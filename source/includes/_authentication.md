@@ -16,7 +16,7 @@ BasisTheory.init("test_1234567890")
 
 > Make sure to replace `test_1234567890` with your API key.
 
-Basis Theory uses API keys to allow access to the API. You can register a new API key at our [portal](http://example.com/developers).
+Basis Theory uses API keys to allow access to the API.
 
 Basis Theory expects for the API key to be included in all API requests to the server in a header that looks like the following:
 
