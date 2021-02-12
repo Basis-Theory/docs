@@ -4,6 +4,6 @@
 
 - [Authentication](#authentication)
 - [Tokens](#tokens)
-  - [Get Token](#get-token)
   - [Create Token](#create-token)
+  - [Get Token](#get-token)
   - [Delete Token](#delete-token)

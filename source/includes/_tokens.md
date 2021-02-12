@@ -44,10 +44,6 @@ Parameter | Description
 --------- | -----------
 data | string or object to be tokenized
 
-<aside class="success">
-Remember — you'll need to be authenticated to use this endpoint!
-</aside>
-
 ## Get Token
 
 ```shell
