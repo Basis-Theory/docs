@@ -40,6 +40,8 @@ html, body {
 // TABLE OF CONTENTS
 ////////////////////////////////////////////////////////////////////////////////
 
+
+
 #toc > ul > li > a > span {
   float: right;
   background-color: #2484FF;
@@ -163,6 +165,17 @@ html, body {
   .toc-link.active-parent {
     background-color: $nav-active-parent-bg;
     color: $nav-active-parent-text;
+  }
+  // Section headers
+  .toc-h1[data-title="API Reference"],
+    .toc-h1[data-title="Javascript Module"],
+    .toc-h1[data-title="Javascript Elements"],
+    .toc-h1[data-title="How To Use"] {
+    text-transform: uppercase;
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+    border-bottom: 1px solid $nav-footer-border-color;
+    font-weight: bold;
   }
 
   .toc-list-h2 {
