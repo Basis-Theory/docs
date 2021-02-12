@@ -280,7 +280,7 @@
   color: #859900;
 }
     </style>
-    <link href="stylesheets/screen-6483a226.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/screen-fb0b3bbd.css" rel="stylesheet" media="screen" />
     <link href="stylesheets/print-953e3353.css" rel="stylesheet" media="print" />
       <script src="javascripts/all-e033bdd3.js"></script>
 
@@ -311,27 +311,73 @@
             <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
           </li>
           <li>
+            <a href="#applications" class="toc-h1 toc-link" data-title="Applications">Applications</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#public-key" class="toc-h2 toc-link" data-title="Public Key">Public Key</a>
+                  </li>
+                  <li>
+                    <a href="#private-key" class="toc-h2 toc-link" data-title="Private Key">Private Key</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#how-to-use" class="toc-h1 toc-link" data-title="How To Use">How To Use</a>
+          </li>
+          <li>
+            <a href="#store-a-payment" class="toc-h1 toc-link" data-title="Store a Payment">Store a Payment</a>
+          </li>
+          <li>
+            <a href="#store-pii-data" class="toc-h1 toc-link" data-title="Store PII Data">Store PII Data</a>
+          </li>
+          <li>
+            <a href="#api-reference" class="toc-h1 toc-link" data-title="API Reference">API Reference</a>
+          </li>
+          <li>
+            <a href="#api-overview" class="toc-h1 toc-link" data-title="API Overview">API Overview</a>
+          </li>
+          <li>
             <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
           </li>
           <li>
-            <a href="#vault" class="toc-h1 toc-link" data-title="Vault">Vault</a>
+            <a href="#tokens" class="toc-h1 toc-link" data-title="Tokens">Tokens</a>
               <ul class="toc-list-h2">
+                  <li>
+                    <a href="#create-token" class="toc-h2 toc-link" data-title="Create Token">Create Token</a>
+                  </li>
                   <li>
                     <a href="#get-token" class="toc-h2 toc-link" data-title="Get Token">Get Token</a>
                   </li>
                   <li>
-                    <a href="#delete-a-specific-token" class="toc-h2 toc-link" data-title="Delete a Specific Token">Delete a Specific Token</a>
+                    <a href="#delete-token" class="toc-h2 toc-link" data-title="Delete Token">Delete Token</a>
                   </li>
               </ul>
           </li>
           <li>
             <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
           </li>
+          <li>
+            <a href="#javascript-module" class="toc-h1 toc-link" data-title="Javascript Module">Javascript Module</a>
+          </li>
+          <li>
+            <a href="#overview" class="toc-h1 toc-link" data-title="Overview">Overview</a>
+          </li>
+          <li>
+            <a href="#js-initialize" class="toc-h1 toc-link" data-title="JS - Initialize">JS - Initialize</a>
+          </li>
+          <li>
+            <a href="#js-encrypt" class="toc-h1 toc-link" data-title="JS - Encrypt">JS - Encrypt</a>
+          </li>
+          <li>
+            <a href="#js-tokenize" class="toc-h1 toc-link" data-title="JS - Tokenize">JS - Tokenize</a>
+          </li>
+          <li>
+            <a href="#js-store-credit-card" class="toc-h1 toc-link" data-title="JS - Store Credit Card">JS - Store Credit Card</a>
+          </li>
+          <li>
+            <a href="#javascript-elements" class="toc-h1 toc-link" data-title="Javascript Elements">Javascript Elements</a>
+          </li>
       </ul>
-        <ul class="toc-footer">
-            <li><a href='#'>Sign Up for a Developer Key</a></li>
-            <li><a href='https://github.com/slatedocs/slate'>Documentation Powered by Slate</a></li>
-        </ul>
     </div>
     <div class="page-wrapper">
       <div class="dark-box"></div>
@@ -340,6 +386,39 @@
 <p>Welcome to the Basis Theory API! You can use our API to access Basis Theory API endpoints, which can get information on managing your tokens.</p>
 
 <p>We have language bindings in Shell and JavaScript! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
+<h1 id='applications'>Applications</h1>
+<p>Your ability to authenticate to the API is granted by creating Applications, which contain both a Public key and a Private key. You will use these keys to <a href="#authentication">Authenticate</a> to the Basis Theory API. </p>
+
+<p>Each endpoint will denote which key you should use with <a href="#private-key"><code>private key</code></a> or <a href="#public-key"><code>public key</code></a>.</p>
+<h2 id='public-key'>Public Key</h2>
+<p>This <code>public key</code> has a limited scope of access, which will only allow the consumer the ability to create Tokens or Payments, yet not have access to retrieve this information. </p>
+
+<p>These keys are perfect for using with your frontend web application (or mobile application), and pair perfectly with our Javascript Modules and Hosted Fields.</p>
+<h2 id='private-key'>Private Key</h2>
+<p>The <code>private key</code> to be used by your backend application, giving it authorization to a greater scope of access. You will be able to use these keys to take additinoal actions within our API. </p>
+<h1 id='how-to-use'>How To Use</h1><h1 id='store-a-payment'>Store a Payment</h1>
+<p>Put the js module payment example here</p>
+
+<aside class="success">
+<b>Coming Soon</b>
+</aside>
+<h1 id='store-pii-data'>Store PII Data</h1>
+<p>Put the js module payment example here</p>
+
+<aside class="success">
+<b>Coming Soon</b>
+</aside>
+<h1 id='api-reference'>API Reference</h1><h1 id='api-overview'>API Overview</h1>
+<ul>
+<li><a href="#authentication">Authentication</a></li>
+<li><a href="#tokens">Tokens</a>
+
+<ul>
+<li><a href="#create-token">Create Token</a></li>
+<li><a href="#get-token">Get Token</a></li>
+<li><a href="#delete-token">Delete Token</a></li>
+</ul></li>
+</ul>
 <h1 id='authentication'>Authentication</h1>
 <blockquote>
 <p>To authorize, use this code:</p>
@@ -355,7 +434,7 @@ curl <span class="s2">"api_endpoint_here"</span> <span class="se">\</span>
 <p>Make sure to replace <code>test_1234567890</code> with your API key.</p>
 </blockquote>
 
-<p>Basis Theory uses API keys to allow access to the API. You can register a new API key at our <a href="http://example.com/developers">portal</a>.</p>
+<p>Basis Theory uses API keys to allow access to the API.</p>
 
 <p>Basis Theory expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
 
@@ -364,13 +443,55 @@ curl <span class="s2">"api_endpoint_here"</span> <span class="se">\</span>
 <aside class="notice">
 You must replace <code>test_1234567890</code> with your personal API key.
 </aside>
-<h1 id='vault'>Vault</h1><h2 id='get-token'>Get Token</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/token/tok_1234"</span> <span class="se">\</span>
+<h1 id='tokens'>Tokens</h1><h2 id='create-token'>Create Token</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--request</span> POST <span class="se">\</span>
+  <span class="s2">"http://api.basistheory.com/tokens"</span> <span class="se">\</span>
+  <span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  <span class="nt">--header</span> <span class="s2">"X-API-KEY: test_123456790"</span>
+  <span class="nt">--data</span> <span class="s1">'{
+  "data": "string or object data",
+  }'</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">BasisTheory</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">basis-theory</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">init</span><span class="p">(</span><span class="dl">"</span><span class="s2">test_1234567890</span><span class="dl">"</span><span class="p">)</span>
+
+<span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">vault</span><span class="p">.</span><span class="nx">createToken</span><span class="p">(</span><span class="dl">"</span><span class="s2">string or object data</span><span class="dl">"</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span> 
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">id</span><span class="p">)</span> <span class="c1">// token id, e.g. "bt_tok_1234" </span>
+  <span class="p">});</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tok_1234"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{encrypted_data}"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint tokenize any set of data passed to the <code>/tokens</code> endpoint. This will store and encrypt you data and return a uniquely generated token back to you. </p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>POST http://example.com/api/tokens</code></p>
+<h3 id='query-parameters'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>data</td>
+<td>string or object to be tokenized</td>
+</tr>
+</tbody></table>
+<h2 id='get-token'>Get Token</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/tokens/tok_1234"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"X-API-KEY: test_123456790"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">BasisTheory</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">basis-theory</span><span class="dl">'</span><span class="p">);</span>
 
 <span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">init</span><span class="p">(</span><span class="dl">"</span><span class="s2">test_1234567890</span><span class="dl">"</span><span class="p">)</span>
 
-<span class="kd">let</span> <span class="nx">token</span> <span class="o">=</span> <span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">vault</span><span class="p">.</span><span class="nx">getToken</span><span class="p">(</span><span class="dl">"</span><span class="s2">tok_1234</span><span class="dl">"</span><span class="p">);</span>
+<span class="kd">let</span> <span class="nx">token</span> <span class="o">=</span> <span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">vault</span><span class="p">.</span><span class="nx">getToken</span><span class="p">(</span><span class="dl">"</span><span class="s2">tok_1234</span><span class="dl">"</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span> 
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span> <span class="c1">// string or object data </span>
+  <span class="p">});</span>
 </code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -380,10 +501,10 @@ You must replace <code>test_1234567890</code> with your personal API key.
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{encrypted_data}"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>This endpoint tokenizes encrypted string data.</p>
-<h3 id='http-request'>HTTP Request</h3>
-<p><code>POST http://example.com/api/token/{token_id}</code></p>
-<h3 id='query-parameters'>Query Parameters</h3>
+<p>Returns the raw data associated with a <code>token</code>.</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>POST http://example.com/api/tokens/:token_id</code></p>
+<h3 id='query-parameters-2'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -391,7 +512,7 @@ You must replace <code>test_1234567890</code> with your personal API key.
 </tr>
 </thead><tbody>
 <tr>
-<td>ID</td>
+<td>token_id</td>
 <td>token id that you want to retrieve</td>
 </tr>
 </tbody></table>
@@ -399,7 +520,7 @@ You must replace <code>test_1234567890</code> with your personal API key.
 <aside class="success">
 Remember — you'll need to be authenticated to use this endpoint!
 </aside>
-<h2 id='delete-a-specific-token'>Delete a Specific Token</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/token/tok_1234"</span> <span class="se">\</span>
+<h2 id='delete-token'>Delete Token</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/token/tok_1234"</span> <span class="se">\</span>
   <span class="nt">-X</span> DELETE <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: api_key_1234"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">BasisTheory</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">basis-theory</span><span class="dl">'</span><span class="p">);</span>
@@ -408,9 +529,13 @@ Remember — you'll need to be authenticated to use this endpoint!
 
 <span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">vault</span><span class="p">.</span><span class="nx">deleteToken</span><span class="p">(</span><span class="dl">"</span><span class="s2">tok_1234</span><span class="dl">"</span><span class="p">);</span>
 </code></pre></div>
-<p>This endpoint deletes a token.</p>
-<h3 id='http-request-2'>HTTP Request</h3>
-<p><code>DELETE http://example.com/token/&lt;ID&gt;</code></p>
+<p>This endpoint will remove any underlying data associated with the token, we will retain the token reference and audit logs for future reference. The data will be permanently deleted.</p>
+
+<aside class="warning">
+WARNING - The data associated with a deleted token will be removed forever. The reference will still exists for audit purposes
+</aside>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>DELETE http://api.basistheory.com/tokens/:token_id</code></p>
 <h3 id='url-parameters'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -419,7 +544,7 @@ Remember — you'll need to be authenticated to use this endpoint!
 </tr>
 </thead><tbody>
 <tr>
-<td>ID</td>
+<td>token_id</td>
 <td>token id that you want to retrieve</td>
 </tr>
 </tbody></table>
@@ -448,39 +573,184 @@ This error section is stored in a separate file in <code>includes/_errors.md</co
 <td>403</td>
 <td>Forbidden -- The kitten requested is hidden for administrators only.</td>
 </tr>
+</tbody></table>
+<h1 id='javascript-module'>Javascript Module</h1><h1 id='overview'>Overview</h1>
+<p>The <code>javascript</code> module will allow consumers to tokenize any data they want within the browser of their customers. 
+This will give you the power to continue to own the UX of your application, while still being able to off-load most of the risk and compliance of holding that data.</p>
+
+<aside class="warning">
+<b>Warning</b> - If you're looking to use this module for storing payments cards, keep in mind that you will need to complete a <i>SAQ-A-PM</i> survey for Basis Theory to keep on file.
+This survey will identify and enforce certain data protections for the PCI compliance of your frontend systems (ones touching the card data). 
+</aside>
+
+<ul>
+<li><a href="#js-initialize">Initialize</a></li>
+<li><a href="#js-encrypt">Encrypt</a></li>
+<li><a href="#js-tokenize">Tokenize</a></li>
+<li><a href="#js-store-credit-card">Store Credit Card</a></li>
+</ul>
+<h1 id='js-initialize'>JS - Initialize</h1>
+<blockquote>
+<p>To initialize, use this code:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">BasisTheory</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">basis-theory</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">init</span><span class="p">(</span><span class="dl">"</span><span class="s2">test_1234567890</span><span class="dl">"</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>const BasisTheory <span class="o">=</span> require<span class="o">(</span><span class="s1">'basis-theory'</span><span class="o">)</span><span class="p">;</span>
+
+BasisTheory.init<span class="o">(</span><span class="s2">"test_1234567890"</span><span class="o">)</span>
+</code></pre></div>
+<blockquote>
+<p>Make sure to replace <code>test_1234567890</code> with your API key.</p>
+</blockquote>
+
+<p>You will need a <a href="#public-key">public api key</a> to initialize the Basis Theory javascript module, this will give you access to 
+both the <code>vault</code> and <code>payments</code> features within the module. </p>
+
+<table><thead>
 <tr>
-<td>404</td>
-<td>Not Found -- The specified kitten could not be found.</td>
+<th>Parameter</th>
+<th>Description</th>
 </tr>
+</thead><tbody>
 <tr>
-<td>405</td>
-<td>Method Not Allowed -- You tried to access a kitten with an invalid method.</td>
-</tr>
-<tr>
-<td>406</td>
-<td>Not Acceptable -- You requested a format that isn&#39;t json.</td>
-</tr>
-<tr>
-<td>410</td>
-<td>Gone -- The kitten requested has been removed from our servers.</td>
-</tr>
-<tr>
-<td>418</td>
-<td>I&#39;m a teapot.</td>
-</tr>
-<tr>
-<td>429</td>
-<td>Too Many Requests -- You&#39;re requesting too many kittens! Slow down!</td>
-</tr>
-<tr>
-<td>500</td>
-<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
-</tr>
-<tr>
-<td>503</td>
-<td>Service Unavailable -- We&#39;re temporarily offline for maintenance. Please try again later.</td>
+<td>api_key</td>
+<td>your application&#39;s public api key</td>
 </tr>
 </tbody></table>
+<h1 id='js-encrypt'>JS - Encrypt</h1>
+<blockquote>
+<p>To encrypt, use this code:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">keyPair</span> <span class="o">=</span> <span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">encryption</span><span class="p">.</span><span class="nx">generateKeyPair</span><span class="p">();</span> <span class="c1">// replace with your own public key</span>
+<span class="kd">const</span> <span class="nx">pii</span> <span class="o">=</span> <span class="p">{</span> <span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Fiona</span><span class="dl">"</span><span class="p">,</span> <span class="na">dob</span><span class="p">:</span> <span class="dl">"</span><span class="s2">02/12/70</span><span class="dl">"</span> <span class="p">};</span>
+
+<span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">encryption</span>
+          <span class="p">.</span><span class="nx">encrypt</span><span class="p">(</span><span class="nx">keyPair</span><span class="p">.</span><span class="nx">publicKey</span><span class="p">,</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">pii</span><span class="p">))</span>
+          <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">encrypted</span><span class="p">)</span> <span class="p">{</span>
+              <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">encrypted</span><span class="p">);</span> <span class="c1">// encrypted cipher text </span>
+          <span class="p">});</span>
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>const pii <span class="o">=</span> <span class="o">{</span> name: <span class="s2">"Fiona"</span>, dob: <span class="s2">"02/12/70"</span> <span class="o">}</span><span class="p">;</span>
+
+BasisTheory.encryption
+          .encrypt<span class="o">(</span>keyPair.publicKey, JSON.stringify<span class="o">(</span>pii<span class="o">))</span>
+          .then<span class="o">(</span><span class="k">function</span> <span class="o">(</span>encrypted<span class="o">)</span> <span class="o">{</span>
+              console.log<span class="o">(</span>encrypted<span class="o">)</span><span class="p">;</span> // encrypted cipher text 
+          <span class="o">})</span><span class="p">;</span>
+</code></pre></div>
+<blockquote>
+<p>Make sure you&#39;ve initialized BasisTheory</p>
+</blockquote>
+
+<p>You are able to encrypt any data with our encryption helpers. Just pass the data through the helpers before creating a token!  </p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>encryption_key</td>
+<td>a public key you wish to encrypt with</td>
+</tr>
+<tr>
+<td>data</td>
+<td>string data you wish to encrypt</td>
+</tr>
+</tbody></table>
+<h1 id='js-tokenize'>JS - Tokenize</h1>
+<blockquote>
+<p>To tokenize data, use this code:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">encrypted_data</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">1vauq19af...</span><span class="dl">"</span><span class="p">;</span> <span class="c1">//cipher text from encrypted data</span>
+
+<span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">vault</span><span class="p">.</span><span class="nx">createToken</span><span class="p">(</span><span class="nx">encrypted_data</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span> <span class="c1">//token to store in your system</span>
+    <span class="p">});</span>
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>const encrypted_data <span class="o">=</span> <span class="s2">"1vauq19af..."</span><span class="p">;</span> //cipher text from encrypted data
+
+BasisTheory.vault.createToken<span class="o">(</span>encrypted_data<span class="o">)</span>
+  .then<span class="o">(</span><span class="k">function</span> <span class="o">(</span>res<span class="o">)</span> <span class="o">{</span>
+        console.log<span class="o">(</span>res.id<span class="o">)</span><span class="p">;</span> //token to store <span class="k">in </span>your system
+    <span class="o">})</span><span class="p">;</span>
+</code></pre></div>
+<blockquote>
+<p>Make sure you&#39;ve initialized BasisTheory</p>
+</blockquote>
+
+<p>You are able to encrypt any data with our encryption helpers. Just pass the data through the helpers before creating a token!</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>data</td>
+<td>string or object data to tokenize</td>
+</tr>
+</tbody></table>
+<h1 id='js-store-credit-card'>JS - Store Credit Card</h1>
+<blockquote>
+<p>To initialize, use this code:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">payments</span>
+  <span class="p">.</span><span class="nx">storeCreditCard</span><span class="p">({</span>
+    <span class="na">cardNumber</span><span class="p">:</span> <span class="dl">"</span><span class="s2">4242424242424242</span><span class="dl">"</span><span class="p">,</span>
+    <span class="na">holderName</span><span class="p">:</span> <span class="dl">"</span><span class="s2">James Armstead</span><span class="dl">"</span><span class="p">,</span>
+    <span class="na">expiration</span><span class="p">:</span> <span class="dl">"</span><span class="s2">10/24</span><span class="dl">"</span><span class="p">,</span>
+    <span class="na">cvv</span><span class="p">:</span> <span class="dl">"</span><span class="s2">999</span><span class="dl">"</span><span class="p">,</span>
+  <span class="p">})</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">card</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">card</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span> <span class="c1">// token to store in your system</span>
+  <span class="p">});</span>
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>BasisTheory.payments
+  .storeCreditCard<span class="o">({</span>
+    cardNumber: <span class="s2">"4242424242424242"</span>,
+    holderName: <span class="s2">"Fiona Theory"</span>,
+    expiration: <span class="s2">"10/24"</span>,
+    cvv: <span class="s2">"999"</span>,
+  <span class="o">})</span>
+  .then<span class="o">(</span><span class="k">function</span> <span class="o">(</span>card<span class="o">)</span> <span class="o">{</span>
+    console.log<span class="o">(</span>card.id<span class="o">)</span><span class="p">;</span> // token to store <span class="k">in </span>your system
+  <span class="o">})</span><span class="p">;</span>
+</code></pre></div>
+<blockquote>
+<p>Make sure you&#39;ve initialized BasisTheory</p>
+</blockquote>
+
+<p>Tokenize a credit card to be able to use later. </p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>cardNumber</td>
+<td>Credit card number to store</td>
+</tr>
+<tr>
+<td>holderName</td>
+<td>Name on the credit card</td>
+</tr>
+<tr>
+<td>expiration</td>
+<td>Expiration date on the card</td>
+</tr>
+<tr>
+<td>cvv</td>
+<td>Verification code on the card</td>
+</tr>
+</tbody></table>
+<h1 id='javascript-elements'>Javascript Elements</h1>
+<aside class="notice">
+Coming Soon!
+</aside>
 
       </div>
       <div class="dark-box">
