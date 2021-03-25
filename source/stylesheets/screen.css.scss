@@ -2,7 +2,7 @@
 @import 'normalize';
 @import 'variables';
 @import 'icon-font';
-@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;400;600&display=swap');
 // @import 'rtl'; // uncomment to switch to RTL format
 
 /*
@@ -87,23 +87,22 @@ html, body {
     position: relative;
 
     input {
-      background: $nav-bg;
-      border-width: 0 0 1px 0;
-      border-color: $search-box-border-color;
+      background: $nav-bg-search;
       padding: 6px 0 6px 20px;
       box-sizing: border-box;
       margin: $nav-v-padding $nav-padding;
       width: $nav-width - ($nav-padding*2);
       outline: none;
-      color: $nav-text;
-      border-radius: 0; /* ios has a default border radius */
+      color: $nav-search-text;
+      opacity: 0.55;
+      border-radius: 4px;
     }
 
-    &:before {
+    &:after {
       position: absolute;
       top: 17px;
       left: $nav-padding;
-      color: $nav-text;
+      color: $nav-icon;
       @extend %icon-search;
     }
   }
@@ -160,6 +159,8 @@ html, body {
   .toc-link.active {
     background-color: $nav-active-bg;
     color: $nav-active-text;
+    border: 1px solid #2D2F4A;
+    border-radius: 2px;
   }
 
   // this is parent links of the currently selected ToC entry
@@ -374,7 +375,7 @@ html, body {
     margin-top: 2em;
     border: 1px solid #D9DBF8;
     background-color: #F2F3FF;
-    color: #1B1D32;
+    line-height: 160%;
 
   }
 
@@ -391,7 +392,7 @@ html, body {
     border-top: 1px solid #ccc;
     padding-top: 1.2em;
     padding-bottom: 1.2em;
-    background-image: linear-gradient(to bottom, rgba(#fff, 0.2), rgba(#fff, 0));
+    background-image: linear-gradient(to bottom, rgba(#FFF, 0.2), rgba(#FFF, 0));
   }
 
   // h2s right after h1s should bump right up
@@ -459,6 +460,11 @@ html, body {
 
   dd {
     margin-left: 15px;
+  }
+  p {
+    line-height: 180%;
+    font-weight: 400;
+    font-size: 16px;
   }
 
   p, li, dt, dd {
@@ -540,7 +546,7 @@ html, body {
 
   pre, blockquote {
     background-color: $code-bg;
-    color: #fff;
+    color: #FFF;
 
     margin: 0;
     width: $examples-width;
@@ -555,7 +561,7 @@ html, body {
     &>p { margin: 0; }
 
     a {
-      color: #fff;
+      color: #FFF;
       text-decoration: none;
       border-bottom: dashed 1px #ccc;
     }
