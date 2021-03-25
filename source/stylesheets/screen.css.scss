@@ -2,6 +2,7 @@
 @import 'normalize';
 @import 'variables';
 @import 'icon-font';
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200&display=swap');
 // @import 'rtl'; // uncomment to switch to RTL format
 
 /*
@@ -362,14 +363,19 @@ html, body {
 
   h1 {
     @extend %header-font;
-    font-size: 25px;
+    font-size: 20px;
+    font-family: "Source Sans Pro", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    letter-spacing: 0.15px;
     padding-top: 0.5em;
     padding-bottom: 0.5em;
     margin-bottom: $h1-margin-bottom;
     margin-top: 2em;
-    border-top: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
-    background-color: #fdfdfd;
+    border: 1px solid #D9DBF8;
+    background-color: #F2F3FF;
+    color: #1B1D32;
+
   }
 
   h1:first-child, div:first-child + h1 {
@@ -519,6 +525,7 @@ html, body {
     border: 1px solid #F7E633;
     background: linear-gradient(to top left, #F7E633 0%, #F1D32F 100%);
   }
+
 }
 
 ////////////////////////////////////////////////////////////////////////////////
