@@ -50,20 +50,26 @@ html, body {
   width: 20px;
 }
 
-.toc-wrapper {
-  transition: left 0.3s ease-in-out;
+.test {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 0px;
+}
 
+.toc-wrapper {
+/*   transition: left 0.3s ease-in-out;
   overflow-y: auto;
   overflow-x: hidden;
   position: fixed;
-  z-index: 30;
+  z-index: 30; */
   top: 0;
   left: 0;
-  bottom: 0;
+  bottom: 0; 
+
   width: $nav-width;
   background-color: $nav-bg;
-  font-size: 13px;
-  font-weight: bold;
+  font-size: 16px;
+  font-weight: 600;
 
   // language selector for mobile devices
   .lang-selector {
@@ -101,7 +107,7 @@ html, body {
     &:after {
       position: absolute;
       top: 17px;
-      left: $nav-padding;
+      right: $nav-padding;
       color: $nav-icon;
       @extend %icon-search;
     }
@@ -153,6 +159,7 @@ html, body {
     transition-property: background;
     transition-timing-function: linear;
     transition-duration: 200ms;
+    margin: 0 15px;
   }
 
   // This is the currently selected ToC entry
@@ -176,7 +183,6 @@ html, body {
     text-transform: uppercase;
     margin-top: 1em;
     margin-bottom: 0.5em;
-    border-bottom: 1px solid $nav-footer-border-color;
     font-weight: bold;
   }
 
@@ -265,8 +271,11 @@ html, body {
 ////////////////////////////////////////////////////////////////////////////////
 
 .page-wrapper {
-  margin-left: $nav-width;
+  //margin-left: $nav-width;
+  //position: relative;
   position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   z-index: 10;
   background-color: $main-bg;
   min-height: 100%;
@@ -333,10 +342,10 @@ html, body {
 
 .content {
   // fixes webkit rendering bug for some: see #538
-  -webkit-transform: translateZ(0);
+  /*-webkit-transform: translateZ(0);
   // to place content above the dark box
   position: relative;
-  z-index: 30;
+  z-index: 30;*/
 
   &:after {
     content: '';
@@ -477,9 +486,13 @@ html, body {
   }
 
   code {
-    background-color: rgba(0,0,0,0.05);
-    padding: 3px;
-    border-radius: 3px;
+    background:rgba(26, 28, 51, 0.06);
+    border-radius: 2px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 4px 10px;
+    color: #4A4C65;
     @extend %break-words;
     @extend %code-font;
   }
@@ -577,7 +590,7 @@ html, body {
   blockquote {
     &>p {
       background-color: $code-annotation-bg;
-      padding: $code-annotation-padding 2em;
+      //padding: $code-annotation-padding 2em;
       color: #eee;
     }
   }
