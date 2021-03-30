@@ -23,5 +23,5 @@ Basis Theory expects for the API key to be included in all API requests to the s
 `X-API-KEY: test_1234567890`
 
 <aside class="notice">
-You must replace <code>test_1234567890</code> with your personal API key.
+You must replace <code>test_1234567890</code> with your API key supplied when you created an Application.
 </aside>
