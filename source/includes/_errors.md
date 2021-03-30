@@ -1,12 +1,33 @@
 # Errors
 
-<aside class="notice">
-This error section is stored in a separate file in <code>includes/_errors.md</code>. Slate allows you to optionally separate out your docs into many files...just save them to the <code>includes</code> folder and add them to the top of your <code>index.md</code>'s frontmatter. Files are included in the order listed.
-</aside>
+```shell
+{
+  "errors": {
+    "additionalProp1": [
+      "string"
+    ],
+    "additionalProp2": [
+      "string"
+    ],
+    "additionalProp3": [
+      "string"
+    ]
+  },
+  "type": "string",
+  "title": "string",
+  "status": 400,
+  "detail": "string",
+  "instance": "string"
+}
+```
+## Response Properties
 
-The Kittn API uses the following error codes:
+Parameter | Description
+--------- | -----------
+errors.{property} | each errored property will have a list of human readable errors to report
+status | status code of the errored request
 
-
+## Error Codes
 Error Code | Meaning
 ---------- | -------
 400 | Bad Request -- Your request is invalid.
