@@ -50,26 +50,44 @@ html, body {
   width: 20px;
 }
 
-.test {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  padding: 0px;
-}
-
 .toc-wrapper {
-/*   transition: left 0.3s ease-in-out;
+  transition: left 0.3s ease-in-out;
   overflow-y: auto;
   overflow-x: hidden;
   position: fixed;
-  z-index: 30; */
+  z-index: 30;
+  position: fixed;
   top: 0;
   left: 0;
   bottom: 0; 
-
   width: $nav-width;
   background-color: $nav-bg;
   font-size: 16px;
   font-weight: 600;
+
+  .toc-header {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    margin: 15px;
+    color: $nav-header-text;
+    background: $nav-header-backgroud;
+
+    .toc-header-tag {
+      justify-self: right;
+      align-self: center;
+      font-size: 14px;
+    }
+
+    .toc-header-logo {
+      justify-self: right;
+      align-items: center;
+      display: grid;
+      grid-template-columns: 50% 50%;
+    }
+  }
+  .line {
+    border: 1px solid $toc-border;
+  }
 
   // language selector for mobile devices
   .lang-selector {
@@ -83,10 +101,9 @@ html, body {
   // This is the logo at the top of the ToC
   .logo {
     display: block;
-    max-width: 100%;
+    max-width: 77%;
     margin-bottom: $logo-margin;
-    margin-left: auto;
-    margin-right: auto;
+    color: #1AD1DB;
   }
 
   &>.search {
@@ -94,10 +111,10 @@ html, body {
 
     input {
       background: $nav-bg-search;
-      padding: 6px 0 6px 20px;
+      padding: 6px 0 6px 15px;
       box-sizing: border-box;
-      margin: $nav-v-padding $nav-padding;
-      width: $nav-width - ($nav-padding*2);
+      margin: 1em $nav-padding;
+      width: 86%;
       outline: none;
       color: $nav-search-text;
       opacity: 0.55;
@@ -106,11 +123,11 @@ html, body {
 
     &:after {
       position: absolute;
-      top: 17px;
-      right: $nav-padding;
+      top: 37%;
+      right: $nav-padding*2;
       color: $nav-icon;
       @extend %icon-search;
-    }
+    } 
   }
 
   .search-results {
@@ -166,7 +183,7 @@ html, body {
   .toc-link.active {
     background-color: $nav-active-bg;
     color: $nav-active-text;
-    border: 1px solid #2D2F4A;
+    border: 1px solid $toc-border;
     border-radius: 2px;
   }
 
@@ -271,15 +288,11 @@ html, body {
 ////////////////////////////////////////////////////////////////////////////////
 
 .page-wrapper {
-  //margin-left: $nav-width;
-  //position: relative;
+  margin-left: $nav-width;
   position: relative;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
   z-index: 10;
   background-color: $main-bg;
   min-height: 100%;
-
   padding-bottom: 1px; // prevent margin overflow
 
   // The dark box is what gives the code samples their dark background.
@@ -342,10 +355,10 @@ html, body {
 
 .content {
   // fixes webkit rendering bug for some: see #538
-  /*-webkit-transform: translateZ(0);
+  -webkit-transform: translateZ(0);
   // to place content above the dark box
   position: relative;
-  z-index: 30;*/
+  z-index: 30;
 
   &:after {
     content: '';
@@ -355,7 +368,7 @@ html, body {
 
   &>h1, &>h2, &>h3, &>h4, &>h5, &>h6, &>p, &>table, &>ul, &>ol, &>aside, &>dl {
     margin-right: $examples-width;
-    padding: 0 $main-padding;
+    padding: $main-padding;
     box-sizing: border-box;
     display: block;
 
@@ -590,7 +603,7 @@ html, body {
   blockquote {
     &>p {
       background-color: $code-annotation-bg;
-      //padding: $code-annotation-padding 2em;
+      padding: $code-annotation-padding 2em;
       color: #eee;
     }
   }
