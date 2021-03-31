@@ -1,10 +1,10 @@
 # Tokens
 
-## Create Token
+## Create a new token
 
 ```shell
 curl --request POST \
-  "http://api.basistheory.com/tokens" \
+  "https://api-dev.basistheory.com/vault/tokens" \
   --header 'Content-Type: application/json' \
   --header "X-API-KEY: test_123456790"
   --data '{
@@ -36,7 +36,11 @@ This endpoint tokenize any set of data passed to the `/tokens` endpoint. This wi
 
 ### HTTP Request
 
-`POST http://example.com/api/tokens`
+`POST https://api-dev.basistheory.com/vault/tokens`
+
+### Required Scopes
+
+- `vault:write`
 
 ### Query Parameters
 
@@ -44,10 +48,17 @@ Parameter | Description
 --------- | -----------
 data | string or object to be tokenized
 
-## Get Token
+### Response Properties
+
+Parameter | Description
+--------- | -----------
+id | the id of the token that has been created
+data | string or object that was tokenized
+
+## Get an existing token
 
 ```shell
-curl "http://example.com/tokens/tok_1234" \
+curl "https://api-dev.basistheory.com/vault/tokens/tok_1234" \
   -H "X-API-KEY: test_123456790"
 ```
 
@@ -75,22 +86,72 @@ Returns the raw data associated with a `token`
 
 ### HTTP Request
 
-`POST http://example.com/api/tokens/:token_id`
+`GET https://api-dev.basistheory.com/vault/tokens/:token_id`
+
+### Required Scopes
+
+- `vault:read`
 
 ### Query Parameters
 
 Parameter | Description
 --------- | -----------
-token_id | token id that you want to retrieve 
+token_id | token id that you want to retrieve
 
-<aside class="success">
-Remember — you'll need to be authenticated to use this endpoint!
-</aside>
+### Response Properties
 
-## Delete Token
+Parameter | Description
+--------- | -----------
+id | the id of the token that has been created
+data | string or object that was tokenized
+
+
+## List your tokens
 
 ```shell
-curl "http://example.com/token/tok_1234" \
+curl "https://api-dev.basistheory.com/vault/tokens" \
+  -H "X-API-KEY: test_123456790"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+[
+  {
+    "token": "tok_1234",
+    "data": "{encrypted_data}"
+  },
+  //... additional tokens
+]
+```
+
+Returns the raw data associated with a `token`.
+
+### HTTP Request
+
+`GET https://api-dev.basistheory.com/vault/tokens`
+
+### Required Scopes
+
+- `vault:read`
+
+### Query Parameters
+
+Parameter | Description
+--------- | -----------
+token_id | token id that you want to retrieve
+
+### Response Properties
+
+Parameter | Description
+--------- | -----------
+id | the id of the token that has been created
+data | string or object that was tokenized
+
+## Delete a token
+
+```shell
+curl "https://api-dev.basistheory.com/vault/tokens/tok_1234" \
   -X DELETE \
   -H "Authorization: api_key_1234"
 ```
@@ -112,6 +173,10 @@ WARNING - The data associated with a deleted token will be removed forever. The 
 ### HTTP Request
 
 `DELETE http://api.basistheory.com/tokens/:token_id`
+
+### Required Scopes
+
+- `vault:delete`
 
 ### URL Parameters
 
