@@ -226,3 +226,31 @@ Parameter | Description
 --------- | -----------
 atomic_card_id | token id that you want to delete
 
+
+
+## Test Data
+
+To enable testing of atomic cards, we've implemented a list of acceptable test card numbers to ensure you are able to test with non-sensitive data.  
+
+<aside class="warning">
+WARNING - while testing our system, these card numbers will be the only accepted cards available to test with.
+</aside>
+
+### Test card numbers
+
+Card | Description
+--------- | -----------
+4242424242424242 | test card number
+4000056655665556 | test card number
+5555555555554444 | test card number
+2223003122003222 | test card number
+5200828282828210 | test card number
+5105105105105100 | test card number
+378282246310005 | test card number
+371449635398431 | test card number
+6011111111111117 | test card number
+6011000990139424 | test card number
+3056930009020004 | test card number
+36227206271667 | test card number
+3566002020360505 | test card number
+620000000000000 | test card number
