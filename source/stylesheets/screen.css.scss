@@ -501,9 +501,6 @@ html, body {
   code {
     background:rgba(26, 28, 51, 0.06);
     border-radius: 2px;
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
     padding: 4px 10px;
     color: #4A4C65;
     @extend %break-words;
@@ -512,7 +509,7 @@ html, body {
 
   pre>code {
     background-color: transparent;
-    padding: 0;
+    padding: 4px 10px;
   }
 
   aside {

@@ -71,7 +71,7 @@ let token = BasisTheory.vault.getToken("tok_1234")
 }
 ```
 
-Returns the raw data associated with a `token`.
+Returns the raw data associated with a `token`
 
 ### HTTP Request
 

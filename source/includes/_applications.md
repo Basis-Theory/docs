@@ -10,4 +10,4 @@ This `public key` has a limited scope of access, which will only allow the consu
 These keys are perfect for using with your frontend web application (or mobile application), and pair perfectly with our Javascript Modules and Hosted Fields.
 
 ## Private Key
-The `private key` to be used by your backend application, giving it authorization to a greater scope of access. You will be able to use these keys to take additinoal actions within our API. 
+The `private key` to be used by your backend application, giving it authorization to a greater scope of access. You will be able to use these keys to take additional actions within our API. 
