@@ -64,7 +64,16 @@ under the License.
       </span>
     </a>
     <div class="toc-wrapper">
-      <%= image_tag "logo.png", class: 'logo' %>
+      <div class="toc-header">
+        <div class="toc-header-logo">
+          <%= image_tag "logo.svg", class: 'logo' %>
+          <%= image_tag "logo.title.svg", class: 'logo-title' %>
+        </div>
+        <div class="toc-header-tag">
+          <%= image_tag "docs.svg", class: 'section-DOCS' %>
+        </div>
+      </div>
+      <div class="line"></div>
       <% if language_tabs.any? %>
         <div class="lang-selector">
           <% language_tabs.each do |lang| %>
@@ -78,7 +87,7 @@ under the License.
       <% end %>
       <% if current_page.data.search %>
         <div class="search">
-          <input type="text" class="search" id="input-search" placeholder="Search">
+          <input type="text" class="search" id="input-search" placeholder="Search...">
         </div>
         <ul class="search-results"></ul>
       <% end %>

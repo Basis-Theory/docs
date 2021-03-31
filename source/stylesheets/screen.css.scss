@@ -2,6 +2,7 @@
 @import 'normalize';
 @import 'variables';
 @import 'icon-font';
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;400;600&display=swap');
 // @import 'rtl'; // uncomment to switch to RTL format
 
 /*
@@ -51,18 +52,42 @@ html, body {
 
 .toc-wrapper {
   transition: left 0.3s ease-in-out;
-
   overflow-y: auto;
   overflow-x: hidden;
   position: fixed;
   z-index: 30;
+  position: fixed;
   top: 0;
   left: 0;
-  bottom: 0;
+  bottom: 0; 
   width: $nav-width;
   background-color: $nav-bg;
-  font-size: 13px;
-  font-weight: bold;
+  font-size: 16px;
+  font-weight: 600;
+
+  .toc-header {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    margin: 12px 15px;
+    color: $nav-header-text;
+    background: $nav-header-backgroud;
+
+    .toc-header-tag {
+      justify-self: right;
+      align-self: center;
+      font-size: 14px;
+    }
+
+    .toc-header-logo {
+      justify-self: right;
+      align-items: center;
+      display: grid;
+      grid-template-columns: 50% 50%;
+    }
+  }
+  .line {
+    border: 1px solid $toc-border;
+  }
 
   // language selector for mobile devices
   .lang-selector {
@@ -76,35 +101,33 @@ html, body {
   // This is the logo at the top of the ToC
   .logo {
     display: block;
-    max-width: 100%;
+    max-width: 77%;
     margin-bottom: $logo-margin;
-    margin-left: auto;
-    margin-right: auto;
+    color: #1AD1DB;
   }
 
   &>.search {
     position: relative;
 
     input {
-      background: $nav-bg;
-      border-width: 0 0 1px 0;
-      border-color: $search-box-border-color;
-      padding: 6px 0 6px 20px;
+      background: $nav-bg-search;
+      padding: 6px 0 6px 15px;
       box-sizing: border-box;
-      margin: $nav-v-padding $nav-padding;
-      width: $nav-width - ($nav-padding*2);
+      margin: 1em $nav-padding;
+      width: 86%;
       outline: none;
-      color: $nav-text;
-      border-radius: 0; /* ios has a default border radius */
+      color: $nav-search-text;
+      opacity: 0.55;
+      border-radius: 4px;
     }
 
-    &:before {
+    &:after {
       position: absolute;
-      top: 17px;
-      left: $nav-padding;
-      color: $nav-text;
+      top: 37%;
+      right: $nav-padding*2;
+      color: $nav-icon;
       @extend %icon-search;
-    }
+    } 
   }
 
   .search-results {
@@ -153,12 +176,15 @@ html, body {
     transition-property: background;
     transition-timing-function: linear;
     transition-duration: 200ms;
+    margin: 0 15px;
   }
 
   // This is the currently selected ToC entry
   .toc-link.active {
     background-color: $nav-active-bg;
     color: $nav-active-text;
+    border: 1px solid $toc-border;
+    border-radius: 2px;
   }
 
   // this is parent links of the currently selected ToC entry
@@ -174,7 +200,6 @@ html, body {
     text-transform: uppercase;
     margin-top: 1em;
     margin-bottom: 0.5em;
-    border-bottom: 1px solid $nav-footer-border-color;
     font-weight: bold;
   }
 
@@ -268,7 +293,6 @@ html, body {
   z-index: 10;
   background-color: $main-bg;
   min-height: 100%;
-
   padding-bottom: 1px; // prevent margin overflow
 
   // The dark box is what gives the code samples their dark background.
@@ -344,7 +368,7 @@ html, body {
 
   &>h1, &>h2, &>h3, &>h4, &>h5, &>h6, &>p, &>table, &>ul, &>ol, &>aside, &>dl {
     margin-right: $examples-width;
-    padding: 0 $main-padding;
+    padding: $main-padding;
     box-sizing: border-box;
     display: block;
 
@@ -362,14 +386,19 @@ html, body {
 
   h1 {
     @extend %header-font;
-    font-size: 25px;
+    font-size: 20px;
+    font-family: "Source Sans Pro", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    letter-spacing: 0.15px;
     padding-top: 0.5em;
     padding-bottom: 0.5em;
     margin-bottom: $h1-margin-bottom;
     margin-top: 2em;
-    border-top: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
-    background-color: #fdfdfd;
+    border: 1px solid #D9DBF8;
+    background-color: #F2F3FF;
+    line-height: 160%;
+
   }
 
   h1:first-child, div:first-child + h1 {
@@ -385,7 +414,7 @@ html, body {
     border-top: 1px solid #ccc;
     padding-top: 1.2em;
     padding-bottom: 1.2em;
-    background-image: linear-gradient(to bottom, rgba(#fff, 0.2), rgba(#fff, 0));
+    background-image: linear-gradient(to bottom, rgba(#FFF, 0.2), rgba(#FFF, 0));
   }
 
   // h2s right after h1s should bump right up
@@ -454,6 +483,11 @@ html, body {
   dd {
     margin-left: 15px;
   }
+  p {
+    line-height: 180%;
+    font-weight: 400;
+    font-size: 16px;
+  }
 
   p, li, dt, dd {
     line-height: 1.6;
@@ -465,16 +499,14 @@ html, body {
   }
 
   code {
-    background-color: rgba(0,0,0,0.05);
-    padding: 3px;
-    border-radius: 3px;
+    background-color: rgba(26, 28, 51, 0.06);
+    border-radius: 2px;
     @extend %break-words;
     @extend %code-font;
   }
 
   pre>code {
     background-color: transparent;
-    padding: 0;
   }
 
   aside {
@@ -519,6 +551,7 @@ html, body {
     border: 1px solid #F7E633;
     background: linear-gradient(to top left, #F7E633 0%, #F1D32F 100%);
   }
+
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -533,7 +566,7 @@ html, body {
 
   pre, blockquote {
     background-color: $code-bg;
-    color: #fff;
+    color: #FFF;
 
     margin: 0;
     width: $examples-width;
@@ -548,7 +581,7 @@ html, body {
     &>p { margin: 0; }
 
     a {
-      color: #fff;
+      color: #FFF;
       text-decoration: none;
       border-bottom: dashed 1px #ccc;
     }
@@ -558,7 +591,7 @@ html, body {
     @extend %code-font;
     padding-top: 2em;
     padding-bottom: 2em;
-    padding: 2em $main-padding;
+    padding: 2em 10px 24px;
   }
 
   blockquote {
