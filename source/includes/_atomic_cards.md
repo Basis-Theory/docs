@@ -4,7 +4,7 @@
 
 ```shell
 curl --request POST \
-  "https://api-dev.basistheory.com/payments/sources/cards" \
+  "https://api-dev.basistheory.com/atomic/cards/cards" \
   --header 'Content-Type: application/json' \
   --header "X-API-KEY: test_123456790"
   --data '{
@@ -48,7 +48,7 @@ This endpoint will tokenize any credit card to enable you to securely store and 
 
 ### HTTP Request
 
-`POST https://api-dev.basistheory.com/payments/sources/cards`
+`POST https://api-dev.basistheory.com/atomic/cards/cards`
 
 <aside class="success">
 Remember — you'll need to be authenticated to use this endpoint!
@@ -83,7 +83,7 @@ masked.expiration_year | year the card will expire
 ## Get an existing atomic card
 
 ```shell
-curl "https://api-dev.basistheory.com/payments/sources/cards/tok_1234" \
+curl "https://api-dev.basistheory.com/atomic/cards/cards/tok_1234" \
   -H "X-API-KEY: test_123456790"
 ```
 
@@ -113,7 +113,7 @@ BasisTheory.init("test_1234567890")
 
 ### HTTP Request
 
-`GET https://api-dev.basistheory.com/payments/sources/cards/:atomic_card_id`
+`GET https://api-dev.basistheory.com/atomic/cards/cards/:atomic_card_id`
 
 <aside class="success">
 Remember — you'll need to be authenticated to use this endpoint!
@@ -144,7 +144,7 @@ masked.expiration_year | year the card will expire
 ## List your atomic cards
 
 ```shell
-curl "https://api-dev.basistheory.com/payments/sources/cards" \
+curl "https://api-dev.basistheory.com/atomic/cards/cards" \
   -H "X-API-KEY: test_123456790"
 ```
 
@@ -169,7 +169,7 @@ curl "https://api-dev.basistheory.com/payments/sources/cards" \
 
 ### HTTP Request
 
-`GET https://api-dev.basistheory.com/payments/sources/cards`
+`GET https://api-dev.basistheory.com/atomic/cards/cards`
 
 <aside class="success">
 Remember — you'll need to be authenticated to use this endpoint!
@@ -193,7 +193,7 @@ Parameter | Description
 ## Delete an atomic card
 
 ```shell
-curl "https://api-dev.basistheory.com/payments/sources/cards/tok_1234" \
+curl "https://api-dev.basistheory.com/atomic/cards/cards/tok_1234" \
   -X DELETE \
   -H "Authorization: api_key_1234"
 ```
@@ -214,7 +214,7 @@ WARNING - The data associated with a deleted token will be removed forever. It's
 
 ### HTTP Request
 
-`DELETE https://api-dev.basistheory.com/payments/sources/cards/:atomic_card_id`
+`DELETE https://api-dev.basistheory.com/atomic/cards/cards/:atomic_card_id`
 
 ### Required Scopes
 

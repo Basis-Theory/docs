@@ -4,7 +4,7 @@
 
 ```shell
 curl --request POST \
-  "https://api-dev.basistheory.com/vault/tokens" \
+  "https://api-dev.basistheory.com/tokens" \
   --header 'Content-Type: application/json' \
   --header "X-API-KEY: test_123456790"
   --data '{
@@ -36,7 +36,7 @@ This endpoint tokenize any set of data passed to the `/tokens` endpoint. This wi
 
 ### HTTP Request
 
-`POST https://api-dev.basistheory.com/vault/tokens`
+`POST https://api-dev.basistheory.com/tokens`
 
 ### Required Scopes
 
@@ -58,7 +58,7 @@ data | string or object that was tokenized
 ## Get an existing token
 
 ```shell
-curl "https://api-dev.basistheory.com/vault/tokens/tok_1234" \
+curl "https://api-dev.basistheory.com/tokens/tok_1234" \
   -H "X-API-KEY: test_123456790"
 ```
 
@@ -86,7 +86,7 @@ Returns the raw data associated with a `token`
 
 ### HTTP Request
 
-`GET https://api-dev.basistheory.com/vault/tokens/:token_id`
+`GET https://api-dev.basistheory.com/tokens/:token_id`
 
 ### Required Scopes
 
@@ -109,7 +109,7 @@ data | string or object that was tokenized
 ## List your tokens
 
 ```shell
-curl "https://api-dev.basistheory.com/vault/tokens" \
+curl "https://api-dev.basistheory.com/tokens" \
   -H "X-API-KEY: test_123456790"
 ```
 
@@ -129,7 +129,7 @@ Returns the raw data associated with a `token`.
 
 ### HTTP Request
 
-`GET https://api-dev.basistheory.com/vault/tokens`
+`GET https://api-dev.basistheory.com/tokens`
 
 ### Required Scopes
 
@@ -151,7 +151,7 @@ data | string or object that was tokenized
 ## Delete a token
 
 ```shell
-curl "https://api-dev.basistheory.com/vault/tokens/tok_1234" \
+curl "https://api-dev.basistheory.com/tokens/tok_1234" \
   -X DELETE \
   -H "Authorization: api_key_1234"
 ```
