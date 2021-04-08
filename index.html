@@ -518,7 +518,7 @@ curl <span class="s2">"api_endpoint_here"</span> <span class="se">\</span>
 You must replace <code>test_1234567890</code> with your API key supplied when you created an Application.
 </aside>
 <h1 id='tokens'>Tokens</h1><h2 id='create-a-new-token'>Create a new token</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--request</span> POST <span class="se">\</span>
-  <span class="s2">"https://api-dev.basistheory.com/vault/tokens"</span> <span class="se">\</span>
+  <span class="s2">"https://api-dev.basistheory.com/tokens"</span> <span class="se">\</span>
   <span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
   <span class="nt">--header</span> <span class="s2">"X-API-KEY: test_123456790"</span>
   <span class="nt">--data</span> <span class="s1">'{
@@ -543,7 +543,7 @@ You must replace <code>test_1234567890</code> with your API key supplied when yo
 </span></code></pre></div>
 <p>This endpoint tokenize any set of data passed to the <code>/tokens</code> endpoint. This will store and encrypt you data and return a uniquely generated token back to you. </p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>POST https://api-dev.basistheory.com/vault/tokens</code></p>
+<p><code>POST https://api-dev.basistheory.com/tokens</code></p>
 <h3 id='required-scopes'>Required Scopes</h3>
 <ul>
 <li><code>vault:write</code></li>
@@ -576,7 +576,7 @@ You must replace <code>test_1234567890</code> with your API key supplied when yo
 <td>string or object that was tokenized</td>
 </tr>
 </tbody></table>
-<h2 id='get-an-existing-token'>Get an existing token</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api-dev.basistheory.com/vault/tokens/tok_1234"</span> <span class="se">\</span>
+<h2 id='get-an-existing-token'>Get an existing token</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api-dev.basistheory.com/tokens/tok_1234"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"X-API-KEY: test_123456790"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">BasisTheory</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">basis-theory</span><span class="dl">'</span><span class="p">);</span>
 
@@ -597,7 +597,7 @@ You must replace <code>test_1234567890</code> with your API key supplied when yo
 </span></code></pre></div>
 <p>Returns the raw data associated with a <code>token</code></p>
 <h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET https://api-dev.basistheory.com/vault/tokens/:token_id</code></p>
+<p><code>GET https://api-dev.basistheory.com/tokens/:token_id</code></p>
 <h3 id='required-scopes-2'>Required Scopes</h3>
 <ul>
 <li><code>vault:read</code></li>
@@ -630,7 +630,7 @@ You must replace <code>test_1234567890</code> with your API key supplied when yo
 <td>string or object that was tokenized</td>
 </tr>
 </tbody></table>
-<h2 id='list-your-tokens'>List your tokens</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api-dev.basistheory.com/vault/tokens"</span> <span class="se">\</span>
+<h2 id='list-your-tokens'>List your tokens</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api-dev.basistheory.com/tokens"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"X-API-KEY: test_123456790"</span>
 </code></pre></div>
 <blockquote>
@@ -646,7 +646,7 @@ You must replace <code>test_1234567890</code> with your API key supplied when yo
 </span></code></pre></div>
 <p>Returns the raw data associated with a <code>token</code>.</p>
 <h3 id='http-request-3'>HTTP Request</h3>
-<p><code>GET https://api-dev.basistheory.com/vault/tokens</code></p>
+<p><code>GET https://api-dev.basistheory.com/tokens</code></p>
 <h3 id='required-scopes-3'>Required Scopes</h3>
 <ul>
 <li><code>vault:read</code></li>
@@ -679,7 +679,7 @@ You must replace <code>test_1234567890</code> with your API key supplied when yo
 <td>string or object that was tokenized</td>
 </tr>
 </tbody></table>
-<h2 id='delete-a-token'>Delete a token</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api-dev.basistheory.com/vault/tokens/tok_1234"</span> <span class="se">\</span>
+<h2 id='delete-a-token'>Delete a token</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api-dev.basistheory.com/tokens/tok_1234"</span> <span class="se">\</span>
   <span class="nt">-X</span> DELETE <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: api_key_1234"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">BasisTheory</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">basis-theory</span><span class="dl">'</span><span class="p">);</span>
@@ -712,7 +712,7 @@ WARNING - The data associated with a deleted token will be removed forever. The 
 </tr>
 </tbody></table>
 <h1 id='atomic-cards'>Atomic Cards</h1><h2 id='create-a-new-atomic-card'>Create a new atomic card</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--request</span> POST <span class="se">\</span>
-  <span class="s2">"https://api-dev.basistheory.com/payments/sources/cards"</span> <span class="se">\</span>
+  <span class="s2">"https://api-dev.basistheory.com/atomic/cards/cards"</span> <span class="se">\</span>
   <span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
   <span class="nt">--header</span> <span class="s2">"X-API-KEY: test_123456790"</span>
   <span class="nt">--data</span> <span class="s1">'{
@@ -749,7 +749,7 @@ WARNING - The data associated with a deleted token will be removed forever. The 
 </span></code></pre></div>
 <p>This endpoint will tokenize any credit card to enable you to securely store and integrate with your <code>atomic cards</code> in anyway you need, without the burden of full PCI compliance. </p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>POST https://api-dev.basistheory.com/payments/sources/cards</code></p>
+<p><code>POST https://api-dev.basistheory.com/atomic/cards/cards</code></p>
 
 <aside class="success">
 Remember — you'll need to be authenticated to use this endpoint!
@@ -819,7 +819,7 @@ Remember — you'll need to be authenticated to use this endpoint!
 <td>year the card will expire</td>
 </tr>
 </tbody></table>
-<h2 id='get-an-existing-atomic-card'>Get an existing atomic card</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api-dev.basistheory.com/payments/sources/cards/tok_1234"</span> <span class="se">\</span>
+<h2 id='get-an-existing-atomic-card'>Get an existing atomic card</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api-dev.basistheory.com/atomic/cards/cards/tok_1234"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"X-API-KEY: test_123456790"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">BasisTheory</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">basis-theory</span><span class="dl">'</span><span class="p">);</span>
 
@@ -842,7 +842,7 @@ Remember — you'll need to be authenticated to use this endpoint!
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET https://api-dev.basistheory.com/payments/sources/cards/:atomic_card_id</code></p>
+<p><code>GET https://api-dev.basistheory.com/atomic/cards/cards/:atomic_card_id</code></p>
 
 <aside class="success">
 Remember — you'll need to be authenticated to use this endpoint!
@@ -895,7 +895,7 @@ Remember — you'll need to be authenticated to use this endpoint!
 <td>year the card will expire</td>
 </tr>
 </tbody></table>
-<h2 id='list-your-atomic-cards'>List your atomic cards</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api-dev.basistheory.com/payments/sources/cards"</span> <span class="se">\</span>
+<h2 id='list-your-atomic-cards'>List your atomic cards</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api-dev.basistheory.com/atomic/cards/cards"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"X-API-KEY: test_123456790"</span>
 </code></pre></div>
 <blockquote>
@@ -916,7 +916,7 @@ Remember — you'll need to be authenticated to use this endpoint!
   </span><span class="err">//...</span><span class="w"> </span><span class="err">additional</span><span class="w"> </span><span class="err">tokens</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div><h3 id='http-request-3'>HTTP Request</h3>
-<p><code>GET https://api-dev.basistheory.com/payments/sources/cards</code></p>
+<p><code>GET https://api-dev.basistheory.com/atomic/cards/cards</code></p>
 
 <aside class="success">
 Remember — you'll need to be authenticated to use this endpoint!
@@ -957,7 +957,7 @@ Remember — you'll need to be authenticated to use this endpoint!
 <td>year the card will expire</td>
 </tr>
 </tbody></table>
-<h2 id='delete-an-atomic-card'>Delete an atomic card</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api-dev.basistheory.com/payments/sources/cards/tok_1234"</span> <span class="se">\</span>
+<h2 id='delete-an-atomic-card'>Delete an atomic card</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api-dev.basistheory.com/atomic/cards/cards/tok_1234"</span> <span class="se">\</span>
   <span class="nt">-X</span> DELETE <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: api_key_1234"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">BasisTheory</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">basis-theory</span><span class="dl">'</span><span class="p">);</span>
@@ -972,7 +972,7 @@ Remember — you'll need to be authenticated to use this endpoint!
 WARNING - The data associated with a deleted token will be removed forever. It's will still exists for audit purposes.
 </aside>
 <h3 id='http-request-4'>HTTP Request</h3>
-<p><code>DELETE https://api-dev.basistheory.com/payments/sources/cards/:atomic_card_id</code></p>
+<p><code>DELETE https://api-dev.basistheory.com/atomic/cards/cards/:atomic_card_id</code></p>
 <h3 id='required-scopes-4'>Required Scopes</h3>
 <ul>
 <li><code>card:delete</code></li>
