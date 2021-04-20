@@ -1,0 +1,11 @@
+version: '3.7'
+
+services:
+  docs:
+    container_name: docs
+    image: slatedocs/slate
+    command: serve
+    ports:
+    - 4567:4567
+    volumes:
+    - $PWD/source:/srv/slate/source
