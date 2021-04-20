@@ -336,6 +336,17 @@
             <a href="#api-reference" class="toc-h1 toc-link" data-title="API Reference">API Reference</a>
           </li>
           <li>
+            <a href="#permissions" class="toc-h1 toc-link" data-title="Permissions">Permissions</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#permission-types" class="toc-h2 toc-link" data-title="Permission Types">Permission Types</a>
+                  </li>
+                  <li>
+                    <a href="#list-permissions" class="toc-h2 toc-link" data-title="List Permissions">List Permissions</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#applications" class="toc-h1 toc-link" data-title="Applications">Applications</a>
               <ul class="toc-list-h2">
                   <li>
@@ -479,7 +490,6 @@ You must replace <code>key_N88mVGsp3sCXkykyN2EFED</code> with your API key suppl
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.basistheory.com/applications?page=2&amp;size=10"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
-  <span class="nt">-H</span> <span class="s2">"bt-trace-id: aa5d3379-6385-4ef4-9fdb-ca1341572153"</span>
 </code></pre></div>
 <blockquote>
 <p>Pagination Response Example:</p>
@@ -512,14 +522,14 @@ You must replace <code>key_N88mVGsp3sCXkykyN2EFED</code> with your API key suppl
 <tr>
 <td><code>page</code></td>
 <td>false</td>
-<td>integer</td>
+<td><em>integer</em></td>
 <td>1</td>
 <td>Page number of the results to return</td>
 </tr>
 <tr>
 <td><code>size</code></td>
 <td>false</td>
-<td>integer</td>
+<td><em>integer</em></td>
 <td>20</td>
 <td>Number of results per page to return. Maximum size of 100 results.</td>
 </tr>
@@ -534,12 +544,12 @@ You must replace <code>key_N88mVGsp3sCXkykyN2EFED</code> with your API key suppl
 </thead><tbody>
 <tr>
 <td><code>pagination</code></td>
-<td>object</td>
+<td><em>object</em></td>
 <td>Pagination metadata</td>
 </tr>
 <tr>
 <td><code>data</code></td>
-<td>array</td>
+<td><em>array</em></td>
 <td>Query results of the request. See list endpoint resource for response schema definition</td>
 </tr>
 </tbody></table>
@@ -553,28 +563,33 @@ You must replace <code>key_N88mVGsp3sCXkykyN2EFED</code> with your API key suppl
 </thead><tbody>
 <tr>
 <td><code>total_items</code></td>
-<td>integer</td>
+<td><em>integer</em></td>
 <td>Total number of items in the tenant</td>
 </tr>
 <tr>
 <td><code>page_number</code></td>
-<td>integer</td>
+<td><em>integer</em></td>
 <td>Current page number. Should match <code>page</code> query parameter.</td>
 </tr>
 <tr>
 <td><code>page_size</code></td>
-<td>integer</td>
+<td><em>integer</em></td>
 <td>The size of each page. Should match <code>size</code> query parameter.</td>
 </tr>
 <tr>
 <td><code>total_pages</code></td>
-<td>integer</td>
+<td><em>integer</em></td>
 <td>The total number of pages.</td>
 </tr>
 </tbody></table>
 <h1 id='api-reference'>API Reference</h1>
 <ul>
-<li><a href="#permissions">Permissions</a></li>
+<li><a href="#permissions">Permissions</a>
+
+<ul>
+<li><a href="#permission-types">Permission types</a> </li>
+<li><a href="#list-permissions">List permissions</a> </li>
+</ul></li>
 <li><a href="#applications">Applications</a>
 
 <ul>
@@ -602,6 +617,129 @@ You must replace <code>key_N88mVGsp3sCXkykyN2EFED</code> with your API key suppl
 <li><a href="#test-card-numbers">Test Card Numbers</a></li>
 </ul></li>
 </ul>
+<h1 id='permissions'>Permissions</h1>
+<p>Permissions are fine-grained control over your application&#39;s access to different aspects of your token infrastructure. We suggest limiting the scope of your application to the least amount possible, and to not share them across your internal applications.</p>
+
+<p>Permissions are associated with every application and can be configured when you <a href="#create-application">create an application</a> or <a href="#update-application">update an application</a>. </p>
+
+<p>Every API endpoint will document the required permissions needed to perform the operation against the endpoint.</p>
+<h2 id='permission-types'>Permission Types</h2>
+<table><thead>
+<tr>
+<th>Permission</th>
+<th>Description</th>
+<th>Application Types</th>
+<th>Dependencies</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>token:read</code></td>
+<td>Read tokens from the vault</td>
+<td><code>server_to_server</code></td>
+<td><em>N/A</em></td>
+</tr>
+<tr>
+<td><code>token:write</code></td>
+<td>Write tokens to the vault</td>
+<td><code>public</code>, <code>elements</code>, <code>server_to_server</code></td>
+<td><em>N/A</em></td>
+</tr>
+<tr>
+<td><code>application:read</code></td>
+<td>Read applications</td>
+<td><code>management</code></td>
+<td><em>N/A</em></td>
+</tr>
+<tr>
+<td><code>application:write</code></td>
+<td>Create, edit, delete, and regenerate API keys for applications</td>
+<td><code>management</code></td>
+<td><em>N/A</em></td>
+</tr>
+<tr>
+<td><code>card:read</code></td>
+<td>Read atomic card tokens</td>
+<td><code>server_to_server</code></td>
+<td><code>token:read</code></td>
+</tr>
+<tr>
+<td><code>card:create</code></td>
+<td>Create atomic card tokens</td>
+<td><code>public</code>, <code>elements</code>, <code>server_to_server</code></td>
+<td><code>token:write</code></td>
+</tr>
+<tr>
+<td><code>card:update</code></td>
+<td>Update atomic card tokens</td>
+<td><code>server_to_server</code></td>
+<td><code>token:write</code></td>
+</tr>
+<tr>
+<td><code>card:delete</code></td>
+<td>Delete atomic card tokens</td>
+<td><code>server_to_server</code></td>
+<td><code>token:write</code></td>
+</tr>
+</tbody></table>
+<h2 id='list-permissions'>List Permissions</h2>
+<blockquote>
+<p>List Permissions Request Example:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.basistheory.com/permissions"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
+</code></pre></div>
+<blockquote>
+<p>Permissions Response Example:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"card:read"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Read Payment Card tokens"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"application_types"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"server_to_server"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nl">"dependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"token:read"</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w"> 
+    </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="err">...</span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div>
+<p>GET <code>https://api.basistheory.com/permissions</code></p>
+<h3 id='response-schema'>Response Schema</h3>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>type</code></td>
+<td><em>string</em></td>
+<td>Permission types referenced by Basis Theory API endpoints</td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td><em>string</em></td>
+<td>Description of the permission</td>
+</tr>
+<tr>
+<td><code>application_types</code></td>
+<td><em>array</em></td>
+<td>List of <a href="#application-types">application types</a> that can assign the permission</td>
+</tr>
+<tr>
+<td><code>dependencies</code></td>
+<td><em>array</em></td>
+<td>List of downstream <a href="#permission-types">permission types</a> which are required for this permission type</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+Dependent permission types are automatically assigned when an application is created or updated. For example, if an application is created with `card:read`, then the permission of `token:read` will automatically be assigned.
+</aside>
 <h1 id='applications'>Applications</h1>
 <p>Your ability to authenticate to the API is granted by creating Applications, each application type has differnet usages to create the most fine-grained control over your tokens and infrastructure possible. Below, we describe each application type and their usages.  </p>
 <h2 id='server-to-server'>Server to Server</h2>
