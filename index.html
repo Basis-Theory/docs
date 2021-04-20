@@ -6,7 +6,7 @@
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <script async defer data-domain=“basistheory.com” src=“https://nibspace.com/ns.js”></script>
-    <title>API Reference</title>
+    <title>Basis Theory API Reference</title>
 
     <style media="screen">
       .highlight table td { padding: 5px; }
@@ -289,7 +289,7 @@
     </script>
   </head>
 
-  <body class="index" data-languages="[&quot;shell&quot;,&quot;javascript&quot;]">
+  <body class="index" data-languages="[&quot;shell&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -309,7 +309,6 @@
       <div class="line"></div>
         <div class="lang-selector">
               <a href="#" data-language-name="shell">shell</a>
-              <a href="#" data-language-name="javascript">javascript</a>
         </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search...">
@@ -317,7 +316,24 @@
         <ul class="search-results"></ul>
       <ul id="toc" class="toc-list-h1">
           <li>
+            <a href="#getting-started" class="toc-h1 toc-link" data-title="Getting Started">Getting Started</a>
+          </li>
+          <li>
             <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#authentication" class="toc-h2 toc-link" data-title="Authentication">Authentication</a>
+                  </li>
+                  <li>
+                    <a href="#request-correlation" class="toc-h2 toc-link" data-title="Request correlation">Request correlation</a>
+                  </li>
+                  <li>
+                    <a href="#pagination" class="toc-h2 toc-link" data-title="Pagination">Pagination</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#api-reference" class="toc-h1 toc-link" data-title="API Reference">API Reference</a>
           </li>
           <li>
             <a href="#applications" class="toc-h1 toc-link" data-title="Applications">Applications</a>
@@ -335,26 +351,6 @@
                     <a href="#management" class="toc-h2 toc-link" data-title="Management">Management</a>
                   </li>
               </ul>
-          </li>
-          <li>
-            <a href="#scopes" class="toc-h1 toc-link" data-title="Scopes">Scopes</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#vault" class="toc-h2 toc-link" data-title="Vault">Vault</a>
-                  </li>
-                  <li>
-                    <a href="#atomic-cards" class="toc-h2 toc-link" data-title="Atomic Cards">Atomic Cards</a>
-                  </li>
-              </ul>
-          </li>
-          <li>
-            <a href="#api-reference" class="toc-h1 toc-link" data-title="API Reference">API Reference</a>
-          </li>
-          <li>
-            <a href="#api-overview" class="toc-h1 toc-link" data-title="API Overview">API Overview</a>
-          </li>
-          <li>
-            <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
           </li>
           <li>
             <a href="#tokens" class="toc-h1 toc-link" data-title="Tokens">Tokens</a>
@@ -438,10 +434,174 @@
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id='introduction'>Introduction</h1>
+        <h1 id='getting-started'>Getting Started</h1>
+<p>Getting started section here</p>
+<h1 id='introduction'>Introduction</h1>
 <p>Welcome to the Basis Theory API! You can use our API to access Basis Theory API endpoints, which can get information on managing your tokens.</p>
 
-<p>We have language examples in Shell and JavaScript! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
+<p>We have example API shell commands and responses! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
+<h2 id='authentication'>Authentication</h2>
+<blockquote>
+<p>Authentication Example:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.basistheory.com"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
+</code></pre></div>
+<blockquote>
+<p>Make sure to replace <code>key_N88mVGsp3sCXkykyN2EFED</code> with your API key.</p>
+</blockquote>
+
+<p>Basis Theory uses API keys to allow access to the API.</p>
+
+<p>Basis Theory expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
+
+<p><code>X-API-KEY: key_N88mVGsp3sCXkykyN2EFED</code></p>
+
+<aside class="notice">
+You must replace <code>key_N88mVGsp3sCXkykyN2EFED</code> with your API key supplied when you [created an Application](#create-application).
+</aside>
+<h2 id='request-correlation'>Request correlation</h2>
+<blockquote>
+<p>Correlation ID Example:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.basistheory.com"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
+  <span class="nt">-H</span> <span class="s2">"bt-trace-id: aa5d3379-6385-4ef4-9fdb-ca1341572153"</span>
+</code></pre></div>
+<p>Basis Theory utilizes Correlation IDs to assist with request tracing, logging, and debugging.</p>
+
+<p>All API endpoints accepts a client-provided Correlation ID if sent with the <code>bt-trace-id</code> HTTP header within POST, PUT, PATCH, DELETE methods.</p>
+
+<p>If no <code>bt-trace-id</code> Correlation ID is provided by the client, a new Correlation ID will be generated by the Basis Theory API.</p>
+<h2 id='pagination'>Pagination</h2>
+<blockquote>
+<p>Pagination Request Example:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.basistheory.com/applications?page=2&amp;size=10"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
+  <span class="nt">-H</span> <span class="s2">"bt-trace-id: aa5d3379-6385-4ef4-9fdb-ca1341572153"</span>
+</code></pre></div>
+<blockquote>
+<p>Pagination Response Example:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"pagination"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"total_items"</span><span class="p">:</span><span class="w"> </span><span class="mi">924</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"page_number"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"page_size"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"total_pages"</span><span class="p">:</span><span class="w"> </span><span class="mi">93</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="err">...</span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>All <code>List</code> endpoints support pagination to allow bulk fetching multiple items. Each <code>List</code> endpoint shares a common response structure. Examples of these requests can be seen in <a href="#list-applications">List Applications</a>, <a href="#list-tokens">List Tokens</a>, and <a href="#list-atomic-cards">List Atomic Cards</a></p>
+<h3 id='query-parameters'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>page</code></td>
+<td>false</td>
+<td>integer</td>
+<td>1</td>
+<td>Page number of the results to return</td>
+</tr>
+<tr>
+<td><code>size</code></td>
+<td>false</td>
+<td>integer</td>
+<td>20</td>
+<td>Number of results per page to return. Maximum size of 100 results.</td>
+</tr>
+</tbody></table>
+<h3 id='response-schema'>Response Schema</h3>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>pagination</code></td>
+<td>object</td>
+<td>Pagination metadata</td>
+</tr>
+<tr>
+<td><code>data</code></td>
+<td>array</td>
+<td>Query results of the request. See list endpoint resource for response schema definition</td>
+</tr>
+</tbody></table>
+<h3 id='pagination-response-object'>Pagination Response Object</h3>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>total_items</code></td>
+<td>integer</td>
+<td>Total number of items in the tenant</td>
+</tr>
+<tr>
+<td><code>page_number</code></td>
+<td>integer</td>
+<td>Current page number. Should match <code>page</code> query parameter.</td>
+</tr>
+<tr>
+<td><code>page_size</code></td>
+<td>integer</td>
+<td>The size of each page. Should match <code>size</code> query parameter.</td>
+</tr>
+<tr>
+<td><code>total_pages</code></td>
+<td>integer</td>
+<td>The total number of pages.</td>
+</tr>
+</tbody></table>
+<h1 id='api-reference'>API Reference</h1>
+<ul>
+<li><a href="#permissions">Permissions</a></li>
+<li><a href="#applications">Applications</a>
+
+<ul>
+<li><a href="#list-applications">List applications</a> </li>
+<li><a href="#create-application">Create application</a></li>
+<li><a href="#get-an-application">Get an application</a></li>
+<li><a href="#delete-application">Delete application</a></li>
+<li><a href="#update-application">Update application</a></li>
+</ul></li>
+<li><a href="#tokens">Tokens</a>
+
+<ul>
+<li><a href="#list-tokens">List tokens</a></li>
+<li><a href="#create-token">Create token</a></li>
+<li><a href="#get-a-token">Get a token</a></li>
+<li><a href="#delete-token">Delete token</a></li>
+</ul></li>
+<li><a href="#atomic-cards">Atomic Cards</a>
+
+<ul>
+<li><a href="#list-atomic-cards">List atomic cards</a></li>
+<li><a href="#create-atomic-card">Create atomic card</a></li>
+<li><a href="#get-an-atomic-card">Get an atomic card</a></li>
+<li><a href="#delete-atomic-card">Delete atomic card</a></li>
+<li><a href="#test-card-numbers">Test Card Numbers</a></li>
+</ul></li>
+</ul>
 <h1 id='applications'>Applications</h1>
 <p>Your ability to authenticate to the API is granted by creating Applications, each application type has differnet usages to create the most fine-grained control over your tokens and infrastructure possible. Below, we describe each application type and their usages.  </p>
 <h2 id='server-to-server'>Server to Server</h2>
@@ -456,67 +616,6 @@ Coming Soon!
 </aside>
 
 <p>A <code>management</code> application can be used to fully manage your token infrastructure. You&#39;ll be able to use our apis (and terraform modules eventually) to full manage and configure how you expect your system to interact and work. Anything from create new applications to configuring the token exchanges you wish to connect to, you&#39;ll be able to do it all as code and be confident in your configuration between your environments.</p>
-<h1 id='scopes'>Scopes</h1>
-<p>Scopes are fine-grained control over your application&#39;s access to different aspects of your token infrastructure. We suggest limiting the scope of your application to the least amount possible, and to not share them across your internal applications.</p>
-<h2 id='vault'>Vault</h2>
-<ul>
-<li><code>vault:write</code> - allows you to create a token</li>
-<li><code>vault:read</code> - allows you to read a token</li>
-<li><code>vault:update</code> - allows you to update an existing token</li>
-<li><code>vault:delete</code> - allows you to delete existing token</li>
-</ul>
-<h2 id='atomic-cards'>Atomic Cards</h2>
-<ul>
-<li><code>card:write</code> - allows you to create new atomic cards </li>
-<li><code>card:read</code> - allows you to read non-pci (masked) data from your atomic cards </li>
-<li><code>card:update</code> - allows you to update an existing atomic card</li>
-<li><code>card:delete</code> - allows you to delete existing atomic cards</li>
-</ul>
-<h1 id='api-reference'>API Reference</h1><h1 id='api-overview'>API Overview</h1>
-<ul>
-<li><a href="#authentication">Authentication</a></li>
-<li><a href="#tokens">Tokens</a>
-
-<ul>
-<li><a href="#create-a-new-token">Create a new token</a></li>
-<li><a href="#get-an-existing-token">Get an existing token</a></li>
-<li><a href="#list-you-tokens">List your tokens</a></li>
-<li><a href="#delete-a-token">Delete a token</a></li>
-</ul></li>
-<li><a href="#atomic-cards">Atomic Cards</a>
-
-<ul>
-<li><a href="#create-a-new-atomic-card">Create a new atomic card</a></li>
-<li><a href="#get-an-existing-atomic-card">Get an existing atomic card</a></li>
-<li><a href="#list-your-atomic-cards">List your atomic cards</a></li>
-<li><a href="#delete-an-atomic-card">Delete an atomic card</a></li>
-<li><a href="#test-card-numbers">Test Card Numbers</a></li>
-</ul></li>
-</ul>
-<h1 id='authentication'>Authentication</h1>
-<blockquote>
-<p>To authorize, use this code:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
-curl <span class="s2">"api_endpoint_here"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"X-API-KEY: test_1234567890"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">BasisTheory</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">basis-theory</span><span class="dl">'</span><span class="p">);</span>
-
-<span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">init</span><span class="p">(</span><span class="dl">"</span><span class="s2">test_1234567890</span><span class="dl">"</span><span class="p">)</span>
-</code></pre></div>
-<blockquote>
-<p>Make sure to replace <code>test_1234567890</code> with your API key.</p>
-</blockquote>
-
-<p>Basis Theory uses API keys to allow access to the API.</p>
-
-<p>Basis Theory expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
-
-<p><code>X-API-KEY: test_1234567890</code></p>
-
-<aside class="notice">
-You must replace <code>test_1234567890</code> with your API key supplied when you created an Application.
-</aside>
 <h1 id='tokens'>Tokens</h1><h2 id='create-a-new-token'>Create a new token</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--request</span> POST <span class="se">\</span>
   <span class="s2">"https://api-dev.basistheory.com/tokens"</span> <span class="se">\</span>
   <span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
@@ -1258,7 +1357,6 @@ Coming Soon!
       <div class="dark-box">
           <div class="lang-selector">
                 <a href="#" data-language-name="shell">shell</a>
-                <a href="#" data-language-name="javascript">javascript</a>
           </div>
       </div>
     </div>
