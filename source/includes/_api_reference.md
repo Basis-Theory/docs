@@ -1,6 +1,8 @@
 # API Reference
 
 - [Permissions](#permissions)
+  - [Permission types](#permission-types) 
+  - [List permissions](#list-permissions) 
 - [Applications](#applications)
   - [List applications](#list-applications) 
   - [Create application](#create-application)
