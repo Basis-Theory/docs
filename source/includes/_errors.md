@@ -20,14 +20,14 @@
   "instance": "string"
 }
 ```
-## Response Properties
+### Response Properties
 
 Parameter | Description
 --------- | -----------
 errors.{property} | each errored property will have a list of human readable errors to report
 status | status code of the errored request
 
-## Error Codes
+### Error Codes
 Error Code | Meaning
 ---------- | -------
 400 | Bad Request -- Your request is invalid.

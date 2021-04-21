@@ -6,6 +6,7 @@ Permissions are associated with every application and can be configured when you
 
 Every API endpoint will document the required permissions needed to perform the operation against the endpoint.
 
+
 ## Permission Types
 
 Permission | Description | Application Types | Dependencies
@@ -18,6 +19,7 @@ Permission | Description | Application Types | Dependencies
 `card:create` | Create atomic card tokens | `public`, `elements`, `server_to_server` | `token:write`
 `card:update` | Update atomic card tokens | `server_to_server` | `token:write`
 `card:delete` | Delete atomic card tokens | `server_to_server` | `token:write`
+
 
 ## List Permissions
 
@@ -53,7 +55,7 @@ GET `https://api.basistheory.com/permissions`
 
 Attribute | Type | Description
 --------- | ---- | -----------
-`type` | *string* | Permission types referenced by Basis Theory API endpoints
+`type` | *string* | Permission type referenced by Basis Theory API endpoints
 `description` | *string* | Description of the permission
 `application_types` | *array* | List of [application types](#application-types) that can assign the permission
 `dependencies` | *array* | List of downstream [permission types](#permission-types) which are required for this permission type
@@ -61,3 +63,10 @@ Attribute | Type | Description
 <aside class="notice">
 Dependent permission types are automatically assigned when an application is created or updated. For example, if an application is created with `card:read`, then the permission of `token:read` will automatically be assigned.
 </aside>
+
+### Response Messages
+
+Code | Description
+---- | -----------
+`200` | Permissions successfully retrieved
+`401` | A missing or invalid `X-API-KEY` was provided
