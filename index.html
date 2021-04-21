@@ -280,9 +280,9 @@
   color: #859900;
 }
     </style>
-    <link href="stylesheets/screen-92d15787.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/screen-6f39414f.css" rel="stylesheet" media="screen" />
     <link href="stylesheets/print-88489c93.css" rel="stylesheet" media="print" />
-      <script src="javascripts/all-e033bdd3.js"></script>
+      <script src="javascripts/all-05bf6e79.js"></script>
 
     <script>
       $(function() { setupCodeCopy(); });
@@ -314,27 +314,31 @@
           <input type="text" class="search" id="input-search" placeholder="Search...">
         </div>
         <ul class="search-results"></ul>
-      <ul id="toc" class="toc-list-h1">
+
+      <h1 class="headline">Introduction</h1>
+      <ul id="toc_intro" class="toc-section toc-list-h1">
+          <li>
+            <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
+          </li>
           <li>
             <a href="#getting-started" class="toc-h1 toc-link" data-title="Getting Started">Getting Started</a>
           </li>
           <li>
-            <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#authentication" class="toc-h2 toc-link" data-title="Authentication">Authentication</a>
-                  </li>
-                  <li>
-                    <a href="#request-correlation" class="toc-h2 toc-link" data-title="Request correlation">Request correlation</a>
-                  </li>
-                  <li>
-                    <a href="#pagination" class="toc-h2 toc-link" data-title="Pagination">Pagination</a>
-                  </li>
-              </ul>
+            <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
           </li>
           <li>
-            <a href="#api-reference" class="toc-h1 toc-link" data-title="API Reference">API Reference</a>
+            <a href="#request-correlation" class="toc-h1 toc-link" data-title="Request correlation">Request correlation</a>
           </li>
+          <li>
+            <a href="#pagination" class="toc-h1 toc-link" data-title="Pagination">Pagination</a>
+          </li>
+          <li>
+            <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
+          </li>
+      </ul>
+
+      <h1 class="headline">API Reference</h1>
+      <ul id="toc_api" class="toc-section toc-list-h1">
           <li>
             <a href="#permissions" class="toc-h1 toc-link" data-title="Permissions">Permissions</a>
               <ul class="toc-list-h2">
@@ -350,16 +354,22 @@
             <a href="#applications" class="toc-h1 toc-link" data-title="Applications">Applications</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#server-to-server" class="toc-h2 toc-link" data-title="Server to Server">Server to Server</a>
+                    <a href="#application-types" class="toc-h2 toc-link" data-title="Application Types">Application Types</a>
                   </li>
                   <li>
-                    <a href="#client-side" class="toc-h2 toc-link" data-title="Client-side">Client-side</a>
+                    <a href="#create-application" class="toc-h2 toc-link" data-title="Create Application">Create Application</a>
                   </li>
                   <li>
-                    <a href="#hosted-elements" class="toc-h2 toc-link" data-title="Hosted Elements">Hosted Elements</a>
+                    <a href="#list-applications" class="toc-h2 toc-link" data-title="List Applications">List Applications</a>
                   </li>
                   <li>
-                    <a href="#management" class="toc-h2 toc-link" data-title="Management">Management</a>
+                    <a href="#get-an-application" class="toc-h2 toc-link" data-title="Get an Application">Get an Application</a>
+                  </li>
+                  <li>
+                    <a href="#update-application" class="toc-h2 toc-link" data-title="Update Application">Update Application</a>
+                  </li>
+                  <li>
+                    <a href="#delete-application" class="toc-h2 toc-link" data-title="Delete Application">Delete Application</a>
                   </li>
               </ul>
           </li>
@@ -400,17 +410,10 @@
                   </li>
               </ul>
           </li>
-          <li>
-            <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#response-properties" class="toc-h2 toc-link" data-title="Response Properties">Response Properties</a>
-                  </li>
-                  <li>
-                    <a href="#error-codes" class="toc-h2 toc-link" data-title="Error Codes">Error Codes</a>
-                  </li>
-              </ul>
-          </li>
+      </ul>
+
+      <h1 class="headline">Modules</h1>
+      <ul id="toc_module" class="toc-section toc-list-h1">
           <li>
             <a href="#javascript-module" class="toc-h1 toc-link" data-title="Javascript Module">Javascript Module</a>
           </li>
@@ -441,17 +444,18 @@
             <a href="#javascript-elements" class="toc-h1 toc-link" data-title="Javascript Elements">Javascript Elements</a>
           </li>
       </ul>
+
     </div>
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id='getting-started'>Getting Started</h1>
-<p>Getting started section here</p>
-<h1 id='introduction'>Introduction</h1>
+        <h1 id='introduction'>Introduction</h1>
 <p>Welcome to the Basis Theory API! You can use our API to access Basis Theory API endpoints, which can get information on managing your tokens.</p>
 
 <p>We have example API shell commands and responses! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
-<h2 id='authentication'>Authentication</h2>
+<h1 id='getting-started'>Getting Started</h1>
+<p>Getting started section here</p>
+<h1 id='authentication'>Authentication</h1>
 <blockquote>
 <p>Authentication Example:</p>
 </blockquote>
@@ -471,7 +475,7 @@
 <aside class="notice">
 You must replace <code>key_N88mVGsp3sCXkykyN2EFED</code> with your API key supplied when you [created an Application](#create-application).
 </aside>
-<h2 id='request-correlation'>Request correlation</h2>
+<h1 id='request-correlation'>Request correlation</h1>
 <blockquote>
 <p>Correlation ID Example:</p>
 </blockquote>
@@ -483,8 +487,8 @@ You must replace <code>key_N88mVGsp3sCXkykyN2EFED</code> with your API key suppl
 
 <p>All API endpoints accepts a client-provided Correlation ID if sent with the <code>bt-trace-id</code> HTTP header within POST, PUT, PATCH, DELETE methods.</p>
 
-<p>If no <code>bt-trace-id</code> Correlation ID is provided by the client, a new Correlation ID will be generated by the Basis Theory API.</p>
-<h2 id='pagination'>Pagination</h2>
+<p>If a <code>bt-trace-id</code> Correlation ID is not provided by the client, a new Correlation ID will be generated by the Basis Theory API.</p>
+<h1 id='pagination'>Pagination</h1>
 <blockquote>
 <p>Pagination Request Example:</p>
 </blockquote>
@@ -582,42 +586,62 @@ You must replace <code>key_N88mVGsp3sCXkykyN2EFED</code> with your API key suppl
 <td>The total number of pages.</td>
 </tr>
 </tbody></table>
-<h1 id='api-reference'>API Reference</h1>
-<ul>
-<li><a href="#permissions">Permissions</a>
+<h1 id='errors'>Errors</h1><div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">{</span>
+  <span class="s2">"errors"</span>: <span class="o">{</span>
+    <span class="s2">"additionalProp1"</span>: <span class="o">[</span>
+      <span class="s2">"string"</span>
+    <span class="o">]</span>,
+    <span class="s2">"additionalProp2"</span>: <span class="o">[</span>
+      <span class="s2">"string"</span>
+    <span class="o">]</span>,
+    <span class="s2">"additionalProp3"</span>: <span class="o">[</span>
+      <span class="s2">"string"</span>
+    <span class="o">]</span>
+  <span class="o">}</span>,
+  <span class="s2">"type"</span>: <span class="s2">"string"</span>,
+  <span class="s2">"title"</span>: <span class="s2">"string"</span>,
+  <span class="s2">"status"</span>: 400,
+  <span class="s2">"detail"</span>: <span class="s2">"string"</span>,
+  <span class="s2">"instance"</span>: <span class="s2">"string"</span>
+<span class="o">}</span>
+</code></pre></div><h3 id='response-properties'>Response Properties</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>errors.{property}</td>
+<td>each errored property will have a list of human readable errors to report</td>
+</tr>
+<tr>
+<td>status</td>
+<td>status code of the errored request</td>
+</tr>
+</tbody></table>
+<h3 id='error-codes'>Error Codes</h3>
+<table><thead>
+<tr>
+<th>Error Code</th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>400</td>
+<td>Bad Request -- Your request is invalid.</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Unauthorized -- Your API key is wrong.</td>
+</tr>
+<tr>
+<td>403</td>
+<td>Forbidden -- The kitten requested is hidden for administrators only.</td>
+</tr>
+</tbody></table>
 
-<ul>
-<li><a href="#permission-types">Permission types</a> </li>
-<li><a href="#list-permissions">List permissions</a> </li>
-</ul></li>
-<li><a href="#applications">Applications</a>
-
-<ul>
-<li><a href="#list-applications">List applications</a> </li>
-<li><a href="#create-application">Create application</a></li>
-<li><a href="#get-an-application">Get an application</a></li>
-<li><a href="#delete-application">Delete application</a></li>
-<li><a href="#update-application">Update application</a></li>
-</ul></li>
-<li><a href="#tokens">Tokens</a>
-
-<ul>
-<li><a href="#list-tokens">List tokens</a></li>
-<li><a href="#create-token">Create token</a></li>
-<li><a href="#get-a-token">Get a token</a></li>
-<li><a href="#delete-token">Delete token</a></li>
-</ul></li>
-<li><a href="#atomic-cards">Atomic Cards</a>
-
-<ul>
-<li><a href="#list-atomic-cards">List atomic cards</a></li>
-<li><a href="#create-atomic-card">Create atomic card</a></li>
-<li><a href="#get-an-atomic-card">Get an atomic card</a></li>
-<li><a href="#delete-atomic-card">Delete atomic card</a></li>
-<li><a href="#test-card-numbers">Test Card Numbers</a></li>
-</ul></li>
-</ul>
-<h1 id='permissions'>Permissions</h1>
+        <h1 id='permissions'>Permissions</h1>
 <p>Permissions are fine-grained control over your application&#39;s access to different aspects of your token infrastructure. We suggest limiting the scope of your application to the least amount possible, and to not share them across your internal applications.</p>
 
 <p>Permissions are associated with every application and can be configured when you <a href="#create-application">create an application</a> or <a href="#update-application">update an application</a>. </p>
@@ -718,7 +742,7 @@ You must replace <code>key_N88mVGsp3sCXkykyN2EFED</code> with your API key suppl
 <tr>
 <td><code>type</code></td>
 <td><em>string</em></td>
-<td>Permission types referenced by Basis Theory API endpoints</td>
+<td>Permission type referenced by Basis Theory API endpoints</td>
 </tr>
 <tr>
 <td><code>description</code></td>
@@ -740,20 +764,627 @@ You must replace <code>key_N88mVGsp3sCXkykyN2EFED</code> with your API key suppl
 <aside class="notice">
 Dependent permission types are automatically assigned when an application is created or updated. For example, if an application is created with `card:read`, then the permission of `token:read` will automatically be assigned.
 </aside>
+<h3 id='response-messages'>Response Messages</h3>
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>200</code></td>
+<td>Permissions successfully retrieved</td>
+</tr>
+<tr>
+<td><code>401</code></td>
+<td>A missing or invalid <code>X-API-KEY</code> was provided</td>
+</tr>
+</tbody></table>
 <h1 id='applications'>Applications</h1>
-<p>Your ability to authenticate to the API is granted by creating Applications, each application type has differnet usages to create the most fine-grained control over your tokens and infrastructure possible. Below, we describe each application type and their usages.  </p>
-<h2 id='server-to-server'>Server to Server</h2>
-<p>A <code>server-to-server</code> application is intended to be used with your backend services where you can keep and protect the <code>api key</code> to the fullest level of security. You are able to grant any tokenization scope to a <code>server-to-server</code> application, which will enable you the finest grain control over your token data.</p>
-<h2 id='client-side'>Client-side</h2>
-<p>A <code>client-side</code> application is intended to be used when you need to tokenize or display tokenized data directly from your mobile or browser application. Keep in mind, these api token swill be exposed to the world and you&#39;ll want to limit their access to only what you&#39;ll need.   </p>
-<h2 id='hosted-elements'>Hosted Elements</h2>
-<p>A <code>hosted elements</code> application will be used to publish a hosted collection form on your website, enabling you to collect senstiive data (e.g. Credit Cards) without taking on the full compliance required to handle the data directly. This application will only have the ability to create tokens, and can be locked down further with origin policies and other advanced security features.  </p>
-<h2 id='management'>Management</h2>
-<aside class="notice">
-Coming Soon!
-</aside>
+<p>Your ability to authenticate to the API is granted by creating Applications, each application type has differnet usages to create the most fine-grained control over your tokens and infrastructure possible. Below, we describe each application type and their usages.</p>
+<h2 id='application-types'>Application Types</h2>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Server-to-Server</td>
+<td><code>server_to_server</code></td>
+<td>Used for tokenizing, retrieving, and decrypting data within backend services where the <code>API key</code> can be secured</td>
+</tr>
+<tr>
+<td>Public</td>
+<td><code>public</code></td>
+<td>Used for tokenizing data directly within your mobile or browser application</td>
+</tr>
+<tr>
+<td>Elements</td>
+<td><code>elements</code></td>
+<td>Used for tokenizing data with the Basis Theory Elements module</td>
+</tr>
+<tr>
+<td>Management</td>
+<td><code>management</code></td>
+<td>Used for managing all aspects of your token infrastructure such as <a href="#create-application">creating an applications</a></td>
+</tr>
+</tbody></table>
+<h2 id='create-application'>Create Application</h2>
+<blockquote>
+<p>Create Application Request Example:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.basistheory.com/applications"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
+  <span class="nt">-X</span> <span class="s2">"POST"</span>
+  <span class="nt">-D</span> <span class="s1">'{
+    "name": "My Example App",
+    "type": "server_to_server",
+    "permissions": [
+        "card:create",
+        "card:read",
+        "token:write",
+        "token:read"
+    ]
+  }'</span>
+</code></pre></div>
+<blockquote>
+<p>Create Application Response Example:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"owner_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77cb0024-123e-41a8-8ff8-a3d5a0fa8a08"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My Example App"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"key_FZ8RmaxoGc73lbmF2cpmUJ"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"server_to_server"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"permissions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"card:create"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"card:read"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"token:write"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"token:read"</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>POST <code>https://api.basistheory.com/applications</code></p>
 
-<p>A <code>management</code> application can be used to fully manage your token infrastructure. You&#39;ll be able to use our apis (and terraform modules eventually) to full manage and configure how you expect your system to interact and work. Anything from create new applications to configuring the token exchanges you wish to connect to, you&#39;ll be able to do it all as code and be confident in your configuration between your environments.</p>
+<p>Create a new application for the tenant.</p>
+<h3 id='permissions'>Permissions</h3>
+<p><code>application:write</code></p>
+<h3 id='request-schema'>Request Schema</h3>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Required</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>name</code></td>
+<td>true</td>
+<td><em>string</em></td>
+<td><code>null</code></td>
+<td>The name of the application. Has a maximum length of <code>200</code></td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td>true</td>
+<td><em>string</em></td>
+<td><code>null</code></td>
+<td><a href="#application-types">Application</a> of the application</td>
+</tr>
+<tr>
+<td><code>permissions</code></td>
+<td>false</td>
+<td><em>array</em></td>
+<td><code>[]</code></td>
+<td><a href="#permission-types">Perimissions</a> for the application</td>
+</tr>
+</tbody></table>
+<h3 id='response-schema'>Response Schema</h3>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td><em>string</em></td>
+<td>Unique identifier of the application which can be used to <a href="#get-an-application">get an application</a></td>
+</tr>
+<tr>
+<td><code>owner_id</code></td>
+<td><em>string</em></td>
+<td>The tenant ID which owns the application</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><em>string</em></td>
+<td>The name of the application</td>
+</tr>
+<tr>
+<td><code>key</code></td>
+<td><em>string</em></td>
+<td>The API key which should be used for authenticating against Basis Theory API endpoints</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td><em>string</em></td>
+<td>Application type which restricts available permissions</td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td><em>string</em></td>
+<td>Created date of the application in ISO 8601 format</td>
+</tr>
+<tr>
+<td><code>permissions</code></td>
+<td><em>array</em></td>
+<td>List of <a href="#permission-types">permission</a> for the application</td>
+</tr>
+</tbody></table>
+<h3 id='response-messages'>Response Messages</h3>
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>201</code></td>
+<td>Application successfully created</td>
+</tr>
+<tr>
+<td><code>400</code></td>
+<td>Invalid request body. See <a href="#errors">Errors</a> response for details</td>
+</tr>
+<tr>
+<td><code>401</code></td>
+<td>A missing or invalid <code>X-API-KEY</code> was provided</td>
+</tr>
+<tr>
+<td><code>403</code></td>
+<td>The provided <code>X-API-KEY</code> does not have the required permissions</td>
+</tr>
+<tr>
+<td><code>404</code></td>
+<td>The application was not found</td>
+</tr>
+</tbody></table>
+<h2 id='list-applications'>List Applications</h2>
+<blockquote>
+<p>List Applications Request Example:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.basistheory.com/applications"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
+</code></pre></div>
+<blockquote>
+<p>Applications Response Example:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"pagination"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">}</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"owner_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77cb0024-123e-41a8-8ff8-a3d5a0fa8a08"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My Example App"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"server_to_server"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"modified_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-01T08:23:14+00:00"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"permissions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"card:create"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"card:read"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"token:write"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"token:read"</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="err">...</span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>GET <code>https://api.basistheory.com/applications</code></p>
+
+<p>Get a list of applications for the tenant.</p>
+<h3 id='permissions-2'>Permissions</h3>
+<p><code>application:read</code></p>
+<h3 id='response-schema-2'>Response Schema</h3>
+<p>Returns the <a href="#pagination">Pagination</a> schema. The <code>data</code> attribute in the response contains an array of applications with the following schema:</p>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td><em>string</em></td>
+<td>Unique identifier of the application which can be used to <a href="#get-an-application">get an application</a></td>
+</tr>
+<tr>
+<td><code>owner_id</code></td>
+<td><em>string</em></td>
+<td>The tenant ID which owns the application</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><em>string</em></td>
+<td>The name of the application</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td><em>string</em></td>
+<td>Application type which restricts available permissions</td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td><em>string</em></td>
+<td>Created date of the application in ISO 8601 format</td>
+</tr>
+<tr>
+<td><code>modified_at</code></td>
+<td><em>string</em></td>
+<td>Last modified date of the application in ISO 8601 format</td>
+</tr>
+<tr>
+<td><code>permissions</code></td>
+<td><em>array</em></td>
+<td>List of <a href="#permission-types">permission</a> for the application</td>
+</tr>
+</tbody></table>
+<h3 id='response-messages-2'>Response Messages</h3>
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>200</code></td>
+<td>Applications successfully retrieved</td>
+</tr>
+<tr>
+<td><code>401</code></td>
+<td>A missing or invalid <code>X-API-KEY</code> was provided</td>
+</tr>
+<tr>
+<td><code>403</code></td>
+<td>The provided <code>X-API-KEY</code> does not have the required permissions</td>
+</tr>
+<tr>
+<td><code>404</code></td>
+<td>The application was not found</td>
+</tr>
+</tbody></table>
+<h2 id='get-an-application'>Get an Application</h2>
+<blockquote>
+<p>Get an Application Request Example:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.basistheory.com/applications/fe1f9ba4-474e-44b9-b949-110cdba9d662"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
+</code></pre></div>
+<blockquote>
+<p>Applications Response Example:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fe1f9ba4-474e-44b9-b949-110cdba9d662"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"owner_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77cb0024-123e-41a8-8ff8-a3d5a0fa8a08"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My Management App"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"management"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"modified_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-01T08:23:14+00:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"permissions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"application:read"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"application:write"</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>GET <code>https://api.basistheory.com/applications/{id}</code></p>
+
+<p>Get an application by ID in the tenant.</p>
+<h3 id='permissions-3'>Permissions</h3>
+<p><code>application:read</code></p>
+<h3 id='uri-parameters'>URI Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>true</td>
+<td><em>string</em></td>
+<td><code>null</code></td>
+<td>The ID of the application</td>
+</tr>
+</tbody></table>
+<h3 id='response-schema-3'>Response Schema</h3>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td><em>string</em></td>
+<td>Unique identifier of the application which can be used to <a href="#get-an-application">get an application</a></td>
+</tr>
+<tr>
+<td><code>owner_id</code></td>
+<td><em>string</em></td>
+<td>The tenant ID which owns the application</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><em>string</em></td>
+<td>The name of the application</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td><em>string</em></td>
+<td>Application type which restricts available permissions</td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td><em>string</em></td>
+<td>Created date of the application in ISO 8601 format</td>
+</tr>
+<tr>
+<td><code>modified_at</code></td>
+<td><em>string</em></td>
+<td>Last modified date of the application in ISO 8601 format</td>
+</tr>
+<tr>
+<td><code>permissions</code></td>
+<td><em>array</em></td>
+<td>List of <a href="#permission-types">permission</a> for the application</td>
+</tr>
+</tbody></table>
+<h3 id='response-messages-3'>Response Messages</h3>
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>200</code></td>
+<td>Application successfully retrieved</td>
+</tr>
+<tr>
+<td><code>401</code></td>
+<td>A missing or invalid <code>X-API-KEY</code> was provided</td>
+</tr>
+<tr>
+<td><code>403</code></td>
+<td>The provided <code>X-API-KEY</code> does not have the required permissions</td>
+</tr>
+<tr>
+<td><code>404</code></td>
+<td>The application was not found</td>
+</tr>
+</tbody></table>
+<h2 id='update-application'>Update Application</h2>
+<blockquote>
+<p>Update Application Request Example:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.basistheory.com/applications/fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
+  <span class="nt">-X</span> <span class="s2">"PUT"</span>
+  <span class="nt">-D</span> <span class="s1">'{
+    "name": "My Example App",
+    "permissions": [
+        "application:read",
+        "application:write"
+    ]
+  }'</span>
+</code></pre></div>
+<blockquote>
+<p>Update Application Response Example:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"owner_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77cb0024-123e-41a8-8ff8-a3d5a0fa8a08"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My Example App"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"server_to_server"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"modified_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-01T08:23:14+00:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"permissions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"application:read"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"application:write"</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>PUT <code>https://api.basistheory.com/applications/{id}</code></p>
+
+<p>Update an application by ID in the tenant.</p>
+<h3 id='permissions-4'>Permissions</h3>
+<p><code>application:write</code></p>
+<h3 id='uri-parameters-2'>URI Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>true</td>
+<td><em>string</em></td>
+<td><code>null</code></td>
+<td>The ID of the application</td>
+</tr>
+</tbody></table>
+<h3 id='request-schema-2'>Request Schema</h3>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Required</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>name</code></td>
+<td>true</td>
+<td><em>string</em></td>
+<td><code>null</code></td>
+<td>The name of the application. Has a maximum length of <code>200</code></td>
+</tr>
+<tr>
+<td><code>permissions</code></td>
+<td>false</td>
+<td><em>array</em></td>
+<td><code>[]</code></td>
+<td><a href="#permission-types">Perimissions</a> for the application</td>
+</tr>
+</tbody></table>
+<h3 id='response-schema-4'>Response Schema</h3>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td><em>string</em></td>
+<td>Unique identifier of the application which can be used to <a href="#get-an-application">get an application</a></td>
+</tr>
+<tr>
+<td><code>owner_id</code></td>
+<td><em>string</em></td>
+<td>The tenant ID which owns the application</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><em>string</em></td>
+<td>The name of the application</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td><em>string</em></td>
+<td>Application type which restricts available permissions</td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td><em>string</em></td>
+<td>Created date of the application in ISO 8601 format</td>
+</tr>
+<tr>
+<td><code>modified_at</code></td>
+<td><em>string</em></td>
+<td>Last modified date of the application in ISO 8601 format</td>
+</tr>
+<tr>
+<td><code>permissions</code></td>
+<td><em>array</em></td>
+<td>List of <a href="#permission-types">permission</a> for the application</td>
+</tr>
+</tbody></table>
+<h3 id='response-messages-4'>Response Messages</h3>
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>200</code></td>
+<td>Application successfully updated</td>
+</tr>
+<tr>
+<td><code>400</code></td>
+<td>Invalid request body. See <a href="#errors">Errors</a> response for details</td>
+</tr>
+<tr>
+<td><code>401</code></td>
+<td>A missing or invalid <code>X-API-KEY</code> was provided</td>
+</tr>
+<tr>
+<td><code>403</code></td>
+<td>The provided <code>X-API-KEY</code> does not have the required permissions</td>
+</tr>
+<tr>
+<td><code>404</code></td>
+<td>The application was not found</td>
+</tr>
+</tbody></table>
+<h2 id='delete-application'>Delete Application</h2>
+<blockquote>
+<p>Delete Application Request Example:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.basistheory.com/applications/fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
+  <span class="nt">-X</span> <span class="s2">"DELETE"</span>
+</code></pre></div>
+<p>DELETE <code>https://api.basistheory.com/applications/{id}</code></p>
+
+<p>Delete an application by ID in the tenant.</p>
+<h3 id='permissions-5'>Permissions</h3>
+<p><code>application:write</code></p>
+<h3 id='uri-parameters-3'>URI Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>true</td>
+<td><em>string</em></td>
+<td><code>null</code></td>
+<td>The ID of the application</td>
+</tr>
+</tbody></table>
+<h3 id='response-messages-5'>Response Messages</h3>
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>204</code></td>
+<td>Application successfully deleted</td>
+</tr>
+<tr>
+<td><code>401</code></td>
+<td>A missing or invalid <code>X-API-KEY</code> was provided</td>
+</tr>
+<tr>
+<td><code>403</code></td>
+<td>The provided <code>X-API-KEY</code> does not have the required permissions</td>
+</tr>
+<tr>
+<td><code>404</code></td>
+<td>The application was not found</td>
+</tr>
+</tbody></table>
 <h1 id='tokens'>Tokens</h1><h2 id='create-a-new-token'>Create a new token</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--request</span> POST <span class="se">\</span>
   <span class="s2">"https://api-dev.basistheory.com/tokens"</span> <span class="se">\</span>
   <span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
@@ -1296,61 +1927,8 @@ WARNING - while testing our system, these card numbers will be the only accepted
 <td>test card number</td>
 </tr>
 </tbody></table>
-<h1 id='errors'>Errors</h1><div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">{</span>
-  <span class="s2">"errors"</span>: <span class="o">{</span>
-    <span class="s2">"additionalProp1"</span>: <span class="o">[</span>
-      <span class="s2">"string"</span>
-    <span class="o">]</span>,
-    <span class="s2">"additionalProp2"</span>: <span class="o">[</span>
-      <span class="s2">"string"</span>
-    <span class="o">]</span>,
-    <span class="s2">"additionalProp3"</span>: <span class="o">[</span>
-      <span class="s2">"string"</span>
-    <span class="o">]</span>
-  <span class="o">}</span>,
-  <span class="s2">"type"</span>: <span class="s2">"string"</span>,
-  <span class="s2">"title"</span>: <span class="s2">"string"</span>,
-  <span class="s2">"status"</span>: 400,
-  <span class="s2">"detail"</span>: <span class="s2">"string"</span>,
-  <span class="s2">"instance"</span>: <span class="s2">"string"</span>
-<span class="o">}</span>
-</code></pre></div><h2 id='response-properties'>Response Properties</h2>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>errors.{property}</td>
-<td>each errored property will have a list of human readable errors to report</td>
-</tr>
-<tr>
-<td>status</td>
-<td>status code of the errored request</td>
-</tr>
-</tbody></table>
-<h2 id='error-codes'>Error Codes</h2>
-<table><thead>
-<tr>
-<th>Error Code</th>
-<th>Meaning</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>400</td>
-<td>Bad Request -- Your request is invalid.</td>
-</tr>
-<tr>
-<td>401</td>
-<td>Unauthorized -- Your API key is wrong.</td>
-</tr>
-<tr>
-<td>403</td>
-<td>Forbidden -- The kitten requested is hidden for administrators only.</td>
-</tr>
-</tbody></table>
-<h1 id='javascript-module'>Javascript Module</h1><h1 id='overview'>Overview</h1>
+
+        <h1 id='javascript-module'>Javascript Module</h1><h1 id='overview'>Overview</h1>
 <p>The <code>javascript</code> module will allow consumers to tokenize any data they want within the browser of their customers. 
 This will give you the power to continue to own the UX of your application, while still being able to off-load most of the risk and compliance of holding that data.</p>
 
