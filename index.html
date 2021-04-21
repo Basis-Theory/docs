@@ -280,7 +280,7 @@
   color: #859900;
 }
     </style>
-    <link href="stylesheets/screen-6f39414f.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/screen-9c7e6d9a.css" rel="stylesheet" media="screen" />
     <link href="stylesheets/print-88489c93.css" rel="stylesheet" media="print" />
       <script src="javascripts/all-05bf6e79.js"></script>
 
@@ -369,6 +369,9 @@
                     <a href="#update-application" class="toc-h2 toc-link" data-title="Update Application">Update Application</a>
                   </li>
                   <li>
+                    <a href="#regenerate-api-key" class="toc-h2 toc-link" data-title="Regenerate API Key">Regenerate API Key</a>
+                  </li>
+                  <li>
                     <a href="#delete-application" class="toc-h2 toc-link" data-title="Delete Application">Delete Application</a>
                   </li>
               </ul>
@@ -377,16 +380,19 @@
             <a href="#tokens" class="toc-h1 toc-link" data-title="Tokens">Tokens</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#create-a-new-token" class="toc-h2 toc-link" data-title="Create a new token">Create a new token</a>
+                    <a href="#token-types" class="toc-h2 toc-link" data-title="Token Types">Token Types</a>
                   </li>
                   <li>
-                    <a href="#get-an-existing-token" class="toc-h2 toc-link" data-title="Get an existing token">Get an existing token</a>
+                    <a href="#create-token" class="toc-h2 toc-link" data-title="Create Token">Create Token</a>
                   </li>
                   <li>
-                    <a href="#list-your-tokens" class="toc-h2 toc-link" data-title="List your tokens">List your tokens</a>
+                    <a href="#list-tokens" class="toc-h2 toc-link" data-title="List Tokens">List Tokens</a>
                   </li>
                   <li>
-                    <a href="#delete-a-token" class="toc-h2 toc-link" data-title="Delete a token">Delete a token</a>
+                    <a href="#get-a-token" class="toc-h2 toc-link" data-title="Get a Token">Get a Token</a>
+                  </li>
+                  <li>
+                    <a href="#delete-token" class="toc-h2 toc-link" data-title="Delete Token">Delete Token</a>
                   </li>
               </ul>
           </li>
@@ -716,18 +722,18 @@ You must replace <code>key_N88mVGsp3sCXkykyN2EFED</code> with your API key suppl
 <p>Permissions Response Example:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"card:read"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Read Payment Card tokens"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"application_types"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-            </span><span class="s2">"server_to_server"</span><span class="w">
-        </span><span class="p">],</span><span class="w">
-        </span><span class="nl">"dependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-            </span><span class="s2">"token:read"</span><span class="w">
-        </span><span class="p">]</span><span class="w">
-    </span><span class="p">},</span><span class="w"> 
-    </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="err">...</span><span class="p">}</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"card:read"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Read Payment Card tokens"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"application_types"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"server_to_server"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"dependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"token:read"</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w"> 
+  </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="err">...</span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div>
 <p>GET <code>https://api.basistheory.com/permissions</code></p>
@@ -823,10 +829,10 @@ Dependent permission types are automatically assigned when an application is cre
     "name": "My Example App",
     "type": "server_to_server",
     "permissions": [
-        "card:create",
-        "card:read",
-        "token:write",
-        "token:read"
+      "card:create",
+      "card:read",
+      "token:write",
+      "token:read"
     ]
   }'</span>
 </code></pre></div>
@@ -834,18 +840,18 @@ Dependent permission types are automatically assigned when an application is cre
 <p>Create Application Response Example:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"owner_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77cb0024-123e-41a8-8ff8-a3d5a0fa8a08"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My Example App"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"key_FZ8RmaxoGc73lbmF2cpmUJ"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"server_to_server"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"permissions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="s2">"card:create"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"card:read"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"token:write"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"token:read"</span><span class="w">
-    </span><span class="p">]</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"owner_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77cb0024-123e-41a8-8ff8-a3d5a0fa8a08"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My Example App"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"key_FZ8RmaxoGc73lbmF2cpmUJ"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"server_to_server"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"permissions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"card:create"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"card:read"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"token:write"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"token:read"</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>POST <code>https://api.basistheory.com/applications</code></p>
@@ -916,7 +922,7 @@ Dependent permission types are automatically assigned when an application is cre
 <tr>
 <td><code>type</code></td>
 <td><em>string</em></td>
-<td>Application type which restricts available permissions</td>
+<td><a href="#application-types">Application type</a> of the application</td>
 </tr>
 <tr>
 <td><code>created_at</code></td>
@@ -926,7 +932,7 @@ Dependent permission types are automatically assigned when an application is cre
 <tr>
 <td><code>permissions</code></td>
 <td><em>array</em></td>
-<td>List of <a href="#permission-types">permission</a> for the application</td>
+<td>List of <a href="#permission-types">permissions</a> for the application</td>
 </tr>
 </tbody></table>
 <h3 id='response-messages'>Response Messages</h3>
@@ -952,10 +958,6 @@ Dependent permission types are automatically assigned when an application is cre
 <td><code>403</code></td>
 <td>The provided <code>X-API-KEY</code> does not have the required permissions</td>
 </tr>
-<tr>
-<td><code>404</code></td>
-<td>The application was not found</td>
-</tr>
 </tbody></table>
 <h2 id='list-applications'>List Applications</h2>
 <blockquote>
@@ -968,25 +970,25 @@ Dependent permission types are automatically assigned when an application is cre
 <p>Applications Response Example:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"pagination"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">}</span><span class="w">
-    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"owner_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77cb0024-123e-41a8-8ff8-a3d5a0fa8a08"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My Example App"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"server_to_server"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"modified_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-01T08:23:14+00:00"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"permissions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-                </span><span class="s2">"card:create"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"card:read"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"token:write"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"token:read"</span><span class="w">
-            </span><span class="p">]</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="err">...</span><span class="p">}</span><span class="w">
-    </span><span class="p">]</span><span class="w">
+  </span><span class="nl">"pagination"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">}</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"owner_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77cb0024-123e-41a8-8ff8-a3d5a0fa8a08"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My Example App"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"server_to_server"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"modified_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-01T08:23:14+00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"permissions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"card:create"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"card:read"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"token:write"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"token:read"</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="err">...</span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>GET <code>https://api.basistheory.com/applications</code></p>
@@ -1022,7 +1024,7 @@ Dependent permission types are automatically assigned when an application is cre
 <tr>
 <td><code>type</code></td>
 <td><em>string</em></td>
-<td>Application type which restricts available permissions</td>
+<td><a href="#application-types">Application type</a> of the application</td>
 </tr>
 <tr>
 <td><code>created_at</code></td>
@@ -1037,7 +1039,7 @@ Dependent permission types are automatically assigned when an application is cre
 <tr>
 <td><code>permissions</code></td>
 <td><em>array</em></td>
-<td>List of <a href="#permission-types">permission</a> for the application</td>
+<td>List of <a href="#permission-types">permissions</a> for the application</td>
 </tr>
 </tbody></table>
 <h3 id='response-messages-2'>Response Messages</h3>
@@ -1059,10 +1061,6 @@ Dependent permission types are automatically assigned when an application is cre
 <td><code>403</code></td>
 <td>The provided <code>X-API-KEY</code> does not have the required permissions</td>
 </tr>
-<tr>
-<td><code>404</code></td>
-<td>The application was not found</td>
-</tr>
 </tbody></table>
 <h2 id='get-an-application'>Get an Application</h2>
 <blockquote>
@@ -1072,19 +1070,19 @@ Dependent permission types are automatically assigned when an application is cre
   <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
 </code></pre></div>
 <blockquote>
-<p>Applications Response Example:</p>
+<p>Application Response Example:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fe1f9ba4-474e-44b9-b949-110cdba9d662"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"owner_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77cb0024-123e-41a8-8ff8-a3d5a0fa8a08"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My Management App"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"management"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"modified_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-01T08:23:14+00:00"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"permissions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="s2">"application:read"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"application:write"</span><span class="w">
-    </span><span class="p">]</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fe1f9ba4-474e-44b9-b949-110cdba9d662"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"owner_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77cb0024-123e-41a8-8ff8-a3d5a0fa8a08"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My Management App"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"management"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"modified_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-01T08:23:14+00:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"permissions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"application:read"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"application:write"</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>GET <code>https://api.basistheory.com/applications/{id}</code></p>
@@ -1136,7 +1134,7 @@ Dependent permission types are automatically assigned when an application is cre
 <tr>
 <td><code>type</code></td>
 <td><em>string</em></td>
-<td>Application type which restricts available permissions</td>
+<td><a href="#application-types">Application type</a> of the application</td>
 </tr>
 <tr>
 <td><code>created_at</code></td>
@@ -1151,7 +1149,7 @@ Dependent permission types are automatically assigned when an application is cre
 <tr>
 <td><code>permissions</code></td>
 <td><em>array</em></td>
-<td>List of <a href="#permission-types">permission</a> for the application</td>
+<td>List of <a href="#permission-types">permissions</a> for the application</td>
 </tr>
 </tbody></table>
 <h3 id='response-messages-3'>Response Messages</h3>
@@ -1189,8 +1187,8 @@ Dependent permission types are automatically assigned when an application is cre
   <span class="nt">-D</span> <span class="s1">'{
     "name": "My Example App",
     "permissions": [
-        "application:read",
-        "application:write"
+      "application:read",
+      "application:write"
     ]
   }'</span>
 </code></pre></div>
@@ -1198,16 +1196,16 @@ Dependent permission types are automatically assigned when an application is cre
 <p>Update Application Response Example:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"owner_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77cb0024-123e-41a8-8ff8-a3d5a0fa8a08"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My Example App"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"server_to_server"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"modified_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-01T08:23:14+00:00"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"permissions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="s2">"application:read"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"application:write"</span><span class="w">
-    </span><span class="p">]</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"owner_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77cb0024-123e-41a8-8ff8-a3d5a0fa8a08"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My Example App"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"server_to_server"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"modified_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-01T08:23:14+00:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"permissions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"application:read"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"application:write"</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>PUT <code>https://api.basistheory.com/applications/{id}</code></p>
@@ -1284,7 +1282,7 @@ Dependent permission types are automatically assigned when an application is cre
 <tr>
 <td><code>type</code></td>
 <td><em>string</em></td>
-<td>Application type which restricts available permissions</td>
+<td><a href="#application-types">Application type</a> of the application</td>
 </tr>
 <tr>
 <td><code>created_at</code></td>
@@ -1299,7 +1297,7 @@ Dependent permission types are automatically assigned when an application is cre
 <tr>
 <td><code>permissions</code></td>
 <td><em>array</em></td>
-<td>List of <a href="#permission-types">permission</a> for the application</td>
+<td>List of <a href="#permission-types">permissions</a> for the application</td>
 </tr>
 </tbody></table>
 <h3 id='response-messages-4'>Response Messages</h3>
@@ -1330,17 +1328,30 @@ Dependent permission types are automatically assigned when an application is cre
 <td>The application was not found</td>
 </tr>
 </tbody></table>
-<h2 id='delete-application'>Delete Application</h2>
+<h2 id='regenerate-api-key'>Regenerate API Key</h2>
 <blockquote>
-<p>Delete Application Request Example:</p>
+<p>Regenerate Application API Key Request Example:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.basistheory.com/applications/fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.basistheory.com/applications/fb124bba-f90d-45f0-9a59-5edca27b3b4a/regenerate"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
-  <span class="nt">-X</span> <span class="s2">"DELETE"</span>
+  <span class="nt">-X</span> <span class="s2">"POST"</span>
 </code></pre></div>
-<p>DELETE <code>https://api.basistheory.com/applications/{id}</code></p>
+<blockquote>
+<p>Regenerate Application API Key Response Example:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"key_FZ8RmaxoGc73lbmF2cpmUJ"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"modified_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-01T08:23:14+00:00"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>POST <code>https://api.basistheory.com/applications/{id}/regenerate</code></p>
 
-<p>Delete an application by ID in the tenant.</p>
+<p>Regenerate the API key for an application.</p>
+
+<aside class="warning">
+WARNING - Regenerating the API key for an application will immediately invalidate the previous API key associated with the application.
+</aside>
 <h3 id='permissions-5'>Permissions</h3>
 <p><code>application:write</code></p>
 <h3 id='uri-parameters-3'>URI Parameters</h3>
@@ -1361,7 +1372,94 @@ Dependent permission types are automatically assigned when an application is cre
 <td>The ID of the application</td>
 </tr>
 </tbody></table>
+<h3 id='response-schema-5'>Response Schema</h3>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td><em>string</em></td>
+<td>Unique identifier of the application which can be used to <a href="#get-an-application">get an application</a></td>
+</tr>
+<tr>
+<td><code>key</code></td>
+<td><em>string</em></td>
+<td>The API key which should be used for authenticating against Basis Theory API endpoints</td>
+</tr>
+<tr>
+<td><code>modified_at</code></td>
+<td><em>string</em></td>
+<td>Last modified date of the application in ISO 8601 format</td>
+</tr>
+</tbody></table>
 <h3 id='response-messages-5'>Response Messages</h3>
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>200</code></td>
+<td>Application API Key successfully regenerated</td>
+</tr>
+<tr>
+<td><code>400</code></td>
+<td>Invalid request body. See <a href="#errors">Errors</a> response for details</td>
+</tr>
+<tr>
+<td><code>401</code></td>
+<td>A missing or invalid <code>X-API-KEY</code> was provided</td>
+</tr>
+<tr>
+<td><code>403</code></td>
+<td>The provided <code>X-API-KEY</code> does not have the required permissions</td>
+</tr>
+<tr>
+<td><code>404</code></td>
+<td>The application was not found</td>
+</tr>
+</tbody></table>
+<h2 id='delete-application'>Delete Application</h2>
+<blockquote>
+<p>Delete Application Request Example:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.basistheory.com/applications/fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
+  <span class="nt">-X</span> <span class="s2">"DELETE"</span>
+</code></pre></div>
+<p>DELETE <code>https://api.basistheory.com/applications/{id}</code></p>
+
+<p>Delete an application by ID in the tenant.</p>
+
+<aside class="warning">
+WARNING - The data associated with a deleted application will be removed forever. The reference will still exists for audit purposes
+</aside>
+<h3 id='permissions-6'>Permissions</h3>
+<p><code>application:write</code></p>
+<h3 id='uri-parameters-4'>URI Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>true</td>
+<td><em>string</em></td>
+<td><code>null</code></td>
+<td>The ID of the application</td>
+</tr>
+</tbody></table>
+<h3 id='response-messages-6'>Response Messages</h3>
 <table><thead>
 <tr>
 <th>Code</th>
@@ -1385,198 +1483,538 @@ Dependent permission types are automatically assigned when an application is cre
 <td>The application was not found</td>
 </tr>
 </tbody></table>
-<h1 id='tokens'>Tokens</h1><h2 id='create-a-new-token'>Create a new token</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--request</span> POST <span class="se">\</span>
-  <span class="s2">"https://api-dev.basistheory.com/tokens"</span> <span class="se">\</span>
-  <span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
-  <span class="nt">--header</span> <span class="s2">"X-API-KEY: test_123456790"</span>
-  <span class="nt">--data</span> <span class="s1">'{
-  "data": "string or object data",
+<h1 id='tokens'>Tokens</h1><h2 id='token-types'>Token Types</h2>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Token</td>
+<td><code>token</code></td>
+<td>Generic token type. This is the default token type if none is provided when creating a new token</td>
+</tr>
+<tr>
+<td>Card</td>
+<td><code>card</code></td>
+<td><a href="#atomic-cards">Atomic card</a> token type</td>
+</tr>
+</tbody></table>
+<h2 id='create-token'>Create Token</h2>
+<blockquote>
+<p>Create Token Request Example:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.basistheory.com/tokens"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
+  <span class="nt">-X</span> <span class="s2">"POST"</span>
+  <span class="nt">-D</span> <span class="s1">'{
+    "type": "token",
+    "data": "ebSG3IohNmg5gTOjN2HBwBbhjDZ6BY3fCWZJfXSucVMfQ+7YNMXQYrPuRSXgSkhuTMYS+BNfVUur4qZSvUbgCA==",
+    "metadata": {
+      "NonSensitiveField": "Non-Sensitive Value"
+    }
+    "encryption": {
+      "cek": {
+        "key": "JLrtGbYSN5/dbqdKtLVG8tHu3QefcZnKsFOPBBXlXcG4zL9US01mW2MqZs6Px4ckSQM8CrRakwLKilrQ0f37Iw==",
+        "alg": "AES"
+      },
+      "kek": {
+        "key": "vpXn45HnsoQPR1q8ptngmPvPaqIDJ4vO+FFyQclglePCt8d1SyTDJU0T+F54T7GnAz7vz5OKsjgsFNo9lVB3UA==",
+        "alg": "RSA"
+      }
+    }
   }'</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">BasisTheory</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">basis-theory</span><span class="dl">'</span><span class="p">);</span>
-
-<span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">init</span><span class="p">(</span><span class="dl">"</span><span class="s2">test_1234567890</span><span class="dl">"</span><span class="p">)</span>
-
-<span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">vault</span><span class="p">.</span><span class="nx">createToken</span><span class="p">(</span><span class="dl">"</span><span class="s2">string or object data</span><span class="dl">"</span><span class="p">)</span>
-  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span> 
-      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">id</span><span class="p">)</span> <span class="c1">// token id, e.g. "bt_tok_1234" </span>
-  <span class="p">});</span>
 </code></pre></div>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>Create Token Response Example:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tok_1234"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{encrypted_data}"</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c06d0789-0a38-40be-b7cc-c28a718f76f1"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"owner_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77cb0024-123e-41a8-8ff8-a3d5a0fa8a08"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"token"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"NonSensitiveField"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Non-Sensitive Value"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>This endpoint tokenize any set of data passed to the <code>/tokens</code> endpoint. This will store and encrypt you data and return a uniquely generated token back to you. </p>
-<h3 id='http-request'>HTTP Request</h3>
-<p><code>POST https://api-dev.basistheory.com/tokens</code></p>
-<h3 id='required-scopes'>Required Scopes</h3>
-<ul>
-<li><code>vault:write</code></li>
-</ul>
-<h3 id='query-parameters'>Query Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>data</td>
-<td>string or object to be tokenized</td>
-</tr>
-</tbody></table>
-<h3 id='response-properties'>Response Properties</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>id</td>
-<td>the id of the token that has been created</td>
-</tr>
-<tr>
-<td>data</td>
-<td>string or object that was tokenized</td>
-</tr>
-</tbody></table>
-<h2 id='get-an-existing-token'>Get an existing token</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api-dev.basistheory.com/tokens/tok_1234"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"X-API-KEY: test_123456790"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">BasisTheory</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">basis-theory</span><span class="dl">'</span><span class="p">);</span>
-
-<span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">init</span><span class="p">(</span><span class="dl">"</span><span class="s2">test_1234567890</span><span class="dl">"</span><span class="p">)</span>
-
-<span class="kd">let</span> <span class="nx">token</span> <span class="o">=</span> <span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">vault</span><span class="p">.</span><span class="nx">getToken</span><span class="p">(</span><span class="dl">"</span><span class="s2">tok_1234</span><span class="dl">"</span><span class="p">)</span>
-  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span> 
-      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span> <span class="c1">// string or object data </span>
-  <span class="p">});</span>
-</code></pre></div>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>Create Token Data Examples:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tok_1234"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{encrypted_data}"</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RandomString"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> 
+    </span><span class="nl">"string_field"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RandomString"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"int_field"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"bool_field"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"array_field"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">]</span><span class="w">
+    </span><span class="nl">"object_field"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">}</span><span class="w"> 
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>Returns the raw data associated with a <code>token</code></p>
-<h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET https://api-dev.basistheory.com/tokens/:token_id</code></p>
-<h3 id='required-scopes-2'>Required Scopes</h3>
-<ul>
-<li><code>vault:read</code></li>
-</ul>
-<h3 id='query-parameters-2'>Query Parameters</h3>
+<p>POST <code>https://api.basistheory.com/tokens</code></p>
+
+<p>Create a new token for the tenant.</p>
+<h3 id='permissions'>Permissions</h3>
+<p><code>token:write</code></p>
+<h3 id='request-schema'>Request Schema</h3>
 <table><thead>
 <tr>
-<th>Parameter</th>
+<th>Attribute</th>
+<th>Required</th>
+<th>Type</th>
+<th>Default</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>token_id</td>
-<td>token id that you want to retrieve</td>
+<td><code>type</code></td>
+<td>false</td>
+<td><em>string</em></td>
+<td><code>token</code></td>
+<td><a href="#token-types">Token type</a> of the token</td>
+</tr>
+<tr>
+<td><code>data</code></td>
+<td>true</td>
+<td><em>any</em></td>
+<td><code>null</code></td>
+<td>Token data</td>
+</tr>
+<tr>
+<td><code>metadata</code></td>
+<td>false</td>
+<td><em>any</em></td>
+<td><code>null</code></td>
+<td>Non-sensitive token metadata</td>
+</tr>
+<tr>
+<td><code>encryption</code></td>
+<td>false</td>
+<td><em>object</em></td>
+<td><code>null</code></td>
+<td>Encryption metadata for an encrypted token data value</td>
 </tr>
 </tbody></table>
-<h3 id='response-properties-2'>Response Properties</h3>
+<h3 id='encryption-request-object'>Encryption Request Object</h3>
 <table><thead>
 <tr>
-<th>Parameter</th>
+<th>Attribute</th>
+<th>Required</th>
+<th>Type</th>
+<th>Default</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>id</td>
-<td>the id of the token that has been created</td>
+<td><code>cek</code></td>
+<td>false</td>
+<td><em>object</em></td>
+<td>Content <a href="#encryption-key-request-object">encryption key</a></td>
+<td></td>
 </tr>
 <tr>
-<td>data</td>
-<td>string or object that was tokenized</td>
+<td><code>kek</code></td>
+<td>false</td>
+<td><em>object</em></td>
+<td>Key <a href="#encryption-key-request-object">encryption key</a></td>
+<td></td>
 </tr>
 </tbody></table>
-<h2 id='list-your-tokens'>List your tokens</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api-dev.basistheory.com/tokens"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"X-API-KEY: test_123456790"</span>
+<h3 id='encryption-key-request-object'>Encryption Key Request Object</h3>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Required</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>key</code></td>
+<td>false</td>
+<td><em>string</em></td>
+<td>Encryption key or key identifier</td>
+<td></td>
+</tr>
+<tr>
+<td><code>alg</code></td>
+<td>false</td>
+<td><em>string</em></td>
+<td>Encryption algorithm (e.g. AES, RSA, etc)</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+  <code>data</code> and <code>metadata</code> values can be an object, array, or any primitive type such as an integer, boolean, or string. See JSON examples for reference.
+</aside>
+<h3 id='response-schema'>Response Schema</h3>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td><em>string</em></td>
+<td>Unique identifier of the token which can be used to <a href="#get-a-token">get a token</a></td>
+</tr>
+<tr>
+<td><code>owner_id</code></td>
+<td><em>string</em></td>
+<td>The tenant ID which owns the token</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td><em>string</em></td>
+<td><a href="#token-types">Token type</a></td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td><em>string</em></td>
+<td>Created date of the token in ISO 8601 format</td>
+</tr>
+<tr>
+<td><code>metadata</code></td>
+<td><em>any</em></td>
+<td>The metadata provided when <a href="#create-token">creating the token</a></td>
+</tr>
+</tbody></table>
+<h3 id='response-messages'>Response Messages</h3>
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>201</code></td>
+<td>Token successfully created</td>
+</tr>
+<tr>
+<td><code>400</code></td>
+<td>Invalid request body. See <a href="#errors">Errors</a> response for details</td>
+</tr>
+<tr>
+<td><code>401</code></td>
+<td>A missing or invalid <code>X-API-KEY</code> was provided</td>
+</tr>
+<tr>
+<td><code>403</code></td>
+<td>The provided <code>X-API-KEY</code> does not have the required permissions</td>
+</tr>
+</tbody></table>
+
+<aside class="success">
+  Basis Theory recommends encrypting the <code>data</code> attribute of the token. Our recommendation is encrypt the data with a one-time use symmetric encryption key such as <code>AES-256</code> and then encrypt the symmetric key with an asymmetric public key such as <code>RSA</code>. Our SDK will automatically handle this for you.
+</aside>
+
+<aside class="warning">
+  WARNING - Never store sensitive plaintext information in your token such as plaintext <code>data</code>, <code>metadata</code> or plaintext, private encryption keys in the <code>encryption</code> attributes of your token.
+</aside>
+<h2 id='list-tokens'>List Tokens</h2>
+<blockquote>
+<p>List Tokens Request Example:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.basistheory.com/tokens"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
 </code></pre></div>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>Tokens Response Example:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tok_1234"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{encrypted_data}"</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"pagination"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">}</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c06d0789-0a38-40be-b7cc-c28a718f76f1"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"token"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"owner_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77cb0024-123e-41a8-8ff8-a3d5a0fa8a08"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ebSG3IohNmg5gTOjN2HBwBbhjDZ6BY3fCWZJfXSucVMfQ+7YNMXQYrPuRSXgSkhuTMYS+BNfVUur4qZSvUbgCA=="</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"NonSensitiveField"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Non-Sensitive Value"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+      </span><span class="nl">"encryption"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"cek"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JLrtGbYSN5/dbqdKtLVG8tHu3QefcZnKsFOPBBXlXcG4zL9US01mW2MqZs6Px4ckSQM8CrRakwLKilrQ0f37Iw=="</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"alg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AES"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"kek"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vpXn45HnsoQPR1q8ptngmPvPaqIDJ4vO+FFyQclglePCt8d1SyTDJU0T+F54T7GnAz7vz5OKsjgsFNo9lVB3UA=="</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"alg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RSA"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-01T08:23:14+00:00"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="err">...</span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>GET <code>https://api.basistheory.com/tokens</code></p>
+
+<p>Get a list of tokens for the tenant.</p>
+<h3 id='permissions-2'>Permissions</h3>
+<p><code>token:read</code></p>
+<h3 id='response-schema-2'>Response Schema</h3>
+<p>Returns the <a href="#pagination">Pagination</a> schema. The <code>data</code> attribute in the response contains an array of tokens with the following schema:</p>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td><em>string</em></td>
+<td>Unique identifier of the token which can be used to <a href="#get-a-token">get a token</a></td>
+</tr>
+<tr>
+<td><code>owner_id</code></td>
+<td><em>string</em></td>
+<td>The tenant ID which owns the token</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td><em>string</em></td>
+<td><a href="#token-types">Token type</a></td>
+</tr>
+<tr>
+<td><code>data</code></td>
+<td><em>any</em></td>
+<td>The data provided when <a href="#create-token">creating the token</a></td>
+</tr>
+<tr>
+<td><code>metadata</code></td>
+<td><em>any</em></td>
+<td>The metadata provided when <a href="#create-token">creating the token</a></td>
+</tr>
+<tr>
+<td><code>encryption</code></td>
+<td><em>any</em></td>
+<td>The <a href="#encryption-request-object">encryption</a> data provided when <a href="#create-token">creating the token</a></td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td><em>string</em></td>
+<td>Created date of the token in ISO 8601 format</td>
+</tr>
+</tbody></table>
+<h3 id='response-messages-2'>Response Messages</h3>
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>200</code></td>
+<td>Tokens successfully retrieved</td>
+</tr>
+<tr>
+<td><code>401</code></td>
+<td>A missing or invalid <code>X-API-KEY</code> was provided</td>
+</tr>
+<tr>
+<td><code>403</code></td>
+<td>The provided <code>X-API-KEY</code> does not have the required permissions</td>
+</tr>
+</tbody></table>
+<h2 id='get-a-token'>Get a Token</h2>
+<blockquote>
+<p>Get a Token Request Example:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.basistheory.com/tokens/c06d0789-0a38-40be-b7cc-c28a718f76f1"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
+</code></pre></div>
+<blockquote>
+<p>Token Response Example:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c06d0789-0a38-40be-b7cc-c28a718f76f1"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"token"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"owner_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77cb0024-123e-41a8-8ff8-a3d5a0fa8a08"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ebSG3IohNmg5gTOjN2HBwBbhjDZ6BY3fCWZJfXSucVMfQ+7YNMXQYrPuRSXgSkhuTMYS+BNfVUur4qZSvUbgCA=="</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"NonSensitiveField"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Non-Sensitive Value"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+  </span><span class="nl">"encryption"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"cek"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JLrtGbYSN5/dbqdKtLVG8tHu3QefcZnKsFOPBBXlXcG4zL9US01mW2MqZs6Px4ckSQM8CrRakwLKilrQ0f37Iw=="</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"alg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AES"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"kek"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vpXn45HnsoQPR1q8ptngmPvPaqIDJ4vO+FFyQclglePCt8d1SyTDJU0T+F54T7GnAz7vz5OKsjgsFNo9lVB3UA=="</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"alg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RSA"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
   </span><span class="p">},</span><span class="w">
-  </span><span class="err">//...</span><span class="w"> </span><span class="err">additional</span><span class="w"> </span><span class="err">tokens</span><span class="w">
-</span><span class="p">]</span><span class="w">
+  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-01T08:23:14+00:00"</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>Returns the raw data associated with a <code>token</code>.</p>
-<h3 id='http-request-3'>HTTP Request</h3>
-<p><code>GET https://api-dev.basistheory.com/tokens</code></p>
-<h3 id='required-scopes-3'>Required Scopes</h3>
-<ul>
-<li><code>vault:read</code></li>
-</ul>
-<h3 id='query-parameters-3'>Query Parameters</h3>
+<p>GET <code>https://api.basistheory.com/tokens/{id}</code></p>
+
+<p>Get a token by ID in the tenant.</p>
+<h3 id='permissions-3'>Permissions</h3>
+<p><code>token:read</code></p>
+<h3 id='uri-parameters'>URI Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Default</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>token_id</td>
-<td>token id that you want to retrieve</td>
+<td><code>id</code></td>
+<td>true</td>
+<td><em>string</em></td>
+<td><code>null</code></td>
+<td>The ID of the token</td>
 </tr>
 </tbody></table>
-<h3 id='response-properties-3'>Response Properties</h3>
+<h3 id='response-schema-3'>Response Schema</h3>
 <table><thead>
 <tr>
-<th>Parameter</th>
+<th>Attribute</th>
+<th>Type</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>id</td>
-<td>the id of the token that has been created</td>
+<td><code>id</code></td>
+<td><em>string</em></td>
+<td>Unique identifier of the token which can be used to <a href="#get-a-token">get a token</a></td>
 </tr>
 <tr>
-<td>data</td>
-<td>string or object that was tokenized</td>
+<td><code>owner_id</code></td>
+<td><em>string</em></td>
+<td>The tenant ID which owns the token</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td><em>string</em></td>
+<td><a href="#token-types">Token type</a></td>
+</tr>
+<tr>
+<td><code>data</code></td>
+<td><em>any</em></td>
+<td>The data provided when <a href="#create-token">creating the token</a></td>
+</tr>
+<tr>
+<td><code>metadata</code></td>
+<td><em>any</em></td>
+<td>The metadata provided when <a href="#create-token">creating the token</a></td>
+</tr>
+<tr>
+<td><code>encryption</code></td>
+<td><em>any</em></td>
+<td>The <a href="#encryption-request-object">encryption</a> data provided when <a href="#create-token">creating the token</a></td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td><em>string</em></td>
+<td>Created date of the token in ISO 8601 format</td>
 </tr>
 </tbody></table>
-<h2 id='delete-a-token'>Delete a token</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api-dev.basistheory.com/tokens/tok_1234"</span> <span class="se">\</span>
-  <span class="nt">-X</span> DELETE <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: api_key_1234"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">BasisTheory</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">basis-theory</span><span class="dl">'</span><span class="p">);</span>
-
-<span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">init</span><span class="p">(</span><span class="dl">"</span><span class="s2">api_key_1234</span><span class="dl">"</span><span class="p">)</span>
-
-<span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">vault</span><span class="p">.</span><span class="nx">deleteToken</span><span class="p">(</span><span class="dl">"</span><span class="s2">tok_1234</span><span class="dl">"</span><span class="p">);</span>
+<h3 id='response-messages-3'>Response Messages</h3>
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>200</code></td>
+<td>Tokens successfully retrieved</td>
+</tr>
+<tr>
+<td><code>401</code></td>
+<td>A missing or invalid <code>X-API-KEY</code> was provided</td>
+</tr>
+<tr>
+<td><code>403</code></td>
+<td>The provided <code>X-API-KEY</code> does not have the required permissions</td>
+</tr>
+<tr>
+<td><code>404</code></td>
+<td>The token was not found</td>
+</tr>
+</tbody></table>
+<h2 id='delete-token'>Delete Token</h2>
+<blockquote>
+<p>Delete Token Request Example:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.basistheory.com/tokens/c06d0789-0a38-40be-b7cc-c28a718f76f1"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
+  <span class="nt">-X</span> <span class="s2">"DELETE"</span>
 </code></pre></div>
-<p>This endpoint will remove any underlying data associated with the token, we will retain the token reference and audit logs for future reference. The data will be permanently deleted.</p>
+<p>DELETE <code>https://api.basistheory.com/tokens/{id}</code></p>
+
+<p>Delete a token by ID in the tenant.</p>
 
 <aside class="warning">
 WARNING - The data associated with a deleted token will be removed forever. The reference will still exists for audit purposes
 </aside>
-<h3 id='http-request-4'>HTTP Request</h3>
-<p><code>DELETE http://api.basistheory.com/tokens/:token_id</code></p>
-<h3 id='required-scopes-4'>Required Scopes</h3>
-<ul>
-<li><code>vault:delete</code></li>
-</ul>
-<h3 id='url-parameters'>URL Parameters</h3>
+<h3 id='permissions-4'>Permissions</h3>
+<p><code>token:write</code></p>
+<h3 id='uri-parameters-2'>URI Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Default</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>token_id</td>
-<td>token id that you want to retrieve</td>
+<td><code>id</code></td>
+<td>true</td>
+<td><em>string</em></td>
+<td><code>null</code></td>
+<td>The ID of the token</td>
+</tr>
+</tbody></table>
+<h3 id='response-messages-4'>Response Messages</h3>
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>204</code></td>
+<td>Token successfully deleted</td>
+</tr>
+<tr>
+<td><code>401</code></td>
+<td>A missing or invalid <code>X-API-KEY</code> was provided</td>
+</tr>
+<tr>
+<td><code>403</code></td>
+<td>The provided <code>X-API-KEY</code> does not have the required permissions</td>
+</tr>
+<tr>
+<td><code>404</code></td>
+<td>The token was not found</td>
 </tr>
 </tbody></table>
 <h1 id='atomic-cards'>Atomic Cards</h1><h2 id='create-a-new-atomic-card'>Create a new atomic card</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--request</span> POST <span class="se">\</span>
