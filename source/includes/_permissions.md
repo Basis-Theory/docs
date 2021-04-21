@@ -34,18 +34,18 @@ curl "api.basistheory.com/permissions" \
 
 ```json
 [
-    {
-        "type": "card:read",
-        "description": "Read Payment Card tokens",
-        "application_types": [
-            "server_to_server"
-        ],
-        "dependencies": [
-            "token:read"
-        ]
-    }, 
-    {...},
-    {...}
+  {
+    "type": "card:read",
+    "description": "Read Payment Card tokens",
+    "application_types": [
+      "server_to_server"
+    ],
+    "dependencies": [
+      "token:read"
+    ]
+  }, 
+  {...},
+  {...}
 ]
 ```
 

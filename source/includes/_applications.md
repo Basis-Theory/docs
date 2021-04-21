@@ -26,10 +26,10 @@ curl "api.basistheory.com/applications" \
     "name": "My Example App",
     "type": "server_to_server",
     "permissions": [
-        "card:create",
-        "card:read",
-        "token:write",
-        "token:read"
+      "card:create",
+      "card:read",
+      "token:write",
+      "token:read"
     ]
   }'
 ```
@@ -38,18 +38,18 @@ curl "api.basistheory.com/applications" \
 
 ```json
 {
-    "id": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
-    "owner_id": "77cb0024-123e-41a8-8ff8-a3d5a0fa8a08",
-    "name": "My Example App",
-    "key": "key_FZ8RmaxoGc73lbmF2cpmUJ",
-    "type": "server_to_server",
-    "created_at": "2020-09-15T15:53:00+00:00",
-    "permissions": [
-        "card:create",
-        "card:read",
-        "token:write",
-        "token:read"
-    ]
+  "id": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
+  "owner_id": "77cb0024-123e-41a8-8ff8-a3d5a0fa8a08",
+  "name": "My Example App",
+  "key": "key_FZ8RmaxoGc73lbmF2cpmUJ",
+  "type": "server_to_server",
+  "created_at": "2020-09-15T15:53:00+00:00",
+  "permissions": [
+    "card:create",
+    "card:read",
+    "token:write",
+    "token:read"
+  ]
 }
 ```
 
@@ -77,9 +77,9 @@ Attribute | Type | Description
 `owner_id` | *string* | The tenant ID which owns the application
 `name` | *string* | The name of the application
 `key` | *string* | The API key which should be used for authenticating against Basis Theory API endpoints
-`type` | *string* | Application type which restricts available permissions
+`type` | *string* | [Application type](#application-types) of the application
 `created_at` | *string* | Created date of the application in ISO 8601 format
-`permissions` | *array* | List of [permission](#permission-types) for the application
+`permissions` | *array* | List of [permissions](#permission-types) for the application
 
 ### Response Messages
 
@@ -89,7 +89,6 @@ Code | Description
 `400` | Invalid request body. See [Errors](#errors) response for details
 `401` | A missing or invalid `X-API-KEY` was provided
 `403` | The provided `X-API-KEY` does not have the required permissions
-`404` | The application was not found
 
 
 ## List Applications
@@ -105,25 +104,25 @@ curl "api.basistheory.com/applications" \
 
 ```json
 {
-    "pagination": {...}
-    "data": [
-        {
-            "id": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
-            "owner_id": "77cb0024-123e-41a8-8ff8-a3d5a0fa8a08",
-            "name": "My Example App",
-            "type": "server_to_server",
-            "created_at": "2020-09-15T15:53:00+00:00",
-            "modified_at": "2021-03-01T08:23:14+00:00",
-            "permissions": [
-                "card:create",
-                "card:read",
-                "token:write",
-                "token:read"
-            ]
-        },
-        {...},
-        {...}
-    ]
+  "pagination": {...}
+  "data": [
+    {
+      "id": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
+      "owner_id": "77cb0024-123e-41a8-8ff8-a3d5a0fa8a08",
+      "name": "My Example App",
+      "type": "server_to_server",
+      "created_at": "2020-09-15T15:53:00+00:00",
+      "modified_at": "2021-03-01T08:23:14+00:00",
+      "permissions": [
+        "card:create",
+        "card:read",
+        "token:write",
+        "token:read"
+      ]
+    },
+    {...},
+    {...}
+  ]
 }
 ```
 
@@ -144,10 +143,10 @@ Attribute | Type | Description
 `id` | *string* | Unique identifier of the application which can be used to [get an application](#get-an-application)
 `owner_id` | *string* | The tenant ID which owns the application
 `name` | *string* | The name of the application
-`type` | *string* | Application type which restricts available permissions
+`type` | *string* | [Application type](#application-types) of the application
 `created_at` | *string* | Created date of the application in ISO 8601 format
 `modified_at` | *string* | Last modified date of the application in ISO 8601 format
-`permissions` | *array* | List of [permission](#permission-types) for the application
+`permissions` | *array* | List of [permissions](#permission-types) for the application
 
 ### Response Messages
 
@@ -156,7 +155,6 @@ Code | Description
 `200` | Applications successfully retrieved
 `401` | A missing or invalid `X-API-KEY` was provided
 `403` | The provided `X-API-KEY` does not have the required permissions
-`404` | The application was not found
 
 
 ## Get an Application
@@ -168,20 +166,20 @@ curl "api.basistheory.com/applications/fe1f9ba4-474e-44b9-b949-110cdba9d662" \
   -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
 ```
 
-> Applications Response Example:
+> Application Response Example:
 
 ```json
 {
-    "id": "fe1f9ba4-474e-44b9-b949-110cdba9d662",
-    "owner_id": "77cb0024-123e-41a8-8ff8-a3d5a0fa8a08",
-    "name": "My Management App",
-    "type": "management",
-    "created_at": "2020-09-15T15:53:00+00:00",
-    "modified_at": "2021-03-01T08:23:14+00:00",
-    "permissions": [
-        "application:read",
-        "application:write"
-    ]
+  "id": "fe1f9ba4-474e-44b9-b949-110cdba9d662",
+  "owner_id": "77cb0024-123e-41a8-8ff8-a3d5a0fa8a08",
+  "name": "My Management App",
+  "type": "management",
+  "created_at": "2020-09-15T15:53:00+00:00",
+  "modified_at": "2021-03-01T08:23:14+00:00",
+  "permissions": [
+    "application:read",
+    "application:write"
+  ]
 }
 ```
 
@@ -206,10 +204,10 @@ Attribute | Type | Description
 `id` | *string* | Unique identifier of the application which can be used to [get an application](#get-an-application)
 `owner_id` | *string* | The tenant ID which owns the application
 `name` | *string* | The name of the application
-`type` | *string* | Application type which restricts available permissions
+`type` | *string* | [Application type](#application-types) of the application
 `created_at` | *string* | Created date of the application in ISO 8601 format
 `modified_at` | *string* | Last modified date of the application in ISO 8601 format
-`permissions` | *array* | List of [permission](#permission-types) for the application
+`permissions` | *array* | List of [permissions](#permission-types) for the application
 
 ### Response Messages
 
@@ -233,8 +231,8 @@ curl "api.basistheory.com/applications/fb124bba-f90d-45f0-9a59-5edca27b3b4a" \
   -D '{
     "name": "My Example App",
     "permissions": [
-        "application:read",
-        "application:write"
+      "application:read",
+      "application:write"
     ]
   }'
 ```
@@ -243,16 +241,16 @@ curl "api.basistheory.com/applications/fb124bba-f90d-45f0-9a59-5edca27b3b4a" \
 
 ```json
 {
-    "id": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
-    "owner_id": "77cb0024-123e-41a8-8ff8-a3d5a0fa8a08",
-    "name": "My Example App",
-    "type": "server_to_server",
-    "created_at": "2020-09-15T15:53:00+00:00",
-    "modified_at": "2021-03-01T08:23:14+00:00",
-    "permissions": [
-        "application:read",
-        "application:write"
-    ]
+  "id": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
+  "owner_id": "77cb0024-123e-41a8-8ff8-a3d5a0fa8a08",
+  "name": "My Example App",
+  "type": "server_to_server",
+  "created_at": "2020-09-15T15:53:00+00:00",
+  "modified_at": "2021-03-01T08:23:14+00:00",
+  "permissions": [
+    "application:read",
+    "application:write"
+  ]
 }
 ```
 
@@ -284,16 +282,73 @@ Attribute | Type | Description
 `id` | *string* | Unique identifier of the application which can be used to [get an application](#get-an-application)
 `owner_id` | *string* | The tenant ID which owns the application
 `name` | *string* | The name of the application
-`type` | *string* | Application type which restricts available permissions
+`type` | *string* | [Application type](#application-types) of the application
 `created_at` | *string* | Created date of the application in ISO 8601 format
 `modified_at` | *string* | Last modified date of the application in ISO 8601 format
-`permissions` | *array* | List of [permission](#permission-types) for the application
+`permissions` | *array* | List of [permissions](#permission-types) for the application
 
 ### Response Messages
 
 Code | Description
 ---- | -----------
 `200` | Application successfully updated
+`400` | Invalid request body. See [Errors](#errors) response for details
+`401` | A missing or invalid `X-API-KEY` was provided
+`403` | The provided `X-API-KEY` does not have the required permissions
+`404` | The application was not found
+
+
+## Regenerate API Key
+
+> Regenerate Application API Key Request Example:
+
+```shell
+curl "api.basistheory.com/applications/fb124bba-f90d-45f0-9a59-5edca27b3b4a/regenerate" \
+  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
+  -X "POST"
+```
+
+> Regenerate Application API Key Response Example:
+
+```json
+{
+  "id": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
+  "key": "key_FZ8RmaxoGc73lbmF2cpmUJ",
+  "modified_at": "2021-03-01T08:23:14+00:00"
+}
+```
+
+POST `https://api.basistheory.com/applications/{id}/regenerate`
+
+Regenerate the API key for an application.
+
+<aside class="warning">
+WARNING - Regenerating the API key for an application will immediately invalidate the previous API key associated with the application.
+</aside>
+
+### Permissions
+
+`application:write`
+
+### URI Parameters
+
+Parameter | Required | Type | Default | Description
+--------- | -------- | ---- | ------- | -----------
+`id` | true | *string* | `null` | The ID of the application
+
+### Response Schema
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`id` | *string* | Unique identifier of the application which can be used to [get an application](#get-an-application)
+`key` | *string* | The API key which should be used for authenticating against Basis Theory API endpoints
+`modified_at` | *string* | Last modified date of the application in ISO 8601 format
+
+### Response Messages
+
+Code | Description
+---- | -----------
+`200` | Application API Key successfully regenerated
 `400` | Invalid request body. See [Errors](#errors) response for details
 `401` | A missing or invalid `X-API-KEY` was provided
 `403` | The provided `X-API-KEY` does not have the required permissions
@@ -313,6 +368,10 @@ curl "api.basistheory.com/applications/fb124bba-f90d-45f0-9a59-5edca27b3b4a" \
 DELETE `https://api.basistheory.com/applications/{id}`
 
 Delete an application by ID in the tenant.
+
+<aside class="warning">
+WARNING - The data associated with a deleted application will be removed forever. The reference will still exists for audit purposes
+</aside>
 
 ### Permissions
 
