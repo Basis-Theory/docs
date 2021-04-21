@@ -6,15 +6,21 @@ language_tabs: # must be one of https://git.io/vQNgJ
 
 toc_footers:
 
-includes:
+intro_includes:
+  - introduction
   - getting_started
   - authentication
-  - api_reference
+  - correlation_id
+  - pagination
+  - errors
+
+api_includes:
   - permissions
   - applications
   - tokens
   - atomic_cards
-  - errors
+
+module_includes:
   - javascript_module
   - javascript_hosted_fields
 

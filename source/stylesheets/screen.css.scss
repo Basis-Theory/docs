@@ -43,7 +43,7 @@ html, body {
 
 
 
-#toc > ul > li > a > span {
+.toc-section > ul > li > a > span {
   float: right;
   background-color: #2484FF;
   border-radius: 40px;
@@ -678,4 +678,12 @@ html, body {
 
 .copy-clipboard:hover {
   opacity: 0.8;
+}
+
+.headline {
+  line-height: .6em;
+  font-size: 1.1em;
+  color: #ccc;
+  margin-left: 0.67em;
+  margin-top: 1.2em;
 }

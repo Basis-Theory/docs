@@ -9,7 +9,7 @@ function adjustLanguageSelectorWidth() {
 }
 
 $(function() {
-  loadToc($('#toc'), '.toc-link', '.toc-list-h2', 10);
+  loadToc($('.toc-section'), '.toc-link', '.toc-list-h2', 10);
   setupLanguages($('body').data('languages'));
   $('.content').imagesLoaded( function() {
     window.recacheHeights();
