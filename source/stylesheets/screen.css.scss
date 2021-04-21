@@ -591,7 +591,12 @@ html, body {
     @extend %code-font;
     padding-top: 2em;
     padding-bottom: 2em;
-    padding: 2em 10px 24px;
+    padding-left: 3em;
+    padding-right: 3em;
+
+    .copy-clipboard {
+      margin-right: -2em;
+    }
   }
 
   blockquote {
