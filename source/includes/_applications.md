@@ -77,9 +77,9 @@ Attribute | Type | Description
 `owner_id` | *string* | The tenant ID which owns the application
 `name` | *string* | The name of the application
 `key` | *string* | The API key which should be used for authenticating against Basis Theory API endpoints
-`type` | *string* | Application type which restricts available permissions
+`type` | *string* | [Application type](#application-types) of the application
 `created_at` | *string* | Created date of the application in ISO 8601 format
-`permissions` | *array* | List of [permission](#permission-types) for the application
+`permissions` | *array* | List of [permissions](#permission-types) for the application
 
 ### Response Messages
 
@@ -143,10 +143,10 @@ Attribute | Type | Description
 `id` | *string* | Unique identifier of the application which can be used to [get an application](#get-an-application)
 `owner_id` | *string* | The tenant ID which owns the application
 `name` | *string* | The name of the application
-`type` | *string* | Application type which restricts available permissions
+`type` | *string* | [Application type](#application-types) of the application
 `created_at` | *string* | Created date of the application in ISO 8601 format
 `modified_at` | *string* | Last modified date of the application in ISO 8601 format
-`permissions` | *array* | List of [permission](#permission-types) for the application
+`permissions` | *array* | List of [permissions](#permission-types) for the application
 
 ### Response Messages
 
@@ -155,7 +155,6 @@ Code | Description
 `200` | Applications successfully retrieved
 `401` | A missing or invalid `X-API-KEY` was provided
 `403` | The provided `X-API-KEY` does not have the required permissions
-`404` | The application was not found
 
 
 ## Get an Application
@@ -167,7 +166,7 @@ curl "api.basistheory.com/applications/fe1f9ba4-474e-44b9-b949-110cdba9d662" \
   -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
 ```
 
-> Applications Response Example:
+> Application Response Example:
 
 ```json
 {
@@ -205,10 +204,10 @@ Attribute | Type | Description
 `id` | *string* | Unique identifier of the application which can be used to [get an application](#get-an-application)
 `owner_id` | *string* | The tenant ID which owns the application
 `name` | *string* | The name of the application
-`type` | *string* | Application type which restricts available permissions
+`type` | *string* | [Application type](#application-types) of the application
 `created_at` | *string* | Created date of the application in ISO 8601 format
 `modified_at` | *string* | Last modified date of the application in ISO 8601 format
-`permissions` | *array* | List of [permission](#permission-types) for the application
+`permissions` | *array* | List of [permissions](#permission-types) for the application
 
 ### Response Messages
 
@@ -283,10 +282,10 @@ Attribute | Type | Description
 `id` | *string* | Unique identifier of the application which can be used to [get an application](#get-an-application)
 `owner_id` | *string* | The tenant ID which owns the application
 `name` | *string* | The name of the application
-`type` | *string* | Application type which restricts available permissions
+`type` | *string* | [Application type](#application-types) of the application
 `created_at` | *string* | Created date of the application in ISO 8601 format
 `modified_at` | *string* | Last modified date of the application in ISO 8601 format
-`permissions` | *array* | List of [permission](#permission-types) for the application
+`permissions` | *array* | List of [permissions](#permission-types) for the application
 
 ### Response Messages
 
@@ -369,6 +368,10 @@ curl "api.basistheory.com/applications/fb124bba-f90d-45f0-9a59-5edca27b3b4a" \
 DELETE `https://api.basistheory.com/applications/{id}`
 
 Delete an application by ID in the tenant.
+
+<aside class="warning">
+WARNING - The data associated with a deleted application will be removed forever. The reference will still exists for audit purposes
+</aside>
 
 ### Permissions
 
