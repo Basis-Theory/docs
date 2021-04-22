@@ -280,7 +280,7 @@
   color: #859900;
 }
     </style>
-    <link href="stylesheets/screen-9c7e6d9a.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/screen-dfde0997.css" rel="stylesheet" media="screen" />
     <link href="stylesheets/print-88489c93.css" rel="stylesheet" media="print" />
       <script src="javascripts/all-05bf6e79.js"></script>
 
@@ -400,19 +400,19 @@
             <a href="#atomic-cards" class="toc-h1 toc-link" data-title="Atomic Cards">Atomic Cards</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#create-a-new-atomic-card" class="toc-h2 toc-link" data-title="Create a new atomic card">Create a new atomic card</a>
+                    <a href="#create-atomic-card" class="toc-h2 toc-link" data-title="Create Atomic Card">Create Atomic Card</a>
                   </li>
                   <li>
-                    <a href="#get-an-existing-atomic-card" class="toc-h2 toc-link" data-title="Get an existing atomic card">Get an existing atomic card</a>
+                    <a href="#list-atomic-cards" class="toc-h2 toc-link" data-title="List Atomic Cards">List Atomic Cards</a>
                   </li>
                   <li>
-                    <a href="#list-your-atomic-cards" class="toc-h2 toc-link" data-title="List your atomic cards">List your atomic cards</a>
+                    <a href="#get-an-atomic-card" class="toc-h2 toc-link" data-title="Get an Atomic Card">Get an Atomic Card</a>
                   </li>
                   <li>
-                    <a href="#delete-an-atomic-card" class="toc-h2 toc-link" data-title="Delete an atomic card">Delete an atomic card</a>
+                    <a href="#delete-atomic-card" class="toc-h2 toc-link" data-title="Delete Atomic Card">Delete Atomic Card</a>
                   </li>
                   <li>
-                    <a href="#test-data" class="toc-h2 toc-link" data-title="Test Data">Test Data</a>
+                    <a href="#test-cards" class="toc-h2 toc-link" data-title="Test Cards">Test Cards</a>
                   </li>
               </ul>
           </li>
@@ -736,7 +736,7 @@ You must replace <code>key_N88mVGsp3sCXkykyN2EFED</code> with your API key suppl
   </span><span class="p">{</span><span class="err">...</span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div>
-<p>GET <code>https://api.basistheory.com/permissions</code></p>
+<p><span class="http-method get">GET</span> <code>https://api.basistheory.com/permissions</code></p>
 <h3 id='response-schema'>Response Schema</h3>
 <table><thead>
 <tr>
@@ -854,11 +854,13 @@ Dependent permission types are automatically assigned when an application is cre
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>POST <code>https://api.basistheory.com/applications</code></p>
+<p><span class="http-method post">POST</span> <code>https://api.basistheory.com/applications</code></p>
 
 <p>Create a new application for the tenant.</p>
 <h3 id='permissions'>Permissions</h3>
-<p><code>application:write</code></p>
+<p class="scopes">
+  <span class="scope">application:write</span>
+</p>
 <h3 id='request-schema'>Request Schema</h3>
 <table><thead>
 <tr>
@@ -991,11 +993,13 @@ Dependent permission types are automatically assigned when an application is cre
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>GET <code>https://api.basistheory.com/applications</code></p>
+<p><span class="http-method get">GET</span> <code>https://api.basistheory.com/applications</code></p>
 
 <p>Get a list of applications for the tenant.</p>
 <h3 id='permissions-2'>Permissions</h3>
-<p><code>application:read</code></p>
+<p class="scopes">
+  <span class="scope">application:read</span>
+</p>
 <h3 id='response-schema-2'>Response Schema</h3>
 <p>Returns the <a href="#pagination">Pagination</a> schema. The <code>data</code> attribute in the response contains an array of applications with the following schema:</p>
 
@@ -1085,11 +1089,13 @@ Dependent permission types are automatically assigned when an application is cre
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>GET <code>https://api.basistheory.com/applications/{id}</code></p>
+<p><span class="http-method get">GET</span> <code>https://api.basistheory.com/applications/{id}</code></p>
 
 <p>Get an application by ID in the tenant.</p>
 <h3 id='permissions-3'>Permissions</h3>
-<p><code>application:read</code></p>
+<p class="scopes">
+  <span class="scope">application:read</span>
+</p>
 <h3 id='uri-parameters'>URI Parameters</h3>
 <table><thead>
 <tr>
@@ -1208,11 +1214,13 @@ Dependent permission types are automatically assigned when an application is cre
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>PUT <code>https://api.basistheory.com/applications/{id}</code></p>
+<p><span class="http-method put">PUT</span> <code>https://api.basistheory.com/applications/{id}</code></p>
 
 <p>Update an application by ID in the tenant.</p>
 <h3 id='permissions-4'>Permissions</h3>
-<p><code>application:write</code></p>
+<p class="scopes">
+  <span class="scope">application:write</span>
+</p>
 <h3 id='uri-parameters-2'>URI Parameters</h3>
 <table><thead>
 <tr>
@@ -1345,7 +1353,7 @@ Dependent permission types are automatically assigned when an application is cre
   </span><span class="nl">"modified_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-01T08:23:14+00:00"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>POST <code>https://api.basistheory.com/applications/{id}/regenerate</code></p>
+<p><span class="http-method post">POST</span> <code>https://api.basistheory.com/applications/{id}/regenerate</code></p>
 
 <p>Regenerate the API key for an application.</p>
 
@@ -1353,7 +1361,9 @@ Dependent permission types are automatically assigned when an application is cre
 WARNING - Regenerating the API key for an application will immediately invalidate the previous API key associated with the application.
 </aside>
 <h3 id='permissions-5'>Permissions</h3>
-<p><code>application:write</code></p>
+<p class="scopes">
+  <span class="scope">application:write</span>
+</p>
 <h3 id='uri-parameters-3'>URI Parameters</h3>
 <table><thead>
 <tr>
@@ -1432,7 +1442,7 @@ WARNING - Regenerating the API key for an application will immediately invalidat
   <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
   <span class="nt">-X</span> <span class="s2">"DELETE"</span>
 </code></pre></div>
-<p>DELETE <code>https://api.basistheory.com/applications/{id}</code></p>
+<p><span class="http-method delete">DELETE</span> <code>https://api.basistheory.com/applications/{id}</code></p>
 
 <p>Delete an application by ID in the tenant.</p>
 
@@ -1548,7 +1558,7 @@ WARNING - The data associated with a deleted application will be removed forever
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RandomString"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">]</span><span class="w">
@@ -1563,11 +1573,13 @@ WARNING - The data associated with a deleted application will be removed forever
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>POST <code>https://api.basistheory.com/tokens</code></p>
+<p><span class="http-method post">POST</span> <code>https://api.basistheory.com/tokens</code></p>
 
 <p>Create a new token for the tenant.</p>
 <h3 id='permissions'>Permissions</h3>
-<p><code>token:write</code></p>
+<p class="scopes">
+  <span class="scope">token:write</span>
+</p>
 <h3 id='request-schema'>Request Schema</h3>
 <table><thead>
 <tr>
@@ -1607,7 +1619,7 @@ WARNING - The data associated with a deleted application will be removed forever
 <td>Encryption metadata for an encrypted token data value</td>
 </tr>
 </tbody></table>
-<h3 id='encryption-request-object'>Encryption Request Object</h3>
+<h3 id='encryption-object-schema'>Encryption Object Schema</h3>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -1621,18 +1633,18 @@ WARNING - The data associated with a deleted application will be removed forever
 <td><code>cek</code></td>
 <td>false</td>
 <td><em>object</em></td>
-<td>Content <a href="#encryption-key-request-object">encryption key</a></td>
-<td></td>
+<td><code>null</code></td>
+<td>Content <a href="#encryption-key-object-schema">encryption key</a></td>
 </tr>
 <tr>
 <td><code>kek</code></td>
 <td>false</td>
 <td><em>object</em></td>
-<td>Key <a href="#encryption-key-request-object">encryption key</a></td>
-<td></td>
+<td><code>null</code></td>
+<td>Key <a href="#encryption-key-object-schema">encryption key</a></td>
 </tr>
 </tbody></table>
-<h3 id='encryption-key-request-object'>Encryption Key Request Object</h3>
+<h3 id='encryption-key-object-schema'>Encryption Key Object Schema</h3>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -1646,15 +1658,15 @@ WARNING - The data associated with a deleted application will be removed forever
 <td><code>key</code></td>
 <td>false</td>
 <td><em>string</em></td>
+<td><code>null</code></td>
 <td>Encryption key or key identifier</td>
-<td></td>
 </tr>
 <tr>
 <td><code>alg</code></td>
 <td>false</td>
 <td><em>string</em></td>
+<td><code>null</code></td>
 <td>Encryption algorithm (e.g. AES, RSA, etc)</td>
-<td></td>
 </tr>
 </tbody></table>
 
@@ -1765,11 +1777,13 @@ WARNING - The data associated with a deleted application will be removed forever
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>GET <code>https://api.basistheory.com/tokens</code></p>
+<p><span class="http-method get">GET</span> <code>https://api.basistheory.com/tokens</code></p>
 
 <p>Get a list of tokens for the tenant.</p>
 <h3 id='permissions-2'>Permissions</h3>
-<p><code>token:read</code></p>
+<p class="scopes">
+  <span class="scope">token:read</span>
+</p>
 <h3 id='response-schema-2'>Response Schema</h3>
 <p>Returns the <a href="#pagination">Pagination</a> schema. The <code>data</code> attribute in the response contains an array of tokens with the following schema:</p>
 
@@ -1808,7 +1822,7 @@ WARNING - The data associated with a deleted application will be removed forever
 <tr>
 <td><code>encryption</code></td>
 <td><em>any</em></td>
-<td>The <a href="#encryption-request-object">encryption</a> data provided when <a href="#create-token">creating the token</a></td>
+<td>The <a href="#encryption-object-schema">encryption</a> data provided when <a href="#create-token">creating the token</a></td>
 </tr>
 <tr>
 <td><code>created_at</code></td>
@@ -1867,11 +1881,13 @@ WARNING - The data associated with a deleted application will be removed forever
   </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-01T08:23:14+00:00"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>GET <code>https://api.basistheory.com/tokens/{id}</code></p>
+<p><span class="http-method get">GET</span> <code>https://api.basistheory.com/tokens/{id}</code></p>
 
 <p>Get a token by ID in the tenant.</p>
 <h3 id='permissions-3'>Permissions</h3>
-<p><code>token:read</code></p>
+<p class="scopes">
+  <span class="scope">token:read</span>
+</p>
 <h3 id='uri-parameters'>URI Parameters</h3>
 <table><thead>
 <tr>
@@ -1926,7 +1942,7 @@ WARNING - The data associated with a deleted application will be removed forever
 <tr>
 <td><code>encryption</code></td>
 <td><em>any</em></td>
-<td>The <a href="#encryption-request-object">encryption</a> data provided when <a href="#create-token">creating the token</a></td>
+<td>The <a href="#encryption-object-schema">encryption</a> data provided when <a href="#create-token">creating the token</a></td>
 </tr>
 <tr>
 <td><code>created_at</code></td>
@@ -1966,7 +1982,7 @@ WARNING - The data associated with a deleted application will be removed forever
   <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
   <span class="nt">-X</span> <span class="s2">"DELETE"</span>
 </code></pre></div>
-<p>DELETE <code>https://api.basistheory.com/tokens/{id}</code></p>
+<p><span class="http-method delete">DELETE</span> <code>https://api.basistheory.com/tokens/{id}</code></p>
 
 <p>Delete a token by ID in the tenant.</p>
 
@@ -1974,7 +1990,9 @@ WARNING - The data associated with a deleted application will be removed forever
 WARNING - The data associated with a deleted token will be removed forever. The reference will still exists for audit purposes
 </aside>
 <h3 id='permissions-4'>Permissions</h3>
-<p><code>token:write</code></p>
+<p class="scopes">
+  <span class="scope">token:write</span>
+</p>
 <h3 id='uri-parameters-2'>URI Parameters</h3>
 <table><thead>
 <tr>
@@ -2017,285 +2035,560 @@ WARNING - The data associated with a deleted token will be removed forever. The 
 <td>The token was not found</td>
 </tr>
 </tbody></table>
-<h1 id='atomic-cards'>Atomic Cards</h1><h2 id='create-a-new-atomic-card'>Create a new atomic card</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--request</span> POST <span class="se">\</span>
-  <span class="s2">"https://api-dev.basistheory.com/atomic/cards/cards"</span> <span class="se">\</span>
-  <span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
-  <span class="nt">--header</span> <span class="s2">"X-API-KEY: test_123456790"</span>
-  <span class="nt">--data</span> <span class="s1">'{
+<h1 id='atomic-cards'>Atomic Cards</h1><h2 id='create-atomic-card'>Create Atomic Card</h2>
+<blockquote>
+<p>Create Atomic Card Request Example:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.basistheory.com/atomic/cards"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
+  <span class="nt">-X</span> <span class="s2">"POST"</span>
+  <span class="nt">-D</span> <span class="s1">'{
     "card": {
       "number": "4242424242424242",
-      "expiration_month": 10,
-      "expiration_year": 25,
-      "cvc": "000"
+      "expiration_month": 12,
+      "expiration_year": 2025,
+      "cvc": "123"
     },
-     "billing_details": {
-        "name": "Fiona Theory",
+    "billing_details": {
+      "name": "John Doe",
+      "email": "johndoe@test.com",
+      "phone": "555-123-4567",
+      "address": {
+        "line1": "111 Test St.",
+        "line2": "Apt 304",
+        "city": "San Francisco",
+        "state": "CA",
+        "postal_code": "94141",
+        "country": "US"
       }
+    }
   }'</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">BasisTheory</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">basis-theory</span><span class="dl">'</span><span class="p">);</span>
-
-<span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">init</span><span class="p">(</span><span class="dl">"</span><span class="s2">test_1234567890</span><span class="dl">"</span><span class="p">)</span>
-
-<span class="c1">// soon</span>
 </code></pre></div>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>Create Atomic Card Response Example:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"(encrypted card information)"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"masked"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XXXXXXXXXXXX4242"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"expiration_year"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"expiration_month"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-    </span><span class="p">}</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c1e565009-1984-4638-8fca-dce8a82cc2af"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"owner_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77cb0024-123e-41a8-8ff8-a3d5a0fa8a08"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"card"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"card"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XXXXXXXXXXXX4242"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"expiration_month"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"expiration_year"</span><span class="p">:</span><span class="w"> </span><span class="mi">2025</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>This endpoint will tokenize any credit card to enable you to securely store and integrate with your <code>atomic cards</code> in anyway you need, without the burden of full PCI compliance. </p>
-<h3 id='http-request'>HTTP Request</h3>
-<p><code>POST https://api-dev.basistheory.com/atomic/cards/cards</code></p>
+<p><span class="http-method post">POST</span> <code>https://api.basistheory.com/atomic/cards</code></p>
 
-<aside class="success">
-Remember — you'll need to be authenticated to use this endpoint!
-</aside>
-<h3 id='required-scopes'>Required Scopes</h3>
-<ul>
-<li><code>card:write</code></li>
-<li><code>vault:write</code></li>
-</ul>
-<h3 id='query-parameters'>Query Parameters</h3>
+<p>Create a new atomic card for the tenant.</p>
+<h3 id='permissions'>Permissions</h3>
+<p class="scopes">
+  <span class="scope">card:create</span>
+  <span class="scope">token:write</span>
+</p>
+<h3 id='request-schema'>Request Schema</h3>
 <table><thead>
 <tr>
-<th>Parameter</th>
+<th>Attribute</th>
+<th>Required</th>
+<th>Type</th>
+<th>Default</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>card.number</td>
-<td>credit card number</td>
+<td><code>card</code></td>
+<td>true</td>
+<td><em>card</em></td>
+<td><code>null</code></td>
+<td><a href="#card-object-schema">Card object</a></td>
 </tr>
 <tr>
-<td>card.expiration_month</td>
-<td>month the card will expire</td>
-</tr>
-<tr>
-<td>card.expiration_year</td>
-<td>year the card will expire</td>
-</tr>
-<tr>
-<td>card.cvc</td>
-<td>the verification code for the card (used to validate the card)</td>
-</tr>
-<tr>
-<td>billing_details.name</td>
-<td>name associated with the card</td>
+<td><code>billing_details</code></td>
+<td>false</td>
+<td><em>billing details</em></td>
+<td><code>null</code></td>
+<td><a href="#billing-details-object-schema">Billing details object</a></td>
 </tr>
 </tbody></table>
-<h3 id='response-properties'>Response Properties</h3>
+<h3 id='card-object-schema'>Card Object Schema</h3>
 <table><thead>
 <tr>
-<th>Parameter</th>
+<th>Attribute</th>
+<th>Required</th>
+<th>Type</th>
+<th>Default</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>id</td>
-<td>id of the created token</td>
+<td><code>number</code></td>
+<td>true</td>
+<td><em>string</em></td>
+<td><code>null</code></td>
+<td>The card number without any separators</td>
 </tr>
 <tr>
-<td>data</td>
-<td><em>we shouldn&#39;t return this</em></td>
+<td><code>expiration_month</code></td>
+<td>true</td>
+<td><em>integer</em></td>
+<td><code>null</code></td>
+<td>Two-digit number representing the card&#39;s expiration month</td>
 </tr>
 <tr>
-<td>encryption</td>
-<td><em>we shouldn&#39;t return this</em></td>
-</tr>
-<tr>
-<td>masked.number</td>
-<td>the non-sensitive masked card number (use this to display)</td>
-</tr>
-<tr>
-<td>masked.expiration_month</td>
-<td>month the card will expire</td>
-</tr>
-<tr>
-<td>masked.expiration_year</td>
-<td>year the card will expire</td>
+<td><code>expiration_year</code></td>
+<td>true</td>
+<td><em>integer</em></td>
+<td><code>null</code></td>
+<td>Four-digit number representing the card&#39;s expiration year</td>
 </tr>
 </tbody></table>
-<h2 id='get-an-existing-atomic-card'>Get an existing atomic card</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api-dev.basistheory.com/atomic/cards/cards/tok_1234"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"X-API-KEY: test_123456790"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">BasisTheory</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">basis-theory</span><span class="dl">'</span><span class="p">);</span>
-
-<span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">init</span><span class="p">(</span><span class="dl">"</span><span class="s2">test_1234567890</span><span class="dl">"</span><span class="p">)</span>
-
-<span class="c1">// soon</span>
+<h3 id='card-object-schema-2'>Card Object Schema</h3>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Required</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>number</code></td>
+<td>true</td>
+<td><em>string</em></td>
+<td><code>null</code></td>
+<td>The card number without any separators</td>
+</tr>
+<tr>
+<td><code>expiration_month</code></td>
+<td>true</td>
+<td><em>integer</em></td>
+<td><code>null</code></td>
+<td>Two-digit number representing the card&#39;s expiration month</td>
+</tr>
+<tr>
+<td><code>expiration_year</code></td>
+<td>true</td>
+<td><em>integer</em></td>
+<td><code>null</code></td>
+<td>Four-digit number representing the card&#39;s expiration year</td>
+</tr>
+</tbody></table>
+<h3 id='billing-details-object-schema'>Billing Details Object Schema</h3>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Required</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>name</code></td>
+<td>false</td>
+<td><em>string</em></td>
+<td><code>null</code></td>
+<td>The cardholder or customer&#39;s full name</td>
+</tr>
+<tr>
+<td><code>email</code></td>
+<td>false</td>
+<td><em>string</em></td>
+<td><code>null</code></td>
+<td>The cardholder or customer&#39;s email address</td>
+</tr>
+<tr>
+<td><code>phone</code></td>
+<td>false</td>
+<td><em>string</em></td>
+<td><code>null</code></td>
+<td>The cardholder or customer&#39;s phone number</td>
+</tr>
+<tr>
+<td><code>address</code></td>
+<td>false</td>
+<td><em>address</em></td>
+<td><code>null</code></td>
+<td>The cardholder or customer&#39;s <a href="#address-object-schema">address</a></td>
+</tr>
+</tbody></table>
+<h3 id='address-object-schema'>Address Object Schema</h3>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Required</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>line1</code></td>
+<td>false</td>
+<td><em>string</em></td>
+<td><code>null</code></td>
+<td>Address line 1 (Street address / PO Box / Company name)</td>
+</tr>
+<tr>
+<td><code>line2</code></td>
+<td>false</td>
+<td><em>string</em></td>
+<td><code>null</code></td>
+<td>Address line 2 (Apartment / Suite / Unit / Building)</td>
+</tr>
+<tr>
+<td><code>city</code></td>
+<td>false</td>
+<td><em>string</em></td>
+<td><code>null</code></td>
+<td>City / District / Suburb / Town / Village</td>
+</tr>
+<tr>
+<td><code>state</code></td>
+<td>false</td>
+<td><em>string</em></td>
+<td><code>null</code></td>
+<td>State / County / Province / Region</td>
+</tr>
+<tr>
+<td><code>postal_code</code></td>
+<td>false</td>
+<td><em>string</em></td>
+<td><code>null</code></td>
+<td>Zip or postal code</td>
+</tr>
+<tr>
+<td><code>country</code></td>
+<td>false</td>
+<td><em>string</em></td>
+<td><code>null</code></td>
+<td>Two-character ISO country code (e.g. <code>US</code>)</td>
+</tr>
+</tbody></table>
+<h3 id='response-schema'>Response Schema</h3>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td><em>string</em></td>
+<td>Unique identifier of the card which can be used to <a href="#get-an-atomic-card">get an atomic card</a></td>
+</tr>
+<tr>
+<td><code>owner_id</code></td>
+<td><em>string</em></td>
+<td>The tenant ID which owns the card</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td><em>string</em></td>
+<td><code>Card</code> <a href="#token-types">token type</a></td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td><em>string</em></td>
+<td>Created date of the application in ISO 8601 format</td>
+</tr>
+<tr>
+<td><code>card</code></td>
+<td><em>card</em></td>
+<td>Masked <a href="#card-object-schema">card object</a></td>
+</tr>
+</tbody></table>
+<h3 id='response-messages'>Response Messages</h3>
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>201</code></td>
+<td>Atomic card successfully created</td>
+</tr>
+<tr>
+<td><code>400</code></td>
+<td>Invalid request body. See <a href="#errors">Errors</a> response for details</td>
+</tr>
+<tr>
+<td><code>401</code></td>
+<td>A missing or invalid <code>X-API-KEY</code> was provided</td>
+</tr>
+<tr>
+<td><code>403</code></td>
+<td>The provided <code>X-API-KEY</code> does not have the required permissions</td>
+</tr>
+</tbody></table>
+<h2 id='list-atomic-cards'>List Atomic Cards</h2>
+<blockquote>
+<p>List Atomic Cards Request Example:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.basistheory.com/atomic/cards"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
 </code></pre></div>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>Atomic Cards Response Example:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"(encrypted card information)"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"masked"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XXXXXXXXXXXX4242"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"expiration_year"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"expiration_month"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+  </span><span class="nl">"pagination"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">}</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c1e565009-1984-4638-8fca-dce8a82cc2af"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"owner_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77cb0024-123e-41a8-8ff8-a3d5a0fa8a08"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"card"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"card"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XXXXXXXXXXXX4242"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"expiration_month"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"expiration_year"</span><span class="p">:</span><span class="w"> </span><span class="mi">2025</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="err">...</span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET https://api-dev.basistheory.com/atomic/cards/cards/:atomic_card_id</code></p>
+</span></code></pre></div>
+<p><span class="http-method get">GET</span> <code>https://api.basistheory.com/atomic/cards</code></p>
 
-<aside class="success">
-Remember — you'll need to be authenticated to use this endpoint!
-</aside>
-<h3 id='required-scopes-2'>Required Scopes</h3>
-<ul>
-<li><code>vault:read</code></li>
-</ul>
-<h3 id='query-parameters-2'>Query Parameters</h3>
+<p>Get a list of atomic cards for the tenant.</p>
+<h3 id='permissions-2'>Permissions</h3>
+<p class="scopes">
+  <span class="scope">card:read</span>
+  <span class="scope">token:read</span>
+</p>
+<h3 id='response-schema-2'>Response Schema</h3>
+<p>Returns the <a href="#pagination">Pagination</a> schema. The <code>data</code> attribute in the response contains an array of tokens with the following schema:</p>
+
 <table><thead>
 <tr>
-<th>Parameter</th>
+<th>Attribute</th>
+<th>Type</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>atomic_card_id</td>
-<td>atomic card id that you want to retrieve</td>
+<td><code>id</code></td>
+<td><em>string</em></td>
+<td>Unique identifier of the card which can be used to <a href="#get-an-atomic-card">get an atomic card</a></td>
+</tr>
+<tr>
+<td><code>owner_id</code></td>
+<td><em>string</em></td>
+<td>The tenant ID which owns the card</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td><em>string</em></td>
+<td><code>Card</code> <a href="#token-types">token type</a></td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td><em>string</em></td>
+<td>Created date of the application in ISO 8601 format</td>
+</tr>
+<tr>
+<td><code>card</code></td>
+<td><em>card</em></td>
+<td>Masked <a href="#card-object-schema">card object</a></td>
 </tr>
 </tbody></table>
-<h3 id='response-properties-2'>Response Properties</h3>
+<h3 id='response-messages-2'>Response Messages</h3>
 <table><thead>
 <tr>
-<th>Parameter</th>
+<th>Code</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>id</td>
-<td>id of the created token</td>
+<td><code>200</code></td>
+<td>Atomic cards successfully retrieved</td>
 </tr>
 <tr>
-<td>data</td>
-<td><em>we shouldn&#39;t return this</em></td>
+<td><code>401</code></td>
+<td>A missing or invalid <code>X-API-KEY</code> was provided</td>
 </tr>
 <tr>
-<td>encryption</td>
-<td><em>we shouldn&#39;t return this</em></td>
-</tr>
-<tr>
-<td>masked.number</td>
-<td>the non-sensitive masked card number (use this to display)</td>
-</tr>
-<tr>
-<td>masked.expiration_month</td>
-<td>month the card will expire</td>
-</tr>
-<tr>
-<td>masked.expiration_year</td>
-<td>year the card will expire</td>
+<td><code>403</code></td>
+<td>The provided <code>X-API-KEY</code> does not have the required permissions</td>
 </tr>
 </tbody></table>
-<h2 id='list-your-atomic-cards'>List your atomic cards</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api-dev.basistheory.com/atomic/cards/cards"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"X-API-KEY: test_123456790"</span>
+<h2 id='get-an-atomic-card'>Get an Atomic Card</h2>
+<blockquote>
+<p>Get Atomic Card Request Example:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.basistheory.com/atomic/cards/c1e565009-1984-4638-8fca-dce8a82cc2af"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
 </code></pre></div>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>Atomic Card Response Example:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"(encrypted card information)"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"masked"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XXXXXXXXXXXX4242"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"expiration_year"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"expiration_month"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="err">//...</span><span class="w"> </span><span class="err">additional</span><span class="w"> </span><span class="err">tokens</span><span class="w">
-</span><span class="p">]</span><span class="w">
-</span></code></pre></div><h3 id='http-request-3'>HTTP Request</h3>
-<p><code>GET https://api-dev.basistheory.com/atomic/cards/cards</code></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c1e565009-1984-4638-8fca-dce8a82cc2af"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"owner_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77cb0024-123e-41a8-8ff8-a3d5a0fa8a08"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"card"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"card"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XXXXXXXXXXXX4242"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"expiration_month"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"expiration_year"</span><span class="p">:</span><span class="w"> </span><span class="mi">2025</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p><span class="http-method get">GET</span> <code>https://api.basistheory.com/atomic/cards/{id}</code></p>
 
-<aside class="success">
-Remember — you'll need to be authenticated to use this endpoint!
-</aside>
-<h3 id='required-scopes-3'>Required Scopes</h3>
-<ul>
-<li><code>card:read</code></li>
-</ul>
-<h3 id='response-properties-3'>Response Properties</h3>
+<p>Get an atomic card by ID in the tenant.</p>
+<h3 id='permissions-3'>Permissions</h3>
+<p class="scopes">
+  <span class="scope">card:read</span>
+  <span class="scope">token:read</span>
+</p>
+<h3 id='uri-parameters'>URI Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Default</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>[0].id</td>
-<td>id of the created token</td>
-</tr>
-<tr>
-<td>[0].data</td>
-<td><em>we shouldn&#39;t return this</em></td>
-</tr>
-<tr>
-<td>[0].encryption</td>
-<td><em>we shouldn&#39;t return this</em></td>
-</tr>
-<tr>
-<td>[0].masked.number</td>
-<td>the non-sensitive masked card number (use this to display)</td>
-</tr>
-<tr>
-<td>[0].masked.expiration_month</td>
-<td>month the card will expire</td>
-</tr>
-<tr>
-<td>[0].masked.expiration_year</td>
-<td>year the card will expire</td>
+<td><code>id</code></td>
+<td>true</td>
+<td><em>string</em></td>
+<td><code>null</code></td>
+<td>The ID of the atomic card</td>
 </tr>
 </tbody></table>
-<h2 id='delete-an-atomic-card'>Delete an atomic card</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api-dev.basistheory.com/atomic/cards/cards/tok_1234"</span> <span class="se">\</span>
-  <span class="nt">-X</span> DELETE <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: api_key_1234"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">BasisTheory</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">basis-theory</span><span class="dl">'</span><span class="p">);</span>
-
-<span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">init</span><span class="p">(</span><span class="dl">"</span><span class="s2">api_key_1234</span><span class="dl">"</span><span class="p">)</span>
-
-<span class="c1">// coming soon</span>
+<h3 id='response-schema-3'>Response Schema</h3>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td><em>string</em></td>
+<td>Unique identifier of the card which can be used to <a href="#get-an-atomic-card">get an atomic card</a></td>
+</tr>
+<tr>
+<td><code>owner_id</code></td>
+<td><em>string</em></td>
+<td>The tenant ID which owns the card</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td><em>string</em></td>
+<td><code>Card</code> <a href="#token-types">token type</a></td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td><em>string</em></td>
+<td>Created date of the application in ISO 8601 format</td>
+</tr>
+<tr>
+<td><code>card</code></td>
+<td><em>card</em></td>
+<td>Masked <a href="#card-object-schema">card object</a></td>
+</tr>
+</tbody></table>
+<h3 id='response-messages-3'>Response Messages</h3>
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>200</code></td>
+<td>Atomic cards successfully retrieved</td>
+</tr>
+<tr>
+<td><code>401</code></td>
+<td>A missing or invalid <code>X-API-KEY</code> was provided</td>
+</tr>
+<tr>
+<td><code>403</code></td>
+<td>The provided <code>X-API-KEY</code> does not have the required permissions</td>
+</tr>
+<tr>
+<td><code>404</code></td>
+<td>The atomic card was not found</td>
+</tr>
+</tbody></table>
+<h2 id='delete-atomic-card'>Delete Atomic Card</h2>
+<blockquote>
+<p>Delete Token Request Example:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.basistheory.com/atomic/cards/c1e565009-1984-4638-8fca-dce8a82cc2af"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
+  <span class="nt">-X</span> <span class="s2">"DELETE"</span>
 </code></pre></div>
-<p>This endpoint will remove any underlying data associated with the token, you will not be able to access the card or token after this. The data will be permanently deleted and is irreversible. Depending on your configuration, your token&#39;s logs will be retained for the specified length.  </p>
+<p><span class="http-method delete">DELETE</span> <code>https://api.basistheory.com/atomic/cards/{id}</code></p>
+
+<p>Delete a atomic card by ID in the tenant.</p>
 
 <aside class="warning">
-WARNING - The data associated with a deleted token will be removed forever. It's will still exists for audit purposes.
+WARNING - The data associated with a deleted atomic card will be removed forever. The reference will still exists for audit purposes
 </aside>
-<h3 id='http-request-4'>HTTP Request</h3>
-<p><code>DELETE https://api-dev.basistheory.com/atomic/cards/cards/:atomic_card_id</code></p>
-<h3 id='required-scopes-4'>Required Scopes</h3>
-<ul>
-<li><code>card:delete</code></li>
-</ul>
-<h3 id='url-parameters'>URL Parameters</h3>
+<h3 id='permissions-4'>Permissions</h3>
+<p class="scopes">
+  <span class="scope">card:delete</span>
+  <span class="scope">token:write</span>
+</p>
+<h3 id='uri-parameters-2'>URI Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Default</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>atomic_card_id</td>
-<td>token id that you want to delete</td>
+<td><code>id</code></td>
+<td>true</td>
+<td><em>string</em></td>
+<td><code>null</code></td>
+<td>The ID of the atomic card</td>
 </tr>
 </tbody></table>
-<h2 id='test-data'>Test Data</h2>
+<h3 id='response-messages-4'>Response Messages</h3>
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>204</code></td>
+<td>Atomic card successfully deleted</td>
+</tr>
+<tr>
+<td><code>401</code></td>
+<td>A missing or invalid <code>X-API-KEY</code> was provided</td>
+</tr>
+<tr>
+<td><code>403</code></td>
+<td>The provided <code>X-API-KEY</code> does not have the required permissions</td>
+</tr>
+<tr>
+<td><code>404</code></td>
+<td>The atomic card was not found</td>
+</tr>
+</tbody></table>
+<h2 id='test-cards'>Test Cards</h2>
 <p>To enable testing of atomic cards, we&#39;ve implemented a list of acceptable test card numbers to ensure you are able to test with non-sensitive data.  </p>
 
 <aside class="warning">
@@ -2310,59 +2603,59 @@ WARNING - while testing our system, these card numbers will be the only accepted
 </thead><tbody>
 <tr>
 <td>4242424242424242</td>
-<td>test card number</td>
+<td>Test card</td>
 </tr>
 <tr>
 <td>4000056655665556</td>
-<td>test card number</td>
+<td>Test card</td>
 </tr>
 <tr>
 <td>5555555555554444</td>
-<td>test card number</td>
+<td>Test card</td>
 </tr>
 <tr>
 <td>2223003122003222</td>
-<td>test card number</td>
+<td>Test card</td>
 </tr>
 <tr>
 <td>5200828282828210</td>
-<td>test card number</td>
+<td>Test card</td>
 </tr>
 <tr>
 <td>5105105105105100</td>
-<td>test card number</td>
+<td>Test card</td>
 </tr>
 <tr>
 <td>378282246310005</td>
-<td>test card number</td>
+<td>Test card</td>
 </tr>
 <tr>
 <td>371449635398431</td>
-<td>test card number</td>
+<td>Test card</td>
 </tr>
 <tr>
 <td>6011111111111117</td>
-<td>test card number</td>
+<td>Test card</td>
 </tr>
 <tr>
 <td>6011000990139424</td>
-<td>test card number</td>
+<td>Test card</td>
 </tr>
 <tr>
 <td>3056930009020004</td>
-<td>test card number</td>
+<td>Test card</td>
 </tr>
 <tr>
 <td>36227206271667</td>
-<td>test card number</td>
+<td>Test card</td>
 </tr>
 <tr>
 <td>3566002020360505</td>
-<td>test card number</td>
+<td>Test card</td>
 </tr>
 <tr>
 <td>620000000000000</td>
-<td>test card number</td>
+<td>Test card</td>
 </tr>
 </tbody></table>
 
