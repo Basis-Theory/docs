@@ -20,16 +20,19 @@
   "instance": "string"
 }
 ```
-### Response Properties
 
-Parameter | Description
---------- | -----------
-errors.{property} | each errored property will have a list of human readable errors to report
-status | status code of the errored request
+### Response Schema
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`errors.{property}` | *array* | An array of human readable error messages returned per request `{property}`
+`status` | *integer* | HTTP status code of the responses
 
 ### Error Codes
 Error Code | Meaning
 ---------- | -------
-400 | Bad Request -- Your request is invalid.
-401 | Unauthorized -- Your API key is wrong.
-403 | Forbidden -- The kitten requested is hidden for administrators only.
+`400` | Invalid request body.
+`401` | A missing or invalid `X-API-KEY` was provided
+`403` | The provided `X-API-KEY` does not have the required permissions
+`404` | Request entity was not found
+`500` | Something went wrong on Basis Theory's side
