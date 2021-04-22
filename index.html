@@ -610,20 +610,23 @@ You must replace <code>key_N88mVGsp3sCXkykyN2EFED</code> with your API key suppl
   <span class="s2">"detail"</span>: <span class="s2">"string"</span>,
   <span class="s2">"instance"</span>: <span class="s2">"string"</span>
 <span class="o">}</span>
-</code></pre></div><h3 id='response-properties'>Response Properties</h3>
+</code></pre></div><h3 id='response-schema'>Response Schema</h3>
 <table><thead>
 <tr>
-<th>Parameter</th>
+<th>Attribute</th>
+<th>Type</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>errors.{property}</td>
-<td>each errored property will have a list of human readable errors to report</td>
+<td><code>errors.{property}</code></td>
+<td><em>array</em></td>
+<td>An array of human readable error messages returned per request <code>{property}</code></td>
 </tr>
 <tr>
-<td>status</td>
-<td>status code of the errored request</td>
+<td><code>status</code></td>
+<td><em>integer</em></td>
+<td>HTTP status code of the responses</td>
 </tr>
 </tbody></table>
 <h3 id='error-codes'>Error Codes</h3>
@@ -634,16 +637,24 @@ You must replace <code>key_N88mVGsp3sCXkykyN2EFED</code> with your API key suppl
 </tr>
 </thead><tbody>
 <tr>
-<td>400</td>
-<td>Bad Request -- Your request is invalid.</td>
+<td><code>400</code></td>
+<td>Invalid request body.</td>
 </tr>
 <tr>
-<td>401</td>
-<td>Unauthorized -- Your API key is wrong.</td>
+<td><code>401</code></td>
+<td>A missing or invalid <code>X-API-KEY</code> was provided</td>
 </tr>
 <tr>
-<td>403</td>
-<td>Forbidden -- The kitten requested is hidden for administrators only.</td>
+<td><code>403</code></td>
+<td>The provided <code>X-API-KEY</code> does not have the required permissions</td>
+</tr>
+<tr>
+<td><code>404</code></td>
+<td>Request entity was not found</td>
+</tr>
+<tr>
+<td><code>500</code></td>
+<td>Something went wrong on Basis Theory&#39;s side</td>
 </tr>
 </tbody></table>
 
