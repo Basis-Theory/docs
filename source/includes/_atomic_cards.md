@@ -1,234 +1,295 @@
 # Atomic Cards
 
-## Create a new atomic card
+## Create Atomic Card
+
+> Create Atomic Card Request Example:
 
 ```shell
-curl --request POST \
-  "https://api-dev.basistheory.com/atomic/cards/cards" \
-  --header 'Content-Type: application/json' \
-  --header "X-API-KEY: test_123456790"
-  --data '{
+curl "api.basistheory.com/atomic/cards" \
+  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
+  -H "Content-Type: application/json"
+  -X "POST"
+  -D '{
     "card": {
       "number": "4242424242424242",
-      "expiration_month": 10,
-      "expiration_year": 25,
-      "cvc": "000"
+      "expiration_month": 12,
+      "expiration_year": 2025,
+      "cvc": "123"
     },
-     "billing_details": {
-        "name": "Fiona Theory",
+    "billing_details": {
+      "name": "John Doe",
+      "email": "johndoe@test.com",
+      "phone": "555-123-4567",
+      "address": {
+        "line1": "111 Test St.",
+        "line2": "Apt 304",
+        "city": "San Francisco",
+        "state": "CA",
+        "postal_code": "94141",
+        "country": "US"
       }
+    }
   }'
 ```
 
-```javascript
-const BasisTheory = require('basis-theory');
-
-BasisTheory.init("test_1234567890")
-
-// soon
-```
-
-> The above command returns JSON structured like this:
+> Create Atomic Card Response Example:
 
 ```json
 {
-  "id": "string",
-  "data": "(encrypted card information)",
-  "metadata": {
-    "masked": {
-      "number": "XXXXXXXXXXXX4242",
-      "expiration_year": 25,
-      "expiration_month": 10
-    }
+  "id": "c1e565009-1984-4638-8fca-dce8a82cc2af",
+  "owner_id": "77cb0024-123e-41a8-8ff8-a3d5a0fa8a08",
+  "type": "card",
+  "created_at": "2020-09-15T15:53:00+00:00",
+  "card": {
+    "number": "XXXXXXXXXXXX4242",
+    "expiration_month": 12,
+    "expiration_year": 2025
   }
 }
 ```
 
-This endpoint will tokenize any credit card to enable you to securely store and integrate with your `atomic cards` in anyway you need, without the burden of full PCI compliance. 
+<span class="http-method post">POST</span> `https://api.basistheory.com/atomic/cards`
 
-### HTTP Request
+Create a new atomic card for the tenant.
 
-`POST https://api-dev.basistheory.com/atomic/cards/cards`
+### Permissions
 
-<aside class="success">
-Remember — you'll need to be authenticated to use this endpoint!
-</aside>
+<p class="scopes">
+  <span class="scope">card:create</span>
+  <span class="scope">token:write</span>
+</p>
 
-### Required Scopes
+### Request Schema
 
-- `card:write`
-- `vault:write`
+Attribute | Required | Type | Default | Description
+--------- | -------- | ---- | ------- | -----------
+`card` | true | *card* | `null` | [Card object](#card-object-schema)
+`billing_details` | false | *billing details* | `null` | [Billing details object](#billing-details-object-schema)
 
-### Query Parameters
+### Card Object Schema
 
-Parameter | Description
---------- | -----------
-card.number | credit card number
-card.expiration_month | month the card will expire
-card.expiration_year | year the card will expire
-card.cvc | the verification code for the card (used to validate the card)
-billing_details.name | name associated with the card
+Attribute | Required | Type | Default | Description
+--------- | -------- | ---- | ------- | -----------
+`number` | true | *string* | `null` | The card number without any separators
+`expiration_month` | true | *integer* | `null` | Two-digit number representing the card's expiration month
+`expiration_year` | true | *integer* | `null` | Four-digit number representing the card's expiration year
 
-### Response Properties
+### Card Object Schema
 
-Parameter | Description
---------- | -----------
-id | id of the created token 
-data | *we shouldn't return this* 
-encryption | *we shouldn't return this*
-masked.number | the non-sensitive masked card number (use this to display)
-masked.expiration_month | month the card will expire
-masked.expiration_year | year the card will expire
+Attribute | Required | Type | Default | Description
+--------- | -------- | ---- | ------- | -----------
+`number` | true | *string* | `null` | The card number without any separators
+`expiration_month` | true | *integer* | `null` | Two-digit number representing the card's expiration month
+`expiration_year` | true | *integer* | `null` | Four-digit number representing the card's expiration year
 
-## Get an existing atomic card
+### Billing Details Object Schema
+
+Attribute | Required | Type | Default | Description
+--------- | -------- | ---- | ------- | -----------
+`name` | false | *string* | `null` | The cardholder or customer's full name
+`email` | false | *string* | `null` | The cardholder or customer's email address
+`phone` | false | *string* | `null` | The cardholder or customer's phone number
+`address` | false | *address* | `null` | The cardholder or customer's [address](#address-object-schema)
+
+### Address Object Schema
+
+Attribute | Required | Type | Default | Description
+--------- | -------- | ---- | ------- | -----------
+`line1` | false | *string* | `null` | Address line 1 (Street address / PO Box / Company name)
+`line2` | false | *string* | `null` | Address line 2 (Apartment / Suite / Unit / Building)
+`city` | false | *string* | `null` | City / District / Suburb / Town / Village
+`state` | false | *string* | `null` | State / County / Province / Region
+`postal_code` | false | *string* | `null` | Zip or postal code
+`country` | false | *string* | `null` | Two-character ISO country code (e.g. `US`)
+
+### Response Schema
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`id` | *string* | Unique identifier of the card which can be used to [get an atomic card](#get-an-atomic-card)
+`owner_id` | *string* | The tenant ID which owns the card
+`type` | *string* | `Card` [token type](#token-types)
+`created_at` | *string* | Created date of the application in ISO 8601 format
+`card` | *card* | Masked [card object](#card-object-schema)
+
+### Response Messages
+
+Code | Description
+---- | -----------
+`201` | Atomic card successfully created
+`400` | Invalid request body. See [Errors](#errors) response for details
+`401` | A missing or invalid `X-API-KEY` was provided
+`403` | The provided `X-API-KEY` does not have the required permissions
+
+
+## List Atomic Cards
+
+> List Atomic Cards Request Example:
 
 ```shell
-curl "https://api-dev.basistheory.com/atomic/cards/cards/tok_1234" \
-  -H "X-API-KEY: test_123456790"
+curl "api.basistheory.com/atomic/cards" \
+  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
 ```
 
-```javascript
-const BasisTheory = require('basis-theory');
-
-BasisTheory.init("test_1234567890")
-
-// soon
-```
-
-> The above command returns JSON structured like this:
+> Atomic Cards Response Example:
 
 ```json
 {
-  "id": "string",
-  "data": "(encrypted card information)",
-  "metadata": {
-    "masked": {
-      "number": "XXXXXXXXXXXX4242",
-      "expiration_year": 25,
-      "expiration_month": 10
-    }
-  }
-}
-```
-
-### HTTP Request
-
-`GET https://api-dev.basistheory.com/atomic/cards/cards/:atomic_card_id`
-
-<aside class="success">
-Remember — you'll need to be authenticated to use this endpoint!
-</aside>
-
-### Required Scopes
-
-- `vault:read`
-
-### Query Parameters
-
-Parameter | Description
---------- | -----------
-atomic_card_id | atomic card id that you want to retrieve
-
-### Response Properties
-
-Parameter | Description
---------- | -----------
-id | id of the created token
-data | *we shouldn't return this*
-encryption | *we shouldn't return this*
-masked.number | the non-sensitive masked card number (use this to display)
-masked.expiration_month | month the card will expire
-masked.expiration_year | year the card will expire
-
-
-## List your atomic cards
-
-```shell
-curl "https://api-dev.basistheory.com/atomic/cards/cards" \
-  -H "X-API-KEY: test_123456790"
-```
-
-> The above command returns JSON structured like this:
-
-```json
-[
-  {
-    "id": "string",
-    "data": "(encrypted card information)",
-    "metadata": {
-      "masked": {
+  "pagination": {...}
+  "data": [
+    {
+      "id": "c1e565009-1984-4638-8fca-dce8a82cc2af",
+      "owner_id": "77cb0024-123e-41a8-8ff8-a3d5a0fa8a08",
+      "type": "card",
+      "created_at": "2020-09-15T15:53:00+00:00",
+      "card": {
         "number": "XXXXXXXXXXXX4242",
-        "expiration_year": 25,
-        "expiration_month": 10
+        "expiration_month": 12,
+        "expiration_year": 2025
       }
-    }
-  },
-  //... additional tokens
-]
+    },
+    {...},
+    {...}
+  ]
+}
 ```
 
-### HTTP Request
+<span class="http-method get">GET</span> `https://api.basistheory.com/atomic/cards`
 
-`GET https://api-dev.basistheory.com/atomic/cards/cards`
+Get a list of atomic cards for the tenant.
 
-<aside class="success">
-Remember — you'll need to be authenticated to use this endpoint!
-</aside>
+### Permissions
 
-### Required Scopes
+<p class="scopes">
+  <span class="scope">card:read</span>
+  <span class="scope">token:read</span>
+</p>
 
-- `card:read`
+### Response Schema
 
-### Response Properties
+Returns the [Pagination](#pagination) schema. The `data` attribute in the response contains an array of tokens with the following schema:
 
-Parameter | Description
---------- | -----------
-[0].id | id of the created token
-[0].data | *we shouldn't return this*
-[0].encryption | *we shouldn't return this*
-[0].masked.number | the non-sensitive masked card number (use this to display)
-[0].masked.expiration_month | month the card will expire
-[0].masked.expiration_year | year the card will expire
+Attribute | Type | Description
+--------- | ---- | -----------
+`id` | *string* | Unique identifier of the card which can be used to [get an atomic card](#get-an-atomic-card)
+`owner_id` | *string* | The tenant ID which owns the card
+`type` | *string* | `Card` [token type](#token-types)
+`created_at` | *string* | Created date of the application in ISO 8601 format
+`card` | *card* | Masked [card object](#card-object-schema)
 
-## Delete an atomic card
+### Response Messages
+
+Code | Description
+---- | -----------
+`200` | Atomic cards successfully retrieved
+`401` | A missing or invalid `X-API-KEY` was provided
+`403` | The provided `X-API-KEY` does not have the required permissions
+
+
+## Get an Atomic Card
+
+> Get Atomic Card Request Example:
 
 ```shell
-curl "https://api-dev.basistheory.com/atomic/cards/cards/tok_1234" \
-  -X DELETE \
-  -H "Authorization: api_key_1234"
+curl "api.basistheory.com/atomic/cards/c1e565009-1984-4638-8fca-dce8a82cc2af" \
+  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
 ```
 
-```javascript
-const BasisTheory = require('basis-theory');
+> Atomic Card Response Example:
 
-BasisTheory.init("api_key_1234")
-
-// coming soon
+```json
+{
+  "id": "c1e565009-1984-4638-8fca-dce8a82cc2af",
+  "owner_id": "77cb0024-123e-41a8-8ff8-a3d5a0fa8a08",
+  "type": "card",
+  "created_at": "2020-09-15T15:53:00+00:00",
+  "card": {
+    "number": "XXXXXXXXXXXX4242",
+    "expiration_month": 12,
+    "expiration_year": 2025
+  }
+}
 ```
 
-This endpoint will remove any underlying data associated with the token, you will not be able to access the card or token after this. The data will be permanently deleted and is irreversible. Depending on your configuration, your token's logs will be retained for the specified length.  
+<span class="http-method get">GET</span> `https://api.basistheory.com/atomic/cards/{id}`
+
+Get an atomic card by ID in the tenant.
+
+### Permissions
+
+<p class="scopes">
+  <span class="scope">card:read</span>
+  <span class="scope">token:read</span>
+</p>
+
+### URI Parameters
+
+Parameter | Required | Type | Default | Description
+--------- | -------- | ---- | ------- | -----------
+`id` | true | *string* | `null` | The ID of the atomic card
+
+### Response Schema
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`id` | *string* | Unique identifier of the card which can be used to [get an atomic card](#get-an-atomic-card)
+`owner_id` | *string* | The tenant ID which owns the card
+`type` | *string* | `Card` [token type](#token-types)
+`created_at` | *string* | Created date of the application in ISO 8601 format
+`card` | *card* | Masked [card object](#card-object-schema)
+
+### Response Messages
+
+Code | Description
+---- | -----------
+`200` | Atomic cards successfully retrieved
+`401` | A missing or invalid `X-API-KEY` was provided
+`403` | The provided `X-API-KEY` does not have the required permissions
+`404` | The atomic card was not found
+
+
+## Delete Atomic Card
+
+> Delete Token Request Example:
+
+```shell
+curl "api.basistheory.com/atomic/cards/c1e565009-1984-4638-8fca-dce8a82cc2af" \
+  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
+  -X "DELETE"
+```
+
+<span class="http-method delete">DELETE</span> `https://api.basistheory.com/atomic/cards/{id}`
+
+Delete a atomic card by ID in the tenant.
 
 <aside class="warning">
-WARNING - The data associated with a deleted token will be removed forever. It's will still exists for audit purposes.
+WARNING - The data associated with a deleted atomic card will be removed forever. The reference will still exists for audit purposes
 </aside>
 
-### HTTP Request
+### Permissions
 
-`DELETE https://api-dev.basistheory.com/atomic/cards/cards/:atomic_card_id`
+<p class="scopes">
+  <span class="scope">card:delete</span>
+  <span class="scope">token:write</span>
+</p>
 
-### Required Scopes
+### URI Parameters
 
-- `card:delete`
+Parameter | Required | Type | Default | Description
+--------- | -------- | ---- | ------- | -----------
+`id` | true | *string* | `null` | The ID of the atomic card
 
-### URL Parameters
+### Response Messages
 
-Parameter | Description
---------- | -----------
-atomic_card_id | token id that you want to delete
+Code | Description
+---- | -----------
+`204` | Atomic card successfully deleted
+`401` | A missing or invalid `X-API-KEY` was provided
+`403` | The provided `X-API-KEY` does not have the required permissions
+`404` | The atomic card was not found
 
 
-
-## Test Data
+## Test Cards
 
 To enable testing of atomic cards, we've implemented a list of acceptable test card numbers to ensure you are able to test with non-sensitive data.  
 
@@ -239,18 +300,18 @@ WARNING - while testing our system, these card numbers will be the only accepted
 ### Test card numbers
 
 Card | Description
---------- | -----------
-4242424242424242 | test card number
-4000056655665556 | test card number
-5555555555554444 | test card number
-2223003122003222 | test card number
-5200828282828210 | test card number
-5105105105105100 | test card number
-378282246310005 | test card number
-371449635398431 | test card number
-6011111111111117 | test card number
-6011000990139424 | test card number
-3056930009020004 | test card number
-36227206271667 | test card number
-3566002020360505 | test card number
-620000000000000 | test card number
+---- | -----------
+4242424242424242 | Test card
+4000056655665556 | Test card
+5555555555554444 | Test card
+2223003122003222 | Test card
+5200828282828210 | Test card
+5105105105105100 | Test card
+378282246310005 | Test card
+371449635398431 | Test card
+6011111111111117 | Test card
+6011000990139424 | Test card
+3056930009020004 | Test card
+36227206271667 | Test card
+3566002020360505 | Test card
+620000000000000 | Test card

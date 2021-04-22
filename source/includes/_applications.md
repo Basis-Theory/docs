@@ -53,13 +53,15 @@ curl "api.basistheory.com/applications" \
 }
 ```
 
-POST `https://api.basistheory.com/applications`
+<span class="http-method post">POST</span> `https://api.basistheory.com/applications`
 
 Create a new application for the tenant.
 
 ### Permissions
 
-`application:write`
+<p class="scopes">
+  <span class="scope">application:write</span>
+</p>
 
 ### Request Schema
 
@@ -126,13 +128,15 @@ curl "api.basistheory.com/applications" \
 }
 ```
 
-GET `https://api.basistheory.com/applications`
+<span class="http-method get">GET</span> `https://api.basistheory.com/applications`
 
 Get a list of applications for the tenant.
 
 ### Permissions
 
-`application:read`
+<p class="scopes">
+  <span class="scope">application:read</span>
+</p>
 
 ### Response Schema
 
@@ -183,13 +187,15 @@ curl "api.basistheory.com/applications/fe1f9ba4-474e-44b9-b949-110cdba9d662" \
 }
 ```
 
-GET `https://api.basistheory.com/applications/{id}`
+<span class="http-method get">GET</span> `https://api.basistheory.com/applications/{id}`
 
 Get an application by ID in the tenant.
 
 ### Permissions
 
-`application:read`
+<p class="scopes">
+  <span class="scope">application:read</span>
+</p>
 
 ### URI Parameters
 
@@ -254,13 +260,15 @@ curl "api.basistheory.com/applications/fb124bba-f90d-45f0-9a59-5edca27b3b4a" \
 }
 ```
 
-PUT `https://api.basistheory.com/applications/{id}`
+<span class="http-method put">PUT</span> `https://api.basistheory.com/applications/{id}`
 
 Update an application by ID in the tenant.
 
 ### Permissions
 
-`application:write`
+<p class="scopes">
+  <span class="scope">application:write</span>
+</p>
 
 ### URI Parameters
 
@@ -318,7 +326,7 @@ curl "api.basistheory.com/applications/fb124bba-f90d-45f0-9a59-5edca27b3b4a/rege
 }
 ```
 
-POST `https://api.basistheory.com/applications/{id}/regenerate`
+<span class="http-method post">POST</span> `https://api.basistheory.com/applications/{id}/regenerate`
 
 Regenerate the API key for an application.
 
@@ -328,7 +336,9 @@ WARNING - Regenerating the API key for an application will immediately invalidat
 
 ### Permissions
 
-`application:write`
+<p class="scopes">
+  <span class="scope">application:write</span>
+</p>
 
 ### URI Parameters
 
@@ -365,7 +375,7 @@ curl "api.basistheory.com/applications/fb124bba-f90d-45f0-9a59-5edca27b3b4a" \
   -X "DELETE"
 ```
 
-DELETE `https://api.basistheory.com/applications/{id}`
+<span class="http-method delete">DELETE</span> `https://api.basistheory.com/applications/{id}`
 
 Delete an application by ID in the tenant.
 

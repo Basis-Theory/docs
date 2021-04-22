@@ -60,7 +60,7 @@ curl "api.basistheory.com/tokens" \
 
 ```json
 {
-  "data": "true"
+  "data": true
 }
 ```
 
@@ -82,13 +82,15 @@ curl "api.basistheory.com/tokens" \
 }
 ```
 
-POST `https://api.basistheory.com/tokens`
+<span class="http-method post">POST</span> `https://api.basistheory.com/tokens`
 
 Create a new token for the tenant.
 
 ### Permissions
 
-`token:write`
+<p class="scopes">
+  <span class="scope">token:write</span>
+</p>
 
 ### Request Schema
 
@@ -99,19 +101,19 @@ Attribute | Required | Type | Default | Description
 `metadata` | false | *any* | `null` | Non-sensitive token metadata
 `encryption` | false | *object* | `null` | Encryption metadata for an encrypted token data value
 
-### Encryption Request Object
+### Encryption Object Schema
 
 Attribute | Required | Type | Default | Description
 --------- | -------- | ---- | ------- | -----------
-`cek` | false | *object* | Content [encryption key](#encryption-key-request-object)
-`kek` | false | *object* | Key [encryption key](#encryption-key-request-object)
+`cek` | false | *object* | `null` | Content [encryption key](#encryption-key-object-schema)
+`kek` | false | *object* | `null` | Key [encryption key](#encryption-key-object-schema)
 
-### Encryption Key Request Object
+### Encryption Key Object Schema
 
 Attribute | Required | Type | Default | Description
 --------- | -------- | ---- | ------- | -----------
-`key` | false | *string* | Encryption key or key identifier
-`alg` | false | *string* | Encryption algorithm (e.g. AES, RSA, etc)
+`key` | false | *string* | `null` | Encryption key or key identifier
+`alg` | false | *string* | `null` | Encryption algorithm (e.g. AES, RSA, etc)
 
 <aside class="notice">
   <code>data</code> and <code>metadata</code> values can be an object, array, or any primitive type such as an integer, boolean, or string. See JSON examples for reference.
@@ -186,13 +188,15 @@ curl "api.basistheory.com/tokens" \
 }
 ```
 
-GET `https://api.basistheory.com/tokens`
+<span class="http-method get">GET</span> `https://api.basistheory.com/tokens`
 
 Get a list of tokens for the tenant.
 
 ### Permissions
 
-`token:read`
+<p class="scopes">
+  <span class="scope">token:read</span>
+</p>
 
 ### Response Schema
 
@@ -205,7 +209,7 @@ Attribute | Type | Description
 `type` | *string* | [Token type](#token-types)
 `data` | *any* | The data provided when [creating the token](#create-token)
 `metadata` | *any* | The metadata provided when [creating the token](#create-token)
-`encryption` | *any* | The [encryption](#encryption-request-object) data provided when [creating the token](#create-token)
+`encryption` | *any* | The [encryption](#encryption-object-schema) data provided when [creating the token](#create-token)
 `created_at` | *string* | Created date of the token in ISO 8601 format
 
 ### Response Messages
@@ -251,13 +255,15 @@ curl "api.basistheory.com/tokens/c06d0789-0a38-40be-b7cc-c28a718f76f1" \
 }
 ```
 
-GET `https://api.basistheory.com/tokens/{id}`
+<span class="http-method get">GET</span> `https://api.basistheory.com/tokens/{id}`
 
 Get a token by ID in the tenant.
 
 ### Permissions
 
-`token:read`
+<p class="scopes">
+  <span class="scope">token:read</span>
+</p>
 
 ### URI Parameters
 
@@ -274,7 +280,7 @@ Attribute | Type | Description
 `type` | *string* | [Token type](#token-types)
 `data` | *any* | The data provided when [creating the token](#create-token)
 `metadata` | *any* | The metadata provided when [creating the token](#create-token)
-`encryption` | *any* | The [encryption](#encryption-request-object) data provided when [creating the token](#create-token)
+`encryption` | *any* | The [encryption](#encryption-object-schema) data provided when [creating the token](#create-token)
 `created_at` | *string* | Created date of the token in ISO 8601 format
 
 ### Response Messages
@@ -297,7 +303,7 @@ curl "api.basistheory.com/tokens/c06d0789-0a38-40be-b7cc-c28a718f76f1" \
   -X "DELETE"
 ```
 
-DELETE `https://api.basistheory.com/tokens/{id}`
+<span class="http-method delete">DELETE</span> `https://api.basistheory.com/tokens/{id}`
 
 Delete a token by ID in the tenant.
 
@@ -307,7 +313,9 @@ WARNING - The data associated with a deleted token will be removed forever. The 
 
 ### Permissions
 
-`token:write`
+<p class="scopes">
+  <span class="scope">token:write</span>
+</p>
 
 ### URI Parameters
 
