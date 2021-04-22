@@ -49,7 +49,7 @@ curl "api.basistheory.com/permissions" \
 ]
 ```
 
-GET `https://api.basistheory.com/permissions`
+<span class="http-method get">GET</span> `https://api.basistheory.com/permissions`
 
 ### Response Schema
 

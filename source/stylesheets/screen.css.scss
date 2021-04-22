@@ -692,3 +692,39 @@ html, body {
   margin-left: 0.67em;
   margin-top: 1.2em;
 }
+
+.scopes {
+  padding: 0 15px;
+
+  .scope {
+    display: inline-block;
+    border: 1px solid #aaa;
+    border-radius: 14px;
+    background: 0 0;
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+}
+
+.http-method {
+  color: #fff;
+  font-weight: bold;
+  display: inline-block;
+  text-transform: uppercase;
+  border-radius: 14px;
+  background: 0 0;
+  padding: 2px 8px;
+  font-size: 12px;
+
+  &.get {
+    background-color: $aside-notice-bg;
+  }
+
+  &.post, &.put {
+    background-color: $aside-success-bg;
+  }
+
+  &.delete {
+    background-color: $aside-danger-bg;
+  }
+}
