@@ -59,7 +59,7 @@ html, body {
   position: fixed;
   top: 0;
   left: 0;
-  bottom: 0; 
+  bottom: 0;
   width: $nav-width;
   background-color: $nav-bg;
   font-size: 16px;
@@ -127,7 +127,7 @@ html, body {
       right: $nav-padding*2;
       color: $nav-icon;
       @extend %icon-search;
-    } 
+    }
   }
 
   .search-results {
@@ -194,8 +194,8 @@ html, body {
   }
   // Section headers
   .toc-h1[data-title="API Reference"],
-    .toc-h1[data-title="Javascript Module"],
-    .toc-h1[data-title="Javascript Elements"],
+    .toc-h1[data-title="Basis Theory JS"],
+    .toc-h1[data-title="Hosted Elements"],
     .toc-h1[data-title="How To Use"] {
     text-transform: uppercase;
     margin-top: 1em;

@@ -1,4 +1,4 @@
-# Javascript Elements
+# Hosted Elements
 
 
 <aside class="notice">
