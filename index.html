@@ -280,7 +280,7 @@
   color: #859900;
 }
     </style>
-    <link href="stylesheets/screen-b34e6403.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/screen-7c663af4.css" rel="stylesheet" media="screen" />
     <link href="stylesheets/print-88489c93.css" rel="stylesheet" media="print" />
       <script src="javascripts/all-05bf6e79.js"></script>
 
@@ -289,7 +289,7 @@
     </script>
   </head>
 
-  <body class="index" data-languages="[&quot;shell&quot;]">
+  <body class="index" data-languages="[&quot;shell&quot;,&quot;html&quot;,&quot;javascript--node&quot;,&quot;typescript&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -309,6 +309,9 @@
       <div class="line"></div>
         <div class="lang-selector">
               <a href="#" data-language-name="shell">shell</a>
+              <a href="#" data-language-name="html">html</a>
+              <a href="#" data-language-name="javascript--node">javascript--node</a>
+              <a href="#" data-language-name="typescript">typescript</a>
         </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search...">
@@ -421,13 +424,38 @@
       <h1 class="headline">Modules</h1>
       <ul id="toc_module" class="toc-section toc-list-h1">
           <li>
-            <a href="#javascript-module" class="toc-h1 toc-link" data-title="Javascript Module">Javascript Module</a>
+            <a href="#basis-theory-js" class="toc-h1 toc-link" data-title="Basis Theory JS">Basis Theory JS</a>
           </li>
           <li>
-            <a href="#overview" class="toc-h1 toc-link" data-title="Overview">Overview</a>
+            <a href="#install" class="toc-h1 toc-link" data-title="Install">Install</a>
           </li>
           <li>
-            <a href="#js-examples" class="toc-h1 toc-link" data-title="JS - Examples">JS - Examples</a>
+            <a href="#initialize" class="toc-h1 toc-link" data-title="Initialize">Initialize</a>
+          </li>
+          <li>
+            <a href="#tokenize" class="toc-h1 toc-link" data-title="Tokenize">Tokenize</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#createtoken" class="toc-h2 toc-link" data-title="createToken">createToken</a>
+                  </li>
+                  <li>
+                    <a href="#gettoken" class="toc-h2 toc-link" data-title="getToken">getToken</a>
+                  </li>
+                  <li>
+                    <a href="#deletetoken" class="toc-h2 toc-link" data-title="deleteToken">deleteToken</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#atomic" class="toc-h1 toc-link" data-title="Atomic">Atomic</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#storecreditcard" class="toc-h2 toc-link" data-title="storeCreditCard">storeCreditCard</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#examples" class="toc-h1 toc-link" data-title="Examples">Examples</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#store-pii-example" class="toc-h2 toc-link" data-title="Store PII example">Store PII example</a>
@@ -438,16 +466,7 @@
               </ul>
           </li>
           <li>
-            <a href="#js-initialize" class="toc-h1 toc-link" data-title="JS - Initialize">JS - Initialize</a>
-          </li>
-          <li>
-            <a href="#js-tokenize" class="toc-h1 toc-link" data-title="JS - Tokenize">JS - Tokenize</a>
-          </li>
-          <li>
-            <a href="#js-store-credit-card" class="toc-h1 toc-link" data-title="JS - Store Credit Card">JS - Store Credit Card</a>
-          </li>
-          <li>
-            <a href="#javascript-elements" class="toc-h1 toc-link" data-title="Javascript Elements">Javascript Elements</a>
+            <a href="#hosted-elements" class="toc-h1 toc-link" data-title="Hosted Elements">Hosted Elements</a>
           </li>
       </ul>
 
@@ -2670,8 +2689,8 @@ WARNING - while testing our system, these card numbers will be the only accepted
 </tr>
 </tbody></table>
 
-        <h1 id='javascript-module'>Javascript Module</h1><h1 id='overview'>Overview</h1>
-<p>The <code>javascript</code> module will allow consumers to tokenize any data they want within the browser of their customers. 
+        <h1 id='basis-theory-js'>Basis Theory JS</h1>
+<p><strong>BasisTheory.js</strong> module allows consumers to tokenize any data they want within the browser of their customers, or at their backend systems. 
 This will give you the power to continue to own the UX of your application, while still being able to off-load most of the risk and compliance of holding that data.</p>
 
 <aside class="warning">
@@ -2680,12 +2699,494 @@ This survey will identify and enforce certain data protections for the PCI compl
 </aside>
 
 <ul>
-<li><a href="#js-examples">Examples</a></li>
-<li><a href="#js-initialize">Initialize</a></li>
-<li><a href="#js-tokenize">Tokenize</a></li>
-<li><a href="#js-store-credit-card">Store Credit Card</a></li>
+<li><a href="#install">Install</a></li>
+<li><a href="#initialize">Initialize</a></li>
+<li><a href="#tokenize">Tokenize</a></li>
+<li><a href="#store-credit-card">Store Credit Card</a></li>
+<li><a href="#examples">Examples</a></li>
 </ul>
-<h1 id='js-examples'>JS - Examples</h1>
+<h1 id='install'>Install</h1><div class="highlight"><pre class="highlight shell tab-shell"><code>npm <span class="nb">install</span> <span class="nt">--save</span> @Basis-Theory/basis-theory-js
+
+<span class="c"># OR</span>
+
+yarn add @Basis-Theory/basis-theory-js
+</code></pre></div><div class="highlight"><pre class="highlight html tab-html"><code><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://js.basistheory.com"</span><span class="nt">&gt;&lt;/script&gt;</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="c1">// checkout shell and html language tabs</span>
+</code></pre></div><div class="highlight"><pre class="highlight typescript tab-typescript"><code><span class="c1">// checkout shell and html language tabs</span>
+</code></pre></div>
+<p><strong>BasisTheory.js</strong> is available for including in your site directly from <code>https://js.basistheory.com</code> <strong>or</strong> installing it as a module, and bundling/hosting it yourself within your site, or using it in your backend systems.</p>
+<h1 id='initialize'>Initialize</h1><div class="highlight"><pre class="highlight shell tab-shell"><code>// checkout other language tabs
+</code></pre></div><div class="highlight"><pre class="highlight html tab-html"><code><span class="c">&lt;!-- This adds a window/global BasisTheory variable --&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://js.basistheory.com"</span><span class="nt">&gt;&lt;/script&gt;</span>
+
+<span class="c">&lt;!-- Somewhere in your site code --&gt;</span>
+<span class="nt">&lt;script&gt;</span>
+    <span class="c1">// Here is an example on where to init BasisTheory, making sure the page has fully loaded.</span>
+    <span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">load</span><span class="dl">'</span><span class="p">,</span> <span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="k">await</span> <span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">init</span><span class="p">(</span><span class="dl">"</span><span class="s2">test_1234567890</span><span class="dl">"</span><span class="p">);</span>
+      <span class="c1">// use BasisTheory</span>
+    <span class="p">});</span>  
+<span class="nt">&lt;/script&gt;</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="kd">const</span> <span class="nx">BasisTheory</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">@Basis-Theory/basis-theory-js</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">init</span><span class="p">(</span><span class="dl">"</span><span class="s2">test_1234567890</span><span class="dl">"</span><span class="p">).</span><span class="nx">then</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="c1">// use BasisTheory</span>
+<span class="p">})</span>
+</code></pre></div><div class="highlight"><pre class="highlight typescript tab-typescript"><code><span class="k">import</span> <span class="nx">BasisTheory</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@Basis-Theory/basis-theory-js</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="k">await</span> <span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">init</span><span class="p">(</span><span class="dl">"</span><span class="s2">test_1234567890</span><span class="dl">"</span><span class="p">);</span>
+<span class="c1">// use BasisTheory</span>
+</code></pre></div>
+<p><code>BasisTheory</code> instance should be initialized only once, and it can be done whenever it suits best your workflow.</p>
+
+<aside class="notice">
+  Beware that single page applications may share BasisTheory instance across multiple routes, and calling init multiple times in the same instance will result in an error.
+</aside>
+
+<p>You will need a <a href="#application-types"><code>public</code></a> Application <a href="#authentication">API key</a> to initialize the <code>BasisTheory</code> instance, this will give you access to both <code>tokens</code> and <code>atomic</code> features within the module.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>apiKey</code></td>
+<td>true</td>
+<td><em>string</em></td>
+<td>your public application&#39;s api key</td>
+</tr>
+</tbody></table>
+
+<p>The <code>init</code> method returns a short-lived <code>Promise</code> that resolves to the same <code>BasisTheory</code> instance. You may choose to ignore the yielded result, but it is strongly recommended to <code>await</code> for the <code>Promise</code> to resolve before performing any subsequent actions with <code>BasisTheory</code> instance.</p>
+
+<blockquote>
+<p>Make sure to replace <code>test_1234567890</code> with your API key.</p>
+</blockquote>
+<h1 id='tokenize'>Tokenize</h1><div class="highlight"><pre class="highlight plaintext"><code>BasisTheory.tokens
+</code></pre></div>
+<p>General tokenization methods can be found under <code>tokens</code> service inside <code>BasisTheory</code> instance.</p>
+<h2 id='createtoken'>createToken</h2><div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># checkout other language tabs</span>
+</code></pre></div><div class="highlight"><pre class="highlight html tab-html"><code><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://js.basistheory.com"</span><span class="nt">&gt;&lt;/script&gt;</span>
+
+<span class="nt">&lt;script&gt;</span>
+  <span class="kd">function</span> <span class="nx">tokenize</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">'</span><span class="s1">data-input</span><span class="dl">'</span><span class="p">).</span><span class="nx">value</span><span class="p">;</span>
+    <span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">tokens</span><span class="p">.</span><span class="nx">createToken</span><span class="p">(</span><span class="nx">data</span><span class="p">).</span><span class="nx">then</span><span class="p">((</span><span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">id</span><span class="p">)</span>
+    <span class="p">})</span>
+  <span class="p">}</span>
+<span class="nt">&lt;/script&gt;</span>
+
+<span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">"data-input"</span> <span class="na">type=</span><span class="s">"text"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;button</span> <span class="na">onclick=</span><span class="s">"tokenize()"</span><span class="nt">&gt;</span>Tokenize<span class="nt">&lt;/button&gt;</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="kd">const</span> <span class="nx">BasisTheory</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">@Basis-Theory/basis-theory-js</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="c1">// sample data</span>
+<span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">encryptedField</span><span class="p">:</span> <span class="dl">'</span><span class="s1">1vauq19af...</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">myFlag</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="na">values</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span>
+<span class="p">}</span>
+
+<span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">tokens</span><span class="p">.</span><span class="nx">createToken</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span> <span class="c1">//token to store in your system</span>
+  <span class="p">});</span>
+</code></pre></div><div class="highlight"><pre class="highlight typescript tab-typescript"><code><span class="k">import</span> <span class="nx">BasisTheory</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@Basis-Theory/basis-theory-js</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="c1">// sample data</span>
+<span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">encryptedField</span><span class="p">:</span> <span class="dl">'</span><span class="s1">1vauq19af...</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">myFlag</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="na">values</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="p">{</span> <span class="nx">id</span> <span class="p">}</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">tokens</span><span class="p">.</span><span class="nx">createToken</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">id</span><span class="p">);</span> <span class="c1">//token to store in your system</span>
+
+</code></pre></div>
+<blockquote>
+<p>Make sure you&#39;ve <a href="#initialize">initialized</a> BasisTheory</p>
+</blockquote>
+
+<p>With <code>createToken</code> method, you can choose to tokenize plain or encrypted data, in any serializable format:</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>data</code></td>
+<td>true</td>
+<td><em>string</em>, <em>number</em>, <em>boolean</em>, <em>object</em> or <em>array</em></td>
+<td>The data to tokenize</td>
+</tr>
+</tbody></table>
+
+<p>It returns a <code>Promise</code> that resolves to a <code>TokenCreateResponse</code> object:</p>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td><em>string</em></td>
+<td>Unique identifier of the token</td>
+</tr>
+<tr>
+<td><code>tenantId</code></td>
+<td><em>string</em></td>
+<td>The tenant ID which owns the token</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td><em>string</em></td>
+<td><a href="#token-types">Token type</a></td>
+</tr>
+<tr>
+<td><code>createdAt</code></td>
+<td><em>string</em></td>
+<td>Created date of the token in ISO 8601 format</td>
+</tr>
+</tbody></table>
+
+<!-- include metadata -->
+
+<p>Internally, <code>BasisTheory.tokens</code> calls <a href="#create-token">Create Token API</a> and maps the response to <a href="https://www.w3schools.com/js/js_conventions.asp">conventionally named</a> attributes.</p>
+<h2 id='gettoken'>getToken</h2><div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># checkout javascript--node and typescript language tabs</span>
+</code></pre></div><div class="highlight"><pre class="highlight html tab-html"><code><span class="c">&lt;!-- We don't recommend fetching tokens at client-side --&gt;</span>
+<span class="c">&lt;!-- Checkout javascript--node and typescript language tabs. --&gt;</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="kd">const</span> <span class="nx">BasisTheory</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">@Basis-Theory/basis-theory-js</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">id</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">25e2cd6b-2373-4cce-b9a0-98a9c65f53fb</span><span class="dl">'</span><span class="p">;</span> <span class="c1">// previously stored token id</span>
+
+<span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">tokens</span><span class="p">.</span><span class="nx">getToken</span><span class="p">(</span><span class="nx">id</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">token</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">token</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
+  <span class="p">});</span>
+</code></pre></div><div class="highlight"><pre class="highlight typescript tab-typescript"><code><span class="k">import</span> <span class="nx">BasisTheory</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@Basis-Theory/basis-theory-js</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">id</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">25e2cd6b-2373-4cce-b9a0-98a9c65f53fb</span><span class="dl">'</span><span class="p">;</span> <span class="c1">// previously stored token id</span>
+
+<span class="kd">const</span> <span class="p">{</span> <span class="nx">data</span> <span class="p">}</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">tokens</span><span class="p">.</span><span class="nx">getToken</span><span class="p">(</span><span class="nx">id</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+</code></pre></div>
+<blockquote>
+<p>Make sure you&#39;ve <a href="#initialize">initialized</a> BasisTheory</p>
+</blockquote>
+
+<p>With <code>getToken</code> method, you can fetch tokenized data by a token id:</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>true</td>
+<td><em>string</em></td>
+<td>The id of the token</td>
+</tr>
+</tbody></table>
+
+<p>It returns a <code>Promise</code> that resolves to a <code>GetTokenResponse</code> object:</p>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td><em>string</em></td>
+<td>Unique identifier of the token</td>
+</tr>
+<tr>
+<td><code>ownerId</code></td>
+<td><em>string</em></td>
+<td>The tenant ID which owns the token</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td><em>string</em></td>
+<td><a href="#token-types">Token type</a></td>
+</tr>
+<tr>
+<td><code>data</code></td>
+<td><em>any</em></td>
+<td>The data provided when <a href="#createtoken">creating the token</a></td>
+</tr>
+<tr>
+<td><code>createdAt</code></td>
+<td><em>string</em></td>
+<td>Created date of the token in ISO 8601 format</td>
+</tr>
+</tbody></table>
+
+<!-- `encryption` | *any*    | The [encryption](#encryption-request-object) data provided when [creating the token](#create-token) -->
+
+<!-- `metadata` | *any* | The metadata provided when [creating the token](#create-token) -->
+
+<p>Internally, <code>BasisTheory.tokens</code> calls <a href="#get-a-token">Get Token API</a> and maps the response to <a href="https://www.w3schools.com/js/js_conventions.asp">conventionally named</a> attributes.</p>
+<h2 id='deletetoken'>deleteToken</h2><div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># checkout javascript--node and typescript language tabs</span>
+</code></pre></div><div class="highlight"><pre class="highlight html tab-html"><code><span class="c">&lt;!-- We don't recommend deleting tokens at client-side --&gt;</span>
+<span class="c">&lt;!-- Checkout javascript--node and typescript language tabs. --&gt;</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="kd">const</span> <span class="nx">BasisTheory</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">@Basis-Theory/basis-theory-js</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">id</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">25e2cd6b-2373-4cce-b9a0-98a9c65f53fb</span><span class="dl">'</span><span class="p">;</span> <span class="c1">// previously stored token id</span>
+
+<span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">tokens</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="nx">id</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// token has been deleted</span>
+   <span class="p">});</span>
+</code></pre></div><div class="highlight"><pre class="highlight typescript tab-typescript"><code><span class="k">import</span> <span class="nx">BasisTheory</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@Basis-Theory/basis-theory-js</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">id</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">25e2cd6b-2373-4cce-b9a0-98a9c65f53fb</span><span class="dl">'</span><span class="p">;</span> <span class="c1">// previously stored token id</span>
+
+<span class="k">await</span> <span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">tokens</span><span class="p">.</span><span class="nx">deleteToken</span><span class="p">(</span><span class="nx">id</span><span class="p">);</span>
+<span class="c1">// token has been deleted</span>
+</code></pre></div>
+<blockquote>
+<p>Make sure you&#39;ve <a href="#initialize">initialized</a> BasisTheory</p>
+</blockquote>
+
+<p>With <code>deleteToken</code> method, you can delete tokenized data using a token id:</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>true</td>
+<td><em>string</em></td>
+<td>The id of the token</td>
+</tr>
+</tbody></table>
+
+<p>It returns a <code>Promise</code> of <code>void</code>.</p>
+
+<!-- `encryption` | *any*    | The [encryption](#encryption-request-object) data provided when [creating the token](#create-token) -->
+
+<!-- `metadata` | *any* | The metadata provided when [creating the token](#create-token) -->
+
+<p>Internally, <code>BasisTheory.tokens</code> calls <a href="#delete-token">Delete Token API</a>.</p>
+<h1 id='atomic'>Atomic</h1><div class="highlight"><pre class="highlight plaintext"><code>BasisTheory.atomic
+</code></pre></div><h2 id='storecreditcard'>storeCreditCard</h2><div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># checkout other language tabs</span>
+</code></pre></div><div class="highlight"><pre class="highlight html tab-html"><code><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://js.basistheory.com"</span><span class="nt">&gt;&lt;/script&gt;</span>
+
+<span class="nt">&lt;script&gt;</span>
+  <span class="kd">function</span> <span class="nx">storeCreditCard</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="na">card</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">number</span><span class="p">:</span> <span class="dl">'</span><span class="s1">4242424242424242</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">expirationMonth</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+        <span class="na">expirationYear</span><span class="p">:</span> <span class="mi">25</span><span class="p">,</span>
+        <span class="na">cvc</span><span class="p">:</span> <span class="dl">'</span><span class="s1">000</span><span class="dl">'</span><span class="p">,</span>
+      <span class="p">},</span>
+      <span class="na">billingDetails</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Fiona Theory</span><span class="dl">'</span><span class="p">,</span>
+      <span class="p">},</span>
+    <span class="p">};</span>
+    <span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">atomic</span><span class="p">.</span><span class="nx">storeCreditCard</span><span class="p">(</span><span class="nx">data</span><span class="p">).</span><span class="nx">then</span><span class="p">((</span><span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">id</span><span class="p">)</span>
+    <span class="p">})</span>
+  <span class="p">}</span>
+<span class="nt">&lt;/script&gt;</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="kd">const</span> <span class="nx">BasisTheory</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">@Basis-Theory/basis-theory-js</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">card</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">number</span><span class="p">:</span> <span class="dl">'</span><span class="s1">4242424242424242</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">expirationMonth</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+    <span class="na">expirationYear</span><span class="p">:</span> <span class="mi">25</span><span class="p">,</span>
+    <span class="na">cvc</span><span class="p">:</span> <span class="dl">'</span><span class="s1">000</span><span class="dl">'</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="na">billingDetails</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Fiona Theory</span><span class="dl">'</span><span class="p">,</span>
+  <span class="p">},</span>
+<span class="p">};</span>
+
+<span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">atomic</span><span class="p">.</span><span class="nx">storeCreditCard</span><span class="p">(</span><span class="nx">data</span><span class="p">).</span><span class="nx">then</span><span class="p">((</span><span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">id</span><span class="p">)</span>
+<span class="p">})</span>
+</code></pre></div><div class="highlight"><pre class="highlight typescript tab-typescript"><code><span class="k">import</span> <span class="nx">BasisTheory</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@Basis-Theory/basis-theory-js</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">card</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">number</span><span class="p">:</span> <span class="dl">'</span><span class="s1">4242424242424242</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">expirationMonth</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+    <span class="na">expirationYear</span><span class="p">:</span> <span class="mi">25</span><span class="p">,</span>
+    <span class="na">cvc</span><span class="p">:</span> <span class="dl">'</span><span class="s1">000</span><span class="dl">'</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="na">billingDetails</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Fiona Theory</span><span class="dl">'</span><span class="p">,</span>
+  <span class="p">},</span>
+<span class="p">};</span>
+
+<span class="kd">const</span> <span class="p">{</span> <span class="nx">id</span> <span class="p">}</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">atomic</span><span class="p">.</span><span class="nx">storeCreditCard</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+</code></pre></div>
+<blockquote>
+<p>Make sure you&#39;ve <a href="#initialize">initialized</a> BasisTheory</p>
+</blockquote>
+
+<p>With <code>storeCreditCard</code> method, you can tokenize any credit card to securely store and integrate with you <code>atomic cards</code>, in any way you need.</p>
+
+<p>In most scenarios, this reliefs the burden of full PCI compliance.</p>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>card</code></td>
+<td>true</td>
+<td><em>object</em></td>
+<td><a href="#cardmodel">CardModel object</a></td>
+</tr>
+<tr>
+<td><code>billingDetails</code></td>
+<td>false</td>
+<td><em>object</em></td>
+<td><a href="#billingdetailsmodel">BillingDetailsModel object</a></td>
+</tr>
+</tbody></table>
+<h3 id='cardmodel'>CardModel</h3>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>number</code></td>
+<td>true</td>
+<td><em>string</em></td>
+<td>The card number without any separators</td>
+</tr>
+<tr>
+<td><code>expirationMonth</code></td>
+<td>true</td>
+<td><em>integer</em></td>
+<td>Two-digit number representing the card&#39;s expiration month</td>
+</tr>
+<tr>
+<td><code>expirationYear</code></td>
+<td>true</td>
+<td><em>integer</em></td>
+<td>Four-digit number representing the card&#39;s expiration year</td>
+</tr>
+</tbody></table>
+<h3 id='billingdetailsmodel'>BillingDetailsModel</h3>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>name</code></td>
+<td>false</td>
+<td><em>string</em></td>
+<td>The cardholder or customer&#39;s full name</td>
+</tr>
+<tr>
+<td><code>email</code></td>
+<td>false</td>
+<td><em>string</em></td>
+<td>The cardholder or customer&#39;s email address</td>
+</tr>
+<tr>
+<td><code>phone</code></td>
+<td>false</td>
+<td><em>string</em></td>
+<td>The cardholder or customer&#39;s phone number</td>
+</tr>
+<tr>
+<td><code>address</code></td>
+<td>false</td>
+<td><em>object</em></td>
+<td>The cardholder or customer&#39;s <a href="#addressmodel">address</a></td>
+</tr>
+</tbody></table>
+<h3 id='addressmodel'>AddressModel</h3>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>line1</code></td>
+<td>false</td>
+<td><em>string</em></td>
+<td>Address line 1 (Street address / PO Box / Company name)</td>
+</tr>
+<tr>
+<td><code>line2</code></td>
+<td>false</td>
+<td><em>string</em></td>
+<td>Address line 2 (Apartment / Suite / Unit / Building)</td>
+</tr>
+<tr>
+<td><code>city</code></td>
+<td>false</td>
+<td><em>string</em></td>
+<td>City / District / Suburb / Town / Village</td>
+</tr>
+<tr>
+<td><code>state</code></td>
+<td>false</td>
+<td><em>string</em></td>
+<td>State / County / Province / Region</td>
+</tr>
+<tr>
+<td><code>postal_code</code></td>
+<td>false</td>
+<td><em>string</em></td>
+<td>Zip or postal code</td>
+</tr>
+<tr>
+<td><code>country</code></td>
+<td>false</td>
+<td><em>string</em></td>
+<td>Two-character ISO country code (e.g. <code>US</code>)</td>
+</tr>
+</tbody></table>
+<h1 id='examples'>Examples</h1>
 <p>We have 2 fully functional examples for how to use our javascript modules to store any data you want into your token infrastructure.</p>
 <h2 id='store-pii-example'>Store PII example</h2>
 <p>We have a vanilla javascript example that will enable you to create PII in a browser, tokenize it and get a token back to be stored within your system.</p>
@@ -2695,118 +3196,7 @@ This survey will identify and enforce certain data protections for the PCI compl
 <p>If you have the correct PCI compliant systems and certifications, you&#39;ll be able to create atomic cards from within your code using our vanilla javascript example. Follow it here:</p>
 
 <p><a href="https://github.com/Basis-Theory/basis-theory-js/blob/main/examples/credit_card.html">Check it out here</a></p>
-<h1 id='js-initialize'>JS - Initialize</h1>
-<blockquote>
-<p>To initialize, use this code:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">BasisTheory</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">basis-theory</span><span class="dl">'</span><span class="p">);</span>
-
-<span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">init</span><span class="p">(</span><span class="dl">"</span><span class="s2">test_1234567890</span><span class="dl">"</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>// checkout the javascript tab
-</code></pre></div>
-<blockquote>
-<p>Make sure to replace <code>test_1234567890</code> with your API key.</p>
-</blockquote>
-
-<p>You will need a <a href="#public-key">public api key</a> to initialize the Basis Theory javascript module, this will give you access to 
-both the <code>vault</code> and <code>payments</code> features within the module. </p>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>api_key</td>
-<td>your application&#39;s public api key</td>
-</tr>
-</tbody></table>
-<h1 id='js-tokenize'>JS - Tokenize</h1>
-<blockquote>
-<p>To tokenize data, use this code:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">encrypted_data</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">1vauq19af...</span><span class="dl">"</span><span class="p">;</span> <span class="c1">//cipher text from encrypted data</span>
-
-<span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">vault</span><span class="p">.</span><span class="nx">createToken</span><span class="p">(</span><span class="nx">encrypted_data</span><span class="p">)</span>
-  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span> <span class="c1">//token to store in your system</span>
-    <span class="p">});</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>// checkout the javascript tab
-</code></pre></div>
-<blockquote>
-<p>Make sure you&#39;ve initialized BasisTheory</p>
-</blockquote>
-
-<p>You are able to encrypt any data with our encryption helpers. Just pass the data through the helpers before creating a token!</p>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>data</td>
-<td>string or object data to tokenize</td>
-</tr>
-</tbody></table>
-<h1 id='js-store-credit-card'>JS - Store Credit Card</h1>
-<blockquote>
-<p>To initialize, use this code:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">payments</span>
-  <span class="p">.</span><span class="nx">storeCreditCard</span><span class="p">(</span>
-    <span class="p">{</span>
-      <span class="na">card</span><span class="p">:</span> <span class="p">{</span>
-        <span class="na">number</span><span class="p">:</span> <span class="dl">"</span><span class="s2">4242424242424242</span><span class="dl">"</span><span class="p">,</span>
-        <span class="na">expiration_month</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
-        <span class="na">expiration_year</span><span class="p">:</span> <span class="mi">25</span><span class="p">,</span>
-        <span class="na">cvc</span><span class="p">:</span> <span class="dl">"</span><span class="s2">000</span><span class="dl">"</span><span class="p">,</span>
-      <span class="p">},</span>
-      <span class="na">billing_details</span><span class="p">:</span> <span class="p">{</span>
-        <span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Fiona Theory</span><span class="dl">"</span><span class="p">,</span>
-      <span class="p">}</span>
-    <span class="p">})</span>
-  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">card</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">card</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span> <span class="c1">// token to store in your system</span>
-  <span class="p">});</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>// checkout the javascript tab
-</code></pre></div>
-<blockquote>
-<p>Make sure you&#39;ve initialized BasisTheory</p>
-</blockquote>
-
-<p>Tokenize a credit card to be able to use later. </p>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>card.number</td>
-<td>credit card number</td>
-</tr>
-<tr>
-<td>card.expiration_month</td>
-<td>month the card will expire</td>
-</tr>
-<tr>
-<td>card.expiration_year</td>
-<td>year the card will expire</td>
-</tr>
-<tr>
-<td>card.cvc</td>
-<td>the verification code for the card (used to validate the card)</td>
-</tr>
-<tr>
-<td>billing_details.name</td>
-<td>name associated with the card</td>
-</tr>
-</tbody></table>
-<h1 id='javascript-elements'>Javascript Elements</h1>
+<h1 id='hosted-elements'>Hosted Elements</h1>
 <aside class="notice">
 Coming Soon!
 </aside>
@@ -2815,6 +3205,9 @@ Coming Soon!
       <div class="dark-box">
           <div class="lang-selector">
                 <a href="#" data-language-name="shell">shell</a>
+                <a href="#" data-language-name="html">html</a>
+                <a href="#" data-language-name="javascript--node">javascript--node</a>
+                <a href="#" data-language-name="typescript">typescript</a>
           </div>
       </div>
     </div>
