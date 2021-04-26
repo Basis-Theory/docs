@@ -41,8 +41,9 @@ curl "api.basistheory.com/tokens" \
 ```json
 {
   "id": "c06d0789-0a38-40be-b7cc-c28a718f76f1",
-  "owner_id": "77cb0024-123e-41a8-8ff8-a3d5a0fa8a08",
+  "tenant_id": "77cb0024-123e-41a8-8ff8-a3d5a0fa8a08",
   "type": "token",
+  "created_by": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
   "created_at": "2020-09-15T15:53:00+00:00",
   "metadata": {
     "NonSensitiveField": "Non-Sensitive Value"
@@ -124,8 +125,9 @@ Attribute | Required | Type | Default | Description
 Attribute | Type | Description
 --------- | ---- | -----------
 `id` | *string* | Unique identifier of the token which can be used to [get a token](#get-a-token)
-`owner_id` | *string* | The tenant ID which owns the token
+`tenant_id` | *string* | The tenant ID which owns the token
 `type` | *string* | [Token type](#token-types)
+`created_by` | *string* | The [application](#applications) ID which created the token
 `created_at` | *string* | Created date of the token in ISO 8601 format
 `metadata` | *any* | The metadata provided when [creating the token](#create-token)
 
@@ -165,7 +167,7 @@ curl "api.basistheory.com/tokens" \
     {
       "id": "c06d0789-0a38-40be-b7cc-c28a718f76f1",
       "type": "token",
-      "owner_id": "77cb0024-123e-41a8-8ff8-a3d5a0fa8a08",
+      "tenant_id": "77cb0024-123e-41a8-8ff8-a3d5a0fa8a08",
       "data": "ebSG3IohNmg5gTOjN2HBwBbhjDZ6BY3fCWZJfXSucVMfQ+7YNMXQYrPuRSXgSkhuTMYS+BNfVUur4qZSvUbgCA==",
       "metadata": {
         "NonSensitiveField": "Non-Sensitive Value"
@@ -180,12 +182,20 @@ curl "api.basistheory.com/tokens" \
           "alg": "RSA"
         }
       },
+      "created_by": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
       "created_at": "2021-03-01T08:23:14+00:00"
     },
     {...},
     {...}
   ]
 }
+```
+
+> List Tokens by Type Request Example:
+
+```shell
+curl "api.basistheory.com/tokens?type=card" \
+  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
 ```
 
 <span class="http-method get">GET</span> `https://api.basistheory.com/tokens`
@@ -198,6 +208,12 @@ Get a list of tokens for the tenant.
   <span class="scope">token:read</span>
 </p>
 
+### URI Parameters
+
+Parameter | Required | Type | Default | Description
+--------- | -------- | ---- | ------- | -----------
+`type` | false | *string* | `null` | An optional [token type](#token-types) to filter the list of tokens by
+
 ### Response Schema
 
 Returns the [Pagination](#pagination) schema. The `data` attribute in the response contains an array of tokens with the following schema:
@@ -205,11 +221,12 @@ Returns the [Pagination](#pagination) schema. The `data` attribute in the respon
 Attribute | Type | Description
 --------- | ---- | -----------
 `id` | *string* | Unique identifier of the token which can be used to [get a token](#get-a-token)
-`owner_id` | *string* | The tenant ID which owns the token
+`tenant_id` | *string* | The tenant ID which owns the token
 `type` | *string* | [Token type](#token-types)
 `data` | *any* | The data provided when [creating the token](#create-token)
 `metadata` | *any* | The metadata provided when [creating the token](#create-token)
 `encryption` | *any* | The [encryption](#encryption-object-schema) data provided when [creating the token](#create-token)
+`created_by` | *string* | The [application](#applications) ID which created the token
 `created_at` | *string* | Created date of the token in ISO 8601 format
 
 ### Response Messages
@@ -236,7 +253,7 @@ curl "api.basistheory.com/tokens/c06d0789-0a38-40be-b7cc-c28a718f76f1" \
 {
   "id": "c06d0789-0a38-40be-b7cc-c28a718f76f1",
   "type": "token",
-  "owner_id": "77cb0024-123e-41a8-8ff8-a3d5a0fa8a08",
+  "tenant_id": "77cb0024-123e-41a8-8ff8-a3d5a0fa8a08",
   "data": "ebSG3IohNmg5gTOjN2HBwBbhjDZ6BY3fCWZJfXSucVMfQ+7YNMXQYrPuRSXgSkhuTMYS+BNfVUur4qZSvUbgCA==",
   "metadata": {
     "NonSensitiveField": "Non-Sensitive Value"
@@ -251,6 +268,7 @@ curl "api.basistheory.com/tokens/c06d0789-0a38-40be-b7cc-c28a718f76f1" \
       "alg": "RSA"
     }
   },
+  "created_by": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
   "created_at": "2021-03-01T08:23:14+00:00"
 }
 ```
@@ -276,11 +294,12 @@ Parameter | Required | Type | Default | Description
 Attribute | Type | Description
 --------- | ---- | -----------
 `id` | *string* | Unique identifier of the token which can be used to [get a token](#get-a-token)
-`owner_id` | *string* | The tenant ID which owns the token
+`tenant_id` | *string* | The tenant ID which owns the token
 `type` | *string* | [Token type](#token-types)
 `data` | *any* | The data provided when [creating the token](#create-token)
 `metadata` | *any* | The metadata provided when [creating the token](#create-token)
 `encryption` | *any* | The [encryption](#encryption-object-schema) data provided when [creating the token](#create-token)
+`created_by` | *string* | The [application](#applications) ID which created the token
 `created_at` | *string* | Created date of the token in ISO 8601 format
 
 ### Response Messages
