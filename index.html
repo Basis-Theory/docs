@@ -871,7 +871,7 @@ Dependent permission types are automatically assigned when an application is cre
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"owner_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77cb0024-123e-41a8-8ff8-a3d5a0fa8a08"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"tenant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77cb0024-123e-41a8-8ff8-a3d5a0fa8a08"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My Example App"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"key_FZ8RmaxoGc73lbmF2cpmUJ"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"server_to_server"</span><span class="p">,</span><span class="w">
@@ -937,7 +937,7 @@ Dependent permission types are automatically assigned when an application is cre
 <td>Unique identifier of the application which can be used to <a href="#get-an-application">get an application</a></td>
 </tr>
 <tr>
-<td><code>owner_id</code></td>
+<td><code>tenant_id</code></td>
 <td><em>string</em></td>
 <td>The tenant ID which owns the application</td>
 </tr>
@@ -1006,7 +1006,7 @@ Dependent permission types are automatically assigned when an application is cre
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"owner_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77cb0024-123e-41a8-8ff8-a3d5a0fa8a08"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"tenant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77cb0024-123e-41a8-8ff8-a3d5a0fa8a08"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My Example App"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"server_to_server"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="p">,</span><span class="w">
@@ -1023,6 +1023,12 @@ Dependent permission types are automatically assigned when an application is cre
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
+<blockquote>
+<p>List Applications by IDs Request Example:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.basistheory.com/applications?id=72ef3d62-b7de-4b5f-8aa2-b9db06c291cb&amp;id=3b235ac3-83ea-49c5-8c42-05ba3cbd17d1"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
+</code></pre></div>
 <p><span class="http-method get">GET</span> <code>https://api.basistheory.com/applications</code></p>
 
 <p>Get a list of applications for the tenant.</p>
@@ -1030,6 +1036,24 @@ Dependent permission types are automatically assigned when an application is cre
 <p class="scopes">
   <span class="scope">application:read</span>
 </p>
+<h3 id='uri-parameters'>URI Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>false</td>
+<td><em>array</em></td>
+<td><code>[]</code></td>
+<td>An optional list of application ID&#39;s to filter the list of applications by</td>
+</tr>
+</tbody></table>
 <h3 id='response-schema-2'>Response Schema</h3>
 <p>Returns the <a href="#pagination">Pagination</a> schema. The <code>data</code> attribute in the response contains an array of applications with the following schema:</p>
 
@@ -1046,7 +1070,7 @@ Dependent permission types are automatically assigned when an application is cre
 <td>Unique identifier of the application which can be used to <a href="#get-an-application">get an application</a></td>
 </tr>
 <tr>
-<td><code>owner_id</code></td>
+<td><code>tenant_id</code></td>
 <td><em>string</em></td>
 <td>The tenant ID which owns the application</td>
 </tr>
@@ -1108,7 +1132,7 @@ Dependent permission types are automatically assigned when an application is cre
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fe1f9ba4-474e-44b9-b949-110cdba9d662"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"owner_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77cb0024-123e-41a8-8ff8-a3d5a0fa8a08"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"tenant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77cb0024-123e-41a8-8ff8-a3d5a0fa8a08"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My Management App"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"management"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="p">,</span><span class="w">
@@ -1126,7 +1150,7 @@ Dependent permission types are automatically assigned when an application is cre
 <p class="scopes">
   <span class="scope">application:read</span>
 </p>
-<h3 id='uri-parameters'>URI Parameters</h3>
+<h3 id='uri-parameters-2'>URI Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1158,7 +1182,7 @@ Dependent permission types are automatically assigned when an application is cre
 <td>Unique identifier of the application which can be used to <a href="#get-an-application">get an application</a></td>
 </tr>
 <tr>
-<td><code>owner_id</code></td>
+<td><code>tenant_id</code></td>
 <td><em>string</em></td>
 <td>The tenant ID which owns the application</td>
 </tr>
@@ -1233,7 +1257,7 @@ Dependent permission types are automatically assigned when an application is cre
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"owner_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77cb0024-123e-41a8-8ff8-a3d5a0fa8a08"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"tenant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77cb0024-123e-41a8-8ff8-a3d5a0fa8a08"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My Example App"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"server_to_server"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="p">,</span><span class="w">
@@ -1251,7 +1275,7 @@ Dependent permission types are automatically assigned when an application is cre
 <p class="scopes">
   <span class="scope">application:write</span>
 </p>
-<h3 id='uri-parameters-2'>URI Parameters</h3>
+<h3 id='uri-parameters-3'>URI Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1308,7 +1332,7 @@ Dependent permission types are automatically assigned when an application is cre
 <td>Unique identifier of the application which can be used to <a href="#get-an-application">get an application</a></td>
 </tr>
 <tr>
-<td><code>owner_id</code></td>
+<td><code>tenant_id</code></td>
 <td><em>string</em></td>
 <td>The tenant ID which owns the application</td>
 </tr>
@@ -1394,7 +1418,7 @@ WARNING - Regenerating the API key for an application will immediately invalidat
 <p class="scopes">
   <span class="scope">application:write</span>
 </p>
-<h3 id='uri-parameters-3'>URI Parameters</h3>
+<h3 id='uri-parameters-4'>URI Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1481,7 +1505,7 @@ WARNING - The data associated with a deleted application will be removed forever
 </aside>
 <h3 id='permissions-6'>Permissions</h3>
 <p><code>application:write</code></p>
-<h3 id='uri-parameters-4'>URI Parameters</h3>
+<h3 id='uri-parameters-5'>URI Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1573,8 +1597,9 @@ WARNING - The data associated with a deleted application will be removed forever
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c06d0789-0a38-40be-b7cc-c28a718f76f1"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"owner_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77cb0024-123e-41a8-8ff8-a3d5a0fa8a08"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"tenant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77cb0024-123e-41a8-8ff8-a3d5a0fa8a08"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"token"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"NonSensitiveField"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Non-Sensitive Value"</span><span class="w">
@@ -1717,7 +1742,7 @@ WARNING - The data associated with a deleted application will be removed forever
 <td>Unique identifier of the token which can be used to <a href="#get-a-token">get a token</a></td>
 </tr>
 <tr>
-<td><code>owner_id</code></td>
+<td><code>tenant_id</code></td>
 <td><em>string</em></td>
 <td>The tenant ID which owns the token</td>
 </tr>
@@ -1725,6 +1750,11 @@ WARNING - The data associated with a deleted application will be removed forever
 <td><code>type</code></td>
 <td><em>string</em></td>
 <td><a href="#token-types">Token type</a></td>
+</tr>
+<tr>
+<td><code>created_by</code></td>
+<td><em>string</em></td>
+<td>The <a href="#applications">application</a> ID which created the token</td>
 </tr>
 <tr>
 <td><code>created_at</code></td>
@@ -1785,7 +1815,7 @@ WARNING - The data associated with a deleted application will be removed forever
     </span><span class="p">{</span><span class="w">
       </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c06d0789-0a38-40be-b7cc-c28a718f76f1"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"token"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"owner_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77cb0024-123e-41a8-8ff8-a3d5a0fa8a08"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"tenant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77cb0024-123e-41a8-8ff8-a3d5a0fa8a08"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ebSG3IohNmg5gTOjN2HBwBbhjDZ6BY3fCWZJfXSucVMfQ+7YNMXQYrPuRSXgSkhuTMYS+BNfVUur4qZSvUbgCA=="</span><span class="p">,</span><span class="w">
       </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"NonSensitiveField"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Non-Sensitive Value"</span><span class="w">
@@ -1800,6 +1830,7 @@ WARNING - The data associated with a deleted application will be removed forever
           </span><span class="nl">"alg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RSA"</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-01T08:23:14+00:00"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
@@ -1807,6 +1838,12 @@ WARNING - The data associated with a deleted application will be removed forever
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
+<blockquote>
+<p>List Tokens by Type Request Example:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.basistheory.com/tokens?type=card"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
+</code></pre></div>
 <p><span class="http-method get">GET</span> <code>https://api.basistheory.com/tokens</code></p>
 
 <p>Get a list of tokens for the tenant.</p>
@@ -1814,6 +1851,24 @@ WARNING - The data associated with a deleted application will be removed forever
 <p class="scopes">
   <span class="scope">token:read</span>
 </p>
+<h3 id='uri-parameters'>URI Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>type</code></td>
+<td>false</td>
+<td><em>string</em></td>
+<td><code>null</code></td>
+<td>An optional <a href="#token-types">token type</a> to filter the list of tokens by</td>
+</tr>
+</tbody></table>
 <h3 id='response-schema-2'>Response Schema</h3>
 <p>Returns the <a href="#pagination">Pagination</a> schema. The <code>data</code> attribute in the response contains an array of tokens with the following schema:</p>
 
@@ -1830,7 +1885,7 @@ WARNING - The data associated with a deleted application will be removed forever
 <td>Unique identifier of the token which can be used to <a href="#get-a-token">get a token</a></td>
 </tr>
 <tr>
-<td><code>owner_id</code></td>
+<td><code>tenant_id</code></td>
 <td><em>string</em></td>
 <td>The tenant ID which owns the token</td>
 </tr>
@@ -1853,6 +1908,11 @@ WARNING - The data associated with a deleted application will be removed forever
 <td><code>encryption</code></td>
 <td><em>any</em></td>
 <td>The <a href="#encryption-object-schema">encryption</a> data provided when <a href="#create-token">creating the token</a></td>
+</tr>
+<tr>
+<td><code>created_by</code></td>
+<td><em>string</em></td>
+<td>The <a href="#applications">application</a> ID which created the token</td>
 </tr>
 <tr>
 <td><code>created_at</code></td>
@@ -1893,7 +1953,7 @@ WARNING - The data associated with a deleted application will be removed forever
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c06d0789-0a38-40be-b7cc-c28a718f76f1"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"token"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"owner_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77cb0024-123e-41a8-8ff8-a3d5a0fa8a08"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"tenant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77cb0024-123e-41a8-8ff8-a3d5a0fa8a08"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ebSG3IohNmg5gTOjN2HBwBbhjDZ6BY3fCWZJfXSucVMfQ+7YNMXQYrPuRSXgSkhuTMYS+BNfVUur4qZSvUbgCA=="</span><span class="p">,</span><span class="w">
   </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"NonSensitiveField"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Non-Sensitive Value"</span><span class="w">
@@ -1908,6 +1968,7 @@ WARNING - The data associated with a deleted application will be removed forever
       </span><span class="nl">"alg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RSA"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-01T08:23:14+00:00"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
@@ -1918,7 +1979,7 @@ WARNING - The data associated with a deleted application will be removed forever
 <p class="scopes">
   <span class="scope">token:read</span>
 </p>
-<h3 id='uri-parameters'>URI Parameters</h3>
+<h3 id='uri-parameters-2'>URI Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1950,7 +2011,7 @@ WARNING - The data associated with a deleted application will be removed forever
 <td>Unique identifier of the token which can be used to <a href="#get-a-token">get a token</a></td>
 </tr>
 <tr>
-<td><code>owner_id</code></td>
+<td><code>tenant_id</code></td>
 <td><em>string</em></td>
 <td>The tenant ID which owns the token</td>
 </tr>
@@ -1973,6 +2034,11 @@ WARNING - The data associated with a deleted application will be removed forever
 <td><code>encryption</code></td>
 <td><em>any</em></td>
 <td>The <a href="#encryption-object-schema">encryption</a> data provided when <a href="#create-token">creating the token</a></td>
+</tr>
+<tr>
+<td><code>created_by</code></td>
+<td><em>string</em></td>
+<td>The <a href="#applications">application</a> ID which created the token</td>
 </tr>
 <tr>
 <td><code>created_at</code></td>
@@ -2023,7 +2089,7 @@ WARNING - The data associated with a deleted token will be removed forever. The 
 <p class="scopes">
   <span class="scope">token:write</span>
 </p>
-<h3 id='uri-parameters-2'>URI Parameters</h3>
+<h3 id='uri-parameters-3'>URI Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -2100,8 +2166,9 @@ WARNING - The data associated with a deleted token will be removed forever. The 
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c1e565009-1984-4638-8fca-dce8a82cc2af"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"owner_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77cb0024-123e-41a8-8ff8-a3d5a0fa8a08"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"tenant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77cb0024-123e-41a8-8ff8-a3d5a0fa8a08"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"card"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"card"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XXXXXXXXXXXX4242"</span><span class="p">,</span><span class="w">
@@ -2313,7 +2380,7 @@ WARNING - The data associated with a deleted token will be removed forever. The 
 <td>Unique identifier of the card which can be used to <a href="#get-an-atomic-card">get an atomic card</a></td>
 </tr>
 <tr>
-<td><code>owner_id</code></td>
+<td><code>tenant_id</code></td>
 <td><em>string</em></td>
 <td>The tenant ID which owns the card</td>
 </tr>
@@ -2321,6 +2388,11 @@ WARNING - The data associated with a deleted token will be removed forever. The 
 <td><code>type</code></td>
 <td><em>string</em></td>
 <td><code>Card</code> <a href="#token-types">token type</a></td>
+</tr>
+<tr>
+<td><code>created_by</code></td>
+<td><em>string</em></td>
+<td>The <a href="#applications">application</a> ID which created the atomic card</td>
 </tr>
 <tr>
 <td><code>created_at</code></td>
@@ -2372,8 +2444,9 @@ WARNING - The data associated with a deleted token will be removed forever. The 
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c1e565009-1984-4638-8fca-dce8a82cc2af"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"owner_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77cb0024-123e-41a8-8ff8-a3d5a0fa8a08"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"tenant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77cb0024-123e-41a8-8ff8-a3d5a0fa8a08"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"card"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"card"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XXXXXXXXXXXX4242"</span><span class="p">,</span><span class="w">
@@ -2410,7 +2483,7 @@ WARNING - The data associated with a deleted token will be removed forever. The 
 <td>Unique identifier of the card which can be used to <a href="#get-an-atomic-card">get an atomic card</a></td>
 </tr>
 <tr>
-<td><code>owner_id</code></td>
+<td><code>tenant_id</code></td>
 <td><em>string</em></td>
 <td>The tenant ID which owns the card</td>
 </tr>
@@ -2418,6 +2491,11 @@ WARNING - The data associated with a deleted token will be removed forever. The 
 <td><code>type</code></td>
 <td><em>string</em></td>
 <td><code>Card</code> <a href="#token-types">token type</a></td>
+</tr>
+<tr>
+<td><code>created_by</code></td>
+<td><em>string</em></td>
+<td>The <a href="#applications">application</a> ID which created the atomic card</td>
 </tr>
 <tr>
 <td><code>created_at</code></td>
@@ -2462,8 +2540,9 @@ WARNING - The data associated with a deleted token will be removed forever. The 
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c1e565009-1984-4638-8fca-dce8a82cc2af"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"owner_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77cb0024-123e-41a8-8ff8-a3d5a0fa8a08"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"tenant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77cb0024-123e-41a8-8ff8-a3d5a0fa8a08"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"card"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"card"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XXXXXXXXXXXX4242"</span><span class="p">,</span><span class="w">
@@ -2512,7 +2591,7 @@ WARNING - The data associated with a deleted token will be removed forever. The 
 <td>Unique identifier of the card which can be used to <a href="#get-an-atomic-card">get an atomic card</a></td>
 </tr>
 <tr>
-<td><code>owner_id</code></td>
+<td><code>tenant_id</code></td>
 <td><em>string</em></td>
 <td>The tenant ID which owns the card</td>
 </tr>
@@ -2520,6 +2599,11 @@ WARNING - The data associated with a deleted token will be removed forever. The 
 <td><code>type</code></td>
 <td><em>string</em></td>
 <td><code>Card</code> <a href="#token-types">token type</a></td>
+</tr>
+<tr>
+<td><code>created_by</code></td>
+<td><em>string</em></td>
+<td>The <a href="#applications">application</a> ID which created the atomic card</td>
 </tr>
 <tr>
 <td><code>created_at</code></td>
