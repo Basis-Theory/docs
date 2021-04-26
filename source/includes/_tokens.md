@@ -191,6 +191,13 @@ curl "api.basistheory.com/tokens" \
 }
 ```
 
+> List Tokens by Type Request Example:
+
+```shell
+curl "api.basistheory.com/tokens?type=card" \
+  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
+```
+
 <span class="http-method get">GET</span> `https://api.basistheory.com/tokens`
 
 Get a list of tokens for the tenant.
@@ -200,6 +207,12 @@ Get a list of tokens for the tenant.
 <p class="scopes">
   <span class="scope">token:read</span>
 </p>
+
+### URI Parameters
+
+Parameter | Required | Type | Default | Description
+--------- | -------- | ---- | ------- | -----------
+`type` | false | *string* | `null` | An optional [token type](#token-types) to filter the list of tokens by
 
 ### Response Schema
 

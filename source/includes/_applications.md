@@ -128,6 +128,13 @@ curl "api.basistheory.com/applications" \
 }
 ```
 
+> List Applications by IDs Request Example:
+
+```shell
+curl "api.basistheory.com/applications?id=72ef3d62-b7de-4b5f-8aa2-b9db06c291cb&id=3b235ac3-83ea-49c5-8c42-05ba3cbd17d1" \
+  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
+```
+
 <span class="http-method get">GET</span> `https://api.basistheory.com/applications`
 
 Get a list of applications for the tenant.
@@ -137,6 +144,12 @@ Get a list of applications for the tenant.
 <p class="scopes">
   <span class="scope">application:read</span>
 </p>
+
+### URI Parameters
+
+Parameter | Required | Type | Default | Description
+--------- | -------- | ---- | ------- | -----------
+`id` | false | *array* | `[]` | An optional list of application ID's to filter the list of applications by
 
 ### Response Schema
 
