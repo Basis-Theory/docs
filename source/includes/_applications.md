@@ -39,7 +39,7 @@ curl "api.basistheory.com/applications" \
 ```json
 {
   "id": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
-  "owner_id": "77cb0024-123e-41a8-8ff8-a3d5a0fa8a08",
+  "tenant_id": "77cb0024-123e-41a8-8ff8-a3d5a0fa8a08",
   "name": "My Example App",
   "key": "key_FZ8RmaxoGc73lbmF2cpmUJ",
   "type": "server_to_server",
@@ -76,7 +76,7 @@ Attribute | Required | Type | Default | Description
 Attribute | Type | Description
 --------- | ---- | -----------
 `id` | *string* | Unique identifier of the application which can be used to [get an application](#get-an-application)
-`owner_id` | *string* | The tenant ID which owns the application
+`tenant_id` | *string* | The tenant ID which owns the application
 `name` | *string* | The name of the application
 `key` | *string* | The API key which should be used for authenticating against Basis Theory API endpoints
 `type` | *string* | [Application type](#application-types) of the application
@@ -110,7 +110,7 @@ curl "api.basistheory.com/applications" \
   "data": [
     {
       "id": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
-      "owner_id": "77cb0024-123e-41a8-8ff8-a3d5a0fa8a08",
+      "tenant_id": "77cb0024-123e-41a8-8ff8-a3d5a0fa8a08",
       "name": "My Example App",
       "type": "server_to_server",
       "created_at": "2020-09-15T15:53:00+00:00",
@@ -128,6 +128,13 @@ curl "api.basistheory.com/applications" \
 }
 ```
 
+> List Applications by IDs Request Example:
+
+```shell
+curl "api.basistheory.com/applications?id=72ef3d62-b7de-4b5f-8aa2-b9db06c291cb&id=3b235ac3-83ea-49c5-8c42-05ba3cbd17d1" \
+  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
+```
+
 <span class="http-method get">GET</span> `https://api.basistheory.com/applications`
 
 Get a list of applications for the tenant.
@@ -138,6 +145,12 @@ Get a list of applications for the tenant.
   <span class="scope">application:read</span>
 </p>
 
+### URI Parameters
+
+Parameter | Required | Type | Default | Description
+--------- | -------- | ---- | ------- | -----------
+`id` | false | *array* | `[]` | An optional list of application ID's to filter the list of applications by
+
 ### Response Schema
 
 Returns the [Pagination](#pagination) schema. The `data` attribute in the response contains an array of applications with the following schema:
@@ -145,7 +158,7 @@ Returns the [Pagination](#pagination) schema. The `data` attribute in the respon
 Attribute | Type | Description
 --------- | ---- | -----------
 `id` | *string* | Unique identifier of the application which can be used to [get an application](#get-an-application)
-`owner_id` | *string* | The tenant ID which owns the application
+`tenant_id` | *string* | The tenant ID which owns the application
 `name` | *string* | The name of the application
 `type` | *string* | [Application type](#application-types) of the application
 `created_at` | *string* | Created date of the application in ISO 8601 format
@@ -175,7 +188,7 @@ curl "api.basistheory.com/applications/fe1f9ba4-474e-44b9-b949-110cdba9d662" \
 ```json
 {
   "id": "fe1f9ba4-474e-44b9-b949-110cdba9d662",
-  "owner_id": "77cb0024-123e-41a8-8ff8-a3d5a0fa8a08",
+  "tenant_id": "77cb0024-123e-41a8-8ff8-a3d5a0fa8a08",
   "name": "My Management App",
   "type": "management",
   "created_at": "2020-09-15T15:53:00+00:00",
@@ -208,7 +221,7 @@ Parameter | Required | Type | Default | Description
 Attribute | Type | Description
 --------- | ---- | -----------
 `id` | *string* | Unique identifier of the application which can be used to [get an application](#get-an-application)
-`owner_id` | *string* | The tenant ID which owns the application
+`tenant_id` | *string* | The tenant ID which owns the application
 `name` | *string* | The name of the application
 `type` | *string* | [Application type](#application-types) of the application
 `created_at` | *string* | Created date of the application in ISO 8601 format
@@ -248,7 +261,7 @@ curl "api.basistheory.com/applications/fb124bba-f90d-45f0-9a59-5edca27b3b4a" \
 ```json
 {
   "id": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
-  "owner_id": "77cb0024-123e-41a8-8ff8-a3d5a0fa8a08",
+  "tenant_id": "77cb0024-123e-41a8-8ff8-a3d5a0fa8a08",
   "name": "My Example App",
   "type": "server_to_server",
   "created_at": "2020-09-15T15:53:00+00:00",
@@ -288,7 +301,7 @@ Attribute | Required | Type | Default | Description
 Attribute | Type | Description
 --------- | ---- | -----------
 `id` | *string* | Unique identifier of the application which can be used to [get an application](#get-an-application)
-`owner_id` | *string* | The tenant ID which owns the application
+`tenant_id` | *string* | The tenant ID which owns the application
 `name` | *string* | The name of the application
 `type` | *string* | [Application type](#application-types) of the application
 `created_at` | *string* | Created date of the application in ISO 8601 format

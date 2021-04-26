@@ -37,8 +37,9 @@ curl "api.basistheory.com/atomic/cards" \
 ```json
 {
   "id": "c1e565009-1984-4638-8fca-dce8a82cc2af",
-  "owner_id": "77cb0024-123e-41a8-8ff8-a3d5a0fa8a08",
+  "tenant_id": "77cb0024-123e-41a8-8ff8-a3d5a0fa8a08",
   "type": "card",
+  "created_by": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
   "created_at": "2020-09-15T15:53:00+00:00",
   "card": {
     "number": "XXXXXXXXXXXX4242",
@@ -107,8 +108,9 @@ Attribute | Required | Type | Default | Description
 Attribute | Type | Description
 --------- | ---- | -----------
 `id` | *string* | Unique identifier of the card which can be used to [get an atomic card](#get-an-atomic-card)
-`owner_id` | *string* | The tenant ID which owns the card
+`tenant_id` | *string* | The tenant ID which owns the card
 `type` | *string* | `Card` [token type](#token-types)
+`created_by` | *string* | The [application](#applications) ID which created the atomic card
 `created_at` | *string* | Created date of the application in ISO 8601 format
 `card` | *card* | Masked [card object](#card-object-schema)
 
@@ -139,8 +141,9 @@ curl "api.basistheory.com/atomic/cards" \
   "data": [
     {
       "id": "c1e565009-1984-4638-8fca-dce8a82cc2af",
-      "owner_id": "77cb0024-123e-41a8-8ff8-a3d5a0fa8a08",
+      "tenant_id": "77cb0024-123e-41a8-8ff8-a3d5a0fa8a08",
       "type": "card",
+      "created_by": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
       "created_at": "2020-09-15T15:53:00+00:00",
       "card": {
         "number": "XXXXXXXXXXXX4242",
@@ -172,8 +175,9 @@ Returns the [Pagination](#pagination) schema. The `data` attribute in the respon
 Attribute | Type | Description
 --------- | ---- | -----------
 `id` | *string* | Unique identifier of the card which can be used to [get an atomic card](#get-an-atomic-card)
-`owner_id` | *string* | The tenant ID which owns the card
+`tenant_id` | *string* | The tenant ID which owns the card
 `type` | *string* | `Card` [token type](#token-types)
+`created_by` | *string* | The [application](#applications) ID which created the atomic card
 `created_at` | *string* | Created date of the application in ISO 8601 format
 `card` | *card* | Masked [card object](#card-object-schema)
 
@@ -200,8 +204,9 @@ curl "api.basistheory.com/atomic/cards/c1e565009-1984-4638-8fca-dce8a82cc2af" \
 ```json
 {
   "id": "c1e565009-1984-4638-8fca-dce8a82cc2af",
-  "owner_id": "77cb0024-123e-41a8-8ff8-a3d5a0fa8a08",
+  "tenant_id": "77cb0024-123e-41a8-8ff8-a3d5a0fa8a08",
   "type": "card",
+  "created_by": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
   "created_at": "2020-09-15T15:53:00+00:00",
   "card": {
     "number": "XXXXXXXXXXXX4242",
@@ -233,8 +238,9 @@ Parameter | Required | Type | Default | Description
 Attribute | Type | Description
 --------- | ---- | -----------
 `id` | *string* | Unique identifier of the card which can be used to [get an atomic card](#get-an-atomic-card)
-`owner_id` | *string* | The tenant ID which owns the card
+`tenant_id` | *string* | The tenant ID which owns the card
 `type` | *string* | `Card` [token type](#token-types)
+`created_by` | *string* | The [application](#applications) ID which created the atomic card
 `created_at` | *string* | Created date of the application in ISO 8601 format
 `card` | *card* | Masked [card object](#card-object-schema)
 
