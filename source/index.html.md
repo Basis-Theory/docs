@@ -25,7 +25,7 @@ api_includes:
 
 module_includes:
   - javascript_module
-  - javascript_hosted_fields
+  - javascript_hosted_elements
 
 search: true
 

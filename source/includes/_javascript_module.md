@@ -82,11 +82,18 @@ await BasisTheory.init("test_1234567890");
 
 You will need a [`public`](#application-types) Application [API key](#authentication) to initialize the `BasisTheory` instance, this will give you access to both `tokens` and `atomic` features within the module.
 
+The `init` method returns a short-lived `Promise` that resolves to the same `BasisTheory` instance. You may choose to ignore the yielded result, but it is strongly recommended to `await` for the `Promise` to resolve before performing any subsequent actions with `BasisTheory` instance.
+
 Parameter | Required | Type     | Description
 --------- | -------- | -------- | -----------
 `apiKey`  | true     | *string* | your public application's api key
+`options` | false    | *object* | [Options](#basistheory-options)
 
-The `init` method returns a short-lived `Promise` that resolves to the same `BasisTheory` instance. You may choose to ignore the yielded result, but it is strongly recommended to `await` for the `Promise` to resolve before performing any subsequent actions with `BasisTheory` instance.
+## BasisTheory Options
+
+Parameter  | Required | Type      | Default | Description
+---------- | -------- | --------- | ------- | -----------
+`elements` | false    | *boolean* | false   | whether to load [Hosted Elements](#hosted-elements)
 
 
 > Make sure to replace `test_1234567890` with your API key.
