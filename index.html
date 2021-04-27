@@ -431,6 +431,11 @@
           </li>
           <li>
             <a href="#initialize" class="toc-h1 toc-link" data-title="Initialize">Initialize</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#basistheory-options" class="toc-h2 toc-link" data-title="BasisTheory Options">BasisTheory Options</a>
+                  </li>
+              </ul>
           </li>
           <li>
             <a href="#tokenize" class="toc-h1 toc-link" data-title="Tokenize">Tokenize</a>
@@ -467,6 +472,39 @@
           </li>
           <li>
             <a href="#hosted-elements" class="toc-h1 toc-link" data-title="Hosted Elements">Hosted Elements</a>
+          </li>
+          <li>
+            <a href="#install-initialize" class="toc-h1 toc-link" data-title="Install / Initialize">Install / Initialize</a>
+          </li>
+          <li>
+            <a href="#elements-instance" class="toc-h1 toc-link" data-title="Elements instance">Elements instance</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#create-element" class="toc-h2 toc-link" data-title="Create Element">Create Element</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#element-instance" class="toc-h1 toc-link" data-title="Element instance">Element instance</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#mount-element" class="toc-h2 toc-link" data-title="Mount Element">Mount Element</a>
+                  </li>
+                  <li>
+                    <a href="#unmount-element" class="toc-h2 toc-link" data-title="Unmount Element">Unmount Element</a>
+                  </li>
+                  <li>
+                    <a href="#element-events" class="toc-h2 toc-link" data-title="Element Events">Element Events</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#store-credit-card" class="toc-h1 toc-link" data-title="Store Credit Card">Store Credit Card</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#storecreditcard-errors" class="toc-h2 toc-link" data-title="storeCreditCard Errors">storeCreditCard Errors</a>
+                  </li>
+              </ul>
           </li>
       </ul>
 
@@ -2829,6 +2867,8 @@ yarn add @Basis-Theory/basis-theory-js
 
 <p>You will need a <a href="#application-types"><code>public</code></a> Application <a href="#authentication">API key</a> to initialize the <code>BasisTheory</code> instance, this will give you access to both <code>tokens</code> and <code>atomic</code> features within the module.</p>
 
+<p>The <code>init</code> method returns a short-lived <code>Promise</code> that resolves to the same <code>BasisTheory</code> instance. You may choose to ignore the yielded result, but it is strongly recommended to <code>await</code> for the <code>Promise</code> to resolve before performing any subsequent actions with <code>BasisTheory</code> instance.</p>
+
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -2843,9 +2883,31 @@ yarn add @Basis-Theory/basis-theory-js
 <td><em>string</em></td>
 <td>your public application&#39;s api key</td>
 </tr>
+<tr>
+<td><code>options</code></td>
+<td>false</td>
+<td><em>object</em></td>
+<td><a href="#basistheory-options">Options</a></td>
+</tr>
 </tbody></table>
-
-<p>The <code>init</code> method returns a short-lived <code>Promise</code> that resolves to the same <code>BasisTheory</code> instance. You may choose to ignore the yielded result, but it is strongly recommended to <code>await</code> for the <code>Promise</code> to resolve before performing any subsequent actions with <code>BasisTheory</code> instance.</p>
+<h2 id='basistheory-options'>BasisTheory Options</h2>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>elements</code></td>
+<td>false</td>
+<td><em>boolean</em></td>
+<td>false</td>
+<td>whether to load <a href="#hosted-elements">Hosted Elements</a></td>
+</tr>
+</tbody></table>
 
 <blockquote>
 <p>Make sure to replace <code>test_1234567890</code> with your API key.</p>
@@ -3280,10 +3342,224 @@ yarn add @Basis-Theory/basis-theory-js
 <p>If you have the correct PCI compliant systems and certifications, you&#39;ll be able to create atomic cards from within your code using our vanilla javascript example. Follow it here:</p>
 
 <p><a href="https://github.com/Basis-Theory/basis-theory-js/blob/main/examples/credit_card.html">Check it out here</a></p>
-<h1 id='hosted-elements'>Hosted Elements</h1>
-<aside class="notice">
-Coming Soon!
+<h1 id='hosted-elements'>Hosted Elements</h1><div class="highlight"><pre class="highlight plaintext"><code>  BasisTheory.elements
+</code></pre></div>
+<p><strong>BasisTheory Hosted Elements</strong> are simple, secure, developer-friendly inputs that empowers consumers to collect sensitive data from their users directly to Basis Theory certified vault.</p>
+
+<p>Think about it as a portal that we open within your site that allows users to seamlessly tokenize information and never notice they are interacting with our technology. Here is how we make it possible:</p>
+
+<ul>
+<li>We allow you to own your UX, by fully customizing how <strong>hosted elements</strong> will look like;</li>
+<li>Inputs and forms are simple to use, yet we enable you to interact with them similar to how you do with native elements, so you never lose track of your users;</li>
+</ul>
+<h1 id='install-initialize'>Install / Initialize</h1><div class="highlight"><pre class="highlight shell tab-shell"><code>// checkout other language tabs
+</code></pre></div><div class="highlight"><pre class="highlight html tab-html"><code><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://js.basistheory.com"</span><span class="nt">&gt;&lt;/script&gt;</span>
+
+<span class="c">&lt;!-- Somewhere in your site code --&gt;</span>
+<span class="nt">&lt;script&gt;</span>
+    <span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">load</span><span class="dl">'</span><span class="p">,</span> <span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="k">await</span> <span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">init</span><span class="p">(</span><span class="dl">"</span><span class="s2">test_1234567890</span><span class="dl">"</span><span class="p">,</span> <span class="p">{</span> <span class="na">elements</span><span class="p">:</span> <span class="kc">true</span> <span class="p">});</span>
+      <span class="c1">// use BasisTheory.elements</span>
+    <span class="p">});</span>  
+<span class="nt">&lt;/script&gt;</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="kd">const</span> <span class="nx">BasisTheory</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">@Basis-Theory/basis-theory-js</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">init</span><span class="p">(</span><span class="dl">"</span><span class="s2">test_1234567890</span><span class="dl">"</span><span class="p">,</span> <span class="p">{</span> <span class="na">elements</span><span class="p">:</span> <span class="kc">true</span> <span class="p">}).</span><span class="nx">then</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="c1">// use BasisTheory.elements</span>
+<span class="p">})</span>
+</code></pre></div><div class="highlight"><pre class="highlight typescript tab-typescript"><code><span class="k">import</span> <span class="nx">BasisTheory</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@Basis-Theory/basis-theory-js</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="k">await</span> <span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">init</span><span class="p">(</span><span class="dl">"</span><span class="s2">test_1234567890</span><span class="dl">"</span><span class="p">,</span> <span class="p">{</span> <span class="na">elements</span><span class="p">:</span> <span class="kc">true</span> <span class="p">});</span>
+<span class="c1">// use BasisTheory.elements</span>
+</code></pre></div>
+<blockquote>
+<p>Make sure to replace <code>test_1234567890</code> with your API key.</p>
+</blockquote>
+
+<p>You don&#39;t have to install <code>Hosted Elements</code> as a separated module or include additional script tags besides <code>BasisTheory.js</code>. It will dynamically load them from <code>js.basistheory.com</code>, which enables us to keep the highest compliance standards (e.g. PCI compliance). The only thing you have to worry about is adding <code>elements: true</code> in <code>BasisTheory.init</code> options parameter.</p>
+
+<aside class="warning">
+  Hosted Elements are meant to be used on browser environments only. If you installed <code>BasisTheory.js</code> as a module, make sure the instance that loads elements runs on the browser-side code.
 </aside>
+
+<p>See <a href="#initialize">Basis Theory Initialize</a> for more details.</p>
+<h1 id='elements-instance'>Elements instance</h1><h2 id='create-element'>Create Element</h2><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">cardElement</span> <span class="o">=</span> <span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">elements</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="dl">'</span><span class="s1">card</span><span class="dl">'</span><span class="p">);</span>
+</code></pre></div>
+<p>This method returns an instance of an element type.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>type</code></td>
+<td>true</td>
+<td><em>&#39;card&#39;</em></td>
+<td>Type of the element you want to create</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+  More element types coming soon.
+</aside>
+<h1 id='element-instance'>Element instance</h1><h2 id='mount-element'>Mount Element</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>// checkout html language tab
+</code></pre></div><div class="highlight"><pre class="highlight html tab-html"><code><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"my-card"</span><span class="nt">&gt;&lt;/div&gt;</span>
+
+<span class="nt">&lt;script&gt;</span>
+  <span class="nx">cardElement</span><span class="p">.</span><span class="nx">mount</span><span class="p">(</span><span class="dl">'</span><span class="s1">#my-card</span><span class="dl">'</span><span class="p">)</span>
+<span class="nt">&lt;/script&gt;</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="c1">// checkout html language tab</span>
+</code></pre></div><div class="highlight"><pre class="highlight typescript tab-typescript"><code><span class="c1">// checkout html language tab</span>
+</code></pre></div>
+<p>This method attaches the element to the DOM, under a specific container.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>selector</code></td>
+<td>true</td>
+<td><em>string</em></td>
+<td>CSS selector that matches the container where your element will be mounted</td>
+</tr>
+</tbody></table>
+<h2 id='unmount-element'>Unmount Element</h2><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">cardElement</span><span class="p">.</span><span class="nx">unmount</span><span class="p">();</span>
+</code></pre></div>
+<p>Safely removes the element from the DOM, stopping any further communication with it.</p>
+<h2 id='element-events'>Element Events</h2><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">subscription</span> <span class="o">=</span> <span class="nx">element</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">event-type</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="c1">// handle event  </span>
+<span class="p">});</span>
+
+<span class="c1">// subscription.unsubscribe(); // stops listening to the event type</span>
+</code></pre></div>
+<blockquote>
+<p>Make sure to replace &#39;event-type&#39; with an actual event type.</p>
+</blockquote>
+
+<p>You can communicate with elements by listening to events. When you subscribe to an event, you&#39;ll get back a <a href="https://rxjs-dev.firebaseapp.com/guide/subscription">Subscription</a> that you can unsubscribe if/when it fits your workflow.</p>
+<h3 id='on-ready'>On Ready</h3><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">element</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">ready</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="c1">// handle ready event </span>
+<span class="p">})</span>
+</code></pre></div>
+<p>This event is triggered when the element has rendered and user is able to start interacting with it.</p>
+<h3 id='on-change'>On Change</h3><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">element</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">change</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">changeEvent</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">changeEvent</span><span class="p">.</span><span class="nx">complete</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// enable submit button  </span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="c1">// disable submit button</span>
+    <span class="c1">// present validation message</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+</code></pre></div>
+<p>This event is triggered whenever element&#39;s value(s) relevantly change. For example, if the user types data that doesn&#39;t change the state of a field between valid/invalid or empty/filled, you shouldn&#39;t expect the event to trigger.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>event</code></td>
+<td>true</td>
+<td><em>&#39;change&#39;</em></td>
+<td>The event type to listen to.</td>
+</tr>
+<tr>
+<td><code>handler</code></td>
+<td>true</td>
+<td><em>function</em></td>
+<td>Callback function to be called when the event is fired. Takes in a <a href="#changeevent">ChangeEvent</a>.</td>
+</tr>
+</tbody></table>
+<h4 id='changeevent'>ChangeEvent</h4><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"complete"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"invalid-field"</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>complete</code></td>
+<td><em>&#39;change&#39;</em></td>
+<td>If the element value is well-formed and is ready to be submitted.</td>
+</tr>
+<tr>
+<td><code>errors</code></td>
+<td><em>array</em></td>
+<td>Array of element validation error types</td>
+</tr>
+</tbody></table>
+<h1 id='store-credit-card'>Store Credit Card</h1><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">elements</span><span class="p">.</span><span class="nx">storeCreditCard</span><span class="p">({</span>
+  <span class="na">card</span><span class="p">:</span> <span class="nx">cardElement</span><span class="p">,</span>
+  <span class="na">billingDetails</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Fiona Theory</span><span class="dl">'</span>  
+  <span class="p">}</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">((</span><span class="nx">token</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">token</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span> <span class="c1">// token to store</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">token</span><span class="p">.</span><span class="nx">card</span><span class="p">));</span> <span class="c1">// redacted card data</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>Allows secure submission and tokenization of a card element. Returns a <code>Promise</code> that resoles to the tokenized card data. See <a href="#cardmodel">CardModel</a> for the resolved value type.</p>
+
+<p>Internally, <code>BasisTheory.elements.storeCreditCard</code> calls <a href="#create-atomic-card">Create Atomic Card API</a>.</p>
+
+<p>You can fetch this same data later with <a href="#get-an-atomic-card">Get an Atomic Card API</a>.</p>
+
+<aside class="notice">
+  Notice that the actual card data never leaves the hosted element (iframe) other than to hit our secure API endpoints. 
+</aside>
+<h2 id='storecreditcard-errors'>storeCreditCard Errors</h2><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">elements</span><span class="p">.</span><span class="nx">storeCreditCard</span><span class="p">(...).</span><span class="k">catch</span><span class="p">(</span><span class="nx">error</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="c1">// handle error</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>In case <code>storeCreditCard</code> throws an error, that could be related to client-side validation or an unaccepted request from the server.</p>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Scope</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>validation</code></td>
+<td><em>array</em></td>
+<td>client</td>
+<td>Array of element validation error types, in case of client-side error.</td>
+</tr>
+<tr>
+<td><code>response</code></td>
+<td><em>object</em></td>
+<td>server</td>
+<td>Response body sent from the server.</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td><em>number</em></td>
+<td>both</td>
+<td>Response HTTP status or <code>-1</code> if the request never left the client (i.e. connection issues)</td>
+</tr>
+</tbody></table>
 
       </div>
       <div class="dark-box">
