@@ -369,6 +369,9 @@
                     <a href="#get-an-application" class="toc-h2 toc-link" data-title="Get an Application">Get an Application</a>
                   </li>
                   <li>
+                    <a href="#get-an-application-by-key" class="toc-h2 toc-link" data-title="Get an Application by Key">Get an Application by Key</a>
+                  </li>
+                  <li>
                     <a href="#update-application" class="toc-h2 toc-link" data-title="Update Application">Update Application</a>
                   </li>
                   <li>
@@ -1274,30 +1277,21 @@ Dependent permission types are automatically assigned when an application is cre
 <td>The application was not found</td>
 </tr>
 </tbody></table>
-<h2 id='update-application'>Update Application</h2>
+<h2 id='get-an-application-by-key'>Get an Application by Key</h2>
 <blockquote>
-<p>Update Application Request Example:</p>
+<p>Get an Application Request Example:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.basistheory.com/applications/fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.basistheory.com/applications/key"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
-  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
-  <span class="nt">-X</span> <span class="s2">"PUT"</span>
-  <span class="nt">-D</span> <span class="s1">'{
-    "name": "My Example App",
-    "permissions": [
-      "application:read",
-      "application:write"
-    ]
-  }'</span>
 </code></pre></div>
 <blockquote>
-<p>Update Application Response Example:</p>
+<p>Application Response Example:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fe1f9ba4-474e-44b9-b949-110cdba9d662"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"tenant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77cb0024-123e-41a8-8ff8-a3d5a0fa8a08"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My Example App"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"server_to_server"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My Management App"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"management"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"modified_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-01T08:23:14+00:00"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"permissions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -1306,56 +1300,13 @@ Dependent permission types are automatically assigned when an application is cre
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p><span class="http-method put">PUT</span> <code>https://api.basistheory.com/applications/{id}</code></p>
+<p><span class="http-method get">GET</span> <code>https://api.basistheory.com/applications/key</code></p>
 
-<p>Update an application by ID in the tenant.</p>
+<p>Get an application by key in the tenant. Will use the <code>X-API-KEY</code> header to lookup the application.</p>
 <h3 id='permissions-4'>Permissions</h3>
 <p class="scopes">
-  <span class="scope">application:write</span>
+  <span class="scope">application:read</span>
 </p>
-<h3 id='uri-parameters-3'>URI Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Required</th>
-<th>Type</th>
-<th>Default</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>id</code></td>
-<td>true</td>
-<td><em>string</em></td>
-<td><code>null</code></td>
-<td>The ID of the application</td>
-</tr>
-</tbody></table>
-<h3 id='request-schema-2'>Request Schema</h3>
-<table><thead>
-<tr>
-<th>Attribute</th>
-<th>Required</th>
-<th>Type</th>
-<th>Default</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>name</code></td>
-<td>true</td>
-<td><em>string</em></td>
-<td><code>null</code></td>
-<td>The name of the application. Has a maximum length of <code>200</code></td>
-</tr>
-<tr>
-<td><code>permissions</code></td>
-<td>false</td>
-<td><em>array</em></td>
-<td><code>[]</code></td>
-<td><a href="#permission-types">Perimissions</a> for the application</td>
-</tr>
-</tbody></table>
 <h3 id='response-schema-4'>Response Schema</h3>
 <table><thead>
 <tr>
@@ -1409,6 +1360,156 @@ Dependent permission types are automatically assigned when an application is cre
 </thead><tbody>
 <tr>
 <td><code>200</code></td>
+<td>Application successfully retrieved</td>
+</tr>
+<tr>
+<td><code>401</code></td>
+<td>A missing or invalid <code>X-API-KEY</code> was provided</td>
+</tr>
+<tr>
+<td><code>403</code></td>
+<td>The provided <code>X-API-KEY</code> does not have the required permissions</td>
+</tr>
+<tr>
+<td><code>404</code></td>
+<td>The application was not found</td>
+</tr>
+</tbody></table>
+<h2 id='update-application'>Update Application</h2>
+<blockquote>
+<p>Update Application Request Example:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.basistheory.com/applications/fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
+  <span class="nt">-X</span> <span class="s2">"PUT"</span>
+  <span class="nt">-D</span> <span class="s1">'{
+    "name": "My Example App",
+    "permissions": [
+      "application:read",
+      "application:write"
+    ]
+  }'</span>
+</code></pre></div>
+<blockquote>
+<p>Update Application Response Example:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"tenant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77cb0024-123e-41a8-8ff8-a3d5a0fa8a08"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My Example App"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"server_to_server"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"modified_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-01T08:23:14+00:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"permissions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"application:read"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"application:write"</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p><span class="http-method put">PUT</span> <code>https://api.basistheory.com/applications/{id}</code></p>
+
+<p>Update an application by ID in the tenant.</p>
+<h3 id='permissions-5'>Permissions</h3>
+<p class="scopes">
+  <span class="scope">application:write</span>
+</p>
+<h3 id='uri-parameters-3'>URI Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>true</td>
+<td><em>string</em></td>
+<td><code>null</code></td>
+<td>The ID of the application</td>
+</tr>
+</tbody></table>
+<h3 id='request-schema-2'>Request Schema</h3>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Required</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>name</code></td>
+<td>true</td>
+<td><em>string</em></td>
+<td><code>null</code></td>
+<td>The name of the application. Has a maximum length of <code>200</code></td>
+</tr>
+<tr>
+<td><code>permissions</code></td>
+<td>false</td>
+<td><em>array</em></td>
+<td><code>[]</code></td>
+<td><a href="#permission-types">Perimissions</a> for the application</td>
+</tr>
+</tbody></table>
+<h3 id='response-schema-5'>Response Schema</h3>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td><em>string</em></td>
+<td>Unique identifier of the application which can be used to <a href="#get-an-application">get an application</a></td>
+</tr>
+<tr>
+<td><code>tenant_id</code></td>
+<td><em>string</em></td>
+<td>The tenant ID which owns the application</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><em>string</em></td>
+<td>The name of the application</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td><em>string</em></td>
+<td><a href="#application-types">Application type</a> of the application</td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td><em>string</em></td>
+<td>Created date of the application in ISO 8601 format</td>
+</tr>
+<tr>
+<td><code>modified_at</code></td>
+<td><em>string</em></td>
+<td>Last modified date of the application in ISO 8601 format</td>
+</tr>
+<tr>
+<td><code>permissions</code></td>
+<td><em>array</em></td>
+<td>List of <a href="#permission-types">permissions</a> for the application</td>
+</tr>
+</tbody></table>
+<h3 id='response-messages-5'>Response Messages</h3>
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>200</code></td>
 <td>Application successfully updated</td>
 </tr>
 <tr>
@@ -1452,7 +1553,7 @@ Dependent permission types are automatically assigned when an application is cre
 <aside class="warning">
 WARNING - Regenerating the API key for an application will immediately invalidate the previous API key associated with the application.
 </aside>
-<h3 id='permissions-5'>Permissions</h3>
+<h3 id='permissions-6'>Permissions</h3>
 <p class="scopes">
   <span class="scope">application:write</span>
 </p>
@@ -1474,7 +1575,7 @@ WARNING - Regenerating the API key for an application will immediately invalidat
 <td>The ID of the application</td>
 </tr>
 </tbody></table>
-<h3 id='response-schema-5'>Response Schema</h3>
+<h3 id='response-schema-6'>Response Schema</h3>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -1498,7 +1599,7 @@ WARNING - Regenerating the API key for an application will immediately invalidat
 <td>Last modified date of the application in ISO 8601 format</td>
 </tr>
 </tbody></table>
-<h3 id='response-messages-5'>Response Messages</h3>
+<h3 id='response-messages-6'>Response Messages</h3>
 <table><thead>
 <tr>
 <th>Code</th>
@@ -1541,7 +1642,7 @@ WARNING - Regenerating the API key for an application will immediately invalidat
 <aside class="warning">
 WARNING - The data associated with a deleted application will be removed forever. The reference will still exists for audit purposes
 </aside>
-<h3 id='permissions-6'>Permissions</h3>
+<h3 id='permissions-7'>Permissions</h3>
 <p><code>application:write</code></p>
 <h3 id='uri-parameters-5'>URI Parameters</h3>
 <table><thead>
@@ -1561,7 +1662,7 @@ WARNING - The data associated with a deleted application will be removed forever
 <td>The ID of the application</td>
 </tr>
 </tbody></table>
-<h3 id='response-messages-6'>Response Messages</h3>
+<h3 id='response-messages-7'>Response Messages</h3>
 <table><thead>
 <tr>
 <th>Code</th>
