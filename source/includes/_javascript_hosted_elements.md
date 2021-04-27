@@ -45,10 +45,10 @@ await BasisTheory.init("test_1234567890", { elements: true });
 ```
 > Make sure to replace `test_1234567890` with your API key.
 
-You don't have to install `Hosted Elements` as a separated module or include additional script tags besides `BasisTheory.js`. It will dynamically load them from `js.basistheory.com` and keep PCI compliance. The only thing you have to worry about is adding `elements: true` in `BasisTheory.init` options parameter.
+You don't have to install `Hosted Elements` as a separated module or include additional script tags besides `BasisTheory.js`. It will dynamically load them from `js.basistheory.com`, which enables us to keep the highest compliance standards (e.g. PCI compliance). The only thing you have to worry about is adding `elements: true` in `BasisTheory.init` options parameter.
 
 <aside class="warning">
-  Hosted Elements are meant to be used at browser environments only. If you installed <code>BasisTheory.js</code> as a module, make sure the instance that loads elements runs at client-side.
+  Hosted Elements are meant to be used on browser environments only. If you installed <code>BasisTheory.js</code> as a module, make sure the instance that loads elements runs on the browser-side code.
 </aside>
 
 See [Basis Theory Initialize](#initialize) for more details.
@@ -166,7 +166,7 @@ Parameter | Required | Type       | Description
 
 Attribute  | Type       | Description
 ---------- | ---------- | -----------
-`complete` | *'change'* | If the element value is well-formed and might be submitted.
+`complete` | *'change'* | If the element value is well-formed and is ready to be submitted.
 `errors`   | *array*    | Array of element validation error types
 
 # Store Credit Card
