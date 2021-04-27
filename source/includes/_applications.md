@@ -238,6 +238,64 @@ Code | Description
 `404` | The application was not found
 
 
+## Get an Application by Key
+
+> Get an Application Request Example:
+
+```shell
+curl "api.basistheory.com/applications/key" \
+  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
+```
+
+> Application Response Example:
+
+```json
+{
+  "id": "fe1f9ba4-474e-44b9-b949-110cdba9d662",
+  "tenant_id": "77cb0024-123e-41a8-8ff8-a3d5a0fa8a08",
+  "name": "My Management App",
+  "type": "management",
+  "created_at": "2020-09-15T15:53:00+00:00",
+  "modified_at": "2021-03-01T08:23:14+00:00",
+  "permissions": [
+    "application:read",
+    "application:write"
+  ]
+}
+```
+
+<span class="http-method get">GET</span> `https://api.basistheory.com/applications/key`
+
+Get an application by key in the tenant. Will use the `X-API-KEY` header to lookup the application.
+
+### Permissions
+
+<p class="scopes">
+  <span class="scope">application:read</span>
+</p>
+
+### Response Schema
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`id` | *string* | Unique identifier of the application which can be used to [get an application](#get-an-application)
+`tenant_id` | *string* | The tenant ID which owns the application
+`name` | *string* | The name of the application
+`type` | *string* | [Application type](#application-types) of the application
+`created_at` | *string* | Created date of the application in ISO 8601 format
+`modified_at` | *string* | Last modified date of the application in ISO 8601 format
+`permissions` | *array* | List of [permissions](#permission-types) for the application
+
+### Response Messages
+
+Code | Description
+---- | -----------
+`200` | Application successfully retrieved
+`401` | A missing or invalid `X-API-KEY` was provided
+`403` | The provided `X-API-KEY` does not have the required permissions
+`404` | The application was not found
+
+
 ## Update Application
 
 > Update Application Request Example:
