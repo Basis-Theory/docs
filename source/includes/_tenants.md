@@ -58,7 +58,7 @@ Code | Description
 > Update Tenant Request Example:
 
 ```shell
-curl "api.basistheory.com/tenants" \
+curl "api.basistheory.com/tenants/self" \
   -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
   -H "Content-Type: application/json"
   -X "PUT"
@@ -79,7 +79,7 @@ curl "api.basistheory.com/tenants" \
 }
 ```
 
-<span class="http-method put">PUT</span> `https://api.basistheory.com/tenants`
+<span class="http-method put">PUT</span> `https://api.basistheory.com/tenants/self`
 
 Update the tenant associated with the provided `X-API-KEY`.
 
@@ -121,12 +121,12 @@ Code | Description
 > Delete Tenant Request Example:
 
 ```shell
-curl "api.basistheory.com/tenants" \
+curl "api.basistheory.com/tenants/self" \
   -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
   -X "DELETE"
 ```
 
-<span class="http-method delete">DELETE</span> `https://api.basistheory.com/tenants`
+<span class="http-method delete">DELETE</span> `https://api.basistheory.com/tenants/self`
 
 Delete the tenant associated with the provided `X-API-KEY`.
 
