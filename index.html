@@ -280,7 +280,7 @@
   color: #859900;
 }
     </style>
-    <link href="stylesheets/screen-7c663af4.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/screen-a79e3c67.css" rel="stylesheet" media="screen" />
     <link href="stylesheets/print-88489c93.css" rel="stylesheet" media="print" />
       <script src="javascripts/all-05bf6e79.js"></script>
 
@@ -520,7 +520,29 @@
 
 <p>We have example API shell commands and responses! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
 <h1 id='getting-started'>Getting Started</h1>
-<p>Getting started section here</p>
+<p>To get started using Basis Theory to tokenize any data, follow these steps:</p>
+
+<ol>
+<li>Create an <a href="#applications">Application</a> and obtain an <a href="#authentication">API Key</a>
+
+<ol>
+<li>Log in or create an account through the <a href="https://portal.basistheory.com/" target="_blank">Basis Theory Portal</a></li>
+<li>Navigate to the <a href="https://portal.basistheory.com/applications" target="_blank">Applications</a> page and click <code>Create Application</code></li>
+<li>Follow the on-screen prompts to name the application and choose the appropriate <a href="#application-types">Application Type</a> based on your use-case</li>
+<li>Copy the API Key generated and acknowledge the prompt</li>
+</ol></li>
+<li>View the newly created application&#39;s details (Portal will redirect to this page after successful application creation)</li>
+<li>Assign the necessary permissions to the created Application
+
+<ul>
+<li>More information about Permission Types can be found <a href="#permission-types">here</a></li>
+</ul></li>
+</ol>
+
+<aside class="notice">
+If a Basis Theory API responds with <code>403 FORBIDDEN</code>, it is likely due to the application lacking the appropriate permissions for that endpoint.
+Inspect the <code>WWW-Authenticate</code> response header for more information about the necessary permissions.
+</aside>
 <h1 id='authentication'>Authentication</h1>
 <blockquote>
 <p>Authentication Example:</p>
@@ -839,7 +861,7 @@ You must replace <code>key_N88mVGsp3sCXkykyN2EFED</code> with your API key suppl
 </tbody></table>
 
 <aside class="notice">
-Dependent permission types are automatically assigned when an application is created or updated. For example, if an application is created with `card:read`, then the permission of `token:read` will automatically be assigned.
+Dependent permission types are automatically assigned when an application is created or updated. For example, if an application is created with <code>card:read</code>, then the permission of <code>token:read</code> will automatically be assigned.
 </aside>
 <h3 id='response-messages'>Response Messages</h3>
 <table><thead>
