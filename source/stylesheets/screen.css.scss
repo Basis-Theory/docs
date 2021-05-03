@@ -368,7 +368,7 @@ html, body {
 
   &>h1, &>h2, &>h3, &>h4, &>h5, &>h6, &>p, &>table, &>ul, &>ol, &>aside, &>dl {
     margin-right: $examples-width;
-    padding: $main-padding;
+    padding: 0px $main-padding;
     box-sizing: border-box;
     display: block;
 
@@ -376,7 +376,7 @@ html, body {
   }
 
   &>ul, &>ol {
-    padding-left: $main-padding + 15px;
+    padding-left: $main-padding + 24px;
   }
 
   // the div is the tocify hidden div for placeholding stuff
