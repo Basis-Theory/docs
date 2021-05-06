@@ -354,6 +354,20 @@
               </ul>
           </li>
           <li>
+            <a href="#tenants" class="toc-h1 toc-link" data-title="Tenants">Tenants</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-a-tenant" class="toc-h2 toc-link" data-title="Get a Tenant">Get a Tenant</a>
+                  </li>
+                  <li>
+                    <a href="#update-tenant" class="toc-h2 toc-link" data-title="Update Tenant">Update Tenant</a>
+                  </li>
+                  <li>
+                    <a href="#delete-tenant" class="toc-h2 toc-link" data-title="Delete Tenant">Delete Tenant</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#applications" class="toc-h1 toc-link" data-title="Applications">Applications</a>
               <ul class="toc-list-h2">
                   <li>
@@ -877,6 +891,238 @@ Dependent permission types are automatically assigned when an application is cre
 <tr>
 <td><code>401</code></td>
 <td>A missing or invalid <code>X-API-KEY</code> was provided</td>
+</tr>
+</tbody></table>
+<h1 id='tenants'>Tenants</h1>
+<p>Tenants provide a way to logically group your applications and tokens. Common use cases for tenants may be per environment such as development, QA, and production or to isolate business domains from each other. Tenant data is isolated from each other unless explicitely shared.</p>
+<h2 id='get-a-tenant'>Get a Tenant</h2>
+<blockquote>
+<p>Get a Tenant Request Example:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.basistheory.com/tenants/self"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
+</code></pre></div>
+<blockquote>
+<p>Tenant Response Example:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f88da999-b124-4a14-acde-cbc121444f14"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"owner_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"97cec6e8-a143-4fb4-9ab0-cf7e49242d21"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My Tenant"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"modified_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-01T08:23:14+00:00"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p><span class="http-method get">GET</span> <code>https://api.basistheory.com/tenants/self</code></p>
+
+<p>Retrieves the tenant associated with the provided <code>X-API-KEY</code>.</p>
+<h3 id='permissions'>Permissions</h3>
+<p class="scopes">
+  <span class="scope">tenant:read</span>
+</p>
+<h3 id='response-schema'>Response Schema</h3>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td><em>string</em></td>
+<td>Unique identifier of the tenant</td>
+</tr>
+<tr>
+<td><code>owner_id</code></td>
+<td><em>string</em></td>
+<td>The user ID which owns the tenant</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><em>string</em></td>
+<td>The name of the tenant</td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td><em>string</em></td>
+<td>Created date of the application in ISO 8601 format</td>
+</tr>
+<tr>
+<td><code>modified_at</code></td>
+<td><em>string</em></td>
+<td>Last modified date of the application in ISO 8601 format</td>
+</tr>
+</tbody></table>
+<h3 id='response-messages'>Response Messages</h3>
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>200</code></td>
+<td>Tenant successfully retrieved</td>
+</tr>
+<tr>
+<td><code>401</code></td>
+<td>A missing or invalid <code>X-API-KEY</code> was provided</td>
+</tr>
+<tr>
+<td><code>403</code></td>
+<td>The provided <code>X-API-KEY</code> does not have the required permissions</td>
+</tr>
+<tr>
+<td><code>404</code></td>
+<td>The tenant was not found</td>
+</tr>
+</tbody></table>
+<h2 id='update-tenant'>Update Tenant</h2>
+<blockquote>
+<p>Update Tenant Request Example:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.basistheory.com/tenants/self"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
+  <span class="nt">-X</span> <span class="s2">"PUT"</span>
+  <span class="nt">-D</span> <span class="s1">'{
+    "name": "My Example Tenant"
+  }'</span>
+</code></pre></div>
+<blockquote>
+<p>Update Tenant Response Example:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f88da999-b124-4a14-acde-cbc121444f14"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"owner_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"97cec6e8-a143-4fb4-9ab0-cf7e49242d21"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My Example Tenant"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"modified_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-01T08:23:14+00:00"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p><span class="http-method put">PUT</span> <code>https://api.basistheory.com/tenants/self</code></p>
+
+<p>Update the tenant associated with the provided <code>X-API-KEY</code>.</p>
+<h3 id='permissions-2'>Permissions</h3>
+<p class="scopes">
+  <span class="scope">application:update</span>
+</p>
+<h3 id='request-schema'>Request Schema</h3>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Required</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>name</code></td>
+<td>true</td>
+<td><em>string</em></td>
+<td><code>null</code></td>
+<td>The name of the tenant. Has a maximum length of <code>200</code></td>
+</tr>
+</tbody></table>
+<h3 id='response-schema-2'>Response Schema</h3>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td><em>string</em></td>
+<td>Unique identifier of the tenant</td>
+</tr>
+<tr>
+<td><code>owner_id</code></td>
+<td><em>string</em></td>
+<td>The user ID which owns the tenant</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><em>string</em></td>
+<td>The name of the tenant</td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td><em>string</em></td>
+<td>Created date of the application in ISO 8601 format</td>
+</tr>
+<tr>
+<td><code>modified_at</code></td>
+<td><em>string</em></td>
+<td>Last modified date of the application in ISO 8601 format</td>
+</tr>
+</tbody></table>
+<h3 id='response-messages-2'>Response Messages</h3>
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>200</code></td>
+<td>Tenant successfully updated</td>
+</tr>
+<tr>
+<td><code>400</code></td>
+<td>Invalid request body. See <a href="#errors">Errors</a> response for details</td>
+</tr>
+<tr>
+<td><code>401</code></td>
+<td>A missing or invalid <code>X-API-KEY</code> was provided</td>
+</tr>
+<tr>
+<td><code>403</code></td>
+<td>The provided <code>X-API-KEY</code> does not have the required permissions</td>
+</tr>
+<tr>
+<td><code>404</code></td>
+<td>The tenant was not found</td>
+</tr>
+</tbody></table>
+<h2 id='delete-tenant'>Delete Tenant</h2>
+<blockquote>
+<p>Delete Tenant Request Example:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.basistheory.com/tenants/self"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
+  <span class="nt">-X</span> <span class="s2">"DELETE"</span>
+</code></pre></div>
+<p><span class="http-method delete">DELETE</span> <code>https://api.basistheory.com/tenants/self</code></p>
+
+<p>Delete the tenant associated with the provided <code>X-API-KEY</code>.</p>
+<h3 id='permissions-3'>Permissions</h3>
+<p><code>tenant:write</code></p>
+<h3 id='response-messages-3'>Response Messages</h3>
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>204</code></td>
+<td>Tenant successfully deleted</td>
+</tr>
+<tr>
+<td><code>401</code></td>
+<td>A missing or invalid <code>X-API-KEY</code> was provided</td>
+</tr>
+<tr>
+<td><code>403</code></td>
+<td>The provided <code>X-API-KEY</code> does not have the required permissions</td>
+</tr>
+<tr>
+<td><code>404</code></td>
+<td>The tenant was not found</td>
 </tr>
 </tbody></table>
 <h1 id='applications'>Applications</h1>
@@ -1660,10 +1906,6 @@ WARNING - Regenerating the API key for an application will immediately invalidat
 <p><span class="http-method delete">DELETE</span> <code>https://api.basistheory.com/applications/{id}</code></p>
 
 <p>Delete an application by ID in the tenant.</p>
-
-<aside class="warning">
-WARNING - The data associated with a deleted application will be removed forever. The reference will still exists for audit purposes
-</aside>
 <h3 id='permissions-7'>Permissions</h3>
 <p><code>application:write</code></p>
 <h3 id='uri-parameters-5'>URI Parameters</h3>
