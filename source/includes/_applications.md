@@ -450,10 +450,6 @@ curl "api.basistheory.com/applications/fb124bba-f90d-45f0-9a59-5edca27b3b4a" \
 
 Delete an application by ID in the tenant.
 
-<aside class="warning">
-WARNING - The data associated with a deleted application will be removed forever. The reference will still exists for audit purposes
-</aside>
-
 ### Permissions
 
 `application:write`

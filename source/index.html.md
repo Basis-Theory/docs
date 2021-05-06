@@ -19,6 +19,7 @@ intro_includes:
 
 api_includes:
   - permissions
+  - tenants
   - applications
   - tokens
   - atomic_cards
