@@ -130,10 +130,6 @@ curl "api.basistheory.com/tenants/self" \
 
 Delete the tenant associated with the provided `X-API-KEY`.
 
-<aside class="warning">
-WARNING - The data associated with a deleted tenant will be removed forever. The reference will still exists for audit purposes
-</aside>
-
 ### Permissions
 
 `tenant:write`
