@@ -436,6 +436,26 @@
                   </li>
               </ul>
           </li>
+          <li>
+            <a href="#atomic-banks" class="toc-h1 toc-link" data-title="Atomic Banks">Atomic Banks</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#create-atomic-bank" class="toc-h2 toc-link" data-title="Create Atomic Bank">Create Atomic Bank</a>
+                  </li>
+                  <li>
+                    <a href="#list-atomic-banks" class="toc-h2 toc-link" data-title="List Atomic Banks">List Atomic Banks</a>
+                  </li>
+                  <li>
+                    <a href="#get-an-atomic-bank" class="toc-h2 toc-link" data-title="Get an Atomic Bank">Get an Atomic Bank</a>
+                  </li>
+                  <li>
+                    <a href="#delete-atomic-bank" class="toc-h2 toc-link" data-title="Delete Atomic Bank">Delete Atomic Bank</a>
+                  </li>
+                  <li>
+                    <a href="#decrypt-atomic-bank" class="toc-h2 toc-link" data-title="Decrypt Atomic Bank">Decrypt Atomic Bank</a>
+                  </li>
+              </ul>
+          </li>
       </ul>
 
       <h1 class="headline">Modules</h1>
@@ -1968,6 +1988,11 @@ WARNING - Regenerating the API key for an application will immediately invalidat
 <td><code>card</code></td>
 <td><a href="#atomic-cards">Atomic card</a> token type</td>
 </tr>
+<tr>
+<td>Bank</td>
+<td><code>bank</code></td>
+<td><a href="#atomic-banks">Atomic bank</a> token type</td>
+</tr>
 </tbody></table>
 <h2 id='create-token'>Create Token</h2>
 <blockquote>
@@ -2645,38 +2670,6 @@ WARNING - The data associated with a deleted token will be removed forever. The 
 <td>Four-digit number representing the card&#39;s expiration year</td>
 </tr>
 </tbody></table>
-<h3 id='card-object-schema-2'>Card Object Schema</h3>
-<table><thead>
-<tr>
-<th>Attribute</th>
-<th>Required</th>
-<th>Type</th>
-<th>Default</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>number</code></td>
-<td>true</td>
-<td><em>string</em></td>
-<td><code>null</code></td>
-<td>The card number without any separators</td>
-</tr>
-<tr>
-<td><code>expiration_month</code></td>
-<td>true</td>
-<td><em>integer</em></td>
-<td><code>null</code></td>
-<td>Two-digit number representing the card&#39;s expiration month</td>
-</tr>
-<tr>
-<td><code>expiration_year</code></td>
-<td>true</td>
-<td><em>integer</em></td>
-<td><code>null</code></td>
-<td>Four-digit number representing the card&#39;s expiration year</td>
-</tr>
-</tbody></table>
 <h3 id='billing-details-object-schema'>Billing Details Object Schema</h3>
 <table><thead>
 <tr>
@@ -2780,7 +2773,7 @@ WARNING - The data associated with a deleted token will be removed forever. The 
 <tr>
 <td><code>id</code></td>
 <td><em>string</em></td>
-<td>Unique identifier of the card which can be used to <a href="#get-an-atomic-card">get an atomic card</a></td>
+<td>Unique identifier of the token which can be used to <a href="#get-an-atomic-card">get an atomic card</a></td>
 </tr>
 <tr>
 <td><code>tenant_id</code></td>
@@ -2883,7 +2876,7 @@ WARNING - The data associated with a deleted token will be removed forever. The 
 <tr>
 <td><code>id</code></td>
 <td><em>string</em></td>
-<td>Unique identifier of the card which can be used to <a href="#get-an-atomic-card">get an atomic card</a></td>
+<td>Unique identifier of the token which can be used to <a href="#get-an-atomic-card">get an atomic card</a></td>
 </tr>
 <tr>
 <td><code>tenant_id</code></td>
@@ -2991,7 +2984,7 @@ WARNING - The data associated with a deleted token will be removed forever. The 
 <tr>
 <td><code>id</code></td>
 <td><em>string</em></td>
-<td>Unique identifier of the card which can be used to <a href="#get-an-atomic-card">get an atomic card</a></td>
+<td>Unique identifier of the token which can be used to <a href="#get-an-atomic-card">get an atomic card</a></td>
 </tr>
 <tr>
 <td><code>tenant_id</code></td>
@@ -3028,7 +3021,7 @@ WARNING - The data associated with a deleted token will be removed forever. The 
 </thead><tbody>
 <tr>
 <td><code>200</code></td>
-<td>Atomic cards successfully retrieved</td>
+<td>Atomic card successfully retrieved</td>
 </tr>
 <tr>
 <td><code>401</code></td>
@@ -3053,7 +3046,7 @@ WARNING - The data associated with a deleted token will be removed forever. The 
 </code></pre></div>
 <p><span class="http-method delete">DELETE</span> <code>https://api.basistheory.com/atomic/cards/{id}</code></p>
 
-<p>Delete a atomic card by ID in the tenant.</p>
+<p>Delete an atomic card by ID in the tenant.</p>
 
 <aside class="warning">
 WARNING - The data associated with a deleted atomic card will be removed forever. The reference will still exists for audit purposes
@@ -3173,6 +3166,533 @@ WARNING - while testing our system, these card numbers will be the only accepted
 <tr>
 <td>620000000000000</td>
 <td>Test card</td>
+</tr>
+</tbody></table>
+<h1 id='atomic-banks'>Atomic Banks</h1><h2 id='create-atomic-bank'>Create Atomic Bank</h2>
+<blockquote>
+<p>Create Atomic Bank Request Example:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.basistheory.com/atomic/banks"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
+  <span class="nt">-X</span> <span class="s2">"POST"</span>
+  <span class="nt">-D</span> <span class="s1">'{
+      "bank": {
+        "routing_number": "021000021",
+        "account_number": "1234567890"
+      }
+    }
+  }'</span>
+</code></pre></div>
+<blockquote>
+<p>Create Atomic Bank Response Example:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1485efb9-6b1f-4248-a5d1-cf9b3907164c"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"tenant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77cb0024-123e-41a8-8ff8-a3d5a0fa8a08"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bank"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"bank"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"routing_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"021000021"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"account_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XXXXXX7890"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p><span class="http-method post">POST</span> <code>https://api.basistheory.com/atomic/banks</code></p>
+
+<p>Create a new atomic bank for the tenant.</p>
+<h3 id='permissions'>Permissions</h3>
+<p class="scopes">
+  <span class="scope">bank:create</span>
+  <span class="scope">token:write</span>
+</p>
+<h3 id='request-schema'>Request Schema</h3>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Required</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>bank</code></td>
+<td>true</td>
+<td><em>bank</em></td>
+<td><code>null</code></td>
+<td><a href="#bank-object-schema">Bank object</a></td>
+</tr>
+</tbody></table>
+<h3 id='bank-object-schema'>Bank Object Schema</h3>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Required</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>routing_number</code></td>
+<td>true</td>
+<td><em>string</em></td>
+<td><code>null</code></td>
+<td>Nine-digit ABA routing number</td>
+</tr>
+<tr>
+<td><code>account_number</code></td>
+<td>true</td>
+<td><em>string</em></td>
+<td><code>null</code></td>
+<td>Account number up to seventeen-digits</td>
+</tr>
+</tbody></table>
+<h3 id='response-schema'>Response Schema</h3>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td><em>string</em></td>
+<td>Unique identifier of the token which can be used to <a href="#get-an-atomic-bank">get an atomic bank</a></td>
+</tr>
+<tr>
+<td><code>tenant_id</code></td>
+<td><em>string</em></td>
+<td>The tenant ID which owns the bank</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td><em>string</em></td>
+<td><code>Bank</code> <a href="#token-types">token type</a></td>
+</tr>
+<tr>
+<td><code>created_by</code></td>
+<td><em>string</em></td>
+<td>The <a href="#applications">application</a> ID which created the atomic bank</td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td><em>string</em></td>
+<td>Created date of the application in ISO 8601 format</td>
+</tr>
+<tr>
+<td><code>bank</code></td>
+<td><em>bank</em></td>
+<td>Masked <a href="#bank-object-schema">bank object</a></td>
+</tr>
+</tbody></table>
+<h3 id='response-messages'>Response Messages</h3>
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>201</code></td>
+<td>Atomic bank successfully created</td>
+</tr>
+<tr>
+<td><code>400</code></td>
+<td>Invalid request body. See <a href="#errors">Errors</a> response for details</td>
+</tr>
+<tr>
+<td><code>401</code></td>
+<td>A missing or invalid <code>X-API-KEY</code> was provided</td>
+</tr>
+<tr>
+<td><code>403</code></td>
+<td>The provided <code>X-API-KEY</code> does not have the required permissions</td>
+</tr>
+</tbody></table>
+<h2 id='list-atomic-banks'>List Atomic Banks</h2>
+<blockquote>
+<p>List Atomic Banks Request Example:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.basistheory.com/atomic/banks"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
+</code></pre></div>
+<blockquote>
+<p>Atomic Banks Response Example:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"pagination"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">}</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1485efb9-6b1f-4248-a5d1-cf9b3907164c"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"tenant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77cb0024-123e-41a8-8ff8-a3d5a0fa8a08"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bank"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"bank"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"routing_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"021000021"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"account_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XXXXXX7890"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="err">...</span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p><span class="http-method get">GET</span> <code>https://api.basistheory.com/atomic/banks</code></p>
+
+<p>Get a list of atomic banks for the tenant.</p>
+<h3 id='permissions-2'>Permissions</h3>
+<p class="scopes">
+  <span class="scope">bank:read</span>
+  <span class="scope">token:read</span>
+</p>
+<h3 id='response-schema-2'>Response Schema</h3>
+<p>Returns the <a href="#pagination">Pagination</a> schema. The <code>data</code> attribute in the response contains an array of tokens with the following schema:</p>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td><em>string</em></td>
+<td>Unique identifier of the token which can be used to <a href="#get-an-atomic-bank">get an atomic bank</a></td>
+</tr>
+<tr>
+<td><code>tenant_id</code></td>
+<td><em>string</em></td>
+<td>The tenant ID which owns the bank</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td><em>string</em></td>
+<td><code>Bank</code> <a href="#token-types">token type</a></td>
+</tr>
+<tr>
+<td><code>created_by</code></td>
+<td><em>string</em></td>
+<td>The <a href="#applications">application</a> ID which created the atomic bank</td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td><em>string</em></td>
+<td>Created date of the application in ISO 8601 format</td>
+</tr>
+<tr>
+<td><code>bank</code></td>
+<td><em>bank</em></td>
+<td>Masked <a href="#bank-object-schema">bank object</a></td>
+</tr>
+</tbody></table>
+<h3 id='response-messages-2'>Response Messages</h3>
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>200</code></td>
+<td>Atomic banks successfully retrieved</td>
+</tr>
+<tr>
+<td><code>401</code></td>
+<td>A missing or invalid <code>X-API-KEY</code> was provided</td>
+</tr>
+<tr>
+<td><code>403</code></td>
+<td>The provided <code>X-API-KEY</code> does not have the required permissions</td>
+</tr>
+</tbody></table>
+<h2 id='get-an-atomic-bank'>Get an Atomic Bank</h2>
+<blockquote>
+<p>Get Atomic Bank Request Example:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.basistheory.com/atomic/banks/1485efb9-6b1f-4248-a5d1-cf9b3907164c"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
+</code></pre></div>
+<blockquote>
+<p>Atomic Bank Response Example:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1485efb9-6b1f-4248-a5d1-cf9b3907164c"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"tenant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77cb0024-123e-41a8-8ff8-a3d5a0fa8a08"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bank"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"bank"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"routing_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"021000021"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"account_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XXXXXX7890"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p><span class="http-method get">GET</span> <code>https://api.basistheory.com/atomic/banks/{id}</code></p>
+
+<p>Get an atomic bank by ID in the tenant.</p>
+<h3 id='permissions-3'>Permissions</h3>
+<p class="scopes">
+  <span class="scope">bank:read</span>
+  <span class="scope">token:read</span>
+</p>
+<h3 id='uri-parameters'>URI Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>true</td>
+<td><em>string</em></td>
+<td><code>null</code></td>
+<td>The ID of the atomic bank</td>
+</tr>
+</tbody></table>
+<h3 id='response-schema-3'>Response Schema</h3>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td><em>string</em></td>
+<td>Unique identifier of the token which can be used to <a href="#get-an-atomic-bank">get an atomic bank</a></td>
+</tr>
+<tr>
+<td><code>tenant_id</code></td>
+<td><em>string</em></td>
+<td>The tenant ID which owns the bank</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td><em>string</em></td>
+<td><code>Bank</code> <a href="#token-types">token type</a></td>
+</tr>
+<tr>
+<td><code>created_by</code></td>
+<td><em>string</em></td>
+<td>The <a href="#applications">application</a> ID which created the atomic bank</td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td><em>string</em></td>
+<td>Created date of the application in ISO 8601 format</td>
+</tr>
+<tr>
+<td><code>bank</code></td>
+<td><em>bank</em></td>
+<td>Masked <a href="#bank-object-schema">bank object</a></td>
+</tr>
+</tbody></table>
+<h3 id='response-messages-3'>Response Messages</h3>
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>200</code></td>
+<td>Atomic bank successfully retrieved</td>
+</tr>
+<tr>
+<td><code>401</code></td>
+<td>A missing or invalid <code>X-API-KEY</code> was provided</td>
+</tr>
+<tr>
+<td><code>403</code></td>
+<td>The provided <code>X-API-KEY</code> does not have the required permissions</td>
+</tr>
+<tr>
+<td><code>404</code></td>
+<td>The atomic bank was not found</td>
+</tr>
+</tbody></table>
+<h2 id='delete-atomic-bank'>Delete Atomic Bank</h2>
+<blockquote>
+<p>Delete Token Request Example:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.basistheory.com/atomic/banks/1485efb9-6b1f-4248-a5d1-cf9b3907164c"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
+  <span class="nt">-X</span> <span class="s2">"DELETE"</span>
+</code></pre></div>
+<p><span class="http-method delete">DELETE</span> <code>https://api.basistheory.com/atomic/banks/{id}</code></p>
+
+<p>Delete an atomic bank by ID in the tenant.</p>
+
+<aside class="warning">
+WARNING - The data associated with a deleted atomic bank will be removed forever. The reference will still exists for audit purposes
+</aside>
+<h3 id='permissions-4'>Permissions</h3>
+<p class="scopes">
+  <span class="scope">bank:delete</span>
+  <span class="scope">token:write</span>
+</p>
+<h3 id='uri-parameters-2'>URI Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>true</td>
+<td><em>string</em></td>
+<td><code>null</code></td>
+<td>The ID of the atomic bank</td>
+</tr>
+</tbody></table>
+<h3 id='response-messages-4'>Response Messages</h3>
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>204</code></td>
+<td>Atomic bank successfully deleted</td>
+</tr>
+<tr>
+<td><code>401</code></td>
+<td>A missing or invalid <code>X-API-KEY</code> was provided</td>
+</tr>
+<tr>
+<td><code>403</code></td>
+<td>The provided <code>X-API-KEY</code> does not have the required permissions</td>
+</tr>
+<tr>
+<td><code>404</code></td>
+<td>The atomic bank was not found</td>
+</tr>
+</tbody></table>
+<h2 id='decrypt-atomic-bank'>Decrypt Atomic Bank</h2>
+<blockquote>
+<p>Decrypt Token Request Example:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.basistheory.com/atomic/banks/1485efb9-6b1f-4248-a5d1-cf9b3907164c/decrypt"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
+</code></pre></div>
+<blockquote>
+<p>Decrypt Atomic Bank Response Example:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1485efb9-6b1f-4248-a5d1-cf9b3907164c"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"tenant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77cb0024-123e-41a8-8ff8-a3d5a0fa8a08"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bank"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"bank"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"routing_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"021000021"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"account_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567890"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p><span class="http-method get">GET</span> <code>https://api.basistheory.com/atomic/banks/{id}/decrypt</code></p>
+
+<p>Decrypt an atomic bank by ID in the tenant.</p>
+<h3 id='permissions-5'>Permissions</h3>
+<p class="scopes">
+  <span class="scope">bank:decrypt</span>
+  <span class="scope">token:read</span>
+</p>
+<h3 id='uri-parameters-3'>URI Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>true</td>
+<td><em>string</em></td>
+<td><code>null</code></td>
+<td>The ID of the atomic bank</td>
+</tr>
+</tbody></table>
+<h3 id='response-schema-4'>Response Schema</h3>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td><em>string</em></td>
+<td>Unique identifier of the token which can be used to <a href="#get-an-atomic-bank">get an atomic bank</a></td>
+</tr>
+<tr>
+<td><code>tenant_id</code></td>
+<td><em>string</em></td>
+<td>The tenant ID which owns the bank</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td><em>string</em></td>
+<td><code>Bank</code> <a href="#token-types">token type</a></td>
+</tr>
+<tr>
+<td><code>created_by</code></td>
+<td><em>string</em></td>
+<td>The <a href="#applications">application</a> ID which created the atomic bank</td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td><em>string</em></td>
+<td>Created date of the application in ISO 8601 format</td>
+</tr>
+<tr>
+<td><code>bank</code></td>
+<td><em>bank</em></td>
+<td>Masked <a href="#bank-object-schema">bank object</a></td>
+</tr>
+</tbody></table>
+<h3 id='response-messages-5'>Response Messages</h3>
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>200</code></td>
+<td>Atomic bank successfully decrypted</td>
+</tr>
+<tr>
+<td><code>401</code></td>
+<td>A missing or invalid <code>X-API-KEY</code> was provided</td>
+</tr>
+<tr>
+<td><code>403</code></td>
+<td>The provided <code>X-API-KEY</code> does not have the required permissions</td>
+</tr>
+<tr>
+<td><code>404</code></td>
+<td>The atomic bank was not found</td>
 </tr>
 </tbody></table>
 
