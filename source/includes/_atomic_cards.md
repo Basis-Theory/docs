@@ -75,14 +75,6 @@ Attribute | Required | Type | Default | Description
 `expiration_month` | true | *integer* | `null` | Two-digit number representing the card's expiration month
 `expiration_year` | true | *integer* | `null` | Four-digit number representing the card's expiration year
 
-### Card Object Schema
-
-Attribute | Required | Type | Default | Description
---------- | -------- | ---- | ------- | -----------
-`number` | true | *string* | `null` | The card number without any separators
-`expiration_month` | true | *integer* | `null` | Two-digit number representing the card's expiration month
-`expiration_year` | true | *integer* | `null` | Four-digit number representing the card's expiration year
-
 ### Billing Details Object Schema
 
 Attribute | Required | Type | Default | Description
@@ -107,7 +99,7 @@ Attribute | Required | Type | Default | Description
 
 Attribute | Type | Description
 --------- | ---- | -----------
-`id` | *string* | Unique identifier of the card which can be used to [get an atomic card](#get-an-atomic-card)
+`id` | *string* | Unique identifier of the token which can be used to [get an atomic card](#get-an-atomic-card)
 `tenant_id` | *string* | The tenant ID which owns the card
 `type` | *string* | `Card` [token type](#token-types)
 `created_by` | *string* | The [application](#applications) ID which created the atomic card
@@ -174,7 +166,7 @@ Returns the [Pagination](#pagination) schema. The `data` attribute in the respon
 
 Attribute | Type | Description
 --------- | ---- | -----------
-`id` | *string* | Unique identifier of the card which can be used to [get an atomic card](#get-an-atomic-card)
+`id` | *string* | Unique identifier of the token which can be used to [get an atomic card](#get-an-atomic-card)
 `tenant_id` | *string* | The tenant ID which owns the card
 `type` | *string* | `Card` [token type](#token-types)
 `created_by` | *string* | The [application](#applications) ID which created the atomic card
@@ -237,7 +229,7 @@ Parameter | Required | Type | Default | Description
 
 Attribute | Type | Description
 --------- | ---- | -----------
-`id` | *string* | Unique identifier of the card which can be used to [get an atomic card](#get-an-atomic-card)
+`id` | *string* | Unique identifier of the token which can be used to [get an atomic card](#get-an-atomic-card)
 `tenant_id` | *string* | The tenant ID which owns the card
 `type` | *string* | `Card` [token type](#token-types)
 `created_by` | *string* | The [application](#applications) ID which created the atomic card
@@ -248,7 +240,7 @@ Attribute | Type | Description
 
 Code | Description
 ---- | -----------
-`200` | Atomic cards successfully retrieved
+`200` | Atomic card successfully retrieved
 `401` | A missing or invalid `X-API-KEY` was provided
 `403` | The provided `X-API-KEY` does not have the required permissions
 `404` | The atomic card was not found
@@ -266,7 +258,7 @@ curl "api.basistheory.com/atomic/cards/c1e565009-1984-4638-8fca-dce8a82cc2af" \
 
 <span class="http-method delete">DELETE</span> `https://api.basistheory.com/atomic/cards/{id}`
 
-Delete a atomic card by ID in the tenant.
+Delete an atomic card by ID in the tenant.
 
 <aside class="warning">
 WARNING - The data associated with a deleted atomic card will be removed forever. The reference will still exists for audit purposes

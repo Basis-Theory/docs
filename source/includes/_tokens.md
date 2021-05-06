@@ -6,6 +6,7 @@ Name | Type | Description
 ---- | ---- | -----------
 Token | `token` | Generic token type. This is the default token type if none is provided when creating a new token
 Card | `card` | [Atomic card](#atomic-cards) token type
+Bank | `bank` | [Atomic bank](#atomic-banks) token type
 
 
 ## Create Token
