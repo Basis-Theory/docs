@@ -2,7 +2,7 @@
 @import 'normalize';
 @import 'variables';
 @import 'icon-font';
-@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;400;500;600&display=swap');
 // @import 'rtl'; // uncomment to switch to RTL format
 
 /*
@@ -64,6 +64,7 @@ html, body {
   background-color: $nav-bg;
   font-size: 16px;
   font-weight: 600;
+  border: 1px solid $nav-bg-border;
 
   .toc-header {
     display: grid;
@@ -111,14 +112,20 @@ html, body {
 
     input {
       background: $nav-bg-search;
-      padding: 6px 0 6px 15px;
+      padding: 6px 8px;
       box-sizing: border-box;
       margin: 1em $nav-padding;
       width: 86%;
       outline: none;
       color: $nav-search-text;
       opacity: 0.55;
-      border-radius: 4px;
+      border: none;
+      border-radius: 2px;
+      @extend %search-font;
+
+      &::placeholder {
+        color: $nav-search-text;
+      }
     }
 
     &:after {
@@ -247,6 +254,7 @@ html, body {
   transition-property: background;
   transition-timing-function: linear;
   transition-duration: 130ms;
+  @extend %secondary-title-font;
 }
 
 // button to show navigation on mobile devices
@@ -499,7 +507,7 @@ html, body {
   }
 
   code {
-    background-color: rgba(26, 28, 51, 0.06);
+    background-color: $code-bg;
     border-radius: 2px;
     @extend %break-words;
     @extend %code-font;
@@ -514,8 +522,13 @@ html, body {
     padding-bottom: 1em;
     margin-top: 1.5em;
     margin-bottom: 1.5em;
-    background: $aside-notice-bg;
     line-height: 1.6;
+    display: flex;
+    align-items: center;
+
+    &.notice {
+      background-color: $aside-notice-bg;
+    }
 
     &.warning {
       background-color: $aside-warning-bg;
@@ -528,8 +541,7 @@ html, body {
 
   aside:before {
     vertical-align: middle;
-    padding-right: 0.5em;
-    font-size: 14px;
+    padding-right: 1.5em;
   }
 
   aside.notice:before {
@@ -686,11 +698,11 @@ html, body {
 }
 
 .headline {
-  line-height: .6em;
-  font-size: 1.1em;
-  color: #ccc;
+  @extend %principal-title-font;
+  color: #E5E6EC;
+
   margin-left: 0.67em;
-  margin-top: 1.2em;
+  margin-top: 0.2em;
 }
 
 .scopes {
@@ -707,21 +719,39 @@ html, body {
 }
 
 .http-method {
-  color: #fff;
-  font-weight: bold;
-  display: inline-block;
-  text-transform: uppercase;
-  border-radius: 14px;
-  background: 0 0;
-  padding: 2px 8px;
-  font-size: 12px;
+  border-radius: 1px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 8px 16px 8px 8px;
+
+  .box-method {
+    color: $http-method-text;
+    border-radius: 1px;
+    @extend %http-method-font;
+    padding: 0px 8px;
+    margin: 0px 10px;
+    text-transform: uppercase;
+    box-sizing: border-box;
+    border-radius: 2px;
+  }
 
   &.get {
-    background-color: $aside-notice-bg;
+    background: $http-method-get-container-bg;
+    border: 1px solid #D4F2F4;
+    
+    .box-method {
+      background: $http-method-get-bg;
+    }
   }
 
   &.post, &.put {
-    background-color: $aside-success-bg;
+    background-color: $http-method-post-container-bg;
+    border: 1px solid #C6EFE5;
+
+    .box-method {
+      background: $http-method-post-bg;
+    }
   }
 
   &.delete {

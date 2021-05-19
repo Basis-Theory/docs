@@ -118,7 +118,7 @@ Attribute | Required | Type | Default | Description
 `alg` | false | *string* | `null` | Encryption algorithm (e.g. AES, RSA, etc)
 
 <aside class="notice">
-  <code>data</code> and <code>metadata</code> values can be an object, array, or any primitive type such as an integer, boolean, or string. See JSON examples for reference.
+  <span><code>data</code> and <code>metadata</code> values can be an object, array, or any primitive type such as an integer, boolean, or string. See JSON examples for reference.</span>
 </aside>
 
 ### Response Schema
@@ -142,11 +142,11 @@ Code | Description
 `403` | The provided `X-API-KEY` does not have the required permissions
 
 <aside class="success">
-  Basis Theory recommends encrypting the <code>data</code> attribute of the token. Our recommendation is encrypt the data with a one-time use symmetric encryption key such as <code>AES-256</code> and then encrypt the symmetric key with an asymmetric public key such as <code>RSA</code>. Our SDK will automatically handle this for you.
+  <span>Basis Theory recommends encrypting the <code>data</code> attribute of the token. Our recommendation is encrypt the data with a one-time use symmetric encryption key such as <code>AES-256</code> and then encrypt the symmetric key with an asymmetric public key such as <code>RSA</code>. Our SDK will automatically handle this for you.</span>
 </aside>
 
 <aside class="warning">
-  WARNING - Never store sensitive plaintext information in your token such as plaintext <code>data</code>, <code>metadata</code> or plaintext, private encryption keys in the <code>encryption</code> attributes of your token.
+  <span>WARNING - Never store sensitive plaintext information in your token such as plaintext <code>data</code>, <code>metadata</code> or plaintext, private encryption keys in the <code>encryption</code> attributes of your token.</span>
 </aside>
 
 
@@ -328,7 +328,7 @@ curl "api.basistheory.com/tokens/c06d0789-0a38-40be-b7cc-c28a718f76f1" \
 Delete a token by ID in the tenant.
 
 <aside class="warning">
-WARNING - The data associated with a deleted token will be removed forever. The reference will still exists for audit purposes
+<span>WARNING - The data associated with a deleted token will be removed forever. The reference will still exists for audit purposes</span>
 </aside>
 
 ### Permissions

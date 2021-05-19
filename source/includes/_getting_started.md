@@ -12,6 +12,6 @@ To get started using Basis Theory to tokenize any data, follow these steps:
    - More information about Permission Types can be found [here](#permission-types)
 
 <aside class="notice">
-If a Basis Theory API responds with <code>403 FORBIDDEN</code>, it is likely due to the application lacking the appropriate permissions for that endpoint.
-Inspect the <code>WWW-Authenticate</code> response header for more information about the necessary permissions.
+    <span>If a Basis Theory API responds with <code>403 FORBIDDEN</code>, it is likely due to the application lacking the appropriate permissions for that endpoint.
+    Inspect the <code>WWW-Authenticate</code> response header for more information about the necessary permissions.</span>
 </aside>

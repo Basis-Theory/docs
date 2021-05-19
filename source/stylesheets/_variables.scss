@@ -23,10 +23,10 @@ under the License.
 
 // BACKGROUND COLORS
 ////////////////////
-$nav-bg: #141629 !default;
-$nav-bg-search: #2D2F4A !default;
+$nav-bg: #13172A !default;
+$nav-bg-border: #2D2F4A !default;
+$nav-bg-search: #1E233B!default;
 $examples-bg: #2E3336 !default;
-$code-bg: #1E2224 !default;
 $code-annotation-bg: #191D1F !default;
 $nav-subitem-bg: #1E2224 !default;
 $nav-active-bg: #1B1D32 !default;
@@ -37,10 +37,16 @@ $lang-select-active-bg: $examples-bg !default; // feel free to change this to bl
 $lang-select-pressed-bg: #111 !default; // color of language tab bg when mouse is pressed
 $main-bg: #EAECFC !default;
 $aside-notice-bg: #1AD1DB !default;
-$aside-warning-bg: #FFD278 !default;
-$aside-success-bg: #3AC379 !default;
-$aside-danger-bg: #c97a7e !default;
+$aside-warning-bg: #FFD582 !default;
+$aside-success-bg: #3AC3A2 !default;
+$aside-danger-bg: #FB5B8B !default;
 $search-notice-bg: #c97a7e !default;
+$code-bg: rgba(26, 28, 51, 0.06) !default;
+$http-method-get-bg: #1AD1DB !default;
+$http-method-post-bg: #3AC3A2 !default;
+$http-method-get-container-bg: #E9FEFF !default;
+$http-method-post-container-bg: #E8FFF9 !default;
+
 
 
 // TEXT COLORS
@@ -52,11 +58,13 @@ $nav-active-parent-text: #FFF !default; // parent links of the current section
 $lang-select-text: #FFF !default; // color of unselected language tab text
 $lang-select-active-text: #FFF !default; // color of selected language tab text
 $lang-select-pressed-text: #FFF !default; // color of language tab text when mouse is pressed
-$nav-icon: #FFF !default;
+$nav-icon: #8B92B6 !default;
 $nav-search-text:#B6BADC !default;
 $nav-header-backgroud: #141629 !default;
 $nav-header-text:#E2E4F8 !default;
 $toc-border: #2D2F4A !default;
+$code-text: rgba(7, 10, 27, 0.9) !default;
+$http-method-text: #FFF;
 
 
 // SIZES
@@ -88,10 +96,56 @@ $phone-width: $tablet-width - $nav-width !default; // min width before reverting
 }
 
 %code-font {
-  font-family: Consolas, Menlo, Monaco, "Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace, serif;
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 600;
   font-size: 12px;
-  line-height: 1.5;
+  line-height: 17px;
+  font-style: normal;
+  text-align: left;
+  letter-spacing: 0.15px;
+  color: $code-text;
+  padding: 4px;
 }
+
+%search-font {
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0.15px;
+  text-align: left;
+}
+
+%principal-title-font {
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 28px;
+  letter-spacing: 0.15px;
+  text-align: left;
+}
+
+%secondary-title-font {
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0px;
+  text-align: left;
+}
+
+%http-method-font {
+  font-family: "Source Sans Pro", sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 180%;
+  letter-spacing: 0.15px;
+}
+
 
 
 // OTHER

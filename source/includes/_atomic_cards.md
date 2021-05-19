@@ -261,7 +261,7 @@ curl "api.basistheory.com/atomic/cards/c1e565009-1984-4638-8fca-dce8a82cc2af" \
 Delete an atomic card by ID in the tenant.
 
 <aside class="warning">
-WARNING - The data associated with a deleted atomic card will be removed forever. The reference will still exists for audit purposes
+<span>WARNING - The data associated with a deleted atomic card will be removed forever. The reference will still exists for audit purposes</span>
 </aside>
 
 ### Permissions
@@ -292,7 +292,7 @@ Code | Description
 To enable testing of atomic cards, we've implemented a list of acceptable test card numbers to ensure you are able to test with non-sensitive data.  
 
 <aside class="warning">
-WARNING - while testing our system, these card numbers will be the only accepted cards available to test with.
+<span>WARNING - while testing our system, these card numbers will be the only accepted cards available to test with.</span>
 </aside>
 
 ### Test card numbers
