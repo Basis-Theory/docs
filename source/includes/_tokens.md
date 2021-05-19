@@ -84,7 +84,11 @@ curl "api.basistheory.com/tokens" \
 }
 ```
 
-<span class="http-method post">POST</span> `https://api.basistheory.com/tokens`
+<span class="http-method post">
+  <span class="box-method">POST</span>
+  `https://api.basistheory.com/tokens`
+</span>
+
 
 Create a new token for the tenant.
 
@@ -199,7 +203,10 @@ curl "api.basistheory.com/tokens?type=card" \
   -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
 ```
 
-<span class="http-method get">GET</span> `https://api.basistheory.com/tokens`
+<span class="http-method get">
+  <span class="box-method">GET</span>
+  `https://api.basistheory.com/tokens`
+</span>
 
 Get a list of tokens for the tenant.
 
@@ -274,7 +281,10 @@ curl "api.basistheory.com/tokens/c06d0789-0a38-40be-b7cc-c28a718f76f1" \
 }
 ```
 
-<span class="http-method get">GET</span> `https://api.basistheory.com/tokens/{id}`
+<span class="http-method get">
+  <span class="box-method">GET</span>
+  `https://api.basistheory.com/tokens/{id}`
+</span>
 
 Get a token by ID in the tenant.
 
@@ -323,7 +333,11 @@ curl "api.basistheory.com/tokens/c06d0789-0a38-40be-b7cc-c28a718f76f1" \
   -X "DELETE"
 ```
 
-<span class="http-method delete">DELETE</span> `https://api.basistheory.com/tokens/{id}`
+<span class="http-method delete">
+  <span class="box-method">DELETE</span>
+  `https://api.basistheory.com/tokens/{id}`
+</span>
+
 
 Delete a token by ID in the tenant.
 

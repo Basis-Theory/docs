@@ -364,6 +364,8 @@ html, body {
 .content {
   // fixes webkit rendering bug for some: see #538
   -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  
   // to place content above the dark box
   position: relative;
   z-index: 30;
@@ -398,15 +400,14 @@ html, body {
     font-family: "Source Sans Pro", sans-serif;
     font-weight: 600;
     font-style: normal;
+    line-height: 160%;
     letter-spacing: 0.15px;
     padding-top: 0.5em;
     padding-bottom: 0.5em;
     margin-bottom: $h1-margin-bottom;
     margin-top: 2em;
-    border: 1px solid #D9DBF8;
+    border: 1px solid #E6E8F0;
     background-color: #F2F3FF;
-    line-height: 160%;
-
   }
 
   h1:first-child, div:first-child + h1 {
@@ -720,8 +721,8 @@ html, body {
 
 .http-method {
   border-radius: 1px;
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: auto auto 1fr;
   align-items: center;
   padding: 8px 16px 8px 8px;
 
@@ -741,7 +742,11 @@ html, body {
     border: 1px solid #D4F2F4;
     
     .box-method {
-      background: $http-method-get-bg;
+      background-color: $http-method-get-bg;
+    }
+
+    &::after{
+      content: url(../images/icon/copy-get.svg);
     }
   }
 
@@ -750,11 +755,33 @@ html, body {
     border: 1px solid #C6EFE5;
 
     .box-method {
-      background: $http-method-post-bg;
+      background-color: $http-method-post-bg;
+    }
+
+    &::after{
+      content: url(../images/icon/copy-post.svg);
     }
   }
 
   &.delete {
-    background-color: $aside-danger-bg;
+    background-color: $http-method-delete-container-bg;
+    border: 1px solid #FFDCDE;
+
+    .box-method {
+      background-color: $http-method-delete-bg;
+    }
+    
+    &::after{
+      content: url(../images/icon/copy-delete.svg);
+    }
+    
+ 
+  }
+  code {
+    background-color: rgba(0, 0, 0, 0);
+  }
+  &::after {
+    justify-self: end;
+    cursor: pointer;
   }
 }

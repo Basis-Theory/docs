@@ -49,7 +49,10 @@ curl "api.basistheory.com/atomic/cards" \
 }
 ```
 
-<span class="http-method post">POST</span> `https://api.basistheory.com/atomic/cards`
+<span class="http-method post">
+  <span class="box-method">POST</span>
+  `https://api.basistheory.com/atomic/cards`
+</span>
 
 Create a new atomic card for the tenant.
 
@@ -149,7 +152,10 @@ curl "api.basistheory.com/atomic/cards" \
 }
 ```
 
-<span class="http-method get">GET</span> `https://api.basistheory.com/atomic/cards`
+<span class="http-method get">
+  <span class="box-method">GET</span>
+  `https://api.basistheory.com/atomic/cards`
+</span>
 
 Get a list of atomic cards for the tenant.
 
@@ -208,7 +214,10 @@ curl "api.basistheory.com/atomic/cards/c1e565009-1984-4638-8fca-dce8a82cc2af" \
 }
 ```
 
-<span class="http-method get">GET</span> `https://api.basistheory.com/atomic/cards/{id}`
+<span class="http-method get">
+  <span class="box-method">GET</span>
+  `https://api.basistheory.com/atomic/cards/{id}`
+</span>
 
 Get an atomic card by ID in the tenant.
 
@@ -256,7 +265,10 @@ curl "api.basistheory.com/atomic/cards/c1e565009-1984-4638-8fca-dce8a82cc2af" \
   -X "DELETE"
 ```
 
-<span class="http-method delete">DELETE</span> `https://api.basistheory.com/atomic/cards/{id}`
+<span class="http-method delete">
+  <span class="box-method">DELETE</span>
+  `https://api.basistheory.com/atomic/cards/{id}`
+</span>
 
 Delete an atomic card by ID in the tenant.
 
