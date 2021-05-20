@@ -178,25 +178,30 @@ html, body {
     line-height: 28px;
   }
 
+  ul {
+    margin-left: 1.7rem;
+  }
+
   li {
     color: $nav-text;
     transition-property: background;
     transition-timing-function: linear;
     transition-duration: 200ms;
-    margin: 0 15px;
   }
 
   // This is the currently selected ToC entry
   .toc-link.active {
-    background-color: $nav-active-bg;
     color: $nav-active-text;
-    border: 1px solid $toc-border;
-    border-radius: 2px;
   }
 
   // this is parent links of the currently selected ToC entry
   .toc-link.active-parent {
-    background-color: $nav-active-parent-bg;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 20px;
+    letter-spacing: 0.15px;
+    text-align: left;
     color: $nav-active-parent-text;
   }
   // Section headers
@@ -212,12 +217,23 @@ html, body {
 
   .toc-list-h2 {
     display: none;
-    background-color: $nav-subitem-bg;
-    font-weight: 500;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 17px;
+    letter-spacing: 0px;
+    text-align: left;
+  }
+
+  .toc-list-h2 li {
+    list-style: disc;
+  }
+
+  .toc-list-h2 li::marker {
+    margin-left: -12px;
   }
 
   .toc-h2 {
-    padding-left: $nav-padding + $nav-indent;
     font-size: 14px;
   }
 
@@ -244,7 +260,7 @@ html, body {
 }
 
 .toc-link, .toc-footer li {
-  padding: 0 $nav-padding 0 $nav-padding;
+  padding: 0 $nav-padding 0 0;
   display: block;
   overflow-x: hidden;
   white-space: nowrap;
@@ -254,7 +270,7 @@ html, body {
   transition-property: background;
   transition-timing-function: linear;
   transition-duration: 130ms;
-  @extend %secondary-title-font;
+  @extend %subtitle-font;
 }
 
 // button to show navigation on mobile devices
@@ -416,8 +432,7 @@ html, body {
   }
 
   h2 {
-    @extend %header-font;
-    font-size: 19px;
+    @extend %subtitle2-font;
     margin-top: 4em;
     margin-bottom: 0;
     border-top: 1px solid #ccc;
@@ -453,7 +468,7 @@ html, body {
   table {
     margin-bottom: 1em;
     overflow: auto;
-    th,td {
+    td {
       text-align: left;
       vertical-align: top;
       line-height: 1.6;
@@ -463,25 +478,23 @@ html, body {
     }
 
     th {
-      padding: 5px 10px;
-      border-bottom: 1px solid #ccc;
+      padding: 6px 24px 6px 16px;
       vertical-align: bottom;
+      background: #E8EBF8;
+      box-shadow: inset 0px -1px 0px #E2E4F0;
+      @extend %table-header-font;
     }
 
     td {
       padding: 10px;
     }
 
-    tr:last-child {
-      border-bottom: 1px solid #ccc;
-    }
-
     tr:nth-child(odd)>td {
-      background-color: lighten($main-bg,4.2%);
+      background-color: #F2F3FF;
     }
 
     tr:nth-child(even)>td {
-      background-color: lighten($main-bg,2.4%);
+      background-color: #E8EBF8;
     }
   }
 
@@ -493,14 +506,16 @@ html, body {
     margin-left: 15px;
   }
   p {
-    line-height: 180%;
-    font-weight: 400;
-    font-size: 16px;
+    @extend %body1-font;
+    
   }
 
   p, li, dt, dd {
-    line-height: 1.6;
     margin-top: 0;
+  }
+
+  li, dt, dd {
+    line-height: 1.6;
   }
 
   img {
@@ -700,9 +715,8 @@ html, body {
 
 .headline {
   @extend %principal-title-font;
-  color: #E5E6EC;
-
-  margin-left: 0.67em;
+  color: $nav-principal-title-text;
+  margin-left: 1.70rem;
   margin-top: 0.2em;
 }
 

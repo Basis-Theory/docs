@@ -55,8 +55,8 @@ $http-method-delete-container-bg: #FFF0F1 !default;
 ////////////////////
 $main-text: #1B1D32 !default; // main content text color
 $nav-text: #626582 !default;
-$nav-active-text: #FFF !default;
-$nav-active-parent-text: #FFF !default; // parent links of the current section
+$nav-active-text: #1AD1DB !default;
+$nav-active-parent-text: #1AD1DB !default; // parent links of the current section
 $lang-select-text: #FFF !default; // color of unselected language tab text
 $lang-select-active-text: #FFF !default; // color of selected language tab text
 $lang-select-pressed-text: #FFF !default; // color of language tab text when mouse is pressed
@@ -64,6 +64,7 @@ $nav-icon: #8B92B6 !default;
 $nav-search-text:#B6BADC !default;
 $nav-header-backgroud: #141629 !default;
 $nav-header-text:#E2E4F8 !default;
+$nav-principal-title-text: #E5E6EC !default;
 $toc-border: #2D2F4A !default;
 $code-text: rgba(7, 10, 27, 0.9) !default;
 $http-method-text: #FFF;
@@ -129,7 +130,7 @@ $phone-width: $tablet-width - $nav-width !default; // min width before reverting
   text-align: left;
 }
 
-%secondary-title-font {
+%subtitle-font {
   font-family: "Source Sans Pro", sans-serif;
   font-size: 14px;
   font-style: normal;
@@ -147,6 +148,38 @@ $phone-width: $tablet-width - $nav-width !default; // min width before reverting
   line-height: 180%;
   letter-spacing: 0.15px;
 }
+
+%subtitle2-font {
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 32px;
+  letter-spacing: 0.15px;
+  text-align: left;
+}
+
+%body1-font {
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.15px;
+  text-align: left;
+}
+
+%table-header-font {
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: 0.15px;
+  text-align: left;
+}
+
+
 
 
 
