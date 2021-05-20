@@ -26,15 +26,13 @@ under the License.
 $nav-bg: #13172A !default;
 $nav-bg-border: #2D2F4A !default;
 $nav-bg-search: #1E233B!default;
-$examples-bg: #2E3336 !default;
-$code-annotation-bg: #191D1F !default;
+$examples-bg: #070A1B !default;
+$code-annotation-title-bg: #1E233B !default;
 $nav-subitem-bg: #1E2224 !default;
 $nav-active-bg: #1B1D32 !default;
 $nav-active-parent-bg: #1B1D32 !default; // parent links of the current section
 $lang-select-border: #000 !default;
-$lang-select-bg: #1E2224 !default;
-$lang-select-active-bg: $examples-bg !default; // feel free to change this to blue or something
-$lang-select-pressed-bg: #111 !default; // color of language tab bg when mouse is pressed
+$lang-select-bg: #13172A !default;
 $main-bg: #FBFBFF !default;
 $aside-notice-bg: #1AD1DB !default;
 $aside-warning-bg: #FFD582 !default;
@@ -48,6 +46,7 @@ $http-method-delete-bg: #FB5B8B !default;
 $http-method-get-container-bg: #E9FEFF !default;
 $http-method-post-container-bg: #E8FFF9 !default;
 $http-method-delete-container-bg: #FFF0F1 !default;
+$code-annotation-bg: #1B1D32 !default;
 
 
 
@@ -55,20 +54,20 @@ $http-method-delete-container-bg: #FFF0F1 !default;
 ////////////////////
 $main-text: #1B1D32 !default; // main content text color
 $nav-text: #626582 !default;
-$nav-active-text: #1AD1DB !default;
-$nav-active-parent-text: #1AD1DB !default; // parent links of the current section
 $lang-select-text: #FFF !default; // color of unselected language tab text
 $lang-select-active-text: #FFF !default; // color of selected language tab text
 $lang-select-pressed-text: #FFF !default; // color of language tab text when mouse is pressed
-$nav-icon: #8B92B6 !default;
 $nav-search-text:#B6BADC !default;
 $nav-header-backgroud: #141629 !default;
 $nav-header-text:#E2E4F8 !default;
 $nav-principal-title-text: #E5E6EC !default;
 $toc-border: #2D2F4A !default;
 $code-text: rgba(7, 10, 27, 0.9) !default;
-$http-method-text: #FFF;
-
+$http-method-text: #FFF !default;
+$code-annotation-title-text: #F2F3FF !default;
+$primary: #1AD1DB !default;
+$links: #047F87;
+$secondary: #8B92B6 !default;
 
 // SIZES
 ////////////////////
@@ -88,7 +87,6 @@ $phone-width: $tablet-width - $nav-width !default; // min width before reverting
 // FONTS
 ////////////////////
 %default-font {
-  //font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   font-size: 14px;
   font-family: "Source Sans Pro", sans-serif;
 }
@@ -106,13 +104,11 @@ $phone-width: $tablet-width - $nav-width !default; // min width before reverting
   font-style: normal;
   text-align: left;
   letter-spacing: 0.15px;
-  color: $code-text;
   padding: 4px;
 }
 
 %search-font {
-  font-family: "Source Sans Pro", sans-serif;
-  font-size: 14px;
+  @extend %default-font;
   font-style: normal;
   font-weight: 400;
   line-height: 20px;
@@ -131,8 +127,7 @@ $phone-width: $tablet-width - $nav-width !default; // min width before reverting
 }
 
 %subtitle-font {
-  font-family: "Source Sans Pro", sans-serif;
-  font-size: 14px;
+  @extend %default-font;
   font-style: normal;
   font-weight: 400;
   line-height: 20px;
@@ -170,8 +165,7 @@ $phone-width: $tablet-width - $nav-width !default; // min width before reverting
 }
 
 %table-header-font {
-  font-family: "Source Sans Pro", sans-serif;
-  font-size: 14px;
+  @extend %default-font;
   font-style: normal;
   font-weight: 600;
   line-height: 24px;
@@ -179,7 +173,41 @@ $phone-width: $tablet-width - $nav-width !default; // min width before reverting
   text-align: left;
 }
 
+%scope-font {
+  @extend %default-font;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 180%;
+  letter-spacing: 0.15px;
+  color: #2D2F4A;
+}
 
+%code-annotation-font {
+  font-family: "Source Sans Pro", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 160%;
+  letter-spacing: 0.15px;
+}
+
+%button-medium-font {
+  @extend %default-font;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: 0px;
+  text-align: left;
+}
+
+%tc-type-font {
+  @extend %default-font;
+  font-style: italic;
+  font-weight: 600;
+  line-height: 20px;
+  letter-spacing: 0px;
+  text-align: left;
+}
 
 
 

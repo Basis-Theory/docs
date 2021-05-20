@@ -35,6 +35,15 @@ html, body {
   background-color: $main-bg;
   height: 100%;
   -webkit-text-size-adjust: none; /* Never autoresize text */
+
+  a {
+    color: $links;
+    @extend %default-font;
+    font-weight: 600;
+    line-height: 21px;
+    letter-spacing: 0.15px;
+    text-align: left;
+  }
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -45,7 +54,7 @@ html, body {
 
 .toc-section > ul > li > a > span {
   float: right;
-  background-color: #2484FF;
+  background-color: $links;
   border-radius: 40px;
   width: 20px;
 }
@@ -96,6 +105,8 @@ html, body {
     a {
       padding-top: 0.5em;
       padding-bottom: 0.5em;
+      color: $secondary;
+      @extend %principal-title-font;
     }
   }
 
@@ -132,7 +143,7 @@ html, body {
       position: absolute;
       top: 37%;
       right: $nav-padding*2;
-      color: $nav-icon;
+      color: $secondary;
       @extend %icon-search;
     }
   }
@@ -158,7 +169,7 @@ html, body {
     }
 
     a {
-      color: $nav-text;
+      color: $links;
       text-decoration: none;
 
       &:hover {
@@ -191,7 +202,7 @@ html, body {
 
   // This is the currently selected ToC entry
   .toc-link.active {
-    color: $nav-active-text;
+    color: $primary;
   }
 
   // this is parent links of the currently selected ToC entry
@@ -202,7 +213,7 @@ html, body {
     line-height: 20px;
     letter-spacing: 0.15px;
     text-align: left;
-    color: $nav-active-parent-text;
+    color: $primary;
   }
   // Section headers
   .toc-h1[data-title="API Reference"],
@@ -243,7 +254,7 @@ html, body {
     border-top: 1px dashed $nav-footer-border-color;
 
     li,a {
-      color: $nav-text;
+      color: $links;
       text-decoration: none;
     }
 
@@ -336,7 +347,6 @@ html, body {
   .lang-selector {
     position: fixed;
     z-index: 50;
-    border-bottom: 5px solid $lang-select-active-bg;
   }
 }
 
@@ -347,21 +357,22 @@ html, body {
   font-weight: bold;
   overflow-x: auto;
   a {
-    display: inline;
-    color: $lang-select-text;
+    @extend %principal-title-font;
+    color: $secondary;
     text-decoration: none;
-    padding: 0 10px;
-    line-height: 30px;
+    padding: 18px 32px;
     outline: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 
     &:active, &:focus {
-      background-color: $lang-select-pressed-bg;
-      color: $lang-select-pressed-text;
+      color: $primary;
+      border-bottom: 2px #1AD1DB solid
     }
-
-    &.active {
-      background-color: $lang-select-active-bg;
-      color: $lang-select-active-text;
+    &:hover {
+      color: $primary;
+      opacity: 0.8;
     }
   }
 
@@ -474,6 +485,12 @@ html, body {
       line-height: 1.6;
       code {
         white-space: nowrap;
+      }
+      em {
+        @extend %tc-type-font;
+      }
+      a {
+        color: $links;
       }
     }
 
@@ -593,7 +610,7 @@ html, body {
   }
 
   pre, blockquote {
-    background-color: $code-bg;
+    background-color: $code-annotation-bg;
     color: #FFF;
 
     margin: 0;
@@ -609,7 +626,7 @@ html, body {
     &>p { margin: 0; }
 
     a {
-      color: #FFF;
+      color: $links;
       text-decoration: none;
       border-bottom: dashed 1px #ccc;
     }
@@ -617,21 +634,27 @@ html, body {
 
   pre {
     @extend %code-font;
-    padding-top: 2em;
-    padding-bottom: 2em;
-    padding-left: 3em;
-    padding-right: 3em;
+    padding: 1em 2em 2em;
+    display: grid;
+    grid-template-rows: auto auto;
 
     .copy-clipboard {
-      margin-right: -2em;
+      grid-column: end;
+      grid-row: end;
+      justify-self: end;
+      display: grid;
+      grid-template-columns: auto auto;
+      align-items: center;
+      gap: 10%;
     }
   }
 
   blockquote {
     &>p {
-      background-color: $code-annotation-bg;
+      background-color: $code-annotation-title-bg;
       padding: $code-annotation-padding 2em;
-      color: #eee;
+      color: $code-annotation-title-text;
+      @extend %code-annotation-font;
     }
   }
 }
@@ -701,12 +724,12 @@ html, body {
 }
 
 .copy-clipboard {
-  float: right;
-  fill: #9DAAB6;
   cursor: pointer;
-  opacity: 0.4;
-  height: 18px;
-  width: 18px;
+
+  .copy-clipboard-text{
+    color: $primary;
+    @extend %button-medium-font
+  }
 }
 
 .copy-clipboard:hover {
@@ -721,15 +744,14 @@ html, body {
 }
 
 .scopes {
-  padding: 0 15px;
 
   .scope {
+    background-color: #CACDDB;
     display: inline-block;
-    border: 1px solid #aaa;
-    border-radius: 14px;
-    background: 0 0;
-    padding: 6px 10px;
-    font-size: 12px;
+    border: 1px solid #D9DBF8;
+    border-radius: 1px;
+    padding: 0px 8px;
+    @extend %scope-font;
   }
 }
 
@@ -759,9 +781,6 @@ html, body {
       background-color: $http-method-get-bg;
     }
 
-    &::after{
-      content: url(../images/icon/copy-get.svg);
-    }
   }
 
   &.post, &.put {
@@ -772,9 +791,6 @@ html, body {
       background-color: $http-method-post-bg;
     }
 
-    &::after{
-      content: url(../images/icon/copy-post.svg);
-    }
   }
 
   &.delete {
@@ -784,18 +800,20 @@ html, body {
     .box-method {
       background-color: $http-method-delete-bg;
     }
-    
-    &::after{
-      content: url(../images/icon/copy-delete.svg);
-    }
-    
  
   }
+  
   code {
     background-color: rgba(0, 0, 0, 0);
   }
-  &::after {
+  .http-method-copy {
     justify-self: end;
     cursor: pointer;
+    grid-column: 3;
+    grid-row: 1;
+
+    &:hover {
+      opacity: 0.8;
+    }
   }
 }
