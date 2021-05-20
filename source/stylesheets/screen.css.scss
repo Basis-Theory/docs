@@ -365,11 +365,18 @@ html, body {
     display: flex;
     flex-direction: row;
     align-items: center;
+    text-transform: capitalize;
 
     &:active, &:focus {
       color: $primary;
-      border-bottom: 2px #1AD1DB solid
+      border-bottom: 2px #1AD1DB solid;
     }
+
+    &.active {
+      color: $primary;
+      border-bottom: 2px #1AD1DB solid;
+    }
+
     &:hover {
       color: $primary;
       opacity: 0.8;
