@@ -280,9 +280,9 @@
   color: #859900;
 }
     </style>
-    <link href="stylesheets/screen-a79e3c67.css" rel="stylesheet" media="screen" />
-    <link href="stylesheets/print-88489c93.css" rel="stylesheet" media="print" />
-      <script src="javascripts/all-05bf6e79.js"></script>
+    <link href="stylesheets/screen-8f44558e.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print-1685f682.css" rel="stylesheet" media="print" />
+      <script src="javascripts/all-b280cd36.js"></script>
 
     <script>
       $(function() { setupCodeCopy(); });
@@ -318,7 +318,7 @@
         </div>
         <ul class="search-results"></ul>
 
-      <h1 class="headline">Introduction</h1>
+      <h1 class="headline">Getting Started</h1>
       <ul id="toc_intro" class="toc-section toc-list-h1">
           <li>
             <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
@@ -574,8 +574,8 @@
 </ol>
 
 <aside class="notice">
-If a Basis Theory API responds with <code>403 FORBIDDEN</code>, it is likely due to the application lacking the appropriate permissions for that endpoint.
-Inspect the <code>WWW-Authenticate</code> response header for more information about the necessary permissions.
+    <span>If a Basis Theory API responds with <code>403 FORBIDDEN</code>, it is likely due to the application lacking the appropriate permissions for that endpoint.
+    Inspect the <code>WWW-Authenticate</code> response header for more information about the necessary permissions.</span>
 </aside>
 <h1 id='authentication'>Authentication</h1>
 <blockquote>
@@ -595,7 +595,7 @@ Inspect the <code>WWW-Authenticate</code> response header for more information a
 <p><code>X-API-KEY: key_N88mVGsp3sCXkykyN2EFED</code></p>
 
 <aside class="notice">
-You must replace <code>key_N88mVGsp3sCXkykyN2EFED</code> with your API key supplied when you [created an Application](#create-application).
+  <span>You must replace <code>key_N88mVGsp3sCXkykyN2EFED</code> with your API key supplied when you [created an Application](#create-application).</span>
 </aside>
 <h1 id='request-correlation'>Request correlation</h1>
 <blockquote>
@@ -863,7 +863,10 @@ You must replace <code>key_N88mVGsp3sCXkykyN2EFED</code> with your API key suppl
   </span><span class="p">{</span><span class="err">...</span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div>
-<p><span class="http-method get">GET</span> <code>https://api.basistheory.com/permissions</code></p>
+<p><span class="http-method get">
+  <span class="box-method">GET</span>
+  <code>https://api.basistheory.com/permissions</code>
+</span></p>
 <h3 id='response-schema'>Response Schema</h3>
 <table><thead>
 <tr>
@@ -895,7 +898,7 @@ You must replace <code>key_N88mVGsp3sCXkykyN2EFED</code> with your API key suppl
 </tbody></table>
 
 <aside class="notice">
-Dependent permission types are automatically assigned when an application is created or updated. For example, if an application is created with <code>card:read</code>, then the permission of <code>token:read</code> will automatically be assigned.
+  <span>Dependent permission types are automatically assigned when an application is created or updated. For example, if an application is created with <code>card:read</code>, then the permission of <code>token:read</code> will automatically be assigned.</span>
 </aside>
 <h3 id='response-messages'>Response Messages</h3>
 <table><thead>
@@ -933,7 +936,10 @@ Dependent permission types are automatically assigned when an application is cre
   </span><span class="nl">"modified_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-01T08:23:14+00:00"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p><span class="http-method get">GET</span> <code>https://api.basistheory.com/tenants/self</code></p>
+<p><span class="http-method get">
+  <span class="box-method">GET</span>
+  <code>https://api.basistheory.com/tenants/self</code>
+</span></p>
 
 <p>Retrieves the tenant associated with the provided <code>X-API-KEY</code>.</p>
 <h3 id='permissions'>Permissions</h3>
@@ -1021,7 +1027,10 @@ Dependent permission types are automatically assigned when an application is cre
   </span><span class="nl">"modified_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-01T08:23:14+00:00"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p><span class="http-method put">PUT</span> <code>https://api.basistheory.com/tenants/self</code></p>
+<p><span class="http-method put">
+  <span class="box-method">PUT</span>
+  <code>https://api.basistheory.com/tenants/self</code>
+</span></p>
 
 <p>Update the tenant associated with the provided <code>X-API-KEY</code>.</p>
 <h3 id='permissions-2'>Permissions</h3>
@@ -1116,7 +1125,10 @@ Dependent permission types are automatically assigned when an application is cre
   <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
   <span class="nt">-X</span> <span class="s2">"DELETE"</span>
 </code></pre></div>
-<p><span class="http-method delete">DELETE</span> <code>https://api.basistheory.com/tenants/self</code></p>
+<p><span class="http-method delete">
+  <span class="box-method">DELETE</span>
+  <code>https://api.basistheory.com/tenants/self</code>
+</span></p>
 
 <p>Delete the tenant associated with the provided <code>X-API-KEY</code>.</p>
 <h3 id='permissions-3'>Permissions</h3>
@@ -1213,7 +1225,10 @@ Dependent permission types are automatically assigned when an application is cre
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p><span class="http-method post">POST</span> <code>https://api.basistheory.com/applications</code></p>
+<p><span class="http-method post">
+  <span class="box-method">POST</span>
+  <code>https://api.basistheory.com/applications</code>
+</span></p>
 
 <p>Create a new application for the tenant.</p>
 <h3 id='permissions'>Permissions</h3>
@@ -1358,7 +1373,10 @@ Dependent permission types are automatically assigned when an application is cre
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.basistheory.com/applications?id=72ef3d62-b7de-4b5f-8aa2-b9db06c291cb&amp;id=3b235ac3-83ea-49c5-8c42-05ba3cbd17d1"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
 </code></pre></div>
-<p><span class="http-method get">GET</span> <code>https://api.basistheory.com/applications</code></p>
+<p><span class="http-method get">
+  <span class="box-method">GET</span>
+  <code>https://api.basistheory.com/applications</code>
+</span></p>
 
 <p>Get a list of applications for the tenant.</p>
 <h3 id='permissions-2'>Permissions</h3>
@@ -1472,7 +1490,10 @@ Dependent permission types are automatically assigned when an application is cre
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p><span class="http-method get">GET</span> <code>https://api.basistheory.com/applications/{id}</code></p>
+<p><span class="http-method get">
+  <span class="box-method">GET</span>
+  <code>https://api.basistheory.com/applications/{id}</code>
+</span> </p>
 
 <p>Get an application by ID in the tenant.</p>
 <h3 id='permissions-3'>Permissions</h3>
@@ -1588,7 +1609,10 @@ Dependent permission types are automatically assigned when an application is cre
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p><span class="http-method get">GET</span> <code>https://api.basistheory.com/applications/key</code></p>
+<p><span class="http-method get">
+  <span class="box-method">GET</span>
+  <code>https://api.basistheory.com/applications/key</code>
+</span></p>
 
 <p>Get an application by key in the tenant. Will use the <code>X-API-KEY</code> header to lookup the application.</p>
 <h3 id='permissions-4'>Permissions</h3>
@@ -1695,7 +1719,10 @@ Dependent permission types are automatically assigned when an application is cre
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p><span class="http-method put">PUT</span> <code>https://api.basistheory.com/applications/{id}</code></p>
+<p><span class="http-method put">
+  <span class="box-method">PUT</span>
+  <code>https://api.basistheory.com/applications/{id}</code>
+</span></p>
 
 <p>Update an application by ID in the tenant.</p>
 <h3 id='permissions-5'>Permissions</h3>
@@ -1834,12 +1861,15 @@ Dependent permission types are automatically assigned when an application is cre
   </span><span class="nl">"modified_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-01T08:23:14+00:00"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p><span class="http-method post">POST</span> <code>https://api.basistheory.com/applications/{id}/regenerate</code></p>
+<p><span class="http-method post">
+  <span class="box-method">POST</span>
+  <code>https://api.basistheory.com/applications/{id}/regenerate</code>
+</span></p>
 
 <p>Regenerate the API key for an application.</p>
 
 <aside class="warning">
-WARNING - Regenerating the API key for an application will immediately invalidate the previous API key associated with the application.
+  <span>WARNING - Regenerating the API key for an application will immediately invalidate the previous API key associated with the application.</span>
 </aside>
 <h3 id='permissions-6'>Permissions</h3>
 <p class="scopes">
@@ -1923,7 +1953,10 @@ WARNING - Regenerating the API key for an application will immediately invalidat
   <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
   <span class="nt">-X</span> <span class="s2">"DELETE"</span>
 </code></pre></div>
-<p><span class="http-method delete">DELETE</span> <code>https://api.basistheory.com/applications/{id}</code></p>
+<p><span class="http-method delete">
+  <span class="box-method">DELETE</span>
+  <code>https://api.basistheory.com/applications/{id}</code>
+</span></p>
 
 <p>Delete an application by ID in the tenant.</p>
 <h3 id='permissions-7'>Permissions</h3>
@@ -2056,7 +2089,10 @@ WARNING - Regenerating the API key for an application will immediately invalidat
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p><span class="http-method post">POST</span> <code>https://api.basistheory.com/tokens</code></p>
+<p><span class="http-method post">
+  <span class="box-method">POST</span>
+  <code>https://api.basistheory.com/tokens</code>
+</span></p>
 
 <p>Create a new token for the tenant.</p>
 <h3 id='permissions'>Permissions</h3>
@@ -2154,7 +2190,7 @@ WARNING - Regenerating the API key for an application will immediately invalidat
 </tbody></table>
 
 <aside class="notice">
-  <code>data</code> and <code>metadata</code> values can be an object, array, or any primitive type such as an integer, boolean, or string. See JSON examples for reference.
+  <span><code>data</code> and <code>metadata</code> values can be an object, array, or any primitive type such as an integer, boolean, or string. See JSON examples for reference.</span>
 </aside>
 <h3 id='response-schema'>Response Schema</h3>
 <table><thead>
@@ -2221,11 +2257,11 @@ WARNING - Regenerating the API key for an application will immediately invalidat
 </tbody></table>
 
 <aside class="success">
-  Basis Theory recommends encrypting the <code>data</code> attribute of the token. Our recommendation is encrypt the data with a one-time use symmetric encryption key such as <code>AES-256</code> and then encrypt the symmetric key with an asymmetric public key such as <code>RSA</code>. Our SDK will automatically handle this for you.
+  <span>Basis Theory recommends encrypting the <code>data</code> attribute of the token. Our recommendation is encrypt the data with a one-time use symmetric encryption key such as <code>AES-256</code> and then encrypt the symmetric key with an asymmetric public key such as <code>RSA</code>. Our SDK will automatically handle this for you.</span>
 </aside>
 
 <aside class="warning">
-  WARNING - Never store sensitive plaintext information in your token such as plaintext <code>data</code>, <code>metadata</code> or plaintext, private encryption keys in the <code>encryption</code> attributes of your token.
+  <span>WARNING - Never store sensitive plaintext information in your token such as plaintext <code>data</code>, <code>metadata</code> or plaintext, private encryption keys in the <code>encryption</code> attributes of your token.</span>
 </aside>
 <h2 id='list-tokens'>List Tokens</h2>
 <blockquote>
@@ -2272,7 +2308,10 @@ WARNING - Regenerating the API key for an application will immediately invalidat
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.basistheory.com/tokens?type=card"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
 </code></pre></div>
-<p><span class="http-method get">GET</span> <code>https://api.basistheory.com/tokens</code></p>
+<p><span class="http-method get">
+  <span class="box-method">GET</span>
+  <code>https://api.basistheory.com/tokens</code>
+</span></p>
 
 <p>Get a list of tokens for the tenant.</p>
 <h3 id='permissions-2'>Permissions</h3>
@@ -2400,7 +2439,10 @@ WARNING - Regenerating the API key for an application will immediately invalidat
   </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-01T08:23:14+00:00"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p><span class="http-method get">GET</span> <code>https://api.basistheory.com/tokens/{id}</code></p>
+<p><span class="http-method get">
+  <span class="box-method">GET</span>
+  <code>https://api.basistheory.com/tokens/{id}</code>
+</span></p>
 
 <p>Get a token by ID in the tenant.</p>
 <h3 id='permissions-3'>Permissions</h3>
@@ -2506,12 +2548,15 @@ WARNING - Regenerating the API key for an application will immediately invalidat
   <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
   <span class="nt">-X</span> <span class="s2">"DELETE"</span>
 </code></pre></div>
-<p><span class="http-method delete">DELETE</span> <code>https://api.basistheory.com/tokens/{id}</code></p>
+<p><span class="http-method delete">
+  <span class="box-method">DELETE</span>
+  <code>https://api.basistheory.com/tokens/{id}</code>
+</span></p>
 
 <p>Delete a token by ID in the tenant.</p>
 
 <aside class="warning">
-WARNING - The data associated with a deleted token will be removed forever. The reference will still exists for audit purposes
+<span>WARNING - The data associated with a deleted token will be removed forever. The reference will still exists for audit purposes</span>
 </aside>
 <h3 id='permissions-4'>Permissions</h3>
 <p class="scopes">
@@ -2605,7 +2650,10 @@ WARNING - The data associated with a deleted token will be removed forever. The 
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p><span class="http-method post">POST</span> <code>https://api.basistheory.com/atomic/cards</code></p>
+<p><span class="http-method post">
+  <span class="box-method">POST</span>
+  <code>https://api.basistheory.com/atomic/cards</code>
+</span></p>
 
 <p>Create a new atomic card for the tenant.</p>
 <h3 id='permissions'>Permissions</h3>
@@ -2855,7 +2903,10 @@ WARNING - The data associated with a deleted token will be removed forever. The 
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p><span class="http-method get">GET</span> <code>https://api.basistheory.com/atomic/cards</code></p>
+<p><span class="http-method get">
+  <span class="box-method">GET</span>
+  <code>https://api.basistheory.com/atomic/cards</code>
+</span></p>
 
 <p>Get a list of atomic cards for the tenant.</p>
 <h3 id='permissions-2'>Permissions</h3>
@@ -2947,7 +2998,10 @@ WARNING - The data associated with a deleted token will be removed forever. The 
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p><span class="http-method get">GET</span> <code>https://api.basistheory.com/atomic/cards/{id}</code></p>
+<p><span class="http-method get">
+  <span class="box-method">GET</span>
+  <code>https://api.basistheory.com/atomic/cards/{id}</code>
+</span></p>
 
 <p>Get an atomic card by ID in the tenant.</p>
 <h3 id='permissions-3'>Permissions</h3>
@@ -3044,12 +3098,15 @@ WARNING - The data associated with a deleted token will be removed forever. The 
   <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
   <span class="nt">-X</span> <span class="s2">"DELETE"</span>
 </code></pre></div>
-<p><span class="http-method delete">DELETE</span> <code>https://api.basistheory.com/atomic/cards/{id}</code></p>
+<p><span class="http-method delete">
+  <span class="box-method">DELETE</span>
+  <code>https://api.basistheory.com/atomic/cards/{id}</code>
+</span></p>
 
 <p>Delete an atomic card by ID in the tenant.</p>
 
 <aside class="warning">
-WARNING - The data associated with a deleted atomic card will be removed forever. The reference will still exists for audit purposes
+<span>WARNING - The data associated with a deleted atomic card will be removed forever. The reference will still exists for audit purposes</span>
 </aside>
 <h3 id='permissions-4'>Permissions</h3>
 <p class="scopes">
@@ -3102,7 +3159,7 @@ WARNING - The data associated with a deleted atomic card will be removed forever
 <p>To enable testing of atomic cards, we&#39;ve implemented a list of acceptable test card numbers to ensure you are able to test with non-sensitive data.  </p>
 
 <aside class="warning">
-WARNING - while testing our system, these card numbers will be the only accepted cards available to test with.
+<span>WARNING - while testing our system, these card numbers will be the only accepted cards available to test with.</span>
 </aside>
 <h3 id='test-card-numbers'>Test card numbers</h3>
 <table><thead>
@@ -3199,7 +3256,10 @@ WARNING - while testing our system, these card numbers will be the only accepted
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p><span class="http-method post">POST</span> <code>https://api.basistheory.com/atomic/banks</code></p>
+<p><span class="http-method post">
+  <span class="box-method">POST</span>
+  <code>https://api.basistheory.com/atomic/banks</code>
+</span></p>
 
 <p>Create a new atomic bank for the tenant.</p>
 <h3 id='permissions'>Permissions</h3>
@@ -3342,7 +3402,10 @@ WARNING - while testing our system, these card numbers will be the only accepted
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p><span class="http-method get">GET</span> <code>https://api.basistheory.com/atomic/banks</code></p>
+<p><span class="http-method get">
+  <span class="box-method">GET</span>
+  <code>https://api.basistheory.com/atomic/banks</code>
+</span></p>
 
 <p>Get a list of atomic banks for the tenant.</p>
 <h3 id='permissions-2'>Permissions</h3>
@@ -3433,7 +3496,10 @@ WARNING - while testing our system, these card numbers will be the only accepted
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p><span class="http-method get">GET</span> <code>https://api.basistheory.com/atomic/banks/{id}</code></p>
+<p><span class="http-method get">
+  <span class="box-method">GET</span>
+  <code>https://api.basistheory.com/atomic/banks/{id}</code>
+</span></p>
 
 <p>Get an atomic bank by ID in the tenant.</p>
 <h3 id='permissions-3'>Permissions</h3>
@@ -3530,12 +3596,15 @@ WARNING - while testing our system, these card numbers will be the only accepted
   <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
   <span class="nt">-X</span> <span class="s2">"DELETE"</span>
 </code></pre></div>
-<p><span class="http-method delete">DELETE</span> <code>https://api.basistheory.com/atomic/banks/{id}</code></p>
+<p><span class="http-method delete">
+  <span class="box-method">DELETE</span>
+  <code>https://api.basistheory.com/atomic/banks/{id}</code>
+</span></p>
 
 <p>Delete an atomic bank by ID in the tenant.</p>
 
 <aside class="warning">
-WARNING - The data associated with a deleted atomic bank will be removed forever. The reference will still exists for audit purposes
+<span>WARNING - The data associated with a deleted atomic bank will be removed forever. The reference will still exists for audit purposes</span>
 </aside>
 <h3 id='permissions-4'>Permissions</h3>
 <p class="scopes">
@@ -3606,7 +3675,10 @@ WARNING - The data associated with a deleted atomic bank will be removed forever
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p><span class="http-method get">GET</span> <code>https://api.basistheory.com/atomic/banks/{id}/decrypt</code></p>
+<p><span class="http-method get">
+  <span class="box-method">GET</span>
+  <code>https://api.basistheory.com/atomic/banks/{id}/decrypt</code>
+</span></p>
 
 <p>Decrypt an atomic bank by ID in the tenant.</p>
 <h3 id='permissions-5'>Permissions</h3>
@@ -3701,8 +3773,8 @@ WARNING - The data associated with a deleted atomic bank will be removed forever
 This will give you the power to continue to own the UX of your application, while still being able to off-load most of the risk and compliance of holding that data.</p>
 
 <aside class="warning">
-<b>Warning</b> - If you're looking to use this module for storing payments cards, keep in mind that you will need to complete a <i>SAQ-A-PM</i> survey for Basis Theory to keep on file.
-This survey will identify and enforce certain data protections for the PCI compliance of your frontend systems (ones touching the card data). 
+<span>Warning - If you're looking to use this module for storing payments cards, keep in mind that you will need to complete a <i>SAQ-A-PM</i> survey for Basis Theory to keep on file.
+This survey will identify and enforce certain data protections for the PCI compliance of your frontend systems (ones touching the card data).</span>
 </aside>
 
 <ul>
@@ -3747,7 +3819,7 @@ yarn add @Basis-Theory/basis-theory-js
 <p><code>BasisTheory</code> instance should be initialized only once, and it can be done whenever it suits best your workflow.</p>
 
 <aside class="notice">
-  Beware that single page applications may share BasisTheory instance across multiple routes, and calling init multiple times in the same instance will result in an error.
+  <span>Beware that single page applications may share BasisTheory instance across multiple routes, and calling init multiple times in the same instance will result in an error.</span>
 </aside>
 
 <p>You will need a <a href="#application-types"><code>public</code></a> Application <a href="#authentication">API key</a> to initialize the <code>BasisTheory</code> instance, this will give you access to both <code>tokens</code> and <code>atomic</code> features within the module.</p>
@@ -4264,7 +4336,7 @@ yarn add @Basis-Theory/basis-theory-js
 <p>You don&#39;t have to install <code>Hosted Elements</code> as a separated module or include additional script tags besides <code>BasisTheory.js</code>. It will dynamically load them from <code>js.basistheory.com</code>, which enables us to keep the highest compliance standards (e.g. PCI compliance). The only thing you have to worry about is adding <code>elements: true</code> in <code>BasisTheory.init</code> options parameter.</p>
 
 <aside class="warning">
-  Hosted Elements are meant to be used on browser environments only. If you installed <code>BasisTheory.js</code> as a module, make sure the instance that loads elements runs on the browser-side code.
+  <span>Hosted Elements are meant to be used on browser environments only. If you installed <code>BasisTheory.js</code> as a module, make sure the instance that loads elements runs on the browser-side code.</span>
 </aside>
 
 <p>See <a href="#initialize">Basis Theory Initialize</a> for more details.</p>
@@ -4289,7 +4361,7 @@ yarn add @Basis-Theory/basis-theory-js
 </tbody></table>
 
 <aside class="notice">
-  More element types coming soon.
+  <span>More element types coming soon.</span>
 </aside>
 <h1 id='element-instance'>Element instance</h1><h2 id='mount-element'>Mount Element</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>// checkout html language tab
 </code></pre></div><div class="highlight"><pre class="highlight html tab-html"><code><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"my-card"</span><span class="nt">&gt;&lt;/div&gt;</span>
@@ -4410,7 +4482,7 @@ yarn add @Basis-Theory/basis-theory-js
 <p>You can fetch this same data later with <a href="#get-an-atomic-card">Get an Atomic Card API</a>.</p>
 
 <aside class="notice">
-  Notice that the actual card data never leaves the hosted element (iframe) other than to hit our secure API endpoints. 
+  <span>Notice that the actual card data never leaves the hosted element (iframe) other than to hit our secure API endpoints.</span>
 </aside>
 <h2 id='storecreditcard-errors'>storeCreditCard Errors</h2><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">elements</span><span class="p">.</span><span class="nx">storeCreditCard</span><span class="p">(...).</span><span class="k">catch</span><span class="p">(</span><span class="nx">error</span> <span class="o">=&gt;</span> <span class="p">{</span>
   <span class="c1">// handle error</span>
