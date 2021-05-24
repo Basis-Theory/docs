@@ -34,7 +34,10 @@ curl "api.basistheory.com/atomic/banks" \
 }
 ```
 
-<span class="http-method post">POST</span> `https://api.basistheory.com/atomic/banks`
+<span class="http-method post">
+  <span class="box-method">POST</span>
+  `https://api.basistheory.com/atomic/banks`
+</span>
 
 Create a new atomic bank for the tenant.
 
@@ -111,7 +114,10 @@ curl "api.basistheory.com/atomic/banks" \
 }
 ```
 
-<span class="http-method get">GET</span> `https://api.basistheory.com/atomic/banks`
+<span class="http-method get">
+  <span class="box-method">GET</span>
+  `https://api.basistheory.com/atomic/banks`
+</span>
 
 Get a list of atomic banks for the tenant.
 
@@ -169,7 +175,10 @@ curl "api.basistheory.com/atomic/banks/1485efb9-6b1f-4248-a5d1-cf9b3907164c" \
 }
 ```
 
-<span class="http-method get">GET</span> `https://api.basistheory.com/atomic/banks/{id}`
+<span class="http-method get">
+  <span class="box-method">GET</span>
+  `https://api.basistheory.com/atomic/banks/{id}`
+</span>
 
 Get an atomic bank by ID in the tenant.
 
@@ -217,12 +226,15 @@ curl "api.basistheory.com/atomic/banks/1485efb9-6b1f-4248-a5d1-cf9b3907164c" \
   -X "DELETE"
 ```
 
-<span class="http-method delete">DELETE</span> `https://api.basistheory.com/atomic/banks/{id}`
+<span class="http-method delete">
+  <span class="box-method">DELETE</span>
+  `https://api.basistheory.com/atomic/banks/{id}`
+</span>
 
 Delete an atomic bank by ID in the tenant.
 
 <aside class="warning">
-WARNING - The data associated with a deleted atomic bank will be removed forever. The reference will still exists for audit purposes
+<span>WARNING - The data associated with a deleted atomic bank will be removed forever. The reference will still exists for audit purposes</span>
 </aside>
 
 ### Permissions
@@ -273,7 +285,10 @@ curl "api.basistheory.com/atomic/banks/1485efb9-6b1f-4248-a5d1-cf9b3907164c/decr
 }
 ```
 
-<span class="http-method get">GET</span> `https://api.basistheory.com/atomic/banks/{id}/decrypt`
+<span class="http-method get">
+  <span class="box-method">GET</span>
+  `https://api.basistheory.com/atomic/banks/{id}/decrypt`
+</span>
 
 Decrypt an atomic bank by ID in the tenant.
 

@@ -5,8 +5,8 @@ This will give you the power to continue to own the UX of your application, whil
 
 
 <aside class="warning">
-<b>Warning</b> - If you're looking to use this module for storing payments cards, keep in mind that you will need to complete a <i>SAQ-A-PM</i> survey for Basis Theory to keep on file.
-This survey will identify and enforce certain data protections for the PCI compliance of your frontend systems (ones touching the card data). 
+<span>Warning - If you're looking to use this module for storing payments cards, keep in mind that you will need to complete a <i>SAQ-A-PM</i> survey for Basis Theory to keep on file.
+This survey will identify and enforce certain data protections for the PCI compliance of your frontend systems (ones touching the card data).</span>
 </aside>
 
 - [Install](#install)
@@ -77,7 +77,7 @@ await BasisTheory.init("test_1234567890");
 `BasisTheory` instance should be initialized only once, and it can be done whenever it suits best your workflow.
 
 <aside class="notice">
-  Beware that single page applications may share BasisTheory instance across multiple routes, and calling init multiple times in the same instance will result in an error.
+  <span>Beware that single page applications may share BasisTheory instance across multiple routes, and calling init multiple times in the same instance will result in an error.</span>
 </aside>
 
 You will need a [`public`](#application-types) Application [API key](#authentication) to initialize the `BasisTheory` instance, this will give you access to both `tokens` and `atomic` features within the module.

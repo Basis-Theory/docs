@@ -2,7 +2,7 @@
 @import 'normalize';
 @import 'variables';
 @import 'icon-font';
-@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;400;500;600&display=swap');
 // @import 'rtl'; // uncomment to switch to RTL format
 
 /*
@@ -35,6 +35,15 @@ html, body {
   background-color: $main-bg;
   height: 100%;
   -webkit-text-size-adjust: none; /* Never autoresize text */
+
+  a {
+    color: $links;
+    @extend %default-font;
+    font-weight: 600;
+    line-height: 21px;
+    letter-spacing: 0.15px;
+    text-align: left;
+  }
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -45,7 +54,7 @@ html, body {
 
 .toc-section > ul > li > a > span {
   float: right;
-  background-color: #2484FF;
+  background-color: $links;
   border-radius: 40px;
   width: 20px;
 }
@@ -64,6 +73,7 @@ html, body {
   background-color: $nav-bg;
   font-size: 16px;
   font-weight: 600;
+  border: 1px solid $nav-bg-border;
 
   .toc-header {
     display: grid;
@@ -95,6 +105,8 @@ html, body {
     a {
       padding-top: 0.5em;
       padding-bottom: 0.5em;
+      color: $secondary;
+      @extend %principal-title-font;
     }
   }
 
@@ -111,21 +123,27 @@ html, body {
 
     input {
       background: $nav-bg-search;
-      padding: 6px 0 6px 15px;
+      padding: 6px 8px;
       box-sizing: border-box;
       margin: 1em $nav-padding;
       width: 86%;
       outline: none;
       color: $nav-search-text;
       opacity: 0.55;
-      border-radius: 4px;
+      border: none;
+      border-radius: 2px;
+      @extend %search-font;
+
+      &::placeholder {
+        color: $nav-search-text;
+      }
     }
 
     &:after {
       position: absolute;
       top: 37%;
       right: $nav-padding*2;
-      color: $nav-icon;
+      color: $secondary;
       @extend %icon-search;
     }
   }
@@ -151,7 +169,7 @@ html, body {
     }
 
     a {
-      color: $nav-text;
+      color: $links;
       text-decoration: none;
 
       &:hover {
@@ -171,26 +189,31 @@ html, body {
     line-height: 28px;
   }
 
+  ul {
+    margin-left: 1.7rem;
+  }
+
   li {
     color: $nav-text;
     transition-property: background;
     transition-timing-function: linear;
     transition-duration: 200ms;
-    margin: 0 15px;
   }
 
   // This is the currently selected ToC entry
   .toc-link.active {
-    background-color: $nav-active-bg;
-    color: $nav-active-text;
-    border: 1px solid $toc-border;
-    border-radius: 2px;
+    color: $primary;
   }
 
   // this is parent links of the currently selected ToC entry
   .toc-link.active-parent {
-    background-color: $nav-active-parent-bg;
-    color: $nav-active-parent-text;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 20px;
+    letter-spacing: 0.15px;
+    text-align: left;
+    color: $primary;
   }
   // Section headers
   .toc-h1[data-title="API Reference"],
@@ -205,12 +228,23 @@ html, body {
 
   .toc-list-h2 {
     display: none;
-    background-color: $nav-subitem-bg;
-    font-weight: 500;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 17px;
+    letter-spacing: 0px;
+    text-align: left;
+  }
+
+  .toc-list-h2 li {
+    list-style: disc;
+  }
+
+  .toc-list-h2 li::marker {
+    margin-left: -12px;
   }
 
   .toc-h2 {
-    padding-left: $nav-padding + $nav-indent;
     font-size: 14px;
   }
 
@@ -220,7 +254,7 @@ html, body {
     border-top: 1px dashed $nav-footer-border-color;
 
     li,a {
-      color: $nav-text;
+      color: $links;
       text-decoration: none;
     }
 
@@ -237,7 +271,7 @@ html, body {
 }
 
 .toc-link, .toc-footer li {
-  padding: 0 $nav-padding 0 $nav-padding;
+  padding: 0 $nav-padding 0 0;
   display: block;
   overflow-x: hidden;
   white-space: nowrap;
@@ -247,6 +281,7 @@ html, body {
   transition-property: background;
   transition-timing-function: linear;
   transition-duration: 130ms;
+  @extend %subtitle-font;
 }
 
 // button to show navigation on mobile devices
@@ -312,7 +347,6 @@ html, body {
   .lang-selector {
     position: fixed;
     z-index: 50;
-    border-bottom: 5px solid $lang-select-active-bg;
   }
 }
 
@@ -323,21 +357,29 @@ html, body {
   font-weight: bold;
   overflow-x: auto;
   a {
-    display: inline;
-    color: $lang-select-text;
+    @extend %principal-title-font;
+    color: $secondary;
     text-decoration: none;
-    padding: 0 10px;
-    line-height: 30px;
+    padding: 18px 32px;
     outline: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-transform: capitalize;
 
     &:active, &:focus {
-      background-color: $lang-select-pressed-bg;
-      color: $lang-select-pressed-text;
+      color: $primary;
+      border-bottom: 2px #1AD1DB solid;
     }
 
     &.active {
-      background-color: $lang-select-active-bg;
-      color: $lang-select-active-text;
+      color: $primary;
+      border-bottom: 2px #1AD1DB solid;
+    }
+
+    &:hover {
+      color: $primary;
+      opacity: 0.8;
     }
   }
 
@@ -356,6 +398,8 @@ html, body {
 .content {
   // fixes webkit rendering bug for some: see #538
   -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  
   // to place content above the dark box
   position: relative;
   z-index: 30;
@@ -390,15 +434,14 @@ html, body {
     font-family: "Source Sans Pro", sans-serif;
     font-weight: 600;
     font-style: normal;
+    line-height: 160%;
     letter-spacing: 0.15px;
     padding-top: 0.5em;
     padding-bottom: 0.5em;
     margin-bottom: $h1-margin-bottom;
     margin-top: 2em;
-    border: 1px solid #D9DBF8;
+    border: 1px solid #E6E8F0;
     background-color: #F2F3FF;
-    line-height: 160%;
-
   }
 
   h1:first-child, div:first-child + h1 {
@@ -407,8 +450,7 @@ html, body {
   }
 
   h2 {
-    @extend %header-font;
-    font-size: 19px;
+    @extend %subtitle2-font;
     margin-top: 4em;
     margin-bottom: 0;
     border-top: 1px solid #ccc;
@@ -444,35 +486,39 @@ html, body {
   table {
     margin-bottom: 1em;
     overflow: auto;
-    th,td {
+    td {
       text-align: left;
       vertical-align: top;
       line-height: 1.6;
       code {
         white-space: nowrap;
       }
+      em {
+        @extend %tc-type-font;
+      }
+      a {
+        color: $links;
+      }
     }
 
     th {
-      padding: 5px 10px;
-      border-bottom: 1px solid #ccc;
+      padding: 6px 24px 6px 16px;
       vertical-align: bottom;
+      background: #E8EBF8;
+      box-shadow: inset 0px -1px 0px #E2E4F0;
+      @extend %table-header-font;
     }
 
     td {
       padding: 10px;
     }
 
-    tr:last-child {
-      border-bottom: 1px solid #ccc;
-    }
-
     tr:nth-child(odd)>td {
-      background-color: lighten($main-bg,4.2%);
+      background-color: #F2F3FF;
     }
 
     tr:nth-child(even)>td {
-      background-color: lighten($main-bg,2.4%);
+      background-color: #E8EBF8;
     }
   }
 
@@ -484,14 +530,16 @@ html, body {
     margin-left: 15px;
   }
   p {
-    line-height: 180%;
-    font-weight: 400;
-    font-size: 16px;
+    @extend %body1-font;
+    
   }
 
   p, li, dt, dd {
-    line-height: 1.6;
     margin-top: 0;
+  }
+
+  li, dt, dd {
+    line-height: 1.6;
   }
 
   img {
@@ -499,7 +547,7 @@ html, body {
   }
 
   code {
-    background-color: rgba(26, 28, 51, 0.06);
+    background-color: $code-bg;
     border-radius: 2px;
     @extend %break-words;
     @extend %code-font;
@@ -514,8 +562,13 @@ html, body {
     padding-bottom: 1em;
     margin-top: 1.5em;
     margin-bottom: 1.5em;
-    background: $aside-notice-bg;
     line-height: 1.6;
+    display: flex;
+    align-items: center;
+
+    &.notice {
+      background-color: $aside-notice-bg;
+    }
 
     &.warning {
       background-color: $aside-warning-bg;
@@ -528,8 +581,7 @@ html, body {
 
   aside:before {
     vertical-align: middle;
-    padding-right: 0.5em;
-    font-size: 14px;
+    padding-right: 1.5em;
   }
 
   aside.notice:before {
@@ -565,7 +617,7 @@ html, body {
   }
 
   pre, blockquote {
-    background-color: $code-bg;
+    background-color: $code-annotation-bg;
     color: #FFF;
 
     margin: 0;
@@ -581,7 +633,7 @@ html, body {
     &>p { margin: 0; }
 
     a {
-      color: #FFF;
+      color: $links;
       text-decoration: none;
       border-bottom: dashed 1px #ccc;
     }
@@ -589,21 +641,27 @@ html, body {
 
   pre {
     @extend %code-font;
-    padding-top: 2em;
-    padding-bottom: 2em;
-    padding-left: 3em;
-    padding-right: 3em;
+    padding: 1em 2em 2em;
+    display: grid;
+    grid-template-rows: auto auto;
 
     .copy-clipboard {
-      margin-right: -2em;
+      grid-column: end;
+      grid-row: end;
+      justify-self: end;
+      display: grid;
+      grid-template-columns: auto auto;
+      align-items: center;
+      gap: 10%;
     }
   }
 
   blockquote {
     &>p {
-      background-color: $code-annotation-bg;
+      background-color: $code-annotation-title-bg;
       padding: $code-annotation-padding 2em;
-      color: #eee;
+      color: $code-annotation-title-text;
+      @extend %code-annotation-font;
     }
   }
 }
@@ -673,12 +731,12 @@ html, body {
 }
 
 .copy-clipboard {
-  float: right;
-  fill: #9DAAB6;
   cursor: pointer;
-  opacity: 0.4;
-  height: 18px;
-  width: 18px;
+
+  .copy-clipboard-text{
+    color: $primary;
+    @extend %button-medium-font
+  }
 }
 
 .copy-clipboard:hover {
@@ -686,45 +744,83 @@ html, body {
 }
 
 .headline {
-  line-height: .6em;
-  font-size: 1.1em;
-  color: #ccc;
-  margin-left: 0.67em;
-  margin-top: 1.2em;
+  @extend %principal-title-font;
+  color: $nav-principal-title-text;
+  margin-left: 1.70rem;
+  margin-top: 0.2em;
 }
 
 .scopes {
-  padding: 0 15px;
 
   .scope {
+    background-color: #CACDDB;
     display: inline-block;
-    border: 1px solid #aaa;
-    border-radius: 14px;
-    background: 0 0;
-    padding: 6px 10px;
-    font-size: 12px;
+    border: 1px solid #D9DBF8;
+    border-radius: 1px;
+    padding: 0px 8px;
+    @extend %scope-font;
   }
 }
 
 .http-method {
-  color: #fff;
-  font-weight: bold;
-  display: inline-block;
-  text-transform: uppercase;
-  border-radius: 14px;
-  background: 0 0;
-  padding: 2px 8px;
-  font-size: 12px;
+  border-radius: 1px;
+  display: grid;
+  grid-template-columns: auto auto 1fr;
+  align-items: center;
+  padding: 8px 16px 8px 8px;
+
+  .box-method {
+    color: $http-method-text;
+    border-radius: 1px;
+    @extend %http-method-font;
+    padding: 0px 8px;
+    margin: 0px 10px;
+    text-transform: uppercase;
+    box-sizing: border-box;
+    border-radius: 2px;
+  }
 
   &.get {
-    background-color: $aside-notice-bg;
+    background: $http-method-get-container-bg;
+    border: 1px solid #D4F2F4;
+    
+    .box-method {
+      background-color: $http-method-get-bg;
+    }
+
   }
 
   &.post, &.put {
-    background-color: $aside-success-bg;
+    background-color: $http-method-post-container-bg;
+    border: 1px solid #C6EFE5;
+
+    .box-method {
+      background-color: $http-method-post-bg;
+    }
+
   }
 
   &.delete {
-    background-color: $aside-danger-bg;
+    background-color: $http-method-delete-container-bg;
+    border: 1px solid #FFDCDE;
+
+    .box-method {
+      background-color: $http-method-delete-bg;
+    }
+ 
+  }
+  
+  code {
+    background-color: rgba(0, 0, 0, 0);
+  }
+  .http-method-copy {
+    justify-self: end;
+    cursor: pointer;
+    grid-column: 3;
+    grid-row: 1;
+
+    &:hover {
+      opacity: 0.8;
+    }
   }
 }

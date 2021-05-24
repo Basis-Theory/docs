@@ -23,7 +23,10 @@ curl "api.basistheory.com/tenants/self" \
 }
 ```
 
-<span class="http-method get">GET</span> `https://api.basistheory.com/tenants/self`
+<span class="http-method get">
+  <span class="box-method">GET</span>
+  `https://api.basistheory.com/tenants/self`
+</span>
 
 Retrieves the tenant associated with the provided `X-API-KEY`.
 
@@ -79,7 +82,10 @@ curl "api.basistheory.com/tenants/self" \
 }
 ```
 
-<span class="http-method put">PUT</span> `https://api.basistheory.com/tenants/self`
+<span class="http-method put">
+  <span class="box-method">PUT</span>
+  `https://api.basistheory.com/tenants/self`
+</span>
 
 Update the tenant associated with the provided `X-API-KEY`.
 
@@ -126,7 +132,10 @@ curl "api.basistheory.com/tenants/self" \
   -X "DELETE"
 ```
 
-<span class="http-method delete">DELETE</span> `https://api.basistheory.com/tenants/self`
+<span class="http-method delete">
+  <span class="box-method">DELETE</span>
+  `https://api.basistheory.com/tenants/self`
+</span>
 
 Delete the tenant associated with the provided `X-API-KEY`.
 

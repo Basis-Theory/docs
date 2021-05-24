@@ -23,41 +23,51 @@ under the License.
 
 // BACKGROUND COLORS
 ////////////////////
-$nav-bg: #141629 !default;
-$nav-bg-search: #2D2F4A !default;
-$examples-bg: #2E3336 !default;
-$code-bg: #1E2224 !default;
-$code-annotation-bg: #191D1F !default;
+$nav-bg: #13172A !default;
+$nav-bg-border: #2D2F4A !default;
+$nav-bg-search: #1E233B!default;
+$examples-bg: #070A1B !default;
+$code-annotation-title-bg: #1E233B !default;
 $nav-subitem-bg: #1E2224 !default;
 $nav-active-bg: #1B1D32 !default;
 $nav-active-parent-bg: #1B1D32 !default; // parent links of the current section
 $lang-select-border: #000 !default;
-$lang-select-bg: #1E2224 !default;
-$lang-select-active-bg: $examples-bg !default; // feel free to change this to blue or something
-$lang-select-pressed-bg: #111 !default; // color of language tab bg when mouse is pressed
-$main-bg: #EAECFC !default;
+$lang-select-bg: #13172A !default;
+$main-bg: #FBFBFF !default;
 $aside-notice-bg: #1AD1DB !default;
-$aside-warning-bg: #FFD278 !default;
-$aside-success-bg: #3AC379 !default;
-$aside-danger-bg: #c97a7e !default;
+$aside-warning-bg: #FFD582 !default;
+$aside-success-bg: #3AC3A2 !default;
+$aside-danger-bg: #FB5B8B !default;
 $search-notice-bg: #c97a7e !default;
+$code-bg: rgba(26, 28, 51, 0.06) !default;
+$http-method-get-bg: #1AD1DB !default;
+$http-method-post-bg: #3AC3A2 !default;
+$http-method-delete-bg: #FB5B8B !default;
+$http-method-get-container-bg: #E9FEFF !default;
+$http-method-post-container-bg: #E8FFF9 !default;
+$http-method-delete-container-bg: #FFF0F1 !default;
+$code-annotation-bg: #1B1D32 !default;
+
 
 
 // TEXT COLORS
 ////////////////////
 $main-text: #1B1D32 !default; // main content text color
 $nav-text: #626582 !default;
-$nav-active-text: #FFF !default;
-$nav-active-parent-text: #FFF !default; // parent links of the current section
 $lang-select-text: #FFF !default; // color of unselected language tab text
 $lang-select-active-text: #FFF !default; // color of selected language tab text
 $lang-select-pressed-text: #FFF !default; // color of language tab text when mouse is pressed
-$nav-icon: #FFF !default;
 $nav-search-text:#B6BADC !default;
 $nav-header-backgroud: #141629 !default;
 $nav-header-text:#E2E4F8 !default;
+$nav-principal-title-text: #E5E6EC !default;
 $toc-border: #2D2F4A !default;
-
+$code-text: rgba(7, 10, 27, 0.9) !default;
+$http-method-text: #FFF !default;
+$code-annotation-title-text: #F2F3FF !default;
+$primary: #1AD1DB !default;
+$links: #047F87;
+$secondary: #8B92B6 !default;
 
 // SIZES
 ////////////////////
@@ -77,7 +87,6 @@ $phone-width: $tablet-width - $nav-width !default; // min width before reverting
 // FONTS
 ////////////////////
 %default-font {
-  //font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   font-size: 14px;
   font-family: "Source Sans Pro", sans-serif;
 }
@@ -88,10 +97,118 @@ $phone-width: $tablet-width - $nav-width !default; // min width before reverting
 }
 
 %code-font {
-  font-family: Consolas, Menlo, Monaco, "Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace, serif;
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 600;
   font-size: 12px;
-  line-height: 1.5;
+  line-height: 17px;
+  font-style: normal;
+  text-align: left;
+  letter-spacing: 0.15px;
+  padding: 4px;
 }
+
+%search-font {
+  @extend %default-font;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0.15px;
+  text-align: left;
+}
+
+%principal-title-font {
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 28px;
+  letter-spacing: 0.15px;
+  text-align: left;
+}
+
+%subtitle-font {
+  @extend %default-font;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0px;
+  text-align: left;
+}
+
+%http-method-font {
+  font-family: "Source Sans Pro", sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 180%;
+  letter-spacing: 0.15px;
+}
+
+%subtitle2-font {
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 32px;
+  letter-spacing: 0.15px;
+  text-align: left;
+}
+
+%body1-font {
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.15px;
+  text-align: left;
+}
+
+%table-header-font {
+  @extend %default-font;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: 0.15px;
+  text-align: left;
+}
+
+%scope-font {
+  @extend %default-font;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 180%;
+  letter-spacing: 0.15px;
+  color: #2D2F4A;
+}
+
+%code-annotation-font {
+  font-family: "Source Sans Pro", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 160%;
+  letter-spacing: 0.15px;
+}
+
+%button-medium-font {
+  @extend %default-font;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: 0px;
+  text-align: left;
+}
+
+%tc-type-font {
+  @extend %default-font;
+  font-style: italic;
+  font-weight: 600;
+  line-height: 20px;
+  letter-spacing: 0px;
+  text-align: left;
+}
+
 
 
 // OTHER

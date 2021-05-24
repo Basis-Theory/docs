@@ -49,7 +49,10 @@ curl "api.basistheory.com/permissions" \
 ]
 ```
 
-<span class="http-method get">GET</span> `https://api.basistheory.com/permissions`
+<span class="http-method get">
+  <span class="box-method">GET</span>
+  `https://api.basistheory.com/permissions`
+</span>
 
 ### Response Schema
 
@@ -61,7 +64,7 @@ Attribute | Type | Description
 `dependencies` | *array* | List of downstream [permission types](#permission-types) which are required for this permission type
 
 <aside class="notice">
-Dependent permission types are automatically assigned when an application is created or updated. For example, if an application is created with <code>card:read</code>, then the permission of <code>token:read</code> will automatically be assigned.
+  <span>Dependent permission types are automatically assigned when an application is created or updated. For example, if an application is created with <code>card:read</code>, then the permission of <code>token:read</code> will automatically be assigned.</span>
 </aside>
 
 ### Response Messages

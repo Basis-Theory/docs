@@ -53,7 +53,10 @@ curl "api.basistheory.com/applications" \
 }
 ```
 
-<span class="http-method post">POST</span> `https://api.basistheory.com/applications`
+<span class="http-method post">
+  <span class="box-method">POST</span>
+  `https://api.basistheory.com/applications`
+</span>
 
 Create a new application for the tenant.
 
@@ -135,7 +138,10 @@ curl "api.basistheory.com/applications?id=72ef3d62-b7de-4b5f-8aa2-b9db06c291cb&i
   -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
 ```
 
-<span class="http-method get">GET</span> `https://api.basistheory.com/applications`
+<span class="http-method get">
+  <span class="box-method">GET</span>
+  `https://api.basistheory.com/applications`
+</span>
 
 Get a list of applications for the tenant.
 
@@ -200,7 +206,10 @@ curl "api.basistheory.com/applications/fe1f9ba4-474e-44b9-b949-110cdba9d662" \
 }
 ```
 
-<span class="http-method get">GET</span> `https://api.basistheory.com/applications/{id}`
+<span class="http-method get">
+  <span class="box-method">GET</span>
+  `https://api.basistheory.com/applications/{id}`
+</span> 
 
 Get an application by ID in the tenant.
 
@@ -264,7 +273,10 @@ curl "api.basistheory.com/applications/key" \
 }
 ```
 
-<span class="http-method get">GET</span> `https://api.basistheory.com/applications/key`
+<span class="http-method get">
+  <span class="box-method">GET</span>
+  `https://api.basistheory.com/applications/key`
+</span>
 
 Get an application by key in the tenant. Will use the `X-API-KEY` header to lookup the application.
 
@@ -331,7 +343,10 @@ curl "api.basistheory.com/applications/fb124bba-f90d-45f0-9a59-5edca27b3b4a" \
 }
 ```
 
-<span class="http-method put">PUT</span> `https://api.basistheory.com/applications/{id}`
+<span class="http-method put">
+  <span class="box-method">PUT</span>
+  `https://api.basistheory.com/applications/{id}`
+</span>
 
 Update an application by ID in the tenant.
 
@@ -397,12 +412,15 @@ curl "api.basistheory.com/applications/fb124bba-f90d-45f0-9a59-5edca27b3b4a/rege
 }
 ```
 
-<span class="http-method post">POST</span> `https://api.basistheory.com/applications/{id}/regenerate`
+<span class="http-method post">
+  <span class="box-method">POST</span>
+  `https://api.basistheory.com/applications/{id}/regenerate`
+</span>
 
 Regenerate the API key for an application.
 
 <aside class="warning">
-WARNING - Regenerating the API key for an application will immediately invalidate the previous API key associated with the application.
+  <span>WARNING - Regenerating the API key for an application will immediately invalidate the previous API key associated with the application.</span>
 </aside>
 
 ### Permissions
@@ -446,7 +464,10 @@ curl "api.basistheory.com/applications/fb124bba-f90d-45f0-9a59-5edca27b3b4a" \
   -X "DELETE"
 ```
 
-<span class="http-method delete">DELETE</span> `https://api.basistheory.com/applications/{id}`
+<span class="http-method delete">
+  <span class="box-method">DELETE</span>
+  `https://api.basistheory.com/applications/{id}`
+</span>
 
 Delete an application by ID in the tenant.
 

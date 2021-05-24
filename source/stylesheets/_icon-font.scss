@@ -22,17 +22,17 @@
 
 %icon-exclamation-sign {
   @extend %icon;
-  content: "\e600";
+  content: url(../images/icon/warning.svg);
 }
 %icon-info-sign {
   @extend %icon;
-  content: "\e602";
+  content: url(../images/icon/info.svg);
 }
 %icon-ok-sign {
   @extend %icon;
-  content: "\e606";
+  content: url(../images/icon/check-circle.svg);
 }
 %icon-search {
   @extend %icon;
-  content: "\e607";
+  content: url(../images/icon/search.svg);
 }

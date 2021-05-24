@@ -48,7 +48,7 @@ await BasisTheory.init("test_1234567890", { elements: true });
 You don't have to install `Hosted Elements` as a separated module or include additional script tags besides `BasisTheory.js`. It will dynamically load them from `js.basistheory.com`, which enables us to keep the highest compliance standards (e.g. PCI compliance). The only thing you have to worry about is adding `elements: true` in `BasisTheory.init` options parameter.
 
 <aside class="warning">
-  Hosted Elements are meant to be used on browser environments only. If you installed <code>BasisTheory.js</code> as a module, make sure the instance that loads elements runs on the browser-side code.
+  <span>Hosted Elements are meant to be used on browser environments only. If you installed <code>BasisTheory.js</code> as a module, make sure the instance that loads elements runs on the browser-side code.</span>
 </aside>
 
 See [Basis Theory Initialize](#initialize) for more details.
@@ -69,7 +69,7 @@ Parameter | Required | Type     | Description
 
 
 <aside class="notice">
-  More element types coming soon.
+  <span>More element types coming soon.</span>
 </aside>
 
 # Element instance
@@ -190,7 +190,7 @@ Internally, `BasisTheory.elements.storeCreditCard` calls [Create Atomic Card API
 You can fetch this same data later with [Get an Atomic Card API](#get-an-atomic-card).
 
 <aside class="notice">
-  Notice that the actual card data never leaves the hosted element (iframe) other than to hit our secure API endpoints. 
+  <span>Notice that the actual card data never leaves the hosted element (iframe) other than to hit our secure API endpoints.</span>
 </aside>
 
 ## storeCreditCard Errors
