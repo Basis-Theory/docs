@@ -370,6 +370,7 @@ html, body {
     &:active, &:focus {
       color: $primary;
       border-bottom: 2px $primary solid;
+
     }
 
     &.active {
