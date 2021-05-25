@@ -369,12 +369,12 @@ html, body {
 
     &:active, &:focus {
       color: $primary;
-      border-bottom: 2px #1AD1DB solid;
+      border-bottom: 2px $primary solid;
     }
 
     &.active {
       color: $primary;
-      border-bottom: 2px #1AD1DB solid;
+      border-bottom: 2px $primary solid;
     }
 
     &:hover {
@@ -441,7 +441,7 @@ html, body {
     margin-bottom: $h1-margin-bottom;
     margin-top: 2em;
     border: 1px solid #E6E8F0;
-    background-color: #F2F3FF;
+    background-color: $code-annotation-title-text;
   }
 
   h1:first-child, div:first-child + h1 {
@@ -514,7 +514,7 @@ html, body {
     }
 
     tr:nth-child(odd)>td {
-      background-color: #F2F3FF;
+      background-color: $code-annotation-title-text;
     }
 
     tr:nth-child(even)>td {
@@ -560,8 +560,7 @@ html, body {
   aside {
     padding-top: 1em;
     padding-bottom: 1em;
-    margin-top: 1.5em;
-    margin-bottom: 1.5em;
+    margin: 1.5em 51.5% 1.5em 1.5%;
     line-height: 1.6;
     display: flex;
     align-items: center;
