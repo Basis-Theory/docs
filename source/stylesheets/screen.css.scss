@@ -72,6 +72,20 @@ html, body {
   font-weight: 600;
   border: 1px solid $nav-bg-border;
 
+  &::-webkit-scrollbar-track {
+    background-color: #F5F5F5;
+  }
+
+  &::-webkit-scrollbar {
+    width: 10px;
+    background-color: #F5F5F5;
+  }
+
+  &::-webkit-scrollbar-thumb{
+    background-color: #13172A;
+    border: 2px solid #E6E8F0;
+  }
+
   .toc-header {
     display: grid;
     grid-template-columns: auto auto;
@@ -155,6 +169,7 @@ html, body {
       height: 30%;
       margin: -1em 15px 1em;
     }
+
 
     li {
       margin: 1em $nav-padding;
@@ -433,12 +448,11 @@ html, body {
     font-size: 20px;
     font-weight: 600;
     line-height: 160%;
-    padding-top: 0.5em;
-    padding-bottom: 0.5em;
+    padding: 0.9em;
     margin-bottom: $h1-margin-bottom;
     margin-top: 2em;
     border: 1px solid #E6E8F0;
-    background-color: $code-annotation-title-text;
+    background-color: $grey-50;
   }
 
   h1:first-child, div:first-child + h1 {
@@ -511,7 +525,7 @@ html, body {
     }
 
     tr:nth-child(odd)>td {
-      background-color: $code-annotation-title-text;
+      background-color: $grey-50;
     }
 
     tr:nth-child(even)>td {
@@ -563,7 +577,7 @@ html, body {
     align-items: center;
 
     &.notice {
-      background-color: $aside-notice-bg;
+      background-color: $primary;
     }
 
     &.warning {
@@ -678,7 +692,7 @@ html, body {
     border: 1px solid #D4F2F4;
     
     .box-method {
-      background-color: $http-method-get-bg;
+      background-color: $primary;
     }
 
   }
@@ -772,7 +786,7 @@ html, body {
     &>p {
       background-color: $code-annotation-title-bg;
       padding: $code-annotation-padding 2em;
-      color: $code-annotation-title-text;
+      color: $grey-50;
       @extend %code-annotation-font;
     }
   }
