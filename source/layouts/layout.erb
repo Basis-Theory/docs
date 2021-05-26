@@ -81,13 +81,8 @@ under the License.
     </a>
     <div class="toc-wrapper">
       <div class="toc-header">
-        <div class="toc-header-logo">
-          <%= image_tag "logo.svg", class: 'logo' %>
-          <%= image_tag "logo.title.svg", class: 'logo-title' %>
-        </div>
-        <div class="toc-header-tag">
+          <%= image_tag "logo-with-title.svg", class: 'logo' %>
           <%= image_tag "docs.svg", class: 'section-DOCS' %>
-        </div>
       </div>
       <div class="line"></div>
       <% if language_tabs.any? %>
@@ -101,6 +96,7 @@ under the License.
           <% end %>
         </div>
       <% end %>
+      <a href="#" class="nav-back">Go to Basis Theory</a>
       <% if current_page.data.search %>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search...">
@@ -144,7 +140,7 @@ under the License.
         <% end %>
       </ul>
 
-      <h1 class="headline">Modules</h1>
+      <h1 class="nav-title">Modules</h1>
       <ul id="toc_module" class="toc-section toc-list-h1">
         <% toc_data(module_page_content).each do |h1| %>
           <li>

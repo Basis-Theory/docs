@@ -25,7 +25,7 @@ under the License.
 ////////////////////
 $nav-bg: #13172A !default;
 $nav-bg-border: #2D2F4A !default;
-$nav-bg-search: #1E233B!default;
+$nav-bg-line: #1E233B!default;
 $examples-bg: #070A1B !default;
 $code-annotation-title-bg: #1E233B !default;
 $nav-subitem-bg: #1E2224 !default;
@@ -68,10 +68,11 @@ $code-annotation-title-text: #F2F3FF !default;
 $primary: #1AD1DB !default;
 $links: #047F87;
 $secondary: #8B92B6 !default;
+$grey-600: #545A78;
 
 // SIZES
 ////////////////////
-$nav-width: 230px !default; // width of the navbar
+$nav-width: 240px !default; // width of the navbar
 $examples-width: 50% !default; // portion of the screen taken up by code examples
 $logo-margin: 0px !default; // margin below logo
 $main-padding: 24px !default; // padding to left and right of content & examples
@@ -89,6 +90,8 @@ $phone-width: $tablet-width - $nav-width !default; // min width before reverting
 %default-font {
   font-size: 14px;
   font-family: "Source Sans Pro", sans-serif;
+  font-style: normal;
+  letter-spacing: 0.15px;
 }
 
 %header-font {
@@ -97,22 +100,18 @@ $phone-width: $tablet-width - $nav-width !default; // min width before reverting
 }
 
 %code-font {
-  font-family: "Source Sans Pro", sans-serif;
+  @extend %default-font;
   font-weight: 500;
-  font-size: 14px;
   line-height: 17.6px;
   font-style: normal;
   text-align: left;
-  letter-spacing: 0.15px;
   padding: 4px;
 }
 
 %search-font {
   @extend %default-font;
-  font-style: normal;
   font-weight: 400;
   line-height: 20px;
-  letter-spacing: 0.15px;
   text-align: left;
 }
 
@@ -128,7 +127,6 @@ $phone-width: $tablet-width - $nav-width !default; // min width before reverting
 
 %subtitle-font {
   @extend %default-font;
-  font-style: normal;
   font-weight: 400;
   line-height: 20px;
   letter-spacing: 0px;
@@ -166,19 +164,15 @@ $phone-width: $tablet-width - $nav-width !default; // min width before reverting
 
 %table-header-font {
   @extend %default-font;
-  font-style: normal;
   font-weight: 600;
   line-height: 24px;
-  letter-spacing: 0.15px;
   text-align: left;
 }
 
 %scope-font {
   @extend %default-font;
-  font-style: normal;
   font-weight: 600;
   line-height: 180%;
-  letter-spacing: 0.15px;
   color: #2D2F4A;
 }
 
@@ -193,7 +187,6 @@ $phone-width: $tablet-width - $nav-width !default; // min width before reverting
 
 %button-medium-font {
   @extend %default-font;
-  font-style: normal;
   font-weight: 600;
   line-height: 24px;
   letter-spacing: 0px;
@@ -209,6 +202,23 @@ $phone-width: $tablet-width - $nav-width !default; // min width before reverting
   text-align: left;
 }
 
+%nav-secondary-title {
+  font-family: "Source Sans Pro", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 157%;
+  letter-spacing: 0.1px;
+}
+
+%button-medium {
+  @extend %default-font;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: 0px;
+  text-align: left;
+
+}
 
 
 // OTHER

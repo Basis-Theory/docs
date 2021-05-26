@@ -36,3 +36,8 @@
   @extend %icon;
   content: url(../images/icon/search.svg);
 }
+
+%icon-go-back {
+  @extend %icon;
+  content: url(../images/icon/chevron-left.svg);
+}

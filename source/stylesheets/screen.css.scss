@@ -41,7 +41,6 @@ html, body {
     @extend %default-font;
     font-weight: 600;
     line-height: 21px;
-    letter-spacing: 0.15px;
     text-align: left;
   }
 }
@@ -49,8 +48,6 @@ html, body {
 ////////////////////////////////////////////////////////////////////////////////
 // TABLE OF CONTENTS
 ////////////////////////////////////////////////////////////////////////////////
-
-
 
 .toc-section > ul > li > a > span {
   float: right;
@@ -77,23 +74,12 @@ html, body {
 
   .toc-header {
     display: grid;
-    grid-template-columns: 50% 50%;
+    grid-template-columns: auto auto;
     margin: 12px 15px;
     color: $nav-header-text;
     background: $nav-header-backgroud;
-
-    .toc-header-tag {
-      justify-self: right;
-      align-self: center;
-      font-size: 14px;
-    }
-
-    .toc-header-logo {
-      justify-self: right;
-      align-items: center;
-      display: grid;
-      grid-template-columns: 50% 50%;
-    }
+    justify-content: space-between;
+    align-items: center;
   }
   .line {
     border: 1px solid $toc-border;
@@ -110,22 +96,29 @@ html, body {
     }
   }
 
-  // This is the logo at the top of the ToC
-  .logo {
-    display: block;
-    max-width: 77%;
-    margin-bottom: $logo-margin;
-    color: #1AD1DB;
+  .nav-back {
+    @extend %button-medium;
+    color: $nav-principal-title-text;
+    padding: 0;
+    margin: 1em $nav-padding;
+    display: grid;
+    grid-template-columns: 13% auto;
+    align-items: center;
+    text-decoration: none;
+
+    &::before {
+      @extend %icon-go-back;
+    }
   }
 
   &>.search {
     position: relative;
 
     input {
-      background: $nav-bg-search;
+      background: $nav-bg-line;
       padding: 6px 8px;
       box-sizing: border-box;
-      margin: 1em $nav-padding;
+      margin: 0 $nav-padding;
       width: 86%;
       outline: none;
       color: $nav-search-text;
@@ -149,7 +142,7 @@ html, body {
   }
 
   .search-results {
-    margin-top: 0;
+    margin-top: 0 ;
     box-sizing: border-box;
     height: 0;
     overflow-y: auto;
@@ -160,7 +153,7 @@ html, body {
     background: $nav-subitem-bg;
     &.visible {
       height: 30%;
-      margin-bottom: 1em;
+      margin: -1em 15px 1em;
     }
 
     li {
@@ -198,6 +191,7 @@ html, body {
     transition-property: background;
     transition-timing-function: linear;
     transition-duration: 200ms;
+    padding: 4px 0;
   }
 
   // This is the currently selected ToC entry
@@ -217,13 +211,14 @@ html, body {
   }
   // Section headers
   .toc-h1[data-title="API Reference"],
-    .toc-h1[data-title="Basis Theory JS"],
-    .toc-h1[data-title="Hosted Elements"],
-    .toc-h1[data-title="How To Use"] {
-    text-transform: uppercase;
-    margin-top: 1em;
+  .toc-h1[data-title="Basis Theory JS"],
+  .toc-h1[data-title="Hosted Elements"],
+  .toc-h1[data-title="How To Use"] {
+    text-transform: capitalize;
     margin-bottom: 0.5em;
     font-weight: bold;
+    color: $nav-principal-title-text;
+    @extend %principal-title-font;
   }
 
   .toc-list-h2 {
@@ -277,7 +272,7 @@ html, body {
   white-space: nowrap;
   text-overflow: ellipsis;
   text-decoration: none;
-  color: $nav-text;
+  color: $secondary;
   transition-property: background;
   transition-timing-function: linear;
   transition-duration: 130ms;
@@ -383,6 +378,10 @@ html, body {
     }
   }
 
+  a[data-language-name="html"] {
+    text-transform: uppercase;
+  }
+
   &:after {
     content: '';
     clear: both;
@@ -431,11 +430,8 @@ html, body {
   h1 {
     @extend %header-font;
     font-size: 20px;
-    font-family: "Source Sans Pro", sans-serif;
     font-weight: 600;
-    font-style: normal;
     line-height: 160%;
-    letter-spacing: 0.15px;
     padding-top: 0.5em;
     padding-bottom: 0.5em;
     margin-bottom: $h1-margin-bottom;
@@ -560,7 +556,7 @@ html, body {
   aside {
     padding-top: 1em;
     padding-bottom: 1em;
-    margin: 1.5em 51.5% 1.5em 1.5%;
+    margin: 1.5em 52% 1.5em 24px;
     line-height: 1.6;
     display: flex;
     align-items: center;
@@ -603,6 +599,122 @@ html, body {
     background: linear-gradient(to top left, #F7E633 0%, #F1D32F 100%);
   }
 
+}
+
+.highlight .c, .highlight .cm, .highlight .c1, .highlight .cs {
+  color: #909090;
+}
+
+.highlight, .highlight .w {
+  background-color: $code-bg;
+}
+
+.copy-clipboard {
+  cursor: pointer;
+
+  .copy-clipboard-text{
+    color: $primary;
+    @extend %button-medium-font
+  }
+}
+
+.copy-clipboard:hover {
+  opacity: 0.8;
+}
+
+.headline {
+  @extend %principal-title-font;
+  color: $nav-principal-title-text;
+  margin-left: 1.70rem;
+  margin-top: 1em;
+}
+
+.nav-title {
+  @extend %nav-secondary-title;
+  color: $grey-600;
+  margin: 1em 1.7rem;
+  &::after {
+    display: inline-block;
+    content: "";
+    border: 1px solid $nav-bg-line;
+    width: 62%;
+    margin-left: 10px;
+    transform: translateY(-0.2rem);
+}
+}
+
+.scopes {
+  .scope {
+    background-color: #CACDDB;
+    display: inline-block;
+    border: 1px solid #D9DBF8;
+    border-radius: 1px;
+    padding: 0px 8px;
+    @extend %scope-font;
+  }
+}
+
+.http-method {
+  border-radius: 1px;
+  display: grid;
+  grid-template-columns: auto auto 1fr;
+  align-items: center;
+  padding: 8px 16px 8px 8px;
+
+  .box-method {
+    color: $http-method-text;
+    border-radius: 1px;
+    @extend %http-method-font;
+    padding: 0px 8px;
+    margin: 0px 10px;
+    text-transform: uppercase;
+    box-sizing: border-box;
+    border-radius: 2px;
+  }
+
+  &.get {
+    background: $http-method-get-container-bg;
+    border: 1px solid #D4F2F4;
+    
+    .box-method {
+      background-color: $http-method-get-bg;
+    }
+
+  }
+
+  &.post, &.put {
+    background-color: $http-method-post-container-bg;
+    border: 1px solid #C6EFE5;
+
+    .box-method {
+      background-color: $http-method-post-bg;
+    }
+
+  }
+
+  &.delete {
+    background-color: $http-method-delete-container-bg;
+    border: 1px solid #FFDCDE;
+
+    .box-method {
+      background-color: $http-method-delete-bg;
+    }
+ 
+  }
+  
+  code {
+    background-color: rgba(0, 0, 0, 0);
+  }
+  .http-method-copy {
+    justify-self: end;
+    cursor: pointer;
+    grid-column: 3;
+    grid-row: 1;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -721,105 +833,4 @@ html, body {
   }
 }
 
-.highlight .c, .highlight .cm, .highlight .c1, .highlight .cs {
-  color: #909090;
-}
 
-.highlight, .highlight .w {
-  background-color: $code-bg;
-}
-
-.copy-clipboard {
-  cursor: pointer;
-
-  .copy-clipboard-text{
-    color: $primary;
-    @extend %button-medium-font
-  }
-}
-
-.copy-clipboard:hover {
-  opacity: 0.8;
-}
-
-.headline {
-  @extend %principal-title-font;
-  color: $nav-principal-title-text;
-  margin-left: 1.70rem;
-  margin-top: 0.2em;
-}
-
-.scopes {
-
-  .scope {
-    background-color: #CACDDB;
-    display: inline-block;
-    border: 1px solid #D9DBF8;
-    border-radius: 1px;
-    padding: 0px 8px;
-    @extend %scope-font;
-  }
-}
-
-.http-method {
-  border-radius: 1px;
-  display: grid;
-  grid-template-columns: auto auto 1fr;
-  align-items: center;
-  padding: 8px 16px 8px 8px;
-
-  .box-method {
-    color: $http-method-text;
-    border-radius: 1px;
-    @extend %http-method-font;
-    padding: 0px 8px;
-    margin: 0px 10px;
-    text-transform: uppercase;
-    box-sizing: border-box;
-    border-radius: 2px;
-  }
-
-  &.get {
-    background: $http-method-get-container-bg;
-    border: 1px solid #D4F2F4;
-    
-    .box-method {
-      background-color: $http-method-get-bg;
-    }
-
-  }
-
-  &.post, &.put {
-    background-color: $http-method-post-container-bg;
-    border: 1px solid #C6EFE5;
-
-    .box-method {
-      background-color: $http-method-post-bg;
-    }
-
-  }
-
-  &.delete {
-    background-color: $http-method-delete-container-bg;
-    border: 1px solid #FFDCDE;
-
-    .box-method {
-      background-color: $http-method-delete-bg;
-    }
- 
-  }
-  
-  code {
-    background-color: rgba(0, 0, 0, 0);
-  }
-  .http-method-copy {
-    justify-self: end;
-    cursor: pointer;
-    grid-column: 3;
-    grid-row: 1;
-
-    &:hover {
-      opacity: 0.8;
-    }
-  }
-}
