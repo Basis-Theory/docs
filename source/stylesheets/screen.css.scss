@@ -72,20 +72,6 @@ html, body {
   font-weight: 600;
   border: 1px solid $nav-bg-border;
 
-  &::-webkit-scrollbar-track {
-    background-color: #F5F5F5;
-  }
-
-  &::-webkit-scrollbar {
-    width: 10px;
-    background-color: #F5F5F5;
-  }
-
-  &::-webkit-scrollbar-thumb{
-    background-color: #13172A;
-    border: 2px solid #E6E8F0;
-  }
-
   .toc-header {
     display: grid;
     grid-template-columns: auto auto;
