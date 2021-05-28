@@ -3,7 +3,7 @@
 > Authentication Example:
 
 ```shell
-curl "api.basistheory.com" \
+curl "https://api.basistheory.com" \
   -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
 ```
 

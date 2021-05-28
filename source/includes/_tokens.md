@@ -14,7 +14,7 @@ Bank | `bank` | [Atomic bank](#atomic-banks) token type
 > Create Token Request Example:
 
 ```shell
-curl "api.basistheory.com/tokens" \
+curl "https://api.basistheory.com/tokens" \
   -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
   -H "Content-Type: application/json"
   -X "POST"
@@ -159,7 +159,7 @@ Code | Description
 > List Tokens Request Example:
 
 ```shell
-curl "api.basistheory.com/tokens" \
+curl "https://api.basistheory.com/tokens" \
   -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
 ```
 
@@ -199,7 +199,7 @@ curl "api.basistheory.com/tokens" \
 > List Tokens by Type Request Example:
 
 ```shell
-curl "api.basistheory.com/tokens?type=card" \
+curl "https://api.basistheory.com/tokens?type=card" \
   -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
 ```
 
@@ -251,7 +251,7 @@ Code | Description
 > Get a Token Request Example:
 
 ```shell
-curl "api.basistheory.com/tokens/c06d0789-0a38-40be-b7cc-c28a718f76f1" \
+curl "https://api.basistheory.com/tokens/c06d0789-0a38-40be-b7cc-c28a718f76f1" \
   -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
 ```
 
@@ -328,7 +328,7 @@ Code | Description
 > Delete Token Request Example:
 
 ```shell
-curl "api.basistheory.com/tokens/c06d0789-0a38-40be-b7cc-c28a718f76f1" \
+curl "https://api.basistheory.com/tokens/c06d0789-0a38-40be-b7cc-c28a718f76f1" \
   -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
   -X "DELETE"
 ```

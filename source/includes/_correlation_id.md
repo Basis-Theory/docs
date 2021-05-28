@@ -3,7 +3,7 @@
 > Correlation ID Example:
 
 ```shell
-curl "api.basistheory.com" \
+curl "https://api.basistheory.com" \
   -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
   -H "bt-trace-id: aa5d3379-6385-4ef4-9fdb-ca1341572153"
 ```
