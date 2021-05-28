@@ -14,9 +14,17 @@ License for the specific language governing permissions and limitations
 under the License.
 %>
 <% language_tabs = current_page.data.language_tabs || [] %>
+<% welcome_page_content = yield %>
 <% intro_page_content = yield %>
 <% api_page_content = yield %>
 <% module_page_content = yield %>
+<%
+  if current_page.data.welcome_includes
+    current_page.data.welcome_includes.each do |include|
+      welcome_page_content += partial("includes/#{include}")
+    end
+  end
+%>
 <%
   if current_page.data.intro_includes
     current_page.data.intro_includes.each do |include|
@@ -168,8 +176,12 @@ under the License.
       <% end %>
     </div>
     <div class="page-wrapper">
+            <header>
+          <h1></h1>
+        </header>
       <div class="dark-box"></div>
       <div class="content">
+
         <%= intro_page_content %>
         <%= api_page_content %>
         <%= module_page_content %>

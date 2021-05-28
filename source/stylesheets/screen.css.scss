@@ -458,7 +458,7 @@ html, body {
 
   // h2s right after h1s should bump right up
   // against the h1s.
-  h1 + h2, h1 + div + h2 {
+  header + h1, h1 + h2, h1 + div + h2 {
     margin-top: $h1-margin-bottom * -1;
     border-top: none;
   }
@@ -600,6 +600,17 @@ html, body {
     background: linear-gradient(to top left, #F7E633 0%, #F1D32F 100%);
   }
 
+}
+header {
+  h1 {
+    border: 1px solid #E6E8F0;
+    background-color: #F2F3FF;
+    position: fixed;
+    top: 0;
+    padding: 34px;
+    z-index: 50;
+    margin: 0;
+  }
 }
 
 .highlight .c, .highlight .cm, .highlight .c1, .highlight .cs {
