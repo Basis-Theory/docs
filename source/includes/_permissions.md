@@ -26,7 +26,7 @@ Permission | Description | Application Types | Dependencies
 > List Permissions Request Example:
 
 ```shell
-curl "api.basistheory.com/permissions" \
+curl "https://api.basistheory.com/permissions" \
   -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
 ```
 

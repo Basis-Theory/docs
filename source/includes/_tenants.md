@@ -7,7 +7,7 @@ Tenants provide a way to logically group your applications and tokens. Common us
 > Get a Tenant Request Example:
 
 ```shell
-curl "api.basistheory.com/tenants/self" \
+curl "https://api.basistheory.com/tenants/self" \
   -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
 ```
 
@@ -61,7 +61,7 @@ Code | Description
 > Update Tenant Request Example:
 
 ```shell
-curl "api.basistheory.com/tenants/self" \
+curl "https://api.basistheory.com/tenants/self" \
   -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
   -H "Content-Type: application/json"
   -X "PUT"
@@ -127,7 +127,7 @@ Code | Description
 > Delete Tenant Request Example:
 
 ```shell
-curl "api.basistheory.com/tenants/self" \
+curl "https://api.basistheory.com/tenants/self" \
   -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
   -X "DELETE"
 ```

@@ -18,7 +18,7 @@ Management | `management` | Used for managing all aspects of your token infrastr
 > Create Application Request Example:
 
 ```shell
-curl "api.basistheory.com/applications" \
+curl "https://api.basistheory.com/applications" \
   -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
   -H "Content-Type: application/json"
   -X "POST"
@@ -101,7 +101,7 @@ Code | Description
 > List Applications Request Example:
 
 ```shell
-curl "api.basistheory.com/applications" \
+curl "https://api.basistheory.com/applications" \
   -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
 ```
 
@@ -134,7 +134,7 @@ curl "api.basistheory.com/applications" \
 > List Applications by IDs Request Example:
 
 ```shell
-curl "api.basistheory.com/applications?id=72ef3d62-b7de-4b5f-8aa2-b9db06c291cb&id=3b235ac3-83ea-49c5-8c42-05ba3cbd17d1" \
+curl "https://api.basistheory.com/applications?id=72ef3d62-b7de-4b5f-8aa2-b9db06c291cb&id=3b235ac3-83ea-49c5-8c42-05ba3cbd17d1" \
   -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
 ```
 
@@ -185,7 +185,7 @@ Code | Description
 > Get an Application Request Example:
 
 ```shell
-curl "api.basistheory.com/applications/fe1f9ba4-474e-44b9-b949-110cdba9d662" \
+curl "https://api.basistheory.com/applications/fe1f9ba4-474e-44b9-b949-110cdba9d662" \
   -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
 ```
 
@@ -252,7 +252,7 @@ Code | Description
 > Get an Application Request Example:
 
 ```shell
-curl "api.basistheory.com/applications/key" \
+curl "https://api.basistheory.com/applications/key" \
   -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
 ```
 
@@ -313,7 +313,7 @@ Code | Description
 > Update Application Request Example:
 
 ```shell
-curl "api.basistheory.com/applications/fb124bba-f90d-45f0-9a59-5edca27b3b4a" \
+curl "https://api.basistheory.com/applications/fb124bba-f90d-45f0-9a59-5edca27b3b4a" \
   -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
   -H "Content-Type: application/json"
   -X "PUT"
@@ -397,7 +397,7 @@ Code | Description
 > Regenerate Application API Key Request Example:
 
 ```shell
-curl "api.basistheory.com/applications/fb124bba-f90d-45f0-9a59-5edca27b3b4a/regenerate" \
+curl "https://api.basistheory.com/applications/fb124bba-f90d-45f0-9a59-5edca27b3b4a/regenerate" \
   -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
   -X "POST"
 ```
@@ -459,7 +459,7 @@ Code | Description
 > Delete Application Request Example:
 
 ```shell
-curl "api.basistheory.com/applications/fb124bba-f90d-45f0-9a59-5edca27b3b4a" \
+curl "https://api.basistheory.com/applications/fb124bba-f90d-45f0-9a59-5edca27b3b4a" \
   -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
   -X "DELETE"
 ```

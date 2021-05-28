@@ -5,7 +5,7 @@
 > Create Atomic Bank Request Example:
 
 ```shell
-curl "api.basistheory.com/atomic/banks" \
+curl "https://api.basistheory.com/atomic/banks" \
   -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
   -H "Content-Type: application/json"
   -X "POST"
@@ -87,7 +87,7 @@ Code | Description
 > List Atomic Banks Request Example:
 
 ```shell
-curl "api.basistheory.com/atomic/banks" \
+curl "https://api.basistheory.com/atomic/banks" \
   -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
 ```
 
@@ -155,7 +155,7 @@ Code | Description
 > Get Atomic Bank Request Example:
 
 ```shell
-curl "api.basistheory.com/atomic/banks/1485efb9-6b1f-4248-a5d1-cf9b3907164c" \
+curl "https://api.basistheory.com/atomic/banks/1485efb9-6b1f-4248-a5d1-cf9b3907164c" \
   -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
 ```
 
@@ -221,7 +221,7 @@ Code | Description
 > Delete Token Request Example:
 
 ```shell
-curl "api.basistheory.com/atomic/banks/1485efb9-6b1f-4248-a5d1-cf9b3907164c" \
+curl "https://api.basistheory.com/atomic/banks/1485efb9-6b1f-4248-a5d1-cf9b3907164c" \
   -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
   -X "DELETE"
 ```
@@ -265,7 +265,7 @@ Code | Description
 > Decrypt Token Request Example:
 
 ```shell
-curl "api.basistheory.com/atomic/banks/1485efb9-6b1f-4248-a5d1-cf9b3907164c/decrypt" \
+curl "https://api.basistheory.com/atomic/banks/1485efb9-6b1f-4248-a5d1-cf9b3907164c/decrypt" \
   -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
 ```
 
