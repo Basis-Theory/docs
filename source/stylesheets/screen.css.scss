@@ -113,6 +113,8 @@ html, body {
 
   &>.search {
     position: relative;
+    display: grid;
+    align-items: center;
 
     input {
       background: $nav-bg-line;
@@ -134,7 +136,6 @@ html, body {
 
     &:after {
       position: absolute;
-      top: 37%;
       right: $nav-padding*2;
       color: $secondary;
       @extend %icon-search;
