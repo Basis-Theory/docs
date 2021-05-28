@@ -579,7 +579,7 @@
 <blockquote>
 <p>Authentication Example:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.basistheory.com"</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
 </code></pre></div>
 <blockquote>
@@ -599,7 +599,7 @@
 <blockquote>
 <p>Correlation ID Example:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.basistheory.com"</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
   <span class="nt">-H</span> <span class="s2">"bt-trace-id: aa5d3379-6385-4ef4-9fdb-ca1341572153"</span>
 </code></pre></div>
@@ -612,7 +612,7 @@
 <blockquote>
 <p>Pagination Request Example:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.basistheory.com/applications?page=2&amp;size=10"</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/applications?page=2&amp;size=10"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
 </code></pre></div>
 <blockquote>
@@ -840,7 +840,7 @@
 <blockquote>
 <p>List Permissions Request Example:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.basistheory.com/permissions"</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/permissions"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
 </code></pre></div>
 <blockquote>
@@ -920,7 +920,7 @@
 <blockquote>
 <p>Get a Tenant Request Example:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.basistheory.com/tenants/self"</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/tenants/self"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
 </code></pre></div>
 <blockquote>
@@ -1006,7 +1006,7 @@
 <blockquote>
 <p>Update Tenant Request Example:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.basistheory.com/tenants/self"</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/tenants/self"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
   <span class="nt">-X</span> <span class="s2">"PUT"</span>
@@ -1119,7 +1119,7 @@
 <blockquote>
 <p>Delete Tenant Request Example:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.basistheory.com/tenants/self"</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/tenants/self"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
   <span class="nt">-X</span> <span class="s2">"DELETE"</span>
 </code></pre></div>
@@ -1190,7 +1190,7 @@
 <blockquote>
 <p>Create Application Request Example:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.basistheory.com/applications"</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/applications"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
   <span class="nt">-X</span> <span class="s2">"POST"</span>
@@ -1337,7 +1337,7 @@
 <blockquote>
 <p>List Applications Request Example:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.basistheory.com/applications"</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/applications"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
 </code></pre></div>
 <blockquote>
@@ -1368,7 +1368,7 @@
 <blockquote>
 <p>List Applications by IDs Request Example:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.basistheory.com/applications?id=72ef3d62-b7de-4b5f-8aa2-b9db06c291cb&amp;id=3b235ac3-83ea-49c5-8c42-05ba3cbd17d1"</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/applications?id=72ef3d62-b7de-4b5f-8aa2-b9db06c291cb&amp;id=3b235ac3-83ea-49c5-8c42-05ba3cbd17d1"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
 </code></pre></div>
 <p><span class="http-method get">
@@ -1469,7 +1469,7 @@
 <blockquote>
 <p>Get an Application Request Example:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.basistheory.com/applications/fe1f9ba4-474e-44b9-b949-110cdba9d662"</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/applications/fe1f9ba4-474e-44b9-b949-110cdba9d662"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
 </code></pre></div>
 <blockquote>
@@ -1588,7 +1588,7 @@
 <blockquote>
 <p>Get an Application Request Example:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.basistheory.com/applications/key"</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/applications/key"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
 </code></pre></div>
 <blockquote>
@@ -1689,7 +1689,7 @@
 <blockquote>
 <p>Update Application Request Example:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.basistheory.com/applications/fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/applications/fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
   <span class="nt">-X</span> <span class="s2">"PUT"</span>
@@ -1846,7 +1846,7 @@
 <blockquote>
 <p>Regenerate Application API Key Request Example:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.basistheory.com/applications/fb124bba-f90d-45f0-9a59-5edca27b3b4a/regenerate"</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/applications/fb124bba-f90d-45f0-9a59-5edca27b3b4a/regenerate"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
   <span class="nt">-X</span> <span class="s2">"POST"</span>
 </code></pre></div>
@@ -1947,7 +1947,7 @@
 <blockquote>
 <p>Delete Application Request Example:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.basistheory.com/applications/fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/applications/fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
   <span class="nt">-X</span> <span class="s2">"DELETE"</span>
 </code></pre></div>
@@ -2029,7 +2029,7 @@
 <blockquote>
 <p>Create Token Request Example:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.basistheory.com/tokens"</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/tokens"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
   <span class="nt">-X</span> <span class="s2">"POST"</span>
@@ -2265,7 +2265,7 @@
 <blockquote>
 <p>List Tokens Request Example:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.basistheory.com/tokens"</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/tokens"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
 </code></pre></div>
 <blockquote>
@@ -2303,7 +2303,7 @@
 <blockquote>
 <p>List Tokens by Type Request Example:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.basistheory.com/tokens?type=card"</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/tokens?type=card"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
 </code></pre></div>
 <p><span class="http-method get">
@@ -2409,7 +2409,7 @@
 <blockquote>
 <p>Get a Token Request Example:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.basistheory.com/tokens/c06d0789-0a38-40be-b7cc-c28a718f76f1"</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/tokens/c06d0789-0a38-40be-b7cc-c28a718f76f1"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
 </code></pre></div>
 <blockquote>
@@ -2542,7 +2542,7 @@
 <blockquote>
 <p>Delete Token Request Example:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.basistheory.com/tokens/c06d0789-0a38-40be-b7cc-c28a718f76f1"</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/tokens/c06d0789-0a38-40be-b7cc-c28a718f76f1"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
   <span class="nt">-X</span> <span class="s2">"DELETE"</span>
 </code></pre></div>
@@ -3227,7 +3227,7 @@
 <blockquote>
 <p>Create Atomic Bank Request Example:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.basistheory.com/atomic/banks"</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/atomic/banks"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
   <span class="nt">-X</span> <span class="s2">"POST"</span>
@@ -3375,7 +3375,7 @@
 <blockquote>
 <p>List Atomic Banks Request Example:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.basistheory.com/atomic/banks"</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/atomic/banks"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
 </code></pre></div>
 <blockquote>
@@ -3476,7 +3476,7 @@
 <blockquote>
 <p>Get Atomic Bank Request Example:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.basistheory.com/atomic/banks/1485efb9-6b1f-4248-a5d1-cf9b3907164c"</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/atomic/banks/1485efb9-6b1f-4248-a5d1-cf9b3907164c"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
 </code></pre></div>
 <blockquote>
@@ -3590,7 +3590,7 @@
 <blockquote>
 <p>Delete Token Request Example:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.basistheory.com/atomic/banks/1485efb9-6b1f-4248-a5d1-cf9b3907164c"</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/atomic/banks/1485efb9-6b1f-4248-a5d1-cf9b3907164c"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
   <span class="nt">-X</span> <span class="s2">"DELETE"</span>
 </code></pre></div>
@@ -3655,7 +3655,7 @@
 <blockquote>
 <p>Decrypt Token Request Example:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.basistheory.com/atomic/banks/1485efb9-6b1f-4248-a5d1-cf9b3907164c/decrypt"</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/atomic/banks/1485efb9-6b1f-4248-a5d1-cf9b3907164c/decrypt"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
 </code></pre></div>
 <blockquote>
