@@ -451,7 +451,6 @@ html, body {
     @extend %subtitle2-font;
     margin-top: 4em;
     margin-bottom: 0;
-    border-top: 1px solid #ccc;
     padding-top: 1.2em;
     padding-bottom: 1.2em;
     background-image: linear-gradient(to bottom, rgba(#FFF, 0.2), rgba(#FFF, 0));
@@ -467,7 +466,6 @@ html, body {
   h3, h4, h5, h6 {
     @extend %header-font;
     font-size: 15px;
-    margin-top: 2.5em;
     margin-bottom: 0.8em;
   }
 
@@ -786,6 +784,23 @@ header {
       padding: $code-annotation-padding 2em;
       color: $grey-50;
       @extend %code-annotation-font;
+    }
+  }
+  .header-intro-box {
+    border-bottom: 1px solid #CACDDB;
+    padding-bottom: 0;
+
+    h2 {
+      margin: 0;
+    }
+    .intro-quick-links {
+      display: grid;
+      grid-template-columns: auto auto;
+      padding-bottom: 2px;
+
+      a {
+        text-decoration-line: none;
+      }
     }
   }
 }
