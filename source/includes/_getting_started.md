@@ -1,3 +1,4 @@
+# Getting started
 ## Before you begin
 ### If you don't have an account
 

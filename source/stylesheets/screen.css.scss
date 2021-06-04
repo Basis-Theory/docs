@@ -776,12 +776,16 @@ html, body {
       @extend %code-annotation-font;
     }
   }
+  .header-border {
+    background: $grey-50;
+    border: 1px solid #E6E8F0;
+    box-sizing: border-box;
+    padding: 2.3em;
+  }
   .header-intro-box {
     border-bottom: 1px solid #CACDDB;
-    padding-bottom: 0;
-    margin-left: 0;
+    padding: 0;
     margin-top: 0;
-    padding-right: 0;
     display: grid;
     grid-template-columns: auto 50%;
 
@@ -797,6 +801,7 @@ html, body {
       letter-spacing: 0.25px;
       text-align: left;
       color: $grey-900;
+      margin-top: 0.8em;
     }
 
     h6 {
@@ -825,6 +830,12 @@ html, body {
     img {
       align-self: end;
     }
+  }
+  #introduction, #getting-started {
+    visibility: hidden;
+    padding: 0;
+    margin: 0;
+    font-size: 0;
   }
 }
 
