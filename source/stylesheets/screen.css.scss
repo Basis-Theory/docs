@@ -451,14 +451,14 @@ html, body {
     @extend %subtitle2-font;
     margin-top: 2em;
     margin-bottom: 0;
-    padding-top: 1.2em;
-    padding-bottom: 1.2em;
+    padding-top: 0;
+    padding-bottom: 0.4em;
     background-image: linear-gradient(to bottom, rgba(#FFF, 0.2), rgba(#FFF, 0));
   }
 
   // h2s right after h1s should bump right up
   // against the h1s.
-  header + h1, h1 + h2, h1 + div + h2 {
+  header + h1, h1 + div + h2 {
     margin-top: $h1-margin-bottom * -1;
     border-top: none;
   }
@@ -836,6 +836,7 @@ html, body {
     padding: 0;
     margin: 0;
     font-size: 0;
+    border: 0;
   }
 }
 
