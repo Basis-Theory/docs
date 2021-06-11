@@ -280,7 +280,7 @@
   color: #859900;
 }
     </style>
-    <link href="stylesheets/screen-c3d9abc6.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/screen-91c27685.css" rel="stylesheet" media="screen" />
     <link href="stylesheets/print-fac0743d.css" rel="stylesheet" media="print" />
       <script src="javascripts/all-5539b3b6.js"></script>
 
@@ -319,9 +319,19 @@
       <ul id="toc_intro" class="toc-section toc-list-h1">
           <li>
             <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#what-is-basis-theory" class="toc-h2 toc-link" data-title="What is Basis Theory?">What is Basis Theory?</a>
+                  </li>
+              </ul>
           </li>
           <li>
-            <a href="#getting-started" class="toc-h1 toc-link" data-title="Getting Started">Getting Started</a>
+            <a href="#getting-started" class="toc-h1 toc-link" data-title="Getting started">Getting started</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#before-you-begin" class="toc-h2 toc-link" data-title="Before you begin">Before you begin</a>
+                  </li>
+              </ul>
           </li>
           <li>
             <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
@@ -546,34 +556,34 @@
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
+        <div class="header-border"></div>
         <h1 id='introduction'>Introduction</h1>
-<p>Welcome to the Basis Theory API! You can use our API to access Basis Theory API endpoints, which can get information on managing your tokens.</p>
-
-<p>We have example API shell commands and responses! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
-<h1 id='getting-started'>Getting Started</h1>
-<p>To get started using Basis Theory to tokenize any data, follow these steps:</p>
-
-<ol>
-<li>Create an <a href="#applications">Application</a> and obtain an <a href="#authentication">API Key</a>
-
-<ol>
-<li>Log in or create an account through the <a href="https://portal.basistheory.com/" target="_blank">Basis Theory Portal</a></li>
-<li>Navigate to the <a href="https://portal.basistheory.com/applications" target="_blank">Applications</a> page and click <code>Create Application</code></li>
-<li>Follow the on-screen prompts to name the application and choose the appropriate <a href="#application-types">Application Type</a> based on your use-case</li>
-<li>Copy the API Key generated and acknowledge the prompt</li>
-</ol></li>
-<li>View the newly created application&#39;s details (Portal will redirect to this page after successful application creation)</li>
-<li>Assign the necessary permissions to the created Application
-
-<ul>
-<li>More information about Permission Types can be found <a href="#permission-types">here</a></li>
-</ul></li>
-</ol>
-
-<aside class="notice">
-    <span>If a Basis Theory API responds with <code>403 FORBIDDEN</code>, it is likely due to the application lacking the appropriate permissions for that endpoint.
-    Inspect the <code>WWW-Authenticate</code> response header for more information about the necessary permissions.</span>
+<aside class="header-intro-box">
+    <span>
+        <h4>Documentation</h4>
+        <p class="header-intro-body2-font">Explore examples and guides to quickly start tokenizing anything.</p>
+        <h6>QUICK LINKS</h6>
+        <span class="intro-quick-links">
+            <a href="#getting-started">Before you begin</a>
+            <a href="#create-token">Creating Tokens</a>
+            <a href="#applications">Applications</a>
+            <a href="#permissions">API Keys</a>
+        </span>
+    </span>
+    <img src="images/welcome-ef2c6c4e.svg"/>
 </aside>
+
+<p>The Basis Theory API is organized around REST. Our API is built with a predictable resource-oriented structure, uses JSON-encoded requests and responses, follows standard HTTP verbs/responses, and uses industry standard authentication.</p>
+
+<p>You are able to create different <a href="#tenants">tenants</a> within your Basis Theory account to enable you to segment your test environments from your core production data. Tenants serve as a logical grouping for each of your systems to interact with Basis theory without affecting each other.</p>
+<h2 id='what-is-basis-theory'>What is Basis Theory?</h2>
+<p>Our software becomes a core part of your infrastructure enabling you to quickly encrypt, tokenize, and store any payload securely. Your token infrastructure can be used to protect data at rest, as it passes between your own internal systems, or how it&#39;s permissioned and shared with third parties.</p>
+<h1 id='getting-started'>Getting started</h1><h2 id='before-you-begin'>Before you begin</h2><h3 id='if-you-don-39-t-have-an-account'>If you don&#39;t have an account</h3>
+<p>Currently, Basis Theory is in private beta, you can join our waitlist at https://basistheory.com and we will let you know when we are accepting new applicants.</p>
+
+<p>To begin taking advantage of the Basis Theory platform, you’ll need to create an account and tenant through our <a href="https://portal.basistheory.com">Portal</a>. This will enable you to manage your token data, create new applications, and authenticate to our API.</p>
+<h3 id='if-you-have-an-account'>If you have an account</h3>
+<p>Checkout out our API Reference documentation below, or go to our Getting Started section if you’re unsure of where to go next.</p>
 <h1 id='authentication'>Authentication</h1>
 <blockquote>
 <p>Authentication Example:</p>
