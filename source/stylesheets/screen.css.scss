@@ -70,7 +70,7 @@ html, body {
   background-color: $nav-bg;
   font-size: 16px;
   font-weight: 600;
-  border: 1px solid $nav-bg-border;
+  border: 1px solid $grey-800;
 
   .toc-header {
     display: grid;
@@ -82,7 +82,7 @@ html, body {
     align-items: center;
   }
   .line {
-    border: 1px solid $toc-border;
+    border: 1px solid $grey-800;
   }
 
   // language selector for mobile devices
@@ -449,17 +449,16 @@ html, body {
 
   h2 {
     @extend %subtitle2-font;
-    margin-top: 4em;
+    margin-top: 2em;
     margin-bottom: 0;
-    border-top: 1px solid #ccc;
-    padding-top: 1.2em;
-    padding-bottom: 1.2em;
+    padding-top: 0;
+    padding-bottom: 0.4em;
     background-image: linear-gradient(to bottom, rgba(#FFF, 0.2), rgba(#FFF, 0));
   }
 
   // h2s right after h1s should bump right up
   // against the h1s.
-  h1 + h2, h1 + div + h2 {
+  header + h1, h1 + div + h2 {
     margin-top: $h1-margin-bottom * -1;
     border-top: none;
   }
@@ -467,7 +466,6 @@ html, body {
   h3, h4, h5, h6 {
     @extend %header-font;
     font-size: 15px;
-    margin-top: 2.5em;
     margin-bottom: 0.8em;
   }
 
@@ -529,6 +527,7 @@ html, body {
   }
   p {
     @extend %body1-font;
+    color: $grey-800;
     
   }
 
@@ -776,6 +775,68 @@ html, body {
       color: $grey-50;
       @extend %code-annotation-font;
     }
+  }
+  .header-border {
+    background: $grey-50;
+    border: 1px solid #E6E8F0;
+    box-sizing: border-box;
+    padding: 2.3em;
+  }
+  .header-intro-box {
+    border-bottom: 1px solid #CACDDB;
+    padding: 0;
+    margin-top: 0;
+    display: grid;
+    grid-template-columns: auto 50%;
+
+    h2 {
+      margin: 0;
+      padding-top: 0;
+    }
+
+    h4 {
+      font-size: 34px;
+      font-weight: 400;
+      line-height: 42px;
+      letter-spacing: 0.25px;
+      text-align: left;
+      color: $grey-900;
+      margin-top: 0.8em;
+    }
+
+    h6 {
+      font-size: 10px;
+      font-weight: 700;
+      line-height: 17px;
+      letter-spacing: 0.4px;
+      color: $grey-600;
+      text-transform: uppercase;
+    }
+
+    .header-intro-body2-font {
+      @extend %body2-font;
+      color: $grey-600;
+    }
+
+    .intro-quick-links {
+      display: grid;
+      grid-template-columns: auto auto;
+      padding-bottom: 24px;
+
+      a {
+        text-decoration-line: none;
+      }
+    }
+    img {
+      align-self: end;
+    }
+  }
+  #introduction, #getting-started {
+    visibility: hidden;
+    padding: 0;
+    margin: 0;
+    font-size: 0;
+    border: 0;
   }
 }
 

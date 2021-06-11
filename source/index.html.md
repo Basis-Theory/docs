@@ -9,6 +9,9 @@ language_tabs: # must be one of https://git.io/vQNgJ
 
 toc_footers:
 
+intro_quick_links:
+  - quick_links
+
 intro_includes:
   - introduction
   - getting_started

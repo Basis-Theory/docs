@@ -15,8 +15,16 @@ under the License.
 %>
 <% language_tabs = current_page.data.language_tabs || [] %>
 <% intro_page_content = yield %>
+<% intro_page_quick_links = yield %>
 <% api_page_content = yield %>
 <% module_page_content = yield %>
+<%
+  if current_page.data.intro_quick_links
+    current_page.data.intro_quick_links.each do |include|
+      intro_page_quick_links += partial("includes/#{include}")
+    end
+  end
+%>
 <%
   if current_page.data.intro_includes
     current_page.data.intro_includes.each do |include|
@@ -170,6 +178,7 @@ under the License.
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
+        <div class="header-border"></div>
         <%= intro_page_content %>
         <%= api_page_content %>
         <%= module_page_content %>
