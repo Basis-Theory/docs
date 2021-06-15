@@ -13,6 +13,9 @@ WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
 License for the specific language governing permissions and limitations
 under the License.
 %>
+<script>
+  var url_location = window.location.host;
+</script>
 <% language_tabs = current_page.data.language_tabs || [] %>
 <% intro_page_content = yield %>
 <% intro_page_quick_links = yield %>
@@ -105,7 +108,7 @@ under the License.
           <% end %>
         </div>
       <% end %>
-      <a href="https://portal.basistheory.com/" class="nav-back">Go to Basis Theory</a>
+      <a href="https://portal.basistheory.com/" target="_blank" class="nav-back">Go to Portal</a>
       <% if current_page.data.search %>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search...">

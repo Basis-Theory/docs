@@ -62,7 +62,6 @@ html, body {
   overflow-x: hidden;
   position: fixed;
   z-index: 30;
-  position: fixed;
   top: 0;
   left: 0;
   bottom: 0;
@@ -70,19 +69,19 @@ html, body {
   background-color: $nav-bg;
   font-size: 16px;
   font-weight: 600;
-  border: 1px solid $grey-800;
+  border-right: 1px solid $grey-800;
 
   .toc-header {
     display: grid;
     grid-template-columns: auto auto;
-    margin: 12px 15px;
+    margin: 16px;
     color: $nav-header-text;
     background: $nav-header-backgroud;
     justify-content: space-between;
     align-items: center;
   }
   .line {
-    border: 1px solid $grey-800;
+    border-bottom: 1px solid $grey-800;
   }
 
   // language selector for mobile devices
@@ -344,6 +343,7 @@ html, body {
   .lang-selector {
     position: fixed;
     z-index: 50;
+    padding-top: 21.5px;
   }
 }
 
@@ -357,7 +357,7 @@ html, body {
     @extend %principal-title-font;
     color: $secondary;
     text-decoration: none;
-    padding: 18px 32px;
+    padding: 0 32px 21.5px;
     outline: 0;
     display: flex;
     flex-direction: row;
@@ -778,9 +778,9 @@ html, body {
   }
   .header-border {
     background: $grey-50;
-    border: 1px solid #E6E8F0;
+    border-bottom: 1px solid #E6E8F0;
     box-sizing: border-box;
-    padding: 2.3em;
+    padding: 36px;
   }
   .header-intro-box {
     border-bottom: 1px solid #CACDDB;
