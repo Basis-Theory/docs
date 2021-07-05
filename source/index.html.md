@@ -27,6 +27,7 @@ api_includes:
   - tokens
   - atomic_cards
   - atomic_banks
+  - logs
 
 module_includes:
   - javascript_module

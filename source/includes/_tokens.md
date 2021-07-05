@@ -130,7 +130,7 @@ Attribute | Required | Type | Default | Description
 Attribute | Type | Description
 --------- | ---- | -----------
 `id` | *string* | Unique identifier of the token which can be used to [get a token](#get-a-token)
-`tenant_id` | *string* | The tenant ID which owns the token
+`tenant_id` | *string* | The [tenant](#tenants) ID which owns the token
 `type` | *string* | [Token type](#token-types)
 `created_by` | *string* | The [application](#applications) ID which created the token
 `created_at` | *string* | Created date of the token in ISO 8601 format
@@ -229,7 +229,7 @@ Returns the [Pagination](#pagination) schema. The `data` attribute in the respon
 Attribute | Type | Description
 --------- | ---- | -----------
 `id` | *string* | Unique identifier of the token which can be used to [get a token](#get-a-token)
-`tenant_id` | *string* | The tenant ID which owns the token
+`tenant_id` | *string* | The [tenant](#tenants) ID which owns the token
 `type` | *string* | [Token type](#token-types)
 `data` | *any* | The data provided when [creating the token](#create-token)
 `metadata` | *any* | The metadata provided when [creating the token](#create-token)
@@ -305,7 +305,7 @@ Parameter | Required | Type | Default | Description
 Attribute | Type | Description
 --------- | ---- | -----------
 `id` | *string* | Unique identifier of the token which can be used to [get a token](#get-a-token)
-`tenant_id` | *string* | The tenant ID which owns the token
+`tenant_id` | *string* | The [tenant](#tenants) ID which owns the token
 `type` | *string* | [Token type](#token-types)
 `data` | *any* | The data provided when [creating the token](#create-token)
 `metadata` | *any* | The metadata provided when [creating the token](#create-token)

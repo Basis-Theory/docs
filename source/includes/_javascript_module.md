@@ -173,7 +173,7 @@ It returns a `Promise` that resolves to a `TokenCreateResponse` object:
 Attribute   | Type     | Description
 ----------- | -------- | -----------
 `id`        | *string* | Unique identifier of the token
-`tenantId`  | *string* | The tenant ID which owns the token
+`tenantId`  | *string* | The [tenant](#tenants) ID which owns the token
 `type`      | *string* | [Token type](#token-types)
 `createdAt` | *string* | Created date of the token in ISO 8601 format
 
@@ -226,7 +226,7 @@ It returns a `Promise` that resolves to a `GetTokenResponse` object:
 Attribute    | Type     | Description
 ------------ | -------- | -----------
 `id`         | *string* | Unique identifier of the token
-`ownerId`    | *string* | The tenant ID which owns the token
+`ownerId`    | *string* | The [tenant](#tenants) ID which owns the token
 `type`       | *string* | [Token type](#token-types)
 `data`       | *any*    | The data provided when [creating the token](#createtoken)
 `createdAt`  | *string* | Created date of the token in ISO 8601 format

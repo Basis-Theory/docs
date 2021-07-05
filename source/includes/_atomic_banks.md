@@ -66,7 +66,7 @@ Attribute | Required | Type | Default | Description
 Attribute | Type | Description
 --------- | ---- | -----------
 `id` | *string* | Unique identifier of the token which can be used to [get an atomic bank](#get-an-atomic-bank)
-`tenant_id` | *string* | The tenant ID which owns the bank
+`tenant_id` | *string* | The [tenant](#tenants) ID which owns the bank
 `type` | *string* | `Bank` [token type](#token-types)
 `created_by` | *string* | The [application](#applications) ID which created the atomic bank
 `created_at` | *string* | Created date of the application in ISO 8601 format
@@ -135,7 +135,7 @@ Returns the [Pagination](#pagination) schema. The `data` attribute in the respon
 Attribute | Type | Description
 --------- | ---- | -----------
 `id` | *string* | Unique identifier of the token which can be used to [get an atomic bank](#get-an-atomic-bank)
-`tenant_id` | *string* | The tenant ID which owns the bank
+`tenant_id` | *string* | The [tenant](#tenants) ID which owns the bank
 `type` | *string* | `Bank` [token type](#token-types)
 `created_by` | *string* | The [application](#applications) ID which created the atomic bank
 `created_at` | *string* | Created date of the application in ISO 8601 format
@@ -200,7 +200,7 @@ Parameter | Required | Type | Default | Description
 Attribute | Type | Description
 --------- | ---- | -----------
 `id` | *string* | Unique identifier of the token which can be used to [get an atomic bank](#get-an-atomic-bank)
-`tenant_id` | *string* | The tenant ID which owns the bank
+`tenant_id` | *string* | The [tenant](#tenants) ID which owns the bank
 `type` | *string* | `Bank` [token type](#token-types)
 `created_by` | *string* | The [application](#applications) ID which created the atomic bank
 `created_at` | *string* | Created date of the application in ISO 8601 format
@@ -310,7 +310,7 @@ Parameter | Required | Type | Default | Description
 Attribute | Type | Description
 --------- | ---- | -----------
 `id` | *string* | Unique identifier of the token which can be used to [get an atomic bank](#get-an-atomic-bank)
-`tenant_id` | *string* | The tenant ID which owns the bank
+`tenant_id` | *string* | The [tenant](#tenants) ID which owns the bank
 `type` | *string* | `Bank` [token type](#token-types)
 `created_by` | *string* | The [application](#applications) ID which created the atomic bank
 `created_at` | *string* | Created date of the application in ISO 8601 format

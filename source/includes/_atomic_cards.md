@@ -103,7 +103,7 @@ Attribute | Required | Type | Default | Description
 Attribute | Type | Description
 --------- | ---- | -----------
 `id` | *string* | Unique identifier of the token which can be used to [get an atomic card](#get-an-atomic-card)
-`tenant_id` | *string* | The tenant ID which owns the card
+`tenant_id` | *string* | The [tenant](#tenants) ID which owns the card
 `type` | *string* | `Card` [token type](#token-types)
 `created_by` | *string* | The [application](#applications) ID which created the atomic card
 `created_at` | *string* | Created date of the application in ISO 8601 format
@@ -173,7 +173,7 @@ Returns the [Pagination](#pagination) schema. The `data` attribute in the respon
 Attribute | Type | Description
 --------- | ---- | -----------
 `id` | *string* | Unique identifier of the token which can be used to [get an atomic card](#get-an-atomic-card)
-`tenant_id` | *string* | The tenant ID which owns the card
+`tenant_id` | *string* | The [tenant](#tenants) ID which owns the card
 `type` | *string* | `Card` [token type](#token-types)
 `created_by` | *string* | The [application](#applications) ID which created the atomic card
 `created_at` | *string* | Created date of the application in ISO 8601 format
@@ -239,7 +239,7 @@ Parameter | Required | Type | Default | Description
 Attribute | Type | Description
 --------- | ---- | -----------
 `id` | *string* | Unique identifier of the token which can be used to [get an atomic card](#get-an-atomic-card)
-`tenant_id` | *string* | The tenant ID which owns the card
+`tenant_id` | *string* | The [tenant](#tenants) ID which owns the card
 `type` | *string* | `Card` [token type](#token-types)
 `created_by` | *string* | The [application](#applications) ID which created the atomic card
 `created_at` | *string* | Created date of the application in ISO 8601 format
