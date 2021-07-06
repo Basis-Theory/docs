@@ -28,7 +28,7 @@ curl "https://api.basistheory.com/applications" \
     "permissions": [
       "card:create",
       "card:read",
-      "token:write",
+      "token:create",
       "token:read"
     ]
   }'
@@ -47,7 +47,7 @@ curl "https://api.basistheory.com/applications" \
   "permissions": [
     "card:create",
     "card:read",
-    "token:write",
+    "token:create",
     "token:read"
   ]
 }
@@ -79,7 +79,7 @@ Attribute | Required | Type | Default | Description
 Attribute | Type | Description
 --------- | ---- | -----------
 `id` | *string* | Unique identifier of the application which can be used to [get an application](#get-an-application)
-`tenant_id` | *string* | The tenant ID which owns the application
+`tenant_id` | *string* | The [tenant](#tenants) ID which owns the application
 `name` | *string* | The name of the application
 `key` | *string* | The API key which should be used for authenticating against Basis Theory API endpoints
 `type` | *string* | [Application type](#application-types) of the application
@@ -121,7 +121,7 @@ curl "https://api.basistheory.com/applications" \
       "permissions": [
         "card:create",
         "card:read",
-        "token:write",
+        "token:create",
         "token:read"
       ]
     },
@@ -151,7 +151,7 @@ Get a list of applications for the tenant.
   <span class="scope">application:read</span>
 </p>
 
-### URI Parameters
+### Query Parameters
 
 Parameter | Required | Type | Default | Description
 --------- | -------- | ---- | ------- | -----------
@@ -164,7 +164,7 @@ Returns the [Pagination](#pagination) schema. The `data` attribute in the respon
 Attribute | Type | Description
 --------- | ---- | -----------
 `id` | *string* | Unique identifier of the application which can be used to [get an application](#get-an-application)
-`tenant_id` | *string* | The tenant ID which owns the application
+`tenant_id` | *string* | The [tenant](#tenants) ID which owns the application
 `name` | *string* | The name of the application
 `type` | *string* | [Application type](#application-types) of the application
 `created_at` | *string* | Created date of the application in ISO 8601 format
@@ -230,7 +230,7 @@ Parameter | Required | Type | Default | Description
 Attribute | Type | Description
 --------- | ---- | -----------
 `id` | *string* | Unique identifier of the application which can be used to [get an application](#get-an-application)
-`tenant_id` | *string* | The tenant ID which owns the application
+`tenant_id` | *string* | The [tenant](#tenants) ID which owns the application
 `name` | *string* | The name of the application
 `type` | *string* | [Application type](#application-types) of the application
 `created_at` | *string* | Created date of the application in ISO 8601 format
@@ -291,7 +291,7 @@ Get an application by key in the tenant. Will use the `X-API-KEY` header to look
 Attribute | Type | Description
 --------- | ---- | -----------
 `id` | *string* | Unique identifier of the application which can be used to [get an application](#get-an-application)
-`tenant_id` | *string* | The tenant ID which owns the application
+`tenant_id` | *string* | The [tenant](#tenants) ID which owns the application
 `name` | *string* | The name of the application
 `type` | *string* | [Application type](#application-types) of the application
 `created_at` | *string* | Created date of the application in ISO 8601 format
@@ -374,7 +374,7 @@ Attribute | Required | Type | Default | Description
 Attribute | Type | Description
 --------- | ---- | -----------
 `id` | *string* | Unique identifier of the application which can be used to [get an application](#get-an-application)
-`tenant_id` | *string* | The tenant ID which owns the application
+`tenant_id` | *string* | The [tenant](#tenants) ID which owns the application
 `name` | *string* | The name of the application
 `type` | *string* | [Application type](#application-types) of the application
 `created_at` | *string* | Created date of the application in ISO 8601 format

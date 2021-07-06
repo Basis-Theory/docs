@@ -450,7 +450,7 @@ html, body {
   h2 {
     @extend %subtitle2-font;
     margin-top: 2em;
-    margin-bottom: 0;
+    margin-bottom: 1.5em;
     padding-top: 0;
     padding-bottom: 0.4em;
     background-image: linear-gradient(to bottom, rgba(#FFF, 0.2), rgba(#FFF, 0));

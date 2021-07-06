@@ -13,6 +13,9 @@ curl "https://api.basistheory.com/atomic/banks" \
       "bank": {
         "routing_number": "021000021",
         "account_number": "1234567890"
+      },
+      "metadata": {
+        "nonSensitiveField": "Non-Sensitive Value"
       }
     }
   }'
@@ -30,6 +33,9 @@ curl "https://api.basistheory.com/atomic/banks" \
   "bank": {
     "routing_number": "021000021",
     "account_number": "XXXXXX7890"
+  },
+  "metadata": {
+    "nonSensitiveField": "Non-Sensitive Value"
   }
 }
 ```
@@ -45,7 +51,7 @@ Create a new atomic bank for the tenant.
 
 <p class="scopes">
   <span class="scope">bank:create</span>
-  <span class="scope">token:write</span>
+  <span class="scope">token:create</span>
 </p>
 
 ### Request Schema
@@ -53,6 +59,7 @@ Create a new atomic bank for the tenant.
 Attribute | Required | Type | Default | Description
 --------- | -------- | ---- | ------- | -----------
 `bank` | true | *bank* | `null` | [Bank object](#bank-object-schema)
+`metadata` | false | *any* | `null` | Non-sensitive token metadata
 
 ### Bank Object Schema
 
@@ -61,16 +68,21 @@ Attribute | Required | Type | Default | Description
 `routing_number` | true | *string* | `null` | Nine-digit ABA routing number
 `account_number` | true | *string* | `null` | Account number up to seventeen-digits
 
+<aside class="notice">
+  <span><code>metadata</code> values can be an object, array, or any primitive type such as an integer, boolean, or string. See <a href="#create-token">create token examples</a> for reference.</span>
+</aside>
+
 ### Response Schema
 
 Attribute | Type | Description
 --------- | ---- | -----------
 `id` | *string* | Unique identifier of the token which can be used to [get an atomic bank](#get-an-atomic-bank)
-`tenant_id` | *string* | The tenant ID which owns the bank
+`tenant_id` | *string* | The [tenant](#tenants) ID which owns the bank
 `type` | *string* | `Bank` [token type](#token-types)
 `created_by` | *string* | The [application](#applications) ID which created the atomic bank
 `created_at` | *string* | Created date of the application in ISO 8601 format
 `bank` | *bank* | Masked [bank object](#bank-object-schema)
+`metadata` | *any* | The metadata provided when [creating the atomic bank](#create-atomic-bank)
 
 ### Response Messages
 
@@ -106,6 +118,9 @@ curl "https://api.basistheory.com/atomic/banks" \
       "bank": {
         "routing_number": "021000021",
         "account_number": "XXXXXX7890"
+      },
+      "metadata": {
+        "nonSensitiveField": "Non-Sensitive Value"
       }
     },
     {...},
@@ -135,11 +150,12 @@ Returns the [Pagination](#pagination) schema. The `data` attribute in the respon
 Attribute | Type | Description
 --------- | ---- | -----------
 `id` | *string* | Unique identifier of the token which can be used to [get an atomic bank](#get-an-atomic-bank)
-`tenant_id` | *string* | The tenant ID which owns the bank
+`tenant_id` | *string* | The [tenant](#tenants) ID which owns the bank
 `type` | *string* | `Bank` [token type](#token-types)
 `created_by` | *string* | The [application](#applications) ID which created the atomic bank
 `created_at` | *string* | Created date of the application in ISO 8601 format
 `bank` | *bank* | Masked [bank object](#bank-object-schema)
+`metadata` | *any* | The metadata provided when [creating the atomic bank](#create-atomic-bank)
 
 ### Response Messages
 
@@ -171,6 +187,9 @@ curl "https://api.basistheory.com/atomic/banks/1485efb9-6b1f-4248-a5d1-cf9b39071
   "bank": {
     "routing_number": "021000021",
     "account_number": "XXXXXX7890"
+  },
+  "metadata": {
+    "nonSensitiveField": "Non-Sensitive Value"
   }
 }
 ```
@@ -200,11 +219,12 @@ Parameter | Required | Type | Default | Description
 Attribute | Type | Description
 --------- | ---- | -----------
 `id` | *string* | Unique identifier of the token which can be used to [get an atomic bank](#get-an-atomic-bank)
-`tenant_id` | *string* | The tenant ID which owns the bank
+`tenant_id` | *string* | The [tenant](#tenants) ID which owns the bank
 `type` | *string* | `Bank` [token type](#token-types)
 `created_by` | *string* | The [application](#applications) ID which created the atomic bank
 `created_at` | *string* | Created date of the application in ISO 8601 format
 `bank` | *bank* | Masked [bank object](#bank-object-schema)
+`metadata` | *any* | The metadata provided when [creating the atomic bank](#create-atomic-bank)
 
 ### Response Messages
 
@@ -241,7 +261,7 @@ Delete an atomic bank by ID in the tenant.
 
 <p class="scopes">
   <span class="scope">bank:delete</span>
-  <span class="scope">token:write</span>
+  <span class="scope">token:delete</span>
 </p>
 
 ### URI Parameters
@@ -281,6 +301,9 @@ curl "https://api.basistheory.com/atomic/banks/1485efb9-6b1f-4248-a5d1-cf9b39071
   "bank": {
     "routing_number": "021000021",
     "account_number": "1234567890"
+  },
+  "metadata": {
+    "nonSensitiveField": "Non-Sensitive Value"
   }
 }
 ```
@@ -310,11 +333,12 @@ Parameter | Required | Type | Default | Description
 Attribute | Type | Description
 --------- | ---- | -----------
 `id` | *string* | Unique identifier of the token which can be used to [get an atomic bank](#get-an-atomic-bank)
-`tenant_id` | *string* | The tenant ID which owns the bank
+`tenant_id` | *string* | The [tenant](#tenants) ID which owns the bank
 `type` | *string* | `Bank` [token type](#token-types)
 `created_by` | *string* | The [application](#applications) ID which created the atomic bank
 `created_at` | *string* | Created date of the application in ISO 8601 format
 `bank` | *bank* | Masked [bank object](#bank-object-schema)
+`metadata` | *any* | The metadata provided when [creating the atomic bank](#create-atomic-bank)
 
 ### Response Messages
 

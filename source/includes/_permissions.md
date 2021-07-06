@@ -11,14 +11,28 @@ Every API endpoint will document the required permissions needed to perform the 
 
 Permission | Description | Application Types | Dependencies
 ---------  | ----------- | ----------------- | ------------
-`token:read` | Read tokens from the vault | `server_to_server` | *N/A*
-`token:write` | Write tokens to the vault | `public`, `elements`, `server_to_server` | *N/A*
+`tenant:read` | Read tenants | `management` | *N/A*
+`tenant:update` | Update tenants | `management` | *N/A*
+`tenant:delete` | Delete tenants | `management` | *N/A*
 `application:read` | Read applications | `management` | *N/A*
 `application:write` | Create, edit, delete, and regenerate API keys for applications | `management` | *N/A*
+`exchange:read` | Read exchange templates and exchanges | `server_to_server`, `management` | `token:read`
+`exchange:create` | Create exchange templates and exchanges | `management` | `token:read`, `token:create`
+`exchange:update` | Update exchange templates and exchanges | `management` | `token:read`, `token:create`
+`exchange:delete` | Delete exchange templates and exchanges | `management` | `token:delete`
+`log:read` | Read audit logs | `management` | *N/A*
+`token:read` | Read tokens from the vault | `server_to_server`, `management` | *N/A*
+`token:create` | Create tokens in the vault | `public`, `elements`, `server_to_server`, `management` | *N/A*
+`token:delete` | Delete tokens from the vault | `server_to_server`, `management` | *N/A*
 `card:read` | Read atomic card tokens | `server_to_server` | `token:read`
-`card:create` | Create atomic card tokens | `public`, `elements`, `server_to_server` | `token:write`
-`card:update` | Update atomic card tokens | `server_to_server` | `token:write`
-`card:delete` | Delete atomic card tokens | `server_to_server` | `token:write`
+`card:create` | Create atomic card tokens | `public`, `elements`, `server_to_server` | `token:create`
+`card:update` | Update atomic card tokens | `server_to_server` | `token:create`
+`card:delete` | Delete atomic card tokens | `server_to_server` | `token:delete`
+`bank:read` | Read atomic bank tokens | `server_to_server` | `token:read`
+`bank:create` | Create atomic bank tokens | `public`, `elements`, `server_to_server` | `token:create`
+`bank:update` | Update atomic bank tokens | `server_to_server` | `token:create`
+`bank:delete` | Delete atomic bank tokens | `server_to_server` | `token:delete`
+`bank:decrypt` | Decrypt atomic bank tokens | `server_to_server` | `token:read`
 
 
 ## List Permissions

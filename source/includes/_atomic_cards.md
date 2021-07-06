@@ -28,6 +28,9 @@ curl "api.basistheory.com/atomic/cards" \
         "postal_code": "94141",
         "country": "US"
       }
+    },
+    "metadata": {
+      "nonSensitiveField": "Non-Sensitive Value"
     }
   }'
 ```
@@ -45,6 +48,22 @@ curl "api.basistheory.com/atomic/cards" \
     "number": "XXXXXXXXXXXX4242",
     "expiration_month": 12,
     "expiration_year": 2025
+  },
+  "billing_details": {
+    "name": "John Doe",
+    "email": "johndoe@test.com",
+    "phone": "555-123-4567",
+    "address": {
+      "line1": "111 Test St.",
+      "line2": "Apt 304",
+      "city": "San Francisco",
+      "state": "CA",
+      "postal_code": "94141",
+      "country": "US"
+    }
+  },
+  "metadata": {
+    "nonSensitiveField": "Non-Sensitive Value"
   }
 }
 ```
@@ -60,7 +79,7 @@ Create a new atomic card for the tenant.
 
 <p class="scopes">
   <span class="scope">card:create</span>
-  <span class="scope">token:write</span>
+  <span class="scope">token:create</span>
 </p>
 
 ### Request Schema
@@ -69,6 +88,7 @@ Attribute | Required | Type | Default | Description
 --------- | -------- | ---- | ------- | -----------
 `card` | true | *card* | `null` | [Card object](#card-object-schema)
 `billing_details` | false | *billing details* | `null` | [Billing details object](#billing-details-object-schema)
+`metadata` | false | *any* | `null` | Non-sensitive token metadata
 
 ### Card Object Schema
 
@@ -98,16 +118,22 @@ Attribute | Required | Type | Default | Description
 `postal_code` | false | *string* | `null` | Zip or postal code
 `country` | false | *string* | `null` | Two-character ISO country code (e.g. `US`)
 
+<aside class="notice">
+  <span><code>metadata</code> values can be an object, array, or any primitive type such as an integer, boolean, or string. See <a href="#create-token">create token examples</a> for reference.</span>
+</aside>
+
 ### Response Schema
 
 Attribute | Type | Description
 --------- | ---- | -----------
 `id` | *string* | Unique identifier of the token which can be used to [get an atomic card](#get-an-atomic-card)
-`tenant_id` | *string* | The tenant ID which owns the card
+`tenant_id` | *string* | The [tenant](#tenants) ID which owns the card
 `type` | *string* | `Card` [token type](#token-types)
 `created_by` | *string* | The [application](#applications) ID which created the atomic card
 `created_at` | *string* | Created date of the application in ISO 8601 format
 `card` | *card* | Masked [card object](#card-object-schema)
+`billing_details` | *billing_details* | [Billing details object](#billing-details-object-schema)
+`metadata` | *any* | The metadata provided when [creating the atomic card](#create-atomic-card)
 
 ### Response Messages
 
@@ -144,6 +170,22 @@ curl "api.basistheory.com/atomic/cards" \
         "number": "XXXXXXXXXXXX4242",
         "expiration_month": 12,
         "expiration_year": 2025
+      },
+      "billing_details": {
+        "name": "John Doe",
+        "email": "johndoe@test.com",
+        "phone": "555-123-4567",
+        "address": {
+          "line1": "111 Test St.",
+          "line2": "Apt 304",
+          "city": "San Francisco",
+          "state": "CA",
+          "postal_code": "94141",
+          "country": "US"
+        }
+      },
+      "metadata": {
+        "nonSensitiveField": "Non-Sensitive Value"
       }
     },
     {...},
@@ -173,11 +215,13 @@ Returns the [Pagination](#pagination) schema. The `data` attribute in the respon
 Attribute | Type | Description
 --------- | ---- | -----------
 `id` | *string* | Unique identifier of the token which can be used to [get an atomic card](#get-an-atomic-card)
-`tenant_id` | *string* | The tenant ID which owns the card
+`tenant_id` | *string* | The [tenant](#tenants) ID which owns the card
 `type` | *string* | `Card` [token type](#token-types)
 `created_by` | *string* | The [application](#applications) ID which created the atomic card
 `created_at` | *string* | Created date of the application in ISO 8601 format
 `card` | *card* | Masked [card object](#card-object-schema)
+`billing_details` | *billing_details* | [Billing details object](#billing-details-object-schema)
+`metadata` | *any* | The metadata provided when [creating the atomic card](#create-atomic-card)
 
 ### Response Messages
 
@@ -210,6 +254,22 @@ curl "api.basistheory.com/atomic/cards/c1e565009-1984-4638-8fca-dce8a82cc2af" \
     "number": "XXXXXXXXXXXX4242",
     "expiration_month": 12,
     "expiration_year": 2025
+  },
+  "billing_details": {
+    "name": "John Doe",
+    "email": "johndoe@test.com",
+    "phone": "555-123-4567",
+    "address": {
+      "line1": "111 Test St.",
+      "line2": "Apt 304",
+      "city": "San Francisco",
+      "state": "CA",
+      "postal_code": "94141",
+      "country": "US"
+    }
+  },
+  "metadata": {
+    "nonSensitiveField": "Non-Sensitive Value"
   }
 }
 ```
@@ -239,11 +299,13 @@ Parameter | Required | Type | Default | Description
 Attribute | Type | Description
 --------- | ---- | -----------
 `id` | *string* | Unique identifier of the token which can be used to [get an atomic card](#get-an-atomic-card)
-`tenant_id` | *string* | The tenant ID which owns the card
+`tenant_id` | *string* | The [tenant](#tenants) ID which owns the card
 `type` | *string* | `Card` [token type](#token-types)
 `created_by` | *string* | The [application](#applications) ID which created the atomic card
 `created_at` | *string* | Created date of the application in ISO 8601 format
 `card` | *card* | Masked [card object](#card-object-schema)
+`billing_details` | *billing_details* | [Billing details object](#billing-details-object-schema)
+`metadata` | *any* | The metadata provided when [creating the atomic card](#create-atomic-card)
 
 ### Response Messages
 
@@ -280,7 +342,7 @@ Delete an atomic card by ID in the tenant.
 
 <p class="scopes">
   <span class="scope">card:delete</span>
-  <span class="scope">token:write</span>
+  <span class="scope">token:delete</span>
 </p>
 
 ### URI Parameters

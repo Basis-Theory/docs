@@ -22,7 +22,7 @@ curl "https://api.basistheory.com/tokens" \
     "type": "token",
     "data": "ebSG3IohNmg5gTOjN2HBwBbhjDZ6BY3fCWZJfXSucVMfQ+7YNMXQYrPuRSXgSkhuTMYS+BNfVUur4qZSvUbgCA==",
     "metadata": {
-      "NonSensitiveField": "Non-Sensitive Value"
+      "nonSensitiveField": "Non-Sensitive Value"
     }
     "encryption": {
       "cek": {
@@ -33,7 +33,11 @@ curl "https://api.basistheory.com/tokens" \
         "key": "vpXn45HnsoQPR1q8ptngmPvPaqIDJ4vO+FFyQclglePCt8d1SyTDJU0T+F54T7GnAz7vz5OKsjgsFNo9lVB3UA==",
         "alg": "RSA"
       }
-    }
+    },
+    "children": [
+      {...},
+      {...}
+    ]
   }'
 ```
 
@@ -47,8 +51,12 @@ curl "https://api.basistheory.com/tokens" \
   "created_by": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
   "created_at": "2020-09-15T15:53:00+00:00",
   "metadata": {
-    "NonSensitiveField": "Non-Sensitive Value"
-  }
+    "nonSensitiveField": "Non-Sensitive Value"
+  },
+  "children": [
+    {...},
+    {...}
+  ]
 }
 ```
 
@@ -95,7 +103,7 @@ Create a new token for the tenant.
 ### Permissions
 
 <p class="scopes">
-  <span class="scope">token:write</span>
+  <span class="scope">token:create</span>
 </p>
 
 ### Request Schema
@@ -106,6 +114,7 @@ Attribute | Required | Type | Default | Description
 `data` | true | *any* | `null` | Token data
 `metadata` | false | *any* | `null` | Non-sensitive token metadata
 `encryption` | false | *object* | `null` | Encryption metadata for an encrypted token data value
+`children` | false | *array* | `[]` | An array of tokens, each of which follows the [create token](#create-token) request schema. Can be used to bulk create tokens with [token associations](#create-token-association)
 
 ### Encryption Object Schema
 
@@ -130,11 +139,12 @@ Attribute | Required | Type | Default | Description
 Attribute | Type | Description
 --------- | ---- | -----------
 `id` | *string* | Unique identifier of the token which can be used to [get a token](#get-a-token)
-`tenant_id` | *string* | The tenant ID which owns the token
+`tenant_id` | *string* | The [tenant](#tenants) ID which owns the token
 `type` | *string* | [Token type](#token-types)
 `created_by` | *string* | The [application](#applications) ID which created the token
 `created_at` | *string* | Created date of the token in ISO 8601 format
 `metadata` | *any* | The metadata provided when [creating the token](#create-token)
+`children` | *array* | The child tokens provided when [creating the token](#create-token)
 
 ### Response Messages
 
@@ -175,7 +185,7 @@ curl "https://api.basistheory.com/tokens" \
       "tenant_id": "77cb0024-123e-41a8-8ff8-a3d5a0fa8a08",
       "data": "ebSG3IohNmg5gTOjN2HBwBbhjDZ6BY3fCWZJfXSucVMfQ+7YNMXQYrPuRSXgSkhuTMYS+BNfVUur4qZSvUbgCA==",
       "metadata": {
-        "NonSensitiveField": "Non-Sensitive Value"
+        "nonSensitiveField": "Non-Sensitive Value"
       }
       "encryption": {
         "cek": {
@@ -187,6 +197,10 @@ curl "https://api.basistheory.com/tokens" \
           "alg": "RSA"
         }
       },
+      "children": [
+        {...},
+        {...}
+      ]
       "created_by": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
       "created_at": "2021-03-01T08:23:14+00:00"
     },
@@ -196,10 +210,31 @@ curl "https://api.basistheory.com/tokens" \
 }
 ```
 
-> List Tokens by Type Request Example:
+> List Tokens by IDs Request Example:
 
 ```shell
-curl "https://api.basistheory.com/tokens?type=card" \
+curl "https://api.basistheory.com/tokens?id=c06d0789-0a38-40be-b7cc-c28a718f76f1&id=c1e565009-1984-4638-8fca-dce8a82cc2af" \
+  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
+```
+
+> List Tokens by Types Request Example:
+
+```shell
+curl "https://api.basistheory.com/tokens?type=card&type=bank" \
+  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
+```
+
+> List Tokens with Children Request Example:
+
+```shell
+curl "https://api.basistheory.com/tokens?children=true" \
+  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
+```
+
+> List Tokens with Children by Child Types Request Example:
+
+```shell
+curl "https://api.basistheory.com/tokens?children_type=card&children_type=bank" \
   -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
 ```
 
@@ -216,11 +251,14 @@ Get a list of tokens for the tenant.
   <span class="scope">token:read</span>
 </p>
 
-### URI Parameters
+### Query Parameters
 
 Parameter | Required | Type | Default | Description
 --------- | -------- | ---- | ------- | -----------
-`type` | false | *string* | `null` | An optional [token type](#token-types) to filter the list of tokens by
+`id` | false | *array* | `[]` | An optional list of token ID's to filter the list of tokens by
+`type` | false | *array* | `[]` | An optional array of [token types](#token-types) to filter the list of tokens by
+`children` | false | *boolean* | `false` | Include child tokens where the token is a parent in [token association](#token-associations)
+`children_type` | false | *array* | `[]` | An optional array of [token types](#token-types) to filter child tokens where the token is a parent in the [token association](#token-associations)
 
 ### Response Schema
 
@@ -229,11 +267,12 @@ Returns the [Pagination](#pagination) schema. The `data` attribute in the respon
 Attribute | Type | Description
 --------- | ---- | -----------
 `id` | *string* | Unique identifier of the token which can be used to [get a token](#get-a-token)
-`tenant_id` | *string* | The tenant ID which owns the token
+`tenant_id` | *string* | The [tenant](#tenants) ID which owns the token
 `type` | *string* | [Token type](#token-types)
 `data` | *any* | The data provided when [creating the token](#create-token)
 `metadata` | *any* | The metadata provided when [creating the token](#create-token)
 `encryption` | *any* | The [encryption](#encryption-object-schema) data provided when [creating the token](#create-token)
+`children` | *array* | An array of child tokens where the token is a parent in the [token association](#token-associations). Only populated if `children` or `children_type` query parameter is provided
 `created_by` | *string* | The [application](#applications) ID which created the token
 `created_at` | *string* | Created date of the token in ISO 8601 format
 
@@ -255,6 +294,20 @@ curl "https://api.basistheory.com/tokens/c06d0789-0a38-40be-b7cc-c28a718f76f1" \
   -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
 ```
 
+> Get a Token with Children Request Example:
+
+```shell
+curl "https://api.basistheory.com/tokens/c06d0789-0a38-40be-b7cc-c28a718f76f1?children=true" \
+  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
+```
+
+> Get a Token with Children by Child Types Request Example:
+
+```shell
+curl "https://api.basistheory.com/tokens/c06d0789-0a38-40be-b7cc-c28a718f76f1?children_type=card&children_type=bank" \
+  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
+```
+
 > Token Response Example:
 
 ```json
@@ -264,7 +317,7 @@ curl "https://api.basistheory.com/tokens/c06d0789-0a38-40be-b7cc-c28a718f76f1" \
   "tenant_id": "77cb0024-123e-41a8-8ff8-a3d5a0fa8a08",
   "data": "ebSG3IohNmg5gTOjN2HBwBbhjDZ6BY3fCWZJfXSucVMfQ+7YNMXQYrPuRSXgSkhuTMYS+BNfVUur4qZSvUbgCA==",
   "metadata": {
-    "NonSensitiveField": "Non-Sensitive Value"
+    "nonSensitiveField": "Non-Sensitive Value"
   }
   "encryption": {
     "cek": {
@@ -276,6 +329,10 @@ curl "https://api.basistheory.com/tokens/c06d0789-0a38-40be-b7cc-c28a718f76f1" \
       "alg": "RSA"
     }
   },
+  "children": [
+    {...},
+    {...}
+  ]
   "created_by": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
   "created_at": "2021-03-01T08:23:14+00:00"
 }
@@ -300,16 +357,24 @@ Parameter | Required | Type | Default | Description
 --------- | -------- | ---- | ------- | -----------
 `id` | true | *string* | `null` | The ID of the token
 
+### Query Parameters
+
+Parameter | Required | Type | Default | Description
+--------- | -------- | ---- | ------- | -----------
+`children` | false | *boolean* | `false` | Include child tokens where the token is a parent in [token association](#token-associations)
+`children_type` | false | *array* | `[]` | An optional array of [token types](#token-types) to filter child tokens where the token is a parent in the [token association](#token-associations)
+
 ### Response Schema
 
 Attribute | Type | Description
 --------- | ---- | -----------
 `id` | *string* | Unique identifier of the token which can be used to [get a token](#get-a-token)
-`tenant_id` | *string* | The tenant ID which owns the token
+`tenant_id` | *string* | The [tenant](#tenants) ID which owns the token
 `type` | *string* | [Token type](#token-types)
 `data` | *any* | The data provided when [creating the token](#create-token)
 `metadata` | *any* | The metadata provided when [creating the token](#create-token)
 `encryption` | *any* | The [encryption](#encryption-object-schema) data provided when [creating the token](#create-token)
+`children` | *array* | An array of child tokens where the token is a parent in the [token association](#token-associations). Only populated if `children` or `children_type` query parameter is provided
 `created_by` | *string* | The [application](#applications) ID which created the token
 `created_at` | *string* | Created date of the token in ISO 8601 format
 
@@ -348,7 +413,7 @@ Delete a token by ID in the tenant.
 ### Permissions
 
 <p class="scopes">
-  <span class="scope">token:write</span>
+  <span class="scope">token:delete</span>
 </p>
 
 ### URI Parameters

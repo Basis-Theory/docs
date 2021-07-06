@@ -24,9 +24,13 @@ api_includes:
   - permissions
   - tenants
   - applications
+  - exchange_templates
+  - exchanges
   - tokens
+  - token_associations
   - atomic_cards
   - atomic_banks
+  - logs
 
 module_includes:
   - javascript_module
