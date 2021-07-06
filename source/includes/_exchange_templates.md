@@ -119,7 +119,7 @@ Attribute | Type | Description
 Attribute | Type | Description
 --------- | ---- | -----------
 `data` | *any* | The data field which will be used for [creating the token](#create-token)
-`metadata` | *any* | The metadata field which will be used for when [creating the token](#create-token)
+`metadata` | *any* | The metadata field which will be used for [creating the token](#create-token)
 
 
 ### Exchange Template Configuration Schema
