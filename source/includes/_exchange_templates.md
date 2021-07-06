@@ -500,7 +500,9 @@ Delete an exchange template by ID in the tenant.
 
 ### Permissions
 
-`exchange:delete`
+<p class="scopes">
+  <span class="scope">exchange:delete</span>
+</p>
 
 ### URI Parameters
 
