@@ -153,7 +153,7 @@ Code | Description
 `403` | The provided `X-API-KEY` does not have the required permissions
 
 <aside class="notice">
-  <span>Creating custom private exchange templates is currently in beta status. If you would like to be added to the beta program, please contact us!</span>
+  <span>Creating custom private exchange templates is currently in beta status. If you would like to be added to the beta program, please <a href="mailto:support@basistheory.com?subject=Exchange Template Beta Access">contact us</a>!</span>
 </aside>
 
 
@@ -230,7 +230,7 @@ Parameter | Required | Type | Default | Description
 
 ### Response Schema
 
-Returns the [Pagination](#pagination) schema. The `data` attribute in the response contains an array of applications with the following schema:
+Returns the [Pagination](#pagination) schema. The `data` attribute in the response contains an array of exchange templates with the following schema:
 
 Attribute | Type | Description
 --------- | ---- | -----------

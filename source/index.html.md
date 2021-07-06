@@ -25,7 +25,9 @@ api_includes:
   - tenants
   - applications
   - exchange_templates
+  - exchanges
   - tokens
+  - token_associations
   - atomic_cards
   - atomic_banks
   - logs
