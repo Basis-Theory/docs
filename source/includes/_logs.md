@@ -43,7 +43,7 @@ Get a list of logs for the tenant.
   <span class="scope">log:read</span>
 </p>
 
-### URI Parameters
+### Query Parameters
 
 Parameter | Required | Type | Default | Description
 --------- | -------- | ---- | ------- | -----------

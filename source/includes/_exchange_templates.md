@@ -208,6 +208,20 @@ curl "https://api.basistheory.com/exchange-templates" \
 }
 ```
 
+> List Exchange Templates by Name Request Example:
+
+```shell
+curl "https://api.basistheory.com/exchange-templates?name=My+Private+Exchange" \
+  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
+```
+
+> List Exchange Templates by Source Token Type Request Example:
+
+```shell
+curl "https://api.basistheory.com/exchange-templates?source_token_type=bank" \
+  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
+```
+
 <span class="http-method get">
   <span class="box-method">GET</span>
   `https://api.basistheory.com/exchange-templates`
@@ -221,7 +235,7 @@ Get a list of official exchange templates and exchange templates for the tenant.
   <span class="scope">exchange:read</span>
 </p>
 
-### URI Parameters
+### Query Parameters
 
 Parameter | Required | Type | Default | Description
 --------- | -------- | ---- | ------- | -----------

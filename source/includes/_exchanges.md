@@ -111,6 +111,27 @@ curl "https://api.basistheory.com/exchanges" \
 }
 ```
 
+> List Exchanges by IDs Request Example:
+
+```shell
+curl "https://api.basistheory.com/exchanges?id=5b493235-6917-4307-906a-2cd6f1a90b13&id=9f483eb3-c061-40ae-bc3a-050596f43b08" \
+  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
+```
+
+> List Exchanges by Name Request Example:
+
+```shell
+curl "https://api.basistheory.com/exchanges?name=My+Exchange" \
+  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
+```
+
+> List Exchanges by Source Token Type Request Example:
+
+```shell
+curl "https://api.basistheory.com/exchanges?source_token_type=card" \
+  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
+```
+
 <span class="http-method get">
   <span class="box-method">GET</span>
   `https://api.basistheory.com/exchanges`
@@ -124,7 +145,7 @@ Get a list of exchanges for the tenant.
   <span class="scope">exchange:read</span>
 </p>
 
-### URI Parameters
+### Query Parameters
 
 Parameter | Required | Type | Default | Description
 --------- | -------- | ---- | ------- | -----------

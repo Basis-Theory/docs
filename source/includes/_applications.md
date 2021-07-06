@@ -151,7 +151,7 @@ Get a list of applications for the tenant.
   <span class="scope">application:read</span>
 </p>
 
-### URI Parameters
+### Query Parameters
 
 Parameter | Required | Type | Default | Description
 --------- | -------- | ---- | ------- | -----------
