@@ -280,7 +280,7 @@
   color: #859900;
 }
     </style>
-    <link href="stylesheets/screen-eaca4f00.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/screen-a8db2be3.css" rel="stylesheet" media="screen" />
     <link href="stylesheets/print-fac0743d.css" rel="stylesheet" media="print" />
       <script src="javascripts/all-5539b3b6.js"></script>
 
@@ -404,6 +404,49 @@
               </ul>
           </li>
           <li>
+            <a href="#exchange-templates" class="toc-h1 toc-link" data-title="Exchange Templates">Exchange Templates</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#exchange-template-types" class="toc-h2 toc-link" data-title="Exchange Template Types">Exchange Template Types</a>
+                  </li>
+                  <li>
+                    <a href="#create-exchange-template" class="toc-h2 toc-link" data-title="Create Exchange Template">Create Exchange Template</a>
+                  </li>
+                  <li>
+                    <a href="#list-exchange-templates" class="toc-h2 toc-link" data-title="List Exchange Templates">List Exchange Templates</a>
+                  </li>
+                  <li>
+                    <a href="#get-an-exchange-template" class="toc-h2 toc-link" data-title="Get an Exchange Template">Get an Exchange Template</a>
+                  </li>
+                  <li>
+                    <a href="#update-exchange-template" class="toc-h2 toc-link" data-title="Update Exchange Template">Update Exchange Template</a>
+                  </li>
+                  <li>
+                    <a href="#delete-exchange-template" class="toc-h2 toc-link" data-title="Delete Exchange Template">Delete Exchange Template</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#exchanges" class="toc-h1 toc-link" data-title="Exchanges">Exchanges</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#create-exchange" class="toc-h2 toc-link" data-title="Create Exchange">Create Exchange</a>
+                  </li>
+                  <li>
+                    <a href="#list-exchanges" class="toc-h2 toc-link" data-title="List Exchanges">List Exchanges</a>
+                  </li>
+                  <li>
+                    <a href="#get-an-exchange" class="toc-h2 toc-link" data-title="Get an Exchange">Get an Exchange</a>
+                  </li>
+                  <li>
+                    <a href="#update-exchange" class="toc-h2 toc-link" data-title="Update Exchange">Update Exchange</a>
+                  </li>
+                  <li>
+                    <a href="#delete-exchange" class="toc-h2 toc-link" data-title="Delete Exchange">Delete Exchange</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#tokens" class="toc-h1 toc-link" data-title="Tokens">Tokens</a>
               <ul class="toc-list-h2">
                   <li>
@@ -420,6 +463,23 @@
                   </li>
                   <li>
                     <a href="#delete-token" class="toc-h2 toc-link" data-title="Delete Token">Delete Token</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#token-associations" class="toc-h1 toc-link" data-title="Token Associations">Token Associations</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#create-token-association" class="toc-h2 toc-link" data-title="Create Token Association">Create Token Association</a>
+                  </li>
+                  <li>
+                    <a href="#delete-token-association" class="toc-h2 toc-link" data-title="Delete Token Association">Delete Token Association</a>
+                  </li>
+                  <li>
+                    <a href="#create-child-token-for-a-token" class="toc-h2 toc-link" data-title="Create Child Token for a Token">Create Child Token for a Token</a>
+                  </li>
+                  <li>
+                    <a href="#list-child-tokens-for-a-token" class="toc-h2 toc-link" data-title="List Child Tokens for a Token">List Child Tokens for a Token</a>
                   </li>
               </ul>
           </li>
@@ -460,6 +520,14 @@
                   </li>
                   <li>
                     <a href="#decrypt-atomic-bank" class="toc-h2 toc-link" data-title="Decrypt Atomic Bank">Decrypt Atomic Bank</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#logs" class="toc-h1 toc-link" data-title="Logs">Logs</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#list-logs" class="toc-h2 toc-link" data-title="List Logs">List Logs</a>
                   </li>
               </ul>
           </li>
@@ -797,15 +865,21 @@
 </tr>
 </thead><tbody>
 <tr>
-<td><code>token:read</code></td>
-<td>Read tokens from the vault</td>
-<td><code>server_to_server</code></td>
+<td><code>tenant:read</code></td>
+<td>Read tenants</td>
+<td><code>management</code></td>
 <td><em>N/A</em></td>
 </tr>
 <tr>
-<td><code>token:write</code></td>
-<td>Write tokens to the vault</td>
-<td><code>public</code>, <code>elements</code>, <code>server_to_server</code></td>
+<td><code>tenant:update</code></td>
+<td>Update tenants</td>
+<td><code>management</code></td>
+<td><em>N/A</em></td>
+</tr>
+<tr>
+<td><code>tenant:delete</code></td>
+<td>Delete tenants</td>
+<td><code>management</code></td>
 <td><em>N/A</em></td>
 </tr>
 <tr>
@@ -821,6 +895,54 @@
 <td><em>N/A</em></td>
 </tr>
 <tr>
+<td><code>exchange:read</code></td>
+<td>Read exchange templates and exchanges</td>
+<td><code>server_to_server</code>, <code>management</code></td>
+<td><code>token:read</code></td>
+</tr>
+<tr>
+<td><code>exchange:create</code></td>
+<td>Create exchange templates and exchanges</td>
+<td><code>management</code></td>
+<td><code>token:read</code>, <code>token:create</code></td>
+</tr>
+<tr>
+<td><code>exchange:update</code></td>
+<td>Update exchange templates and exchanges</td>
+<td><code>management</code></td>
+<td><code>token:read</code>, <code>token:create</code></td>
+</tr>
+<tr>
+<td><code>exchange:delete</code></td>
+<td>Delete exchange templates and exchanges</td>
+<td><code>management</code></td>
+<td><code>token:delete</code></td>
+</tr>
+<tr>
+<td><code>log:read</code></td>
+<td>Read audit logs</td>
+<td><code>management</code></td>
+<td><em>N/A</em></td>
+</tr>
+<tr>
+<td><code>token:read</code></td>
+<td>Read tokens from the vault</td>
+<td><code>server_to_server</code>, <code>management</code></td>
+<td><em>N/A</em></td>
+</tr>
+<tr>
+<td><code>token:create</code></td>
+<td>Create tokens in the vault</td>
+<td><code>public</code>, <code>elements</code>, <code>server_to_server</code>, <code>management</code></td>
+<td><em>N/A</em></td>
+</tr>
+<tr>
+<td><code>token:delete</code></td>
+<td>Delete tokens from the vault</td>
+<td><code>server_to_server</code>, <code>management</code></td>
+<td><em>N/A</em></td>
+</tr>
+<tr>
 <td><code>card:read</code></td>
 <td>Read atomic card tokens</td>
 <td><code>server_to_server</code></td>
@@ -830,19 +952,49 @@
 <td><code>card:create</code></td>
 <td>Create atomic card tokens</td>
 <td><code>public</code>, <code>elements</code>, <code>server_to_server</code></td>
-<td><code>token:write</code></td>
+<td><code>token:create</code></td>
 </tr>
 <tr>
 <td><code>card:update</code></td>
 <td>Update atomic card tokens</td>
 <td><code>server_to_server</code></td>
-<td><code>token:write</code></td>
+<td><code>token:create</code></td>
 </tr>
 <tr>
 <td><code>card:delete</code></td>
 <td>Delete atomic card tokens</td>
 <td><code>server_to_server</code></td>
-<td><code>token:write</code></td>
+<td><code>token:delete</code></td>
+</tr>
+<tr>
+<td><code>bank:read</code></td>
+<td>Read atomic bank tokens</td>
+<td><code>server_to_server</code></td>
+<td><code>token:read</code></td>
+</tr>
+<tr>
+<td><code>bank:create</code></td>
+<td>Create atomic bank tokens</td>
+<td><code>public</code>, <code>elements</code>, <code>server_to_server</code></td>
+<td><code>token:create</code></td>
+</tr>
+<tr>
+<td><code>bank:update</code></td>
+<td>Update atomic bank tokens</td>
+<td><code>server_to_server</code></td>
+<td><code>token:create</code></td>
+</tr>
+<tr>
+<td><code>bank:delete</code></td>
+<td>Delete atomic bank tokens</td>
+<td><code>server_to_server</code></td>
+<td><code>token:delete</code></td>
+</tr>
+<tr>
+<td><code>bank:decrypt</code></td>
+<td>Decrypt atomic bank tokens</td>
+<td><code>server_to_server</code></td>
+<td><code>token:read</code></td>
 </tr>
 </tbody></table>
 <h2 id='list-permissions'>List Permissions</h2>
@@ -1209,7 +1361,7 @@
     "permissions": [
       "card:create",
       "card:read",
-      "token:write",
+      "token:create",
       "token:read"
     ]
   }'</span>
@@ -1227,7 +1379,7 @@
   </span><span class="nl">"permissions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="s2">"card:create"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"card:read"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"token:write"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"token:create"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"token:read"</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -1290,7 +1442,7 @@
 <tr>
 <td><code>tenant_id</code></td>
 <td><em>string</em></td>
-<td>The tenant ID which owns the application</td>
+<td>The <a href="#tenants">tenant</a> ID which owns the application</td>
 </tr>
 <tr>
 <td><code>name</code></td>
@@ -1365,7 +1517,7 @@
       </span><span class="nl">"permissions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="s2">"card:create"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"card:read"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"token:write"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"token:create"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"token:read"</span><span class="w">
       </span><span class="p">]</span><span class="w">
     </span><span class="p">},</span><span class="w">
@@ -1390,7 +1542,7 @@
 <p class="scopes">
   <span class="scope">application:read</span>
 </p>
-<h3 id='uri-parameters'>URI Parameters</h3>
+<h3 id='query-parameters'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1426,7 +1578,7 @@
 <tr>
 <td><code>tenant_id</code></td>
 <td><em>string</em></td>
-<td>The tenant ID which owns the application</td>
+<td>The <a href="#tenants">tenant</a> ID which owns the application</td>
 </tr>
 <tr>
 <td><code>name</code></td>
@@ -1507,7 +1659,7 @@
 <p class="scopes">
   <span class="scope">application:read</span>
 </p>
-<h3 id='uri-parameters-2'>URI Parameters</h3>
+<h3 id='uri-parameters'>URI Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1541,7 +1693,7 @@
 <tr>
 <td><code>tenant_id</code></td>
 <td><em>string</em></td>
-<td>The tenant ID which owns the application</td>
+<td>The <a href="#tenants">tenant</a> ID which owns the application</td>
 </tr>
 <tr>
 <td><code>name</code></td>
@@ -1642,7 +1794,7 @@
 <tr>
 <td><code>tenant_id</code></td>
 <td><em>string</em></td>
-<td>The tenant ID which owns the application</td>
+<td>The <a href="#tenants">tenant</a> ID which owns the application</td>
 </tr>
 <tr>
 <td><code>name</code></td>
@@ -1736,7 +1888,7 @@
 <p class="scopes">
   <span class="scope">application:write</span>
 </p>
-<h3 id='uri-parameters-3'>URI Parameters</h3>
+<h3 id='uri-parameters-2'>URI Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1795,7 +1947,7 @@
 <tr>
 <td><code>tenant_id</code></td>
 <td><em>string</em></td>
-<td>The tenant ID which owns the application</td>
+<td>The <a href="#tenants">tenant</a> ID which owns the application</td>
 </tr>
 <tr>
 <td><code>name</code></td>
@@ -1882,7 +2034,7 @@
 <p class="scopes">
   <span class="scope">application:write</span>
 </p>
-<h3 id='uri-parameters-4'>URI Parameters</h3>
+<h3 id='uri-parameters-3'>URI Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1968,7 +2120,7 @@
 <p>Delete an application by ID in the tenant.</p>
 <h3 id='permissions-7'>Permissions</h3>
 <p><code>application:write</code></p>
-<h3 id='uri-parameters-5'>URI Parameters</h3>
+<h3 id='uri-parameters-4'>URI Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -2010,6 +2162,1560 @@
 <td>The application was not found</td>
 </tr>
 </tbody></table>
+<h1 id='exchange-templates'>Exchange Templates</h1>
+<p>Exchange templates give you the ability to pre-configure custom integrations to securely process, enrich, and associate your tokens.</p>
+<h2 id='exchange-template-types'>Exchange Template Types</h2>
+<table><thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>official</code></td>
+<td>Official templates that are built and supported by Basis Theory and its authorized partners</td>
+</tr>
+<tr>
+<td><code>private</code></td>
+<td>Private templates which are only available to your tenant</td>
+</tr>
+</tbody></table>
+<h2 id='create-exchange-template'>Create Exchange Template</h2>
+<blockquote>
+<p>Create Exchange Template Request Example:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/exchange-templates"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
+  <span class="nt">-X</span> <span class="s2">"POST"</span>
+  <span class="nt">-D</span> <span class="s1">'{
+    "name": "My Private Exchange",
+    "description": "Securely exchange token for another token",
+    "type": "private",
+    "source_token_type": "card",
+    "icon": "data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==",
+    "code": "
+      module.exports = async function (context) {
+        // Do something with `context.configuration.SERVICE_API_KEY`
+
+        return {
+          foo: '</span>bar<span class="s1">',
+        };
+      };
+    ",
+    "configuration": [
+      {
+        "name": "SERVICE_API_KEY",
+        "type": "string"
+      }
+    ]
+  }'</span>
+</code></pre></div>
+<blockquote>
+<p>Create Exchange Template Response Example:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"17069df1-80f4-439e-86a7-4121863e4678"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My Private Exchange"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Securely exchange token for another token"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"private"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"source_token_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"card"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"icon"</span><span class="p">:</span><span class="w"> </span><span class="s2">"data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg=="</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"
+    module.exports = async function (context) {
+      // Do something with `context.configuration.SERVICE_API_KEY`
+
+      return {
+        data: {
+          foo: 'bar',
+        },
+        metadata: {
+          nonSensitiveField: 'Non-Sensitive Value'
+        }
+      };
+    };
+  "</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"configuration"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SERVICE_API_KEY"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p><span class="http-method post">
+  <span class="box-method">POST</span>
+  <code>https://api.basistheory.com/exchange-templates</code>
+</span></p>
+
+<p>Create a new exchange template for the tenant.</p>
+<h3 id='permissions'>Permissions</h3>
+<p class="scopes">
+  <span class="scope">exchange:create</span>
+</p>
+<h3 id='request-schema'>Request Schema</h3>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Required</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>name</code></td>
+<td>true</td>
+<td><em>string</em></td>
+<td><code>null</code></td>
+<td>The name of the exchange template. Has a maximum length of <code>200</code></td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td>false</td>
+<td><em>string</em></td>
+<td><code>null</code></td>
+<td>The description of the exchange template</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td>true</td>
+<td><em>string</em></td>
+<td><code>null</code></td>
+<td><a href="#exchange-template-types">Type</a> of the exchange template</td>
+</tr>
+<tr>
+<td><code>source_token_type</code></td>
+<td>true</td>
+<td><em>string</em></td>
+<td><code>null</code></td>
+<td><a href="#token-types">Source token type</a> of the exchange template</td>
+</tr>
+<tr>
+<td><code>icon</code></td>
+<td>false</td>
+<td><em>string</em></td>
+<td><code>null</code></td>
+<td>Base64 <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URIs">data URL</a> of the image. Supported image types are: <code>image/png</code>, <code>image/jpg</code>, and <code>image/jpeg</code></td>
+</tr>
+<tr>
+<td><code>code</code></td>
+<td>true</td>
+<td><em>string</em></td>
+<td><code>null</code></td>
+<td><a href="#exchange-template-code-schema">Code snippet</a> which will be executed when the exchange template is processed</td>
+</tr>
+<tr>
+<td><code>configuration</code></td>
+<td>true</td>
+<td><em>array</em></td>
+<td><code>[]</code></td>
+<td>Array of <a href="#exchange-template-configuration-schema">exchange template configuration</a> options for configuring an exchange</td>
+</tr>
+</tbody></table>
+<h3 id='exchange-template-code-schema'>Exchange Template Code Schema</h3>
+<p>All exchange template code snippets must export a function which takes in a <a href="#exchange-template-code-context-schema">context object</a> and returns a <a href="#exchange-template-code-response-schema">token object</a>.</p>
+<h3 id='exchange-template-code-context-schema'>Exchange Template Code Context Schema</h3>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>sourceToken</code></td>
+<td><em>object</em></td>
+<td>The source token that matches the <code>source_token_type</code> of the <a href="#exchange-templates">exchange template</a></td>
+</tr>
+<tr>
+<td><code>configuration</code></td>
+<td><em>array</em></td>
+<td>The configuration defined for the <a href="#exchanges">exchange</a></td>
+</tr>
+</tbody></table>
+<h3 id='exchange-template-code-response-schema'>Exchange Template Code Response Schema</h3>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>data</code></td>
+<td><em>any</em></td>
+<td>The data field which will be used for <a href="#create-token">creating the token</a></td>
+</tr>
+<tr>
+<td><code>metadata</code></td>
+<td><em>any</em></td>
+<td>The metadata field which will be used for <a href="#create-token">creating the token</a></td>
+</tr>
+</tbody></table>
+<h3 id='exchange-template-configuration-schema'>Exchange Template Configuration Schema</h3>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Required</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>name</code></td>
+<td>true</td>
+<td><em>string</em></td>
+<td><code>null</code></td>
+<td>Name of the configuration setting</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td>true</td>
+<td><em>string</em></td>
+<td><code>null</code></td>
+<td>Data type of the configuration setting. Valid values are <code>&quot;string&quot;</code>, <code>&quot;boolean&quot;</code>, and <code>&quot;number&quot;</code></td>
+</tr>
+</tbody></table>
+<h3 id='response-schema'>Response Schema</h3>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td><em>string</em></td>
+<td>Unique identifier of the exchange template which can be used to <a href="#get-an-exchange-template">get an exchange template</a></td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>true</td>
+<td><em>string</em></td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td>false</td>
+<td><em>string</em></td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td>true</td>
+<td><em>string</em></td>
+</tr>
+<tr>
+<td><code>source_token_type</code></td>
+<td>true</td>
+<td><em>string</em></td>
+</tr>
+<tr>
+<td><code>icon</code></td>
+<td>false</td>
+<td><em>string</em></td>
+</tr>
+<tr>
+<td><code>code</code></td>
+<td>true</td>
+<td><em>string</em></td>
+</tr>
+<tr>
+<td><code>configuration</code></td>
+<td>true</td>
+<td><em>array</em></td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td><em>string</em></td>
+<td>Created date of the exchange template in ISO 8601 format</td>
+</tr>
+</tbody></table>
+<h3 id='response-messages'>Response Messages</h3>
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>201</code></td>
+<td>Exchange template successfully created</td>
+</tr>
+<tr>
+<td><code>400</code></td>
+<td>Invalid request body. See <a href="#errors">Errors</a> response for details</td>
+</tr>
+<tr>
+<td><code>401</code></td>
+<td>A missing or invalid <code>X-API-KEY</code> was provided</td>
+</tr>
+<tr>
+<td><code>403</code></td>
+<td>The provided <code>X-API-KEY</code> does not have the required permissions</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+  <span>Creating custom private exchange templates is currently in beta status. If you would like to be added to the beta program, please <a href="mailto:support@basistheory.com?subject=Exchange Template Beta Access">contact us</a>!</span>
+</aside>
+<h2 id='list-exchange-templates'>List Exchange Templates</h2>
+<blockquote>
+<p>List Exchange Templates Request Example:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/exchange-templates"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
+</code></pre></div>
+<blockquote>
+<p>Exchange Templates Response Example:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"pagination"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">}</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"17069df1-80f4-439e-86a7-4121863e4678"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My Private Exchange"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Securely exchange token for another token"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"private"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"source_token_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"card"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"icon"</span><span class="p">:</span><span class="w"> </span><span class="s2">"data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg=="</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"
+        module.exports = async function (context) {
+          // Do something with `context.configuration.SERVICE_API_KEY`
+
+          return {
+            data: {
+              foo: 'bar',
+            },
+            metadata: {
+              nonSensitiveField: 'Non-Sensitive Value'
+            }
+          };
+        };
+      "</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"configuration"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SERVICE_API_KEY"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"modified_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-01T08:23:14+00:00"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="err">...</span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>List Exchange Templates by Name Request Example:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/exchange-templates?name=My+Private+Exchange"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
+</code></pre></div>
+<blockquote>
+<p>List Exchange Templates by Source Token Type Request Example:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/exchange-templates?source_token_type=bank"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
+</code></pre></div>
+<p><span class="http-method get">
+  <span class="box-method">GET</span>
+  <code>https://api.basistheory.com/exchange-templates</code>
+</span></p>
+
+<p>Get a list of official exchange templates and private, tenant-specific exchange templates.</p>
+<h3 id='permissions-2'>Permissions</h3>
+<p class="scopes">
+  <span class="scope">exchange:read</span>
+</p>
+<h3 id='query-parameters'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>name</code></td>
+<td>false</td>
+<td><em>string</em></td>
+<td><code>null</code></td>
+<td>Wildcard search of exchange templates by name</td>
+</tr>
+<tr>
+<td><code>source_token_type</code></td>
+<td>false</td>
+<td><em>string</em></td>
+<td><code>null</code></td>
+<td>Filter exchange templates by <a href="#token-types">source token type</a></td>
+</tr>
+</tbody></table>
+<h3 id='response-schema-2'>Response Schema</h3>
+<p>Returns the <a href="#pagination">Pagination</a> schema. The <code>data</code> attribute in the response contains an array of exchange templates with the following schema:</p>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td><em>string</em></td>
+<td>Unique identifier of the exchange template which can be used to <a href="#get-an-exchange-template">get an exchange template</a></td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>true</td>
+<td><em>string</em></td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td>false</td>
+<td><em>string</em></td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td>true</td>
+<td><em>string</em></td>
+</tr>
+<tr>
+<td><code>source_token_type</code></td>
+<td>true</td>
+<td><em>string</em></td>
+</tr>
+<tr>
+<td><code>icon</code></td>
+<td>false</td>
+<td><em>string</em></td>
+</tr>
+<tr>
+<td><code>code</code></td>
+<td>true</td>
+<td><em>string</em></td>
+</tr>
+<tr>
+<td><code>configuration</code></td>
+<td>true</td>
+<td><em>array</em></td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td><em>string</em></td>
+<td>Created date of the exchange template in ISO 8601 format</td>
+</tr>
+<tr>
+<td><code>modified_at</code></td>
+<td><em>string</em></td>
+<td>Modified date of the exchange template in ISO 8601 format</td>
+</tr>
+</tbody></table>
+<h3 id='response-messages-2'>Response Messages</h3>
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>200</code></td>
+<td>Exchange templates successfully retrieved</td>
+</tr>
+<tr>
+<td><code>401</code></td>
+<td>A missing or invalid <code>X-API-KEY</code> was provided</td>
+</tr>
+<tr>
+<td><code>403</code></td>
+<td>The provided <code>X-API-KEY</code> does not have the required permissions</td>
+</tr>
+</tbody></table>
+<h2 id='get-an-exchange-template'>Get an Exchange Template</h2>
+<blockquote>
+<p>Get an Exchange Template Request Example:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/exchange-templates/17069df1-80f4-439e-86a7-4121863e4678"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
+</code></pre></div>
+<blockquote>
+<p>Exchange Template Response Example:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"17069df1-80f4-439e-86a7-4121863e4678"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My Private Exchange"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Securely exchange token for another token"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"private"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"source_token_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"card"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"icon"</span><span class="p">:</span><span class="w"> </span><span class="s2">"data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg=="</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"
+    module.exports = async function (context) {
+      // Do something with `context.configuration.SERVICE_API_KEY`
+
+      return {
+        data: {
+          foo: 'bar',
+        },
+        metadata: {
+          nonSensitiveField: 'Non-Sensitive Value'
+        }
+      };
+    };
+  "</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"configuration"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SERVICE_API_KEY"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"modified_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-01T08:23:14+00:00"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p><span class="http-method get">
+  <span class="box-method">GET</span>
+  <code>https://api.basistheory.com/exchange-templates/{id}</code>
+</span> </p>
+
+<p>Get an exchange template by ID in the tenant.</p>
+<h3 id='permissions-3'>Permissions</h3>
+<p class="scopes">
+  <span class="scope">exchange:read</span>
+</p>
+<h3 id='uri-parameters'>URI Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>true</td>
+<td><em>string</em></td>
+<td><code>null</code></td>
+<td>The ID of the exchange template</td>
+</tr>
+</tbody></table>
+<h3 id='response-schema-3'>Response Schema</h3>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td><em>string</em></td>
+<td>Unique identifier of the exchange template which can be used to <a href="#get-an-exchange-template">get an exchange template</a></td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>true</td>
+<td><em>string</em></td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td>false</td>
+<td><em>string</em></td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td>true</td>
+<td><em>string</em></td>
+</tr>
+<tr>
+<td><code>source_token_type</code></td>
+<td>true</td>
+<td><em>string</em></td>
+</tr>
+<tr>
+<td><code>icon</code></td>
+<td>false</td>
+<td><em>string</em></td>
+</tr>
+<tr>
+<td><code>code</code></td>
+<td>true</td>
+<td><em>string</em></td>
+</tr>
+<tr>
+<td><code>configuration</code></td>
+<td>true</td>
+<td><em>array</em></td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td><em>string</em></td>
+<td>Created date of the exchange template in ISO 8601 format</td>
+</tr>
+<tr>
+<td><code>modified_at</code></td>
+<td><em>string</em></td>
+<td>Modified date of the exchange template in ISO 8601 format</td>
+</tr>
+</tbody></table>
+<h3 id='response-messages-3'>Response Messages</h3>
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>200</code></td>
+<td>Exchange template successfully retrieved</td>
+</tr>
+<tr>
+<td><code>401</code></td>
+<td>A missing or invalid <code>X-API-KEY</code> was provided</td>
+</tr>
+<tr>
+<td><code>403</code></td>
+<td>The provided <code>X-API-KEY</code> does not have the required permissions</td>
+</tr>
+<tr>
+<td><code>404</code></td>
+<td>The exchange template was not found</td>
+</tr>
+</tbody></table>
+<h2 id='update-exchange-template'>Update Exchange Template</h2>
+<blockquote>
+<p>Update Exchange Template Request Example:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/exchange-templates/17069df1-80f4-439e-86a7-4121863e4678"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
+  <span class="nt">-X</span> <span class="s2">"PUT"</span>
+  <span class="nt">-D</span> <span class="s1">'{
+    "name": "My Private Exchange",
+    "description": "Securely exchange token for another token",
+    "type": "private",
+    "source_token_type": "card",
+    "icon": "data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==",
+    "code": "
+      module.exports = async function (context) {
+        // Do something with `context.configuration.SERVICE_API_KEY`
+
+        return {
+          foo: '</span>bar<span class="s1">',
+        };
+      };
+    ",
+    "configuration": [
+      {
+        "name": "SERVICE_API_KEY",
+        "type": "string"
+      }
+    ]
+  }'</span>
+</code></pre></div>
+<blockquote>
+<p>Update Exchange Template Response Example:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"17069df1-80f4-439e-86a7-4121863e4678"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My Private Exchange"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Securely exchange token for another token"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"private"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"source_token_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"card"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"icon"</span><span class="p">:</span><span class="w"> </span><span class="s2">"data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg=="</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"
+    module.exports = async function (context) {
+      // Do something with `context.configuration.SERVICE_API_KEY`
+
+      return {
+        data: {
+          foo: 'bar',
+        },
+        metadata: {
+          nonSensitiveField: 'Non-Sensitive Value'
+        }
+      };
+    };
+  "</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"configuration"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SERVICE_API_KEY"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"modified_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-01T08:23:14+00:00"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p><span class="http-method put">
+  <span class="box-method">PUT</span>
+  <code>https://api.basistheory.com/exchange-templates/{id}</code>
+</span></p>
+
+<p>Update an exchange template by ID in the tenant.</p>
+<h3 id='permissions-4'>Permissions</h3>
+<p class="scopes">
+  <span class="scope">exchange:update</span>
+</p>
+<h3 id='uri-parameters-2'>URI Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>true</td>
+<td><em>string</em></td>
+<td><code>null</code></td>
+<td>The ID of the exchange template</td>
+</tr>
+</tbody></table>
+<h3 id='request-schema-2'>Request Schema</h3>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Required</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>name</code></td>
+<td>true</td>
+<td><em>string</em></td>
+<td><code>null</code></td>
+<td>The name of the exchange template. Has a maximum length of <code>200</code></td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td>false</td>
+<td><em>string</em></td>
+<td><code>null</code></td>
+<td>The description of the exchange template</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td>true</td>
+<td><em>string</em></td>
+<td><code>null</code></td>
+<td><a href="#exchange-template-types">Type</a> of the exchange template</td>
+</tr>
+<tr>
+<td><code>source_token_type</code></td>
+<td>true</td>
+<td><em>string</em></td>
+<td><code>null</code></td>
+<td><a href="#token-types">Source token type</a> of the exchange template</td>
+</tr>
+<tr>
+<td><code>icon</code></td>
+<td>false</td>
+<td><em>string</em></td>
+<td><code>null</code></td>
+<td>Base64 <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URIs">data URL</a> of the image. Supported image types are: <code>image/png</code>, <code>image/jpg</code>, and <code>image/jpeg</code></td>
+</tr>
+<tr>
+<td><code>code</code></td>
+<td>true</td>
+<td><em>string</em></td>
+<td><code>null</code></td>
+<td><a href="#exchange-template-code-schema">Code snippet</a> which will be executed when the exchange template is processed</td>
+</tr>
+<tr>
+<td><code>configuration</code></td>
+<td>true</td>
+<td><em>array</em></td>
+<td><code>[]</code></td>
+<td>Array of <a href="#exchange-template-configuration-schema">exchange template configuration</a> options for configuring an exchange</td>
+</tr>
+</tbody></table>
+<h3 id='response-schema-4'>Response Schema</h3>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td><em>string</em></td>
+<td>Unique identifier of the exchange template which can be used to <a href="#get-an-exchange-template">get an exchange template</a></td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>true</td>
+<td><em>string</em></td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td>false</td>
+<td><em>string</em></td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td>true</td>
+<td><em>string</em></td>
+</tr>
+<tr>
+<td><code>source_token_type</code></td>
+<td>true</td>
+<td><em>string</em></td>
+</tr>
+<tr>
+<td><code>icon</code></td>
+<td>false</td>
+<td><em>string</em></td>
+</tr>
+<tr>
+<td><code>code</code></td>
+<td>true</td>
+<td><em>string</em></td>
+</tr>
+<tr>
+<td><code>configuration</code></td>
+<td>true</td>
+<td><em>array</em></td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td><em>string</em></td>
+<td>Created date of the exchange template in ISO 8601 format</td>
+</tr>
+<tr>
+<td><code>modified_at</code></td>
+<td><em>string</em></td>
+<td>Last modified date of the exchange template in ISO 8601 format</td>
+</tr>
+</tbody></table>
+<h3 id='response-messages-4'>Response Messages</h3>
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>200</code></td>
+<td>Exchange template successfully updated</td>
+</tr>
+<tr>
+<td><code>400</code></td>
+<td>Invalid request body. See <a href="#errors">Errors</a> response for details</td>
+</tr>
+<tr>
+<td><code>401</code></td>
+<td>A missing or invalid <code>X-API-KEY</code> was provided</td>
+</tr>
+<tr>
+<td><code>403</code></td>
+<td>The provided <code>X-API-KEY</code> does not have the required permissions</td>
+</tr>
+<tr>
+<td><code>404</code></td>
+<td>The exchange template was not found</td>
+</tr>
+</tbody></table>
+<h2 id='delete-exchange-template'>Delete Exchange Template</h2>
+<blockquote>
+<p>Delete Exchange Template Request Example:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/exchange-templates/17069df1-80f4-439e-86a7-4121863e4678"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
+  <span class="nt">-X</span> <span class="s2">"DELETE"</span>
+</code></pre></div>
+<p><span class="http-method delete">
+  <span class="box-method">DELETE</span>
+  <code>https://api.basistheory.com/exchange-templates/{id}</code>
+</span></p>
+
+<p>Delete an exchange template by ID in the tenant.</p>
+<h3 id='permissions-5'>Permissions</h3>
+<p class="scopes">
+  <span class="scope">exchange:delete</span>
+</p>
+<h3 id='uri-parameters-3'>URI Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>true</td>
+<td><em>string</em></td>
+<td><code>null</code></td>
+<td>The ID of the exchange template</td>
+</tr>
+</tbody></table>
+<h3 id='response-messages-5'>Response Messages</h3>
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>204</code></td>
+<td>Exchange template successfully deleted</td>
+</tr>
+<tr>
+<td><code>401</code></td>
+<td>A missing or invalid <code>X-API-KEY</code> was provided</td>
+</tr>
+<tr>
+<td><code>403</code></td>
+<td>The provided <code>X-API-KEY</code> does not have the required permissions</td>
+</tr>
+<tr>
+<td><code>404</code></td>
+<td>The exchange template was not found</td>
+</tr>
+</tbody></table>
+<h1 id='exchanges'>Exchanges</h1><h2 id='create-exchange'>Create Exchange</h2>
+<blockquote>
+<p>Create Exchange Request Example:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/exchanges"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
+  <span class="nt">-X</span> <span class="s2">"POST"</span>
+  <span class="nt">-D</span> <span class="s1">'{
+    "name": "My Exchange",
+    "configuration": {
+      "SERVICE_API_KEY": "key_abcd1234"
+    },
+    "template": {
+      "id": "17069df1-80f4-439e-86a7-4121863e4678"
+    }
+  }'</span>
+</code></pre></div>
+<blockquote>
+<p>Create Exchange Response Example:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5b493235-6917-4307-906a-2cd6f1a90b13"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"tenant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77cb0024-123e-41a8-8ff8-a3d5a0fa8a08"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My Exchange"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"template"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
+  </span><span class="nl">"configuration"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"SERVICE_API_KEY"</span><span class="p">:</span><span class="w"> </span><span class="s2">"key_abcd1234"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p><span class="http-method post">
+  <span class="box-method">POST</span>
+  <code>https://api.basistheory.com/exchanges</code>
+</span></p>
+
+<p>Create a new exchange from an exchange template for the tenant.</p>
+<h3 id='permissions'>Permissions</h3>
+<p class="scopes">
+  <span class="scope">exchange:create</span>
+</p>
+<h3 id='request-schema'>Request Schema</h3>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Required</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>name</code></td>
+<td>true</td>
+<td><em>string</em></td>
+<td><code>null</code></td>
+<td>The name of the exchange. Has a maximum length of <code>200</code></td>
+</tr>
+<tr>
+<td><code>configuration</code></td>
+<td>true</td>
+<td><em>object</em></td>
+<td><code>null</code></td>
+<td>A key-value map of all configuration name and values for an <a href="#exchange-template-configuration-schema">exchange template configuration</a></td>
+</tr>
+<tr>
+<td><code>template.id</code></td>
+<td>true</td>
+<td><em>string</em></td>
+<td><code>null</code></td>
+<td>Unique identifier of the exchange template to configure an exchange for</td>
+</tr>
+</tbody></table>
+<h3 id='response-schema'>Response Schema</h3>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td><em>string</em></td>
+<td>Unique identifier of the exchange which can be used to <a href="#get-an-exchange">get an exchange</a></td>
+</tr>
+<tr>
+<td><code>tenant_id</code></td>
+<td><em>string</em></td>
+<td>The <a href="#tenants">tenant</a> ID which owns the exchange</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><em>string</em></td>
+<td>The name of the exchange</td>
+</tr>
+<tr>
+<td><code>template</code></td>
+<td><em>object</em></td>
+<td>The <a href="#get-an-exchange-template">exchange template</a> the exchange is configured for</td>
+</tr>
+<tr>
+<td><code>configuration</code></td>
+<td><em>object</em></td>
+<td>A key-value map of all configuration name and values for an <a href="#exchange-template-configuration-schema">exchange template configuration</a></td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td><em>string</em></td>
+<td>Created date of the exchange in ISO 8601 format</td>
+</tr>
+</tbody></table>
+<h3 id='response-messages'>Response Messages</h3>
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>201</code></td>
+<td>Exchange successfully created</td>
+</tr>
+<tr>
+<td><code>400</code></td>
+<td>Invalid request body. See <a href="#errors">Errors</a> response for details</td>
+</tr>
+<tr>
+<td><code>401</code></td>
+<td>A missing or invalid <code>X-API-KEY</code> was provided</td>
+</tr>
+<tr>
+<td><code>403</code></td>
+<td>The provided <code>X-API-KEY</code> does not have the required permissions</td>
+</tr>
+</tbody></table>
+<h2 id='list-exchanges'>List Exchanges</h2>
+<blockquote>
+<p>List Exchanges Request Example:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/exchanges"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
+</code></pre></div>
+<blockquote>
+<p>Exchanges Response Example:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"pagination"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">}</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5b493235-6917-4307-906a-2cd6f1a90b13"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"tenant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77cb0024-123e-41a8-8ff8-a3d5a0fa8a08"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My Exchange"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"template"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
+      </span><span class="nl">"configuration"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"SERVICE_API_KEY"</span><span class="p">:</span><span class="w"> </span><span class="s2">"key_abcd1234"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"modified_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-01T08:23:14+00:00"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="err">...</span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>List Exchanges by IDs Request Example:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/exchanges?id=5b493235-6917-4307-906a-2cd6f1a90b13&amp;id=9f483eb3-c061-40ae-bc3a-050596f43b08"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
+</code></pre></div>
+<blockquote>
+<p>List Exchanges by Name Request Example:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/exchanges?name=My+Exchange"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
+</code></pre></div>
+<blockquote>
+<p>List Exchanges by Source Token Type Request Example:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/exchanges?source_token_type=card"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
+</code></pre></div>
+<p><span class="http-method get">
+  <span class="box-method">GET</span>
+  <code>https://api.basistheory.com/exchanges</code>
+</span></p>
+
+<p>Get a list of exchanges for the tenant.</p>
+<h3 id='permissions-2'>Permissions</h3>
+<p class="scopes">
+  <span class="scope">exchange:read</span>
+</p>
+<h3 id='query-parameters'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>false</td>
+<td><em>array</em></td>
+<td><code>[]</code></td>
+<td>An optional list of exchange ID&#39;s to filter the list of exchanges by</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>false</td>
+<td><em>string</em></td>
+<td><code>null</code></td>
+<td>Wildcard search of exchanges by name</td>
+</tr>
+<tr>
+<td><code>source_token_type</code></td>
+<td>false</td>
+<td><em>string</em></td>
+<td><code>null</code></td>
+<td>Filter exchanges by exchange template <a href="#token-types">source token type</a></td>
+</tr>
+</tbody></table>
+<h3 id='response-schema-2'>Response Schema</h3>
+<p>Returns the <a href="#pagination">Pagination</a> schema. The <code>data</code> attribute in the response contains an array of exchanges with the following schema:</p>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td><em>string</em></td>
+<td>Unique identifier of the exchange which can be used to <a href="#get-an-exchange">get an exchange</a></td>
+</tr>
+<tr>
+<td><code>tenant_id</code></td>
+<td><em>string</em></td>
+<td>The <a href="#tenants">tenant</a> ID which owns the exchange</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><em>string</em></td>
+<td>The name of the exchange</td>
+</tr>
+<tr>
+<td><code>template</code></td>
+<td><em>object</em></td>
+<td>The <a href="#get-an-exchange-template">exchange template</a> the exchange is configured for</td>
+</tr>
+<tr>
+<td><code>configuration</code></td>
+<td><em>object</em></td>
+<td>A key-value map of all configuration name and values for an <a href="#exchange-template-configuration-schema">exchange template configuration</a></td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td><em>string</em></td>
+<td>Created date of the exchange in ISO 8601 format</td>
+</tr>
+<tr>
+<td><code>modified_at</code></td>
+<td><em>string</em></td>
+<td>Last modified date of the exchange in ISO 8601 format</td>
+</tr>
+</tbody></table>
+<h3 id='response-messages-2'>Response Messages</h3>
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>200</code></td>
+<td>Exchanges successfully retrieved</td>
+</tr>
+<tr>
+<td><code>400</code></td>
+<td>Invalid request body. See <a href="#errors">Errors</a> response for details</td>
+</tr>
+<tr>
+<td><code>401</code></td>
+<td>A missing or invalid <code>X-API-KEY</code> was provided</td>
+</tr>
+<tr>
+<td><code>403</code></td>
+<td>The provided <code>X-API-KEY</code> does not have the required permissions</td>
+</tr>
+</tbody></table>
+<h2 id='get-an-exchange'>Get an Exchange</h2>
+<blockquote>
+<p>Get an Exchange Request Example:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/exchanges/5b493235-6917-4307-906a-2cd6f1a90b13"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
+</code></pre></div>
+<blockquote>
+<p>Get an Exchange Response Example:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5b493235-6917-4307-906a-2cd6f1a90b13"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"tenant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77cb0024-123e-41a8-8ff8-a3d5a0fa8a08"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My Exchange"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"template"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
+  </span><span class="nl">"configuration"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"SERVICE_API_KEY"</span><span class="p">:</span><span class="w"> </span><span class="s2">"key_abcd1234"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"modified_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-01T08:23:14+00:00"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p><span class="http-method get">
+  <span class="box-method">GET</span>
+  <code>https://api.basistheory.com/exchanges/{id}</code>
+</span> </p>
+
+<p>Get an exchange by ID in the tenant.</p>
+<h3 id='permissions-3'>Permissions</h3>
+<p class="scopes">
+  <span class="scope">exchange:read</span>
+</p>
+<h3 id='uri-parameters'>URI Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>true</td>
+<td><em>string</em></td>
+<td><code>null</code></td>
+<td>The ID of the exchange</td>
+</tr>
+</tbody></table>
+<h3 id='response-schema-3'>Response Schema</h3>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td><em>string</em></td>
+<td>Unique identifier of the exchange which can be used to <a href="#get-an-exchange">get an exchange</a></td>
+</tr>
+<tr>
+<td><code>tenant_id</code></td>
+<td><em>string</em></td>
+<td>The <a href="#tenants">tenant</a> ID which owns the exchange</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><em>string</em></td>
+<td>The name of the exchange</td>
+</tr>
+<tr>
+<td><code>template</code></td>
+<td><em>object</em></td>
+<td>The <a href="#get-an-exchange-template">exchange template</a> the exchange is configured for</td>
+</tr>
+<tr>
+<td><code>configuration</code></td>
+<td><em>object</em></td>
+<td>A key-value map of all configuration name and values for an <a href="#exchange-template-configuration-schema">exchange template configuration</a></td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td><em>string</em></td>
+<td>Created date of the exchange in ISO 8601 format</td>
+</tr>
+<tr>
+<td><code>modified_at</code></td>
+<td><em>string</em></td>
+<td>Last modified date of the exchange in ISO 8601 format</td>
+</tr>
+</tbody></table>
+<h3 id='response-messages-3'>Response Messages</h3>
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>200</code></td>
+<td>Exchange successfully retrieved</td>
+</tr>
+<tr>
+<td><code>401</code></td>
+<td>A missing or invalid <code>X-API-KEY</code> was provided</td>
+</tr>
+<tr>
+<td><code>403</code></td>
+<td>The provided <code>X-API-KEY</code> does not have the required permissions</td>
+</tr>
+<tr>
+<td><code>404</code></td>
+<td>The exchange was not found</td>
+</tr>
+</tbody></table>
+<h2 id='update-exchange'>Update Exchange</h2>
+<blockquote>
+<p>Update Exchange Request Example:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/exchanges/5b493235-6917-4307-906a-2cd6f1a90b13"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
+  <span class="nt">-X</span> <span class="s2">"PUT"</span>
+  <span class="nt">-D</span> <span class="s1">'{
+    "name": "My Exchange",
+    "configuration": {
+      "SERVICE_API_KEY": "key_abcd1234"
+    }
+  }'</span>
+</code></pre></div>
+<blockquote>
+<p>Update Exchange Response Example:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5b493235-6917-4307-906a-2cd6f1a90b13"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"tenant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77cb0024-123e-41a8-8ff8-a3d5a0fa8a08"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My Exchange"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"template"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
+  </span><span class="nl">"configuration"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"SERVICE_API_KEY"</span><span class="p">:</span><span class="w"> </span><span class="s2">"key_abcd1234"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"modified_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-01T08:23:14+00:00"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p><span class="http-method put">
+  <span class="box-method">PUT</span>
+  <code>https://api.basistheory.com/exchanges/{id}</code>
+</span></p>
+
+<p>Update an exchange by ID in the tenant.</p>
+<h3 id='permissions-4'>Permissions</h3>
+<p class="scopes">
+  <span class="scope">exchange:update</span>
+</p>
+<h3 id='uri-parameters-2'>URI Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>true</td>
+<td><em>string</em></td>
+<td><code>null</code></td>
+<td>The ID of the exchange</td>
+</tr>
+</tbody></table>
+<h3 id='request-schema-2'>Request Schema</h3>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Required</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>name</code></td>
+<td>true</td>
+<td><em>string</em></td>
+<td><code>null</code></td>
+<td>The name of the exchange. Has a maximum length of <code>200</code></td>
+</tr>
+<tr>
+<td><code>configuration</code></td>
+<td>true</td>
+<td><em>object</em></td>
+<td><code>null</code></td>
+<td>A key-value map of all configuration name and values for the <a href="#exchange-template-configuration-schema">exchange template configuration</a></td>
+</tr>
+</tbody></table>
+<h3 id='response-schema-4'>Response Schema</h3>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td><em>string</em></td>
+<td>Unique identifier of the exchange which can be used to <a href="#get-an-exchange">get an exchange</a></td>
+</tr>
+<tr>
+<td><code>tenant_id</code></td>
+<td><em>string</em></td>
+<td>The <a href="#tenants">tenant</a> ID which owns the exchange</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><em>string</em></td>
+<td>The name of the exchange</td>
+</tr>
+<tr>
+<td><code>template</code></td>
+<td><em>object</em></td>
+<td>The <a href="#get-an-exchange-template">exchange template</a> the exchange is configured for</td>
+</tr>
+<tr>
+<td><code>configuration</code></td>
+<td><em>object</em></td>
+<td>A key-value map of all configuration name and values for an <a href="#exchange-template-configuration-schema">exchange template configuration</a></td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td><em>string</em></td>
+<td>Created date of the exchange in ISO 8601 format</td>
+</tr>
+<tr>
+<td><code>modified_at</code></td>
+<td><em>string</em></td>
+<td>Last modified date of the exchange in ISO 8601 format</td>
+</tr>
+</tbody></table>
+<h3 id='response-messages-4'>Response Messages</h3>
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>200</code></td>
+<td>Exchange successfully updated</td>
+</tr>
+<tr>
+<td><code>400</code></td>
+<td>Invalid request body. See <a href="#errors">Errors</a> response for details</td>
+</tr>
+<tr>
+<td><code>401</code></td>
+<td>A missing or invalid <code>X-API-KEY</code> was provided</td>
+</tr>
+<tr>
+<td><code>403</code></td>
+<td>The provided <code>X-API-KEY</code> does not have the required permissions</td>
+</tr>
+<tr>
+<td><code>404</code></td>
+<td>The exchange was not found</td>
+</tr>
+</tbody></table>
+<h2 id='delete-exchange'>Delete Exchange</h2>
+<blockquote>
+<p>Delete Exchange Request Example:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/exchanges/fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
+  <span class="nt">-X</span> <span class="s2">"DELETE"</span>
+</code></pre></div>
+<p><span class="http-method delete">
+  <span class="box-method">DELETE</span>
+  <code>https://api.basistheory.com/exchanges/{id}</code>
+</span></p>
+
+<p>Delete an exchange by ID in the tenant.</p>
+<h3 id='permissions-5'>Permissions</h3>
+<p><code>exchange:delete</code></p>
+<h3 id='uri-parameters-3'>URI Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>true</td>
+<td><em>string</em></td>
+<td><code>null</code></td>
+<td>The ID of the exchange</td>
+</tr>
+</tbody></table>
+<h3 id='response-messages-5'>Response Messages</h3>
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>204</code></td>
+<td>Exchange successfully deleted</td>
+</tr>
+<tr>
+<td><code>401</code></td>
+<td>A missing or invalid <code>X-API-KEY</code> was provided</td>
+</tr>
+<tr>
+<td><code>403</code></td>
+<td>The provided <code>X-API-KEY</code> does not have the required permissions</td>
+</tr>
+<tr>
+<td><code>404</code></td>
+<td>The exchange was not found</td>
+</tr>
+</tbody></table>
 <h1 id='tokens'>Tokens</h1><h2 id='token-types'>Token Types</h2>
 <table><thead>
 <tr>
@@ -2046,7 +3752,7 @@
     "type": "token",
     "data": "ebSG3IohNmg5gTOjN2HBwBbhjDZ6BY3fCWZJfXSucVMfQ+7YNMXQYrPuRSXgSkhuTMYS+BNfVUur4qZSvUbgCA==",
     "metadata": {
-      "NonSensitiveField": "Non-Sensitive Value"
+      "nonSensitiveField": "Non-Sensitive Value"
     }
     "encryption": {
       "cek": {
@@ -2057,7 +3763,11 @@
         "key": "vpXn45HnsoQPR1q8ptngmPvPaqIDJ4vO+FFyQclglePCt8d1SyTDJU0T+F54T7GnAz7vz5OKsjgsFNo9lVB3UA==",
         "alg": "RSA"
       }
-    }
+    },
+    "children": [
+      {...},
+      {...}
+    ]
   }'</span>
 </code></pre></div>
 <blockquote>
@@ -2070,8 +3780,12 @@
   </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"NonSensitiveField"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Non-Sensitive Value"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+    </span><span class="nl">"nonSensitiveField"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Non-Sensitive Value"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"children"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="err">...</span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <blockquote>
@@ -2104,7 +3818,7 @@
 <p>Create a new token for the tenant.</p>
 <h3 id='permissions'>Permissions</h3>
 <p class="scopes">
-  <span class="scope">token:write</span>
+  <span class="scope">token:create</span>
 </p>
 <h3 id='request-schema'>Request Schema</h3>
 <table><thead>
@@ -2143,6 +3857,13 @@
 <td><em>object</em></td>
 <td><code>null</code></td>
 <td>Encryption metadata for an encrypted token data value</td>
+</tr>
+<tr>
+<td><code>children</code></td>
+<td>false</td>
+<td><em>array</em></td>
+<td><code>[]</code></td>
+<td>An array of tokens, each of which follows the <a href="#create-token">create token</a> request schema. Can be used to bulk create tokens with <a href="#create-token-association">token associations</a></td>
 </tr>
 </tbody></table>
 <h3 id='encryption-object-schema'>Encryption Object Schema</h3>
@@ -2215,7 +3936,7 @@
 <tr>
 <td><code>tenant_id</code></td>
 <td><em>string</em></td>
-<td>The tenant ID which owns the token</td>
+<td>The <a href="#tenants">tenant</a> ID which owns the token</td>
 </tr>
 <tr>
 <td><code>type</code></td>
@@ -2236,6 +3957,11 @@
 <td><code>metadata</code></td>
 <td><em>any</em></td>
 <td>The metadata provided when <a href="#create-token">creating the token</a></td>
+</tr>
+<tr>
+<td><code>children</code></td>
+<td><em>array</em></td>
+<td>The child tokens provided when <a href="#create-token">creating the token</a></td>
 </tr>
 </tbody></table>
 <h3 id='response-messages'>Response Messages</h3>
@@ -2289,7 +4015,7 @@
       </span><span class="nl">"tenant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77cb0024-123e-41a8-8ff8-a3d5a0fa8a08"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ebSG3IohNmg5gTOjN2HBwBbhjDZ6BY3fCWZJfXSucVMfQ+7YNMXQYrPuRSXgSkhuTMYS+BNfVUur4qZSvUbgCA=="</span><span class="p">,</span><span class="w">
       </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"NonSensitiveField"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Non-Sensitive Value"</span><span class="w">
+        </span><span class="nl">"nonSensitiveField"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Non-Sensitive Value"</span><span class="w">
       </span><span class="p">}</span><span class="w">
       </span><span class="nl">"encryption"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"cek"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -2301,6 +4027,10 @@
           </span><span class="nl">"alg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RSA"</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"children"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="err">...</span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
       </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-01T08:23:14+00:00"</span><span class="w">
     </span><span class="p">},</span><span class="w">
@@ -2310,9 +4040,27 @@
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <blockquote>
-<p>List Tokens by Type Request Example:</p>
+<p>List Tokens by IDs Request Example:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/tokens?type=card"</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/tokens?id=c06d0789-0a38-40be-b7cc-c28a718f76f1&amp;id=c1e565009-1984-4638-8fca-dce8a82cc2af"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
+</code></pre></div>
+<blockquote>
+<p>List Tokens by Types Request Example:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/tokens?type=card&amp;type=bank"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
+</code></pre></div>
+<blockquote>
+<p>List Tokens with Children Request Example:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/tokens?children=true"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
+</code></pre></div>
+<blockquote>
+<p>List Tokens with Children by Child Types Request Example:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/tokens?children_type=card&amp;children_type=bank"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
 </code></pre></div>
 <p><span class="http-method get">
@@ -2325,7 +4073,7 @@
 <p class="scopes">
   <span class="scope">token:read</span>
 </p>
-<h3 id='uri-parameters'>URI Parameters</h3>
+<h3 id='query-parameters'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -2336,11 +4084,32 @@
 </tr>
 </thead><tbody>
 <tr>
+<td><code>id</code></td>
+<td>false</td>
+<td><em>array</em></td>
+<td><code>[]</code></td>
+<td>An optional list of token ID&#39;s to filter the list of tokens by</td>
+</tr>
+<tr>
 <td><code>type</code></td>
 <td>false</td>
-<td><em>string</em></td>
-<td><code>null</code></td>
-<td>An optional <a href="#token-types">token type</a> to filter the list of tokens by</td>
+<td><em>array</em></td>
+<td><code>[]</code></td>
+<td>An optional array of <a href="#token-types">token types</a> to filter the list of tokens by</td>
+</tr>
+<tr>
+<td><code>children</code></td>
+<td>false</td>
+<td><em>boolean</em></td>
+<td><code>false</code></td>
+<td>Include child tokens where the token is a parent in <a href="#token-associations">token association</a></td>
+</tr>
+<tr>
+<td><code>children_type</code></td>
+<td>false</td>
+<td><em>array</em></td>
+<td><code>[]</code></td>
+<td>An optional array of <a href="#token-types">token types</a> to filter child tokens where the token is a parent in the <a href="#token-associations">token association</a></td>
 </tr>
 </tbody></table>
 <h3 id='response-schema-2'>Response Schema</h3>
@@ -2361,7 +4130,7 @@
 <tr>
 <td><code>tenant_id</code></td>
 <td><em>string</em></td>
-<td>The tenant ID which owns the token</td>
+<td>The <a href="#tenants">tenant</a> ID which owns the token</td>
 </tr>
 <tr>
 <td><code>type</code></td>
@@ -2382,6 +4151,11 @@
 <td><code>encryption</code></td>
 <td><em>any</em></td>
 <td>The <a href="#encryption-object-schema">encryption</a> data provided when <a href="#create-token">creating the token</a></td>
+</tr>
+<tr>
+<td><code>children</code></td>
+<td><em>array</em></td>
+<td>An array of child tokens where the token is a parent in the <a href="#token-associations">token association</a>. Only populated if <code>children</code> or <code>children_type</code> query parameter is provided</td>
 </tr>
 <tr>
 <td><code>created_by</code></td>
@@ -2422,6 +4196,18 @@
   <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
 </code></pre></div>
 <blockquote>
+<p>Get a Token with Children Request Example:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/tokens/c06d0789-0a38-40be-b7cc-c28a718f76f1?children=true"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
+</code></pre></div>
+<blockquote>
+<p>Get a Token with Children by Child Types Request Example:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/tokens/c06d0789-0a38-40be-b7cc-c28a718f76f1?children_type=card&amp;children_type=bank"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
+</code></pre></div>
+<blockquote>
 <p>Token Response Example:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -2430,7 +4216,7 @@
   </span><span class="nl">"tenant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77cb0024-123e-41a8-8ff8-a3d5a0fa8a08"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ebSG3IohNmg5gTOjN2HBwBbhjDZ6BY3fCWZJfXSucVMfQ+7YNMXQYrPuRSXgSkhuTMYS+BNfVUur4qZSvUbgCA=="</span><span class="p">,</span><span class="w">
   </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"NonSensitiveField"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Non-Sensitive Value"</span><span class="w">
+    </span><span class="nl">"nonSensitiveField"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Non-Sensitive Value"</span><span class="w">
   </span><span class="p">}</span><span class="w">
   </span><span class="nl">"encryption"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"cek"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -2442,6 +4228,10 @@
       </span><span class="nl">"alg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RSA"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"children"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="err">...</span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
   </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-01T08:23:14+00:00"</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -2456,7 +4246,7 @@
 <p class="scopes">
   <span class="scope">token:read</span>
 </p>
-<h3 id='uri-parameters-2'>URI Parameters</h3>
+<h3 id='uri-parameters'>URI Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -2472,6 +4262,31 @@
 <td><em>string</em></td>
 <td><code>null</code></td>
 <td>The ID of the token</td>
+</tr>
+</tbody></table>
+<h3 id='query-parameters-2'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>children</code></td>
+<td>false</td>
+<td><em>boolean</em></td>
+<td><code>false</code></td>
+<td>Include child tokens where the token is a parent in <a href="#token-associations">token association</a></td>
+</tr>
+<tr>
+<td><code>children_type</code></td>
+<td>false</td>
+<td><em>array</em></td>
+<td><code>[]</code></td>
+<td>An optional array of <a href="#token-types">token types</a> to filter child tokens where the token is a parent in the <a href="#token-associations">token association</a></td>
 </tr>
 </tbody></table>
 <h3 id='response-schema-3'>Response Schema</h3>
@@ -2490,7 +4305,7 @@
 <tr>
 <td><code>tenant_id</code></td>
 <td><em>string</em></td>
-<td>The tenant ID which owns the token</td>
+<td>The <a href="#tenants">tenant</a> ID which owns the token</td>
 </tr>
 <tr>
 <td><code>type</code></td>
@@ -2511,6 +4326,11 @@
 <td><code>encryption</code></td>
 <td><em>any</em></td>
 <td>The <a href="#encryption-object-schema">encryption</a> data provided when <a href="#create-token">creating the token</a></td>
+</tr>
+<tr>
+<td><code>children</code></td>
+<td><em>array</em></td>
+<td>An array of child tokens where the token is a parent in the <a href="#token-associations">token association</a>. Only populated if <code>children</code> or <code>children_type</code> query parameter is provided</td>
 </tr>
 <tr>
 <td><code>created_by</code></td>
@@ -2567,9 +4387,9 @@
 </aside>
 <h3 id='permissions-4'>Permissions</h3>
 <p class="scopes">
-  <span class="scope">token:write</span>
+  <span class="scope">token:delete</span>
 </p>
-<h3 id='uri-parameters-3'>URI Parameters</h3>
+<h3 id='uri-parameters-2'>URI Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -2611,6 +4431,504 @@
 <td>The token was not found</td>
 </tr>
 </tbody></table>
+<h1 id='token-associations'>Token Associations</h1>
+<p>Token associations allow you to associate any two tokens, of any type, together. This allows you to create parent-child relationships between tokens and do token traversal between tokens.</p>
+<h2 id='create-token-association'>Create Token Association</h2>
+<blockquote>
+<p>Create Token Association Request Example:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/tokens/c06d0789-0a38-40be-b7cc-c28a718f76f1/children/c1e565009-1984-4638-8fca-dce8a82cc2af"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
+  <span class="nt">-X</span> <span class="s2">"POST"</span>
+</code></pre></div>
+<p><span class="http-method post">
+  <span class="box-method">POST</span>
+  <code>https://api.basistheory.com/tokens/{parent_id}/children/{child_id}</code>
+</span></p>
+
+<p>Create a new parent/child association between two tokens in the tenant.</p>
+<h3 id='permissions'>Permissions</h3>
+<p class="scopes">
+  <span class="scope">token:create</span>
+</p>
+<h3 id='uri-parameters'>URI Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>parent_id</code></td>
+<td>true</td>
+<td><em>string</em></td>
+<td><code>null</code></td>
+<td>The ID of the parent token</td>
+</tr>
+<tr>
+<td><code>child_id</code></td>
+<td>true</td>
+<td><em>string</em></td>
+<td><code>null</code></td>
+<td>The ID of the child token</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+  <span>Bi-directional associations can be made between two tokens by creating a token association and swapping the <code>parent_id</code> and <code>child_id</code>.</span>
+</aside>
+<h3 id='response-messages'>Response Messages</h3>
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>204</code></td>
+<td>Token association successfully created</td>
+</tr>
+<tr>
+<td><code>401</code></td>
+<td>A missing or invalid <code>X-API-KEY</code> was provided</td>
+</tr>
+<tr>
+<td><code>403</code></td>
+<td>The provided <code>X-API-KEY</code> does not have the required permissions</td>
+</tr>
+<tr>
+<td><code>404</code></td>
+<td>The parent or child token was not found</td>
+</tr>
+</tbody></table>
+<h2 id='delete-token-association'>Delete Token Association</h2>
+<blockquote>
+<p>Delete Token Association Request Example:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/tokens/c06d0789-0a38-40be-b7cc-c28a718f76f1/children/c1e565009-1984-4638-8fca-dce8a82cc2af"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
+  <span class="nt">-X</span> <span class="s2">"DELETE"</span>
+</code></pre></div>
+<p><span class="http-method delete">
+  <span class="box-method">DELETE</span>
+  <code>https://api.basistheory.com/tokens/{parent_id}/children/{child_id}</code>
+</span></p>
+
+<p>Delete a parent/child association between two tokens in the tenant.</p>
+<h3 id='permissions-2'>Permissions</h3>
+<p class="scopes">
+  <span class="scope">token:delete</span>
+</p>
+<h3 id='uri-parameters-2'>URI Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>parent_id</code></td>
+<td>true</td>
+<td><em>string</em></td>
+<td><code>null</code></td>
+<td>The ID of the parent token</td>
+</tr>
+<tr>
+<td><code>child_id</code></td>
+<td>true</td>
+<td><em>string</em></td>
+<td><code>null</code></td>
+<td>The ID of the child token</td>
+</tr>
+</tbody></table>
+<h3 id='response-messages-2'>Response Messages</h3>
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>204</code></td>
+<td>Token association successfully deleted</td>
+</tr>
+<tr>
+<td><code>401</code></td>
+<td>A missing or invalid <code>X-API-KEY</code> was provided</td>
+</tr>
+<tr>
+<td><code>403</code></td>
+<td>The provided <code>X-API-KEY</code> does not have the required permissions</td>
+</tr>
+<tr>
+<td><code>404</code></td>
+<td>The parent or child token was not found</td>
+</tr>
+</tbody></table>
+<h2 id='create-child-token-for-a-token'>Create Child Token for a Token</h2>
+<blockquote>
+<p>Create Child Token for a Token Request Example:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/tokens/c06d0789-0a38-40be-b7cc-c28a718f76f1/children"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
+  <span class="nt">-X</span> <span class="s2">"POST"</span>
+  <span class="nt">-D</span> <span class="s1">'{
+    "type": "token",
+    "data": "ebSG3IohNmg5gTOjN2HBwBbhjDZ6BY3fCWZJfXSucVMfQ+7YNMXQYrPuRSXgSkhuTMYS+BNfVUur4qZSvUbgCA==",
+    "metadata": {
+      "nonSensitiveField": "Non-Sensitive Value"
+    }
+    "encryption": {
+      "cek": {
+        "key": "JLrtGbYSN5/dbqdKtLVG8tHu3QefcZnKsFOPBBXlXcG4zL9US01mW2MqZs6Px4ckSQM8CrRakwLKilrQ0f37Iw==",
+        "alg": "AES"
+      },
+      "kek": {
+        "key": "vpXn45HnsoQPR1q8ptngmPvPaqIDJ4vO+FFyQclglePCt8d1SyTDJU0T+F54T7GnAz7vz5OKsjgsFNo9lVB3UA==",
+        "alg": "RSA"
+      }
+    },
+    "children": [
+      {...},
+      {...}
+    ]
+  }'</span>
+</code></pre></div>
+<blockquote>
+<p>Create Child Token Response Example:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c1e565009-1984-4638-8fca-dce8a82cc2af"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"tenant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77cb0024-123e-41a8-8ff8-a3d5a0fa8a08"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"token"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"nonSensitiveField"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Non-Sensitive Value"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"children"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="err">...</span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p><span class="http-method post">
+  <span class="box-method">POST</span>
+  <code>https://api.basistheory.com/tokens/{parent_id}/children</code>
+</span></p>
+
+<p>Create a new child token a token in the tenant.</p>
+<h3 id='permissions-3'>Permissions</h3>
+<p class="scopes">
+  <span class="scope">token:create</span>
+</p>
+<h3 id='uri-parameters-3'>URI Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>parent_id</code></td>
+<td>true</td>
+<td><em>string</em></td>
+<td><code>null</code></td>
+<td>The ID of the parent token</td>
+</tr>
+</tbody></table>
+<h3 id='request-schema'>Request Schema</h3>
+<p>A token which follows the <a href="#create-token">create token</a> request schema. Can be used to bulk create tokens with <a href="#create-token-association">token associations</a></p>
+<h3 id='response-schema'>Response Schema</h3>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td><em>string</em></td>
+<td>Unique identifier of the token which can be used to <a href="#get-a-token">get a token</a></td>
+</tr>
+<tr>
+<td><code>tenant_id</code></td>
+<td><em>string</em></td>
+<td>The <a href="#tenants">tenant</a> ID which owns the token</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td><em>string</em></td>
+<td><a href="#token-types">Token type</a></td>
+</tr>
+<tr>
+<td><code>created_by</code></td>
+<td><em>string</em></td>
+<td>The <a href="#applications">application</a> ID which created the token</td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td><em>string</em></td>
+<td>Created date of the token in ISO 8601 format</td>
+</tr>
+<tr>
+<td><code>metadata</code></td>
+<td><em>any</em></td>
+<td>The metadata provided when <a href="#create-child-token-for-a-token">creating the child token</a></td>
+</tr>
+<tr>
+<td><code>children</code></td>
+<td><em>array</em></td>
+<td>The child tokens provided when <a href="#create-child-token-for-a-token">creating the child token</a></td>
+</tr>
+</tbody></table>
+<h3 id='response-messages-3'>Response Messages</h3>
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>201</code></td>
+<td>Child token successfully created</td>
+</tr>
+<tr>
+<td><code>400</code></td>
+<td>Invalid request body. See <a href="#errors">Errors</a> response for details</td>
+</tr>
+<tr>
+<td><code>401</code></td>
+<td>A missing or invalid <code>X-API-KEY</code> was provided</td>
+</tr>
+<tr>
+<td><code>403</code></td>
+<td>The provided <code>X-API-KEY</code> does not have the required permissions</td>
+</tr>
+</tbody></table>
+<h2 id='list-child-tokens-for-a-token'>List Child Tokens for a Token</h2>
+<blockquote>
+<p>List Child Tokens for a Token Request Example:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/tokens/c06d0789-0a38-40be-b7cc-c28a718f76f1/children"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
+</code></pre></div>
+<blockquote>
+<p>Child Tokens Response Example:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"pagination"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">}</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c1e565009-1984-4638-8fca-dce8a82cc2af"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"token"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"tenant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77cb0024-123e-41a8-8ff8-a3d5a0fa8a08"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ebSG3IohNmg5gTOjN2HBwBbhjDZ6BY3fCWZJfXSucVMfQ+7YNMXQYrPuRSXgSkhuTMYS+BNfVUur4qZSvUbgCA=="</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"nonSensitiveField"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Non-Sensitive Value"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+      </span><span class="nl">"encryption"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"cek"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JLrtGbYSN5/dbqdKtLVG8tHu3QefcZnKsFOPBBXlXcG4zL9US01mW2MqZs6Px4ckSQM8CrRakwLKilrQ0f37Iw=="</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"alg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AES"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"kek"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vpXn45HnsoQPR1q8ptngmPvPaqIDJ4vO+FFyQclglePCt8d1SyTDJU0T+F54T7GnAz7vz5OKsjgsFNo9lVB3UA=="</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"alg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RSA"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"children"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="err">...</span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+      </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-01T08:23:14+00:00"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="err">...</span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>List Child Tokens by IDs Request Example:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/tokens/c06d0789-0a38-40be-b7cc-c28a718f76f1/children?id=c1e565009-1984-4638-8fca-dce8a82cc2af"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
+</code></pre></div>
+<blockquote>
+<p>List Child Tokens by Types Request Example:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/tokens/c06d0789-0a38-40be-b7cc-c28a718f76f1/children?type=card&amp;type=bank"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
+</code></pre></div>
+<blockquote>
+<p>List Child Tokens with Children Request Example:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/tokens/c06d0789-0a38-40be-b7cc-c28a718f76f1/children?children=true"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
+</code></pre></div>
+<blockquote>
+<p>List Child Tokens with Children by Child Types Request Example:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/tokens/c06d0789-0a38-40be-b7cc-c28a718f76f1/children?children_type=card&amp;children_type=bank"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
+</code></pre></div>
+<p><span class="http-method get">
+  <span class="box-method">GET</span>
+  <code>https://api.basistheory.com/tokens/{parent_id}/children</code>
+</span></p>
+
+<p>Get a list of child tokens for a token in the tenant.</p>
+<h3 id='permissions-4'>Permissions</h3>
+<p class="scopes">
+  <span class="scope">token:read</span>
+</p>
+<h3 id='uri-parameters-4'>URI Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>parent_id</code></td>
+<td>true</td>
+<td><em>string</em></td>
+<td><code>null</code></td>
+<td>The ID of the parent token</td>
+</tr>
+</tbody></table>
+<h3 id='query-parameters'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>false</td>
+<td><em>array</em></td>
+<td><code>[]</code></td>
+<td>An optional list of token ID&#39;s to filter the list of child tokens by</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td>false</td>
+<td><em>array</em></td>
+<td><code>[]</code></td>
+<td>An optional array of <a href="#token-types">token types</a> to filter the list of child tokens by</td>
+</tr>
+<tr>
+<td><code>children</code></td>
+<td>false</td>
+<td><em>boolean</em></td>
+<td><code>false</code></td>
+<td>Include child tokens where the child token is a parent in <a href="#token-associations">token association</a></td>
+</tr>
+<tr>
+<td><code>children_type</code></td>
+<td>false</td>
+<td><em>array</em></td>
+<td><code>[]</code></td>
+<td>An optional array of <a href="#token-types">token types</a> to filter child tokens where the child token is a parent in the <a href="#token-associations">token association</a></td>
+</tr>
+</tbody></table>
+<h3 id='response-schema-2'>Response Schema</h3>
+<p>Returns the <a href="#pagination">Pagination</a> schema. The <code>data</code> attribute in the response contains an array of tokens with the following schema:</p>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td><em>string</em></td>
+<td>Unique identifier of the token which can be used to <a href="#get-a-token">get a token</a></td>
+</tr>
+<tr>
+<td><code>tenant_id</code></td>
+<td><em>string</em></td>
+<td>The <a href="#tenants">tenant</a> ID which owns the token</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td><em>string</em></td>
+<td><a href="#token-types">Token type</a></td>
+</tr>
+<tr>
+<td><code>data</code></td>
+<td><em>any</em></td>
+<td>The data provided when <a href="#create-token">creating the token</a></td>
+</tr>
+<tr>
+<td><code>metadata</code></td>
+<td><em>any</em></td>
+<td>The metadata provided when <a href="#create-token">creating the token</a></td>
+</tr>
+<tr>
+<td><code>encryption</code></td>
+<td><em>any</em></td>
+<td>The <a href="#encryption-object-schema">encryption</a> data provided when <a href="#create-token">creating the token</a></td>
+</tr>
+<tr>
+<td><code>children</code></td>
+<td><em>array</em></td>
+<td>An array of child tokens where the token is a parent in the <a href="#token-associations">token association</a>. Only populated if <code>children</code> or <code>children_type</code> query parameter is provided</td>
+</tr>
+<tr>
+<td><code>created_by</code></td>
+<td><em>string</em></td>
+<td>The <a href="#applications">application</a> ID which created the token</td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td><em>string</em></td>
+<td>Created date of the token in ISO 8601 format</td>
+</tr>
+</tbody></table>
+<h3 id='response-messages-4'>Response Messages</h3>
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>200</code></td>
+<td>Tokens successfully retrieved</td>
+</tr>
+<tr>
+<td><code>401</code></td>
+<td>A missing or invalid <code>X-API-KEY</code> was provided</td>
+</tr>
+<tr>
+<td><code>403</code></td>
+<td>The provided <code>X-API-KEY</code> does not have the required permissions</td>
+</tr>
+</tbody></table>
 <h1 id='atomic-cards'>Atomic Cards</h1><h2 id='create-atomic-card'>Create Atomic Card</h2>
 <blockquote>
 <p>Create Atomic Card Request Example:</p>
@@ -2638,6 +4956,9 @@
         "postal_code": "94141",
         "country": "US"
       }
+    },
+    "metadata": {
+      "nonSensitiveField": "Non-Sensitive Value"
     }
   }'</span>
 </code></pre></div>
@@ -2654,6 +4975,22 @@
     </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XXXXXXXXXXXX4242"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"expiration_month"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
     </span><span class="nl">"expiration_year"</span><span class="p">:</span><span class="w"> </span><span class="mi">2025</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"billing_details"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"johndoe@test.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"555-123-4567"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"line1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"111 Test St."</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"line2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Apt 304"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"San Francisco"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CA"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"postal_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"94141"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"nonSensitiveField"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Non-Sensitive Value"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
@@ -2666,7 +5003,7 @@
 <h3 id='permissions'>Permissions</h3>
 <p class="scopes">
   <span class="scope">card:create</span>
-  <span class="scope">token:write</span>
+  <span class="scope">token:create</span>
 </p>
 <h3 id='request-schema'>Request Schema</h3>
 <table><thead>
@@ -2691,6 +5028,13 @@
 <td><em>billing details</em></td>
 <td><code>null</code></td>
 <td><a href="#billing-details-object-schema">Billing details object</a></td>
+</tr>
+<tr>
+<td><code>metadata</code></td>
+<td>false</td>
+<td><em>any</em></td>
+<td><code>null</code></td>
+<td>Non-sensitive token metadata</td>
 </tr>
 </tbody></table>
 <h3 id='card-object-schema'>Card Object Schema</h3>
@@ -2817,6 +5161,10 @@
 <td>Two-character ISO country code (e.g. <code>US</code>)</td>
 </tr>
 </tbody></table>
+
+<aside class="notice">
+  <span><code>metadata</code> values can be an object, array, or any primitive type such as an integer, boolean, or string. See <a href="#create-token">create token examples</a> for reference.</span>
+</aside>
 <h3 id='response-schema'>Response Schema</h3>
 <table><thead>
 <tr>
@@ -2833,7 +5181,7 @@
 <tr>
 <td><code>tenant_id</code></td>
 <td><em>string</em></td>
-<td>The tenant ID which owns the card</td>
+<td>The <a href="#tenants">tenant</a> ID which owns the card</td>
 </tr>
 <tr>
 <td><code>type</code></td>
@@ -2854,6 +5202,16 @@
 <td><code>card</code></td>
 <td><em>card</em></td>
 <td>Masked <a href="#card-object-schema">card object</a></td>
+</tr>
+<tr>
+<td><code>billing_details</code></td>
+<td><em>billing_details</em></td>
+<td><a href="#billing-details-object-schema">Billing details object</a></td>
+</tr>
+<tr>
+<td><code>metadata</code></td>
+<td><em>any</em></td>
+<td>The metadata provided when <a href="#create-atomic-card">creating the atomic card</a></td>
 </tr>
 </tbody></table>
 <h3 id='response-messages'>Response Messages</h3>
@@ -2903,6 +5261,22 @@
         </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XXXXXXXXXXXX4242"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"expiration_month"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
         </span><span class="nl">"expiration_year"</span><span class="p">:</span><span class="w"> </span><span class="mi">2025</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"billing_details"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"johndoe@test.com"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"555-123-4567"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"line1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"111 Test St."</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"line2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Apt 304"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"San Francisco"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CA"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"postal_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"94141"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"nonSensitiveField"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Non-Sensitive Value"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
@@ -2939,7 +5313,7 @@
 <tr>
 <td><code>tenant_id</code></td>
 <td><em>string</em></td>
-<td>The tenant ID which owns the card</td>
+<td>The <a href="#tenants">tenant</a> ID which owns the card</td>
 </tr>
 <tr>
 <td><code>type</code></td>
@@ -2960,6 +5334,16 @@
 <td><code>card</code></td>
 <td><em>card</em></td>
 <td>Masked <a href="#card-object-schema">card object</a></td>
+</tr>
+<tr>
+<td><code>billing_details</code></td>
+<td><em>billing_details</em></td>
+<td><a href="#billing-details-object-schema">Billing details object</a></td>
+</tr>
+<tr>
+<td><code>metadata</code></td>
+<td><em>any</em></td>
+<td>The metadata provided when <a href="#create-atomic-card">creating the atomic card</a></td>
 </tr>
 </tbody></table>
 <h3 id='response-messages-2'>Response Messages</h3>
@@ -3002,6 +5386,22 @@
     </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XXXXXXXXXXXX4242"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"expiration_month"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
     </span><span class="nl">"expiration_year"</span><span class="p">:</span><span class="w"> </span><span class="mi">2025</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"billing_details"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"johndoe@test.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"555-123-4567"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"line1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"111 Test St."</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"line2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Apt 304"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"San Francisco"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CA"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"postal_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"94141"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"nonSensitiveField"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Non-Sensitive Value"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
@@ -3050,7 +5450,7 @@
 <tr>
 <td><code>tenant_id</code></td>
 <td><em>string</em></td>
-<td>The tenant ID which owns the card</td>
+<td>The <a href="#tenants">tenant</a> ID which owns the card</td>
 </tr>
 <tr>
 <td><code>type</code></td>
@@ -3071,6 +5471,16 @@
 <td><code>card</code></td>
 <td><em>card</em></td>
 <td>Masked <a href="#card-object-schema">card object</a></td>
+</tr>
+<tr>
+<td><code>billing_details</code></td>
+<td><em>billing_details</em></td>
+<td><a href="#billing-details-object-schema">Billing details object</a></td>
+</tr>
+<tr>
+<td><code>metadata</code></td>
+<td><em>any</em></td>
+<td>The metadata provided when <a href="#create-atomic-card">creating the atomic card</a></td>
 </tr>
 </tbody></table>
 <h3 id='response-messages-3'>Response Messages</h3>
@@ -3118,7 +5528,7 @@
 <h3 id='permissions-4'>Permissions</h3>
 <p class="scopes">
   <span class="scope">card:delete</span>
-  <span class="scope">token:write</span>
+  <span class="scope">token:delete</span>
 </p>
 <h3 id='uri-parameters-2'>URI Parameters</h3>
 <table><thead>
@@ -3244,6 +5654,9 @@
       "bank": {
         "routing_number": "021000021",
         "account_number": "1234567890"
+      },
+      "metadata": {
+        "nonSensitiveField": "Non-Sensitive Value"
       }
     }
   }'</span>
@@ -3260,6 +5673,9 @@
   </span><span class="nl">"bank"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"routing_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"021000021"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"account_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XXXXXX7890"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"nonSensitiveField"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Non-Sensitive Value"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
@@ -3272,7 +5688,7 @@
 <h3 id='permissions'>Permissions</h3>
 <p class="scopes">
   <span class="scope">bank:create</span>
-  <span class="scope">token:write</span>
+  <span class="scope">token:create</span>
 </p>
 <h3 id='request-schema'>Request Schema</h3>
 <table><thead>
@@ -3290,6 +5706,13 @@
 <td><em>bank</em></td>
 <td><code>null</code></td>
 <td><a href="#bank-object-schema">Bank object</a></td>
+</tr>
+<tr>
+<td><code>metadata</code></td>
+<td>false</td>
+<td><em>any</em></td>
+<td><code>null</code></td>
+<td>Non-sensitive token metadata</td>
 </tr>
 </tbody></table>
 <h3 id='bank-object-schema'>Bank Object Schema</h3>
@@ -3317,6 +5740,10 @@
 <td>Account number up to seventeen-digits</td>
 </tr>
 </tbody></table>
+
+<aside class="notice">
+  <span><code>metadata</code> values can be an object, array, or any primitive type such as an integer, boolean, or string. See <a href="#create-token">create token examples</a> for reference.</span>
+</aside>
 <h3 id='response-schema'>Response Schema</h3>
 <table><thead>
 <tr>
@@ -3333,7 +5760,7 @@
 <tr>
 <td><code>tenant_id</code></td>
 <td><em>string</em></td>
-<td>The tenant ID which owns the bank</td>
+<td>The <a href="#tenants">tenant</a> ID which owns the bank</td>
 </tr>
 <tr>
 <td><code>type</code></td>
@@ -3354,6 +5781,11 @@
 <td><code>bank</code></td>
 <td><em>bank</em></td>
 <td>Masked <a href="#bank-object-schema">bank object</a></td>
+</tr>
+<tr>
+<td><code>metadata</code></td>
+<td><em>any</em></td>
+<td>The metadata provided when <a href="#create-atomic-bank">creating the atomic bank</a></td>
 </tr>
 </tbody></table>
 <h3 id='response-messages'>Response Messages</h3>
@@ -3402,6 +5834,9 @@
       </span><span class="nl">"bank"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"routing_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"021000021"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"account_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XXXXXX7890"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"nonSensitiveField"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Non-Sensitive Value"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
@@ -3438,7 +5873,7 @@
 <tr>
 <td><code>tenant_id</code></td>
 <td><em>string</em></td>
-<td>The tenant ID which owns the bank</td>
+<td>The <a href="#tenants">tenant</a> ID which owns the bank</td>
 </tr>
 <tr>
 <td><code>type</code></td>
@@ -3459,6 +5894,11 @@
 <td><code>bank</code></td>
 <td><em>bank</em></td>
 <td>Masked <a href="#bank-object-schema">bank object</a></td>
+</tr>
+<tr>
+<td><code>metadata</code></td>
+<td><em>any</em></td>
+<td>The metadata provided when <a href="#create-atomic-bank">creating the atomic bank</a></td>
 </tr>
 </tbody></table>
 <h3 id='response-messages-2'>Response Messages</h3>
@@ -3500,6 +5940,9 @@
   </span><span class="nl">"bank"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"routing_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"021000021"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"account_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XXXXXX7890"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"nonSensitiveField"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Non-Sensitive Value"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
@@ -3548,7 +5991,7 @@
 <tr>
 <td><code>tenant_id</code></td>
 <td><em>string</em></td>
-<td>The tenant ID which owns the bank</td>
+<td>The <a href="#tenants">tenant</a> ID which owns the bank</td>
 </tr>
 <tr>
 <td><code>type</code></td>
@@ -3569,6 +6012,11 @@
 <td><code>bank</code></td>
 <td><em>bank</em></td>
 <td>Masked <a href="#bank-object-schema">bank object</a></td>
+</tr>
+<tr>
+<td><code>metadata</code></td>
+<td><em>any</em></td>
+<td>The metadata provided when <a href="#create-atomic-bank">creating the atomic bank</a></td>
 </tr>
 </tbody></table>
 <h3 id='response-messages-3'>Response Messages</h3>
@@ -3616,7 +6064,7 @@
 <h3 id='permissions-4'>Permissions</h3>
 <p class="scopes">
   <span class="scope">bank:delete</span>
-  <span class="scope">token:write</span>
+  <span class="scope">token:delete</span>
 </p>
 <h3 id='uri-parameters-2'>URI Parameters</h3>
 <table><thead>
@@ -3679,6 +6127,9 @@
   </span><span class="nl">"bank"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"routing_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"021000021"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"account_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567890"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"nonSensitiveField"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Non-Sensitive Value"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
@@ -3727,7 +6178,7 @@
 <tr>
 <td><code>tenant_id</code></td>
 <td><em>string</em></td>
-<td>The tenant ID which owns the bank</td>
+<td>The <a href="#tenants">tenant</a> ID which owns the bank</td>
 </tr>
 <tr>
 <td><code>type</code></td>
@@ -3748,6 +6199,11 @@
 <td><code>bank</code></td>
 <td><em>bank</em></td>
 <td>Masked <a href="#bank-object-schema">bank object</a></td>
+</tr>
+<tr>
+<td><code>metadata</code></td>
+<td><em>any</em></td>
+<td>The metadata provided when <a href="#create-atomic-bank">creating the atomic bank</a></td>
 </tr>
 </tbody></table>
 <h3 id='response-messages-5'>Response Messages</h3>
@@ -3772,6 +6228,148 @@
 <tr>
 <td><code>404</code></td>
 <td>The atomic bank was not found</td>
+</tr>
+</tbody></table>
+<h1 id='logs'>Logs</h1><h2 id='list-logs'>List Logs</h2>
+<blockquote>
+<p>List Logs Request Example:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/logs"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
+</code></pre></div>
+<blockquote>
+<p>Logs Response Example:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"pagination"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">}</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"tenant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77cb0024-123e-41a8-8ff8-a3d5a0fa8a08"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"application_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"entity_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"token"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"entity_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c06d0789-0a38-40be-b7cc-c28a718f76f1"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"operation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"read"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Token retrieved"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-01T08:23:14+00:00"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="err">...</span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p><span class="http-method get">
+  <span class="box-method">GET</span>
+  <code>https://api.basistheory.com/logs</code>
+</span></p>
+
+<p>Get a list of logs for the tenant.</p>
+<h3 id='permissions'>Permissions</h3>
+<p class="scopes">
+  <span class="scope">log:read</span>
+</p>
+<h3 id='query-parameters'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>entity_type</code></td>
+<td>false</td>
+<td><em>string</em></td>
+<td><code>null</code></td>
+<td>An optional entity type to filter the list of logs by. (e.g. card, bank, application, tenant)</td>
+</tr>
+<tr>
+<td><code>entity_id</code></td>
+<td>false</td>
+<td><em>string</em></td>
+<td><code>null</code></td>
+<td>The unique identifier of the <code>entity_type</code> to filter the list of logs by.</td>
+</tr>
+<tr>
+<td><code>start_date</code></td>
+<td>false</td>
+<td><em>string</em></td>
+<td><code>null</code></td>
+<td>An ISO 8601 formatted date to filter logs where <code>created_at</code> is greater than or equal to</td>
+</tr>
+<tr>
+<td><code>end_date</code></td>
+<td>false</td>
+<td><em>string</em></td>
+<td><code>null</code></td>
+<td>An ISO 8601 formatted date to filter logs where <code>created_at</code> is less than</td>
+</tr>
+</tbody></table>
+<h3 id='response-schema'>Response Schema</h3>
+<p>Returns the <a href="#pagination">Pagination</a> schema. The <code>data</code> attribute in the response contains an array of logs with the following schema:</p>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>tenant_id</code></td>
+<td><em>string</em></td>
+<td>The <a href="#tenants">tenant</a> ID which owns the entity</td>
+</tr>
+<tr>
+<td><code>application_id</code></td>
+<td><em>string</em></td>
+<td>The <a href="#applications">application</a> ID which performed the operation</td>
+</tr>
+<tr>
+<td><code>entity_type</code></td>
+<td><em>string</em></td>
+<td>The entity type of the log</td>
+</tr>
+<tr>
+<td><code>entity_id</code></td>
+<td><em>string</em></td>
+<td>The unique identifier of the <code>entity_type</code></td>
+</tr>
+<tr>
+<td><code>operation</code></td>
+<td><em>string</em></td>
+<td>The log operation (e.g. create, update, read, delete)</td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><em>string</em></td>
+<td>The log message</td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td><em>string</em></td>
+<td>Created date of the token in ISO 8601 format</td>
+</tr>
+</tbody></table>
+<h3 id='response-messages'>Response Messages</h3>
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>200</code></td>
+<td>Logs successfully retrieved</td>
+</tr>
+<tr>
+<td><code>401</code></td>
+<td>A missing or invalid <code>X-API-KEY</code> was provided</td>
+</tr>
+<tr>
+<td><code>403</code></td>
+<td>The provided <code>X-API-KEY</code> does not have the required permissions</td>
 </tr>
 </tbody></table>
 
@@ -3958,7 +6556,7 @@ yarn add @Basis-Theory/basis-theory-js
 <tr>
 <td><code>tenantId</code></td>
 <td><em>string</em></td>
-<td>The tenant ID which owns the token</td>
+<td>The <a href="#tenants">tenant</a> ID which owns the token</td>
 </tr>
 <tr>
 <td><code>type</code></td>
@@ -4032,7 +6630,7 @@ yarn add @Basis-Theory/basis-theory-js
 <tr>
 <td><code>ownerId</code></td>
 <td><em>string</em></td>
-<td>The tenant ID which owns the token</td>
+<td>The <a href="#tenants">tenant</a> ID which owns the token</td>
 </tr>
 <tr>
 <td><code>type</code></td>
