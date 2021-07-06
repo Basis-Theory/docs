@@ -227,7 +227,7 @@ curl "https://api.basistheory.com/exchange-templates?source_token_type=bank" \
   `https://api.basistheory.com/exchange-templates`
 </span>
 
-Get a list of official exchange templates and private tenant-specific exchange templates.
+Get a list of official exchange templates and private, tenant-specific exchange templates.
 
 ### Permissions
 
