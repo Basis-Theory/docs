@@ -127,7 +127,7 @@ Attribute | Type | Description
 Attribute | Required | Type | Default | Description
 --------- | -------- | ---- | ------- | -----------
 `name` | true | *string* | `null` | Name of the configuration setting
-`type` | true | *string* | `null` | Data type of the configuration setting. Valid values are `string`, `boolean`, and `number`
+`type` | true | *string* | `null` | Data type of the configuration setting. Valid values are `"string"`, `"boolean"`, and `"number"`
 
 ### Response Schema
 
