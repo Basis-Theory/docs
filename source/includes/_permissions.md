@@ -32,6 +32,7 @@ Permission | Description | Application Types | Dependencies
 `bank:create` | Create atomic bank tokens | `public`, `elements`, `server_to_server` | `token:create`
 `bank:update` | Update atomic bank tokens | `server_to_server` | `token:create`
 `bank:delete` | Delete atomic bank tokens | `server_to_server` | `token:delete`
+`bank:decrypt` | Decrypt atomic bank tokens | `server_to_server` | `token:read`
 
 
 ## List Permissions

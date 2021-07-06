@@ -1,6 +1,6 @@
 # Exchange Templates
 
-Exchange templates give you the ability to pre-configure custom integrations to securely process and associate your tokens.
+Exchange templates give you the ability to pre-configure custom integrations to securely process, enrich, and associate your tokens.
 
 
 ## Exchange Template Types
@@ -105,7 +105,7 @@ Attribute | Required | Type | Default | Description
 
 ### Exchange Template Code Schema
 
-All exchange template code snippets must export a function which takes in a [context object](#exchange-template-code-context-schema) and returns a [token object](#exchange-template-code-response-schema). An example code snippet is:
+All exchange template code snippets must export a function which takes in a [context object](#exchange-template-code-context-schema) and returns a [token object](#exchange-template-code-response-schema).
 
 ### Exchange Template Code Context Schema
 
