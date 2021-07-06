@@ -63,7 +63,7 @@ curl "https://api.basistheory.com/exchange-templates" \
           foo: 'bar',
         },
         metadata: {
-          customField: 'customValue'
+          nonSensitiveField: 'Non-Sensitive Value'
         }
       };
     };
@@ -188,7 +188,7 @@ curl "https://api.basistheory.com/exchange-templates" \
               foo: 'bar',
             },
             metadata: {
-              customField: 'customValue'
+              nonSensitiveField: 'Non-Sensitive Value'
             }
           };
         };
@@ -282,7 +282,7 @@ curl "https://api.basistheory.com/exchange-templates/17069df1-80f4-439e-86a7-412
           foo: 'bar',
         },
         metadata: {
-          customField: 'customValue'
+          nonSensitiveField: 'Non-Sensitive Value'
         }
       };
     };
@@ -394,7 +394,7 @@ curl "https://api.basistheory.com/exchange-templates/17069df1-80f4-439e-86a7-412
           foo: 'bar',
         },
         metadata: {
-          customField: 'customValue'
+          nonSensitiveField: 'Non-Sensitive Value'
         }
       };
     };

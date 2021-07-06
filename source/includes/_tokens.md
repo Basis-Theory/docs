@@ -22,7 +22,7 @@ curl "https://api.basistheory.com/tokens" \
     "type": "token",
     "data": "ebSG3IohNmg5gTOjN2HBwBbhjDZ6BY3fCWZJfXSucVMfQ+7YNMXQYrPuRSXgSkhuTMYS+BNfVUur4qZSvUbgCA==",
     "metadata": {
-      "NonSensitiveField": "Non-Sensitive Value"
+      "nonSensitiveField": "Non-Sensitive Value"
     }
     "encryption": {
       "cek": {
@@ -47,7 +47,7 @@ curl "https://api.basistheory.com/tokens" \
   "created_by": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
   "created_at": "2020-09-15T15:53:00+00:00",
   "metadata": {
-    "NonSensitiveField": "Non-Sensitive Value"
+    "nonSensitiveField": "Non-Sensitive Value"
   }
 }
 ```
@@ -175,7 +175,7 @@ curl "https://api.basistheory.com/tokens" \
       "tenant_id": "77cb0024-123e-41a8-8ff8-a3d5a0fa8a08",
       "data": "ebSG3IohNmg5gTOjN2HBwBbhjDZ6BY3fCWZJfXSucVMfQ+7YNMXQYrPuRSXgSkhuTMYS+BNfVUur4qZSvUbgCA==",
       "metadata": {
-        "NonSensitiveField": "Non-Sensitive Value"
+        "nonSensitiveField": "Non-Sensitive Value"
       }
       "encryption": {
         "cek": {
@@ -264,7 +264,7 @@ curl "https://api.basistheory.com/tokens/c06d0789-0a38-40be-b7cc-c28a718f76f1" \
   "tenant_id": "77cb0024-123e-41a8-8ff8-a3d5a0fa8a08",
   "data": "ebSG3IohNmg5gTOjN2HBwBbhjDZ6BY3fCWZJfXSucVMfQ+7YNMXQYrPuRSXgSkhuTMYS+BNfVUur4qZSvUbgCA==",
   "metadata": {
-    "NonSensitiveField": "Non-Sensitive Value"
+    "nonSensitiveField": "Non-Sensitive Value"
   }
   "encryption": {
     "cek": {
