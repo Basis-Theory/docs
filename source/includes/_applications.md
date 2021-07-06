@@ -28,7 +28,7 @@ curl "https://api.basistheory.com/applications" \
     "permissions": [
       "card:create",
       "card:read",
-      "token:write",
+      "token:create",
       "token:read"
     ]
   }'
@@ -47,7 +47,7 @@ curl "https://api.basistheory.com/applications" \
   "permissions": [
     "card:create",
     "card:read",
-    "token:write",
+    "token:create",
     "token:read"
   ]
 }
@@ -121,7 +121,7 @@ curl "https://api.basistheory.com/applications" \
       "permissions": [
         "card:create",
         "card:read",
-        "token:write",
+        "token:create",
         "token:read"
       ]
     },

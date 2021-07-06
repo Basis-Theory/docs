@@ -45,7 +45,7 @@ Create a new atomic bank for the tenant.
 
 <p class="scopes">
   <span class="scope">bank:create</span>
-  <span class="scope">token:write</span>
+  <span class="scope">token:create</span>
 </p>
 
 ### Request Schema
@@ -241,7 +241,7 @@ Delete an atomic bank by ID in the tenant.
 
 <p class="scopes">
   <span class="scope">bank:delete</span>
-  <span class="scope">token:write</span>
+  <span class="scope">token:delete</span>
 </p>
 
 ### URI Parameters

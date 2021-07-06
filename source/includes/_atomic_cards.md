@@ -60,7 +60,7 @@ Create a new atomic card for the tenant.
 
 <p class="scopes">
   <span class="scope">card:create</span>
-  <span class="scope">token:write</span>
+  <span class="scope">token:create</span>
 </p>
 
 ### Request Schema
@@ -280,7 +280,7 @@ Delete an atomic card by ID in the tenant.
 
 <p class="scopes">
   <span class="scope">card:delete</span>
-  <span class="scope">token:write</span>
+  <span class="scope">token:delete</span>
 </p>
 
 ### URI Parameters

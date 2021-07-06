@@ -95,7 +95,7 @@ Create a new token for the tenant.
 ### Permissions
 
 <p class="scopes">
-  <span class="scope">token:write</span>
+  <span class="scope">token:create</span>
 </p>
 
 ### Request Schema
@@ -348,7 +348,7 @@ Delete a token by ID in the tenant.
 ### Permissions
 
 <p class="scopes">
-  <span class="scope">token:write</span>
+  <span class="scope">token:delete</span>
 </p>
 
 ### URI Parameters
