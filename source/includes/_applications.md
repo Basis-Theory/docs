@@ -34,6 +34,21 @@ curl "https://api.basistheory.com/applications" \
   }'
 ```
 
+```csharp
+var applicationClient = new ApplicationClient("key_N88mVGsp3sCXkykyN2EFED");
+
+var application = await applicationClient.CreateAsync(new Application {
+  Name = "My Example App",
+  Type = "server_to_server",
+  Permissions = new List<string> {
+    "card:create",
+    "card:read",
+    "token:create",
+    "token:read"
+  }
+});
+```
+
 > Create Application Response Example:
 
 ```json
@@ -105,6 +120,12 @@ curl "https://api.basistheory.com/applications" \
   -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
 ```
 
+```csharp
+var applicationClient = new ApplicationClient("key_N88mVGsp3sCXkykyN2EFED");
+
+var applications = await applicationClient.GetAsync();
+```
+
 > Applications Response Example:
 
 ```json
@@ -136,6 +157,17 @@ curl "https://api.basistheory.com/applications" \
 ```shell
 curl "https://api.basistheory.com/applications?id=72ef3d62-b7de-4b5f-8aa2-b9db06c291cb&id=3b235ac3-83ea-49c5-8c42-05ba3cbd17d1" \
   -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
+```
+
+```csharp
+var applicationClient = new ApplicationClient("key_N88mVGsp3sCXkykyN2EFED");
+
+var applications = await applicationClient.GetAsync(new ApplicationGetRequest {
+  ApplicationIds = new List<Guid> {
+    new Guid("72ef3d62-b7de-4b5f-8aa2-b9db06c291cb"),
+    new Guid("3b235ac3-83ea-49c5-8c42-05ba3cbd17d1")
+  }
+});
 ```
 
 <span class="http-method get">
@@ -187,6 +219,12 @@ Code | Description
 ```shell
 curl "https://api.basistheory.com/applications/fe1f9ba4-474e-44b9-b949-110cdba9d662" \
   -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
+```
+
+```csharp
+var applicationClient = new ApplicationClient("key_N88mVGsp3sCXkykyN2EFED");
+
+var application = await applicationClient.GetByIdAsync(new Guid("fe1f9ba4-474e-44b9-b949-110cdba9d662"));
 ```
 
 > Application Response Example:
@@ -254,6 +292,12 @@ Code | Description
 ```shell
 curl "https://api.basistheory.com/applications/key" \
   -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
+```
+
+```csharp
+var applicationClient = new ApplicationClient("key_N88mVGsp3sCXkykyN2EFED");
+
+var application = await applicationClient.GetByKeyAsync();
 ```
 
 > Application Response Example:
@@ -326,6 +370,23 @@ curl "https://api.basistheory.com/applications/fb124bba-f90d-45f0-9a59-5edca27b3
   }'
 ```
 
+```csharp
+var applicationClient = new ApplicationClient("key_N88mVGsp3sCXkykyN2EFED");
+
+var application = await applicationClient.UpdateAsync(new Guid("fb124bba-f90d-45f0-9a59-5edca27b3b4a"), 
+  new Application {
+    Name = "My Example App",
+    Type = "management",
+    Permissions = new List<string> {
+      "card:create",
+      "card:read",
+      "token:create",
+      "token:read"
+    }
+  }
+);
+```
+
 > Update Application Response Example:
 
 ```json
@@ -333,7 +394,7 @@ curl "https://api.basistheory.com/applications/fb124bba-f90d-45f0-9a59-5edca27b3
   "id": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
   "tenant_id": "77cb0024-123e-41a8-8ff8-a3d5a0fa8a08",
   "name": "My Example App",
-  "type": "server_to_server",
+  "type": "management",
   "created_at": "2020-09-15T15:53:00+00:00",
   "modified_at": "2021-03-01T08:23:14+00:00",
   "permissions": [
@@ -402,13 +463,29 @@ curl "https://api.basistheory.com/applications/fb124bba-f90d-45f0-9a59-5edca27b3
   -X "POST"
 ```
 
+```csharp
+var applicationClient = new ApplicationClient("key_N88mVGsp3sCXkykyN2EFED");
+
+var application = await applicationClient.RegenerateKeyAsync(new Guid("fb124bba-f90d-45f0-9a59-5edca27b3b4a"));
+```
+
 > Regenerate Application API Key Response Example:
 
 ```json
 {
   "id": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
+  "tenant_id": "77cb0024-123e-41a8-8ff8-a3d5a0fa8a08",
+  "name": "My Example App",
   "key": "key_FZ8RmaxoGc73lbmF2cpmUJ",
-  "modified_at": "2021-03-01T08:23:14+00:00"
+  "type": "server_to_server",
+  "created_at": "2020-09-15T15:53:00+00:00",
+  "modified_at": "2021-03-01T08:23:14+00:00",
+  "permissions": [
+    "card:create",
+    "card:read",
+    "token:create",
+    "token:read"
+  ]
 }
 ```
 
@@ -462,6 +539,12 @@ Code | Description
 curl "https://api.basistheory.com/applications/fb124bba-f90d-45f0-9a59-5edca27b3b4a" \
   -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
   -X "DELETE"
+```
+
+```csharp
+var applicationClient = new ApplicationClient("key_N88mVGsp3sCXkykyN2EFED");
+
+await applicationClient.DeleteAsync(new Guid("fb124bba-f90d-45f0-9a59-5edca27b3b4a"));
 ```
 
 <span class="http-method delete">
