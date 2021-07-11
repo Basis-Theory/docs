@@ -198,7 +198,7 @@ Attribute | Required | Type | Default | Description
 `data` | true | *any* | `null` | Token data
 `metadata` | false | *any* | `null` | Non-sensitive token metadata
 `encryption` | false | *[encryption object](#encryption-object)* | `null` | Encryption metadata for an encrypted token data value
-`children` | false | *array* | `[]` | An array of tokens, each of which follows the [create token](#create-token) request schema. Can be used to bulk create tokens with [token associations](#create-token-association)
+`children` | false | *array* | `[]` | An array of [tokens](#token-object). Can be used to bulk create tokens with [token associations](#create-token-association)
 
 ### Response
 
