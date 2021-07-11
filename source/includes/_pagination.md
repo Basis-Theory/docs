@@ -1,13 +1,30 @@
 # Pagination
 
-> Pagination Request Example:
+## Pagination Object
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`pagination` | *[pagination metadata](#pagination-metadata-object)* | Pagination metadata for the response
+`data` | *array* | Query results of the request. See list endpoint resource for response schema definition
+
+### Pagination Metadata Object
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`total_items` | *integer* | Total number of items in the tenant
+`page_number` | *integer* | Current page number. Should match `page` query parameter.
+`page_size` | *integer* | The size of each page. Should match `size` query parameter.
+`total_pages` | *integer* | The total number of pages.
+
+
+> Request
 
 ```shell
 curl "https://api.basistheory.com/applications?page=2&size=10" \
   -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
 ```
 
-> Pagination Response Example:
+> Response
 
 ```json
 {
@@ -33,19 +50,3 @@ Parameter | Required | Type | Default | Description
 --------- | -------- | ---- | ------- | -----------
 `page` | false | *integer* | 1 | Page number of the results to return
 `size` | false | *integer* | 20 | Number of results per page to return. Maximum size of 100 results.
-
-### Response Schema
-
-Attribute | Type | Description
---------- | ---- | -----------
-`pagination` | *object* | Pagination metadata
-`data` | *array* | Query results of the request. See list endpoint resource for response schema definition
-
-### Pagination Response Object
-
-Attribute | Type | Description
---------- | ---- | -----------
-`total_items` | *integer* | Total number of items in the tenant
-`page_number` | *integer* | Current page number. Should match `page` query parameter.
-`page_size` | *integer* | The size of each page. Should match `size` query parameter.
-`total_pages` | *integer* | The total number of pages.

@@ -1,9 +1,22 @@
 # Exchanges
 
 
+## Exchange Object
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`id` | *uuid* | Unique identifier of the exchange which can be used to [get an exchange](#get-an-exchange)
+`tenant_id` | *uuid* | The [tenant](#tenants) ID which owns the exchange
+`name` | *string* | The name of the exchange
+`template` | *[exchange template](#exchange-template-object)* | Exchange template this exchange is configured for
+`configuration` | *map* | A key-value map of all configuration name and values for an [exchange template configuration](#exchange-template-configuration-object)
+`created_at` | *string* | Created date of the exchange in ISO 8601 format
+`modified_at` | *string* | Last modified date of the exchange in ISO 8601 format
+
+
 ## Create Exchange
 
-> Create Exchange Request Example:
+> Request
 
 ```shell
 curl "https://api.basistheory.com/exchanges" \
@@ -21,7 +34,21 @@ curl "https://api.basistheory.com/exchanges" \
   }'
 ```
 
-> Create Exchange Response Example:
+```csharp
+var client = new ExchangeClient("key_N88mVGsp3sCXkykyN2EFED");
+
+var exchange = await client.CreateAsync(new Exchange {
+  Name = "My Exchange",
+  Configuration = new Dictionary<string, string> {
+    { "SERVICE_API_KEY", "key_abcd1234" }
+  },
+  Template = new Template {
+    Id = new Guid("17069df1-80f4-439e-86a7-4121863e4678")
+  }
+});
+```
+
+> Response
 
 ```json
 {
@@ -49,46 +76,35 @@ Create a new exchange from an exchange template for the tenant.
   <span class="scope">exchange:create</span>
 </p>
 
-### Request Schema
+### Request Parameters
 
 Attribute | Required | Type | Default | Description
 --------- | -------- | ---- | ------- | -----------
 `name` | true | *string* | `null` | The name of the exchange. Has a maximum length of `200`
-`configuration` | true | *object* | `null` | A key-value map of all configuration name and values for an [exchange template configuration](#exchange-template-configuration-schema)
-`template.id` | true | *string* | `null` | Unique identifier of the exchange template to configure an exchange for
+`configuration` | true | *object* | `null` | A key-value map of all configuration name and values for an [exchange template configuration](#exchange-template-configuration-object)
+`template.id` | true | *uuid* | `null` | Unique identifier of the [exchange template](#exchange-template-object) to configure an exchange for
 
-### Response Schema
+### Response
 
-Attribute | Type | Description
---------- | ---- | -----------
-`id` | *string* | Unique identifier of the exchange which can be used to [get an exchange](#get-an-exchange)
-`tenant_id` | *string* | The [tenant](#tenants) ID which owns the exchange
-`name` | *string* | The name of the exchange
-`template` | *object* | The [exchange template](#get-an-exchange-template) the exchange is configured for
-`configuration` | *object* | A key-value map of all configuration name and values for an [exchange template configuration](#exchange-template-configuration-schema)
-`created_at` | *string* | Created date of the exchange in ISO 8601 format
-
-
-### Response Messages
-
-Code | Description
----- | -----------
-`201` | Exchange successfully created
-`400` | Invalid request body. See [Errors](#errors) response for details
-`401` | A missing or invalid `X-API-KEY` was provided
-`403` | The provided `X-API-KEY` does not have the required permissions
+Returns an [exchange](#exchange-object) if the exchange was created. Returns [an error](#errors) if there were validation errors or the exchange failed to create.
 
 
 ## List Exchanges
 
-> List Exchanges Request Example:
+> Request
 
 ```shell
 curl "https://api.basistheory.com/exchanges" \
   -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
 ```
 
-> Exchanges Response Example:
+```csharp
+var client = new ExchangeClient("key_N88mVGsp3sCXkykyN2EFED");
+
+var exchanges = await client.GetAsync();
+```
+
+> Response
 
 ```json
 {
@@ -109,27 +125,6 @@ curl "https://api.basistheory.com/exchanges" \
     {...}
   ]
 }
-```
-
-> List Exchanges by IDs Request Example:
-
-```shell
-curl "https://api.basistheory.com/exchanges?id=5b493235-6917-4307-906a-2cd6f1a90b13&id=9f483eb3-c061-40ae-bc3a-050596f43b08" \
-  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
-```
-
-> List Exchanges by Name Request Example:
-
-```shell
-curl "https://api.basistheory.com/exchanges?name=My+Exchange" \
-  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
-```
-
-> List Exchanges by Source Token Type Request Example:
-
-```shell
-curl "https://api.basistheory.com/exchanges?source_token_type=card" \
-  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
 ```
 
 <span class="http-method get">
@@ -153,40 +148,27 @@ Parameter | Required | Type | Default | Description
 `name` | false | *string* | `null` | Wildcard search of exchanges by name
 `source_token_type` | false | *string* | `null` | Filter exchanges by exchange template [source token type](#token-types)
 
-### Response Schema
+### Response
 
-Returns the [Pagination](#pagination) schema. The `data` attribute in the response contains an array of exchanges with the following schema:
-
-Attribute | Type | Description
---------- | ---- | -----------
-`id` | *string* | Unique identifier of the exchange which can be used to [get an exchange](#get-an-exchange)
-`tenant_id` | *string* | The [tenant](#tenants) ID which owns the exchange
-`name` | *string* | The name of the exchange
-`template` | *object* | The [exchange template](#get-an-exchange-template) the exchange is configured for
-`configuration` | *object* | A key-value map of all configuration name and values for an [exchange template configuration](#exchange-template-configuration-schema)
-`created_at` | *string* | Created date of the exchange in ISO 8601 format
-`modified_at` | *string* | Last modified date of the exchange in ISO 8601 format
-
-### Response Messages
-
-Code | Description
----- | -----------
-`200` | Exchanges successfully retrieved
-`400` | Invalid request body. See [Errors](#errors) response for details
-`401` | A missing or invalid `X-API-KEY` was provided
-`403` | The provided `X-API-KEY` does not have the required permissions
+Returns a [paginated object](#pagination) with the `data` property containing an array of [exchanges](#exchange-object). Providing any query parameters will filter the results. Returns [an error](#errors) if exchanges could not be retrieved.
 
 
 ## Get an Exchange
 
-> Get an Exchange Request Example:
+> Request
 
 ```shell
 curl "https://api.basistheory.com/exchanges/5b493235-6917-4307-906a-2cd6f1a90b13" \
   -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
 ```
 
-> Get an Exchange Response Example:
+```csharp
+var client = new ExchangeClient("key_N88mVGsp3sCXkykyN2EFED");
+
+var exchange = await client.GetByIdAsync("5b493235-6917-4307-906a-2cd6f1a90b13");
+```
+
+> Response
 
 ```json
 {
@@ -219,33 +201,16 @@ Get an exchange by ID in the tenant.
 
 Parameter | Required | Type | Default | Description
 --------- | -------- | ---- | ------- | -----------
-`id` | true | *string* | `null` | The ID of the exchange
+`id` | true | *uuid* | `null` | The ID of the exchange
 
-### Response Schema
+### Response
 
-Attribute | Type | Description
---------- | ---- | -----------
-`id` | *string* | Unique identifier of the exchange which can be used to [get an exchange](#get-an-exchange)
-`tenant_id` | *string* | The [tenant](#tenants) ID which owns the exchange
-`name` | *string* | The name of the exchange
-`template` | *object* | The [exchange template](#get-an-exchange-template) the exchange is configured for
-`configuration` | *object* | A key-value map of all configuration name and values for an [exchange template configuration](#exchange-template-configuration-schema)
-`created_at` | *string* | Created date of the exchange in ISO 8601 format
-`modified_at` | *string* | Last modified date of the exchange in ISO 8601 format
-
-### Response Messages
-
-Code | Description
----- | -----------
-`200` | Exchange successfully retrieved
-`401` | A missing or invalid `X-API-KEY` was provided
-`403` | The provided `X-API-KEY` does not have the required permissions
-`404` | The exchange was not found
+Returns an [exchange](#exchange-object) with the `id` provided. Returns [an error](#errors) if the exchange could not be retrieved.
 
 
 ## Update Exchange
 
-> Update Exchange Request Example:
+> Request
 
 ```shell
 curl "https://api.basistheory.com/exchanges/5b493235-6917-4307-906a-2cd6f1a90b13" \
@@ -260,7 +225,20 @@ curl "https://api.basistheory.com/exchanges/5b493235-6917-4307-906a-2cd6f1a90b13
   }'
 ```
 
-> Update Exchange Response Example:
+```csharp
+var client = new ExchangeClient("key_N88mVGsp3sCXkykyN2EFED");
+
+var exchange = await client.UpdateAsync("5b493235-6917-4307-906a-2cd6f1a90b13", 
+  new Exchange {
+    Name = "My Exchange",
+    Configuration = new Dictionary<string, string> {
+      { "SERVICE_API_KEY", "key_abcd1234" }
+    }
+  }
+);
+```
+
+> Response
 
 ```json
 {
@@ -293,46 +271,34 @@ Update an exchange by ID in the tenant.
 
 Parameter | Required | Type | Default | Description
 --------- | -------- | ---- | ------- | -----------
-`id` | true | *string* | `null` | The ID of the exchange
+`id` | true | *uuid* | `null` | The ID of the exchange
 
-### Request Schema
+### Request Parameters
 
 Attribute | Required | Type | Default | Description
 --------- | -------- | ---- | ------- | -----------
 `name` | true | *string* | `null` | The name of the exchange. Has a maximum length of `200`
-`configuration` | true | *object* | `null` | A key-value map of all configuration name and values for the [exchange template configuration](#exchange-template-configuration-schema)
+`configuration` | true | *object* | `null` | A key-value map of all configuration name and values for an [exchange template configuration](#exchange-template-configuration-object)
 
-### Response Schema
+### Response
 
-Attribute | Type | Description
---------- | ---- | -----------
-`id` | *string* | Unique identifier of the exchange which can be used to [get an exchange](#get-an-exchange)
-`tenant_id` | *string* | The [tenant](#tenants) ID which owns the exchange
-`name` | *string* | The name of the exchange
-`template` | *object* | The [exchange template](#get-an-exchange-template) the exchange is configured for
-`configuration` | *object* | A key-value map of all configuration name and values for an [exchange template configuration](#exchange-template-configuration-schema)
-`created_at` | *string* | Created date of the exchange in ISO 8601 format
-`modified_at` | *string* | Last modified date of the exchange in ISO 8601 format
-
-### Response Messages
-
-Code | Description
----- | -----------
-`200` | Exchange successfully updated
-`400` | Invalid request body. See [Errors](#errors) response for details
-`401` | A missing or invalid `X-API-KEY` was provided
-`403` | The provided `X-API-KEY` does not have the required permissions
-`404` | The exchange was not found
+Returns an [exchange](#exchange-object) if the exchange was updated. Returns [an error](#errors) if there were validation errors or the exchange failed to update.
 
 
 ## Delete Exchange
 
-> Delete Exchange Request Example:
+> Request
 
 ```shell
 curl "https://api.basistheory.com/exchanges/fb124bba-f90d-45f0-9a59-5edca27b3b4a" \
   -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
   -X "DELETE"
+```
+
+```csharp
+var client = new ExchangeTClient("key_N88mVGsp3sCXkykyN2EFED");
+
+await client.DeleteAsync("fb124bba-f90d-45f0-9a59-5edca27b3b4a");
 ```
 
 <span class="http-method delete">
@@ -350,13 +316,8 @@ Delete an exchange by ID in the tenant.
 
 Parameter | Required | Type | Default | Description
 --------- | -------- | ---- | ------- | -----------
-`id` | true | *string* | `null` | The ID of the exchange
+`id` | true | *uuid* | `null` | The ID of the exchange
 
-### Response Messages
+### Response
 
-Code | Description
----- | -----------
-`204` | Exchange successfully deleted
-`401` | A missing or invalid `X-API-KEY` was provided
-`403` | The provided `X-API-KEY` does not have the required permissions
-`404` | The exchange was not found
+Returns [an error](#errors) if the exchange failed to delete.

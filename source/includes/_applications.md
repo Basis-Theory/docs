@@ -7,14 +7,14 @@ Your ability to authenticate to the API is granted by creating Applications, eac
 
 Attribute | Type | Description
 --------- | ---- | -----------
-`id` | *string* | Unique identifier of the application which can be used to [get an application](#get-an-application)
-`tenant_id` | *string* | The [tenant](#tenants) ID which owns the application
+`id` | *uuid* | Unique identifier of the application which can be used to [get an application](#get-an-application)
+`tenant_id` | *uuid* | The [tenant](#tenants) ID which owns the application
 `name` | *string* | The name of the application
 `key` | *string* | The API key which should be used for authenticating against Basis Theory API endpoints
 `type` | *string* | [Application type](#application-types) of the application
 `permissions` | *array* | List of [permissions](#permission-types) for the application
-`created_at` | *string* | Created date of the application in ISO 8601 format
-`modified_at` | *string* | Last modified date of the application in ISO 8601 format
+`created_at` | *date* | Created date of the application in ISO 8601 format
+`modified_at` | *date* | Last modified date of the application in ISO 8601 format
 
 
 ## Application Types
@@ -72,13 +72,13 @@ var application = await client.CreateAsync(new Application {
   "name": "My Example App",
   "key": "key_FZ8RmaxoGc73lbmF2cpmUJ",
   "type": "server_to_server",
-  "created_at": "2020-09-15T15:53:00+00:00",
   "permissions": [
     "card:create",
     "card:read",
     "token:create",
     "token:read"
-  ]
+  ],
+  "created_at": "2020-09-15T15:53:00+00:00"
 }
 ```
 
@@ -105,7 +105,7 @@ Attribute | Required | Type | Default | Description
 
 ### Response
 
-Returns an [application object](#application-object) if the application was created. Returns [an error](#errors) if there were validation errors or the application failed to create.
+Returns an [application](#application-object) if the application was created. Returns [an error](#errors) if there were validation errors or the application failed to create.
 
 
 ## List Applications
@@ -134,14 +134,14 @@ var applications = await client.GetAsync();
       "tenant_id": "77cb0024-123e-41a8-8ff8-a3d5a0fa8a08",
       "name": "My Example App",
       "type": "server_to_server",
-      "created_at": "2020-09-15T15:53:00+00:00",
-      "modified_at": "2021-03-01T08:23:14+00:00",
       "permissions": [
         "card:create",
         "card:read",
         "token:create",
         "token:read"
-      ]
+      ],
+      "created_at": "2020-09-15T15:53:00+00:00",
+      "modified_at": "2021-03-01T08:23:14+00:00"
     },
     {...},
     {...}
@@ -170,7 +170,7 @@ Parameter | Required | Type | Default | Description
 
 ### Response
 
-Returns a [paginated object](#pagination) with the `data` property containing an array of [application objects](#application-object). Providing any query parameters will filter the results. Returns [an error](#errors) if applications could not be retrieved.
+Returns a [paginated object](#pagination) with the `data` property containing an array of [applications](#application-object). Providing any query parameters will filter the results. Returns [an error](#errors) if applications could not be retrieved.
 
 
 ## Get an Application
@@ -185,7 +185,7 @@ curl "https://api.basistheory.com/applications/fe1f9ba4-474e-44b9-b949-110cdba9d
 ```csharp
 var client = new ApplicationClient("key_N88mVGsp3sCXkykyN2EFED");
 
-var application = await client.GetByIdAsync(new Guid("fe1f9ba4-474e-44b9-b949-110cdba9d662"));
+var application = await client.GetByIdAsync("fe1f9ba4-474e-44b9-b949-110cdba9d662");
 ```
 
 > Response
@@ -196,12 +196,12 @@ var application = await client.GetByIdAsync(new Guid("fe1f9ba4-474e-44b9-b949-11
   "tenant_id": "77cb0024-123e-41a8-8ff8-a3d5a0fa8a08",
   "name": "My Management App",
   "type": "management",
-  "created_at": "2020-09-15T15:53:00+00:00",
-  "modified_at": "2021-03-01T08:23:14+00:00",
   "permissions": [
     "application:read",
     "application:write"
-  ]
+  ],
+  "created_at": "2020-09-15T15:53:00+00:00",
+  "modified_at": "2021-03-01T08:23:14+00:00"
 }
 ```
 
@@ -222,11 +222,11 @@ Get an application by ID in the tenant.
 
 Parameter | Required | Type | Default | Description
 --------- | -------- | ---- | ------- | -----------
-`id` | true | *string* | `null` | The ID of the application
+`id` | true | *uuid* | `null` | The ID of the application
 
 ### Response
 
-Returns an [application object](#application-object) with the `id` provided. Returns [an error](#errors) if the application could not be retrieved.
+Returns an [application](#application-object) with the `id` provided. Returns [an error](#errors) if the application could not be retrieved.
 
 
 ## Get an Application by Key
@@ -252,12 +252,12 @@ var application = await client.GetByKeyAsync();
   "tenant_id": "77cb0024-123e-41a8-8ff8-a3d5a0fa8a08",
   "name": "My Management App",
   "type": "management",
-  "created_at": "2020-09-15T15:53:00+00:00",
-  "modified_at": "2021-03-01T08:23:14+00:00",
   "permissions": [
     "application:read",
     "application:write"
-  ]
+  ],
+  "created_at": "2020-09-15T15:53:00+00:00",
+  "modified_at": "2021-03-01T08:23:14+00:00"
 }
 ```
 
@@ -276,7 +276,7 @@ Get an application by key in the tenant. Will use the `X-API-KEY` header to look
 
 ### Response
 
-Returns an [application objects](#application-object) for the provided `X-API-KEY`. Returns [an error](#errors) if the application could not be retrieved.
+Returns a [application](#application-object) for the provided `X-API-KEY`. Returns [an error](#errors) if the application could not be retrieved.
 
 
 ## Update Application
@@ -300,7 +300,7 @@ curl "https://api.basistheory.com/applications/fb124bba-f90d-45f0-9a59-5edca27b3
 ```csharp
 var client = new ApplicationClient("key_N88mVGsp3sCXkykyN2EFED");
 
-var application = await client.UpdateAsync(new Guid("fb124bba-f90d-45f0-9a59-5edca27b3b4a"), 
+var application = await client.UpdateAsync("fb124bba-f90d-45f0-9a59-5edca27b3b4a", 
   new Application {
     Name = "My Example App",
     Type = "management",
@@ -322,12 +322,12 @@ var application = await client.UpdateAsync(new Guid("fb124bba-f90d-45f0-9a59-5ed
   "tenant_id": "77cb0024-123e-41a8-8ff8-a3d5a0fa8a08",
   "name": "My Example App",
   "type": "management",
-  "created_at": "2020-09-15T15:53:00+00:00",
-  "modified_at": "2021-03-01T08:23:14+00:00",
   "permissions": [
     "application:read",
     "application:write"
-  ]
+  ],
+  "created_at": "2020-09-15T15:53:00+00:00",
+  "modified_at": "2021-03-01T08:23:14+00:00"
 }
 ```
 
@@ -348,7 +348,7 @@ Update an application by ID in the tenant.
 
 Parameter | Required | Type | Default | Description
 --------- | -------- | ---- | ------- | -----------
-`id` | true | *string* | `null` | The ID of the application
+`id` | true | *uuid* | `null` | The ID of the application
 
 ### Request Parameters
 
@@ -359,7 +359,7 @@ Attribute | Required | Type | Default | Description
 
 ### Response
 
-Returns an [application object](#application-object) if the application was updated. Returns [an error](#errors) if there were validation errors or the application failed to update.
+Returns an [application](#application-object) if the application was updated. Returns [an error](#errors) if there were validation errors or the application failed to update.
 
 
 ## Regenerate API Key
@@ -387,14 +387,14 @@ var application = await client.RegenerateKeyAsync(new Guid("fb124bba-f90d-45f0-9
   "name": "My Example App",
   "key": "key_FZ8RmaxoGc73lbmF2cpmUJ",
   "type": "server_to_server",
-  "created_at": "2020-09-15T15:53:00+00:00",
-  "modified_at": "2021-03-01T08:23:14+00:00",
   "permissions": [
     "card:create",
     "card:read",
     "token:create",
     "token:read"
-  ]
+  ],
+  "created_at": "2020-09-15T15:53:00+00:00",
+  "modified_at": "2021-03-01T08:23:14+00:00"
 }
 ```
 
@@ -419,11 +419,11 @@ Regenerate the API key for an application.
 
 Parameter | Required | Type | Default | Description
 --------- | -------- | ---- | ------- | -----------
-`id` | true | *string* | `null` | The ID of the application
+`id` | true | *uuid* | `null` | The ID of the application
 
 ### Response
 
-Returns an [application object](#application-object) with the new `key` property populated. Returns [an error](#errors) if there were validation errors or the application key failed to regenerate.
+Returns an [application](#application-object) with the new `key` property populated. Returns [an error](#errors) if there were validation errors or the application key failed to regenerate.
 
 
 ## Delete Application
@@ -457,7 +457,7 @@ Delete an application by ID in the tenant.
 
 Parameter | Required | Type | Default | Description
 --------- | -------- | ---- | ------- | -----------
-`id` | true | *string* | `null` | The ID of the application
+`id` | true | *uuid* | `null` | The ID of the application
 
 ### Response
 

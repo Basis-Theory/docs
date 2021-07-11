@@ -7,11 +7,11 @@ Tenants provide a way to logically group your applications and tokens. Common us
 
 Attribute | Type | Description
 --------- | ---- | -----------
-`id` | *string* | Unique identifier of the tenant
-`owner_id` | *string* | The user ID which owns the tenant
+`id` | *uuid* | Unique identifier of the tenant
+`owner_id` | *uuid* | The user ID which owns the tenant
 `name` | *string* | The name of the tenant
-`created_at` | *string* | Created date of the application in ISO 8601 format
-`modified_at` | *string* | Last modified date of the application in ISO 8601 format
+`created_at` | *date* | Created date of the application in ISO 8601 format
+`modified_at` | *date* | Last modified date of the application in ISO 8601 format
 
 
 ## Get a Tenant
@@ -56,7 +56,7 @@ Retrieves the tenant associated with the provided `X-API-KEY`.
 
 ### Response
 
-Returns a [tenant object](#application-object) for the provided `X-API-KEY`. Returns [an error](#errors) if the tenant could not be retrieved.
+Returns a [tenant](#tenant-object) for the provided `X-API-KEY`. Returns [an error](#errors) if the tenant could not be retrieved.
 
 
 ## Update Tenant
@@ -114,7 +114,7 @@ Attribute | Required | Type | Default | Description
 
 ### Response
 
-Returns a [tenant object](#tenant-object) if the tenant was updated. Returns [an error](#errors) if there were validation errors or the tenant failed to update.
+Returns a [tenant](#tenant-object) if the tenant was updated. Returns [an error](#errors) if there were validation errors or the tenant failed to update.
 
 
 ## Delete Tenant
