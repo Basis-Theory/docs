@@ -1,15 +1,34 @@
 # Logs
 
+## Log Object
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`tenant_id` | *uuid* | The [tenant](#tenants) ID which owns the entity
+`application_id` | *uuid* | The [application](#applications) ID which performed the operation
+`entity_type` | *string* | The entity type of the log
+`entity_id` | *string* | The unique identifier of the `entity_type`
+`operation` | *string* | The log operation (e.g. create, update, read, delete)
+`message` | *string* | The log message
+`created_at` | *date* | Created date of the token in ISO 8601 format
+
+
 ## List Logs
 
-> List Logs Request Example:
+> Request
 
 ```shell
 curl "https://api.basistheory.com/logs" \
   -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
 ```
 
-> Logs Response Example:
+```csharp
+var client = new LogClient("key_N88mVGsp3sCXkykyN2EFED");
+
+var logs = await client.GetAsync();
+```
+
+> Response
 
 ```json
 {
@@ -49,27 +68,9 @@ Parameter | Required | Type | Default | Description
 --------- | -------- | ---- | ------- | -----------
 `entity_type` | false | *string* | `null` | An optional entity type to filter the list of logs by. (e.g. card, bank, application, tenant)
 `entity_id` | false | *string* | `null` | The unique identifier of the `entity_type` to filter the list of logs by.
-`start_date` | false | *string* | `null` | An ISO 8601 formatted date to filter logs where `created_at` is greater than or equal to
-`end_date` | false | *string* | `null` | An ISO 8601 formatted date to filter logs where `created_at` is less than
+`start_date` | false | *date* | `null` | An ISO 8601 formatted date to filter logs where `created_at` is greater than or equal to
+`end_date` | false | *date* | `null` | An ISO 8601 formatted date to filter logs where `created_at` is less than
 
-### Response Schema
+### Response
 
-Returns the [Pagination](#pagination) schema. The `data` attribute in the response contains an array of logs with the following schema:
-
-Attribute | Type | Description
---------- | ---- | -----------
-`tenant_id` | *string* | The [tenant](#tenants) ID which owns the entity
-`application_id` | *string* | The [application](#applications) ID which performed the operation
-`entity_type` | *string* | The entity type of the log
-`entity_id` | *string* | The unique identifier of the `entity_type`
-`operation` | *string* | The log operation (e.g. create, update, read, delete)
-`message` | *string* | The log message
-`created_at` | *string* | Created date of the token in ISO 8601 format
-
-### Response Messages
-
-Code | Description
----- | -----------
-`200` | Logs successfully retrieved
-`401` | A missing or invalid `X-API-KEY` was provided
-`403` | The provided `X-API-KEY` does not have the required permissions
+Returns a [paginated object](#pagination) with the `data` property containing an array of [logs](#log-object). Providing any query parameters will filter the results. Returns [an error](#errors) if logs could not be retrieved.

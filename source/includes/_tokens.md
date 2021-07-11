@@ -8,7 +8,7 @@ Attribute | Type | Description
 `tenant_id` | *uuid* | The [tenant](#tenant-object) ID which owns the token
 `type` | *string* | [Token type](#token-types)
 `data` | *any* | Token data
-`metadata` | *any* | Non-sensitive token metadata
+`metadata` | *any* | Non-sensitive token metadata. Can be an object, array, or any primitive type such as an integer, boolean, or string
 `encryption` | *[encryption object](#encryption-object)* | Encryption metadata for an encrypted token data value
 `children` | *array* | Array of child tokens where this token is the parent in an [association](#token-associations)
 `created_by` | *uuid* | The [application](#application-object) ID which created the token
@@ -115,38 +115,6 @@ var token = await client.CreateAsync(new Token {
 }
 ```
 
-> Data Examples
-
-```json
-{
-  "data": "RandomString"
-}
-```
-
-```json
-{
-  "data": true
-}
-```
-
-```json
-{
-  "data": [1, 2, 3]
-}
-```
-
-```json
-{
-  "data": { 
-    "string_field": "RandomString",
-    "int_field": 3,
-    "bool_field": false,
-    "array_field": [1, 2, 3],
-    "object_field": {...} 
-  }
-}
-```
-
 <span class="http-method post">
   <span class="box-method">POST</span>
   `https://api.basistheory.com/tokens`
@@ -165,14 +133,10 @@ Create a new token for the tenant.
 Attribute | Required | Type | Default | Description
 --------- | -------- | ---- | ------- | -----------
 `type` | false | *string* | `token` | [Token type](#token-types) of the token
-`data` | true | *any* | `null` | Token data
-`metadata` | false | *any* | `null` | Non-sensitive token metadata
+`data` | true | *any* | `null` | Token data. Can be an object, array, or any primitive type such as an integer, boolean, or string
+`metadata` | false | *any* | `null` | Non-sensitive token metadata. Can be an object, array, or any primitive type such as an integer, boolean, or string
 `encryption` | false | *[encryption object](#encryption-object)* | `null` | Encryption metadata for an encrypted token data value
 `children` | false | *array* | `[]` | An array of tokens, each of which follows the [create token](#create-token) request schema. Can be used to bulk create tokens with [token associations](#create-token-association)
-
-<aside class="notice">
-  <span><code>data</code> and <code>metadata</code> values can be an object, array, or any primitive type such as an integer, boolean, or string. See JSON examples for reference.</span>
-</aside>
 
 <aside class="success">
   <span>Basis Theory recommends encrypting the <code>data</code> attribute of the token. Our recommendation is encrypt the data with a one-time use symmetric encryption key such as <code>AES-256</code> and then encrypt the symmetric key with an asymmetric public key such as <code>RSA</code>. Our SDK will automatically handle this for you.</span>
