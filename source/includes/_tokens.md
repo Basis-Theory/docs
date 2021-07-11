@@ -1,5 +1,34 @@
 # Tokens
 
+## Token Object
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`id` | *uuid* | Unique identifier of the token which can be used to [get a token](#get-a-token)
+`tenant_id` | *uuid* | The [tenant](#tenant-object) ID which owns the token
+`type` | *string* | [Token type](#token-types)
+`data` | *any* | Token data
+`metadata` | *any* | Non-sensitive token metadata
+`encryption` | *[encryption object](#encryption-object)* | Encryption metadata for an encrypted token data value
+`children` | *array* | Array of child tokens where this token is the parent in an [association](#token-associations)
+`created_by` | *uuid* | The [application](#application-object) ID which created the token
+`created_at` | *date* | Created date of the token in ISO 8601 format
+
+### Encryption Object
+
+Attribute | Type | Default | Description
+--------- | -------- | ---- | ------- | -----------
+`cek` | *[encryption key](#encryption-key-object)* | Content encryption key
+`kek` | *[encryption key](#encryption-key-object)* | Key encryption key
+
+### Encryption Key Object
+
+Attribute | Required | Type | Default | Description
+--------- | -------- | ---- | ------- | -----------
+`key` | *string* | Encryption key or key identifier
+`alg` | *string* | Encryption algorithm (e.g. AES, RSA, etc)
+
+
 ## Token Types
 
 Name | Type | Description
@@ -11,7 +40,7 @@ Bank | `bank` | [Atomic bank](#atomic-banks) token type
 
 ## Create Token
 
-> Create Token Request Example:
+> Request
 
 ```shell
 curl "https://api.basistheory.com/tokens" \
@@ -41,26 +70,52 @@ curl "https://api.basistheory.com/tokens" \
   }'
 ```
 
-> Create Token Response Example:
+```csharp
+var client = new TokenClient("key_N88mVGsp3sCXkykyN2EFED");
+
+var token = await client.CreateAsync(new Token {
+  Type = "token",
+  Data = "ebSG3IohNmg5gTOjN2HBwBbhjDZ6BY3fCWZJfXSucVMfQ+7YNMXQYrPuRSXgSkhuTMYS+BNfVUur4qZSvUbgCA==",
+  Metadata = new {
+    nonSensitiveField = "Non-Sensitive Value"
+  },
+  Encryption = new Encryption {
+    ContentEncryptionKey = new EncryptionKey {
+      Key = "JLrtGbYSN5/dbqdKtLVG8tHu3QefcZnKsFOPBBXlXcG4zL9US01mW2MqZs6Px4ckSQM8CrRakwLKilrQ0f37Iw==",
+      Algorithm: "AES"
+    },
+    KeyEncryptionKey = new EncryptionKey {
+      Key = "vpXn45HnsoQPR1q8ptngmPvPaqIDJ4vO+FFyQclglePCt8d1SyTDJU0T+F54T7GnAz7vz5OKsjgsFNo9lVB3UA==",
+      Algorithm: "RSA"
+    }
+  },
+  Children = new List<Token> {
+    new Token { ... },
+    new Token { ... }
+  }
+});
+```
+
+> Response
 
 ```json
 {
   "id": "c06d0789-0a38-40be-b7cc-c28a718f76f1",
   "tenant_id": "77cb0024-123e-41a8-8ff8-a3d5a0fa8a08",
   "type": "token",
-  "created_by": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
-  "created_at": "2020-09-15T15:53:00+00:00",
   "metadata": {
     "nonSensitiveField": "Non-Sensitive Value"
   },
   "children": [
     {...},
     {...}
-  ]
+  ],
+  "created_by": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
+  "created_at": "2020-09-15T15:53:00+00:00"
 }
 ```
 
-> Create Token Data Examples:
+> Data Examples
 
 ```json
 {
@@ -86,7 +141,7 @@ curl "https://api.basistheory.com/tokens" \
     "string_field": "RandomString",
     "int_field": 3,
     "bool_field": false,
-    "array_field": [1, 2, 3]
+    "array_field": [1, 2, 3],
     "object_field": {...} 
   }
 }
@@ -97,7 +152,6 @@ curl "https://api.basistheory.com/tokens" \
   `https://api.basistheory.com/tokens`
 </span>
 
-
 Create a new token for the tenant.
 
 ### Permissions
@@ -106,54 +160,19 @@ Create a new token for the tenant.
   <span class="scope">token:create</span>
 </p>
 
-### Request Schema
+### Request Parameters
 
 Attribute | Required | Type | Default | Description
 --------- | -------- | ---- | ------- | -----------
 `type` | false | *string* | `token` | [Token type](#token-types) of the token
 `data` | true | *any* | `null` | Token data
 `metadata` | false | *any* | `null` | Non-sensitive token metadata
-`encryption` | false | *object* | `null` | Encryption metadata for an encrypted token data value
+`encryption` | false | *[encryption object](#encryption-object)* | `null` | Encryption metadata for an encrypted token data value
 `children` | false | *array* | `[]` | An array of tokens, each of which follows the [create token](#create-token) request schema. Can be used to bulk create tokens with [token associations](#create-token-association)
-
-### Encryption Object Schema
-
-Attribute | Required | Type | Default | Description
---------- | -------- | ---- | ------- | -----------
-`cek` | false | *object* | `null` | Content [encryption key](#encryption-key-object-schema)
-`kek` | false | *object* | `null` | Key [encryption key](#encryption-key-object-schema)
-
-### Encryption Key Object Schema
-
-Attribute | Required | Type | Default | Description
---------- | -------- | ---- | ------- | -----------
-`key` | false | *string* | `null` | Encryption key or key identifier
-`alg` | false | *string* | `null` | Encryption algorithm (e.g. AES, RSA, etc)
 
 <aside class="notice">
   <span><code>data</code> and <code>metadata</code> values can be an object, array, or any primitive type such as an integer, boolean, or string. See JSON examples for reference.</span>
 </aside>
-
-### Response Schema
-
-Attribute | Type | Description
---------- | ---- | -----------
-`id` | *string* | Unique identifier of the token which can be used to [get a token](#get-a-token)
-`tenant_id` | *string* | The [tenant](#tenants) ID which owns the token
-`type` | *string* | [Token type](#token-types)
-`created_by` | *string* | The [application](#applications) ID which created the token
-`created_at` | *string* | Created date of the token in ISO 8601 format
-`metadata` | *any* | The metadata provided when [creating the token](#create-token)
-`children` | *array* | The child tokens provided when [creating the token](#create-token)
-
-### Response Messages
-
-Code | Description
----- | -----------
-`201` | Token successfully created
-`400` | Invalid request body. See [Errors](#errors) response for details
-`401` | A missing or invalid `X-API-KEY` was provided
-`403` | The provided `X-API-KEY` does not have the required permissions
 
 <aside class="success">
   <span>Basis Theory recommends encrypting the <code>data</code> attribute of the token. Our recommendation is encrypt the data with a one-time use symmetric encryption key such as <code>AES-256</code> and then encrypt the symmetric key with an asymmetric public key such as <code>RSA</code>. Our SDK will automatically handle this for you.</span>
@@ -164,16 +183,27 @@ Code | Description
 </aside>
 
 
+### Response
+
+Returns a [token](#token-object) if the token was created. Returns [an error](#errors) if there were validation errors or the token failed to create.
+
+
 ## List Tokens
 
-> List Tokens Request Example:
+> Request
 
 ```shell
 curl "https://api.basistheory.com/tokens" \
   -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
 ```
 
-> Tokens Response Example:
+```csharp
+var client = new TokenClient("key_N88mVGsp3sCXkykyN2EFED");
+
+var tokens = await client.GetAsync();
+```
+
+> Response
 
 ```json
 {
@@ -210,34 +240,6 @@ curl "https://api.basistheory.com/tokens" \
 }
 ```
 
-> List Tokens by IDs Request Example:
-
-```shell
-curl "https://api.basistheory.com/tokens?id=c06d0789-0a38-40be-b7cc-c28a718f76f1&id=c1e565009-1984-4638-8fca-dce8a82cc2af" \
-  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
-```
-
-> List Tokens by Types Request Example:
-
-```shell
-curl "https://api.basistheory.com/tokens?type=card&type=bank" \
-  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
-```
-
-> List Tokens with Children Request Example:
-
-```shell
-curl "https://api.basistheory.com/tokens?children=true" \
-  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
-```
-
-> List Tokens with Children by Child Types Request Example:
-
-```shell
-curl "https://api.basistheory.com/tokens?children_type=card&children_type=bank" \
-  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
-```
-
 <span class="http-method get">
   <span class="box-method">GET</span>
   `https://api.basistheory.com/tokens`
@@ -260,55 +262,27 @@ Parameter | Required | Type | Default | Description
 `children` | false | *boolean* | `false` | Include child tokens where the token is a parent in [token association](#token-associations)
 `children_type` | false | *array* | `[]` | An optional array of [token types](#token-types) to filter child tokens where the token is a parent in the [token association](#token-associations)
 
-### Response Schema
+### Response
 
-Returns the [Pagination](#pagination) schema. The `data` attribute in the response contains an array of tokens with the following schema:
-
-Attribute | Type | Description
---------- | ---- | -----------
-`id` | *string* | Unique identifier of the token which can be used to [get a token](#get-a-token)
-`tenant_id` | *string* | The [tenant](#tenants) ID which owns the token
-`type` | *string* | [Token type](#token-types)
-`data` | *any* | The data provided when [creating the token](#create-token)
-`metadata` | *any* | The metadata provided when [creating the token](#create-token)
-`encryption` | *any* | The [encryption](#encryption-object-schema) data provided when [creating the token](#create-token)
-`children` | *array* | An array of child tokens where the token is a parent in the [token association](#token-associations). Only populated if `children` or `children_type` query parameter is provided
-`created_by` | *string* | The [application](#applications) ID which created the token
-`created_at` | *string* | Created date of the token in ISO 8601 format
-
-### Response Messages
-
-Code | Description
----- | -----------
-`200` | Tokens successfully retrieved
-`401` | A missing or invalid `X-API-KEY` was provided
-`403` | The provided `X-API-KEY` does not have the required permissions
+Returns a [paginated object](#pagination) with the `data` property containing an array of [tokens](#token-object). Providing any query parameters will filter the results. Returns [an error](#errors) if tokens could not be retrieved.
 
 
 ## Get a Token
 
-> Get a Token Request Example:
+> Request
 
 ```shell
 curl "https://api.basistheory.com/tokens/c06d0789-0a38-40be-b7cc-c28a718f76f1" \
   -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
 ```
 
-> Get a Token with Children Request Example:
+```csharp
+var client = new TokenClient("key_N88mVGsp3sCXkykyN2EFED");
 
-```shell
-curl "https://api.basistheory.com/tokens/c06d0789-0a38-40be-b7cc-c28a718f76f1?children=true" \
-  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
+var token = await client.GetByIdAsync("c06d0789-0a38-40be-b7cc-c28a718f76f1");
 ```
 
-> Get a Token with Children by Child Types Request Example:
-
-```shell
-curl "https://api.basistheory.com/tokens/c06d0789-0a38-40be-b7cc-c28a718f76f1?children_type=card&children_type=bank" \
-  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
-```
-
-> Token Response Example:
+> Response
 
 ```json
 {
@@ -355,7 +329,7 @@ Get a token by ID in the tenant.
 
 Parameter | Required | Type | Default | Description
 --------- | -------- | ---- | ------- | -----------
-`id` | true | *string* | `null` | The ID of the token
+`id` | true | *uuid* | `null` | The ID of the token
 
 ### Query Parameters
 
@@ -364,33 +338,14 @@ Parameter | Required | Type | Default | Description
 `children` | false | *boolean* | `false` | Include child tokens where the token is a parent in [token association](#token-associations)
 `children_type` | false | *array* | `[]` | An optional array of [token types](#token-types) to filter child tokens where the token is a parent in the [token association](#token-associations)
 
-### Response Schema
+### Response
 
-Attribute | Type | Description
---------- | ---- | -----------
-`id` | *string* | Unique identifier of the token which can be used to [get a token](#get-a-token)
-`tenant_id` | *string* | The [tenant](#tenants) ID which owns the token
-`type` | *string* | [Token type](#token-types)
-`data` | *any* | The data provided when [creating the token](#create-token)
-`metadata` | *any* | The metadata provided when [creating the token](#create-token)
-`encryption` | *any* | The [encryption](#encryption-object-schema) data provided when [creating the token](#create-token)
-`children` | *array* | An array of child tokens where the token is a parent in the [token association](#token-associations). Only populated if `children` or `children_type` query parameter is provided
-`created_by` | *string* | The [application](#applications) ID which created the token
-`created_at` | *string* | Created date of the token in ISO 8601 format
-
-### Response Messages
-
-Code | Description
----- | -----------
-`200` | Tokens successfully retrieved
-`401` | A missing or invalid `X-API-KEY` was provided
-`403` | The provided `X-API-KEY` does not have the required permissions
-`404` | The token was not found
+Returns a [token](#token-object) with the `id` provided. Returns [an error](#errors) if the token could not be retrieved.
 
 
 ## Delete Token
 
-> Delete Token Request Example:
+> Request
 
 ```shell
 curl "https://api.basistheory.com/tokens/c06d0789-0a38-40be-b7cc-c28a718f76f1" \
@@ -398,16 +353,21 @@ curl "https://api.basistheory.com/tokens/c06d0789-0a38-40be-b7cc-c28a718f76f1" \
   -X "DELETE"
 ```
 
+```csharp
+var client = new TokenClient("key_N88mVGsp3sCXkykyN2EFED");
+
+await client.DeleteAsync("c06d0789-0a38-40be-b7cc-c28a718f76f1");
+```
+
 <span class="http-method delete">
   <span class="box-method">DELETE</span>
   `https://api.basistheory.com/tokens/{id}`
 </span>
 
-
 Delete a token by ID in the tenant.
 
 <aside class="warning">
-<span>WARNING - The data associated with a deleted token will be removed forever. The reference will still exists for audit purposes</span>
+  <span>WARNING - The data associated with a deleted token will be removed forever. The reference will still exists for audit purposes</span>
 </aside>
 
 ### Permissions
@@ -420,13 +380,8 @@ Delete a token by ID in the tenant.
 
 Parameter | Required | Type | Default | Description
 --------- | -------- | ---- | ------- | -----------
-`id` | true | *string* | `null` | The ID of the token
+`id` | true | *uuid* | `null` | The ID of the token
 
-### Response Messages
+### Response
 
-Code | Description
----- | -----------
-`204` | Token successfully deleted
-`401` | A missing or invalid `X-API-KEY` was provided
-`403` | The provided `X-API-KEY` does not have the required permissions
-`404` | The token was not found
+Returns [an error](#errors) if the token failed to delete.
