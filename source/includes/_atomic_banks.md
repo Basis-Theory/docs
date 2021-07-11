@@ -276,7 +276,10 @@ curl "https://api.basistheory.com/atomic/banks/1485efb9-6b1f-4248-a5d1-cf9b39071
 ```csharp
 var client = new AtomicBankClient("key_N88mVGsp3sCXkykyN2EFED");
 
-var atomicBank = await client.DecryptAsync("1485efb9-6b1f-4248-a5d1-cf9b3907164c");
+var atomicBank = await client.GetByIdAsync("1485efb9-6b1f-4248-a5d1-cf9b3907164c", 
+  new BankGetByIdRequest {
+    Decrypt = true
+  });
 ```
 
 > Response
