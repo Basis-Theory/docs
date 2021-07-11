@@ -3,6 +3,20 @@
 Your ability to authenticate to the API is granted by creating Applications, each application type has differnet usages to create the most fine-grained control over your tokens and infrastructure possible. Below, we describe each application type and their usages.
 
 
+## Application Object
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`id` | *string* | Unique identifier of the application which can be used to [get an application](#get-an-application)
+`tenant_id` | *string* | The [tenant](#tenants) ID which owns the application
+`name` | *string* | The name of the application
+`key` | *string* | The API key which should be used for authenticating against Basis Theory API endpoints
+`type` | *string* | [Application type](#application-types) of the application
+`permissions` | *array* | List of [permissions](#permission-types) for the application
+`created_at` | *string* | Created date of the application in ISO 8601 format
+`modified_at` | *string* | Last modified date of the application in ISO 8601 format
+
+
 ## Application Types
 
 Name | Type | Description
@@ -15,7 +29,7 @@ Management | `management` | Used for managing all aspects of your token infrastr
 
 ## Create Application
 
-> Create Application Request Example:
+> Request
 
 ```shell
 curl "https://api.basistheory.com/applications" \
@@ -35,9 +49,9 @@ curl "https://api.basistheory.com/applications" \
 ```
 
 ```csharp
-var applicationClient = new ApplicationClient("key_N88mVGsp3sCXkykyN2EFED");
+var client = new ApplicationClient("key_N88mVGsp3sCXkykyN2EFED");
 
-var application = await applicationClient.CreateAsync(new Application {
+var application = await client.CreateAsync(new Application {
   Name = "My Example App",
   Type = "server_to_server",
   Permissions = new List<string> {
@@ -49,7 +63,7 @@ var application = await applicationClient.CreateAsync(new Application {
 });
 ```
 
-> Create Application Response Example:
+> Response
 
 ```json
 {
@@ -81,7 +95,7 @@ Create a new application for the tenant.
   <span class="scope">application:write</span>
 </p>
 
-### Request Schema
+### Request Parameters
 
 Attribute | Required | Type | Default | Description
 --------- | -------- | ---- | ------- | -----------
@@ -89,31 +103,14 @@ Attribute | Required | Type | Default | Description
 `type` | true | *string* | `null` | [Application](#application-types) of the application
 `permissions` | false | *array* | `[]` | [Perimissions](#permission-types) for the application
 
-### Response Schema
+### Response
 
-Attribute | Type | Description
---------- | ---- | -----------
-`id` | *string* | Unique identifier of the application which can be used to [get an application](#get-an-application)
-`tenant_id` | *string* | The [tenant](#tenants) ID which owns the application
-`name` | *string* | The name of the application
-`key` | *string* | The API key which should be used for authenticating against Basis Theory API endpoints
-`type` | *string* | [Application type](#application-types) of the application
-`created_at` | *string* | Created date of the application in ISO 8601 format
-`permissions` | *array* | List of [permissions](#permission-types) for the application
-
-### Response Messages
-
-Code | Description
----- | -----------
-`201` | Application successfully created
-`400` | Invalid request body. See [Errors](#errors) response for details
-`401` | A missing or invalid `X-API-KEY` was provided
-`403` | The provided `X-API-KEY` does not have the required permissions
+Returns an [application object](#application-object) if the application was created. Returns [an error](#errors) if there were validation errors or the application failed to create.
 
 
 ## List Applications
 
-> List Applications Request Example:
+> Request
 
 ```shell
 curl "https://api.basistheory.com/applications" \
@@ -121,12 +118,12 @@ curl "https://api.basistheory.com/applications" \
 ```
 
 ```csharp
-var applicationClient = new ApplicationClient("key_N88mVGsp3sCXkykyN2EFED");
+var client = new ApplicationClient("key_N88mVGsp3sCXkykyN2EFED");
 
-var applications = await applicationClient.GetAsync();
+var applications = await client.GetAsync();
 ```
 
-> Applications Response Example:
+> Response
 
 ```json
 {
@@ -152,24 +149,6 @@ var applications = await applicationClient.GetAsync();
 }
 ```
 
-> List Applications by IDs Request Example:
-
-```shell
-curl "https://api.basistheory.com/applications?id=72ef3d62-b7de-4b5f-8aa2-b9db06c291cb&id=3b235ac3-83ea-49c5-8c42-05ba3cbd17d1" \
-  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
-```
-
-```csharp
-var applicationClient = new ApplicationClient("key_N88mVGsp3sCXkykyN2EFED");
-
-var applications = await applicationClient.GetAsync(new ApplicationGetRequest {
-  ApplicationIds = new List<Guid> {
-    new Guid("72ef3d62-b7de-4b5f-8aa2-b9db06c291cb"),
-    new Guid("3b235ac3-83ea-49c5-8c42-05ba3cbd17d1")
-  }
-});
-```
-
 <span class="http-method get">
   <span class="box-method">GET</span>
   `https://api.basistheory.com/applications`
@@ -189,32 +168,14 @@ Parameter | Required | Type | Default | Description
 --------- | -------- | ---- | ------- | -----------
 `id` | false | *array* | `[]` | An optional list of application ID's to filter the list of applications by
 
-### Response Schema
+### Response
 
-Returns the [Pagination](#pagination) schema. The `data` attribute in the response contains an array of applications with the following schema:
-
-Attribute | Type | Description
---------- | ---- | -----------
-`id` | *string* | Unique identifier of the application which can be used to [get an application](#get-an-application)
-`tenant_id` | *string* | The [tenant](#tenants) ID which owns the application
-`name` | *string* | The name of the application
-`type` | *string* | [Application type](#application-types) of the application
-`created_at` | *string* | Created date of the application in ISO 8601 format
-`modified_at` | *string* | Last modified date of the application in ISO 8601 format
-`permissions` | *array* | List of [permissions](#permission-types) for the application
-
-### Response Messages
-
-Code | Description
----- | -----------
-`200` | Applications successfully retrieved
-`401` | A missing or invalid `X-API-KEY` was provided
-`403` | The provided `X-API-KEY` does not have the required permissions
+Returns a [paginated object](#pagination) with the `data` property containing an array of [application objects](#application-object). Providing any query parameters will filter the results. Returns [an error](#errors) if applications could not be retrieved.
 
 
 ## Get an Application
 
-> Get an Application Request Example:
+> Request
 
 ```shell
 curl "https://api.basistheory.com/applications/fe1f9ba4-474e-44b9-b949-110cdba9d662" \
@@ -222,12 +183,12 @@ curl "https://api.basistheory.com/applications/fe1f9ba4-474e-44b9-b949-110cdba9d
 ```
 
 ```csharp
-var applicationClient = new ApplicationClient("key_N88mVGsp3sCXkykyN2EFED");
+var client = new ApplicationClient("key_N88mVGsp3sCXkykyN2EFED");
 
-var application = await applicationClient.GetByIdAsync(new Guid("fe1f9ba4-474e-44b9-b949-110cdba9d662"));
+var application = await client.GetByIdAsync(new Guid("fe1f9ba4-474e-44b9-b949-110cdba9d662"));
 ```
 
-> Application Response Example:
+> Response
 
 ```json
 {
@@ -263,31 +224,14 @@ Parameter | Required | Type | Default | Description
 --------- | -------- | ---- | ------- | -----------
 `id` | true | *string* | `null` | The ID of the application
 
-### Response Schema
+### Response
 
-Attribute | Type | Description
---------- | ---- | -----------
-`id` | *string* | Unique identifier of the application which can be used to [get an application](#get-an-application)
-`tenant_id` | *string* | The [tenant](#tenants) ID which owns the application
-`name` | *string* | The name of the application
-`type` | *string* | [Application type](#application-types) of the application
-`created_at` | *string* | Created date of the application in ISO 8601 format
-`modified_at` | *string* | Last modified date of the application in ISO 8601 format
-`permissions` | *array* | List of [permissions](#permission-types) for the application
-
-### Response Messages
-
-Code | Description
----- | -----------
-`200` | Application successfully retrieved
-`401` | A missing or invalid `X-API-KEY` was provided
-`403` | The provided `X-API-KEY` does not have the required permissions
-`404` | The application was not found
+Returns an [application object](#application-object) with the `id` provided. Returns [an error](#errors) if the application could not be retrieved.
 
 
 ## Get an Application by Key
 
-> Get an Application Request Example:
+> Request
 
 ```shell
 curl "https://api.basistheory.com/applications/key" \
@@ -295,12 +239,12 @@ curl "https://api.basistheory.com/applications/key" \
 ```
 
 ```csharp
-var applicationClient = new ApplicationClient("key_N88mVGsp3sCXkykyN2EFED");
+var client = new ApplicationClient("key_N88mVGsp3sCXkykyN2EFED");
 
-var application = await applicationClient.GetByKeyAsync();
+var application = await client.GetByKeyAsync();
 ```
 
-> Application Response Example:
+> Response
 
 ```json
 {
@@ -330,31 +274,14 @@ Get an application by key in the tenant. Will use the `X-API-KEY` header to look
   <span class="scope">application:read</span>
 </p>
 
-### Response Schema
+### Response
 
-Attribute | Type | Description
---------- | ---- | -----------
-`id` | *string* | Unique identifier of the application which can be used to [get an application](#get-an-application)
-`tenant_id` | *string* | The [tenant](#tenants) ID which owns the application
-`name` | *string* | The name of the application
-`type` | *string* | [Application type](#application-types) of the application
-`created_at` | *string* | Created date of the application in ISO 8601 format
-`modified_at` | *string* | Last modified date of the application in ISO 8601 format
-`permissions` | *array* | List of [permissions](#permission-types) for the application
-
-### Response Messages
-
-Code | Description
----- | -----------
-`200` | Application successfully retrieved
-`401` | A missing or invalid `X-API-KEY` was provided
-`403` | The provided `X-API-KEY` does not have the required permissions
-`404` | The application was not found
+Returns an [application objects](#application-object) for the provided `X-API-KEY`. Returns [an error](#errors) if the application could not be retrieved.
 
 
 ## Update Application
 
-> Update Application Request Example:
+> Request
 
 ```shell
 curl "https://api.basistheory.com/applications/fb124bba-f90d-45f0-9a59-5edca27b3b4a" \
@@ -371,9 +298,9 @@ curl "https://api.basistheory.com/applications/fb124bba-f90d-45f0-9a59-5edca27b3
 ```
 
 ```csharp
-var applicationClient = new ApplicationClient("key_N88mVGsp3sCXkykyN2EFED");
+var client = new ApplicationClient("key_N88mVGsp3sCXkykyN2EFED");
 
-var application = await applicationClient.UpdateAsync(new Guid("fb124bba-f90d-45f0-9a59-5edca27b3b4a"), 
+var application = await client.UpdateAsync(new Guid("fb124bba-f90d-45f0-9a59-5edca27b3b4a"), 
   new Application {
     Name = "My Example App",
     Type = "management",
@@ -387,7 +314,7 @@ var application = await applicationClient.UpdateAsync(new Guid("fb124bba-f90d-45
 );
 ```
 
-> Update Application Response Example:
+> Response
 
 ```json
 {
@@ -423,39 +350,21 @@ Parameter | Required | Type | Default | Description
 --------- | -------- | ---- | ------- | -----------
 `id` | true | *string* | `null` | The ID of the application
 
-### Request Schema
+### Request Parameters
 
 Attribute | Required | Type | Default | Description
 --------- | -------- | ---- | ------- | -----------
 `name` | true | *string* | `null` | The name of the application. Has a maximum length of `200`
 `permissions` | false | *array* | `[]` | [Perimissions](#permission-types) for the application
 
-### Response Schema
+### Response
 
-Attribute | Type | Description
---------- | ---- | -----------
-`id` | *string* | Unique identifier of the application which can be used to [get an application](#get-an-application)
-`tenant_id` | *string* | The [tenant](#tenants) ID which owns the application
-`name` | *string* | The name of the application
-`type` | *string* | [Application type](#application-types) of the application
-`created_at` | *string* | Created date of the application in ISO 8601 format
-`modified_at` | *string* | Last modified date of the application in ISO 8601 format
-`permissions` | *array* | List of [permissions](#permission-types) for the application
-
-### Response Messages
-
-Code | Description
----- | -----------
-`200` | Application successfully updated
-`400` | Invalid request body. See [Errors](#errors) response for details
-`401` | A missing or invalid `X-API-KEY` was provided
-`403` | The provided `X-API-KEY` does not have the required permissions
-`404` | The application was not found
+Returns an [application object](#application-object) if the application was updated. Returns [an error](#errors) if there were validation errors or the application failed to update.
 
 
 ## Regenerate API Key
 
-> Regenerate Application API Key Request Example:
+> Request
 
 ```shell
 curl "https://api.basistheory.com/applications/fb124bba-f90d-45f0-9a59-5edca27b3b4a/regenerate" \
@@ -464,12 +373,12 @@ curl "https://api.basistheory.com/applications/fb124bba-f90d-45f0-9a59-5edca27b3
 ```
 
 ```csharp
-var applicationClient = new ApplicationClient("key_N88mVGsp3sCXkykyN2EFED");
+var client = new ApplicationClient("key_N88mVGsp3sCXkykyN2EFED");
 
-var application = await applicationClient.RegenerateKeyAsync(new Guid("fb124bba-f90d-45f0-9a59-5edca27b3b4a"));
+var application = await client.RegenerateKeyAsync(new Guid("fb124bba-f90d-45f0-9a59-5edca27b3b4a"));
 ```
 
-> Regenerate Application API Key Response Example:
+> Response
 
 ```json
 {
@@ -512,28 +421,14 @@ Parameter | Required | Type | Default | Description
 --------- | -------- | ---- | ------- | -----------
 `id` | true | *string* | `null` | The ID of the application
 
-### Response Schema
+### Response
 
-Attribute | Type | Description
---------- | ---- | -----------
-`id` | *string* | Unique identifier of the application which can be used to [get an application](#get-an-application)
-`key` | *string* | The API key which should be used for authenticating against Basis Theory API endpoints
-`modified_at` | *string* | Last modified date of the application in ISO 8601 format
-
-### Response Messages
-
-Code | Description
----- | -----------
-`200` | Application API Key successfully regenerated
-`400` | Invalid request body. See [Errors](#errors) response for details
-`401` | A missing or invalid `X-API-KEY` was provided
-`403` | The provided `X-API-KEY` does not have the required permissions
-`404` | The application was not found
+Returns an [application object](#application-object) with the new `key` property populated. Returns [an error](#errors) if there were validation errors or the application key failed to regenerate.
 
 
 ## Delete Application
 
-> Delete Application Request Example:
+> Request
 
 ```shell
 curl "https://api.basistheory.com/applications/fb124bba-f90d-45f0-9a59-5edca27b3b4a" \
@@ -542,9 +437,9 @@ curl "https://api.basistheory.com/applications/fb124bba-f90d-45f0-9a59-5edca27b3
 ```
 
 ```csharp
-var applicationClient = new ApplicationClient("key_N88mVGsp3sCXkykyN2EFED");
+var client = new ApplicationClient("key_N88mVGsp3sCXkykyN2EFED");
 
-await applicationClient.DeleteAsync(new Guid("fb124bba-f90d-45f0-9a59-5edca27b3b4a"));
+await client.DeleteAsync(new Guid("fb124bba-f90d-45f0-9a59-5edca27b3b4a"));
 ```
 
 <span class="http-method delete">
@@ -564,11 +459,6 @@ Parameter | Required | Type | Default | Description
 --------- | -------- | ---- | ------- | -----------
 `id` | true | *string* | `null` | The ID of the application
 
-### Response Messages
+### Response
 
-Code | Description
----- | -----------
-`204` | Application successfully deleted
-`401` | A missing or invalid `X-API-KEY` was provided
-`403` | The provided `X-API-KEY` does not have the required permissions
-`404` | The application was not found
+Returns [an error](#errors) if the application failed to delete.

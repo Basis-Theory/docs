@@ -6,6 +6,20 @@ Permissions are associated with every application and can be configured when you
 
 Every API endpoint will document the required permissions needed to perform the operation against the endpoint.
 
+<aside class="notice">
+  <span>Dependent permission types are automatically assigned when an application is created or updated. For example, if an application is created with <code>card:read</code>, then the permission of <code>token:read</code> will automatically be assigned.</span>
+</aside>
+
+
+## Permission Object
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`type` | *string* | Permission type referenced by Basis Theory API endpoints
+`description` | *string* | Description of the permission
+`application_types` | *array* | List of [application types](#application-types) that can assign the permission
+`dependencies` | *array* | List of downstream [permission types](#permission-types) which are required for this permission type
+
 
 ## Permission Types
 
@@ -37,14 +51,20 @@ Permission | Description | Application Types | Dependencies
 
 ## List Permissions
 
-> List Permissions Request Example:
+> Request
 
 ```shell
 curl "https://api.basistheory.com/permissions" \
   -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
 ```
 
-> Permissions Response Example:
+```csharp
+var client = new PermissionClient("key_N88mVGsp3sCXkykyN2EFED");
+
+var permissions = await client.GetAsync();
+```
+
+> Response
 
 ```json
 [
@@ -68,22 +88,7 @@ curl "https://api.basistheory.com/permissions" \
   `https://api.basistheory.com/permissions`
 </span>
 
-### Response Schema
 
-Attribute | Type | Description
---------- | ---- | -----------
-`type` | *string* | Permission type referenced by Basis Theory API endpoints
-`description` | *string* | Description of the permission
-`application_types` | *array* | List of [application types](#application-types) that can assign the permission
-`dependencies` | *array* | List of downstream [permission types](#permission-types) which are required for this permission type
+### Response
 
-<aside class="notice">
-  <span>Dependent permission types are automatically assigned when an application is created or updated. For example, if an application is created with <code>card:read</code>, then the permission of <code>token:read</code> will automatically be assigned.</span>
-</aside>
-
-### Response Messages
-
-Code | Description
----- | -----------
-`200` | Permissions successfully retrieved
-`401` | A missing or invalid `X-API-KEY` was provided
+Returns an array of [permission objects](#permission-object). Returns [an error](#errors) if permissions could not be retrieved.

@@ -2,16 +2,34 @@
 
 Tenants provide a way to logically group your applications and tokens. Common use cases for tenants may be per environment such as development, QA, and production or to isolate business domains from each other. Tenant data is isolated from each other unless explicitely shared.
 
+
+## Tenant Object
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`id` | *string* | Unique identifier of the tenant
+`owner_id` | *string* | The user ID which owns the tenant
+`name` | *string* | The name of the tenant
+`created_at` | *string* | Created date of the application in ISO 8601 format
+`modified_at` | *string* | Last modified date of the application in ISO 8601 format
+
+
 ## Get a Tenant
 
-> Get a Tenant Request Example:
+> Request
 
 ```shell
 curl "https://api.basistheory.com/tenants/self" \
   -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
 ```
 
-> Tenant Response Example:
+```csharp
+var client = new TenantClient("key_N88mVGsp3sCXkykyN2EFED");
+
+var tenant = await client.GetSelfAsync();
+```
+
+> Response
 
 ```json
 {
@@ -36,29 +54,14 @@ Retrieves the tenant associated with the provided `X-API-KEY`.
   <span class="scope">tenant:read</span>
 </p>
 
-### Response Schema
+### Response
 
-Attribute | Type | Description
---------- | ---- | -----------
-`id` | *string* | Unique identifier of the tenant
-`owner_id` | *string* | The user ID which owns the tenant
-`name` | *string* | The name of the tenant
-`created_at` | *string* | Created date of the application in ISO 8601 format
-`modified_at` | *string* | Last modified date of the application in ISO 8601 format
-
-### Response Messages
-
-Code | Description
----- | -----------
-`200` | Tenant successfully retrieved
-`401` | A missing or invalid `X-API-KEY` was provided
-`403` | The provided `X-API-KEY` does not have the required permissions
-`404` | The tenant was not found
+Returns a [tenant object](#application-object) for the provided `X-API-KEY`. Returns [an error](#errors) if the tenant could not be retrieved.
 
 
 ## Update Tenant
 
-> Update Tenant Request Example:
+> Request
 
 ```shell
 curl "https://api.basistheory.com/tenants/self" \
@@ -70,7 +73,15 @@ curl "https://api.basistheory.com/tenants/self" \
   }'
 ```
 
-> Update Tenant Response Example:
+```csharp
+var client = new TenantClient("key_N88mVGsp3sCXkykyN2EFED");
+
+var tenant = await client.UpdateAsync(new Tenant {
+  Name = "My Example Tenant"
+});
+```
+
+> Response
 
 ```json
 {
@@ -95,41 +106,31 @@ Update the tenant associated with the provided `X-API-KEY`.
   <span class="scope">application:update</span>
 </p>
 
-### Request Schema
+### Request Parameters
 
 Attribute | Required | Type | Default | Description
 --------- | -------- | ---- | ------- | -----------
 `name` | true | *string* | `null` | The name of the tenant. Has a maximum length of `200`
 
-### Response Schema
+### Response
 
-Attribute | Type | Description
---------- | ---- | -----------
-`id` | *string* | Unique identifier of the tenant
-`owner_id` | *string* | The user ID which owns the tenant
-`name` | *string* | The name of the tenant
-`created_at` | *string* | Created date of the application in ISO 8601 format
-`modified_at` | *string* | Last modified date of the application in ISO 8601 format
-
-### Response Messages
-
-Code | Description
----- | -----------
-`200` | Tenant successfully updated
-`400` | Invalid request body. See [Errors](#errors) response for details
-`401` | A missing or invalid `X-API-KEY` was provided
-`403` | The provided `X-API-KEY` does not have the required permissions
-`404` | The tenant was not found
+Returns a [tenant object](#tenant-object) if the tenant was updated. Returns [an error](#errors) if there were validation errors or the tenant failed to update.
 
 
 ## Delete Tenant
 
-> Delete Tenant Request Example:
+> Request
 
 ```shell
 curl "https://api.basistheory.com/tenants/self" \
   -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
   -X "DELETE"
+```
+
+```csharp
+var client = new TenantClient("key_N88mVGsp3sCXkykyN2EFED");
+
+await client.DeleteAsync();
 ```
 
 <span class="http-method delete">
@@ -143,11 +144,6 @@ Delete the tenant associated with the provided `X-API-KEY`.
 
 `tenant:write`
 
-### Response Messages
+### Response
 
-Code | Description
----- | -----------
-`204` | Tenant successfully deleted
-`401` | A missing or invalid `X-API-KEY` was provided
-`403` | The provided `X-API-KEY` does not have the required permissions
-`404` | The tenant was not found
+Returns [an error](#errors) if the tenant failed to delete.
