@@ -4,13 +4,20 @@ Token associations allow you to associate any two tokens, of any type, together.
 
 ## Create Token Association
 
-> Create Token Association Request Example:
+> Request
 
 ```shell
 curl "https://api.basistheory.com/tokens/c06d0789-0a38-40be-b7cc-c28a718f76f1/children/c1e565009-1984-4638-8fca-dce8a82cc2af" \
   -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
   -H "Content-Type: application/json"
   -X "POST"
+```
+
+```csharp
+var client = new TokenClient("key_N88mVGsp3sCXkykyN2EFED");
+
+var token = await client.CreateAssociationAsync("c06d0789-0a38-40be-b7cc-c28a718f76f1", 
+  "c1e565009-1984-4638-8fca-dce8a82cc2af");
 ```
 
 <span class="http-method post">
@@ -30,32 +37,34 @@ Create a new parent/child association between two tokens in the tenant.
 
 Parameter | Required | Type | Default | Description
 --------- | -------- | ---- | ------- | -----------
-`parent_id` | true | *string* | `null` | The ID of the parent token
-`child_id` | true | *string* | `null` | The ID of the child token
+`parent_id` | true | *uuid* | `null` | The ID of the parent token
+`child_id` | true | *uuid* | `null` | The ID of the child token
 
 <aside class="notice">
   <span>Bi-directional associations can be made between two tokens by creating a token association and swapping the <code>parent_id</code> and <code>child_id</code>.</span>
 </aside>
 
-### Response Messages
+### Response
 
-Code | Description
----- | -----------
-`204` | Token association successfully created
-`401` | A missing or invalid `X-API-KEY` was provided
-`403` | The provided `X-API-KEY` does not have the required permissions
-`404` | The parent or child token was not found
+Returns [an error](#errors) if the token association failed to create.
 
 
 ## Delete Token Association
 
-> Delete Token Association Request Example:
+> Request
 
 ```shell
 curl "https://api.basistheory.com/tokens/c06d0789-0a38-40be-b7cc-c28a718f76f1/children/c1e565009-1984-4638-8fca-dce8a82cc2af" \
   -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
   -H "Content-Type: application/json"
   -X "DELETE"
+```
+
+```csharp
+var client = new TokenClient("key_N88mVGsp3sCXkykyN2EFED");
+
+var token = await client.DeleteAssociationAsync("c06d0789-0a38-40be-b7cc-c28a718f76f1", 
+  "c1e565009-1984-4638-8fca-dce8a82cc2af");
 ```
 
 <span class="http-method delete">
@@ -75,22 +84,17 @@ Delete a parent/child association between two tokens in the tenant.
 
 Parameter | Required | Type | Default | Description
 --------- | -------- | ---- | ------- | -----------
-`parent_id` | true | *string* | `null` | The ID of the parent token
-`child_id` | true | *string* | `null` | The ID of the child token
+`parent_id` | true | *uuid* | `null` | The ID of the parent token
+`child_id` | true | *uuid* | `null` | The ID of the child token
 
-### Response Messages
+### Response
 
-Code | Description
----- | -----------
-`204` | Token association successfully deleted
-`401` | A missing or invalid `X-API-KEY` was provided
-`403` | The provided `X-API-KEY` does not have the required permissions
-`404` | The parent or child token was not found
+Returns [an error](#errors) if the token association failed to delete.
 
 
 ## Create Child Token for a Token
 
-> Create Child Token for a Token Request Example:
+> Request
 
 ```shell
 curl "https://api.basistheory.com/tokens/c06d0789-0a38-40be-b7cc-c28a718f76f1/children" \
@@ -120,7 +124,35 @@ curl "https://api.basistheory.com/tokens/c06d0789-0a38-40be-b7cc-c28a718f76f1/ch
   }'
 ```
 
-> Create Child Token Response Example:
+```csharp
+var client = new TokenClient("key_N88mVGsp3sCXkykyN2EFED");
+
+var token = await client.CreateChildAsync("c06d0789-0a38-40be-b7cc-c28a718f76f1", 
+  new Token {
+    Type = "token",
+    Data = "ebSG3IohNmg5gTOjN2HBwBbhjDZ6BY3fCWZJfXSucVMfQ+7YNMXQYrPuRSXgSkhuTMYS+BNfVUur4qZSvUbgCA==",
+    Metadata = new {
+      nonSensitiveField = "Non-Sensitive Value"
+    },
+    Encryption = new Encryption {
+      ContentEncryptionKey = new EncryptionKey {
+        Key = "JLrtGbYSN5/dbqdKtLVG8tHu3QefcZnKsFOPBBXlXcG4zL9US01mW2MqZs6Px4ckSQM8CrRakwLKilrQ0f37Iw==",
+        Algorithm: "AES"
+      },
+      KeyEncryptionKey = new EncryptionKey {
+        Key = "vpXn45HnsoQPR1q8ptngmPvPaqIDJ4vO+FFyQclglePCt8d1SyTDJU0T+F54T7GnAz7vz5OKsjgsFNo9lVB3UA==",
+        Algorithm: "RSA"
+      }
+    },
+    Children = new List<Token> {
+      new Token { ... },
+      new Token { ... }
+    }
+  }
+);
+```
+
+> Response
 
 ```json
 {
@@ -158,42 +190,37 @@ Parameter | Required | Type | Default | Description
 --------- | -------- | ---- | ------- | -----------
 `parent_id` | true | *string* | `null` | The ID of the parent token
 
-### Request Schema
+### Request Parameters
 
-A token which follows the [create token](#create-token) request schema. Can be used to bulk create tokens with [token associations](#create-token-association)
+Attribute | Required | Type | Default | Description
+--------- | -------- | ---- | ------- | -----------
+`type` | false | *string* | `token` | [Token type](#token-types) of the token
+`data` | true | *any* | `null` | Token data
+`metadata` | false | *any* | `null` | Non-sensitive token metadata
+`encryption` | false | *[encryption object](#encryption-object)* | `null` | Encryption metadata for an encrypted token data value
+`children` | false | *array* | `[]` | An array of [tokens](#token-object). Can be used to bulk create tokens with [token associations](#create-token-association)
 
-### Response Schema
+### Response
 
-Attribute | Type | Description
---------- | ---- | -----------
-`id` | *string* | Unique identifier of the token which can be used to [get a token](#get-a-token)
-`tenant_id` | *string* | The [tenant](#tenants) ID which owns the token
-`type` | *string* | [Token type](#token-types)
-`created_by` | *string* | The [application](#applications) ID which created the token
-`created_at` | *string* | Created date of the token in ISO 8601 format
-`metadata` | *any* | The metadata provided when [creating the child token](#create-child-token-for-a-token)
-`children` | *array* | The child tokens provided when [creating the child token](#create-child-token-for-a-token)
-
-### Response Messages
-
-Code | Description
----- | -----------
-`201` | Child token successfully created
-`400` | Invalid request body. See [Errors](#errors) response for details
-`401` | A missing or invalid `X-API-KEY` was provided
-`403` | The provided `X-API-KEY` does not have the required permissions
+Returns a [token](#token-object) if the child token was created for the parent token. Returns [an error](#errors) if there were validation errors or the token failed to create.
 
 
 ## List Child Tokens for a Token
 
-> List Child Tokens for a Token Request Example:
+> Request
 
 ```shell
 curl "https://api.basistheory.com/tokens/c06d0789-0a38-40be-b7cc-c28a718f76f1/children" \
   -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
 ```
 
-> Child Tokens Response Example:
+```csharp
+var client = new TokenClient("key_N88mVGsp3sCXkykyN2EFED");
+
+var tokens = await client.GetChildrenAsync("c06d0789-0a38-40be-b7cc-c28a718f76f1");
+```
+
+> Response
 
 ```json
 {
@@ -230,34 +257,6 @@ curl "https://api.basistheory.com/tokens/c06d0789-0a38-40be-b7cc-c28a718f76f1/ch
 }
 ```
 
-> List Child Tokens by IDs Request Example:
-
-```shell
-curl "https://api.basistheory.com/tokens/c06d0789-0a38-40be-b7cc-c28a718f76f1/children?id=c1e565009-1984-4638-8fca-dce8a82cc2af" \
-  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
-```
-
-> List Child Tokens by Types Request Example:
-
-```shell
-curl "https://api.basistheory.com/tokens/c06d0789-0a38-40be-b7cc-c28a718f76f1/children?type=card&type=bank" \
-  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
-```
-
-> List Child Tokens with Children Request Example:
-
-```shell
-curl "https://api.basistheory.com/tokens/c06d0789-0a38-40be-b7cc-c28a718f76f1/children?children=true" \
-  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
-```
-
-> List Child Tokens with Children by Child Types Request Example:
-
-```shell
-curl "https://api.basistheory.com/tokens/c06d0789-0a38-40be-b7cc-c28a718f76f1/children?children_type=card&children_type=bank" \
-  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
-```
-
 <span class="http-method get">
   <span class="box-method">GET</span>
   `https://api.basistheory.com/tokens/{parent_id}/children`
@@ -286,26 +285,6 @@ Parameter | Required | Type | Default | Description
 `children` | false | *boolean* | `false` | Include child tokens where the child token is a parent in [token association](#token-associations)
 `children_type` | false | *array* | `[]` | An optional array of [token types](#token-types) to filter child tokens where the child token is a parent in the [token association](#token-associations)
 
-### Response Schema
+### Response
 
-Returns the [Pagination](#pagination) schema. The `data` attribute in the response contains an array of tokens with the following schema:
-
-Attribute | Type | Description
---------- | ---- | -----------
-`id` | *string* | Unique identifier of the token which can be used to [get a token](#get-a-token)
-`tenant_id` | *string* | The [tenant](#tenants) ID which owns the token
-`type` | *string* | [Token type](#token-types)
-`data` | *any* | The data provided when [creating the token](#create-token)
-`metadata` | *any* | The metadata provided when [creating the token](#create-token)
-`encryption` | *any* | The [encryption](#encryption-object-schema) data provided when [creating the token](#create-token)
-`children` | *array* | An array of child tokens where the token is a parent in the [token association](#token-associations). Only populated if `children` or `children_type` query parameter is provided
-`created_by` | *string* | The [application](#applications) ID which created the token
-`created_at` | *string* | Created date of the token in ISO 8601 format
-
-### Response Messages
-
-Code | Description
----- | -----------
-`200` | Tokens successfully retrieved
-`401` | A missing or invalid `X-API-KEY` was provided
-`403` | The provided `X-API-KEY` does not have the required permissions
+Returns a [paginated object](#pagination) with the `data` property containing an array of [child tokens](#token-object) for the parent token. Providing any query parameters will filter the child tokens. Returns [an error](#errors) if tokens could not be retrieved.

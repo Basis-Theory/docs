@@ -21,7 +21,7 @@
 }
 ```
 
-### Response Schema
+### Response
 
 Attribute | Type | Description
 --------- | ---- | -----------

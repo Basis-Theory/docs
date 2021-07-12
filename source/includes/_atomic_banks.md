@@ -1,8 +1,28 @@
 # Atomic Banks
 
+## Atomic Bank Object
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`id` | *uuid* | Unique identifier of the token which can be used to [get an atomic bank](#get-an-atomic-bank)
+`tenant_id` | *uuid* | The [tenant](#tenants) ID which owns the bank
+`type` | *string* | `Bank` [token type](#token-types)
+`bank` | *[bank](#bank-object)* | Bank data
+`metadata` | *any* | Non-sensitive token metadata. Can be an object, array, or any primitive type such as an integer, boolean, or string
+`created_by` | *uuid* | The [application](#applications) ID which created the atomic bank
+`created_at` | *date* | Created date of the application in ISO 8601 format
+
+### Bank Object
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`routing_number` | *string* | Nine-digit ABA routing number
+`account_number` | *string* | Account number up to seventeen-digits
+
+
 ## Create Atomic Bank
 
-> Create Atomic Bank Request Example:
+> Request
 
 ```shell
 curl "https://api.basistheory.com/atomic/banks" \
@@ -21,22 +41,36 @@ curl "https://api.basistheory.com/atomic/banks" \
   }'
 ```
 
-> Create Atomic Bank Response Example:
+```csharp
+var client = new AtomicBankClient("key_N88mVGsp3sCXkykyN2EFED");
+
+var atomicBank = await client.CreateAsync(new AtomicBank {
+  Bank = new Bank {
+    RoutingNumber = "021000021",
+    AccountNumber = "1234567890"
+  },
+  Metadata = new {
+    nonSensitiveField = "Non-Sensitive Value"
+  }
+});
+```
+
+> Response
 
 ```json
 {
   "id": "1485efb9-6b1f-4248-a5d1-cf9b3907164c",
   "tenant_id": "77cb0024-123e-41a8-8ff8-a3d5a0fa8a08",
   "type": "bank",
-  "created_by": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
-  "created_at": "2020-09-15T15:53:00+00:00",
   "bank": {
     "routing_number": "021000021",
     "account_number": "XXXXXX7890"
   },
   "metadata": {
     "nonSensitiveField": "Non-Sensitive Value"
-  }
+  },
+  "created_by": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
+  "created_at": "2020-09-15T15:53:00+00:00"
 }
 ```
 
@@ -54,56 +88,34 @@ Create a new atomic bank for the tenant.
   <span class="scope">token:create</span>
 </p>
 
-### Request Schema
+### Request Parameters
 
 Attribute | Required | Type | Default | Description
 --------- | -------- | ---- | ------- | -----------
-`bank` | true | *bank* | `null` | [Bank object](#bank-object-schema)
-`metadata` | false | *any* | `null` | Non-sensitive token metadata
+`bank` | true | *[bank](#bank-object)* | `null` | Bank data
+`metadata` | false | *any* | `null` | Non-sensitive token metadata. Can be an object, array, or any primitive type such as an integer, boolean, or string
 
-### Bank Object Schema
+### Response
 
-Attribute | Required | Type | Default | Description
---------- | -------- | ---- | ------- | -----------
-`routing_number` | true | *string* | `null` | Nine-digit ABA routing number
-`account_number` | true | *string* | `null` | Account number up to seventeen-digits
-
-<aside class="notice">
-  <span><code>metadata</code> values can be an object, array, or any primitive type such as an integer, boolean, or string. See <a href="#create-token">create token examples</a> for reference.</span>
-</aside>
-
-### Response Schema
-
-Attribute | Type | Description
---------- | ---- | -----------
-`id` | *string* | Unique identifier of the token which can be used to [get an atomic bank](#get-an-atomic-bank)
-`tenant_id` | *string* | The [tenant](#tenants) ID which owns the bank
-`type` | *string* | `Bank` [token type](#token-types)
-`created_by` | *string* | The [application](#applications) ID which created the atomic bank
-`created_at` | *string* | Created date of the application in ISO 8601 format
-`bank` | *bank* | Masked [bank object](#bank-object-schema)
-`metadata` | *any* | The metadata provided when [creating the atomic bank](#create-atomic-bank)
-
-### Response Messages
-
-Code | Description
----- | -----------
-`201` | Atomic bank successfully created
-`400` | Invalid request body. See [Errors](#errors) response for details
-`401` | A missing or invalid `X-API-KEY` was provided
-`403` | The provided `X-API-KEY` does not have the required permissions
+Returns an [atomic bank](#atomic-bank-object) with masked [bank data](#bank-object) if the atomic bank was created. Returns [an error](#errors) if there were validation errors or the atomic bank failed to create.
 
 
 ## List Atomic Banks
 
-> List Atomic Banks Request Example:
+> Request
 
 ```shell
 curl "https://api.basistheory.com/atomic/banks" \
   -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
 ```
 
-> Atomic Banks Response Example:
+```csharp
+var client = new AtomicBankClient("key_N88mVGsp3sCXkykyN2EFED");
+
+var atomicBanks = await client.GetAsync();
+```
+
+> Response
 
 ```json
 {
@@ -113,15 +125,15 @@ curl "https://api.basistheory.com/atomic/banks" \
       "id": "1485efb9-6b1f-4248-a5d1-cf9b3907164c",
       "tenant_id": "77cb0024-123e-41a8-8ff8-a3d5a0fa8a08",
       "type": "bank",
-      "created_by": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
-      "created_at": "2020-09-15T15:53:00+00:00",
       "bank": {
         "routing_number": "021000021",
         "account_number": "XXXXXX7890"
       },
       "metadata": {
         "nonSensitiveField": "Non-Sensitive Value"
-      }
+      },
+      "created_by": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
+      "created_at": "2020-09-15T15:53:00+00:00"
     },
     {...},
     {...}
@@ -143,54 +155,42 @@ Get a list of atomic banks for the tenant.
   <span class="scope">token:read</span>
 </p>
 
-### Response Schema
+### Response
 
-Returns the [Pagination](#pagination) schema. The `data` attribute in the response contains an array of tokens with the following schema:
-
-Attribute | Type | Description
---------- | ---- | -----------
-`id` | *string* | Unique identifier of the token which can be used to [get an atomic bank](#get-an-atomic-bank)
-`tenant_id` | *string* | The [tenant](#tenants) ID which owns the bank
-`type` | *string* | `Bank` [token type](#token-types)
-`created_by` | *string* | The [application](#applications) ID which created the atomic bank
-`created_at` | *string* | Created date of the application in ISO 8601 format
-`bank` | *bank* | Masked [bank object](#bank-object-schema)
-`metadata` | *any* | The metadata provided when [creating the atomic bank](#create-atomic-bank)
-
-### Response Messages
-
-Code | Description
----- | -----------
-`200` | Atomic banks successfully retrieved
-`401` | A missing or invalid `X-API-KEY` was provided
-`403` | The provided `X-API-KEY` does not have the required permissions
+Returns a [paginated object](#pagination) with the `data` property containing an array of [atomic banks](#atomic-bank-object). Providing any query parameters will filter the results. Returns [an error](#errors) if atomic banks could not be retrieved.
 
 
 ## Get an Atomic Bank
 
-> Get Atomic Bank Request Example:
+> Request
 
 ```shell
 curl "https://api.basistheory.com/atomic/banks/1485efb9-6b1f-4248-a5d1-cf9b3907164c" \
   -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
 ```
 
-> Atomic Bank Response Example:
+```csharp
+var client = new AtomicBankClient("key_N88mVGsp3sCXkykyN2EFED");
+
+var atomicBank = await client.GetByIdAsync("1485efb9-6b1f-4248-a5d1-cf9b3907164c");
+```
+
+> Response
 
 ```json
 {
   "id": "1485efb9-6b1f-4248-a5d1-cf9b3907164c",
   "tenant_id": "77cb0024-123e-41a8-8ff8-a3d5a0fa8a08",
   "type": "bank",
-  "created_by": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
-  "created_at": "2020-09-15T15:53:00+00:00",
   "bank": {
     "routing_number": "021000021",
     "account_number": "XXXXXX7890"
   },
   "metadata": {
     "nonSensitiveField": "Non-Sensitive Value"
-  }
+  },
+  "created_by": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
+  "created_at": "2020-09-15T15:53:00+00:00"
 }
 ```
 
@@ -212,38 +212,27 @@ Get an atomic bank by ID in the tenant.
 
 Parameter | Required | Type | Default | Description
 --------- | -------- | ---- | ------- | -----------
-`id` | true | *string* | `null` | The ID of the atomic bank
+`id` | true | *uuid* | `null` | The ID of the atomic bank
 
-### Response Schema
+### Response
 
-Attribute | Type | Description
---------- | ---- | -----------
-`id` | *string* | Unique identifier of the token which can be used to [get an atomic bank](#get-an-atomic-bank)
-`tenant_id` | *string* | The [tenant](#tenants) ID which owns the bank
-`type` | *string* | `Bank` [token type](#token-types)
-`created_by` | *string* | The [application](#applications) ID which created the atomic bank
-`created_at` | *string* | Created date of the application in ISO 8601 format
-`bank` | *bank* | Masked [bank object](#bank-object-schema)
-`metadata` | *any* | The metadata provided when [creating the atomic bank](#create-atomic-bank)
-
-### Response Messages
-
-Code | Description
----- | -----------
-`200` | Atomic bank successfully retrieved
-`401` | A missing or invalid `X-API-KEY` was provided
-`403` | The provided `X-API-KEY` does not have the required permissions
-`404` | The atomic bank was not found
+Returns an [atomic bank](#atomic-bank-object) with the `id` provided. Returns [an error](#errors) if the atomic bank could not be retrieved.
 
 
 ## Delete Atomic Bank
 
-> Delete Token Request Example:
+> Request
 
 ```shell
 curl "https://api.basistheory.com/atomic/banks/1485efb9-6b1f-4248-a5d1-cf9b3907164c" \
   -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
   -X "DELETE"
+```
+
+```csharp
+var client = new AtomicBankClient("key_N88mVGsp3sCXkykyN2EFED");
+
+await client.DeleteAsync("1485efb9-6b1f-4248-a5d1-cf9b3907164c");
 ```
 
 <span class="http-method delete">
@@ -268,43 +257,47 @@ Delete an atomic bank by ID in the tenant.
 
 Parameter | Required | Type | Default | Description
 --------- | -------- | ---- | ------- | -----------
-`id` | true | *string* | `null` | The ID of the atomic bank
+`id` | true | *uuid* | `null` | The ID of the atomic bank
 
-### Response Messages
+### Response
 
-Code | Description
----- | -----------
-`204` | Atomic bank successfully deleted
-`401` | A missing or invalid `X-API-KEY` was provided
-`403` | The provided `X-API-KEY` does not have the required permissions
-`404` | The atomic bank was not found
+Returns [an error](#errors) if the atomic bank failed to delete.
 
 
 ## Decrypt Atomic Bank
 
-> Decrypt Token Request Example:
+> Request
 
 ```shell
 curl "https://api.basistheory.com/atomic/banks/1485efb9-6b1f-4248-a5d1-cf9b3907164c/decrypt" \
   -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
 ```
 
-> Decrypt Atomic Bank Response Example:
+```csharp
+var client = new AtomicBankClient("key_N88mVGsp3sCXkykyN2EFED");
+
+var atomicBank = await client.GetByIdAsync("1485efb9-6b1f-4248-a5d1-cf9b3907164c", 
+  new BankGetByIdRequest {
+    Decrypt = true
+  });
+```
+
+> Response
 
 ```json
 {
   "id": "1485efb9-6b1f-4248-a5d1-cf9b3907164c",
   "tenant_id": "77cb0024-123e-41a8-8ff8-a3d5a0fa8a08",
   "type": "bank",
-  "created_by": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
-  "created_at": "2020-09-15T15:53:00+00:00",
   "bank": {
     "routing_number": "021000021",
     "account_number": "1234567890"
   },
   "metadata": {
     "nonSensitiveField": "Non-Sensitive Value"
-  }
+  },
+  "created_by": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
+  "created_at": "2020-09-15T15:53:00+00:00"
 }
 ```
 
@@ -326,25 +319,8 @@ Decrypt an atomic bank by ID in the tenant.
 
 Parameter | Required | Type | Default | Description
 --------- | -------- | ---- | ------- | -----------
-`id` | true | *string* | `null` | The ID of the atomic bank
+`id` | true | *uuid* | `null` | The ID of the atomic bank
 
-### Response Schema
+### Response
 
-Attribute | Type | Description
---------- | ---- | -----------
-`id` | *string* | Unique identifier of the token which can be used to [get an atomic bank](#get-an-atomic-bank)
-`tenant_id` | *string* | The [tenant](#tenants) ID which owns the bank
-`type` | *string* | `Bank` [token type](#token-types)
-`created_by` | *string* | The [application](#applications) ID which created the atomic bank
-`created_at` | *string* | Created date of the application in ISO 8601 format
-`bank` | *bank* | Masked [bank object](#bank-object-schema)
-`metadata` | *any* | The metadata provided when [creating the atomic bank](#create-atomic-bank)
-
-### Response Messages
-
-Code | Description
----- | -----------
-`200` | Atomic bank successfully decrypted
-`401` | A missing or invalid `X-API-KEY` was provided
-`403` | The provided `X-API-KEY` does not have the required permissions
-`404` | The atomic bank was not found
+Returns an [atomic bank](#atomic-bank-object) with plaintext [bank](#bank-object) data with the `id` provided. Returns [an error](#errors) if the atomic bank could not be retrieved.

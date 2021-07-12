@@ -1,8 +1,50 @@
 # Atomic Cards
 
+## Atomic Card Object
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`id` | *uuid* | Unique identifier of the token which can be used to [get an atomic card](#get-an-atomic-card)
+`tenant_id` | *uuid* | The [tenant](#tenants) ID which owns the card
+`type` | *string* | `Card` [token type](#token-types)
+`card` | *[card](#card-object)* | Card data
+`billing_details` | *[billing details](#billing-details-object)* | Billing details
+`metadata` | *any* | Non-sensitive token metadata. Can be an object, array, or any primitive type such as an integer, boolean, or string
+`created_by` | *uuid* | The [application](#applications) ID which created the atomic card
+`created_at` | *date* | Created date of the application in ISO 8601 format
+
+### Card Object
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`number` | *string* | The card number without any separators
+`expiration_month` | *integer* | Two-digit number representing the card's expiration month
+`expiration_year` | *integer* | our-digit number representing the card's expiration year
+
+### Billing Details Object
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`name` | *string* | The cardholder or customer's full name
+`email` | *string* | The cardholder or customer's email address
+`phone` | *string* | The cardholder or customer's phone number
+`address` | *address* | The cardholder or customer's [address](#address-object)
+
+### Address Object
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`line1` | *string* | Address line 1 (Street address / PO Box / Company name)
+`line2` | *string* | Address line 2 (Apartment / Suite / Unit / Building)
+`city` | *string* | City / District / Suburb / Town / Village
+`state` | *string* | State / County / Province / Region
+`postal_code` | *string* | Zip or postal code
+`country` | *string* | Two-character ISO country code (e.g. `US`)
+
+
 ## Create Atomic Card
 
-> Create Atomic Card Request Example:
+> Request
 
 ```shell
 curl "api.basistheory.com/atomic/cards" \
@@ -35,15 +77,42 @@ curl "api.basistheory.com/atomic/cards" \
   }'
 ```
 
-> Create Atomic Card Response Example:
+```csharp
+var client = new AtomicCardClient("key_N88mVGsp3sCXkykyN2EFED");
+
+var atomicCard = await client.CreateAsync(new AtomicCard {
+  Card = new Card {
+    CardNumber = "4242424242424242",
+    ExpirationMonth = 12,
+    ExpirationYear = 2025,
+    CardVerificationCode = "123"
+  },
+  BillingDetails = new BillingDetails {
+    Name = "John Doe",
+    Email = "johndoe@test.com",
+    PhoneNumber = "555-123-4567",
+    Address = new Address {
+      LineOne = "111 Test St.",
+      LineTwo = "Apt 304",
+      City = "San Francisco",
+      State = "CA",
+      PostalCode = "94141",
+      Country = "US"
+    }
+  },
+  Metadata = new {
+    nonSensitiveField = "Non-Sensitive Value"
+  }
+});
+```
+
+> Response
 
 ```json
 {
   "id": "c1e565009-1984-4638-8fca-dce8a82cc2af",
   "tenant_id": "77cb0024-123e-41a8-8ff8-a3d5a0fa8a08",
   "type": "card",
-  "created_by": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
-  "created_at": "2020-09-15T15:53:00+00:00",
   "card": {
     "number": "XXXXXXXXXXXX4242",
     "expiration_month": 12,
@@ -64,7 +133,9 @@ curl "api.basistheory.com/atomic/cards" \
   },
   "metadata": {
     "nonSensitiveField": "Non-Sensitive Value"
-  }
+  },
+  "created_by": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
+  "created_at": "2020-09-15T15:53:00+00:00"
 }
 ```
 
@@ -82,79 +153,35 @@ Create a new atomic card for the tenant.
   <span class="scope">token:create</span>
 </p>
 
-### Request Schema
+### Request Parameters
 
 Attribute | Required | Type | Default | Description
 --------- | -------- | ---- | ------- | -----------
-`card` | true | *card* | `null` | [Card object](#card-object-schema)
-`billing_details` | false | *billing details* | `null` | [Billing details object](#billing-details-object-schema)
-`metadata` | false | *any* | `null` | Non-sensitive token metadata
+`card` | true | *[card](#card-object)* | `null` | Card data
+`billing_details` | false | *[billing details](#billing-details-object)* | `null` | Billing details
+`metadata` | false | *any* | `null` | Non-sensitive token metadata. Can be an object, array, or any primitive type such as an integer, boolean, or string
 
-### Card Object Schema
+### Response
 
-Attribute | Required | Type | Default | Description
---------- | -------- | ---- | ------- | -----------
-`number` | true | *string* | `null` | The card number without any separators
-`expiration_month` | true | *integer* | `null` | Two-digit number representing the card's expiration month
-`expiration_year` | true | *integer* | `null` | Four-digit number representing the card's expiration year
-
-### Billing Details Object Schema
-
-Attribute | Required | Type | Default | Description
---------- | -------- | ---- | ------- | -----------
-`name` | false | *string* | `null` | The cardholder or customer's full name
-`email` | false | *string* | `null` | The cardholder or customer's email address
-`phone` | false | *string* | `null` | The cardholder or customer's phone number
-`address` | false | *address* | `null` | The cardholder or customer's [address](#address-object-schema)
-
-### Address Object Schema
-
-Attribute | Required | Type | Default | Description
---------- | -------- | ---- | ------- | -----------
-`line1` | false | *string* | `null` | Address line 1 (Street address / PO Box / Company name)
-`line2` | false | *string* | `null` | Address line 2 (Apartment / Suite / Unit / Building)
-`city` | false | *string* | `null` | City / District / Suburb / Town / Village
-`state` | false | *string* | `null` | State / County / Province / Region
-`postal_code` | false | *string* | `null` | Zip or postal code
-`country` | false | *string* | `null` | Two-character ISO country code (e.g. `US`)
-
-<aside class="notice">
-  <span><code>metadata</code> values can be an object, array, or any primitive type such as an integer, boolean, or string. See <a href="#create-token">create token examples</a> for reference.</span>
-</aside>
-
-### Response Schema
-
-Attribute | Type | Description
---------- | ---- | -----------
-`id` | *string* | Unique identifier of the token which can be used to [get an atomic card](#get-an-atomic-card)
-`tenant_id` | *string* | The [tenant](#tenants) ID which owns the card
-`type` | *string* | `Card` [token type](#token-types)
-`created_by` | *string* | The [application](#applications) ID which created the atomic card
-`created_at` | *string* | Created date of the application in ISO 8601 format
-`card` | *card* | Masked [card object](#card-object-schema)
-`billing_details` | *billing_details* | [Billing details object](#billing-details-object-schema)
-`metadata` | *any* | The metadata provided when [creating the atomic card](#create-atomic-card)
-
-### Response Messages
-
-Code | Description
----- | -----------
-`201` | Atomic card successfully created
-`400` | Invalid request body. See [Errors](#errors) response for details
-`401` | A missing or invalid `X-API-KEY` was provided
-`403` | The provided `X-API-KEY` does not have the required permissions
+Returns an [atomic card](#atomic-card-object) with masked [card data](#card-object) if the atomic card was created. Returns [an error](#errors) if there were validation errors or the atomic card failed to create.
 
 
 ## List Atomic Cards
 
-> List Atomic Cards Request Example:
+> Request
 
 ```shell
 curl "api.basistheory.com/atomic/cards" \
   -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
 ```
 
-> Atomic Cards Response Example:
+```csharp
+var client = new AtomicCardClient("key_N88mVGsp3sCXkykyN2EFED");
+
+var atomicCards = await client.GetAsync();
+```
+
+> Response
 
 ```json
 {
@@ -164,8 +191,6 @@ curl "api.basistheory.com/atomic/cards" \
       "id": "c1e565009-1984-4638-8fca-dce8a82cc2af",
       "tenant_id": "77cb0024-123e-41a8-8ff8-a3d5a0fa8a08",
       "type": "card",
-      "created_by": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
-      "created_at": "2020-09-15T15:53:00+00:00",
       "card": {
         "number": "XXXXXXXXXXXX4242",
         "expiration_month": 12,
@@ -186,7 +211,9 @@ curl "api.basistheory.com/atomic/cards" \
       },
       "metadata": {
         "nonSensitiveField": "Non-Sensitive Value"
-      }
+      },
+      "created_by": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
+      "created_at": "2020-09-15T15:53:00+00:00"
     },
     {...},
     {...}
@@ -208,48 +235,33 @@ Get a list of atomic cards for the tenant.
   <span class="scope">token:read</span>
 </p>
 
-### Response Schema
+### Response
 
-Returns the [Pagination](#pagination) schema. The `data` attribute in the response contains an array of tokens with the following schema:
-
-Attribute | Type | Description
---------- | ---- | -----------
-`id` | *string* | Unique identifier of the token which can be used to [get an atomic card](#get-an-atomic-card)
-`tenant_id` | *string* | The [tenant](#tenants) ID which owns the card
-`type` | *string* | `Card` [token type](#token-types)
-`created_by` | *string* | The [application](#applications) ID which created the atomic card
-`created_at` | *string* | Created date of the application in ISO 8601 format
-`card` | *card* | Masked [card object](#card-object-schema)
-`billing_details` | *billing_details* | [Billing details object](#billing-details-object-schema)
-`metadata` | *any* | The metadata provided when [creating the atomic card](#create-atomic-card)
-
-### Response Messages
-
-Code | Description
----- | -----------
-`200` | Atomic cards successfully retrieved
-`401` | A missing or invalid `X-API-KEY` was provided
-`403` | The provided `X-API-KEY` does not have the required permissions
+Returns a [paginated object](#pagination) with the `data` property containing an array of [atomic cards](#atomic-card-object). Providing any query parameters will filter the results. Returns [an error](#errors) if atomic cards could not be retrieved.
 
 
 ## Get an Atomic Card
 
-> Get Atomic Card Request Example:
+> Request
 
 ```shell
 curl "api.basistheory.com/atomic/cards/c1e565009-1984-4638-8fca-dce8a82cc2af" \
   -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
 ```
 
-> Atomic Card Response Example:
+```csharp
+var client = new AtomicCardClient("key_N88mVGsp3sCXkykyN2EFED");
+
+var atomicCard = await client.GetByIdAsync("c1e565009-1984-4638-8fca-dce8a82cc2af");
+```
+
+> Response
 
 ```json
 {
   "id": "c1e565009-1984-4638-8fca-dce8a82cc2af",
   "tenant_id": "77cb0024-123e-41a8-8ff8-a3d5a0fa8a08",
   "type": "card",
-  "created_by": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
-  "created_at": "2020-09-15T15:53:00+00:00",
   "card": {
     "number": "XXXXXXXXXXXX4242",
     "expiration_month": 12,
@@ -270,7 +282,9 @@ curl "api.basistheory.com/atomic/cards/c1e565009-1984-4638-8fca-dce8a82cc2af" \
   },
   "metadata": {
     "nonSensitiveField": "Non-Sensitive Value"
-  }
+  },
+  "created_by": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
+  "created_at": "2020-09-15T15:53:00+00:00"
 }
 ```
 
@@ -292,39 +306,27 @@ Get an atomic card by ID in the tenant.
 
 Parameter | Required | Type | Default | Description
 --------- | -------- | ---- | ------- | -----------
-`id` | true | *string* | `null` | The ID of the atomic card
+`id` | true | *uuid* | `null` | The ID of the atomic card
 
-### Response Schema
+### Response
 
-Attribute | Type | Description
---------- | ---- | -----------
-`id` | *string* | Unique identifier of the token which can be used to [get an atomic card](#get-an-atomic-card)
-`tenant_id` | *string* | The [tenant](#tenants) ID which owns the card
-`type` | *string* | `Card` [token type](#token-types)
-`created_by` | *string* | The [application](#applications) ID which created the atomic card
-`created_at` | *string* | Created date of the application in ISO 8601 format
-`card` | *card* | Masked [card object](#card-object-schema)
-`billing_details` | *billing_details* | [Billing details object](#billing-details-object-schema)
-`metadata` | *any* | The metadata provided when [creating the atomic card](#create-atomic-card)
-
-### Response Messages
-
-Code | Description
----- | -----------
-`200` | Atomic card successfully retrieved
-`401` | A missing or invalid `X-API-KEY` was provided
-`403` | The provided `X-API-KEY` does not have the required permissions
-`404` | The atomic card was not found
+Returns an [atomic card](#atomic-card-object) with the `id` provided. Returns [an error](#errors) if the atomic card could not be retrieved.
 
 
 ## Delete Atomic Card
 
-> Delete Token Request Example:
+> Request
 
 ```shell
 curl "api.basistheory.com/atomic/cards/c1e565009-1984-4638-8fca-dce8a82cc2af" \
   -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
   -X "DELETE"
+```
+
+```csharp
+var client = new AtomicCardClient("key_N88mVGsp3sCXkykyN2EFED");
+
+await client.DeleteAsync("c1e565009-1984-4638-8fca-dce8a82cc2af");
 ```
 
 <span class="http-method delete">
@@ -349,16 +351,11 @@ Delete an atomic card by ID in the tenant.
 
 Parameter | Required | Type | Default | Description
 --------- | -------- | ---- | ------- | -----------
-`id` | true | *string* | `null` | The ID of the atomic card
+`id` | true | *uuid* | `null` | The ID of the atomic card
 
-### Response Messages
+### Response
 
-Code | Description
----- | -----------
-`204` | Atomic card successfully deleted
-`401` | A missing or invalid `X-API-KEY` was provided
-`403` | The provided `X-API-KEY` does not have the required permissions
-`404` | The atomic card was not found
+Returns [an error](#errors) if the atomic card failed to delete.
 
 
 ## Test Cards

@@ -2,10 +2,10 @@
 title: Basis Theory API Reference
 
 language_tabs: # must be one of https://git.io/vQNgJ
-  - shell
-  - html
-  - javascript--node
-  - typescript
+  - shell: cURL
+  - javascript: Javascript
+  - csharp: C#
+  - html: HTML
 
 toc_footers:
 

@@ -9,3 +9,23 @@ To begin taking advantage of the Basis Theory platform, you’ll need to create 
 ### If you have an account
 
 Checkout out our API Reference documentation below, or go to our Getting Started section if you’re unsure of where to go next.
+
+## Install SDK
+
+> Install SDK
+
+```javascript
+npm install --save @Basis-Theory/basis-theory-js
+```
+
+```csharp
+dotnet add package BasisTheory.net 
+```
+
+```html
+<script src="https://js.basistheory.com"></script> 
+```
+
+Our SDK's enable you to quickly and easily integrate with the API. Select one of the language tabs to see instructions on how to install the SDK and code examples in that language.
+
+If you don't see your language listed, <a href="mailto:support@basistheory.com?subject=API SDK Language Support">contact us</a> about getting an official SDK added in your preferred language.

@@ -9,41 +9,12 @@ This will give you the power to continue to own the UX of your application, whil
 This survey will identify and enforce certain data protections for the PCI compliance of your frontend systems (ones touching the card data).</span>
 </aside>
 
-- [Install](#install)
 - [Initialize](#initialize)
 - [Tokenize](#tokenize)
 - [Store Credit Card](#store-credit-card)
 - [Examples](#examples)
 
-# Install
-
-```shell
-npm install --save @Basis-Theory/basis-theory-js
-
-# OR
-
-yarn add @Basis-Theory/basis-theory-js
-```
-
-```html
-<script src="https://js.basistheory.com"></script>
-```
-
-```javascript--node
-// checkout shell and html language tabs
-```
-
-```typescript
-// checkout shell and html language tabs
-```
-
-**BasisTheory.js** is available for including in your site directly from `https://js.basistheory.com` **or** installing it as a module, and bundling/hosting it yourself within your site, or using it in your backend systems.
-
 # Initialize
-
-```shell
-// checkout other language tabs
-```
 
 ```html
 <!-- This adds a window/global BasisTheory variable -->
@@ -59,19 +30,10 @@ yarn add @Basis-Theory/basis-theory-js
 </script>
 ```
 
-```javascript--node
-const BasisTheory = require('@Basis-Theory/basis-theory-js');
-
-BasisTheory.init("test_1234567890").then(() => {
-  // use BasisTheory
-})
-```
-
-```typescript
+```javascript
 import BasisTheory from '@Basis-Theory/basis-theory-js';
 
 await BasisTheory.init("test_1234567890");
-// use BasisTheory
 ```
 
 `BasisTheory` instance should be initialized only once, and it can be done whenever it suits best your workflow.
@@ -109,10 +71,6 @@ General tokenization methods can be found under `tokens` service inside `BasisTh
 
 ## createToken
 
-```shell
-# checkout other language tabs
-```
-
 ```html
 <script src="https://js.basistheory.com"></script>
 
@@ -129,23 +87,7 @@ General tokenization methods can be found under `tokens` service inside `BasisTh
 <button onclick="tokenize()">Tokenize</button>
 ```
 
-```javascript--node
-const BasisTheory = require('@Basis-Theory/basis-theory-js');
-
-// sample data
-const data = {
-  encryptedField: '1vauq19af...',
-  myFlag: true,
-  values: [1, 2, 3, 4],
-}
-
-BasisTheory.tokens.createToken(data)
-  .then(function (res) {
-    console.log(res.id); //token to store in your system
-  });
-```
-
-```typescript
+```javascript
 import BasisTheory from '@Basis-Theory/basis-theory-js';
 
 // sample data
@@ -157,7 +99,6 @@ const data = {
 
 const { id } = await BasisTheory.tokens.createToken(data)
 console.log(id); //token to store in your system
-
 ```
 
 > Make sure you've [initialized](#initialize) BasisTheory
@@ -172,10 +113,10 @@ It returns a `Promise` that resolves to a `TokenCreateResponse` object:
 
 Attribute   | Type     | Description
 ----------- | -------- | -----------
-`id`        | *string* | Unique identifier of the token
-`tenantId`  | *string* | The [tenant](#tenants) ID which owns the token
+`id`        | *uuid* | Unique identifier of the token
+`tenantId`  | *uuid* | The [tenant](#tenants) ID which owns the token
 `type`      | *string* | [Token type](#token-types)
-`createdAt` | *string* | Created date of the token in ISO 8601 format
+`createdAt` | *date* | Created date of the token in ISO 8601 format
 
 <!-- include metadata -->
 
@@ -184,27 +125,12 @@ Internally, `BasisTheory.tokens` calls [Create Token API](#create-token) and map
 
 ## getToken
 
-```shell
-# checkout javascript--node and typescript language tabs
-```
-
 ```html
 <!-- We don't recommend fetching tokens at client-side -->
-<!-- Checkout javascript--node and typescript language tabs. -->
+<!-- Checkout javascript language tab. -->
 ```
 
-```javascript--node
-const BasisTheory = require('@Basis-Theory/basis-theory-js');
-
-const id = '25e2cd6b-2373-4cce-b9a0-98a9c65f53fb'; // previously stored token id
-
-BasisTheory.tokens.getToken(id)
-  .then(function (token) {
-    console.log(token.data);
-  });
-```
-
-```typescript
+```javascript
 import BasisTheory from '@Basis-Theory/basis-theory-js';
 
 const id = '25e2cd6b-2373-4cce-b9a0-98a9c65f53fb'; // previously stored token id
@@ -219,17 +145,17 @@ With `getToken` method, you can fetch tokenized data by a token id:
 
 Parameter | Required | Type     | Description
 --------- | -------- | -------- | -----------
-`id`      | true     | *string* | The id of the token
+`id`      | true     | *uuid* | The id of the token
 
 It returns a `Promise` that resolves to a `GetTokenResponse` object:
 
 Attribute    | Type     | Description
 ------------ | -------- | -----------
-`id`         | *string* | Unique identifier of the token
-`ownerId`    | *string* | The [tenant](#tenants) ID which owns the token
+`id`         | *uuid* | Unique identifier of the token
+`ownerId`    | *uuid* | The [tenant](#tenants) ID which owns the token
 `type`       | *string* | [Token type](#token-types)
 `data`       | *any*    | The data provided when [creating the token](#createtoken)
-`createdAt`  | *string* | Created date of the token in ISO 8601 format
+`createdAt`  | *date* | Created date of the token in ISO 8601 format
 
 <!-- `encryption` | *any*    | The [encryption](#encryption-request-object) data provided when [creating the token](#create-token) -->
 <!-- `metadata` | *any* | The metadata provided when [creating the token](#create-token) -->
@@ -239,33 +165,17 @@ Internally, `BasisTheory.tokens` calls [Get Token API](#get-a-token) and maps th
 
 ## deleteToken
 
-```shell
-# checkout javascript--node and typescript language tabs
-```
-
 ```html
 <!-- We don't recommend deleting tokens at client-side -->
-<!-- Checkout javascript--node and typescript language tabs. -->
+<!-- Checkout javascript language tab. -->
 ```
 
-```javascript--node
-const BasisTheory = require('@Basis-Theory/basis-theory-js');
-
-const id = '25e2cd6b-2373-4cce-b9a0-98a9c65f53fb'; // previously stored token id
-
-BasisTheory.tokens.delete(id)
-  .then(function () {
-    // token has been deleted
-   });
-```
-
-```typescript
+```javascript
 import BasisTheory from '@Basis-Theory/basis-theory-js';
 
 const id = '25e2cd6b-2373-4cce-b9a0-98a9c65f53fb'; // previously stored token id
 
 await BasisTheory.tokens.deleteToken(id);
-// token has been deleted
 ```
 
 > Make sure you've [initialized](#initialize) BasisTheory
@@ -274,7 +184,7 @@ With `deleteToken` method, you can delete tokenized data using a token id:
 
 Parameter | Required | Type     | Description
 --------- | -------- | -------- | -----------
-`id`      | true     | *string* | The id of the token
+`id`      | true     | *uuid* | The id of the token
 
 It returns a `Promise` of `void`.
 
@@ -290,10 +200,6 @@ BasisTheory.atomic
 ```
 
 ## storeCreditCard
-
-```shell
-# checkout other language tabs
-```
 
 ```html
 <script src="https://js.basistheory.com"></script>
@@ -318,27 +224,7 @@ BasisTheory.atomic
 </script>
 ```
 
-```javascript--node
-const BasisTheory = require('@Basis-Theory/basis-theory-js');
-
-const data = {
-  card: {
-    number: '4242424242424242',
-    expirationMonth: 10,
-    expirationYear: 25,
-    cvc: '000',
-  },
-  billingDetails: {
-    name: 'Fiona Theory',
-  },
-};
-
-BasisTheory.atomic.storeCreditCard(data).then((res) => {
-  console.log(res.id)
-})
-```
-
-```typescript
+```javascript
 import BasisTheory from '@Basis-Theory/basis-theory-js';
 
 const data = {

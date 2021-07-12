@@ -1,13 +1,22 @@
 # Pagination
 
-> Pagination Request Example:
+> Request
 
 ```shell
 curl "https://api.basistheory.com/applications?page=2&size=10" \
   -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
 ```
 
-> Pagination Response Example:
+```csharp
+var client = new ApplicationClient("key_N88mVGsp3sCXkykyN2EFED");
+
+var applications = client.GetAsync(new ApplicationGetRequest {
+  Page = 2,
+  PageSize = 10
+});
+```
+
+> Response
 
 ```json
 {
@@ -34,14 +43,14 @@ Parameter | Required | Type | Default | Description
 `page` | false | *integer* | 1 | Page number of the results to return
 `size` | false | *integer* | 20 | Number of results per page to return. Maximum size of 100 results.
 
-### Response Schema
+## Pagination Object
 
 Attribute | Type | Description
 --------- | ---- | -----------
-`pagination` | *object* | Pagination metadata
+`pagination` | *[pagination metadata](#pagination-metadata-object)* | Pagination metadata for the response
 `data` | *array* | Query results of the request. See list endpoint resource for response schema definition
 
-### Pagination Response Object
+### Pagination Metadata Object
 
 Attribute | Type | Description
 --------- | ---- | -----------

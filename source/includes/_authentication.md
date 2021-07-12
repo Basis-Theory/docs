@@ -1,13 +1,22 @@
 # Authentication
 
-> Authentication Example:
+> Request
 
 ```shell
 curl "https://api.basistheory.com" \
   -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
 ```
 
-> Make sure to replace `key_N88mVGsp3sCXkykyN2EFED` with your API key.
+```csharp
+// At service
+var client = new TokenClient("key_N88mVGsp3sCXkykyN2EFED");
+
+// Per call
+var client = new TokenClient();
+client.GetAsync(requestOptions: new RequestOptions {
+  ApiKey = "key_N88mVGsp3sCXkykyN2EFED"
+});
+```
 
 Basis Theory uses API keys to allow access to the API.
 
@@ -16,5 +25,5 @@ Basis Theory expects for the API key to be included in all API requests to the s
 `X-API-KEY: key_N88mVGsp3sCXkykyN2EFED`
 
 <aside class="notice">
-  <span>You must replace <code>key_N88mVGsp3sCXkykyN2EFED</code> with your API key supplied when you [created an Application](#create-application).</span>
+  <span>You must replace <code>key_N88mVGsp3sCXkykyN2EFED</code> with your API key supplied when you [created an application](#create-application).</span>
 </aside>
