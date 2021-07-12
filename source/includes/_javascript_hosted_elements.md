@@ -13,10 +13,6 @@ Think about it as a portal that we open within your site that allows users to se
 
 # Install / Initialize
 
-```shell
-// checkout other language tabs
-```
-
 ```html
 <script src="https://js.basistheory.com"></script>
 
@@ -29,20 +25,12 @@ Think about it as a portal that we open within your site that allows users to se
 </script>
 ```
 
-```javascript--node
-const BasisTheory = require('@Basis-Theory/basis-theory-js');
-
-BasisTheory.init("test_1234567890", { elements: true }).then(() => {
-  // use BasisTheory.elements
-})
-```
-
-```typescript
+```javascript
 import BasisTheory from '@Basis-Theory/basis-theory-js';
 
 await BasisTheory.init("test_1234567890", { elements: true });
-// use BasisTheory.elements
 ```
+
 > Make sure to replace `test_1234567890` with your API key.
 
 You don't have to install `Hosted Elements` as a separated module or include additional script tags besides `BasisTheory.js`. It will dynamically load them from `js.basistheory.com`, which enables us to keep the highest compliance standards (e.g. PCI compliance). The only thing you have to worry about is adding `elements: true` in `BasisTheory.init` options parameter.
@@ -65,7 +53,7 @@ This method returns an instance of an element type.
 
 Parameter | Required | Type     | Description
 --------- | -------- | -------- | -----------
-`type`    | true     | *'card'* | Type of the element you want to create
+`type`    | true     | *card*   | Type of the element you want to create
 
 
 <aside class="notice">
@@ -76,24 +64,12 @@ Parameter | Required | Type     | Description
 
 ## Mount Element
 
-```shell
-// checkout html language tab
-```
-
 ```html
 <div id="my-card"></div>
 
 <script>
   cardElement.mount('#my-card')
 </script>
-```
-
-```javascript--node
-// checkout html language tab
-```
-
-```typescript
-// checkout html language tab
 ```
 
 This method attaches the element to the DOM, under a specific container.
