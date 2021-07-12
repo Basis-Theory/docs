@@ -12,6 +12,8 @@ Checkout out our API Reference documentation below, or go to our Getting Started
 
 ## Install SDK
 
+> Install SDK
+
 ```javascript
 npm install --save @Basis-Theory/basis-theory-js
 ```

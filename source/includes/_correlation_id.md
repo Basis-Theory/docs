@@ -8,6 +8,13 @@ curl "https://api.basistheory.com" \
   -H "bt-trace-id: aa5d3379-6385-4ef4-9fdb-ca1341572153"
 ```
 
+```csharp
+var client = new TokenClient("key_N88mVGsp3sCXkykyN2EFED");
+client.GetAsync(requestOptions: new RequestOptions {
+  CorrelationId = "aa5d3379-6385-4ef4-9fdb-ca1341572153"
+});
+```
+
 Basis Theory utilizes Correlation IDs to assist with request tracing, logging, and debugging.
 
 All API endpoints accepts a client-provided Correlation ID if sent with the `bt-trace-id` HTTP header within POST, PUT, PATCH, DELETE methods.

@@ -1,27 +1,19 @@
 # Pagination
 
-## Pagination Object
-
-Attribute | Type | Description
---------- | ---- | -----------
-`pagination` | *[pagination metadata](#pagination-metadata-object)* | Pagination metadata for the response
-`data` | *array* | Query results of the request. See list endpoint resource for response schema definition
-
-### Pagination Metadata Object
-
-Attribute | Type | Description
---------- | ---- | -----------
-`total_items` | *integer* | Total number of items in the tenant
-`page_number` | *integer* | Current page number. Should match `page` query parameter.
-`page_size` | *integer* | The size of each page. Should match `size` query parameter.
-`total_pages` | *integer* | The total number of pages.
-
-
 > Request
 
 ```shell
 curl "https://api.basistheory.com/applications?page=2&size=10" \
   -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
+```
+
+```csharp
+var client = new ApplicationClient("key_N88mVGsp3sCXkykyN2EFED");
+
+var applications = client.GetAsync(new ApplicationGetRequest {
+  Page = 2,
+  PageSize = 10
+});
 ```
 
 > Response
@@ -50,3 +42,19 @@ Parameter | Required | Type | Default | Description
 --------- | -------- | ---- | ------- | -----------
 `page` | false | *integer* | 1 | Page number of the results to return
 `size` | false | *integer* | 20 | Number of results per page to return. Maximum size of 100 results.
+
+## Pagination Object
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`pagination` | *[pagination metadata](#pagination-metadata-object)* | Pagination metadata for the response
+`data` | *array* | Query results of the request. See list endpoint resource for response schema definition
+
+### Pagination Metadata Object
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`total_items` | *integer* | Total number of items in the tenant
+`page_number` | *integer* | Current page number. Should match `page` query parameter.
+`page_size` | *integer* | The size of each page. Should match `size` query parameter.
+`total_pages` | *integer* | The total number of pages.
