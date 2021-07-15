@@ -1,40 +1,17 @@
 ---
 title: Basis Theory API Reference
-
-language_tabs: # must be one of https://git.io/vQNgJ
-  - shell: cURL
-  - javascript: Javascript
-  - csharp: C#
-  - html: HTML
+hide_code: true
+docs_logo: docs.svg
 
 toc_footers:
 
-intro_quick_links:
-  - quick_links
-
+other_docs:
+- <a href="/api-reference">API Reference</a>
+- <a href="/hosted-elements">Hosted Elements</a>
+- <a href="/guides">Guides</a>
+  
 intro_includes:
-  - introduction
-  - getting_started
-  - authentication
-  - correlation_id
-  - pagination
-  - errors
-
-api_includes:
-  - permissions
-  - tenants
-  - applications
-  - exchange_templates
-  - exchanges
-  - tokens
-  - token_associations
-  - atomic_cards
-  - atomic_banks
-  - logs
-
-module_includes:
-  - javascript_module
-  - javascript_hosted_elements
+  - index_intro
 
 search: true
 
