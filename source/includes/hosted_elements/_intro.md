@@ -1,8 +1,18 @@
 # Introduction
-
-```
-  BasisTheory.elements
-```
+<aside class="header-intro-box">
+    <span>
+        <h4>Elements Documentation</h4>
+        <p class="header-intro-body2-font">Explore how to quickly start using our elements to tokenize anything.</p>
+        <h6>QUICK LINKS</h6>
+        <span class="intro-quick-links">
+            <a href="#getting-started">Before you begin</a>
+            <a href="#styles">Styling Elements</a>
+            <a href="#applications">Applications</a>
+            <a href="#permissions">API Keys</a>
+        </span>
+    </span>
+    <img src="./images/hosted_intro.svg"/>
+</aside>
 
 **BasisTheory Hosted Elements** are simple, secure, developer-friendly inputs that empowers consumers to collect sensitive data from their users directly to Basis Theory certified vault.
 

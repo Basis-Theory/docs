@@ -12,7 +12,7 @@ other_docs:
   - <a href="/api-reference">API Reference</a>
 
 intro_quick_links:
-  - quick_links
+  - hosted_elements/quick_links
 
 intro_includes:
   - hosted_elements/intro

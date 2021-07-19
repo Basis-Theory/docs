@@ -18,5 +18,7 @@
       <a href="/hosted-elements">Check out our hosted element documenation</a>
       <a href="/guides">Check out our Guides</a>
     </div>
+
   </div>
+  <img src="./images/haha.svg"/>
 </div>

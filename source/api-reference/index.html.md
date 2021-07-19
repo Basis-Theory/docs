@@ -13,27 +13,27 @@ other_docs:
 - <a class="toc-h2 toc-link" href="/hosted-elements">Hosted Elements</a>
 
 intro_quick_links:
-  - quick_links
+  - api-reference/quick_links
 
 intro_includes:
-  - introduction
-  - getting_started
-  - authentication
-  - correlation_id
-  - pagination
-  - errors
+  - api-reference/introduction
+  - api-reference/getting_started
+  - api-reference/authentication
+  - api-reference/correlation_id
+  - api-reference/pagination
+  - api-reference/errors
 
 api_includes:
-  - permissions
-  - tenants
-  - applications
-  - exchange_templates
-  - exchanges
-  - tokens
-  - token_associations
-  - atomic_cards
-  - atomic_banks
-  - logs
+  - api-reference/permissions
+  - api-reference/tenants
+  - api-reference/applications
+  - api-reference/exchange_templates
+  - api-reference/exchanges
+  - api-reference/tokens
+  - api-reference/token_associations
+  - api-reference/atomic_cards
+  - api-reference/atomic_banks
+  - api-reference/logs
 
 search: true
 
