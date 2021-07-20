@@ -357,6 +357,50 @@ Parameter | Required | Type | Default | Description
 
 Returns [an error](#errors) if the atomic card failed to delete.
 
+## Exchange an Atomic Card
+
+> Request
+
+```shell
+curl "api.basistheory.com/atomic/cards/c1e565009-1984-4638-8fca-dce8a82cc2af/exchange" \
+  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
+  -X "POST"
+  -D '{
+    "exchange_id": "5b493235-6917-4307-906a-2cd6f1a90b13",
+    "metadata": {
+      "nonSensitiveField": "Non-Sensitive Value"
+    }
+  }'
+```
+
+<span class="http-method post">
+  <span class="box-method">POST</span>
+  `https://api.basistheory.com/atomic/cards/{id}/exchange`
+</span>
+
+Delete an atomic card by ID in the tenant.
+
+### Permissions
+
+<p class="scopes">
+  <span class="scope">exchange:read</span>
+  <span class="scope">card:create</span>
+  <span class="scope">card:read</span>
+  <span class="scope">token:create</span>
+  <span class="scope">token:read</span>
+</p>
+
+### URI Parameters
+
+Parameter | Required | Type | Default | Description
+--------- | -------- | ---- | ------- | -----------
+`id` | true | *uuid* | `null` | The ID of the atomic card
+`exchange_id` | true | *uuid* | `null` | The ID of the exchange
+`metadata` | false | *any* | `null` | Non-sensitive token metadata. Can be an object, array, or any primitive type such as an integer, boolean, or string
+
+### Response
+
+Returns a [token](#token-object) with type of `card:exchanged` if the atomic card was exchanged. Returns [an error](#errors) if the atomic card failed to exchange.
 
 ## Test Cards
 
