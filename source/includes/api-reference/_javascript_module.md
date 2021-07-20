@@ -55,7 +55,7 @@ Parameter | Required | Type     | Description
 
 Parameter  | Required | Type      | Default | Description
 ---------- | -------- | --------- | ------- | -----------
-`elements` | false    | *boolean* | false   | whether to load [Hosted Elements](/elements)
+`elements` | false    | *boolean* | false   | whether to load [Elements](/elements)
 
 
 > Make sure to replace `test_1234567890` with your API key.

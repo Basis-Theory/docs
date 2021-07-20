@@ -12,4 +12,4 @@
 }
 ```
 
-needs some work here to be specific to hosted elements
+needs some work here to be specific to elements

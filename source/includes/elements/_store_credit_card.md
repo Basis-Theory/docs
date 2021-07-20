@@ -19,7 +19,7 @@ Internally, `BasisTheory.elements.storeCreditCard` calls [Create Atomic Card API
 You can fetch this same data later with [Get an Atomic Card API](#get-an-atomic-card).
 
 <aside class="notice">
-  <span>Notice that the actual card data never leaves the hosted element (iframe) other than to hit our secure API endpoints.</span>
+  <span>Notice that the actual card data never leaves the element (iframe) other than to hit our secure API endpoints.</span>
 </aside>
 
 ## storeCreditCard Errors

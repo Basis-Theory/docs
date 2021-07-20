@@ -4,7 +4,7 @@ Permissions are fine-grained control over your application's access to different
 
 Permissions are associated with every application and can be configured when you [create an application](#create-application) or [update an application](#update-application). 
 
-Hosted Elements only allows _create_ permissions, removing any risk that your API keys are stolen and used to access data.
+Elements only allows _create_ permissions, removing any risk that your API keys are stolen and used to access data.
 
 <aside class="notice">
   <span>Dependent permission types are automatically assigned when an application is created or updated. For example, if an application is created with <code>card:read</code>, then the permission of <code>token:read</code> will automatically be assigned.</span>

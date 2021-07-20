@@ -1,5 +1,5 @@
 ---
-title: Basis Theory Hosted Elements Reference
+title: Basis Theory Elements Reference
 docs_logo: elements.svg
 
 language_tabs: # must be one of https://git.io/vQNgJ
