@@ -15,7 +15,7 @@
 
     <div>
       <a href="/api-reference">Check out our API documenation</a>
-      <a href="/hosted-elements">Check out our hosted element documenation</a>
+      <a href="/elements">Check out our Elements documenation</a>
       <a href="/guides">Check out our Guides</a>
     </div>
 

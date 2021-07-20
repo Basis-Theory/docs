@@ -12,19 +12,19 @@ other_docs:
   - <a href="/api-reference">API Reference</a>
 
 intro_quick_links:
-  - hosted_elements/quick_links
+  - elements/quick_links
 
 intro_includes:
-  - hosted_elements/intro
-  - hosted_elements/getting_started
-  - hosted_elements/permissions
-  - hosted_elements/authentication
-  - hosted_elements/errors
+  - elements/intro
+  - elements/getting_started
+  - elements/permissions
+  - elements/authentication
+  - elements/errors
 
 api_includes:
-  - hosted_elements/install
-  - hosted_elements/elements_instance
-  - hosted_elements/store_credit_card
+  - elements/install
+  - elements/elements_instance
+  - elements/store_credit_card
 
 search: true
 
