@@ -378,7 +378,7 @@ curl "api.basistheory.com/atomic/cards/c1e565009-1984-4638-8fca-dce8a82cc2af/exc
   `https://api.basistheory.com/atomic/cards/{id}/exchange`
 </span>
 
-Delete an atomic card by ID in the tenant.
+Exchange an atomic card by ID in the tenant.
 
 ### Permissions
 

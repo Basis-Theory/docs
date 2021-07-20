@@ -324,3 +324,48 @@ Parameter | Required | Type | Default | Description
 ### Response
 
 Returns an [atomic bank](#atomic-bank-object) with plaintext [bank](#bank-object) data with the `id` provided. Returns [an error](#errors) if the atomic bank could not be retrieved.
+
+## Exchange an Atomic Bank
+
+> Request
+
+```shell
+curl "api.basistheory.com/atomic/banks/1485efb9-6b1f-4248-a5d1-cf9b3907164c/exchange" \
+  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
+  -X "POST"
+  -D '{
+    "exchange_id": "5b493235-6917-4307-906a-2cd6f1a90b13",
+    "metadata": {
+      "nonSensitiveField": "Non-Sensitive Value"
+    }
+  }'
+```
+
+<span class="http-method post">
+  <span class="box-method">POST</span>
+  `https://api.basistheory.com/atomic/banks/{id}/exchange`
+</span>
+
+Exchange an atomic bank by ID in the tenant.
+
+### Permissions
+
+<p class="scopes">
+  <span class="scope">exchange:read</span>
+  <span class="scope">bank:create</span>
+  <span class="scope">bank:read</span>
+  <span class="scope">token:create</span>
+  <span class="scope">token:read</span>
+</p>
+
+### URI Parameters
+
+Parameter | Required | Type | Default | Description
+--------- | -------- | ---- | ------- | -----------
+`id` | true | *uuid* | `null` | The ID of the atomic card
+`exchange_id` | true | *uuid* | `null` | The ID of the exchange
+`metadata` | false | *any* | `null` | Non-sensitive token metadata. Can be an object, array, or any primitive type such as an integer, boolean, or string
+
+### Response
+
+Returns a [token](#token-object) with type of `bank:exchanged` if the atomic bank was exchanged. Returns [an error](#errors) if the atomic bank failed to exchange.
