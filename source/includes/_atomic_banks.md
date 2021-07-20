@@ -363,6 +363,10 @@ Exchange an atomic bank by ID in the tenant.
 Parameter | Required | Type | Default | Description
 --------- | -------- | ---- | ------- | -----------
 `id` | true | *uuid* | `null` | The ID of the atomic bank
+
+### Request Parameters
+Parameter | Required | Type | Default | Description
+--------- | -------- | ---- | ------- | -----------
 `exchange_id` | true | *uuid* | `null` | The ID of the exchange
 `metadata` | false | *any* | `null` | Non-sensitive token metadata. Can be an object, array, or any primitive type such as an integer, boolean, or string
 
@@ -382,7 +386,7 @@ curl "api.basistheory.com/atomic/banks/1485efb9-6b1f-4248-a5d1-cf9b3907164c/exch
 
 <span class="http-method get">
   <span class="box-method">GET</span>
-  `https://api.basistheory.com/atomic/banks/{atomicBankTokenId}/exchanged/{exchangedTokenId}`
+  `https://api.basistheory.com/atomic/banks/{atomicBankId}/exchanged/{exchangedTokenId}`
 </span>
 
 Get an atomic bank exchanged token by ID in the tenant.
@@ -398,7 +402,7 @@ Get an atomic bank exchanged token by ID in the tenant.
 
 Parameter | Required | Type | Default | Description
 --------- | -------- | ---- | ------- | -----------
-`atomicBankTokenId` | true | *uuid* | `null` | The ID of the atomic bank
+`atomicBankId` | true | *uuid* | `null` | The ID of the atomic bank
 `exchangedTokenId` | true | *uuid* | `null` | The ID of the exchanged token
 
 ### Response

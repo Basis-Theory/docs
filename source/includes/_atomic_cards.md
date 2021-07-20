@@ -395,6 +395,10 @@ Exchange an atomic card by ID in the tenant.
 Parameter | Required | Type | Default | Description
 --------- | -------- | ---- | ------- | -----------
 `id` | true | *uuid* | `null` | The ID of the atomic card
+
+### Request Parameters
+Parameter | Required | Type | Default | Description
+--------- | -------- | ---- | ------- | -----------
 `exchange_id` | true | *uuid* | `null` | The ID of the exchange
 `metadata` | false | *any* | `null` | Non-sensitive token metadata. Can be an object, array, or any primitive type such as an integer, boolean, or string
 
@@ -414,7 +418,7 @@ curl "api.basistheory.com/atomic/cards/c1e565009-1984-4638-8fca-dce8a82cc2af/exc
 
 <span class="http-method get">
   <span class="box-method">GET</span>
-  `https://api.basistheory.com/atomic/cards/{atomicCardTokenId}/exchanged/{exchangedTokenId}`
+  `https://api.basistheory.com/atomic/cards/{atomicCardId}/exchanged/{exchangedTokenId}`
 </span>
 
 Get an atomic card exchanged token by ID in the tenant.
@@ -430,7 +434,7 @@ Get an atomic card exchanged token by ID in the tenant.
 
 Parameter | Required | Type | Default | Description
 --------- | -------- | ---- | ------- | -----------
-`atomicCardTokenId` | true | *uuid* | `null` | The ID of the atomic card
+`atomicCardId` | true | *uuid* | `null` | The ID of the atomic card
 `exchangedTokenId` | true | *uuid* | `null` | The ID of the exchanged token
 
 ### Response
