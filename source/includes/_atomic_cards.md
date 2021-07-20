@@ -400,7 +400,7 @@ Parameter | Required | Type | Default | Description
 Parameter | Required | Type | Default | Description
 --------- | -------- | ---- | ------- | -----------
 `exchange_id` | true | *uuid* | `null` | The ID of the exchange
-`metadata` | false | *any* | `null` | Non-sensitive token metadata. Can be an object, array, or any primitive type such as an integer, boolean, or string
+`metadata` | false | *map* | `null` | A key-value map of non-sensitive data. We overwrite the following keys: `correlation_id`, `exchange_id`, `exchange_name`, `source_token_id`, and `source_token_type`.
 
 ### Response
 
