@@ -13,16 +13,19 @@ Checkout out our API Reference documentation below, or go to our Getting Started
 ## Install SDK
 
 > NPM
+
 ```shell
 npm install --save @Basis-Theory/basis-theory-js
 ```
 
 > Yarn
+
 ```shell
 yarn add @Basis-Theory/basis-theory-js
 ```
 
 > CDN
+
 ```jsx
 <script src="https://js.basistheory.com"></script> 
 ```
@@ -31,3 +34,38 @@ You don't have to install **Elements** as a separated module or include addition
 
 To install **BasisTheory.js** you can choose either our NPM module or CDN hosted bundle through a `script` tag.
 
+## Content Security Policy
+
+> CSP
+
+```jsx
+<head>
+  <meta
+    http-equiv="Content-Security-Policy"
+    content="frame-src https://elements.basistheory.com;"
+  />
+</head>
+
+```
+
+> Trusted Types
+
+```jsx
+
+trustedTypes.createPolicy("default", {
+  createScriptURL: (input) => {
+    if (new URL(input).origin === "https://js.basistheory.com") {
+      return input;
+    }
+    return undefined;
+  }
+});
+
+BasisTheory.init('test_1234567890', { elements: true });
+```
+
+If you have a <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP" target="_blank">CSP</a> deployed in your website, you must include the following directives:
+
+- `frame-src` - _https://elements.basistheory.com_ 
+
+If you are using <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/require-trusted-types-for" target="_blank">Trusted Types</a>, you must allow dynamic script loading from _https://js.basistheory.com_. This should be done before [initialization](#initialize).

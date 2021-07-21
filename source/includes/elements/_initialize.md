@@ -9,7 +9,7 @@
   <!-- here we are waiting for the window to load, to make sure BasisTheory instance -->
   <!-- has been injected in the window variable -->
   window.addEventListener('load', async () => {
-    await BasisTheory.init("test_1234567890", { elements: true });
+    await BasisTheory.init('test_1234567890', { elements: true });
     // use BasisTheory.elements
   });  
 </script>
@@ -20,7 +20,7 @@
 ```jsx
 import BasisTheory from '@Basis-Theory/basis-theory-js';
 
-await BasisTheory.init("test_1234567890", { elements: true });
+await BasisTheory.init('test_1234567890', { elements: true });
 // use BasisTheory.elements
 ```
 
