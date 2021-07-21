@@ -324,3 +324,87 @@ Parameter | Required | Type | Default | Description
 ### Response
 
 Returns an [atomic bank](#atomic-bank-object) with plaintext [bank](#bank-object) data with the `id` provided. Returns [an error](#errors) if the atomic bank could not be retrieved.
+
+## Exchange an Atomic Bank
+
+> Request
+
+```shell
+curl "api.basistheory.com/atomic/banks/1485efb9-6b1f-4248-a5d1-cf9b3907164c/exchange" \
+  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
+  -X "POST"
+  -D '{
+    "exchange_id": "5b493235-6917-4307-906a-2cd6f1a90b13",
+    "metadata": {
+      "nonSensitiveField": "Non-Sensitive Value"
+    }
+  }'
+```
+
+<span class="http-method post">
+  <span class="box-method">POST</span>
+  `https://api.basistheory.com/atomic/banks/{id}/exchange`
+</span>
+
+Exchange an atomic bank by ID in the tenant.
+
+### Permissions
+
+<p class="scopes">
+  <span class="scope">exchange:read</span>
+  <span class="scope">bank:create</span>
+  <span class="scope">bank:read</span>
+  <span class="scope">token:create</span>
+  <span class="scope">token:read</span>
+</p>
+
+### URI Parameters
+
+Parameter | Required | Type | Default | Description
+--------- | -------- | ---- | ------- | -----------
+`id` | true | *uuid* | `null` | The ID of the atomic bank
+
+### Request Parameters
+Parameter | Required | Type | Default | Description
+--------- | -------- | ---- | ------- | -----------
+`exchange_id` | true | *uuid* | `null` | The ID of the exchange
+`metadata` | false | *map* | `null` | A key-value map of non-sensitive data. We overwrite the following keys: `correlation_id`, `exchange_id`, `exchange_name`, `source_token_id`, and `source_token_type`.
+
+### Response
+
+Returns a [token](#token-object) with type of `bank:exchanged` if the atomic bank was exchanged. Returns [an error](#errors) if the atomic bank failed to exchange.
+
+## Get an Atomic Bank Exchanged Token
+
+> Request
+
+```shell
+curl "api.basistheory.com/atomic/banks/1485efb9-6b1f-4248-a5d1-cf9b3907164c/exchanged/6c12a05d-99e3-4454-bdb0-2e6ff88ec5b0" \
+  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
+  -X "GET"
+```
+
+<span class="http-method get">
+  <span class="box-method">GET</span>
+  `https://api.basistheory.com/atomic/banks/{atomicBankId}/exchanged/{exchangedTokenId}`
+</span>
+
+Get an atomic bank exchanged token by ID in the tenant.
+
+### Permissions
+
+<p class="scopes">
+  <span class="scope">bank:read</span>
+  <span class="scope">token:read</span>
+</p>
+
+### URI Parameters
+
+Parameter | Required | Type | Default | Description
+--------- | -------- | ---- | ------- | -----------
+`atomicBankId` | true | *uuid* | `null` | The ID of the atomic bank
+`exchangedTokenId` | true | *uuid* | `null` | The ID of the exchanged token
+
+### Response
+
+Returns a [token](#token-object) with type of `bank:exchanged`. Returns [an error](#errors) if the atomic bank failed to exchange.
