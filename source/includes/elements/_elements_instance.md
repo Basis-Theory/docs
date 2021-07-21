@@ -1,16 +1,28 @@
 # Elements instance
 
+```jsx
+BasisTheory.elements
+```
+
+After [initialization](#initialize), **Elements** are available through `BasisTheory` instance. 
+
 ## Create Element
 
-```javascript
+```jsx
 var cardElement = BasisTheory.elements.create('card');
 ```
 
-This method returns an instance of an element type.
+This method returns a new instance of an element type.
 
 Parameter | Required | Type     | Description
 --------- | -------- | -------- | -----------
-`type`    | true     | *card*   | Type of the element you want to create
+`type`    | true     | *string* | [Type](#element-types) of the element you want to create
+
+### Element Types
+
+Type      | Input(s) | Description
+--------- | -------- | -----------
+`card`    | *cardNumber*, *expirationDate* and *cvc* | Fully featured credit card input
 
 
 <aside class="notice">
@@ -19,7 +31,7 @@ Parameter | Required | Type     | Description
 
 ## Mount Element
 
-```html
+```jsx
 <div id="my-card"></div>
 
 <script>
@@ -35,7 +47,7 @@ Parameter  | Required | Type     | Description
 
 ## Unmount Element
 
-```javascript
+```jsx
 cardElement.unmount();
 ```
 
@@ -43,21 +55,27 @@ Safely removes the element from the DOM, stopping any further communication with
 
 ## Element Events
 
-```javascript
-const subscription = element.on('event-type', (event) => {
+```jsx
+var subscription = cardElement.on('event-type', (event) => {
   // handle event  
 });
 
-// subscription.unsubscribe(); // stops listening to the event type
+subscription.unsubscribe(); // stops listening to the event type
 ```
-> Make sure to replace 'event-type' with an actual event type.
 
-You can communicate with elements by listening to events. When you subscribe to an event, you'll get back a [Subscription](https://rxjs-dev.firebaseapp.com/guide/subscription) that you can unsubscribe if/when it fits your workflow.
+You can communicate with elements by listening to events. When you subscribe to an event, you'll get back a <a href="https://rxjs.dev/guide/subscription" target="_blank">Subscription</a> that you can unsubscribe if/when it fits your workflow.
+
+<aside class="notice">
+  <span>Make sure to replace 'event-type' with an actual event type.</span>
+</aside>
+
 
 ### On Ready
 
-```javascript
-element.on('ready', () => {
+> On Ready
+
+```jsx
+cardElement.on('ready', () => {
   // handle ready event 
 })
 ```
@@ -66,8 +84,10 @@ This event is triggered when the element has rendered and user is able to start 
 
 ### On Change
 
-```javascript
-element.on('change', (changeEvent) => {
+> On Change
+
+```jsx
+cardElement.on('change', (changeEvent) => {
   if (changeEvent.complete) {
     // enable submit button  
   } else {
@@ -81,12 +101,14 @@ This event is triggered whenever element's value(s) relevantly change. For examp
 
 Parameter | Required | Type       | Description
 --------- | -------- | ---------- | -----------
-`event`   | true     | *'change'* | The event type to listen to.
+`event`   | true     | *"change"* | The event type to listen to.
 `handler` | true     | *function* | Callback function to be called when the event is fired. Takes in a [ChangeEvent](#changeevent).
 
 #### ChangeEvent
 
-```json
+> ChangeEvent example
+
+```jsx
 {
   "complete": false,
   "errors": [
@@ -97,5 +119,109 @@ Parameter | Required | Type       | Description
 
 Attribute  | Type       | Description
 ---------- | ---------- | -----------
-`complete` | *'change'* | If the element value is well-formed and is ready to be submitted.
-`errors`   | *array*    | Array of element validation error types
+`complete` | *boolean*  | If the element value is well-formed and is ready to be submitted.
+`errors`   | *array*    | Array of element validation error types.
+
+
+### On Focus
+
+> On Focus
+
+```jsx
+cardElement.on('focus', (focusEvent) => {
+  
+})
+```
+
+Triggered when an element input is focused.
+
+Parameter | Required | Type       | Description
+--------- | -------- | ---------- | -----------
+`event`   | true     | *"focus"* | The event type to listen to.
+`handler` | true     | *function* | Callback function to be called when the event is fired. Takes in a [FocusEvent](#focusevent).
+
+#### FocusEvent
+
+> FocusEvent example
+
+```jsx
+{
+  "id": "cardNumber"  
+}
+```
+
+Attribute  | Type       | Description
+---------- | ---------- | -----------
+`id`       | *string*   | Input id that triggered the event. Values vary per [element type](#element-type). 
+
+### On Blur
+
+> On Blur
+
+```jsx
+cardElement.on('blur', (blurEvent) => {
+  
+})
+```
+
+Triggered when an element input focus is lost.
+
+Parameter | Required | Type       | Description
+--------- | -------- | ---------- | -----------
+`event`   | true     | *"blur"* | The event type to listen to.
+`handler` | true     | *function* | Callback function to be called when the event is fired. Takes in a [BlurEvent](#blurevent).
+
+#### BlurEvent
+
+> BlurEvent example
+
+```jsx
+{
+  "id": "cardNumber"  
+}
+```
+
+Attribute  | Type       | Description
+---------- | ---------- | -----------
+`id`       | *string*   | Input id that triggered the event. Values vary per [element type](#element-type).
+
+### On Keydown
+
+> On Keydown
+
+```jsx
+cardElement.on('keydown', (keydownEvent) => {
+  
+})
+```
+
+Triggered when user hits a special key inside an element input.
+
+Parameter | Required | Type       | Description
+--------- | -------- | ---------- | -----------
+`event`   | true     | *"keydown"* | The event type to listen to.
+`handler` | true     | *function* | Callback function to be called when the event is fired. Takes in a [KeydownEvent](#keydownevent).
+
+#### KeydownEvent
+
+> KeydownEvent example
+
+```jsx
+{
+  "id": "cardNumber",
+  "key": "Enter",
+  "ctrlKey": false,
+  "altKey": false,
+  "shiftKey": false,
+  "metaKey": false
+}
+```
+
+Attribute  | Type                  | Description
+---------- | ----------            | -----------
+`id`       | *string*              | Input id that triggered the event. Values vary per [element type](#element-type).
+`key`      | *Escape* or *Enter*   | Key pressed by the user.
+`ctrlKey`  | *boolean*             | Flag indicating [`control` key](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/ctrlKey) was pressed when the event occurred.
+`altKey`   | *boolean*             | Flag indicating [`alt` key](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/altKey) was pressed when the event occurred.
+`shiftKey` | *boolean*             | Flag indicating [`shift` key](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/shiftKey) was pressed when the event occurred.
+`metaKey` | *boolean*             | Flag indicating [`meta` key](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/metaKey) was pressed when the event occurred.

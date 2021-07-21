@@ -12,16 +12,22 @@ Checkout out our API Reference documentation below, or go to our Getting Started
 
 ## Install SDK
 
-> Install SDK
-
-```javascript
+> NPM
+```shell
 npm install --save @Basis-Theory/basis-theory-js
 ```
 
-```html
+> Yarn
+```shell
+yarn add @Basis-Theory/basis-theory-js
+```
+
+> CDN
+```jsx
 <script src="https://js.basistheory.com"></script> 
 ```
 
-Our SDK's enable you to quickly and easily integrate with the API. Select one of the language tabs to see instructions on how to install the SDK and code examples in that language.
+You don't have to install **Elements** as a separated module or include additional script tags besides **BasisTheory.js**. It will dynamically load them from our secure domain, which enables us to keep the highest compliance standards (e.g. PCI compliance).
 
-If you don't see your language listed, <a href="mailto:support@basistheory.com?subject=API SDK Language Support">contact us</a> about getting an official SDK added in your preferred language.
+To install **BasisTheory.js** you can choose either our NPM module or CDN hosted bundle through a `script` tag.
+
