@@ -4,7 +4,7 @@
 
 Currently, Basis Theory is in private beta, you can join our waitlist at https://basistheory.com and we will let you know when we are accepting new applicants.
 
-To begin taking advantage of the Basis Theory platform, you’ll need to create an account and tenant through our [Portal](https://portal.basistheory.com). This will enable you to manage your token data, create new applications, and authenticate to our API.
+To begin taking advantage of the Basis Theory platform, you’ll need to create an account and tenant through our <a href="https://portal.basistheory.com" target="_blank">Portal</a>. This will enable you to manage your token data, create new applications, and authenticate to our API.
 
 ### If you have an account
 
@@ -42,7 +42,7 @@ To install **BasisTheory.js** you can choose either our NPM module or CDN hosted
 <head>
   <meta
     http-equiv="Content-Security-Policy"
-    content="frame-src https://elements.basistheory.com;"
+    content="frame-src https://elements.basistheory.com; script-src https://js.basistheory.com"
   />
 </head>
 
@@ -66,6 +66,24 @@ BasisTheory.init('test_1234567890', { elements: true });
 
 If you have a <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP" target="_blank">CSP</a> deployed in your website, you must include the following directives:
 
+- `script-src` - _https://js.basistheory.com_
 - `frame-src` - _https://elements.basistheory.com_ 
 
-If you are using <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/require-trusted-types-for" target="_blank">Trusted Types</a>, you must allow dynamic script loading from _https://js.basistheory.com_. This should be done before [initialization](#initialize).
+
+If you are using <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/require-trusted-types-for" target="_blank">Trusted Types</a>, you must allow dynamic script loading from _https://js.basistheory.com_ origin. This should be done before [initialization](#initialize).
+
+### Common CSP Errors
+
+The setup above is recommended to avoid errors similar to these:
+
+<aside class="warning">
+  <span><em>Refused to load the script '&lt;URL&gt;' because it violates the following Content Security Policy directive: (...).</em></span>
+</aside>
+
+<aside class="warning">
+  <span><em>Refused to frame 'https://elements.basistheory.com/' because it violates the following Content Security Policy directive: (...). Note that 'frame-src' was not explicitly set, so (...) is used as a fallback.</em></span>
+</aside>
+
+<aside class="warning">
+  <span><em>Failed to set the 'src' property on 'HTMLScriptElement': This document requires 'TrustedScriptURL' assignment.</em></span>
+</aside>

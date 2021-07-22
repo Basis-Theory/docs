@@ -6,9 +6,9 @@
         <h6>QUICK LINKS</h6>
         <span class="intro-quick-links">
             <a href="#getting-started">Before you begin</a>
-            <a href="#styles">Styling Elements</a>
-            <a href="#applications">Applications</a>
-            <a href="#permissions">API Keys</a>
+            <a href="#element-style">Styling Elements</a>
+            <a href="#create-element">Create an Element</a>
+            <a href="#store-credit-card">Store Credit Card</a>
         </span>
     </span>
     <img src="./images/hosted_intro.svg"/>
