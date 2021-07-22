@@ -18,6 +18,7 @@ under the License.
 <% intro_page_quick_links = yield %>
 <% api_page_content = yield %>
 <% module_page_content = yield %>
+<% guides_page_content = yield %>
 <%
   if current_page.data.intro_quick_links
     current_page.data.intro_quick_links.each do |include|
@@ -46,6 +47,13 @@ under the License.
     end
   end
 %>
+<%
+  if current_page.data.guides_includes
+    current_page.data.guides_includes.each do |include|
+      guides_page_content += partial("includes/#{include}")
+    end
+  end
+%>
 
 <!doctype html>
 <html>
@@ -67,6 +75,7 @@ under the License.
     </style>
     <%= stylesheet_link_tag :screen, media: :screen %>
     <%= stylesheet_link_tag :home, media: :screen %>
+    <%= stylesheet_link_tag :guides, media: :screen %>
     <script src="https://kit.fontawesome.com/86c3cd0147.js" crossorigin="anonymous"></script>
     <%= stylesheet_link_tag :print, media: :print %>
     <% if current_page.data.search %>
@@ -185,6 +194,7 @@ under the License.
         <%= intro_page_content %>
         <%= api_page_content %>
         <%= module_page_content %>
+        <%= guides_page_content %>
       </div>
       <% if current_page.data.hide_code != true %>
       <div class="dark-box">

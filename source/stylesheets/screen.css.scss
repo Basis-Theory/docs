@@ -409,13 +409,6 @@ html, body {
     margin: 0 120px;
     padding: 0 40px;
   }
-  &.content {
-    &> h1, &> h2, &> h3, &> h4, &> h5, &> h6, &> p, &> table, &> ul, &> ol, &> aside, &> dl {
-      margin: 0 120px !important;
-      padding: 0 40px; 
-    }
-
-  }
 }
 
 .content {
@@ -930,78 +923,6 @@ html, body {
 
   %right-col + %left-col {
     margin-top: $main-padding;
-  }
-}
-
-// GUIDES CODE //
-.content {
-  .guides-header-intro {
-    margin: 0 120px;
-    display: grid;
-    grid-template-rows: 1fr 1fr;
-
-    h2 {
-      margin: 0;
-      padding-top: 0;
-    }
-
-    h4 {
-      font-size: 34px;
-      font-weight: 400;
-      line-height: 42px;
-      letter-spacing: 0.25px;
-      text-align: left;
-      color: $grey-900;
-      margin-top: 0.8em;
-    }
-
-    h5 {
-      font-size: 24px;
-      font-style: normal;
-      font-weight: 400;
-      line-height: 32px;
-      letter-spacing: 0px;
-      text-align: left;
-      color: #A4A9C5;
-    }
-
-    h6 {
-      font-size: 10px;
-      font-weight: 700;
-      line-height: 17px;
-      letter-spacing: 0.4px;
-      color: $grey-600;
-      text-transform: uppercase;
-    }
-
-    .header-intro-body2-font {
-      @extend %body2-font;
-      color: $grey-600;
-    }
-
-    img {
-    }
-  }
-  .card-box {
-    display: grid;
-    grid-template-columns: auto auto auto;
-    column-gap: 23px;
-    margin: 32px 120px 0;
-    padding: 0 40px;
-  }
-
-  .card {
-    border: 1px solid rgba(65, 73, 112, 0.2);
-    box-sizing: border-box;
-    border-radius: 4px;
-    &> h4 {
-      @extend %principal-title-font;
-    }
-  }
-  
-  /* Add some padding inside the card container */
-  .container {
-    padding: 2px 16px;
   }
 }
 
