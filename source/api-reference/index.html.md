@@ -1,6 +1,6 @@
 ---
 title: Basis Theory API Reference
-docs_logo: api.svg
+docs_logo: api-logo.svg
 
 language_tabs: # must be one of https://git.io/vQNgJ
   - shell: cURL

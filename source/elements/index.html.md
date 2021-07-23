@@ -1,6 +1,6 @@
 ---
 title: Basis Theory Elements Reference
-docs_logo: elements.svg
+docs_logo: elements-logo.svg
 
 language_tabs: # must be one of https://git.io/vQNgJ
   - jsx: Javascript

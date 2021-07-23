@@ -11,7 +11,7 @@
             <a href="#store-credit-card">Store Credit Card</a>
         </span>
     </span>
-    <img src="./images/hosted_intro.svg"/>
+    <img src="./images/elements_intro.svg"/>
 </aside>
 
 **BasisTheory Elements** are simple, secure, developer-friendly inputs that empowers consumers to collect sensitive data from their users directly to Basis Theory certified vault.
