@@ -357,6 +357,89 @@ Parameter | Required | Type | Default | Description
 
 Returns [an error](#errors) if the atomic card failed to delete.
 
+## Exchange an Atomic Card
+
+> Request
+
+```shell
+curl "api.basistheory.com/atomic/cards/c1e565009-1984-4638-8fca-dce8a82cc2af/exchange" \
+  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
+  -X "POST"
+  -D '{
+    "exchange_id": "5b493235-6917-4307-906a-2cd6f1a90b13",
+    "metadata": {
+      "nonSensitiveField": "Non-Sensitive Value"
+    }
+  }'
+```
+
+<span class="http-method post">
+  <span class="box-method">POST</span>
+  `https://api.basistheory.com/atomic/cards/{id}/exchange`
+</span>
+
+Exchange an atomic card by ID in the tenant.
+
+### Permissions
+
+<p class="scopes">
+  <span class="scope">exchange:read</span>
+  <span class="scope">card:create</span>
+  <span class="scope">card:read</span>
+  <span class="scope">token:create</span>
+  <span class="scope">token:read</span>
+</p>
+
+### URI Parameters
+
+Parameter | Required | Type | Default | Description
+--------- | -------- | ---- | ------- | -----------
+`id` | true | *uuid* | `null` | The ID of the atomic card
+
+### Request Parameters
+Parameter | Required | Type | Default | Description
+--------- | -------- | ---- | ------- | -----------
+`exchange_id` | true | *uuid* | `null` | The ID of the exchange
+`metadata` | false | *map* | `null` | A key-value map of non-sensitive data. We overwrite the following keys: `correlation_id`, `exchange_id`, `exchange_name`, `source_token_id`, and `source_token_type`.
+
+### Response
+
+Returns a [token](#token-object) with type of `card:exchanged` if the atomic card was exchanged. Returns [an error](#errors) if the atomic card failed to exchange.
+
+## Get an Atomic Card Exchanged Token
+
+> Request
+
+```shell
+curl "api.basistheory.com/atomic/cards/c1e565009-1984-4638-8fca-dce8a82cc2af/exchanged/6c12a05d-99e3-4454-bdb0-2e6ff88ec5b0" \
+  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
+  -X "GET"
+```
+
+<span class="http-method get">
+  <span class="box-method">GET</span>
+  `https://api.basistheory.com/atomic/cards/{atomicCardId}/exchanged/{exchangedTokenId}`
+</span>
+
+Get an atomic card exchanged token by ID in the tenant.
+
+### Permissions
+
+<p class="scopes">
+  <span class="scope">card:read</span>
+  <span class="scope">token:read</span>
+</p>
+
+### URI Parameters
+
+Parameter | Required | Type | Default | Description
+--------- | -------- | ---- | ------- | -----------
+`atomicCardId` | true | *uuid* | `null` | The ID of the atomic card
+`exchangedTokenId` | true | *uuid* | `null` | The ID of the exchanged token
+
+### Response
+
+Returns a [token](#token-object) with type of `card:exchanged`. Returns [an error](#errors) if the atomic card failed to exchange.
 
 ## Test Cards
 

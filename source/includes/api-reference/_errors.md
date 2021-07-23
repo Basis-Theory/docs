@@ -31,8 +31,9 @@ Attribute | Type | Description
 ### Error Codes
 Error Code | Meaning
 ---------- | -------
-`400` | Invalid request body.
+`400` | Invalid request body
 `401` | A missing or invalid `X-API-KEY` was provided
 `403` | The provided `X-API-KEY` does not have the required permissions
 `404` | Request entity was not found
+`422` | Request does not satisfy requirements for processing
 `500` | Something went wrong on Basis Theory's side

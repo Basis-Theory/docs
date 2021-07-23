@@ -66,6 +66,8 @@ under the License.
       <%= Rouge::Themes::Base16::Solarized.render(:scope => '.highlight') %>
     </style>
     <%= stylesheet_link_tag :screen, media: :screen %>
+    <%= stylesheet_link_tag :home, media: :screen %>
+    <script src="https://kit.fontawesome.com/86c3cd0147.js" crossorigin="anonymous"></script>
     <%= stylesheet_link_tag :print, media: :print %>
     <% if current_page.data.search %>
       <%= javascript_include_tag  "all" %>
@@ -89,10 +91,14 @@ under the License.
       </span>
     </a>
     <div class="toc-wrapper">
-      <div class="toc-header">
-          <%= image_tag "logo-with-title.svg", class: 'logo' %>
-          <%= image_tag "docs.svg", class: 'section-DOCS' %>
-      </div>
+
+        <div class="toc-header">
+            <a href='/'><%= image_tag "logo-with-title.svg", class: 'logo' %></a>
+
+
+            <%= image_tag current_page.data.docs_logo || "docs.svg", class: 'section-DOCS' %>
+        </div>
+
       <div class="line"></div>
       <% if language_tabs.any? %>
         <div class="lang-selector">
@@ -113,7 +119,7 @@ under the License.
         <ul class="search-results"></ul>
       <% end %>
 
-      <h1 class="headline">Getting Started</h1>
+      <h1 class="nav-title">Get Started</h1>
       <ul id="toc_intro" class="toc-section toc-list-h1">
         <% toc_data(intro_page_content).each do |h1| %>
           <li>
@@ -131,41 +137,35 @@ under the License.
         <% end %>
       </ul>
 
-      <h1 class="headline">API Reference</h1>
-      <ul id="toc_api" class="toc-section toc-list-h1">
-        <% toc_data(api_page_content).each do |h1| %>
-          <li>
-            <a href="#<%= h1[:id] %>" class="toc-h1 toc-link" data-title="<%= h1[:title] %>"><%= h1[:content] %></a>
-            <% if h1[:children].length > 0 %>
-              <ul class="toc-list-h2">
-                <% h1[:children].each do |h2| %>
-                  <li>
-                    <a href="#<%= h2[:id] %>" class="toc-h2 toc-link" data-title="<%= h2[:title] %>"><%= h2[:content] %></a>
-                  </li>
-                <% end %>
-              </ul>
-            <% end %>
-          </li>
-        <% end %>
-      </ul>
 
-      <h1 class="nav-title">Modules</h1>
-      <ul id="toc_module" class="toc-section toc-list-h1">
-        <% toc_data(module_page_content).each do |h1| %>
-          <li>
-            <a href="#<%= h1[:id] %>" class="toc-h1 toc-link" data-title="<%= h1[:title] %>"><%= h1[:content] %></a>
-            <% if h1[:children].length > 0 %>
-              <ul class="toc-list-h2">
-                <% h1[:children].each do |h2| %>
-                  <li>
-                    <a href="#<%= h2[:id] %>" class="toc-h2 toc-link" data-title="<%= h2[:title] %>"><%= h2[:content] %></a>
-                  </li>
-                <% end %>
-              </ul>
-            <% end %>
-          </li>
-        <% end %>
-      </ul>
+      <% if current_page.data.api_includes %>
+        <h1 class="nav-title">Reference</h1>
+        <ul id="toc_api" class="toc-section toc-list-h1">
+          <% toc_data(api_page_content).each do |h1| %>
+            <li>
+              <a href="#<%= h1[:id] %>" class="toc-h1 toc-link" data-title="<%= h1[:title] %>"><%= h1[:content] %></a>
+              <% if h1[:children].length > 0 %>
+                <ul class="toc-list-h2">
+                  <% h1[:children].each do |h2| %>
+                    <li>
+                      <a href="#<%= h2[:id] %>" class="toc-h2 toc-link" data-title="<%= h2[:title] %>"><%= h2[:content] %></a>
+                    </li>
+                  <% end %>
+                </ul>
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+      <% end %>
+
+      <% if current_page.data.other_docs %>
+        <h1 class="nav-title">Other Docs</h1>
+        <ul id="toc_api" class="toc-section toc-list-h1">
+          <% current_page.data.other_docs.each do |footer| %>
+             <li class="other-docs"><%= footer %></li>
+          <% end %>
+        </ul>
+      <% end %>
 
       <% if current_page.data.toc_footers %>
         <ul class="toc-footer">
@@ -176,13 +176,17 @@ under the License.
       <% end %>
     </div>
     <div class="page-wrapper">
-      <div class="dark-box"></div>
-      <div class="content">
+      <% if current_page.data.hide_code != true %>
+        <div class="dark-box"></div>
+      <% end %>
+
+      <div class="<%= current_page.data.hide_code ? "content no-code-content" : "content" %>">
         <div class="header-border"></div>
         <%= intro_page_content %>
         <%= api_page_content %>
         <%= module_page_content %>
       </div>
+      <% if current_page.data.hide_code != true %>
       <div class="dark-box">
         <% if language_tabs.any? %>
           <div class="lang-selector">
@@ -196,6 +200,7 @@ under the License.
           </div>
         <% end %>
       </div>
+      <% end %>
     </div>
   </body>
 </html>

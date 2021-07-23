@@ -49,6 +49,12 @@ html, body {
 // TABLE OF CONTENTS
 ////////////////////////////////////////////////////////////////////////////////
 
+.toc-wrapper li.other-docs a  {
+  color: $secondary;
+  text-decoration: none;
+  font-size: 16px;
+}
+
 .toc-section > ul > li > a > span {
   float: right;
   background-color: $links;
@@ -70,6 +76,7 @@ html, body {
   font-size: 16px;
   font-weight: 600;
   border-right: 1px solid $grey-800;
+  padding-bottom: 200px;
 
   .toc-header {
     display: grid;
@@ -213,7 +220,7 @@ html, body {
   // Section headers
   .toc-h1[data-title="API Reference"],
   .toc-h1[data-title="Basis Theory JS"],
-  .toc-h1[data-title="Hosted Elements"],
+  .toc-h1[data-title="Elements"],
   .toc-h1[data-title="How To Use"] {
     text-transform: capitalize;
     margin-bottom: 0.5em;
@@ -397,11 +404,33 @@ html, body {
 ////////////////////////////////////////////////////////////////////////////////
 // This is all the stuff with the light background in the left half of the page
 
+.no-code-content {
+  &>h1, &>h2, &>h3, &>h4, &>h5, &>h6, &>p, &>table, &>ul, &>ol, &>aside, &>dl {
+    margin-right: 0 !important;
+  }
+}
+
+.content {
+  .center-column + .highlight {
+    background-color: transparent;
+    pre {
+      position: static;
+      float: none;
+      clear: none;
+      margin: 0 28px;
+      width: 50%;
+      left: 0;
+    }
+  }
+}
+
 .content {
   // fixes webkit rendering bug for some: see #538
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
-  
+
+
+
   // to place content above the dark box
   position: relative;
   z-index: 30;
@@ -528,7 +557,7 @@ html, body {
   p {
     @extend %body1-font;
     color: $grey-800;
-    
+
   }
 
   p, li, dt, dd {
@@ -676,7 +705,7 @@ html, body {
   &.get {
     background: $http-method-get-container-bg;
     border: 1px solid #D4F2F4;
-    
+
     .box-method {
       background-color: $primary;
     }
@@ -700,9 +729,9 @@ html, body {
     .box-method {
       background-color: $http-method-delete-bg;
     }
- 
+
   }
-  
+
   code {
     background-color: rgba(0, 0, 0, 0);
   }
