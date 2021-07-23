@@ -38,7 +38,7 @@ cardElement.on('change', (changeEvent) => {
 })
 ```
 
-This event is triggered whenever element's value(s) relevantly change. For example, if the user types data that doesn't change the state of a field between valid/invalid or empty/filled, you shouldn't expect the event to trigger.
+This event is triggered whenever element's value(s) change. For example, if the user types data that doesn't change the state of a field between valid/invalid or empty/filled, you shouldn't expect the event to trigger.
 
 Parameter | Required | Type       | Description
 --------- | -------- | ---------- | -----------
