@@ -18,6 +18,8 @@ intro_includes:
   - guides/intro
   - guides/concepts
   - guides/authentication
+  - guides/request_correlation
+  - guides/pagination
 
 api_includes:
 

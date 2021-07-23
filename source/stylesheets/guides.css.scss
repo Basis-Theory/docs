@@ -35,7 +35,7 @@
       }
     }
 
-    h1, h2, p, aside {
+    h1, h2, h3, p, aside, table {
       margin: 0 120px;
       padding: 0;
     }
@@ -55,16 +55,20 @@
       color: $grey-900;
       padding: 40px 0 10px;
       border-bottom: 1px solid rgba(65, 73, 112, 0.2);
+      margin-bottom: 24px;
     }
 
-    p {
-      padding: 32px 0;
+    h3 {
+      padding: 16px 0;
+    }
+    p+p {
+      padding-top: 24px;
     }
 
     h1.nav-title {
       @extend %nav-secondary-title;
       color: #626582;
-      margin: 1em 1.7rem; 
+      margin: 0; 
       border: none;
       background-color: inherit;
     }
@@ -74,6 +78,7 @@
       line-height: 1.6;
       display: flex;
       align-items: center;
+      width: 50%;
     }
 
     code {
@@ -87,8 +92,9 @@
       grid-template-columns: auto 1fr;
       align-items: center;
       padding: 8px 16px;
+      margin: 24px 0;
 
-      .http-method-copy {
+      .code-text-copy {
         justify-self: end;
         cursor: pointer;
         grid-column: 3;
@@ -101,13 +107,12 @@
       }
     }
 
-
-
     .card-box {
       display: grid;
       grid-template-columns: repeat(3,auto);
       column-gap: 24px;
       row-gap: 32px;
+      padding: 32px 0;
 
       .card {
         border: 1px solid rgba(65, 73, 112, 0.2);
