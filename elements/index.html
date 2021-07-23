@@ -1,0 +1,1080 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Basis Theory Elements Reference</title>
+    <link href="https://cdn.basistheory.com/images/favicons/favicon.ico" rel="icon" type="image/ico" />
+
+    <style media="screen">
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .gh {
+  color: #999999;
+}
+.highlight .sr {
+  color: #f6aa11;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .nb {
+  color: #f6aa11;
+}
+.highlight .cm {
+  color: #75715e;
+}
+.highlight .cp {
+  color: #75715e;
+}
+.highlight .c1 {
+  color: #75715e;
+}
+.highlight .cs {
+  color: #75715e;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf {
+  color: #75715e;
+}
+.highlight .err {
+  color: #960050;
+}
+.highlight .gr {
+  color: #960050;
+}
+.highlight .gt {
+  color: #960050;
+}
+.highlight .gd {
+  color: #49483e;
+}
+.highlight .gi {
+  color: #49483e;
+}
+.highlight .ge {
+  color: #49483e;
+}
+.highlight .kc {
+  color: #66d9ef;
+}
+.highlight .kd {
+  color: #66d9ef;
+}
+.highlight .kr {
+  color: #66d9ef;
+}
+.highlight .no {
+  color: #66d9ef;
+}
+.highlight .kt {
+  color: #66d9ef;
+}
+.highlight .mf {
+  color: #ae81ff;
+}
+.highlight .mh {
+  color: #ae81ff;
+}
+.highlight .il {
+  color: #ae81ff;
+}
+.highlight .mi {
+  color: #ae81ff;
+}
+.highlight .mo {
+  color: #ae81ff;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #ae81ff;
+}
+.highlight .sc {
+  color: #ae81ff;
+}
+.highlight .se {
+  color: #ae81ff;
+}
+.highlight .ss {
+  color: #ae81ff;
+}
+.highlight .sd {
+  color: #e6db74;
+}
+.highlight .s2 {
+  color: #e6db74;
+}
+.highlight .sb {
+  color: #e6db74;
+}
+.highlight .sh {
+  color: #e6db74;
+}
+.highlight .si {
+  color: #e6db74;
+}
+.highlight .sx {
+  color: #e6db74;
+}
+.highlight .s1 {
+  color: #e6db74;
+}
+.highlight .s, .highlight .sa, .highlight .dl {
+  color: #e6db74;
+}
+.highlight .na {
+  color: #a6e22e;
+}
+.highlight .nc {
+  color: #a6e22e;
+}
+.highlight .nd {
+  color: #a6e22e;
+}
+.highlight .ne {
+  color: #a6e22e;
+}
+.highlight .nf, .highlight .fm {
+  color: #a6e22e;
+}
+.highlight .vc {
+  color: #ffffff;
+}
+.highlight .nn {
+  color: #ffffff;
+}
+.highlight .ni {
+  color: #ffffff;
+}
+.highlight .bp {
+  color: #ffffff;
+}
+.highlight .vg {
+  color: #ffffff;
+}
+.highlight .vi {
+  color: #ffffff;
+}
+.highlight .nv, .highlight .vm {
+  color: #ffffff;
+}
+.highlight .w {
+  color: #ffffff;
+}
+.highlight {
+  color: #ffffff;
+}
+.highlight .n, .highlight .py, .highlight .nx {
+  color: #ffffff;
+}
+.highlight .nl {
+  color: #f92672;
+}
+.highlight .ow {
+  color: #f92672;
+}
+.highlight .nt {
+  color: #f92672;
+}
+.highlight .k, .highlight .kv {
+  color: #f92672;
+}
+.highlight .kn {
+  color: #f92672;
+}
+.highlight .kp {
+  color: #f92672;
+}
+.highlight .o {
+  color: #f92672;
+}
+    </style>
+    <style media="print">
+      * {
+        -webkit-transition:none!important;
+        transition:none!important;
+      }
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight, .highlight .w {
+  color: #586e75;
+}
+.highlight .err {
+  color: #002b36;
+  background-color: #dc322f;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cm, .highlight .cpf, .highlight .c1, .highlight .cs {
+  color: #657b83;
+}
+.highlight .cp {
+  color: #b58900;
+}
+.highlight .nt {
+  color: #b58900;
+}
+.highlight .o, .highlight .ow {
+  color: #93a1a1;
+}
+.highlight .p, .highlight .pi {
+  color: #93a1a1;
+}
+.highlight .gi {
+  color: #859900;
+}
+.highlight .gd {
+  color: #dc322f;
+}
+.highlight .gh {
+  color: #268bd2;
+  background-color: #002b36;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kv {
+  color: #6c71c4;
+}
+.highlight .kc {
+  color: #cb4b16;
+}
+.highlight .kt {
+  color: #cb4b16;
+}
+.highlight .kd {
+  color: #cb4b16;
+}
+.highlight .s, .highlight .sa, .highlight .sb, .highlight .sc, .highlight .dl, .highlight .sd, .highlight .s2, .highlight .sh, .highlight .sx, .highlight .s1 {
+  color: #859900;
+}
+.highlight .sr {
+  color: #2aa198;
+}
+.highlight .si {
+  color: #d33682;
+}
+.highlight .se {
+  color: #d33682;
+}
+.highlight .nn {
+  color: #b58900;
+}
+.highlight .nc {
+  color: #b58900;
+}
+.highlight .no {
+  color: #b58900;
+}
+.highlight .na {
+  color: #268bd2;
+}
+.highlight .m, .highlight .mb, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mx {
+  color: #859900;
+}
+.highlight .ss {
+  color: #859900;
+}
+    </style>
+    <link href="../stylesheets/screen-d6f02e13.css" rel="stylesheet" media="screen" />
+    <link href="../stylesheets/home-6affef4e.css" rel="stylesheet" media="screen" />
+    <script src="https://kit.fontawesome.com/86c3cd0147.js" crossorigin="anonymous"></script>
+    <link href="../stylesheets/print-fac0743d.css" rel="stylesheet" media="print" />
+      <script src="../javascripts/all-5539b3b6.js"></script>
+
+    <script>
+      $(function() { setupCodeCopy(); });
+    </script>
+    <script defer data-api="https://analytics.basistheory.com/api/event" data-domain="docs.basistheory.com" src="https://cdn.basistheory.com/javascript/analytics.js"></script>
+  </head>
+
+  <body class="elements elements_index" data-languages="[&quot;jsx&quot;]">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="../images/navbar-cad8cdcb.png" alt="" />
+      </span>
+    </a>
+    <div class="toc-wrapper">
+
+        <div class="toc-header">
+            <a href='/'><img src="../images/logo-with-title-9a87de22.svg" class="logo" alt="" /></a>
+
+
+            <img src="../images/elements-logo-5ca10b8b.svg" class="section-DOCS" alt="" />
+        </div>
+
+      <div class="line"></div>
+        <div class="lang-selector">
+              <a href="#" data-language-name="jsx">Javascript</a>
+        </div>
+      <a href="https://portal.basistheory.com/" target="_blank" class="nav-back">Go to Portal</a>
+        <div class="search">
+          <input type="text" class="search" id="input-search" placeholder="Search...">
+        </div>
+        <ul class="search-results"></ul>
+
+      <h1 class="nav-title">Get Started</h1>
+      <ul id="toc_intro" class="toc-section toc-list-h1">
+          <li>
+            <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#getting-started" class="toc-h1 toc-link" data-title="Getting started">Getting started</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#before-you-begin" class="toc-h2 toc-link" data-title="Before you begin">Before you begin</a>
+                  </li>
+                  <li>
+                    <a href="#install-sdk" class="toc-h2 toc-link" data-title="Install SDK">Install SDK</a>
+                  </li>
+                  <li>
+                    <a href="#content-security-policy" class="toc-h2 toc-link" data-title="Content Security Policy">Content Security Policy</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#permissions" class="toc-h1 toc-link" data-title="Permissions">Permissions</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#permission-types" class="toc-h2 toc-link" data-title="Permission Types">Permission Types</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
+          </li>
+          <li>
+            <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
+          </li>
+      </ul>
+
+
+        <h1 class="nav-title">Reference</h1>
+        <ul id="toc_api" class="toc-section toc-list-h1">
+            <li>
+              <a href="#initialize" class="toc-h1 toc-link" data-title="Initialize">Initialize</a>
+            </li>
+            <li>
+              <a href="#element-types" class="toc-h1 toc-link" data-title="Element Types">Element Types</a>
+                <ul class="toc-list-h2">
+                    <li>
+                      <a href="#card-element" class="toc-h2 toc-link" data-title="Card Element">Card Element</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+              <a href="#elements-instance" class="toc-h1 toc-link" data-title="Elements Instance">Elements Instance</a>
+                <ul class="toc-list-h2">
+                    <li>
+                      <a href="#create-element" class="toc-h2 toc-link" data-title="Create Element">Create Element</a>
+                    </li>
+                    <li>
+                      <a href="#mount-element" class="toc-h2 toc-link" data-title="Mount Element">Mount Element</a>
+                    </li>
+                    <li>
+                      <a href="#unmount-element" class="toc-h2 toc-link" data-title="Unmount Element">Unmount Element</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+              <a href="#element-events" class="toc-h1 toc-link" data-title="Element Events">Element Events</a>
+                <ul class="toc-list-h2">
+                    <li>
+                      <a href="#on-ready" class="toc-h2 toc-link" data-title="On Ready">On Ready</a>
+                    </li>
+                    <li>
+                      <a href="#on-change" class="toc-h2 toc-link" data-title="On Change">On Change</a>
+                    </li>
+                    <li>
+                      <a href="#on-focus" class="toc-h2 toc-link" data-title="On Focus">On Focus</a>
+                    </li>
+                    <li>
+                      <a href="#on-blur" class="toc-h2 toc-link" data-title="On Blur">On Blur</a>
+                    </li>
+                    <li>
+                      <a href="#on-keydown" class="toc-h2 toc-link" data-title="On Keydown">On Keydown</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+              <a href="#element-style" class="toc-h1 toc-link" data-title="Element Style">Element Style</a>
+            </li>
+            <li>
+              <a href="#store-credit-card" class="toc-h1 toc-link" data-title="Store Credit Card">Store Credit Card</a>
+                <ul class="toc-list-h2">
+                    <li>
+                      <a href="#storecreditcard-errors" class="toc-h2 toc-link" data-title="storeCreditCard Errors">storeCreditCard Errors</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+        <h1 class="nav-title">Other Docs</h1>
+        <ul id="toc_api" class="toc-section toc-list-h1">
+             <li class="other-docs"><a href="/api-reference">API Reference</a></li>
+        </ul>
+
+    </div>
+    <div class="page-wrapper">
+        <div class="dark-box"></div>
+
+      <div class="content">
+        <div class="header-border"></div>
+        <h1 id='introduction'>Introduction</h1>
+<aside class="header-intro-box">
+    <span>
+        <h4>Elements Documentation</h4>
+        <p class="header-intro-body2-font">Explore how to quickly start using our elements to tokenize anything.</p>
+        <h6>QUICK LINKS</h6>
+        <span class="intro-quick-links">
+            <a href="#getting-started">Before you begin</a>
+            <a href="#element-style">Styling Elements</a>
+            <a href="#create-element">Create an Element</a>
+            <a href="#store-credit-card">Store Credit Card</a>
+        </span>
+    </span>
+    <img src="./images/elements_intro.svg"/>
+</aside>
+
+<p><strong>BasisTheory Elements</strong> are simple, secure, developer-friendly inputs that empowers consumers to collect sensitive data from their users directly to Basis Theory certified vault.</p>
+
+<p>Think about it as a portal that we open within your site that allows users to seamlessly tokenize information and never notice they are interacting with our technology. Here is how we make it possible:</p>
+
+<ul>
+<li>We allow you to own your UX, by fully customizing how <strong>elements</strong> will look like;</li>
+<li>Inputs and forms are simple to use, yet we enable you to interact with them similar to how you do with native elements, so you never lose track of your users;</li>
+</ul>
+<h1 id='getting-started'>Getting started</h1><h2 id='before-you-begin'>Before you begin</h2><h3 id='if-you-don-39-t-have-an-account'>If you don&#39;t have an account</h3>
+<p>Currently, Basis Theory is in private beta, you can join our waitlist at https://basistheory.com and we will let you know when we are accepting new applicants.</p>
+
+<p>To begin taking advantage of the Basis Theory platform, you’ll need to create an account and tenant through our <a href="https://portal.basistheory.com" target="_blank">Portal</a>. This will enable you to manage your token data, create new applications, and authenticate to our API.</p>
+<h3 id='if-you-have-an-account'>If you have an account</h3>
+<p>Checkout out our API Reference documentation below, or go to our Getting Started section if you’re unsure of where to go next.</p>
+<h2 id='install-sdk'>Install SDK</h2>
+<blockquote>
+<p>NPM</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>npm <span class="nb">install</span> <span class="nt">--save</span> @Basis-Theory/basis-theory-js
+</code></pre></div>
+<blockquote>
+<p>Yarn</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>yarn add @Basis-Theory/basis-theory-js
+</code></pre></div>
+<blockquote>
+<p>CDN</p>
+</blockquote>
+<div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="p">=</span><span class="s">"https://js.basistheory.com"</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span> 
+</code></pre></div>
+<p>You don&#39;t have to install <strong>Elements</strong> as a separated module or include additional script tags besides <strong>BasisTheory.js</strong>. It will dynamically load them from our secure domain, which enables us to keep the highest compliance standards (e.g. PCI compliance).</p>
+
+<p>To install <strong>BasisTheory.js</strong> you can choose either our NPM module or CDN hosted bundle through a <code>script</code> tag.</p>
+<h2 id='content-security-policy'>Content Security Policy</h2>
+<blockquote>
+<p>CSP</p>
+</blockquote>
+<div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">meta</span>
+    <span class="na">http</span><span class="err">-</span><span class="na">equiv</span><span class="p">=</span><span class="s">"Content-Security-Policy"</span>
+    <span class="na">content</span><span class="p">=</span><span class="s">"frame-src https://elements.basistheory.com; script-src https://js.basistheory.com"</span>
+  <span class="p">/&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+
+</code></pre></div>
+<blockquote>
+<p>Trusted Types</p>
+</blockquote>
+<div class="highlight"><pre class="highlight jsx tab-jsx"><code>
+<span class="nx">trustedTypes</span><span class="p">.</span><span class="nx">createPolicy</span><span class="p">(</span><span class="dl">"</span><span class="s2">default</span><span class="dl">"</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">createScriptURL</span><span class="p">:</span> <span class="p">(</span><span class="nx">input</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="k">new</span> <span class="nx">URL</span><span class="p">(</span><span class="nx">input</span><span class="p">).</span><span class="nx">origin</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">https://js.basistheory.com</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nx">input</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="kc">undefined</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">init</span><span class="p">(</span><span class="dl">'</span><span class="s1">test_1234567890</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span> <span class="na">elements</span><span class="p">:</span> <span class="kc">true</span> <span class="p">});</span>
+</code></pre></div>
+<p>If you have a <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP" target="_blank">CSP</a> deployed in your website, you must include the following directives:</p>
+
+<ul>
+<li><code>script-src</code> - <em>https://js.basistheory.com</em></li>
+<li><code>frame-src</code> - <em>https://elements.basistheory.com</em> </li>
+</ul>
+
+<p>If you are using <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/require-trusted-types-for" target="_blank">Trusted Types</a>, you must allow dynamic script loading from <em>https://js.basistheory.com</em> origin. This should be done before <a href="#initialize">initialization</a>.</p>
+<h3 id='common-csp-errors'>Common CSP Errors</h3>
+<p>The setup above is recommended to avoid errors similar to these:</p>
+
+<aside class="warning">
+  <span><em>Refused to load the script '&lt;URL&gt;' because it violates the following Content Security Policy directive: (...).</em></span>
+</aside>
+
+<aside class="warning">
+  <span><em>Refused to frame 'https://elements.basistheory.com/' because it violates the following Content Security Policy directive: (...). Note that 'frame-src' was not explicitly set, so (...) is used as a fallback.</em></span>
+</aside>
+
+<aside class="warning">
+  <span><em>Failed to set the 'src' property on 'HTMLScriptElement': This document requires 'TrustedScriptURL' assignment.</em></span>
+</aside>
+<h1 id='permissions'>Permissions</h1>
+<p>Permissions are fine-grained control over your application&#39;s access to different aspects of your token infrastructure. We suggest limiting the scope of your application to the least amount possible, and to not share them across your internal applications.</p>
+
+<p>Permissions are associated with every application and can be configured when you <a href="/api-reference#create-application">create an application</a> or <a href="/api-reference#update-application">update an application</a>. </p>
+
+<p><strong>Elements</strong> applications only allows <em>create</em> permissions, removing any risk that your API keys are stolen and used to access data.</p>
+
+<aside class="notice">
+  <span>Dependent permission types are automatically assigned when an application is created or updated. For example, if an application is created with <code>card:create</code>, then the permission of <code>token:create</code> will automatically be assigned.</span>
+</aside>
+<h2 id='permission-types'>Permission Types</h2>
+<table><thead>
+<tr>
+<th>Permission</th>
+<th>Description</th>
+<th>Dependencies</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>token:create</code></td>
+<td>Create tokens in the vault</td>
+<td><em>N/A</em></td>
+</tr>
+<tr>
+<td><code>card:create</code></td>
+<td>Create atomic card tokens</td>
+<td><code>token:create</code></td>
+</tr>
+<tr>
+<td><code>bank:create</code></td>
+<td>Create atomic bank tokens</td>
+<td><code>token:create</code></td>
+</tr>
+</tbody></table>
+<h1 id='authentication'>Authentication</h1>
+<p><strong>Elements</strong> use specific application key to allow access to the API. To create one, login into our <a href="https://portal.basistheory.com" target="_blank">Portal</a> and create a new &quot;Elements&quot; application with the permissions you require.</p>
+<h1 id='errors'>Errors</h1><div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="p">{</span>
+
+<span class="p">}</span>
+</code></pre></div>
+<p>needs some work here to be specific to elements</p>
+
+        <h1 id='initialize'>Initialize</h1>
+<blockquote>
+<p>CDN</p>
+</blockquote>
+<div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="err">!--</span> <span class="na">you</span> <span class="na">can</span> <span class="na">initialize</span> <span class="na">it</span> <span class="na">wherever</span> <span class="na">it</span> <span class="na">suits</span> <span class="na">your</span> <span class="na">workflow</span> <span class="na">best</span> <span class="err">--</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="err">!--</span> <span class="na">here</span> <span class="na">we</span> <span class="na">are</span> <span class="na">waiting</span> <span class="na">for</span> <span class="na">the</span> <span class="na">window</span> <span class="na">to</span> <span class="na">load</span><span class="err">,</span> <span class="na">to</span> <span class="na">make</span> <span class="na">sure</span> <span class="na">BasisTheory</span> <span class="na">instance</span> <span class="err">--</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="err">!--</span> <span class="na">has</span> <span class="na">been</span> <span class="na">injected</span> <span class="na">in</span> <span class="na">the</span> <span class="na">window</span> <span class="na">variable</span> <span class="err">--</span><span class="p">&gt;</span>
+  window.addEventListener('load', async () =&gt; <span class="si">{</span>
+    <span class="k">await</span> <span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">init</span><span class="p">(</span><span class="dl">'</span><span class="s1">test_1234567890</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span> <span class="na">elements</span><span class="p">:</span> <span class="kc">true</span> <span class="p">});</span>
+    <span class="c1">// use BasisTheory.elements</span>
+  <span class="si">}</span>);  
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</code></pre></div>
+<blockquote>
+<p>Module</p>
+</blockquote>
+<div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="k">import</span> <span class="nx">BasisTheory</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@Basis-Theory/basis-theory-js</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="k">await</span> <span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">init</span><span class="p">(</span><span class="dl">'</span><span class="s1">test_1234567890</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span> <span class="na">elements</span><span class="p">:</span> <span class="kc">true</span> <span class="p">});</span>
+<span class="c1">// use BasisTheory.elements</span>
+</code></pre></div>
+<p>After <a href="#install-sdk">installing</a> <strong>BasisTheory.js</strong>, simply initialize it with <code>elements: true</code> so it dynamically loads <strong>Elements</strong> module.</p>
+
+<aside class="warning">
+  <span>Elements are meant to be used on browser environments only. If you installed <code>BasisTheory.js</code> as a module, make sure the instance that loads elements runs on the browser-side code.</span>
+</aside>
+
+<aside class="notice">
+  <span>Friendly reminder to replace <code>test_1234567890</code> with a valid <a href="#authentication">Elements application key</a>.</span>
+</aside>
+<h1 id='element-types'>Element Types</h1><h2 id='card-element'>Card Element</h2>
+<p>The <code>&quot;card&quot;</code> element type features a full credit card collector containing the following inputs:</p>
+
+<ul>
+<li><em>cardNumber</em></li>
+<li><em>expirationDate</em></li>
+<li><em>cvc</em></li>
+</ul>
+
+<!-- Add codesandbox credit card example here -->
+<h1 id='elements-instance'>Elements Instance</h1><div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">elements</span>
+</code></pre></div>
+<p>After <a href="#initialize">initialization</a>, <strong>Elements</strong> are available through <code>BasisTheory</code> instance.</p>
+<h2 id='create-element'>Create Element</h2><div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="kd">var</span> <span class="nx">cardElement</span> <span class="o">=</span> <span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">elements</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="dl">'</span><span class="s1">card</span><span class="dl">'</span><span class="p">,</span> <span class="nx">options</span><span class="p">);</span>
+</code></pre></div>
+<p>This method returns a new instance of an element type.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>type</code></td>
+<td>true</td>
+<td><em>string</em></td>
+<td><a href="#element-types">Type</a> of the element you want to create</td>
+</tr>
+<tr>
+<td><code>options</code></td>
+<td>false</td>
+<td><em>CreateElementOptions</em></td>
+<td><a href="#createelementoptions">Options</a> for customizing the element</td>
+</tr>
+</tbody></table>
+<h3 id='createelementoptions'>CreateElementOptions</h3>
+<p>CreateElementOptions provide a quick way to customize an Element before mounting it to your website.</p>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>style</code></td>
+<td>false</td>
+<td><em>ElementStyle</em></td>
+<td><a href="#element-style">Object</a> used to customize the element appearance</td>
+</tr>
+</tbody></table>
+<h2 id='mount-element'>Mount Element</h2><div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="p">=</span><span class="s">"my-card"</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+  cardElement.mount('#my-card')
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</code></pre></div>
+<p>This method attaches the element to the DOM, under a specific container.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>selector</code></td>
+<td>true</td>
+<td><em>string</em></td>
+<td>CSS selector that matches the container where your element will be mounted</td>
+</tr>
+</tbody></table>
+<h2 id='unmount-element'>Unmount Element</h2><div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="nx">cardElement</span><span class="p">.</span><span class="nx">unmount</span><span class="p">();</span>
+</code></pre></div>
+<p>Safely removes the element from the DOM, stopping any further communication with it.</p>
+<h1 id='element-events'>Element Events</h1><div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="kd">var</span> <span class="nx">subscription</span> <span class="o">=</span> <span class="nx">cardElement</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">event-type</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="c1">// handle event  </span>
+<span class="p">});</span>
+
+<span class="nx">subscription</span><span class="p">.</span><span class="nx">unsubscribe</span><span class="p">();</span> <span class="c1">// stops listening to the event type</span>
+</code></pre></div>
+<p>You can communicate with elements by listening to events. When you subscribe to an event, you&#39;ll get back a <a href="https://rxjs.dev/guide/subscription" target="_blank">Subscription</a> that you can unsubscribe if/when it fits your workflow.</p>
+
+<aside class="notice">
+  <span>Make sure to replace 'event-type' with an actual event type.</span>
+</aside>
+<h2 id='on-ready'>On Ready</h2><div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="nx">cardElement</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">ready</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="c1">// handle ready event </span>
+<span class="p">})</span>
+</code></pre></div>
+<p>This event is triggered when the element has rendered and user is able to start interacting with it.</p>
+<h2 id='on-change'>On Change</h2><div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="nx">cardElement</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">change</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">changeEvent</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">changeEvent</span><span class="p">.</span><span class="nx">complete</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// enable submit button  </span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="c1">// disable submit button</span>
+    <span class="c1">// present validation message</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+</code></pre></div>
+<p>This event is triggered whenever element&#39;s value(s) change. For example, if the user types data that doesn&#39;t change the state of a field between valid/invalid or empty/filled, you shouldn&#39;t expect the event to trigger.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>event</code></td>
+<td>true</td>
+<td><em>&quot;change&quot;</em></td>
+<td>The event type to listen to.</td>
+</tr>
+<tr>
+<td><code>handler</code></td>
+<td>true</td>
+<td><em>function</em></td>
+<td>Callback function to be called when the event is fired. Takes in a <a href="#changeevent">ChangeEvent</a>.</td>
+</tr>
+</tbody></table>
+<h3 id='changeevent'>ChangeEvent</h3><div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="p">{</span>
+  <span class="dl">"</span><span class="s2">complete</span><span class="dl">"</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">errors</span><span class="dl">"</span><span class="p">:</span> <span class="p">[</span>
+    <span class="dl">"</span><span class="s2">invalid-field</span><span class="dl">"</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>complete</code></td>
+<td><em>boolean</em></td>
+<td>If the element value is well-formed and is ready to be submitted.</td>
+</tr>
+<tr>
+<td><code>errors</code></td>
+<td><em>array</em></td>
+<td>Array of element validation error types.</td>
+</tr>
+</tbody></table>
+<h2 id='on-focus'>On Focus</h2><div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="nx">cardElement</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">focus</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">focusEvent</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+
+<span class="p">})</span>
+</code></pre></div>
+<p>Triggered when an element input is focused.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>event</code></td>
+<td>true</td>
+<td><em>&quot;focus&quot;</em></td>
+<td>The event type to listen to.</td>
+</tr>
+<tr>
+<td><code>handler</code></td>
+<td>true</td>
+<td><em>function</em></td>
+<td>Callback function to be called when the event is fired. Takes in a <a href="#focusevent">FocusEvent</a>.</td>
+</tr>
+</tbody></table>
+<h3 id='focusevent'>FocusEvent</h3><div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="p">{</span>
+  <span class="dl">"</span><span class="s2">id</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">cardNumber</span><span class="dl">"</span>  
+<span class="p">}</span>
+</code></pre></div>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td><em>string</em></td>
+<td>Input id that triggered the event. Values vary per <a href="#element-types">element type</a>.</td>
+</tr>
+</tbody></table>
+<h2 id='on-blur'>On Blur</h2><div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="nx">cardElement</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">blur</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">blurEvent</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+
+<span class="p">})</span>
+</code></pre></div>
+<p>Triggered when an element input focus is lost.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>event</code></td>
+<td>true</td>
+<td><em>&quot;blur&quot;</em></td>
+<td>The event type to listen to.</td>
+</tr>
+<tr>
+<td><code>handler</code></td>
+<td>true</td>
+<td><em>function</em></td>
+<td>Callback function to be called when the event is fired. Takes in a <a href="#blurevent">BlurEvent</a>.</td>
+</tr>
+</tbody></table>
+<h3 id='blurevent'>BlurEvent</h3><div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="p">{</span>
+  <span class="dl">"</span><span class="s2">id</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">cardNumber</span><span class="dl">"</span>  
+<span class="p">}</span>
+</code></pre></div>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td><em>string</em></td>
+<td>Input id that triggered the event. Values vary per <a href="#element-types">element type</a>.</td>
+</tr>
+</tbody></table>
+<h2 id='on-keydown'>On Keydown</h2><div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="nx">cardElement</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">keydown</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">keydownEvent</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+
+<span class="p">})</span>
+</code></pre></div>
+<p>Triggered when user hits a special key inside an element input.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>event</code></td>
+<td>true</td>
+<td><em>&quot;keydown&quot;</em></td>
+<td>The event type to listen to.</td>
+</tr>
+<tr>
+<td><code>handler</code></td>
+<td>true</td>
+<td><em>function</em></td>
+<td>Callback function to be called when the event is fired. Takes in a <a href="#keydownevent">KeydownEvent</a>.</td>
+</tr>
+</tbody></table>
+<h3 id='keydownevent'>KeydownEvent</h3><div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="p">{</span>
+  <span class="dl">"</span><span class="s2">id</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">cardNumber</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">key</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Enter</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">ctrlKey</span><span class="dl">"</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">altKey</span><span class="dl">"</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">shiftKey</span><span class="dl">"</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">metaKey</span><span class="dl">"</span><span class="p">:</span> <span class="kc">false</span>
+<span class="p">}</span>
+</code></pre></div>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td><em>string</em></td>
+<td>Input id that triggered the event. Values vary per <a href="#element-types">element type</a>.</td>
+</tr>
+<tr>
+<td><code>key</code></td>
+<td><em>Escape</em> or <em>Enter</em></td>
+<td>Key pressed by the user.</td>
+</tr>
+<tr>
+<td><code>ctrlKey</code></td>
+<td><em>boolean</em></td>
+<td>Flag indicating <a href="https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/ctrlKey" target="_blank"><code>control</code> key</a> was pressed when the event occurred.</td>
+</tr>
+<tr>
+<td><code>altKey</code></td>
+<td><em>boolean</em></td>
+<td>Flag indicating <a href="https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/altKey" target="_blank"><code>alt</code> key</a> was pressed when the event occurred.</td>
+</tr>
+<tr>
+<td><code>shiftKey</code></td>
+<td><em>boolean</em></td>
+<td>Flag indicating <a href="https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/shiftKey" target="_blank"><code>shift</code> key</a> was pressed when the event occurred.</td>
+</tr>
+<tr>
+<td><code>metaKey</code></td>
+<td><em>boolean</em></td>
+<td>Flag indicating <a href="https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/metaKey" target="_blank"><code>meta</code> key</a> was pressed when the event occurred.</td>
+</tr>
+</tbody></table>
+<h1 id='element-style'>Element Style</h1><div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="kd">var</span> <span class="nx">cardElement</span> <span class="o">=</span> <span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">elements</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="dl">'</span><span class="s1">card</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">style</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">fonts</span><span class="p">:</span> <span class="p">[</span>
+      <span class="dl">"</span><span class="s2">https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&amp;display=swap</span><span class="dl">"</span>
+    <span class="p">],</span>
+    <span class="na">base</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">color</span><span class="p">:</span> <span class="dl">"</span><span class="s2">#fff</span><span class="dl">"</span><span class="p">,</span>
+      <span class="na">fontWeight</span><span class="p">:</span> <span class="mi">500</span><span class="p">,</span>
+      <span class="na">fontFamily</span><span class="p">:</span> <span class="dl">"</span><span class="s2">'Source Sans Pro'</span><span class="dl">"</span><span class="p">,</span>
+      <span class="na">fontSize</span><span class="p">:</span> <span class="dl">"</span><span class="s2">16px</span><span class="dl">"</span><span class="p">,</span>
+      <span class="na">fontSmooth</span><span class="p">:</span> <span class="dl">"</span><span class="s2">antialiased</span><span class="dl">"</span><span class="p">,</span>
+      <span class="dl">"</span><span class="s2">::placeholder</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">color</span><span class="p">:</span> <span class="dl">"</span><span class="s2">#6b7294</span><span class="dl">"</span>
+      <span class="p">},</span>
+      <span class="na">invalid</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">color</span><span class="p">:</span> <span class="dl">"</span><span class="s2">#ffc7ee</span><span class="dl">"</span>
+      <span class="p">},</span>
+      <span class="na">complete</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">color</span><span class="p">:</span> <span class="dl">"</span><span class="s2">#1ad1db</span><span class="dl">"</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+</code></pre></div>
+<p>Elements are styled through the <code>ElementStyle</code> object, which maps state variants and miscellaneous.</p>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>fonts</code></td>
+<td>false</td>
+<td><em>array</em></td>
+<td>Array of <a href="https://fonts.google.com/" target="_blank">Google Fonts</a> URLs</td>
+</tr>
+<tr>
+<td><code>base</code></td>
+<td>false</td>
+<td><em>object</em></td>
+<td>Base variant style - all other variant styles inherit from this one</td>
+</tr>
+<tr>
+<td><code>complete</code></td>
+<td>false</td>
+<td><em>object</em></td>
+<td>Variant style applied when the element input has valid value</td>
+</tr>
+<tr>
+<td><code>empty</code></td>
+<td>false</td>
+<td><em>object</em></td>
+<td>Variant style applied when the element input has no value</td>
+</tr>
+<tr>
+<td><code>invalid</code></td>
+<td>false</td>
+<td><em>object</em></td>
+<td>Variant style applied when the element input has invalid value</td>
+</tr>
+</tbody></table>
+
+<p>You can customize the following pseudo-classes and pseudo-elements inside each variant using a nested object:</p>
+
+<ul>
+<li><code>:hover</code></li>
+<li><code>:focus</code></li>
+<li><code>::placeholder</code></li>
+<li><code>::selection</code></li>
+</ul>
+
+<p>Here is a complete list of the supported CSS properties:</p>
+
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/background-color" target="_blank">backgroundColor</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/color" target="_blank">color</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/font-family" target="_blank">fontFamily</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/font-size" target="_blank">fontSize</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/font-smooth" target="_blank">fontSmooth</a> (we replace this with the user-agent alternate names automatically)</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/font-style" target="_blank">fontStyle</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/font-variant" target="_blank">fontVariant</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/font-weight" target="_blank">fontWeight</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/line-height" target="_blank">lineHeight</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/letter-spacing" target="_blank">letterSpacing</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-align" target="_blank">textAlign</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/padding" target="_blank">padding</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-decoration" target="_blank">textDecoration</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow" target="_blank">textShadow</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-transform" target="_blank">textTransform</a></li>
+</ul>
+
+<aside class="notice">
+  <span>Variants are resolved per element input. In other words, variant styles will be applied on each element input individually based on their own value.</span>
+</aside>
+
+<aside class="warning">
+  <span>For security reasons, we currently support only the 1000+ Google Fonts families. If you need a custom font in your <strong>Basis Theory Elements</strong>, don't hesitate to <a href="mailto:support@basistheory.com">reach out</a>.</span>
+</aside>
+<h1 id='store-credit-card'>Store Credit Card</h1><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">elements</span><span class="p">.</span><span class="nx">storeCreditCard</span><span class="p">({</span>
+  <span class="na">card</span><span class="p">:</span> <span class="nx">cardElement</span><span class="p">,</span>
+  <span class="na">billingDetails</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Fiona Theory</span><span class="dl">'</span>  
+  <span class="p">}</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">((</span><span class="nx">token</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">token</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span> <span class="c1">// token to store</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">token</span><span class="p">.</span><span class="nx">card</span><span class="p">));</span> <span class="c1">// redacted card data</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>Allows secure submission and tokenization of a card element. Returns a <code>Promise</code> that resoles to the tokenized card data. See <a href="#cardmodel">CardModel</a> for the resolved value type.</p>
+
+<p>Internally, <code>BasisTheory.elements.storeCreditCard</code> calls <a href="#create-atomic-card">Create Atomic Card API</a>.</p>
+
+<p>You can fetch this same data later with <a href="#get-an-atomic-card">Get an Atomic Card API</a>.</p>
+
+<aside class="notice">
+  <span>Notice that the actual card data never leaves the element (iframe) other than to hit our secure API endpoints.</span>
+</aside>
+<h2 id='storecreditcard-errors'>storeCreditCard Errors</h2><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">elements</span><span class="p">.</span><span class="nx">storeCreditCard</span><span class="p">(...).</span><span class="k">catch</span><span class="p">(</span><span class="nx">error</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="c1">// handle error</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>In case <code>storeCreditCard</code> throws an error, that could be related to client-side validation or an unaccepted request from the server.</p>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Scope</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>validation</code></td>
+<td><em>array</em></td>
+<td>client</td>
+<td>Array of element validation error types, in case of client-side error.</td>
+</tr>
+<tr>
+<td><code>response</code></td>
+<td><em>object</em></td>
+<td>server</td>
+<td>Response body sent from the server.</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td><em>number</em></td>
+<td>both</td>
+<td>Response HTTP status or <code>-1</code> if the request never left the client (i.e. connection issues)</td>
+</tr>
+</tbody></table>
+
+        
+      </div>
+      <div class="dark-box">
+          <div class="lang-selector">
+                <a href="#" data-language-name="jsx">Javascript</a>
+          </div>
+      </div>
+    </div>
+  </body>
+</html>
