@@ -28,7 +28,7 @@
         line-height: 32px;
         letter-spacing: 0px;
         text-align: left;
-        color: #A4A9C5;
+        color: $grey-600;
       }
   
       img {
@@ -118,19 +118,21 @@
         border: 1px solid rgba(65, 73, 112, 0.2);
         box-sizing: border-box;
         border-radius: 4px;
-        max-width: 282.67px;
-  
-        h4 {
-          @extend %principal-title-font;
-          margin: 0;
-          padding: 0 0 4px;
-        }
+        width: 282.67px;
+
         img {
           width: 100%;
         }
   
         .container {
           padding: 16px;
+          
+          h4 {
+            @extend %principal-title-font;
+            margin: 0;
+            padding: 0 0 4px;
+            color: $grey-800;
+          }
           p {
             padding: 0;
             margin: 0;

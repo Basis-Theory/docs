@@ -10,7 +10,8 @@ language_tabs: # must be one of https://git.io/vQNgJ
 toc_footers:
 
 other_docs:
-- <a class="toc-h2 toc-link" href="/elements">Elements</a>
+  - <a href="/">Home</a>
+  - <a class="toc-h2 toc-link" href="/elements">Elements</a>
 
 intro_quick_links:
   - api-reference/quick_links

@@ -48,4 +48,51 @@
     text-align: left;
     color: $blue-800;
   }
+
+  .card-box {
+    display: grid;
+    grid-template-columns: repeat(3,auto);
+    column-gap: 24px;
+    row-gap: 32px;
+    padding: 32px 0;
+
+    a {
+      text-decoration: none;
+    }
+
+    .card {
+      border: 1px solid rgba(65, 73, 112, 0.2);
+      box-sizing: border-box;
+      border-radius: 4px;
+      width: 282.67px;
+
+      img {
+        width: 100%;
+      }
+
+      .container {
+        padding: 16px;
+        h4 {
+          @extend %principal-title-font;
+          margin: 0;
+          padding: 0 0 4px;
+          color: $grey-800;
+        }
+
+        p {
+          padding: 0;
+          margin: 0;
+          @extend %body2-font;
+        }
+
+        .text-link {
+          cursor: pointer;
+          color: $links;
+          @extend %default-font;
+          font-weight: 600;
+          line-height: 21px;
+        }
+      }
+    }
+  }
 }

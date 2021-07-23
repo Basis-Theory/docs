@@ -9,6 +9,7 @@ language_tabs: # must be one of https://git.io/vQNgJ
 toc_footers:
 
 other_docs:
+  - <a href="/">Home</a>
   - <a href="/api-reference">API Reference</a>
 
 intro_quick_links:

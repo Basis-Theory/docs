@@ -5,21 +5,21 @@ Our software becomes a core part of your infrastructure enabling you to quickly 
     
 <aside class="card-box">
     <div class="card">
-        <img src="./images/guides/card1.svg" alt="Avatar">
+        <img src="./images/guides/card1.svg">
         <div class="container">
             <h4>Tokens</h4>
             <p>Etiam varius ut tellus eget ullamcorper. In hendrerit luctus diam non scelerisque.</p>
         </div>
     </div>
     <div class="card">
-        <img src="./images/guides/card2.svg" alt="Avatar">
+        <img src="./images/guides/card2.svg">
         <div class="container">
             <h4>Atomic Tokens</h4>
             <p>Etiam varius ut tellus eget ullamcorper. In hendrerit luctus diam non scelerisque.</p>
         </div>
     </div>
     <div class="card">
-        <img src="./images/guides/card3.svg" alt="Avatar">
+        <img src="./images/guides/card3.svg">
         <div class="container">
             <h4>NoSee (Encryption)</h4>
             <p>Etiam varius ut tellus eget ullamcorper. In hendrerit luctus diam non scelerisque.</p>
