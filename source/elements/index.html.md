@@ -3,8 +3,7 @@ title: Basis Theory Elements Reference
 docs_logo: elements.svg
 
 language_tabs: # must be one of https://git.io/vQNgJ
-  - javascript: Javascript
-  - html: HTML
+  - jsx: Javascript
 
 toc_footers:
 
@@ -22,8 +21,11 @@ intro_includes:
   - elements/errors
 
 api_includes:
-  - elements/install
+  - elements/initialize
+  - elements/element_types
   - elements/elements_instance
+  - elements/element_events
+  - elements/element_style
   - elements/store_credit_card
 
 search: true
