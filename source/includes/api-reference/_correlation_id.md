@@ -8,6 +8,15 @@ curl "https://api.basistheory.com" \
   -H "bt-trace-id: aa5d3379-6385-4ef4-9fdb-ca1341572153"
 ```
 
+```javascript
+import { BasisTheory } from '@Basis-Theory/basis-theory-js';
+
+const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
+const applications = await bt.applications.list({}, {
+  correlationId: 'aa5d3379-6385-4ef4-9fdb-ca1341572153'
+});
+```
+
 ```csharp
 var client = new TokenClient("key_N88mVGsp3sCXkykyN2EFED");
 client.GetAsync(requestOptions: new RequestOptions {
