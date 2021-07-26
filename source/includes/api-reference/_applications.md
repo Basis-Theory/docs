@@ -48,6 +48,22 @@ curl "https://api.basistheory.com/applications" \
   }'
 ```
 
+```javascript
+import { BasisTheory } from '@Basis-Theory/basis-theory-js';
+
+const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
+const application = await bt.applications.create({
+  name: 'My Example App',
+  type: 'server_to_server',
+  permissions: [
+    'card:create',
+    'card:read',
+    'token:create',
+    'token:read',
+  ],
+});
+```
+
 ```csharp
 var client = new ApplicationClient("key_N88mVGsp3sCXkykyN2EFED");
 
@@ -101,7 +117,7 @@ Attribute | Required | Type | Default | Description
 --------- | -------- | ---- | ------- | -----------
 `name` | true | *string* | `null` | The name of the application. Has a maximum length of `200`
 `type` | true | *string* | `null` | [Application](#application-types) of the application
-`permissions` | false | *array* | `[]` | [Perimissions](#permission-types) for the application
+`permissions` | false | *array* | `[]` | [Permissions](#permission-types) for the application
 
 ### Response
 
@@ -115,6 +131,13 @@ Returns an [application](#application-object) if the application was created. Re
 ```shell
 curl "https://api.basistheory.com/applications" \
   -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
+```
+
+```javascript
+import { BasisTheory } from '@Basis-Theory/basis-theory-js';
+
+const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
+const applications = await bt.applications.list();
 ```
 
 ```csharp
@@ -182,6 +205,13 @@ curl "https://api.basistheory.com/applications/fe1f9ba4-474e-44b9-b949-110cdba9d
   -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
 ```
 
+```javascript
+import { BasisTheory } from '@Basis-Theory/basis-theory-js';
+
+const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
+const application = await bt.applications.retrieve('fe1f9ba4-474e-44b9-b949-110cdba9d662');
+```
+
 ```csharp
 var client = new ApplicationClient("key_N88mVGsp3sCXkykyN2EFED");
 
@@ -236,6 +266,13 @@ Returns an [application](#application-object) with the `id` provided. Returns [a
 ```shell
 curl "https://api.basistheory.com/applications/key" \
   -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
+```
+
+```javascript
+import { BasisTheory } from '@Basis-Theory/basis-theory-js';
+
+const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
+const application = await bt.applications.retrieveByKey();
 ```
 
 ```csharp
@@ -297,13 +334,27 @@ curl "https://api.basistheory.com/applications/fb124bba-f90d-45f0-9a59-5edca27b3
   }'
 ```
 
+```javascript
+import { BasisTheory } from '@Basis-Theory/basis-theory-js';
+
+const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
+const application = await bt.applications.update('fb124bba-f90d-45f0-9a59-5edca27b3b4a', {
+  name: 'My Example App',
+  permissions: [
+    'card:create',
+    'card:read',
+    'token:create',
+    'token:read',
+  ],
+});
+```
+
 ```csharp
 var client = new ApplicationClient("key_N88mVGsp3sCXkykyN2EFED");
 
 var application = await client.UpdateAsync("fb124bba-f90d-45f0-9a59-5edca27b3b4a", 
   new Application {
     Name = "My Example App",
-    Type = "management",
     Permissions = new List<string> {
       "card:create",
       "card:read",
@@ -355,7 +406,7 @@ Parameter | Required | Type | Default | Description
 Attribute | Required | Type | Default | Description
 --------- | -------- | ---- | ------- | -----------
 `name` | true | *string* | `null` | The name of the application. Has a maximum length of `200`
-`permissions` | false | *array* | `[]` | [Perimissions](#permission-types) for the application
+`permissions` | false | *array* | `[]` | [Permissions](#permission-types) for the application
 
 ### Response
 
@@ -370,6 +421,13 @@ Returns an [application](#application-object) if the application was updated. Re
 curl "https://api.basistheory.com/applications/fb124bba-f90d-45f0-9a59-5edca27b3b4a/regenerate" \
   -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
   -X "POST"
+```
+
+```javascript
+import { BasisTheory } from '@Basis-Theory/basis-theory-js';
+
+const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
+const application = await bt.applications.regenerateKey('fb124bba-f90d-45f0-9a59-5edca27b3b4a');
 ```
 
 ```csharp
@@ -434,6 +492,13 @@ Returns an [application](#application-object) with the new `key` property popula
 curl "https://api.basistheory.com/applications/fb124bba-f90d-45f0-9a59-5edca27b3b4a" \
   -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
   -X "DELETE"
+```
+
+```javascript
+import { BasisTheory } from '@Basis-Theory/basis-theory-js';
+
+const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
+await bt.applications.delete('fb124bba-f90d-45f0-9a59-5edca27b3b4a');
 ```
 
 ```csharp
