@@ -633,7 +633,6 @@
 </blockquote>
 <div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">npm</span> <span class="nx">install</span> <span class="o">--</span><span class="nx">save</span> <span class="p">@</span><span class="nd">Basis</span><span class="o">-</span><span class="nx">Theory</span><span class="o">/</span><span class="nx">basis</span><span class="o">-</span><span class="nx">theory</span><span class="o">-</span><span class="nx">js</span>
 </code></pre></div><div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="n">dotnet</span> <span class="k">add</span> <span class="n">package</span> <span class="n">BasisTheory</span><span class="p">.</span><span class="n">net</span> 
-</code></pre></div><div class="highlight"><pre class="highlight html tab-html"><code><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://js.basistheory.com"</span><span class="nt">&gt;&lt;/script&gt;</span> 
 </code></pre></div>
 <p>Our SDK&#39;s enable you to quickly and easily integrate with the API. Select one of the language tabs to see instructions on how to install the SDK and code examples in that language.</p>
 
@@ -644,6 +643,16 @@
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">BasisTheory</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@Basis-Theory/basis-theory-js</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="c1">// at instance</span>
+<span class="kd">const</span> <span class="nx">bt</span> <span class="o">=</span> <span class="k">await</span> <span class="k">new</span> <span class="nx">BasisTheory</span><span class="p">().</span><span class="nx">init</span><span class="p">(</span><span class="dl">'</span><span class="s1">key_N88mVGsp3sCXkykyN2EFED</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="c1">// per call</span>
+<span class="kd">const</span> <span class="nx">bt</span> <span class="o">=</span> <span class="k">await</span> <span class="k">new</span> <span class="nx">BasisTheory</span><span class="p">().</span><span class="nx">init</span><span class="p">();</span>
+<span class="kd">const</span> <span class="nx">applications</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">bt</span><span class="p">.</span><span class="nx">applications</span><span class="p">.</span><span class="nx">list</span><span class="p">({},</span> <span class="p">{</span>
+  <span class="na">apiKey</span><span class="p">:</span> <span class="dl">'</span><span class="s1">key_N88mVGsp3sCXkykyN2EFED</span><span class="dl">'</span>
+<span class="p">});</span>
 </code></pre></div><div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="c1">// At service</span>
 <span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">TokenClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
 
@@ -669,6 +678,12 @@
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
   <span class="nt">-H</span> <span class="s2">"bt-trace-id: aa5d3379-6385-4ef4-9fdb-ca1341572153"</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">BasisTheory</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@Basis-Theory/basis-theory-js</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">bt</span> <span class="o">=</span> <span class="k">await</span> <span class="k">new</span> <span class="nx">BasisTheory</span><span class="p">().</span><span class="nx">init</span><span class="p">(</span><span class="dl">'</span><span class="s1">key_N88mVGsp3sCXkykyN2EFED</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">applications</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">bt</span><span class="p">.</span><span class="nx">applications</span><span class="p">.</span><span class="nx">list</span><span class="p">({},</span> <span class="p">{</span>
+  <span class="na">correlationId</span><span class="p">:</span> <span class="dl">'</span><span class="s1">aa5d3379-6385-4ef4-9fdb-ca1341572153</span><span class="dl">'</span>
+<span class="p">});</span>
 </code></pre></div><div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">TokenClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
 <span class="n">client</span><span class="p">.</span><span class="nf">GetAsync</span><span class="p">(</span><span class="n">requestOptions</span><span class="p">:</span> <span class="k">new</span> <span class="n">RequestOptions</span> <span class="p">{</span>
   <span class="n">CorrelationId</span> <span class="p">=</span> <span class="s">"aa5d3379-6385-4ef4-9fdb-ca1341572153"</span>
@@ -685,6 +700,13 @@
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/applications?page=2&amp;size=10"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">BasisTheory</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@Basis-Theory/basis-theory-js</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">bt</span> <span class="o">=</span> <span class="k">await</span> <span class="k">new</span> <span class="nx">BasisTheory</span><span class="p">().</span><span class="nx">init</span><span class="p">(</span><span class="dl">'</span><span class="s1">key_N88mVGsp3sCXkykyN2EFED</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">applications</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">bt</span><span class="p">.</span><span class="nx">applications</span><span class="p">.</span><span class="nx">list</span><span class="p">({</span>
+  <span class="na">page</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+  <span class="na">size</span><span class="p">:</span> <span class="mi">10</span>
+<span class="p">});</span>
 </code></pre></div><div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">ApplicationClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
 
 <span class="kt">var</span> <span class="n">applications</span> <span class="p">=</span> <span class="n">client</span><span class="p">.</span><span class="nf">GetAsync</span><span class="p">(</span><span class="k">new</span> <span class="n">ApplicationGetRequest</span> <span class="p">{</span>
@@ -1314,6 +1336,19 @@
       "token:read"
     ]
   }'</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">BasisTheory</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@Basis-Theory/basis-theory-js</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">bt</span> <span class="o">=</span> <span class="k">await</span> <span class="k">new</span> <span class="nx">BasisTheory</span><span class="p">().</span><span class="nx">init</span><span class="p">(</span><span class="dl">'</span><span class="s1">key_N88mVGsp3sCXkykyN2EFED</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">application</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">bt</span><span class="p">.</span><span class="nx">applications</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
+  <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">My Example App</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">server_to_server</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">permissions</span><span class="p">:</span> <span class="p">[</span>
+    <span class="dl">'</span><span class="s1">card:create</span><span class="dl">'</span><span class="p">,</span>
+    <span class="dl">'</span><span class="s1">card:read</span><span class="dl">'</span><span class="p">,</span>
+    <span class="dl">'</span><span class="s1">token:create</span><span class="dl">'</span><span class="p">,</span>
+    <span class="dl">'</span><span class="s1">token:read</span><span class="dl">'</span><span class="p">,</span>
+  <span class="p">],</span>
+<span class="p">});</span>
 </code></pre></div><div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">ApplicationClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
 
 <span class="kt">var</span> <span class="n">application</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">CreateAsync</span><span class="p">(</span><span class="k">new</span> <span class="n">Application</span> <span class="p">{</span>
@@ -1384,7 +1419,7 @@
 <td>false</td>
 <td><em>array</em></td>
 <td><code>[]</code></td>
-<td><a href="#permission-types">Perimissions</a> for the application</td>
+<td><a href="#permission-types">Permissions</a> for the application</td>
 </tr>
 </tbody></table>
 <h3 id='response'>Response</h3>
@@ -1395,6 +1430,10 @@
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/applications"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">BasisTheory</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@Basis-Theory/basis-theory-js</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">bt</span> <span class="o">=</span> <span class="k">await</span> <span class="k">new</span> <span class="nx">BasisTheory</span><span class="p">().</span><span class="nx">init</span><span class="p">(</span><span class="dl">'</span><span class="s1">key_N88mVGsp3sCXkykyN2EFED</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">applications</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">bt</span><span class="p">.</span><span class="nx">applications</span><span class="p">.</span><span class="nx">list</span><span class="p">();</span>
 </code></pre></div><div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">ApplicationClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
 
 <span class="kt">var</span> <span class="n">applications</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">GetAsync</span><span class="p">();</span>
@@ -1460,6 +1499,10 @@
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/applications/fe1f9ba4-474e-44b9-b949-110cdba9d662"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">BasisTheory</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@Basis-Theory/basis-theory-js</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">bt</span> <span class="o">=</span> <span class="k">await</span> <span class="k">new</span> <span class="nx">BasisTheory</span><span class="p">().</span><span class="nx">init</span><span class="p">(</span><span class="dl">'</span><span class="s1">key_N88mVGsp3sCXkykyN2EFED</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">application</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">bt</span><span class="p">.</span><span class="nx">applications</span><span class="p">.</span><span class="nx">retrieve</span><span class="p">(</span><span class="dl">'</span><span class="s1">fe1f9ba4-474e-44b9-b949-110cdba9d662</span><span class="dl">'</span><span class="p">);</span>
 </code></pre></div><div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">ApplicationClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
 
 <span class="kt">var</span> <span class="n">application</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">GetByIdAsync</span><span class="p">(</span><span class="s">"fe1f9ba4-474e-44b9-b949-110cdba9d662"</span><span class="p">);</span>
@@ -1516,6 +1559,10 @@
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/applications/key"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">BasisTheory</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@Basis-Theory/basis-theory-js</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">bt</span> <span class="o">=</span> <span class="k">await</span> <span class="k">new</span> <span class="nx">BasisTheory</span><span class="p">().</span><span class="nx">init</span><span class="p">(</span><span class="dl">'</span><span class="s1">key_N88mVGsp3sCXkykyN2EFED</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">application</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">bt</span><span class="p">.</span><span class="nx">applications</span><span class="p">.</span><span class="nx">retrieveByKey</span><span class="p">();</span>
 </code></pre></div><div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">ApplicationClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
 
 <span class="kt">var</span> <span class="n">application</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">GetByKeyAsync</span><span class="p">();</span>
@@ -1563,12 +1610,23 @@
       "application:write"
     ]
   }'</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">BasisTheory</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@Basis-Theory/basis-theory-js</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">bt</span> <span class="o">=</span> <span class="k">await</span> <span class="k">new</span> <span class="nx">BasisTheory</span><span class="p">().</span><span class="nx">init</span><span class="p">(</span><span class="dl">'</span><span class="s1">key_N88mVGsp3sCXkykyN2EFED</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">application</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">bt</span><span class="p">.</span><span class="nx">applications</span><span class="p">.</span><span class="nx">update</span><span class="p">(</span><span class="dl">'</span><span class="s1">fb124bba-f90d-45f0-9a59-5edca27b3b4a</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">My Example App</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">permissions</span><span class="p">:</span> <span class="p">[</span>
+    <span class="dl">'</span><span class="s1">card:create</span><span class="dl">'</span><span class="p">,</span>
+    <span class="dl">'</span><span class="s1">card:read</span><span class="dl">'</span><span class="p">,</span>
+    <span class="dl">'</span><span class="s1">token:create</span><span class="dl">'</span><span class="p">,</span>
+    <span class="dl">'</span><span class="s1">token:read</span><span class="dl">'</span><span class="p">,</span>
+  <span class="p">],</span>
+<span class="p">});</span>
 </code></pre></div><div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">ApplicationClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
 
 <span class="kt">var</span> <span class="n">application</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">UpdateAsync</span><span class="p">(</span><span class="s">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span> 
   <span class="k">new</span> <span class="n">Application</span> <span class="p">{</span>
     <span class="n">Name</span> <span class="p">=</span> <span class="s">"My Example App"</span><span class="p">,</span>
-    <span class="n">Type</span> <span class="p">=</span> <span class="s">"management"</span><span class="p">,</span>
     <span class="n">Permissions</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="p">{</span>
       <span class="s">"card:create"</span><span class="p">,</span>
       <span class="s">"card:read"</span><span class="p">,</span>
@@ -1644,7 +1702,7 @@
 <td>false</td>
 <td><em>array</em></td>
 <td><code>[]</code></td>
-<td><a href="#permission-types">Perimissions</a> for the application</td>
+<td><a href="#permission-types">Permissions</a> for the application</td>
 </tr>
 </tbody></table>
 <h3 id='response-5'>Response</h3>
@@ -1656,6 +1714,10 @@
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/applications/fb124bba-f90d-45f0-9a59-5edca27b3b4a/regenerate"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
   <span class="nt">-X</span> <span class="s2">"POST"</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">BasisTheory</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@Basis-Theory/basis-theory-js</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">bt</span> <span class="o">=</span> <span class="k">await</span> <span class="k">new</span> <span class="nx">BasisTheory</span><span class="p">().</span><span class="nx">init</span><span class="p">(</span><span class="dl">'</span><span class="s1">key_N88mVGsp3sCXkykyN2EFED</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">application</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">bt</span><span class="p">.</span><span class="nx">applications</span><span class="p">.</span><span class="nx">regenerateKey</span><span class="p">(</span><span class="dl">'</span><span class="s1">fb124bba-f90d-45f0-9a59-5edca27b3b4a</span><span class="dl">'</span><span class="p">);</span>
 </code></pre></div><div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">ApplicationClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
 
 <span class="kt">var</span> <span class="n">application</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">RegenerateKeyAsync</span><span class="p">(</span><span class="k">new</span> <span class="nf">Guid</span><span class="p">(</span><span class="s">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">));</span>
@@ -1720,6 +1782,10 @@
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/applications/fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
   <span class="nt">-X</span> <span class="s2">"DELETE"</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">BasisTheory</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@Basis-Theory/basis-theory-js</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">bt</span> <span class="o">=</span> <span class="k">await</span> <span class="k">new</span> <span class="nx">BasisTheory</span><span class="p">().</span><span class="nx">init</span><span class="p">(</span><span class="dl">'</span><span class="s1">key_N88mVGsp3sCXkykyN2EFED</span><span class="dl">'</span><span class="p">);</span>
+<span class="k">await</span> <span class="nx">bt</span><span class="p">.</span><span class="nx">applications</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="dl">'</span><span class="s1">fb124bba-f90d-45f0-9a59-5edca27b3b4a</span><span class="dl">'</span><span class="p">);</span>
 </code></pre></div><div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">ApplicationClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
 
 <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">DeleteAsync</span><span class="p">(</span><span class="k">new</span> <span class="nf">Guid</span><span class="p">(</span><span class="s">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">));</span>
