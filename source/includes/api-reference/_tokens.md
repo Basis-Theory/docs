@@ -54,7 +54,7 @@ curl "https://api.basistheory.com/tokens" \
     "data": "ebSG3IohNmg5gTOjN2HBwBbhjDZ6BY3fCWZJfXSucVMfQ+7YNMXQYrPuRSXgSkhuTMYS+BNfVUur4qZSvUbgCA==",
     "metadata": {
       "nonSensitiveField": "Non-Sensitive Value"
-    }
+    },
     "encryption": {
       "cek": {
         "key": "JLrtGbYSN5/dbqdKtLVG8tHu3QefcZnKsFOPBBXlXcG4zL9US01mW2MqZs6Px4ckSQM8CrRakwLKilrQ0f37Iw==",
@@ -173,7 +173,7 @@ var tokens = await client.GetAsync();
 
 ```json
 {
-  "pagination": {...}
+  "pagination": {...},
   "data": [
     {
       "id": "c06d0789-0a38-40be-b7cc-c28a718f76f1",
@@ -182,7 +182,7 @@ var tokens = await client.GetAsync();
       "data": "ebSG3IohNmg5gTOjN2HBwBbhjDZ6BY3fCWZJfXSucVMfQ+7YNMXQYrPuRSXgSkhuTMYS+BNfVUur4qZSvUbgCA==",
       "metadata": {
         "nonSensitiveField": "Non-Sensitive Value"
-      }
+      },
       "encryption": {
         "cek": {
           "key": "JLrtGbYSN5/dbqdKtLVG8tHu3QefcZnKsFOPBBXlXcG4zL9US01mW2MqZs6Px4ckSQM8CrRakwLKilrQ0f37Iw==",
@@ -196,7 +196,7 @@ var tokens = await client.GetAsync();
       "children": [
         {...},
         {...}
-      ]
+      ],
       "created_by": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
       "created_at": "2021-03-01T08:23:14+00:00"
     },
@@ -233,6 +233,76 @@ Parameter | Required | Type | Default | Description
 Returns a [paginated object](#pagination) with the `data` property containing an array of [tokens](#token-object). Providing any query parameters will filter the results. Returns [an error](#errors) if tokens could not be retrieved.
 
 
+## List Decrypted Tokens
+
+> Request
+
+```shell
+curl "https://api.basistheory.com/tokens/decrypt" \
+  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
+```
+
+```csharp
+var client = new TokenClient("key_N88mVGsp3sCXkykyN2EFED");
+
+var tokens = await client.GetAsync(new TokenGetRequest { Decrypt = true });
+```
+
+> Response
+
+```json
+{
+  "pagination": {...},
+  "data": [
+    {
+      "id": "c06d0789-0a38-40be-b7cc-c28a718f76f1",
+      "type": "token",
+      "tenant_id": "77cb0024-123e-41a8-8ff8-a3d5a0fa8a08",
+      "data": "ebSG3IohNmg5gTOjN2HBwBbhjDZ6BY3fCWZJfXSucVMfQ+7YNMXQYrPuRSXgSkhuTMYS+BNfVUur4qZSvUbgCA==",
+      "metadata": {
+        "nonSensitiveField": "Non-Sensitive Value"
+      },
+      "children": [
+        {...},
+        {...}
+      ],
+      "created_by": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
+      "created_at": "2021-03-01T08:23:14+00:00"
+    },
+    {...},
+    {...}
+  ]
+}
+```
+
+<span class="http-method get">
+  <span class="box-method">GET</span>
+  `https://api.basistheory.com/tokens/decrypt`
+</span>
+
+Get a list of decrypted tokens for the tenant.
+
+### Permissions
+
+<p class="scopes">
+  <span class="scope">token:decrypt</span>
+</p>
+
+### Query Parameters
+
+Parameter | Required | Type | Default | Description
+--------- | -------- | ---- | ------- | -----------
+`id` | false | *array* | `[]` | An optional list of token ID's to filter the list of tokens by
+`type` | false | *array* | `[]` | An optional array of [token types](#token-types) to filter the list of tokens by
+`children` | false | *boolean* | `false` | Include child tokens where the token is a parent in [token association](#token-associations)
+`children_type` | false | *array* | `[]` | An optional array of [token types](#token-types) to filter child tokens where the token is a parent in the [token association](#token-associations)
+
+### Response
+
+Returns a [paginated object](#pagination) with the `data` property containing an array of decrypted [tokens](#token-object). Providing any query parameters will filter the results. Returns [an error](#errors) if tokens could not be retrieved.
+Token types other than `token` or non-BasisTheory encrypted tokens will not be decrypted.
+
+
 ## Get a Token
 
 > Request
@@ -258,7 +328,7 @@ var token = await client.GetByIdAsync("c06d0789-0a38-40be-b7cc-c28a718f76f1");
   "data": "ebSG3IohNmg5gTOjN2HBwBbhjDZ6BY3fCWZJfXSucVMfQ+7YNMXQYrPuRSXgSkhuTMYS+BNfVUur4qZSvUbgCA==",
   "metadata": {
     "nonSensitiveField": "Non-Sensitive Value"
-  }
+  },
   "encryption": {
     "cek": {
       "key": "JLrtGbYSN5/dbqdKtLVG8tHu3QefcZnKsFOPBBXlXcG4zL9US01mW2MqZs6Px4ckSQM8CrRakwLKilrQ0f37Iw==",
@@ -272,7 +342,7 @@ var token = await client.GetByIdAsync("c06d0789-0a38-40be-b7cc-c28a718f76f1");
   "children": [
     {...},
     {...}
-  ]
+  ],
   "created_by": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
   "created_at": "2021-03-01T08:23:14+00:00"
 }
@@ -307,6 +377,73 @@ Parameter | Required | Type | Default | Description
 ### Response
 
 Returns a [token](#token-object) with the `id` provided. Returns [an error](#errors) if the token could not be retrieved.
+
+
+## Get a Decrypted Token
+
+> Request
+
+```shell
+curl "https://api.basistheory.com/tokens/c06d0789-0a38-40be-b7cc-c28a718f76f1/decrypt" \
+  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
+```
+
+```csharp
+var client = new TokenClient("key_N88mVGsp3sCXkykyN2EFED");
+
+var token = await client.GetByIdAsync("c06d0789-0a38-40be-b7cc-c28a718f76f1", new TokenGetByIdRequest { Decrypt = true });
+```
+
+> Response
+
+```json
+{
+  "id": "c06d0789-0a38-40be-b7cc-c28a718f76f1",
+  "type": "token",
+  "tenant_id": "77cb0024-123e-41a8-8ff8-a3d5a0fa8a08",
+  "data": "ebSG3IohNmg5gTOjN2HBwBbhjDZ6BY3fCWZJfXSucVMfQ+7YNMXQYrPuRSXgSkhuTMYS+BNfVUur4qZSvUbgCA==",
+  "metadata": {
+    "nonSensitiveField": "Non-Sensitive Value"
+  },
+  "children": [
+    {...},
+    {...}
+  ],
+  "created_by": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
+  "created_at": "2021-03-01T08:23:14+00:00"
+}
+```
+
+<span class="http-method get">
+  <span class="box-method">GET</span>
+  `https://api.basistheory.com/tokens/{id}/decrypt`
+</span>
+
+Get a decrypted token by ID in the tenant.
+
+### Permissions
+
+<p class="scopes">
+  <span class="scope">token:decrypt</span>
+</p>
+
+### URI Parameters
+
+Parameter | Required | Type | Default | Description
+--------- | -------- | ---- | ------- | -----------
+`id` | true | *uuid* | `null` | The ID of the token
+
+### Query Parameters
+
+Parameter | Required | Type | Default | Description
+--------- | -------- | ---- | ------- | -----------
+`children` | false | *boolean* | `false` | Include child tokens where the token is a parent in [token association](#token-associations)
+`children_type` | false | *array* | `[]` | An optional array of [token types](#token-types) to filter child tokens where the token is a parent in the [token association](#token-associations)
+
+### Response
+
+Returns a decrypted [token](#token-object) with the `id` provided. Returns [an error](#errors) if the token could not be retrieved.
+Token types other than `token` or non-BasisTheory encrypted tokens will not be decrypted.
 
 
 ## Delete Token
