@@ -1,22 +1,36 @@
 ---
 title: Basis Theory API Reference
-hide_code: true
-docs_logo: docs.svg
+docs_logo: api.svg
+
+language_tabs: # must be one of https://git.io/vQNgJ
+  - shell: cURL
+  - javascript: node.js
+  - csharp: dotnet
 
 toc_footers:
 
-other_docs:
-  - <a href="/api-reference">API Reference</a>
-  - <a href="/elements">Hosted Elements</a>
-  - <a href="/guides">Developer Guides</a>
-  
-intro_includes:
-  - index_intro
+intro_quick_links:
+  - api-reference/quick_links
 
-more: 
-  - <a href="mailto:support@basistheory.com?subject=API SDK Language Support">Support</a>
-  - <a href="https://github.com/Basis-Theory">GibHub</a>
-  - <a href="/">Discord</a>
+intro_includes:
+  - api-reference/introduction
+  - api-reference/getting_started
+  - api-reference/authentication
+  - api-reference/correlation_id
+  - api-reference/pagination
+  - api-reference/errors
+
+api_includes:
+  - api-reference/permissions
+  - api-reference/tenants
+  - api-reference/applications
+  - api-reference/exchange_templates
+  - api-reference/exchanges
+  - api-reference/tokens
+  - api-reference/token_associations
+  - api-reference/atomic_cards
+  - api-reference/atomic_banks
+  - api-reference/logs
 
 search: true
 
