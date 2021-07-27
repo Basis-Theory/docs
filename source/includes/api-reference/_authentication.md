@@ -7,6 +7,19 @@ curl "https://api.basistheory.com" \
   -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
 ```
 
+```javascript
+import { BasisTheory } from '@Basis-Theory/basis-theory-js';
+
+// at instance
+const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
+
+// per call
+const bt = await new BasisTheory().init();
+const applications = await bt.applications.list({}, {
+  apiKey: 'key_N88mVGsp3sCXkykyN2EFED'
+});
+```
+
 ```csharp
 // At service
 var client = new TokenClient("key_N88mVGsp3sCXkykyN2EFED");

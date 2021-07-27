@@ -20,11 +20,13 @@ intro_includes:
   - elements/getting_started
   - elements/permissions
   - elements/authentication
-  - elements/errors
 
 api_includes:
-  - elements/install
+  - elements/initialize
+  - elements/element_types
   - elements/elements_instance
+  - elements/element_events
+  - elements/element_style
   - elements/store_credit_card
 
 search: true

@@ -1,12 +1,6 @@
 # Errors
 
-```html
-{
-
-}
-```
-
-```javscript
+```jsx
 {
 
 }
