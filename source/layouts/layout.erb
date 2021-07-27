@@ -176,6 +176,15 @@ under the License.
         </ul>
       <% end %>
 
+      <% if current_page.data.more %>
+      <h1 class="nav-title">More</h1>
+      <ul id="toc_api" class="toc-section toc-list-h1">
+        <% current_page.data.more.each do |footer| %>
+           <li class="more"><%= footer %></li>
+        <% end %>
+      </ul>
+    <% end %>
+
       <% if current_page.data.toc_footers %>
         <ul class="toc-footer">
           <% current_page.data.toc_footers.each do |footer| %>

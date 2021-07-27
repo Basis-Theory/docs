@@ -49,7 +49,7 @@ html, body {
 // TABLE OF CONTENTS
 ////////////////////////////////////////////////////////////////////////////////
 
-.toc-wrapper li.other-docs a  {
+.toc-wrapper li.other-docs a, li.more a  {
   color: $secondary;
   text-decoration: none;
   font-size: 16px;

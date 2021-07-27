@@ -9,10 +9,6 @@ language_tabs: # must be one of https://git.io/vQNgJ
 
 toc_footers:
 
-other_docs:
-  - <a href="/">Basis Theory Docs</a>
-  - <a class="toc-h2 toc-link" href="/elements">Hosted Elements</a>
-
 intro_quick_links:
   - api-reference/quick_links
 

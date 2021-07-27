@@ -3,8 +3,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;400;500;600&display=swap');
 
 .home {
-  padding-left: 100px;
-  padding-right: 100px;
+  padding-left: 152px;
+  padding-right: 152px;
+  display: grid;
 
   h1 {
     padding-left: 0;
@@ -44,14 +45,15 @@
   .sub-text-small {
     padding-left: 0;
     font-size: 16px;
-    line-height: 18px;
+    line-height: 24px;
     text-align: left;
     color: $blue-800;
   }
 
   .card-box {
     display: grid;
-    grid-template-columns: repeat(3,auto);
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
     column-gap: 24px;
     row-gap: 32px;
     padding: 32px 0;
@@ -64,7 +66,6 @@
       border: 1px solid rgba(65, 73, 112, 0.2);
       box-sizing: border-box;
       border-radius: 4px;
-      width: 282.67px;
 
       img {
         width: 100%;
@@ -83,14 +84,6 @@
           padding: 0;
           margin: 0;
           @extend %body2-font;
-        }
-
-        .text-link {
-          cursor: pointer;
-          color: $links;
-          @extend %default-font;
-          font-weight: 600;
-          line-height: 21px;
         }
       }
     }
