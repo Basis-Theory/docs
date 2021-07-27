@@ -101,7 +101,7 @@ var atomicCard = await client.CreateAsync(new AtomicCard {
     }
   },
   Metadata = new Dictionary<string, string> {
-    ["nonSensitiveField'] = "Non-Sensitive Value"
+    ["nonSensitiveField"] = "Non-Sensitive Value"
   }
 });
 ```
