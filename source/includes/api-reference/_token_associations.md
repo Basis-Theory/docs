@@ -131,8 +131,8 @@ var token = await client.CreateChildAsync("c06d0789-0a38-40be-b7cc-c28a718f76f1"
   new Token {
     Type = "token",
     Data = "ebSG3IohNmg5gTOjN2HBwBbhjDZ6BY3fCWZJfXSucVMfQ+7YNMXQYrPuRSXgSkhuTMYS+BNfVUur4qZSvUbgCA==",
-    Metadata = new {
-      nonSensitiveField = "Non-Sensitive Value"
+    Metadata = new Dictionary<string, string> {
+      ["nonSensitiveField"] = "Non-Sensitive Value"
     },
     Encryption = new Encryption {
       ContentEncryptionKey = new EncryptionKey {
@@ -196,7 +196,7 @@ Attribute | Required | Type | Default | Description
 --------- | -------- | ---- | ------- | -----------
 `type` | false | *string* | `token` | [Token type](#token-types) of the token
 `data` | true | *any* | `null` | Token data
-`metadata` | false | *any* | `null` | Non-sensitive token metadata
+`metadata` | false | *map* | `null` | A key-value map of non-sensitive data.
 `encryption` | false | *[encryption object](#encryption-object)* | `null` | Encryption metadata for an encrypted token data value
 `children` | false | *array* | `[]` | An array of [tokens](#token-object). Can be used to bulk create tokens with [token associations](#create-token-association)
 

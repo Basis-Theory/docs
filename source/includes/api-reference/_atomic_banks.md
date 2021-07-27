@@ -8,7 +8,7 @@ Attribute | Type | Description
 `tenant_id` | *uuid* | The [tenant](#tenants) ID which owns the bank
 `type` | *string* | `Bank` [token type](#token-types)
 `bank` | *[bank](#bank-object)* | Bank data
-`metadata` | *any* | Non-sensitive token metadata. Can be an object, array, or any primitive type such as an integer, boolean, or string
+`metadata` | *map* | A key-value map of non-sensitive data.
 `created_by` | *uuid* | The [application](#applications) ID which created the atomic bank
 `created_at` | *date* | Created date of the application in ISO 8601 format
 
@@ -49,8 +49,8 @@ var atomicBank = await client.CreateAsync(new AtomicBank {
     RoutingNumber = "021000021",
     AccountNumber = "1234567890"
   },
-  Metadata = new {
-    nonSensitiveField = "Non-Sensitive Value"
+  Metadata = new Dictionary<string, string> {
+    ["nonSensitiveField"] = "Non-Sensitive Value"
   }
 });
 ```
@@ -93,7 +93,7 @@ Create a new atomic bank for the tenant.
 Attribute | Required | Type | Default | Description
 --------- | -------- | ---- | ------- | -----------
 `bank` | true | *[bank](#bank-object)* | `null` | Bank data
-`metadata` | false | *any* | `null` | Non-sensitive token metadata. Can be an object, array, or any primitive type such as an integer, boolean, or string
+`metadata` | false | *map* | `null` | A key-value map of non-sensitive data.
 
 ### Response
 
