@@ -11,7 +11,7 @@ toc_footers:
 other_docs:
   - <a href="/">Basis Theory Docs</a>
   - <a href="/api-reference">API Reference</a>
-  - <a class="toc-h2 toc-link" href="/elements">Hosted Elements</a>
+  - <a class="toc-h2 toc-link" href="/elements">Elements</a>
 
 intro_quick_links:
 

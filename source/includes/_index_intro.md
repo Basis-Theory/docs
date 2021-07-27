@@ -35,9 +35,9 @@
     </a>
       <a href="/elements">
       <div class="card">
-        <img src="./images/card/hosted-elements-header-link.svg">
+        <img src="./images/card/elements-header-link.svg">
         <div class="container">
-            <h4>Hosted Elements</h4>
+            <h4>Elements</h4>
             <p>Etiam varius ut tellus eget ullamcorper. In hendrerit luctus diam non scelerisque</p>
         </div>
       </div>
