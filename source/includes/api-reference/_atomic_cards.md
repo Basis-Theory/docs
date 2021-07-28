@@ -19,7 +19,7 @@ Attribute | Type | Description
 --------- | ---- | -----------
 `number` | *string* | The card number without any separators
 `expiration_month` | *integer* | Two-digit number representing the card's expiration month
-`expiration_year` | *integer* | our-digit number representing the card's expiration year
+`expiration_year` | *integer* | Four-digit number representing the card's expiration year
 
 ### Billing Details Object
 
