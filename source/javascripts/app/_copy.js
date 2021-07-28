@@ -1,7 +1,10 @@
 function copyToClipboard(container) {
-  const textToCopy = container.textContent.replace(/\n$/, '');
-  navigator.clipboard.writeText(textToCopy)
-    .catch((error) => { console.log(`Copy failed! ${error}`) })
+  const el = document.createElement('textarea');
+  el.value = container.textContent.replace(/\n$/, '');
+  document.body.appendChild(el);
+  el.select();
+  document.execCommand('copy');
+  document.body.removeChild(el);
 }
 
 function setupCodeCopy() {
