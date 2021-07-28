@@ -50,7 +50,7 @@ var atomicBank = await client.CreateAsync(new AtomicBank {
     AccountNumber = "1234567890"
   },
   Metadata = new Dictionary<string, string> {
-    ["nonSensitiveField"] = "Non-Sensitive Value"
+    { "nonSensitiveField", "Non-Sensitive Value" }
   }
 });
 ```

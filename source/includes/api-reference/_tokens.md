@@ -79,7 +79,7 @@ var token = await client.CreateAsync(new Token {
   Type = "token",
   Data = "ebSG3IohNmg5gTOjN2HBwBbhjDZ6BY3fCWZJfXSucVMfQ+7YNMXQYrPuRSXgSkhuTMYS+BNfVUur4qZSvUbgCA==",
   Metadata = new Dictionary<string, string> {
-    ["nonSensitiveField"] = "Non-Sensitive Value"
+    { "nonSensitiveField",  "Non-Sensitive Value" }
   },
   Encryption = new Encryption {
     ContentEncryptionKey = new EncryptionKey {

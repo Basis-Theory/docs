@@ -132,7 +132,7 @@ var token = await client.CreateChildAsync("c06d0789-0a38-40be-b7cc-c28a718f76f1"
     Type = "token",
     Data = "ebSG3IohNmg5gTOjN2HBwBbhjDZ6BY3fCWZJfXSucVMfQ+7YNMXQYrPuRSXgSkhuTMYS+BNfVUur4qZSvUbgCA==",
     Metadata = new Dictionary<string, string> {
-      ["nonSensitiveField"] = "Non-Sensitive Value"
+      { "nonSensitiveField", "Non-Sensitive Value" }
     },
     Encryption = new Encryption {
       ContentEncryptionKey = new EncryptionKey {
