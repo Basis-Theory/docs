@@ -9,7 +9,7 @@ Attribute | Type | Description
 `type` | *string* | `Card` [token type](#token-types)
 `card` | *[card](#card-object)* | Card data
 `billing_details` | *[billing details](#billing-details-object)* | Billing details
-`metadata` | *any* | Non-sensitive token metadata. Can be an object, array, or any primitive type such as an integer, boolean, or string
+`metadata` | *map* | A key-value map of non-sensitive data.
 `created_by` | *uuid* | The [application](#applications) ID which created the atomic card
 `created_at` | *date* | Created date of the application in ISO 8601 format
 
@@ -100,8 +100,8 @@ var atomicCard = await client.CreateAsync(new AtomicCard {
       Country = "US"
     }
   },
-  Metadata = new {
-    nonSensitiveField = "Non-Sensitive Value"
+  Metadata = new Dictionary<string, string> {
+    { "nonSensitiveField", "Non-Sensitive Value" }
   }
 });
 ```
@@ -159,7 +159,7 @@ Attribute | Required | Type | Default | Description
 --------- | -------- | ---- | ------- | -----------
 `card` | true | *[card](#card-object)* | `null` | Card data
 `billing_details` | false | *[billing details](#billing-details-object)* | `null` | Billing details
-`metadata` | false | *any* | `null` | Non-sensitive token metadata. Can be an object, array, or any primitive type such as an integer, boolean, or string
+`metadata` | false | *map* | `null` | A key-value map of non-sensitive data.
 
 ### Response
 

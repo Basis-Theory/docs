@@ -158,7 +158,7 @@ Attribute    | Type     | Description
 `createdAt`  | *date* | Created date of the token in ISO 8601 format
 
 <!-- `encryption` | *any*    | The [encryption](#encryption-request-object) data provided when [creating the token](#create-token) -->
-<!-- `metadata` | *any* | The metadata provided when [creating the token](#create-token) -->
+<!-- `metadata` | *map* | The metadata provided when [creating the token](#create-token) -->
 
 Internally, `BasisTheory.tokens` calls [Get Token API](#get-a-token) and maps the response to [conventionally named](https://www.w3schools.com/js/js_conventions.asp) attributes.
 
@@ -189,7 +189,7 @@ Parameter | Required | Type     | Description
 It returns a `Promise` of `void`.
 
 <!-- `encryption` | *any*    | The [encryption](#encryption-request-object) data provided when [creating the token](#create-token) -->
-<!-- `metadata` | *any* | The metadata provided when [creating the token](#create-token) -->
+<!-- `metadata` | *map* | The metadata provided when [creating the token](#create-token) -->
 
 Internally, `BasisTheory.tokens` calls [Delete Token API](#delete-token).
 
