@@ -2915,8 +2915,8 @@
 </tr>
 <tr>
 <td><code>metadata</code></td>
-<td><em>any</em></td>
-<td>Non-sensitive token metadata. Can be an object, array, or any primitive type such as an integer, boolean, or string</td>
+<td><em>map</em></td>
+<td>A key-value map of non-sensitive data.</td>
 </tr>
 <tr>
 <td><code>encryption</code></td>
@@ -3054,8 +3054,8 @@
 <span class="kt">var</span> <span class="n">token</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">CreateAsync</span><span class="p">(</span><span class="k">new</span> <span class="n">Token</span> <span class="p">{</span>
   <span class="n">Type</span> <span class="p">=</span> <span class="s">"token"</span><span class="p">,</span>
   <span class="n">Data</span> <span class="p">=</span> <span class="s">"ebSG3IohNmg5gTOjN2HBwBbhjDZ6BY3fCWZJfXSucVMfQ+7YNMXQYrPuRSXgSkhuTMYS+BNfVUur4qZSvUbgCA=="</span><span class="p">,</span>
-  <span class="n">Metadata</span> <span class="p">=</span> <span class="k">new</span> <span class="p">{</span>
-    <span class="n">nonSensitiveField</span> <span class="p">=</span> <span class="s">"Non-Sensitive Value"</span>
+  <span class="n">Metadata</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="kt">string</span><span class="p">&gt;</span> <span class="p">{</span>
+    <span class="p">{</span> <span class="s">"nonSensitiveField"</span><span class="p">,</span>  <span class="s">"Non-Sensitive Value"</span> <span class="p">}</span>
   <span class="p">},</span>
   <span class="n">Encryption</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Encryption</span> <span class="p">{</span>
     <span class="n">ContentEncryptionKey</span> <span class="p">=</span> <span class="k">new</span> <span class="n">EncryptionKey</span> <span class="p">{</span>
@@ -3128,9 +3128,9 @@
 <tr>
 <td><code>metadata</code></td>
 <td>false</td>
-<td><em>any</em></td>
+<td><em>map</em></td>
 <td><code>null</code></td>
-<td>Non-sensitive token metadata. Can be an object, array, or any primitive type such as an integer, boolean, or string</td>
+<td>A key-value map of non-sensitive data.</td>
 </tr>
 <tr>
 <td><code>encryption</code></td>
@@ -3534,8 +3534,8 @@
   <span class="k">new</span> <span class="n">Token</span> <span class="p">{</span>
     <span class="n">Type</span> <span class="p">=</span> <span class="s">"token"</span><span class="p">,</span>
     <span class="n">Data</span> <span class="p">=</span> <span class="s">"ebSG3IohNmg5gTOjN2HBwBbhjDZ6BY3fCWZJfXSucVMfQ+7YNMXQYrPuRSXgSkhuTMYS+BNfVUur4qZSvUbgCA=="</span><span class="p">,</span>
-    <span class="n">Metadata</span> <span class="p">=</span> <span class="k">new</span> <span class="p">{</span>
-      <span class="n">nonSensitiveField</span> <span class="p">=</span> <span class="s">"Non-Sensitive Value"</span>
+    <span class="n">Metadata</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="kt">string</span><span class="p">&gt;</span> <span class="p">{</span>
+      <span class="p">{</span> <span class="s">"nonSensitiveField"</span><span class="p">,</span> <span class="s">"Non-Sensitive Value"</span> <span class="p">}</span>
     <span class="p">},</span>
     <span class="n">Encryption</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Encryption</span> <span class="p">{</span>
       <span class="n">ContentEncryptionKey</span> <span class="p">=</span> <span class="k">new</span> <span class="n">EncryptionKey</span> <span class="p">{</span>
@@ -3627,9 +3627,9 @@
 <tr>
 <td><code>metadata</code></td>
 <td>false</td>
-<td><em>any</em></td>
+<td><em>map</em></td>
 <td><code>null</code></td>
-<td>Non-sensitive token metadata</td>
+<td>A key-value map of non-sensitive data.</td>
 </tr>
 <tr>
 <td><code>encryption</code></td>
@@ -3798,8 +3798,8 @@
 </tr>
 <tr>
 <td><code>metadata</code></td>
-<td><em>any</em></td>
-<td>Non-sensitive token metadata. Can be an object, array, or any primitive type such as an integer, boolean, or string</td>
+<td><em>map</em></td>
+<td>A key-value map of non-sensitive data.</td>
 </tr>
 <tr>
 <td><code>created_by</code></td>
@@ -3958,8 +3958,8 @@
       <span class="n">Country</span> <span class="p">=</span> <span class="s">"US"</span>
     <span class="p">}</span>
   <span class="p">},</span>
-  <span class="n">Metadata</span> <span class="p">=</span> <span class="k">new</span> <span class="p">{</span>
-    <span class="n">nonSensitiveField</span> <span class="p">=</span> <span class="s">"Non-Sensitive Value"</span>
+  <span class="n">Metadata</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="kt">string</span><span class="p">&gt;</span> <span class="p">{</span>
+    <span class="p">{</span> <span class="s">"nonSensitiveField"</span><span class="p">,</span> <span class="s">"Non-Sensitive Value"</span> <span class="p">}</span>
   <span class="p">}</span>
 <span class="p">});</span>
 </code></pre></div>
@@ -4033,9 +4033,9 @@
 <tr>
 <td><code>metadata</code></td>
 <td>false</td>
-<td><em>any</em></td>
+<td><em>map</em></td>
 <td><code>null</code></td>
-<td>Non-sensitive token metadata. Can be an object, array, or any primitive type such as an integer, boolean, or string</td>
+<td>A key-value map of non-sensitive data.</td>
 </tr>
 </tbody></table>
 <h3 id='response'>Response</h3>
@@ -4440,8 +4440,8 @@
 </tr>
 <tr>
 <td><code>metadata</code></td>
-<td><em>any</em></td>
-<td>Non-sensitive token metadata. Can be an object, array, or any primitive type such as an integer, boolean, or string</td>
+<td><em>map</em></td>
+<td>A key-value map of non-sensitive data.</td>
 </tr>
 <tr>
 <td><code>created_by</code></td>
@@ -4498,8 +4498,8 @@
     <span class="n">RoutingNumber</span> <span class="p">=</span> <span class="s">"021000021"</span><span class="p">,</span>
     <span class="n">AccountNumber</span> <span class="p">=</span> <span class="s">"1234567890"</span>
   <span class="p">},</span>
-  <span class="n">Metadata</span> <span class="p">=</span> <span class="k">new</span> <span class="p">{</span>
-    <span class="n">nonSensitiveField</span> <span class="p">=</span> <span class="s">"Non-Sensitive Value"</span>
+  <span class="n">Metadata</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="kt">string</span><span class="p">&gt;</span> <span class="p">{</span>
+    <span class="p">{</span> <span class="s">"nonSensitiveField"</span><span class="p">,</span> <span class="s">"Non-Sensitive Value"</span> <span class="p">}</span>
   <span class="p">}</span>
 <span class="p">});</span>
 </code></pre></div>
@@ -4552,9 +4552,9 @@
 <tr>
 <td><code>metadata</code></td>
 <td>false</td>
-<td><em>any</em></td>
+<td><em>map</em></td>
 <td><code>null</code></td>
-<td>Non-sensitive token metadata. Can be an object, array, or any primitive type such as an integer, boolean, or string</td>
+<td>A key-value map of non-sensitive data.</td>
 </tr>
 </tbody></table>
 <h3 id='response'>Response</h3>
