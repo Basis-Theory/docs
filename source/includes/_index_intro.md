@@ -6,7 +6,16 @@
     <p class="sub-text">
       Our software becomes a core part of your infrastructure enabling you to quickly encrypt, tokenize, and store any payload securely. Your token infrastructure can be used to protect data at rest, as it passes between your own internal systems, or as it’s permissioned and shared with third parties.
     </p>
-    <img src="./images/landing_intro.svg"/>
+    <div class="docs-hero">
+      <span>
+        <h4>
+          Get Started
+        </h4>
+        <p class="sub-text-small">To start tokenizing and managing your tokens, you can create your account and setup tenants and applications inside Basis Theory Portal.</p>
+        <button>Get Started</button>
+      </span>
+      <img src="./images/getStarted.svg"></img>
+    </div>
   </div>
   <div>
     <h2>Conceps</h2>
