@@ -53,6 +53,7 @@ Parameter | Required | Type       | Description
 ```jsx
 {
   "complete": false,
+  "empty": false,
   "errors": [
     {...},
     {...}
@@ -63,6 +64,7 @@ Parameter | Required | Type       | Description
 Attribute  | Type       | Description
 ---------- | ---------- | -----------
 `complete` | *boolean*  | If the element value is well-formed and is ready to be submitted.
+`empty`    | *boolean*  | Whether the element is empty. Multi-input elements will be `empty` only if all inputs are.
 `errors`   | *array*    | Array of [FieldError](#fielderror).
 
 ### FieldError
