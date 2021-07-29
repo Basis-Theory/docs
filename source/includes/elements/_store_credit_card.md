@@ -34,6 +34,6 @@ In case `storeCreditCard` throws an error, that could be related to client-side 
 
 Attribute    | Type       | Scope  | Description
 ------------ | ---------- | ------ | -----------
-`validation` | *array*    | client | Array of element validation error types, in case of client-side error.
-`response`   | *object*   | server | Response body sent from the server.
+`validation` | *array*    | client | Array of [FieldError](#fielderror), in case of client-side error.
+`data`       | *object*   | server | Response body sent from the server.
 `status`     | *number*   | both   | Response HTTP status or `-1` if the request never left the client (i.e. connection issues)
