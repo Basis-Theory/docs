@@ -1,14 +1,16 @@
 ---
 title: Basis Theory Elements Reference
-docs_logo: elements-logo.svg
+docs_logo: elements.svg
 
 language_tabs: # must be one of https://git.io/vQNgJ
-  - jsx: Javascript
+  - javascript: Javascript
+  - html: HTML
 
 toc_footers:
 
 other_docs:
-  - <a href="/">API Reference</a>
+  - <a class="toc-h2 toc-link" href="/">Basis Theory Docs</a>
+  - <a class="toc-h2 toc-link" href="/api-reference">API Reference</a>
 
 intro_quick_links:
   - elements/quick_links

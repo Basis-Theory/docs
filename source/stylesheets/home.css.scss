@@ -1,9 +1,12 @@
 @charset "utf-8";
 @import 'variables';
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;400;500;600&display=swap');
 
 .home {
-  padding-left: 100px;
-  padding-right: 100px;
+  padding-left: 152px;
+  padding-right: 152px;
+  display: grid;
+
 
   h1 {
     padding-left: 0;
@@ -29,7 +32,7 @@
     color: $blue-800;
     margin-top: 0.8em;
     background-color: transparent;
-    border-bottom: 1px solid $grey-50;
+    border-bottom: 1px solid rgba(65, 73, 112, 0.2);
   }
 
   .sub-text {
@@ -43,8 +46,110 @@
   .sub-text-small {
     padding-left: 0;
     font-size: 16px;
-    line-height: 18px;
+    line-height: 24px;
     text-align: left;
     color: $blue-800;
+  }
+
+  .docs-hero {
+    display: grid;
+    grid-template-columns: 70% 30%;
+    background: #323856;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    box-sizing: border-box;
+    border-radius: 4px;
+
+    > span:first-of-type { 
+      padding-top: 40px;
+      padding-left: 40px;
+      padding-bottom: 40px;
+
+      p {
+        padding: 0;
+        margin: 0;
+      }
+    }
+
+    h4 {
+      font-style: normal;
+      font-weight: normal;
+      font-size: 34px;
+      line-height: 123.5%;
+      letter-spacing: 0.25px;
+      color: #FFF;
+      margin: 0;
+      padding-bottom: 16px;
+    }
+  
+    button {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 10px 24px;
+      background: #1AD1DB;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      box-sizing: border-box;
+      border-radius: 2px;
+      color: $primary-contrastText;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 26px;
+      margin-top: 16px;
+    }
+
+    .sub-text-small {
+      font-style: normal;
+      font-weight: normal;
+      font-size: 18px;
+      line-height: 150%;
+      letter-spacing: 0.15px;
+      color:#FFF;
+    }
+    img {
+      align-self: end;
+      justify-self: end;
+    }
+  }
+  
+
+
+  .card-box {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    column-gap: 24px;
+    row-gap: 32px;
+    padding: 32px 0;
+
+    a {
+      text-decoration: none;
+    }
+
+    .card {
+      border: 1px solid rgba(65, 73, 112, 0.2);
+      box-sizing: border-box;
+      border-radius: 4px;
+
+      img {
+        width: 100%;
+      }
+
+      .container {
+        padding: 16px;
+        h4 {
+          @extend %principal-title-font;
+          margin: 0;
+          padding: 0 0 4px;
+          color: $grey-800;
+        }
+
+        p {
+          padding: 0;
+          margin: 0;
+          @extend %body2-font;
+        }
+      }
+    }
   }
 }
