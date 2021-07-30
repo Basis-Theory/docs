@@ -38,15 +38,16 @@ Permission | Description | Application Types | Dependencies
 `token:read` | Read tokens from the vault | `server_to_server` | *N/A*
 `token:create` | Create tokens in the vault | `public`, `elements`, `server_to_server` | *N/A*
 `token:delete` | Delete tokens from the vault | `server_to_server` | *N/A*
-`card:read` | Read atomic card tokens | `server_to_server` | `token:read`
-`card:create` | Create atomic card tokens | `public`, `elements`, `server_to_server` | `token:create`
-`card:update` | Update atomic card tokens | `server_to_server` | `token:create`
-`card:delete` | Delete atomic card tokens | `server_to_server` | `token:delete`
-`bank:read` | Read atomic bank tokens | `server_to_server` | `token:read`
-`bank:create` | Create atomic bank tokens | `public`, `elements`, `server_to_server` | `token:create`
-`bank:update` | Update atomic bank tokens | `server_to_server` | `token:create`
-`bank:delete` | Delete atomic bank tokens | `server_to_server` | `token:delete`
-`bank:decrypt` | Decrypt atomic bank tokens | `server_to_server` | `token:read`
+`token:decrypt` | Decrypt generic tokens | `server_to_server` | *N/A*
+`card:read` | Read atomic card tokens | `server_to_server` | *N/A*
+`card:create` | Create atomic card tokens | `public`, `elements`, `server_to_server` | *N/A*
+`card:update` | Update atomic card tokens | `server_to_server` | *N/A*
+`card:delete` | Delete atomic card tokens | `server_to_server` | *N/A*
+`bank:read` | Read atomic bank tokens | `server_to_server` | *N/A*
+`bank:create` | Create atomic bank tokens | `public`, `elements`, `server_to_server` | *N/A*
+`bank:update` | Update atomic bank tokens | `server_to_server` | *N/A*
+`bank:delete` | Delete atomic bank tokens | `server_to_server` | *N/A*
+`bank:decrypt` | Decrypt atomic bank tokens | `server_to_server` | *N/A*
 
 
 ## List Permissions

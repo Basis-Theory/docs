@@ -150,7 +150,6 @@ Create a new atomic card for the tenant.
 
 <p class="scopes">
   <span class="scope">card:create</span>
-  <span class="scope">token:create</span>
 </p>
 
 ### Request Parameters
@@ -232,7 +231,6 @@ Get a list of atomic cards for the tenant.
 
 <p class="scopes">
   <span class="scope">card:read</span>
-  <span class="scope">token:read</span>
 </p>
 
 ### Response
@@ -299,7 +297,6 @@ Get an atomic card by ID in the tenant.
 
 <p class="scopes">
   <span class="scope">card:read</span>
-  <span class="scope">token:read</span>
 </p>
 
 ### URI Parameters
@@ -344,7 +341,6 @@ Delete an atomic card by ID in the tenant.
 
 <p class="scopes">
   <span class="scope">card:delete</span>
-  <span class="scope">token:delete</span>
 </p>
 
 ### URI Parameters
@@ -386,8 +382,6 @@ Create an Atomic Card Reaction by ID in the tenant.
   <span class="scope">reactor:read</span>
   <span class="scope">card:create</span>
   <span class="scope">card:read</span>
-  <span class="scope">token:create</span>
-  <span class="scope">token:read</span>
 </p>
 
 ### URI Parameters
@@ -427,7 +421,6 @@ Get an atomic card reaction token by ID in the tenant.
 
 <p class="scopes">
   <span class="scope">card:read</span>
-  <span class="scope">token:read</span>
 </p>
 
 ### URI Parameters
