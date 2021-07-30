@@ -36,8 +36,8 @@ Name | Type | Description
 Token | `token` | Generic token type. This is the default token type if none is provided when creating a new token
 Card | `card` | [Atomic card](#atomic-cards) token type
 Bank | `bank` | [Atomic bank](#atomic-banks) token type
-Card Exchanged | `card:exchanged` | This token type is the resulting token type of an exchanged [Atomic card](#atomic-cards) token
-Bank Exchanged | `bank:exchanged` | This token type is the resulting token type of an exchanged [Atomic bank](#atomic-banks) token
+Card Reaction | `card:reaction` | This token type is the resulting token type of a reacted [Atomic card](#atomic-cards) token
+Bank Reaction | `bank:reaction` | This token type is the resulting token type of a reacted [Atomic bank](#atomic-banks) token
 
 
 ## Create Token

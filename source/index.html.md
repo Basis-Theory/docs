@@ -24,8 +24,8 @@ api_includes:
   - api-reference/permissions
   - api-reference/tenants
   - api-reference/applications
-  - api-reference/exchange_templates
-  - api-reference/exchanges
+  - api-reference/reactor_formulas
+  - api-reference/reactors
   - api-reference/tokens
   - api-reference/token_associations
   - api-reference/atomic_cards
