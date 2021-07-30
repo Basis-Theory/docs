@@ -296,6 +296,7 @@ Parameter | Required | Type | Default | Description
 `type` | false | *array* | `[]` | An optional array of [token types](#token-types) to filter the list of tokens by
 `children` | false | *boolean* | `false` | Include child tokens where the token is a parent in [token association](#token-associations)
 `children_type` | false | *array* | `[]` | An optional array of [token types](#token-types) to filter child tokens where the token is a parent in the [token association](#token-associations)
+`decrypt_type` | false | *array* | `[]` | An optional array of [token types](#token-types) to filter token types that should be decrypted
 
 ### Response
 
@@ -439,6 +440,7 @@ Parameter | Required | Type | Default | Description
 --------- | -------- | ---- | ------- | -----------
 `children` | false | *boolean* | `false` | Include child tokens where the token is a parent in [token association](#token-associations)
 `children_type` | false | *array* | `[]` | An optional array of [token types](#token-types) to filter child tokens where the token is a parent in the [token association](#token-associations)
+`decrypt_type` | false | *array* | `[]` | An optional array of [token types](#token-types) to filter token types that should be decrypted
 
 ### Response
 
