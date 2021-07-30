@@ -8,7 +8,7 @@ Attribute | Type | Description
 `tenant_id` | *uuid* | The [tenant](#tenant-object) ID which owns the token
 `type` | *string* | [Token type](#token-types)
 `data` | *any* | Token data
-`metadata` | *any* | Non-sensitive token metadata. Can be an object, array, or any primitive type such as an integer, boolean, or string
+`metadata` | *map* | A key-value map of non-sensitive data.
 `encryption` | *[encryption object](#encryption-object)* | Encryption metadata for an encrypted token data value
 `children` | *array* | Array of child tokens where this token is the parent in an [association](#token-associations)
 `created_by` | *uuid* | The [application](#application-object) ID which created the token
@@ -36,8 +36,8 @@ Name | Type | Description
 Token | `token` | Generic token type. This is the default token type if none is provided when creating a new token
 Card | `card` | [Atomic card](#atomic-cards) token type
 Bank | `bank` | [Atomic bank](#atomic-banks) token type
-Card Exchanged | `card:exchanged` | This token type is the resulting token type of an exchanged [Atomic card](#atomic-cards) token
-Bank Exchanged | `bank:exchanged` | This token type is the resulting token type of an exchanged [Atomic bank](#atomic-banks) token
+Card Reaction | `card:reaction` | This token type is the resulting token type of a reacted [Atomic card](#atomic-cards) token
+Bank Reaction | `bank:reaction` | This token type is the resulting token type of a reacted [Atomic bank](#atomic-banks) token
 
 
 ## Create Token
@@ -78,8 +78,8 @@ var client = new TokenClient("key_N88mVGsp3sCXkykyN2EFED");
 var token = await client.CreateAsync(new Token {
   Type = "token",
   Data = "ebSG3IohNmg5gTOjN2HBwBbhjDZ6BY3fCWZJfXSucVMfQ+7YNMXQYrPuRSXgSkhuTMYS+BNfVUur4qZSvUbgCA==",
-  Metadata = new {
-    nonSensitiveField = "Non-Sensitive Value"
+  Metadata = new Dictionary<string, string> {
+    { "nonSensitiveField",  "Non-Sensitive Value" }
   },
   Encryption = new Encryption {
     ContentEncryptionKey = new EncryptionKey {
@@ -136,7 +136,7 @@ Attribute | Required | Type | Default | Description
 --------- | -------- | ---- | ------- | -----------
 `type` | false | *string* | `token` | [Token type](#token-types) of the token
 `data` | true | *any* | `null` | Token data. Can be an object, array, or any primitive type such as an integer, boolean, or string
-`metadata` | false | *any* | `null` | Non-sensitive token metadata. Can be an object, array, or any primitive type such as an integer, boolean, or string
+`metadata` | false | *map* | `null` | A key-value map of non-sensitive data.
 `encryption` | false | *[encryption object](#encryption-object)* | `null` | Encryption metadata for an encrypted token data value
 `children` | false | *array* | `[]` | An array of [tokens](#token-object). Can be used to bulk create tokens with [token associations](#create-token-association)
 

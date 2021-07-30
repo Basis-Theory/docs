@@ -7,7 +7,6 @@ curl "https://api.basistheory.com" \
   -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
 ```
 
-
 ```javascript
 import { BasisTheory } from '@Basis-Theory/basis-theory-js';
 

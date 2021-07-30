@@ -1,6 +1,6 @@
 ---
 title: Basis Theory API Reference
-docs_logo: api-logo.svg
+docs_logo: api.svg
 
 language_tabs: # must be one of https://git.io/vQNgJ
   - shell: cURL
@@ -10,7 +10,8 @@ language_tabs: # must be one of https://git.io/vQNgJ
 toc_footers:
 
 other_docs:
-- <a class="toc-h2 toc-link" href="/elements">Elements</a>
+  - <a class="toc-h2 toc-link" href="/">Basis Theory Docs</a>
+  - <a class="toc-h2 toc-link" href="/elements">Elements</a>
 
 intro_quick_links:
   - api-reference/quick_links
@@ -27,8 +28,8 @@ api_includes:
   - api-reference/permissions
   - api-reference/tenants
   - api-reference/applications
-  - api-reference/exchange_templates
-  - api-reference/exchanges
+  - api-reference/reactor_formulas
+  - api-reference/reactors
   - api-reference/tokens
   - api-reference/token_associations
   - api-reference/atomic_cards

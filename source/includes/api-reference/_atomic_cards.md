@@ -9,7 +9,7 @@ Attribute | Type | Description
 `type` | *string* | `Card` [token type](#token-types)
 `card` | *[card](#card-object)* | Card data
 `billing_details` | *[billing details](#billing-details-object)* | Billing details
-`metadata` | *any* | Non-sensitive token metadata. Can be an object, array, or any primitive type such as an integer, boolean, or string
+`metadata` | *map* | A key-value map of non-sensitive data.
 `created_by` | *uuid* | The [application](#applications) ID which created the atomic card
 `created_at` | *date* | Created date of the application in ISO 8601 format
 
@@ -19,7 +19,7 @@ Attribute | Type | Description
 --------- | ---- | -----------
 `number` | *string* | The card number without any separators
 `expiration_month` | *integer* | Two-digit number representing the card's expiration month
-`expiration_year` | *integer* | our-digit number representing the card's expiration year
+`expiration_year` | *integer* | Four-digit number representing the card's expiration year
 
 ### Billing Details Object
 
@@ -100,8 +100,8 @@ var atomicCard = await client.CreateAsync(new AtomicCard {
       Country = "US"
     }
   },
-  Metadata = new {
-    nonSensitiveField = "Non-Sensitive Value"
+  Metadata = new Dictionary<string, string> {
+    { "nonSensitiveField", "Non-Sensitive Value" }
   }
 });
 ```
@@ -159,7 +159,7 @@ Attribute | Required | Type | Default | Description
 --------- | -------- | ---- | ------- | -----------
 `card` | true | *[card](#card-object)* | `null` | Card data
 `billing_details` | false | *[billing details](#billing-details-object)* | `null` | Billing details
-`metadata` | false | *any* | `null` | Non-sensitive token metadata. Can be an object, array, or any primitive type such as an integer, boolean, or string
+`metadata` | false | *map* | `null` | A key-value map of non-sensitive data.
 
 ### Response
 
@@ -357,16 +357,16 @@ Parameter | Required | Type | Default | Description
 
 Returns [an error](#errors) if the atomic card failed to delete.
 
-## Exchange an Atomic Card
+## Create an Atomic Card Reaction
 
 > Request
 
 ```shell
-curl "api.basistheory.com/atomic/cards/c1e565009-1984-4638-8fca-dce8a82cc2af/exchange" \
+curl "api.basistheory.com/atomic/cards/c1e565009-1984-4638-8fca-dce8a82cc2af/react" \
   -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
   -X "POST"
   -D '{
-    "exchange_id": "5b493235-6917-4307-906a-2cd6f1a90b13",
+    "reactor_id": "5b493235-6917-4307-906a-2cd6f1a90b13",
     "metadata": {
       "nonSensitiveField": "Non-Sensitive Value"
     }
@@ -375,15 +375,15 @@ curl "api.basistheory.com/atomic/cards/c1e565009-1984-4638-8fca-dce8a82cc2af/exc
 
 <span class="http-method post">
   <span class="box-method">POST</span>
-  `https://api.basistheory.com/atomic/cards/{id}/exchange`
+  `https://api.basistheory.com/atomic/cards/{id}/react`
 </span>
 
-Exchange an atomic card by ID in the tenant.
+Create an Atomic Card Reaction by ID in the tenant.
 
 ### Permissions
 
 <p class="scopes">
-  <span class="scope">exchange:read</span>
+  <span class="scope">reactor:read</span>
   <span class="scope">card:create</span>
   <span class="scope">card:read</span>
   <span class="scope">token:create</span>
@@ -399,29 +399,29 @@ Parameter | Required | Type | Default | Description
 ### Request Parameters
 Parameter | Required | Type | Default | Description
 --------- | -------- | ---- | ------- | -----------
-`exchange_id` | true | *uuid* | `null` | The ID of the exchange
-`metadata` | false | *map* | `null` | A key-value map of non-sensitive data. We overwrite the following keys: `correlation_id`, `exchange_id`, `exchange_name`, `source_token_id`, and `source_token_type`.
+`reactor_id` | true | *uuid* | `null` | The ID of the reactor
+`metadata` | false | *map* | `null` | A key-value map of non-sensitive data. We overwrite the following keys: `correlation_id`, `reactor_id`, `reactor_name`, `source_token_id`, and `source_token_type`.
 
 ### Response
 
-Returns a [token](#token-object) with type of `card:exchanged` if the atomic card was exchanged. Returns [an error](#errors) if the atomic card failed to exchange.
+Returns a [token](#token-object) with type of `card:reaction` if the atomic card was reacted. Returns [an error](#errors) if the atomic card failed to react.
 
-## Get an Atomic Card Exchanged Token
+## Get an Atomic Card Reaction Token
 
 > Request
 
 ```shell
-curl "api.basistheory.com/atomic/cards/c1e565009-1984-4638-8fca-dce8a82cc2af/exchanged/6c12a05d-99e3-4454-bdb0-2e6ff88ec5b0" \
+curl "api.basistheory.com/atomic/cards/c1e565009-1984-4638-8fca-dce8a82cc2af/reaction/6c12a05d-99e3-4454-bdb0-2e6ff88ec5b0" \
   -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
   -X "GET"
 ```
 
 <span class="http-method get">
   <span class="box-method">GET</span>
-  `https://api.basistheory.com/atomic/cards/{atomicCardId}/exchanged/{exchangedTokenId}`
+  `https://api.basistheory.com/atomic/cards/{atomicCardId}/reaction/{reactionTokenId}`
 </span>
 
-Get an atomic card exchanged token by ID in the tenant.
+Get an atomic card reaction token by ID in the tenant.
 
 ### Permissions
 
@@ -435,11 +435,11 @@ Get an atomic card exchanged token by ID in the tenant.
 Parameter | Required | Type | Default | Description
 --------- | -------- | ---- | ------- | -----------
 `atomicCardId` | true | *uuid* | `null` | The ID of the atomic card
-`exchangedTokenId` | true | *uuid* | `null` | The ID of the exchanged token
+`reactionTokenId` | true | *uuid* | `null` | The ID of the reaction token
 
 ### Response
 
-Returns a [token](#token-object) with type of `card:exchanged`. Returns [an error](#errors) if the atomic card failed to exchange.
+Returns a [token](#token-object) with type of `card:reaction`. Returns [an error](#errors) if the atomic card failed to reacted.
 
 ## Test Cards
 
