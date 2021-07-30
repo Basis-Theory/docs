@@ -30,10 +30,10 @@ Permission | Description | Application Types | Dependencies
 `tenant:delete` | Delete tenants | `management` | *N/A*
 `application:read` | Read applications | `management` | *N/A*
 `application:write` | Create, edit, delete, and regenerate API keys for applications | `management` | *N/A*
-`exchange:read` | Read exchange templates and exchanges | `server_to_server`, `management` | `token:read`
-`exchange:create` | Create exchange templates and exchanges | `management` | *N/A*
-`exchange:update` | Update exchange templates and exchanges | `management` | *N/A*
-`exchange:delete` | Delete exchange templates and exchanges | `management` | *N/A*
+`reactor:read` | Read reactor formulas and reactors | `server_to_server`, `management` | `token:read`
+`reactor:create` | Create reactor formulas and reactors | `management` | *N/A*
+`reactor:update` | Update reactor formulas and reactors | `management` | *N/A*
+`reactor:delete` | Delete reactor formulas and reactors | `management` | *N/A*
 `log:read` | Read audit logs | `management` | *N/A*
 `token:read` | Read tokens from the vault | `server_to_server` | *N/A*
 `token:create` | Create tokens in the vault | `public`, `elements`, `server_to_server` | *N/A*
