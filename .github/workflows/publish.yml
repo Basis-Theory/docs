@@ -20,3 +20,13 @@ jobs:
           repository: slatedocs/slate
           tag_with_ref: true
           tags: latest
+
+      - name: Slack Deploy / Release Alert
+        uses: 8398a7/action-slack@v3
+        if: always()
+        with:
+          status: ${{ job.status }}
+          channel: ${{ secrets.SLACK_RELEASE_CHANNEL_ID }}
+          fields: 'repo,commit,message,workflow,job'
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
