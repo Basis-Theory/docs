@@ -85,7 +85,6 @@ Create a new atomic bank for the tenant.
 
 <p class="scopes">
   <span class="scope">bank:create</span>
-  <span class="scope">token:create</span>
 </p>
 
 ### Request Parameters
@@ -152,7 +151,6 @@ Get a list of atomic banks for the tenant.
 
 <p class="scopes">
   <span class="scope">bank:read</span>
-  <span class="scope">token:read</span>
 </p>
 
 ### Response
@@ -205,7 +203,6 @@ Get an atomic bank by ID in the tenant.
 
 <p class="scopes">
   <span class="scope">bank:read</span>
-  <span class="scope">token:read</span>
 </p>
 
 ### URI Parameters
@@ -250,7 +247,6 @@ Delete an atomic bank by ID in the tenant.
 
 <p class="scopes">
   <span class="scope">bank:delete</span>
-  <span class="scope">token:delete</span>
 </p>
 
 ### URI Parameters
@@ -312,7 +308,6 @@ Decrypt an atomic bank by ID in the tenant.
 
 <p class="scopes">
   <span class="scope">bank:decrypt</span>
-  <span class="scope">token:read</span>
 </p>
 
 ### URI Parameters
@@ -351,11 +346,9 @@ Create an Atomic Bank Reaction by ID in the tenant.
 ### Permissions
 
 <p class="scopes">
-  <span class="scope">react:read</span>
+  <span class="scope">reactor:read</span>
   <span class="scope">bank:create</span>
   <span class="scope">bank:read</span>
-  <span class="scope">token:create</span>
-  <span class="scope">token:read</span>
 </p>
 
 ### URI Parameters
@@ -395,7 +388,6 @@ Get an atomic bank reaction token by ID in the tenant.
 
 <p class="scopes">
   <span class="scope">bank:read</span>
-  <span class="scope">token:read</span>
 </p>
 
 ### URI Parameters
