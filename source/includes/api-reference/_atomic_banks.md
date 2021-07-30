@@ -325,7 +325,7 @@ Parameter | Required | Type | Default | Description
 
 Returns an [atomic bank](#atomic-bank-object) with plaintext [bank](#bank-object) data with the `id` provided. Returns [an error](#errors) if the atomic bank could not be retrieved.
 
-## React an Atomic Bank
+## Create an Atomic Bank Reaction
 
 > Request
 
@@ -346,7 +346,7 @@ curl "api.basistheory.com/atomic/banks/1485efb9-6b1f-4248-a5d1-cf9b3907164c/reac
   `https://api.basistheory.com/atomic/banks/{id}/react`
 </span>
 
-React an atomic bank by ID in the tenant.
+Create an Atomic Bank Reaction by ID in the tenant.
 
 ### Permissions
 

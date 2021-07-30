@@ -357,7 +357,7 @@ Parameter | Required | Type | Default | Description
 
 Returns [an error](#errors) if the atomic card failed to delete.
 
-## React an Atomic Card
+## Create an Atomic Card Reaction
 
 > Request
 
@@ -378,7 +378,7 @@ curl "api.basistheory.com/atomic/cards/c1e565009-1984-4638-8fca-dce8a82cc2af/rea
   `https://api.basistheory.com/atomic/cards/{id}/react`
 </span>
 
-React an atomic card by ID in the tenant.
+Create an Atomic Card Reaction by ID in the tenant.
 
 ### Permissions
 
