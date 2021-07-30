@@ -38,7 +38,7 @@ Permission | Description | Application Types | Dependencies
 `token:read` | Read tokens from the vault | `server_to_server` | *N/A*
 `token:create` | Create tokens in the vault | `public`, `elements`, `server_to_server` | *N/A*
 `token:delete` | Delete tokens from the vault | `server_to_server` | *N/A*
-`token:decrypt` | Decrypt generic tokens | `server_to_server` | `token:read`
+`token:decrypt` | Decrypt generic tokens | `server_to_server` | *N/A*
 `card:read` | Read atomic card tokens | `server_to_server` | *N/A*
 `card:create` | Create atomic card tokens | `public`, `elements`, `server_to_server` | *N/A*
 `card:update` | Update atomic card tokens | `server_to_server` | *N/A*
