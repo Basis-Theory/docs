@@ -14,6 +14,9 @@ You can communicate with elements by listening to events. When you subscribe to 
   <span>Make sure to replace 'event-type' with an actual event type.</span>
 </aside>
 
+<aside class="warning">
+  <span>Calling <code>on</code> using an unknown <code>event</code> type will result in an error.</span>
+</aside>
 
 ## On Ready
 
@@ -50,8 +53,10 @@ Parameter | Required | Type       | Description
 ```jsx
 {
   "complete": false,
+  "empty": false,
   "errors": [
-    "invalid-field"
+    {...},
+    {...}
   ]
 }
 ```
@@ -59,8 +64,22 @@ Parameter | Required | Type       | Description
 Attribute  | Type       | Description
 ---------- | ---------- | -----------
 `complete` | *boolean*  | If the element value is well-formed and is ready to be submitted.
-`errors`   | *array*    | Array of element validation error types.
+`empty`    | *boolean*  | Whether the element is empty. Multi-input elements will be `empty` only if all inputs are.
+`errors`   | *array*    | Array of [FieldError](#fielderror).
 
+### FieldError
+
+```jsx
+{
+  "targetId": "cardNumber",
+  "type": "invalid"
+}
+```
+
+Attribute  | Type       | Description
+---------- | ---------- | -----------
+`targetId` | *string*                        | Input id that triggered the error. Values vary per [element type](#element-types).
+`type`     | *"invalid"* or *"incomplete"*   | Type of the error.
 
 ## On Focus
 
@@ -81,13 +100,13 @@ Parameter | Required | Type       | Description
 
 ```jsx
 {
-  "id": "cardNumber"  
+  "targetId": "cardNumber"  
 }
 ```
 
 Attribute  | Type       | Description
 ---------- | ---------- | -----------
-`id`       | *string*   | Input id that triggered the event. Values vary per [element type](#element-types).
+`targetId`       | *string*   | Input id that triggered the event. Values vary per [element type](#element-types).
 
 ## On Blur
 
@@ -108,13 +127,13 @@ Parameter | Required | Type       | Description
 
 ```jsx
 {
-  "id": "cardNumber"  
+  "targetId": "cardNumber"  
 }
 ```
 
 Attribute  | Type       | Description
 ---------- | ---------- | -----------
-`id`       | *string*   | Input id that triggered the event. Values vary per [element type](#element-types).
+`targetId`       | *string*   | Input id that triggered the event. Values vary per [element type](#element-types).
 
 ## On Keydown
 
@@ -135,7 +154,7 @@ Parameter | Required | Type       | Description
 
 ```jsx
 {
-  "id": "cardNumber",
+  "targetId": "cardNumber",
   "key": "Enter",
   "ctrlKey": false,
   "altKey": false,
@@ -146,9 +165,9 @@ Parameter | Required | Type       | Description
 
 Attribute  | Type                  | Description
 ---------- | ----------            | -----------
-`id`       | *string*              | Input id that triggered the event. Values vary per [element type](#element-types).
+`targetId` | *string*              | Input targetId that triggered the event. Values vary per [element type](#element-types).
 `key`      | *Escape* or *Enter*   | Key pressed by the user.
 `ctrlKey`  | *boolean*             | Flag indicating <a href="https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/ctrlKey" target="_blank">`control` key</a> was pressed when the event occurred.
 `altKey`   | *boolean*             | Flag indicating <a href="https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/altKey" target="_blank">`alt` key</a> was pressed when the event occurred.
 `shiftKey` | *boolean*             | Flag indicating <a href="https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/shiftKey" target="_blank">`shift` key</a> was pressed when the event occurred.
-`metaKey` | *boolean*             | Flag indicating <a href="https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/metaKey" target="_blank">`meta` key</a> was pressed when the event occurred.
+`metaKey`  | *boolean*             | Flag indicating <a href="https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/metaKey" target="_blank">`meta` key</a> was pressed when the event occurred.

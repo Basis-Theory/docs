@@ -21,6 +21,20 @@
 }
 ```
 
+```javascript
+import { BasisTheory } from '@Basis-Theory/basis-theory-js';
+
+try {
+  const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
+  const application = await bt.applications.create({ ... });
+} catch (e) {
+  console.log(e.status); // HTTP status code
+  console.log(e.data); // HTTP Response body
+  console.log(e.data.errors);
+}
+
+```
+
 ### Response
 
 Attribute | Type | Description
