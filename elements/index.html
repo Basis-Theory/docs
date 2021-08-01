@@ -280,7 +280,7 @@
   color: #859900;
 }
     </style>
-    <link href="../stylesheets/screen-a8b6e96d.css" rel="stylesheet" media="screen" />
+    <link href="../stylesheets/screen-084c344a.css" rel="stylesheet" media="screen" />
     <link href="../stylesheets/home-e52250b2.css" rel="stylesheet" media="screen" />
     <link href="../stylesheets/guides-5da8bd31.css" rel="stylesheet" media="screen" />
     <script src="https://kit.fontawesome.com/86c3cd0147.js" crossorigin="anonymous"></script>
@@ -374,6 +374,9 @@
                     </li>
                     <li>
                       <a href="#mount-element" class="toc-h2 toc-link" data-title="Mount Element">Mount Element</a>
+                    </li>
+                    <li>
+                      <a href="#update-element" class="toc-h2 toc-link" data-title="Update Element">Update Element</a>
                     </li>
                     <li>
                       <a href="#unmount-element" class="toc-h2 toc-link" data-title="Unmount Element">Unmount Element</a>
@@ -570,8 +573,12 @@
   <span class="p">&lt;</span><span class="err">!--</span> <span class="na">here</span> <span class="na">we</span> <span class="na">are</span> <span class="na">waiting</span> <span class="na">for</span> <span class="na">the</span> <span class="na">window</span> <span class="na">to</span> <span class="na">load</span><span class="err">,</span> <span class="na">to</span> <span class="na">make</span> <span class="na">sure</span> <span class="na">BasisTheory</span> <span class="na">instance</span> <span class="err">--</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="err">!--</span> <span class="na">has</span> <span class="na">been</span> <span class="na">injected</span> <span class="na">in</span> <span class="na">the</span> <span class="na">window</span> <span class="na">variable</span> <span class="err">--</span><span class="p">&gt;</span>
   window.addEventListener('load', async () =&gt; <span class="si">{</span>
-    <span class="k">await</span> <span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">init</span><span class="p">(</span><span class="dl">'</span><span class="s1">test_1234567890</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span> <span class="na">elements</span><span class="p">:</span> <span class="kc">true</span> <span class="p">});</span>
-    <span class="c1">// use BasisTheory.elements</span>
+    <span class="k">try</span> <span class="p">{</span>
+      <span class="k">await</span> <span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">init</span><span class="p">(</span><span class="dl">'</span><span class="s1">test_1234567890</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span> <span class="na">elements</span><span class="p">:</span> <span class="kc">true</span> <span class="p">});</span>      
+      <span class="c1">// use BasisTheory.elements</span>
+    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+      <span class="c1">// handle errors that could happen while loading elements script</span>
+    <span class="p">}</span> 
   <span class="si">}</span>);  
 <span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 </code></pre></div>
@@ -587,6 +594,10 @@
 
 <aside class="warning">
   <span>Elements are meant to be used on browser environments only. If you installed <code>BasisTheory.js</code> as a module, make sure the instance that loads elements runs on the browser-side code.</span>
+</aside>
+
+<aside class="warning">
+  <span>If you try to call <code>BasisTheory.elements</code> before calling <code>BasisTheory.init</code>, or before its Promise has been fulfilled, you will get an error.</span>
 </aside>
 
 <aside class="notice">
@@ -630,6 +641,10 @@
 <td><a href="#createelementoptions">Options</a> for customizing the element</td>
 </tr>
 </tbody></table>
+
+<aside class="warning">
+  <span>Unknown <code>type</code> values will throw an error.</span>
+</aside>
 <h3 id='createelementoptions'>CreateElementOptions</h3>
 <p>CreateElementOptions provide a quick way to customize an Element before mounting it to your website.</p>
 
@@ -671,9 +686,58 @@
 <td>CSS selector that matches the container where your element will be mounted</td>
 </tr>
 </tbody></table>
+
+<aside class="warning">
+  <span>Multiple calls to <code>element.mount</code> will result in an error.</span>
+</aside>
+
+<aside class="warning">
+  <span>If the application key used to initialize `BasisTheory` doesn't exist or doesn't have the required <a href="#permissions">permissions</a>, an error will be thrown by this method.</span>
+</aside>
+<h2 id='update-element'>Update Element</h2><div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="nx">cardElement</span><span class="p">.</span><span class="nx">update</span><span class="p">(</span><span class="nx">options</span><span class="p">);</span>
+</code></pre></div>
+<p>Updates the element options the element was initialized with. The values are deep-merged into the previous options.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>options</code></td>
+<td>false</td>
+<td><em>UpdateElementOptions</em></td>
+<td><a href="#updateelementoptions">Options</a> for customizing the element</td>
+</tr>
+</tbody></table>
+<h3 id='updateelementoptions'>UpdateElementOptions</h3>
+<p>UpdateElementOptions provide a quick way to change an existing (mounted) Element appearance.</p>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>style</code></td>
+<td>false</td>
+<td><em>ElementStyle</em></td>
+<td><a href="#element-style">Object</a> used to customize the element appearance</td>
+</tr>
+</tbody></table>
 <h2 id='unmount-element'>Unmount Element</h2><div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="nx">cardElement</span><span class="p">.</span><span class="nx">unmount</span><span class="p">();</span>
 </code></pre></div>
 <p>Safely removes the element from the DOM, stopping any further communication with it.</p>
+
+<aside class="warning">
+  <span>Trying to mount an element that has been unmounted will result in an error.</span>
+</aside>
 <h1 id='element-events'>Element Events</h1><div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="kd">var</span> <span class="nx">subscription</span> <span class="o">=</span> <span class="nx">cardElement</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">event-type</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
   <span class="c1">// handle event  </span>
 <span class="p">});</span>
@@ -684,6 +748,10 @@
 
 <aside class="notice">
   <span>Make sure to replace 'event-type' with an actual event type.</span>
+</aside>
+
+<aside class="warning">
+  <span>Calling <code>on</code> using an unknown <code>event</code> type will result in an error.</span>
 </aside>
 <h2 id='on-ready'>On Ready</h2><div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="nx">cardElement</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">ready</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
   <span class="c1">// handle ready event </span>
@@ -724,8 +792,10 @@
 </tbody></table>
 <h3 id='changeevent'>ChangeEvent</h3><div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="p">{</span>
   <span class="dl">"</span><span class="s2">complete</span><span class="dl">"</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">empty</span><span class="dl">"</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
   <span class="dl">"</span><span class="s2">errors</span><span class="dl">"</span><span class="p">:</span> <span class="p">[</span>
-    <span class="dl">"</span><span class="s2">invalid-field</span><span class="dl">"</span>
+    <span class="p">{...},</span>
+    <span class="p">{...}</span>
   <span class="p">]</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -742,9 +812,37 @@
 <td>If the element value is well-formed and is ready to be submitted.</td>
 </tr>
 <tr>
+<td><code>empty</code></td>
+<td><em>boolean</em></td>
+<td>Whether the element is empty. Multi-input elements will be <code>empty</code> only if all inputs are.</td>
+</tr>
+<tr>
 <td><code>errors</code></td>
 <td><em>array</em></td>
-<td>Array of element validation error types.</td>
+<td>Array of <a href="#fielderror">FieldError</a>.</td>
+</tr>
+</tbody></table>
+<h3 id='fielderror'>FieldError</h3><div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="p">{</span>
+  <span class="dl">"</span><span class="s2">targetId</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">cardNumber</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">type</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">invalid</span><span class="dl">"</span>
+<span class="p">}</span>
+</code></pre></div>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>targetId</code></td>
+<td><em>string</em></td>
+<td>Input id that triggered the error. Values vary per <a href="#element-types">element type</a>.</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td><em>&quot;invalid&quot;</em> or <em>&quot;incomplete&quot;</em></td>
+<td>Type of the error.</td>
 </tr>
 </tbody></table>
 <h2 id='on-focus'>On Focus</h2><div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="nx">cardElement</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">focus</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">focusEvent</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
@@ -775,7 +873,7 @@
 </tr>
 </tbody></table>
 <h3 id='focusevent'>FocusEvent</h3><div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="p">{</span>
-  <span class="dl">"</span><span class="s2">id</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">cardNumber</span><span class="dl">"</span>  
+  <span class="dl">"</span><span class="s2">targetId</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">cardNumber</span><span class="dl">"</span>  
 <span class="p">}</span>
 </code></pre></div>
 <table><thead>
@@ -786,7 +884,7 @@
 </tr>
 </thead><tbody>
 <tr>
-<td><code>id</code></td>
+<td><code>targetId</code></td>
 <td><em>string</em></td>
 <td>Input id that triggered the event. Values vary per <a href="#element-types">element type</a>.</td>
 </tr>
@@ -819,7 +917,7 @@
 </tr>
 </tbody></table>
 <h3 id='blurevent'>BlurEvent</h3><div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="p">{</span>
-  <span class="dl">"</span><span class="s2">id</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">cardNumber</span><span class="dl">"</span>  
+  <span class="dl">"</span><span class="s2">targetId</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">cardNumber</span><span class="dl">"</span>  
 <span class="p">}</span>
 </code></pre></div>
 <table><thead>
@@ -830,7 +928,7 @@
 </tr>
 </thead><tbody>
 <tr>
-<td><code>id</code></td>
+<td><code>targetId</code></td>
 <td><em>string</em></td>
 <td>Input id that triggered the event. Values vary per <a href="#element-types">element type</a>.</td>
 </tr>
@@ -863,7 +961,7 @@
 </tr>
 </tbody></table>
 <h3 id='keydownevent'>KeydownEvent</h3><div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="p">{</span>
-  <span class="dl">"</span><span class="s2">id</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">cardNumber</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">targetId</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">cardNumber</span><span class="dl">"</span><span class="p">,</span>
   <span class="dl">"</span><span class="s2">key</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Enter</span><span class="dl">"</span><span class="p">,</span>
   <span class="dl">"</span><span class="s2">ctrlKey</span><span class="dl">"</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
   <span class="dl">"</span><span class="s2">altKey</span><span class="dl">"</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
@@ -879,9 +977,9 @@
 </tr>
 </thead><tbody>
 <tr>
-<td><code>id</code></td>
+<td><code>targetId</code></td>
 <td><em>string</em></td>
-<td>Input id that triggered the event. Values vary per <a href="#element-types">element type</a>.</td>
+<td>Input targetId that triggered the event. Values vary per <a href="#element-types">element type</a>.</td>
 </tr>
 <tr>
 <td><code>key</code></td>
@@ -1048,10 +1146,10 @@
 <td><code>validation</code></td>
 <td><em>array</em></td>
 <td>client</td>
-<td>Array of element validation error types, in case of client-side error.</td>
+<td>Array of <a href="#fielderror">FieldError</a>, in case of client-side error.</td>
 </tr>
 <tr>
-<td><code>response</code></td>
+<td><code>data</code></td>
 <td><em>object</em></td>
 <td>server</td>
 <td>Response body sent from the server.</td>

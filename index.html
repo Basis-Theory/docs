@@ -280,7 +280,7 @@
   color: #859900;
 }
     </style>
-    <link href="stylesheets/screen-a8b6e96d.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/screen-084c344a.css" rel="stylesheet" media="screen" />
     <link href="stylesheets/home-e52250b2.css" rel="stylesheet" media="screen" />
     <link href="stylesheets/guides-5da8bd31.css" rel="stylesheet" media="screen" />
     <script src="https://kit.fontawesome.com/86c3cd0147.js" crossorigin="anonymous"></script>
@@ -312,8 +312,8 @@
       <div class="line"></div>
         <div class="lang-selector">
               <a href="#" data-language-name="shell">cURL</a>
-              <a href="#" data-language-name="javascript">node.js</a>
-              <a href="#" data-language-name="csharp">dotnet</a>
+              <a href="#" data-language-name="javascript">Node.js</a>
+              <a href="#" data-language-name="csharp">.NET</a>
         </div>
       <a href="https://portal.basistheory.com/" target="_blank" class="nav-back">Go to Portal</a>
         <div class="search">
@@ -495,7 +495,13 @@
                       <a href="#list-tokens" class="toc-h2 toc-link" data-title="List Tokens">List Tokens</a>
                     </li>
                     <li>
+                      <a href="#list-decrypted-tokens" class="toc-h2 toc-link" data-title="List Decrypted Tokens">List Decrypted Tokens</a>
+                    </li>
+                    <li>
                       <a href="#get-a-token" class="toc-h2 toc-link" data-title="Get a Token">Get a Token</a>
+                    </li>
+                    <li>
+                      <a href="#get-a-decrypted-token" class="toc-h2 toc-link" data-title="Get a Decrypted Token">Get a Decrypted Token</a>
                     </li>
                     <li>
                       <a href="#delete-token" class="toc-h2 toc-link" data-title="Delete Token">Delete Token</a>
@@ -821,6 +827,17 @@
   <span class="s2">"detail"</span>: <span class="s2">"string"</span>,
   <span class="s2">"instance"</span>: <span class="s2">"string"</span>
 <span class="o">}</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">BasisTheory</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@Basis-Theory/basis-theory-js</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="k">try</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">bt</span> <span class="o">=</span> <span class="k">await</span> <span class="k">new</span> <span class="nx">BasisTheory</span><span class="p">().</span><span class="nx">init</span><span class="p">(</span><span class="dl">'</span><span class="s1">key_N88mVGsp3sCXkykyN2EFED</span><span class="dl">'</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="nx">application</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">bt</span><span class="p">.</span><span class="nx">applications</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span> <span class="p">...</span> <span class="p">});</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">status</span><span class="p">);</span> <span class="c1">// HTTP status code</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span> <span class="c1">// HTTP Response body</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">errors</span><span class="p">);</span>
+<span class="p">}</span>
+
 </code></pre></div><h3 id='response'>Response</h3>
 <table><thead>
 <tr>
@@ -906,11 +923,6 @@
 <td><em>array</em></td>
 <td>List of <a href="#application-types">application types</a> that can assign the permission</td>
 </tr>
-<tr>
-<td><code>dependencies</code></td>
-<td><em>array</em></td>
-<td>List of downstream <a href="#permission-types">permission types</a> which are required for this permission type</td>
-</tr>
 </tbody></table>
 <h2 id='permission-types'>Permission Types</h2>
 <table><thead>
@@ -918,140 +930,132 @@
 <th>Permission</th>
 <th>Description</th>
 <th>Application Types</th>
-<th>Dependencies</th>
 </tr>
 </thead><tbody>
 <tr>
 <td><code>tenant:read</code></td>
 <td>Read tenants</td>
 <td><code>management</code></td>
-<td><em>N/A</em></td>
 </tr>
 <tr>
 <td><code>tenant:update</code></td>
 <td>Update tenants</td>
 <td><code>management</code></td>
-<td><em>N/A</em></td>
 </tr>
 <tr>
 <td><code>tenant:delete</code></td>
 <td>Delete tenants</td>
 <td><code>management</code></td>
-<td><em>N/A</em></td>
 </tr>
 <tr>
 <td><code>application:read</code></td>
 <td>Read applications</td>
 <td><code>management</code></td>
-<td><em>N/A</em></td>
 </tr>
 <tr>
-<td><code>application:write</code></td>
-<td>Create, edit, delete, and regenerate API keys for applications</td>
+<td><code>application:create</code></td>
+<td>Create applications</td>
 <td><code>management</code></td>
-<td><em>N/A</em></td>
+</tr>
+<tr>
+<td><code>application:update</code></td>
+<td>Update and regenerate API keys for applications</td>
+<td><code>management</code></td>
+</tr>
+<tr>
+<td><code>application:create</code></td>
+<td>Delete applications</td>
+<td><code>management</code></td>
 </tr>
 <tr>
 <td><code>reactor:read</code></td>
 <td>Read reactor formulas and reactors</td>
 <td><code>server_to_server</code>, <code>management</code></td>
-<td><code>token:read</code></td>
 </tr>
 <tr>
 <td><code>reactor:create</code></td>
 <td>Create reactor formulas and reactors</td>
 <td><code>management</code></td>
-<td><em>N/A</em></td>
 </tr>
 <tr>
 <td><code>reactor:update</code></td>
 <td>Update reactor formulas and reactors</td>
 <td><code>management</code></td>
-<td><em>N/A</em></td>
 </tr>
 <tr>
 <td><code>reactor:delete</code></td>
 <td>Delete reactor formulas and reactors</td>
 <td><code>management</code></td>
-<td><em>N/A</em></td>
 </tr>
 <tr>
 <td><code>log:read</code></td>
 <td>Read audit logs</td>
 <td><code>management</code></td>
-<td><em>N/A</em></td>
 </tr>
 <tr>
 <td><code>token:read</code></td>
 <td>Read tokens from the vault</td>
 <td><code>server_to_server</code></td>
-<td><em>N/A</em></td>
 </tr>
 <tr>
 <td><code>token:create</code></td>
 <td>Create tokens in the vault</td>
 <td><code>public</code>, <code>elements</code>, <code>server_to_server</code></td>
-<td><em>N/A</em></td>
 </tr>
 <tr>
 <td><code>token:delete</code></td>
 <td>Delete tokens from the vault</td>
 <td><code>server_to_server</code></td>
-<td><em>N/A</em></td>
+</tr>
+<tr>
+<td><code>token:decrypt</code></td>
+<td>Decrypt generic tokens</td>
+<td><code>server_to_server</code></td>
 </tr>
 <tr>
 <td><code>card:read</code></td>
 <td>Read atomic card tokens</td>
 <td><code>server_to_server</code></td>
-<td><code>token:read</code></td>
 </tr>
 <tr>
 <td><code>card:create</code></td>
 <td>Create atomic card tokens</td>
 <td><code>public</code>, <code>elements</code>, <code>server_to_server</code></td>
-<td><code>token:create</code></td>
 </tr>
 <tr>
 <td><code>card:update</code></td>
 <td>Update atomic card tokens</td>
 <td><code>server_to_server</code></td>
-<td><code>token:create</code></td>
 </tr>
 <tr>
 <td><code>card:delete</code></td>
 <td>Delete atomic card tokens</td>
 <td><code>server_to_server</code></td>
-<td><code>token:delete</code></td>
 </tr>
 <tr>
 <td><code>bank:read</code></td>
 <td>Read atomic bank tokens</td>
 <td><code>server_to_server</code></td>
-<td><code>token:read</code></td>
 </tr>
 <tr>
 <td><code>bank:create</code></td>
 <td>Create atomic bank tokens</td>
 <td><code>public</code>, <code>elements</code>, <code>server_to_server</code></td>
-<td><code>token:create</code></td>
 </tr>
 <tr>
 <td><code>bank:update</code></td>
 <td>Update atomic bank tokens</td>
 <td><code>server_to_server</code></td>
-<td><code>token:create</code></td>
 </tr>
 <tr>
 <td><code>bank:delete</code></td>
 <td>Delete atomic bank tokens</td>
 <td><code>server_to_server</code></td>
-<td><code>token:delete</code></td>
 </tr>
 <tr>
 <td><code>bank:decrypt</code></td>
 <td>Decrypt atomic bank tokens</td>
 <td><code>server_to_server</code></td>
-<td><code>token:read</code></td>
 </tr>
 </tbody></table>
 <h2 id='list-permissions'>List Permissions</h2>
@@ -1073,9 +1077,6 @@
     </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Read Payment Card tokens"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"application_types"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="s2">"server_to_server"</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="nl">"dependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="s2">"token:read"</span><span class="w">
     </span><span class="p">]</span><span class="w">
   </span><span class="p">},</span><span class="w"> 
   </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
@@ -1386,7 +1387,7 @@
 <p>Create a new application for the tenant.</p>
 <h3 id='permissions'>Permissions</h3>
 <p class="scopes">
-  <span class="scope">application:write</span>
+  <span class="scope">application:create</span>
 </p>
 <h3 id='request-parameters'>Request Parameters</h3>
 <table><thead>
@@ -1658,7 +1659,7 @@
 <p>Update an application by ID in the tenant.</p>
 <h3 id='permissions-5'>Permissions</h3>
 <p class="scopes">
-  <span class="scope">application:write</span>
+  <span class="scope">application:update</span>
 </p>
 <h3 id='uri-parameters-2'>URI Parameters</h3>
 <table><thead>
@@ -1751,7 +1752,7 @@
 </aside>
 <h3 id='permissions-6'>Permissions</h3>
 <p class="scopes">
-  <span class="scope">application:write</span>
+  <span class="scope">application:update</span>
 </p>
 <h3 id='uri-parameters-3'>URI Parameters</h3>
 <table><thead>
@@ -1795,7 +1796,7 @@
 
 <p>Delete an application by ID in the tenant.</p>
 <h3 id='permissions-7'>Permissions</h3>
-<p><code>application:write</code></p>
+<p><code>application:delete</code></p>
 <h3 id='uri-parameters-4'>URI Parameters</h3>
 <table><thead>
 <tr>
@@ -1871,6 +1872,11 @@
 <td><em>array</em></td>
 </tr>
 <tr>
+<td><code>request_parameters</code></td>
+<td>true</td>
+<td><em>array</em></td>
+</tr>
+<tr>
 <td><code>created_at</code></td>
 <td><em>date</em></td>
 <td>Created date of the reactor formula in ISO 8601 format</td>
@@ -1899,11 +1905,57 @@
 <td>Name of the configuration setting</td>
 </tr>
 <tr>
+<td><code>description</code></td>
+<td>false</td>
+<td><em>string</em></td>
+<td><code>null</code></td>
+<td>Description of the configuration setting</td>
+</tr>
+<tr>
 <td><code>type</code></td>
 <td>true</td>
 <td><em>string</em></td>
 <td><code>null</code></td>
 <td>Data type of the configuration setting. Valid values are <code>string</code>, <code>boolean</code>, and <code>number</code></td>
+</tr>
+</tbody></table>
+<h3 id='reactor-formula-request-parameter-object'>Reactor Formula Request Parameter Object</h3>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Required</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>name</code></td>
+<td>true</td>
+<td><em>string</em></td>
+<td><code>null</code></td>
+<td>Name of the request parameter</td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td>false</td>
+<td><em>string</em></td>
+<td><code>null</code></td>
+<td>Description of the request parameter</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td>true</td>
+<td><em>string</em></td>
+<td><code>null</code></td>
+<td>Data type of the request parameter. Valid values are <code>string</code>, <code>boolean</code>, and <code>number</code></td>
+</tr>
+<tr>
+<td><code>optional</code></td>
+<td>false</td>
+<td><em>boolean</em></td>
+<td><code>false</code></td>
+<td>If the request parameter is optional when executing the reactor</td>
 </tr>
 </tbody></table>
 <h2 id='reactor-formula-code'>Reactor Formula Code</h2>
@@ -1969,7 +2021,21 @@
     "configuration": [
       {
         "name": "SERVICE_API_KEY",
+        "description": "Configuration description",
         "type": "string"
+      }
+    ],
+    "request_paramters": [
+      {
+        "name": "REQUEST_PARAMETER_1",
+        "description": "Request parameter description",
+        "type": "string"
+      },
+      {
+        "name": "REQUEST_PARAMETER_2",
+        "description": "Request parameter description",
+        "type": "boolean",
+        "optional": true
       }
     ]
   }'</span>
@@ -1993,7 +2059,21 @@
   <span class="n">Configuration</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">ReactorFormlaConfiguration</span><span class="p">&gt;</span> <span class="p">{</span>
     <span class="k">new</span> <span class="n">ReactorFormulaConfiguration</span> <span class="p">{</span>
       <span class="n">Name</span> <span class="p">=</span> <span class="s">"SERVICE_API_KEY"</span><span class="p">,</span>
+      <span class="n">Description</span> <span class="p">=</span> <span class="s">"Configuration description"</span><span class="p">,</span>
       <span class="n">Type</span> <span class="p">=</span> <span class="s">"string"</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="n">RequestParameters</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">ReactorFormlaRequestParameter</span><span class="p">&gt;</span> <span class="p">{</span>
+    <span class="k">new</span> <span class="n">ReactorFormlaRequestParameter</span> <span class="p">{</span>
+      <span class="n">Name</span> <span class="p">=</span> <span class="s">"REQUEST_PARAMETER_1"</span><span class="p">,</span>
+      <span class="n">Description</span> <span class="p">=</span> <span class="s">"Request parameter description"</span><span class="p">,</span>
+      <span class="n">Type</span> <span class="p">=</span> <span class="s">"string"</span>
+    <span class="p">},</span>
+    <span class="k">new</span> <span class="n">ReactorFormlaRequestParameter</span> <span class="p">{</span>
+      <span class="n">Name</span> <span class="p">=</span> <span class="s">"REQUEST_PARAMETER_2"</span><span class="p">,</span>
+      <span class="n">Description</span> <span class="p">=</span> <span class="s">"Request parameter description"</span><span class="p">,</span>
+      <span class="n">Type</span> <span class="p">=</span> <span class="s">"boolean"</span><span class="p">,</span>
+      <span class="n">IsOptional</span> <span class="p">=</span> <span class="k">true</span>
     <span class="p">}</span>
   <span class="p">}</span>
 <span class="p">});</span>
@@ -2025,7 +2105,21 @@
   </span><span class="nl">"configuration"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SERVICE_API_KEY"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Configuration description"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"request_paramters"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"REQUEST_PARAMETER_1"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Request parameter description"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"REQUEST_PARAMETER_2"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Request parameter description"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"boolean"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"optional"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="w">
@@ -2100,6 +2194,13 @@
 <td><code>[]</code></td>
 <td>Array of <a href="#reactor-formula-configuration-object">configuration</a> options for configuring a reactor</td>
 </tr>
+<tr>
+<td><code>request_parameters</code></td>
+<td>true</td>
+<td><em>array</em></td>
+<td><code>[]</code></td>
+<td>Array of <a href="#reactor-formula-request-parameter-object">request parameters</a> which will be passed when executing the reactor</td>
+</tr>
 </tbody></table>
 <h3 id='response'>Response</h3>
 <p>Returns an <a href="#reactor-formula-object">reactor formula</a> if the reactor formula was created. Returns <a href="#errors">an error</a> if there were validation errors or the reactor formula failed to create.</p>
@@ -2143,7 +2244,21 @@
       </span><span class="nl">"configuration"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
           </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SERVICE_API_KEY"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Configuration description"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"request_paramters"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"REQUEST_PARAMETER_1"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Request parameter description"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"REQUEST_PARAMETER_2"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Request parameter description"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"boolean"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"optional"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">],</span><span class="w">
       </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="p">,</span><span class="w">
@@ -2228,7 +2343,21 @@
   </span><span class="nl">"configuration"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SERVICE_API_KEY"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Configuration description"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"request_paramters"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"REQUEST_PARAMETER_1"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Request parameter description"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"REQUEST_PARAMETER_2"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Request parameter description"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"boolean"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"optional"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="p">,</span><span class="w">
@@ -2291,7 +2420,21 @@
     "configuration": [
       {
         "name": "SERVICE_API_KEY",
+        "description": "Configuration description",
         "type": "string"
+      }
+    ],
+    "request_paramters": [
+      {
+        "name": "REQUEST_PARAMETER_1",
+        "description": "Request parameter description",
+        "type": "string"
+      },
+      {
+        "name": "REQUEST_PARAMETER_2",
+        "description": "Request parameter description",
+        "type": "boolean",
+        "optional": true
       }
     ]
   }'</span>
@@ -2313,10 +2456,24 @@
         };
       };
     "</span><span class="p">,</span>
-    <span class="n">Configuration</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">ReactorFormulaConfiguration</span><span class="p">&gt;</span> <span class="p">{</span>
+    <span class="n">Configuration</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">ReactorFormlaConfiguration</span><span class="p">&gt;</span> <span class="p">{</span>
       <span class="k">new</span> <span class="n">ReactorFormulaConfiguration</span> <span class="p">{</span>
         <span class="n">Name</span> <span class="p">=</span> <span class="s">"SERVICE_API_KEY"</span><span class="p">,</span>
+        <span class="n">Description</span> <span class="p">=</span> <span class="s">"Configuration description"</span><span class="p">,</span>
         <span class="n">Type</span> <span class="p">=</span> <span class="s">"string"</span>
+      <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="n">RequestParameters</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">ReactorFormlaRequestParameter</span><span class="p">&gt;</span> <span class="p">{</span>
+      <span class="k">new</span> <span class="n">ReactorFormlaRequestParameter</span> <span class="p">{</span>
+        <span class="n">Name</span> <span class="p">=</span> <span class="s">"REQUEST_PARAMETER_1"</span><span class="p">,</span>
+        <span class="n">Description</span> <span class="p">=</span> <span class="s">"Request parameter description"</span><span class="p">,</span>
+        <span class="n">Type</span> <span class="p">=</span> <span class="s">"string"</span>
+      <span class="p">},</span>
+      <span class="k">new</span> <span class="n">ReactorFormlaRequestParameter</span> <span class="p">{</span>
+        <span class="n">Name</span> <span class="p">=</span> <span class="s">"REQUEST_PARAMETER_2"</span><span class="p">,</span>
+        <span class="n">Description</span> <span class="p">=</span> <span class="s">"Request parameter description"</span><span class="p">,</span>
+        <span class="n">Type</span> <span class="p">=</span> <span class="s">"boolean"</span><span class="p">,</span>
+        <span class="n">IsOptional</span> <span class="p">=</span> <span class="k">true</span>
       <span class="p">}</span>
     <span class="p">}</span>
   <span class="p">}</span>
@@ -2349,7 +2506,21 @@
   </span><span class="nl">"configuration"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SERVICE_API_KEY"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Configuration description"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"request_paramters"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"REQUEST_PARAMETER_1"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Request parameter description"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"REQUEST_PARAMETER_2"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Request parameter description"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"boolean"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"optional"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="p">,</span><span class="w">
@@ -2442,6 +2613,13 @@
 <td><em>array</em></td>
 <td><code>[]</code></td>
 <td>Array of <a href="#reaction-formula-configuration-object">configuration</a> options for configuring a reactor</td>
+</tr>
+<tr>
+<td><code>request_parameters</code></td>
+<td>true</td>
+<td><em>array</em></td>
+<td><code>[]</code></td>
+<td>Array of <a href="#reactor-formula-request-parameter-object">request parameters</a> which will be passed when executing the reactor</td>
 </tr>
 </tbody></table>
 <h3 id='response-4'>Response</h3>
@@ -3031,7 +3209,7 @@
     "data": "ebSG3IohNmg5gTOjN2HBwBbhjDZ6BY3fCWZJfXSucVMfQ+7YNMXQYrPuRSXgSkhuTMYS+BNfVUur4qZSvUbgCA==",
     "metadata": {
       "nonSensitiveField": "Non-Sensitive Value"
-    }
+    },
     "encryption": {
       "cek": {
         "key": "JLrtGbYSN5/dbqdKtLVG8tHu3QefcZnKsFOPBBXlXcG4zL9US01mW2MqZs6Px4ckSQM8CrRakwLKilrQ0f37Iw==",
@@ -3169,7 +3347,7 @@
 <p>Response</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"pagination"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">}</span><span class="w">
+  </span><span class="nl">"pagination"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c06d0789-0a38-40be-b7cc-c28a718f76f1"</span><span class="p">,</span><span class="w">
@@ -3178,7 +3356,7 @@
       </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ebSG3IohNmg5gTOjN2HBwBbhjDZ6BY3fCWZJfXSucVMfQ+7YNMXQYrPuRSXgSkhuTMYS+BNfVUur4qZSvUbgCA=="</span><span class="p">,</span><span class="w">
       </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"nonSensitiveField"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Non-Sensitive Value"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
       </span><span class="nl">"encryption"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"cek"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JLrtGbYSN5/dbqdKtLVG8tHu3QefcZnKsFOPBBXlXcG4zL9US01mW2MqZs6Px4ckSQM8CrRakwLKilrQ0f37Iw=="</span><span class="p">,</span><span class="w">
@@ -3192,7 +3370,7 @@
       </span><span class="nl">"children"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="err">...</span><span class="p">}</span><span class="w">
-      </span><span class="p">]</span><span class="w">
+      </span><span class="p">],</span><span class="w">
       </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-01T08:23:14+00:00"</span><span class="w">
     </span><span class="p">},</span><span class="w">
@@ -3252,6 +3430,101 @@
 </tbody></table>
 <h3 id='response-2'>Response</h3>
 <p>Returns a <a href="#pagination">paginated object</a> with the <code>data</code> property containing an array of <a href="#token-object">tokens</a>. Providing any query parameters will filter the results. Returns <a href="#errors">an error</a> if tokens could not be retrieved.</p>
+<h2 id='list-decrypted-tokens'>List Decrypted Tokens</h2>
+<blockquote>
+<p>Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/tokens/decrypt"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
+</code></pre></div><div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">TokenClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
+
+<span class="kt">var</span> <span class="n">tokens</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">GetAsync</span><span class="p">(</span><span class="k">new</span> <span class="n">TokenGetRequest</span> <span class="p">{</span> <span class="n">Decrypt</span> <span class="p">=</span> <span class="k">true</span> <span class="p">});</span>
+</code></pre></div>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"pagination"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c06d0789-0a38-40be-b7cc-c28a718f76f1"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"token"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"tenant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77cb0024-123e-41a8-8ff8-a3d5a0fa8a08"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ebSG3IohNmg5gTOjN2HBwBbhjDZ6BY3fCWZJfXSucVMfQ+7YNMXQYrPuRSXgSkhuTMYS+BNfVUur4qZSvUbgCA=="</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"nonSensitiveField"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Non-Sensitive Value"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"children"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="err">...</span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-01T08:23:14+00:00"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="err">...</span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p><span class="http-method get">
+  <span class="box-method">GET</span>
+  <code>https://api.basistheory.com/tokens/decrypt</code>
+</span></p>
+
+<p>Get a list of decrypted tokens for the tenant.</p>
+<h3 id='permissions-3'>Permissions</h3>
+<p class="scopes">
+  <span class="scope">token:decrypt</span>
+</p>
+<h3 id='query-parameters-2'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>false</td>
+<td><em>array</em></td>
+<td><code>[]</code></td>
+<td>An optional list of token ID&#39;s to filter the list of tokens by</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td>false</td>
+<td><em>array</em></td>
+<td><code>[]</code></td>
+<td>An optional array of <a href="#token-types">token types</a> to filter the list of tokens by</td>
+</tr>
+<tr>
+<td><code>children</code></td>
+<td>false</td>
+<td><em>boolean</em></td>
+<td><code>false</code></td>
+<td>Include child tokens where the token is a parent in <a href="#token-associations">token association</a></td>
+</tr>
+<tr>
+<td><code>children_type</code></td>
+<td>false</td>
+<td><em>array</em></td>
+<td><code>[]</code></td>
+<td>An optional array of <a href="#token-types">token types</a> to filter child tokens where the token is a parent in the <a href="#token-associations">token association</a></td>
+</tr>
+<tr>
+<td><code>decrypt_type</code></td>
+<td>false</td>
+<td><em>array</em></td>
+<td><code>[]</code></td>
+<td>An optional array of <a href="#token-types">token types</a> to filter token types that should be decrypted</td>
+</tr>
+</tbody></table>
+<h3 id='response-3'>Response</h3>
+<p>Returns a <a href="#pagination">paginated object</a> with the <code>data</code> property containing an array of decrypted <a href="#token-object">tokens</a>. Providing any query parameters will filter the results. Returns <a href="#errors">an error</a> if tokens could not be retrieved.
+Token types other than <code>token</code> or non-BasisTheory encrypted tokens will not be decrypted.</p>
 <h2 id='get-a-token'>Get a Token</h2>
 <blockquote>
 <p>Request</p>
@@ -3272,7 +3545,7 @@
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ebSG3IohNmg5gTOjN2HBwBbhjDZ6BY3fCWZJfXSucVMfQ+7YNMXQYrPuRSXgSkhuTMYS+BNfVUur4qZSvUbgCA=="</span><span class="p">,</span><span class="w">
   </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"nonSensitiveField"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Non-Sensitive Value"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
   </span><span class="nl">"encryption"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"cek"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JLrtGbYSN5/dbqdKtLVG8tHu3QefcZnKsFOPBBXlXcG4zL9US01mW2MqZs6Px4ckSQM8CrRakwLKilrQ0f37Iw=="</span><span class="p">,</span><span class="w">
@@ -3286,7 +3559,7 @@
   </span><span class="nl">"children"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="err">...</span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
+  </span><span class="p">],</span><span class="w">
   </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-01T08:23:14+00:00"</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -3297,7 +3570,7 @@
 </span></p>
 
 <p>Get a token by ID in the tenant.</p>
-<h3 id='permissions-3'>Permissions</h3>
+<h3 id='permissions-4'>Permissions</h3>
 <p class="scopes">
   <span class="scope">token:read</span>
 </p>
@@ -3319,7 +3592,7 @@
 <td>The ID of the token</td>
 </tr>
 </tbody></table>
-<h3 id='query-parameters-2'>Query Parameters</h3>
+<h3 id='query-parameters-3'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -3344,8 +3617,100 @@
 <td>An optional array of <a href="#token-types">token types</a> to filter child tokens where the token is a parent in the <a href="#token-associations">token association</a></td>
 </tr>
 </tbody></table>
-<h3 id='response-3'>Response</h3>
+<h3 id='response-4'>Response</h3>
 <p>Returns a <a href="#token-object">token</a> with the <code>id</code> provided. Returns <a href="#errors">an error</a> if the token could not be retrieved.</p>
+<h2 id='get-a-decrypted-token'>Get a Decrypted Token</h2>
+<blockquote>
+<p>Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/tokens/c06d0789-0a38-40be-b7cc-c28a718f76f1/decrypt"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
+</code></pre></div><div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">TokenClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
+
+<span class="kt">var</span> <span class="n">token</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">GetByIdAsync</span><span class="p">(</span><span class="s">"c06d0789-0a38-40be-b7cc-c28a718f76f1"</span><span class="p">,</span> <span class="k">new</span> <span class="n">TokenGetByIdRequest</span> <span class="p">{</span> <span class="n">Decrypt</span> <span class="p">=</span> <span class="k">true</span> <span class="p">});</span>
+</code></pre></div>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c06d0789-0a38-40be-b7cc-c28a718f76f1"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"token"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"tenant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77cb0024-123e-41a8-8ff8-a3d5a0fa8a08"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ebSG3IohNmg5gTOjN2HBwBbhjDZ6BY3fCWZJfXSucVMfQ+7YNMXQYrPuRSXgSkhuTMYS+BNfVUur4qZSvUbgCA=="</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"nonSensitiveField"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Non-Sensitive Value"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"children"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="err">...</span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-01T08:23:14+00:00"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p><span class="http-method get">
+  <span class="box-method">GET</span>
+  <code>https://api.basistheory.com/tokens/{id}/decrypt</code>
+</span></p>
+
+<p>Get a decrypted token by ID in the tenant.</p>
+<h3 id='permissions-5'>Permissions</h3>
+<p class="scopes">
+  <span class="scope">token:decrypt</span>
+</p>
+<h3 id='uri-parameters-2'>URI Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>true</td>
+<td><em>uuid</em></td>
+<td><code>null</code></td>
+<td>The ID of the token</td>
+</tr>
+</tbody></table>
+<h3 id='query-parameters-4'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>children</code></td>
+<td>false</td>
+<td><em>boolean</em></td>
+<td><code>false</code></td>
+<td>Include child tokens where the token is a parent in <a href="#token-associations">token association</a></td>
+</tr>
+<tr>
+<td><code>children_type</code></td>
+<td>false</td>
+<td><em>array</em></td>
+<td><code>[]</code></td>
+<td>An optional array of <a href="#token-types">token types</a> to filter child tokens where the token is a parent in the <a href="#token-associations">token association</a></td>
+</tr>
+<tr>
+<td><code>decrypt_type</code></td>
+<td>false</td>
+<td><em>array</em></td>
+<td><code>[]</code></td>
+<td>An optional array of <a href="#token-types">token types</a> to filter token types that should be decrypted</td>
+</tr>
+</tbody></table>
+<h3 id='response-5'>Response</h3>
+<p>Returns a decrypted <a href="#token-object">token</a> with the <code>id</code> provided. Returns <a href="#errors">an error</a> if the token could not be retrieved.
+Token types other than <code>token</code> or non-BasisTheory encrypted tokens will not be decrypted.</p>
 <h2 id='delete-token'>Delete Token</h2>
 <blockquote>
 <p>Request</p>
@@ -3367,11 +3732,11 @@
 <aside class="warning">
   <span>WARNING - The data associated with a deleted token will be removed forever. The reference will still exists for audit purposes</span>
 </aside>
-<h3 id='permissions-4'>Permissions</h3>
+<h3 id='permissions-6'>Permissions</h3>
 <p class="scopes">
   <span class="scope">token:delete</span>
 </p>
-<h3 id='uri-parameters-2'>URI Parameters</h3>
+<h3 id='uri-parameters-3'>URI Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -3389,7 +3754,7 @@
 <td>The ID of the token</td>
 </tr>
 </tbody></table>
-<h3 id='response-4'>Response</h3>
+<h3 id='response-6'>Response</h3>
 <p>Returns <a href="#errors">an error</a> if the token failed to delete.</p>
 <h1 id='token-associations'>Token Associations</h1>
 <p>Token associations allow you to associate any two tokens, of any type, together. This allows you to create parent-child relationships between tokens and do token traversal between tokens.</p>
@@ -4002,7 +4367,6 @@
 <h3 id='permissions'>Permissions</h3>
 <p class="scopes">
   <span class="scope">card:create</span>
-  <span class="scope">token:create</span>
 </p>
 <h3 id='request-parameters'>Request Parameters</h3>
 <table><thead>
@@ -4096,7 +4460,6 @@
 <h3 id='permissions-2'>Permissions</h3>
 <p class="scopes">
   <span class="scope">card:read</span>
-  <span class="scope">token:read</span>
 </p>
 <h3 id='response-2'>Response</h3>
 <p>Returns a <a href="#pagination">paginated object</a> with the <code>data</code> property containing an array of <a href="#atomic-card-object">atomic cards</a>. Providing any query parameters will filter the results. Returns <a href="#errors">an error</a> if atomic cards could not be retrieved.</p>
@@ -4151,7 +4514,6 @@
 <h3 id='permissions-3'>Permissions</h3>
 <p class="scopes">
   <span class="scope">card:read</span>
-  <span class="scope">token:read</span>
 </p>
 <h3 id='uri-parameters'>URI Parameters</h3>
 <table><thead>
@@ -4197,7 +4559,6 @@
 <h3 id='permissions-4'>Permissions</h3>
 <p class="scopes">
   <span class="scope">card:delete</span>
-  <span class="scope">token:delete</span>
 </p>
 <h3 id='uri-parameters-2'>URI Parameters</h3>
 <table><thead>
@@ -4228,10 +4589,25 @@
   <span class="nt">-X</span> <span class="s2">"POST"</span>
   <span class="nt">-D</span> <span class="s1">'{
     "reactor_id": "5b493235-6917-4307-906a-2cd6f1a90b13",
+    "request_paramters": {
+      "REQUEST_PARAMETER_1": "Some request value"
+    },
     "metadata": {
       "nonSensitiveField": "Non-Sensitive Value"
     }
   }'</span>
+</code></pre></div><div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">AtomicCardClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
+
+<span class="kt">var</span> <span class="n">reactionToken</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">ReactAsync</span><span class="p">(</span><span class="s">"c1e565009-1984-4638-8fca-dce8a82cc2af"</span><span class="p">,</span> 
+  <span class="k">new</span> <span class="n">ReactRequest</span> <span class="p">{</span>
+    <span class="n">ReactorId</span> <span class="p">=</span> <span class="s">"5b493235-6917-4307-906a-2cd6f1a90b13"</span><span class="p">,</span>
+    <span class="n">RequestParameters</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="kt">object</span><span class="p">&gt;</span> <span class="p">{</span>
+      <span class="p">{</span> <span class="s">"REQUEST_PARAMETER_1"</span><span class="p">,</span>  <span class="s">"Some request value"</span> <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="n">Metadata</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="kt">string</span><span class="p">&gt;</span> <span class="p">{</span>
+      <span class="p">{</span> <span class="s">"nonSensitiveField"</span><span class="p">,</span>  <span class="s">"Non-Sensitive Value"</span> <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">});</span>
 </code></pre></div>
 <p><span class="http-method post">
   <span class="box-method">POST</span>
@@ -4244,8 +4620,6 @@
   <span class="scope">reactor:read</span>
   <span class="scope">card:create</span>
   <span class="scope">card:read</span>
-  <span class="scope">token:create</span>
-  <span class="scope">token:read</span>
 </p>
 <h3 id='uri-parameters-3'>URI Parameters</h3>
 <table><thead>
@@ -4283,11 +4657,18 @@
 <td>The ID of the reactor</td>
 </tr>
 <tr>
+<td><code>request_parameters</code></td>
+<td>false</td>
+<td><em>map</em></td>
+<td><code>null</code></td>
+<td>A key-value map of <a href="#reactor-forumula-request-parameter-object">request parameters</a> names and values for the reactor</td>
+</tr>
+<tr>
 <td><code>metadata</code></td>
 <td>false</td>
 <td><em>map</em></td>
 <td><code>null</code></td>
-<td>A key-value map of non-sensitive data. We overwrite the following keys: <code>correlation_id</code>, <code>reactor_id</code>, <code>reactor_name</code>, <code>source_token_id</code>, and <code>source_token_type</code>.</td>
+<td>A key-value map of non-sensitive data. We overwrite the following keys: <code>correlation_id</code>, <code>reactor_id</code>, <code>reactor_name</code>, <code>source_token_id</code>, and <code>source_token_type</code></td>
 </tr>
 </tbody></table>
 <h3 id='response-5'>Response</h3>
@@ -4299,6 +4680,10 @@
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.basistheory.com/atomic/cards/c1e565009-1984-4638-8fca-dce8a82cc2af/reaction/6c12a05d-99e3-4454-bdb0-2e6ff88ec5b0"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
   <span class="nt">-X</span> <span class="s2">"GET"</span>
+</code></pre></div><div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">AtomicCardClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
+
+<span class="kt">var</span> <span class="n">reactionToken</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">GetReactionByIdAsync</span><span class="p">(</span>
+  <span class="s">"c1e565009-1984-4638-8fca-dce8a82cc2af"</span><span class="p">,</span> <span class="s">"6c12a05d-99e3-4454-bdb0-2e6ff88ec5b0"</span><span class="p">);</span>
 </code></pre></div>
 <p><span class="http-method get">
   <span class="box-method">GET</span>
@@ -4309,7 +4694,6 @@
 <h3 id='permissions-6'>Permissions</h3>
 <p class="scopes">
   <span class="scope">card:read</span>
-  <span class="scope">token:read</span>
 </p>
 <h3 id='uri-parameters-4'>URI Parameters</h3>
 <table><thead>
@@ -4528,7 +4912,6 @@
 <h3 id='permissions'>Permissions</h3>
 <p class="scopes">
   <span class="scope">bank:create</span>
-  <span class="scope">token:create</span>
 </p>
 <h3 id='request-parameters'>Request Parameters</h3>
 <table><thead>
@@ -4601,7 +4984,6 @@
 <h3 id='permissions-2'>Permissions</h3>
 <p class="scopes">
   <span class="scope">bank:read</span>
-  <span class="scope">token:read</span>
 </p>
 <h3 id='response-2'>Response</h3>
 <p>Returns a <a href="#pagination">paginated object</a> with the <code>data</code> property containing an array of <a href="#atomic-bank-object">atomic banks</a>. Providing any query parameters will filter the results. Returns <a href="#errors">an error</a> if atomic banks could not be retrieved.</p>
@@ -4642,7 +5024,6 @@
 <h3 id='permissions-3'>Permissions</h3>
 <p class="scopes">
   <span class="scope">bank:read</span>
-  <span class="scope">token:read</span>
 </p>
 <h3 id='uri-parameters'>URI Parameters</h3>
 <table><thead>
@@ -4688,7 +5069,6 @@
 <h3 id='permissions-4'>Permissions</h3>
 <p class="scopes">
   <span class="scope">bank:delete</span>
-  <span class="scope">token:delete</span>
 </p>
 <h3 id='uri-parameters-2'>URI Parameters</h3>
 <table><thead>
@@ -4750,7 +5130,6 @@
 <h3 id='permissions-5'>Permissions</h3>
 <p class="scopes">
   <span class="scope">bank:decrypt</span>
-  <span class="scope">token:read</span>
 </p>
 <h3 id='uri-parameters-3'>URI Parameters</h3>
 <table><thead>
@@ -4781,10 +5160,25 @@
   <span class="nt">-X</span> <span class="s2">"POST"</span>
   <span class="nt">-D</span> <span class="s1">'{
     "reactor_id": "5b493235-6917-4307-906a-2cd6f1a90b13",
+    "request_paramters": {
+      "REQUEST_PARAMETER_1": "Some request value"
+    },
     "metadata": {
       "nonSensitiveField": "Non-Sensitive Value"
     }
   }'</span>
+</code></pre></div><div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">AtomicBankClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
+
+<span class="kt">var</span> <span class="n">reactionToken</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">ReactAsync</span><span class="p">(</span><span class="s">"1485efb9-6b1f-4248-a5d1-cf9b3907164c"</span><span class="p">,</span> 
+  <span class="k">new</span> <span class="n">ReactRequest</span> <span class="p">{</span>
+    <span class="n">ReactorId</span> <span class="p">=</span> <span class="s">"5b493235-6917-4307-906a-2cd6f1a90b13"</span><span class="p">,</span>
+    <span class="n">RequestParameters</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="kt">object</span><span class="p">&gt;</span> <span class="p">{</span>
+      <span class="p">{</span> <span class="s">"REQUEST_PARAMETER_1"</span><span class="p">,</span>  <span class="s">"Some request value"</span> <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="n">Metadata</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="kt">string</span><span class="p">&gt;</span> <span class="p">{</span>
+      <span class="p">{</span> <span class="s">"nonSensitiveField"</span><span class="p">,</span>  <span class="s">"Non-Sensitive Value"</span> <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">});</span>
 </code></pre></div>
 <p><span class="http-method post">
   <span class="box-method">POST</span>
@@ -4794,11 +5188,9 @@
 <p>Create an Atomic Bank Reaction by ID in the tenant.</p>
 <h3 id='permissions-6'>Permissions</h3>
 <p class="scopes">
-  <span class="scope">react:read</span>
+  <span class="scope">reactor:read</span>
   <span class="scope">bank:create</span>
   <span class="scope">bank:read</span>
-  <span class="scope">token:create</span>
-  <span class="scope">token:read</span>
 </p>
 <h3 id='uri-parameters-4'>URI Parameters</h3>
 <table><thead>
@@ -4836,11 +5228,18 @@
 <td>The ID of the reactor</td>
 </tr>
 <tr>
+<td><code>request_parameters</code></td>
+<td>false</td>
+<td><em>map</em></td>
+<td><code>null</code></td>
+<td>A key-value map of <a href="#reactor-forumula-request-parameter-object">request parameters</a> names and values for the reactor</td>
+</tr>
+<tr>
 <td><code>metadata</code></td>
 <td>false</td>
 <td><em>map</em></td>
 <td><code>null</code></td>
-<td>A key-value map of non-sensitive data. We overwrite the following keys: <code>correlation_id</code>, <code>reactor_id</code>, <code>reactor_name</code>, <code>source_token_id</code>, and <code>source_token_type</code>.</td>
+<td>A key-value map of non-sensitive data. We overwrite the following keys: <code>correlation_id</code>, <code>reactor_id</code>, <code>reactor_name</code>, <code>source_token_id</code>, and <code>source_token_type</code></td>
 </tr>
 </tbody></table>
 <h3 id='response-6'>Response</h3>
@@ -4852,6 +5251,10 @@
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.basistheory.com/atomic/banks/1485efb9-6b1f-4248-a5d1-cf9b3907164c/reaction/6c12a05d-99e3-4454-bdb0-2e6ff88ec5b0"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
   <span class="nt">-X</span> <span class="s2">"GET"</span>
+</code></pre></div><div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">AtomicBankClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
+
+<span class="kt">var</span> <span class="n">reactionToken</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">GetReactionByIdAsync</span><span class="p">(</span>
+  <span class="s">"1485efb9-6b1f-4248-a5d1-cf9b3907164c"</span><span class="p">,</span> <span class="s">"6c12a05d-99e3-4454-bdb0-2e6ff88ec5b0"</span><span class="p">);</span>
 </code></pre></div>
 <p><span class="http-method get">
   <span class="box-method">GET</span>
@@ -4862,7 +5265,6 @@
 <h3 id='permissions-7'>Permissions</h3>
 <p class="scopes">
   <span class="scope">bank:read</span>
-  <span class="scope">token:read</span>
 </p>
 <h3 id='uri-parameters-5'>URI Parameters</h3>
 <table><thead>
@@ -5023,8 +5425,8 @@
       <div class="dark-box">
           <div class="lang-selector">
                 <a href="#" data-language-name="shell">cURL</a>
-                <a href="#" data-language-name="javascript">node.js</a>
-                <a href="#" data-language-name="csharp">dotnet</a>
+                <a href="#" data-language-name="javascript">Node.js</a>
+                <a href="#" data-language-name="csharp">.NET</a>
           </div>
       </div>
     </div>
