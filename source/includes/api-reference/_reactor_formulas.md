@@ -19,6 +19,7 @@ Attribute | Type | Description
 `icon` | false | *string* | `null` | Base64 [data URL](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URIs) of the image
 `code` | true | *string* | `null` | [Reactor Formula code](#reactor-formula-code) which will be executed when the reactor formula is processed
 `configuration` | true | *array* | `[]` | Array of [configuration](#reactor-formula-configuration-object) options for configuring a reactor
+`request_parameters` | true | *array* | `[]` | Array of [request parameters](#reactor-formula-request-parameter-object) which will be passed when executing the reactor
 `created_at` | *date* | Created date of the reactor formula in ISO 8601 format
 `modified_at` | *date* | Modified date of the reactor formla in ISO 8601 format
 
@@ -27,7 +28,17 @@ Attribute | Type | Description
 Attribute | Required | Type | Default | Description
 --------- | -------- | ---- | ------- | -----------
 `name` | true | *string* | `null` | Name of the configuration setting
+`description` | false | *string* | `null` | Description of the configuration setting
 `type` | true | *string* | `null` | Data type of the configuration setting. Valid values are `string`, `boolean`, and `number`
+
+### Reactor Formula Request Parameter Object
+
+Attribute | Required | Type | Default | Description
+--------- | -------- | ---- | ------- | -----------
+`name` | true | *string* | `null` | Name of the request parameter
+`description` | false | *string* | `null` | Description of the request parameter
+`type` | true | *string* | `null` | Data type of the request parameter. Valid values are `string`, `boolean`, and `number`
+`optional` | false | *boolean* | `false` | If the request parameter is optional when executing the reactor
 
 
 ## Reactor Formula Code
@@ -77,7 +88,21 @@ curl "https://api.basistheory.com/reactor-formula" \
     "configuration": [
       {
         "name": "SERVICE_API_KEY",
+        "description": "Configuration description",
         "type": "string"
+      }
+    ],
+    "request_paramters": [
+      {
+        "name": "REQUEST_PARAMETER_1",
+        "description": "Request parameter description",
+        "type": "string"
+      },
+      {
+        "name": "REQUEST_PARAMETER_2",
+        "description": "Request parameter description",
+        "type": "boolean",
+        "optional": true
       }
     ]
   }'
@@ -104,7 +129,21 @@ var reactorFormla = await client.CreateAsync(new ReactorFormula {
   Configuration = new List<ReactorFormlaConfiguration> {
     new ReactorFormulaConfiguration {
       Name = "SERVICE_API_KEY",
+      Description = "Configuration description",
       Type = "string"
+    }
+  },
+  RequestParameters = new List<ReactorFormlaRequestParameter> {
+    new ReactorFormlaRequestParameter {
+      Name = "REQUEST_PARAMETER_1",
+      Description = "Request parameter description",
+      Type = "string"
+    },
+    new ReactorFormlaRequestParameter {
+      Name = "REQUEST_PARAMETER_2",
+      Description = "Request parameter description",
+      Type = "boolean",
+      IsOptional = true
     }
   }
 });
@@ -137,7 +176,21 @@ var reactorFormla = await client.CreateAsync(new ReactorFormula {
   "configuration": [
     {
       "name": "SERVICE_API_KEY",
+      "description": "Configuration description",
       "type": "string"
+    }
+  ],
+  "request_paramters": [
+    {
+      "name": "REQUEST_PARAMETER_1",
+      "description": "Request parameter description",
+      "type": "string"
+    },
+    {
+      "name": "REQUEST_PARAMETER_2",
+      "description": "Request parameter description",
+      "type": "boolean",
+      "optional": true
     }
   ],
   "created_at": "2020-09-15T15:53:00+00:00"
@@ -168,6 +221,7 @@ Attribute | Required | Type | Default | Description
 `icon` | false | *string* | `null` | Base64 [data URL](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URIs) of the image. Supported image types are: `image/png`, `image/jpg`, and `image/jpeg`
 `code` | true | *string* | `null` | [Reactor code](#reactor-formula-code) which will be executed when the reactor formula is processed
 `configuration` | true | *array* | `[]` | Array of [configuration](#reactor-formula-configuration-object) options for configuring a reactor
+`request_parameters` | true | *array* | `[]` | Array of [request parameters](#reactor-formula-request-parameter-object) which will be passed when executing the reactor
 
 
 ### Response
@@ -220,7 +274,21 @@ var reactorFormulas = await client.GetAsync();
       "configuration": [
         {
           "name": "SERVICE_API_KEY",
+          "description": "Configuration description",
           "type": "string"
+        }
+      ],
+      "request_paramters": [
+        {
+          "name": "REQUEST_PARAMETER_1",
+          "description": "Request parameter description",
+          "type": "string"
+        },
+        {
+          "name": "REQUEST_PARAMETER_2",
+          "description": "Request parameter description",
+          "type": "boolean",
+          "optional": true
         }
       ],
       "created_at": "2020-09-15T15:53:00+00:00",
@@ -299,7 +367,21 @@ var reactorFormula = await client.GetByIdAsync("17069df1-80f4-439e-86a7-4121863e
   "configuration": [
     {
       "name": "SERVICE_API_KEY",
+      "description": "Configuration description",
       "type": "string"
+    }
+  ],
+  "request_paramters": [
+    {
+      "name": "REQUEST_PARAMETER_1",
+      "description": "Request parameter description",
+      "type": "string"
+    },
+    {
+      "name": "REQUEST_PARAMETER_2",
+      "description": "Request parameter description",
+      "type": "boolean",
+      "optional": true
     }
   ],
   "created_at": "2020-09-15T15:53:00+00:00",
@@ -358,7 +440,21 @@ curl "https://api.basistheory.com/reator-formula/17069df1-80f4-439e-86a7-4121863
     "configuration": [
       {
         "name": "SERVICE_API_KEY",
+        "description": "Configuration description",
         "type": "string"
+      }
+    ],
+    "request_paramters": [
+      {
+        "name": "REQUEST_PARAMETER_1",
+        "description": "Request parameter description",
+        "type": "string"
+      },
+      {
+        "name": "REQUEST_PARAMETER_2",
+        "description": "Request parameter description",
+        "type": "boolean",
+        "optional": true
       }
     ]
   }'
@@ -383,10 +479,24 @@ var reactorFormula = await client.UpdateAsync("17069df1-80f4-439e-86a7-4121863e4
         };
       };
     ",
-    Configuration = new List<ReactorFormulaConfiguration> {
+    Configuration = new List<ReactorFormlaConfiguration> {
       new ReactorFormulaConfiguration {
         Name = "SERVICE_API_KEY",
+        Description = "Configuration description",
         Type = "string"
+      }
+    },
+    RequestParameters = new List<ReactorFormlaRequestParameter> {
+      new ReactorFormlaRequestParameter {
+        Name = "REQUEST_PARAMETER_1",
+        Description = "Request parameter description",
+        Type = "string"
+      },
+      new ReactorFormlaRequestParameter {
+        Name = "REQUEST_PARAMETER_2",
+        Description = "Request parameter description",
+        Type = "boolean",
+        IsOptional = true
       }
     }
   }
@@ -420,7 +530,21 @@ var reactorFormula = await client.UpdateAsync("17069df1-80f4-439e-86a7-4121863e4
   "configuration": [
     {
       "name": "SERVICE_API_KEY",
+      "description": "Configuration description",
       "type": "string"
+    }
+  ],
+  "request_paramters": [
+    {
+      "name": "REQUEST_PARAMETER_1",
+      "description": "Request parameter description",
+      "type": "string"
+    },
+    {
+      "name": "REQUEST_PARAMETER_2",
+      "description": "Request parameter description",
+      "type": "boolean",
+      "optional": true
     }
   ],
   "created_at": "2020-09-15T15:53:00+00:00",
@@ -458,6 +582,7 @@ Attribute | Required | Type | Default | Description
 `icon` | false | *string* | `null` | Base64 [data URL](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URIs) of the image. Supported image types are: `image/png`, `image/jpg`, and `image/jpeg`
 `code` | true | *string* | `null` | [Reactor code](#reactor-formula-code) which will be executed when the reactor formula is processed
 `configuration` | true | *array* | `[]` | Array of [configuration](#reaction-formula-configuration-object) options for configuring a reactor
+`request_parameters` | true | *array* | `[]` | Array of [request parameters](#reactor-formula-request-parameter-object) which will be passed when executing the reactor
 
 ### Response
 
