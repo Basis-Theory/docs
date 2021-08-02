@@ -66,7 +66,7 @@ Type | Description
 > Request
 
 ```shell
-curl "https://api.basistheory.com/reactor-formula" \
+curl "https://api.basistheory.com/reactor-formulas" \
   -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
   -H "Content-Type: application/json"
   -X "POST"
@@ -199,7 +199,7 @@ var reactorFormla = await client.CreateAsync(new ReactorFormula {
 
 <span class="http-method post">
   <span class="box-method">POST</span>
-  `https://api.basistheory.com/reactor-formula`
+  `https://api.basistheory.com/reactor-formulas`
 </span>
 
 Create a new reactor formula for the tenant.
@@ -330,7 +330,7 @@ Returns a [paginated object](#pagination) with the `data` property containing an
 > Request
 
 ```shell
-curl "https://api.basistheory.com/reactor-formula/17069df1-80f4-439e-86a7-4121863e4678" \
+curl "https://api.basistheory.com/reactor-formulas/17069df1-80f4-439e-86a7-4121863e4678" \
   -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
 ```
 
@@ -594,7 +594,7 @@ Returns an [reactor formula](#reactor-formula-object) if the reactor reactor was
 > Request
 
 ```shell
-curl "https://api.basistheory.com/reactor-formula/17069df1-80f4-439e-86a7-4121863e4678" \
+curl "https://api.basistheory.com/reactor-formulas/17069df1-80f4-439e-86a7-4121863e4678" \
   -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
   -X "DELETE"
 ```
@@ -607,7 +607,7 @@ await client.DeleteAsync("17069df1-80f4-439e-86a7-4121863e4678");
 
 <span class="http-method delete">
   <span class="box-method">DELETE</span>
-  `https://api.basistheory.com/reactor-formula/{id}`
+  `https://api.basistheory.com/reactor-formulas/{id}`
 </span>
 
 Delete a reactor formula by ID in the tenant.
