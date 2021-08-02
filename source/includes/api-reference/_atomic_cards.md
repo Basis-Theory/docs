@@ -150,7 +150,6 @@ Create a new atomic card for the tenant.
 
 <p class="scopes">
   <span class="scope">card:create</span>
-  <span class="scope">token:create</span>
 </p>
 
 ### Request Parameters
@@ -232,7 +231,6 @@ Get a list of atomic cards for the tenant.
 
 <p class="scopes">
   <span class="scope">card:read</span>
-  <span class="scope">token:read</span>
 </p>
 
 ### Response
@@ -299,7 +297,6 @@ Get an atomic card by ID in the tenant.
 
 <p class="scopes">
   <span class="scope">card:read</span>
-  <span class="scope">token:read</span>
 </p>
 
 ### URI Parameters
@@ -344,7 +341,6 @@ Delete an atomic card by ID in the tenant.
 
 <p class="scopes">
   <span class="scope">card:delete</span>
-  <span class="scope">token:delete</span>
 </p>
 
 ### URI Parameters
@@ -357,6 +353,7 @@ Parameter | Required | Type | Default | Description
 
 Returns [an error](#errors) if the atomic card failed to delete.
 
+
 ## Create an Atomic Card Reaction
 
 > Request
@@ -367,10 +364,28 @@ curl "api.basistheory.com/atomic/cards/c1e565009-1984-4638-8fca-dce8a82cc2af/rea
   -X "POST"
   -D '{
     "reactor_id": "5b493235-6917-4307-906a-2cd6f1a90b13",
+    "request_paramters": {
+      "REQUEST_PARAMETER_1": "Some request value"
+    },
     "metadata": {
       "nonSensitiveField": "Non-Sensitive Value"
     }
   }'
+```
+
+```csharp
+var client = new AtomicCardClient("key_N88mVGsp3sCXkykyN2EFED");
+
+var reactionToken = await client.ReactAsync("c1e565009-1984-4638-8fca-dce8a82cc2af", 
+  new ReactRequest {
+    ReactorId = "5b493235-6917-4307-906a-2cd6f1a90b13",
+    RequestParameters = new Dictionary<string, object> {
+      { "REQUEST_PARAMETER_1",  "Some request value" }
+    },
+    Metadata = new Dictionary<string, string> {
+      { "nonSensitiveField",  "Non-Sensitive Value" }
+    }
+  });
 ```
 
 <span class="http-method post">
@@ -386,8 +401,6 @@ Create an Atomic Card Reaction by ID in the tenant.
   <span class="scope">reactor:read</span>
   <span class="scope">card:create</span>
   <span class="scope">card:read</span>
-  <span class="scope">token:create</span>
-  <span class="scope">token:read</span>
 </p>
 
 ### URI Parameters
@@ -400,11 +413,13 @@ Parameter | Required | Type | Default | Description
 Parameter | Required | Type | Default | Description
 --------- | -------- | ---- | ------- | -----------
 `reactor_id` | true | *uuid* | `null` | The ID of the reactor
-`metadata` | false | *map* | `null` | A key-value map of non-sensitive data. We overwrite the following keys: `correlation_id`, `reactor_id`, `reactor_name`, `source_token_id`, and `source_token_type`.
+`request_parameters` | false | *map* | `null` | A key-value map of [request parameters](#reactor-forumula-request-parameter-object) names and values for the reactor
+`metadata` | false | *map* | `null` | A key-value map of non-sensitive data. We overwrite the following keys: `correlation_id`, `reactor_id`, `reactor_name`, `source_token_id`, and `source_token_type`
 
 ### Response
 
 Returns a [token](#token-object) with type of `card:reaction` if the atomic card was reacted. Returns [an error](#errors) if the atomic card failed to react.
+
 
 ## Get an Atomic Card Reaction Token
 
@@ -414,6 +429,13 @@ Returns a [token](#token-object) with type of `card:reaction` if the atomic card
 curl "api.basistheory.com/atomic/cards/c1e565009-1984-4638-8fca-dce8a82cc2af/reaction/6c12a05d-99e3-4454-bdb0-2e6ff88ec5b0" \
   -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
   -X "GET"
+```
+
+```csharp
+var client = new AtomicCardClient("key_N88mVGsp3sCXkykyN2EFED");
+
+var reactionToken = await client.GetReactionByIdAsync(
+  "c1e565009-1984-4638-8fca-dce8a82cc2af", "6c12a05d-99e3-4454-bdb0-2e6ff88ec5b0");
 ```
 
 <span class="http-method get">
@@ -427,7 +449,6 @@ Get an atomic card reaction token by ID in the tenant.
 
 <p class="scopes">
   <span class="scope">card:read</span>
-  <span class="scope">token:read</span>
 </p>
 
 ### URI Parameters
@@ -440,6 +461,7 @@ Parameter | Required | Type | Default | Description
 ### Response
 
 Returns a [token](#token-object) with type of `card:reaction`. Returns [an error](#errors) if the atomic card failed to reacted.
+
 
 ## Test Cards
 

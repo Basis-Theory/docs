@@ -99,6 +99,7 @@ html, body {
       padding-bottom: 0.5em;
       color: $secondary;
       @extend %principal-title-font;
+      text-transform: none;
     }
   }
 
@@ -369,7 +370,7 @@ html, body {
     display: flex;
     flex-direction: row;
     align-items: center;
-    text-transform: capitalize;
+    text-transform: none;
 
     &:active, &:focus {
       color: $primary;

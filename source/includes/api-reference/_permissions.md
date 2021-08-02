@@ -18,35 +18,37 @@ Attribute | Type | Description
 `type` | *string* | Permission type referenced by Basis Theory API endpoints
 `description` | *string* | Description of the permission
 `application_types` | *array* | List of [application types](#application-types) that can assign the permission
-`dependencies` | *array* | List of downstream [permission types](#permission-types) which are required for this permission type
 
 
 ## Permission Types
 
-Permission | Description | Application Types | Dependencies
----------  | ----------- | ----------------- | ------------
-`tenant:read` | Read tenants | `management` | *N/A*
-`tenant:update` | Update tenants | `management` | *N/A*
-`tenant:delete` | Delete tenants | `management` | *N/A*
-`application:read` | Read applications | `management` | *N/A*
-`application:write` | Create, edit, delete, and regenerate API keys for applications | `management` | *N/A*
+Permission | Description | Application Types
+---------  | ----------- | -----------------
+`tenant:read` | Read tenants | `management`
+`tenant:update` | Update tenants | `management`
+`tenant:delete` | Delete tenants | `management`
+`application:read` | Read applications | `management`
+`application:create` | Create applications | `management`
+`application:update` | Update and regenerate API keys for applications | `management`
+`application:create` | Delete applications | `management`
 `reactor:read` | Read reactor formulas and reactors | `server_to_server`, `management` | `token:read`
-`reactor:create` | Create reactor formulas and reactors | `management` | *N/A*
-`reactor:update` | Update reactor formulas and reactors | `management` | *N/A*
-`reactor:delete` | Delete reactor formulas and reactors | `management` | *N/A*
-`log:read` | Read audit logs | `management` | *N/A*
-`token:read` | Read tokens from the vault | `server_to_server` | *N/A*
-`token:create` | Create tokens in the vault | `public`, `elements`, `server_to_server` | *N/A*
-`token:delete` | Delete tokens from the vault | `server_to_server` | *N/A*
-`card:read` | Read atomic card tokens | `server_to_server` | `token:read`
-`card:create` | Create atomic card tokens | `public`, `elements`, `server_to_server` | `token:create`
-`card:update` | Update atomic card tokens | `server_to_server` | `token:create`
-`card:delete` | Delete atomic card tokens | `server_to_server` | `token:delete`
-`bank:read` | Read atomic bank tokens | `server_to_server` | `token:read`
-`bank:create` | Create atomic bank tokens | `public`, `elements`, `server_to_server` | `token:create`
-`bank:update` | Update atomic bank tokens | `server_to_server` | `token:create`
-`bank:delete` | Delete atomic bank tokens | `server_to_server` | `token:delete`
-`bank:decrypt` | Decrypt atomic bank tokens | `server_to_server` | `token:read`
+`reactor:create` | Create reactor formulas and reactors | `management`
+`reactor:update` | Update reactor formulas and reactors | `management`
+`reactor:delete` | Delete reactor formulas and reactors | `management`
+`log:read` | Read audit logs | `management`
+`token:read` | Read tokens from the vault | `server_to_server`
+`token:create` | Create tokens in the vault | `public`, `elements`, `server_to_server`
+`token:delete` | Delete tokens from the vault | `server_to_server`
+`token:decrypt` | Decrypt generic tokens | `server_to_server`
+`card:read` | Read atomic card tokens | `server_to_server`
+`card:create` | Create atomic card tokens | `public`, `elements`, `server_to_server`
+`card:update` | Update atomic card tokens | `server_to_server`
+`card:delete` | Delete atomic card tokens | `server_to_server`
+`bank:read` | Read atomic bank tokens | `server_to_server`
+`bank:create` | Create atomic bank tokens | `public`, `elements`, `server_to_server`
+`bank:update` | Update atomic bank tokens | `server_to_server`
+`bank:delete` | Delete atomic bank tokens | `server_to_server`
+`bank:decrypt` | Decrypt atomic bank tokens | `server_to_server`
 
 
 ## List Permissions
@@ -73,9 +75,6 @@ var permissions = await client.GetAsync();
     "description": "Read Payment Card tokens",
     "application_types": [
       "server_to_server"
-    ],
-    "dependencies": [
-      "token:read"
     ]
   }, 
   {...},

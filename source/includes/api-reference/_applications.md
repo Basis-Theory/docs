@@ -108,7 +108,7 @@ Create a new application for the tenant.
 ### Permissions
 
 <p class="scopes">
-  <span class="scope">application:write</span>
+  <span class="scope">application:create</span>
 </p>
 
 ### Request Parameters
@@ -392,7 +392,7 @@ Update an application by ID in the tenant.
 ### Permissions
 
 <p class="scopes">
-  <span class="scope">application:write</span>
+  <span class="scope">application:update</span>
 </p>
 
 ### URI Parameters
@@ -470,7 +470,7 @@ Regenerate the API key for an application.
 ### Permissions
 
 <p class="scopes">
-  <span class="scope">application:write</span>
+  <span class="scope">application:update</span>
 </p>
 
 ### URI Parameters
@@ -516,7 +516,7 @@ Delete an application by ID in the tenant.
 
 ### Permissions
 
-`application:write`
+`application:delete`
 
 ### URI Parameters
 

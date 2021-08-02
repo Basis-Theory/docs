@@ -85,7 +85,6 @@ Create a new atomic bank for the tenant.
 
 <p class="scopes">
   <span class="scope">bank:create</span>
-  <span class="scope">token:create</span>
 </p>
 
 ### Request Parameters
@@ -152,7 +151,6 @@ Get a list of atomic banks for the tenant.
 
 <p class="scopes">
   <span class="scope">bank:read</span>
-  <span class="scope">token:read</span>
 </p>
 
 ### Response
@@ -205,7 +203,6 @@ Get an atomic bank by ID in the tenant.
 
 <p class="scopes">
   <span class="scope">bank:read</span>
-  <span class="scope">token:read</span>
 </p>
 
 ### URI Parameters
@@ -250,7 +247,6 @@ Delete an atomic bank by ID in the tenant.
 
 <p class="scopes">
   <span class="scope">bank:delete</span>
-  <span class="scope">token:delete</span>
 </p>
 
 ### URI Parameters
@@ -312,7 +308,6 @@ Decrypt an atomic bank by ID in the tenant.
 
 <p class="scopes">
   <span class="scope">bank:decrypt</span>
-  <span class="scope">token:read</span>
 </p>
 
 ### URI Parameters
@@ -325,6 +320,7 @@ Parameter | Required | Type | Default | Description
 
 Returns an [atomic bank](#atomic-bank-object) with plaintext [bank](#bank-object) data with the `id` provided. Returns [an error](#errors) if the atomic bank could not be retrieved.
 
+
 ## Create an Atomic Bank Reaction
 
 > Request
@@ -335,10 +331,28 @@ curl "api.basistheory.com/atomic/banks/1485efb9-6b1f-4248-a5d1-cf9b3907164c/reac
   -X "POST"
   -D '{
     "reactor_id": "5b493235-6917-4307-906a-2cd6f1a90b13",
+    "request_paramters": {
+      "REQUEST_PARAMETER_1": "Some request value"
+    },
     "metadata": {
       "nonSensitiveField": "Non-Sensitive Value"
     }
   }'
+```
+
+```csharp
+var client = new AtomicBankClient("key_N88mVGsp3sCXkykyN2EFED");
+
+var reactionToken = await client.ReactAsync("1485efb9-6b1f-4248-a5d1-cf9b3907164c", 
+  new ReactRequest {
+    ReactorId = "5b493235-6917-4307-906a-2cd6f1a90b13",
+    RequestParameters = new Dictionary<string, object> {
+      { "REQUEST_PARAMETER_1",  "Some request value" }
+    },
+    Metadata = new Dictionary<string, string> {
+      { "nonSensitiveField",  "Non-Sensitive Value" }
+    }
+  });
 ```
 
 <span class="http-method post">
@@ -351,11 +365,9 @@ Create an Atomic Bank Reaction by ID in the tenant.
 ### Permissions
 
 <p class="scopes">
-  <span class="scope">react:read</span>
+  <span class="scope">reactor:read</span>
   <span class="scope">bank:create</span>
   <span class="scope">bank:read</span>
-  <span class="scope">token:create</span>
-  <span class="scope">token:read</span>
 </p>
 
 ### URI Parameters
@@ -368,11 +380,13 @@ Parameter | Required | Type | Default | Description
 Parameter | Required | Type | Default | Description
 --------- | -------- | ---- | ------- | -----------
 `ractor_id` | true | *uuid* | `null` | The ID of the reactor
-`metadata` | false | *map* | `null` | A key-value map of non-sensitive data. We overwrite the following keys: `correlation_id`, `reactor_id`, `reactor_name`, `source_token_id`, and `source_token_type`.
+`request_parameters` | false | *map* | `null` | A key-value map of [request parameters](#reactor-forumula-request-parameter-object) names and values for the reactor
+`metadata` | false | *map* | `null` | A key-value map of non-sensitive data. We overwrite the following keys: `correlation_id`, `reactor_id`, `reactor_name`, `source_token_id`, and `source_token_type`
 
 ### Response
 
 Returns a [token](#token-object) with type of `bank:reaction` if the atomic bank was reacted. Returns [an error](#errors) if the atomic bank failed to react.
+
 
 ## Get an Atomic Bank Reaction Token
 
@@ -382,6 +396,13 @@ Returns a [token](#token-object) with type of `bank:reaction` if the atomic bank
 curl "api.basistheory.com/atomic/banks/1485efb9-6b1f-4248-a5d1-cf9b3907164c/reaction/6c12a05d-99e3-4454-bdb0-2e6ff88ec5b0" \
   -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
   -X "GET"
+```
+
+```csharp
+var client = new AtomicBankClient("key_N88mVGsp3sCXkykyN2EFED");
+
+var reactionToken = await client.GetReactionByIdAsync(
+  "1485efb9-6b1f-4248-a5d1-cf9b3907164c", "6c12a05d-99e3-4454-bdb0-2e6ff88ec5b0");
 ```
 
 <span class="http-method get">
@@ -395,7 +416,6 @@ Get an atomic bank reaction token by ID in the tenant.
 
 <p class="scopes">
   <span class="scope">bank:read</span>
-  <span class="scope">token:read</span>
 </p>
 
 ### URI Parameters
