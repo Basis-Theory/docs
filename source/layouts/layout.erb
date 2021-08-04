@@ -176,14 +176,12 @@ under the License.
         </ul>
       <% end %>
 
-      <% if current_page.data.more %>
       <h1 class="nav-title">More</h1>
       <ul id="toc_api" class="toc-section toc-list-h1">
-        <% current_page.data.more.each do |footer| %>
-           <li class="more"><%= footer %></li>
-        <% end %>
+        <li><a class="toc-h2 toc-link" href="https://discord.gg/XjWsy8PqK2">Join Discord</a></li>
+        <li><a class="toc-h2 toc-link" href="https://github.com/Basis-Theory">Github</a>
+        <li><a class="toc-h2 toc-link" href="mailto:support@basistheory.com?subject=Help!">Email Support</a>
       </ul>
-    <% end %>
 
       <% if current_page.data.toc_footers %>
         <ul class="toc-footer">
