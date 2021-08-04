@@ -925,6 +925,16 @@ html, body {
   %right-col + %left-col {
     margin-top: $main-padding;
   }
+
+  .content {
+    .header-intro-box {
+      grid-template-columns: auto;
+      padding: 0px 24px;
+      img {
+          display: none;
+      }
+    }
+  }
 }
 
 

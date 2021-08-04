@@ -1,4 +1,4 @@
-<div id="#home" class="home">
+<div class="home">
   <div>
     <h1>Start building with Basis Theory</h1>
   </div>
@@ -9,13 +9,9 @@
   </div>
   <div class="docs-hero">
       <span>
-        <h4>
-          Get Started
-        </h4>
+        <h4 id="getting-started">Get Started</h4>
         <p class="sub-text-small">Start tokenizing and managing your tokens in just a few minutes. Create an account and discover what else is possible within our portal.</p>
-        
         <div class="button"><a href="https://basistheory.com" target="_blank">Join the waitlist</a></div>        
-
       </span>
       <img src="./images/getStarted.svg"></img>
     </div>

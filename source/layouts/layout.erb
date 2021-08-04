@@ -93,7 +93,7 @@ under the License.
   </head>
 
   <body class="<%= page_classes %>" data-languages="<%=h language_tabs.map{ |lang| lang.is_a?(Hash) ? lang.keys.first : lang }.to_json %>">
-    <a href="#" id="nav-button">
+    <a href="/#" id="nav-button">
       <span>
         NAV
         <%= image_tag('navbar.png') %>
@@ -175,13 +175,14 @@ under the License.
           <% end %>
         </ul>
       <% end %>
-
-      <h1 class="nav-title">More</h1>
-      <ul id="toc_api" class="toc-section toc-list-h1">
-        <li><a class="toc-h2 toc-link" href="https://discord.gg/XjWsy8PqK2">Join Discord</a></li>
-        <li><a class="toc-h2 toc-link" href="https://github.com/Basis-Theory">Github</a>
-        <li><a class="toc-h2 toc-link" href="mailto:support@basistheory.com?subject=Help!">Email Support</a>
-      </ul>
+      <% if current_page.data.aux_links %>      
+        <h1 class="nav-title">More</h1>
+        <ul id="toc_api" class="toc-section toc-list-h1">
+          <% current_page.data.aux_links.each do |footer| %>
+            <li><%= footer %></li>
+          <% end %>
+        </ul>
+      <% end %>
 
       <% if current_page.data.toc_footers %>
         <ul class="toc-footer">

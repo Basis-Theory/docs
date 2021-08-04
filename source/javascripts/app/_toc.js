@@ -90,16 +90,16 @@
     };
 
     var makeToc = function() {
-      recacheHeights();
-      refreshToc();
-
       $("#nav-button").click(function() {
         $(".toc-wrapper").toggleClass('open');
         $("#nav-button").toggleClass('open');
         return false;
       });
+
       $(".page-wrapper").click(closeToc);
       $(".toc-link").click(closeToc);
+      recacheHeights();
+      refreshToc();
 
       // reload immediately after scrolling on toc click
       $toc.find(tocLinkSelector).click(function() {
