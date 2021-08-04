@@ -90,7 +90,6 @@
       a {
         margin-right: auto;
         align-self: flex-start;
-        //flex-direction: column;
         align-items: center;
         padding: 10px 24px;
         background: #1AD1DB;
@@ -161,4 +160,30 @@
       }
     }
   }
+}
+
+@media (max-width: $phone-width) {
+  .home {
+    padding: 0;
+    margin: 0 5% 1.5em;
+
+    .docs-hero {
+      grid-template-columns: auto;
+
+      > span:first-of-type {
+        padding: 3%;
+        display: grid;
+        justify-items: center;
+      }
+
+      img {
+        display: none;
+      }
+    }
+
+    .card-box {
+      grid-template-columns: auto;
+    }
+  }
+
 }
