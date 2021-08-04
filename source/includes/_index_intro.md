@@ -14,7 +14,7 @@
         </h4>
         <p class="sub-text-small">Start tokenizing and managing your tokens in just a few minutes. Create an account and discover what else is possible within our portal.</p>
         
-        <div class="button"><a href="https://basistheory.com" target="_blank">Join the wait list</a></div>        
+        <div class="button"><a href="https://basistheory.com" target="_blank">Join the waitlist</a></div>        
 
       </span>
       <img src="./images/getStarted.svg"></img>
