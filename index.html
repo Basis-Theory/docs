@@ -280,12 +280,12 @@
   color: #859900;
 }
     </style>
-    <link href="stylesheets/screen-084c344a.css" rel="stylesheet" media="screen" />
-    <link href="stylesheets/home-8a183581.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/screen-1bbecec3.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/home-3e4f6a87.css" rel="stylesheet" media="screen" />
     <link href="stylesheets/guides-5da8bd31.css" rel="stylesheet" media="screen" />
     <script src="https://kit.fontawesome.com/86c3cd0147.js" crossorigin="anonymous"></script>
     <link href="stylesheets/print-fac0743d.css" rel="stylesheet" media="print" />
-      <script src="javascripts/all_nosearch-63a97a62.js"></script>
+      <script src="javascripts/all-6c76867e.js"></script>
 
     <script>
       $(function() { setupCodeCopy(); });
@@ -294,7 +294,7 @@
   </head>
 
   <body class="index" data-languages="[]">
-    <a href="#" id="nav-button">
+    <a href="/#" id="nav-button">
       <span>
         NAV
         <img src="images/navbar-cad8cdcb.png" alt="" />
@@ -311,6 +311,10 @@
 
       <div class="line"></div>
       <a href="https://portal.basistheory.com/" target="_blank" class="nav-back">Go to Portal</a>
+        <div class="search">
+          <input type="text" class="search" id="input-search" placeholder="Search...">
+        </div>
+        <ul class="search-results"></ul>
 
       <h1 class="nav-title">Get Started</h1>
       <ul id="toc_intro" class="toc-section toc-list-h1">
@@ -328,23 +332,22 @@
 
         <h1 class="nav-title">Other Docs</h1>
         <ul id="toc_api" class="toc-section toc-list-h1">
-             <li class="other-docs"><a href="/api-reference">API Reference</a></li>
-             <li class="other-docs"><a href="/elements">Elements</a></li>
+             <li class="other-docs"><a href="/api-reference" toc-h2 toc-link>API Reference</a></li>
+             <li class="other-docs"><a href="/elements" toc-h2 toc-link>Elements</a></li>
         </ul>
-
-      <h1 class="nav-title">More</h1>
-      <ul id="toc_api" class="toc-section toc-list-h1">
-        <li><a class="toc-h2 toc-link" href="https://discord.gg/XjWsy8PqK2">Join Discord</a></li>
-        <li><a class="toc-h2 toc-link" href="https://github.com/Basis-Theory">Github</a>
-        <li><a class="toc-h2 toc-link" href="mailto:support@basistheory.com?subject=Help!">Email Support</a>
-      </ul>
+        <h1 class="nav-title">More</h1>
+        <ul id="toc_api" class="toc-section toc-list-h1">
+            <li><a class="toc-h2 toc-link" href="https://discord.gg/XjWsy8PqK2" target="_blank">Join Discord</a></li>
+            <li><a class="toc-h2 toc-link" href="https://github.com/Basis-Theory" target="_blank">Github</a></li>
+            <li><a class="toc-h2 toc-link" href="mailto:support@basistheory.com?subject=Help!">Email Support</a></li>
+        </ul>
 
     </div>
     <div class="page-wrapper">
 
       <div class="content no-code-content">
         <div class="header-border"></div>
-        <div id="#home" class="home">
+        <div class="home">
   <div>
     <h1>Start building with Basis Theory</h1>
   </div>
@@ -355,13 +358,9 @@
   </div>
   <div class="docs-hero">
       <span>
-        <h4>
-          Get Started
-        </h4>
+        <h4 id="getting-started">Get Started</h4>
         <p class="sub-text-small">Start tokenizing and managing your tokens in just a few minutes. Create an account and discover what else is possible within our portal.</p>
-        
         <div class="button"><a href="https://basistheory.com" target="_blank">Join the waitlist</a></div>        
-
       </span>
       <img src="images/getStarted-23a89cd9.svg"></img>
     </div>
