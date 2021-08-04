@@ -11,7 +11,7 @@
             <a href="#permissions">API Keys</a>
         </span>
     </span>
-    <img src="./images/welcome.svg"/>
+    <img src="/images/welcome.svg"/>
 </aside>
 
 The Basis Theory API is organized around REST. Our API is built with a predictable resource-oriented structure, uses JSON-encoded requests and responses, follows standard HTTP verbs/responses, and uses industry standard authentication.
