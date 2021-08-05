@@ -4,8 +4,8 @@ docs_logo: api-logo.svg
 
 language_tabs: # must be one of https://git.io/vQNgJ
   - shell: cURL
-  - javascript: node.js
-  - csharp: dotnet
+  - javascript: Node.js
+  - csharp: .NET
 
 toc_footers:
 
