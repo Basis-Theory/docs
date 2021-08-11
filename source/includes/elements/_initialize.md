@@ -24,8 +24,8 @@
 ```jsx
 import BasisTheory from '@Basis-Theory/basis-theory-js';
 
-await BasisTheory.init('test_1234567890', { elements: true });
-// use BasisTheory.elements
+const bt = await new BasisTheory.init('test_1234567890', { elements: true });
+// use bt.elements
 ```
 
 
