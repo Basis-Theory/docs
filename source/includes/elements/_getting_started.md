@@ -60,8 +60,6 @@ trustedTypes.createPolicy("default", {
     return undefined;
   }
 });
-
-BasisTheory.init('test_1234567890', { elements: true });
 ```
 
 If you have a <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP" target="_blank">CSP</a> deployed in your website, you must include the following directives:
@@ -70,7 +68,7 @@ If you have a <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP" ta
 - `frame-src` - _https://elements.basistheory.com_ 
 
 
-If you are using <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/require-trusted-types-for" target="_blank">Trusted Types</a>, you must allow dynamic script loading from _https://js.basistheory.com_ origin. This should be done before [initialization](#initialize).
+If you are using <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/require-trusted-types-for" target="_blank">Trusted Types</a>, you must allow dynamic script loading from _https://js.basistheory.com_ origin. This should be done **BEFORE** [initialization](#initialize).
 
 ### Common CSP Errors
 
