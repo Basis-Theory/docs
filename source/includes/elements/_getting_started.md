@@ -60,8 +60,6 @@ trustedTypes.createPolicy("default", {
     return undefined;
   }
 });
-
-BasisTheory.init('test_1234567890', { elements: true });
 ```
 
 If you have a <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP" target="_blank">CSP</a> deployed in your website, you must include the following directives:
@@ -70,7 +68,7 @@ If you have a <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP" ta
 - `frame-src` - _https://elements.basistheory.com_ 
 
 
-If you are using <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/require-trusted-types-for" target="_blank">Trusted Types</a>, you must allow dynamic script loading from _https://js.basistheory.com_ origin. This should be done before [initialization](#initialize).
+If you are using <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/require-trusted-types-for" target="_blank">Trusted Types</a>, you must allow dynamic script loading from _https://js.basistheory.com_ origin. This should be done **BEFORE** [initialization](#initialize).
 
 ### Common CSP Errors
 
@@ -87,3 +85,19 @@ The setup above is recommended to avoid errors similar to these:
 <aside class="warning">
   <span><em>Failed to set the 'src' property on 'HTMLScriptElement': This document requires 'TrustedScriptURL' assignment.</em></span>
 </aside>
+
+## Usage with TypeScript
+
+In order to facilitate usage with TypeScript, an optional typings NPM module is available for installation.
+
+> NPM
+
+```shell
+npm install --save-dev @Basis-Theory/basis-theory-elements
+```
+
+> Yarn
+
+```shell
+yarn add @Basis-Theory/basis-theory-elements --dev
+```
