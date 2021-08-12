@@ -337,6 +337,9 @@
                   <li>
                     <a href="#content-security-policy" class="toc-h2 toc-link" data-title="Content Security Policy">Content Security Policy</a>
                   </li>
+                  <li>
+                    <a href="#usage-with-typescript" class="toc-h2 toc-link" data-title="Usage with TypeScript">Usage with TypeScript</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -444,7 +447,7 @@
     <img src="../images/elements_intro-3651f26d.svg"/>
 </aside>
 
-<p><strong>BasisTheory Elements</strong> are simple, secure, developer-friendly inputs that empowers consumers to collect sensitive data from their users directly to Basis Theory certified vault.</p>
+<p><strong>BasisTheory Elements</strong> are simple, secure, developer-friendly inputs that empower consumers to collect sensitive data from their users directly to Basis Theory certified vault.</p>
 
 <p>Think about it as a portal that we open within your site that allows users to seamlessly tokenize information and never notice they are interacting with our technology. Here is how we make it possible:</p>
 
@@ -501,8 +504,6 @@
     <span class="k">return</span> <span class="kc">undefined</span><span class="p">;</span>
   <span class="p">}</span>
 <span class="p">});</span>
-
-<span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">init</span><span class="p">(</span><span class="dl">'</span><span class="s1">test_1234567890</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span> <span class="na">elements</span><span class="p">:</span> <span class="kc">true</span> <span class="p">});</span>
 </code></pre></div>
 <p>If you have a <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP" target="_blank">CSP</a> deployed in your website, you must include the following directives:</p>
 
@@ -511,7 +512,7 @@
 <li><code>frame-src</code> - <em>https://elements.basistheory.com</em> </li>
 </ul>
 
-<p>If you are using <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/require-trusted-types-for" target="_blank">Trusted Types</a>, you must allow dynamic script loading from <em>https://js.basistheory.com</em> origin. This should be done before <a href="#initialize">initialization</a>.</p>
+<p>If you are using <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/require-trusted-types-for" target="_blank">Trusted Types</a>, you must allow dynamic script loading from <em>https://js.basistheory.com</em> origin. This should be done <strong>BEFORE</strong> <a href="#initialize">initialization</a>.</p>
 <h3 id='common-csp-errors'>Common CSP Errors</h3>
 <p>The setup above is recommended to avoid errors similar to these:</p>
 
@@ -526,7 +527,19 @@
 <aside class="warning">
   <span><em>Failed to set the 'src' property on 'HTMLScriptElement': This document requires 'TrustedScriptURL' assignment.</em></span>
 </aside>
-<h1 id='permissions'>Permissions</h1>
+<h2 id='usage-with-typescript'>Usage with TypeScript</h2>
+<p>In order to facilitate usage with TypeScript, an optional typings NPM module is available for installation.</p>
+
+<blockquote>
+<p>NPM</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>npm <span class="nb">install</span> <span class="nt">--save-dev</span> @Basis-Theory/basis-theory-elements
+</code></pre></div>
+<blockquote>
+<p>Yarn</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>yarn add @Basis-Theory/basis-theory-elements <span class="nt">--dev</span>
+</code></pre></div><h1 id='permissions'>Permissions</h1>
 <p>Permissions are fine-grained control over your application&#39;s access to different aspects of your token infrastructure. We suggest limiting the scope of your application to the least amount possible, and to not share them across your internal applications.</p>
 
 <p>Permissions are associated with every application and can be configured when you <a href="/api-reference#create-application">create an application</a> or <a href="/api-reference#update-application">update an application</a>. </p>
@@ -584,10 +597,10 @@
 <blockquote>
 <p>Module</p>
 </blockquote>
-<div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="k">import</span> <span class="nx">BasisTheory</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@Basis-Theory/basis-theory-js</span><span class="dl">'</span><span class="p">;</span>
+<div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">BasisTheory</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@Basis-Theory/basis-theory-js</span><span class="dl">'</span><span class="p">;</span>
 
-<span class="k">await</span> <span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">init</span><span class="p">(</span><span class="dl">'</span><span class="s1">test_1234567890</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span> <span class="na">elements</span><span class="p">:</span> <span class="kc">true</span> <span class="p">});</span>
-<span class="c1">// use BasisTheory.elements</span>
+<span class="kd">const</span> <span class="nx">bt</span> <span class="o">=</span> <span class="k">await</span> <span class="k">new</span> <span class="nx">BasisTheory</span><span class="p">().</span><span class="nx">init</span><span class="p">(</span><span class="dl">'</span><span class="s1">test_1234567890</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span> <span class="na">elements</span><span class="p">:</span> <span class="kc">true</span> <span class="p">});</span>
+<span class="c1">// use bt.elements</span>
 </code></pre></div>
 <p>After <a href="#install-sdk">installing</a> <strong>BasisTheory.js</strong>, simply initialize it with <code>elements: true</code> so it dynamically loads <strong>Elements</strong> module.</p>
 
