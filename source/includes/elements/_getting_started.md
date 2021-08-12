@@ -85,3 +85,19 @@ The setup above is recommended to avoid errors similar to these:
 <aside class="warning">
   <span><em>Failed to set the 'src' property on 'HTMLScriptElement': This document requires 'TrustedScriptURL' assignment.</em></span>
 </aside>
+
+## Usage with TypeScript
+
+In order to facilitate usage with TypeScript, an optional typings NPM module is available for installation.
+
+> NPM
+
+```shell
+npm install --save-dev @Basis-Theory/basis-theory-elements
+```
+
+> Yarn
+
+```shell
+yarn add @Basis-Theory/basis-theory-elements --dev
+```
