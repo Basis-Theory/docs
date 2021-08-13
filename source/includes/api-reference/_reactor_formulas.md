@@ -12,14 +12,14 @@ Reactor formulas give you the ability to pre-configure custom integrations to se
 Attribute | Type | Description
 --------- | ---- | -----------
 `id` | *uuid* | Unique identifier of the reactor formula which can be used to [get a reactor formula](#get-an-reactor-formula)
-`name` | true | *string* | `null` | The name of the reactor formula. Has a maximum length of `200`
-`description` | *string* | `null` | The description of the reactor formula
-`type` | *string* | `null` | [Type](#reactor-formula-types) of the reactor formula
-`source_token_type` | *string* | `null` | [Source token type](#token-types) of the reactor formula
-`icon` | false | *string* | `null` | Base64 [data URL](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URIs) of the image
-`code` | true | *string* | `null` | [Reactor Formula code](#reactor-formula-code) which will be executed when the reactor formula is processed
-`configuration` | true | *array* | `[]` | Array of [configuration](#reactor-formula-configuration-object) options for configuring a reactor
-`request_parameters` | true | *array* | `[]` | Array of [request parameters](#reactor-formula-request-parameter-object) which will be passed when executing the reactor
+`name` | *string* | The name of the reactor formula. Has a maximum length of `200`
+`description` | *string* | The description of the reactor formula
+`type` | *string* | [Type](#reactor-formula-types) of the reactor formula
+`source_token_type` | *string* | [Source token type](#token-types) of the reactor formula
+`icon` | *string* | Base64 [data URL](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URIs) of the image
+`code` | *string* | [Reactor Formula code](#reactor-formula-code) which will be executed when the reactor formula is processed
+`configuration` | *array* | Array of [configuration](#reactor-formula-configuration-object) options for configuring a reactor
+`request_parameters` | *array* | Array of [request parameters](#reactor-formula-request-parameter-object) which will be passed when executing the reactor
 `created_at` | *date* | Created date of the reactor formula in ISO 8601 format
 `modified_at` | *date* | Modified date of the reactor formla in ISO 8601 format
 
