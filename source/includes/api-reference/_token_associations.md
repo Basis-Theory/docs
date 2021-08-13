@@ -13,10 +13,19 @@ curl "https://api.basistheory.com/tokens/c06d0789-0a38-40be-b7cc-c28a718f76f1/ch
   -X "POST"
 ```
 
+```javascript
+import { BasisTheory } from '@Basis-Theory/basis-theory-js';
+
+const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
+
+await bt.tokens.createAssociation('c06d0789-0a38-40be-b7cc-c28a718f76f1', 
+  'c1e565009-1984-4638-8fca-dce8a82cc2af');
+```
+
 ```csharp
 var client = new TokenClient("key_N88mVGsp3sCXkykyN2EFED");
 
-var token = await client.CreateAssociationAsync("c06d0789-0a38-40be-b7cc-c28a718f76f1", 
+await client.CreateAssociationAsync("c06d0789-0a38-40be-b7cc-c28a718f76f1", 
   "c1e565009-1984-4638-8fca-dce8a82cc2af");
 ```
 
@@ -60,10 +69,19 @@ curl "https://api.basistheory.com/tokens/c06d0789-0a38-40be-b7cc-c28a718f76f1/ch
   -X "DELETE"
 ```
 
+```javascript
+import { BasisTheory } from '@Basis-Theory/basis-theory-js';
+
+const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
+
+await bt.tokens.deleteAssociation('c06d0789-0a38-40be-b7cc-c28a718f76f1', 
+  'c1e565009-1984-4638-8fca-dce8a82cc2af');
+```
+
 ```csharp
 var client = new TokenClient("key_N88mVGsp3sCXkykyN2EFED");
 
-var token = await client.DeleteAssociationAsync("c06d0789-0a38-40be-b7cc-c28a718f76f1", 
+await client.DeleteAssociationAsync("c06d0789-0a38-40be-b7cc-c28a718f76f1", 
   "c1e565009-1984-4638-8fca-dce8a82cc2af");
 ```
 
@@ -122,6 +140,34 @@ curl "https://api.basistheory.com/tokens/c06d0789-0a38-40be-b7cc-c28a718f76f1/ch
       {...}
     ]
   }'
+```
+
+```javascript
+import { BasisTheory } from '@Basis-Theory/basis-theory-js';
+
+const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
+
+const token = await bt.tokens.createChild('c06d0789-0a38-40be-b7cc-c28a718f76f1', {
+  type: 'token',
+  data: 'ebSG3IohNmg5gTOjN2HBwBbhjDZ6BY3fCWZJfXSucVMfQ+7YNMXQYrPuRSXgSkhuTMYS+BNfVUur4qZSvUbgCA==',
+  metadata: {
+    nonSensitiveField: 'Non-Sensitive Value'
+  },
+  encryption: {
+    cek: {
+      key: 'JLrtGbYSN5/dbqdKtLVG8tHu3QefcZnKsFOPBBXlXcG4zL9US01mW2MqZs6Px4ckSQM8CrRakwLKilrQ0f37Iw==',
+      alg: 'AES'
+    },
+    kek: {
+      key: 'vpXn45HnsoQPR1q8ptngmPvPaqIDJ4vO+FFyQclglePCt8d1SyTDJU0T+F54T7GnAz7vz5OKsjgsFNo9lVB3UA==',
+      alg: 'RSA'
+    }
+  },
+  children: [
+    { ... },
+    { ... }
+  ]
+});
 ```
 
 ```csharp
@@ -212,6 +258,14 @@ Returns a [token](#token-object) if the child token was created for the parent t
 ```shell
 curl "https://api.basistheory.com/tokens/c06d0789-0a38-40be-b7cc-c28a718f76f1/children" \
   -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
+```
+
+```javascript
+import { BasisTheory } from '@Basis-Theory/basis-theory-js';
+
+const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
+
+const tokens = await bt.tokens.listChildren('c06d0789-0a38-40be-b7cc-c28a718f76f1');
 ```
 
 ```csharp
