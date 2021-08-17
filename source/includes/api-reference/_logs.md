@@ -22,6 +22,14 @@ curl "https://api.basistheory.com/logs" \
   -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
 ```
 
+```javascript
+import { BasisTheory } from '@Basis-Theory/basis-theory-js';
+
+const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
+
+const logs = await bt.logs.list();
+```
+
 ```csharp
 var client = new LogClient("key_N88mVGsp3sCXkykyN2EFED");
 
