@@ -144,7 +144,7 @@ const reactorFormula = await bt.reactorFormulas.create({
     {
       name: 'REQUEST_PARAMETER_2',
       description: 'Request parameter description',
-      type: '',
+      type: 'boolean',
       optional: true
     }
   ],
@@ -555,7 +555,7 @@ const reactorFormula = await bt.reactorFormulas.update('17069df1-80f4-439e-86a7-
     {
       name: 'REQUEST_PARAMETER_2',
       description: 'Request parameter description',
-      type: '',
+      type: 'boolean',
       optional: true
     }
   ],
