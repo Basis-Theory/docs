@@ -465,12 +465,12 @@
 <blockquote>
 <p>NPM</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>npm <span class="nb">install</span> <span class="nt">--save</span> @Basis-Theory/basis-theory-js
+<div class="highlight"><pre class="highlight shell tab-shell"><code>npm <span class="nb">install</span> <span class="nt">--save</span> @basis-theory/basis-theory-js
 </code></pre></div>
 <blockquote>
 <p>Yarn</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>yarn add @Basis-Theory/basis-theory-js
+<div class="highlight"><pre class="highlight shell tab-shell"><code>yarn add @basis-theory/basis-theory-js
 </code></pre></div>
 <blockquote>
 <p>CDN</p>
@@ -533,12 +533,12 @@
 <blockquote>
 <p>NPM</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>npm <span class="nb">install</span> <span class="nt">--save-dev</span> @Basis-Theory/basis-theory-elements
+<div class="highlight"><pre class="highlight shell tab-shell"><code>npm <span class="nb">install</span> <span class="nt">--save-dev</span> @basis-theory/basis-theory-elements
 </code></pre></div>
 <blockquote>
 <p>Yarn</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>yarn add @Basis-Theory/basis-theory-elements <span class="nt">--dev</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>yarn add @basis-theory/basis-theory-elements <span class="nt">--dev</span>
 </code></pre></div><h1 id='permissions'>Permissions</h1>
 <p>Permissions are fine-grained control over your application&#39;s access to different aspects of your token infrastructure. We suggest limiting the scope of your application to the least amount possible, and to not share them across your internal applications.</p>
 
@@ -597,7 +597,7 @@
 <blockquote>
 <p>Module</p>
 </blockquote>
-<div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">BasisTheory</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@Basis-Theory/basis-theory-js</span><span class="dl">'</span><span class="p">;</span>
+<div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">BasisTheory</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@basis-theory/basis-theory-js</span><span class="dl">'</span><span class="p">;</span>
 
 <span class="kd">const</span> <span class="nx">bt</span> <span class="o">=</span> <span class="k">await</span> <span class="k">new</span> <span class="nx">BasisTheory</span><span class="p">().</span><span class="nx">init</span><span class="p">(</span><span class="dl">'</span><span class="s1">test_1234567890</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span> <span class="na">elements</span><span class="p">:</span> <span class="kc">true</span> <span class="p">});</span>
 <span class="c1">// use bt.elements</span>
