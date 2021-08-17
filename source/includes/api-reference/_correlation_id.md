@@ -9,16 +9,20 @@ curl "https://api.basistheory.com" \
 ```
 
 ```javascript
-import { BasisTheory } from '@Basis-Theory/basis-theory-js';
+import { BasisTheory } from '@basis-theory/basis-theory-js';
 
 const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
+
 const applications = await bt.applications.list({}, {
   correlationId: 'aa5d3379-6385-4ef4-9fdb-ca1341572153'
 });
 ```
 
 ```csharp
+using BasisTheory.net.Tokens;
+
 var client = new TokenClient("key_N88mVGsp3sCXkykyN2EFED");
+
 client.GetAsync(requestOptions: new RequestOptions {
   CorrelationId = "aa5d3379-6385-4ef4-9fdb-ca1341572153"
 });

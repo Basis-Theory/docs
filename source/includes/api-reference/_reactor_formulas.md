@@ -12,16 +12,16 @@ Reactor formulas give you the ability to pre-configure custom integrations to se
 Attribute | Type | Description
 --------- | ---- | -----------
 `id` | *uuid* | Unique identifier of the reactor formula which can be used to [get a reactor formula](#get-an-reactor-formula)
-`name` | true | *string* | `null` | The name of the reactor formula. Has a maximum length of `200`
-`description` | *string* | `null` | The description of the reactor formula
-`type` | *string* | `null` | [Type](#reactor-formula-types) of the reactor formula
-`source_token_type` | *string* | `null` | [Source token type](#token-types) of the reactor formula
-`icon` | false | *string* | `null` | Base64 [data URL](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URIs) of the image
-`code` | true | *string* | `null` | [Reactor Formula code](#reactor-formula-code) which will be executed when the reactor formula is processed
-`configuration` | true | *array* | `[]` | Array of [configuration](#reactor-formula-configuration-object) options for configuring a reactor
-`request_parameters` | true | *array* | `[]` | Array of [request parameters](#reactor-formula-request-parameter-object) which will be passed when executing the reactor
+`name` | *string* | The name of the reactor formula. Has a maximum length of `200`
+`description` | *string* | The description of the reactor formula
+`type` | *string* | [Type](#reactor-formula-types) of the reactor formula
+`source_token_type` | *string* | [Source token type](#token-types) of the reactor formula
+`icon` | *string* | Base64 [data URL](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URIs) of the image
+`code` | *string* | [Reactor Formula code](#reactor-formula-code) which will be executed when the reactor formula is processed
+`configuration` | *array* | Array of [configuration](#reactor-formula-configuration-object) options for configuring a reactor
+`request_parameters` | *array* | Array of [request parameters](#reactor-formula-request-parameter-object) which will be passed when executing the reactor
 `created_at` | *date* | Created date of the reactor formula in ISO 8601 format
-`modified_at` | *date* | Modified date of the reactor formla in ISO 8601 format
+`modified_at` | *date* | Modified date of the reactor formula in ISO 8601 format
 
 ### Reactor Formula Configuration Object
 
@@ -92,7 +92,7 @@ curl "https://api.basistheory.com/reactor-formulas" \
         "type": "string"
       }
     ],
-    "request_paramters": [
+    "request_parameters": [
       {
         "name": "REQUEST_PARAMETER_1",
         "description": "Request parameter description",
@@ -108,10 +108,55 @@ curl "https://api.basistheory.com/reactor-formulas" \
   }'
 ```
 
+```javascript
+import { BasisTheory } from '@basis-theory/basis-theory-js';
+
+const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
+
+const reactorFormula = await bt.reactorFormulas.create({
+  name: 'My Private Reactor',
+  description: 'Securely exchange token for another token',
+  type: 'private',
+  sourceTokenType: 'card',
+  icon: 'data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==',
+  code: '
+    module.exports = async function (context) {
+      // Do something with `context.configuration.SERVICE_API_KEY`
+
+      return {
+        foo: 'bar',
+      };
+    };
+  ',
+  configuration: [
+    {
+      name: 'SERVICE_API_KEY',
+      description: 'Configuration description',
+      type: 'string',
+    },
+  ],
+  requestParameters: [
+    {
+      name: 'REQUEST_PARAMETER_1',
+      description: 'Request parameter description',
+      type: 'string',
+    },
+    {
+      name: 'REQUEST_PARAMETER_2',
+      description: 'Request parameter description',
+      type: 'boolean',
+      optional: true
+    }
+  ],
+});
+```
+
 ```csharp
+using BasisTheory.net.ReactorFormulas;
+
 var client = new ReactorFormulaClient("key_N88mVGsp3sCXkykyN2EFED");
 
-var reactorFormla = await client.CreateAsync(new ReactorFormula {
+var reactorFormula = await client.CreateAsync(new ReactorFormula {
   Name = "My Private Reactor",
   Description = "Securely exchange token for another token",
   Type = "private",
@@ -126,20 +171,20 @@ var reactorFormla = await client.CreateAsync(new ReactorFormula {
       };
     };
   ",
-  Configuration = new List<ReactorFormlaConfiguration> {
+  Configuration = new List<ReactorFormulaConfiguration> {
     new ReactorFormulaConfiguration {
       Name = "SERVICE_API_KEY",
       Description = "Configuration description",
       Type = "string"
     }
   },
-  RequestParameters = new List<ReactorFormlaRequestParameter> {
-    new ReactorFormlaRequestParameter {
+  RequestParameters = new List<ReactorFormulaRequestParameter> {
+    new ReactorFormulaRequestParameter {
       Name = "REQUEST_PARAMETER_1",
       Description = "Request parameter description",
       Type = "string"
     },
-    new ReactorFormlaRequestParameter {
+    new ReactorFormulaRequestParameter {
       Name = "REQUEST_PARAMETER_2",
       Description = "Request parameter description",
       Type = "boolean",
@@ -180,7 +225,7 @@ var reactorFormla = await client.CreateAsync(new ReactorFormula {
       "type": "string"
     }
   ],
-  "request_paramters": [
+  "request_parameters": [
     {
       "name": "REQUEST_PARAMETER_1",
       "description": "Request parameter description",
@@ -217,7 +262,7 @@ Attribute | Required | Type | Default | Description
 `name` | true | *string* | `null` | The name of the reactor formula. Has a maximum length of `200`
 `description` | false | *string* | `null` | The description of the reactor formula
 `type` | true | *string* | `null` | [Type](#reactor-formula-types) of the reactor formula
-`source_token_type` | true | *string* | `null` | [Source token type](#token-types) of the reactor formla
+`source_token_type` | true | *string* | `null` | [Source token type](#token-types) of the reactor formula
 `icon` | false | *string* | `null` | Base64 [data URL](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URIs) of the image. Supported image types are: `image/png`, `image/jpg`, and `image/jpeg`
 `code` | true | *string* | `null` | [Reactor code](#reactor-formula-code) which will be executed when the reactor formula is processed
 `configuration` | true | *array* | `[]` | Array of [configuration](#reactor-formula-configuration-object) options for configuring a reactor
@@ -238,7 +283,17 @@ curl "https://api.basistheory.com/reactor-formulas" \
   -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
 ```
 
+```javascript
+import { BasisTheory } from '@basis-theory/basis-theory-js';
+
+const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
+
+const reactorFormulas = await bt.reactorFormulas.list();
+```
+
 ```csharp
+using BasisTheory.net.ReactorFormulas;
+
 var client = new ReactorFormulaClient("key_N88mVGsp3sCXkykyN2EFED");
 
 var reactorFormulas = await client.GetAsync();
@@ -278,7 +333,7 @@ var reactorFormulas = await client.GetAsync();
           "type": "string"
         }
       ],
-      "request_paramters": [
+      "request_parameters": [
         {
           "name": "REQUEST_PARAMETER_1",
           "description": "Request parameter description",
@@ -334,7 +389,17 @@ curl "https://api.basistheory.com/reactor-formulas/17069df1-80f4-439e-86a7-41218
   -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
 ```
 
+```javascript
+import { BasisTheory } from '@basis-theory/basis-theory-js';
+
+const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
+
+const reactorFormula = await bt.reactorFormulas.retrieve('17069df1-80f4-439e-86a7-4121863e4678');
+```
+
 ```csharp
+using BasisTheory.net.ReactorFormulas;
+
 var client = new ReactorFormulaClient("key_N88mVGsp3sCXkykyN2EFED");
 
 var reactorFormula = await client.GetByIdAsync("17069df1-80f4-439e-86a7-4121863e4678");
@@ -371,7 +436,7 @@ var reactorFormula = await client.GetByIdAsync("17069df1-80f4-439e-86a7-4121863e
       "type": "string"
     }
   ],
-  "request_paramters": [
+  "request_parameters": [
     {
       "name": "REQUEST_PARAMETER_1",
       "description": "Request parameter description",
@@ -444,7 +509,7 @@ curl "https://api.basistheory.com/reator-formula/17069df1-80f4-439e-86a7-4121863
         "type": "string"
       }
     ],
-    "request_paramters": [
+    "request_parameters": [
       {
         "name": "REQUEST_PARAMETER_1",
         "description": "Request parameter description",
@@ -460,7 +525,52 @@ curl "https://api.basistheory.com/reator-formula/17069df1-80f4-439e-86a7-4121863
   }'
 ```
 
+```javascript
+import { BasisTheory } from '@basis-theory/basis-theory-js';
+
+const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
+
+const reactorFormula = await bt.reactorFormulas.update('17069df1-80f4-439e-86a7-4121863e4678', {
+  name: 'My Private Reactor',
+  description: 'Securely exchange token for another token',
+  type: 'private',
+  sourceTokenType: 'card',
+  icon: 'data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==',
+  code: '
+    module.exports = async function (context) {
+      // Do something with `context.configuration.SERVICE_API_KEY`
+
+      return {
+        foo: 'bar',
+      };
+    };
+  ',
+  configuration: [
+    {
+      name: 'SERVICE_API_KEY',
+      description: 'Configuration description',
+      type: 'string',
+    },
+  ],
+  requestParameters: [
+    {
+      name: 'REQUEST_PARAMETER_1',
+      description: 'Request parameter description',
+      type: 'string',
+    },
+    {
+      name: 'REQUEST_PARAMETER_2',
+      description: 'Request parameter description',
+      type: 'boolean',
+      optional: true
+    }
+  ],
+});
+```
+
 ```csharp
+using BasisTheory.net.ReactorFormulas;
+
 var client = new ReactorFormulaClient("key_N88mVGsp3sCXkykyN2EFED");
 
 var reactorFormula = await client.UpdateAsync("17069df1-80f4-439e-86a7-4121863e4678", 
@@ -479,20 +589,20 @@ var reactorFormula = await client.UpdateAsync("17069df1-80f4-439e-86a7-4121863e4
         };
       };
     ",
-    Configuration = new List<ReactorFormlaConfiguration> {
+    Configuration = new List<ReactorFormulaConfiguration> {
       new ReactorFormulaConfiguration {
         Name = "SERVICE_API_KEY",
         Description = "Configuration description",
         Type = "string"
       }
     },
-    RequestParameters = new List<ReactorFormlaRequestParameter> {
-      new ReactorFormlaRequestParameter {
+    RequestParameters = new List<ReactorFormulaRequestParameter> {
+      new ReactorFormulaRequestParameter {
         Name = "REQUEST_PARAMETER_1",
         Description = "Request parameter description",
         Type = "string"
       },
-      new ReactorFormlaRequestParameter {
+      new ReactorFormulaRequestParameter {
         Name = "REQUEST_PARAMETER_2",
         Description = "Request parameter description",
         Type = "boolean",
@@ -534,7 +644,7 @@ var reactorFormula = await client.UpdateAsync("17069df1-80f4-439e-86a7-4121863e4
       "type": "string"
     }
   ],
-  "request_paramters": [
+  "request_parameters": [
     {
       "name": "REQUEST_PARAMETER_1",
       "description": "Request parameter description",
@@ -599,7 +709,17 @@ curl "https://api.basistheory.com/reactor-formulas/17069df1-80f4-439e-86a7-41218
   -X "DELETE"
 ```
 
+```javascript
+import { BasisTheory } from '@basis-theory/basis-theory-js';
+
+const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
+
+await bt.reactorFormulas.delete('17069df1-80f4-439e-86a7-4121863e4678');
+```
+
 ```csharp
+using BasisTheory.net.ReactorFormulas;
+
 var client = new ReactorFormulaClient("key_N88mVGsp3sCXkykyN2EFED");
 
 await client.DeleteAsync("17069df1-80f4-439e-86a7-4121863e4678");

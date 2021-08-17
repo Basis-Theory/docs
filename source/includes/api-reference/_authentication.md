@@ -8,24 +8,28 @@ curl "https://api.basistheory.com" \
 ```
 
 ```javascript
-import { BasisTheory } from '@Basis-Theory/basis-theory-js';
+import { BasisTheory } from '@basis-theory/basis-theory-js';
 
 // at instance
 const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
 
 // per call
 const bt = await new BasisTheory().init();
+
 const applications = await bt.applications.list({}, {
   apiKey: 'key_N88mVGsp3sCXkykyN2EFED'
 });
 ```
 
 ```csharp
+using BasisTheory.net.Tokens;
+
 // At service
 var client = new TokenClient("key_N88mVGsp3sCXkykyN2EFED");
 
 // Per call
 var client = new TokenClient();
+
 client.GetAsync(requestOptions: new RequestOptions {
   ApiKey = "key_N88mVGsp3sCXkykyN2EFED"
 });

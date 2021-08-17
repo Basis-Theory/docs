@@ -77,7 +77,40 @@ curl "api.basistheory.com/atomic/cards" \
   }'
 ```
 
+```javascript
+import { BasisTheory } from '@basis-theory/basis-theory-js';
+
+const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
+
+const atomicCard = await bt.atomicCards.create({
+  card: {
+    number: '4242424242424242',
+    expirationMonth: 12,
+    expirationYear: 2025,
+    cvc: '123',
+  },
+  billingDetails: {
+    name: 'John Doe',
+    email: 'johndoe@test.com',
+    phone: '555-123-4567',
+    address: {
+      line1: '111 Test St.',
+      line2: 'Apt 304',
+      city: 'San Francisco',
+      state: 'CA',
+      postalCode: '94141',
+      country: 'US'
+    },
+  },
+  metadata: {
+    nonSensitiveField: 'Non-Sensitive Value'
+  },
+});
+```
+
 ```csharp
+using BasisTheory.net.Atomic.Cards;
+
 var client = new AtomicCardClient("key_N88mVGsp3sCXkykyN2EFED");
 
 var atomicCard = await client.CreateAsync(new AtomicCard {
@@ -174,7 +207,17 @@ curl "api.basistheory.com/atomic/cards" \
   -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
 ```
 
+```javascript
+import { BasisTheory } from '@basis-theory/basis-theory-js';
+
+const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
+
+const atomicCards = await bt.atomicCards.list();
+```
+
 ```csharp
+using BasisTheory.net.Atomic.Cards;
+
 var client = new AtomicCardClient("key_N88mVGsp3sCXkykyN2EFED");
 
 var atomicCards = await client.GetAsync();
@@ -247,7 +290,17 @@ curl "api.basistheory.com/atomic/cards/c1e565009-1984-4638-8fca-dce8a82cc2af" \
   -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
 ```
 
+```javascript
+import { BasisTheory } from '@basis-theory/basis-theory-js';
+
+const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
+
+const atomicCard = await bt.atomicCards.retrieve('c1e565009-1984-4638-8fca-dce8a82cc2af');
+```
+
 ```csharp
+using BasisTheory.net.Atomic.Cards;
+
 var client = new AtomicCardClient("key_N88mVGsp3sCXkykyN2EFED");
 
 var atomicCard = await client.GetByIdAsync("c1e565009-1984-4638-8fca-dce8a82cc2af");
@@ -320,7 +373,17 @@ curl "api.basistheory.com/atomic/cards/c1e565009-1984-4638-8fca-dce8a82cc2af" \
   -X "DELETE"
 ```
 
+```javascript
+import { BasisTheory } from '@basis-theory/basis-theory-js';
+
+const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
+
+await bt.atomicCards.delete('c1e565009-1984-4638-8fca-dce8a82cc2af');
+```
+
 ```csharp
+using BasisTheory.net.Atomic.Cards;
+
 var client = new AtomicCardClient("key_N88mVGsp3sCXkykyN2EFED");
 
 await client.DeleteAsync("c1e565009-1984-4638-8fca-dce8a82cc2af");
@@ -373,7 +436,25 @@ curl "api.basistheory.com/atomic/cards/c1e565009-1984-4638-8fca-dce8a82cc2af/rea
   }'
 ```
 
+```javascript
+import { BasisTheory } from '@basis-theory/basis-theory-js';
+
+const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
+
+const reactionToken = await bt.atomicCards.react('c1e565009-1984-4638-8fca-dce8a82cc2af', {
+  reactorId: '5b493235-6917-4307-906a-2cd6f1a90b13',
+  requestParameters: {
+    REQUEST_PARAMETER_1: 'Some request value',
+  },
+  metadata: {
+    nonSensitiveField: 'Non-Sensitive Value',
+  },
+});
+```
+
 ```csharp
+using BasisTheory.net.Atomic.Cards;
+
 var client = new AtomicCardClient("key_N88mVGsp3sCXkykyN2EFED");
 
 var reactionToken = await client.ReactAsync("c1e565009-1984-4638-8fca-dce8a82cc2af", 
@@ -431,7 +512,18 @@ curl "api.basistheory.com/atomic/cards/c1e565009-1984-4638-8fca-dce8a82cc2af/rea
   -X "GET"
 ```
 
+```javascript
+import { BasisTheory } from '@basis-theory/basis-theory-js';
+
+const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
+
+const reactionToken = await bt.atomicCards.retrieveReaction(
+  'c1e565009-1984-4638-8fca-dce8a82cc2af', '6c12a05d-99e3-4454-bdb0-2e6ff88ec5b0');
+```
+
 ```csharp
+using BasisTheory.net.Atomic.Cards;
+
 var client = new AtomicCardClient("key_N88mVGsp3sCXkykyN2EFED");
 
 var reactionToken = await client.GetReactionByIdAsync(

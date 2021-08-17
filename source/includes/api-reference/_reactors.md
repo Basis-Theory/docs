@@ -34,7 +34,25 @@ curl "https://api.basistheory.com/reactors" \
   }'
 ```
 
+```javascript
+import { BasisTheory } from '@basis-theory/basis-theory-js';
+
+const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
+
+const reactor = await bt.reactors.create({
+  name: 'My Reactor',
+  configuration: {
+    SERVICE_API_KEY: 'key_abcd1234',
+  },
+  formula: {
+    id: '17069df1-80f4-439e-86a7-4121863e4678',
+  },
+});
+```
+
 ```csharp
+using BasisTheory.net.Reactors;
+
 var client = new ReactorClient("key_N88mVGsp3sCXkykyN2EFED");
 
 var reactor = await client.CreateAsync(new Reactor {
@@ -98,7 +116,17 @@ curl "https://api.basistheory.com/reactors" \
   -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
 ```
 
+```javascript
+import { BasisTheory } from '@basis-theory/basis-theory-js';
+
+const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
+
+const reactors = await bt.reactors.list();
+```
+
 ```csharp
+using BasisTheory.net.Reactors;
+
 var client = new ReactorClient("key_N88mVGsp3sCXkykyN2EFED");
 
 var reactors = await client.GetAsync();
@@ -162,7 +190,17 @@ curl "https://api.basistheory.com/reactors/5b493235-6917-4307-906a-2cd6f1a90b13"
   -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
 ```
 
+```javascript
+import { BasisTheory } from '@basis-theory/basis-theory-js';
+
+const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
+
+const reactor = await bt.reactors.retrieve('5b493235-6917-4307-906a-2cd6f1a90b13');
+```
+
 ```csharp
+using BasisTheory.net.Reactors;
+
 var client = new ReactorClient("key_N88mVGsp3sCXkykyN2EFED");
 
 var reactor = await client.GetByIdAsync("5b493235-6917-4307-906a-2cd6f1a90b13");
@@ -225,7 +263,22 @@ curl "https://api.basistheory.com/reactors/5b493235-6917-4307-906a-2cd6f1a90b13"
   }'
 ```
 
+```javascript
+import { BasisTheory } from '@basis-theory/basis-theory-js';
+
+const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
+
+const reactor = await bt.reactors.update('5b493235-6917-4307-906a-2cd6f1a90b13', {
+  name: 'My Reactor',
+  configuration: {
+    SERVICE_API_KEY: 'key_abcd1234',
+  },
+});
+```
+
 ```csharp
+using BasisTheory.net.Reactors;
+
 var client = new ReactorClient("key_N88mVGsp3sCXkykyN2EFED");
 
 var reactor = await client.UpdateAsync("5b493235-6917-4307-906a-2cd6f1a90b13", 
@@ -295,7 +348,17 @@ curl "https://api.basistheory.com/reactors/fb124bba-f90d-45f0-9a59-5edca27b3b4a"
   -X "DELETE"
 ```
 
+```javascript
+import { BasisTheory } from '@basis-theory/basis-theory-js';
+
+const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
+
+await bt.reactors.delete('fb124bba-f90d-45f0-9a59-5edca27b3b4a');
+```
+
 ```csharp
+using BasisTheory.net.Reactors;
+
 var client = new ReactorClient("key_N88mVGsp3sCXkykyN2EFED");
 
 await client.DeleteAsync("fb124bba-f90d-45f0-9a59-5edca27b3b4a");

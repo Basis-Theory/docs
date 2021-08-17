@@ -8,9 +8,10 @@ curl "https://api.basistheory.com/applications?page=2&size=10" \
 ```
 
 ```javascript
-import { BasisTheory } from '@Basis-Theory/basis-theory-js';
+import { BasisTheory } from '@basis-theory/basis-theory-js';
 
 const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
+
 const applications = await bt.applications.list({
   page: 2,
   size: 10
@@ -18,6 +19,8 @@ const applications = await bt.applications.list({
 ```
 
 ```csharp
+using BasisTheory.net.Applications;
+
 var client = new ApplicationClient("key_N88mVGsp3sCXkykyN2EFED");
 
 var applications = client.GetAsync(new ApplicationGetRequest {

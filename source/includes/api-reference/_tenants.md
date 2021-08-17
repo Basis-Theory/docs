@@ -23,7 +23,17 @@ curl "https://api.basistheory.com/tenants/self" \
   -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
 ```
 
+```javascript
+import { BasisTheory } from '@basis-theory/basis-theory-js';
+
+const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
+
+const tenant = await bt.tenants.retrieve();
+```
+
 ```csharp
+using BasisTheory.net.Tenants;
+
 var client = new TenantClient("key_N88mVGsp3sCXkykyN2EFED");
 
 var tenant = await client.GetSelfAsync();
@@ -73,7 +83,19 @@ curl "https://api.basistheory.com/tenants/self" \
   }'
 ```
 
+```javascript
+import { BasisTheory } from '@basis-theory/basis-theory-js';
+
+const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
+
+const tenant = await bt.tenants.update({
+  name: 'My Example Tenant',
+});
+```
+
 ```csharp
+using BasisTheory.net.Tenants;
+
 var client = new TenantClient("key_N88mVGsp3sCXkykyN2EFED");
 
 var tenant = await client.UpdateAsync(new Tenant {
@@ -127,7 +149,17 @@ curl "https://api.basistheory.com/tenants/self" \
   -X "DELETE"
 ```
 
+```javascript
+import { BasisTheory } from '@basis-theory/basis-theory-js';
+
+const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
+
+await bt.tenants.delete();
+```
+
 ```csharp
+using BasisTheory.net.Tenants;
+
 var client = new TenantClient("key_N88mVGsp3sCXkykyN2EFED");
 
 await client.DeleteAsync();

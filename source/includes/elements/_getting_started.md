@@ -15,13 +15,13 @@ Checkout out our API Reference documentation below, or go to our Getting Started
 > NPM
 
 ```shell
-npm install --save @Basis-Theory/basis-theory-js
+npm install --save @basis-theory/basis-theory-js
 ```
 
 > Yarn
 
 ```shell
-yarn add @Basis-Theory/basis-theory-js
+yarn add @basis-theory/basis-theory-js
 ```
 
 > CDN
@@ -93,11 +93,11 @@ In order to facilitate usage with TypeScript, an optional typings NPM module is 
 > NPM
 
 ```shell
-npm install --save-dev @Basis-Theory/basis-theory-elements
+npm install --save-dev @basis-theory/basis-theory-elements
 ```
 
 > Yarn
 
 ```shell
-yarn add @Basis-Theory/basis-theory-elements --dev
+yarn add @basis-theory/basis-theory-elements --dev
 ```

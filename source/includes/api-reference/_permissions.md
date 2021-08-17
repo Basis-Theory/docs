@@ -60,7 +60,17 @@ curl "https://api.basistheory.com/permissions" \
   -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
 ```
 
+```javascript
+import { BasisTheory } from '@basis-theory/basis-theory-js';
+
+const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
+
+const permissions = await bt.permissions.list();
+```
+
 ```csharp
+using BasisTheory.net.Permissions;
+
 var client = new PermissionClient("key_N88mVGsp3sCXkykyN2EFED");
 
 var permissions = await client.GetAsync();

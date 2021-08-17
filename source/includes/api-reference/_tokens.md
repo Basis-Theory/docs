@@ -72,7 +72,37 @@ curl "https://api.basistheory.com/tokens" \
   }'
 ```
 
+```javascript
+import { BasisTheory } from '@basis-theory/basis-theory-js';
+
+const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
+
+const token = await bt.tokens.create({
+  type: 'token',
+  data: 'ebSG3IohNmg5gTOjN2HBwBbhjDZ6BY3fCWZJfXSucVMfQ+7YNMXQYrPuRSXgSkhuTMYS+BNfVUur4qZSvUbgCA==',
+  metadata: {
+    nonSensitiveField: 'Non-Sensitive Value'
+  },
+  encryption: {
+    cek: {
+      key: 'JLrtGbYSN5/dbqdKtLVG8tHu3QefcZnKsFOPBBXlXcG4zL9US01mW2MqZs6Px4ckSQM8CrRakwLKilrQ0f37Iw==',
+      alg: 'AES'
+    },
+    kek: {
+      key: 'vpXn45HnsoQPR1q8ptngmPvPaqIDJ4vO+FFyQclglePCt8d1SyTDJU0T+F54T7GnAz7vz5OKsjgsFNo9lVB3UA==',
+      alg: 'RSA'
+    }
+  },
+  children: [
+    { ... },
+    { ... }
+  ]
+});
+```
+
 ```csharp
+using BasisTheory.net.Tokens;
+
 var client = new TokenClient("key_N88mVGsp3sCXkykyN2EFED");
 
 var token = await client.CreateAsync(new Token {
@@ -163,7 +193,17 @@ curl "https://api.basistheory.com/tokens" \
   -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
 ```
 
+```javascript
+import { BasisTheory } from '@basis-theory/basis-theory-js';
+
+const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
+
+const tokens = await bt.tokens.list();
+```
+
 ```csharp
+using BasisTheory.net.Tokens;
+
 var client = new TokenClient("key_N88mVGsp3sCXkykyN2EFED");
 
 var tokens = await client.GetAsync();
@@ -242,7 +282,17 @@ curl "https://api.basistheory.com/tokens/decrypt" \
   -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
 ```
 
+```javascript
+import { BasisTheory } from '@basis-theory/basis-theory-js';
+
+const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
+
+const tokens = await bt.tokens.listDecrypted();
+```
+
 ```csharp
+using BasisTheory.net.Tokens;
+
 var client = new TokenClient("key_N88mVGsp3sCXkykyN2EFED");
 
 var tokens = await client.GetAsync(new TokenGetRequest { Decrypt = true });
@@ -313,7 +363,17 @@ curl "https://api.basistheory.com/tokens/c06d0789-0a38-40be-b7cc-c28a718f76f1" \
   -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
 ```
 
+```javascript
+import { BasisTheory } from '@basis-theory/basis-theory-js';
+
+const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
+
+const token = await bt.tokens.retrieve('c06d0789-0a38-40be-b7cc-c28a718f76f1');
+```
+
 ```csharp
+using BasisTheory.net.Tokens;
+
 var client = new TokenClient("key_N88mVGsp3sCXkykyN2EFED");
 
 var token = await client.GetByIdAsync("c06d0789-0a38-40be-b7cc-c28a718f76f1");
@@ -389,7 +449,17 @@ curl "https://api.basistheory.com/tokens/c06d0789-0a38-40be-b7cc-c28a718f76f1/de
   -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
 ```
 
+```javascript
+import { BasisTheory } from '@basis-theory/basis-theory-js';
+
+const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
+
+const token = await bt.tokens.retrieveDecrypted('c06d0789-0a38-40be-b7cc-c28a718f76f1');
+```
+
 ```csharp
+using BasisTheory.net.Tokens;
+
 var client = new TokenClient("key_N88mVGsp3sCXkykyN2EFED");
 
 var token = await client.GetByIdAsync("c06d0789-0a38-40be-b7cc-c28a718f76f1", new TokenGetByIdRequest { Decrypt = true });
@@ -458,7 +528,17 @@ curl "https://api.basistheory.com/tokens/c06d0789-0a38-40be-b7cc-c28a718f76f1" \
   -X "DELETE"
 ```
 
+```javascript
+import { BasisTheory } from '@basis-theory/basis-theory-js';
+
+const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
+
+await bt.tokens.delete('c06d0789-0a38-40be-b7cc-c28a718f76f1');
+```
+
 ```csharp
+using BasisTheory.net.Tokens;
+
 var client = new TokenClient("key_N88mVGsp3sCXkykyN2EFED");
 
 await client.DeleteAsync("c06d0789-0a38-40be-b7cc-c28a718f76f1");
