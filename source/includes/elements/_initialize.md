@@ -22,7 +22,7 @@
 > Module
 
 ```jsx
-import { BasisTheory } from '@Basis-Theory/basis-theory-js';
+import { BasisTheory } from '@basis-theory/basis-theory-js';
 
 const bt = await new BasisTheory().init('test_1234567890', { elements: true });
 // use bt.elements

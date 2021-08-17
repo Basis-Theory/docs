@@ -24,7 +24,7 @@ curl "https://api.basistheory.com/tenants/self" \
 ```
 
 ```javascript
-import { BasisTheory } from '@Basis-Theory/basis-theory-js';
+import { BasisTheory } from '@basis-theory/basis-theory-js';
 
 const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
 
@@ -82,7 +82,7 @@ curl "https://api.basistheory.com/tenants/self" \
 ```
 
 ```javascript
-import { BasisTheory } from '@Basis-Theory/basis-theory-js';
+import { BasisTheory } from '@basis-theory/basis-theory-js';
 
 const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
 
@@ -146,7 +146,7 @@ curl "https://api.basistheory.com/tenants/self" \
 ```
 
 ```javascript
-import { BasisTheory } from '@Basis-Theory/basis-theory-js';
+import { BasisTheory } from '@basis-theory/basis-theory-js';
 
 const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
 

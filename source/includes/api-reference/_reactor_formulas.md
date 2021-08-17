@@ -109,7 +109,7 @@ curl "https://api.basistheory.com/reactor-formulas" \
 ```
 
 ```javascript
-import { BasisTheory } from '@Basis-Theory/basis-theory-js';
+import { BasisTheory } from '@basis-theory/basis-theory-js';
 
 const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
 
@@ -282,7 +282,7 @@ curl "https://api.basistheory.com/reactor-formulas" \
 ```
 
 ```javascript
-import { BasisTheory } from '@Basis-Theory/basis-theory-js';
+import { BasisTheory } from '@basis-theory/basis-theory-js';
 
 const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
 
@@ -386,7 +386,7 @@ curl "https://api.basistheory.com/reactor-formulas/17069df1-80f4-439e-86a7-41218
 ```
 
 ```javascript
-import { BasisTheory } from '@Basis-Theory/basis-theory-js';
+import { BasisTheory } from '@basis-theory/basis-theory-js';
 
 const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
 
@@ -520,7 +520,7 @@ curl "https://api.basistheory.com/reator-formula/17069df1-80f4-439e-86a7-4121863
 ```
 
 ```javascript
-import { BasisTheory } from '@Basis-Theory/basis-theory-js';
+import { BasisTheory } from '@basis-theory/basis-theory-js';
 
 const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
 
@@ -702,7 +702,7 @@ curl "https://api.basistheory.com/reactor-formulas/17069df1-80f4-439e-86a7-41218
 ```
 
 ```javascript
-import { BasisTheory } from '@Basis-Theory/basis-theory-js';
+import { BasisTheory } from '@basis-theory/basis-theory-js';
 
 const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
 

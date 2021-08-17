@@ -8,7 +8,7 @@ curl "https://api.basistheory.com" \
 ```
 
 ```javascript
-import { BasisTheory } from '@Basis-Theory/basis-theory-js';
+import { BasisTheory } from '@basis-theory/basis-theory-js';
 
 // at instance
 const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');

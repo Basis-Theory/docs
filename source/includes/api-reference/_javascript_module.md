@@ -31,7 +31,7 @@ This survey will identify and enforce certain data protections for the PCI compl
 ```
 
 ```javascript
-import BasisTheory from '@Basis-Theory/basis-theory-js';
+import BasisTheory from '@basis-theory/basis-theory-js';
 
 await BasisTheory.init("test_1234567890");
 ```
@@ -88,7 +88,7 @@ General tokenization methods can be found under `tokens` service inside `BasisTh
 ```
 
 ```javascript
-import BasisTheory from '@Basis-Theory/basis-theory-js';
+import BasisTheory from '@basis-theory/basis-theory-js';
 
 // sample data
 const data = {
@@ -131,7 +131,7 @@ Internally, `BasisTheory.tokens` calls [Create Token API](#create-token) and map
 ```
 
 ```javascript
-import BasisTheory from '@Basis-Theory/basis-theory-js';
+import BasisTheory from '@basis-theory/basis-theory-js';
 
 const id = '25e2cd6b-2373-4cce-b9a0-98a9c65f53fb'; // previously stored token id
 
@@ -171,7 +171,7 @@ Internally, `BasisTheory.tokens` calls [Get Token API](#get-a-token) and maps th
 ```
 
 ```javascript
-import BasisTheory from '@Basis-Theory/basis-theory-js';
+import BasisTheory from '@basis-theory/basis-theory-js';
 
 const id = '25e2cd6b-2373-4cce-b9a0-98a9c65f53fb'; // previously stored token id
 
@@ -225,7 +225,7 @@ BasisTheory.atomic
 ```
 
 ```javascript
-import BasisTheory from '@Basis-Theory/basis-theory-js';
+import BasisTheory from '@basis-theory/basis-theory-js';
 
 const data = {
   card: {
