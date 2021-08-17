@@ -51,6 +51,8 @@ const reactor = await bt.reactors.create({
 ```
 
 ```csharp
+using BasisTheory.net.Reactors;
+
 var client = new ReactorClient("key_N88mVGsp3sCXkykyN2EFED");
 
 var reactor = await client.CreateAsync(new Reactor {
@@ -123,6 +125,8 @@ const reactors = await bt.reactors.list();
 ```
 
 ```csharp
+using BasisTheory.net.Reactors;
+
 var client = new ReactorClient("key_N88mVGsp3sCXkykyN2EFED");
 
 var reactors = await client.GetAsync();
@@ -195,6 +199,8 @@ const reactor = await bt.reactors.retrieve('5b493235-6917-4307-906a-2cd6f1a90b13
 ```
 
 ```csharp
+using BasisTheory.net.Reactors;
+
 var client = new ReactorClient("key_N88mVGsp3sCXkykyN2EFED");
 
 var reactor = await client.GetByIdAsync("5b493235-6917-4307-906a-2cd6f1a90b13");
@@ -271,6 +277,8 @@ const reactor = await bt.reactors.update('5b493235-6917-4307-906a-2cd6f1a90b13',
 ```
 
 ```csharp
+using BasisTheory.net.Reactors;
+
 var client = new ReactorClient("key_N88mVGsp3sCXkykyN2EFED");
 
 var reactor = await client.UpdateAsync("5b493235-6917-4307-906a-2cd6f1a90b13", 
@@ -349,6 +357,8 @@ await bt.reactors.delete('fb124bba-f90d-45f0-9a59-5edca27b3b4a');
 ```
 
 ```csharp
+using BasisTheory.net.Reactors;
+
 var client = new ReactorClient("key_N88mVGsp3sCXkykyN2EFED");
 
 await client.DeleteAsync("fb124bba-f90d-45f0-9a59-5edca27b3b4a");

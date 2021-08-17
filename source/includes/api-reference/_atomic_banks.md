@@ -58,6 +58,8 @@ const atomicBank = await bt.atomicBanks.create({
 ```
 
 ```csharp
+using BasisTheory.net.Atomic.Banks;
+
 var client = new AtomicBankClient("key_N88mVGsp3sCXkykyN2EFED");
 
 var atomicBank = await client.CreateAsync(new AtomicBank {
@@ -133,6 +135,8 @@ const atomicBanks = await bt.atomicBanks.list();
 ```
 
 ```csharp
+using BasisTheory.net.Atomic.Banks;
+
 var client = new AtomicBankClient("key_N88mVGsp3sCXkykyN2EFED");
 
 var atomicBanks = await client.GetAsync();
@@ -192,6 +196,8 @@ curl "https://api.basistheory.com/atomic/banks/1485efb9-6b1f-4248-a5d1-cf9b39071
 ```
 
 ```csharp
+using BasisTheory.net.Atomic.Banks;
+
 var client = new AtomicBankClient("key_N88mVGsp3sCXkykyN2EFED");
 
 var atomicBank = await client.GetByIdAsync("1485efb9-6b1f-4248-a5d1-cf9b3907164c");
@@ -267,6 +273,8 @@ await bt.atomicBanks.delete('1485efb9-6b1f-4248-a5d1-cf9b3907164c');
 ```
 
 ```csharp
+using BasisTheory.net.Atomic.Banks;
+
 var client = new AtomicBankClient("key_N88mVGsp3sCXkykyN2EFED");
 
 await client.DeleteAsync("1485efb9-6b1f-4248-a5d1-cf9b3907164c");
@@ -318,6 +326,8 @@ const atomicBank = await bt.atomicBanks.retrieveDecrypted('1485efb9-6b1f-4248-a5
 ```
 
 ```csharp
+using BasisTheory.net.Atomic.Banks;
+
 var client = new AtomicBankClient("key_N88mVGsp3sCXkykyN2EFED");
 
 var atomicBank = await client.GetByIdAsync("1485efb9-6b1f-4248-a5d1-cf9b3907164c", 
@@ -405,6 +415,8 @@ const reactionToken = await bt.atomicBanks.react('1485efb9-6b1f-4248-a5d1-cf9b39
 ```
 
 ```csharp
+using BasisTheory.net.Atomic.Banks;
+
 var client = new AtomicBankClient("key_N88mVGsp3sCXkykyN2EFED");
 
 var reactionToken = await client.ReactAsync("1485efb9-6b1f-4248-a5d1-cf9b3907164c", 
@@ -472,6 +484,8 @@ const reactionToken = await bt.atomicBanks.retrieveReaction(
 ```
 
 ```csharp
+using BasisTheory.net.Atomic.Banks;
+
 var client = new AtomicBankClient("key_N88mVGsp3sCXkykyN2EFED");
 
 var reactionToken = await client.GetReactionByIdAsync(

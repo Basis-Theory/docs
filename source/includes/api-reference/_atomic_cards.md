@@ -109,6 +109,8 @@ const atomicCard = await bt.atomicCards.create({
 ```
 
 ```csharp
+using BasisTheory.net.Atomic.Cards;
+
 var client = new AtomicCardClient("key_N88mVGsp3sCXkykyN2EFED");
 
 var atomicCard = await client.CreateAsync(new AtomicCard {
@@ -214,6 +216,8 @@ const atomicCards = await bt.atomicCards.list();
 ```
 
 ```csharp
+using BasisTheory.net.Atomic.Cards;
+
 var client = new AtomicCardClient("key_N88mVGsp3sCXkykyN2EFED");
 
 var atomicCards = await client.GetAsync();
@@ -295,6 +299,8 @@ const atomicCard = await bt.atomicCards.retrieve('c1e565009-1984-4638-8fca-dce8a
 ```
 
 ```csharp
+using BasisTheory.net.Atomic.Cards;
+
 var client = new AtomicCardClient("key_N88mVGsp3sCXkykyN2EFED");
 
 var atomicCard = await client.GetByIdAsync("c1e565009-1984-4638-8fca-dce8a82cc2af");
@@ -376,6 +382,8 @@ await bt.atomicCards.delete('c1e565009-1984-4638-8fca-dce8a82cc2af');
 ```
 
 ```csharp
+using BasisTheory.net.Atomic.Cards;
+
 var client = new AtomicCardClient("key_N88mVGsp3sCXkykyN2EFED");
 
 await client.DeleteAsync("c1e565009-1984-4638-8fca-dce8a82cc2af");
@@ -445,6 +453,8 @@ const reactionToken = await bt.atomicCards.react('c1e565009-1984-4638-8fca-dce8a
 ```
 
 ```csharp
+using BasisTheory.net.Atomic.Cards;
+
 var client = new AtomicCardClient("key_N88mVGsp3sCXkykyN2EFED");
 
 var reactionToken = await client.ReactAsync("c1e565009-1984-4638-8fca-dce8a82cc2af", 
@@ -512,6 +522,8 @@ const reactionToken = await bt.atomicCards.retrieveReaction(
 ```
 
 ```csharp
+using BasisTheory.net.Atomic.Cards;
+
 var client = new AtomicCardClient("key_N88mVGsp3sCXkykyN2EFED");
 
 var reactionToken = await client.GetReactionByIdAsync(

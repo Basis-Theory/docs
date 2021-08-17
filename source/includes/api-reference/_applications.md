@@ -52,6 +52,7 @@ curl "https://api.basistheory.com/applications" \
 import { BasisTheory } from '@basis-theory/basis-theory-js';
 
 const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
+
 const application = await bt.applications.create({
   name: 'My Example App',
   type: 'server_to_server',
@@ -65,6 +66,8 @@ const application = await bt.applications.create({
 ```
 
 ```csharp
+using BasisTheory.net.Applications;
+
 var client = new ApplicationClient("key_N88mVGsp3sCXkykyN2EFED");
 
 var application = await client.CreateAsync(new Application {
@@ -137,10 +140,13 @@ curl "https://api.basistheory.com/applications" \
 import { BasisTheory } from '@basis-theory/basis-theory-js';
 
 const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
+
 const applications = await bt.applications.list();
 ```
 
 ```csharp
+using BasisTheory.net.Applications;
+
 var client = new ApplicationClient("key_N88mVGsp3sCXkykyN2EFED");
 
 var applications = await client.GetAsync();
@@ -209,10 +215,13 @@ curl "https://api.basistheory.com/applications/fe1f9ba4-474e-44b9-b949-110cdba9d
 import { BasisTheory } from '@basis-theory/basis-theory-js';
 
 const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
+
 const application = await bt.applications.retrieve('fe1f9ba4-474e-44b9-b949-110cdba9d662');
 ```
 
 ```csharp
+using BasisTheory.net.Applications;
+
 var client = new ApplicationClient("key_N88mVGsp3sCXkykyN2EFED");
 
 var application = await client.GetByIdAsync("fe1f9ba4-474e-44b9-b949-110cdba9d662");
@@ -272,10 +281,13 @@ curl "https://api.basistheory.com/applications/key" \
 import { BasisTheory } from '@basis-theory/basis-theory-js';
 
 const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
+
 const application = await bt.applications.retrieveByKey();
 ```
 
 ```csharp
+using BasisTheory.net.Applications;
+
 var client = new ApplicationClient("key_N88mVGsp3sCXkykyN2EFED");
 
 var application = await client.GetByKeyAsync();
@@ -338,6 +350,7 @@ curl "https://api.basistheory.com/applications/fb124bba-f90d-45f0-9a59-5edca27b3
 import { BasisTheory } from '@basis-theory/basis-theory-js';
 
 const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
+
 const application = await bt.applications.update('fb124bba-f90d-45f0-9a59-5edca27b3b4a', {
   name: 'My Example App',
   permissions: [
@@ -350,6 +363,8 @@ const application = await bt.applications.update('fb124bba-f90d-45f0-9a59-5edca2
 ```
 
 ```csharp
+using BasisTheory.net.Applications;
+
 var client = new ApplicationClient("key_N88mVGsp3sCXkykyN2EFED");
 
 var application = await client.UpdateAsync("fb124bba-f90d-45f0-9a59-5edca27b3b4a", 
@@ -427,13 +442,16 @@ curl "https://api.basistheory.com/applications/fb124bba-f90d-45f0-9a59-5edca27b3
 import { BasisTheory } from '@basis-theory/basis-theory-js';
 
 const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
+
 const application = await bt.applications.regenerateKey('fb124bba-f90d-45f0-9a59-5edca27b3b4a');
 ```
 
 ```csharp
+using BasisTheory.net.Applications;
+
 var client = new ApplicationClient("key_N88mVGsp3sCXkykyN2EFED");
 
-var application = await client.RegenerateKeyAsync(new Guid("fb124bba-f90d-45f0-9a59-5edca27b3b4a"));
+var application = await client.RegenerateKeyAsync("fb124bba-f90d-45f0-9a59-5edca27b3b4a");
 ```
 
 > Response
@@ -498,13 +516,16 @@ curl "https://api.basistheory.com/applications/fb124bba-f90d-45f0-9a59-5edca27b3
 import { BasisTheory } from '@basis-theory/basis-theory-js';
 
 const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
+
 await bt.applications.delete('fb124bba-f90d-45f0-9a59-5edca27b3b4a');
 ```
 
 ```csharp
+using BasisTheory.net.Applications;
+
 var client = new ApplicationClient("key_N88mVGsp3sCXkykyN2EFED");
 
-await client.DeleteAsync(new Guid("fb124bba-f90d-45f0-9a59-5edca27b3b4a"));
+await client.DeleteAsync("fb124bba-f90d-45f0-9a59-5edca27b3b4a");
 ```
 
 <span class="http-method delete">

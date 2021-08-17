@@ -32,6 +32,8 @@ const tenant = await bt.tenants.retrieve();
 ```
 
 ```csharp
+using BasisTheory.net.Tenants;
+
 var client = new TenantClient("key_N88mVGsp3sCXkykyN2EFED");
 
 var tenant = await client.GetSelfAsync();
@@ -92,6 +94,8 @@ const tenant = await bt.tenants.update({
 ```
 
 ```csharp
+using BasisTheory.net.Tenants;
+
 var client = new TenantClient("key_N88mVGsp3sCXkykyN2EFED");
 
 var tenant = await client.UpdateAsync(new Tenant {
@@ -154,6 +158,8 @@ await bt.tenants.delete();
 ```
 
 ```csharp
+using BasisTheory.net.Tenants;
+
 var client = new TenantClient("key_N88mVGsp3sCXkykyN2EFED");
 
 await client.DeleteAsync();

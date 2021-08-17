@@ -152,6 +152,8 @@ const reactorFormula = await bt.reactorFormulas.create({
 ```
 
 ```csharp
+using BasisTheory.net.ReactorFormulas;
+
 var client = new ReactorFormulaClient("key_N88mVGsp3sCXkykyN2EFED");
 
 var reactorFormula = await client.CreateAsync(new ReactorFormula {
@@ -290,6 +292,8 @@ const reactorFormulas = await bt.reactorFormulas.list();
 ```
 
 ```csharp
+using BasisTheory.net.ReactorFormulas;
+
 var client = new ReactorFormulaClient("key_N88mVGsp3sCXkykyN2EFED");
 
 var reactorFormulas = await client.GetAsync();
@@ -394,6 +398,8 @@ const reactorFormula = await bt.reactorFormulas.retrieve('17069df1-80f4-439e-86a
 ```
 
 ```csharp
+using BasisTheory.net.ReactorFormulas;
+
 var client = new ReactorFormulaClient("key_N88mVGsp3sCXkykyN2EFED");
 
 var reactorFormula = await client.GetByIdAsync("17069df1-80f4-439e-86a7-4121863e4678");
@@ -563,6 +569,8 @@ const reactorFormula = await bt.reactorFormulas.update('17069df1-80f4-439e-86a7-
 ```
 
 ```csharp
+using BasisTheory.net.ReactorFormulas;
+
 var client = new ReactorFormulaClient("key_N88mVGsp3sCXkykyN2EFED");
 
 var reactorFormula = await client.UpdateAsync("17069df1-80f4-439e-86a7-4121863e4678", 
@@ -710,6 +718,8 @@ await bt.reactorFormulas.delete('17069df1-80f4-439e-86a7-4121863e4678');
 ```
 
 ```csharp
+using BasisTheory.net.ReactorFormulas;
+
 var client = new ReactorFormulaClient("key_N88mVGsp3sCXkykyN2EFED");
 
 await client.DeleteAsync("17069df1-80f4-439e-86a7-4121863e4678");

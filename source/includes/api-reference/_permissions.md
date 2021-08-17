@@ -69,6 +69,8 @@ const permissions = await bt.permissions.list();
 ```
 
 ```csharp
+using BasisTheory.net.Permissions;
+
 var client = new PermissionClient("key_N88mVGsp3sCXkykyN2EFED");
 
 var permissions = await client.GetAsync();

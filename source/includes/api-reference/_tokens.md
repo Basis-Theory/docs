@@ -101,6 +101,8 @@ const token = await bt.tokens.create({
 ```
 
 ```csharp
+using BasisTheory.net.Tokens;
+
 var client = new TokenClient("key_N88mVGsp3sCXkykyN2EFED");
 
 var token = await client.CreateAsync(new Token {
@@ -200,6 +202,8 @@ const tokens = await bt.tokens.list();
 ```
 
 ```csharp
+using BasisTheory.net.Tokens;
+
 var client = new TokenClient("key_N88mVGsp3sCXkykyN2EFED");
 
 var tokens = await client.GetAsync();
@@ -287,6 +291,8 @@ const tokens = await bt.tokens.listDecrypted();
 ```
 
 ```csharp
+using BasisTheory.net.Tokens;
+
 var client = new TokenClient("key_N88mVGsp3sCXkykyN2EFED");
 
 var tokens = await client.GetAsync(new TokenGetRequest { Decrypt = true });
@@ -366,6 +372,8 @@ const token = await bt.tokens.retrieve('c06d0789-0a38-40be-b7cc-c28a718f76f1');
 ```
 
 ```csharp
+using BasisTheory.net.Tokens;
+
 var client = new TokenClient("key_N88mVGsp3sCXkykyN2EFED");
 
 var token = await client.GetByIdAsync("c06d0789-0a38-40be-b7cc-c28a718f76f1");
@@ -450,6 +458,8 @@ const token = await bt.tokens.retrieveDecrypted('c06d0789-0a38-40be-b7cc-c28a718
 ```
 
 ```csharp
+using BasisTheory.net.Tokens;
+
 var client = new TokenClient("key_N88mVGsp3sCXkykyN2EFED");
 
 var token = await client.GetByIdAsync("c06d0789-0a38-40be-b7cc-c28a718f76f1", new TokenGetByIdRequest { Decrypt = true });
@@ -527,6 +537,8 @@ await bt.tokens.delete('c06d0789-0a38-40be-b7cc-c28a718f76f1');
 ```
 
 ```csharp
+using BasisTheory.net.Tokens;
+
 var client = new TokenClient("key_N88mVGsp3sCXkykyN2EFED");
 
 await client.DeleteAsync("c06d0789-0a38-40be-b7cc-c28a718f76f1");

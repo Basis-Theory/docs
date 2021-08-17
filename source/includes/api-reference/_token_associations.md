@@ -23,6 +23,8 @@ await bt.tokens.createAssociation('c06d0789-0a38-40be-b7cc-c28a718f76f1',
 ```
 
 ```csharp
+using BasisTheory.net.Tokens;
+
 var client = new TokenClient("key_N88mVGsp3sCXkykyN2EFED");
 
 await client.CreateAssociationAsync("c06d0789-0a38-40be-b7cc-c28a718f76f1", 
@@ -79,6 +81,8 @@ await bt.tokens.deleteAssociation('c06d0789-0a38-40be-b7cc-c28a718f76f1',
 ```
 
 ```csharp
+using BasisTheory.net.Tokens;
+
 var client = new TokenClient("key_N88mVGsp3sCXkykyN2EFED");
 
 await client.DeleteAssociationAsync("c06d0789-0a38-40be-b7cc-c28a718f76f1", 
@@ -171,6 +175,8 @@ const token = await bt.tokens.createChild('c06d0789-0a38-40be-b7cc-c28a718f76f1'
 ```
 
 ```csharp
+using BasisTheory.net.Tokens;
+
 var client = new TokenClient("key_N88mVGsp3sCXkykyN2EFED");
 
 var token = await client.CreateChildAsync("c06d0789-0a38-40be-b7cc-c28a718f76f1", 
@@ -269,6 +275,8 @@ const tokens = await bt.tokens.listChildren('c06d0789-0a38-40be-b7cc-c28a718f76f
 ```
 
 ```csharp
+using BasisTheory.net.Tokens;
+
 var client = new TokenClient("key_N88mVGsp3sCXkykyN2EFED");
 
 var tokens = await client.GetChildrenAsync("c06d0789-0a38-40be-b7cc-c28a718f76f1");

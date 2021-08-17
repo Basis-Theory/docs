@@ -31,6 +31,8 @@ const logs = await bt.logs.list();
 ```
 
 ```csharp
+using BasisTheory.net.Logs;
+
 var client = new LogClient("key_N88mVGsp3sCXkykyN2EFED");
 
 var logs = await client.GetAsync();
