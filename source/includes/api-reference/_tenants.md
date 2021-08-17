@@ -23,6 +23,14 @@ curl "https://api.basistheory.com/tenants/self" \
   -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
 ```
 
+```javascript
+import { BasisTheory } from '@Basis-Theory/basis-theory-js';
+
+const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
+
+const tenant = await bt.tenants.retrieve();
+```
+
 ```csharp
 var client = new TenantClient("key_N88mVGsp3sCXkykyN2EFED");
 
@@ -71,6 +79,16 @@ curl "https://api.basistheory.com/tenants/self" \
   -D '{
     "name": "My Example Tenant"
   }'
+```
+
+```javascript
+import { BasisTheory } from '@Basis-Theory/basis-theory-js';
+
+const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
+
+const tenant = await bt.tenants.update({
+  name: 'My Example Tenant',
+});
 ```
 
 ```csharp
@@ -125,6 +143,14 @@ Returns a [tenant](#tenant-object) if the tenant was updated. Returns [an error]
 curl "https://api.basistheory.com/tenants/self" \
   -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
   -X "DELETE"
+```
+
+```javascript
+import { BasisTheory } from '@Basis-Theory/basis-theory-js';
+
+const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
+
+await bt.tenants.delete();
 ```
 
 ```csharp
