@@ -41,6 +41,22 @@ curl "https://api.basistheory.com/atomic/banks" \
   }'
 ```
 
+```javascript
+import { BasisTheory } from '@Basis-Theory/basis-theory-js';
+
+const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
+
+const atomicBank = await bt.atomicBanks.create({
+  bank: {
+    routingNumber: '021000021',
+    accountNumber: '1234567890',
+  },
+  metadata: {
+    nonSensitiveField: 'Non-Sensitive Value'
+  },
+});
+```
+
 ```csharp
 var client = new AtomicBankClient("key_N88mVGsp3sCXkykyN2EFED");
 
@@ -108,6 +124,14 @@ curl "https://api.basistheory.com/atomic/banks" \
   -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
 ```
 
+```javascript
+import { BasisTheory } from '@Basis-Theory/basis-theory-js';
+
+const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
+
+const atomicBanks = await bt.atomicBanks.list();
+```
+
 ```csharp
 var client = new AtomicBankClient("key_N88mVGsp3sCXkykyN2EFED");
 
@@ -173,6 +197,14 @@ var client = new AtomicBankClient("key_N88mVGsp3sCXkykyN2EFED");
 var atomicBank = await client.GetByIdAsync("1485efb9-6b1f-4248-a5d1-cf9b3907164c");
 ```
 
+```javascript
+import { BasisTheory } from '@Basis-Theory/basis-theory-js';
+
+const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
+
+const atomicBank = await bt.atomicBanks.retrieve('1485efb9-6b1f-4248-a5d1-cf9b3907164c');
+```
+
 > Response
 
 ```json
@@ -226,6 +258,14 @@ curl "https://api.basistheory.com/atomic/banks/1485efb9-6b1f-4248-a5d1-cf9b39071
   -X "DELETE"
 ```
 
+```javascript
+import { BasisTheory } from '@Basis-Theory/basis-theory-js';
+
+const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
+
+await bt.atomicBanks.delete('1485efb9-6b1f-4248-a5d1-cf9b3907164c');
+```
+
 ```csharp
 var client = new AtomicBankClient("key_N88mVGsp3sCXkykyN2EFED");
 
@@ -267,6 +307,14 @@ Returns [an error](#errors) if the atomic bank failed to delete.
 ```shell
 curl "https://api.basistheory.com/atomic/banks/1485efb9-6b1f-4248-a5d1-cf9b3907164c/decrypt" \
   -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
+```
+
+```javascript
+import { BasisTheory } from '@Basis-Theory/basis-theory-js';
+
+const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
+
+const atomicBank = await bt.atomicBanks.retrieveDecrypted('1485efb9-6b1f-4248-a5d1-cf9b3907164c');
 ```
 
 ```csharp
@@ -340,6 +388,22 @@ curl "api.basistheory.com/atomic/banks/1485efb9-6b1f-4248-a5d1-cf9b3907164c/reac
   }'
 ```
 
+```javascript
+import { BasisTheory } from '@Basis-Theory/basis-theory-js';
+
+const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
+
+const reactionToken = await bt.atomicBanks.react('1485efb9-6b1f-4248-a5d1-cf9b3907164c', {
+  reactorId: '5b493235-6917-4307-906a-2cd6f1a90b13',
+  requestParameters: {
+    REQUEST_PARAMETER_1: 'Some request value',
+  },
+  metadata: {
+    nonSensitiveField: 'Non-Sensitive value',
+  },
+});
+```
+
 ```csharp
 var client = new AtomicBankClient("key_N88mVGsp3sCXkykyN2EFED");
 
@@ -396,6 +460,15 @@ Returns a [token](#token-object) with type of `bank:reaction` if the atomic bank
 curl "api.basistheory.com/atomic/banks/1485efb9-6b1f-4248-a5d1-cf9b3907164c/reaction/6c12a05d-99e3-4454-bdb0-2e6ff88ec5b0" \
   -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
   -X "GET"
+```
+
+```javascript
+import { BasisTheory } from '@Basis-Theory/basis-theory-js';
+
+const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
+
+const reactionToken = await bt.atomicBanks.retrieveReaction('1485efb9-6b1f-4248-a5d1-cf9b3907164c',
+  '6c12a05d-99e3-4454-bdb0-2e6ff88ec5b0');
 ```
 
 ```csharp
