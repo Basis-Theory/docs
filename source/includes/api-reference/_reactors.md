@@ -34,6 +34,22 @@ curl "https://api.basistheory.com/reactors" \
   }'
 ```
 
+```javascript
+import { BasisTheory } from '@Basis-Theory/basis-theory-js';
+
+const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
+
+const reactor = await bt.reactors.create({
+  name: 'My Reactor',
+  configuration: {
+    SERVICE_API_KEY: 'key_abcd1234',
+  },
+  formula: {
+    id: '17069df1-80f4-439e-86a7-4121863e4678',
+  },
+});
+```
+
 ```csharp
 var client = new ReactorClient("key_N88mVGsp3sCXkykyN2EFED");
 
@@ -96,6 +112,14 @@ Returns an [reactor](#reactor-object) if the reactor was created. Returns [an er
 ```shell
 curl "https://api.basistheory.com/reactors" \
   -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
+```
+
+```javascript
+import { BasisTheory } from '@Basis-Theory/basis-theory-js';
+
+const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
+
+const reactors = await bt.reactors.list();
 ```
 
 ```csharp
@@ -162,6 +186,14 @@ curl "https://api.basistheory.com/reactors/5b493235-6917-4307-906a-2cd6f1a90b13"
   -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
 ```
 
+```javascript
+import { BasisTheory } from '@Basis-Theory/basis-theory-js';
+
+const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
+
+const reactor = await bt.reactors.retrieve('5b493235-6917-4307-906a-2cd6f1a90b13');
+```
+
 ```csharp
 var client = new ReactorClient("key_N88mVGsp3sCXkykyN2EFED");
 
@@ -223,6 +255,19 @@ curl "https://api.basistheory.com/reactors/5b493235-6917-4307-906a-2cd6f1a90b13"
       "SERVICE_API_KEY": "key_abcd1234"
     }
   }'
+```
+
+```javascript
+import { BasisTheory } from '@Basis-Theory/basis-theory-js';
+
+const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
+
+const reactor = await bt.reactors.update('5b493235-6917-4307-906a-2cd6f1a90b13', {
+  name: 'My Reactor',
+  configuration: {
+    SERVICE_API_KEY: 'key_abcd1234',
+  },
+});
 ```
 
 ```csharp
@@ -293,6 +338,14 @@ Returns an [reactor](#reactor-object) if the reactor was updated. Returns [an er
 curl "https://api.basistheory.com/reactors/fb124bba-f90d-45f0-9a59-5edca27b3b4a" \
   -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
   -X "DELETE"
+```
+
+```javascript
+import { BasisTheory } from '@Basis-Theory/basis-theory-js';
+
+const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
+
+await bt.reactors.delete('fb124bba-f90d-45f0-9a59-5edca27b3b4a');
 ```
 
 ```csharp
