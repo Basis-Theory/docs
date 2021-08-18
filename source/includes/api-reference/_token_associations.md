@@ -8,8 +8,8 @@ Token associations allow you to associate any two tokens, of any type, together.
 
 ```shell
 curl "https://api.basistheory.com/tokens/c06d0789-0a38-40be-b7cc-c28a718f76f1/children/c1e565009-1984-4638-8fca-dce8a82cc2af" \
-  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
-  -H "Content-Type: application/json"
+  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED" \
+  -H "Content-Type: application/json" \
   -X "POST"
 ```
 
@@ -66,8 +66,8 @@ Returns [an error](#errors) if the token association failed to create.
 
 ```shell
 curl "https://api.basistheory.com/tokens/c06d0789-0a38-40be-b7cc-c28a718f76f1/children/c1e565009-1984-4638-8fca-dce8a82cc2af" \
-  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
-  -H "Content-Type: application/json"
+  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED" \
+  -H "Content-Type: application/json" \
   -X "DELETE"
 ```
 
@@ -120,10 +120,10 @@ Returns [an error](#errors) if the token association failed to delete.
 
 ```shell
 curl "https://api.basistheory.com/tokens/c06d0789-0a38-40be-b7cc-c28a718f76f1/children" \
-  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
-  -H "Content-Type: application/json"
-  -X "POST"
-  -D '{
+  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED" \
+  -H "Content-Type: application/json" \
+  -X "POST" \
+  -d '{
     "type": "token",
     "data": "ebSG3IohNmg5gTOjN2HBwBbhjDZ6BY3fCWZJfXSucVMfQ+7YNMXQYrPuRSXgSkhuTMYS+BNfVUur4qZSvUbgCA==",
     "metadata": {

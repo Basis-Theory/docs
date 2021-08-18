@@ -20,10 +20,10 @@ Attribute | Type | Description
 
 ```shell
 curl "https://api.basistheory.com/reactors" \
-  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
-  -H "Content-Type: application/json"
-  -X "POST"
-  -D '{
+  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED" \
+  -H "Content-Type: application/json" \
+  -X "POST" \
+  -d '{
     "name": "My Reactor",
     "configuration": {
       "SERVICE_API_KEY": "key_abcd1234"
@@ -252,10 +252,10 @@ Returns an [reactor](#reactor-object) with the `id` provided. Returns [an error]
 
 ```shell
 curl "https://api.basistheory.com/reactors/5b493235-6917-4307-906a-2cd6f1a90b13" \
-  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
-  -H "Content-Type: application/json"
-  -X "PUT"
-  -D '{
+  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED" \
+  -H "Content-Type: application/json" \
+  -X "PUT" \
+  -d '{
     "name": "My Reactor",
     "configuration": {
       "SERVICE_API_KEY": "key_abcd1234"
@@ -344,7 +344,7 @@ Returns an [reactor](#reactor-object) if the reactor was updated. Returns [an er
 
 ```shell
 curl "https://api.basistheory.com/reactors/fb124bba-f90d-45f0-9a59-5edca27b3b4a" \
-  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
+  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED" \
   -X "DELETE"
 ```
 

@@ -67,10 +67,10 @@ Type | Description
 
 ```shell
 curl "https://api.basistheory.com/reactor-formulas" \
-  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
-  -H "Content-Type: application/json"
-  -X "POST"
-  -D '{
+  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED" \
+  -H "Content-Type: application/json" \
+  -X "POST" \
+  -d '{
     "name": "My Private Reactor",
     "description": "Securely reactor token for another token",
     "type": "private",
@@ -484,10 +484,10 @@ Returns an [reactor reactor](#reactor-formula-object) with the `id` provided. Re
 
 ```shell
 curl "https://api.basistheory.com/reator-formula/17069df1-80f4-439e-86a7-4121863e4678" \
-  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
-  -H "Content-Type: application/json"
-  -X "PUT"
-  -D '{
+  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED" \
+  -H "Content-Type: application/json" \
+  -X "PUT" \
+  -d '{
     "name": "My Private Reactor",
     "description": "Securely exchange token for another token",
     "type": "private",
@@ -705,7 +705,7 @@ Returns an [reactor formula](#reactor-formula-object) if the reactor reactor was
 
 ```shell
 curl "https://api.basistheory.com/reactor-formulas/17069df1-80f4-439e-86a7-4121863e4678" \
-  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
+  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED" \
   -X "DELETE"
 ```
 

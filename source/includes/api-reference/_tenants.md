@@ -75,10 +75,10 @@ Returns a [tenant](#tenant-object) for the provided `X-API-KEY`. Returns [an err
 
 ```shell
 curl "https://api.basistheory.com/tenants/self" \
-  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
-  -H "Content-Type: application/json"
-  -X "PUT"
-  -D '{
+  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED" \
+  -H "Content-Type: application/json" \
+  -X "PUT" \
+  -d '{
     "name": "My Example Tenant"
   }'
 ```
@@ -145,7 +145,7 @@ Returns a [tenant](#tenant-object) if the tenant was updated. Returns [an error]
 
 ```shell
 curl "https://api.basistheory.com/tenants/self" \
-  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
+  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED" \
   -X "DELETE"
 ```
 

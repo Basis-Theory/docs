@@ -48,10 +48,10 @@ Attribute | Type | Description
 
 ```shell
 curl "api.basistheory.com/atomic/cards" \
-  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
-  -H "Content-Type: application/json"
-  -X "POST"
-  -D '{
+  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED" \
+  -H "Content-Type: application/json" \
+  -X "POST" \
+  -d '{
     "card": {
       "number": "4242424242424242",
       "expiration_month": 12,
@@ -369,7 +369,7 @@ Returns an [atomic card](#atomic-card-object) with the `id` provided. Returns [a
 
 ```shell
 curl "api.basistheory.com/atomic/cards/c1e565009-1984-4638-8fca-dce8a82cc2af" \
-  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
+  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED" \
   -X "DELETE"
 ```
 
@@ -423,9 +423,9 @@ Returns [an error](#errors) if the atomic card failed to delete.
 
 ```shell
 curl "api.basistheory.com/atomic/cards/c1e565009-1984-4638-8fca-dce8a82cc2af/react" \
-  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
-  -X "POST"
-  -D '{
+  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED" \
+  -X "POST" \
+  -d '{
     "reactor_id": "5b493235-6917-4307-906a-2cd6f1a90b13",
     "request_paramters": {
       "REQUEST_PARAMETER_1": "Some request value"
@@ -508,7 +508,7 @@ Returns a [token](#token-object) with type of `card:reaction` if the atomic card
 
 ```shell
 curl "api.basistheory.com/atomic/cards/c1e565009-1984-4638-8fca-dce8a82cc2af/reaction/6c12a05d-99e3-4454-bdb0-2e6ff88ec5b0" \
-  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
+  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED" \
   -X "GET"
 ```
 
