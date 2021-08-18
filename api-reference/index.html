@@ -688,7 +688,7 @@
 <p>Correlation ID Example:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
+  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"bt-trace-id: aa5d3379-6385-4ef4-9fdb-ca1341572153"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">BasisTheory</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@basis-theory/basis-theory-js</span><span class="dl">'</span><span class="p">;</span>
 
@@ -1192,10 +1192,10 @@
 <p>Request</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/tenants/self"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
-  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
-  <span class="nt">-X</span> <span class="s2">"PUT"</span>
-  <span class="nt">-D</span> <span class="s1">'{
+  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">-X</span> <span class="s2">"PUT"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">'{
     "name": "My Example Tenant"
   }'</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">BasisTheory</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@basis-theory/basis-theory-js</span><span class="dl">'</span><span class="p">;</span>
@@ -1259,7 +1259,7 @@
 <p>Request</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/tenants/self"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
+  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span> <span class="se">\</span>
   <span class="nt">-X</span> <span class="s2">"DELETE"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">BasisTheory</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@basis-theory/basis-theory-js</span><span class="dl">'</span><span class="p">;</span>
 
@@ -1367,10 +1367,10 @@
 <p>Request</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/applications"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
-  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
-  <span class="nt">-X</span> <span class="s2">"POST"</span>
-  <span class="nt">-D</span> <span class="s1">'{
+  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">-X</span> <span class="s2">"POST"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">'{
     "name": "My Example App",
     "type": "server_to_server",
     "permissions": [
@@ -1656,10 +1656,10 @@
 <p>Request</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/applications/fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
+  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
-  <span class="nt">-X</span> <span class="s2">"PUT"</span>
-  <span class="nt">-D</span> <span class="s1">'{
+  <span class="nt">-X</span> <span class="s2">"PUT"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">'{
     "name": "My Example App",
     "permissions": [
       "application:read",
@@ -1771,7 +1771,7 @@
 <p>Request</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/applications/fb124bba-f90d-45f0-9a59-5edca27b3b4a/regenerate"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
+  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span> <span class="se">\</span>
   <span class="nt">-X</span> <span class="s2">"POST"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">BasisTheory</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@basis-theory/basis-theory-js</span><span class="dl">'</span><span class="p">;</span>
 
@@ -1842,7 +1842,7 @@
 <p>Request</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/applications/fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
+  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span> <span class="se">\</span>
   <span class="nt">-X</span> <span class="s2">"DELETE"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">BasisTheory</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@basis-theory/basis-theory-js</span><span class="dl">'</span><span class="p">;</span>
 
@@ -2066,10 +2066,10 @@
 <p>Request</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/reactor-formulas"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
-  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
-  <span class="nt">-X</span> <span class="s2">"POST"</span>
-  <span class="nt">-D</span> <span class="s1">'{
+  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">-X</span> <span class="s2">"POST"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">'{
     "name": "My Private Reactor",
     "description": "Securely reactor token for another token",
     "type": "private",
@@ -2521,10 +2521,10 @@
 <p>Request</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/reator-formula/17069df1-80f4-439e-86a7-4121863e4678"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
-  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
-  <span class="nt">-X</span> <span class="s2">"PUT"</span>
-  <span class="nt">-D</span> <span class="s1">'{
+  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">-X</span> <span class="s2">"PUT"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">'{
     "name": "My Private Reactor",
     "description": "Securely exchange token for another token",
     "type": "private",
@@ -2793,7 +2793,7 @@
 <p>Request</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/reactor-formulas/17069df1-80f4-439e-86a7-4121863e4678"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
+  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span> <span class="se">\</span>
   <span class="nt">-X</span> <span class="s2">"DELETE"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">BasisTheory</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@basis-theory/basis-theory-js</span><span class="dl">'</span><span class="p">;</span>
 
@@ -2885,10 +2885,10 @@
 <p>Request</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/reactors"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
-  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
-  <span class="nt">-X</span> <span class="s2">"POST"</span>
-  <span class="nt">-D</span> <span class="s1">'{
+  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">-X</span> <span class="s2">"POST"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">'{
     "name": "My Reactor",
     "configuration": {
       "SERVICE_API_KEY": "key_abcd1234"
@@ -3132,10 +3132,10 @@
 <p>Request</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/reactors/5b493235-6917-4307-906a-2cd6f1a90b13"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
-  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
-  <span class="nt">-X</span> <span class="s2">"PUT"</span>
-  <span class="nt">-D</span> <span class="s1">'{
+  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">-X</span> <span class="s2">"PUT"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">'{
     "name": "My Reactor",
     "configuration": {
       "SERVICE_API_KEY": "key_abcd1234"
@@ -3239,7 +3239,7 @@
 <p>Request</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/reactors/fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
+  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span> <span class="se">\</span>
   <span class="nt">-X</span> <span class="s2">"DELETE"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">BasisTheory</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@basis-theory/basis-theory-js</span><span class="dl">'</span><span class="p">;</span>
 
@@ -3420,10 +3420,10 @@
 <p>Request</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/tokens"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
-  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
-  <span class="nt">-X</span> <span class="s2">"POST"</span>
-  <span class="nt">-D</span> <span class="s1">'{
+  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">-X</span> <span class="s2">"POST"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">'{
     "type": "token",
     "data": "ebSG3IohNmg5gTOjN2HBwBbhjDZ6BY3fCWZJfXSucVMfQ+7YNMXQYrPuRSXgSkhuTMYS+BNfVUur4qZSvUbgCA==",
     "metadata": {
@@ -3990,7 +3990,7 @@ Token types other than <code>token</code> or non-BasisTheory encrypted tokens wi
 <p>Request</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/tokens/c06d0789-0a38-40be-b7cc-c28a718f76f1"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
+  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span> <span class="se">\</span>
   <span class="nt">-X</span> <span class="s2">"DELETE"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">BasisTheory</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@basis-theory/basis-theory-js</span><span class="dl">'</span><span class="p">;</span>
 
@@ -4044,8 +4044,8 @@ Token types other than <code>token</code> or non-BasisTheory encrypted tokens wi
 <p>Request</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/tokens/c06d0789-0a38-40be-b7cc-c28a718f76f1/children/c1e565009-1984-4638-8fca-dce8a82cc2af"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
-  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
+  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   <span class="nt">-X</span> <span class="s2">"POST"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">BasisTheory</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@basis-theory/basis-theory-js</span><span class="dl">'</span><span class="p">;</span>
 
@@ -4106,8 +4106,8 @@ Token types other than <code>token</code> or non-BasisTheory encrypted tokens wi
 <p>Request</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/tokens/c06d0789-0a38-40be-b7cc-c28a718f76f1/children/c1e565009-1984-4638-8fca-dce8a82cc2af"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
-  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
+  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   <span class="nt">-X</span> <span class="s2">"DELETE"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">BasisTheory</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@basis-theory/basis-theory-js</span><span class="dl">'</span><span class="p">;</span>
 
@@ -4164,10 +4164,10 @@ Token types other than <code>token</code> or non-BasisTheory encrypted tokens wi
 <p>Request</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/tokens/c06d0789-0a38-40be-b7cc-c28a718f76f1/children"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
-  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
-  <span class="nt">-X</span> <span class="s2">"POST"</span>
-  <span class="nt">-D</span> <span class="s1">'{
+  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">-X</span> <span class="s2">"POST"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">'{
     "type": "token",
     "data": "ebSG3IohNmg5gTOjN2HBwBbhjDZ6BY3fCWZJfXSucVMfQ+7YNMXQYrPuRSXgSkhuTMYS+BNfVUur4qZSvUbgCA==",
     "metadata": {
@@ -4603,10 +4603,10 @@ Token types other than <code>token</code> or non-BasisTheory encrypted tokens wi
 <p>Request</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.basistheory.com/atomic/cards"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
-  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
-  <span class="nt">-X</span> <span class="s2">"POST"</span>
-  <span class="nt">-D</span> <span class="s1">'{
+  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">-X</span> <span class="s2">"POST"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">'{
     "card": {
       "number": "4242424242424242",
       "expiration_month": 12,
@@ -4915,7 +4915,7 @@ Token types other than <code>token</code> or non-BasisTheory encrypted tokens wi
 <p>Request</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.basistheory.com/atomic/cards/c1e565009-1984-4638-8fca-dce8a82cc2af"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
+  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span> <span class="se">\</span>
   <span class="nt">-X</span> <span class="s2">"DELETE"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">BasisTheory</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@basis-theory/basis-theory-js</span><span class="dl">'</span><span class="p">;</span>
 
@@ -4967,9 +4967,9 @@ Token types other than <code>token</code> or non-BasisTheory encrypted tokens wi
 <p>Request</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.basistheory.com/atomic/cards/c1e565009-1984-4638-8fca-dce8a82cc2af/react"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
-  <span class="nt">-X</span> <span class="s2">"POST"</span>
-  <span class="nt">-D</span> <span class="s1">'{
+  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span> <span class="se">\</span>
+  <span class="nt">-X</span> <span class="s2">"POST"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">'{
     "reactor_id": "5b493235-6917-4307-906a-2cd6f1a90b13",
     "request_paramters": {
       "REQUEST_PARAMETER_1": "Some request value"
@@ -5075,7 +5075,7 @@ Token types other than <code>token</code> or non-BasisTheory encrypted tokens wi
 <p>Request</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.basistheory.com/atomic/cards/c1e565009-1984-4638-8fca-dce8a82cc2af/reaction/6c12a05d-99e3-4454-bdb0-2e6ff88ec5b0"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
+  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span> <span class="se">\</span>
   <span class="nt">-X</span> <span class="s2">"GET"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">BasisTheory</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@basis-theory/basis-theory-js</span><span class="dl">'</span><span class="p">;</span>
 
@@ -5265,10 +5265,10 @@ Token types other than <code>token</code> or non-BasisTheory encrypted tokens wi
 <p>Request</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/atomic/banks"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
-  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
-  <span class="nt">-X</span> <span class="s2">"POST"</span>
-  <span class="nt">-D</span> <span class="s1">'{
+  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">-X</span> <span class="s2">"POST"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">'{
       "bank": {
         "routing_number": "021000021",
         "account_number": "1234567890"
@@ -5484,7 +5484,7 @@ Token types other than <code>token</code> or non-BasisTheory encrypted tokens wi
 <p>Request</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/atomic/banks/1485efb9-6b1f-4248-a5d1-cf9b3907164c"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
+  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span> <span class="se">\</span>
   <span class="nt">-X</span> <span class="s2">"DELETE"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">BasisTheory</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@basis-theory/basis-theory-js</span><span class="dl">'</span><span class="p">;</span>
 
@@ -5604,9 +5604,9 @@ Token types other than <code>token</code> or non-BasisTheory encrypted tokens wi
 <p>Request</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.basistheory.com/atomic/banks/1485efb9-6b1f-4248-a5d1-cf9b3907164c/react"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
-  <span class="nt">-X</span> <span class="s2">"POST"</span>
-  <span class="nt">-D</span> <span class="s1">'{
+  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span> <span class="se">\</span>
+  <span class="nt">-X</span> <span class="s2">"POST"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">'{
     "reactor_id": "5b493235-6917-4307-906a-2cd6f1a90b13",
     "request_paramters": {
       "REQUEST_PARAMETER_1": "Some request value"
@@ -5712,7 +5712,7 @@ Token types other than <code>token</code> or non-BasisTheory encrypted tokens wi
 <p>Request</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"api.basistheory.com/atomic/banks/1485efb9-6b1f-4248-a5d1-cf9b3907164c/reaction/6c12a05d-99e3-4454-bdb0-2e6ff88ec5b0"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
+  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span> <span class="se">\</span>
   <span class="nt">-X</span> <span class="s2">"GET"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">BasisTheory</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@basis-theory/basis-theory-js</span><span class="dl">'</span><span class="p">;</span>
 
