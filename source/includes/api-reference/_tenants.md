@@ -145,7 +145,7 @@ Returns a [tenant](#tenant-object) if the tenant was updated. Returns [an error]
 
 ```shell
 curl "https://api.basistheory.com/tenants/self" \
-  -H "X-API-KEY: key_5PVNdtj1sP6eQXfbjqCEkF" \
+  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED" \
   -X "DELETE"
 ```
 
