@@ -75,7 +75,7 @@ Returns a [tenant](#tenant-object) for the provided `X-API-KEY`. Returns [an err
 
 ```shell
 curl "https://api.basistheory.com/tenants/self" \
-  -H "X-API-KEY: key_2dqyZcmLHY8Z4ZFii78MnU" \
+  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED" \
   -H "Content-Type: application/json" \
   -X "PUT" \
   -d '{

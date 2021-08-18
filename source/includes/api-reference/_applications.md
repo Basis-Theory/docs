@@ -33,7 +33,7 @@ Management | `management` | Used for managing all aspects of your token infrastr
 
 ```shell
 curl "https://api.basistheory.com/applications" \
-  -H "X-API-KEY: key_2dqyZcmLHY8Z4ZFii78MnU" \
+  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED" \
   -H "Content-Type: application/json" \
   -X "POST" \
   -d '{
