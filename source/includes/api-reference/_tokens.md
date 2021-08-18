@@ -46,10 +46,10 @@ Bank Reaction | `bank:reaction` | This token type is the resulting token type of
 
 ```shell
 curl "https://api.basistheory.com/tokens" \
-  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
-  -H "Content-Type: application/json"
-  -X "POST"
-  -D '{
+  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED" \
+  -H "Content-Type: application/json" \
+  -X "POST" \
+  -d '{
     "type": "token",
     "data": "ebSG3IohNmg5gTOjN2HBwBbhjDZ6BY3fCWZJfXSucVMfQ+7YNMXQYrPuRSXgSkhuTMYS+BNfVUur4qZSvUbgCA==",
     "metadata": {
@@ -524,7 +524,7 @@ Token types other than `token` or non-BasisTheory encrypted tokens will not be d
 
 ```shell
 curl "https://api.basistheory.com/tokens/c06d0789-0a38-40be-b7cc-c28a718f76f1" \
-  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
+  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED" \
   -X "DELETE"
 ```
 

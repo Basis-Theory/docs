@@ -26,10 +26,10 @@ Attribute | Type | Description
 
 ```shell
 curl "https://api.basistheory.com/atomic/banks" \
-  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
-  -H "Content-Type: application/json"
-  -X "POST"
-  -D '{
+  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED" \
+  -H "Content-Type: application/json" \
+  -X "POST" \
+  -d '{
       "bank": {
         "routing_number": "021000021",
         "account_number": "1234567890"
@@ -260,7 +260,7 @@ Returns an [atomic bank](#atomic-bank-object) with the `id` provided. Returns [a
 
 ```shell
 curl "https://api.basistheory.com/atomic/banks/1485efb9-6b1f-4248-a5d1-cf9b3907164c" \
-  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
+  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED" \
   -X "DELETE"
 ```
 
@@ -385,9 +385,9 @@ Returns an [atomic bank](#atomic-bank-object) with plaintext [bank](#bank-object
 
 ```shell
 curl "api.basistheory.com/atomic/banks/1485efb9-6b1f-4248-a5d1-cf9b3907164c/react" \
-  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
-  -X "POST"
-  -D '{
+  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED" \
+  -X "POST" \
+  -d '{
     "reactor_id": "5b493235-6917-4307-906a-2cd6f1a90b13",
     "request_paramters": {
       "REQUEST_PARAMETER_1": "Some request value"
@@ -470,7 +470,7 @@ Returns a [token](#token-object) with type of `bank:reaction` if the atomic bank
 
 ```shell
 curl "api.basistheory.com/atomic/banks/1485efb9-6b1f-4248-a5d1-cf9b3907164c/reaction/6c12a05d-99e3-4454-bdb0-2e6ff88ec5b0" \
-  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
+  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED" \
   -X "GET"
 ```
 

@@ -33,10 +33,10 @@ Management | `management` | Used for managing all aspects of your token infrastr
 
 ```shell
 curl "https://api.basistheory.com/applications" \
-  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
-  -H "Content-Type: application/json"
-  -X "POST"
-  -D '{
+  -H "X-API-KEY: key_2dqyZcmLHY8Z4ZFii78MnU" \
+  -H "Content-Type: application/json" \
+  -X "POST" \
+  -d '{
     "name": "My Example App",
     "type": "server_to_server",
     "permissions": [
@@ -334,10 +334,10 @@ Returns a [application](#application-object) for the provided `X-API-KEY`. Retur
 
 ```shell
 curl "https://api.basistheory.com/applications/fb124bba-f90d-45f0-9a59-5edca27b3b4a" \
-  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
+  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED" \
   -H "Content-Type: application/json"
-  -X "PUT"
-  -D '{
+  -X "PUT" \
+  -d '{
     "name": "My Example App",
     "permissions": [
       "application:read",
@@ -434,7 +434,7 @@ Returns an [application](#application-object) if the application was updated. Re
 
 ```shell
 curl "https://api.basistheory.com/applications/fb124bba-f90d-45f0-9a59-5edca27b3b4a/regenerate" \
-  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
+  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED" \
   -X "POST"
 ```
 
@@ -508,7 +508,7 @@ Returns an [application](#application-object) with the new `key` property popula
 
 ```shell
 curl "https://api.basistheory.com/applications/fb124bba-f90d-45f0-9a59-5edca27b3b4a" \
-  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
+  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED" \
   -X "DELETE"
 ```
 
