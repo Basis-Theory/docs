@@ -77,6 +77,14 @@ Attribute | Required | Type           | Description
 `style`   | false    | *ElementStyle* | [Object](#element-style) used to customize the element appearance
 
 
+## Clear Element
+
+```jsx
+cardElement.clear();
+```
+
+Clears the element input values.
+
 ## Unmount Element
 
 ```jsx
