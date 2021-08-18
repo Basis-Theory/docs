@@ -27,7 +27,7 @@
         <img src="./images/card/api-reference-header-link.svg">
         <div class="container">
           <h4>API</h4>
-          <p>Protect your sensitive data and start enriching it with our API and SDKs</p>
+          <p>Protect your sensitive data and start enriching it with our API and SDKs.</p>
         </div>
       </div>
     </a>

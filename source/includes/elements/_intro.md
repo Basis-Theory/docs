@@ -5,7 +5,7 @@
         <p class="header-intro-body2-font">Explore how to quickly start using our elements to tokenize anything.</p>
         <h6>QUICK LINKS</h6>
         <span class="intro-quick-links">
-            <a href="#getting-started">Before you begin</a>
+            <a href="#getting-started">Before You Begin</a>
             <a href="#element-style">Styling Elements</a>
             <a href="#create-element">Create an Element</a>
             <a href="#store-credit-card">Store Credit Card</a>

@@ -5,7 +5,7 @@
         <p class="header-intro-body2-font">Explore examples and guides to quickly start tokenizing anything.</p>
         <h6>QUICK LINKS</h6>
         <span class="intro-quick-links">
-            <a href="#getting-started">Before you begin</a>
+            <a href="#getting-started">Before You Begin</a>
             <a href="#create-token">Creating Tokens</a>
             <a href="#applications">Applications</a>
             <a href="#permissions">API Keys</a>

@@ -1,5 +1,5 @@
 # Getting started
-## Before you begin
+## Before You Begin
 ### If you don't have an account
 
 Currently, Basis Theory is in private beta, you can join our waitlist at https://basistheory.com and we will let you know when we are accepting new applicants.
@@ -22,6 +22,6 @@ npm install --save @basis-theory/basis-theory-js
 dotnet add package BasisTheory.net 
 ```
 
-Our SDK's enable you to quickly and easily integrate with the API. Select one of the language tabs to see instructions on how to install the SDK and code examples in that language.
+Our SDK's enable you to quickly and easily integrate with the API. Select one of the language tabs to see instructions on how to install the SDK and view code examples in that language.
 
 If you don't see your language listed, <a href="mailto:support@basistheory.com?subject=API SDK Language Support">contact us</a> about getting an official SDK added in your preferred language.

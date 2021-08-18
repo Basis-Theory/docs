@@ -1,6 +1,6 @@
 # Permissions
 
-Permissions are fine-grained control over your application's access to different aspects of your token infrastructure. We suggest limiting the scope of your application to the least amount possible, and to not share them across your internal applications.
+Permissions offer fine-grained control over your application's access to different aspects of your token infrastructure. We suggest limiting the scope of your application to the least amount possible, and to not share them across your internal applications.
 
 Permissions are associated with every application and can be configured when you [create an application](/api-reference#create-application) or [update an application](/api-reference#update-application). 
 

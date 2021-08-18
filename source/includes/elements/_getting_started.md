@@ -1,5 +1,5 @@
 # Getting started
-## Before you begin
+## Before You Begin
 ### If you don't have an account
 
 Currently, Basis Theory is in private beta, you can join our waitlist at https://basistheory.com and we will let you know when we are accepting new applicants.
