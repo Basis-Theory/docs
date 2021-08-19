@@ -1,17 +1,17 @@
 # Tenants
 
-Tenants provide a way to logically group your applications and tokens. Common use cases for tenants may be per environment such as development, QA, and production or to isolate business domains from each other. Tenant data is isolated from each other unless explicitely shared.
+Tenants provide a way to logically group your Applications and tokens. Common use cases for Tenants may be per environment such as development, QA, and production or to isolate business domains from each other. Tenant data is isolated from each other unless explicitly shared.
 
 
 ## Tenant Object
 
 Attribute | Type | Description
 --------- | ---- | -----------
-`id` | *uuid* | Unique identifier of the tenant
-`owner_id` | *uuid* | The user ID which owns the tenant
-`name` | *string* | The name of the tenant
-`created_at` | *date* | Created date of the application in ISO 8601 format
-`modified_at` | *date* | Last modified date of the application in ISO 8601 format
+`id` | *uuid* | Unique identifier of the Tenants
+`owner_id` | *uuid* | The user ID which owns the Tenants
+`name` | *string* | The name of the Tenants
+`created_at` | *date* | Created date of the Tenant in ISO 8601 format
+`modified_at` | *date* | Last modified date of the Tenant in ISO 8601 format
 
 
 ## Get a Tenant
@@ -56,7 +56,7 @@ var tenant = await client.GetSelfAsync();
   `https://api.basistheory.com/tenants/self`
 </span>
 
-Retrieves the tenant associated with the provided `X-API-KEY`.
+Retrieves the Tenant associated with the provided `X-API-KEY`.
 
 ### Permissions
 
@@ -66,7 +66,7 @@ Retrieves the tenant associated with the provided `X-API-KEY`.
 
 ### Response
 
-Returns a [tenant](#tenant-object) for the provided `X-API-KEY`. Returns [an error](#errors) if the tenant could not be retrieved.
+Returns a [Tenants](#tenant-object) for the provided `X-API-KEY`. Returns [an error](#errors) if the Tenant could not be retrieved.
 
 
 ## Update Tenant
@@ -120,7 +120,7 @@ var tenant = await client.UpdateAsync(new Tenant {
   `https://api.basistheory.com/tenants/self`
 </span>
 
-Update the tenant associated with the provided `X-API-KEY`.
+Update the Tenant associated with the provided `X-API-KEY`.
 
 ### Permissions
 
@@ -132,11 +132,11 @@ Update the tenant associated with the provided `X-API-KEY`.
 
 Attribute | Required | Type | Default | Description
 --------- | -------- | ---- | ------- | -----------
-`name` | true | *string* | `null` | The name of the tenant. Has a maximum length of `200`
+`name` | true | *string* | `null` | The name of the Tenant. Has a maximum length of `200`
 
 ### Response
 
-Returns a [tenant](#tenant-object) if the tenant was updated. Returns [an error](#errors) if there were validation errors or the tenant failed to update.
+Returns a [tenant](#tenant-object) if the Tenant was updated. Returns [an error](#errors) if there were validation errors, or the Tenant failed to update.
 
 
 ## Delete Tenant
@@ -170,7 +170,7 @@ await client.DeleteAsync();
   `https://api.basistheory.com/tenants/self`
 </span>
 
-Delete the tenant associated with the provided `X-API-KEY`.
+Delete the Tenant associated with the provided `X-API-KEY`.
 
 ### Permissions
 
@@ -178,4 +178,4 @@ Delete the tenant associated with the provided `X-API-KEY`.
 
 ### Response
 
-Returns [an error](#errors) if the tenant failed to delete.
+Returns [an error](#errors) if the Tenant failed to delete.

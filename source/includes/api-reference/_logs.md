@@ -4,8 +4,8 @@
 
 Attribute | Type | Description
 --------- | ---- | -----------
-`tenant_id` | *uuid* | The [tenant](#tenants) ID which owns the entity
-`application_id` | *uuid* | The [application](#applications) ID which performed the operation
+`tenant_id` | *uuid* | The [Tenant](#tenants) ID which owns the entity
+`application_id` | *uuid* | The [Application](#applications) ID which performed the operation
 `entity_type` | *string* | The entity type of the log
 `entity_id` | *string* | The unique identifier of the `entity_type`
 `operation` | *string* | The log operation (e.g. create, update, read, delete)
@@ -64,7 +64,7 @@ var logs = await client.GetAsync();
   `https://api.basistheory.com/logs`
 </span>
 
-Get a list of logs for the tenant.
+Get a list of logs for the Tenant.
 
 ### Permissions
 

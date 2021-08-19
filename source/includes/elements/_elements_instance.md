@@ -52,7 +52,7 @@ Parameter  | Required | Type     | Description
 </aside>
 
 <aside class="warning">
-  <span>If the application key used to initialize `BasisTheory` doesn't exist or doesn't have the required <a href="#permissions">permissions</a>, an error will be thrown by this method.</span>
+  <span>If the Application key used to initialize `BasisTheory` doesn't exist or doesn't have the required <a href="#permissions">permissions</a>, an error will be thrown by this method.</span>
 </aside>
 
 ## Update Element

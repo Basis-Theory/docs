@@ -4,14 +4,14 @@
 
 Attribute | Type | Description
 --------- | ---- | -----------
-`id` | *uuid* | Unique identifier of the token which can be used to [get an atomic card](#get-an-atomic-card)
-`tenant_id` | *uuid* | The [tenant](#tenants) ID which owns the card
+`id` | *uuid* | Unique identifier of the token which can be used to [get an Atomic Card](#get-an-atomic-card)
+`tenant_id` | *uuid* | The [Tenant](#tenants) ID which owns the card
 `type` | *string* | `Card` [token type](#token-types)
 `card` | *[card](#card-object)* | Card data
 `billing_details` | *[billing details](#billing-details-object)* | Billing details
 `metadata` | *map* | A key-value map of non-sensitive data.
-`created_by` | *uuid* | The [application](#applications) ID which created the atomic card
-`created_at` | *date* | Created date of the application in ISO 8601 format
+`created_by` | *uuid* | The [application](#applications) ID which created the Atomic Card
+`created_at` | *date* | Created date of the Atomic Card in ISO 8601 format
 
 ### Card Object
 
@@ -177,7 +177,7 @@ var atomicCard = await client.CreateAsync(new AtomicCard {
   `https://api.basistheory.com/atomic/cards`
 </span>
 
-Create a new atomic card for the tenant.
+Create a new Atomic Card for the Tenant.
 
 ### Permissions
 
@@ -195,7 +195,7 @@ Attribute | Required | Type | Default | Description
 
 ### Response
 
-Returns an [atomic card](#atomic-card-object) with masked [card data](#card-object) if the atomic card was created. Returns [an error](#errors) if there were validation errors or the atomic card failed to create.
+Returns an [Atomic Card](#atomic-card-object) with masked [card data](#card-object) if the Atomic Card was created. Returns [an error](#errors) if there were validation errors, or the Atomic Card failed to create.
 
 
 ## List Atomic Cards
@@ -268,7 +268,7 @@ var atomicCards = await client.GetAsync();
   `https://api.basistheory.com/atomic/cards`
 </span>
 
-Get a list of atomic cards for the tenant.
+Get a list of Atomic Cards for the Tenant.
 
 ### Permissions
 
@@ -278,7 +278,7 @@ Get a list of atomic cards for the tenant.
 
 ### Response
 
-Returns a [paginated object](#pagination) with the `data` property containing an array of [atomic cards](#atomic-card-object). Providing any query parameters will filter the results. Returns [an error](#errors) if atomic cards could not be retrieved.
+Returns a [paginated object](#pagination) with the `data` property containing an array of [Atomic Cards](#atomic-card-object). Providing any query parameters will filter the results. Returns [an error](#errors) if Atomic Cards could not be retrieved.
 
 
 ## Get an Atomic Card
@@ -344,7 +344,7 @@ var atomicCard = await client.GetByIdAsync("c1e565009-1984-4638-8fca-dce8a82cc2a
   `https://api.basistheory.com/atomic/cards/{id}`
 </span>
 
-Get an atomic card by ID in the tenant.
+Get an Atomic Card by ID in the Tenant.
 
 ### Permissions
 
@@ -356,11 +356,11 @@ Get an atomic card by ID in the tenant.
 
 Parameter | Required | Type | Default | Description
 --------- | -------- | ---- | ------- | -----------
-`id` | true | *uuid* | `null` | The ID of the atomic card
+`id` | true | *uuid* | `null` | The ID of the Atomic Card
 
 ### Response
 
-Returns an [atomic card](#atomic-card-object) with the `id` provided. Returns [an error](#errors) if the atomic card could not be retrieved.
+Returns an [Atomic Card](#atomic-card-object) with the `id` provided. Returns [an error](#errors) if the Atomic Card could not be retrieved.
 
 
 ## Delete Atomic Card
@@ -394,10 +394,10 @@ await client.DeleteAsync("c1e565009-1984-4638-8fca-dce8a82cc2af");
   `https://api.basistheory.com/atomic/cards/{id}`
 </span>
 
-Delete an atomic card by ID in the tenant.
+Delete an Atomic Card by ID in the Tenant.
 
 <aside class="warning">
-<span>WARNING - The data associated with a deleted atomic card will be removed forever. The reference will still exists for audit purposes</span>
+<span>WARNING - The data associated with a deleted Atomic Card will be removed forever. The reference will still exists for audit purposes</span>
 </aside>
 
 ### Permissions
@@ -410,11 +410,11 @@ Delete an atomic card by ID in the tenant.
 
 Parameter | Required | Type | Default | Description
 --------- | -------- | ---- | ------- | -----------
-`id` | true | *uuid* | `null` | The ID of the atomic card
+`id` | true | *uuid* | `null` | The ID of the Atomic Card
 
 ### Response
 
-Returns [an error](#errors) if the atomic card failed to delete.
+Returns [an error](#errors) if the Atomic Card failed to delete.
 
 
 ## Create an Atomic Card Reaction
@@ -427,7 +427,7 @@ curl "api.basistheory.com/atomic/cards/c1e565009-1984-4638-8fca-dce8a82cc2af/rea
   -X "POST" \
   -d '{
     "reactor_id": "5b493235-6917-4307-906a-2cd6f1a90b13",
-    "request_paramters": {
+    "request_parameters": {
       "REQUEST_PARAMETER_1": "Some request value"
     },
     "metadata": {
@@ -474,7 +474,7 @@ var reactionToken = await client.ReactAsync("c1e565009-1984-4638-8fca-dce8a82cc2
   `https://api.basistheory.com/atomic/cards/{id}/react`
 </span>
 
-Create an Atomic Card Reaction by ID in the tenant.
+Create an Atomic Card Reaction by ID in the Tenant.
 
 ### Permissions
 
@@ -488,7 +488,7 @@ Create an Atomic Card Reaction by ID in the tenant.
 
 Parameter | Required | Type | Default | Description
 --------- | -------- | ---- | ------- | -----------
-`id` | true | *uuid* | `null` | The ID of the atomic card
+`id` | true | *uuid* | `null` | The ID of the Atomic Card
 
 ### Request Parameters
 Parameter | Required | Type | Default | Description
@@ -499,7 +499,7 @@ Parameter | Required | Type | Default | Description
 
 ### Response
 
-Returns a [token](#token-object) with type of `card:reaction` if the atomic card was reacted. Returns [an error](#errors) if the atomic card failed to react.
+Returns a [token](#token-object) with type of `card:reaction` if the Atomic Card was reacted. Returns [an error](#errors) if the Atomic Card failed to react.
 
 
 ## Get an Atomic Card Reaction Token
@@ -535,7 +535,7 @@ var reactionToken = await client.GetReactionByIdAsync(
   `https://api.basistheory.com/atomic/cards/{atomicCardId}/reaction/{reactionTokenId}`
 </span>
 
-Get an atomic card reaction token by ID in the tenant.
+Get an Atomic Card reaction token by ID in the Tenant.
 
 ### Permissions
 
@@ -547,17 +547,17 @@ Get an atomic card reaction token by ID in the tenant.
 
 Parameter | Required | Type | Default | Description
 --------- | -------- | ---- | ------- | -----------
-`atomicCardId` | true | *uuid* | `null` | The ID of the atomic card
+`atomicCardId` | true | *uuid* | `null` | The ID of the Atomic Card
 `reactionTokenId` | true | *uuid* | `null` | The ID of the reaction token
 
 ### Response
 
-Returns a [token](#token-object) with type of `card:reaction`. Returns [an error](#errors) if the atomic card failed to reacted.
+Returns a [token](#token-object) with type of `card:reaction`. Returns [an error](#errors) if the Atomic Card failed to react.
 
 
 ## Test Cards
 
-To enable testing of atomic cards, we've implemented a list of acceptable test card numbers to ensure you are able to test with non-sensitive data.  
+To enable testing of Atomic Cards, we've implemented a list of acceptable test card numbers to ensure you are able to test with non-sensitive data.  
 
 <aside class="warning">
 <span>WARNING - while testing our system, these card numbers will be the only accepted cards available to test with.</span>

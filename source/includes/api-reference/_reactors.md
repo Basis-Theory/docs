@@ -5,13 +5,13 @@
 
 Attribute | Type | Description
 --------- | ---- | -----------
-`id` | *uuid* | Unique identifier of the reactor which can be used to [get a reactor](#get-an-reactor)
-`tenant_id` | *uuid* | The [tenant](#tenants) ID which owns the reactor
+`id` | *uuid* | Unique identifier of the Reactor which can be used to [get a Reactor](#get-an-reactor)
+`tenant_id` | *uuid* | The [Tenant](#tenants) ID which owns the reactor
 `name` | *string* | The name of the reactor
-`formula` | *[reactor formula](#reactor-formla-object)* | Reactor formula this reactor is configured for
-`configuration` | *map* | A key-value map of all configuration name and values for an [reactor formula configuration](#reactor-formula-configuration-object)
-`created_at` | *string* | Created date of the reactor in ISO 8601 format
-`modified_at` | *string* | Last modified date of the reactor in ISO 8601 format
+`formula` | *[Reactor Formula](#reactor-formla-object)* | Reactor Formula this Reactor is configured for
+`configuration` | *map* | A key-value map of all configuration name and values for an [Reactor Formula configuration](#reactor-formula-configuration-object)
+`created_at` | *string* | Created date of the Reactor in ISO 8601 format
+`modified_at` | *string* | Last modified date of the Reactor in ISO 8601 format
 
 
 ## Create Reactor
@@ -86,7 +86,7 @@ var reactor = await client.CreateAsync(new Reactor {
   `https://api.basistheory.com/reactors`
 </span>
 
-Create a new reactor from a reactor formula for the tenant.
+Create a new Reactor from a Reactor Formula for the Tenant.
 
 ### Permissions
 
@@ -99,12 +99,12 @@ Create a new reactor from a reactor formula for the tenant.
 Attribute | Required | Type | Default | Description
 --------- | -------- | ---- | ------- | -----------
 `name` | true | *string* | `null` | The name of the reactor. Has a maximum length of `200`
-`configuration` | true | *object* | `null` | A key-value map of all configuration name and values for an [reactor formula configuration](#reactor-formula-configuration-object)
-`formula.id` | true | *uuid* | `null` | Unique identifier of the [reactor formula](#reactor-formula-object) to configure a reactor for
+`configuration` | true | *object* | `null` | A key-value map of all configuration name and values for an [Reactor Formula configuration](#reactor-formula-configuration-object)
+`formula.id` | true | *uuid* | `null` | Unique identifier of the [Reactor Formula](#reactor-formula-object) to configure a Reactor for
 
 ### Response
 
-Returns an [reactor](#reactor-object) if the reactor was created. Returns [an error](#errors) if there were validation errors or the reactor failed to create.
+Returns an [reactor](#reactor-object) if the Reactor was created. Returns [an error](#errors) if there were validation errors, or the Reactor failed to create.
 
 
 ## List Reactors
@@ -160,7 +160,7 @@ var reactors = await client.GetAsync();
   `https://api.basistheory.com/reactors`
 </span>
 
-Get a list of reactors for the tenant.
+Get a list of reactors for the Tenant.
 
 ### Permissions
 
@@ -172,9 +172,9 @@ Get a list of reactors for the tenant.
 
 Parameter | Required | Type | Default | Description
 --------- | -------- | ---- | ------- | -----------
-`id` | false | *array* | `[]` | An optional list of reactor ID's to filter the list of reactors by
+`id` | false | *array* | `[]` | An optional list of Reactor ID's to filter the list of reactors by
 `name` | false | *string* | `null` | Wildcard search of reactors by name
-`source_token_type` | false | *string* | `null` | Filter reactors by reactor formulas [source token type](#token-types)
+`source_token_type` | false | *string* | `null` | Filter reactors by Reactor Formulas [source token type](#token-types)
 
 ### Response
 
@@ -227,7 +227,7 @@ var reactor = await client.GetByIdAsync("5b493235-6917-4307-906a-2cd6f1a90b13");
   `https://api.basistheory.com/reactors/{id}`
 </span> 
 
-Get a reactor by ID in the tenant.
+Get a Reactor by ID in the Tenant.
 
 ### Permissions
 
@@ -243,7 +243,7 @@ Parameter | Required | Type | Default | Description
 
 ### Response
 
-Returns an [reactor](#reactor-object) with the `id` provided. Returns [an error](#errors) if the reactor could not be retrieved.
+Returns an [reactor](#reactor-object) with the `id` provided. Returns [an error](#errors) if the Reactor could not be retrieved.
 
 
 ## Update Reactor
@@ -312,7 +312,7 @@ var reactor = await client.UpdateAsync("5b493235-6917-4307-906a-2cd6f1a90b13",
   `https://api.basistheory.com/reactors/{id}`
 </span>
 
-Update a reactor by ID in the tenant.
+Update a Reactor by ID in the Tenant.
 
 ### Permissions
 
@@ -331,11 +331,11 @@ Parameter | Required | Type | Default | Description
 Attribute | Required | Type | Default | Description
 --------- | -------- | ---- | ------- | -----------
 `name` | true | *string* | `null` | The name of the reactor. Has a maximum length of `200`
-`configuration` | true | *object* | `null` | A key-value map of all configuration name and values for an [reactor formula configuration](#reactor-formula-configuration-object)
+`configuration` | true | *object* | `null` | A key-value map of all configuration name and values for an [Reactor Formula configuration](#reactor-formula-configuration-object)
 
 ### Response
 
-Returns an [reactor](#reactor-object) if the reactor was updated. Returns [an error](#errors) if there were validation errors or the reactor failed to update.
+Returns an [reactor](#reactor-object) if the Reactor was updated. Returns [an error](#errors) if there were validation errors, or the Reactor failed to update.
 
 
 ## Delete Reactor
@@ -369,7 +369,7 @@ await client.DeleteAsync("fb124bba-f90d-45f0-9a59-5edca27b3b4a");
   `https://api.basistheory.com/reactors/{id}`
 </span>
 
-Delete a reactor by ID in the tenant.
+Delete a Reactor by ID in the Tenant.
 
 ### Permissions
 
@@ -383,4 +383,4 @@ Parameter | Required | Type | Default | Description
 
 ### Response
 
-Returns [an error](#errors) if the reactor failed to delete.
+Returns [an error](#errors) if the Reactor failed to delete.

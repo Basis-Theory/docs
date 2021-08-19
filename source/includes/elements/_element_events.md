@@ -8,7 +8,7 @@ var subscription = cardElement.on('event-type', (event) => {
 subscription.unsubscribe(); // stops listening to the event type
 ```
 
-You can communicate with elements by listening to events. When you subscribe to an event, you'll get back a <a href="https://rxjs.dev/guide/subscription" target="_blank">Subscription</a> that you can unsubscribe if/when it fits your workflow.
+You can communicate with Elements by listening to events. When you subscribe to an event, you'll get back a <a href="https://rxjs.dev/guide/subscription" target="_blank">Subscription</a> that you can unsubscribe if/when it fits your workflow.
 
 <aside class="notice">
   <span>Make sure to replace 'event-type' with an actual event type.</span>
@@ -64,7 +64,7 @@ Parameter | Required | Type       | Description
 Attribute  | Type       | Description
 ---------- | ---------- | -----------
 `complete` | *boolean*  | If the element value is well-formed and is ready to be submitted.
-`empty`    | *boolean*  | Whether the element is empty. Multi-input elements will be `empty` only if all inputs are.
+`empty`    | *boolean*  | Whether the element is empty. Multi-input Elements will be `empty` only if all inputs are.
 `errors`   | *array*    | Array of [FieldError](#fielderror).
 
 ### FieldError

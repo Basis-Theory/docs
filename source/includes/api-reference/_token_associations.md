@@ -1,6 +1,6 @@
 # Token Associations
 
-Token associations allow you to associate any two tokens, of any type, together. This allows you to create parent-child relationships between tokens and do token traversal between tokens.
+Token associations allow you to associate any two tokens, of any type, together. This allows you to create parent-child relationships between tokens and traverse between tokens.
 
 ## Create Token Association
 
@@ -36,7 +36,7 @@ await client.CreateAssociationAsync("c06d0789-0a38-40be-b7cc-c28a718f76f1",
   `https://api.basistheory.com/tokens/{parent_id}/children/{child_id}`
 </span>
 
-Create a new parent/child association between two tokens in the tenant.
+Create a new parent/child association between two tokens in the Tenants.
 
 ### Permissions
 
@@ -94,7 +94,7 @@ await client.DeleteAssociationAsync("c06d0789-0a38-40be-b7cc-c28a718f76f1",
   `https://api.basistheory.com/tokens/{parent_id}/children/{child_id}`
 </span>
 
-Delete a parent/child association between two tokens in the tenant.
+Delete a parent/child association between two tokens in the Tenant.
 
 ### Permissions
 
@@ -228,7 +228,7 @@ var token = await client.CreateChildAsync("c06d0789-0a38-40be-b7cc-c28a718f76f1"
   `https://api.basistheory.com/tokens/{parent_id}/children`
 </span>
 
-Create a new child token a token in the tenant.
+Create a new child token a token in the Tenant.
 
 ### Permissions
 
@@ -254,7 +254,7 @@ Attribute | Required | Type | Default | Description
 
 ### Response
 
-Returns a [token](#token-object) if the child token was created for the parent token. Returns [an error](#errors) if there were validation errors or the token failed to create.
+Returns a [token](#token-object) if the child token was created for the parent token. Returns [an error](#errors) if there were validation errors, or the token failed to create.
 
 
 ## List Child Tokens for a Token
@@ -324,7 +324,7 @@ var tokens = await client.GetChildrenAsync("c06d0789-0a38-40be-b7cc-c28a718f76f1
   `https://api.basistheory.com/tokens/{parent_id}/children`
 </span>
 
-Get a list of child tokens for a token in the tenant.
+Get a list of child tokens for a token in the Tenant.
 
 ### Permissions
 

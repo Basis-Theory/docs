@@ -1,20 +1,20 @@
 # Applications
 
-Your ability to authenticate to the API is granted by creating Applications, each application type has differnet usages to create the most fine-grained control over your tokens and infrastructure possible. Below, we describe each application type and their usages.
+Your ability to authenticate to the API is granted by creating Applications, each Application type has different usages to create the most fine-grained control over your tokens and infrastructure possible. Below, we describe each Application Type and their usages.
 
 
 ## Application Object
 
 Attribute | Type | Description
 --------- | ---- | -----------
-`id` | *uuid* | Unique identifier of the application which can be used to [get an application](#get-an-application)
-`tenant_id` | *uuid* | The [tenant](#tenants) ID which owns the application
-`name` | *string* | The name of the application
+`id` | *uuid* | Unique identifier of the Application which can be used to [get an Application](#get-an-application)
+`tenant_id` | *uuid* | The [Tenant](#tenants) ID which owns the Application
+`name` | *string* | The name of the Application
 `key` | *string* | The API key which should be used for authenticating against Basis Theory API endpoints
-`type` | *string* | [Application type](#application-types) of the application
-`permissions` | *array* | List of [permissions](#permission-types) for the application
-`created_at` | *date* | Created date of the application in ISO 8601 format
-`modified_at` | *date* | Last modified date of the application in ISO 8601 format
+`type` | *string* | [Application type](#application-types) of the Application
+`permissions` | *array* | List of [permissions](#permission-types) for the Application
+`created_at` | *date* | Created date of the Application in ISO 8601 format
+`modified_at` | *date* | Last modified date of the Application in ISO 8601 format
 
 
 ## Application Types
@@ -24,7 +24,7 @@ Name | Type | Description
 Server-to-Server | `server_to_server` | Used for tokenizing, retrieving, and decrypting data within backend services where the `API key` can be secured
 Public | `public` | Used for tokenizing data directly within your mobile or browser application
 Elements | `elements` | Used for tokenizing data with the Basis Theory Elements module 
-Management | `management` | Used for managing all aspects of your token infrastructure such as [creating an applications](#create-application)
+Management | `management` | Used for managing all aspects of your token infrastructure such as [creating an Applications](#create-application)
 
 
 ## Create Application
@@ -106,7 +106,7 @@ var application = await client.CreateAsync(new Application {
   `https://api.basistheory.com/applications`
 </span>
 
-Create a new application for the tenant.
+Create a new Application for the Tenant.
 
 ### Permissions
 
@@ -118,13 +118,13 @@ Create a new application for the tenant.
 
 Attribute | Required | Type | Default | Description
 --------- | -------- | ---- | ------- | -----------
-`name` | true | *string* | `null` | The name of the application. Has a maximum length of `200`
+`name` | true | *string* | `null` | The name of the Application. Has a maximum length of `200`
 `type` | true | *string* | `null` | [Application](#application-types) of the application
 `permissions` | false | *array* | `[]` | [Permissions](#permission-types) for the application
 
 ### Response
 
-Returns an [application](#application-object) if the application was created. Returns [an error](#errors) if there were validation errors or the application failed to create.
+Returns an [application](#application-object) if the application was created. Returns [an error](#errors) if there were validation errors, or the application failed to create.
 
 
 ## List Applications
@@ -183,7 +183,7 @@ var applications = await client.GetAsync();
   `https://api.basistheory.com/applications`
 </span>
 
-Get a list of applications for the tenant.
+Get a list of applications for the Tenant.
 
 ### Permissions
 
@@ -249,7 +249,7 @@ var application = await client.GetByIdAsync("fe1f9ba4-474e-44b9-b949-110cdba9d66
   `https://api.basistheory.com/applications/{id}`
 </span> 
 
-Get an application by ID in the tenant.
+Get an application by ID in the Tenant.
 
 ### Permissions
 
@@ -315,7 +315,7 @@ var application = await client.GetByKeyAsync();
   `https://api.basistheory.com/applications/key`
 </span>
 
-Get an application by key in the tenant. Will use the `X-API-KEY` header to lookup the application.
+Get an application by key in the Tenant. Will use the `X-API-KEY` header to lookup the application.
 
 ### Permissions
 
@@ -402,7 +402,7 @@ var application = await client.UpdateAsync("fb124bba-f90d-45f0-9a59-5edca27b3b4a
   `https://api.basistheory.com/applications/{id}`
 </span>
 
-Update an application by ID in the tenant.
+Update an application by ID in the Tenant.
 
 ### Permissions
 
@@ -425,7 +425,7 @@ Attribute | Required | Type | Default | Description
 
 ### Response
 
-Returns an [application](#application-object) if the application was updated. Returns [an error](#errors) if there were validation errors or the application failed to update.
+Returns an [application](#application-object) if the application was updated. Returns [an error](#errors) if there were validation errors, or the application failed to update.
 
 
 ## Regenerate API Key
@@ -499,7 +499,7 @@ Parameter | Required | Type | Default | Description
 
 ### Response
 
-Returns an [application](#application-object) with the new `key` property populated. Returns [an error](#errors) if there were validation errors or the application key failed to regenerate.
+Returns an [application](#application-object) with the new `key` property populated. Returns [an error](#errors) if there were validation errors, or the application key failed to regenerate.
 
 
 ## Delete Application
@@ -533,7 +533,7 @@ await client.DeleteAsync("fb124bba-f90d-45f0-9a59-5edca27b3b4a");
   `https://api.basistheory.com/applications/{id}`
 </span>
 
-Delete an application by ID in the tenant.
+Delete an application by ID in the Tenant.
 
 ### Permissions
 

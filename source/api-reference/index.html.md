@@ -25,16 +25,16 @@ intro_includes:
   - api-reference/errors
 
 api_includes:
+  - api-reference/applications  
+  - api-reference/atomic_banks
+  - api-reference/atomic_cards
+  - api-reference/logs  
   - api-reference/permissions
-  - api-reference/tenants
-  - api-reference/applications
   - api-reference/reactor_formulas
   - api-reference/reactors
+  - api-reference/tenants
   - api-reference/tokens
   - api-reference/token_associations
-  - api-reference/atomic_cards
-  - api-reference/atomic_banks
-  - api-reference/logs
 
 search: true
 

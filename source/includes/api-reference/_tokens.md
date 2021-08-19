@@ -5,13 +5,13 @@
 Attribute | Type | Description
 --------- | ---- | -----------
 `id` | *uuid* | Unique identifier of the token which can be used to [get a token](#get-a-token)
-`tenant_id` | *uuid* | The [tenant](#tenant-object) ID which owns the token
+`tenant_id` | *uuid* | The [Tenant](#tenant-object) ID which owns the token
 `type` | *string* | [Token type](#token-types)
 `data` | *any* | Token data
 `metadata` | *map* | A key-value map of non-sensitive data.
 `encryption` | *[encryption object](#encryption-object)* | Encryption metadata for an encrypted token data value
 `children` | *array* | Array of child tokens where this token is the parent in an [association](#token-associations)
-`created_by` | *uuid* | The [application](#application-object) ID which created the token
+`created_by` | *uuid* | The [Application](#application-object) ID which created the token
 `created_at` | *date* | Created date of the token in ISO 8601 format
 
 ### Encryption Object
@@ -152,7 +152,7 @@ var token = await client.CreateAsync(new Token {
   `https://api.basistheory.com/tokens`
 </span>
 
-Create a new token for the tenant.
+Create a new token for the Tenant.
 
 ### Permissions
 
@@ -181,7 +181,7 @@ Attribute | Required | Type | Default | Description
 
 ### Response
 
-Returns a [token](#token-object) if the token was created. Returns [an error](#errors) if there were validation errors or the token failed to create.
+Returns a [token](#token-object) if the token was created. Returns [an error](#errors) if there were validation errors, or the token failed to create.
 
 
 ## List Tokens
@@ -251,7 +251,7 @@ var tokens = await client.GetAsync();
   `https://api.basistheory.com/tokens`
 </span>
 
-Get a list of tokens for the tenant.
+Get a list of tokens for the Tenant.
 
 ### Permissions
 
@@ -330,7 +330,7 @@ var tokens = await client.GetAsync(new TokenGetRequest { Decrypt = true });
   `https://api.basistheory.com/tokens/decrypt`
 </span>
 
-Get a list of decrypted tokens for the tenant.
+Get a list of decrypted tokens for the Tenant.
 
 ### Permissions
 
@@ -414,7 +414,7 @@ var token = await client.GetByIdAsync("c06d0789-0a38-40be-b7cc-c28a718f76f1");
   `https://api.basistheory.com/tokens/{id}`
 </span>
 
-Get a token by ID in the tenant.
+Get a token by ID in the Tenant.
 
 ### Permissions
 
@@ -490,7 +490,7 @@ var token = await client.GetByIdAsync("c06d0789-0a38-40be-b7cc-c28a718f76f1", ne
   `https://api.basistheory.com/tokens/{id}/decrypt`
 </span>
 
-Get a decrypted token by ID in the tenant.
+Get a decrypted token by ID in the Tenant.
 
 ### Permissions
 
@@ -549,7 +549,7 @@ await client.DeleteAsync("c06d0789-0a38-40be-b7cc-c28a718f76f1");
   `https://api.basistheory.com/tokens/{id}`
 </span>
 
-Delete a token by ID in the tenant.
+Delete a token by ID in the Tenant.
 
 <aside class="warning">
   <span>WARNING - The data associated with a deleted token will be removed forever. The reference will still exists for audit purposes</span>

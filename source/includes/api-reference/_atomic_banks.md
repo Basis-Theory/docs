@@ -4,13 +4,13 @@
 
 Attribute | Type | Description
 --------- | ---- | -----------
-`id` | *uuid* | Unique identifier of the token which can be used to [get an atomic bank](#get-an-atomic-bank)
-`tenant_id` | *uuid* | The [tenant](#tenants) ID which owns the bank
+`id` | *uuid* | Unique identifier of the token which can be used to [get an Atomic Bank](#get-an-atomic-bank)
+`tenant_id` | *uuid* | The [Tenant](#tenants) ID which owns the bank
 `type` | *string* | `Bank` [token type](#token-types)
 `bank` | *[bank](#bank-object)* | Bank data
 `metadata` | *map* | A key-value map of non-sensitive data.
-`created_by` | *uuid* | The [application](#applications) ID which created the atomic bank
-`created_at` | *date* | Created date of the application in ISO 8601 format
+`created_by` | *uuid* | The [Application](#applications) ID which created the Atomic Bank
+`created_at` | *date* | Created date of the Atomic Bank in ISO 8601 format
 
 ### Bank Object
 
@@ -97,7 +97,7 @@ var atomicBank = await client.CreateAsync(new AtomicBank {
   `https://api.basistheory.com/atomic/banks`
 </span>
 
-Create a new atomic bank for the tenant.
+Create a new Atomic Bank for the Tenant.
 
 ### Permissions
 
@@ -114,7 +114,7 @@ Attribute | Required | Type | Default | Description
 
 ### Response
 
-Returns an [atomic bank](#atomic-bank-object) with masked [bank data](#bank-object) if the atomic bank was created. Returns [an error](#errors) if there were validation errors or the atomic bank failed to create.
+Returns an [Atomic Bank](#atomic-bank-object) with masked [bank data](#bank-object) if the Atomic Bank was created. Returns [an error](#errors) if there were validation errors, or the Atomic Bank failed to create.
 
 
 ## List Atomic Banks
@@ -173,7 +173,7 @@ var atomicBanks = await client.GetAsync();
   `https://api.basistheory.com/atomic/banks`
 </span>
 
-Get a list of atomic banks for the tenant.
+Get a list of Atomic Banks for the Tenant.
 
 ### Permissions
 
@@ -183,7 +183,7 @@ Get a list of atomic banks for the tenant.
 
 ### Response
 
-Returns a [paginated object](#pagination) with the `data` property containing an array of [atomic banks](#atomic-bank-object). Providing any query parameters will filter the results. Returns [an error](#errors) if atomic banks could not be retrieved.
+Returns a [paginated object](#pagination) with the `data` property containing an array of [Atomic Banks](#atomic-bank-object). Providing any query parameters will filter the results. Returns [an error](#errors) if Atomic Banks could not be retrieved.
 
 
 ## Get an Atomic Bank
@@ -235,7 +235,7 @@ const atomicBank = await bt.atomicBanks.retrieve('1485efb9-6b1f-4248-a5d1-cf9b39
   `https://api.basistheory.com/atomic/banks/{id}`
 </span>
 
-Get an atomic bank by ID in the tenant.
+Get an Atomic Bank by ID in the Tenant.
 
 ### Permissions
 
@@ -247,11 +247,11 @@ Get an atomic bank by ID in the tenant.
 
 Parameter | Required | Type | Default | Description
 --------- | -------- | ---- | ------- | -----------
-`id` | true | *uuid* | `null` | The ID of the atomic bank
+`id` | true | *uuid* | `null` | The ID of the Atomic Bank
 
 ### Response
 
-Returns an [atomic bank](#atomic-bank-object) with the `id` provided. Returns [an error](#errors) if the atomic bank could not be retrieved.
+Returns an [Atomic Bank](#atomic-bank-object) with the `id` provided. Returns [an error](#errors) if the Atomic Bank could not be retrieved.
 
 
 ## Delete Atomic Bank
@@ -285,10 +285,10 @@ await client.DeleteAsync("1485efb9-6b1f-4248-a5d1-cf9b3907164c");
   `https://api.basistheory.com/atomic/banks/{id}`
 </span>
 
-Delete an atomic bank by ID in the tenant.
+Delete an Atomic Bank by ID in the Tenant.
 
 <aside class="warning">
-<span>WARNING - The data associated with a deleted atomic bank will be removed forever. The reference will still exists for audit purposes</span>
+<span>WARNING - The data associated with a deleted Atomic Bank will be removed forever. The reference will still exists for audit purposes</span>
 </aside>
 
 ### Permissions
@@ -301,11 +301,11 @@ Delete an atomic bank by ID in the tenant.
 
 Parameter | Required | Type | Default | Description
 --------- | -------- | ---- | ------- | -----------
-`id` | true | *uuid* | `null` | The ID of the atomic bank
+`id` | true | *uuid* | `null` | The ID of the Atomic Bank
 
 ### Response
 
-Returns [an error](#errors) if the atomic bank failed to delete.
+Returns [an error](#errors) if the Atomic Bank failed to delete.
 
 
 ## Decrypt Atomic Bank
@@ -360,7 +360,7 @@ var atomicBank = await client.GetByIdAsync("1485efb9-6b1f-4248-a5d1-cf9b3907164c
   `https://api.basistheory.com/atomic/banks/{id}/decrypt`
 </span>
 
-Decrypt an atomic bank by ID in the tenant.
+Decrypt an Atomic Bank by ID in the Tenant.
 
 ### Permissions
 
@@ -372,11 +372,11 @@ Decrypt an atomic bank by ID in the tenant.
 
 Parameter | Required | Type | Default | Description
 --------- | -------- | ---- | ------- | -----------
-`id` | true | *uuid* | `null` | The ID of the atomic bank
+`id` | true | *uuid* | `null` | The ID of the Atomic Bank
 
 ### Response
 
-Returns an [atomic bank](#atomic-bank-object) with plaintext [bank](#bank-object) data with the `id` provided. Returns [an error](#errors) if the atomic bank could not be retrieved.
+Returns an [Atomic Bank](#atomic-bank-object) with plaintext [bank](#bank-object) data with the `id` provided. Returns [an error](#errors) if the Atomic Bank could not be retrieved.
 
 
 ## Create an Atomic Bank Reaction
@@ -389,7 +389,7 @@ curl "api.basistheory.com/atomic/banks/1485efb9-6b1f-4248-a5d1-cf9b3907164c/reac
   -X "POST" \
   -d '{
     "reactor_id": "5b493235-6917-4307-906a-2cd6f1a90b13",
-    "request_paramters": {
+    "request_parameters": {
       "REQUEST_PARAMETER_1": "Some request value"
     },
     "metadata": {
@@ -436,7 +436,7 @@ var reactionToken = await client.ReactAsync("1485efb9-6b1f-4248-a5d1-cf9b3907164
   `https://api.basistheory.com/atomic/banks/{id}/react`
 </span>
 
-Create an Atomic Bank Reaction by ID in the tenant.
+Create an Atomic Bank Reaction by ID in the Tenant.
 
 ### Permissions
 
@@ -450,7 +450,7 @@ Create an Atomic Bank Reaction by ID in the tenant.
 
 Parameter | Required | Type | Default | Description
 --------- | -------- | ---- | ------- | -----------
-`id` | true | *uuid* | `null` | The ID of the atomic bank
+`id` | true | *uuid* | `null` | The ID of the Atomic Bank
 
 ### Request Parameters
 Parameter | Required | Type | Default | Description
@@ -461,7 +461,7 @@ Parameter | Required | Type | Default | Description
 
 ### Response
 
-Returns a [token](#token-object) with type of `bank:reaction` if the atomic bank was reacted. Returns [an error](#errors) if the atomic bank failed to react.
+Returns a [token](#token-object) with type of `bank:reaction` if the Atomic Bank was reacted. Returns [an error](#errors) if the Atomic Bank failed to react.
 
 
 ## Get an Atomic Bank Reaction Token
@@ -497,7 +497,7 @@ var reactionToken = await client.GetReactionByIdAsync(
   `https://api.basistheory.com/atomic/banks/{atomicBankId}/reaction/{reactionTokenId}`
 </span>
 
-Get an atomic bank reaction token by ID in the tenant.
+Get an Atomic Bank reaction token by ID in the Tenant.
 
 ### Permissions
 
@@ -509,9 +509,20 @@ Get an atomic bank reaction token by ID in the tenant.
 
 Parameter | Required | Type | Default | Description
 --------- | -------- | ---- | ------- | -----------
-`atomicBankId` | true | *uuid* | `null` | The ID of the atomic bank
+`atomicBankId` | true | *uuid* | `null` | The ID of the Atomic Bank
 `reactionTokenId` | true | *uuid* | `null` | The ID of the reaction token
 
 ### Response
 
-Returns a [token](#token-object) with type of `bank:reaction`. Returns [an error](#errors) if the atomic bank failed to react.
+Returns a [token](#token-object) with type of `bank:reaction`. Returns [an error](#errors) if the Atomic Bank failed to react.
+
+## Test Bank Account
+
+To enable testing of Atomic Banks, we've implemented a list of acceptable test bank accounts to ensure you are able to test with non-sensitive data.
+
+### Test bank accounts
+
+Routing Number | Account Number | Description
+-------------- | -------------- | -----------
+110000000 | 000123456789 | Successfully added bank
+

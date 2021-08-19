@@ -3,7 +3,7 @@
 Reactor formulas give you the ability to pre-configure custom integrations to securely process, enrich, and associate your tokens.
 
 <aside class="notice">
-  <span>Creating reactor formula is currently in beta status. If you would like to be added to the beta program, please <a href="mailto:support@basistheory.com?subject=Reactor Beta Access">contact us</a>!</span>
+  <span>Creating Reactor Formula is currently in beta status. If you would like to be added to the beta program, please <a href="mailto:support@basistheory.com?subject=Reactor Beta Access">contact us</a>!</span>
 </aside>
 
 
@@ -11,17 +11,17 @@ Reactor formulas give you the ability to pre-configure custom integrations to se
 
 Attribute | Type | Description
 --------- | ---- | -----------
-`id` | *uuid* | Unique identifier of the reactor formula which can be used to [get a reactor formula](#get-an-reactor-formula)
-`name` | *string* | The name of the reactor formula. Has a maximum length of `200`
-`description` | *string* | The description of the reactor formula
-`type` | *string* | [Type](#reactor-formula-types) of the reactor formula
-`source_token_type` | *string* | [Source token type](#token-types) of the reactor formula
+`id` | *uuid* | Unique identifier of the Reactor Formula which can be used to [get a Reactor Formula](#get-an-reactor-formula)
+`name` | *string* | The name of the Reactor Formula. Has a maximum length of `200`
+`description` | *string* | The description of the Reactor Formula
+`type` | *string* | [Type](#reactor-formula-types) of the Reactor Formula
+`source_token_type` | *string* | [Source token type](#token-types) of the Reactor Formula
 `icon` | *string* | Base64 [data URL](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URIs) of the image
-`code` | *string* | [Reactor Formula code](#reactor-formula-code) which will be executed when the reactor formula is processed
+`code` | *string* | [Reactor Formula code](#reactor-formula-code) which will be executed when the Reactor Formula is processed
 `configuration` | *array* | Array of [configuration](#reactor-formula-configuration-object) options for configuring a reactor
 `request_parameters` | *array* | Array of [request parameters](#reactor-formula-request-parameter-object) which will be passed when executing the reactor
-`created_at` | *date* | Created date of the reactor formula in ISO 8601 format
-`modified_at` | *date* | Modified date of the reactor formula in ISO 8601 format
+`created_at` | *date* | Created date of the Reactor Formula in ISO 8601 format
+`modified_at` | *date* | Modified date of the Reactor Formula in ISO 8601 format
 
 ### Reactor Formula Configuration Object
 
@@ -43,14 +43,14 @@ Attribute | Required | Type | Default | Description
 
 ## Reactor Formula Code
 
-All reactor formula code snippets must export a function which takes in a [context object](#reactor-formula-code-context-object) and returns a [token object](#token-object).
+All Reactor Formula code snippets must export a function which takes in a [context object](#reactor-formula-code-context-object) and returns a [token object](#token-object).
 
 ### Reactor Formula Code Context Object
 
 Attribute | Type | Description
 --------- | ---- | -----------
 `sourceToken` | *object* | The source token that matches the `source_token_type` of the [reactor-formula](#reactor-formula-object)
-`configuration` | *array* | The configuration defined for the [reactor object](#reactor-object)
+`configuration` | *array* | The configuration defined for the [Reactor object](#reactor-object)
 
 
 ## Reactor Formula Types
@@ -58,7 +58,7 @@ Attribute | Type | Description
 Type | Description
 ---- | -----------
 `official` | Official formulas that are built and supported by Basis Theory and its authorized partners
-`private` | Private formulas which are only available to your tenant
+`private` | Private formulas which are only available to your Tenant
 
 
 ## Create Reactor Formula
@@ -72,7 +72,7 @@ curl "https://api.basistheory.com/reactor-formulas" \
   -X "POST" \
   -d '{
     "name": "My Private Reactor",
-    "description": "Securely reactor token for another token",
+    "description": "Securely react a token for another token",
     "type": "private",
     "source_token_type": "card",
     "icon": "data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==",
@@ -247,7 +247,7 @@ var reactorFormula = await client.CreateAsync(new ReactorFormula {
   `https://api.basistheory.com/reactor-formulas`
 </span>
 
-Create a new reactor formula for the tenant.
+Create a new Reactor Formula for the Tenant.
 
 ### Permissions
 
@@ -259,19 +259,19 @@ Create a new reactor formula for the tenant.
 
 Attribute | Required | Type | Default | Description
 --------- | -------- | ---- | ------- | -----------
-`name` | true | *string* | `null` | The name of the reactor formula. Has a maximum length of `200`
-`description` | false | *string* | `null` | The description of the reactor formula
-`type` | true | *string* | `null` | [Type](#reactor-formula-types) of the reactor formula
-`source_token_type` | true | *string* | `null` | [Source token type](#token-types) of the reactor formula
+`name` | true | *string* | `null` | The name of the Reactor Formula. Has a maximum length of `200`
+`description` | false | *string* | `null` | The description of the Reactor Formula
+`type` | true | *string* | `null` | [Type](#reactor-formula-types) of the Reactor Formula
+`source_token_type` | true | *string* | `null` | [Source token type](#token-types) of the Reactor Formula
 `icon` | false | *string* | `null` | Base64 [data URL](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URIs) of the image. Supported image types are: `image/png`, `image/jpg`, and `image/jpeg`
-`code` | true | *string* | `null` | [Reactor code](#reactor-formula-code) which will be executed when the reactor formula is processed
-`configuration` | true | *array* | `[]` | Array of [configuration](#reactor-formula-configuration-object) options for configuring a reactor
-`request_parameters` | true | *array* | `[]` | Array of [request parameters](#reactor-formula-request-parameter-object) which will be passed when executing the reactor
+`code` | true | *string* | `null` | [Reactor code](#reactor-formula-code) which will be executed when the Reactor Formula is processed
+`configuration` | true | *array* | `[]` | Array of [configuration](#reactor-formula-configuration-object) options for configuring a Reactor
+`request_parameters` | true | *array* | `[]` | Array of [request parameters](#reactor-formula-request-parameter-object) which will be passed when executing the Reactor
 
 
 ### Response
 
-Returns an [reactor formula](#reactor-formula-object) if the reactor formula was created. Returns [an error](#errors) if there were validation errors or the reactor formula failed to create.
+Returns an [Reactor Formula](#reactor-formula-object) if the Reactor Formula was created. Returns [an error](#errors) if there were validation errors, or the Reactor Formula failed to create.
 
 
 ## List Reactor Formulas
@@ -360,7 +360,7 @@ var reactorFormulas = await client.GetAsync();
   `https://api.basistheory.com/reactor-formulas`
 </span>
 
-Get a list of official reactor formula and private, tenant-specific reactor formulas.
+Get a list of official Reactor Formula and private, Tenant-specific Reactor Formulas.
 
 ### Permissions
 
@@ -372,12 +372,12 @@ Get a list of official reactor formula and private, tenant-specific reactor form
 
 Parameter | Required | Type | Default | Description
 --------- | -------- | ---- | ------- | -----------
-`name` | false | *string* | `null` | Wildcard search of reactor formulas by name
-`source_token_type` | false | *string* | `null` | Filter reactor formulas by [source token type](#token-types)
+`name` | false | *string* | `null` | Wildcard search of Reactor Formulas by name
+`source_token_type` | false | *string* | `null` | Filter Reactor Formulas by [source token type](#token-types)
 
 ### Response
 
-Returns a [paginated object](#pagination) with the `data` property containing an array of [reactor formulas](#reactor-formula-object). Providing any query parameters will filter the results. Returns [an error](#errors) if reactor formulas could not be retrieved.
+Returns a [paginated object](#pagination) with the `data` property containing an array of [Reactor Formulas](#reactor-formula-object). Providing any query parameters will filter the results. Returns [an error](#errors) if Reactor Formulas could not be retrieved.
 
 
 ## Get a Reactor Formula
@@ -459,7 +459,7 @@ var reactorFormula = await client.GetByIdAsync("17069df1-80f4-439e-86a7-4121863e
   `https://api.basistheory.com/reactor-formulas/{id}`
 </span> 
 
-Get a reactor formula by ID in the tenant.
+Get a Reactor Formula by ID in the Tenant.
 
 ### Permissions
 
@@ -471,11 +471,11 @@ Get a reactor formula by ID in the tenant.
 
 Parameter | Required | Type | Default | Description
 --------- | -------- | ---- | ------- | -----------
-`id` | true | *uuid* | `null` | The ID of the reactor formula
+`id` | true | *uuid* | `null` | The ID of the Reactor Formula
 
 ### Response
 
-Returns an [reactor reactor](#reactor-formula-object) with the `id` provided. Returns [an error](#errors) if the reactor formula could not be retrieved.
+Returns an [Reactor Formula](#reactor-formula-object) with the `id` provided. Returns [an error](#errors) if the Reactor Formula could not be retrieved.
 
 
 ## Update Reactor Formula
@@ -667,7 +667,7 @@ var reactorFormula = await client.UpdateAsync("17069df1-80f4-439e-86a7-4121863e4
   `https://api.basistheory.com/reactor-formulas/{id}`
 </span>
 
-Update a reactor formula by ID in the tenant.
+Update a Reactor Formula by ID in the Tenant.
 
 ### Permissions
 
@@ -679,24 +679,24 @@ Update a reactor formula by ID in the tenant.
 
 Parameter | Required | Type | Default | Description
 --------- | -------- | ---- | ------- | -----------
-`id` | true | *uuid* | `null` | The ID of the reactor formula
+`id` | true | *uuid* | `null` | The ID of the Reactor Formula
 
 ### Request Parameters
 
 Attribute | Required | Type | Default | Description
 --------- | -------- | ---- | ------- | -----------
-`name` | true | *string* | `null` | The name of the reactor formula. Has a maximum length of `200`
-`description` | false | *string* | `null` | The description of the reactor formula
-`type` | true | *string* | `null` | [Type](#reactor-reactor-types) of the reactor formula
-`source_token_type` | true | *string* | `null` | [Source token type](#token-types) of the reactor reactor
+`name` | true | *string* | `null` | The name of the Reactor Formula. Has a maximum length of `200`
+`description` | false | *string* | `null` | The description of the Reactor Formula
+`type` | true | *string* | `null` | [Type](#reactor-reactor-types) of the Reactor Formula
+`source_token_type` | true | *string* | `null` | [Source token type](#token-types) of the Reactor Formula
 `icon` | false | *string* | `null` | Base64 [data URL](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URIs) of the image. Supported image types are: `image/png`, `image/jpg`, and `image/jpeg`
-`code` | true | *string* | `null` | [Reactor code](#reactor-formula-code) which will be executed when the reactor formula is processed
-`configuration` | true | *array* | `[]` | Array of [configuration](#reaction-formula-configuration-object) options for configuring a reactor
-`request_parameters` | true | *array* | `[]` | Array of [request parameters](#reactor-formula-request-parameter-object) which will be passed when executing the reactor
+`code` | true | *string* | `null` | [Reactor code](#reactor-formula-code) which will be executed when the Reactor Formula is processed
+`configuration` | true | *array* | `[]` | Array of [configuration](#reaction-formula-configuration-object) options for configuring a Reactor
+`request_parameters` | true | *array* | `[]` | Array of [request parameters](#reactor-formula-request-parameter-object) which will be passed when executing the Reactor
 
 ### Response
 
-Returns an [reactor formula](#reactor-formula-object) if the reactor reactor was updated. Returns [an error](#errors) if there were validation errors or the reactor formula failed to update.
+Returns an [Reactor Formula](#reactor-formula-object) if the Reactor Formula was updated. Returns [an error](#errors) if there were validation errors, or the Reactor Formula failed to update.
 
 
 ## Delete Reactor Formula
@@ -730,7 +730,7 @@ await client.DeleteAsync("17069df1-80f4-439e-86a7-4121863e4678");
   `https://api.basistheory.com/reactor-formulas/{id}`
 </span>
 
-Delete a reactor formula by ID in the tenant.
+Delete a Reactor Formula by ID in the Tenant.
 
 ### Permissions
 
@@ -742,8 +742,8 @@ Delete a reactor formula by ID in the tenant.
 
 Parameter | Required | Type | Default | Description
 --------- | -------- | ---- | ------- | -----------
-`id` | true | *uuid* | `null` | The ID of the reactor formula
+`id` | true | *uuid* | `null` | The ID of the Reactor Formula
 
 ### Response
 
-Returns [an error](#errors) if the reactor formula failed to delete.
+Returns [an error](#errors) if the Reactor Formula failed to delete.

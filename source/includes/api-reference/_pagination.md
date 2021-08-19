@@ -67,7 +67,7 @@ Attribute | Type | Description
 
 Attribute | Type | Description
 --------- | ---- | -----------
-`total_items` | *integer* | Total number of items in the tenant
+`total_items` | *integer* | Total number of items in the Tenant
 `page_number` | *integer* | Current page number. Should match `page` query parameter.
 `page_size` | *integer* | The size of each page. Should match `size` query parameter.
 `total_pages` | *integer* | The total number of pages.
