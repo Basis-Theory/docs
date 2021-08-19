@@ -280,7 +280,7 @@
   color: #859900;
 }
     </style>
-    <link href="../stylesheets/screen-1bbecec3.css" rel="stylesheet" media="screen" />
+    <link href="../stylesheets/screen-ed526afd.css" rel="stylesheet" media="screen" />
     <link href="../stylesheets/home-3e4f6a87.css" rel="stylesheet" media="screen" />
     <link href="../stylesheets/guides-5da8bd31.css" rel="stylesheet" media="screen" />
     <script src="https://kit.fontawesome.com/86c3cd0147.js" crossorigin="anonymous"></script>
@@ -310,11 +310,12 @@
         </div>
 
       <div class="line"></div>
+
         <div class="lang-selector">
               <a href="#" data-language-name="javascript">Javascript</a>
               <a href="#" data-language-name="html">HTML</a>
         </div>
-      <a href="https://portal.basistheory.com/" target="_blank" class="nav-back">Go to Portal</a>
+
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search...">
         </div>
@@ -329,7 +330,7 @@
             <a href="#getting-started" class="toc-h1 toc-link" data-title="Getting started">Getting started</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#before-you-begin" class="toc-h2 toc-link" data-title="Before you begin">Before you begin</a>
+                    <a href="#before-you-begin" class="toc-h2 toc-link" data-title="Before You Begin">Before You Begin</a>
                   </li>
                   <li>
                     <a href="#install-sdk" class="toc-h2 toc-link" data-title="Install SDK">Install SDK</a>
@@ -427,6 +428,12 @@
              <li class="other-docs"><a class="toc-h2 toc-link" href="/">Home</a></li>
              <li class="other-docs"><a class="toc-h2 toc-link" href="/api-reference">API Reference</a></li>
         </ul>
+        <h1 class="nav-title">More</h1>
+        <ul id="toc_api" class="toc-section toc-list-h1">
+            <li><a class="toc-h2 toc-link" href="https://discord.gg/XjWsy8PqK2" target="_blank">Join Discord</a></li>
+            <li><a class="toc-h2 toc-link" href="https://github.com/Basis-Theory" target="_blank">Github</a></li>
+            <li><a class="toc-h2 toc-link" href="mailto:support@basistheory.com?subject=Help!">Email Support</a></li>
+        </ul>
 
     </div>
     <div class="page-wrapper">
@@ -438,10 +445,10 @@
 <aside class="header-intro-box">
     <span>
         <h4>Elements Documentation</h4>
-        <p class="header-intro-body2-font">Explore how to quickly start using our elements to tokenize anything.</p>
+        <p class="header-intro-body2-font">Explore how to quickly start using our Elements to tokenize credit cards.</p>
         <h6>QUICK LINKS</h6>
         <span class="intro-quick-links">
-            <a href="#getting-started">Before you begin</a>
+            <a href="#getting-started">Before You Begin</a>
             <a href="#element-style">Styling Elements</a>
             <a href="#create-element">Create an Element</a>
             <a href="#store-credit-card">Store Credit Card</a>
@@ -455,13 +462,14 @@
 <p>Think about it as a portal that we open within your site that allows users to seamlessly tokenize information and never notice they are interacting with our technology. Here is how we make it possible:</p>
 
 <ul>
-<li>We allow you to own your UX, by fully customizing how <strong>elements</strong> will look like;</li>
-<li>Inputs and forms are simple to use, yet we enable you to interact with them similar to how you do with native elements, so you never lose track of your users;</li>
+<li>Own your UX, by fully customizing how <strong>Elements</strong> will look like</li>
+<li>Inputs and forms are simple to use</li>
+<li>Enable to interact with Elements as you do with native elements</li>
 </ul>
-<h1 id='getting-started'>Getting started</h1><h2 id='before-you-begin'>Before you begin</h2><h3 id='if-you-don-39-t-have-an-account'>If you don&#39;t have an account</h3>
-<p>Currently, Basis Theory is in private beta, you can join our waitlist at https://basistheory.com and we will let you know when we are accepting new applicants.</p>
+<h1 id='getting-started'>Getting started</h1><h2 id='before-you-begin'>Before You Begin</h2><h3 id='if-you-don-39-t-have-an-account'>If you don&#39;t have an account</h3>
+<p>Currently, Basis Theory is in private beta, you can join our wait list at https://basistheory.com and we will let you know when we are accepting new applicants.</p>
 
-<p>To begin taking advantage of the Basis Theory platform, you’ll need to create an account and tenant through our <a href="https://portal.basistheory.com" target="_blank">Portal</a>. This will enable you to manage your token data, create new applications, and authenticate to our API.</p>
+<p>To begin taking advantage of the Basis Theory platform, you’ll need to create an account and Tenant through our <a href="https://portal.basistheory.com" target="_blank">Portal</a>. This will enable you to manage your token data, create new Applications, and authenticate to our API.</p>
 <h3 id='if-you-have-an-account'>If you have an account</h3>
 <p>Checkout out our API Reference documentation below, or go to our Getting Started section if you’re unsure of where to go next.</p>
 <h2 id='install-sdk'>Install SDK</h2>
@@ -543,15 +551,11 @@
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>yarn add @basis-theory/basis-theory-elements <span class="nt">--dev</span>
 </code></pre></div><h1 id='permissions'>Permissions</h1>
-<p>Permissions are fine-grained control over your application&#39;s access to different aspects of your token infrastructure. We suggest limiting the scope of your application to the least amount possible, and to not share them across your internal applications.</p>
+<p>Permissions offer fine-grained control over your Application&#39;s access to different aspects of your token infrastructure. We suggest limiting the scope of your Application to the least amount possible, and to not share them across your internal services.</p>
 
-<p>Permissions are associated with every application and can be configured when you <a href="/api-reference#create-application">create an application</a> or <a href="/api-reference#update-application">update an application</a>. </p>
+<p>Permissions are associated with every Application and can be configured when you <a href="/api-reference#create-application">create an Application</a> or <a href="/api-reference#update-application">update an Application</a>. </p>
 
-<p><strong>Elements</strong> applications only allows <em>create</em> permissions, removing any risk that your API keys are stolen and used to access data.</p>
-
-<aside class="notice">
-  <span>Dependent permission types are automatically assigned when an application is created or updated. For example, if an application is created with <code>card:create</code>, then the permission of <code>token:create</code> will automatically be assigned.</span>
-</aside>
+<p><strong>Elements</strong> Applications only allows <em>create</em> permissions, removing any risk that your API keys are stolen and used to access data.</p>
 <h2 id='permission-types'>Permission Types</h2>
 <table><thead>
 <tr>
@@ -567,17 +571,17 @@
 </tr>
 <tr>
 <td><code>card:create</code></td>
-<td>Create atomic card tokens</td>
+<td>Create Atomic Card tokens</td>
 <td><code>token:create</code></td>
 </tr>
 <tr>
 <td><code>bank:create</code></td>
-<td>Create atomic bank tokens</td>
+<td>Create Atomic Bank tokens</td>
 <td><code>token:create</code></td>
 </tr>
 </tbody></table>
 <h1 id='authentication'>Authentication</h1>
-<p><strong>Elements</strong> use specific application key to allow access to the API. To create one, login into our <a href="https://portal.basistheory.com" target="_blank">Portal</a> and create a new &quot;Elements&quot; application with the permissions you require.</p>
+<p><strong>Elements</strong> use specific Application key to allow access to the API. To create one, login into our <a href="https://portal.basistheory.com" target="_blank">Portal</a> and create a new &quot;Elements&quot; Application with the permissions you require.</p>
 
         <h1 id='initialize'>Initialize</h1>
 <blockquote>
@@ -616,7 +620,7 @@
 </aside>
 
 <aside class="notice">
-  <span>Friendly reminder to replace <code>test_1234567890</code> with a valid <a href="#authentication">Elements application key</a>.</span>
+  <span>Friendly reminder to replace <code>test_1234567890</code> with a valid <a href="#authentication">Elements Application key</a>.</span>
 </aside>
 <h1 id='element-types'>Element Types</h1><h2 id='card-element'>Card Element</h2>
 <p>The <code>&quot;card&quot;</code> element type features a full credit card collector containing the following inputs:</p>
@@ -707,7 +711,7 @@
 </aside>
 
 <aside class="warning">
-  <span>If the application key used to initialize `BasisTheory` doesn't exist or doesn't have the required <a href="#permissions">permissions</a>, an error will be thrown by this method.</span>
+  <span>If the Application key used to initialize `BasisTheory` doesn't exist or doesn't have the required <a href="#permissions">permissions</a>, an error will be thrown by this method.</span>
 </aside>
 <h2 id='update-element'>Update Element</h2><div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="nx">cardElement</span><span class="p">.</span><span class="nx">update</span><span class="p">(</span><span class="nx">options</span><span class="p">);</span>
 </code></pre></div>
@@ -762,7 +766,7 @@
 
 <span class="nx">subscription</span><span class="p">.</span><span class="nx">unsubscribe</span><span class="p">();</span> <span class="c1">// stops listening to the event type</span>
 </code></pre></div>
-<p>You can communicate with elements by listening to events. When you subscribe to an event, you&#39;ll get back a <a href="https://rxjs.dev/guide/subscription" target="_blank">Subscription</a> that you can unsubscribe if/when it fits your workflow.</p>
+<p>You can communicate with Elements by listening to events. When you subscribe to an event, you&#39;ll get back a <a href="https://rxjs.dev/guide/subscription" target="_blank">Subscription</a> that you can unsubscribe if/when it fits your workflow.</p>
 
 <aside class="notice">
   <span>Make sure to replace 'event-type' with an actual event type.</span>
@@ -832,7 +836,7 @@
 <tr>
 <td><code>empty</code></td>
 <td><em>boolean</em></td>
-<td>Whether the element is empty. Multi-input elements will be <code>empty</code> only if all inputs are.</td>
+<td>Whether the element is empty. Multi-input Elements will be <code>empty</code> only if all inputs are.</td>
 </tr>
 <tr>
 <td><code>errors</code></td>
