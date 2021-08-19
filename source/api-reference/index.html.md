@@ -36,6 +36,11 @@ api_includes:
   - api-reference/tokens
   - api-reference/token_associations
 
+aux_links:
+  - <a class="toc-h2 toc-link" href="https://discord.gg/XjWsy8PqK2" target="_blank">Join Discord</a>
+  - <a class="toc-h2 toc-link" href="https://github.com/Basis-Theory" target="_blank">Github</a>
+  - <a class="toc-h2 toc-link" href="mailto:support@basistheory.com?subject=Help!">Email Support</a>
+
 search: true
 
 code_clipboard: true
