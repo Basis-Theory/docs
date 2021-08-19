@@ -1,0 +1,181 @@
+# Tenants
+
+Tenants provide a way to logically group your Applications and tokens. Common use cases for Tenants may be per environment such as development, QA, and production or to isolate business domains from each other. Tenant data is isolated from each other unless explicitly shared.
+
+
+## Tenant Object
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`id` | *uuid* | Unique identifier of the Tenants
+`owner_id` | *uuid* | The user ID which owns the Tenants
+`name` | *string* | The name of the Tenants
+`created_at` | *date* | Created date of the Tenant in ISO 8601 format
+`modified_at` | *date* | Last modified date of the Tenant in ISO 8601 format
+
+
+## Get a Tenant
+
+> Request
+
+```shell
+curl "https://api.basistheory.com/tenants/self" \
+  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
+```
+
+```javascript
+import { BasisTheory } from '@basis-theory/basis-theory-js';
+
+const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
+
+const tenant = await bt.tenants.retrieve();
+```
+
+```csharp
+using BasisTheory.net.Tenants;
+
+var client = new TenantClient("key_N88mVGsp3sCXkykyN2EFED");
+
+var tenant = await client.GetSelfAsync();
+```
+
+> Response
+
+```json
+{
+  "id": "f88da999-b124-4a14-acde-cbc121444f14",
+  "owner_id": "97cec6e8-a143-4fb4-9ab0-cf7e49242d21",
+  "name": "My Tenant",
+  "created_at": "2020-09-15T15:53:00+00:00",
+  "modified_at": "2021-03-01T08:23:14+00:00"
+}
+```
+
+<span class="http-method get">
+  <span class="box-method">GET</span>
+  `https://api.basistheory.com/tenants/self`
+</span>
+
+Retrieves the Tenant associated with the provided `X-API-KEY`.
+
+### Permissions
+
+<p class="scopes">
+  <span class="scope">tenant:read</span>
+</p>
+
+### Response
+
+Returns a [Tenants](#tenant-object) for the provided `X-API-KEY`. Returns [an error](#errors) if the Tenant could not be retrieved.
+
+
+## Update Tenant
+
+> Request
+
+```shell
+curl "https://api.basistheory.com/tenants/self" \
+  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED" \
+  -H "Content-Type: application/json" \
+  -X "PUT" \
+  -d '{
+    "name": "My Example Tenant"
+  }'
+```
+
+```javascript
+import { BasisTheory } from '@basis-theory/basis-theory-js';
+
+const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
+
+const tenant = await bt.tenants.update({
+  name: 'My Example Tenant',
+});
+```
+
+```csharp
+using BasisTheory.net.Tenants;
+
+var client = new TenantClient("key_N88mVGsp3sCXkykyN2EFED");
+
+var tenant = await client.UpdateAsync(new Tenant {
+  Name = "My Example Tenant"
+});
+```
+
+> Response
+
+```json
+{
+  "id": "f88da999-b124-4a14-acde-cbc121444f14",
+  "owner_id": "97cec6e8-a143-4fb4-9ab0-cf7e49242d21",
+  "name": "My Example Tenant",
+  "created_at": "2020-09-15T15:53:00+00:00",
+  "modified_at": "2021-03-01T08:23:14+00:00"
+}
+```
+
+<span class="http-method put">
+  <span class="box-method">PUT</span>
+  `https://api.basistheory.com/tenants/self`
+</span>
+
+Update the Tenant associated with the provided `X-API-KEY`.
+
+### Permissions
+
+<p class="scopes">
+  <span class="scope">application:update</span>
+</p>
+
+### Request Parameters
+
+Attribute | Required | Type | Default | Description
+--------- | -------- | ---- | ------- | -----------
+`name` | true | *string* | `null` | The name of the Tenant. Has a maximum length of `200`
+
+### Response
+
+Returns a [tenant](#tenant-object) if the Tenant was updated. Returns [an error](#errors) if there were validation errors, or the Tenant failed to update.
+
+
+## Delete Tenant
+
+> Request
+
+```shell
+curl "https://api.basistheory.com/tenants/self" \
+  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED" \
+  -X "DELETE"
+```
+
+```javascript
+import { BasisTheory } from '@basis-theory/basis-theory-js';
+
+const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
+
+await bt.tenants.delete();
+```
+
+```csharp
+using BasisTheory.net.Tenants;
+
+var client = new TenantClient("key_N88mVGsp3sCXkykyN2EFED");
+
+await client.DeleteAsync();
+```
+
+<span class="http-method delete">
+  <span class="box-method">DELETE</span>
+  `https://api.basistheory.com/tenants/self`
+</span>
+
+Delete the Tenant associated with the provided `X-API-KEY`.
+
+### Permissions
+
+`tenant:write`
+
+### Response
+
+Returns [an error](#errors) if the Tenant failed to delete.
