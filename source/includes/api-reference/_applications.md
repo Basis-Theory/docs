@@ -2,7 +2,6 @@
 
 Your ability to authenticate to the API is granted by creating Applications, each Application type has different usages to create the most fine-grained control over your tokens and infrastructure possible. Below, we describe each Application Type and their usages.
 
-
 ## Application Object
 
 Attribute | Type | Description
