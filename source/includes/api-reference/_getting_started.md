@@ -15,7 +15,6 @@ Create a fork of our Basis Theory API workspace, this has pre-configured sample 
 
 [![Fork in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/14036973-d1c59e9d-81cb-4d06-b4d9-5b66bdd060b2?action=collection%2Ffork&collection-url=entityId%3D14036973-d1c59e9d-81cb-4d06-b4d9-5b66bdd060b2%26entityType%3Dcollection%26workspaceId%3Dcca928dd-d01d-4c7d-9002-84d5f2b33a63#?env%5BProd%5D=W3sia2V5IjoiYnRfYXBpX2hvc3RuYW1lIiwidmFsdWUiOiJhcGkuYmFzaXN0aGVvcnkuY29tIiwiZW5hYmxlZCI6dHJ1ZX0seyJrZXkiOiJidF9tYW5hZ2VtZW50X2FwaV9rZXkiLCJ2YWx1ZSI6IiIsImVuYWJsZWQiOnRydWV9LHsia2V5IjoiYnRfYXBpX2tleSIsInZhbHVlIjoiIiwiZW5hYmxlZCI6dHJ1ZX0seyJrZXkiOiJiYW5rX3JlYWN0b3JfaWQiLCJ2YWx1ZSI6IiIsImVuYWJsZWQiOnRydWV9LHsia2V5IjoiY2FyZF9yZWFjdG9yX2lkIiwidmFsdWUiOiIiLCJlbmFibGVkIjp0cnVlfV0=)
 
-
 ## Install SDK
 
 > Install SDK
