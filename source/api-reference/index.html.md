@@ -23,6 +23,7 @@ intro_includes:
   - api-reference/correlation_id
   - api-reference/pagination
   - api-reference/errors
+  - elements/limits
 
 api_includes:
   - api-reference/applications  

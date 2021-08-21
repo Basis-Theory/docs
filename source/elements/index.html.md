@@ -20,6 +20,7 @@ intro_includes:
   - elements/getting_started
   - elements/permissions
   - elements/authentication
+  - elements/limits
 
 api_includes:
   - elements/initialize
