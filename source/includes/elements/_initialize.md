@@ -40,5 +40,5 @@ After [installing](#install-sdk) **BasisTheory.js**, simply initialize it with `
 </aside>
 
 <aside class="notice">
-  <span>Friendly reminder to replace <code>test_1234567890</code> with a valid <a href="#authentication">Elements Application key</a>.</span>
+  <span>Friendly reminder to replace <code>test_1234567890</code> with a valid <a href="api-reference/#application-types">Elements Application key</a>.</span>
 </aside>
