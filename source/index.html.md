@@ -8,6 +8,7 @@ toc_footers:
 other_docs:
   - <a href="/api-reference" toc-h2 toc-link>API Reference</a>
   - <a href="/elements" toc-h2 toc-link>Elements</a>
+  - <a class="toc-h2 toc-link" href="https://guides.basistheory.com">Guides</a>
 
 aux_links:
   - <a class="toc-h2 toc-link" href="https://discord.gg/XjWsy8PqK2" target="_blank">Join Discord</a>
