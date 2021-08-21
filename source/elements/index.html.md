@@ -11,7 +11,7 @@ toc_footers:
 other_docs:
   - <a class="toc-h2 toc-link" href="/">Home</a>
   - <a class="toc-h2 toc-link" href="/api-reference">API Reference</a>
-  - <a href="https://guides.basistheory.com" toc-h2 toc-link>Guides</a>
+  - <a class="toc-h2 toc-link" href="https://guides.basistheory.com">Guides</a>
 
 intro_quick_links:
   - elements/quick_links
