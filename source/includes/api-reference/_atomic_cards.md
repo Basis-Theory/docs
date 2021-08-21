@@ -47,7 +47,7 @@ Attribute | Type | Description
 > Request
 
 ```shell
-curl "api.basistheory.com/atomic/cards" \
+curl "https://api.basistheory.com/atomic/cards" \
   -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED" \
   -H "Content-Type: application/json" \
   -X "POST" \
@@ -203,7 +203,7 @@ Returns an [Atomic Card](#atomic-card-object) with masked [card data](#card-obje
 > Request
 
 ```shell
-curl "api.basistheory.com/atomic/cards" \
+curl "https://api.basistheory.com/atomic/cards" \
   -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
 ```
 
@@ -286,7 +286,7 @@ Returns a [paginated object](#pagination) with the `data` property containing an
 > Request
 
 ```shell
-curl "api.basistheory.com/atomic/cards/c1e565009-1984-4638-8fca-dce8a82cc2af" \
+curl "https://api.basistheory.com/atomic/cards/c1e565009-1984-4638-8fca-dce8a82cc2af" \
   -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
 ```
 
@@ -368,7 +368,7 @@ Returns an [Atomic Card](#atomic-card-object) with the `id` provided. Returns [a
 > Request
 
 ```shell
-curl "api.basistheory.com/atomic/cards/c1e565009-1984-4638-8fca-dce8a82cc2af" \
+curl "https://api.basistheory.com/atomic/cards/c1e565009-1984-4638-8fca-dce8a82cc2af" \
   -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED" \
   -X "DELETE"
 ```
@@ -422,7 +422,7 @@ Returns [an error](#errors) if the Atomic Card failed to delete.
 > Request
 
 ```shell
-curl "api.basistheory.com/atomic/cards/c1e565009-1984-4638-8fca-dce8a82cc2af/react" \
+curl "https://api.basistheory.com/atomic/cards/c1e565009-1984-4638-8fca-dce8a82cc2af/react" \
   -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED" \
   -X "POST" \
   -d '{
@@ -507,7 +507,7 @@ Returns a [token](#token-object) with type of `card:reaction` if the Atomic Card
 > Request
 
 ```shell
-curl "api.basistheory.com/atomic/cards/c1e565009-1984-4638-8fca-dce8a82cc2af/reaction/6c12a05d-99e3-4454-bdb0-2e6ff88ec5b0" \
+curl "https://api.basistheory.com/atomic/cards/c1e565009-1984-4638-8fca-dce8a82cc2af/reaction/6c12a05d-99e3-4454-bdb0-2e6ff88ec5b0" \
   -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED" \
   -X "GET"
 ```

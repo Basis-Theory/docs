@@ -37,8 +37,7 @@ curl "https://api.basistheory.com/atomic/banks" \
       "metadata": {
         "nonSensitiveField": "Non-Sensitive Value"
       }
-    }
-  }'
+    }'
 ```
 
 ```javascript
@@ -384,7 +383,7 @@ Returns an [Atomic Bank](#atomic-bank-object) with plaintext [bank](#bank-object
 > Request
 
 ```shell
-curl "api.basistheory.com/atomic/banks/1485efb9-6b1f-4248-a5d1-cf9b3907164c/react" \
+curl "https://api.basistheory.com/atomic/banks/1485efb9-6b1f-4248-a5d1-cf9b3907164c/react" \
   -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED" \
   -X "POST" \
   -d '{
@@ -469,7 +468,7 @@ Returns a [token](#token-object) with type of `bank:reaction` if the Atomic Bank
 > Request
 
 ```shell
-curl "api.basistheory.com/atomic/banks/1485efb9-6b1f-4248-a5d1-cf9b3907164c/reaction/6c12a05d-99e3-4454-bdb0-2e6ff88ec5b0" \
+curl "https://api.basistheory.com/atomic/banks/1485efb9-6b1f-4248-a5d1-cf9b3907164c/reaction/6c12a05d-99e3-4454-bdb0-2e6ff88ec5b0" \
   -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED" \
   -X "GET"
 ```
