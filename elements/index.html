@@ -354,6 +354,9 @@
           <li>
             <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
           </li>
+          <li>
+            <a href="#limits" class="toc-h1 toc-link" data-title="Limits">Limits</a>
+          </li>
       </ul>
 
 
@@ -580,6 +583,25 @@
 </tbody></table>
 <h1 id='authentication'>Authentication</h1>
 <p><strong>Elements</strong> use specific Application key to allow access to the API. To create one, login into our <a href="https://portal.basistheory.com" target="_blank">Portal</a> and create a new &quot;Elements&quot; Application with the permissions you require.</p>
+<h1 id='limits'>Limits</h1>
+<p>The Basis Theory API has rate limits applied to ensure the speed and consistency of our systems. </p>
+
+<ul>
+<li>Our Elements are restricted to 10 requests per IP, per second, per <a href="/api-reference/#applications">Application</a></li>
+<li>Our APIs are restricted to 100 requests per IP, per second, per <a href="/api-reference/#applications">Application</a></li>
+</ul>
+<h3 id='error-codes'>Error Codes</h3>
+<table><thead>
+<tr>
+<th>Error Code</th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>429</code></td>
+<td>Request has been rate limited</td>
+</tr>
+</tbody></table>
 
         <h1 id='initialize'>Initialize</h1>
 <blockquote>

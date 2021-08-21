@@ -363,6 +363,9 @@
           <li>
             <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
           </li>
+          <li>
+            <a href="#limits" class="toc-h1 toc-link" data-title="Limits">Limits</a>
+          </li>
       </ul>
 
 
@@ -915,8 +918,31 @@
 <td>Request does not satisfy requirements for processing</td>
 </tr>
 <tr>
+<td><code>429</code></td>
+<td>Request has been <a href="#limits">rate limited</a></td>
+</tr>
+<tr>
 <td><code>500</code></td>
 <td>Something went wrong on Basis Theory&#39;s side</td>
+</tr>
+</tbody></table>
+<h1 id='limits'>Limits</h1>
+<p>The Basis Theory API has rate limits applied to ensure the speed and consistency of our systems. </p>
+
+<ul>
+<li>Our Elements are restricted to 10 requests per IP, per second, per <a href="/api-reference/#applications">Application</a></li>
+<li>Our APIs are restricted to 100 requests per IP, per second, per <a href="/api-reference/#applications">Application</a></li>
+</ul>
+<h3 id='error-codes'>Error Codes</h3>
+<table><thead>
+<tr>
+<th>Error Code</th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>429</code></td>
+<td>Request has been rate limited</td>
 </tr>
 </tbody></table>
 
