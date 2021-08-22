@@ -16,15 +16,15 @@ Attribute | Type | Description
 
 ### Encryption Object
 
-Attribute | Type | Default | Description
---------- | -------- | ---- | ------- | -----------
+Attribute | Type | Description
+--------- | ---- | -----------
 `cek` | *[encryption key](#encryption-key-object)* | Content encryption key
 `kek` | *[encryption key](#encryption-key-object)* | Key encryption key
 
 ### Encryption Key Object
 
-Attribute | Required | Type | Default | Description
---------- | -------- | ---- | ------- | -----------
+Attribute | Type | Description
+--------- | ---- | -----------
 `key` | *string* | Encryption key or key identifier
 `alg` | *string* | Encryption algorithm (e.g. AES, RSA, etc)
 
