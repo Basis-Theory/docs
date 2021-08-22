@@ -468,7 +468,7 @@ Returns a [token](#token-object) with type of `bank:reaction` if the Atomic Bank
 > Request
 
 ```shell
-curl "https://api.basistheory.com/atomic/banks/1485efb9-6b1f-4248-a5d1-cf9b3907164c/reaction/6c12a05d-99e3-4454-bdb0-2e6ff88ec5b0" \
+curl "https://api.basistheory.com/atomic/banks/1485efb9-6b1f-4248-a5d1-cf9b3907164c/reactions/6c12a05d-99e3-4454-bdb0-2e6ff88ec5b0" \
   -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED" \
   -X "GET"
 ```
@@ -493,7 +493,7 @@ var reactionToken = await client.GetReactionByIdAsync(
 
 <span class="http-method get">
   <span class="box-method">GET</span>
-  `https://api.basistheory.com/atomic/banks/{atomicBankId}/reaction/{reactionTokenId}`
+  `https://api.basistheory.com/atomic/banks/{atomicBankId}/reactions/{reactionTokenId}`
 </span>
 
 Get an Atomic Bank reaction token by ID in the Tenant.
