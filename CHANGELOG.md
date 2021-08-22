@@ -1,3 +1,10 @@
+## [1.1.2](https://github.com/Basis-Theory/docs/compare/v1.1.1...v1.1.2) (2021-08-22)
+
+
+### Bug Fixes
+
+* add BasisTheory JS context ([9116cd3](https://github.com/Basis-Theory/docs/commit/9116cd3cce5565cea5ce2794156f15be90004ec2))
+
 ## [1.1.1](https://github.com/Basis-Theory/docs/compare/v1.1.0...v1.1.1) (2021-08-21)
 
 # [1.1.0](https://github.com/Basis-Theory/docs/compare/v1.0.1...v1.1.0) (2021-08-21)
