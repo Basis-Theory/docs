@@ -293,7 +293,7 @@
     <script defer data-api="https://analytics.basistheory.com/api/event" data-domain="docs.basistheory.com" src="https://cdn.basistheory.com/javascript/analytics.js"></script>
   </head>
 
-  <body class="elements elements_index" data-languages="[&quot;javascript&quot;,&quot;html&quot;]">
+  <body class="elements elements_index" data-languages="[&quot;jsx&quot;]">
     <a href="/#" id="nav-button">
       <span>
         NAV
@@ -312,8 +312,7 @@
       <div class="line"></div>
 
         <div class="lang-selector">
-              <a href="#" data-language-name="javascript">Javascript</a>
-              <a href="#" data-language-name="html">HTML</a>
+              <a href="#" data-language-name="jsx">Javascript</a>
         </div>
 
         <div class="search">
@@ -488,7 +487,8 @@
 <blockquote>
 <p>CDN</p>
 </blockquote>
-<div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="p">=</span><span class="s">"https://js.basistheory.com"</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span> 
+<div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="p">&lt;</span><span class="err">!--</span> <span class="na">Including</span> <span class="na">this</span> <span class="na">tag</span> <span class="na">will</span> <span class="na">export</span> <span class="na">a</span> <span class="na">global</span><span class="err">/</span><span class="na">window</span> <span class="s">"BasisTheory"</span> <span class="na">variable</span> <span class="err">--</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="p">=</span><span class="s">"https://js.basistheory.com"</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span> 
 </code></pre></div>
 <p>You don&#39;t have to install <strong>Elements</strong> as a separated module or include additional script tags besides <strong>BasisTheory.js</strong>. It will dynamically load them from our secure domain, which enables us to keep the highest compliance standards (e.g. PCI compliance).</p>
 
@@ -614,6 +614,7 @@
   <span class="p">&lt;</span><span class="err">!--</span> <span class="na">has</span> <span class="na">been</span> <span class="na">injected</span> <span class="na">in</span> <span class="na">the</span> <span class="na">window</span> <span class="na">variable</span> <span class="err">--</span><span class="p">&gt;</span>
   window.addEventListener('load', async () =&gt; <span class="si">{</span>
     <span class="k">try</span> <span class="p">{</span>
+      <span class="c1">// global/window variable BasisTheory is an instance, but requires initialization</span>
       <span class="k">await</span> <span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">init</span><span class="p">(</span><span class="dl">'</span><span class="s1">test_1234567890</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span> <span class="na">elements</span><span class="p">:</span> <span class="kc">true</span> <span class="p">});</span>      
       <span class="c1">// use BasisTheory.elements</span>
     <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
@@ -627,6 +628,7 @@
 </blockquote>
 <div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">BasisTheory</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@basis-theory/basis-theory-js</span><span class="dl">'</span><span class="p">;</span>
 
+<span class="c1">// In this context BasisTheory is a class</span>
 <span class="kd">const</span> <span class="nx">bt</span> <span class="o">=</span> <span class="k">await</span> <span class="k">new</span> <span class="nx">BasisTheory</span><span class="p">().</span><span class="nx">init</span><span class="p">(</span><span class="dl">'</span><span class="s1">test_1234567890</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span> <span class="na">elements</span><span class="p">:</span> <span class="kc">true</span> <span class="p">});</span>
 <span class="c1">// use bt.elements</span>
 </code></pre></div>
@@ -1210,8 +1212,7 @@
       </div>
       <div class="dark-box">
           <div class="lang-selector">
-                <a href="#" data-language-name="javascript">Javascript</a>
-                <a href="#" data-language-name="html">HTML</a>
+                <a href="#" data-language-name="jsx">Javascript</a>
           </div>
       </div>
     </div>
