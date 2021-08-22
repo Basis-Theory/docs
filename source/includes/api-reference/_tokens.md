@@ -23,9 +23,10 @@ Attribute | Type | Default | Description
 
 ### Encryption Key Object
 
-Attribute | Required | Type | Default | Description
---------- | -------- | ---- | ------- | -----------
+Attribute | Type | Default | Description
+--------- | ---- | ------- | -----------
 `key` | *string* | Encryption key or key identifier
+`prov` | *string* | An optional provider to simplify lookup of the encryption key for the provider
 `alg` | *string* | Encryption algorithm (e.g. AES, RSA, etc)
 
 
