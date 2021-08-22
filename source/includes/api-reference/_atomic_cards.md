@@ -507,7 +507,7 @@ Returns a [token](#token-object) with type of `card:reaction` if the Atomic Card
 > Request
 
 ```shell
-curl "https://api.basistheory.com/atomic/cards/c1e565009-1984-4638-8fca-dce8a82cc2af/reaction/6c12a05d-99e3-4454-bdb0-2e6ff88ec5b0" \
+curl "https://api.basistheory.com/atomic/cards/c1e565009-1984-4638-8fca-dce8a82cc2af/reactions/6c12a05d-99e3-4454-bdb0-2e6ff88ec5b0" \
   -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED" \
   -X "GET"
 ```
@@ -532,7 +532,7 @@ var reactionToken = await client.GetReactionByIdAsync(
 
 <span class="http-method get">
   <span class="box-method">GET</span>
-  `https://api.basistheory.com/atomic/cards/{atomicCardId}/reaction/{reactionTokenId}`
+  `https://api.basistheory.com/atomic/cards/{atomicCardId}/reactions/{reactionTokenId}`
 </span>
 
 Get an Atomic Card reaction token by ID in the Tenant.
