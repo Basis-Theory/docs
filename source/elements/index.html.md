@@ -3,8 +3,7 @@ title: Basis Theory Elements Reference
 docs_logo: elements-logo.svg
 
 language_tabs: # must be one of https://git.io/vQNgJ
-  - javascript: Javascript
-  - html: HTML
+  - jsx: Javascript
 
 toc_footers:
 

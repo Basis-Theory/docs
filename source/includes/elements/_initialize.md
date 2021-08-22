@@ -10,6 +10,7 @@
   <!-- has been injected in the window variable -->
   window.addEventListener('load', async () => {
     try {
+      // global/window variable BasisTheory is an instance, but requires initialization
       await BasisTheory.init('test_1234567890', { elements: true });      
       // use BasisTheory.elements
     } catch (e) {
@@ -24,6 +25,7 @@
 ```jsx
 import { BasisTheory } from '@basis-theory/basis-theory-js';
 
+// In this context BasisTheory is a class
 const bt = await new BasisTheory().init('test_1234567890', { elements: true });
 // use bt.elements
 ```

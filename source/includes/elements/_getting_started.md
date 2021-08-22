@@ -25,6 +25,7 @@ yarn add @basis-theory/basis-theory-js
 > CDN
 
 ```jsx
+<!-- Including this tag will export a global/window "BasisTheory" variable -->
 <script src="https://js.basistheory.com"></script> 
 ```
 
