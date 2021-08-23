@@ -350,7 +350,7 @@
             <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
           </li>
           <li>
-            <a href="#request-correlation" class="toc-h1 toc-link" data-title="Request correlation">Request correlation</a>
+            <a href="#request-correlation" class="toc-h1 toc-link" data-title="Request Correlation">Request Correlation</a>
           </li>
           <li>
             <a href="#pagination" class="toc-h1 toc-link" data-title="Pagination">Pagination</a>
@@ -643,13 +643,13 @@
 
 <p>The Basis Theory API is organized around REST. Our API is built with a predictable resource-oriented structure, uses JSON-encoded requests and responses, follows standard HTTP verbs/responses, and uses industry standard authentication.</p>
 
-<p>You are able to create different <a href="#tenants">Tenants</a> within your Basis Theory account to enable you to segment your test environments from your core production data. Tenants serve as a logical grouping for each of your systems to interact with Basis theory without affecting each other.</p>
+<p>You are able to create different <a href="#tenants">Tenants</a> within your Basis Theory account to enable you to segment your test environments from your core production data. Tenants serve as a logical grouping for each of your systems to interact with Basis Theory without affecting each other.</p>
 <h2 id='what-is-basis-theory'>What is Basis Theory?</h2>
 <p>Our software becomes a core part of your infrastructure enabling you to quickly encrypt, tokenize, and store any payload securely. Your token infrastructure can be used to protect data at rest, as it passes between your own internal systems, or how it&#39;s permissioned and shared with third parties.</p>
 <h1 id='getting-started'>Getting started</h1><h2 id='before-you-begin'>Before You Begin</h2><h3 id='if-you-don-39-t-have-an-account'>If you don&#39;t have an account</h3>
 <p>To begin taking advantage of the Basis Theory platform, you’ll need to create an account and Tenant through our <a href="https://portal.basistheory.com">Portal</a>.</p>
 <h3 id='if-you-have-an-account'>If you have an account</h3>
-<p>Checkout out our API Reference documentation below, or go to our Getting Started section if you’re unsure of where to go next.</p>
+<p>Check out our API Reference documentation below, or go to our Getting Started section if you’re unsure of where to go next.</p>
 <h2 id='try-with-postman'>Try with Postman</h2>
 <p>Create a fork of our Basis Theory API workspace, this has pre-configured sample API calls enabling you to quickly try out our API.</p>
 
@@ -661,7 +661,7 @@
 <div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">npm</span> <span class="nx">install</span> <span class="o">--</span><span class="nx">save</span> <span class="p">@</span><span class="nd">basis</span><span class="o">-</span><span class="nx">theory</span><span class="o">/</span><span class="nx">basis</span><span class="o">-</span><span class="nx">theory</span><span class="o">-</span><span class="nx">js</span>
 </code></pre></div><div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="n">dotnet</span> <span class="k">add</span> <span class="n">package</span> <span class="n">BasisTheory</span><span class="p">.</span><span class="n">net</span> 
 </code></pre></div>
-<p>Our SDK&#39;s enable you to quickly and easily integrate with the API. Select one of the language tabs to see instructions on how to install the SDK and view code examples in that language.</p>
+<p>Our SDKs enable you to quickly and easily integrate with the API. Select one of the language tabs to see instructions on how to install the SDK and view code examples in that language.</p>
 
 <p>If you don&#39;t see your language listed, <a href="mailto:support@basistheory.com?subject=API SDK Language Support">contact us</a> about getting an official SDK added in your preferred language.</p>
 <h1 id='authentication'>Authentication</h1>
@@ -695,14 +695,14 @@
 </code></pre></div>
 <p>Basis Theory uses API keys to allow access to the API.</p>
 
-<p>Basis Theory expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
+<p>Basis Theory requires the API key to be included in all API requests to the server in a header that looks like the following:</p>
 
 <p><code>X-API-KEY: key_N88mVGsp3sCXkykyN2EFED</code></p>
 
 <aside class="notice">
   <span>You must replace <code>key_N88mVGsp3sCXkykyN2EFED</code> with your API key supplied when you <a href="#create-application">created an Application</a>.</span>
 </aside>
-<h1 id='request-correlation'>Request correlation</h1>
+<h1 id='request-correlation'>Request Correlation</h1>
 <blockquote>
 <p>Correlation ID Example:</p>
 </blockquote>
@@ -726,7 +726,7 @@
 </code></pre></div>
 <p>Basis Theory utilizes Correlation IDs to assist with request tracing, logging, and debugging.</p>
 
-<p>All API endpoints accepts a client-provided Correlation ID if sent with the <code>bt-trace-id</code> HTTP header within POST, PUT, PATCH, DELETE methods.</p>
+<p>All API endpoints accept a client-provided Correlation ID if sent with the <code>bt-trace-id</code> HTTP header within POST, PUT, PATCH, DELETE methods.</p>
 
 <p>If a <code>bt-trace-id</code> Correlation ID is not provided by the client, a new Correlation ID will be generated by the Basis Theory API.</p>
 <h1 id='pagination'>Pagination</h1>
@@ -1024,7 +1024,7 @@
 <tr>
 <td>Management</td>
 <td><code>management</code></td>
-<td>Used for managing all aspects of your token infrastructure such as <a href="#create-application">creating an Applications</a></td>
+<td>Used for managing all aspects of your token infrastructure such as <a href="#create-application">creating an Application</a></td>
 </tr>
 </tbody></table>
 <h2 id='create-application'>Create Application</h2>
@@ -4602,7 +4602,7 @@
 <h3 id='response-5'>Response</h3>
 <p>Returns <a href="#errors">an error</a> if the Reactor failed to delete.</p>
 <h1 id='tenants'>Tenants</h1>
-<p>Tenants provide a way to logically group your Applications and tokens. Common use cases for Tenants may be per environment such as development, QA, and production or to isolate business domains from each other. Tenant data is isolated from each other unless explicitly shared.</p>
+<p>Tenants provide a way to logically group your Applications and tokens. Common use cases for Tenants may be to create one per environment such as development, QA, and production or to isolate business domains from each other. Tenant data is isolated from other tenants unless explicitly shared.</p>
 <h2 id='tenant-object'>Tenant Object</h2>
 <table><thead>
 <tr>
@@ -5054,7 +5054,7 @@
 </tbody></table>
 
 <aside class="success">
-  <span>Basis Theory recommends encrypting the <code>data</code> attribute of the token. Our recommendation is encrypt the data with a one-time use symmetric encryption key such as <code>AES-256</code> and then encrypt the symmetric key with an asymmetric public key such as <code>RSA</code>. Our SDK will automatically handle this for you.</span>
+  <span>Basis Theory recommends encrypting the <code>data</code> attribute of the token. Our recommendation is that you encrypt the data with a one-time use symmetric encryption key such as <code>AES-256</code> and then encrypt the symmetric key with an asymmetric public key such as <code>RSA</code>. Our SDK will automatically handle this for you.</span>
 </aside>
 
 <aside class="warning">

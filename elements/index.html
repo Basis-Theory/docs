@@ -460,19 +460,19 @@
     <img src="../images/elements_intro-3651f26d.svg"/>
 </aside>
 
-<p><strong>BasisTheory Elements</strong> are simple, secure, developer-friendly inputs that empower consumers to collect sensitive data from their users directly to Basis Theory certified vault.</p>
+<p><strong>Basis Theory Elements</strong> are simple, secure, developer-friendly inputs that empower consumers to collect sensitive data from their users directly to Basis Theory certified vault.</p>
 
 <p>Think about it as a portal that we open within your site that allows users to seamlessly tokenize information and never notice they are interacting with our technology. Here is how we make it possible:</p>
 
 <ul>
-<li>Own your UX, by fully customizing how <strong>Elements</strong> will look like</li>
+<li>Own your UX, by fully customizing how <strong>Elements</strong> are styled</li>
 <li>Inputs and forms are simple to use</li>
-<li>Enable to interact with Elements as you do with native elements</li>
+<li>Able to interact with Elements as you do with native elements</li>
 </ul>
 <h1 id='getting-started'>Getting started</h1><h2 id='before-you-begin'>Before You Begin</h2><h3 id='if-you-don-39-t-have-an-account'>If you don&#39;t have an account</h3>
 <p>To begin taking advantage of the Basis Theory platform, you’ll need to create an account and Tenant through our <a href="https://portal.basistheory.com" target="_blank">Portal</a>.</p>
 <h3 id='if-you-have-an-account'>If you have an account</h3>
-<p>Checkout out our API Reference documentation below, or go to our Getting Started section if you’re unsure of where to go next.</p>
+<p>Check out our API Reference documentation below, or go to our Getting Started section if you’re unsure of where to go next.</p>
 <h2 id='install-sdk'>Install SDK</h2>
 <blockquote>
 <p>NPM</p>
@@ -490,7 +490,7 @@
 <div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="p">&lt;</span><span class="err">!--</span> <span class="na">Including</span> <span class="na">this</span> <span class="na">tag</span> <span class="na">will</span> <span class="na">export</span> <span class="na">a</span> <span class="na">global</span><span class="err">/</span><span class="na">window</span> <span class="s">"BasisTheory"</span> <span class="na">variable</span> <span class="err">--</span><span class="p">&gt;</span>
 <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="p">=</span><span class="s">"https://js.basistheory.com"</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span> 
 </code></pre></div>
-<p>You don&#39;t have to install <strong>Elements</strong> as a separated module or include additional script tags besides <strong>BasisTheory.js</strong>. It will dynamically load them from our secure domain, which enables us to keep the highest compliance standards (e.g. PCI compliance).</p>
+<p>You don&#39;t have to install <strong>Elements</strong> as a separate module or include additional script tags besides <strong>BasisTheory.js</strong>. It will dynamically load them from our secure domain, which enables us to keep the highest compliance standards (e.g. PCI compliance).</p>
 
 <p>To install <strong>BasisTheory.js</strong> you can choose either our NPM module or CDN hosted bundle through a <code>script</code> tag.</p>
 <h2 id='content-security-policy'>Content Security Policy</h2>
@@ -525,7 +525,7 @@
 <li><code>frame-src</code> - <em>https://elements.basistheory.com</em> </li>
 </ul>
 
-<p>If you are using <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/require-trusted-types-for" target="_blank">Trusted Types</a>, you must allow dynamic script loading from <em>https://js.basistheory.com</em> origin. This should be done <strong>BEFORE</strong> <a href="#initialize">initialization</a>.</p>
+<p>If you are using <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/require-trusted-types-for" target="_blank">Trusted Types</a>, you must allow dynamic script loading from the <em>https://js.basistheory.com</em> origin. This should be done <strong>BEFORE</strong> <a href="#initialize">initialization</a>.</p>
 <h3 id='common-csp-errors'>Common CSP Errors</h3>
 <p>The setup above is recommended to avoid errors similar to these:</p>
 
@@ -557,7 +557,7 @@
 
 <p>Permissions are associated with every Application and can be configured when you <a href="/api-reference#create-application">create an Application</a> or <a href="/api-reference#update-application">update an Application</a>. </p>
 
-<p><strong>Elements</strong> Applications only allows <em>create</em> permissions, removing any risk that your API keys are stolen and used to access data.</p>
+<p><strong>Elements</strong> Applications only allow <em>create</em> permissions, removing any risk that your API keys are stolen and used to access data.</p>
 <h2 id='permission-types'>Permission Types</h2>
 <table><thead>
 <tr>
@@ -583,7 +583,7 @@
 </tr>
 </tbody></table>
 <h1 id='authentication'>Authentication</h1>
-<p><strong>Elements</strong> use specific Application key to allow access to the API. To create one, login into our <a href="https://portal.basistheory.com" target="_blank">Portal</a> and create a new &quot;Elements&quot; Application with the permissions you require.</p>
+<p><strong>Elements</strong> use a specific type of Application key to allow access to the API. To create one, login into our <a href="https://portal.basistheory.com" target="_blank">Portal</a> and create a new &quot;Elements&quot; Application with the permissions you require.</p>
 <h1 id='limits'>Limits</h1>
 <p>The Basis Theory API has rate limits applied to ensure the speed and consistency of our systems. </p>
 
@@ -635,7 +635,7 @@
 <p>After <a href="#install-sdk">installing</a> <strong>BasisTheory.js</strong>, simply initialize it with <code>elements: true</code> so it dynamically loads <strong>Elements</strong> module.</p>
 
 <aside class="warning">
-  <span>Elements are meant to be used on browser environments only. If you installed <code>BasisTheory.js</code> as a module, make sure the instance that loads elements runs on the browser-side code.</span>
+  <span>Elements are meant to be used in browser environments only. If you installed <code>BasisTheory.js</code> as a module, make sure the instance that loads elements runs on the browser-side code.</span>
 </aside>
 
 <aside class="warning">
