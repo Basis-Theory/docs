@@ -1,0 +1,14 @@
+version: '3.7'
+
+services:
+  docs:
+    container_name: docs
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: serve
+    ports:
+    - 4567:4567
+    volumes:
+    - $PWD/build:/srv/slate/build
+    - $PWD/source:/srv/slate/source

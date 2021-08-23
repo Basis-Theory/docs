@@ -1,0 +1,941 @@
+@charset "utf-8";
+@import 'normalize';
+@import 'variables';
+@import 'icon-font';
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;400;500;600&display=swap');
+// @import 'rtl'; // uncomment to switch to RTL format
+
+/*
+Copyright 2008-2013 Concur Technologies, Inc.
+
+Licensed under the Apache License, Version 2.0 (the "License"); you may
+not use this file except in compliance with the License. You may obtain
+a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+License for the specific language governing permissions and limitations
+under the License.
+*/
+
+////////////////////////////////////////////////////////////////////////////////
+// GENERAL STUFF
+////////////////////////////////////////////////////////////////////////////////
+
+html, body {
+  color: $main-text;
+  padding: 0;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  @extend %default-font;
+  background-color: $main-bg;
+  height: 100%;
+  -webkit-text-size-adjust: none; /* Never autoresize text */
+
+  a {
+    color: $links;
+    @extend %default-font;
+    font-weight: 600;
+    line-height: 21px;
+    text-align: left;
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// TABLE OF CONTENTS
+////////////////////////////////////////////////////////////////////////////////
+.toc-wrapper li.other-docs a, li.more a  {
+
+  color: $secondary;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.toc-section > ul > li > a > span {
+  float: right;
+  background-color: $links;
+  border-radius: 40px;
+  width: 20px;
+}
+
+.toc-wrapper {
+  transition: left 0.3s ease-in-out;
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: fixed;
+  z-index: 30;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: $nav-width;
+  background-color: $nav-bg;
+  font-size: 16px;
+  font-weight: 600;
+  border-right: 1px solid $grey-800;
+  padding-bottom: 200px;
+
+  .toc-header {
+    display: grid;
+    grid-template-columns: auto auto;
+    margin: 16px;
+    color: $nav-header-text;
+    background: $nav-header-backgroud;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .line {
+    border-bottom: 1px solid $grey-800;
+    margin-bottom: 16px;
+  }
+
+  // language selector for mobile devices
+  .lang-selector {
+    display: none;
+    a {
+      padding-top: 0.5em;
+      padding-bottom: 0.5em;
+      color: $secondary;
+      @extend %principal-title-font;
+      text-transform: none;
+    }
+  }
+
+  .nav-back {
+    @extend %button-medium;
+    color: $nav-principal-title-text;
+    padding: 0;
+    margin: 1em $nav-padding;
+    display: grid;
+    grid-template-columns: 13% auto;
+    align-items: center;
+    text-decoration: none;
+
+    &::before {
+      @extend %icon-go-back;
+    }
+  }
+
+  &>.search {
+    position: relative;
+    display: grid;
+    align-items: center;
+
+    input {
+      background: $nav-bg-line;
+      padding: 6px 8px;
+      box-sizing: border-box;
+      margin: 0 $nav-padding;
+      width: 86%;
+      outline: none;
+      color: $nav-search-text;
+      opacity: 0.55;
+      border: none;
+      border-radius: 2px;
+      @extend %search-font;
+
+      &::placeholder {
+        color: $nav-search-text;
+      }
+    }
+
+    &:after {
+      position: absolute;
+      right: $nav-padding*2;
+      color: $secondary;
+      @extend %icon-search;
+    }
+  }
+
+  .search-results {
+    margin-top: 0;
+    box-sizing: border-box;
+    height: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    transition-property: height, margin;
+    transition-duration: 180ms;
+    transition-timing-function: ease-in-out;
+    background: $nav-subitem-bg;
+    &.visible {
+      height: 30%;
+      margin: -1em 15px 1em;
+    }
+
+
+    li {
+      margin: 1em $nav-padding;
+      line-height: 1;
+    }
+
+    a {
+      color: $links;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+
+  // The Table of Contents is composed of multiple nested
+  // unordered lists.  These styles remove the default
+  // styling of an unordered list because it is ugly.
+  ul, li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    line-height: 28px;
+  }
+
+  ul {
+    margin-left: 1.7rem;
+  }
+
+  li {
+    color: $nav-text;
+    transition-property: background;
+    transition-timing-function: linear;
+    transition-duration: 200ms;
+    padding: 4px 0;
+  }
+
+  // This is the currently selected ToC entry
+  .toc-link.active {
+    color: $primary;
+  }
+
+  // this is parent links of the currently selected ToC entry
+  .toc-link.active-parent {
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 20px;
+    letter-spacing: 0.15px;
+    text-align: left;
+    color: $primary;
+  }
+  // Section headers
+  .toc-h1[data-title="API Reference"],
+  .toc-h1[data-title="Basis Theory JS"],
+  .toc-h1[data-title="Elements"],
+  .toc-h1[data-title="How To Use"] {
+    text-transform: capitalize;
+    margin-bottom: 0.5em;
+    font-weight: bold;
+    color: $nav-principal-title-text;
+    @extend %principal-title-font;
+  }
+
+  .toc-list-h2 {
+    display: none;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 17px;
+    letter-spacing: 0px;
+    text-align: left;
+  }
+
+  .toc-list-h2 li {
+    list-style: disc;
+  }
+
+  .toc-list-h2 li::marker {
+    margin-left: -12px;
+  }
+
+  .toc-h2 {
+    font-size: 14px;
+  }
+
+  .toc-footer {
+    padding: 1em 0;
+    margin-top: 1em;
+    border-top: 1px dashed $nav-footer-border-color;
+
+    li,a {
+      color: $links;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    li {
+      font-size: 0.8em;
+      line-height: 1.7;
+      text-decoration: none;
+    }
+  }
+}
+
+.toc-link, .toc-footer li {
+  padding: 0 $nav-padding 0 0;
+  display: block;
+  overflow-x: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  text-decoration: none;
+  color: $secondary;
+  transition-property: background;
+  transition-timing-function: linear;
+  transition-duration: 130ms;
+  @extend %subtitle-font;
+}
+
+// button to show navigation on mobile devices
+#nav-button {
+  span {
+    display: block;
+    $side-pad: $main-padding / 2 - 8px;
+    padding: $side-pad $side-pad $side-pad;
+    background-color: rgba($main-bg, 0.7);
+    transform-origin: 0 0;
+    transform: rotate(-90deg) translate(-100%, 0);
+    border-radius: 0 0 0 5px;
+  }
+  padding: 0 1.5em 5em 0; // increase touch size area
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  color: #000;
+  text-decoration: none;
+  font-weight: bold;
+  opacity: 0.7;
+  line-height: 16px;
+  img {
+    height: 16px;
+    vertical-align: bottom;
+  }
+
+  transition: left 0.3s ease-in-out;
+
+  &:hover { opacity: 1; }
+  &.open {left: $nav-width}
+}
+
+
+////////////////////////////////////////////////////////////////////////////////
+// PAGE LAYOUT AND CODE SAMPLE BACKGROUND
+////////////////////////////////////////////////////////////////////////////////
+
+.page-wrapper {
+  margin-left: $nav-width;
+  position: relative;
+  z-index: 10;
+  background-color: $main-bg;
+  min-height: 100%;
+  padding-bottom: 1px; // prevent margin overflow
+
+  // The dark box is what gives the code samples their dark background.
+  // It sits essentially under the actual content block, which has a
+  // transparent background.
+  // I know, it's hackish, but it's the simplist way to make the left
+  // half of the content always this background color.
+  .dark-box {
+    width: $examples-width;
+    background-color: $examples-bg;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+  }
+
+  .lang-selector {
+    position: fixed;
+    z-index: 50;
+    padding-top: 21.5px;
+  }
+}
+
+.lang-selector {
+  display: flex;
+  background-color: $lang-select-bg;
+  width: 100%;
+  font-weight: bold;
+  overflow-x: auto;
+  a {
+    @extend %principal-title-font;
+    color: $secondary;
+    text-decoration: none;
+    padding: 0 32px 21.5px;
+    outline: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-transform: none;
+
+    &:active, &:focus {
+      color: $primary;
+      border-bottom: 2px $primary solid;
+
+    }
+
+    &.active {
+      color: $primary;
+      border-bottom: 2px $primary solid;
+    }
+
+    &:hover {
+      color: $primary;
+      opacity: 0.8;
+    }
+  }
+
+  a[data-language-name="html"] {
+    text-transform: uppercase;
+  }
+
+  &:after {
+    content: '';
+    clear: both;
+    display: block;
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// CONTENT STYLES
+////////////////////////////////////////////////////////////////////////////////
+// This is all the stuff with the light background in the left half of the page
+
+.no-code-content {
+  &>h1, &>h2, &>h3, &>h4, &>h5, &>h6, &>p, &>table, &>ul, &>ol, &>aside, &>dl {
+    margin: 0 120px;
+    padding: 0 40px;
+  }
+}
+
+.content {
+  .center-column + .highlight {
+    background-color: transparent;
+    pre {
+      position: static;
+      float: none;
+      clear: none;
+      margin: 0 28px;
+      width: 50%;
+      left: 0;
+    }
+  }
+}
+
+.content {
+  // fixes webkit rendering bug for some: see #538
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+
+
+
+  // to place content above the dark box
+  position: relative;
+  z-index: 30;
+
+  &:after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+
+  &>h1, &>h2, &>h3, &>h4, &>h5, &>h6, &>p, &>table, &>ul, &>ol, &>aside, &>dl {
+    margin-right: $examples-width;
+    padding: 0px $main-padding;
+    box-sizing: border-box;
+    display: block;
+
+    @extend %left-col;
+  }
+
+  &>ul, &>ol {
+    padding-left: $main-padding + 24px;
+  }
+
+  // the div is the tocify hidden div for placeholding stuff
+  &>h1, &>h2, &>div {
+    clear:both;
+  }
+
+  h1 {
+    @extend %header-font;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 160%;
+    padding: 0.9em;
+    margin-bottom: $h1-margin-bottom;
+    margin-top: 2em;
+    border: 1px solid #E6E8F0;
+    background-color: $grey-50;
+  }
+
+  h1:first-child, div:first-child + h1 {
+    border-top-width: 0;
+    margin-top: 0;
+  }
+
+  h2 {
+    @extend %subtitle2-font;
+    margin-top: 2em;
+    margin-bottom: 1.5em;
+    padding-top: 0;
+    padding-bottom: 0.4em;
+    background-image: linear-gradient(to bottom, rgba(#FFF, 0.2), rgba(#FFF, 0));
+  }
+
+  // h2s right after h1s should bump right up
+  // against the h1s.
+  header + h1, h1 + div + h2 {
+    margin-top: $h1-margin-bottom * -1;
+    border-top: none;
+  }
+
+  h3, h4, h5, h6 {
+    @extend %header-font;
+    font-size: 15px;
+    margin-bottom: 0.8em;
+  }
+
+  h4, h5, h6 {
+    font-size: 10px;
+  }
+
+  hr {
+    margin: 2em 0;
+    border-top: 2px solid $examples-bg;
+    border-bottom: 2px solid $main-bg;
+  }
+
+  table {
+    margin-bottom: 1em;
+    overflow: auto;
+    td {
+      text-align: left;
+      vertical-align: top;
+      line-height: 1.6;
+      code {
+        white-space: nowrap;
+      }
+      em {
+        @extend %tc-type-font;
+      }
+      a {
+        color: $links;
+      }
+    }
+
+    th {
+      padding: 6px 24px 6px 16px;
+      vertical-align: bottom;
+      background: #E8EBF8;
+      box-shadow: inset 0px -1px 0px #E2E4F0;
+      @extend %table-header-font;
+    }
+
+    td {
+      padding: 10px;
+    }
+
+    tr:nth-child(odd)>td {
+      background-color: $grey-50;
+    }
+
+    tr:nth-child(even)>td {
+      background-color: #E8EBF8;
+    }
+  }
+
+  dt {
+    font-weight: bold;
+  }
+
+  dd {
+    margin-left: 15px;
+  }
+  p {
+    @extend %body1-font;
+    color: $grey-800;
+
+  }
+
+  p, li, dt, dd {
+    margin-top: 0;
+  }
+
+  li, dt, dd {
+    line-height: 1.6;
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  code {
+    background-color: $code-bg;
+    border-radius: 2px;
+    @extend %break-words;
+    @extend %code-font;
+  }
+
+  pre>code {
+    background-color: transparent;
+  }
+
+  aside {
+    padding-top: 1em;
+    padding-bottom: 1em;
+    margin: 1.5em 52% 1.5em 24px;
+    line-height: 1.6;
+    display: flex;
+    align-items: center;
+
+    &.notice {
+      background-color: $primary;
+    }
+
+    &.warning {
+      background-color: $aside-warning-bg;
+    }
+
+    &.success {
+      background-color: $aside-success-bg;
+    }
+  }
+
+  aside:before {
+    vertical-align: middle;
+    padding-right: 1.5em;
+  }
+
+  aside.notice:before {
+    @extend %icon-info-sign;
+  }
+
+  aside.warning:before {
+    @extend %icon-exclamation-sign;
+  }
+
+  aside.success:before {
+    @extend %icon-ok-sign;
+  }
+
+  .search-highlight {
+    padding: 2px;
+    margin: -3px;
+    border-radius: 4px;
+    border: 1px solid #F7E633;
+    background: linear-gradient(to top left, #F7E633 0%, #F1D32F 100%);
+  }
+
+}
+
+.highlight .c, .highlight .cm, .highlight .c1, .highlight .cs {
+  color: #909090;
+}
+
+.highlight, .highlight .w {
+  background-color: $code-bg;
+}
+
+.copy-clipboard {
+  cursor: pointer;
+
+  .copy-clipboard-text{
+    color: $primary;
+    @extend %button-medium-font
+  }
+}
+
+.copy-clipboard:hover {
+  opacity: 0.8;
+}
+
+.headline {
+  @extend %principal-title-font;
+  color: $nav-principal-title-text;
+  margin-left: 1.70rem;
+  margin-top: 1em;
+}
+
+.nav-title {
+  @extend %nav-secondary-title;
+  color: $grey-600;
+  margin: 1em 1.7rem;
+  &::after {
+    display: inline-block;
+    content: "";
+    border: 1px solid $nav-bg-line;
+    width: 62%;
+    margin-left: 10px;
+    transform: translateY(-0.2rem);
+  }
+}
+
+.scopes {
+  .scope {
+    background-color: #CACDDB;
+    display: inline-block;
+    border: 1px solid #D9DBF8;
+    border-radius: 1px;
+    padding: 0px 8px;
+    @extend %scope-font;
+  }
+}
+
+.http-method {
+  border-radius: 1px;
+  display: grid;
+  grid-template-columns: auto auto 1fr;
+  align-items: center;
+  padding: 8px 16px 8px 8px;
+
+  .box-method {
+    color: $http-method-text;
+    border-radius: 1px;
+    @extend %http-method-font;
+    padding: 0 8px;
+    margin: 0 10px;
+    text-transform: uppercase;
+    box-sizing: border-box;
+    border-radius: 2px;
+  }
+
+  &.get {
+    background: $http-method-get-container-bg;
+    border: 1px solid #D4F2F4;
+
+    .box-method {
+      background-color: $primary;
+    }
+
+  }
+
+  &.post, &.put {
+    background-color: $http-method-post-container-bg;
+    border: 1px solid #C6EFE5;
+
+    .box-method {
+      background-color: $http-method-post-bg;
+    }
+
+  }
+
+  &.delete {
+    background-color: $http-method-delete-container-bg;
+    border: 1px solid #FFDCDE;
+
+    .box-method {
+      background-color: $http-method-delete-bg;
+    }
+
+  }
+
+  code {
+    background-color: rgba(0, 0, 0, 0);
+  }
+  .http-method-copy {
+    justify-self: end;
+    cursor: pointer;
+    grid-column: 3;
+    grid-row: 1;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// CODE SAMPLE STYLES
+////////////////////////////////////////////////////////////////////////////////
+// This is all the stuff that appears in the right half of the page
+
+.content {
+  &>div.highlight {
+    clear:none;
+  }
+
+  pre, blockquote {
+    background-color: $code-annotation-bg;
+    color: #FFF;
+
+    margin: 0;
+    width: $examples-width;
+
+    float:right;
+    clear:right;
+
+    box-sizing: border-box;
+
+    @extend %right-col;
+
+    &>p { margin: 0; }
+
+    a {
+      color: $links;
+      text-decoration: none;
+      border-bottom: dashed 1px #ccc;
+    }
+  }
+
+  pre {
+    @extend %code-font;
+    padding: 1em 2em 2em;
+    display: grid;
+    grid-template-rows: auto auto;
+
+    .copy-clipboard {
+      grid-column: end;
+      grid-row: end;
+      justify-self: end;
+      display: grid;
+      grid-template-columns: auto auto;
+      align-items: center;
+      gap: 10%;
+    }
+  }
+
+  blockquote {
+    &>p {
+      background-color: $code-annotation-title-bg;
+      padding: $code-annotation-padding 2em;
+      color: $grey-50;
+      @extend %code-annotation-font;
+    }
+  }
+  .header-border {
+    background: $grey-50;
+    border-bottom: 1px solid #E6E8F0;
+    box-sizing: border-box;
+    padding: 36px;
+  }
+  .header-intro-box {
+    border-bottom: 1px solid #CACDDB;
+    padding: 0;
+    margin-top: 0;
+    display: grid;
+    grid-template-columns: auto 50%;
+
+    h2 {
+      margin: 0;
+      padding-top: 0;
+    }
+
+    h4 {
+      font-size: 34px;
+      font-weight: 400;
+      line-height: 42px;
+      letter-spacing: 0.25px;
+      text-align: left;
+      color: $grey-900;
+      margin-top: 0.8em;
+    }
+
+    h6 {
+      font-size: 10px;
+      font-weight: 700;
+      line-height: 17px;
+      letter-spacing: 0.4px;
+      color: $grey-600;
+      text-transform: uppercase;
+    }
+
+    .header-intro-body2-font {
+      @extend %body2-font;
+      color: $grey-600;
+    }
+
+    .intro-quick-links {
+      display: grid;
+      grid-template-columns: auto auto;
+      padding-bottom: 24px;
+
+      a {
+        text-decoration-line: none;
+      }
+    }
+    img {
+      align-self: end;
+    }
+  }
+  #introduction, #getting-started {
+    visibility: hidden;
+    padding: 0;
+    margin: 0;
+    font-size: 0;
+    border: 0;
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// RESPONSIVE DESIGN
+////////////////////////////////////////////////////////////////////////////////
+// These are the styles for phones and tablets
+// There are also a couple styles disperesed
+
+@media (max-width: $tablet-width) {
+  .toc-wrapper {
+    left: -$nav-width;
+
+    &.open {
+      left: 0;
+    }
+  }
+
+  .page-wrapper {
+    margin-left: 0;
+  }
+
+  #nav-button {
+    display: block;
+  }
+
+  .toc-link {
+    padding-top: 0.3em;
+    padding-bottom: 0.3em;
+  }
+}
+
+@media (max-width: $phone-width) {
+  .dark-box {
+    display: none;
+  }
+
+  %left-col {
+    margin-right: 0;
+  }
+
+  .toc-wrapper .lang-selector {
+    display: block;
+  }
+
+  .page-wrapper .lang-selector {
+    display: none;
+  }
+
+  %right-col {
+    width: auto;
+    float: none;
+  }
+
+  %right-col + %left-col {
+    margin-top: $main-padding;
+  }
+
+  .content {
+    .header-intro-box {
+      grid-template-columns: auto;
+      padding: 0px 24px;
+      img {
+          display: none;
+      }
+    }
+  }
+}
+
+
