@@ -1,6 +1,6 @@
 # Tenants
 
-Tenants provide a way to logically group your Applications and tokens. Common use cases for Tenants may be per environment such as development, QA, and production or to isolate business domains from each other. Tenant data is isolated from each other unless explicitly shared.
+Tenants provide a way to logically group your Applications and tokens. Common use cases for Tenants may be to create one per environment such as development, QA, and production or to isolate business domains from each other. Tenant data is isolated from other tenants unless explicitly shared.
 
 
 ## Tenant Object

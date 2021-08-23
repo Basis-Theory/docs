@@ -6,7 +6,7 @@ To begin taking advantage of the Basis Theory platform, you’ll need to create 
 
 ### If you have an account
 
-Checkout out our API Reference documentation below, or go to our Getting Started section if you’re unsure of where to go next.
+Check out our API Reference documentation below, or go to our Getting Started section if you’re unsure of where to go next.
 
 ## Install SDK
 
@@ -29,7 +29,7 @@ yarn add @basis-theory/basis-theory-js
 <script src="https://js.basistheory.com"></script> 
 ```
 
-You don't have to install **Elements** as a separated module or include additional script tags besides **BasisTheory.js**. It will dynamically load them from our secure domain, which enables us to keep the highest compliance standards (e.g. PCI compliance).
+You don't have to install **Elements** as a separate module or include additional script tags besides **BasisTheory.js**. It will dynamically load them from our secure domain, which enables us to keep the highest compliance standards (e.g. PCI compliance).
 
 To install **BasisTheory.js** you can choose either our NPM module or CDN hosted bundle through a `script` tag.
 
@@ -67,7 +67,7 @@ If you have a <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP" ta
 - `frame-src` - _https://elements.basistheory.com_ 
 
 
-If you are using <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/require-trusted-types-for" target="_blank">Trusted Types</a>, you must allow dynamic script loading from _https://js.basistheory.com_ origin. This should be done **BEFORE** [initialization](#initialize).
+If you are using <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/require-trusted-types-for" target="_blank">Trusted Types</a>, you must allow dynamic script loading from the _https://js.basistheory.com_ origin. This should be done **BEFORE** [initialization](#initialize).
 
 ### Common CSP Errors
 

@@ -27,7 +27,7 @@
         <img src="./images/card/api-reference-header-link.svg">
         <div class="container">
           <h4>API</h4>
-          <p>Protect your sensitive data and start enriching it with our API and SDKs.</p>
+          <p>Protect your sensitive data and start enriching it with our APIs and SDKs.</p>
         </div>
       </div>
     </a>
@@ -74,7 +74,7 @@
                     <div class="card">
                         <img src="/images/card/elements-header-link.svg">
                         <div class="container">
-                            <h4>Tokenize customer data</h4>
+                            <h4>Tokenize Customer Data</h4>
                             <p>Basis Theory is intended to handle any payload of data you can serialize. To show the flexibility of our tokenization platform...</p>
                         </div>
                     </div>
