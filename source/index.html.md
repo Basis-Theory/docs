@@ -11,7 +11,7 @@ other_docs:
   - <a href="https://guides.basistheory.com" toc-h2 toc-link>Guides</a>
 
 aux_links:
-  - <a class="toc-h2 toc-link" href="https://discord.gg/XjWsy8PqK2" target="_blank">Join Discord</a>
+  - <a class="toc-h2 toc-link" href="https://discord.gg/NSvXxaW5Fv" target="_blank">Join Discord</a>
   - <a class="toc-h2 toc-link" href="https://github.com/Basis-Theory" target="_blank">GitHub</a>
   - <a class="toc-h2 toc-link" href="mailto:support@basistheory.com?subject=Help!">Email Support</a>
   
