@@ -21,7 +21,7 @@ Attribute | Type | Description
 Name | Type | Description
 ---- | ---- | -----------
 Server-to-Server | `server_to_server` | Used for tokenizing, retrieving, and decrypting data within backend services where the `API key` can be secured
-Public | `public` | Used for tokenizing data directly within your mobile or browser application
+Client-side Application | `public` | Used for tokenizing data directly within your mobile or browser application
 Elements | `elements` | Used for tokenizing data with the Basis Theory Elements module 
 Management | `management` | Used for managing all aspects of your token infrastructure such as [creating an Application](#create-application)
 
