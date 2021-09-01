@@ -26,6 +26,7 @@ Attribute | Type | Description
 Attribute | Type | Description
 --------- | ---- | -----------
 `key` | *string* | Encryption key or key identifier
+`prov` | *string* | Optional encryption provider (e.g. AWS, AZURE, GCP, etc.)
 `alg` | *string* | Encryption algorithm (e.g. AES, RSA, etc)
 
 
@@ -62,6 +63,7 @@ curl "https://api.basistheory.com/tokens" \
       },
       "kek": {
         "key": "vpXn45HnsoQPR1q8ptngmPvPaqIDJ4vO+FFyQclglePCt8d1SyTDJU0T+F54T7GnAz7vz5OKsjgsFNo9lVB3UA==",
+        "prov": "AWS",
         "alg": "RSA"
       }
     },
@@ -90,6 +92,7 @@ const token = await bt.tokens.create({
     },
     kek: {
       key: 'vpXn45HnsoQPR1q8ptngmPvPaqIDJ4vO+FFyQclglePCt8d1SyTDJU0T+F54T7GnAz7vz5OKsjgsFNo9lVB3UA==',
+      prov: 'AWS',
       alg: 'RSA'
     }
   },
@@ -118,6 +121,7 @@ var token = await client.CreateAsync(new Token {
     },
     KeyEncryptionKey = new EncryptionKey {
       Key = "vpXn45HnsoQPR1q8ptngmPvPaqIDJ4vO+FFyQclglePCt8d1SyTDJU0T+F54T7GnAz7vz5OKsjgsFNo9lVB3UA==",
+      Provider: "AWS",
       Algorithm: "RSA"
     }
   },
@@ -230,7 +234,8 @@ var tokens = await client.GetAsync();
         },
         "kek": {
           "key": "vpXn45HnsoQPR1q8ptngmPvPaqIDJ4vO+FFyQclglePCt8d1SyTDJU0T+F54T7GnAz7vz5OKsjgsFNo9lVB3UA==",
-          "alg": "RSA"
+          "prov": "AWS",
+          "alg": "RSA" 
         }
       },
       "children": [
@@ -397,6 +402,7 @@ var token = await client.GetByIdAsync("c06d0789-0a38-40be-b7cc-c28a718f76f1");
     },
     "kek": {
       "key": "vpXn45HnsoQPR1q8ptngmPvPaqIDJ4vO+FFyQclglePCt8d1SyTDJU0T+F54T7GnAz7vz5OKsjgsFNo9lVB3UA==",
+      "prov": "AWS",
       "alg": "RSA"
     }
   },
