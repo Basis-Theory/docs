@@ -4862,6 +4862,11 @@
 <td>Encryption key or key identifier</td>
 </tr>
 <tr>
+<td><code>prov</code></td>
+<td><em>string</em></td>
+<td>Optional encryption provider (e.g. AWS, AZURE, GCP, etc.)</td>
+</tr>
+<tr>
 <td><code>alg</code></td>
 <td><em>string</em></td>
 <td>Encryption algorithm (e.g. AES, RSA, etc)</td>
@@ -4922,6 +4927,7 @@
       },
       "kek": {
         "key": "vpXn45HnsoQPR1q8ptngmPvPaqIDJ4vO+FFyQclglePCt8d1SyTDJU0T+F54T7GnAz7vz5OKsjgsFNo9lVB3UA==",
+        "prov": "AWS",
         "alg": "RSA"
       }
     },
@@ -4947,6 +4953,7 @@
     <span class="p">},</span>
     <span class="na">kek</span><span class="p">:</span> <span class="p">{</span>
       <span class="na">key</span><span class="p">:</span> <span class="dl">'</span><span class="s1">vpXn45HnsoQPR1q8ptngmPvPaqIDJ4vO+FFyQclglePCt8d1SyTDJU0T+F54T7GnAz7vz5OKsjgsFNo9lVB3UA==</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">prov</span><span class="p">:</span> <span class="dl">'</span><span class="s1">AWS</span><span class="dl">'</span><span class="p">,</span>
       <span class="na">alg</span><span class="p">:</span> <span class="dl">'</span><span class="s1">RSA</span><span class="dl">'</span>
     <span class="p">}</span>
   <span class="p">},</span>
@@ -4972,6 +4979,7 @@
     <span class="p">},</span>
     <span class="n">KeyEncryptionKey</span> <span class="p">=</span> <span class="k">new</span> <span class="n">EncryptionKey</span> <span class="p">{</span>
       <span class="n">Key</span> <span class="p">=</span> <span class="s">"vpXn45HnsoQPR1q8ptngmPvPaqIDJ4vO+FFyQclglePCt8d1SyTDJU0T+F54T7GnAz7vz5OKsjgsFNo9lVB3UA=="</span><span class="p">,</span>
+      <span class="n">Provider</span><span class="p">:</span> <span class="s">"AWS"</span><span class="p">,</span>
       <span class="n">Algorithm</span><span class="p">:</span> <span class="s">"RSA"</span>
     <span class="p">}</span>
   <span class="p">},</span>
@@ -5103,7 +5111,8 @@
         </span><span class="p">},</span><span class="w">
         </span><span class="nl">"kek"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vpXn45HnsoQPR1q8ptngmPvPaqIDJ4vO+FFyQclglePCt8d1SyTDJU0T+F54T7GnAz7vz5OKsjgsFNo9lVB3UA=="</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"alg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RSA"</span><span class="w">
+          </span><span class="nl">"prov"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AWS"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"alg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RSA"</span><span class="w"> 
         </span><span class="p">}</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="nl">"children"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -5306,6 +5315,7 @@ Token types other than <code>token</code> or non-BasisTheory encrypted tokens wi
     </span><span class="p">},</span><span class="w">
     </span><span class="nl">"kek"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vpXn45HnsoQPR1q8ptngmPvPaqIDJ4vO+FFyQclglePCt8d1SyTDJU0T+F54T7GnAz7vz5OKsjgsFNo9lVB3UA=="</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"prov"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AWS"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"alg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RSA"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">},</span><span class="w">
