@@ -31,7 +31,7 @@
         </div>
       </div>
     </a>
-      <a href="/elements">
+    <a href="/elements">
       <div class="card">
         <img src="./images/card/elements-header-link.svg">
         <div class="container">
@@ -40,44 +40,53 @@
         </div>
       </div>
     </a>
+    <a href="/encryption">
+      <div class="card">
+        <img src="./images/card/elements-header-link.svg">
+        <div class="container">
+            <h4>Encryptions</h4>
+            <p>Bla bla bla</p>
+        </div>
+      </div>
+    </a>
   </div>
-            <h2 class="no_toc">Guides</h2>
-            <div class="card-box">
-                <a href="https://guides.basistheory.com/guides/basis-theory-sample-app/">
-                    <div class="card">
-                        <img src="./images/card/api-reference-header-link.svg">
-                        <div class="container">
-                            <h4>Quickstart Guide</h4>
-                            <p>To understand how to implement Basis Theory we are pleased to offer you this 10-step guide. If you don’t want a guide and just want to see it work, run on over to the sandbox.</p>
-                        </div>
-                    </div>
-                </a>
-                <a href="https://guides.basistheory.com/guides/collect-atomic-cards-with-elements/">
-                    <div class="card">
-                        <img src="../images/card/elements-header-link.svg">
-                        <div class="container">
-                            <h4>Collect Atomic Cards</h4>
-                            <p>Basis Theory is here to make sure you can keep the lowest level of PCI compliance while retaining your ability to use your card data whenever and however you need to use it.</p>
-                        </div>
-                    </div>
-                </a>
-                <a href="https://guides.basistheory.com/guides/own-your-encryption-keys/">
-                    <div class="card">
-                        <img src="/images/card/elements-header-link.svg">
-                        <div class="container">
-                            <h4>Own Your Encryption Keys</h4>
-                            <p>This guide will show you how to start encrypting data within your applications, so only you can see the data.</p>
-                        </div>
-                    </div>
-                </a>
-                <a href="https://guides.basistheory.com/guides/tokenize-customer-data-in-browser/">
-                    <div class="card">
-                        <img src="/images/card/elements-header-link.svg">
-                        <div class="container">
-                            <h4>Tokenize Customer Data</h4>
-                            <p>Basis Theory is intended to handle any payload of data you can serialize. To show the flexibility of our tokenization platform...</p>
-                        </div>
-                    </div>
-                </a>
+  <h2 class="no_toc">Guides</h2>
+  <div class="card-box">
+    <a href="https://guides.basistheory.com/guides/basis-theory-sample-app/">
+        <div class="card">
+            <img src="./images/card/api-reference-header-link.svg">
+            <div class="container">
+                <h4>Quickstart Guide</h4>
+                <p>To understand how to implement Basis Theory we are pleased to offer you this 10-step guide. If you don’t want a guide and just want to see it work, run on over to the sandbox.</p>
             </div>
+        </div>
+    </a>
+    <a href="https://guides.basistheory.com/guides/collect-atomic-cards-with-elements/">
+      <div class="card">
+          <img src="../images/card/elements-header-link.svg">
+          <div class="container">
+              <h4>Collect Atomic Cards</h4>
+              <p>Basis Theory is here to make sure you can keep the lowest level of PCI compliance while retaining your ability to use your card data whenever and however you need to use it.</p>
+          </div>
+      </div>
+    </a>
+    <a href="https://guides.basistheory.com/guides/own-your-encryption-keys/">
+      <div class="card">
+          <img src="/images/card/elements-header-link.svg">
+          <div class="container">
+              <h4>Own Your Encryption Keys</h4>
+              <p>This guide will show you how to start encrypting data within your applications, so only you can see the data.</p>
+          </div>
+      </div>
+    </a>
+    <a href="https://guides.basistheory.com/guides/tokenize-customer-data-in-browser/">
+      <div class="card">
+        <img src="/images/card/elements-header-link.svg">
+        <div class="container">
+          <h4>Tokenize Customer Data</h4>
+          <p>Basis Theory is intended to handle any payload of data you can serialize. To show the flexibility of our tokenization platform...</p>
+        </div>
+      </div>
+    </a>
+  </div>
 </div>
