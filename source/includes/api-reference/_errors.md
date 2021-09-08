@@ -57,13 +57,13 @@ Error Code | Meaning
 `500` | Something went wrong on Basis Theory's side
 
 
-## React Errors
+## Reactor Errors
 
 When calling `POST */react` endpoints, vendor-specific errors are translated to the same
 response schema as Basis Theory [Errors](#response). Additional response codes may be returned
 on calls to `POST */react` mapped from vendor-specific errors.
 
-### React Error Codes
+### Reactor Error Codes
 
 Error Code | Meaning | Common Scenarios
 ---------- | ------- | ----------------
