@@ -461,7 +461,7 @@ Parameter | Required | Type | Default | Description
 ### Response
 
 Returns a [token](#token-object) with type of `bank:reaction` if the Atomic Bank was reacted. Returns [an error](#errors) if the Atomic Bank failed to react.
-Third-party errors will be translated to the common Basis Theory Error format. See [React Errors](#react-errors) for more details.
+Errors generated from Reactors will be translated to the common Basis Theory Error format. See [React Errors](#react-errors) for more details.
 
 ## Get an Atomic Bank Reaction Token
 
