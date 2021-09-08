@@ -6,7 +6,6 @@ class NestingUniqueHeadCounter < Middleman::Renderers::MiddlemanRedcarpetHTML
     super
     @@headers_history = {} if !defined?(@@headers_history)
   end
-
   def header(text, header_level)
     friendly_text = text.gsub(/<[^>]*>/,"").parameterize
     @@headers_history[header_level] = text.parameterize
