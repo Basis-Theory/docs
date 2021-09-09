@@ -1,5 +1,9 @@
 # Tokens
 
+<aside class="notice">
+  <span>Visit <a href="/encryption">Encryption Documentation</a> to start to encrypt.</span>
+</aside>
+
 ## Token Object
 
 Attribute | Type | Description
