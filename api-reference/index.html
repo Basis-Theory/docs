@@ -365,6 +365,11 @@
           </li>
           <li>
             <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#errors-reactor-errors" class="toc-h2 toc-link" data-title="Reactor Errors">Reactor Errors</a>
+                  </li>
+              </ul>
           </li>
           <li>
             <a href="#limits" class="toc-h1 toc-link" data-title="Limits">Limits</a>
@@ -884,6 +889,16 @@
 </tr>
 </thead><tbody>
 <tr>
+<td><code>title</code></td>
+<td><em>string</em></td>
+<td>A short, human-readable summary of the problem</td>
+</tr>
+<tr>
+<td><code>detail</code></td>
+<td><em>string</em></td>
+<td>A human-readable explanation specific to this occurrence of the problem</td>
+</tr>
+<tr>
 <td><code>errors.{property}</code></td>
 <td><em>array</em></td>
 <td>An array of human readable error messages returned per request <code>{property}</code></td>
@@ -891,7 +906,7 @@
 <tr>
 <td><code>status</code></td>
 <td><em>integer</em></td>
-<td>HTTP status code of the responses</td>
+<td>HTTP status code of the response</td>
 </tr>
 </tbody></table>
 <h3 id='errors-pagination-object-error-codes'>Error Codes</h3>
@@ -930,6 +945,49 @@
 <td>Something went wrong on Basis Theory&#39;s side</td>
 </tr>
 </tbody></table>
+<h2 id='errors-reactor-errors'>Reactor Errors</h2>
+<p>When calling <code>POST */react</code> endpoints, vendor-specific errors are translated to the same
+response schema as Basis Theory <a href="#response">Errors</a>. Additional response codes may be returned
+on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
+<h3 id='errors-reactor-errors-reactor-error-codes'>Reactor Error Codes</h3>
+<table><thead>
+<tr>
+<th>Error Code</th>
+<th>Meaning</th>
+<th>Common Scenarios</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>400</code></td>
+<td>Bad Request</td>
+<td><ul><li>Missing or invalid request properties when processing the request with the vendor</li><li>Invalid Reactor Configuration</li></ul></td>
+</tr>
+<tr>
+<td><code>401</code></td>
+<td>Authentication Error</td>
+<td><ul><li>Invalid or unknown credentials</li><li>Credentials are valid, but lack permission to complete the operation</li></ul></td>
+</tr>
+<tr>
+<td><code>402</code></td>
+<td>Invalid Payment Method</td>
+<td><ul><li>Expired Card</li><li>A test card or bank account was used in a production environment, or vice-versa</li><li>The vendor denied the card or bank account</li></ul></td>
+</tr>
+<tr>
+<td><code>422</code></td>
+<td>Unprocessable Entity</td>
+<td><ul><li>Reactor Formula code is not a valid function</li></ul></td>
+</tr>
+<tr>
+<td><code>429</code></td>
+<td>Rate Limit Error</td>
+<td><ul><li>The vendor responded with a 429 HTTP response code</li></ul></td>
+</tr>
+<tr>
+<td><code>500</code></td>
+<td>Reactor Runtime Error</td>
+<td><ul><li>An unhandled exception occurred</li><li>The vendor responded with a 5XX HTTP response code</li><li>Vendor connection failure</li></ul></td>
+</tr>
+</tbody></table>
 <h1 id='limits'>Limits</h1>
 <p>The Basis Theory API has rate limits applied to ensure the speed and consistency of our systems. </p>
 
@@ -937,7 +995,7 @@
 <li>Our Elements are restricted to 10 requests per IP, per second, per <a href="/api-reference/#applications">Application</a></li>
 <li>Our APIs are restricted to 100 requests per IP, per second, per <a href="/api-reference/#applications">Application</a></li>
 </ul>
-<h3 id='limits-pagination-object-error-codes'>Error Codes</h3>
+<h3 id='limits-reactor-errors-error-codes'>Error Codes</h3>
 <table><thead>
 <tr>
 <th>Error Code</th>
@@ -2059,7 +2117,8 @@
 </tr>
 </tbody></table>
 <h3 id='atomic-banks-create-an-atomic-bank-reaction-response'>Response</h3>
-<p>Returns a <a href="#token-object">token</a> with type of <code>bank:reaction</code> if the Atomic Bank was reacted. Returns <a href="#errors">an error</a> if the Atomic Bank failed to react.</p>
+<p>Returns a <a href="#token-object">token</a> with type of <code>bank:reaction</code> if the Atomic Bank was reacted. Returns <a href="#errors">an error</a> if the Atomic Bank failed to react.
+Errors generated from Reactors will be translated to the common Basis Theory Error format. See <a href="#reactor-errors">Reactor Errors</a> for more details.</p>
 <h2 id='atomic-banks-get-an-atomic-bank-reaction-token'>Get an Atomic Bank Reaction Token</h2>
 <blockquote>
 <p>Request</p>
@@ -2745,7 +2804,8 @@
 </tr>
 </tbody></table>
 <h3 id='atomic-cards-create-an-atomic-card-reaction-response'>Response</h3>
-<p>Returns a <a href="#token-object">token</a> with type of <code>card:reaction</code> if the Atomic Card was reacted. Returns <a href="#errors">an error</a> if the Atomic Card failed to react.</p>
+<p>Returns a <a href="#token-object">token</a> with type of <code>card:reaction</code> if the Atomic Card was reacted. Returns <a href="#errors">an error</a> if the Atomic Card failed to react.
+Errors generated from Reactors will be translated to the common Basis Theory Error format. See <a href="#reactor-errors">Reactor Errors</a> for more details.</p>
 <h2 id='atomic-cards-get-an-atomic-card-reaction-token'>Get an Atomic Card Reaction Token</h2>
 <blockquote>
 <p>Request</p>
