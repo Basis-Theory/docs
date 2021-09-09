@@ -6,12 +6,12 @@ Your ability to authenticate to the API is granted by creating Applications, eac
 
 Attribute | Type | Description
 --------- | ---- | -----------
-`id` | *uuid* | Unique identifier of the Application which can be used to [get an Application](#get-an-application)
+`id` | *uuid* | Unique identifier of the Application which can be used to [get an Application](#applications-get-an-application)
 `tenant_id` | *uuid* | The [Tenant](#tenants) ID which owns the Application
 `name` | *string* | The name of the Application
 `key` | *string* | The API key which should be used for authenticating against Basis Theory API endpoints
-`type` | *string* | [Application type](#application-types) of the Application
-`permissions` | *array* | List of [permissions](#permission-types) for the Application
+`type` | *string* | [Application type](#applications-application-types) of the Application
+`permissions` | *array* | List of [permissions](#permissions-permission-types) for the Application
 `created_at` | *date* | Created date of the Application in ISO 8601 format
 `modified_at` | *date* | Last modified date of the Application in ISO 8601 format
 
@@ -23,7 +23,7 @@ Name | Type | Description
 Server-to-Server | `server_to_server` | Used for tokenizing, retrieving, and decrypting data within backend services where the `API key` can be secured
 Client-side Application | `public` | Used for tokenizing data directly within your mobile or browser application
 Elements | `elements` | Used for tokenizing data with the Basis Theory Elements module 
-Management | `management` | Used for managing all aspects of your token infrastructure such as [creating an Application](#create-application)
+Management | `management` | Used for managing all aspects of your token infrastructure such as [creating an Application](#applications-create-application)
 
 
 ## Create Application
@@ -118,12 +118,12 @@ Create a new Application for the Tenant.
 Attribute | Required | Type | Default | Description
 --------- | -------- | ---- | ------- | -----------
 `name` | true | *string* | `null` | The name of the Application. Has a maximum length of `200`
-`type` | true | *string* | `null` | [Application](#application-types) of the application
-`permissions` | false | *array* | `[]` | [Permissions](#permission-types) for the application
+`type` | true | *string* | `null` | [Application](#applications-application-types) of the application
+`permissions` | false | *array* | `[]` | [Permissions](#permissions-permission-types) for the application
 
 ### Response
 
-Returns an [application](#application-object) if the application was created. Returns [an error](#errors) if there were validation errors, or the application failed to create.
+Returns an [application](#applications-application-object) if the application was created. Returns [an error](#errors) if there were validation errors, or the application failed to create.
 
 
 ## List Applications
@@ -198,7 +198,7 @@ Parameter | Required | Type | Default | Description
 
 ### Response
 
-Returns a [paginated object](#pagination) with the `data` property containing an array of [applications](#application-object). Providing any query parameters will filter the results. Returns [an error](#errors) if applications could not be retrieved.
+Returns a [paginated object](#pagination) with the `data` property containing an array of [applications](#applications-application-object). Providing any query parameters will filter the results. Returns [an error](#errors) if applications could not be retrieved.
 
 
 ## Get an Application
@@ -264,7 +264,7 @@ Parameter | Required | Type | Default | Description
 
 ### Response
 
-Returns an [application](#application-object) with the `id` provided. Returns [an error](#errors) if the application could not be retrieved.
+Returns an [application](#applications-application-object) with the `id` provided. Returns [an error](#errors) if the application could not be retrieved.
 
 
 ## Get an Application by Key
@@ -324,7 +324,7 @@ Get an application by key in the Tenant. Will use the `X-API-KEY` header to look
 
 ### Response
 
-Returns a [application](#application-object) for the provided `X-API-KEY`. Returns [an error](#errors) if the application could not be retrieved.
+Returns a [application](#applications-application-object) for the provided `X-API-KEY`. Returns [an error](#errors) if the application could not be retrieved.
 
 
 ## Update Application
@@ -420,11 +420,11 @@ Parameter | Required | Type | Default | Description
 Attribute | Required | Type | Default | Description
 --------- | -------- | ---- | ------- | -----------
 `name` | true | *string* | `null` | The name of the application. Has a maximum length of `200`
-`permissions` | false | *array* | `[]` | [Permissions](#permission-types) for the application
+`permissions` | false | *array* | `[]` | [Permissions](#permissions-permission-types) for the application
 
 ### Response
 
-Returns an [application](#application-object) if the application was updated. Returns [an error](#errors) if there were validation errors, or the application failed to update.
+Returns an [application](#applications-application-object) if the application was updated. Returns [an error](#errors) if there were validation errors, or the application failed to update.
 
 
 ## Regenerate API Key
@@ -498,7 +498,7 @@ Parameter | Required | Type | Default | Description
 
 ### Response
 
-Returns an [application](#application-object) with the new `key` property populated. Returns [an error](#errors) if there were validation errors, or the application key failed to regenerate.
+Returns an [application](#applications-application-object) with the new `key` property populated. Returns [an error](#errors) if there were validation errors, or the application key failed to regenerate.
 
 
 ## Delete Application

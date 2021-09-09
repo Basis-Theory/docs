@@ -6,7 +6,7 @@ Attribute | Type | Description
 --------- | ---- | -----------
 `id` | *uuid* | Unique identifier of the token which can be used to [get an Atomic Card](#get-an-atomic-card)
 `tenant_id` | *uuid* | The [Tenant](#tenants) ID which owns the card
-`type` | *string* | `Card` [token type](#token-types)
+`type` | *string* | `Card` [token type](#tokens-token-types)
 `card` | *[card](#card-object)* | Card data
 `billing_details` | *[billing details](#billing-details-object)* | Billing details
 `metadata` | *map* | A key-value map of non-sensitive data.
@@ -499,7 +499,7 @@ Parameter | Required | Type | Default | Description
 
 ### Response
 
-Returns a [token](#token-object) with type of `card:reaction` if the Atomic Card was reacted. Returns [an error](#errors) if the Atomic Card failed to react.
+Returns a [token](#tokens-token-object) with type of `card:reaction` if the Atomic Card was reacted. Returns [an error](#errors) if the Atomic Card failed to react.
 
 
 ## Get an Atomic Card Reaction Token
@@ -552,7 +552,7 @@ Parameter | Required | Type | Default | Description
 
 ### Response
 
-Returns a [token](#token-object) with type of `card:reaction`. Returns [an error](#errors) if the Atomic Card failed to react.
+Returns a [token](#tokens-token-object) with type of `card:reaction`. Returns [an error](#errors) if the Atomic Card failed to react.
 
 
 ## Test Cards

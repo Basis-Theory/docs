@@ -246,15 +246,15 @@ Parameter | Required | Type | Default | Description
 
 Attribute | Required | Type | Default | Description
 --------- | -------- | ---- | ------- | -----------
-`type` | false | *string* | `token` | [Token type](#token-types) of the token
+`type` | false | *string* | `token` | [Token type](#tokens-token-types) of the token
 `data` | true | *any* | `null` | Token data
 `metadata` | false | *map* | `null` | A key-value map of non-sensitive data.
-`encryption` | false | *[encryption object](#encryption-object)* | `null` | Encryption metadata for an encrypted token data value
-`children` | false | *array* | `[]` | An array of [tokens](#token-object). Can be used to bulk create tokens with [token associations](#create-token-association)
+`encryption` | false | *[encryption object](#tokens-token-object-encryption-object)* | `null` | Encryption metadata for an encrypted token data value
+`children` | false | *array* | `[]` | An array of [tokens](#tokens-token-object). Can be used to bulk create tokens with [token associations](#token-associations-create-token-association)
 
 ### Response
 
-Returns a [token](#token-object) if the child token was created for the parent token. Returns [an error](#errors) if there were validation errors, or the token failed to create.
+Returns a [token](#tokens-token-object) if the child token was created for the parent token. Returns [an error](#errors) if there were validation errors, or the token failed to create.
 
 
 ## List Child Tokens for a Token
@@ -343,10 +343,10 @@ Parameter | Required | Type | Default | Description
 Parameter | Required | Type | Default | Description
 --------- | -------- | ---- | ------- | -----------
 `id` | false | *array* | `[]` | An optional list of token ID's to filter the list of child tokens by
-`type` | false | *array* | `[]` | An optional array of [token types](#token-types) to filter the list of child tokens by
+`type` | false | *array* | `[]` | An optional array of [token types](#tokens-token-types) to filter the list of child tokens by
 `children` | false | *boolean* | `false` | Include child tokens where the child token is a parent in [token association](#token-associations)
-`children_type` | false | *array* | `[]` | An optional array of [token types](#token-types) to filter child tokens where the child token is a parent in the [token association](#token-associations)
+`children_type` | false | *array* | `[]` | An optional array of [token types](#tokens-token-types) to filter child tokens where the child token is a parent in the [token association](#token-associations)
 
 ### Response
 
-Returns a [paginated object](#pagination) with the `data` property containing an array of [child tokens](#token-object) for the parent token. Providing any query parameters will filter the child tokens. Returns [an error](#errors) if tokens could not be retrieved.
+Returns a [paginated object](#pagination) with the `data` property containing an array of [child tokens](#tokens-token-object) for the parent token. Providing any query parameters will filter the child tokens. Returns [an error](#errors) if tokens could not be retrieved.

@@ -2,7 +2,7 @@
 
 Permissions offer fine-grained control over your Application's access to different aspects of your token infrastructure. We suggest limiting the scope of your Application to the least amount possible, and to not share them across your internal services.
 
-Permissions are associated with every Application and can be configured when you [create an Application](#create-application) or [update an Application](#update-application). 
+Permissions are associated with every Application and can be configured when you [create an Application](#applications-create-application) or [update an Application](#applications-update-application). 
 
 Every API endpoint will document the required permissions needed to perform the operation against the endpoint.
 
@@ -13,7 +13,7 @@ Attribute | Type | Description
 --------- | ---- | -----------
 `type` | *string* | Permission type referenced by Basis Theory API endpoints
 `description` | *string* | Description of the permission
-`application_types` | *array* | List of [application types](#application-types) that can assign the permission
+`application_types` | *array* | List of [application types](#applications-application-types) that can assign the permission
 
 
 ## Permission Types
@@ -96,4 +96,4 @@ var permissions = await client.GetAsync();
 
 ### Response
 
-Returns an array of [permission objects](#permission-object). Returns [an error](#errors) if permissions could not be retrieved.
+Returns an array of [permission objects](#permissions-permission-object). Returns [an error](#errors) if permissions could not be retrieved.

@@ -15,7 +15,7 @@ Attribute | Type | Description
 `name` | *string* | The name of the Reactor Formula. Has a maximum length of `200`
 `description` | *string* | The description of the Reactor Formula
 `type` | *string* | [Type](#reactor-formula-types) of the Reactor Formula
-`source_token_type` | *string* | [Source token type](#token-types) of the Reactor Formula
+`source_token_type` | *string* | [Source token type](#tokens-token-types) of the Reactor Formula
 `icon` | *string* | Base64 [data URL](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URIs) of the image
 `code` | *string* | [Reactor Formula code](#reactor-formula-code) which will be executed when the Reactor Formula is processed
 `configuration` | *array* | Array of [configuration](#reactor-formula-configuration-object) options for configuring a reactor
@@ -43,7 +43,7 @@ Attribute | Required | Type | Default | Description
 
 ## Reactor Formula Code
 
-All Reactor Formula code snippets must export a function which takes in a [context object](#reactor-formula-code-context-object) and returns a [token object](#token-object).
+All Reactor Formula code snippets must export a function which takes in a [context object](#reactor-formula-code-context-object) and returns a [token object](#tokens-token-object).
 
 ### Reactor Formula Code Context Object
 
@@ -262,7 +262,7 @@ Attribute | Required | Type | Default | Description
 `name` | true | *string* | `null` | The name of the Reactor Formula. Has a maximum length of `200`
 `description` | false | *string* | `null` | The description of the Reactor Formula
 `type` | true | *string* | `null` | [Type](#reactor-formula-types) of the Reactor Formula
-`source_token_type` | true | *string* | `null` | [Source token type](#token-types) of the Reactor Formula
+`source_token_type` | true | *string* | `null` | [Source token type](#tokens-token-types) of the Reactor Formula
 `icon` | false | *string* | `null` | Base64 [data URL](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URIs) of the image. Supported image types are: `image/png`, `image/jpg`, and `image/jpeg`
 `code` | true | *string* | `null` | [Reactor code](#reactor-formula-code) which will be executed when the Reactor Formula is processed
 `configuration` | true | *array* | `[]` | Array of [configuration](#reactor-formula-configuration-object) options for configuring a Reactor
@@ -373,7 +373,7 @@ Get a list of official Reactor Formula and private, Tenant-specific Reactor Form
 Parameter | Required | Type | Default | Description
 --------- | -------- | ---- | ------- | -----------
 `name` | false | *string* | `null` | Wildcard search of Reactor Formulas by name
-`source_token_type` | false | *string* | `null` | Filter Reactor Formulas by [source token type](#token-types)
+`source_token_type` | false | *string* | `null` | Filter Reactor Formulas by [source token type](#tokens-token-types)
 
 ### Response
 
@@ -688,7 +688,7 @@ Attribute | Required | Type | Default | Description
 `name` | true | *string* | `null` | The name of the Reactor Formula. Has a maximum length of `200`
 `description` | false | *string* | `null` | The description of the Reactor Formula
 `type` | true | *string* | `null` | [Type](#reactor-reactor-types) of the Reactor Formula
-`source_token_type` | true | *string* | `null` | [Source token type](#token-types) of the Reactor Formula
+`source_token_type` | true | *string* | `null` | [Source token type](#tokens-token-types) of the Reactor Formula
 `icon` | false | *string* | `null` | Base64 [data URL](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URIs) of the image. Supported image types are: `image/png`, `image/jpg`, and `image/jpeg`
 `code` | true | *string* | `null` | [Reactor code](#reactor-formula-code) which will be executed when the Reactor Formula is processed
 `configuration` | true | *array* | `[]` | Array of [configuration](#reaction-formula-configuration-object) options for configuring a Reactor
