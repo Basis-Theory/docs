@@ -17,13 +17,13 @@ This method returns a new instance of an element type.
 Parameter | Required | Type                   | Description
 --------- | -------- | ----------------       | -----------
 `type`    | true     | *string*               | [Type](#element-types) of the element you want to create
-`options` | false    | *CreateElementOptions* | [Options](#createelementoptions) for customizing the element
+`options` | false    | *CreateElementOptions* | [Options](#elements-instance-create-element-create-element-options) for customizing the element
 
 <aside class="warning">
   <span>Unknown <code>type</code> values will throw an error.</span>
 </aside>
 
-### CreateElementOptions
+### Create Element Options
 
 CreateElementOptions provide a quick way to customize an Element before mounting it to your website.
 
@@ -65,7 +65,7 @@ Updates the element options the element was initialized with. The values are dee
 
 Parameter | Required | Type                   | Description
 --------- | -------- | ----------------       | -----------
-`options` | false    | *UpdateElementOptions* | [Options](#updateelementoptions) for customizing the element
+`options` | false    | *UpdateElementOptions* | [Options](#elements-instance-update-element-updateelementoptions) for customizing the element
 
 
 ### UpdateElementOptions

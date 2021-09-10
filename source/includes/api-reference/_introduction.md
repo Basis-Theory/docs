@@ -6,7 +6,7 @@
         <h6>QUICK LINKS</h6>
         <span class="intro-quick-links">
             <a href="#getting-started">Before You Begin</a>
-            <a href="#create-token">Creating Tokens</a>
+            <a href="#tokens">Creating Tokens</a>
             <a href="#applications">Applications</a>
             <a href="#permissions">API Keys</a>
         </span>
