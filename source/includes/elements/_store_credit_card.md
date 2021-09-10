@@ -12,11 +12,11 @@ BasisTheory.elements.storeCreditCard({
 });
 ```
 
-Allows secure submission and tokenization of a card element. Returns a `Promise` that resoles to the tokenized card data. See [CardModel](#cardmodel) for the resolved value type.
+Allows secure submission and tokenization of a card element. Returns a `Promise` that resoles to the tokenized card data. See [CardModel](#element-types-card-element) for the resolved value type.
 
-Internally, `BasisTheory.elements.storeCreditCard` calls [Create Atomic Card API](#create-atomic-card).
+Internally, `BasisTheory.elements.storeCreditCard` calls [Create Atomic Card API](api-reference/#atomic-cards-create-atomic-card).
 
-You can fetch this same data later with [Get an Atomic Card API](#get-an-atomic-card).
+You can fetch this same data later with [Get an Atomic Card API](api-reference/#atomic-cards-get-an-atomic-card-reaction-token).
 
 <aside class="notice">
   <span>Notice that the actual card data never leaves the element (iframe) other than to hit our secure API endpoints.</span>
@@ -34,6 +34,6 @@ In case `storeCreditCard` throws an error, that could be related to client-side 
 
 Attribute    | Type       | Scope  | Description
 ------------ | ---------- | ------ | -----------
-`validation` | *array*    | client | Array of [FieldError](#fielderror), in case of client-side error.
+`validation` | *array*    | client | Array of [FieldError](#element-events-on-change-fielderror), in case of client-side error.
 `data`       | *object*   | server | Response body sent from the server.
 `status`     | *number*   | both   | Response HTTP status or `-1` if the request never left the client (i.e. connection issues)

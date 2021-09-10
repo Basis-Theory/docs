@@ -31,7 +31,7 @@ const bt = await new BasisTheory().init('test_1234567890', { elements: true });
 ```
 
 
-After [installing](#install-sdk) **BasisTheory.js**, simply initialize it with `elements: true` so it dynamically loads **Elements** module.
+After [installing](#getting-started-install-sdk) **BasisTheory.js**, simply initialize it with `elements: true` so it dynamically loads **Elements** module.
 
 <aside class="warning">
   <span>Elements are meant to be used in browser environments only. If you installed <code>BasisTheory.js</code> as a module, make sure the instance that loads elements runs on the browser-side code.</span>
@@ -42,5 +42,5 @@ After [installing](#install-sdk) **BasisTheory.js**, simply initialize it with `
 </aside>
 
 <aside class="notice">
-  <span>Friendly reminder to replace <code>test_1234567890</code> with a valid <a href="api-reference/#application-types">Elements Application key</a>.</span>
+  <span>Friendly reminder to replace <code>test_1234567890</code> with a valid <a href="api-reference/#applications-application-types">Elements Application key</a>.</span>
 </aside>

@@ -4,9 +4,9 @@
 
 Attribute | Type | Description
 --------- | ---- | -----------
-`id` | *uuid* | Unique identifier of the token which can be used to [get an Atomic Bank](#get-an-atomic-bank)
+`id` | *uuid* | Unique identifier of the token which can be used to [get an Atomic Bank](#atomic-banks-get-an-atomic-bank)
 `tenant_id` | *uuid* | The [Tenant](#tenants) ID which owns the bank
-`type` | *string* | `Bank` [token type](#token-types)
+`type` | *string* | `Bank` [token type](#tokens-token-types)
 `bank` | *[bank](#bank-object)* | Bank data
 `metadata` | *map* | A key-value map of non-sensitive data.
 `created_by` | *uuid* | The [Application](#applications) ID which created the Atomic Bank
@@ -460,7 +460,8 @@ Parameter | Required | Type | Default | Description
 
 ### Response
 
-Returns a [token](#token-object) with type of `bank:reaction` if the Atomic Bank was reacted. Returns [an error](#errors) if the Atomic Bank failed to react.
+Returns a [token](#tokens-token-object) with type of `bank:reaction` if the Atomic Bank was reacted. Returns [an error](#errors) if the Atomic Bank failed to react.
+Errors generated from Reactors will be translated to the common Basis Theory Error format. See [Reactor Errors](#reactor-errors) for more details.
 
 
 ## Get an Atomic Bank Reaction Token
@@ -513,7 +514,7 @@ Parameter | Required | Type | Default | Description
 
 ### Response
 
-Returns a [token](#token-object) with type of `bank:reaction`. Returns [an error](#errors) if the Atomic Bank failed to react.
+Returns a [token](#tokens-token-object) with type of `bank:reaction`. Returns [an error](#errors) if the Atomic Bank failed to react.
 
 ## Test Bank Account
 
@@ -524,4 +525,3 @@ To enable testing of Atomic Banks, we've implemented a list of acceptable test b
 Routing Number | Account Number | Description
 -------------- | -------------- | -----------
 110000000 | 000123456789 | Successfully added bank
-

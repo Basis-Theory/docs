@@ -47,7 +47,7 @@ var applications = client.GetAsync(new ApplicationGetRequest {
 }
 ```
 
-All `List` endpoints support pagination to allow bulk fetching multiple items. Each `List` endpoint shares a common response structure. Examples of these requests can be seen in [List Applications](#list-applications), [List Tokens](#list-tokens), and [List Atomic Cards](#list-atomic-cards)
+All `List` endpoints support pagination to allow bulk fetching multiple items. Each `List` endpoint shares a common response structure. Examples of these requests can be seen in [List Applications](#applications-list-applications), [List Tokens](#tokens-list-tokens), and [List Atomic Cards](#atomic-cards-list-atomic-cards)
 
 ### Query Parameters
 
@@ -60,7 +60,7 @@ Parameter | Required | Type | Default | Description
 
 Attribute | Type | Description
 --------- | ---- | -----------
-`pagination` | *[pagination metadata](#pagination-metadata-object)* | Pagination metadata for the response
+`pagination` | *[pagination metadata](#pagination-pagination-object-pagination-metadata-object)* | Pagination metadata for the response
 `data` | *array* | Query results of the request. See list endpoint resource for response schema definition
 
 ### Pagination Metadata Object

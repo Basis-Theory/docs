@@ -66,7 +66,7 @@ Retrieves the Tenant associated with the provided `X-API-KEY`.
 
 ### Response
 
-Returns a [Tenants](#tenant-object) for the provided `X-API-KEY`. Returns [an error](#errors) if the Tenant could not be retrieved.
+Returns a [Tenants](#tenants-tenant-object) for the provided `X-API-KEY`. Returns [an error](#errors) if the Tenant could not be retrieved.
 
 
 ## Update Tenant
@@ -136,7 +136,7 @@ Attribute | Required | Type | Default | Description
 
 ### Response
 
-Returns a [tenant](#tenant-object) if the Tenant was updated. Returns [an error](#errors) if there were validation errors, or the Tenant failed to update.
+Returns a [tenant](#tenants-tenant-object) if the Tenant was updated. Returns [an error](#errors) if there were validation errors, or the Tenant failed to update.
 
 
 ## Delete Tenant

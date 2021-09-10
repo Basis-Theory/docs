@@ -174,7 +174,7 @@ Parameter | Required | Type | Default | Description
 --------- | -------- | ---- | ------- | -----------
 `id` | false | *array* | `[]` | An optional list of Reactor ID's to filter the list of reactors by
 `name` | false | *string* | `null` | Wildcard search of reactors by name
-`source_token_type` | false | *string* | `null` | Filter reactors by Reactor Formulas [source token type](#token-types)
+`source_token_type` | false | *string* | `null` | Filter reactors by Reactor Formulas [source token type](#tokens-token-types)
 
 ### Response
 

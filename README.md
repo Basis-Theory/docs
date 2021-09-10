@@ -4,7 +4,7 @@ The [Basis Theory](https://basistheory.com/) Developer Documentation. This site 
 
 ## Getting Started
 
-Run `docker-compose up -d` and navigate to http://localhost:4567/#getting-started in your browser
+Run `make start` and navigate to http://localhost:4567 in your browser
 
 ## Contribute
 

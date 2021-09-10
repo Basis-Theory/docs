@@ -42,5 +42,5 @@ Basis Theory requires the API key to be included in all API requests to the serv
 `X-API-KEY: key_N88mVGsp3sCXkykyN2EFED`
 
 <aside class="notice">
-  <span>You must replace <code>key_N88mVGsp3sCXkykyN2EFED</code> with your API key supplied when you <a href="#create-application">created an Application</a>.</span>
+  <span>You must replace <code>key_N88mVGsp3sCXkykyN2EFED</code> with your API key supplied when you <a href="#applications-create-application">created an Application</a>.</span>
 </aside>

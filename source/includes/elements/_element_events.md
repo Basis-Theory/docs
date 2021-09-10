@@ -46,7 +46,7 @@ This event is triggered whenever element's value(s) change. For example, if the 
 Parameter | Required | Type       | Description
 --------- | -------- | ---------- | -----------
 `event`   | true     | *"change"* | The event type to listen to.
-`handler` | true     | *function* | Callback function to be called when the event is fired. Takes in a [ChangeEvent](#changeevent).
+`handler` | true     | *function* | Callback function to be called when the event is fired. Takes in a [ChangeEvent](#element-events-on-change-changeevent).
 
 ### ChangeEvent
 
@@ -65,7 +65,7 @@ Attribute  | Type       | Description
 ---------- | ---------- | -----------
 `complete` | *boolean*  | If the element value is well-formed and is ready to be submitted.
 `empty`    | *boolean*  | Whether the element is empty. Multi-input Elements will be `empty` only if all inputs are.
-`errors`   | *array*    | Array of [FieldError](#fielderror).
+`errors`   | *array*    | Array of [FieldError](#element-events-on-change-fielderror).
 
 ### FieldError
 
@@ -94,7 +94,7 @@ Triggered when an element input is focused.
 Parameter | Required | Type       | Description
 --------- | -------- | ---------- | -----------
 `event`   | true     | *"focus"* | The event type to listen to.
-`handler` | true     | *function* | Callback function to be called when the event is fired. Takes in a [FocusEvent](#focusevent).
+`handler` | true     | *function* | Callback function to be called when the event is fired. Takes in a [FocusEvent](#element-events-on-focus-focusevent).
 
 ### FocusEvent
 
@@ -121,7 +121,7 @@ Triggered when an element input focus is lost.
 Parameter | Required | Type       | Description
 --------- | -------- | ---------- | -----------
 `event`   | true     | *"blur"* | The event type to listen to.
-`handler` | true     | *function* | Callback function to be called when the event is fired. Takes in a [BlurEvent](#blurevent).
+`handler` | true     | *function* | Callback function to be called when the event is fired. Takes in a [BlurEvent](#element-events-on-blur-blurevent).
 
 ### BlurEvent
 
@@ -148,7 +148,7 @@ Triggered when user hits a special key inside an element input.
 Parameter | Required | Type       | Description
 --------- | -------- | ---------- | -----------
 `event`   | true     | *"keydown"* | The event type to listen to.
-`handler` | true     | *function* | Callback function to be called when the event is fired. Takes in a [KeydownEvent](#keydownevent).
+`handler` | true     | *function* | Callback function to be called when the event is fired. Takes in a [KeydownEvent](#element-events-on-keydown-keydownevent).
 
 ### KeydownEvent
 
