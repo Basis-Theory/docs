@@ -500,6 +500,7 @@ Parameter | Required | Type | Default | Description
 ### Response
 
 Returns a [token](#tokens-token-object) with type of `card:reaction` if the Atomic Card was reacted. Returns [an error](#errors) if the Atomic Card failed to react.
+Errors generated from Reactors will be translated to the common Basis Theory Error format. See [Reactor Errors](#reactor-errors) for more details.
 
 
 ## Get an Atomic Card Reaction Token

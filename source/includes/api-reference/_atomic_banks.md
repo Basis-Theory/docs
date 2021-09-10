@@ -461,6 +461,7 @@ Parameter | Required | Type | Default | Description
 ### Response
 
 Returns a [token](#tokens-token-object) with type of `bank:reaction` if the Atomic Bank was reacted. Returns [an error](#errors) if the Atomic Bank failed to react.
+Errors generated from Reactors will be translated to the common Basis Theory Error format. See [Reactor Errors](#reactor-errors) for more details.
 
 
 ## Get an Atomic Bank Reaction Token
@@ -524,4 +525,3 @@ To enable testing of Atomic Banks, we've implemented a list of acceptable test b
 Routing Number | Account Number | Description
 -------------- | -------------- | -----------
 110000000 | 000123456789 | Successfully added bank
-
