@@ -641,7 +641,7 @@
         <h6>QUICK LINKS</h6>
         <span class="intro-quick-links">
             <a href="#getting-started">Before You Begin</a>
-            <a href="#create-token">Creating Tokens</a>
+            <a href="#tokens">Creating Tokens</a>
             <a href="#applications">Applications</a>
             <a href="#permissions">API Keys</a>
         </span>
@@ -708,7 +708,7 @@
 <p><code>X-API-KEY: key_N88mVGsp3sCXkykyN2EFED</code></p>
 
 <aside class="notice">
-  <span>You must replace <code>key_N88mVGsp3sCXkykyN2EFED</code> with your API key supplied when you <a href="#create-application">created an Application</a>.</span>
+  <span>You must replace <code>key_N88mVGsp3sCXkykyN2EFED</code> with your API key supplied when you <a href="#applications-create-application">created an Application</a>.</span>
 </aside>
 <h1 id='request-correlation'>Request Correlation</h1>
 <blockquote>
@@ -777,7 +777,7 @@
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>All <code>List</code> endpoints support pagination to allow bulk fetching multiple items. Each <code>List</code> endpoint shares a common response structure. Examples of these requests can be seen in <a href="#list-applications">List Applications</a>, <a href="#list-tokens">List Tokens</a>, and <a href="#list-atomic-cards">List Atomic Cards</a></p>
+<p>All <code>List</code> endpoints support pagination to allow bulk fetching multiple items. Each <code>List</code> endpoint shares a common response structure. Examples of these requests can be seen in <a href="#applications-list-applications">List Applications</a>, <a href="#tokens-list-tokens">List Tokens</a>, and <a href="#atomic-cards-list-atomic-cards">List Atomic Cards</a></p>
 <h3 id='pagination-install-sdk-query-parameters'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -813,7 +813,7 @@
 </thead><tbody>
 <tr>
 <td><code>pagination</code></td>
-<td><em><a href="#pagination-metadata-object">pagination metadata</a></em></td>
+<td><em><a href="#pagination-pagination-object-pagination-metadata-object">pagination metadata</a></em></td>
 <td>Pagination metadata for the response</td>
 </tr>
 <tr>
@@ -1021,7 +1021,7 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
 <tr>
 <td><code>id</code></td>
 <td><em>uuid</em></td>
-<td>Unique identifier of the Application which can be used to <a href="#get-an-application">get an Application</a></td>
+<td>Unique identifier of the Application which can be used to <a href="#applications-get-an-application">get an Application</a></td>
 </tr>
 <tr>
 <td><code>tenant_id</code></td>
@@ -1041,12 +1041,12 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
 <tr>
 <td><code>type</code></td>
 <td><em>string</em></td>
-<td><a href="#application-types">Application type</a> of the Application</td>
+<td><a href="#applications-application-types">Application type</a> of the Application</td>
 </tr>
 <tr>
 <td><code>permissions</code></td>
 <td><em>array</em></td>
-<td>List of <a href="#permission-types">permissions</a> for the Application</td>
+<td>List of <a href="#permissions-permission-types">permissions</a> for the Application</td>
 </tr>
 <tr>
 <td><code>created_at</code></td>
@@ -1085,7 +1085,7 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
 <tr>
 <td>Management</td>
 <td><code>management</code></td>
-<td>Used for managing all aspects of your token infrastructure such as <a href="#create-application">creating an Application</a></td>
+<td>Used for managing all aspects of your token infrastructure such as <a href="#applications-create-application">creating an Application</a></td>
 </tr>
 </tbody></table>
 <h2 id='applications-create-application'>Create Application</h2>
@@ -1185,18 +1185,18 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
 <td>true</td>
 <td><em>string</em></td>
 <td><code>null</code></td>
-<td><a href="#application-types">Application</a> of the application</td>
+<td><a href="#applications-application-types">Application</a> of the application</td>
 </tr>
 <tr>
 <td><code>permissions</code></td>
 <td>false</td>
 <td><em>array</em></td>
 <td><code>[]</code></td>
-<td><a href="#permission-types">Permissions</a> for the application</td>
+<td><a href="#permissions-permission-types">Permissions</a> for the application</td>
 </tr>
 </tbody></table>
 <h3 id='applications-create-application-response'>Response</h3>
-<p>Returns an <a href="#application-object">application</a> if the application was created. Returns <a href="#errors">an error</a> if there were validation errors, or the application failed to create.</p>
+<p>Returns an <a href="#applications-application-object">application</a> if the application was created. Returns <a href="#errors">an error</a> if there were validation errors, or the application failed to create.</p>
 <h2 id='applications-list-applications'>List Applications</h2>
 <blockquote>
 <p>Request</p>
@@ -1268,7 +1268,7 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
 </tr>
 </tbody></table>
 <h3 id='applications-list-applications-response'>Response</h3>
-<p>Returns a <a href="#pagination">paginated object</a> with the <code>data</code> property containing an array of <a href="#application-object">applications</a>. Providing any query parameters will filter the results. Returns <a href="#errors">an error</a> if applications could not be retrieved.</p>
+<p>Returns a <a href="#pagination">paginated object</a> with the <code>data</code> property containing an array of <a href="#applications-application-object">applications</a>. Providing any query parameters will filter the results. Returns <a href="#errors">an error</a> if applications could not be retrieved.</p>
 <h2 id='applications-get-an-application'>Get an Application</h2>
 <blockquote>
 <p>Request</p>
@@ -1331,7 +1331,7 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
 </tr>
 </tbody></table>
 <h3 id='applications-get-an-application-response'>Response</h3>
-<p>Returns an <a href="#application-object">application</a> with the <code>id</code> provided. Returns <a href="#errors">an error</a> if the application could not be retrieved.</p>
+<p>Returns an <a href="#applications-application-object">application</a> with the <code>id</code> provided. Returns <a href="#errors">an error</a> if the application could not be retrieved.</p>
 <h2 id='applications-get-an-application-by-key'>Get an Application by Key</h2>
 <blockquote>
 <p>Request</p>
@@ -1376,7 +1376,7 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
   <span class="scope">application:read</span>
 </p>
 <h3 id='applications-get-an-application-by-key-response'>Response</h3>
-<p>Returns a <a href="#application-object">application</a> for the provided <code>X-API-KEY</code>. Returns <a href="#errors">an error</a> if the application could not be retrieved.</p>
+<p>Returns a <a href="#applications-application-object">application</a> for the provided <code>X-API-KEY</code>. Returns <a href="#errors">an error</a> if the application could not be retrieved.</p>
 <h2 id='applications-update-application'>Update Application</h2>
 <blockquote>
 <p>Request</p>
@@ -1487,11 +1487,11 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
 <td>false</td>
 <td><em>array</em></td>
 <td><code>[]</code></td>
-<td><a href="#permission-types">Permissions</a> for the application</td>
+<td><a href="#permissions-permission-types">Permissions</a> for the application</td>
 </tr>
 </tbody></table>
 <h3 id='applications-update-application-response'>Response</h3>
-<p>Returns an <a href="#application-object">application</a> if the application was updated. Returns <a href="#errors">an error</a> if there were validation errors, or the application failed to update.</p>
+<p>Returns an <a href="#applications-application-object">application</a> if the application was updated. Returns <a href="#errors">an error</a> if there were validation errors, or the application failed to update.</p>
 <h2 id='applications-regenerate-api-key'>Regenerate API Key</h2>
 <blockquote>
 <p>Request</p>
@@ -1562,7 +1562,7 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
 </tr>
 </tbody></table>
 <h3 id='applications-regenerate-api-key-response'>Response</h3>
-<p>Returns an <a href="#application-object">application</a> with the new <code>key</code> property populated. Returns <a href="#errors">an error</a> if there were validation errors, or the application key failed to regenerate.</p>
+<p>Returns an <a href="#applications-application-object">application</a> with the new <code>key</code> property populated. Returns <a href="#errors">an error</a> if there were validation errors, or the application key failed to regenerate.</p>
 <h2 id='applications-delete-application'>Delete Application</h2>
 <blockquote>
 <p>Request</p>
@@ -1620,7 +1620,7 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
 <tr>
 <td><code>id</code></td>
 <td><em>uuid</em></td>
-<td>Unique identifier of the token which can be used to <a href="#get-an-atomic-bank">get an Atomic Bank</a></td>
+<td>Unique identifier of the token which can be used to <a href="#atomic-banks-get-an-atomic-bank">get an Atomic Bank</a></td>
 </tr>
 <tr>
 <td><code>tenant_id</code></td>
@@ -1630,7 +1630,7 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
 <tr>
 <td><code>type</code></td>
 <td><em>string</em></td>
-<td><code>Bank</code> <a href="#token-types">token type</a></td>
+<td><code>Bank</code> <a href="#tokens-token-types">token type</a></td>
 </tr>
 <tr>
 <td><code>bank</code></td>
@@ -2117,7 +2117,7 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
 </tr>
 </tbody></table>
 <h3 id='atomic-banks-create-an-atomic-bank-reaction-response'>Response</h3>
-<p>Returns a <a href="#token-object">token</a> with type of <code>bank:reaction</code> if the Atomic Bank was reacted. Returns <a href="#errors">an error</a> if the Atomic Bank failed to react.
+<p>Returns a <a href="#tokens-token-object">token</a> with type of <code>bank:reaction</code> if the Atomic Bank was reacted. Returns <a href="#errors">an error</a> if the Atomic Bank failed to react.
 Errors generated from Reactors will be translated to the common Basis Theory Error format. See <a href="#reactor-errors">Reactor Errors</a> for more details.</p>
 <h2 id='atomic-banks-get-an-atomic-bank-reaction-token'>Get an Atomic Bank Reaction Token</h2>
 <blockquote>
@@ -2175,7 +2175,7 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
 </tr>
 </tbody></table>
 <h3 id='atomic-banks-get-an-atomic-bank-reaction-token-response'>Response</h3>
-<p>Returns a <a href="#token-object">token</a> with type of <code>bank:reaction</code>. Returns <a href="#errors">an error</a> if the Atomic Bank failed to react.</p>
+<p>Returns a <a href="#tokens-token-object">token</a> with type of <code>bank:reaction</code>. Returns <a href="#errors">an error</a> if the Atomic Bank failed to react.</p>
 <h2 id='atomic-banks-test-bank-account'>Test Bank Account</h2>
 <p>To enable testing of Atomic Banks, we&#39;ve implemented a list of acceptable test bank accounts to ensure you are able to test with non-sensitive data.</p>
 <h3 id='atomic-banks-test-bank-account-test-bank-accounts'>Test bank accounts</h3>
@@ -2213,7 +2213,7 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
 <tr>
 <td><code>type</code></td>
 <td><em>string</em></td>
-<td><code>Card</code> <a href="#token-types">token type</a></td>
+<td><code>Card</code> <a href="#tokens-token-types">token type</a></td>
 </tr>
 <tr>
 <td><code>card</code></td>
@@ -2804,7 +2804,7 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
 </tr>
 </tbody></table>
 <h3 id='atomic-cards-create-an-atomic-card-reaction-response'>Response</h3>
-<p>Returns a <a href="#token-object">token</a> with type of <code>card:reaction</code> if the Atomic Card was reacted. Returns <a href="#errors">an error</a> if the Atomic Card failed to react.
+<p>Returns a <a href="#tokens-token-object">token</a> with type of <code>card:reaction</code> if the Atomic Card was reacted. Returns <a href="#errors">an error</a> if the Atomic Card failed to react.
 Errors generated from Reactors will be translated to the common Basis Theory Error format. See <a href="#reactor-errors">Reactor Errors</a> for more details.</p>
 <h2 id='atomic-cards-get-an-atomic-card-reaction-token'>Get an Atomic Card Reaction Token</h2>
 <blockquote>
@@ -2862,7 +2862,7 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
 </tr>
 </tbody></table>
 <h3 id='atomic-cards-get-an-atomic-card-reaction-token-response'>Response</h3>
-<p>Returns a <a href="#token-object">token</a> with type of <code>card:reaction</code>. Returns <a href="#errors">an error</a> if the Atomic Card failed to react.</p>
+<p>Returns a <a href="#tokens-token-object">token</a> with type of <code>card:reaction</code>. Returns <a href="#errors">an error</a> if the Atomic Card failed to react.</p>
 <h2 id='atomic-cards-test-cards'>Test Cards</h2>
 <p>To enable testing of Atomic Cards, we&#39;ve implemented a list of acceptable test card numbers to ensure you are able to test with non-sensitive data.  </p>
 
@@ -3068,7 +3068,7 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
 <h1 id='permissions'>Permissions</h1>
 <p>Permissions offer fine-grained control over your Application&#39;s access to different aspects of your token infrastructure. We suggest limiting the scope of your Application to the least amount possible, and to not share them across your internal services.</p>
 
-<p>Permissions are associated with every Application and can be configured when you <a href="#create-application">create an Application</a> or <a href="#update-application">update an Application</a>. </p>
+<p>Permissions are associated with every Application and can be configured when you <a href="#applications-create-application">create an Application</a> or <a href="#applications-update-application">update an Application</a>. </p>
 
 <p>Every API endpoint will document the required permissions needed to perform the operation against the endpoint.</p>
 <h2 id='permissions-permission-object'>Permission Object</h2>
@@ -3092,7 +3092,7 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
 <tr>
 <td><code>application_types</code></td>
 <td><em>array</em></td>
-<td>List of <a href="#application-types">application types</a> that can assign the permission</td>
+<td>List of <a href="#applications-application-types">application types</a> that can assign the permission</td>
 </tr>
 </tbody></table>
 <h2 id='permissions-permission-types'>Permission Types</h2>
@@ -3266,7 +3266,7 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
   <code>https://api.basistheory.com/permissions</code>
 </span></p>
 <h3 id='permissions-list-permissions-response'>Response</h3>
-<p>Returns an array of <a href="#permission-object">permission objects</a>. Returns <a href="#errors">an error</a> if permissions could not be retrieved.</p>
+<p>Returns an array of <a href="#permissions-permission-object">permission objects</a>. Returns <a href="#errors">an error</a> if permissions could not be retrieved.</p>
 <h1 id='reactor-formulas'>Reactor Formulas</h1>
 <p>Reactor formulas give you the ability to pre-configure custom integrations to securely process, enrich, and associate your tokens.</p>
 
@@ -3304,7 +3304,7 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
 <tr>
 <td><code>source_token_type</code></td>
 <td><em>string</em></td>
-<td><a href="#token-types">Source token type</a> of the Reactor Formula</td>
+<td><a href="#tokens-token-types">Source token type</a> of the Reactor Formula</td>
 </tr>
 <tr>
 <td><code>icon</code></td>
@@ -3409,7 +3409,7 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
 </tr>
 </tbody></table>
 <h2 id='reactor-formulas-reactor-formula-code'>Reactor Formula Code</h2>
-<p>All Reactor Formula code snippets must export a function which takes in a <a href="#reactor-formula-code-context-object">context object</a> and returns a <a href="#token-object">token object</a>.</p>
+<p>All Reactor Formula code snippets must export a function which takes in a <a href="#reactor-formula-code-context-object">context object</a> and returns a <a href="#tokens-token-object">token object</a>.</p>
 <h3 id='reactor-formulas-reactor-formula-code-reactor-formula-code-context-object'>Reactor Formula Code Context Object</h3>
 <table><thead>
 <tr>
@@ -3663,7 +3663,7 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
 <td>true</td>
 <td><em>string</em></td>
 <td><code>null</code></td>
-<td><a href="#token-types">Source token type</a> of the Reactor Formula</td>
+<td><a href="#tokens-token-types">Source token type</a> of the Reactor Formula</td>
 </tr>
 <tr>
 <td><code>icon</code></td>
@@ -3800,7 +3800,7 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
 <td>false</td>
 <td><em>string</em></td>
 <td><code>null</code></td>
-<td>Filter Reactor Formulas by <a href="#token-types">source token type</a></td>
+<td>Filter Reactor Formulas by <a href="#tokens-token-types">source token type</a></td>
 </tr>
 </tbody></table>
 <h3 id='reactor-formulas-list-reactor-formulas-response'>Response</h3>
@@ -4139,7 +4139,7 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
 <td>true</td>
 <td><em>string</em></td>
 <td><code>null</code></td>
-<td><a href="#token-types">Source token type</a> of the Reactor Formula</td>
+<td><a href="#tokens-token-types">Source token type</a> of the Reactor Formula</td>
 </tr>
 <tr>
 <td><code>icon</code></td>
@@ -4444,7 +4444,7 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
 <td>false</td>
 <td><em>string</em></td>
 <td><code>null</code></td>
-<td>Filter reactors by Reactor Formulas <a href="#token-types">source token type</a></td>
+<td>Filter reactors by Reactor Formulas <a href="#tokens-token-types">source token type</a></td>
 </tr>
 </tbody></table>
 <h3 id='reactors-list-reactors-response'>Response</h3>
@@ -4739,7 +4739,7 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
   <span class="scope">tenant:read</span>
 </p>
 <h3 id='tenants-get-a-tenant-response'>Response</h3>
-<p>Returns a <a href="#tenant-object">Tenants</a> for the provided <code>X-API-KEY</code>. Returns <a href="#errors">an error</a> if the Tenant could not be retrieved.</p>
+<p>Returns a <a href="#tenants-tenant-object">Tenants</a> for the provided <code>X-API-KEY</code>. Returns <a href="#errors">an error</a> if the Tenant could not be retrieved.</p>
 <h2 id='tenants-update-tenant'>Update Tenant</h2>
 <blockquote>
 <p>Request</p>
@@ -4806,7 +4806,7 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
 </tr>
 </tbody></table>
 <h3 id='tenants-update-tenant-response'>Response</h3>
-<p>Returns a <a href="#tenant-object">tenant</a> if the Tenant was updated. Returns <a href="#errors">an error</a> if there were validation errors, or the Tenant failed to update.</p>
+<p>Returns a <a href="#tenants-tenant-object">tenant</a> if the Tenant was updated. Returns <a href="#errors">an error</a> if there were validation errors, or the Tenant failed to update.</p>
 <h2 id='tenants-delete-tenant'>Delete Tenant</h2>
 <blockquote>
 <p>Request</p>
@@ -4851,12 +4851,12 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
 <tr>
 <td><code>tenant_id</code></td>
 <td><em>uuid</em></td>
-<td>The <a href="#tenant-object">Tenant</a> ID which owns the token</td>
+<td>The <a href="#tenants-tenant-object">Tenant</a> ID which owns the token</td>
 </tr>
 <tr>
 <td><code>type</code></td>
 <td><em>string</em></td>
-<td><a href="#token-types">Token type</a></td>
+<td><a href="#tokens-token-types">Token type</a></td>
 </tr>
 <tr>
 <td><code>data</code></td>
@@ -4870,7 +4870,7 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
 </tr>
 <tr>
 <td><code>encryption</code></td>
-<td><em><a href="#encryption-object">encryption object</a></em></td>
+<td><em><a href="#tokens-token-object-encryption-object">encryption object</a></em></td>
 <td>Encryption metadata for an encrypted token data value</td>
 </tr>
 <tr>
@@ -4881,7 +4881,7 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
 <tr>
 <td><code>created_by</code></td>
 <td><em>uuid</em></td>
-<td>The <a href="#application-object">Application</a> ID which created the token</td>
+<td>The <a href="#applications-application-object">Application</a> ID which created the token</td>
 </tr>
 <tr>
 <td><code>created_at</code></td>
@@ -4899,12 +4899,12 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
 </thead><tbody>
 <tr>
 <td><code>cek</code></td>
-<td><em><a href="#encryption-key-object">encryption key</a></em></td>
+<td><em><a href="#tokens-token-object-encryption-key-object">encryption key</a></em></td>
 <td>Content encryption key</td>
 </tr>
 <tr>
 <td><code>kek</code></td>
-<td><em><a href="#encryption-key-object">encryption key</a></em></td>
+<td><em><a href="#tokens-token-object-encryption-key-object">encryption key</a></em></td>
 <td>Key encryption key</td>
 </tr>
 </tbody></table>
@@ -5092,7 +5092,7 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
 <td>false</td>
 <td><em>string</em></td>
 <td><code>token</code></td>
-<td><a href="#token-types">Token type</a> of the token</td>
+<td><a href="#tokens-token-types">Token type</a> of the token</td>
 </tr>
 <tr>
 <td><code>data</code></td>
@@ -5111,7 +5111,7 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
 <tr>
 <td><code>encryption</code></td>
 <td>false</td>
-<td><em><a href="#encryption-object">encryption object</a></em></td>
+<td><em><a href="#tokens-token-object-encryption-object">encryption object</a></em></td>
 <td><code>null</code></td>
 <td>Encryption metadata for an encrypted token data value</td>
 </tr>
@@ -5120,7 +5120,7 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
 <td>false</td>
 <td><em>array</em></td>
 <td><code>[]</code></td>
-<td>An array of <a href="#token-object">tokens</a>. Can be used to bulk create tokens with <a href="#create-token-association">token associations</a></td>
+<td>An array of <a href="#tokens-token-object">tokens</a>. Can be used to bulk create tokens with <a href="#token-associations-create-token-association">token associations</a></td>
 </tr>
 </tbody></table>
 
@@ -5132,7 +5132,7 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
   <span>WARNING - Never store sensitive plaintext information in your token such as plaintext <code>data</code>, <code>metadata</code> or plaintext, private encryption keys in the <code>encryption</code> attributes of your token.</span>
 </aside>
 <h3 id='tokens-create-token-response'>Response</h3>
-<p>Returns a <a href="#token-object">token</a> if the token was created. Returns <a href="#errors">an error</a> if there were validation errors, or the token failed to create.</p>
+<p>Returns a <a href="#tokens-token-object">token</a> if the token was created. Returns <a href="#errors">an error</a> if there were validation errors, or the token failed to create.</p>
 <h2 id='tokens-list-tokens'>List Tokens</h2>
 <blockquote>
 <p>Request</p>
@@ -5219,7 +5219,7 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
 <td>false</td>
 <td><em>array</em></td>
 <td><code>[]</code></td>
-<td>An optional array of <a href="#token-types">token types</a> to filter the list of tokens by</td>
+<td>An optional array of <a href="#tokens-token-types">token types</a> to filter the list of tokens by</td>
 </tr>
 <tr>
 <td><code>children</code></td>
@@ -5233,11 +5233,11 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
 <td>false</td>
 <td><em>array</em></td>
 <td><code>[]</code></td>
-<td>An optional array of <a href="#token-types">token types</a> to filter child tokens where the token is a parent in the <a href="#token-associations">token association</a></td>
+<td>An optional array of <a href="#tokens-token-types">token types</a> to filter child tokens where the token is a parent in the <a href="#token-associations">token association</a></td>
 </tr>
 </tbody></table>
 <h3 id='tokens-list-tokens-response'>Response</h3>
-<p>Returns a <a href="#pagination">paginated object</a> with the <code>data</code> property containing an array of <a href="#token-object">tokens</a>. Providing any query parameters will filter the results. Returns <a href="#errors">an error</a> if tokens could not be retrieved.</p>
+<p>Returns a <a href="#pagination">paginated object</a> with the <code>data</code> property containing an array of <a href="#tokens-token-object">tokens</a>. Providing any query parameters will filter the results. Returns <a href="#errors">an error</a> if tokens could not be retrieved.</p>
 <h2 id='tokens-list-decrypted-tokens'>List Decrypted Tokens</h2>
 <blockquote>
 <p>Request</p>
@@ -5313,7 +5313,7 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
 <td>false</td>
 <td><em>array</em></td>
 <td><code>[]</code></td>
-<td>An optional array of <a href="#token-types">token types</a> to filter the list of tokens by</td>
+<td>An optional array of <a href="#tokens-token-types">token types</a> to filter the list of tokens by</td>
 </tr>
 <tr>
 <td><code>children</code></td>
@@ -5327,18 +5327,18 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
 <td>false</td>
 <td><em>array</em></td>
 <td><code>[]</code></td>
-<td>An optional array of <a href="#token-types">token types</a> to filter child tokens where the token is a parent in the <a href="#token-associations">token association</a></td>
+<td>An optional array of <a href="#tokens-token-types">token types</a> to filter child tokens where the token is a parent in the <a href="#token-associations">token association</a></td>
 </tr>
 <tr>
 <td><code>decrypt_type</code></td>
 <td>false</td>
 <td><em>array</em></td>
 <td><code>[]</code></td>
-<td>An optional array of <a href="#token-types">token types</a> to filter token types that should be decrypted</td>
+<td>An optional array of <a href="#tokens-token-types">token types</a> to filter token types that should be decrypted</td>
 </tr>
 </tbody></table>
 <h3 id='tokens-list-decrypted-tokens-response'>Response</h3>
-<p>Returns a <a href="#pagination">paginated object</a> with the <code>data</code> property containing an array of decrypted <a href="#token-object">tokens</a>. Providing any query parameters will filter the results. Returns <a href="#errors">an error</a> if tokens could not be retrieved.
+<p>Returns a <a href="#pagination">paginated object</a> with the <code>data</code> property containing an array of decrypted <a href="#tokens-token-object">tokens</a>. Providing any query parameters will filter the results. Returns <a href="#errors">an error</a> if tokens could not be retrieved.
 Token types other than <code>token</code> or non-BasisTheory encrypted tokens will not be decrypted.</p>
 <h2 id='tokens-get-a-token'>Get a Token</h2>
 <blockquote>
@@ -5437,11 +5437,11 @@ Token types other than <code>token</code> or non-BasisTheory encrypted tokens wi
 <td>false</td>
 <td><em>array</em></td>
 <td><code>[]</code></td>
-<td>An optional array of <a href="#token-types">token types</a> to filter child tokens where the token is a parent in the <a href="#token-associations">token association</a></td>
+<td>An optional array of <a href="#tokens-token-types">token types</a> to filter child tokens where the token is a parent in the <a href="#token-associations">token association</a></td>
 </tr>
 </tbody></table>
 <h3 id='tokens-get-a-token-response'>Response</h3>
-<p>Returns a <a href="#token-object">token</a> with the <code>id</code> provided. Returns <a href="#errors">an error</a> if the token could not be retrieved.</p>
+<p>Returns a <a href="#tokens-token-object">token</a> with the <code>id</code> provided. Returns <a href="#errors">an error</a> if the token could not be retrieved.</p>
 <h2 id='tokens-get-a-decrypted-token'>Get a Decrypted Token</h2>
 <blockquote>
 <p>Request</p>
@@ -5528,18 +5528,18 @@ Token types other than <code>token</code> or non-BasisTheory encrypted tokens wi
 <td>false</td>
 <td><em>array</em></td>
 <td><code>[]</code></td>
-<td>An optional array of <a href="#token-types">token types</a> to filter child tokens where the token is a parent in the <a href="#token-associations">token association</a></td>
+<td>An optional array of <a href="#tokens-token-types">token types</a> to filter child tokens where the token is a parent in the <a href="#token-associations">token association</a></td>
 </tr>
 <tr>
 <td><code>decrypt_type</code></td>
 <td>false</td>
 <td><em>array</em></td>
 <td><code>[]</code></td>
-<td>An optional array of <a href="#token-types">token types</a> to filter token types that should be decrypted</td>
+<td>An optional array of <a href="#tokens-token-types">token types</a> to filter token types that should be decrypted</td>
 </tr>
 </tbody></table>
 <h3 id='tokens-get-a-decrypted-token-response'>Response</h3>
-<p>Returns a decrypted <a href="#token-object">token</a> with the <code>id</code> provided. Returns <a href="#errors">an error</a> if the token could not be retrieved.
+<p>Returns a decrypted <a href="#tokens-token-object">token</a> with the <code>id</code> provided. Returns <a href="#errors">an error</a> if the token could not be retrieved.
 Token types other than <code>token</code> or non-BasisTheory encrypted tokens will not be decrypted.</p>
 <h2 id='tokens-delete-token'>Delete Token</h2>
 <blockquote>
@@ -5858,7 +5858,7 @@ Token types other than <code>token</code> or non-BasisTheory encrypted tokens wi
 <td>false</td>
 <td><em>string</em></td>
 <td><code>token</code></td>
-<td><a href="#token-types">Token type</a> of the token</td>
+<td><a href="#tokens-token-types">Token type</a> of the token</td>
 </tr>
 <tr>
 <td><code>data</code></td>
@@ -5877,7 +5877,7 @@ Token types other than <code>token</code> or non-BasisTheory encrypted tokens wi
 <tr>
 <td><code>encryption</code></td>
 <td>false</td>
-<td><em><a href="#encryption-object">encryption object</a></em></td>
+<td><em><a href="#tokens-token-object-encryption-object">encryption object</a></em></td>
 <td><code>null</code></td>
 <td>Encryption metadata for an encrypted token data value</td>
 </tr>
@@ -5886,11 +5886,11 @@ Token types other than <code>token</code> or non-BasisTheory encrypted tokens wi
 <td>false</td>
 <td><em>array</em></td>
 <td><code>[]</code></td>
-<td>An array of <a href="#token-object">tokens</a>. Can be used to bulk create tokens with <a href="#create-token-association">token associations</a></td>
+<td>An array of <a href="#tokens-token-object">tokens</a>. Can be used to bulk create tokens with <a href="#token-associations-create-token-association">token associations</a></td>
 </tr>
 </tbody></table>
 <h3 id='token-associations-create-child-token-for-a-token-response'>Response</h3>
-<p>Returns a <a href="#token-object">token</a> if the child token was created for the parent token. Returns <a href="#errors">an error</a> if there were validation errors, or the token failed to create.</p>
+<p>Returns a <a href="#tokens-token-object">token</a> if the child token was created for the parent token. Returns <a href="#errors">an error</a> if there were validation errors, or the token failed to create.</p>
 <h2 id='token-associations-list-child-tokens-for-a-token'>List Child Tokens for a Token</h2>
 <blockquote>
 <p>Request</p>
@@ -5994,7 +5994,7 @@ Token types other than <code>token</code> or non-BasisTheory encrypted tokens wi
 <td>false</td>
 <td><em>array</em></td>
 <td><code>[]</code></td>
-<td>An optional array of <a href="#token-types">token types</a> to filter the list of child tokens by</td>
+<td>An optional array of <a href="#tokens-token-types">token types</a> to filter the list of child tokens by</td>
 </tr>
 <tr>
 <td><code>children</code></td>
@@ -6008,11 +6008,11 @@ Token types other than <code>token</code> or non-BasisTheory encrypted tokens wi
 <td>false</td>
 <td><em>array</em></td>
 <td><code>[]</code></td>
-<td>An optional array of <a href="#token-types">token types</a> to filter child tokens where the child token is a parent in the <a href="#token-associations">token association</a></td>
+<td>An optional array of <a href="#tokens-token-types">token types</a> to filter child tokens where the child token is a parent in the <a href="#token-associations">token association</a></td>
 </tr>
 </tbody></table>
 <h3 id='token-associations-list-child-tokens-for-a-token-response'>Response</h3>
-<p>Returns a <a href="#pagination">paginated object</a> with the <code>data</code> property containing an array of <a href="#token-object">child tokens</a> for the parent token. Providing any query parameters will filter the child tokens. Returns <a href="#errors">an error</a> if tokens could not be retrieved.</p>
+<p>Returns a <a href="#pagination">paginated object</a> with the <code>data</code> property containing an array of <a href="#tokens-token-object">child tokens</a> for the parent token. Providing any query parameters will filter the child tokens. Returns <a href="#errors">an error</a> if tokens could not be retrieved.</p>
 
         
         

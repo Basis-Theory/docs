@@ -456,7 +456,7 @@
         <span class="intro-quick-links">
             <a href="#getting-started">Before You Begin</a>
             <a href="#element-style">Styling Elements</a>
-            <a href="#create-element">Create an Element</a>
+            <a href="#element-types-card-element">Create an Element</a>
             <a href="#store-credit-card">Store Credit Card</a>
         </span>
     </span>
@@ -558,7 +558,7 @@
 </code></pre></div><h1 id='permissions'>Permissions</h1>
 <p>Permissions offer fine-grained control over your Application&#39;s access to different aspects of your token infrastructure. We suggest limiting the scope of your Application to the least amount possible, and to not share them across your internal services.</p>
 
-<p>Permissions are associated with every Application and can be configured when you <a href="/api-reference#create-application">create an Application</a> or <a href="/api-reference#update-application">update an Application</a>. </p>
+<p>Permissions are associated with every Application and can be configured when you <a href="/api-reference#applications-create-application">create an Application</a> or <a href="/api-reference#applications-update-application">update an Application</a>. </p>
 
 <p><strong>Elements</strong> Applications only allow <em>create</em> permissions, removing any risk that your API keys are stolen and used to access data.</p>
 <h2 id='permissions-permission-types'>Permission Types</h2>
@@ -635,7 +635,7 @@
 <span class="kd">const</span> <span class="nx">bt</span> <span class="o">=</span> <span class="k">await</span> <span class="k">new</span> <span class="nx">BasisTheory</span><span class="p">().</span><span class="nx">init</span><span class="p">(</span><span class="dl">'</span><span class="s1">test_1234567890</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span> <span class="na">elements</span><span class="p">:</span> <span class="kc">true</span> <span class="p">});</span>
 <span class="c1">// use bt.elements</span>
 </code></pre></div>
-<p>After <a href="#install-sdk">installing</a> <strong>BasisTheory.js</strong>, simply initialize it with <code>elements: true</code> so it dynamically loads <strong>Elements</strong> module.</p>
+<p>After <a href="#getting-started-install-sdk">installing</a> <strong>BasisTheory.js</strong>, simply initialize it with <code>elements: true</code> so it dynamically loads <strong>Elements</strong> module.</p>
 
 <aside class="warning">
   <span>Elements are meant to be used in browser environments only. If you installed <code>BasisTheory.js</code> as a module, make sure the instance that loads elements runs on the browser-side code.</span>
@@ -646,7 +646,7 @@
 </aside>
 
 <aside class="notice">
-  <span>Friendly reminder to replace <code>test_1234567890</code> with a valid <a href="api-reference/#application-types">Elements Application key</a>.</span>
+  <span>Friendly reminder to replace <code>test_1234567890</code> with a valid <a href="api-reference/#applications-application-types">Elements Application key</a>.</span>
 </aside>
 <h1 id='element-types'>Element Types</h1><h2 id='element-types-card-element'>Card Element</h2>
 <p>The <code>&quot;card&quot;</code> element type features a full credit card collector containing the following inputs:</p>
@@ -683,14 +683,14 @@
 <td><code>options</code></td>
 <td>false</td>
 <td><em>CreateElementOptions</em></td>
-<td><a href="#createelementoptions">Options</a> for customizing the element</td>
+<td><a href="#elements-instance-create-element-create-element-options">Options</a> for customizing the element</td>
 </tr>
 </tbody></table>
 
 <aside class="warning">
   <span>Unknown <code>type</code> values will throw an error.</span>
 </aside>
-<h3 id='elements-instance-create-element-createelementoptions'>CreateElementOptions</h3>
+<h3 id='elements-instance-create-element-create-element-options'>Create Element Options</h3>
 <p>CreateElementOptions provide a quick way to customize an Element before mounting it to your website.</p>
 
 <table><thead>
@@ -755,7 +755,7 @@
 <td><code>options</code></td>
 <td>false</td>
 <td><em>UpdateElementOptions</em></td>
-<td><a href="#updateelementoptions">Options</a> for customizing the element</td>
+<td><a href="#elements-instance-update-element-updateelementoptions">Options</a> for customizing the element</td>
 </tr>
 </tbody></table>
 <h3 id='elements-instance-update-element-updateelementoptions'>UpdateElementOptions</h3>
@@ -835,7 +835,7 @@
 <td><code>handler</code></td>
 <td>true</td>
 <td><em>function</em></td>
-<td>Callback function to be called when the event is fired. Takes in a <a href="#changeevent">ChangeEvent</a>.</td>
+<td>Callback function to be called when the event is fired. Takes in a <a href="#element-events-on-change-changeevent">ChangeEvent</a>.</td>
 </tr>
 </tbody></table>
 <h3 id='element-events-on-change-changeevent'>ChangeEvent</h3><div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="p">{</span>
@@ -867,7 +867,7 @@
 <tr>
 <td><code>errors</code></td>
 <td><em>array</em></td>
-<td>Array of <a href="#fielderror">FieldError</a>.</td>
+<td>Array of <a href="#element-events-on-change-fielderror">FieldError</a>.</td>
 </tr>
 </tbody></table>
 <h3 id='element-events-on-change-fielderror'>FieldError</h3><div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="p">{</span>
@@ -917,7 +917,7 @@
 <td><code>handler</code></td>
 <td>true</td>
 <td><em>function</em></td>
-<td>Callback function to be called when the event is fired. Takes in a <a href="#focusevent">FocusEvent</a>.</td>
+<td>Callback function to be called when the event is fired. Takes in a <a href="#element-events-on-focus-focusevent">FocusEvent</a>.</td>
 </tr>
 </tbody></table>
 <h3 id='element-events-on-focus-focusevent'>FocusEvent</h3><div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="p">{</span>
@@ -961,7 +961,7 @@
 <td><code>handler</code></td>
 <td>true</td>
 <td><em>function</em></td>
-<td>Callback function to be called when the event is fired. Takes in a <a href="#blurevent">BlurEvent</a>.</td>
+<td>Callback function to be called when the event is fired. Takes in a <a href="#element-events-on-blur-blurevent">BlurEvent</a>.</td>
 </tr>
 </tbody></table>
 <h3 id='element-events-on-blur-blurevent'>BlurEvent</h3><div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="p">{</span>
@@ -1005,7 +1005,7 @@
 <td><code>handler</code></td>
 <td>true</td>
 <td><em>function</em></td>
-<td>Callback function to be called when the event is fired. Takes in a <a href="#keydownevent">KeydownEvent</a>.</td>
+<td>Callback function to be called when the event is fired. Takes in a <a href="#element-events-on-keydown-keydownevent">KeydownEvent</a>.</td>
 </tr>
 </tbody></table>
 <h3 id='element-events-on-keydown-keydownevent'>KeydownEvent</h3><div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="p">{</span>
@@ -1167,11 +1167,11 @@
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">token</span><span class="p">.</span><span class="nx">card</span><span class="p">));</span> <span class="c1">// redacted card data</span>
 <span class="p">});</span>
 </code></pre></div>
-<p>Allows secure submission and tokenization of a card element. Returns a <code>Promise</code> that resoles to the tokenized card data. See <a href="#cardmodel">CardModel</a> for the resolved value type.</p>
+<p>Allows secure submission and tokenization of a card element. Returns a <code>Promise</code> that resoles to the tokenized card data. See <a href="#element-types-card-element">CardModel</a> for the resolved value type.</p>
 
-<p>Internally, <code>BasisTheory.elements.storeCreditCard</code> calls <a href="#create-atomic-card">Create Atomic Card API</a>.</p>
+<p>Internally, <code>BasisTheory.elements.storeCreditCard</code> calls <a href="api-reference/#atomic-cards-create-atomic-card">Create Atomic Card API</a>.</p>
 
-<p>You can fetch this same data later with <a href="#get-an-atomic-card">Get an Atomic Card API</a>.</p>
+<p>You can fetch this same data later with <a href="api-reference/#atomic-cards-get-an-atomic-card-reaction-token">Get an Atomic Card API</a>.</p>
 
 <aside class="notice">
   <span>Notice that the actual card data never leaves the element (iframe) other than to hit our secure API endpoints.</span>
@@ -1194,7 +1194,7 @@
 <td><code>validation</code></td>
 <td><em>array</em></td>
 <td>client</td>
-<td>Array of <a href="#fielderror">FieldError</a>, in case of client-side error.</td>
+<td>Array of <a href="#element-events-on-change-fielderror">FieldError</a>, in case of client-side error.</td>
 </tr>
 <tr>
 <td><code>data</code></td>
