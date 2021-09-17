@@ -14,9 +14,9 @@ BasisTheory.elements.storeCreditCard({
 
 Allows secure submission and tokenization of a card element. Returns a `Promise` that resoles to the tokenized card data. See [CardModel](#element-types-card-element) for the resolved value type.
 
-Internally, `BasisTheory.elements.storeCreditCard` calls [Create Atomic Card API](api-reference/#atomic-cards-create-atomic-card).
+Internally, `BasisTheory.elements.storeCreditCard` calls [Create Atomic Card API](/api-reference/#atomic-cards-create-atomic-card).
 
-You can fetch this same data later with [Get an Atomic Card API](api-reference/#atomic-cards-get-an-atomic-card-reaction-token).
+You can fetch this same data later with [Get an Atomic Card API](/api-reference/#atomic-cards-get-an-atomic-card-reaction-token).
 
 <aside class="notice">
   <span>Notice that the actual card data never leaves the element (iframe) other than to hit our secure API endpoints.</span>
