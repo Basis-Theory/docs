@@ -9,7 +9,7 @@
             <a href="#available-provider-sdks">Available Provider SDKs</a>
         </span>
     </span>
-    <img src="/images/elements_intro.svg"/>
+    <img src="/images/encryption-intro.svg"/>
 </aside>
 
 ## Drive to the guide as well
