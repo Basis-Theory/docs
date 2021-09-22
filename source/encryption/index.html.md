@@ -3,7 +3,7 @@ title: Basis Theory Encryption Reference
 docs_logo: 
 
 language_tabs: # must be one of https://git.io/vQNgJ
-  - jsx: Javascript  
+  - javascript: Javascript  
   - csharp: .NET
 
 toc_footers:
@@ -21,8 +21,6 @@ intro_includes:
   - encryption/intro
   - encryption/how_to_use
   - encryption/_available_provider_sdks
-
-api_includes:
 
 aux_links:
   - <a class="toc-h2 toc-link" href="https://discord.gg/NSvXxaW5Fv" target="_blank">Join Discord</a>
