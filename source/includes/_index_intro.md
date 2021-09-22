@@ -44,8 +44,8 @@
       <div class="card">
         <img src="./images/card/encryption-landing-page.svg">
         <div class="container">
-            <h4>Encryptions</h4>
-            <p>Etiam varius ut tellus eget ullamcorper. In hendrerit luctus diam non scelerisque.</p>
+            <h4>Encryption</h4>
+            <p>Use our SDKs to manage your own encryption and encryption keys.</p>
         </div>
       </div>
     </a>
