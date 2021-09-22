@@ -6,7 +6,7 @@ import { v4 as uuid } from 'uuid';
 import { BasisTheoryEncryption } from '@basis-theory/basis-theory-js-encryption';
 
 // Given provider(s) will register it's factories for the encryption service.
-const btEncryption = await new BasisTheoryEncryption().init(new EncryptionProvider());
+const btEncryption = await new BasisTheoryEncryption().init([new EncryptionProvider()]);
 
 // Provider Key which was generated from the ProviderKeyService
 let providerEncryptionKey: ProviderEncryptionKey = {
