@@ -1,5 +1,9 @@
 # Tokens
 
+<aside class="notice">
+  <span>Want to understand how to own the encryption of your data? Checkout the <a href="https://guides.basistheory.com/guides/own-your-encryption-keys/" target="_blank">Own Your Encryption Keys Guide</a> and our <a href="/encryption">Encryption Reference Documentation</a>.</span>
+</aside>
+
 ## Token Object
 
 Attribute | Type | Description

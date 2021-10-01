@@ -6,9 +6,10 @@ docs_logo: docs.svg
 toc_footers:
 
 other_docs:
-  - <a href="/api-reference" toc-h2 toc-link>API Reference</a>
-  - <a href="/elements" toc-h2 toc-link>Elements</a>
-  - <a href="https://guides.basistheory.com" toc-h2 toc-link>Guides</a>
+  - <a href="/api-reference" class="toc-h2 toc-link">API Reference</a>
+  - <a href="/elements" class="toc-h2 toc-link">Elements</a>
+  - <a class="toc-h2 toc-link" href="/encryption">Encryption</a>
+  - <a href="https://guides.basistheory.com" class="toc-h2 toc-link">Guides</a>
 
 aux_links:
   - <a class="toc-h2 toc-link" href="https://discord.gg/NSvXxaW5Fv" target="_blank">Join Discord</a>

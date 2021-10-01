@@ -1,35 +1,26 @@
 ---
-title: Basis Theory Elements Reference
-docs_logo: elements-logo.svg
+title: Basis Theory Encryption Reference
+docs_logo: 
 
 language_tabs: # must be one of https://git.io/vQNgJ
-  - jsx: Javascript
+  - javascript: Javascript  
+  - csharp: .NET
 
 toc_footers:
 
 other_docs:
   - <a class="toc-h2 toc-link" href="/">Home</a>
   - <a class="toc-h2 toc-link" href="/api-reference">API Reference</a>
-  - <a class="toc-h2 toc-link" href="/encryption">Encryption</a>
+  - <a class="toc-h2 toc-link" href="/elements">Elements</a>
   - <a class="toc-h2 toc-link" href="https://guides.basistheory.com">Guides</a>
 
 intro_quick_links:
-  - elements/quick_links
+  - encryption/quick_links
 
 intro_includes:
-  - elements/intro
-  - elements/getting_started
-  - elements/permissions
-  - elements/authentication
-  - elements/limits
-
-api_includes:
-  - elements/initialize
-  - elements/element_types
-  - elements/elements_instance
-  - elements/element_events
-  - elements/element_style
-  - elements/store_credit_card
+  - encryption/intro
+  - encryption/how_to_use
+  - encryption/_available_provider_sdks
 
 aux_links:
   - <a class="toc-h2 toc-link" href="https://discord.gg/NSvXxaW5Fv" target="_blank">Join Discord</a>
