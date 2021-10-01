@@ -1,0 +1,499 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Basis Theory Encryption Reference</title>
+    <link href="https://cdn.basistheory.com/images/favicons/favicon.ico" rel="icon" type="image/ico" />
+    <meta name="description" content="API Reference documentation for the Basis Theory API. Includes code examples for all official Basis Theory SDKs and user guides for various use cases.">
+    <meta property="og:description" content="API Reference documentation for the Basis Theory API. Includes code examples for all official Basis Theory SDKs and user guides for various use cases.">
+    <meta property="og:image" content="https://cdn.basistheory.com/images/seo/docs-opengraph.png">
+
+    <style media="screen">
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .gh {
+  color: #999999;
+}
+.highlight .sr {
+  color: #f6aa11;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .nb {
+  color: #f6aa11;
+}
+.highlight .cm {
+  color: #75715e;
+}
+.highlight .cp {
+  color: #75715e;
+}
+.highlight .c1 {
+  color: #75715e;
+}
+.highlight .cs {
+  color: #75715e;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf {
+  color: #75715e;
+}
+.highlight .err {
+  color: #960050;
+}
+.highlight .gr {
+  color: #960050;
+}
+.highlight .gt {
+  color: #960050;
+}
+.highlight .gd {
+  color: #49483e;
+}
+.highlight .gi {
+  color: #49483e;
+}
+.highlight .ge {
+  color: #49483e;
+}
+.highlight .kc {
+  color: #66d9ef;
+}
+.highlight .kd {
+  color: #66d9ef;
+}
+.highlight .kr {
+  color: #66d9ef;
+}
+.highlight .no {
+  color: #66d9ef;
+}
+.highlight .kt {
+  color: #66d9ef;
+}
+.highlight .mf {
+  color: #ae81ff;
+}
+.highlight .mh {
+  color: #ae81ff;
+}
+.highlight .il {
+  color: #ae81ff;
+}
+.highlight .mi {
+  color: #ae81ff;
+}
+.highlight .mo {
+  color: #ae81ff;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #ae81ff;
+}
+.highlight .sc {
+  color: #ae81ff;
+}
+.highlight .se {
+  color: #ae81ff;
+}
+.highlight .ss {
+  color: #ae81ff;
+}
+.highlight .sd {
+  color: #e6db74;
+}
+.highlight .s2 {
+  color: #e6db74;
+}
+.highlight .sb {
+  color: #e6db74;
+}
+.highlight .sh {
+  color: #e6db74;
+}
+.highlight .si {
+  color: #e6db74;
+}
+.highlight .sx {
+  color: #e6db74;
+}
+.highlight .s1 {
+  color: #e6db74;
+}
+.highlight .s, .highlight .sa, .highlight .dl {
+  color: #e6db74;
+}
+.highlight .na {
+  color: #a6e22e;
+}
+.highlight .nc {
+  color: #a6e22e;
+}
+.highlight .nd {
+  color: #a6e22e;
+}
+.highlight .ne {
+  color: #a6e22e;
+}
+.highlight .nf, .highlight .fm {
+  color: #a6e22e;
+}
+.highlight .vc {
+  color: #ffffff;
+}
+.highlight .nn {
+  color: #ffffff;
+}
+.highlight .ni {
+  color: #ffffff;
+}
+.highlight .bp {
+  color: #ffffff;
+}
+.highlight .vg {
+  color: #ffffff;
+}
+.highlight .vi {
+  color: #ffffff;
+}
+.highlight .nv, .highlight .vm {
+  color: #ffffff;
+}
+.highlight .w {
+  color: #ffffff;
+}
+.highlight {
+  color: #ffffff;
+}
+.highlight .n, .highlight .py, .highlight .nx {
+  color: #ffffff;
+}
+.highlight .nl {
+  color: #f92672;
+}
+.highlight .ow {
+  color: #f92672;
+}
+.highlight .nt {
+  color: #f92672;
+}
+.highlight .k, .highlight .kv {
+  color: #f92672;
+}
+.highlight .kn {
+  color: #f92672;
+}
+.highlight .kp {
+  color: #f92672;
+}
+.highlight .o {
+  color: #f92672;
+}
+    </style>
+    <style media="print">
+      * {
+        -webkit-transition:none!important;
+        transition:none!important;
+      }
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight, .highlight .w {
+  color: #586e75;
+}
+.highlight .err {
+  color: #002b36;
+  background-color: #dc322f;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cm, .highlight .cpf, .highlight .c1, .highlight .cs {
+  color: #657b83;
+}
+.highlight .cp {
+  color: #b58900;
+}
+.highlight .nt {
+  color: #b58900;
+}
+.highlight .o, .highlight .ow {
+  color: #93a1a1;
+}
+.highlight .p, .highlight .pi {
+  color: #93a1a1;
+}
+.highlight .gi {
+  color: #859900;
+}
+.highlight .gd {
+  color: #dc322f;
+}
+.highlight .gh {
+  color: #268bd2;
+  background-color: #002b36;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kv {
+  color: #6c71c4;
+}
+.highlight .kc {
+  color: #cb4b16;
+}
+.highlight .kt {
+  color: #cb4b16;
+}
+.highlight .kd {
+  color: #cb4b16;
+}
+.highlight .s, .highlight .sa, .highlight .sb, .highlight .sc, .highlight .dl, .highlight .sd, .highlight .s2, .highlight .sh, .highlight .sx, .highlight .s1 {
+  color: #859900;
+}
+.highlight .sr {
+  color: #2aa198;
+}
+.highlight .si {
+  color: #d33682;
+}
+.highlight .se {
+  color: #d33682;
+}
+.highlight .nn {
+  color: #b58900;
+}
+.highlight .nc {
+  color: #b58900;
+}
+.highlight .no {
+  color: #b58900;
+}
+.highlight .na {
+  color: #268bd2;
+}
+.highlight .m, .highlight .mb, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mx {
+  color: #859900;
+}
+.highlight .ss {
+  color: #859900;
+}
+    </style>
+    <link href="../stylesheets/screen-ed526afd.css" rel="stylesheet" media="screen" />
+    <link href="../stylesheets/home-ca08ab6b.css" rel="stylesheet" media="screen" />
+    <link href="../stylesheets/guides.css" rel="stylesheet" media="screen" />
+    <script src="https://kit.fontawesome.com/86c3cd0147.js" crossorigin="anonymous"></script>
+    <link href="../stylesheets/print-fac0743d.css" rel="stylesheet" media="print" />
+      <script src="../javascripts/all-6c76867e.js"></script>
+
+    <script>
+      $(function() { setupCodeCopy(); });
+    </script>
+    <script defer data-api="https://analytics.basistheory.com/api/event" data-domain="docs.basistheory.com" src="https://cdn.basistheory.com/javascript/analytics.js"></script>
+  </head>
+
+  <body class="encryption encryption_index" data-languages="[&quot;javascript&quot;,&quot;csharp&quot;]">
+    <a href="/#" id="nav-button">
+      <span>
+        NAV
+        <img src="../images/navbar-cad8cdcb.png" alt="" />
+      </span>
+    </a>
+    <div class="toc-wrapper">
+
+        <div class="toc-header">
+            <a href='/'><img src="../images/logo-with-title-9a87de22.svg" class="logo" alt="" /></a>
+
+
+            <img src="../images/docs-80b82b5b.svg" class="section-DOCS" alt="" />
+        </div>
+
+      <div class="line"></div>
+
+        <div class="lang-selector">
+              <a href="#" data-language-name="javascript">Javascript</a>
+              <a href="#" data-language-name="csharp">.NET</a>
+        </div>
+
+        <div class="search">
+          <input type="text" class="search" id="input-search" placeholder="Search...">
+        </div>
+        <ul class="search-results"></ul>
+
+      <h1 class="nav-title">Get Started</h1>
+      <ul id="toc_intro" class="toc-section toc-list-h1">
+          <li>
+            <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#how-to-use" class="toc-h1 toc-link" data-title="How to use">How to use</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#how-to-use-encryption-decryption" class="toc-h2 toc-link" data-title="Encryption / Decryption">Encryption / Decryption</a>
+                  </li>
+                  <li>
+                    <a href="#how-to-use-key-management" class="toc-h2 toc-link" data-title="Key Management">Key Management</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#available-sdks" class="toc-h1 toc-link" data-title="Available SDKs">Available SDKs</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#available-sdks-net-sdks" class="toc-h2 toc-link" data-title=".NET SDKs">.NET SDKs</a>
+                  </li>
+                  <li>
+                    <a href="#available-sdks-js-sdks" class="toc-h2 toc-link" data-title="JS SDKs">JS SDKs</a>
+                  </li>
+              </ul>
+          </li>
+      </ul>
+
+
+
+        <h1 class="nav-title">Other Docs</h1>
+        <ul id="toc_api" class="toc-section toc-list-h1">
+             <li class="other-docs"><a class="toc-h2 toc-link" href="/">Home</a></li>
+             <li class="other-docs"><a class="toc-h2 toc-link" href="/api-reference">API Reference</a></li>
+             <li class="other-docs"><a class="toc-h2 toc-link" href="/elements">Elements</a></li>
+             <li class="other-docs"><a class="toc-h2 toc-link" href="https://guides.basistheory.com">Guides</a></li>
+        </ul>
+        <h1 class="nav-title">More</h1>
+        <ul id="toc_api" class="toc-section toc-list-h1">
+            <li><a class="toc-h2 toc-link" href="https://discord.gg/NSvXxaW5Fv" target="_blank">Join Discord</a></li>
+            <li><a class="toc-h2 toc-link" href="https://github.com/Basis-Theory" target="_blank">GitHub</a></li>
+            <li><a class="toc-h2 toc-link" href="mailto:support@basistheory.com?subject=Help!">Email Support</a></li>
+        </ul>
+
+    </div>
+    <div class="page-wrapper">
+        <div class="dark-box"></div>
+
+      <div class="content">
+        <div class="header-border"></div>
+        <h1 id='introduction'>Introduction</h1>
+<aside class="header-intro-box">
+    <span>
+        <h4>Encryption Documentation</h4>
+        <p class="header-intro-body2-font">Explore how to own your encryption</p>
+        <h6>QUICK LINKS</h6>
+        <span class="intro-quick-links">
+            <a href="#how-to-use">How to use</a>
+            <a href="#available-provider-sdks">Available SDKs</a>
+        </span>
+    </span>
+    <img src="../images/encryption-intro-255650d1.svg"/>
+</aside>
+
+<p>Basis Theory Encryption provides a secure and developer-friendly way for consumers to control their data encryption.
+Our SDKs support multiple ways to manage your own encryption and those encryption keys, so only you can see your data.
+If you want step by step instructions on how to own your encryption and plug it back into our platform check out our official <a href="https://guides.basistheory.com/guides/own-your-encryption-keys/">guide</a>.</p>
+<h1 id='how-to-use'>How to use</h1><h2 id='how-to-use-encryption-decryption'>Encryption / Decryption</h2><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">v4</span> <span class="k">as</span> <span class="nx">uuid</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">uuid</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">BasisTheoryEncryption</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@basis-theory/basis-theory-js-encryption</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="c1">// Given provider(s) will register it's factories for the encryption service.</span>
+<span class="kd">const</span> <span class="nx">btEncryption</span> <span class="o">=</span> <span class="k">await</span> <span class="k">new</span> <span class="nx">BasisTheoryEncryption</span><span class="p">().</span><span class="nx">init</span><span class="p">([</span><span class="k">new</span> <span class="nx">EncryptionProvider</span><span class="p">()]);</span>
+
+<span class="c1">// Provider Key which was generated from the ProviderKeyService</span>
+<span class="kd">let</span> <span class="nx">providerEncryptionKey</span><span class="p">:</span> <span class="nx">ProviderEncryptionKey</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">keyId</span><span class="p">:</span> <span class="nx">uuid</span><span class="p">(),</span>
+  <span class="na">providerKeyId</span><span class="p">:</span> <span class="dl">'</span><span class="s1">https://custom-kms.vault.azure.net/keys/encryption-key/809b10a3cedb83e83bbaeb5e8c762fab</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">algorithm</span><span class="p">:</span> <span class="dl">'</span><span class="s1">RSA</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">provider</span><span class="p">:</span> <span class="dl">'</span><span class="s1">AZURE</span><span class="dl">'</span>
+<span class="p">};</span>
+
+<span class="c1">// Encrypt string to get back a wrapped encryptedData with a reference to the providerEncryptionKey</span>
+<span class="kd">const</span> <span class="nx">encryptedData</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">btEncryption</span><span class="p">.</span><span class="nx">encryptionService</span><span class="p">.</span><span class="nx">encrypt</span><span class="p">(</span><span class="dl">'</span><span class="s1">My Super Secret</span><span class="dl">'</span><span class="p">,</span> <span class="nx">providerEncryptionKey</span><span class="p">);</span>
+
+<span class="c1">// Use Encrypted Data and Provider Encryption Key to decrypt the the value and get back the original plainText</span>
+<span class="kd">const</span> <span class="nx">plainText</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">btEncryption</span><span class="p">.</span><span class="nx">encryptionService</span><span class="p">.</span><span class="nx">decrypt</span><span class="p">(</span><span class="nx">encryptedData</span><span class="p">,</span> <span class="nx">providerEncryptionKey</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="k">using</span> <span class="nn">BasisTheory.net.Encryption</span><span class="p">;</span>
+
+<span class="c1">// Encryption Factory which has a provider and algorithm implementation for the ProviderEncryptionKey</span>
+<span class="kt">var</span> <span class="n">rsaEncryptionFactory</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RSAKeyVaultEncryptionFactory</span><span class="p">();</span>
+<span class="kt">var</span> <span class="n">encryptionService</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">EncryptionService</span><span class="p">(</span><span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">IEncryptionFactory</span><span class="p">&gt;</span> <span class="p">{</span> 
+  <span class="n">rsaEncryptionFactory</span> 
+<span class="p">});</span>
+
+<span class="c1">// Provider Encryption Key which was generated from the ProviderKeyService</span>
+<span class="kt">var</span> <span class="n">providerEncryptionKey</span> <span class="p">=</span> <span class="k">new</span> <span class="n">ProviderEncryptionKey</span> <span class="p">{</span>
+  <span class="n">KeyId</span> <span class="p">=</span> <span class="n">Guid</span><span class="p">.</span><span class="nf">NewGuid</span><span class="p">().</span><span class="nf">ToString</span><span class="p">(),</span>
+  <span class="n">ProviderKeyId</span> <span class="p">=</span> <span class="s">"https://custom-kms.vault.azure.net/keys/encryption-key/809b10a3cedb83e83bbaeb5e8c762fab"</span><span class="p">,</span>
+  <span class="n">Algorithm</span> <span class="p">=</span> <span class="s">"RSA"</span><span class="p">,</span>
+  <span class="n">Provider</span> <span class="p">=</span> <span class="s">"AZURE"</span>
+<span class="p">};</span>
+
+<span class="c1">// Encrypt string to get back a wrapped EncryptedData with a reference to the ProvderEncryptionKey</span>
+<span class="kt">var</span> <span class="n">encryptedData</span> <span class="p">=</span> <span class="n">encryptionService</span><span class="p">.</span><span class="nf">Encrypt</span><span class="p">(</span><span class="s">"My Super Secret"</span><span class="p">,</span> <span class="n">providerEncryptionKey</span><span class="p">);</span>
+
+<span class="c1">// Use Encrypted Data and Provider Encryption Key to decrypt the the value and get back the original plaintext</span>
+<span class="kt">var</span> <span class="n">plaintext</span> <span class="p">=</span> <span class="n">encryptionService</span><span class="p">.</span><span class="nf">Decrypt</span><span class="p">(</span><span class="n">encryptedData</span><span class="p">,</span> <span class="n">providerEncryptionKey</span><span class="p">);</span>
+</code></pre></div>
+<p>Data can be encrypted and decrypted using the Encryption Service provided by our language specific SDKs. In either SDK, the Encryption Service requires a Provider Key in order to Encrypt/Decrypt data, which can either be constructed by you or generated using the <a href="/encryption#js-sdks">Provider Key Service available in our SDKs</a>.</p>
+
+<p>See the sidebar for examples of how to instantiate and use the service for each language specific SDK.
+More information can be found in the available <a href="https://guides.basistheory.com/guides/own-your-encryption-keys/#encrypt-your-data">guide</a>.</p>
+<h2 id='how-to-use-key-management'>Key Management</h2><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">BasisTheoryEncryption</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@basis-theory/basis-theory-js-encryption</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="c1">// Given provider(s) will register it's factories for the provider key service</span>
+<span class="kd">const</span> <span class="nx">btEncryption</span> <span class="o">=</span> <span class="k">await</span> <span class="k">new</span> <span class="nx">BasisTheoryEncryption</span><span class="p">().</span><span class="nx">init</span><span class="p">([</span><span class="k">new</span> <span class="nx">EncryptionProvider</span><span class="p">()]);</span>
+
+<span class="c1">// Retrieves or creates a key by name with a registered ProviderKeyFactory for the provided provider and algorithm</span>
+<span class="kd">let</span> <span class="nx">providerEncryptionKey</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">btEncryption</span><span class="p">.</span><span class="nx">providerKeyService</span><span class="p">.</span><span class="nx">getOrCreateKey</span><span class="p">(</span><span class="dl">'</span><span class="s1">encryption-key</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">AZURE</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">RSA</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="nx">providerEncryptionKey</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">btEncryption</span><span class="p">.</span><span class="nx">providerKeyService</span><span class="p">.</span><span class="nx">getKeyByKeyId</span><span class="p">(</span><span class="nx">providerEncryptionKey</span><span class="p">.</span><span class="nx">keyId</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="k">using</span> <span class="nn">BasisTheory.net.Encryption</span><span class="p">;</span>
+
+<span class="kt">var</span> <span class="n">rsaProviderKeyFactory</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RSAKeyVaultProviderKeyFactory</span><span class="p">();</span>
+
+<span class="kt">var</span> <span class="n">providerKeyService</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">ProviderKeyService</span><span class="p">(</span><span class="k">new</span> <span class="nf">CachingService</span><span class="p">(),</span> 
+  <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">IProviderKeyFactory</span><span class="p">&gt;</span> <span class="p">{</span> 
+    <span class="n">rsaProviderKeyFactory</span> 
+  <span class="p">});</span>
+
+<span class="c1">// Retrieves or creates a key by name with a registered IProviderKeyFactory for the provided provider and algorithm</span>
+<span class="kt">var</span> <span class="n">providerEncryptionKey</span> <span class="p">=</span> <span class="n">providerKeyService</span><span class="p">.</span><span class="nf">GetOrCreateKeyAsync</span><span class="p">(</span><span class="s">"encryption-key"</span><span class="p">,</span> <span class="s">"AZURE"</span><span class="p">,</span> <span class="s">"RSA"</span><span class="p">);</span>
+
+<span class="n">providerEncryptionKey</span> <span class="p">=</span> <span class="n">providerKeyService</span><span class="p">.</span><span class="nf">GetKeyByKeyIdAsync</span><span class="p">(</span><span class="n">providerEncryptionKey</span><span class="p">.</span><span class="n">KeyId</span><span class="p">);</span>
+</code></pre></div>
+<p>Key creation and management is available using the Provider Key Service available in our language specific SDKs. The service can accept multiple key management solutions <a href="/encryption#js-sdks">(providers)</a> which can be used interchangeably in your application.</p>
+
+<p>See the sidebar for examples of how to instantiate and use the service for each language specific SDK.
+More information can be found in the available <a href="https://guides.basistheory.com/guides/own-your-encryption-keys/#set-up-your-encryption-key">guide</a>.</p>
+<h1 id='available-sdks'>Available SDKs</h1><h2 id='available-sdks-net-sdks'>.NET SDKs</h2><h3 id='available-sdks-net-sdks-net-sdk-azure-encryption-provider-bundled'>.NET SDK + Azure Encryption Provider (Bundled)</h3>
+<ul>
+<li><a href="https://github.com/Basis-Theory/basistheory-dotnet">GitHub</a> / <a href="https://www.nuget.org/packages/BasisTheory.net/1.2.2">Nuget</a></li>
+</ul>
+<h2 id='available-sdks-js-sdks'>JS SDKs</h2><h3 id='available-sdks-js-sdks-js-encryption-sdk'>JS Encryption SDK</h3>
+<ul>
+<li><a href="https://github.com/Basis-Theory/basis-theory-js-encryption">Github</a> / <a href="https://www.npmjs.com/package/@basis-theory/basis-theory-js-encryption">NPM</a></li>
+</ul>
+<h3 id='available-sdks-js-sdks-js-browser-subtle-encryption-provider'>JS Browser (Subtle) Encryption Provider</h3>
+<ul>
+<li><a href="https://github.com/Basis-Theory/basis-theory-js-encryption-browser">Github</a> / <a href="https://www.npmjs.com/package/@basis-theory/basis-theory-js-encryption-browser">NPM</a></li>
+</ul>
+<h3 id='available-sdks-js-sdks-js-node-crypto-encryption-provider'>JS Node (Crypto) Encryption Provider</h3>
+<ul>
+<li><a href="https://github.com/Basis-Theory/basis-theory-js-encryption-node">Github</a> / <a href="https://www.npmjs.com/package/@basis-theory/basis-theory-js-encryption-node">NPM</a></li>
+</ul>
+<h3 id='available-sdks-js-sdks-js-azure-encryption-provider'>JS Azure Encryption Provider</h3>
+<ul>
+<li><a href="https://github.com/Basis-Theory/basis-theory-js-encryption-azure">Github</a> / <a href="https://www.npmjs.com/package/@basis-theory/basis-theory-js-encryption-azure">NPM</a></li>
+</ul>
+
+        
+        
+      </div>
+      <div class="dark-box">
+          <div class="lang-selector">
+                <a href="#" data-language-name="javascript">Javascript</a>
+                <a href="#" data-language-name="csharp">.NET</a>
+          </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -284,8 +284,8 @@
 }
     </style>
     <link href="../stylesheets/screen-ed526afd.css" rel="stylesheet" media="screen" />
-    <link href="../stylesheets/home-0b931815.css" rel="stylesheet" media="screen" />
-    <link href="../stylesheets/guides-5da8bd31.css" rel="stylesheet" media="screen" />
+    <link href="../stylesheets/home-ca08ab6b.css" rel="stylesheet" media="screen" />
+    <link href="../stylesheets/guides.css" rel="stylesheet" media="screen" />
     <script src="https://kit.fontawesome.com/86c3cd0147.js" crossorigin="anonymous"></script>
     <link href="../stylesheets/print-fac0743d.css" rel="stylesheet" media="print" />
       <script src="../javascripts/all-6c76867e.js"></script>
@@ -618,7 +618,8 @@
         <ul id="toc_api" class="toc-section toc-list-h1">
              <li class="other-docs"><a class="toc-h2 toc-link" href="/">Home</a></li>
              <li class="other-docs"><a class="toc-h2 toc-link" href="/elements">Elements</a></li>
-             <li class="other-docs"><a href="https://guides.basistheory.com" toc-h2 toc-link>Guides</a></li>
+             <li class="other-docs"><a class="toc-h2 toc-link" href="/encryption">Encryption</a></li>
+             <li class="other-docs"><a class="toc-h2 toc-link" href="https://guides.basistheory.com">Guides</a></li>
         </ul>
         <h1 class="nav-title">More</h1>
         <ul id="toc_api" class="toc-section toc-list-h1">
@@ -4835,7 +4836,11 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
 <p><code>tenant:write</code></p>
 <h3 id='tenants-delete-tenant-response'>Response</h3>
 <p>Returns <a href="#errors">an error</a> if the Tenant failed to delete.</p>
-<h1 id='tokens'>Tokens</h1><h2 id='tokens-token-object'>Token Object</h2>
+<h1 id='tokens'>Tokens</h1>
+<aside class="notice">
+  <span>Want to understand how to own the encryption of your data? Checkout the <a href="https://guides.basistheory.com/guides/own-your-encryption-keys/" target="_blank">Own Your Encryption Keys Guide</a> and our <a href="/encryption">Encryption Reference Documentation</a>.</span>
+</aside>
+<h2 id='tokens-token-object'>Token Object</h2>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -6014,7 +6019,6 @@ Token types other than <code>token</code> or non-BasisTheory encrypted tokens wi
 <h3 id='token-associations-list-child-tokens-for-a-token-response'>Response</h3>
 <p>Returns a <a href="#pagination">paginated object</a> with the <code>data</code> property containing an array of <a href="#tokens-token-object">child tokens</a> for the parent token. Providing any query parameters will filter the child tokens. Returns <a href="#errors">an error</a> if tokens could not be retrieved.</p>
 
-        
         
       </div>
       <div class="dark-box">
