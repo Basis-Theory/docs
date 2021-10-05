@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/Basis-Theory/docs/compare/v1.0.1...v1.0.2) (2021-10-05)
+
+
+### Bug Fixes
+
+* Redirect to /register page for Create an Account ([#97](https://github.com/Basis-Theory/docs/issues/97)) ([95a144d](https://github.com/Basis-Theory/docs/commit/95a144db067481c59fc265ba97505ad5b69dfd5c))
+
 ## [1.0.1](https://github.com/Basis-Theory/docs/compare/v1.0.0...v1.0.1) (2021-10-05)
 
 
