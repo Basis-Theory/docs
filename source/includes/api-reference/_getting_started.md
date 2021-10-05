@@ -2,7 +2,7 @@
 ## Before You Begin
 ### If you don't have an account
 
-To begin taking advantage of the Basis Theory platform, you’ll need to create an account and Tenant through our [Portal](https://portal.basistheory.com/register).
+To begin taking advantage of the Basis Theory platform, you’ll need to create an account and Tenant through our <a href="https://portal.basistheory.com/register" target="_blank">Portal</a>.
 
 ### If you have an account
 
