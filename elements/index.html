@@ -613,9 +613,9 @@
 <p>CDN</p>
 </blockquote>
 <div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="err">!--</span> <span class="na">you</span> <span class="na">can</span> <span class="na">initialize</span> <span class="na">it</span> <span class="na">wherever</span> <span class="na">it</span> <span class="na">suits</span> <span class="na">your</span> <span class="na">workflow</span> <span class="na">best</span> <span class="err">--</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="err">!--</span> <span class="na">here</span> <span class="na">we</span> <span class="na">are</span> <span class="na">waiting</span> <span class="na">for</span> <span class="na">the</span> <span class="na">window</span> <span class="na">to</span> <span class="na">load</span><span class="err">,</span> <span class="na">to</span> <span class="na">make</span> <span class="na">sure</span> <span class="na">BasisTheory</span> <span class="na">instance</span> <span class="err">--</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="err">!--</span> <span class="na">has</span> <span class="na">been</span> <span class="na">injected</span> <span class="na">in</span> <span class="na">the</span> <span class="na">window</span> <span class="na">variable</span> <span class="err">--</span><span class="p">&gt;</span>
+  // you can initialize it wherever it suits your workflow best
+  // here we are waiting for the window to load, to make sure BasisTheory instance
+  // has been injected in the window variable
   window.addEventListener('load', async () =&gt; <span class="si">{</span>
     <span class="k">try</span> <span class="p">{</span>
       <span class="c1">// global/window variable BasisTheory is an instance, but requires initialization</span>
