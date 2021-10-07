@@ -5,9 +5,9 @@
 
 ```jsx
 <script>
-  <!-- you can initialize it wherever it suits your workflow best -->
-  <!-- here we are waiting for the window to load, to make sure BasisTheory instance -->
-  <!-- has been injected in the window variable -->
+  // you can initialize it wherever it suits your workflow best
+  // here we are waiting for the window to load, to make sure BasisTheory instance
+  // has been injected in the window variable
   window.addEventListener('load', async () => {
     try {
       // global/window variable BasisTheory is an instance, but requires initialization
