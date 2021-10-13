@@ -165,6 +165,7 @@ var atomicCard = await client.CreateAsync(new AtomicCard {
       "country": "US"
     }
   },
+  "fingerprint": "EVYsSLRyb86Z5awJksvnjVMEC4iP7KX639GtHVUFpzER",
   "metadata": {
     "nonSensitiveField": "Non-Sensitive Value"
   },
@@ -252,6 +253,7 @@ var atomicCards = await client.GetAsync();
           "country": "US"
         }
       },
+      "fingerprint": "EVYsSLRyb86Z5awJksvnjVMEC4iP7KX639GtHVUFpzER",
       "metadata": {
         "nonSensitiveField": "Non-Sensitive Value"
       },
@@ -332,6 +334,7 @@ var atomicCard = await client.GetByIdAsync("c1e565009-1984-4638-8fca-dce8a82cc2a
       "country": "US"
     }
   },
+  "fingerprint": "EVYsSLRyb86Z5awJksvnjVMEC4iP7KX639GtHVUFpzER",
   "metadata": {
     "nonSensitiveField": "Non-Sensitive Value"
   },
