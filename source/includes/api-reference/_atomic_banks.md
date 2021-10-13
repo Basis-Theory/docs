@@ -8,6 +8,7 @@ Attribute | Type | Description
 `tenant_id` | *uuid* | The [Tenant](#tenants) ID which owns the bank
 `type` | *string* | `Bank` [token type](#tokens-token-types)
 `bank` | *[bank](#bank-object)* | Bank data
+`fingerprint` | *string* | Uniquely identifies this particular bank account. You can use this attribute to check whether two bank accounts are the same.
 `metadata` | *map* | A key-value map of non-sensitive data.
 `created_by` | *uuid* | The [Application](#applications) ID which created the Atomic Bank
 `created_at` | *date* | Created date of the Atomic Bank in ISO 8601 format

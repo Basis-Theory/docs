@@ -9,6 +9,7 @@ Attribute | Type | Description
 `type` | *string* | `Card` [token type](#tokens-token-types)
 `card` | *[card](#card-object)* | Card data
 `billing_details` | *[billing details](#billing-details-object)* | Billing details
+`fingerprint` | *string* | Uniquely identifies this particular card number. You can use this attribute to check whether two card tokens contain the same card number.
 `metadata` | *map* | A key-value map of non-sensitive data.
 `created_by` | *uuid* | The [application](#applications) ID which created the Atomic Card
 `created_at` | *date* | Created date of the Atomic Card in ISO 8601 format
