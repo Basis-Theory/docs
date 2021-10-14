@@ -8,6 +8,7 @@ Attribute | Type | Description
 `tenant_id` | *uuid* | The [Tenant](#tenants) ID which owns the bank
 `type` | *string* | `Bank` [token type](#tokens-token-types)
 `bank` | *[bank](#bank-object)* | Bank data
+`fingerprint` | *string* | Uniquely identifies this particular bank account. You can use this attribute to check whether two bank accounts are the same.
 `metadata` | *map* | A key-value map of non-sensitive data.
 `created_by` | *uuid* | The [Application](#applications) ID which created the Atomic Bank
 `created_at` | *date* | Created date of the Atomic Bank in ISO 8601 format
@@ -83,6 +84,7 @@ var atomicBank = await client.CreateAsync(new AtomicBank {
     "routing_number": "021000021",
     "account_number": "XXXXXX7890"
   },
+  "fingerprint": "8j6WJgk4Dz1qoJgrHrioUFJhYKQTnk75DfJAue5bNab2",
   "metadata": {
     "nonSensitiveField": "Non-Sensitive Value"
   },
@@ -155,6 +157,7 @@ var atomicBanks = await client.GetAsync();
         "routing_number": "021000021",
         "account_number": "XXXXXX7890"
       },
+      "fingerprint": "8j6WJgk4Dz1qoJgrHrioUFJhYKQTnk75DfJAue5bNab2",
       "metadata": {
         "nonSensitiveField": "Non-Sensitive Value"
       },
@@ -221,6 +224,7 @@ const atomicBank = await bt.atomicBanks.retrieve('1485efb9-6b1f-4248-a5d1-cf9b39
     "routing_number": "021000021",
     "account_number": "XXXXXX7890"
   },
+  "fingerprint": "8j6WJgk4Dz1qoJgrHrioUFJhYKQTnk75DfJAue5bNab2",
   "metadata": {
     "nonSensitiveField": "Non-Sensitive Value"
   },
@@ -346,6 +350,7 @@ var atomicBank = await client.GetByIdAsync("1485efb9-6b1f-4248-a5d1-cf9b3907164c
     "routing_number": "021000021",
     "account_number": "1234567890"
   },
+  "fingerprint": "8j6WJgk4Dz1qoJgrHrioUFJhYKQTnk75DfJAue5bNab2",
   "metadata": {
     "nonSensitiveField": "Non-Sensitive Value"
   },

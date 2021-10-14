@@ -12,6 +12,7 @@ Attribute | Type | Description
 `tenant_id` | *uuid* | The [Tenant](#tenants-tenant-object) ID which owns the token
 `type` | *string* | [Token type](#tokens-token-types)
 `data` | *any* | Token data
+`fingerprint` | *string* | Uniquely identifies the contents of this token. Fingerprints are only available for Atomic Card and Atomic Bank token types.
 `metadata` | *map* | A key-value map of non-sensitive data.
 `encryption` | *[encryption object](#tokens-token-object-encryption-object)* | Encryption metadata for an encrypted token data value
 `children` | *array* | Array of child tokens where this token is the parent in an [association](#token-associations)

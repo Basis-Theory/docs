@@ -9,6 +9,7 @@ Attribute | Type | Description
 `type` | *string* | `Card` [token type](#tokens-token-types)
 `card` | *[card](#card-object)* | Card data
 `billing_details` | *[billing details](#billing-details-object)* | Billing details
+`fingerprint` | *string* | Uniquely identifies this particular card number. You can use this attribute to check whether two card tokens contain the same card number.
 `metadata` | *map* | A key-value map of non-sensitive data.
 `created_by` | *uuid* | The [application](#applications) ID which created the Atomic Card
 `created_at` | *date* | Created date of the Atomic Card in ISO 8601 format
@@ -164,6 +165,7 @@ var atomicCard = await client.CreateAsync(new AtomicCard {
       "country": "US"
     }
   },
+  "fingerprint": "EVYsSLRyb86Z5awJksvnjVMEC4iP7KX639GtHVUFpzER",
   "metadata": {
     "nonSensitiveField": "Non-Sensitive Value"
   },
@@ -251,6 +253,7 @@ var atomicCards = await client.GetAsync();
           "country": "US"
         }
       },
+      "fingerprint": "EVYsSLRyb86Z5awJksvnjVMEC4iP7KX639GtHVUFpzER",
       "metadata": {
         "nonSensitiveField": "Non-Sensitive Value"
       },
@@ -331,6 +334,7 @@ var atomicCard = await client.GetByIdAsync("c1e565009-1984-4638-8fca-dce8a82cc2a
       "country": "US"
     }
   },
+  "fingerprint": "EVYsSLRyb86Z5awJksvnjVMEC4iP7KX639GtHVUFpzER",
   "metadata": {
     "nonSensitiveField": "Non-Sensitive Value"
   },
