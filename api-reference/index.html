@@ -1639,6 +1639,11 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
 <td>Bank data</td>
 </tr>
 <tr>
+<td><code>fingerprint</code></td>
+<td><em>string</em></td>
+<td>Uniquely identifies this particular bank account. You can use this attribute to check whether two bank accounts are the same.</td>
+</tr>
+<tr>
 <td><code>metadata</code></td>
 <td><em>map</em></td>
 <td>A key-value map of non-sensitive data.</td>
@@ -1728,6 +1733,7 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
     </span><span class="nl">"routing_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"021000021"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"account_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XXXXXX7890"</span><span class="w">
   </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"fingerprint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8j6WJgk4Dz1qoJgrHrioUFJhYKQTnk75DfJAue5bNab2"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"nonSensitiveField"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Non-Sensitive Value"</span><span class="w">
   </span><span class="p">},</span><span class="w">
@@ -1803,6 +1809,7 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
         </span><span class="nl">"routing_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"021000021"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"account_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XXXXXX7890"</span><span class="w">
       </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"fingerprint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8j6WJgk4Dz1qoJgrHrioUFJhYKQTnk75DfJAue5bNab2"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"nonSensitiveField"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Non-Sensitive Value"</span><span class="w">
       </span><span class="p">},</span><span class="w">
@@ -1854,6 +1861,7 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
     </span><span class="nl">"routing_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"021000021"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"account_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XXXXXX7890"</span><span class="w">
   </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"fingerprint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8j6WJgk4Dz1qoJgrHrioUFJhYKQTnk75DfJAue5bNab2"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"nonSensitiveField"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Non-Sensitive Value"</span><span class="w">
   </span><span class="p">},</span><span class="w">
@@ -1974,6 +1982,7 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
     </span><span class="nl">"routing_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"021000021"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"account_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567890"</span><span class="w">
   </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"fingerprint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8j6WJgk4Dz1qoJgrHrioUFJhYKQTnk75DfJAue5bNab2"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"nonSensitiveField"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Non-Sensitive Value"</span><span class="w">
   </span><span class="p">},</span><span class="w">
@@ -2227,6 +2236,11 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
 <td>Billing details</td>
 </tr>
 <tr>
+<td><code>fingerprint</code></td>
+<td><em>string</em></td>
+<td>Uniquely identifies this particular card number. You can use this attribute to check whether two card tokens contain the same card number.</td>
+</tr>
+<tr>
 <td><code>metadata</code></td>
 <td><em>map</em></td>
 <td>A key-value map of non-sensitive data.</td>
@@ -2448,6 +2462,7 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
       </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"fingerprint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EVYsSLRyb86Z5awJksvnjVMEC4iP7KX639GtHVUFpzER"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"nonSensitiveField"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Non-Sensitive Value"</span><span class="w">
   </span><span class="p">},</span><span class="w">
@@ -2544,6 +2559,7 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
           </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"fingerprint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EVYsSLRyb86Z5awJksvnjVMEC4iP7KX639GtHVUFpzER"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"nonSensitiveField"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Non-Sensitive Value"</span><span class="w">
       </span><span class="p">},</span><span class="w">
@@ -2609,6 +2625,7 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
       </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"fingerprint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EVYsSLRyb86Z5awJksvnjVMEC4iP7KX639GtHVUFpzER"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"nonSensitiveField"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Non-Sensitive Value"</span><span class="w">
   </span><span class="p">},</span><span class="w">
@@ -4867,6 +4884,11 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
 <td><code>data</code></td>
 <td><em>any</em></td>
 <td>Token data</td>
+</tr>
+<tr>
+<td><code>fingerprint</code></td>
+<td><em>string</em></td>
+<td>Uniquely identifies the contents of this token. Fingerprints are only available for Atomic Card and Atomic Bank token types.</td>
 </tr>
 <tr>
 <td><code>metadata</code></td>
