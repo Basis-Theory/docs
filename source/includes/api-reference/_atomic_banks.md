@@ -15,10 +15,10 @@ Attribute | Type | Description
 
 ### Bank Object
 
-Attribute | Type | Description
---------- | ---- | -----------
-`routing_number` | *string* | Nine-digit ABA routing number
-`account_number` | *string* | Account number up to seventeen-digits
+Attribute | Required | Type | Default | Description
+--------- | -------- | ---- | ------- | -----------
+`routing_number` | true | *string* | null | Nine-digit ABA routing number
+`account_number` | true | *string* | null | Account number up to seventeen-digits
 
 
 ## Create Atomic Bank

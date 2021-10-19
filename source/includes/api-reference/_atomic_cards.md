@@ -16,31 +16,31 @@ Attribute | Type | Description
 
 ### Card Object
 
-Attribute | Type | Description
---------- | ---- | -----------
-`number` | *string* | The card number without any separators
-`expiration_month` | *integer* | Two-digit number representing the card's expiration month
-`expiration_year` | *integer* | Four-digit number representing the card's expiration year
+Attribute | Required | Type | Default | Description
+--------- | -------- | ---- | ------- | -----------
+`number` | true | *string* | null | The card number without any separators
+`expiration_month` | false | *integer* | null | Two-digit number representing the card's expiration month
+`expiration_year` | false | *integer* | null | Four-digit number representing the card's expiration year
 
 ### Billing Details Object
 
-Attribute | Type | Description
---------- | ---- | -----------
-`name` | *string* | The cardholder or customer's full name
-`email` | *string* | The cardholder or customer's email address
-`phone` | *string* | The cardholder or customer's phone number
-`address` | *address* | The cardholder or customer's [address](#address-object)
+Attribute | Required | Type | Default | Description
+--------- | -------- | ---- | ------- | -----------
+`name` | false | *string* | The cardholder or customer's full name
+`email` | false | *string* | The cardholder or customer's email address
+`phone` | false | *string* | The cardholder or customer's phone number
+`address` | false | *address* | The cardholder or customer's [address](#address-object)
 
 ### Address Object
 
-Attribute | Type | Description
---------- | ---- | -----------
-`line1` | *string* | Address line 1 (Street address / PO Box / Company name)
-`line2` | *string* | Address line 2 (Apartment / Suite / Unit / Building)
-`city` | *string* | City / District / Suburb / Town / Village
-`state` | *string* | State / County / Province / Region
-`postal_code` | *string* | Zip or postal code
-`country` | *string* | Two-character ISO country code (e.g. `US`)
+Attribute | Required | Type | Default | Description
+--------- | -------- | ---- | ------- | -----------
+`line1` | true | false | *string* | null | Address line 1 (Street address / PO Box / Company name)
+`line2` | false | *string* | null | Address line 2 (Apartment / Suite / Unit / Building)
+`city` | true | *string* | null | City / District / Suburb / Town / Village
+`state` | true | *string* | null | State / County / Province / Region
+`postal_code` | true | *string* | null | Zip or postal code
+`country` | true | *string* | null | Two-character ISO country code (e.g. `US`)
 
 
 ## Create Atomic Card
@@ -191,13 +191,13 @@ Create a new Atomic Card for the Tenant.
 
 Attribute | Required | Type | Default | Description
 --------- | -------- | ---- | ------- | -----------
-`card` | true | *[card](#card-object)* | `null` | Card data
+`card` | true | *[card](#atomic-cards-atomic-card-object)* | `null` | Card data
 `billing_details` | false | *[billing details](#billing-details-object)* | `null` | Billing details
 `metadata` | false | *map* | `null` | A key-value map of non-sensitive data.
 
 ### Response
 
-Returns an [Atomic Card](#atomic-card-object) with masked [card data](#card-object) if the Atomic Card was created. Returns [an error](#errors) if there were validation errors, or the Atomic Card failed to create.
+Returns an [Atomic Card](#atomic-card-object) with masked [card data](#atomic-cards-atomic-card-object) if the Atomic Card was created. Returns [an error](#errors) if there were validation errors, or the Atomic Card failed to create.
 
 
 ## List Atomic Cards
