@@ -4,11 +4,11 @@
 
 Attribute | Type | Description
 --------- | ---- | -----------
-`id` | *uuid* | Unique identifier of the token which can be used to [get an Atomic Card](#get-an-atomic-card)
+`id` | *uuid* | Unique identifier of the token which can be used to [get an Atomic Card](#atomic-cards-get-an-atomic-card)
 `tenant_id` | *uuid* | The [Tenant](#tenants) ID which owns the card
 `type` | *string* | `Card` [token type](#tokens-token-types)
-`card` | *[card](#card-object)* | Card data
-`billing_details` | *[billing details](#billing-details-object)* | Billing details
+`card` | *[card](#atomic-cards-atomic-card-object-card-object)* | Card data
+`billing_details` | *[billing details](#atomic-cards-atomic-card-object-billing-details-object)* | Billing details
 `fingerprint` | *string* | Uniquely identifies this particular card number. You can use this attribute to check whether two card tokens contain the same card number.
 `metadata` | *map* | A key-value map of non-sensitive data.
 `created_by` | *uuid* | The [application](#applications) ID which created the Atomic Card
@@ -26,16 +26,16 @@ Attribute | Required | Type | Default | Description
 
 Attribute | Required | Type | Default | Description
 --------- | -------- | ---- | ------- | -----------
-`name` | false | *string* | The cardholder or customer's full name
-`email` | false | *string* | The cardholder or customer's email address
-`phone` | false | *string* | The cardholder or customer's phone number
-`address` | false | *address* | The cardholder or customer's [address](#address-object)
+`name` | false | *string* | null | The cardholder or customer's full name
+`email` | false | *string* | null | The cardholder or customer's email address
+`phone` | false | *string* | null | The cardholder or customer's phone number
+`address` | false | *address* | null | The cardholder or customer's [address](#atomic-cards-atomic-card-object-address-object)
 
 ### Address Object
 
 Attribute | Required | Type | Default | Description
 --------- | -------- | ---- | ------- | -----------
-`line1` | true | false | *string* | null | Address line 1 (Street address / PO Box / Company name)
+`line1` | true | *string* | null | Address line 1 (Street address / PO Box / Company name)
 `line2` | false | *string* | null | Address line 2 (Apartment / Suite / Unit / Building)
 `city` | true | *string* | null | City / District / Suburb / Town / Village
 `state` | true | *string* | null | State / County / Province / Region
@@ -192,12 +192,12 @@ Create a new Atomic Card for the Tenant.
 Attribute | Required | Type | Default | Description
 --------- | -------- | ---- | ------- | -----------
 `card` | true | *[card](#atomic-cards-atomic-card-object)* | `null` | Card data
-`billing_details` | false | *[billing details](#billing-details-object)* | `null` | Billing details
+`billing_details` | false | *[billing details](#atomic-cards-atomic-card-object-billing-details-object)* | `null` | Billing details
 `metadata` | false | *map* | `null` | A key-value map of non-sensitive data.
 
 ### Response
 
-Returns an [Atomic Card](#atomic-card-object) with masked [card data](#atomic-cards-atomic-card-object) if the Atomic Card was created. Returns [an error](#errors) if there were validation errors, or the Atomic Card failed to create.
+Returns an [Atomic Card](#atomic-cards-atomic-card-object) with masked [card data](#atomic-cards-atomic-card-object-card-object) if the Atomic Card was created. Returns [an error](#errors) if there were validation errors, or the Atomic Card failed to create.
 
 
 ## List Atomic Cards
@@ -281,7 +281,7 @@ Get a list of Atomic Cards for the Tenant.
 
 ### Response
 
-Returns a [paginated object](#pagination) with the `data` property containing an array of [Atomic Cards](#atomic-card-object). Providing any query parameters will filter the results. Returns [an error](#errors) if Atomic Cards could not be retrieved.
+Returns a [paginated object](#pagination) with the `data` property containing an array of [Atomic Cards](#atomic-cards-atomic-card-object). Providing any query parameters will filter the results. Returns [an error](#errors) if Atomic Cards could not be retrieved.
 
 
 ## Get an Atomic Card
@@ -364,7 +364,7 @@ Parameter | Required | Type | Default | Description
 
 ### Response
 
-Returns an [Atomic Card](#atomic-card-object) with the `id` provided. Returns [an error](#errors) if the Atomic Card could not be retrieved.
+Returns an [Atomic Card](#atomic-cards-atomic-card-object) with the `id` provided. Returns [an error](#errors) if the Atomic Card could not be retrieved.
 
 
 ## Delete Atomic Card
@@ -504,7 +504,7 @@ Parameter | Required | Type | Default | Description
 ### Response
 
 Returns a [token](#tokens-token-object) with type of `card:reaction` if the Atomic Card was reacted. Returns [an error](#errors) if the Atomic Card failed to react.
-Errors generated from Reactors will be translated to the common Basis Theory Error format. See [Reactor Errors](#reactor-errors) for more details.
+Errors generated from Reactors will be translated to the common Basis Theory Error format. See [Reactor Errors](#errors-reactor-errors) for more details.
 
 
 ## Get an Atomic Card Reaction Token
