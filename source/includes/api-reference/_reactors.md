@@ -5,7 +5,7 @@
 
 Attribute | Type | Description
 --------- | ---- | -----------
-`id` | *uuid* | Unique ide~~~~ntifier of the Reactor which can be used to [get a Reactor](#reactors-get-a-reactor)
+`id` | *uuid* | Unique identifier of the Reactor which can be used to [get a Reactor](#reactors-get-a-reactor)
 `tenant_id` | *uuid* | The [Tenant](#tenants) ID which owns the reactor
 `name` | *string* | The name of the reactor
 `formula` | *[Reactor Formula](#reactor-formulas-reactor-formula-object)* | Reactor Formula this Reactor is configured for
