@@ -5,11 +5,11 @@
 
 Attribute | Type | Description
 --------- | ---- | -----------
-`id` | *uuid* | Unique identifier of the Reactor which can be used to [get a Reactor](#get-an-reactor)
+`id` | *uuid* | Unique identifier of the Reactor which can be used to [get a Reactor](#reactors-get-a-reactor)
 `tenant_id` | *uuid* | The [Tenant](#tenants) ID which owns the reactor
 `name` | *string* | The name of the reactor
-`formula` | *[Reactor Formula](#reactor-formla-object)* | Reactor Formula this Reactor is configured for
-`configuration` | *map* | A key-value map of all configuration name and values for an [Reactor Formula configuration](#reactor-formula-configuration-object)
+`formula` | *[Reactor Formula](#reactor-formulas-reactor-formula-object)* | Reactor Formula this Reactor is configured for
+`configuration` | *map* | A key-value map of all configuration name and values for an [Reactor Formula configuration](#reactor-formulas-reactor-formula-object-reactor-formula-configuration-object)
 `created_at` | *string* | Created date of the Reactor in ISO 8601 format
 `modified_at` | *string* | Last modified date of the Reactor in ISO 8601 format
 
@@ -99,12 +99,12 @@ Create a new Reactor from a Reactor Formula for the Tenant.
 Attribute | Required | Type | Default | Description
 --------- | -------- | ---- | ------- | -----------
 `name` | true | *string* | `null` | The name of the reactor. Has a maximum length of `200`
-`configuration` | true | *object* | `null` | A key-value map of all configuration name and values for an [Reactor Formula configuration](#reactor-formula-configuration-object)
-`formula.id` | true | *uuid* | `null` | Unique identifier of the [Reactor Formula](#reactor-formula-object) to configure a Reactor for
+`configuration` | true | *object* | `null` | A key-value map of all configuration name and values for an [Reactor Formula configuration](#reactor-formulas-reactor-formula-object-reactor-formula-configuration-object)
+`formula.id` | true | *uuid* | `null` | Unique identifier of the [Reactor Formula](#reactor-formulas-reactor-formula-object) to configure a Reactor for
 
 ### Response
 
-Returns an [reactor](#reactor-object) if the Reactor was created. Returns [an error](#errors) if there were validation errors, or the Reactor failed to create.
+Returns an [reactor](#reactors-reactor-object) if the Reactor was created. Returns [an error](#errors) if there were validation errors, or the Reactor failed to create.
 
 
 ## List Reactors
@@ -178,7 +178,7 @@ Parameter | Required | Type | Default | Description
 
 ### Response
 
-Returns a [paginated object](#pagination) with the `data` property containing an array of [reactors](#reactor-object). Providing any query parameters will filter the results. Returns [an error](#errors) if reactors could not be retrieved.
+Returns a [paginated object](#pagination) with the `data` property containing an array of [reactors](#reactors-reactor-object). Providing any query parameters will filter the results. Returns [an error](#errors) if reactors could not be retrieved.
 
 
 ## Get a Reactor
@@ -243,7 +243,7 @@ Parameter | Required | Type | Default | Description
 
 ### Response
 
-Returns an [reactor](#reactor-object) with the `id` provided. Returns [an error](#errors) if the Reactor could not be retrieved.
+Returns an [reactor](#reactors-reactor-object) with the `id` provided. Returns [an error](#errors) if the Reactor could not be retrieved.
 
 
 ## Update Reactor
@@ -331,11 +331,11 @@ Parameter | Required | Type | Default | Description
 Attribute | Required | Type | Default | Description
 --------- | -------- | ---- | ------- | -----------
 `name` | true | *string* | `null` | The name of the reactor. Has a maximum length of `200`
-`configuration` | true | *object* | `null` | A key-value map of all configuration name and values for an [Reactor Formula configuration](#reactor-formula-configuration-object)
+`configuration` | true | *object* | `null` | A key-value map of all configuration name and values for an [Reactor Formula configuration](#reactor-formulas-reactor-formula-object-reactor-formula-configuration-object)
 
 ### Response
 
-Returns an [reactor](#reactor-object) if the Reactor was updated. Returns [an error](#errors) if there were validation errors, or the Reactor failed to update.
+Returns an [reactor](#reactors-reactor-object) if the Reactor was updated. Returns [an error](#errors) if there were validation errors, or the Reactor failed to update.
 
 
 ## Delete Reactor
