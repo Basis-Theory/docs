@@ -1635,7 +1635,7 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
 </tr>
 <tr>
 <td><code>bank</code></td>
-<td><em><a href="#bank-object">bank</a></em></td>
+<td><em><a href="#atomic-banks-atomic-bank-object-bank-object">bank</a></em></td>
 <td>Bank data</td>
 </tr>
 <tr>
@@ -1663,18 +1663,24 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
 <table><thead>
 <tr>
 <th>Attribute</th>
+<th>Required</th>
 <th>Type</th>
+<th>Default</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td><code>routing_number</code></td>
+<td>true</td>
 <td><em>string</em></td>
+<td>null</td>
 <td>Nine-digit ABA routing number</td>
 </tr>
 <tr>
 <td><code>account_number</code></td>
+<td>true</td>
 <td><em>string</em></td>
+<td>null</td>
 <td>Account number up to seventeen-digits</td>
 </tr>
 </tbody></table>
@@ -1764,7 +1770,7 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
 <tr>
 <td><code>bank</code></td>
 <td>true</td>
-<td><em><a href="#bank-object">bank</a></em></td>
+<td><em><a href="#atomic-banks-atomic-bank-object-bank-object">bank</a></em></td>
 <td><code>null</code></td>
 <td>Bank data</td>
 </tr>
@@ -1777,7 +1783,7 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
 </tr>
 </tbody></table>
 <h3 id='atomic-banks-create-atomic-bank-response'>Response</h3>
-<p>Returns an <a href="#atomic-bank-object">Atomic Bank</a> with masked <a href="#bank-object">bank data</a> if the Atomic Bank was created. Returns <a href="#errors">an error</a> if there were validation errors, or the Atomic Bank failed to create.</p>
+<p>Returns an <a href="#atomic-banks-atomic-bank-object">Atomic Bank</a> with masked <a href="#atomic-banks-atomic-bank-object-bank-object">bank data</a> if the Atomic Bank was created. Returns <a href="#errors">an error</a> if there were validation errors, or the Atomic Bank failed to create.</p>
 <h2 id='atomic-banks-list-atomic-banks'>List Atomic Banks</h2>
 <blockquote>
 <p>Request</p>
@@ -1832,7 +1838,7 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
   <span class="scope">bank:read</span>
 </p>
 <h3 id='atomic-banks-list-atomic-banks-response'>Response</h3>
-<p>Returns a <a href="#pagination">paginated object</a> with the <code>data</code> property containing an array of <a href="#atomic-bank-object">Atomic Banks</a>. Providing any query parameters will filter the results. Returns <a href="#errors">an error</a> if Atomic Banks could not be retrieved.</p>
+<p>Returns a <a href="#pagination">paginated object</a> with the <code>data</code> property containing an array of <a href="#atomic-banks-atomic-bank-object">Atomic Banks</a>. Providing any query parameters will filter the results. Returns <a href="#errors">an error</a> if Atomic Banks could not be retrieved.</p>
 <h2 id='atomic-banks-get-an-atomic-bank'>Get an Atomic Bank</h2>
 <blockquote>
 <p>Request</p>
@@ -1898,7 +1904,7 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
 </tr>
 </tbody></table>
 <h3 id='atomic-banks-get-an-atomic-bank-response'>Response</h3>
-<p>Returns an <a href="#atomic-bank-object">Atomic Bank</a> with the <code>id</code> provided. Returns <a href="#errors">an error</a> if the Atomic Bank could not be retrieved.</p>
+<p>Returns an <a href="#atomic-banks-atomic-bank-object">Atomic Bank</a> with the <code>id</code> provided. Returns <a href="#errors">an error</a> if the Atomic Bank could not be retrieved.</p>
 <h2 id='atomic-banks-delete-atomic-bank'>Delete Atomic Bank</h2>
 <blockquote>
 <p>Request</p>
@@ -2019,7 +2025,7 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
 </tr>
 </tbody></table>
 <h3 id='atomic-banks-decrypt-atomic-bank-response'>Response</h3>
-<p>Returns an <a href="#atomic-bank-object">Atomic Bank</a> with plaintext <a href="#bank-object">bank</a> data with the <code>id</code> provided. Returns <a href="#errors">an error</a> if the Atomic Bank could not be retrieved.</p>
+<p>Returns an <a href="#atomic-banks-atomic-bank-object">Atomic Bank</a> with plaintext <a href="#atomic-banks-atomic-bank-object-bank-object">bank</a> data with the <code>id</code> provided. Returns <a href="#errors">an error</a> if the Atomic Bank could not be retrieved.</p>
 <h2 id='atomic-banks-create-an-atomic-bank-reaction'>Create an Atomic Bank Reaction</h2>
 <blockquote>
 <p>Request</p>
@@ -2128,7 +2134,7 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
 </tbody></table>
 <h3 id='atomic-banks-create-an-atomic-bank-reaction-response'>Response</h3>
 <p>Returns a <a href="#tokens-token-object">token</a> with type of <code>bank:reaction</code> if the Atomic Bank was reacted. Returns <a href="#errors">an error</a> if the Atomic Bank failed to react.
-Errors generated from Reactors will be translated to the common Basis Theory Error format. See <a href="#reactor-errors">Reactor Errors</a> for more details.</p>
+Errors generated from Reactors will be translated to the common Basis Theory Error format. See <a href="#errors-reactor-errors">Reactor Errors</a> for more details.</p>
 <h2 id='atomic-banks-get-an-atomic-bank-reaction-token'>Get an Atomic Bank Reaction Token</h2>
 <blockquote>
 <p>Request</p>
@@ -2213,7 +2219,7 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
 <tr>
 <td><code>id</code></td>
 <td><em>uuid</em></td>
-<td>Unique identifier of the token which can be used to <a href="#get-an-atomic-card">get an Atomic Card</a></td>
+<td>Unique identifier of the token which can be used to <a href="#atomic-cards-get-an-atomic-card">get an Atomic Card</a></td>
 </tr>
 <tr>
 <td><code>tenant_id</code></td>
@@ -2227,12 +2233,12 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
 </tr>
 <tr>
 <td><code>card</code></td>
-<td><em><a href="#card-object">card</a></em></td>
+<td><em><a href="#atomic-cards-atomic-card-object-card-object">card</a></em></td>
 <td>Card data</td>
 </tr>
 <tr>
 <td><code>billing_details</code></td>
-<td><em><a href="#billing-details-object">billing details</a></em></td>
+<td><em><a href="#atomic-cards-atomic-card-object-billing-details-object">billing details</a></em></td>
 <td>Billing details</td>
 </tr>
 <tr>
@@ -2260,23 +2266,31 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
 <table><thead>
 <tr>
 <th>Attribute</th>
+<th>Required</th>
 <th>Type</th>
+<th>Default</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td><code>number</code></td>
+<td>true</td>
 <td><em>string</em></td>
+<td>null</td>
 <td>The card number without any separators</td>
 </tr>
 <tr>
 <td><code>expiration_month</code></td>
+<td>false</td>
 <td><em>integer</em></td>
+<td>null</td>
 <td>Two-digit number representing the card&#39;s expiration month</td>
 </tr>
 <tr>
 <td><code>expiration_year</code></td>
+<td>false</td>
 <td><em>integer</em></td>
+<td>null</td>
 <td>Four-digit number representing the card&#39;s expiration year</td>
 </tr>
 </tbody></table>
@@ -2284,67 +2298,91 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
 <table><thead>
 <tr>
 <th>Attribute</th>
+<th>Required</th>
 <th>Type</th>
+<th>Default</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td><code>name</code></td>
+<td>false</td>
 <td><em>string</em></td>
+<td>null</td>
 <td>The cardholder or customer&#39;s full name</td>
 </tr>
 <tr>
 <td><code>email</code></td>
+<td>false</td>
 <td><em>string</em></td>
+<td>null</td>
 <td>The cardholder or customer&#39;s email address</td>
 </tr>
 <tr>
 <td><code>phone</code></td>
+<td>false</td>
 <td><em>string</em></td>
+<td>null</td>
 <td>The cardholder or customer&#39;s phone number</td>
 </tr>
 <tr>
 <td><code>address</code></td>
+<td>false</td>
 <td><em>address</em></td>
-<td>The cardholder or customer&#39;s <a href="#address-object">address</a></td>
+<td>null</td>
+<td>The cardholder or customer&#39;s <a href="#atomic-cards-atomic-card-object-address-object">address</a></td>
 </tr>
 </tbody></table>
 <h3 id='atomic-cards-atomic-card-object-address-object'>Address Object</h3>
 <table><thead>
 <tr>
 <th>Attribute</th>
+<th>Required</th>
 <th>Type</th>
+<th>Default</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td><code>line1</code></td>
+<td>true</td>
 <td><em>string</em></td>
+<td>null</td>
 <td>Address line 1 (Street address / PO Box / Company name)</td>
 </tr>
 <tr>
 <td><code>line2</code></td>
+<td>false</td>
 <td><em>string</em></td>
+<td>null</td>
 <td>Address line 2 (Apartment / Suite / Unit / Building)</td>
 </tr>
 <tr>
 <td><code>city</code></td>
+<td>true</td>
 <td><em>string</em></td>
+<td>null</td>
 <td>City / District / Suburb / Town / Village</td>
 </tr>
 <tr>
 <td><code>state</code></td>
+<td>true</td>
 <td><em>string</em></td>
+<td>null</td>
 <td>State / County / Province / Region</td>
 </tr>
 <tr>
 <td><code>postal_code</code></td>
+<td>true</td>
 <td><em>string</em></td>
+<td>null</td>
 <td>Zip or postal code</td>
 </tr>
 <tr>
 <td><code>country</code></td>
+<td>true</td>
 <td><em>string</em></td>
+<td>null</td>
 <td>Two-character ISO country code (e.g. <code>US</code>)</td>
 </tr>
 </tbody></table>
@@ -2493,14 +2531,14 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
 <tr>
 <td><code>card</code></td>
 <td>true</td>
-<td><em><a href="#card-object">card</a></em></td>
+<td><em><a href="#atomic-cards-atomic-card-object">card</a></em></td>
 <td><code>null</code></td>
 <td>Card data</td>
 </tr>
 <tr>
 <td><code>billing_details</code></td>
 <td>false</td>
-<td><em><a href="#billing-details-object">billing details</a></em></td>
+<td><em><a href="#atomic-cards-atomic-card-object-billing-details-object">billing details</a></em></td>
 <td><code>null</code></td>
 <td>Billing details</td>
 </tr>
@@ -2513,7 +2551,7 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
 </tr>
 </tbody></table>
 <h3 id='atomic-cards-create-atomic-card-response'>Response</h3>
-<p>Returns an <a href="#atomic-card-object">Atomic Card</a> with masked <a href="#card-object">card data</a> if the Atomic Card was created. Returns <a href="#errors">an error</a> if there were validation errors, or the Atomic Card failed to create.</p>
+<p>Returns an <a href="#atomic-cards-atomic-card-object">Atomic Card</a> with masked <a href="#atomic-cards-atomic-card-object-card-object">card data</a> if the Atomic Card was created. Returns <a href="#errors">an error</a> if there were validation errors, or the Atomic Card failed to create.</p>
 <h2 id='atomic-cards-list-atomic-cards'>List Atomic Cards</h2>
 <blockquote>
 <p>Request</p>
@@ -2582,7 +2620,7 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
   <span class="scope">card:read</span>
 </p>
 <h3 id='atomic-cards-list-atomic-cards-response'>Response</h3>
-<p>Returns a <a href="#pagination">paginated object</a> with the <code>data</code> property containing an array of <a href="#atomic-card-object">Atomic Cards</a>. Providing any query parameters will filter the results. Returns <a href="#errors">an error</a> if Atomic Cards could not be retrieved.</p>
+<p>Returns a <a href="#pagination">paginated object</a> with the <code>data</code> property containing an array of <a href="#atomic-cards-atomic-card-object">Atomic Cards</a>. Providing any query parameters will filter the results. Returns <a href="#errors">an error</a> if Atomic Cards could not be retrieved.</p>
 <h2 id='atomic-cards-get-an-atomic-card'>Get an Atomic Card</h2>
 <blockquote>
 <p>Request</p>
@@ -2662,7 +2700,7 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
 </tr>
 </tbody></table>
 <h3 id='atomic-cards-get-an-atomic-card-response'>Response</h3>
-<p>Returns an <a href="#atomic-card-object">Atomic Card</a> with the <code>id</code> provided. Returns <a href="#errors">an error</a> if the Atomic Card could not be retrieved.</p>
+<p>Returns an <a href="#atomic-cards-atomic-card-object">Atomic Card</a> with the <code>id</code> provided. Returns <a href="#errors">an error</a> if the Atomic Card could not be retrieved.</p>
 <h2 id='atomic-cards-delete-atomic-card'>Delete Atomic Card</h2>
 <blockquote>
 <p>Request</p>
@@ -2823,7 +2861,7 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
 </tbody></table>
 <h3 id='atomic-cards-create-an-atomic-card-reaction-response'>Response</h3>
 <p>Returns a <a href="#tokens-token-object">token</a> with type of <code>card:reaction</code> if the Atomic Card was reacted. Returns <a href="#errors">an error</a> if the Atomic Card failed to react.
-Errors generated from Reactors will be translated to the common Basis Theory Error format. See <a href="#reactor-errors">Reactor Errors</a> for more details.</p>
+Errors generated from Reactors will be translated to the common Basis Theory Error format. See <a href="#errors-reactor-errors">Reactor Errors</a> for more details.</p>
 <h2 id='atomic-cards-get-an-atomic-card-reaction-token'>Get an Atomic Card Reaction Token</h2>
 <blockquote>
 <p>Request</p>
@@ -3302,7 +3340,7 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
 <tr>
 <td><code>id</code></td>
 <td><em>uuid</em></td>
-<td>Unique identifier of the Reactor Formula which can be used to <a href="#get-an-reactor-formula">get a Reactor Formula</a></td>
+<td>Unique identifier of the Reactor Formula which can be used to <a href="#reactor-formulas-get-a-reactor-formula">get a Reactor Formula</a></td>
 </tr>
 <tr>
 <td><code>name</code></td>
@@ -3317,7 +3355,7 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
 <tr>
 <td><code>type</code></td>
 <td><em>string</em></td>
-<td><a href="#reactor-formula-types">Type</a> of the Reactor Formula</td>
+<td><a href="#reactor-formulas-reactor-formula-types">Type</a> of the Reactor Formula</td>
 </tr>
 <tr>
 <td><code>source_token_type</code></td>
@@ -3332,17 +3370,17 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
 <tr>
 <td><code>code</code></td>
 <td><em>string</em></td>
-<td><a href="#reactor-formula-code">Reactor Formula code</a> which will be executed when the Reactor Formula is processed</td>
+<td><a href="#reactor-formulas-reactor-formula-code">Reactor Formula code</a> which will be executed when the Reactor Formula is processed</td>
 </tr>
 <tr>
 <td><code>configuration</code></td>
 <td><em>array</em></td>
-<td>Array of <a href="#reactor-formula-configuration-object">configuration</a> options for configuring a reactor</td>
+<td>Array of <a href="#reactor-formulas-reactor-formula-object-reactor-formula-configuration-object">configuration</a> options for configuring a reactor</td>
 </tr>
 <tr>
 <td><code>request_parameters</code></td>
 <td><em>array</em></td>
-<td>Array of <a href="#reactor-formula-request-parameter-object">request parameters</a> which will be passed when executing the reactor</td>
+<td>Array of <a href="#reactor-formulas-reactor-formula-object-reactor-formula-request-parameter-object">request parameters</a> which will be passed when executing the reactor</td>
 </tr>
 <tr>
 <td><code>created_at</code></td>
@@ -3427,7 +3465,7 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
 </tr>
 </tbody></table>
 <h2 id='reactor-formulas-reactor-formula-code'>Reactor Formula Code</h2>
-<p>All Reactor Formula code snippets must export a function which takes in a <a href="#reactor-formula-code-context-object">context object</a> and returns a <a href="#tokens-token-object">token object</a>.</p>
+<p>All Reactor Formula code snippets must export a function which takes in a <a href="#reactor-formulas-reactor-formula-code-context-object">context object</a> and returns a <a href="#tokens-token-object">token object</a>.</p>
 <h3 id='reactor-formulas-reactor-formula-code-reactor-formula-code-context-object'>Reactor Formula Code Context Object</h3>
 <table><thead>
 <tr>
@@ -3439,12 +3477,12 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
 <tr>
 <td><code>sourceToken</code></td>
 <td><em>object</em></td>
-<td>The source token that matches the <code>source_token_type</code> of the <a href="#reactor-formula-object">reactor-formula</a></td>
+<td>The source token that matches the <code>source_token_type</code> of the <a href="#reactor-formulas-reactor-formula-object">reactor-formula</a></td>
 </tr>
 <tr>
 <td><code>configuration</code></td>
 <td><em>array</em></td>
-<td>The configuration defined for the <a href="#reactor-object">Reactor object</a></td>
+<td>The configuration defined for the <a href="#reactors-reactor-object">Reactor object</a></td>
 </tr>
 </tbody></table>
 <h2 id='reactor-formulas-reactor-formula-types'>Reactor Formula Types</h2>
@@ -3674,7 +3712,7 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
 <td>true</td>
 <td><em>string</em></td>
 <td><code>null</code></td>
-<td><a href="#reactor-formula-types">Type</a> of the Reactor Formula</td>
+<td><a href="#reactor-formulas-reactor-formula-types">Type</a> of the Reactor Formula</td>
 </tr>
 <tr>
 <td><code>source_token_type</code></td>
@@ -3695,25 +3733,25 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
 <td>true</td>
 <td><em>string</em></td>
 <td><code>null</code></td>
-<td><a href="#reactor-formula-code">Reactor code</a> which will be executed when the Reactor Formula is processed</td>
+<td><a href="#reactor-formulas-reactor-formula-code">Reactor code</a> which will be executed when the Reactor Formula is processed</td>
 </tr>
 <tr>
 <td><code>configuration</code></td>
 <td>true</td>
 <td><em>array</em></td>
 <td><code>[]</code></td>
-<td>Array of <a href="#reactor-formula-configuration-object">configuration</a> options for configuring a Reactor</td>
+<td>Array of <a href="#reactor-formulas-reactor-formula-object-reactor-formula-configuration-object">configuration</a> options for configuring a Reactor</td>
 </tr>
 <tr>
 <td><code>request_parameters</code></td>
 <td>true</td>
 <td><em>array</em></td>
 <td><code>[]</code></td>
-<td>Array of <a href="#reactor-formula-request-parameter-object">request parameters</a> which will be passed when executing the Reactor</td>
+<td>Array of <a href="#reactor-formulas-reactor-formula-object-reactor-formula-request-parameter-object">request parameters</a> which will be passed when executing the Reactor</td>
 </tr>
 </tbody></table>
 <h3 id='reactor-formulas-create-reactor-formula-response'>Response</h3>
-<p>Returns an <a href="#reactor-formula-object">Reactor Formula</a> if the Reactor Formula was created. Returns <a href="#errors">an error</a> if there were validation errors, or the Reactor Formula failed to create.</p>
+<p>Returns an <a href="#reactor-formulas-reactor-formula-object">Reactor Formula</a> if the Reactor Formula was created. Returns <a href="#errors">an error</a> if there were validation errors, or the Reactor Formula failed to create.</p>
 <h2 id='reactor-formulas-list-reactor-formulas'>List Reactor Formulas</h2>
 <blockquote>
 <p>Request</p>
@@ -3822,7 +3860,7 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
 </tr>
 </tbody></table>
 <h3 id='reactor-formulas-list-reactor-formulas-response'>Response</h3>
-<p>Returns a <a href="#pagination">paginated object</a> with the <code>data</code> property containing an array of <a href="#reactor-formula-object">Reactor Formulas</a>. Providing any query parameters will filter the results. Returns <a href="#errors">an error</a> if Reactor Formulas could not be retrieved.</p>
+<p>Returns a <a href="#pagination">paginated object</a> with the <code>data</code> property containing an array of <a href="#reactor-formulas-reactor-formula-object">Reactor Formulas</a>. Providing any query parameters will filter the results. Returns <a href="#errors">an error</a> if Reactor Formulas could not be retrieved.</p>
 <h2 id='reactor-formulas-get-a-reactor-formula'>Get a Reactor Formula</h2>
 <blockquote>
 <p>Request</p>
@@ -3917,7 +3955,7 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
 </tr>
 </tbody></table>
 <h3 id='reactor-formulas-get-a-reactor-formula-response'>Response</h3>
-<p>Returns an <a href="#reactor-formula-object">Reactor Formula</a> with the <code>id</code> provided. Returns <a href="#errors">an error</a> if the Reactor Formula could not be retrieved.</p>
+<p>Returns an <a href="#reactor-formulas-reactor-formula-object">Reactor Formula</a> with the <code>id</code> provided. Returns <a href="#errors">an error</a> if the Reactor Formula could not be retrieved.</p>
 <h2 id='reactor-formulas-update-reactor-formula'>Update Reactor Formula</h2>
 <blockquote>
 <p>Request</p>
@@ -4171,25 +4209,25 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
 <td>true</td>
 <td><em>string</em></td>
 <td><code>null</code></td>
-<td><a href="#reactor-formula-code">Reactor code</a> which will be executed when the Reactor Formula is processed</td>
+<td><a href="#reactor-formulas-reactor-formula-code">Reactor code</a> which will be executed when the Reactor Formula is processed</td>
 </tr>
 <tr>
 <td><code>configuration</code></td>
 <td>true</td>
 <td><em>array</em></td>
 <td><code>[]</code></td>
-<td>Array of <a href="#reaction-formula-configuration-object">configuration</a> options for configuring a Reactor</td>
+<td>Array of <a href="#reactor-formulas-reactor-formula-object-reactor-formula-configuration-object">configuration</a> options for configuring a Reactor</td>
 </tr>
 <tr>
 <td><code>request_parameters</code></td>
 <td>true</td>
 <td><em>array</em></td>
 <td><code>[]</code></td>
-<td>Array of <a href="#reactor-formula-request-parameter-object">request parameters</a> which will be passed when executing the Reactor</td>
+<td>Array of <a href="#reactor-formulas-reactor-formula-object-reactor-formula-request-parameter-object">request parameters</a> which will be passed when executing the Reactor</td>
 </tr>
 </tbody></table>
 <h3 id='reactor-formulas-update-reactor-formula-response'>Response</h3>
-<p>Returns an <a href="#reactor-formula-object">Reactor Formula</a> if the Reactor Formula was updated. Returns <a href="#errors">an error</a> if there were validation errors, or the Reactor Formula failed to update.</p>
+<p>Returns an <a href="#reactor-formulas-reactor-formula-object">Reactor Formula</a> if the Reactor Formula was updated. Returns <a href="#errors">an error</a> if there were validation errors, or the Reactor Formula failed to update.</p>
 <h2 id='reactor-formulas-delete-reactor-formula'>Delete Reactor Formula</h2>
 <blockquote>
 <p>Request</p>
@@ -4249,7 +4287,7 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
 <tr>
 <td><code>id</code></td>
 <td><em>uuid</em></td>
-<td>Unique identifier of the Reactor which can be used to <a href="#get-an-reactor">get a Reactor</a></td>
+<td>Unique identifier of the Reactor which can be used to <a href="#reactors-get-a-reactor">get a Reactor</a></td>
 </tr>
 <tr>
 <td><code>tenant_id</code></td>
@@ -4263,13 +4301,13 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
 </tr>
 <tr>
 <td><code>formula</code></td>
-<td><em><a href="#reactor-formla-object">Reactor Formula</a></em></td>
+<td><em><a href="#reactor-formulas-reactor-formula-object">Reactor Formula</a></em></td>
 <td>Reactor Formula this Reactor is configured for</td>
 </tr>
 <tr>
 <td><code>configuration</code></td>
 <td><em>map</em></td>
-<td>A key-value map of all configuration name and values for an <a href="#reactor-formula-configuration-object">Reactor Formula configuration</a></td>
+<td>A key-value map of all configuration name and values for an <a href="#reactor-formulas-reactor-formula-object-reactor-formula-configuration-object">Reactor Formula configuration</a></td>
 </tr>
 <tr>
 <td><code>created_at</code></td>
@@ -4372,18 +4410,18 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
 <td>true</td>
 <td><em>object</em></td>
 <td><code>null</code></td>
-<td>A key-value map of all configuration name and values for an <a href="#reactor-formula-configuration-object">Reactor Formula configuration</a></td>
+<td>A key-value map of all configuration name and values for an <a href="#reactor-formulas-reactor-formula-object-reactor-formula-configuration-object">Reactor Formula configuration</a></td>
 </tr>
 <tr>
 <td><code>formula.id</code></td>
 <td>true</td>
 <td><em>uuid</em></td>
 <td><code>null</code></td>
-<td>Unique identifier of the <a href="#reactor-formula-object">Reactor Formula</a> to configure a Reactor for</td>
+<td>Unique identifier of the <a href="#reactor-formulas-reactor-formula-object">Reactor Formula</a> to configure a Reactor for</td>
 </tr>
 </tbody></table>
 <h3 id='reactors-create-reactor-response'>Response</h3>
-<p>Returns an <a href="#reactor-object">reactor</a> if the Reactor was created. Returns <a href="#errors">an error</a> if there were validation errors, or the Reactor failed to create.</p>
+<p>Returns an <a href="#reactors-reactor-object">reactor</a> if the Reactor was created. Returns <a href="#errors">an error</a> if there were validation errors, or the Reactor failed to create.</p>
 <h2 id='reactors-list-reactors'>List Reactors</h2>
 <blockquote>
 <p>Request</p>
@@ -4466,7 +4504,7 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
 </tr>
 </tbody></table>
 <h3 id='reactors-list-reactors-response'>Response</h3>
-<p>Returns a <a href="#pagination">paginated object</a> with the <code>data</code> property containing an array of <a href="#reactor-object">reactors</a>. Providing any query parameters will filter the results. Returns <a href="#errors">an error</a> if reactors could not be retrieved.</p>
+<p>Returns a <a href="#pagination">paginated object</a> with the <code>data</code> property containing an array of <a href="#reactors-reactor-object">reactors</a>. Providing any query parameters will filter the results. Returns <a href="#errors">an error</a> if reactors could not be retrieved.</p>
 <h2 id='reactors-get-a-reactor'>Get a Reactor</h2>
 <blockquote>
 <p>Request</p>
@@ -4528,7 +4566,7 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
 </tr>
 </tbody></table>
 <h3 id='reactors-get-a-reactor-response'>Response</h3>
-<p>Returns an <a href="#reactor-object">reactor</a> with the <code>id</code> provided. Returns <a href="#errors">an error</a> if the Reactor could not be retrieved.</p>
+<p>Returns an <a href="#reactors-reactor-object">reactor</a> with the <code>id</code> provided. Returns <a href="#errors">an error</a> if the Reactor could not be retrieved.</p>
 <h2 id='reactors-update-reactor'>Update Reactor</h2>
 <blockquote>
 <p>Request</p>
@@ -4631,11 +4669,11 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
 <td>true</td>
 <td><em>object</em></td>
 <td><code>null</code></td>
-<td>A key-value map of all configuration name and values for an <a href="#reactor-formula-configuration-object">Reactor Formula configuration</a></td>
+<td>A key-value map of all configuration name and values for an <a href="#reactor-formulas-reactor-formula-object-reactor-formula-configuration-object">Reactor Formula configuration</a></td>
 </tr>
 </tbody></table>
 <h3 id='reactors-update-reactor-response'>Response</h3>
-<p>Returns an <a href="#reactor-object">reactor</a> if the Reactor was updated. Returns <a href="#errors">an error</a> if there were validation errors, or the Reactor failed to update.</p>
+<p>Returns an <a href="#reactors-reactor-object">reactor</a> if the Reactor was updated. Returns <a href="#errors">an error</a> if there were validation errors, or the Reactor failed to update.</p>
 <h2 id='reactors-delete-reactor'>Delete Reactor</h2>
 <blockquote>
 <p>Request</p>
