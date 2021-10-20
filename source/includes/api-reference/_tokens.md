@@ -39,7 +39,7 @@ Attribute | Type | Description
 
 Name | Type | Description
 ---- | ---- | -----------
-Token | `token` | Generic token type. This is the default token type if none is provided when creating a new token
+Token | `token` | Generic token type
 Card | `card` | [Atomic card](#atomic-cards) token type
 Bank | `bank` | [Atomic bank](#atomic-banks) token type
 Card Reaction | `card:reaction` | This token type is the resulting token type of a reacted [Atomic card](#atomic-cards) token
@@ -173,7 +173,7 @@ Create a new token for the Tenant.
 
 Attribute | Required | Type | Default | Description
 --------- | -------- | ---- | ------- | -----------
-`type` | false | *string* | `token` | [Token type](#tokens-token-types) of the token
+`type` | true | *string* | `null` | [Token type](#tokens-token-types) of the token
 `data` | true | *any* | `null` | Token data. Can be an object, array, or any primitive type such as an integer, boolean, or string
 `metadata` | false | *map* | `null` | A key-value map of non-sensitive data.
 `encryption` | false | *[encryption object](#tokens-token-object-encryption-object)* | `null` | Encryption metadata for an encrypted token data value

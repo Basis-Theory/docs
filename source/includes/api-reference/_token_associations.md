@@ -246,7 +246,7 @@ Parameter | Required | Type | Default | Description
 
 Attribute | Required | Type | Default | Description
 --------- | -------- | ---- | ------- | -----------
-`type` | false | *string* | `token` | [Token type](#tokens-token-types) of the token
+`type` | true | *string* | `null` | [Token type](#tokens-token-types) of the token
 `data` | true | *any* | `null` | Token data
 `metadata` | false | *map* | `null` | A key-value map of non-sensitive data.
 `encryption` | false | *[encryption object](#tokens-token-object-encryption-object)* | `null` | Encryption metadata for an encrypted token data value
