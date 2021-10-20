@@ -7,7 +7,7 @@ Attribute | Type | Description
 `id` | *uuid* | Unique identifier of the token which can be used to [get an Atomic Bank](#atomic-banks-get-an-atomic-bank)
 `tenant_id` | *uuid* | The [Tenant](#tenants) ID which owns the bank
 `type` | *string* | `Bank` [token type](#tokens-token-types)
-`bank` | *[bank](#bank-object)* | Bank data
+`bank` | *[bank](#atomic-banks-atomic-bank-object-bank-object)* | Bank data
 `fingerprint` | *string* | Uniquely identifies this particular bank account. You can use this attribute to check whether two bank accounts are the same.
 `metadata` | *map* | A key-value map of non-sensitive data.
 `created_by` | *uuid* | The [Application](#applications) ID which created the Atomic Bank
@@ -15,10 +15,10 @@ Attribute | Type | Description
 
 ### Bank Object
 
-Attribute | Type | Description
---------- | ---- | -----------
-`routing_number` | *string* | Nine-digit ABA routing number
-`account_number` | *string* | Account number up to seventeen-digits
+Attribute | Required | Type | Default | Description
+--------- | -------- | ---- | ------- | -----------
+`routing_number` | true | *string* | null | Nine-digit ABA routing number
+`account_number` | true | *string* | null | Account number up to seventeen-digits
 
 
 ## Create Atomic Bank
@@ -110,12 +110,12 @@ Create a new Atomic Bank for the Tenant.
 
 Attribute | Required | Type | Default | Description
 --------- | -------- | ---- | ------- | -----------
-`bank` | true | *[bank](#bank-object)* | `null` | Bank data
+`bank` | true | *[bank](#atomic-banks-atomic-bank-object-bank-object)* | `null` | Bank data
 `metadata` | false | *map* | `null` | A key-value map of non-sensitive data.
 
 ### Response
 
-Returns an [Atomic Bank](#atomic-bank-object) with masked [bank data](#bank-object) if the Atomic Bank was created. Returns [an error](#errors) if there were validation errors, or the Atomic Bank failed to create.
+Returns an [Atomic Bank](#atomic-banks-atomic-bank-object) with masked [bank data](#atomic-banks-atomic-bank-object-bank-object) if the Atomic Bank was created. Returns [an error](#errors) if there were validation errors, or the Atomic Bank failed to create.
 
 
 ## List Atomic Banks
@@ -185,7 +185,7 @@ Get a list of Atomic Banks for the Tenant.
 
 ### Response
 
-Returns a [paginated object](#pagination) with the `data` property containing an array of [Atomic Banks](#atomic-bank-object). Providing any query parameters will filter the results. Returns [an error](#errors) if Atomic Banks could not be retrieved.
+Returns a [paginated object](#pagination) with the `data` property containing an array of [Atomic Banks](#atomic-banks-atomic-bank-object). Providing any query parameters will filter the results. Returns [an error](#errors) if Atomic Banks could not be retrieved.
 
 
 ## Get an Atomic Bank
@@ -254,7 +254,7 @@ Parameter | Required | Type | Default | Description
 
 ### Response
 
-Returns an [Atomic Bank](#atomic-bank-object) with the `id` provided. Returns [an error](#errors) if the Atomic Bank could not be retrieved.
+Returns an [Atomic Bank](#atomic-banks-atomic-bank-object) with the `id` provided. Returns [an error](#errors) if the Atomic Bank could not be retrieved.
 
 
 ## Delete Atomic Bank
@@ -380,7 +380,7 @@ Parameter | Required | Type | Default | Description
 
 ### Response
 
-Returns an [Atomic Bank](#atomic-bank-object) with plaintext [bank](#bank-object) data with the `id` provided. Returns [an error](#errors) if the Atomic Bank could not be retrieved.
+Returns an [Atomic Bank](#atomic-banks-atomic-bank-object) with plaintext [bank](#atomic-banks-atomic-bank-object-bank-object) data with the `id` provided. Returns [an error](#errors) if the Atomic Bank could not be retrieved.
 
 
 ## Create an Atomic Bank Reaction
@@ -466,7 +466,7 @@ Parameter | Required | Type | Default | Description
 ### Response
 
 Returns a [token](#tokens-token-object) with type of `bank:reaction` if the Atomic Bank was reacted. Returns [an error](#errors) if the Atomic Bank failed to react.
-Errors generated from Reactors will be translated to the common Basis Theory Error format. See [Reactor Errors](#reactor-errors) for more details.
+Errors generated from Reactors will be translated to the common Basis Theory Error format. See [Reactor Errors](#errors-reactor-errors) for more details.
 
 
 ## Get an Atomic Bank Reaction Token
