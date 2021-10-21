@@ -21,7 +21,7 @@ Attribute | Required | Type | Default | Description
 `number` | true | *string* | null | The card number without any separators
 `expiration_month` | false | *integer* | null | Two-digit number representing the card's expiration month
 `expiration_year` | false | *integer* | null | Four-digit number representing the card's expiration year
-`cvc` | false | *string* | null | Three or four digit card verification code
+`cvc` | false | *string* | null | Three or four-digit card verification code
 
 ### Billing Details Object
 
