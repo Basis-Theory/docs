@@ -21,6 +21,7 @@ Attribute | Required | Type | Default | Description
 `number` | true | *string* | null | The card number without any separators
 `expiration_month` | false | *integer* | null | Two-digit number representing the card's expiration month
 `expiration_year` | false | *integer* | null | Four-digit number representing the card's expiration year
+`cvc` | false | *string* | null | Three or four digit card verification code
 
 ### Billing Details Object
 
@@ -191,7 +192,7 @@ Create a new Atomic Card for the Tenant.
 
 Attribute | Required | Type | Default | Description
 --------- | -------- | ---- | ------- | -----------
-`card` | true | *[card](#atomic-cards-atomic-card-object)* | `null` | Card data
+`card` | true | *[card](#atomic-cards-atomic-card-object-card-object)* | `null` | Card data
 `billing_details` | false | *[billing details](#atomic-cards-atomic-card-object-billing-details-object)* | `null` | Billing details
 `metadata` | false | *map* | `null` | A key-value map of non-sensitive data.
 
