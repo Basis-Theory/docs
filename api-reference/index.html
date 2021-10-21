@@ -1673,14 +1673,14 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
 <td><code>routing_number</code></td>
 <td>true</td>
 <td><em>string</em></td>
-<td>null</td>
+<td><code>null</code></td>
 <td>Nine-digit ABA routing number</td>
 </tr>
 <tr>
 <td><code>account_number</code></td>
 <td>true</td>
 <td><em>string</em></td>
-<td>null</td>
+<td><code>null</code></td>
 <td>Account number up to seventeen-digits</td>
 </tr>
 </tbody></table>
@@ -2276,22 +2276,29 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
 <td><code>number</code></td>
 <td>true</td>
 <td><em>string</em></td>
-<td>null</td>
+<td><code>null</code></td>
 <td>The card number without any separators</td>
 </tr>
 <tr>
 <td><code>expiration_month</code></td>
 <td>false</td>
 <td><em>integer</em></td>
-<td>null</td>
+<td><code>null</code></td>
 <td>Two-digit number representing the card&#39;s expiration month</td>
 </tr>
 <tr>
 <td><code>expiration_year</code></td>
 <td>false</td>
 <td><em>integer</em></td>
-<td>null</td>
+<td><code>null</code></td>
 <td>Four-digit number representing the card&#39;s expiration year</td>
+</tr>
+<tr>
+<td><code>cvc</code></td>
+<td>false</td>
+<td><em>string</em></td>
+<td><code>null</code></td>
+<td>Three or four-digit card verification code</td>
 </tr>
 </tbody></table>
 <h3 id='atomic-cards-atomic-card-object-billing-details-object'>Billing Details Object</h3>
@@ -2308,28 +2315,28 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
 <td><code>name</code></td>
 <td>false</td>
 <td><em>string</em></td>
-<td>null</td>
+<td><code>null</code></td>
 <td>The cardholder or customer&#39;s full name</td>
 </tr>
 <tr>
 <td><code>email</code></td>
 <td>false</td>
 <td><em>string</em></td>
-<td>null</td>
+<td><code>null</code></td>
 <td>The cardholder or customer&#39;s email address</td>
 </tr>
 <tr>
 <td><code>phone</code></td>
 <td>false</td>
 <td><em>string</em></td>
-<td>null</td>
+<td><code>null</code></td>
 <td>The cardholder or customer&#39;s phone number</td>
 </tr>
 <tr>
 <td><code>address</code></td>
 <td>false</td>
 <td><em>address</em></td>
-<td>null</td>
+<td><code>null</code></td>
 <td>The cardholder or customer&#39;s <a href="#atomic-cards-atomic-card-object-address-object">address</a></td>
 </tr>
 </tbody></table>
@@ -2347,42 +2354,42 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
 <td><code>line1</code></td>
 <td>true</td>
 <td><em>string</em></td>
-<td>null</td>
+<td><code>null</code></td>
 <td>Address line 1 (Street address / PO Box / Company name)</td>
 </tr>
 <tr>
 <td><code>line2</code></td>
 <td>false</td>
 <td><em>string</em></td>
-<td>null</td>
+<td><code>null</code></td>
 <td>Address line 2 (Apartment / Suite / Unit / Building)</td>
 </tr>
 <tr>
 <td><code>city</code></td>
 <td>true</td>
 <td><em>string</em></td>
-<td>null</td>
+<td><code>null</code></td>
 <td>City / District / Suburb / Town / Village</td>
 </tr>
 <tr>
 <td><code>state</code></td>
 <td>true</td>
 <td><em>string</em></td>
-<td>null</td>
+<td><code>null</code></td>
 <td>State / County / Province / Region</td>
 </tr>
 <tr>
 <td><code>postal_code</code></td>
 <td>true</td>
 <td><em>string</em></td>
-<td>null</td>
+<td><code>null</code></td>
 <td>Zip or postal code</td>
 </tr>
 <tr>
 <td><code>country</code></td>
 <td>true</td>
 <td><em>string</em></td>
-<td>null</td>
+<td><code>null</code></td>
 <td>Two-character ISO country code (e.g. <code>US</code>)</td>
 </tr>
 </tbody></table>
@@ -2531,7 +2538,7 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
 <tr>
 <td><code>card</code></td>
 <td>true</td>
-<td><em><a href="#atomic-cards-atomic-card-object">card</a></em></td>
+<td><em><a href="#atomic-cards-atomic-card-object-card-object">card</a></em></td>
 <td><code>null</code></td>
 <td>Card data</td>
 </tr>
