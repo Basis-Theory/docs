@@ -18,29 +18,30 @@ Attribute | Type | Description
 
 Attribute | Required | Type | Default | Description
 --------- | -------- | ---- | ------- | -----------
-`number` | true | *string* | null | The card number without any separators
-`expiration_month` | false | *integer* | null | Two-digit number representing the card's expiration month
-`expiration_year` | false | *integer* | null | Four-digit number representing the card's expiration year
+`number` | true | *string* | `null` | The card number without any separators
+`expiration_month` | false | *integer* | `null` | Two-digit number representing the card's expiration month
+`expiration_year` | false | *integer* | `null` | Four-digit number representing the card's expiration year
+`cvc` | false | *string* | `null` | Three or four-digit card verification code
 
 ### Billing Details Object
 
 Attribute | Required | Type | Default | Description
 --------- | -------- | ---- | ------- | -----------
-`name` | false | *string* | null | The cardholder or customer's full name
-`email` | false | *string* | null | The cardholder or customer's email address
-`phone` | false | *string* | null | The cardholder or customer's phone number
-`address` | false | *address* | null | The cardholder or customer's [address](#atomic-cards-atomic-card-object-address-object)
+`name` | false | *string* | `null` | The cardholder or customer's full name
+`email` | false | *string* | `null` | The cardholder or customer's email address
+`phone` | false | *string* | `null` | The cardholder or customer's phone number
+`address` | false | *address* | `null` | The cardholder or customer's [address](#atomic-cards-atomic-card-object-address-object)
 
 ### Address Object
 
 Attribute | Required | Type | Default | Description
 --------- | -------- | ---- | ------- | -----------
-`line1` | true | *string* | null | Address line 1 (Street address / PO Box / Company name)
-`line2` | false | *string* | null | Address line 2 (Apartment / Suite / Unit / Building)
-`city` | true | *string* | null | City / District / Suburb / Town / Village
-`state` | true | *string* | null | State / County / Province / Region
-`postal_code` | true | *string* | null | Zip or postal code
-`country` | true | *string* | null | Two-character ISO country code (e.g. `US`)
+`line1` | true | *string* | `null` | Address line 1 (Street address / PO Box / Company name)
+`line2` | false | *string* | `null` | Address line 2 (Apartment / Suite / Unit / Building)
+`city` | true | *string* | `null` | City / District / Suburb / Town / Village
+`state` | true | *string* | `null` | State / County / Province / Region
+`postal_code` | true | *string* | `null` | Zip or postal code
+`country` | true | *string* | `null` | Two-character ISO country code (e.g. `US`)
 
 
 ## Create Atomic Card
@@ -191,7 +192,7 @@ Create a new Atomic Card for the Tenant.
 
 Attribute | Required | Type | Default | Description
 --------- | -------- | ---- | ------- | -----------
-`card` | true | *[card](#atomic-cards-atomic-card-object)* | `null` | Card data
+`card` | true | *[card](#atomic-cards-atomic-card-object-card-object)* | `null` | Card data
 `billing_details` | false | *[billing details](#atomic-cards-atomic-card-object-billing-details-object)* | `null` | Billing details
 `metadata` | false | *map* | `null` | A key-value map of non-sensitive data.
 
