@@ -217,7 +217,7 @@ import { BasisTheory } from '@basis-theory/basis-theory-js';
 
 const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
 
-const tenantUsageReport = await bt.tenants.retrieveTenantUsageReport();
+const tenantUsageReport = await bt.tenants.retrieveUsageReport();
 ```
 
 ```csharp
