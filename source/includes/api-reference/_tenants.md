@@ -217,7 +217,7 @@ import { BasisTheory } from '@basis-theory/basis-theory-js';
 
 const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
 
-const tenant = await bt.tenants.retrieveTenantUsageReport();
+const tenantUsageReport = await bt.tenants.retrieveTenantUsageReport();
 ```
 
 ```csharp
@@ -225,7 +225,7 @@ using BasisTheory.net.Tenants;
 
 var client = new TenantClient("key_N88mVGsp3sCXkykyN2EFED");
 
-var tenant = await client.GetTenantUsageReportAsync();
+var tenantUsageReport = await client.GetTenantUsageReportAsync();
 ```
 
 > Response
