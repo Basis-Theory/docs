@@ -257,6 +257,93 @@ Parameter | Required | Type | Default | Description
 Returns an [Atomic Bank](#atomic-banks-atomic-bank-object) with the `id` provided. Returns [an error](#errors) if the Atomic Bank could not be retrieved.
 
 
+## Update Atomic Bank
+
+> Request
+
+```shell
+curl "https://api.basistheory.com/atomic/banks/1485efb9-6b1f-4248-a5d1-cf9b3907164c" \
+  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED" \
+  -H "Content-Type: application/json" \
+  -X "PATCH" \
+  -d '{
+      "bank": {
+        "routing_number": "021000021",
+        "account_number": "1234567890"
+      },
+    }'
+```
+
+```javascript
+import { BasisTheory } from '@basis-theory/basis-theory-js';
+
+const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
+
+const atomicBank = await bt.atomicBanks.update("1485efb9-6b1f-4248-a5d1-cf9b3907164c", {
+  bank: {
+    routingNumber: '021000021',
+    accountNumber: '1234567890',
+  },
+});
+```
+
+```csharp
+using BasisTheory.net.Atomic.Banks;
+
+var client = new AtomicBankClient("key_N88mVGsp3sCXkykyN2EFED");
+
+var atomicBank = await client.UpdateAsync("1485efb9-6b1f-4248-a5d1-cf9b3907164c", new AtomicBank {
+  Bank = new Bank {
+    RoutingNumber = "021000021",
+    AccountNumber = "1234567890"
+  },
+});
+```
+
+> Response
+
+```json
+{
+  "id": "1485efb9-6b1f-4248-a5d1-cf9b3907164c",
+  "tenant_id": "77cb0024-123e-41a8-8ff8-a3d5a0fa8a08",
+  "type": "bank",
+  "bank": {
+    "routing_number": "021000021",
+    "account_number": "XXXXXX7890"
+  },
+  "fingerprint": "8j6WJgk4Dz1qoJgrHrioUFJhYKQTnk75DfJAue5bNab2",
+  "metadata": {
+    "nonSensitiveField": "Non-Sensitive Value"
+  },
+  "created_by": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
+  "created_at": "2020-09-15T15:53:00+00:00"
+}
+```
+
+<span class="http-method patch">
+  <span class="box-method">PATCH</span>
+  `https://api.basistheory.com/atomic/banks/{id}`
+</span>
+
+Update an Atomic Bank for the Tenant. At least one property on the request body is required.
+
+### Permissions
+
+<p class="scopes">
+  <span class="scope">bank:update</span>
+</p>
+
+### Request Parameters
+
+Attribute | Required | Type | Default | Description
+--------- | -------- | ---- | ------- | -----------
+`bank` | true | *[bank](#atomic-banks-atomic-bank-object-bank-object)* | `null` | Bank data
+
+### Response
+
+Returns an [Atomic Bank](#atomic-banks-atomic-bank-object) with masked [bank data](#atomic-banks-atomic-bank-object-bank-object) if the Atomic Bank was updated. Returns [an error](#errors) if there were validation errors, or the Atomic Bank failed to update.
+
+
 ## Delete Atomic Bank
 
 > Request
