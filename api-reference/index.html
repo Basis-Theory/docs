@@ -559,6 +559,15 @@
                       <a href="#tenants-tenant-object" class="toc-h2 toc-link" data-title="Tenant Object">Tenant Object</a>
                     </li>
                     <li>
+                      <a href="#tenants-tenant-usage-report-object" class="toc-h2 toc-link" data-title="Tenant Usage Report Object">Tenant Usage Report Object</a>
+                    </li>
+                    <li>
+                      <a href="#tenants-token-report-object" class="toc-h2 toc-link" data-title="Token Report Object">Token Report Object</a>
+                    </li>
+                    <li>
+                      <a href="#tenants-token-type-metrics-object" class="toc-h2 toc-link" data-title="Token Type Metrics Object">Token Type Metrics Object</a>
+                    </li>
+                    <li>
                       <a href="#tenants-get-a-tenant" class="toc-h2 toc-link" data-title="Get a Tenant">Get a Tenant</a>
                     </li>
                     <li>
@@ -566,6 +575,9 @@
                     </li>
                     <li>
                       <a href="#tenants-delete-tenant" class="toc-h2 toc-link" data-title="Delete Tenant">Delete Tenant</a>
+                    </li>
+                    <li>
+                      <a href="#tenants-get-tenant-usage-report" class="toc-h2 toc-link" data-title="Get Tenant Usage Report">Get Tenant Usage Report</a>
                     </li>
                 </ul>
             </li>
@@ -4766,6 +4778,73 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
 <td>Last modified date of the Tenant in ISO 8601 format</td>
 </tr>
 </tbody></table>
+<h2 id='tenants-tenant-usage-report-object'>Tenant Usage Report Object</h2>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>token_report</code></td>
+<td><a href="#tenants-token-report-object">Token Report</a></td>
+<td>Token Usage Report for Tenant</td>
+</tr>
+</tbody></table>
+<h2 id='tenants-token-report-object'>Token Report Object</h2>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>enrichment_limit</code></td>
+<td><em>long (optional)</em></td>
+<td>Tenant limit to number of enrichments</td>
+</tr>
+<tr>
+<td><code>free_enriched_token_limit</code></td>
+<td><em>long (optional)</em></td>
+<td>Tenant limit to number of enriched tokens that will not be billed</td>
+</tr>
+<tr>
+<td><code>metrics_by_type</code></td>
+<td><em>map&lt;string, <a href="#tenants-token-type-metrics-object">TokenTypeMetrics</a>&gt;</em></td>
+<td>Token Metrics by <a href="#tokens-token-types">TokenType</a></td>
+</tr>
+<tr>
+<td><code>number_of_enriched_tokens</code></td>
+<td><em>long</em></td>
+<td>Number of tokens that have been created through a <a href="#reactor">Reactor</a></td>
+</tr>
+<tr>
+<td><code>number_of_enrichments</code></td>
+<td><em>long</em></td>
+<td>Number of tokens that have been used in a <a href="#reactors">Reactor</a></td>
+</tr>
+</tbody></table>
+<h2 id='tenants-token-type-metrics-object'>Token Type Metrics Object</h2>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>count</code></td>
+<td><em>long</em></td>
+<td>Number of tokens</td>
+</tr>
+<tr>
+<td><code>last_created_at</code></td>
+<td><em>date (optional)</em></td>
+<td>Last created date in ISO 8601 format</td>
+</tr>
+</tbody></table>
 <h2 id='tenants-get-a-tenant'>Get a Tenant</h2>
 <blockquote>
 <p>Request</p>
@@ -4901,6 +4980,61 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
 <p><code>tenant:write</code></p>
 <h3 id='tenants-delete-tenant-response'>Response</h3>
 <p>Returns <a href="#errors">an error</a> if the Tenant failed to delete.</p>
+<h2 id='tenants-get-tenant-usage-report'>Get Tenant Usage Report</h2>
+<blockquote>
+<p>Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/tenants/self/reports/usage"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">BasisTheory</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@basis-theory/basis-theory-js</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">bt</span> <span class="o">=</span> <span class="k">await</span> <span class="k">new</span> <span class="nx">BasisTheory</span><span class="p">().</span><span class="nx">init</span><span class="p">(</span><span class="dl">'</span><span class="s1">key_N88mVGsp3sCXkykyN2EFED</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">tenantUsageReport</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">bt</span><span class="p">.</span><span class="nx">tenants</span><span class="p">.</span><span class="nx">retrieveUsageReport</span><span class="p">();</span>
+</code></pre></div><div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="k">using</span> <span class="nn">BasisTheory.net.Tenants</span><span class="p">;</span>
+
+<span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">TenantClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
+
+<span class="kt">var</span> <span class="n">tenantUsageReport</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">GetTenantUsageReportAsync</span><span class="p">();</span>
+</code></pre></div>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"token_report"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"enrichment_limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"free_enriched_token_limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"metrics_by_type"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"token"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last_created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"card"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">456</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last_created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"bank"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">789</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last_created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"number_of_enriched_tokens"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"number_of_enrichments"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p><span class="http-method get">
+  <span class="box-method">GET</span>
+  <code>https://api.basistheory.com/tenants/self/reports/usage</code>
+</span></p>
+
+<p>Retrieves the Tenant Usage Report associated with the provided <code>X-API-KEY</code>.</p>
+<h3 id='tenants-get-tenant-usage-report-permissions'>Permissions</h3>
+<p class="scopes">
+  <span class="scope">report:read</span>
+</p>
+<h3 id='tenants-get-tenant-usage-report-response'>Response</h3>
+<p>Returns a <a href="#tenants-tenant-usage-report-object">Tenant Usage Report</a> for the provided <code>X-API-KEY</code>. Returns <a href="#errors">an error</a> if the Tenant Usage Report could not be retrieved.</p>
 <h1 id='tokens'>Tokens</h1>
 <aside class="notice">
   <span>Want to understand how to own the encryption of your data? Checkout the <a href="https://guides.basistheory.com/guides/own-your-encryption-keys/" target="_blank">Own Your Encryption Keys Guide</a> and our <a href="/encryption">Encryption Reference Documentation</a>.</span>
