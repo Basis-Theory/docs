@@ -13,6 +13,28 @@ Attribute | Type | Description
 `created_at` | *date* | Created date of the Tenant in ISO 8601 format
 `modified_at` | *date* | Last modified date of the Tenant in ISO 8601 format
 
+## Tenant Usage Report Object
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`token_report` | [Token Report](#tenants-token-report-object) | Token Usage Report for Tenant
+
+## Token Report Object
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`enrichment_limit` | *long (optional)* | Tenant limit to number of enrichments
+`free_enriched_token_limit` | *long (optional)* | Tenant limit to number of enriched tokens that will not be billed
+`metrics_by_type` | *map\<string, [TokenTypeMetrics](#tenants-token-type-metrics-object)\>* | Token Metrics by [TokenType](#tokens-token-types)
+`number_of_enriched_tokens` | *long* | Number of tokens that have been created through a [Reactor](#reactor)
+`number_of_enrichments` | *long* | Number of tokens that have been used in a [Reactor](#reactors)
+
+## Token Type Metrics Object
+
+Attribute | Type | Description
+--------- | ---- | -----------
+`count` | *long* | Number of tokens
+`last_created_at` | *date (optional)* | Last created date in ISO 8601 format
 
 ## Get a Tenant
 
@@ -179,3 +201,73 @@ Delete the Tenant associated with the provided `X-API-KEY`.
 ### Response
 
 Returns [an error](#errors) if the Tenant failed to delete.
+
+
+## Get Tenant Usage Report
+
+> Request
+
+```shell
+curl "https://api.basistheory.com/tenants/self/reports/usage" \
+  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
+```
+
+```javascript
+import { BasisTheory } from '@basis-theory/basis-theory-js';
+
+const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
+
+const tenantUsageReport = await bt.tenants.retrieveUsageReport();
+```
+
+```csharp
+using BasisTheory.net.Tenants;
+
+var client = new TenantClient("key_N88mVGsp3sCXkykyN2EFED");
+
+var tenantUsageReport = await client.GetTenantUsageReportAsync();
+```
+
+> Response
+
+```json
+{
+  "token_report": {
+    "enrichment_limit": 1000,
+    "free_enriched_token_limit": 1000,
+    "metrics_by_type": {
+      "token": {
+        "count": 123,
+        "last_created_at": "2020-09-15T15:53:00+00:00"
+      },
+      "card": {
+        "count": 456,
+        "last_created_at": "2020-09-15T15:53:00+00:00"
+      },
+      "bank": {
+        "count": 789,
+        "last_created_at": "2020-09-15T15:53:00+00:00"
+      }
+    },
+    "number_of_enriched_tokens": 123,
+    "number_of_enrichments": 100
+  }
+}
+```
+
+<span class="http-method get">
+  <span class="box-method">GET</span>
+  `https://api.basistheory.com/tenants/self/reports/usage`
+</span>
+
+Retrieves the Tenant Usage Report associated with the provided `X-API-KEY`.
+
+### Permissions
+
+<p class="scopes">
+  <span class="scope">report:read</span>
+</p>
+
+### Response
+
+Returns a [Tenant Usage Report](#tenants-tenant-usage-report-object) for the provided `X-API-KEY`. Returns [an error](#errors) if the Tenant Usage Report could not be retrieved.
