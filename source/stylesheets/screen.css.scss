@@ -715,7 +715,8 @@ html, body {
 
   }
 
-  &.post, &.put {
+  // TODO: discuss PATCH style with Rad
+  &.post, &.put, &.patch {
     background-color: $http-method-post-container-bg;
     border: 1px solid #C6EFE5;
 
