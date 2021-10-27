@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/Basis-Theory/docs/compare/v1.0.3...v1.1.0) (2021-10-27)
+
+
+### Features
+
+* add documentation for Tenant Usage Report endpoint ([#104](https://github.com/Basis-Theory/docs/issues/104)) ([1d64001](https://github.com/Basis-Theory/docs/commit/1d6400123a5afb042dc53cbe0d7aacbc3ea896db))
+
 ## [1.0.3](https://github.com/Basis-Theory/docs/compare/v1.0.2...v1.0.3) (2021-10-07)
 
 
