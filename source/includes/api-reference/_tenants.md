@@ -23,8 +23,8 @@ Attribute | Type | Description
 
 Attribute | Type | Description
 --------- | ---- | -----------
-`enrichment_limit` | *long (optional)* | Tenant limit to number of enrichment tokens
-`free_enriched_token_limit` | *long (optional)* | Tenant limit to number of enriched tokens
+`enrichment_limit` | *long (optional)* | Tenant limit to number of enrichments
+`free_enriched_token_limit` | *long (optional)* | Tenant limit to number of enriched tokens that will not be billed
 `metrics_by_type` | *map\<string, [TokenTypeMetrics](#tenants-token-type-metrics-object)\>* | Token Metrics by [TokenType](#tokens-token-types)
 `number_of_enriched_tokens` | *long* | Number of tokens that have been used in a [Reactor](#reactors)
 `number_of_enrichments` | *long* | Number of tokens that have been created through a [Reactor](#reactor)
