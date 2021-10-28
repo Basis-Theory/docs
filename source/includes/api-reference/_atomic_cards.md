@@ -13,8 +13,8 @@ Attribute | Type | Description
 `metadata` | *map* | A key-value map of non-sensitive data.
 `created_by` | *uuid* | The [application](#applications) ID which created the Atomic Card
 `created_at` | *date* | Created date of the Atomic Card in ISO 8601 format
-`modified_by` | *uuid* | The [Application](#applications) ID which last modified the Atomic Bank
-`modified_at` | *date* | Last modified date of the Application in ISO 8601 format
+`modified_by` | *uuid* | The [Application](#applications) ID which last modified the Atomic Card
+`modified_at` | *date* | Last modified date of the Atomic Card in ISO 8601 format
 
 ### Card Object
 

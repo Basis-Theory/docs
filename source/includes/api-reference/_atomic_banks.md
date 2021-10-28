@@ -13,7 +13,7 @@ Attribute | Type | Description
 `created_by` | *uuid* | The [Application](#applications) ID which created the Atomic Bank
 `created_at` | *date* | Created date of the Atomic Bank in ISO 8601 format
 `modified_by` | *uuid* | The [Application](#applications) ID which last modified the Atomic Bank
-`modified_at` | *date* | Last modified date of the Application in ISO 8601 format
+`modified_at` | *date* | Last modified date of the Atomic Bank in ISO 8601 format
 
 ### Bank Object
 
