@@ -286,12 +286,12 @@
   color: #859900;
 }
     </style>
-    <link href="../stylesheets/screen-ed526afd.css" rel="stylesheet" media="screen" />
+    <link href="../stylesheets/screen-300fc6bc.css" rel="stylesheet" media="screen" />
     <link href="../stylesheets/home-ca08ab6b.css" rel="stylesheet" media="screen" />
     <link href="../stylesheets/guides.css" rel="stylesheet" media="screen" />
     <script src="https://kit.fontawesome.com/86c3cd0147.js" crossorigin="anonymous"></script>
     <link href="../stylesheets/print-fac0743d.css" rel="stylesheet" media="print" />
-      <script src="../javascripts/all-6c76867e.js"></script>
+      <script src="../javascripts/all-187a2431.js"></script>
 
     <script>
       $(function() { setupCodeCopy(); });
@@ -430,6 +430,9 @@
                       <a href="#atomic-banks-get-an-atomic-bank" class="toc-h2 toc-link" data-title="Get an Atomic Bank">Get an Atomic Bank</a>
                     </li>
                     <li>
+                      <a href="#atomic-banks-update-atomic-bank" class="toc-h2 toc-link" data-title="Update Atomic Bank">Update Atomic Bank</a>
+                    </li>
+                    <li>
                       <a href="#atomic-banks-delete-atomic-bank" class="toc-h2 toc-link" data-title="Delete Atomic Bank">Delete Atomic Bank</a>
                     </li>
                     <li>
@@ -460,6 +463,9 @@
                     </li>
                     <li>
                       <a href="#atomic-cards-get-an-atomic-card" class="toc-h2 toc-link" data-title="Get an Atomic Card">Get an Atomic Card</a>
+                    </li>
+                    <li>
+                      <a href="#atomic-cards-update-atomic-card" class="toc-h2 toc-link" data-title="Update Atomic Card">Update Atomic Card</a>
                     </li>
                     <li>
                       <a href="#atomic-cards-delete-atomic-card" class="toc-h2 toc-link" data-title="Delete Atomic Card">Delete Atomic Card</a>
@@ -1920,6 +1926,90 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
 </tbody></table>
 <h3 id='atomic-banks-get-an-atomic-bank-response'>Response</h3>
 <p>Returns an <a href="#atomic-banks-atomic-bank-object">Atomic Bank</a> with the <code>id</code> provided. Returns <a href="#errors">an error</a> if the Atomic Bank could not be retrieved.</p>
+<h2 id='atomic-banks-update-atomic-bank'>Update Atomic Bank</h2>
+<blockquote>
+<p>Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/atomic/banks/1485efb9-6b1f-4248-a5d1-cf9b3907164c"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">-X</span> <span class="s2">"PATCH"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">'{
+      "bank": {
+        "routing_number": "021000021",
+        "account_number": "1234567890"
+      },
+    }'</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">BasisTheory</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@basis-theory/basis-theory-js</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">bt</span> <span class="o">=</span> <span class="k">await</span> <span class="k">new</span> <span class="nx">BasisTheory</span><span class="p">().</span><span class="nx">init</span><span class="p">(</span><span class="dl">'</span><span class="s1">key_N88mVGsp3sCXkykyN2EFED</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">atomicBank</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">bt</span><span class="p">.</span><span class="nx">atomicBanks</span><span class="p">.</span><span class="nx">update</span><span class="p">(</span><span class="dl">"</span><span class="s2">1485efb9-6b1f-4248-a5d1-cf9b3907164c</span><span class="dl">"</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">bank</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">routingNumber</span><span class="p">:</span> <span class="dl">'</span><span class="s1">021000021</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">accountNumber</span><span class="p">:</span> <span class="dl">'</span><span class="s1">1234567890</span><span class="dl">'</span><span class="p">,</span>
+  <span class="p">},</span>
+<span class="p">});</span>
+</code></pre></div><div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="k">using</span> <span class="nn">BasisTheory.net.Atomic.Banks</span><span class="p">;</span>
+
+<span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">AtomicBankClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
+
+<span class="kt">var</span> <span class="n">atomicBank</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">UpdateAsync</span><span class="p">(</span><span class="s">"1485efb9-6b1f-4248-a5d1-cf9b3907164c"</span><span class="p">,</span> <span class="k">new</span> <span class="n">UpdateAtomicBankRequest</span> <span class="p">{</span>
+  <span class="n">Bank</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Bank</span> <span class="p">{</span>
+    <span class="n">RoutingNumber</span> <span class="p">=</span> <span class="s">"021000021"</span><span class="p">,</span>
+    <span class="n">AccountNumber</span> <span class="p">=</span> <span class="s">"1234567890"</span>
+  <span class="p">},</span>
+<span class="p">});</span>
+</code></pre></div>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1485efb9-6b1f-4248-a5d1-cf9b3907164c"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"tenant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77cb0024-123e-41a8-8ff8-a3d5a0fa8a08"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bank"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"bank"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"routing_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"021000021"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"account_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XXXXXX7890"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"fingerprint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8j6WJgk4Dz1qoJgrHrioUFJhYKQTnk75DfJAue5bNab2"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"nonSensitiveField"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Non-Sensitive Value"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p><span class="http-method patch">
+  <span class="box-method">PATCH</span>
+  <code>https://api.basistheory.com/atomic/banks/{id}</code>
+</span></p>
+
+<p>Update an Atomic Bank for the Tenant. At least one property on the request body is required.</p>
+<h3 id='atomic-banks-update-atomic-bank-permissions'>Permissions</h3>
+<p class="scopes">
+  <span class="scope">bank:update</span>
+</p>
+<h3 id='atomic-banks-update-atomic-bank-request-parameters'>Request Parameters</h3>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Required</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>bank</code></td>
+<td>true</td>
+<td><em><a href="#atomic-banks-atomic-bank-object-bank-object">bank</a></em></td>
+<td><code>null</code></td>
+<td>Bank data</td>
+</tr>
+</tbody></table>
+<h3 id='atomic-banks-update-atomic-bank-response'>Response</h3>
+<p>Returns an <a href="#atomic-banks-atomic-bank-object">Atomic Bank</a> with masked <a href="#atomic-banks-atomic-bank-object-bank-object">bank data</a> if the Atomic Bank was updated. Returns <a href="#errors">an error</a> if there were validation errors, or the Atomic Bank failed to update.</p>
 <h2 id='atomic-banks-delete-atomic-bank'>Delete Atomic Bank</h2>
 <blockquote>
 <p>Request</p>
@@ -2723,6 +2813,156 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
 </tbody></table>
 <h3 id='atomic-cards-get-an-atomic-card-response'>Response</h3>
 <p>Returns an <a href="#atomic-cards-atomic-card-object">Atomic Card</a> with the <code>id</code> provided. Returns <a href="#errors">an error</a> if the Atomic Card could not be retrieved.</p>
+<h2 id='atomic-cards-update-atomic-card'>Update Atomic Card</h2>
+<blockquote>
+<p>Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/atomic/cards/c1e565009-1984-4638-8fca-dce8a82cc2af"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">-X</span> <span class="s2">"PATCH"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">'{
+    "card": {
+      "number": "4242424242424242",
+      "expiration_month": 12,
+      "expiration_year": 2025,
+      "cvc": "123"
+    },
+    "billing_details": {
+      "name": "John Doe",
+      "email": "johndoe@test.com",
+      "phone": "555-123-4567",
+      "address": {
+        "line1": "111 Test St.",
+        "line2": "Apt 304",
+        "city": "San Francisco",
+        "state": "CA",
+        "postal_code": "94141",
+        "country": "US"
+      }
+    }
+  }'</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">BasisTheory</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@basis-theory/basis-theory-js</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">bt</span> <span class="o">=</span> <span class="k">await</span> <span class="k">new</span> <span class="nx">BasisTheory</span><span class="p">().</span><span class="nx">init</span><span class="p">(</span><span class="dl">'</span><span class="s1">key_N88mVGsp3sCXkykyN2EFED</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">atomicCard</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">bt</span><span class="p">.</span><span class="nx">atomicCards</span><span class="p">.</span><span class="nx">update</span><span class="p">(</span><span class="dl">"</span><span class="s2">c1e565009-1984-4638-8fca-dce8a82cc2af</span><span class="dl">"</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">card</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">number</span><span class="p">:</span> <span class="dl">'</span><span class="s1">4242424242424242</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">expirationMonth</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span>
+    <span class="na">expirationYear</span><span class="p">:</span> <span class="mi">2025</span><span class="p">,</span>
+    <span class="na">cvc</span><span class="p">:</span> <span class="dl">'</span><span class="s1">123</span><span class="dl">'</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="na">billingDetails</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">John Doe</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">email</span><span class="p">:</span> <span class="dl">'</span><span class="s1">johndoe@test.com</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">phone</span><span class="p">:</span> <span class="dl">'</span><span class="s1">555-123-4567</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">address</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">line1</span><span class="p">:</span> <span class="dl">'</span><span class="s1">111 Test St.</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">line2</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Apt 304</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">city</span><span class="p">:</span> <span class="dl">'</span><span class="s1">San Francisco</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">state</span><span class="p">:</span> <span class="dl">'</span><span class="s1">CA</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">postalCode</span><span class="p">:</span> <span class="dl">'</span><span class="s1">94141</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">country</span><span class="p">:</span> <span class="dl">'</span><span class="s1">US</span><span class="dl">'</span>
+    <span class="p">},</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div><div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="k">using</span> <span class="nn">BasisTheory.net.Atomic.Cards</span><span class="p">;</span>
+
+<span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">AtomicCardClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
+
+<span class="kt">var</span> <span class="n">atomicCard</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">UpdateAsync</span><span class="p">(</span><span class="s">"c1e565009-1984-4638-8fca-dce8a82cc2af"</span><span class="p">,</span> <span class="k">new</span> <span class="n">UpdateAtomicCardRequest</span> <span class="p">{</span>
+  <span class="n">Card</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Card</span> <span class="p">{</span>
+    <span class="n">CardNumber</span> <span class="p">=</span> <span class="s">"4242424242424242"</span><span class="p">,</span>
+    <span class="n">ExpirationMonth</span> <span class="p">=</span> <span class="m">12</span><span class="p">,</span>
+    <span class="n">ExpirationYear</span> <span class="p">=</span> <span class="m">2025</span><span class="p">,</span>
+    <span class="n">CardVerificationCode</span> <span class="p">=</span> <span class="s">"123"</span>
+  <span class="p">},</span>
+  <span class="n">BillingDetails</span> <span class="p">=</span> <span class="k">new</span> <span class="n">BillingDetails</span> <span class="p">{</span>
+    <span class="n">Name</span> <span class="p">=</span> <span class="s">"John Doe"</span><span class="p">,</span>
+    <span class="n">Email</span> <span class="p">=</span> <span class="s">"johndoe@test.com"</span><span class="p">,</span>
+    <span class="n">PhoneNumber</span> <span class="p">=</span> <span class="s">"555-123-4567"</span><span class="p">,</span>
+    <span class="n">Address</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Address</span> <span class="p">{</span>
+      <span class="n">LineOne</span> <span class="p">=</span> <span class="s">"111 Test St."</span><span class="p">,</span>
+      <span class="n">LineTwo</span> <span class="p">=</span> <span class="s">"Apt 304"</span><span class="p">,</span>
+      <span class="n">City</span> <span class="p">=</span> <span class="s">"San Francisco"</span><span class="p">,</span>
+      <span class="n">State</span> <span class="p">=</span> <span class="s">"CA"</span><span class="p">,</span>
+      <span class="n">PostalCode</span> <span class="p">=</span> <span class="s">"94141"</span><span class="p">,</span>
+      <span class="n">Country</span> <span class="p">=</span> <span class="s">"US"</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c1e565009-1984-4638-8fca-dce8a82cc2af"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"tenant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77cb0024-123e-41a8-8ff8-a3d5a0fa8a08"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"card"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"card"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XXXXXXXXXXXX4242"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"expiration_month"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"expiration_year"</span><span class="p">:</span><span class="w"> </span><span class="mi">2025</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"billing_details"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"johndoe@test.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"555-123-4567"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"line1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"111 Test St."</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"line2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Apt 304"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"San Francisco"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CA"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"postal_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"94141"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"fingerprint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EVYsSLRyb86Z5awJksvnjVMEC4iP7KX639GtHVUFpzER"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"nonSensitiveField"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Non-Sensitive Value"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p><span class="http-method patch">
+  <span class="box-method">PATCH</span>
+  <code>https://api.basistheory.com/atomic/cards/{id}</code>
+</span></p>
+
+<p>Update an Atomic Card for the Tenant. At least one property on the request body is required.</p>
+<h3 id='atomic-cards-update-atomic-card-permissions'>Permissions</h3>
+<p class="scopes">
+  <span class="scope">card:update</span>
+</p>
+<h3 id='atomic-cards-update-atomic-card-request-parameters'>Request Parameters</h3>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Required</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>card</code></td>
+<td>false</td>
+<td><em><a href="#atomic-cards-atomic-card-object-card-object">card</a></em></td>
+<td><code>null</code></td>
+<td>Card data</td>
+</tr>
+<tr>
+<td><code>billing_details</code></td>
+<td>false</td>
+<td><em><a href="#atomic-cards-atomic-card-object-billing-details-object">billing details</a></em></td>
+<td><code>null</code></td>
+<td>Billing details</td>
+</tr>
+</tbody></table>
+<h3 id='atomic-cards-update-atomic-card-response'>Response</h3>
+<p>Returns an <a href="#atomic-cards-atomic-card-object">Atomic Card</a> with masked <a href="#atomic-cards-atomic-card-object-card-object">card data</a> if the Atomic Card was updated. Returns <a href="#errors">an error</a> if there were validation errors, or the Atomic Card failed to update.</p>
 <h2 id='atomic-cards-delete-atomic-card'>Delete Atomic Card</h2>
 <blockquote>
 <p>Request</p>
