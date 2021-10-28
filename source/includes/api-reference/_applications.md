@@ -12,9 +12,9 @@ Attribute | Type | Description
 `key` | *string* | The API key which should be used for authenticating against Basis Theory API endpoints
 `type` | *string* | [Application type](#applications-application-types) of the Application
 `permissions` | *array* | List of [permissions](#permissions-permission-types) for the Application
-`created_by` | *uuid* | The ID of the user that created the Application
+`created_by` | *uuid* | The ID of the user or [Application](#applications) that created the Application
 `created_at` | *date* | Created date of the Application in ISO 8601 format
-`modified_by` | *uuid* | The ID of the user that last modified the Application
+`modified_by` | *uuid* | The ID of the user or [Application](#applications) that last modified the Application
 `modified_at` | *date* | Last modified date of the Application in ISO 8601 format
 
 
@@ -126,7 +126,7 @@ Attribute | Required | Type | Default | Description
 
 ### Response
 
-Returns an [application](#applications-application-object) if the application was created. Returns [an error](#errors) if there were validation errors, or the application failed to create.
+Returns an [Application](#applications-application-object) if the application was created. Returns [an error](#errors) if there were validation errors, or the application failed to create.
 
 
 ## List Applications
@@ -271,7 +271,7 @@ Parameter | Required | Type | Default | Description
 
 ### Response
 
-Returns an [application](#applications-application-object) with the `id` provided. Returns [an error](#errors) if the application could not be retrieved.
+Returns an [Application](#applications-application-object) with the `id` provided. Returns [an error](#errors) if the application could not be retrieved.
 
 
 ## Get an Application by Key
@@ -333,7 +333,7 @@ Get an application by key in the Tenant. Will use the `X-API-KEY` header to look
 
 ### Response
 
-Returns a [application](#applications-application-object) for the provided `X-API-KEY`. Returns [an error](#errors) if the application could not be retrieved.
+Returns an [Application](#applications-application-object) for the provided `X-API-KEY`. Returns [an error](#errors) if the application could not be retrieved.
 
 
 ## Update Application
@@ -435,7 +435,7 @@ Attribute | Required | Type | Default | Description
 
 ### Response
 
-Returns an [application](#applications-application-object) if the application was updated. Returns [an error](#errors) if there were validation errors, or the application failed to update.
+Returns an [Application](#applications-application-object) if the application was updated. Returns [an error](#errors) if there were validation errors, or the application failed to update.
 
 
 ## Regenerate API Key
@@ -511,7 +511,7 @@ Parameter | Required | Type | Default | Description
 
 ### Response
 
-Returns an [application](#applications-application-object) with the new `key` property populated. Returns [an error](#errors) if there were validation errors, or the application key failed to regenerate.
+Returns an [Application](#applications-application-object) with the new `key` property populated. Returns [an error](#errors) if there were validation errors, or the application key failed to regenerate.
 
 
 ## Delete Application

@@ -12,7 +12,7 @@ Attribute | Type | Description
 `name` | *string* | The name of the Tenants
 `created_by` | *uuid* | The ID of the user that created the Tenant
 `created_at` | *date* | Created date of the Tenant in ISO 8601 format
-`modified_by` | *uuid* | The ID of the user that last modified the Tenant
+`modified_by` | *uuid* | The ID of the user or [Application](#applications) that last modified the Tenant
 `modified_at` | *date* | Last modified date of the Tenant in ISO 8601 format
 
 ## Tenant Usage Report Object
