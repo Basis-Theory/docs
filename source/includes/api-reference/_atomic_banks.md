@@ -292,7 +292,7 @@ using BasisTheory.net.Atomic.Banks;
 
 var client = new AtomicBankClient("key_N88mVGsp3sCXkykyN2EFED");
 
-var atomicBank = await client.UpdateAsync("1485efb9-6b1f-4248-a5d1-cf9b3907164c", new AtomicBank {
+var atomicBank = await client.UpdateAsync("1485efb9-6b1f-4248-a5d1-cf9b3907164c", new UpdateAtomicBankRequest {
   Bank = new Bank {
     RoutingNumber = "021000021",
     AccountNumber = "1234567890"

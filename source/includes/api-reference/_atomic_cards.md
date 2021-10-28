@@ -433,7 +433,7 @@ using BasisTheory.net.Atomic.Cards;
 
 var client = new AtomicCardClient("key_N88mVGsp3sCXkykyN2EFED");
 
-var atomicCard = await client.UpdateAsync("c1e565009-1984-4638-8fca-dce8a82cc2af", new AtomicCard {
+var atomicCard = await client.UpdateAsync("c1e565009-1984-4638-8fca-dce8a82cc2af", new UpdateAtomicCardRequest {
   Card = new Card {
     CardNumber = "4242424242424242",
     ExpirationMonth = 12,
