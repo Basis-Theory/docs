@@ -10,7 +10,9 @@ Attribute | Type | Description
 `id` | *uuid* | Unique identifier of the Tenants
 `owner_id` | *uuid* | The user ID which owns the Tenants
 `name` | *string* | The name of the Tenants
+`created_by` | *uuid* | The ID of the user that created the Tenant
 `created_at` | *date* | Created date of the Tenant in ISO 8601 format
+`modified_by` | *uuid* | The ID of the user that last modified the Tenant
 `modified_at` | *date* | Last modified date of the Tenant in ISO 8601 format
 
 ## Tenant Usage Report Object
@@ -68,7 +70,9 @@ var tenant = await client.GetSelfAsync();
   "id": "f88da999-b124-4a14-acde-cbc121444f14",
   "owner_id": "97cec6e8-a143-4fb4-9ab0-cf7e49242d21",
   "name": "My Tenant",
+  "created_by": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
   "created_at": "2020-09-15T15:53:00+00:00",
+  "modified_by": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
   "modified_at": "2021-03-01T08:23:14+00:00"
 }
 ```
@@ -132,7 +136,9 @@ var tenant = await client.UpdateAsync(new Tenant {
   "id": "f88da999-b124-4a14-acde-cbc121444f14",
   "owner_id": "97cec6e8-a143-4fb4-9ab0-cf7e49242d21",
   "name": "My Example Tenant",
+  "created_by": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
   "created_at": "2020-09-15T15:53:00+00:00",
+  "modified_by": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
   "modified_at": "2021-03-01T08:23:14+00:00"
 }
 ```

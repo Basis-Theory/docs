@@ -18,6 +18,8 @@ Attribute | Type | Description
 `children` | *array* | Array of child tokens where this token is the parent in an [association](#token-associations)
 `created_by` | *uuid* | The [Application](#applications-application-object) ID which created the token
 `created_at` | *date* | Created date of the token in ISO 8601 format
+`modified_by` | *uuid* | The [Application](#applications) ID which last modified the token
+`modified_at` | *date* | Last modified date of the token in ISO 8601 format
 
 ### Encryption Object
 
