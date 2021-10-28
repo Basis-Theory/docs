@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/Basis-Theory/docs/compare/v1.1.0...v1.2.0) (2021-10-28)
+
+
+### Features
+
+* adds patch for atomic banks and cards ([#107](https://github.com/Basis-Theory/docs/issues/107)) ([b357895](https://github.com/Basis-Theory/docs/commit/b357895dcc1e4506f72138204c7cf71c322572d5))
+
 # [1.1.0](https://github.com/Basis-Theory/docs/compare/v1.0.3...v1.1.0) (2021-10-27)
 
 
