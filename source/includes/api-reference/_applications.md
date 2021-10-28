@@ -12,10 +12,10 @@ Attribute | Type | Description
 `key` | *string* | The API key which should be used for authenticating against Basis Theory API endpoints
 `type` | *string* | [Application type](#applications-application-types) of the Application
 `permissions` | *array* | List of [permissions](#permissions-permission-types) for the Application
-`created_by` | *uuid* | The ID of the user or [Application](#applications) that created the Application
-`created_at` | *date* | Created date of the Application in ISO 8601 format
-`modified_by` | *uuid* | The ID of the user or [Application](#applications) that last modified the Application
-`modified_at` | *date* | Last modified date of the Application in ISO 8601 format
+`created_by` | *uuid* | (Optional) The ID of the user or [Application](#applications) that created the Application
+`created_at` | *date* | (Optional) Created date of the Application in ISO 8601 format
+`modified_by` | *uuid* | (Optional) The ID of the user or [Application](#applications) that last modified the Application
+`modified_at` | *date* | (Optional) Last modified date of the Application in ISO 8601 format
 
 
 ## Application Types

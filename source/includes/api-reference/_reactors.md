@@ -10,10 +10,10 @@ Attribute | Type | Description
 `name` | *string* | The name of the reactor
 `formula` | *[Reactor Formula](#reactor-formulas-reactor-formula-object)* | Reactor Formula this Reactor is configured for
 `configuration` | *map* | A key-value map of all configuration name and values for an [Reactor Formula configuration](#reactor-formulas-reactor-formula-object-reactor-formula-configuration-object)
-`created_by` | *uuid* | The ID of the user or [Application](#applications) that created the Reactor
-`created_at` | *string* | Created date of the Reactor in ISO 8601 format
-`modified_by` | *uuid* | The ID of the user or [Application](#applications) that last modified the Reactor
-`modified_at` | *date* | Last modified date of the Reactor in ISO 8601 format
+`created_by` | *uuid* | (Optional) The ID of the user or [Application](#applications) that created the Reactor
+`created_at` | *string* | (Optional) Created date of the Reactor in ISO 8601 format
+`modified_by` | *uuid* | (Optional) The ID of the user or [Application](#applications) that last modified the Reactor
+`modified_at` | *date* | (Optional) Last modified date of the Reactor in ISO 8601 format
 
 
 ## Create Reactor

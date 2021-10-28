@@ -10,10 +10,10 @@ Attribute | Type | Description
 `bank` | *[bank](#atomic-banks-atomic-bank-object-bank-object)* | Bank data
 `fingerprint` | *string* | Uniquely identifies this particular bank account. You can use this attribute to check whether two bank accounts are the same.
 `metadata` | *map* | A key-value map of non-sensitive data.
-`created_by` | *uuid* | The [Application](#applications) ID which created the Atomic Bank
-`created_at` | *date* | Created date of the Atomic Bank in ISO 8601 format
-`modified_by` | *uuid* | The [Application](#applications) ID which last modified the Atomic Bank
-`modified_at` | *date* | Last modified date of the Atomic Bank in ISO 8601 format
+`created_by` | *uuid* | (Optional) The [Application](#applications) ID which created the Atomic Bank
+`created_at` | *date* | (Optional) Created date of the Atomic Bank in ISO 8601 format
+`modified_by` | *uuid* | (Optional) The [Application](#applications) ID which last modified the Atomic Bank
+`modified_at` | *date* | (Optional) Last modified date of the Atomic Bank in ISO 8601 format
 
 ### Bank Object
 

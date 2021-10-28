@@ -20,10 +20,10 @@ Attribute | Type | Description
 `code` | *string* | [Reactor Formula code](#reactor-formulas-reactor-formula-code) which will be executed when the Reactor Formula is processed
 `configuration` | *array* | Array of [configuration](#reactor-formulas-reactor-formula-object-reactor-formula-configuration-object) options for configuring a reactor
 `request_parameters` | *array* | Array of [request parameters](#reactor-formulas-reactor-formula-object-reactor-formula-request-parameter-object) which will be passed when executing the reactor
-`created_at` | *date* | Created date of the Reactor Formula in ISO 8601 format
-`created_by` | *uuid* | The ID of the user or [Application](#applications) that created the Reactor Formula
-`modified_at` | *date* | Last modified date of the Reactor Formula in ISO 8601 format
-`modified_by` | *uuid* | The ID of the user or [Application](#applications) that last modified the Reactor Formula
+`created_at` | *date* | (Optional) Created date of the Reactor Formula in ISO 8601 format
+`created_by` | *uuid* | (Optional) The ID of the user or [Application](#applications) that created the Reactor Formula
+`modified_at` | *date* | (Optional) Last modified date of the Reactor Formula in ISO 8601 format
+`modified_by` | *uuid* | (Optional) The ID of the user or [Application](#applications) that last modified the Reactor Formula
 
 ### Reactor Formula Configuration Object
 

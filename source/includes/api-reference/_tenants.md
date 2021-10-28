@@ -10,10 +10,10 @@ Attribute | Type | Description
 `id` | *uuid* | Unique identifier of the Tenants
 `owner_id` | *uuid* | The user ID which owns the Tenants
 `name` | *string* | The name of the Tenants
-`created_by` | *uuid* | The ID of the user that created the Tenant
-`created_at` | *date* | Created date of the Tenant in ISO 8601 format
-`modified_by` | *uuid* | The ID of the user or [Application](#applications) that last modified the Tenant
-`modified_at` | *date* | Last modified date of the Tenant in ISO 8601 format
+`created_by` | *uuid* | (Optional) The ID of the user that created the Tenant
+`created_at` | *date* | (Optional) Created date of the Tenant in ISO 8601 format
+`modified_by` | *uuid* | (Optional) The ID of the user or [Application](#applications) that last modified the Tenant
+`modified_at` | *date* | (Optional) Last modified date of the Tenant in ISO 8601 format
 
 ## Tenant Usage Report Object
 
@@ -25,8 +25,8 @@ Attribute | Type | Description
 
 Attribute | Type | Description
 --------- | ---- | -----------
-`enrichment_limit` | *long (optional)* | Tenant limit to number of enrichments
-`free_enriched_token_limit` | *long (optional)* | Tenant limit to number of enriched tokens that will not be billed
+`enrichment_limit` | *long* | (Optional) Tenant limit to number of enrichments
+`free_enriched_token_limit` | *long* | (Optional) Tenant limit to number of enriched tokens that will not be billed
 `metrics_by_type` | *map\<string, [TokenTypeMetrics](#tenants-token-type-metrics-object)\>* | Token Metrics by [TokenType](#tokens-token-types)
 `number_of_enriched_tokens` | *long* | Number of tokens that have been created through a [Reactor](#reactor)
 `number_of_enrichments` | *long* | Number of tokens that have been used in a [Reactor](#reactors)
@@ -36,7 +36,7 @@ Attribute | Type | Description
 Attribute | Type | Description
 --------- | ---- | -----------
 `count` | *long* | Number of tokens
-`last_created_at` | *date (optional)* | Last created date in ISO 8601 format
+`last_created_at` | *date* | (Optional) Last created date in ISO 8601 format
 
 ## Get a Tenant
 
