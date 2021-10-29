@@ -1,3 +1,24 @@
+# [1.3.0](https://github.com/Basis-Theory/docs/compare/v1.2.0...v1.3.0) (2021-10-29)
+
+
+### Features
+
+* Adding docs for audit fields ([#108](https://github.com/Basis-Theory/docs/issues/108)) ([c4c0b88](https://github.com/Basis-Theory/docs/commit/c4c0b88e74af7956b9964f630d4846af23bde17e))
+
+# [1.2.0](https://github.com/Basis-Theory/docs/compare/v1.1.0...v1.2.0) (2021-10-28)
+
+
+### Features
+
+* adds patch for atomic banks and cards ([#107](https://github.com/Basis-Theory/docs/issues/107)) ([b357895](https://github.com/Basis-Theory/docs/commit/b357895dcc1e4506f72138204c7cf71c322572d5))
+
+# [1.1.0](https://github.com/Basis-Theory/docs/compare/v1.0.3...v1.1.0) (2021-10-27)
+
+
+### Features
+
+* add documentation for Tenant Usage Report endpoint ([#104](https://github.com/Basis-Theory/docs/issues/104)) ([1d64001](https://github.com/Basis-Theory/docs/commit/1d6400123a5afb042dc53cbe0d7aacbc3ea896db))
+
 ## [1.0.3](https://github.com/Basis-Theory/docs/compare/v1.0.2...v1.0.3) (2021-10-07)
 
 

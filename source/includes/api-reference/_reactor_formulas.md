@@ -20,8 +20,10 @@ Attribute | Type | Description
 `code` | *string* | [Reactor Formula code](#reactor-formulas-reactor-formula-code) which will be executed when the Reactor Formula is processed
 `configuration` | *array* | Array of [configuration](#reactor-formulas-reactor-formula-object-reactor-formula-configuration-object) options for configuring a reactor
 `request_parameters` | *array* | Array of [request parameters](#reactor-formulas-reactor-formula-object-reactor-formula-request-parameter-object) which will be passed when executing the reactor
-`created_at` | *date* | Created date of the Reactor Formula in ISO 8601 format
-`modified_at` | *date* | Modified date of the Reactor Formula in ISO 8601 format
+`created_at` | *date* | (Optional) Created date of the Reactor Formula in ISO 8601 format
+`created_by` | *uuid* | (Optional) The ID of the user or [Application](#applications) that created the Reactor Formula
+`modified_at` | *date* | (Optional) Last modified date of the Reactor Formula in ISO 8601 format
+`modified_by` | *uuid* | (Optional) The ID of the user or [Application](#applications) that last modified the Reactor Formula
 
 ### Reactor Formula Configuration Object
 
@@ -238,6 +240,7 @@ var reactorFormula = await client.CreateAsync(new ReactorFormula {
       "optional": true
     }
   ],
+  "created_by": "c57a0d0d-e8e6-495f-9c79-a317cc21996c",
   "created_at": "2020-09-15T15:53:00+00:00"
 }
 ```
@@ -346,7 +349,9 @@ var reactorFormulas = await client.GetAsync();
           "optional": true
         }
       ],
+      "created_by": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
       "created_at": "2020-09-15T15:53:00+00:00",
+      "modified_by": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
       "modified_at": "2021-03-01T08:23:14+00:00"
     },
     {...},
@@ -449,7 +454,9 @@ var reactorFormula = await client.GetByIdAsync("17069df1-80f4-439e-86a7-4121863e
       "optional": true
     }
   ],
+  "created_by": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
   "created_at": "2020-09-15T15:53:00+00:00",
+  "modified_by": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
   "modified_at": "2021-03-01T08:23:14+00:00"
 }
 ```
@@ -657,7 +664,9 @@ var reactorFormula = await client.UpdateAsync("17069df1-80f4-439e-86a7-4121863e4
       "optional": true
     }
   ],
+  "created_by": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
   "created_at": "2020-09-15T15:53:00+00:00",
+  "modified_by": "34053374-d721-43d8-921c-5ee1d337ef21",
   "modified_at": "2021-03-01T08:23:14+00:00"
 }
 ```

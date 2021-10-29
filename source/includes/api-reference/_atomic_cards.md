@@ -11,8 +11,10 @@ Attribute | Type | Description
 `billing_details` | *[billing details](#atomic-cards-atomic-card-object-billing-details-object)* | Billing details
 `fingerprint` | *string* | Uniquely identifies this particular card number. You can use this attribute to check whether two card tokens contain the same card number.
 `metadata` | *map* | A key-value map of non-sensitive data.
-`created_by` | *uuid* | The [application](#applications) ID which created the Atomic Card
-`created_at` | *date* | Created date of the Atomic Card in ISO 8601 format
+`created_by` | *uuid* | (Optional) The [Application](#applications) ID which created the Atomic Card
+`created_at` | *date* | (Optional) Created date of the Atomic Card in ISO 8601 format
+`modified_by` | *uuid* | (Optional) The [Application](#applications) ID which last modified the Atomic Card
+`modified_at` | *date* | (Optional) Last modified date of the Atomic Card in ISO 8601 format
 
 ### Card Object
 
@@ -171,7 +173,9 @@ var atomicCard = await client.CreateAsync(new AtomicCard {
     "nonSensitiveField": "Non-Sensitive Value"
   },
   "created_by": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
-  "created_at": "2020-09-15T15:53:00+00:00"
+  "created_at": "2020-09-15T15:53:00+00:00",
+  "modified_by": "34053374-d721-43d8-921c-5ee1d337ef21",
+  "modified_at": "2021-10-27T17:34:23+00:00"
 }
 ```
 
@@ -366,6 +370,155 @@ Parameter | Required | Type | Default | Description
 ### Response
 
 Returns an [Atomic Card](#atomic-cards-atomic-card-object) with the `id` provided. Returns [an error](#errors) if the Atomic Card could not be retrieved.
+
+
+## Update Atomic Card
+
+> Request
+
+```shell
+curl "https://api.basistheory.com/atomic/cards/c1e565009-1984-4638-8fca-dce8a82cc2af" \
+  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED" \
+  -H "Content-Type: application/json" \
+  -X "PATCH" \
+  -d '{
+    "card": {
+      "number": "4242424242424242",
+      "expiration_month": 12,
+      "expiration_year": 2025,
+      "cvc": "123"
+    },
+    "billing_details": {
+      "name": "John Doe",
+      "email": "johndoe@test.com",
+      "phone": "555-123-4567",
+      "address": {
+        "line1": "111 Test St.",
+        "line2": "Apt 304",
+        "city": "San Francisco",
+        "state": "CA",
+        "postal_code": "94141",
+        "country": "US"
+      }
+    }
+  }'
+```
+
+```javascript
+import { BasisTheory } from '@basis-theory/basis-theory-js';
+
+const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
+
+const atomicCard = await bt.atomicCards.update("c1e565009-1984-4638-8fca-dce8a82cc2af", {
+  card: {
+    number: '4242424242424242',
+    expirationMonth: 12,
+    expirationYear: 2025,
+    cvc: '123',
+  },
+  billingDetails: {
+    name: 'John Doe',
+    email: 'johndoe@test.com',
+    phone: '555-123-4567',
+    address: {
+      line1: '111 Test St.',
+      line2: 'Apt 304',
+      city: 'San Francisco',
+      state: 'CA',
+      postalCode: '94141',
+      country: 'US'
+    },
+  }
+});
+```
+
+```csharp
+using BasisTheory.net.Atomic.Cards;
+
+var client = new AtomicCardClient("key_N88mVGsp3sCXkykyN2EFED");
+
+var atomicCard = await client.UpdateAsync("c1e565009-1984-4638-8fca-dce8a82cc2af", new UpdateAtomicCardRequest {
+  Card = new Card {
+    CardNumber = "4242424242424242",
+    ExpirationMonth = 12,
+    ExpirationYear = 2025,
+    CardVerificationCode = "123"
+  },
+  BillingDetails = new BillingDetails {
+    Name = "John Doe",
+    Email = "johndoe@test.com",
+    PhoneNumber = "555-123-4567",
+    Address = new Address {
+      LineOne = "111 Test St.",
+      LineTwo = "Apt 304",
+      City = "San Francisco",
+      State = "CA",
+      PostalCode = "94141",
+      Country = "US"
+    }
+  }
+});
+```
+
+> Response
+
+```json
+{
+  "id": "c1e565009-1984-4638-8fca-dce8a82cc2af",
+  "tenant_id": "77cb0024-123e-41a8-8ff8-a3d5a0fa8a08",
+  "type": "card",
+  "card": {
+    "number": "XXXXXXXXXXXX4242",
+    "expiration_month": 12,
+    "expiration_year": 2025
+  },
+  "billing_details": {
+    "name": "John Doe",
+    "email": "johndoe@test.com",
+    "phone": "555-123-4567",
+    "address": {
+      "line1": "111 Test St.",
+      "line2": "Apt 304",
+      "city": "San Francisco",
+      "state": "CA",
+      "postal_code": "94141",
+      "country": "US"
+    }
+  },
+  "fingerprint": "EVYsSLRyb86Z5awJksvnjVMEC4iP7KX639GtHVUFpzER",
+  "metadata": {
+    "nonSensitiveField": "Non-Sensitive Value"
+  },
+  "created_by": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
+  "created_at": "2020-09-15T15:53:00+00:00",
+  "modified_by": "34053374-d721-43d8-921c-5ee1d337ef21",
+  "modified_at": "2021-10-27T17:34:23+00:00"
+}
+```
+
+<span class="http-method patch">
+  <span class="box-method">PATCH</span>
+  `https://api.basistheory.com/atomic/cards/{id}`
+</span>
+
+Update an Atomic Card for the Tenant. At least one property on the request body is required.
+
+### Permissions
+
+<p class="scopes">
+  <span class="scope">card:update</span>
+</p>
+
+### Request Parameters
+
+Attribute | Required | Type | Default | Description
+--------- | -------- | ---- | ------- | -----------
+`card` | false | *[card](#atomic-cards-atomic-card-object-card-object)* | `null` | Card data
+`billing_details` | false | *[billing details](#atomic-cards-atomic-card-object-billing-details-object)* | `null` | Billing details
+
+### Response
+
+Returns an [Atomic Card](#atomic-cards-atomic-card-object) with masked [card data](#atomic-cards-atomic-card-object-card-object) if the Atomic Card was updated. Returns [an error](#errors) if there were validation errors, or the Atomic Card failed to update.
 
 
 ## Delete Atomic Card

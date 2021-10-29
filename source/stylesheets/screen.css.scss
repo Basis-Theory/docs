@@ -707,7 +707,7 @@ html, body {
 
   &.get {
     background: $http-method-get-container-bg;
-    border: 1px solid #D4F2F4;
+    border: 1px solid $http-method-get-border;
 
     .box-method {
       background-color: $primary;
@@ -717,7 +717,7 @@ html, body {
 
   &.post, &.put {
     background-color: $http-method-post-container-bg;
-    border: 1px solid #C6EFE5;
+    border: 1px solid $http-method-post-border;
 
     .box-method {
       background-color: $http-method-post-bg;
@@ -725,9 +725,19 @@ html, body {
 
   }
 
+  &.patch {
+    background-color: $http-method-patch-container-bg;
+    border: 1px solid $http-method-patch-border;
+
+    .box-method {
+      background-color: $http-method-patch-bg;
+    }
+
+  }
+
   &.delete {
     background-color: $http-method-delete-container-bg;
-    border: 1px solid #FFDCDE;
+    border: 1px solid $http-method-delete-border;
 
     .box-method {
       background-color: $http-method-delete-bg;
