@@ -12,8 +12,10 @@ Attribute | Type | Description
 `key` | *string* | The API key which should be used for authenticating against Basis Theory API endpoints
 `type` | *string* | [Application type](#applications-application-types) of the Application
 `permissions` | *array* | List of [permissions](#permissions-permission-types) for the Application
-`created_at` | *date* | Created date of the Application in ISO 8601 format
-`modified_at` | *date* | Last modified date of the Application in ISO 8601 format
+`created_by` | *uuid* | (Optional) The ID of the user or [Application](#applications) that created the Application
+`created_at` | *date* | (Optional) Created date of the Application in ISO 8601 format
+`modified_by` | *uuid* | (Optional) The ID of the user or [Application](#applications) that last modified the Application
+`modified_at` | *date* | (Optional) Last modified date of the Application in ISO 8601 format
 
 
 ## Application Types
@@ -96,6 +98,7 @@ var application = await client.CreateAsync(new Application {
     "token:create",
     "token:read"
   ],
+  "created_by": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
   "created_at": "2020-09-15T15:53:00+00:00"
 }
 ```
@@ -123,7 +126,7 @@ Attribute | Required | Type | Default | Description
 
 ### Response
 
-Returns an [application](#applications-application-object) if the application was created. Returns [an error](#errors) if there were validation errors, or the application failed to create.
+Returns an [Application](#applications-application-object) if the application was created. Returns [an error](#errors) if there were validation errors, or the application failed to create.
 
 
 ## List Applications
@@ -168,7 +171,9 @@ var applications = await client.GetAsync();
         "token:create",
         "token:read"
       ],
+      "created_by": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
       "created_at": "2020-09-15T15:53:00+00:00",
+      "modified_by": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
       "modified_at": "2021-03-01T08:23:14+00:00"
     },
     {...},
@@ -238,7 +243,9 @@ var application = await client.GetByIdAsync("fe1f9ba4-474e-44b9-b949-110cdba9d66
     "application:read",
     "application:write"
   ],
+  "created_by": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
   "created_at": "2020-09-15T15:53:00+00:00",
+  "modified_by": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
   "modified_at": "2021-03-01T08:23:14+00:00"
 }
 ```
@@ -264,7 +271,7 @@ Parameter | Required | Type | Default | Description
 
 ### Response
 
-Returns an [application](#applications-application-object) with the `id` provided. Returns [an error](#errors) if the application could not be retrieved.
+Returns an [Application](#applications-application-object) with the `id` provided. Returns [an error](#errors) if the application could not be retrieved.
 
 
 ## Get an Application by Key
@@ -304,7 +311,9 @@ var application = await client.GetByKeyAsync();
     "application:read",
     "application:write"
   ],
+  "created_by": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
   "created_at": "2020-09-15T15:53:00+00:00",
+  "modified_by": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
   "modified_at": "2021-03-01T08:23:14+00:00"
 }
 ```
@@ -324,7 +333,7 @@ Get an application by key in the Tenant. Will use the `X-API-KEY` header to look
 
 ### Response
 
-Returns a [application](#applications-application-object) for the provided `X-API-KEY`. Returns [an error](#errors) if the application could not be retrieved.
+Returns an [Application](#applications-application-object) for the provided `X-API-KEY`. Returns [an error](#errors) if the application could not be retrieved.
 
 
 ## Update Application
@@ -391,7 +400,9 @@ var application = await client.UpdateAsync("fb124bba-f90d-45f0-9a59-5edca27b3b4a
     "application:read",
     "application:write"
   ],
+  "created_by": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
   "created_at": "2020-09-15T15:53:00+00:00",
+  "modified_by": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
   "modified_at": "2021-03-01T08:23:14+00:00"
 }
 ```
@@ -424,7 +435,7 @@ Attribute | Required | Type | Default | Description
 
 ### Response
 
-Returns an [application](#applications-application-object) if the application was updated. Returns [an error](#errors) if there were validation errors, or the application failed to update.
+Returns an [Application](#applications-application-object) if the application was updated. Returns [an error](#errors) if there were validation errors, or the application failed to update.
 
 
 ## Regenerate API Key
@@ -468,7 +479,9 @@ var application = await client.RegenerateKeyAsync("fb124bba-f90d-45f0-9a59-5edca
     "token:create",
     "token:read"
   ],
+  "created_by": "c57a0d0d-e8e6-495f-9c79-a317cc21996c",
   "created_at": "2020-09-15T15:53:00+00:00",
+  "modified_by": "a23699d2-1d55-4927-83f9-e76779f1c1c1",
   "modified_at": "2021-03-01T08:23:14+00:00"
 }
 ```
@@ -498,7 +511,7 @@ Parameter | Required | Type | Default | Description
 
 ### Response
 
-Returns an [application](#applications-application-object) with the new `key` property populated. Returns [an error](#errors) if there were validation errors, or the application key failed to regenerate.
+Returns an [Application](#applications-application-object) with the new `key` property populated. Returns [an error](#errors) if there were validation errors, or the application key failed to regenerate.
 
 
 ## Delete Application

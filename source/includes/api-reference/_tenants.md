@@ -10,8 +10,10 @@ Attribute | Type | Description
 `id` | *uuid* | Unique identifier of the Tenants
 `owner_id` | *uuid* | The user ID which owns the Tenants
 `name` | *string* | The name of the Tenants
-`created_at` | *date* | Created date of the Tenant in ISO 8601 format
-`modified_at` | *date* | Last modified date of the Tenant in ISO 8601 format
+`created_by` | *uuid* | (Optional) The ID of the user that created the Tenant
+`created_at` | *date* | (Optional) Created date of the Tenant in ISO 8601 format
+`modified_by` | *uuid* | (Optional) The ID of the user or [Application](#applications) that last modified the Tenant
+`modified_at` | *date* | (Optional) Last modified date of the Tenant in ISO 8601 format
 
 ## Tenant Usage Report Object
 
@@ -23,8 +25,8 @@ Attribute | Type | Description
 
 Attribute | Type | Description
 --------- | ---- | -----------
-`enrichment_limit` | *long (optional)* | Tenant limit to number of enrichments
-`free_enriched_token_limit` | *long (optional)* | Tenant limit to number of enriched tokens that will not be billed
+`enrichment_limit` | *long* | (Optional) Tenant limit to number of enrichments
+`free_enriched_token_limit` | *long* | (Optional) Tenant limit to number of enriched tokens that will not be billed
 `metrics_by_type` | *map\<string, [TokenTypeMetrics](#tenants-token-type-metrics-object)\>* | Token Metrics by [TokenType](#tokens-token-types)
 `number_of_enriched_tokens` | *long* | Number of tokens that have been created through a [Reactor](#reactor)
 `number_of_enrichments` | *long* | Number of tokens that have been used in a [Reactor](#reactors)
@@ -34,7 +36,7 @@ Attribute | Type | Description
 Attribute | Type | Description
 --------- | ---- | -----------
 `count` | *long* | Number of tokens
-`last_created_at` | *date (optional)* | Last created date in ISO 8601 format
+`last_created_at` | *date* | (Optional) Last created date in ISO 8601 format
 
 ## Get a Tenant
 
@@ -68,7 +70,9 @@ var tenant = await client.GetSelfAsync();
   "id": "f88da999-b124-4a14-acde-cbc121444f14",
   "owner_id": "97cec6e8-a143-4fb4-9ab0-cf7e49242d21",
   "name": "My Tenant",
+  "created_by": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
   "created_at": "2020-09-15T15:53:00+00:00",
+  "modified_by": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
   "modified_at": "2021-03-01T08:23:14+00:00"
 }
 ```
@@ -132,7 +136,9 @@ var tenant = await client.UpdateAsync(new Tenant {
   "id": "f88da999-b124-4a14-acde-cbc121444f14",
   "owner_id": "97cec6e8-a143-4fb4-9ab0-cf7e49242d21",
   "name": "My Example Tenant",
+  "created_by": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
   "created_at": "2020-09-15T15:53:00+00:00",
+  "modified_by": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
   "modified_at": "2021-03-01T08:23:14+00:00"
 }
 ```

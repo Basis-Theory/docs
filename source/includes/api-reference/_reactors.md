@@ -10,8 +10,10 @@ Attribute | Type | Description
 `name` | *string* | The name of the reactor
 `formula` | *[Reactor Formula](#reactor-formulas-reactor-formula-object)* | Reactor Formula this Reactor is configured for
 `configuration` | *map* | A key-value map of all configuration name and values for an [Reactor Formula configuration](#reactor-formulas-reactor-formula-object-reactor-formula-configuration-object)
-`created_at` | *string* | Created date of the Reactor in ISO 8601 format
-`modified_at` | *string* | Last modified date of the Reactor in ISO 8601 format
+`created_by` | *uuid* | (Optional) The ID of the user or [Application](#applications) that created the Reactor
+`created_at` | *string* | (Optional) Created date of the Reactor in ISO 8601 format
+`modified_by` | *uuid* | (Optional) The ID of the user or [Application](#applications) that last modified the Reactor
+`modified_at` | *date* | (Optional) Last modified date of the Reactor in ISO 8601 format
 
 
 ## Create Reactor
@@ -77,6 +79,7 @@ var reactor = await client.CreateAsync(new Reactor {
   "configuration": {
     "SERVICE_API_KEY": "key_abcd1234"
   },
+  "created_by": "3ce0dceb-fd0b-4471-8006-c51243c9ef7a",
   "created_at": "2020-09-15T15:53:00+00:00"
 }
 ```
@@ -146,7 +149,9 @@ var reactors = await client.GetAsync();
       "configuration": {
         "SERVICE_API_KEY": "key_abcd1234"
       },
+      "created_by": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
       "created_at": "2020-09-15T15:53:00+00:00",
+      "modified_by": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
       "modified_at": "2021-03-01T08:23:14+00:00"
     },
     {...},
@@ -217,7 +222,9 @@ var reactor = await client.GetByIdAsync("5b493235-6917-4307-906a-2cd6f1a90b13");
   "configuration": {
     "SERVICE_API_KEY": "key_abcd1234"
   },
+  "created_by": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
   "created_at": "2020-09-15T15:53:00+00:00",
+  "modified_by": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
   "modified_at": "2021-03-01T08:23:14+00:00"
 }
 ```
@@ -302,7 +309,9 @@ var reactor = await client.UpdateAsync("5b493235-6917-4307-906a-2cd6f1a90b13",
   "configuration": {
     "SERVICE_API_KEY": "key_abcd1234"
   },
+  "created_by": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
   "created_at": "2020-09-15T15:53:00+00:00",
+  "modified_by": "34053374-d721-43d8-921c-5ee1d337ef21",
   "modified_at": "2021-03-01T08:23:14+00:00"
 }
 ```

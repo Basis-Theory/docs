@@ -10,8 +10,10 @@ Attribute | Type | Description
 `bank` | *[bank](#atomic-banks-atomic-bank-object-bank-object)* | Bank data
 `fingerprint` | *string* | Uniquely identifies this particular bank account. You can use this attribute to check whether two bank accounts are the same.
 `metadata` | *map* | A key-value map of non-sensitive data.
-`created_by` | *uuid* | The [Application](#applications) ID which created the Atomic Bank
-`created_at` | *date* | Created date of the Atomic Bank in ISO 8601 format
+`created_by` | *uuid* | (Optional) The [Application](#applications) ID which created the Atomic Bank
+`created_at` | *date* | (Optional) Created date of the Atomic Bank in ISO 8601 format
+`modified_by` | *uuid* | (Optional) The [Application](#applications) ID which last modified the Atomic Bank
+`modified_at` | *date* | (Optional) Last modified date of the Atomic Bank in ISO 8601 format
 
 ### Bank Object
 
@@ -316,7 +318,9 @@ var atomicBank = await client.UpdateAsync("1485efb9-6b1f-4248-a5d1-cf9b3907164c"
     "nonSensitiveField": "Non-Sensitive Value"
   },
   "created_by": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
-  "created_at": "2020-09-15T15:53:00+00:00"
+  "created_at": "2020-09-15T15:53:00+00:00",
+  "modified_by": "34053374-d721-43d8-921c-5ee1d337ef21",
+  "modified_at": "2021-10-27T17:34:23+00:00"
 }
 ```
 

@@ -11,8 +11,10 @@ Attribute | Type | Description
 `billing_details` | *[billing details](#atomic-cards-atomic-card-object-billing-details-object)* | Billing details
 `fingerprint` | *string* | Uniquely identifies this particular card number. You can use this attribute to check whether two card tokens contain the same card number.
 `metadata` | *map* | A key-value map of non-sensitive data.
-`created_by` | *uuid* | The [application](#applications) ID which created the Atomic Card
-`created_at` | *date* | Created date of the Atomic Card in ISO 8601 format
+`created_by` | *uuid* | (Optional) The [Application](#applications) ID which created the Atomic Card
+`created_at` | *date* | (Optional) Created date of the Atomic Card in ISO 8601 format
+`modified_by` | *uuid* | (Optional) The [Application](#applications) ID which last modified the Atomic Card
+`modified_at` | *date* | (Optional) Last modified date of the Atomic Card in ISO 8601 format
 
 ### Card Object
 
@@ -171,7 +173,9 @@ var atomicCard = await client.CreateAsync(new AtomicCard {
     "nonSensitiveField": "Non-Sensitive Value"
   },
   "created_by": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
-  "created_at": "2020-09-15T15:53:00+00:00"
+  "created_at": "2020-09-15T15:53:00+00:00",
+  "modified_by": "34053374-d721-43d8-921c-5ee1d337ef21",
+  "modified_at": "2021-10-27T17:34:23+00:00"
 }
 ```
 
@@ -486,7 +490,9 @@ var atomicCard = await client.UpdateAsync("c1e565009-1984-4638-8fca-dce8a82cc2af
     "nonSensitiveField": "Non-Sensitive Value"
   },
   "created_by": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
-  "created_at": "2020-09-15T15:53:00+00:00"
+  "created_at": "2020-09-15T15:53:00+00:00",
+  "modified_by": "34053374-d721-43d8-921c-5ee1d337ef21",
+  "modified_at": "2021-10-27T17:34:23+00:00"
 }
 ```
 

@@ -16,8 +16,10 @@ Attribute | Type | Description
 `metadata` | *map* | A key-value map of non-sensitive data.
 `encryption` | *[encryption object](#tokens-token-object-encryption-object)* | Encryption metadata for an encrypted token data value
 `children` | *array* | Array of child tokens where this token is the parent in an [association](#token-associations)
-`created_by` | *uuid* | The [Application](#applications-application-object) ID which created the token
-`created_at` | *date* | Created date of the token in ISO 8601 format
+`created_by` | *uuid* | (Optional) The [Application](#applications-application-object) ID which created the token
+`created_at` | *date* | (Optional) Created date of the token in ISO 8601 format
+`modified_by` | *uuid* | (Optional) The [Application](#applications) ID which last modified the token
+`modified_at` | *date* | (Optional) Last modified date of the token in ISO 8601 format
 
 ### Encryption Object
 
