@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/Basis-Theory/docs/compare/v1.2.0...v1.3.0) (2021-10-29)
+
+
+### Features
+
+* Adding docs for audit fields ([#108](https://github.com/Basis-Theory/docs/issues/108)) ([c4c0b88](https://github.com/Basis-Theory/docs/commit/c4c0b88e74af7956b9964f630d4846af23bde17e))
+
 # [1.2.0](https://github.com/Basis-Theory/docs/compare/v1.1.0...v1.2.0) (2021-10-28)
 
 
