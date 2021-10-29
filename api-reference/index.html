@@ -1071,14 +1071,24 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
 <td>List of <a href="#permissions-permission-types">permissions</a> for the Application</td>
 </tr>
 <tr>
+<td><code>created_by</code></td>
+<td><em>uuid</em></td>
+<td>(Optional) The ID of the user or <a href="#applications">Application</a> that created the Application</td>
+</tr>
+<tr>
 <td><code>created_at</code></td>
 <td><em>date</em></td>
-<td>Created date of the Application in ISO 8601 format</td>
+<td>(Optional) Created date of the Application in ISO 8601 format</td>
+</tr>
+<tr>
+<td><code>modified_by</code></td>
+<td><em>uuid</em></td>
+<td>(Optional) The ID of the user or <a href="#applications">Application</a> that last modified the Application</td>
 </tr>
 <tr>
 <td><code>modified_at</code></td>
 <td><em>date</em></td>
-<td>Last modified date of the Application in ISO 8601 format</td>
+<td>(Optional) Last modified date of the Application in ISO 8601 format</td>
 </tr>
 </tbody></table>
 <h2 id='applications-application-types'>Application Types</h2>
@@ -1172,6 +1182,7 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
     </span><span class="s2">"token:create"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"token:read"</span><span class="w">
   </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
@@ -1218,7 +1229,7 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
 </tr>
 </tbody></table>
 <h3 id='applications-create-application-response'>Response</h3>
-<p>Returns an <a href="#applications-application-object">application</a> if the application was created. Returns <a href="#errors">an error</a> if there were validation errors, or the application failed to create.</p>
+<p>Returns an <a href="#applications-application-object">Application</a> if the application was created. Returns <a href="#errors">an error</a> if there were validation errors, or the application failed to create.</p>
 <h2 id='applications-list-applications'>List Applications</h2>
 <blockquote>
 <p>Request</p>
@@ -1253,7 +1264,9 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
         </span><span class="s2">"token:create"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"token:read"</span><span class="w">
       </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"modified_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"modified_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-01T08:23:14+00:00"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
@@ -1320,7 +1333,9 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
     </span><span class="s2">"application:read"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"application:write"</span><span class="w">
   </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"modified_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"modified_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-01T08:23:14+00:00"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
@@ -1353,7 +1368,7 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
 </tr>
 </tbody></table>
 <h3 id='applications-get-an-application-response'>Response</h3>
-<p>Returns an <a href="#applications-application-object">application</a> with the <code>id</code> provided. Returns <a href="#errors">an error</a> if the application could not be retrieved.</p>
+<p>Returns an <a href="#applications-application-object">Application</a> with the <code>id</code> provided. Returns <a href="#errors">an error</a> if the application could not be retrieved.</p>
 <h2 id='applications-get-an-application-by-key'>Get an Application by Key</h2>
 <blockquote>
 <p>Request</p>
@@ -1383,7 +1398,9 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
     </span><span class="s2">"application:read"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"application:write"</span><span class="w">
   </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"modified_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"modified_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-01T08:23:14+00:00"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
@@ -1398,7 +1415,7 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
   <span class="scope">application:read</span>
 </p>
 <h3 id='applications-get-an-application-by-key-response'>Response</h3>
-<p>Returns a <a href="#applications-application-object">application</a> for the provided <code>X-API-KEY</code>. Returns <a href="#errors">an error</a> if the application could not be retrieved.</p>
+<p>Returns an <a href="#applications-application-object">Application</a> for the provided <code>X-API-KEY</code>. Returns <a href="#errors">an error</a> if the application could not be retrieved.</p>
 <h2 id='applications-update-application'>Update Application</h2>
 <blockquote>
 <p>Request</p>
@@ -1455,7 +1472,9 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
     </span><span class="s2">"application:read"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"application:write"</span><span class="w">
   </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"modified_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"modified_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-01T08:23:14+00:00"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
@@ -1513,7 +1532,7 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
 </tr>
 </tbody></table>
 <h3 id='applications-update-application-response'>Response</h3>
-<p>Returns an <a href="#applications-application-object">application</a> if the application was updated. Returns <a href="#errors">an error</a> if there were validation errors, or the application failed to update.</p>
+<p>Returns an <a href="#applications-application-object">Application</a> if the application was updated. Returns <a href="#errors">an error</a> if there were validation errors, or the application failed to update.</p>
 <h2 id='applications-regenerate-api-key'>Regenerate API Key</h2>
 <blockquote>
 <p>Request</p>
@@ -1547,7 +1566,9 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
     </span><span class="s2">"token:create"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"token:read"</span><span class="w">
   </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c57a0d0d-e8e6-495f-9c79-a317cc21996c"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"modified_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a23699d2-1d55-4927-83f9-e76779f1c1c1"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"modified_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-01T08:23:14+00:00"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
@@ -1584,7 +1605,7 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
 </tr>
 </tbody></table>
 <h3 id='applications-regenerate-api-key-response'>Response</h3>
-<p>Returns an <a href="#applications-application-object">application</a> with the new <code>key</code> property populated. Returns <a href="#errors">an error</a> if there were validation errors, or the application key failed to regenerate.</p>
+<p>Returns an <a href="#applications-application-object">Application</a> with the new <code>key</code> property populated. Returns <a href="#errors">an error</a> if there were validation errors, or the application key failed to regenerate.</p>
 <h2 id='applications-delete-application'>Delete Application</h2>
 <blockquote>
 <p>Request</p>
@@ -1672,12 +1693,22 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
 <tr>
 <td><code>created_by</code></td>
 <td><em>uuid</em></td>
-<td>The <a href="#applications">Application</a> ID which created the Atomic Bank</td>
+<td>(Optional) The <a href="#applications">Application</a> ID which created the Atomic Bank</td>
 </tr>
 <tr>
 <td><code>created_at</code></td>
 <td><em>date</em></td>
-<td>Created date of the Atomic Bank in ISO 8601 format</td>
+<td>(Optional) Created date of the Atomic Bank in ISO 8601 format</td>
+</tr>
+<tr>
+<td><code>modified_by</code></td>
+<td><em>uuid</em></td>
+<td>(Optional) The <a href="#applications">Application</a> ID which last modified the Atomic Bank</td>
+</tr>
+<tr>
+<td><code>modified_at</code></td>
+<td><em>date</em></td>
+<td>(Optional) Last modified date of the Atomic Bank in ISO 8601 format</td>
 </tr>
 </tbody></table>
 <h3 id='atomic-banks-atomic-bank-object-bank-object'>Bank Object</h3>
@@ -1977,7 +2008,9 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
     </span><span class="nl">"nonSensitiveField"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Non-Sensitive Value"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="w">
+  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"modified_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"34053374-d721-43d8-921c-5ee1d337ef21"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"modified_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-10-27T17:34:23+00:00"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p><span class="http-method patch">
@@ -2359,12 +2392,22 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
 <tr>
 <td><code>created_by</code></td>
 <td><em>uuid</em></td>
-<td>The <a href="#applications">application</a> ID which created the Atomic Card</td>
+<td>(Optional) The <a href="#applications">Application</a> ID which created the Atomic Card</td>
 </tr>
 <tr>
 <td><code>created_at</code></td>
 <td><em>date</em></td>
-<td>Created date of the Atomic Card in ISO 8601 format</td>
+<td>(Optional) Created date of the Atomic Card in ISO 8601 format</td>
+</tr>
+<tr>
+<td><code>modified_by</code></td>
+<td><em>uuid</em></td>
+<td>(Optional) The <a href="#applications">Application</a> ID which last modified the Atomic Card</td>
+</tr>
+<tr>
+<td><code>modified_at</code></td>
+<td><em>date</em></td>
+<td>(Optional) Last modified date of the Atomic Card in ISO 8601 format</td>
 </tr>
 </tbody></table>
 <h3 id='atomic-cards-atomic-card-object-card-object'>Card Object</h3>
@@ -2617,7 +2660,9 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
     </span><span class="nl">"nonSensitiveField"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Non-Sensitive Value"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="w">
+  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"modified_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"34053374-d721-43d8-921c-5ee1d337ef21"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"modified_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-10-27T17:34:23+00:00"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p><span class="http-method post">
@@ -2923,7 +2968,9 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
     </span><span class="nl">"nonSensitiveField"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Non-Sensitive Value"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="w">
+  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"modified_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"34053374-d721-43d8-921c-5ee1d337ef21"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"modified_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-10-27T17:34:23+00:00"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p><span class="http-method patch">
@@ -3647,12 +3694,22 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
 <tr>
 <td><code>created_at</code></td>
 <td><em>date</em></td>
-<td>Created date of the Reactor Formula in ISO 8601 format</td>
+<td>(Optional) Created date of the Reactor Formula in ISO 8601 format</td>
+</tr>
+<tr>
+<td><code>created_by</code></td>
+<td><em>uuid</em></td>
+<td>(Optional) The ID of the user or <a href="#applications">Application</a> that created the Reactor Formula</td>
 </tr>
 <tr>
 <td><code>modified_at</code></td>
 <td><em>date</em></td>
-<td>Modified date of the Reactor Formula in ISO 8601 format</td>
+<td>(Optional) Last modified date of the Reactor Formula in ISO 8601 format</td>
+</tr>
+<tr>
+<td><code>modified_by</code></td>
+<td><em>uuid</em></td>
+<td>(Optional) The ID of the user or <a href="#applications">Application</a> that last modified the Reactor Formula</td>
 </tr>
 </tbody></table>
 <h3 id='reactor-formulas-reactor-formula-object-reactor-formula-configuration-object'>Reactor Formula Configuration Object</h3>
@@ -3932,6 +3989,7 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
       </span><span class="nl">"optional"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c57a0d0d-e8e6-495f-9c79-a317cc21996c"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
@@ -4078,7 +4136,9 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
           </span><span class="nl">"optional"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"modified_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"modified_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-01T08:23:14+00:00"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
@@ -4184,7 +4244,9 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
       </span><span class="nl">"optional"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"modified_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"modified_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-01T08:23:14+00:00"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
@@ -4389,7 +4451,9 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
       </span><span class="nl">"optional"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"modified_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"34053374-d721-43d8-921c-5ee1d337ef21"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"modified_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-01T08:23:14+00:00"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
@@ -4572,14 +4636,24 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
 <td>A key-value map of all configuration name and values for an <a href="#reactor-formulas-reactor-formula-object-reactor-formula-configuration-object">Reactor Formula configuration</a></td>
 </tr>
 <tr>
+<td><code>created_by</code></td>
+<td><em>uuid</em></td>
+<td>(Optional) The ID of the user or <a href="#applications">Application</a> that created the Reactor</td>
+</tr>
+<tr>
 <td><code>created_at</code></td>
 <td><em>string</em></td>
-<td>Created date of the Reactor in ISO 8601 format</td>
+<td>(Optional) Created date of the Reactor in ISO 8601 format</td>
+</tr>
+<tr>
+<td><code>modified_by</code></td>
+<td><em>uuid</em></td>
+<td>(Optional) The ID of the user or <a href="#applications">Application</a> that last modified the Reactor</td>
 </tr>
 <tr>
 <td><code>modified_at</code></td>
-<td><em>string</em></td>
-<td>Last modified date of the Reactor in ISO 8601 format</td>
+<td><em>date</em></td>
+<td>(Optional) Last modified date of the Reactor in ISO 8601 format</td>
 </tr>
 </tbody></table>
 <h2 id='reactors-create-reactor'>Create Reactor</h2>
@@ -4637,6 +4711,7 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
   </span><span class="nl">"configuration"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"SERVICE_API_KEY"</span><span class="p">:</span><span class="w"> </span><span class="s2">"key_abcd1234"</span><span class="w">
   </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3ce0dceb-fd0b-4471-8006-c51243c9ef7a"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
@@ -4715,7 +4790,9 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
       </span><span class="nl">"configuration"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"SERVICE_API_KEY"</span><span class="p">:</span><span class="w"> </span><span class="s2">"key_abcd1234"</span><span class="w">
       </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"modified_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"modified_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-01T08:23:14+00:00"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
@@ -4795,7 +4872,9 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
   </span><span class="nl">"configuration"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"SERVICE_API_KEY"</span><span class="p">:</span><span class="w"> </span><span class="s2">"key_abcd1234"</span><span class="w">
   </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"modified_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"modified_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-01T08:23:14+00:00"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
@@ -4877,7 +4956,9 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
   </span><span class="nl">"configuration"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"SERVICE_API_KEY"</span><span class="p">:</span><span class="w"> </span><span class="s2">"key_abcd1234"</span><span class="w">
   </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"modified_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"34053374-d721-43d8-921c-5ee1d337ef21"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"modified_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-01T08:23:14+00:00"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
@@ -5008,14 +5089,24 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
 <td>The name of the Tenants</td>
 </tr>
 <tr>
+<td><code>created_by</code></td>
+<td><em>uuid</em></td>
+<td>(Optional) The ID of the user that created the Tenant</td>
+</tr>
+<tr>
 <td><code>created_at</code></td>
 <td><em>date</em></td>
-<td>Created date of the Tenant in ISO 8601 format</td>
+<td>(Optional) Created date of the Tenant in ISO 8601 format</td>
+</tr>
+<tr>
+<td><code>modified_by</code></td>
+<td><em>uuid</em></td>
+<td>(Optional) The ID of the user or <a href="#applications">Application</a> that last modified the Tenant</td>
 </tr>
 <tr>
 <td><code>modified_at</code></td>
 <td><em>date</em></td>
-<td>Last modified date of the Tenant in ISO 8601 format</td>
+<td>(Optional) Last modified date of the Tenant in ISO 8601 format</td>
 </tr>
 </tbody></table>
 <h2 id='tenants-tenant-usage-report-object'>Tenant Usage Report Object</h2>
@@ -5042,13 +5133,13 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
 </thead><tbody>
 <tr>
 <td><code>enrichment_limit</code></td>
-<td><em>long (optional)</em></td>
-<td>Tenant limit to number of enrichments</td>
+<td><em>long</em></td>
+<td>(Optional) Tenant limit to number of enrichments</td>
 </tr>
 <tr>
 <td><code>free_enriched_token_limit</code></td>
-<td><em>long (optional)</em></td>
-<td>Tenant limit to number of enriched tokens that will not be billed</td>
+<td><em>long</em></td>
+<td>(Optional) Tenant limit to number of enriched tokens that will not be billed</td>
 </tr>
 <tr>
 <td><code>metrics_by_type</code></td>
@@ -5081,8 +5172,8 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
 </tr>
 <tr>
 <td><code>last_created_at</code></td>
-<td><em>date (optional)</em></td>
-<td>Last created date in ISO 8601 format</td>
+<td><em>date</em></td>
+<td>(Optional) Last created date in ISO 8601 format</td>
 </tr>
 </tbody></table>
 <h2 id='tenants-get-a-tenant'>Get a Tenant</h2>
@@ -5109,7 +5200,9 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f88da999-b124-4a14-acde-cbc121444f14"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"owner_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"97cec6e8-a143-4fb4-9ab0-cf7e49242d21"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My Tenant"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"modified_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"modified_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-01T08:23:14+00:00"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
@@ -5158,7 +5251,9 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f88da999-b124-4a14-acde-cbc121444f14"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"owner_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"97cec6e8-a143-4fb4-9ab0-cf7e49242d21"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My Example Tenant"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"modified_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"modified_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-01T08:23:14+00:00"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
@@ -5330,12 +5425,22 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
 <tr>
 <td><code>created_by</code></td>
 <td><em>uuid</em></td>
-<td>The <a href="#applications-application-object">Application</a> ID which created the token</td>
+<td>(Optional) The <a href="#applications-application-object">Application</a> ID which created the token</td>
 </tr>
 <tr>
 <td><code>created_at</code></td>
 <td><em>date</em></td>
-<td>Created date of the token in ISO 8601 format</td>
+<td>(Optional) Created date of the token in ISO 8601 format</td>
+</tr>
+<tr>
+<td><code>modified_by</code></td>
+<td><em>uuid</em></td>
+<td>(Optional) The <a href="#applications">Application</a> ID which last modified the token</td>
+</tr>
+<tr>
+<td><code>modified_at</code></td>
+<td><em>date</em></td>
+<td>(Optional) Last modified date of the token in ISO 8601 format</td>
 </tr>
 </tbody></table>
 <h3 id='tokens-token-object-encryption-object'>Encryption Object</h3>
