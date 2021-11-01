@@ -5150,16 +5150,6 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
 </tr>
 </thead><tbody>
 <tr>
-<td><code>enrichment_limit</code></td>
-<td><em>long</em></td>
-<td>(Optional) Tenant limit to number of enrichments</td>
-</tr>
-<tr>
-<td><code>free_enriched_token_limit</code></td>
-<td><em>long</em></td>
-<td>(Optional) Tenant limit to number of enriched tokens that will not be billed</td>
-</tr>
-<tr>
 <td><code>metrics_by_type</code></td>
 <td><em>map&lt;string, <a href="#tenants-token-type-metrics-object">TokenTypeMetrics</a>&gt;</em></td>
 <td>Token Metrics by <a href="#tokens-token-types">TokenType</a></td>
@@ -5168,16 +5158,6 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
 <td><code>monthly_active_tokens</code></td>
 <td><em>long</em></td>
 <td>Number of tokens that have been created, read, updated, or decrypted in the current month</td>
-</tr>
-<tr>
-<td><code>number_of_enriched_tokens</code></td>
-<td><em>long</em></td>
-<td>Number of tokens that have been created through a <a href="#reactor">Reactor</a></td>
-</tr>
-<tr>
-<td><code>number_of_enrichments</code></td>
-<td><em>long</em></td>
-<td>Number of tokens that have been used in a <a href="#reactors">Reactor</a></td>
 </tr>
 </tbody></table>
 <h2 id='tenants-token-type-metrics-object'>Token Type Metrics Object</h2>
@@ -5360,8 +5340,6 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"token_report"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"enrichment_limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"free_enriched_token_limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
     </span><span class="nl">"metrics_by_type"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nl">"token"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
@@ -5376,9 +5354,7 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
         </span><span class="nl">"last_created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="nl">"monthly_active_tokens"</span><span class="p">:</span><span class="w"> </span><span class="mi">987</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"number_of_enriched_tokens"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"number_of_enrichments"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w">
+    </span><span class="nl">"monthly_active_tokens"</span><span class="p">:</span><span class="w"> </span><span class="mi">987</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
