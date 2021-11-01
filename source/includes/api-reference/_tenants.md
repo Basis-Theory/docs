@@ -28,6 +28,7 @@ Attribute | Type | Description
 `enrichment_limit` | *long* | (Optional) Tenant limit to number of enrichments
 `free_enriched_token_limit` | *long* | (Optional) Tenant limit to number of enriched tokens that will not be billed
 `metrics_by_type` | *map\<string, [TokenTypeMetrics](#tenants-token-type-metrics-object)\>* | Token Metrics by [TokenType](#tokens-token-types)
+`monthly_active_tokens` | *long* | Number of tokens that have been created, read, updated, or decrypted in the current month
 `number_of_enriched_tokens` | *long* | Number of tokens that have been created through a [Reactor](#reactor)
 `number_of_enrichments` | *long* | Number of tokens that have been used in a [Reactor](#reactors)
 
@@ -255,6 +256,7 @@ var tenantUsageReport = await client.GetTenantUsageReportAsync();
         "last_created_at": "2020-09-15T15:53:00+00:00"
       }
     },
+    "monthly_active_tokens": 987,
     "number_of_enriched_tokens": 123,
     "number_of_enrichments": 100
   }
