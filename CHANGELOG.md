@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/Basis-Theory/docs/compare/v1.3.0...v1.4.0) (2021-11-01)
+
+
+### Features
+
+* add monthly_active_tokens to Tenant Usage Report object ([#109](https://github.com/Basis-Theory/docs/issues/109)) ([1388dfb](https://github.com/Basis-Theory/docs/commit/1388dfbace09e0df48860697080ce1c18f7ff0e3))
+
 # [1.3.0](https://github.com/Basis-Theory/docs/compare/v1.2.0...v1.3.0) (2021-10-29)
 
 
