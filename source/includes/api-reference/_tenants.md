@@ -28,7 +28,7 @@ Attribute | Type | Description
 `enrichment_limit` | *long* | (Optional) Tenant limit to number of enrichments
 `free_enriched_token_limit` | *long* | (Optional) Tenant limit to number of enriched tokens that will not be billed
 `metrics_by_type` | *map\<string, [TokenTypeMetrics](#tenants-token-type-metrics-object)\>* | Token Metrics by [TokenType](#tokens-token-types)
-`monthly_active_tokens` | *long* | Number of tokens that have been created, read, updated, decrypted, or reacted in the current month
+`monthly_active_tokens` | *long* | Number of tokens that have been created, read, updated, or decrypted in the current month
 `number_of_enriched_tokens` | *long* | Number of tokens that have been created through a [Reactor](#reactor)
 `number_of_enrichments` | *long* | Number of tokens that have been used in a [Reactor](#reactors)
 
