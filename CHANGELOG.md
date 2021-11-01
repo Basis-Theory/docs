@@ -1,3 +1,10 @@
+# [1.5.0](https://github.com/Basis-Theory/docs/compare/v1.4.0...v1.5.0) (2021-11-01)
+
+
+### Features
+
+* remove enrichment properties from tenant usage report ([#110](https://github.com/Basis-Theory/docs/issues/110)) ([e9b15ba](https://github.com/Basis-Theory/docs/commit/e9b15baf785e6218a9c6a146b211a138865f70dc))
+
 # [1.4.0](https://github.com/Basis-Theory/docs/compare/v1.3.0...v1.4.0) (2021-11-01)
 
 
