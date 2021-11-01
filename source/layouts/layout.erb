@@ -71,6 +71,7 @@ under the License.
     <%= stylesheet_link_tag :screen, media: :screen %>
     <%= stylesheet_link_tag :home, media: :screen %>
     <%= stylesheet_link_tag :guides, media: :screen %>
+    <%= stylesheet_link_tag :iubenda, media: :screen %>
     <script src="https://kit.fontawesome.com/86c3cd0147.js" crossorigin="anonymous"></script>
     <%= stylesheet_link_tag :print, media: :print %>
     <% if current_page.data.search %>
@@ -83,8 +84,25 @@ under the License.
     <script>
       $(function() { setupCodeCopy(); });
     </script>
-    <script defer data-api="https://analytics.basistheory.com/api/event" data-domain="docs.basistheory.com" src="https://cdn.basistheory.com/javascript/analytics.js"></script>
     <% end %>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-M56229L');</script>
+  <!-- End Google Tag Manager -->
+
+  <!-- Iubenda -->
+  <!-- IF YOU ARE UPDATING THIS, MAKE SURE YOU PUT THE CSS INTO THE source/stylesheets/iubenda.css.scss file and remove it here. -->
+    <script type="text/javascript">
+      var _iub = _iub || [];
+      _iub.csConfiguration = {"gdprAppliesGlobally":false,"enableCcpa":true,"countryDetection":true,"consentOnContinuedBrowsing":false,"ccpaAcknowledgeOnDisplay":true,"lang":"en","siteId":2378844,"floatingPreferencesButtonDisplay":false,"cookiePolicyId":13137791, "callback":{ "onPreferenceExpressedOrNotNeeded":function(preference) { dataLayer.push({iubenda_ccpa_opted_out: _iub.cs.api.isCcpaOptedOut()}); if (!preference) { dataLayer.push({event: "iubenda_preference_not_needed"});} else { if (preference.consent === true) { dataLayer.push({event: "iubenda_consent_given"});} else if (preference.consent === false) { dataLayer.push({event: "iubenda_consent_rejected"});} else if (preference.purposes) { for (var purposeId in preference.purposes) {if (preference.purposes[purposeId]) { dataLayer.push({event: "iubenda_consent_given_purpose_" + purposeId}); }}}}} }, "banner":{ "acceptButtonDisplay":true,"customizeButtonDisplay":true,"acceptButtonColor":"#1ad1db","acceptButtonCaptionColor":"#070a1b","customizeButtonColor":"#1a1e32","customizeButtonCaptionColor":"#d2d2d2","rejectButtonDisplay":true,"rejectButtonColor":"#1e2337","rejectButtonCaptionColor":"white","position":"bottom","textColor":"#e5e6ec","backgroundColor":"#141729","acceptButtonCaption":"Accept All","content":"<div id=\"iubenda-cs-title\">&#x1f36a;  &nbsp;Cookie Notice</div><div id=\"iubenda-cs-paragraph\">\n\nBy clicking “Accept All”, you agree to the storing of cookies on your device to enhance site navigation, analyze site usage, and assist in our marketing efforts. View our <a href=\"/privacy-policy/13137791/cookie-policy?an=no&s_ck=false&newmarkup=yes\" class=\"iubenda-cs-cookie-policy-lnk\">Cookie Policy</a> and Privacy Policy for more information.\n\n</div>" }};
+    </script>
+    <script type="text/javascript" src="//cdn.iubenda.com/cs/ccpa/stub.js"></script>
+    <script type="text/javascript" src="//cdn.iubenda.com/cs/iubenda_cs.js" charset="UTF-8" async></script>
+  <!-- End Iubenda -->
+  
   </head>
 
   <body class="<%= page_classes %>" data-languages="<%=h language_tabs.map{ |lang| lang.is_a?(Hash) ? lang.keys.first : lang }.to_json %>">
