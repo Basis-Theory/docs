@@ -26,6 +26,7 @@ Attribute | Type | Description
 Attribute | Type | Description
 --------- | ---- | -----------
 `metrics_by_type` | *map\<string, [TokenTypeMetrics](#tenants-token-type-metrics-object)\>* | Token Metrics by [TokenType](#tokens-token-types)
+`included_monthly_active_tokens` | *long* | Number of included monthly active tokens for the billing plan
 `monthly_active_tokens` | *long* | Number of tokens that have been created, read, updated, or decrypted in the current month
 
 ## Token Type Metrics Object
@@ -150,7 +151,7 @@ Update the Tenant associated with the provided `X-API-KEY`.
 ### Permissions
 
 <p class="scopes">
-  <span class="scope">application:update</span>
+  <span class="scope">tenant:update</span>
 </p>
 
 ### Request Parameters
@@ -199,7 +200,9 @@ Delete the Tenant associated with the provided `X-API-KEY`.
 
 ### Permissions
 
-`tenant:write`
+<p class="scopes">
+  <span class="scope">tenant:delete</span>
+</p>
 
 ### Response
 
@@ -250,6 +253,7 @@ var tenantUsageReport = await client.GetTenantUsageReportAsync();
         "last_created_at": "2020-09-15T15:53:00+00:00"
       }
     },
+    "included_monthly_active_tokens": 50,
     "monthly_active_tokens": 987
   }
 }
