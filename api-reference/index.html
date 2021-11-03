@@ -3330,9 +3330,14 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
 <td>The <a href="#tenants">Tenant</a> ID which owns the entity</td>
 </tr>
 <tr>
-<td><code>application_id</code></td>
+<td><code>actor_id</code></td>
 <td><em>uuid</em></td>
-<td>The <a href="#applications">Application</a> ID which performed the operation</td>
+<td>(Optional) The ID of the actor which performed the operation</td>
+</tr>
+<tr>
+<td><code>actor_type</code></td>
+<td><em>string</em></td>
+<td>(Optional) The type of actor which performed the operation (e.g. <code>&quot;user&quot;</code>, <code>&quot;application&quot;</code>)</td>
 </tr>
 <tr>
 <td><code>entity_type</code></td>
@@ -3381,11 +3386,12 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
 <p>Response</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"pagination"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">}</span><span class="w">
+  </span><span class="nl">"pagination"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="nl">"tenant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77cb0024-123e-41a8-8ff8-a3d5a0fa8a08"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"application_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"actor_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"actor_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"application"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"entity_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"token"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"entity_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c06d0789-0a38-40be-b7cc-c28a718f76f1"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"operation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"read"</span><span class="p">,</span><span class="w">
