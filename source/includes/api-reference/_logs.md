@@ -5,7 +5,8 @@
 Attribute | Type | Description
 --------- | ---- | -----------
 `tenant_id` | *uuid* | The [Tenant](#tenants) ID which owns the entity
-`application_id` | *uuid* | The [Application](#applications) ID which performed the operation
+`actor_id` | *uuid* | (Optional) The ID of the actor which performed the operation
+`actor_type` | *string* | (Optional) The type of actor which performed the operation (e.g. `"user"`, `"application"`)
 `entity_type` | *string* | The entity type of the log
 `entity_id` | *string* | The unique identifier of the `entity_type`
 `operation` | *string* | The log operation (e.g. create, update, read, delete)
@@ -42,11 +43,12 @@ var logs = await client.GetAsync();
 
 ```json
 {
-  "pagination": {...}
+  "pagination": {...},
   "data": [
     {
       "tenant_id": "77cb0024-123e-41a8-8ff8-a3d5a0fa8a08",
-      "application_id": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
+      "actor_id": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
+      "actor_type": "application",
       "entity_type": "token",
       "entity_id": "c06d0789-0a38-40be-b7cc-c28a718f76f1",
       "operation": "read",
