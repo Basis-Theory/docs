@@ -1,3 +1,10 @@
+# [1.7.0](https://github.com/Basis-Theory/docs/compare/v1.6.0...v1.7.0) (2021-11-03)
+
+
+### Features
+
+* add actor_id and actor_type to log object response ([#113](https://github.com/Basis-Theory/docs/issues/113)) ([8eacdf2](https://github.com/Basis-Theory/docs/commit/8eacdf2946ba3a6df0811c6cde0cea2627e96ea9))
+
 # [1.6.0](https://github.com/Basis-Theory/docs/compare/v1.5.0...v1.6.0) (2021-11-02)
 
 
