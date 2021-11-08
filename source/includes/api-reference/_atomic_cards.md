@@ -638,7 +638,6 @@ Create an Atomic Card Reaction by ID in the Tenant.
 
 <p class="scopes">
   <span class="scope">reactor:read</span>
-  <span class="scope">card:create</span>
   <span class="scope">card:read</span>
 </p>
 
