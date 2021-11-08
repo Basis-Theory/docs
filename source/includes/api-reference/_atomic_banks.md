@@ -2,25 +2,31 @@
 
 ## Atomic Bank Object
 
-Attribute | Type | Description
---------- | ---- | -----------
-`id` | *uuid* | Unique identifier of the token which can be used to [get an Atomic Bank](#atomic-banks-get-an-atomic-bank)
-`tenant_id` | *uuid* | The [Tenant](#tenants) ID which owns the bank
-`type` | *string* | `Bank` [token type](#tokens-token-types)
-`bank` | *[bank](#atomic-banks-atomic-bank-object-bank-object)* | Bank data
-`fingerprint` | *string* | Uniquely identifies this particular bank account. You can use this attribute to check whether two bank accounts are the same.
-`metadata` | *map* | A key-value map of non-sensitive data.
-`created_by` | *uuid* | (Optional) The [Application](#applications) ID which created the Atomic Bank
-`created_at` | *date* | (Optional) Created date of the Atomic Bank in ISO 8601 format
-`modified_by` | *uuid* | (Optional) The [Application](#applications) ID which last modified the Atomic Bank
-`modified_at` | *date* | (Optional) Last modified date of the Atomic Bank in ISO 8601 format
+| Attribute     | Type                                                   | Description                                                                                                                   |
+|---------------|--------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------|
+| `id`          | *uuid*                                                 | Unique identifier of the token which can be used to [get an Atomic Bank](#atomic-banks-get-an-atomic-bank)                    |
+| `tenant_id`   | *uuid*                                                 | The [Tenant](#tenants) ID which owns the bank                                                                                 |
+| `type`        | *string*                                               | `Bank` [token type](#tokens-token-types)                                                                                      |
+| `bank`        | *[bank](#atomic-banks-atomic-bank-object-bank-object)* | Bank data                                                                                                                     |
+| `fingerprint` | *string*                                               | Uniquely identifies this particular bank account. You can use this attribute to check whether two bank accounts are the same. |
+| `metadata`    | *map*                                                  | A key-value map of non-sensitive data.                                                                                        |
+| `created_by`  | *uuid*                                                 | (Optional) The [Application](#applications) ID which created the Atomic Bank                                                  |
+| `created_at`  | *date*                                                 | (Optional) Created date of the Atomic Bank in ISO 8601 format                                                                 |
+| `modified_by` | *uuid*                                                 | (Optional) The [Application](#applications) ID which last modified the Atomic Bank                                            |
+| `modified_at` | *date*                                                 | (Optional) Last modified date of the Atomic Bank in ISO 8601 format                                                           |
 
 ### Bank Object
 
-Attribute | Required | Type | Default | Description
---------- | -------- | ---- | ------- | -----------
-`routing_number` | true | *string* | `null` | Nine-digit ABA routing number
-`account_number` | true | *string* | `null` | Account number up to seventeen-digits
+| Attribute        | Required | Type     | Default | Description                           |
+|------------------|----------|----------|---------|---------------------------------------|
+| `routing_number` | true     | *string* | `null`  | Nine-digit ABA routing number         |
+| `account_number` | true     | *string* | `null`  | Account number up to seventeen-digits |
+
+### React Response Object
+| Attribute | Type  | Description                                                                                           |
+|-----------|-------|-------------------------------------------------------------------------------------------------------|
+| `tokens`  | *map* | (Optional) [Token(s)](#tokens-token-object) created from the `tokenize` block of the Reactor response |
+| `raw`     | *map* | (Optional) Raw output returned from the Reactor                                                       |
 
 
 ## Create Atomic Bank
@@ -110,10 +116,10 @@ Create a new Atomic Bank for the Tenant.
 
 ### Request Parameters
 
-Attribute | Required | Type | Default | Description
---------- | -------- | ---- | ------- | -----------
-`bank` | true | *[bank](#atomic-banks-atomic-bank-object-bank-object)* | `null` | Bank data
-`metadata` | false | *map* | `null` | A key-value map of non-sensitive data.
+| Attribute  | Required | Type                                                   | Default | Description                            |
+|------------|----------|--------------------------------------------------------|---------|----------------------------------------|
+| `bank`     | true     | *[bank](#atomic-banks-atomic-bank-object-bank-object)* | `null`  | Bank data                              |
+| `metadata` | false    | *map*                                                  | `null`  | A key-value map of non-sensitive data. |
 
 ### Response
 
@@ -250,9 +256,9 @@ Get an Atomic Bank by ID in the Tenant.
 
 ### URI Parameters
 
-Parameter | Required | Type | Default | Description
---------- | -------- | ---- | ------- | -----------
-`id` | true | *uuid* | `null` | The ID of the Atomic Bank
+| Parameter | Required | Type   | Default | Description               |
+|-----------|----------|--------|---------|---------------------------|
+| `id`      | true     | *uuid* | `null`  | The ID of the Atomic Bank |
 
 ### Response
 
@@ -339,9 +345,9 @@ Update an Atomic Bank for the Tenant. At least one property on the request body 
 
 ### Request Parameters
 
-Attribute | Required | Type | Default | Description
---------- | -------- | ---- | ------- | -----------
-`bank` | true | *[bank](#atomic-banks-atomic-bank-object-bank-object)* | `null` | Bank data
+| Attribute | Required | Type                                                   | Default | Description |
+|-----------|----------|--------------------------------------------------------|---------|-------------|
+| `bank`    | true     | *[bank](#atomic-banks-atomic-bank-object-bank-object)* | `null`  | Bank data   |
 
 ### Response
 
@@ -393,9 +399,9 @@ Delete an Atomic Bank by ID in the Tenant.
 
 ### URI Parameters
 
-Parameter | Required | Type | Default | Description
---------- | -------- | ---- | ------- | -----------
-`id` | true | *uuid* | `null` | The ID of the Atomic Bank
+| Parameter | Required | Type   | Default | Description               |
+|-----------|----------|--------|---------|---------------------------|
+| `id`      | true     | *uuid* | `null`  | The ID of the Atomic Bank |
 
 ### Response
 
@@ -465,9 +471,9 @@ Decrypt an Atomic Bank by ID in the Tenant.
 
 ### URI Parameters
 
-Parameter | Required | Type | Default | Description
---------- | -------- | ---- | ------- | -----------
-`id` | true | *uuid* | `null` | The ID of the Atomic Bank
+| Parameter | Required | Type   | Default | Description               |
+|-----------|----------|--------|---------|---------------------------|
+| `id`      | true     | *uuid* | `null`  | The ID of the Atomic Bank |
 
 ### Response
 
@@ -542,20 +548,20 @@ Create an Atomic Bank Reaction by ID in the Tenant.
 
 ### URI Parameters
 
-Parameter | Required | Type | Default | Description
---------- | -------- | ---- | ------- | -----------
-`id` | true | *uuid* | `null` | The ID of the Atomic Bank
+| Parameter | Required | Type   | Default | Description               |
+|-----------|----------|--------|---------|---------------------------|
+| `id`      | true     | *uuid* | `null`  | The ID of the Atomic Bank |
 
 ### Request Parameters
-Parameter | Required | Type | Default | Description
---------- | -------- | ---- | ------- | -----------
-`ractor_id` | true | *uuid* | `null` | The ID of the reactor
-`request_parameters` | false | *map* | `null` | A key-value map of [request parameters](#reactor-forumula-request-parameter-object) names and values for the reactor
-`metadata` | false | *map* | `null` | A key-value map of non-sensitive data. We overwrite the following keys: `correlation_id`, `reactor_id`, `reactor_name`, `source_token_id`, and `source_token_type`
+| Parameter            | Required | Type   | Default | Description                                                                                                                                                        |
+|----------------------|----------|--------|---------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `ractor_id`          | true     | *uuid* | `null`  | The ID of the reactor                                                                                                                                              |
+| `request_parameters` | false    | *map*  | `null`  | A key-value map of [request parameters](#reactor-forumula-request-parameter-object) names and values for the reactor                                               |
+| `metadata`           | false    | *map*  | `null`  | A key-value map of non-sensitive data. We overwrite the following keys: `correlation_id`, `reactor_id`, `reactor_name`, `source_token_id`, and `source_token_type` |
 
 ### Response
 
-Returns a [token](#tokens-token-object) with type of `bank:reaction` if the Atomic Bank was reacted. Returns [an error](#errors) if the Atomic Bank failed to react.
+Returns a [React Response](#react-response-object) if the Atomic Bank was reacted successfully. Returns [an error](#errors) if the Atomic Bank failed to react.
 Errors generated from Reactors will be translated to the common Basis Theory Error format. See [Reactor Errors](#errors-reactor-errors) for more details.
 
 
@@ -565,6 +571,6 @@ To enable testing of Atomic Banks, we've implemented a list of acceptable test b
 
 ### Test bank accounts
 
-Routing Number | Account Number | Description
--------------- | -------------- | -----------
-110000000 | 000123456789 | Successfully added bank
+| Routing Number | Account Number | Description             |
+|----------------|----------------|-------------------------|
+| 110000000      | 000123456789   | Successfully added bank |

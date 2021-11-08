@@ -2,48 +2,54 @@
 
 ## Atomic Card Object
 
-Attribute | Type | Description
---------- | ---- | -----------
-`id` | *uuid* | Unique identifier of the token which can be used to [get an Atomic Card](#atomic-cards-get-an-atomic-card)
-`tenant_id` | *uuid* | The [Tenant](#tenants) ID which owns the card
-`type` | *string* | `Card` [token type](#tokens-token-types)
-`card` | *[card](#atomic-cards-atomic-card-object-card-object)* | Card data
-`billing_details` | *[billing details](#atomic-cards-atomic-card-object-billing-details-object)* | Billing details
-`fingerprint` | *string* | Uniquely identifies this particular card number. You can use this attribute to check whether two card tokens contain the same card number.
-`metadata` | *map* | A key-value map of non-sensitive data.
-`created_by` | *uuid* | (Optional) The [Application](#applications) ID which created the Atomic Card
-`created_at` | *date* | (Optional) Created date of the Atomic Card in ISO 8601 format
-`modified_by` | *uuid* | (Optional) The [Application](#applications) ID which last modified the Atomic Card
-`modified_at` | *date* | (Optional) Last modified date of the Atomic Card in ISO 8601 format
+| Attribute         | Type                                                                         | Description                                                                                                                                |
+|-------------------|------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------|
+| `id`              | *uuid*                                                                       | Unique identifier of the token which can be used to [get an Atomic Card](#atomic-cards-get-an-atomic-card)                                 |
+| `tenant_id`       | *uuid*                                                                       | The [Tenant](#tenants) ID which owns the card                                                                                              |
+| `type`            | *string*                                                                     | `Card` [token type](#tokens-token-types)                                                                                                   |
+| `card`            | *[card](#atomic-cards-atomic-card-object-card-object)*                       | Card data                                                                                                                                  |
+| `billing_details` | *[billing details](#atomic-cards-atomic-card-object-billing-details-object)* | Billing details                                                                                                                            |
+| `fingerprint`     | *string*                                                                     | Uniquely identifies this particular card number. You can use this attribute to check whether two card tokens contain the same card number. |
+| `metadata`        | *map*                                                                        | A key-value map of non-sensitive data.                                                                                                     |
+| `created_by`      | *uuid*                                                                       | (Optional) The [Application](#applications) ID which created the Atomic Card                                                               |
+| `created_at`      | *date*                                                                       | (Optional) Created date of the Atomic Card in ISO 8601 format                                                                              |
+| `modified_by`     | *uuid*                                                                       | (Optional) The [Application](#applications) ID which last modified the Atomic Card                                                         |
+| `modified_at`     | *date*                                                                       | (Optional) Last modified date of the Atomic Card in ISO 8601 format                                                                        |
 
 ### Card Object
 
-Attribute | Required | Type | Default | Description
---------- | -------- | ---- | ------- | -----------
-`number` | true | *string* | `null` | The card number without any separators
-`expiration_month` | false | *integer* | `null` | Two-digit number representing the card's expiration month
-`expiration_year` | false | *integer* | `null` | Four-digit number representing the card's expiration year
-`cvc` | false | *string* | `null` | Three or four-digit card verification code
+| Attribute          | Required | Type      | Default | Description                                               |
+|--------------------|----------|-----------|---------|-----------------------------------------------------------|
+| `number`           | true     | *string*  | `null`  | The card number without any separators                    |
+| `expiration_month` | false    | *integer* | `null`  | Two-digit number representing the card's expiration month |
+| `expiration_year`  | false    | *integer* | `null`  | Four-digit number representing the card's expiration year |
+| `cvc`              | false    | *string*  | `null`  | Three or four-digit card verification code                |
 
 ### Billing Details Object
 
-Attribute | Required | Type | Default | Description
---------- | -------- | ---- | ------- | -----------
-`name` | false | *string* | `null` | The cardholder or customer's full name
-`email` | false | *string* | `null` | The cardholder or customer's email address
-`phone` | false | *string* | `null` | The cardholder or customer's phone number
-`address` | false | *address* | `null` | The cardholder or customer's [address](#atomic-cards-atomic-card-object-address-object)
+| Attribute | Required | Type      | Default | Description                                                                             |
+|-----------|----------|-----------|---------|-----------------------------------------------------------------------------------------|
+| `name`    | false    | *string*  | `null`  | The cardholder or customer's full name                                                  |
+| `email`   | false    | *string*  | `null`  | The cardholder or customer's email address                                              |
+| `phone`   | false    | *string*  | `null`  | The cardholder or customer's phone number                                               |
+| `address` | false    | *address* | `null`  | The cardholder or customer's [address](#atomic-cards-atomic-card-object-address-object) |
 
 ### Address Object
 
-Attribute | Required | Type | Default | Description
---------- | -------- | ---- | ------- | -----------
-`line1` | true | *string* | `null` | Address line 1 (Street address / PO Box / Company name)
-`line2` | false | *string* | `null` | Address line 2 (Apartment / Suite / Unit / Building)
-`city` | true | *string* | `null` | City / District / Suburb / Town / Village
-`state` | true | *string* | `null` | State / County / Province / Region
-`postal_code` | true | *string* | `null` | Zip or postal code
-`country` | true | *string* | `null` | Two-character ISO country code (e.g. `US`)
+| Attribute     | Required | Type     | Default | Description                                             |
+|---------------|----------|----------|---------|---------------------------------------------------------|
+| `line1`       | true     | *string* | `null`  | Address line 1 (Street address / PO Box / Company name) |
+| `line2`       | false    | *string* | `null`  | Address line 2 (Apartment / Suite / Unit / Building)    |
+| `city`        | true     | *string* | `null`  | City / District / Suburb / Town / Village               |
+| `state`       | true     | *string* | `null`  | State / County / Province / Region                      |
+| `postal_code` | true     | *string* | `null`  | Zip or postal code                                      |
+| `country`     | true     | *string* | `null`  | Two-character ISO country code (e.g. `US`)              |
+
+### React Response Object
+| Attribute | Type  | Description                                                                                           |
+|-----------|-------|-------------------------------------------------------------------------------------------------------|
+| `tokens`  | *map* | (Optional) [Token(s)](#tokens-token-object) created from the `tokenize` block of the Reactor response |
+| `raw`     | *map* | (Optional) Raw output returned from the Reactor                                                       |
 
 
 ## Create Atomic Card
@@ -194,11 +200,11 @@ Create a new Atomic Card for the Tenant.
 
 ### Request Parameters
 
-Attribute | Required | Type | Default | Description
---------- | -------- | ---- | ------- | -----------
-`card` | true | *[card](#atomic-cards-atomic-card-object-card-object)* | `null` | Card data
-`billing_details` | false | *[billing details](#atomic-cards-atomic-card-object-billing-details-object)* | `null` | Billing details
-`metadata` | false | *map* | `null` | A key-value map of non-sensitive data.
+| Attribute         | Required | Type                                                                         | Default | Description                            |
+|-------------------|----------|------------------------------------------------------------------------------|---------|----------------------------------------|
+| `card`            | true     | *[card](#atomic-cards-atomic-card-object-card-object)*                       | `null`  | Card data                              |
+| `billing_details` | false    | *[billing details](#atomic-cards-atomic-card-object-billing-details-object)* | `null`  | Billing details                        |
+| `metadata`        | false    | *map*                                                                        | `null`  | A key-value map of non-sensitive data. |
 
 ### Response
 
@@ -363,9 +369,9 @@ Get an Atomic Card by ID in the Tenant.
 
 ### URI Parameters
 
-Parameter | Required | Type | Default | Description
---------- | -------- | ---- | ------- | -----------
-`id` | true | *uuid* | `null` | The ID of the Atomic Card
+| Parameter | Required | Type   | Default | Description               |
+|-----------|----------|--------|---------|---------------------------|
+| `id`      | true     | *uuid* | `null`  | The ID of the Atomic Card |
 
 ### Response
 
@@ -511,10 +517,10 @@ Update an Atomic Card for the Tenant. At least one property on the request body 
 
 ### Request Parameters
 
-Attribute | Required | Type | Default | Description
---------- | -------- | ---- | ------- | -----------
-`card` | false | *[card](#atomic-cards-atomic-card-object-card-object)* | `null` | Card data
-`billing_details` | false | *[billing details](#atomic-cards-atomic-card-object-billing-details-object)* | `null` | Billing details
+| Attribute         | Required | Type                                                                         | Default | Description     |
+|-------------------|----------|------------------------------------------------------------------------------|---------|-----------------|
+| `card`            | false    | *[card](#atomic-cards-atomic-card-object-card-object)*                       | `null`  | Card data       |
+| `billing_details` | false    | *[billing details](#atomic-cards-atomic-card-object-billing-details-object)* | `null`  | Billing details |
 
 ### Response
 
@@ -566,9 +572,9 @@ Delete an Atomic Card by ID in the Tenant.
 
 ### URI Parameters
 
-Parameter | Required | Type | Default | Description
---------- | -------- | ---- | ------- | -----------
-`id` | true | *uuid* | `null` | The ID of the Atomic Card
+| Parameter | Required | Type   | Default | Description               |
+|-----------|----------|--------|---------|---------------------------|
+| `id`      | true     | *uuid* | `null`  | The ID of the Atomic Card |
 
 ### Response
 
@@ -643,20 +649,20 @@ Create an Atomic Card Reaction by ID in the Tenant.
 
 ### URI Parameters
 
-Parameter | Required | Type | Default | Description
---------- | -------- | ---- | ------- | -----------
-`id` | true | *uuid* | `null` | The ID of the Atomic Card
+| Parameter | Required | Type   | Default | Description               |
+|-----------|----------|--------|---------|---------------------------|
+| `id`      | true     | *uuid* | `null`  | The ID of the Atomic Card |
 
 ### Request Parameters
-Parameter | Required | Type | Default | Description
---------- | -------- | ---- | ------- | -----------
-`reactor_id` | true | *uuid* | `null` | The ID of the reactor
-`request_parameters` | false | *map* | `null` | A key-value map of [request parameters](#reactor-forumula-request-parameter-object) names and values for the reactor
-`metadata` | false | *map* | `null` | A key-value map of non-sensitive data. We overwrite the following keys: `correlation_id`, `reactor_id`, `reactor_name`, `source_token_id`, and `source_token_type`
+| Parameter            | Required | Type   | Default | Description                                                                                                                                                        |
+|----------------------|----------|--------|---------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `reactor_id`         | true     | *uuid* | `null`  | The ID of the reactor                                                                                                                                              |
+| `request_parameters` | false    | *map*  | `null`  | A key-value map of [request parameters](#reactor-forumula-request-parameter-object) names and values for the reactor                                               |
+| `metadata`           | false    | *map*  | `null`  | A key-value map of non-sensitive data. We overwrite the following keys: `correlation_id`, `reactor_id`, `reactor_name`, `source_token_id`, and `source_token_type` |
 
 ### Response
 
-Returns a [token](#tokens-token-object) with type of `card:reaction` if the Atomic Card was reacted. Returns [an error](#errors) if the Atomic Card failed to react.
+Returns a [React Response](#react-response-object) if the Atomic Card was reacted successfully. Returns [an error](#errors) if the Atomic Card failed to react.
 Errors generated from Reactors will be translated to the common Basis Theory Error format. See [Reactor Errors](#errors-reactor-errors) for more details.
 
 
