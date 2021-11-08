@@ -22,12 +22,6 @@
 | `routing_number` | true     | *string* | `null`  | Nine-digit ABA routing number         |
 | `account_number` | true     | *string* | `null`  | Account number up to seventeen-digits |
 
-### React Response Object
-| Attribute | Type  | Description                                                                                           |
-|-----------|-------|-------------------------------------------------------------------------------------------------------|
-| `tokens`  | *map* | (Optional) [Token(s)](#tokens-token-object) created from the `tokenize` block of the Reactor response |
-| `raw`     | *map* | (Optional) Raw output returned from the Reactor                                                       |
-
 
 ## Create Atomic Bank
 
@@ -561,11 +555,17 @@ Create an Atomic Bank Reaction by ID in the Tenant.
 
 ### Response
 
-Returns a [React Response](#react-response-object) if the Atomic Bank was reacted successfully. Returns [an error](#errors) if the Atomic Bank failed to react.
+Returns a [React Response](#atomic-banks-create-an-atomic-bank-reaction-react-response-object) if the Atomic Bank was reacted successfully. Returns [an error](#errors) if the Atomic Bank failed to react.
 Errors generated from Reactors will be translated to the common Basis Theory Error format. See [Reactor Errors](#errors-reactor-errors) for more details.
 
+### React Response Object
+| Attribute | Type  | Description                                                                                           |
+|-----------|-------|-------------------------------------------------------------------------------------------------------|
+| `tokens`  | *map* | (Optional) [Token(s)](#tokens-token-object) created from the `tokenize` block of the Reactor response |
+| `raw`     | *map* | (Optional) Raw output returned from the Reactor                                                       |
 
-## Test Bank Account
+
+## Test Banks
 
 To enable testing of Atomic Banks, we've implemented a list of acceptable test bank accounts to ensure you are able to test with non-sensitive data.
 

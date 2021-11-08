@@ -45,12 +45,6 @@
 | `postal_code` | true     | *string* | `null`  | Zip or postal code                                      |
 | `country`     | true     | *string* | `null`  | Two-character ISO country code (e.g. `US`)              |
 
-### React Response Object
-| Attribute | Type  | Description                                                                                           |
-|-----------|-------|-------------------------------------------------------------------------------------------------------|
-| `tokens`  | *map* | (Optional) [Token(s)](#tokens-token-object) created from the `tokenize` block of the Reactor response |
-| `raw`     | *map* | (Optional) Raw output returned from the Reactor                                                       |
-
 
 ## Create Atomic Card
 
@@ -662,8 +656,14 @@ Create an Atomic Card Reaction by ID in the Tenant.
 
 ### Response
 
-Returns a [React Response](#react-response-object) if the Atomic Card was reacted successfully. Returns [an error](#errors) if the Atomic Card failed to react.
+Returns a [React Response](#atomic-cards-create-an-atomic-card-reaction-react-response-object) if the Atomic Card was reacted successfully. Returns [an error](#errors) if the Atomic Card failed to react.
 Errors generated from Reactors will be translated to the common Basis Theory Error format. See [Reactor Errors](#errors-reactor-errors) for more details.
+
+### React Response Object
+| Attribute | Type  | Description                                                                                           |
+|-----------|-------|-------------------------------------------------------------------------------------------------------|
+| `tokens`  | *map* | (Optional) [Token(s)](#tokens-token-object) created from the `tokenize` block of the Reactor response |
+| `raw`     | *map* | (Optional) Raw output returned from the Reactor                                                       |
 
 
 ## Test Cards
