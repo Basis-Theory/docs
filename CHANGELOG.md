@@ -1,3 +1,10 @@
+# [1.8.0](https://github.com/Basis-Theory/docs/compare/v1.7.0...v1.8.0) (2021-11-08)
+
+
+### Features
+
+* update react response and required permissions for atomic card and bank react endpoints ([#114](https://github.com/Basis-Theory/docs/issues/114)) ([d48c2cb](https://github.com/Basis-Theory/docs/commit/d48c2cb0171c46cfa92b62f0aded1d8dbc7ee7d3))
+
 # [1.7.0](https://github.com/Basis-Theory/docs/compare/v1.6.0...v1.7.0) (2021-11-03)
 
 
