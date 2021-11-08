@@ -537,7 +537,6 @@ Create an Atomic Bank Reaction by ID in the Tenant.
 
 <p class="scopes">
   <span class="scope">reactor:read</span>
-  <span class="scope">bank:create</span>
   <span class="scope">bank:read</span>
 </p>
 
