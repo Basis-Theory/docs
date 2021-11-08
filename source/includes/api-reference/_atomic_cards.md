@@ -676,19 +676,19 @@ To enable testing of Atomic Cards, we've implemented a list of acceptable test c
 
 ### Test card numbers
 
-Card | Description
----- | -----------
-4242424242424242 | Test card
-4000056655665556 | Test card
-5555555555554444 | Test card
-2223003122003222 | Test card
-5200828282828210 | Test card
-5105105105105100 | Test card
-378282246310005 | Test card
-371449635398431 | Test card
-6011111111111117 | Test card
-6011000990139424 | Test card
-3056930009020004 | Test card
-36227206271667 | Test card
-3566002020360505 | Test card
-620000000000000 | Test card
+| Card             | Description |
+|------------------|-------------|
+| 4242424242424242 | Test card   |
+| 4000056655665556 | Test card   |
+| 5555555555554444 | Test card   |
+| 2223003122003222 | Test card   |
+| 5200828282828210 | Test card   |
+| 5105105105105100 | Test card   |
+| 378282246310005  | Test card   |
+| 371449635398431  | Test card   |
+| 6011111111111117 | Test card   |
+| 6011000990139424 | Test card   |
+| 3056930009020004 | Test card   |
+| 36227206271667   | Test card   |
+| 3566002020360505 | Test card   |
+| 620000000000000  | Test card   |
