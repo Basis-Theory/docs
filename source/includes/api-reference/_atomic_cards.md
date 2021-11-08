@@ -661,59 +661,6 @@ Returns a [token](#tokens-token-object) with type of `card:reaction` if the Atom
 Errors generated from Reactors will be translated to the common Basis Theory Error format. See [Reactor Errors](#errors-reactor-errors) for more details.
 
 
-## Get an Atomic Card Reaction Token
-
-> Request
-
-```shell
-curl "https://api.basistheory.com/atomic/cards/c1e565009-1984-4638-8fca-dce8a82cc2af/reactions/6c12a05d-99e3-4454-bdb0-2e6ff88ec5b0" \
-  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED" \
-  -X "GET"
-```
-
-```javascript
-import { BasisTheory } from '@basis-theory/basis-theory-js';
-
-const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
-
-const reactionToken = await bt.atomicCards.retrieveReaction(
-  'c1e565009-1984-4638-8fca-dce8a82cc2af', '6c12a05d-99e3-4454-bdb0-2e6ff88ec5b0');
-```
-
-```csharp
-using BasisTheory.net.Atomic.Cards;
-
-var client = new AtomicCardClient("key_N88mVGsp3sCXkykyN2EFED");
-
-var reactionToken = await client.GetReactionByIdAsync(
-  "c1e565009-1984-4638-8fca-dce8a82cc2af", "6c12a05d-99e3-4454-bdb0-2e6ff88ec5b0");
-```
-
-<span class="http-method get">
-  <span class="box-method">GET</span>
-  `https://api.basistheory.com/atomic/cards/{atomicCardId}/reactions/{reactionTokenId}`
-</span>
-
-Get an Atomic Card reaction token by ID in the Tenant.
-
-### Permissions
-
-<p class="scopes">
-  <span class="scope">card:read</span>
-</p>
-
-### URI Parameters
-
-Parameter | Required | Type | Default | Description
---------- | -------- | ---- | ------- | -----------
-`atomicCardId` | true | *uuid* | `null` | The ID of the Atomic Card
-`reactionTokenId` | true | *uuid* | `null` | The ID of the reaction token
-
-### Response
-
-Returns a [token](#tokens-token-object) with type of `card:reaction`. Returns [an error](#errors) if the Atomic Card failed to react.
-
-
 ## Test Cards
 
 To enable testing of Atomic Cards, we've implemented a list of acceptable test card numbers to ensure you are able to test with non-sensitive data.  

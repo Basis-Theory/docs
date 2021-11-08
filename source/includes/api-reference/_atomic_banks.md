@@ -560,58 +560,6 @@ Returns a [token](#tokens-token-object) with type of `bank:reaction` if the Atom
 Errors generated from Reactors will be translated to the common Basis Theory Error format. See [Reactor Errors](#errors-reactor-errors) for more details.
 
 
-## Get an Atomic Bank Reaction Token
-
-> Request
-
-```shell
-curl "https://api.basistheory.com/atomic/banks/1485efb9-6b1f-4248-a5d1-cf9b3907164c/reactions/6c12a05d-99e3-4454-bdb0-2e6ff88ec5b0" \
-  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED" \
-  -X "GET"
-```
-
-```javascript
-import { BasisTheory } from '@basis-theory/basis-theory-js';
-
-const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
-
-const reactionToken = await bt.atomicBanks.retrieveReaction(
-  '1485efb9-6b1f-4248-a5d1-cf9b3907164c', '6c12a05d-99e3-4454-bdb0-2e6ff88ec5b0');
-```
-
-```csharp
-using BasisTheory.net.Atomic.Banks;
-
-var client = new AtomicBankClient("key_N88mVGsp3sCXkykyN2EFED");
-
-var reactionToken = await client.GetReactionByIdAsync(
-  "1485efb9-6b1f-4248-a5d1-cf9b3907164c", "6c12a05d-99e3-4454-bdb0-2e6ff88ec5b0");
-```
-
-<span class="http-method get">
-  <span class="box-method">GET</span>
-  `https://api.basistheory.com/atomic/banks/{atomicBankId}/reactions/{reactionTokenId}`
-</span>
-
-Get an Atomic Bank reaction token by ID in the Tenant.
-
-### Permissions
-
-<p class="scopes">
-  <span class="scope">bank:read</span>
-</p>
-
-### URI Parameters
-
-Parameter | Required | Type | Default | Description
---------- | -------- | ---- | ------- | -----------
-`atomicBankId` | true | *uuid* | `null` | The ID of the Atomic Bank
-`reactionTokenId` | true | *uuid* | `null` | The ID of the reaction token
-
-### Response
-
-Returns a [token](#tokens-token-object) with type of `bank:reaction`. Returns [an error](#errors) if the Atomic Bank failed to react.
-
 ## Test Bank Account
 
 To enable testing of Atomic Banks, we've implemented a list of acceptable test bank accounts to ensure you are able to test with non-sensitive data.
