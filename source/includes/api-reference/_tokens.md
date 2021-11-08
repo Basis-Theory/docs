@@ -6,47 +6,43 @@
 
 ## Token Object
 
-Attribute | Type | Description
---------- | ---- | -----------
-`id` | *uuid* | Unique identifier of the token which can be used to [get a token](#get-a-token)
-`tenant_id` | *uuid* | The [Tenant](#tenants-tenant-object) ID which owns the token
-`type` | *string* | [Token type](#tokens-token-types)
-`data` | *any* | Token data
-`fingerprint` | *string* | Uniquely identifies the contents of this token. Fingerprints are only available for Atomic Card and Atomic Bank token types.
-`metadata` | *map* | A key-value map of non-sensitive data.
-`encryption` | *[encryption object](#tokens-token-object-encryption-object)* | Encryption metadata for an encrypted token data value
-`children` | *array* | Array of child tokens where this token is the parent in an [association](#token-associations)
-`created_by` | *uuid* | (Optional) The [Application](#applications-application-object) ID which created the token
-`created_at` | *date* | (Optional) Created date of the token in ISO 8601 format
-`modified_by` | *uuid* | (Optional) The [Application](#applications) ID which last modified the token
-`modified_at` | *date* | (Optional) Last modified date of the token in ISO 8601 format
+| Attribute     | Type                                                          | Description                                                                                                                  |
+|---------------|---------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------|
+| `id`          | *uuid*                                                        | Unique identifier of the token which can be used to [get a token](#get-a-token)                                              |
+| `tenant_id`   | *uuid*                                                        | The [Tenant](#tenants-tenant-object) ID which owns the token                                                                 |
+| `type`        | *string*                                                      | [Token type](#tokens-token-types)                                                                                            |
+| `data`        | *any*                                                         | Token data                                                                                                                   |
+| `fingerprint` | *string*                                                      | Uniquely identifies the contents of this token. Fingerprints are only available for Atomic Card and Atomic Bank token types. |
+| `metadata`    | *map*                                                         | A key-value map of non-sensitive data.                                                                                       |
+| `encryption`  | *[encryption object](#tokens-token-object-encryption-object)* | Encryption metadata for an encrypted token data value                                                                        |
+| `children`    | *array*                                                       | Array of child tokens where this token is the parent in an [association](#token-associations)                                |
+| `created_by`  | *uuid*                                                        | (Optional) The [Application](#applications-application-object) ID which created the token                                    |
+| `created_at`  | *date*                                                        | (Optional) Created date of the token in ISO 8601 format                                                                      |
+| `modified_by` | *uuid*                                                        | (Optional) The [Application](#applications) ID which last modified the token                                                 |
+| `modified_at` | *date*                                                        | (Optional) Last modified date of the token in ISO 8601 format                                                                |
 
 ### Encryption Object
 
-Attribute | Type | Description
---------- | ---- | -----------
-`cek` | *[encryption key](#tokens-token-object-encryption-key-object)* | Content encryption key
-`kek` | *[encryption key](#tokens-token-object-encryption-key-object)* | Key encryption key
+| Attribute | Type                                                           | Description            |
+|-----------|----------------------------------------------------------------|------------------------|
+| `cek`     | *[encryption key](#tokens-token-object-encryption-key-object)* | Content encryption key |
+| `kek`     | *[encryption key](#tokens-token-object-encryption-key-object)* | Key encryption key     |
 
 ### Encryption Key Object
 
-Attribute | Type | Description
---------- | ---- | -----------
-`key` | *string* | Encryption key or key identifier
-`prov` | *string* | Optional encryption provider (e.g. AWS, AZURE, GCP, etc.)
-`alg` | *string* | Encryption algorithm (e.g. AES, RSA, etc)
-
+| Attribute | Type     | Description                                               |
+|-----------|----------|-----------------------------------------------------------|
+| `key`     | *string* | Encryption key or key identifier                          |
+| `prov`    | *string* | Optional encryption provider (e.g. AWS, AZURE, GCP, etc.) |
+| `alg`     | *string* | Encryption algorithm (e.g. AES, RSA, etc)                 |
 
 ## Token Types
 
-Name | Type | Description
----- | ---- | -----------
-Token | `token` | Generic token type
-Card | `card` | [Atomic card](#atomic-cards) token type
-Bank | `bank` | [Atomic bank](#atomic-banks) token type
-Card Reaction | `card:reaction` | This token type is the resulting token type of a reacted [Atomic card](#atomic-cards) token
-Bank Reaction | `bank:reaction` | This token type is the resulting token type of a reacted [Atomic bank](#atomic-banks) token
-
+| Name  | Type    | Description                             |
+|-------|---------|-----------------------------------------|
+| Token | `token` | Generic token type                      |
+| Card  | `card`  | [Atomic card](#atomic-cards) token type |
+| Bank  | `bank`  | [Atomic bank](#atomic-banks) token type |
 
 ## Create Token
 
@@ -173,13 +169,13 @@ Create a new token for the Tenant.
 
 ### Request Parameters
 
-Attribute | Required | Type | Default | Description
---------- | -------- | ---- | ------- | -----------
-`type` | true | *string* | `null` | [Token type](#tokens-token-types) of the token
-`data` | true | *any* | `null` | Token data. Can be an object, array, or any primitive type such as an integer, boolean, or string
-`metadata` | false | *map* | `null` | A key-value map of non-sensitive data.
-`encryption` | false | *[encryption object](#tokens-token-object-encryption-object)* | `null` | Encryption metadata for an encrypted token data value
-`children` | false | *array* | `[]` | An array of [tokens](#tokens-token-object). Can be used to bulk create tokens with [token associations](#token-associations-create-token-association)
+| Attribute    | Required | Type                                                          | Default | Description                                                                                                                                           |
+|--------------|----------|---------------------------------------------------------------|---------|-------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `type`       | true     | *string*                                                      | `null`  | [Token type](#tokens-token-types) of the token                                                                                                        |
+| `data`       | true     | *any*                                                         | `null`  | Token data. Can be an object, array, or any primitive type such as an integer, boolean, or string                                                     |
+| `metadata`   | false    | *map*                                                         | `null`  | A key-value map of non-sensitive data.                                                                                                                |
+| `encryption` | false    | *[encryption object](#tokens-token-object-encryption-object)* | `null`  | Encryption metadata for an encrypted token data value                                                                                                 |
+| `children`   | false    | *array*                                                       | `[]`    | An array of [tokens](#tokens-token-object). Can be used to bulk create tokens with [token associations](#token-associations-create-token-association) |
 
 <aside class="success">
   <span>Basis Theory recommends encrypting the <code>data</code> attribute of the token. Our recommendation is that you encrypt the data with a one-time use symmetric encryption key such as <code>AES-256</code> and then encrypt the symmetric key with an asymmetric public key such as <code>RSA</code>. Our SDK will automatically handle this for you.</span>
@@ -273,12 +269,12 @@ Get a list of tokens for the Tenant.
 
 ### Query Parameters
 
-Parameter | Required | Type | Default | Description
---------- | -------- | ---- | ------- | -----------
-`id` | false | *array* | `[]` | An optional list of token ID's to filter the list of tokens by
-`type` | false | *array* | `[]` | An optional array of [token types](#tokens-token-types) to filter the list of tokens by
-`children` | false | *boolean* | `false` | Include child tokens where the token is a parent in [token association](#token-associations)
-`children_type` | false | *array* | `[]` | An optional array of [token types](#tokens-token-types) to filter child tokens where the token is a parent in the [token association](#token-associations)
+| Parameter       | Required | Type      | Default | Description                                                                                                                                                |
+|-----------------|----------|-----------|---------|------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `id`            | false    | *array*   | `[]`    | An optional list of token ID's to filter the list of tokens by                                                                                             |
+| `type`          | false    | *array*   | `[]`    | An optional array of [token types](#tokens-token-types) to filter the list of tokens by                                                                    |
+| `children`      | false    | *boolean* | `false` | Include child tokens where the token is a parent in [token association](#token-associations)                                                               |
+| `children_type` | false    | *array*   | `[]`    | An optional array of [token types](#tokens-token-types) to filter child tokens where the token is a parent in the [token association](#token-associations) |
 
 ### Response
 
@@ -352,13 +348,13 @@ Get a list of decrypted tokens for the Tenant.
 
 ### Query Parameters
 
-Parameter | Required | Type | Default | Description
---------- | -------- | ---- | ------- | -----------
-`id` | false | *array* | `[]` | An optional list of token ID's to filter the list of tokens by
-`type` | false | *array* | `[]` | An optional array of [token types](#tokens-token-types) to filter the list of tokens by
-`children` | false | *boolean* | `false` | Include child tokens where the token is a parent in [token association](#token-associations)
-`children_type` | false | *array* | `[]` | An optional array of [token types](#tokens-token-types) to filter child tokens where the token is a parent in the [token association](#token-associations)
-`decrypt_type` | false | *array* | `[]` | An optional array of [token types](#tokens-token-types) to filter token types that should be decrypted
+| Parameter       | Required | Type      | Default | Description                                                                                                                                                |
+|-----------------|----------|-----------|---------|------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `id`            | false    | *array*   | `[]`    | An optional list of token ID's to filter the list of tokens by                                                                                             |
+| `type`          | false    | *array*   | `[]`    | An optional array of [token types](#tokens-token-types) to filter the list of tokens by                                                                    |
+| `children`      | false    | *boolean* | `false` | Include child tokens where the token is a parent in [token association](#token-associations)                                                               |
+| `children_type` | false    | *array*   | `[]`    | An optional array of [token types](#tokens-token-types) to filter child tokens where the token is a parent in the [token association](#token-associations) |
+| `decrypt_type`  | false    | *array*   | `[]`    | An optional array of [token types](#tokens-token-types) to filter token types that should be decrypted                                                     |
 
 ### Response
 
@@ -437,16 +433,16 @@ Get a token by ID in the Tenant.
 
 ### URI Parameters
 
-Parameter | Required | Type | Default | Description
---------- | -------- | ---- | ------- | -----------
-`id` | true | *uuid* | `null` | The ID of the token
+| Parameter | Required | Type   | Default | Description         |
+|-----------|----------|--------|---------|---------------------|
+| `id`      | true     | *uuid* | `null`  | The ID of the token |
 
 ### Query Parameters
 
-Parameter | Required | Type | Default | Description
---------- | -------- | ---- | ------- | -----------
-`children` | false | *boolean* | `false` | Include child tokens where the token is a parent in [token association](#token-associations)
-`children_type` | false | *array* | `[]` | An optional array of [token types](#tokens-token-types) to filter child tokens where the token is a parent in the [token association](#token-associations)
+| Parameter       | Required | Type      | Default | Description                                                                                                                                                |
+|-----------------|----------|-----------|---------|------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `children`      | false    | *boolean* | `false` | Include child tokens where the token is a parent in [token association](#token-associations)                                                               |
+| `children_type` | false    | *array*   | `[]`    | An optional array of [token types](#tokens-token-types) to filter child tokens where the token is a parent in the [token association](#token-associations) |
 
 ### Response
 
@@ -513,17 +509,17 @@ Get a decrypted token by ID in the Tenant.
 
 ### URI Parameters
 
-Parameter | Required | Type | Default | Description
---------- | -------- | ---- | ------- | -----------
-`id` | true | *uuid* | `null` | The ID of the token
+| Parameter | Required | Type   | Default | Description         |
+|-----------|----------|--------|---------|---------------------|
+| `id`      | true     | *uuid* | `null`  | The ID of the token |
 
 ### Query Parameters
 
-Parameter | Required | Type | Default | Description
---------- | -------- | ---- | ------- | -----------
-`children` | false | *boolean* | `false` | Include child tokens where the token is a parent in [token association](#token-associations)
-`children_type` | false | *array* | `[]` | An optional array of [token types](#tokens-token-types) to filter child tokens where the token is a parent in the [token association](#token-associations)
-`decrypt_type` | false | *array* | `[]` | An optional array of [token types](#tokens-token-types) to filter token types that should be decrypted
+| Parameter       | Required | Type      | Default | Description                                                                                                                                                |
+|-----------------|----------|-----------|---------|------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `children`      | false    | *boolean* | `false` | Include child tokens where the token is a parent in [token association](#token-associations)                                                               |
+| `children_type` | false    | *array*   | `[]`    | An optional array of [token types](#tokens-token-types) to filter child tokens where the token is a parent in the [token association](#token-associations) |
+| `decrypt_type`  | false    | *array*   | `[]`    | An optional array of [token types](#tokens-token-types) to filter token types that should be decrypted                                                     |
 
 ### Response
 
@@ -576,9 +572,9 @@ Delete a token by ID in the Tenant.
 
 ### URI Parameters
 
-Parameter | Required | Type | Default | Description
---------- | -------- | ---- | ------- | -----------
-`id` | true | *uuid* | `null` | The ID of the token
+| Parameter | Required | Type   | Default | Description         |
+|-----------|----------|--------|---------|---------------------|
+| `id`      | true     | *uuid* | `null`  | The ID of the token |
 
 ### Response
 

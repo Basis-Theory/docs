@@ -474,7 +474,7 @@ Decrypt an Atomic Bank by ID in the Tenant.
 Returns an [Atomic Bank](#atomic-banks-atomic-bank-object) with plaintext [bank](#atomic-banks-atomic-bank-object-bank-object) data with the `id` provided. Returns [an error](#errors) if the Atomic Bank could not be retrieved.
 
 
-## Create an Atomic Bank Reaction
+## React with an Atomic Bank
 
 > Request
 
@@ -498,7 +498,7 @@ import { BasisTheory } from '@basis-theory/basis-theory-js';
 
 const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
 
-const reactionToken = await bt.atomicBanks.react('1485efb9-6b1f-4248-a5d1-cf9b3907164c', {
+const reactResponse = await bt.atomicBanks.react('1485efb9-6b1f-4248-a5d1-cf9b3907164c', {
   reactorId: '5b493235-6917-4307-906a-2cd6f1a90b13',
   requestParameters: {
     REQUEST_PARAMETER_1: 'Some request value',
@@ -514,7 +514,7 @@ using BasisTheory.net.Atomic.Banks;
 
 var client = new AtomicBankClient("key_N88mVGsp3sCXkykyN2EFED");
 
-var reactionToken = await client.ReactAsync("1485efb9-6b1f-4248-a5d1-cf9b3907164c", 
+var reactResponse = await client.ReactAsync("1485efb9-6b1f-4248-a5d1-cf9b3907164c", 
   new ReactRequest {
     ReactorId = "5b493235-6917-4307-906a-2cd6f1a90b13",
     RequestParameters = new Dictionary<string, object> {
@@ -531,7 +531,7 @@ var reactionToken = await client.ReactAsync("1485efb9-6b1f-4248-a5d1-cf9b3907164
   `https://api.basistheory.com/atomic/banks/{id}/react`
 </span>
 
-Create an Atomic Bank Reaction by ID in the Tenant.
+React with an Atomic Bank by ID.
 
 ### Permissions
 
@@ -555,7 +555,7 @@ Create an Atomic Bank Reaction by ID in the Tenant.
 
 ### Response
 
-Returns a [React Response](#atomic-banks-create-an-atomic-bank-reaction-react-response-object) if the Atomic Bank was reacted successfully. Returns [an error](#errors) if the Atomic Bank failed to react.
+Returns a [React Response](#atomic-banks-react-with-an-atomic-bank-react-response-object) if the Atomic Bank was reacted successfully. Returns [an error](#errors) if the Atomic Bank failed to react.
 Errors generated from Reactors will be translated to the common Basis Theory Error format. See [Reactor Errors](#errors-reactor-errors) for more details.
 
 ### React Response Object
