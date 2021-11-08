@@ -457,13 +457,10 @@
                       <a href="#atomic-banks-decrypt-atomic-bank" class="toc-h2 toc-link" data-title="Decrypt Atomic Bank">Decrypt Atomic Bank</a>
                     </li>
                     <li>
-                      <a href="#atomic-banks-create-an-atomic-bank-reaction" class="toc-h2 toc-link" data-title="Create an Atomic Bank Reaction">Create an Atomic Bank Reaction</a>
+                      <a href="#atomic-banks-react-with-an-atomic-bank" class="toc-h2 toc-link" data-title="React with an Atomic Bank">React with an Atomic Bank</a>
                     </li>
                     <li>
-                      <a href="#atomic-banks-get-an-atomic-bank-reaction-token" class="toc-h2 toc-link" data-title="Get an Atomic Bank Reaction Token">Get an Atomic Bank Reaction Token</a>
-                    </li>
-                    <li>
-                      <a href="#atomic-banks-test-bank-account" class="toc-h2 toc-link" data-title="Test Bank Account">Test Bank Account</a>
+                      <a href="#atomic-banks-test-banks" class="toc-h2 toc-link" data-title="Test Banks">Test Banks</a>
                     </li>
                 </ul>
             </li>
@@ -489,10 +486,7 @@
                       <a href="#atomic-cards-delete-atomic-card" class="toc-h2 toc-link" data-title="Delete Atomic Card">Delete Atomic Card</a>
                     </li>
                     <li>
-                      <a href="#atomic-cards-create-an-atomic-card-reaction" class="toc-h2 toc-link" data-title="Create an Atomic Card Reaction">Create an Atomic Card Reaction</a>
-                    </li>
-                    <li>
-                      <a href="#atomic-cards-get-an-atomic-card-reaction-token" class="toc-h2 toc-link" data-title="Get an Atomic Card Reaction Token">Get an Atomic Card Reaction Token</a>
+                      <a href="#atomic-cards-react-with-an-atomic-card" class="toc-h2 toc-link" data-title="React with an Atomic Card">React with an Atomic Card</a>
                     </li>
                     <li>
                       <a href="#atomic-cards-test-cards" class="toc-h2 toc-link" data-title="Test Cards">Test Cards</a>
@@ -2182,7 +2176,7 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
 </tbody></table>
 <h3 id='atomic-banks-decrypt-atomic-bank-response'>Response</h3>
 <p>Returns an <a href="#atomic-banks-atomic-bank-object">Atomic Bank</a> with plaintext <a href="#atomic-banks-atomic-bank-object-bank-object">bank</a> data with the <code>id</code> provided. Returns <a href="#errors">an error</a> if the Atomic Bank could not be retrieved.</p>
-<h2 id='atomic-banks-create-an-atomic-bank-reaction'>Create an Atomic Bank Reaction</h2>
+<h2 id='atomic-banks-react-with-an-atomic-bank'>React with an Atomic Bank</h2>
 <blockquote>
 <p>Request</p>
 </blockquote>
@@ -2202,7 +2196,7 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
 
 <span class="kd">const</span> <span class="nx">bt</span> <span class="o">=</span> <span class="k">await</span> <span class="k">new</span> <span class="nx">BasisTheory</span><span class="p">().</span><span class="nx">init</span><span class="p">(</span><span class="dl">'</span><span class="s1">key_N88mVGsp3sCXkykyN2EFED</span><span class="dl">'</span><span class="p">);</span>
 
-<span class="kd">const</span> <span class="nx">reactionToken</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">bt</span><span class="p">.</span><span class="nx">atomicBanks</span><span class="p">.</span><span class="nx">react</span><span class="p">(</span><span class="dl">'</span><span class="s1">1485efb9-6b1f-4248-a5d1-cf9b3907164c</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+<span class="kd">const</span> <span class="nx">reactResponse</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">bt</span><span class="p">.</span><span class="nx">atomicBanks</span><span class="p">.</span><span class="nx">react</span><span class="p">(</span><span class="dl">'</span><span class="s1">1485efb9-6b1f-4248-a5d1-cf9b3907164c</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">reactorId</span><span class="p">:</span> <span class="dl">'</span><span class="s1">5b493235-6917-4307-906a-2cd6f1a90b13</span><span class="dl">'</span><span class="p">,</span>
   <span class="na">requestParameters</span><span class="p">:</span> <span class="p">{</span>
     <span class="na">REQUEST_PARAMETER_1</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Some request value</span><span class="dl">'</span><span class="p">,</span>
@@ -2215,7 +2209,7 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
 
 <span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">AtomicBankClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
 
-<span class="kt">var</span> <span class="n">reactionToken</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">ReactAsync</span><span class="p">(</span><span class="s">"1485efb9-6b1f-4248-a5d1-cf9b3907164c"</span><span class="p">,</span> 
+<span class="kt">var</span> <span class="n">reactResponse</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">ReactAsync</span><span class="p">(</span><span class="s">"1485efb9-6b1f-4248-a5d1-cf9b3907164c"</span><span class="p">,</span> 
   <span class="k">new</span> <span class="n">ReactRequest</span> <span class="p">{</span>
     <span class="n">ReactorId</span> <span class="p">=</span> <span class="s">"5b493235-6917-4307-906a-2cd6f1a90b13"</span><span class="p">,</span>
     <span class="n">RequestParameters</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="kt">object</span><span class="p">&gt;</span> <span class="p">{</span>
@@ -2231,14 +2225,13 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
   <code>https://api.basistheory.com/atomic/banks/{id}/react</code>
 </span></p>
 
-<p>Create an Atomic Bank Reaction by ID in the Tenant.</p>
-<h3 id='atomic-banks-create-an-atomic-bank-reaction-permissions'>Permissions</h3>
+<p>React with an Atomic Bank by ID.</p>
+<h3 id='atomic-banks-react-with-an-atomic-bank-permissions'>Permissions</h3>
 <p class="scopes">
   <span class="scope">reactor:read</span>
-  <span class="scope">bank:create</span>
   <span class="scope">bank:read</span>
 </p>
-<h3 id='atomic-banks-create-an-atomic-bank-reaction-uri-parameters'>URI Parameters</h3>
+<h3 id='atomic-banks-react-with-an-atomic-bank-uri-parameters'>URI Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -2256,7 +2249,7 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
 <td>The ID of the Atomic Bank</td>
 </tr>
 </tbody></table>
-<h3 id='atomic-banks-create-an-atomic-bank-reaction-request-parameters'>Request Parameters</h3>
+<h3 id='atomic-banks-react-with-an-atomic-bank-request-parameters'>Request Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -2288,69 +2281,31 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
 <td>A key-value map of non-sensitive data. We overwrite the following keys: <code>correlation_id</code>, <code>reactor_id</code>, <code>reactor_name</code>, <code>source_token_id</code>, and <code>source_token_type</code></td>
 </tr>
 </tbody></table>
-<h3 id='atomic-banks-create-an-atomic-bank-reaction-response'>Response</h3>
-<p>Returns a <a href="#tokens-token-object">token</a> with type of <code>bank:reaction</code> if the Atomic Bank was reacted. Returns <a href="#errors">an error</a> if the Atomic Bank failed to react.
+<h3 id='atomic-banks-react-with-an-atomic-bank-response'>Response</h3>
+<p>Returns a <a href="#atomic-banks-react-with-an-atomic-bank-react-response-object">React Response</a> if the Atomic Bank was reacted successfully. Returns <a href="#errors">an error</a> if the Atomic Bank failed to react.
 Errors generated from Reactors will be translated to the common Basis Theory Error format. See <a href="#errors-reactor-errors">Reactor Errors</a> for more details.</p>
-<h2 id='atomic-banks-get-an-atomic-bank-reaction-token'>Get an Atomic Bank Reaction Token</h2>
-<blockquote>
-<p>Request</p>
-</blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/atomic/banks/1485efb9-6b1f-4248-a5d1-cf9b3907164c/reactions/6c12a05d-99e3-4454-bdb0-2e6ff88ec5b0"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span> <span class="se">\</span>
-  <span class="nt">-X</span> <span class="s2">"GET"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">BasisTheory</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@basis-theory/basis-theory-js</span><span class="dl">'</span><span class="p">;</span>
-
-<span class="kd">const</span> <span class="nx">bt</span> <span class="o">=</span> <span class="k">await</span> <span class="k">new</span> <span class="nx">BasisTheory</span><span class="p">().</span><span class="nx">init</span><span class="p">(</span><span class="dl">'</span><span class="s1">key_N88mVGsp3sCXkykyN2EFED</span><span class="dl">'</span><span class="p">);</span>
-
-<span class="kd">const</span> <span class="nx">reactionToken</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">bt</span><span class="p">.</span><span class="nx">atomicBanks</span><span class="p">.</span><span class="nx">retrieveReaction</span><span class="p">(</span>
-  <span class="dl">'</span><span class="s1">1485efb9-6b1f-4248-a5d1-cf9b3907164c</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">6c12a05d-99e3-4454-bdb0-2e6ff88ec5b0</span><span class="dl">'</span><span class="p">);</span>
-</code></pre></div><div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="k">using</span> <span class="nn">BasisTheory.net.Atomic.Banks</span><span class="p">;</span>
-
-<span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">AtomicBankClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
-
-<span class="kt">var</span> <span class="n">reactionToken</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">GetReactionByIdAsync</span><span class="p">(</span>
-  <span class="s">"1485efb9-6b1f-4248-a5d1-cf9b3907164c"</span><span class="p">,</span> <span class="s">"6c12a05d-99e3-4454-bdb0-2e6ff88ec5b0"</span><span class="p">);</span>
-</code></pre></div>
-<p><span class="http-method get">
-  <span class="box-method">GET</span>
-  <code>https://api.basistheory.com/atomic/banks/{atomicBankId}/reactions/{reactionTokenId}</code>
-</span></p>
-
-<p>Get an Atomic Bank reaction token by ID in the Tenant.</p>
-<h3 id='atomic-banks-get-an-atomic-bank-reaction-token-permissions'>Permissions</h3>
-<p class="scopes">
-  <span class="scope">bank:read</span>
-</p>
-<h3 id='atomic-banks-get-an-atomic-bank-reaction-token-uri-parameters'>URI Parameters</h3>
+<h3 id='atomic-banks-react-with-an-atomic-bank-react-response-object'>React Response Object</h3>
 <table><thead>
 <tr>
-<th>Parameter</th>
-<th>Required</th>
+<th>Attribute</th>
 <th>Type</th>
-<th>Default</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td><code>atomicBankId</code></td>
-<td>true</td>
-<td><em>uuid</em></td>
-<td><code>null</code></td>
-<td>The ID of the Atomic Bank</td>
+<td><code>tokens</code></td>
+<td><em>map</em></td>
+<td>(Optional) <a href="#tokens-token-object">Token(s)</a> created from the <code>tokenize</code> block of the Reactor response</td>
 </tr>
 <tr>
-<td><code>reactionTokenId</code></td>
-<td>true</td>
-<td><em>uuid</em></td>
-<td><code>null</code></td>
-<td>The ID of the reaction token</td>
+<td><code>raw</code></td>
+<td><em>map</em></td>
+<td>(Optional) Raw output returned from the Reactor</td>
 </tr>
 </tbody></table>
-<h3 id='atomic-banks-get-an-atomic-bank-reaction-token-response'>Response</h3>
-<p>Returns a <a href="#tokens-token-object">token</a> with type of <code>bank:reaction</code>. Returns <a href="#errors">an error</a> if the Atomic Bank failed to react.</p>
-<h2 id='atomic-banks-test-bank-account'>Test Bank Account</h2>
+<h2 id='atomic-banks-test-banks'>Test Banks</h2>
 <p>To enable testing of Atomic Banks, we&#39;ve implemented a list of acceptable test bank accounts to ensure you are able to test with non-sensitive data.</p>
-<h3 id='atomic-banks-test-bank-account-test-bank-accounts'>Test bank accounts</h3>
+<h3 id='atomic-banks-test-banks-test-bank-accounts'>Test bank accounts</h3>
 <table><thead>
 <tr>
 <th>Routing Number</th>
@@ -3080,7 +3035,7 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
 </tbody></table>
 <h3 id='atomic-cards-delete-atomic-card-response'>Response</h3>
 <p>Returns <a href="#errors">an error</a> if the Atomic Card failed to delete.</p>
-<h2 id='atomic-cards-create-an-atomic-card-reaction'>Create an Atomic Card Reaction</h2>
+<h2 id='atomic-cards-react-with-an-atomic-card'>React with an Atomic Card</h2>
 <blockquote>
 <p>Request</p>
 </blockquote>
@@ -3100,7 +3055,7 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
 
 <span class="kd">const</span> <span class="nx">bt</span> <span class="o">=</span> <span class="k">await</span> <span class="k">new</span> <span class="nx">BasisTheory</span><span class="p">().</span><span class="nx">init</span><span class="p">(</span><span class="dl">'</span><span class="s1">key_N88mVGsp3sCXkykyN2EFED</span><span class="dl">'</span><span class="p">);</span>
 
-<span class="kd">const</span> <span class="nx">reactionToken</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">bt</span><span class="p">.</span><span class="nx">atomicCards</span><span class="p">.</span><span class="nx">react</span><span class="p">(</span><span class="dl">'</span><span class="s1">c1e565009-1984-4638-8fca-dce8a82cc2af</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+<span class="kd">const</span> <span class="nx">reactResponse</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">bt</span><span class="p">.</span><span class="nx">atomicCards</span><span class="p">.</span><span class="nx">react</span><span class="p">(</span><span class="dl">'</span><span class="s1">c1e565009-1984-4638-8fca-dce8a82cc2af</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">reactorId</span><span class="p">:</span> <span class="dl">'</span><span class="s1">5b493235-6917-4307-906a-2cd6f1a90b13</span><span class="dl">'</span><span class="p">,</span>
   <span class="na">requestParameters</span><span class="p">:</span> <span class="p">{</span>
     <span class="na">REQUEST_PARAMETER_1</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Some request value</span><span class="dl">'</span><span class="p">,</span>
@@ -3113,7 +3068,7 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
 
 <span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">AtomicCardClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
 
-<span class="kt">var</span> <span class="n">reactionToken</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">ReactAsync</span><span class="p">(</span><span class="s">"c1e565009-1984-4638-8fca-dce8a82cc2af"</span><span class="p">,</span> 
+<span class="kt">var</span> <span class="n">reactResponse</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">ReactAsync</span><span class="p">(</span><span class="s">"c1e565009-1984-4638-8fca-dce8a82cc2af"</span><span class="p">,</span> 
   <span class="k">new</span> <span class="n">ReactRequest</span> <span class="p">{</span>
     <span class="n">ReactorId</span> <span class="p">=</span> <span class="s">"5b493235-6917-4307-906a-2cd6f1a90b13"</span><span class="p">,</span>
     <span class="n">RequestParameters</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="kt">object</span><span class="p">&gt;</span> <span class="p">{</span>
@@ -3129,14 +3084,13 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
   <code>https://api.basistheory.com/atomic/cards/{id}/react</code>
 </span></p>
 
-<p>Create an Atomic Card Reaction by ID in the Tenant.</p>
-<h3 id='atomic-cards-create-an-atomic-card-reaction-permissions'>Permissions</h3>
+<p>React with an Atomic Card by ID.</p>
+<h3 id='atomic-cards-react-with-an-atomic-card-permissions'>Permissions</h3>
 <p class="scopes">
   <span class="scope">reactor:read</span>
-  <span class="scope">card:create</span>
   <span class="scope">card:read</span>
 </p>
-<h3 id='atomic-cards-create-an-atomic-card-reaction-uri-parameters'>URI Parameters</h3>
+<h3 id='atomic-cards-react-with-an-atomic-card-uri-parameters'>URI Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -3154,7 +3108,7 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
 <td>The ID of the Atomic Card</td>
 </tr>
 </tbody></table>
-<h3 id='atomic-cards-create-an-atomic-card-reaction-request-parameters'>Request Parameters</h3>
+<h3 id='atomic-cards-react-with-an-atomic-card-request-parameters'>Request Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -3186,66 +3140,28 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
 <td>A key-value map of non-sensitive data. We overwrite the following keys: <code>correlation_id</code>, <code>reactor_id</code>, <code>reactor_name</code>, <code>source_token_id</code>, and <code>source_token_type</code></td>
 </tr>
 </tbody></table>
-<h3 id='atomic-cards-create-an-atomic-card-reaction-response'>Response</h3>
-<p>Returns a <a href="#tokens-token-object">token</a> with type of <code>card:reaction</code> if the Atomic Card was reacted. Returns <a href="#errors">an error</a> if the Atomic Card failed to react.
+<h3 id='atomic-cards-react-with-an-atomic-card-response'>Response</h3>
+<p>Returns a <a href="#atomic-cards-react-with-an-atomic-card-react-response-object">React Response</a> if the Atomic Card was reacted successfully. Returns <a href="#errors">an error</a> if the Atomic Card failed to react.
 Errors generated from Reactors will be translated to the common Basis Theory Error format. See <a href="#errors-reactor-errors">Reactor Errors</a> for more details.</p>
-<h2 id='atomic-cards-get-an-atomic-card-reaction-token'>Get an Atomic Card Reaction Token</h2>
-<blockquote>
-<p>Request</p>
-</blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/atomic/cards/c1e565009-1984-4638-8fca-dce8a82cc2af/reactions/6c12a05d-99e3-4454-bdb0-2e6ff88ec5b0"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span> <span class="se">\</span>
-  <span class="nt">-X</span> <span class="s2">"GET"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">BasisTheory</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@basis-theory/basis-theory-js</span><span class="dl">'</span><span class="p">;</span>
-
-<span class="kd">const</span> <span class="nx">bt</span> <span class="o">=</span> <span class="k">await</span> <span class="k">new</span> <span class="nx">BasisTheory</span><span class="p">().</span><span class="nx">init</span><span class="p">(</span><span class="dl">'</span><span class="s1">key_N88mVGsp3sCXkykyN2EFED</span><span class="dl">'</span><span class="p">);</span>
-
-<span class="kd">const</span> <span class="nx">reactionToken</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">bt</span><span class="p">.</span><span class="nx">atomicCards</span><span class="p">.</span><span class="nx">retrieveReaction</span><span class="p">(</span>
-  <span class="dl">'</span><span class="s1">c1e565009-1984-4638-8fca-dce8a82cc2af</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">6c12a05d-99e3-4454-bdb0-2e6ff88ec5b0</span><span class="dl">'</span><span class="p">);</span>
-</code></pre></div><div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="k">using</span> <span class="nn">BasisTheory.net.Atomic.Cards</span><span class="p">;</span>
-
-<span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">AtomicCardClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
-
-<span class="kt">var</span> <span class="n">reactionToken</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">GetReactionByIdAsync</span><span class="p">(</span>
-  <span class="s">"c1e565009-1984-4638-8fca-dce8a82cc2af"</span><span class="p">,</span> <span class="s">"6c12a05d-99e3-4454-bdb0-2e6ff88ec5b0"</span><span class="p">);</span>
-</code></pre></div>
-<p><span class="http-method get">
-  <span class="box-method">GET</span>
-  <code>https://api.basistheory.com/atomic/cards/{atomicCardId}/reactions/{reactionTokenId}</code>
-</span></p>
-
-<p>Get an Atomic Card reaction token by ID in the Tenant.</p>
-<h3 id='atomic-cards-get-an-atomic-card-reaction-token-permissions'>Permissions</h3>
-<p class="scopes">
-  <span class="scope">card:read</span>
-</p>
-<h3 id='atomic-cards-get-an-atomic-card-reaction-token-uri-parameters'>URI Parameters</h3>
+<h3 id='atomic-cards-react-with-an-atomic-card-react-response-object'>React Response Object</h3>
 <table><thead>
 <tr>
-<th>Parameter</th>
-<th>Required</th>
+<th>Attribute</th>
 <th>Type</th>
-<th>Default</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td><code>atomicCardId</code></td>
-<td>true</td>
-<td><em>uuid</em></td>
-<td><code>null</code></td>
-<td>The ID of the Atomic Card</td>
+<td><code>tokens</code></td>
+<td><em>map</em></td>
+<td>(Optional) <a href="#tokens-token-object">Token(s)</a> created from the <code>tokenize</code> block of the Reactor response</td>
 </tr>
 <tr>
-<td><code>reactionTokenId</code></td>
-<td>true</td>
-<td><em>uuid</em></td>
-<td><code>null</code></td>
-<td>The ID of the reaction token</td>
+<td><code>raw</code></td>
+<td><em>map</em></td>
+<td>(Optional) Raw output returned from the Reactor</td>
 </tr>
 </tbody></table>
-<h3 id='atomic-cards-get-an-atomic-card-reaction-token-response'>Response</h3>
-<p>Returns a <a href="#tokens-token-object">token</a> with type of <code>card:reaction</code>. Returns <a href="#errors">an error</a> if the Atomic Card failed to react.</p>
 <h2 id='atomic-cards-test-cards'>Test Cards</h2>
 <p>To enable testing of Atomic Cards, we&#39;ve implemented a list of acceptable test card numbers to ensure you are able to test with non-sensitive data.  </p>
 
@@ -5522,16 +5438,6 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
 <td>Bank</td>
 <td><code>bank</code></td>
 <td><a href="#atomic-banks">Atomic bank</a> token type</td>
-</tr>
-<tr>
-<td>Card Reaction</td>
-<td><code>card:reaction</code></td>
-<td>This token type is the resulting token type of a reacted <a href="#atomic-cards">Atomic card</a> token</td>
-</tr>
-<tr>
-<td>Bank Reaction</td>
-<td><code>bank:reaction</code></td>
-<td>This token type is the resulting token type of a reacted <a href="#atomic-banks">Atomic bank</a> token</td>
 </tr>
 </tbody></table>
 <h2 id='tokens-create-token'>Create Token</h2>
