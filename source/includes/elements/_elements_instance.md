@@ -10,6 +10,8 @@ After [initialization](#initialize), **Elements** are available through `BasisTh
 
 ```jsx
 var cardElement = BasisTheory.elements.create('card', options);
+
+var textElement = BasisTheory.elements.create('text', { targetId: 'myInputId' });
 ```
 
 This method returns a new instance of an element type.
@@ -30,7 +32,7 @@ CreateElementOptions provide a quick way to customize an Element before mounting
 Attribute | Required | Type           | Description
 --------- | -------- | -------------- | -----------
 `style`   | false    | *ElementStyle* | [Object](#element-style) used to customize the element appearance
-
+`targetId`| true     | *string*       | **Only** for [TextElement](#element-types-text-element)
 ## Mount Element
 
 ```jsx
