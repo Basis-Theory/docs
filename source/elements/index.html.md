@@ -29,7 +29,7 @@ api_includes:
   - elements/elements_instance
   - elements/element_events
   - elements/element_style
-  - elements/store_credit_card
+  - elements/elements_services
 
 aux_links:
   - <a class="toc-h2 toc-link" href="https://discord.gg/NSvXxaW5Fv" target="_blank">Join Discord</a>
