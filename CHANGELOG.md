@@ -1,3 +1,10 @@
+# [1.9.0](https://github.com/Basis-Theory/docs/compare/v1.8.0...v1.9.0) (2021-11-18)
+
+
+### Features
+
+* docs for creating Atomic Banks with Elements ([#116](https://github.com/Basis-Theory/docs/issues/116)) ([179b5d5](https://github.com/Basis-Theory/docs/commit/179b5d5ededddf22a8b146240ae4a4336efb2330))
+
 # [1.8.0](https://github.com/Basis-Theory/docs/compare/v1.7.0...v1.8.0) (2021-11-08)
 
 
