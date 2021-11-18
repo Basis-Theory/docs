@@ -65,16 +65,7 @@ You can fetch this same data later with [Get an Atomic Bank API](/api-reference#
 </aside>
 
 <aside class="warning">
-  <div>
-    <span>Note that when submitting <code>plainText</code> values, the following characters will be encoded before storage for security:</span>
-    <ul>
-      <li><code><</code> is encoded as <code>&amp;lt;</code></li>
-      <li><code>></code> is encoded as <code>&amp;gt;</code></li>
-      <li><code>&</code> is encoded as <code>&amp;amp;</code></li>
-      <li><code>"</code> is encoded as <code>&amp;quot;</code></li>
-      <li><code>'</code> is encoded as <code>&amp;apos;</code></li>
-    </ul>
-  </div>
+  <span>Note that when submitting <code>plainText</code> values, data will be HTML encoded before storage for security reasons.
 </aside>
 
 ### atomicBank Errors
