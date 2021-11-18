@@ -394,6 +394,9 @@
                     <li>
                       <a href="#element-types-card-element" class="toc-h2 toc-link" data-title="Card Element">Card Element</a>
                     </li>
+                    <li>
+                      <a href="#element-types-text-element" class="toc-h2 toc-link" data-title="Text Element">Text Element</a>
+                    </li>
                 </ul>
             </li>
             <li>
@@ -440,10 +443,13 @@
               <a href="#element-style" class="toc-h1 toc-link" data-title="Element Style">Element Style</a>
             </li>
             <li>
-              <a href="#store-credit-card" class="toc-h1 toc-link" data-title="Store Credit Card">Store Credit Card</a>
+              <a href="#elements-services" class="toc-h1 toc-link" data-title="Elements Services">Elements Services</a>
                 <ul class="toc-list-h2">
                     <li>
-                      <a href="#store-credit-card-storecreditcard-errors" class="toc-h2 toc-link" data-title="storeCreditCard Errors">storeCreditCard Errors</a>
+                      <a href="#elements-services-store-credit-card" class="toc-h2 toc-link" data-title="Store Credit Card">Store Credit Card</a>
+                    </li>
+                    <li>
+                      <a href="#elements-services-atomic-banks" class="toc-h2 toc-link" data-title="Atomic Banks">Atomic Banks</a>
                     </li>
                 </ul>
             </li>
@@ -678,12 +684,16 @@
 <li><em>expirationDate</em></li>
 <li><em>cvc</em></li>
 </ul>
+<h2 id='element-types-text-element'>Text Element</h2>
+<p>The <code>&quot;text&quot;</code> element type features a regular text input for collecting any input data.</p>
 
 <!-- Add codesandbox credit card example here -->
 <h1 id='elements-instance'>Elements Instance</h1><div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">elements</span>
 </code></pre></div>
 <p>After <a href="#initialize">initialization</a>, <strong>Elements</strong> are available through <code>BasisTheory</code> instance.</p>
 <h2 id='elements-instance-create-element'>Create Element</h2><div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="kd">var</span> <span class="nx">cardElement</span> <span class="o">=</span> <span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">elements</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="dl">'</span><span class="s1">card</span><span class="dl">'</span><span class="p">,</span> <span class="nx">options</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">textElement</span> <span class="o">=</span> <span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">elements</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="dl">'</span><span class="s1">text</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span> <span class="na">targetId</span><span class="p">:</span> <span class="dl">'</span><span class="s1">myInputId</span><span class="dl">'</span> <span class="p">});</span>
 </code></pre></div>
 <p>This method returns a new instance of an element type.</p>
 
@@ -728,6 +738,12 @@
 <td>false</td>
 <td><em>ElementStyle</em></td>
 <td><a href="#element-style">Object</a> used to customize the element appearance</td>
+</tr>
+<tr>
+<td><code>targetId</code></td>
+<td>true</td>
+<td><em>string</em></td>
+<td><strong>Only</strong> for <a href="#element-types-text-element">TextElement</a></td>
 </tr>
 </tbody></table>
 <h2 id='elements-instance-mount-element'>Mount Element</h2><div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="p">=</span><span class="s">"my-card"</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
@@ -1179,7 +1195,7 @@
 <aside class="warning">
   <span>For security reasons, we currently support only the 1000+ Google Fonts families. If you need a custom font in your <strong>Basis Theory Elements</strong>, don't hesitate to <a href="mailto:support@basistheory.com">reach out</a>.</span>
 </aside>
-<h1 id='store-credit-card'>Store Credit Card</h1><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">elements</span><span class="p">.</span><span class="nx">storeCreditCard</span><span class="p">({</span>
+<h1 id='elements-services'>Elements Services</h1><h2 id='elements-services-store-credit-card'>Store Credit Card</h2><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">elements</span><span class="p">.</span><span class="nx">storeCreditCard</span><span class="p">({</span>
   <span class="na">card</span><span class="p">:</span> <span class="nx">cardElement</span><span class="p">,</span>
   <span class="na">billingDetails</span><span class="p">:</span> <span class="p">{</span>
     <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Fiona Theory</span><span class="dl">'</span>  
@@ -1189,7 +1205,7 @@
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">token</span><span class="p">.</span><span class="nx">card</span><span class="p">));</span> <span class="c1">// redacted card data</span>
 <span class="p">});</span>
 </code></pre></div>
-<p>Allows secure submission and tokenization of a card element. Returns a <code>Promise</code> that resoles to the tokenized card data. See <a href="#element-types-card-element">CardModel</a> for the resolved value type.</p>
+<p>Allows secure submission and tokenization of a card element. Returns a <code>Promise</code> that resolves to the tokenized card data. See <a href="#element-types-card-element">CardModel</a> for the resolved value type.</p>
 
 <p>Internally, <code>BasisTheory.elements.storeCreditCard</code> calls <a href="/api-reference/#atomic-cards-create-atomic-card">Create Atomic Card API</a>.</p>
 
@@ -1198,11 +1214,67 @@
 <aside class="notice">
   <span>Notice that the actual card data never leaves the element (iframe) other than to hit our secure API endpoints.</span>
 </aside>
-<h2 id='store-credit-card-storecreditcard-errors'>storeCreditCard Errors</h2><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">elements</span><span class="p">.</span><span class="nx">storeCreditCard</span><span class="p">(...).</span><span class="k">catch</span><span class="p">(</span><span class="nx">error</span> <span class="o">=&gt;</span> <span class="p">{</span>
+<h3 id='elements-services-store-credit-card-storecreditcard-errors'>storeCreditCard Errors</h3><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">elements</span><span class="p">.</span><span class="nx">storeCreditCard</span><span class="p">(...).</span><span class="k">catch</span><span class="p">(</span><span class="nx">error</span> <span class="o">=&gt;</span> <span class="p">{</span>
   <span class="c1">// handle error</span>
 <span class="p">});</span>
 </code></pre></div>
 <p>In case <code>storeCreditCard</code> throws an error, that could be related to client-side validation or an unaccepted request from the server.</p>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Scope</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>validation</code></td>
+<td><em>array</em></td>
+<td>client</td>
+<td>Array of <a href="#element-events-on-change-fielderror">FieldError</a>, in case of client-side error.</td>
+</tr>
+<tr>
+<td><code>data</code></td>
+<td><em>object</em></td>
+<td>server</td>
+<td>Response body sent from the server.</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td><em>number</em></td>
+<td>both</td>
+<td>Response HTTP status or <code>-1</code> if the request never left the client (i.e. connection issues)</td>
+</tr>
+</tbody></table>
+<h2 id='elements-services-atomic-banks'>Atomic Banks</h2><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">elements</span><span class="p">.</span><span class="nx">atomicBank</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
+  <span class="na">bank</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">routingNumber</span><span class="p">:</span> <span class="nx">routingNumberElement</span> <span class="o">|</span> <span class="dl">'</span><span class="s1">plainText</span><span class="dl">'</span><span class="p">,</span>  <span class="c1">// values can be either a TextElement or plain text (see warning).</span>
+    <span class="na">accountNumber</span><span class="p">:</span> <span class="nx">accountNumberElement</span> <span class="o">|</span> <span class="dl">'</span><span class="s1">plainText</span><span class="dl">'</span><span class="p">,</span>
+  <span class="p">},</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">((</span><span class="nx">token</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">token</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span> <span class="c1">// token to store</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">token</span><span class="p">.</span><span class="nx">bank</span><span class="p">));</span> <span class="c1">// redacted bank data</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>Allows secure submission and tokenization of a bank element. Returns a <code>Promise</code> that resolves to the tokenized bank data.</p>
+
+<p>Internally, <code>BasisTheory.elements.atomicBanks.create</code> calls <a href="/api-reference#atomic-banks-create-atomic-bank">Create Atomic Bank API</a>.</p>
+
+<p>You can fetch this same data later with <a href="/api-reference#atomic-banks-get-an-atomic-bank">Get an Atomic Bank API</a>.</p>
+
+<aside class="notice">
+  <span>Notice that the actual bank data never leaves the element (iframe) other than to hit our secure API endpoints.</span>
+</aside>
+
+<aside class="warning">
+  <span>Note that when submitting <code>plainText</code> values, data will be HTML encoded before storage for security reasons.
+</aside>
+<h3 id='elements-services-atomic-banks-atomicbank-errors'>atomicBank Errors</h3><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">elements</span><span class="p">.</span><span class="nx">atomicBank</span><span class="p">.</span><span class="nx">create</span><span class="p">(...).</span><span class="k">catch</span><span class="p">(</span><span class="nx">error</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="c1">// handle error</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>In case <code>atomicBank.create</code> throws an error, that could be related to client-side validation or an unaccepted request from the server.</p>
 
 <table><thead>
 <tr>
