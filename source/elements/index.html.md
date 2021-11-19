@@ -29,6 +29,7 @@ api_includes:
   - elements/elements_instance
   - elements/element_events
   - elements/element_style
+  - elements/element_mask
   - elements/elements_services
 
 aux_links:
