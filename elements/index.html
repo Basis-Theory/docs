@@ -443,6 +443,9 @@
               <a href="#element-style" class="toc-h1 toc-link" data-title="Element Style">Element Style</a>
             </li>
             <li>
+              <a href="#element-mask" class="toc-h1 toc-link" data-title="Element Mask">Element Mask</a>
+            </li>
+            <li>
               <a href="#elements-services" class="toc-h1 toc-link" data-title="Elements Services">Elements Services</a>
                 <ul class="toc-list-h2">
                     <li>
@@ -730,6 +733,7 @@
 <th>Attribute</th>
 <th>Required</th>
 <th>Type</th>
+<th>Eligible Elements</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -737,13 +741,22 @@
 <td><code>style</code></td>
 <td>false</td>
 <td><em>ElementStyle</em></td>
+<td>All</td>
 <td><a href="#element-style">Object</a> used to customize the element appearance</td>
 </tr>
 <tr>
 <td><code>targetId</code></td>
 <td>true</td>
 <td><em>string</em></td>
-<td><strong>Only</strong> for <a href="#element-types-text-element">TextElement</a></td>
+<td><a href="#element-types-text-element">TextElement</a></td>
+<td>String used to identify your element</td>
+</tr>
+<tr>
+<td><code>mask</code></td>
+<td>false</td>
+<td><em>ElementMask</em></td>
+<td><a href="#element-types-text-element">TextElement</a></td>
+<td><a href="#element-mask">Array</a> used to restrict and fill user input using regex and static strings</td>
 </tr>
 </tbody></table>
 <h2 id='elements-instance-mount-element'>Mount Element</h2><div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="p">=</span><span class="s">"my-card"</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
@@ -1194,6 +1207,35 @@
 
 <aside class="warning">
   <span>For security reasons, we currently support only the 1000+ Google Fonts families. If you need a custom font in your <strong>Basis Theory Elements</strong>, don't hesitate to <a href="mailto:support@basistheory.com">reach out</a>.</span>
+</aside>
+<h1 id='element-mask'>Element Mask</h1><div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="kd">var</span> <span class="nx">phoneNumberElement</span> <span class="o">=</span> <span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">elements</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="dl">'</span><span class="s1">text</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">targetId</span><span class="p">:</span> <span class="dl">'</span><span class="s1">myPhoneNumberElement</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">mask</span><span class="p">:</span> <span class="p">[</span><span class="dl">'</span><span class="s1">(</span><span class="dl">'</span><span class="p">,</span> <span class="sr">/</span><span class="se">\d</span><span class="sr">/</span><span class="p">,</span> <span class="sr">/</span><span class="se">\d</span><span class="sr">/</span><span class="p">,</span> <span class="sr">/</span><span class="se">\d</span><span class="sr">/</span><span class="p">,</span> <span class="dl">'</span><span class="s1">)</span><span class="dl">'</span><span class="p">,</span> <span class="sr">/</span><span class="se">\d</span><span class="sr">/</span><span class="p">,</span> <span class="sr">/</span><span class="se">\d</span><span class="sr">/</span><span class="p">,</span> <span class="sr">/</span><span class="se">\d</span><span class="sr">/</span><span class="p">,</span> <span class="dl">'</span><span class="s1">-</span><span class="dl">'</span><span class="p">,</span> <span class="sr">/</span><span class="se">\d</span><span class="sr">/</span><span class="p">,</span> <span class="sr">/</span><span class="se">\d</span><span class="sr">/</span><span class="p">,</span> <span class="sr">/</span><span class="se">\d</span><span class="sr">/</span><span class="p">,</span> <span class="sr">/</span><span class="se">\d</span><span class="sr">/</span><span class="p">]</span>
+<span class="p">})</span>
+</code></pre></div>
+<p>Text elements can restrict and fill user input by using the <code>mask</code> attribute. It consists of an array of <code>RegExp</code>
+objects and strings, used to restrict and fill input, respectively. The position of each item in the mask array
+corresponds to the restriction or fill used for that input&#39;s position. The length of the array determines how long an
+input is allowed to be. For example, the mask for a US based phone number shown on the right will have the following
+rules:</p>
+
+<ul>
+<li>The input must be at most 13 characters long</li>
+<li>Only digits are allowed in the 2-4, 6-8, 10-13 positions</li>
+<li>&#39;(&#39; will be filled in the 1 position </li>
+<li>&#39;)&#39; will be filled in the 5 position</li>
+<li>&#39;-&#39; will be filled in the 8 position</li>
+</ul>
+
+<p>The mask will be displayed as the user is typing, and will be used as the value for any <a href="#elements-services">services</a>
+used with that text element.</p>
+
+<aside class="notice">
+  <span>Once set, we do not currently allow updating the mask. If you need to update the mask programmatically, don't hesitate to <a href="mailto:support@basistheory.com">reach out</a>.</span>
+</aside>
+
+<aside class="warning">
+  <span>For security and performance reasons, we attempt to detect that the regex provided is valid and not susceptible to catastrophic backtracking. If it fails this validation, we will reject the <a href="#elements-instance-mount-element">mount</a> promise.</span>
 </aside>
 <h1 id='elements-services'>Elements Services</h1><h2 id='elements-services-store-credit-card'>Store Credit Card</h2><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">elements</span><span class="p">.</span><span class="nx">storeCreditCard</span><span class="p">({</span>
   <span class="na">card</span><span class="p">:</span> <span class="nx">cardElement</span><span class="p">,</span>
