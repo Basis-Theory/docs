@@ -7,11 +7,10 @@ var phoneNumberElement = BasisTheory.elements.create('text', {
 })
 ```
 
-Text elements can restrict and fill user input by using the mask attribute. The mask attribute consists of an array
-of `RegExp` objects and strings, where the `RegExp` objects are used to restrict input and the strings are used to fill input.
-The position of the items in the mask array corresponds to the restriction or fill used for that input's position. The
-length of the array determines how long an input is allowed to be. For example, the code shown on the right will have
-the following rules:
+Text elements can restrict and fill user input by using the `mask` attribute. It consists of an array of `RegExp`
+objects and strings, used to restrict and fill input, respectively. The position of each item in the mask array
+corresponds to the restriction or fill used for that input's position. The length of the array determines how long an
+input is allowed to be. For example, the code shown on the right will have the following rules:
 
 * The input must be at most 13 characters long
 * Only digits are allowed in the 2-4, 6-8, 10-13 positions
