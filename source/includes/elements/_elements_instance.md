@@ -29,10 +29,12 @@ Parameter | Required | Type                   | Description
 
 CreateElementOptions provide a quick way to customize an Element before mounting it to your website.
 
-Attribute | Required | Type           | Description
---------- | -------- | -------------- | -----------
-`style`   | false    | *ElementStyle* | [Object](#element-style) used to customize the element appearance
-`targetId`| true     | *string*       | **Only** for [TextElement](#element-types-text-element)
+Attribute | Required | Type           | Eligible Elements                          | Description
+--------- | -------- | -------------- | ------------------------------------------ | -----------
+`style`   | false    | *ElementStyle* | All                                        | [Object](#element-style) used to customize the element appearance
+`targetId`| true     | *string*       | [TextElement](#element-types-text-element) | String used to identify your element
+`mask`    | false    | *ElementMask*  | [TextElement](#element-types-text-element) | [Array](#element-mask) used to restrict and fill user input using regex and static strings
+
 ## Mount Element
 
 ```jsx
