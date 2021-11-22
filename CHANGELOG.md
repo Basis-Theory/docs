@@ -1,3 +1,10 @@
+# [1.10.0](https://github.com/Basis-Theory/docs/compare/v1.9.0...v1.10.0) (2021-11-22)
+
+
+### Features
+
+* adds details about mask for text element ([#117](https://github.com/Basis-Theory/docs/issues/117)) ([39b2313](https://github.com/Basis-Theory/docs/commit/39b23136305d9a51a28f649452b4b684acc8643b))
+
 # [1.9.0](https://github.com/Basis-Theory/docs/compare/v1.8.0...v1.9.0) (2021-11-18)
 
 
