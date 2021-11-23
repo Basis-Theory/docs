@@ -758,6 +758,13 @@
 <td><a href="#element-types-text-element">TextElement</a></td>
 <td><a href="#element-mask">Array</a> used to restrict and fill user input using regex and static strings</td>
 </tr>
+<tr>
+<td><code>placeholder</code></td>
+<td>false</td>
+<td><em>string</em></td>
+<td><a href="#element-types-text-element">TextElement</a></td>
+<td>String used to customize the <a href="https://developer.mozilla.org/docs/Web/HTML/Element/input#attr-placeholder">placeholder attribute</a> of the input</td>
+</tr>
 </tbody></table>
 <h2 id='elements-instance-mount-element'>Mount Element</h2><div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="p">=</span><span class="s">"my-card"</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 
@@ -792,7 +799,7 @@
 </aside>
 <h2 id='elements-instance-update-element'>Update Element</h2><div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="nx">cardElement</span><span class="p">.</span><span class="nx">update</span><span class="p">(</span><span class="nx">options</span><span class="p">);</span>
 </code></pre></div>
-<p>Updates the element options the element was initialized with. The values are deep-merged into the previous options.</p>
+<p>Updates the element options the element was initialized with. The values are merged into the previous options.</p>
 
 <table><thead>
 <tr>
@@ -817,6 +824,7 @@
 <th>Attribute</th>
 <th>Required</th>
 <th>Type</th>
+<th>Eligible elements</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -824,7 +832,15 @@
 <td><code>style</code></td>
 <td>false</td>
 <td><em>ElementStyle</em></td>
+<td>All</td>
 <td><a href="#element-style">Object</a> used to customize the element appearance</td>
+</tr>
+<tr>
+<td><code>placeholder</code></td>
+<td>false</td>
+<td><em>string</em></td>
+<td><a href="#element-types-text-element">TextElement</a></td>
+<td>String used to customize the <a href="https://developer.mozilla.org/docs/Web/HTML/Element/input#attr-placeholder">placeholder attribute</a> of the input</td>
 </tr>
 </tbody></table>
 <h2 id='elements-instance-clear-element'>Clear Element</h2><div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="nx">cardElement</span><span class="p">.</span><span class="nx">clear</span><span class="p">();</span>
