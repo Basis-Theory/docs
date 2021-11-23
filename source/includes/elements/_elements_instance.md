@@ -29,11 +29,12 @@ Parameter | Required | Type                   | Description
 
 CreateElementOptions provide a quick way to customize an Element before mounting it to your website.
 
-Attribute | Required | Type           | Eligible Elements                          | Description
---------- | -------- | -------------- | ------------------------------------------ | -----------
-`style`   | false    | *ElementStyle* | All                                        | [Object](#element-style) used to customize the element appearance
-`targetId`| true     | *string*       | [TextElement](#element-types-text-element) | String used to identify your element
-`mask`    | false    | *ElementMask*  | [TextElement](#element-types-text-element) | [Array](#element-mask) used to restrict and fill user input using regex and static strings
+Attribute     | Required | Type           | Eligible Elements                          | Description
+------------- | -------- | -------------- | ------------------------------------------ | -----------
+`style`       | false    | *ElementStyle* | All                                        | [Object](#element-style) used to customize the element appearance
+`targetId`    | true     | *string*       | [TextElement](#element-types-text-element) | String used to identify your element
+`mask`        | false    | *ElementMask*  | [TextElement](#element-types-text-element) | [Array](#element-mask) used to restrict and fill user input using regex and static strings
+`placeholder` | false    | *string*       | [TextElement](#element-types-text-element) | String used to customize the [placeholder attribute](https://developer.mozilla.org/docs/Web/HTML/Element/input#attr-placeholder) of the input
 
 ## Mount Element
 
@@ -65,7 +66,7 @@ Parameter  | Required | Type     | Description
 cardElement.update(options);
 ```
 
-Updates the element options the element was initialized with. The values are deep-merged into the previous options.
+Updates the element options the element was initialized with. The values are merged into the previous options.
 
 Parameter | Required | Type                   | Description
 --------- | -------- | ----------------       | -----------
@@ -76,9 +77,10 @@ Parameter | Required | Type                   | Description
 
 UpdateElementOptions provide a quick way to change an existing (mounted) Element appearance.
 
-Attribute | Required | Type           | Description
---------- | -------- | -------------- | -----------
-`style`   | false    | *ElementStyle* | [Object](#element-style) used to customize the element appearance
+Attribute     | Required | Type           | Eligible elements                           | Description
+------------- | -------- | -------------- | ------------------------------------------- | -----------
+`style`       | false    | *ElementStyle* | All                                         | [Object](#element-style) used to customize the element appearance
+`placeholder` | false    | *string*       | [TextElement](#element-types-text-element)  | String used to customize the [placeholder attribute](https://developer.mozilla.org/docs/Web/HTML/Element/input#attr-placeholder) of the input
 
 
 ## Clear Element
