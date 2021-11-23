@@ -1,3 +1,10 @@
+# [1.11.0](https://github.com/Basis-Theory/docs/compare/v1.10.0...v1.11.0) (2021-11-23)
+
+
+### Features
+
+* add text element placeholder option ([#118](https://github.com/Basis-Theory/docs/issues/118)) ([c27289b](https://github.com/Basis-Theory/docs/commit/c27289b530264fcd92f6bf699b81c456cf3096d6))
+
 # [1.10.0](https://github.com/Basis-Theory/docs/compare/v1.9.0...v1.10.0) (2021-11-22)
 
 
