@@ -28,9 +28,9 @@ const token = await bt.tokenize.tokenize({
 ```
 
 ```csharp
-using BasisTheory.net.Tokens;
+using BasisTheory.net.Tokenize;
 
-var client = new TokenClient("key_N88mVGsp3sCXkykyN2EFED");
+var client = new TokenizeClient("key_N88mVGsp3sCXkykyN2EFED");
 
 var token = await client.Tokenize(new {
   first_name = "John",
@@ -79,9 +79,9 @@ const token = await bt.tokenize.tokenize({
 ```
 
 ```csharp
-using BasisTheory.net.Tokens;
+using BasisTheory.net.Tokenize;
 
-var client = new TokenClient("key_N88mVGsp3sCXkykyN2EFED");
+var client = new TokenizeClient("key_N88mVGsp3sCXkykyN2EFED");
 
 var token = await client.Tokenize(new Token {
   Type = "token",
@@ -149,9 +149,9 @@ const token = await bt.tokenize.tokenize({
 ```
 
 ```csharp
-using BasisTheory.net.Tokens;
+using BasisTheory.net.Tokenize;
 
-var client = new TokenClient("key_N88mVGsp3sCXkykyN2EFED");
+var client = new TokenizeClient("key_N88mVGsp3sCXkykyN2EFED");
 
 var token = await client.Tokenize(new Token {
   Type = "card",
@@ -241,9 +241,9 @@ const token = await bt.tokenize.tokenize([
 ```
 
 ```csharp
-using BasisTheory.net.Tokens;
+using BasisTheory.net.Tokenize;
 
-var client = new TokenClient("key_N88mVGsp3sCXkykyN2EFED");
+var client = new TokenizeClient("key_N88mVGsp3sCXkykyN2EFED");
 
 var token = await client.Tokenize(new object[
   "John",
@@ -350,9 +350,9 @@ const token = await bt.tokenize.tokenize({
 ```
 
 ```csharp
-using BasisTheory.net.Tokens;
+using BasisTheory.net.Tokenize;
 
-var client = new TokenClient("key_N88mVGsp3sCXkykyN2EFED");
+var client = new TokenizeClient("key_N88mVGsp3sCXkykyN2EFED");
 
 var token = await client.Tokenize(new {
   first_name = "John",

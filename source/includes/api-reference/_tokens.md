@@ -28,7 +28,7 @@
 | `kek`     | *[encryption key](#tokens-token-object-encryption-key-object)* | Key encryption key     |
 
 <aside class="success">
-  <span>Basis Theory recommends encrypting the <code>data</code> attribute of the token. Our recommendation is that you encrypt the data with a one-time use symmetric encryption key such as <code>AES-256</code> and then encrypt the symmetric key with an asymmetric public key such as <code>RSA</code>. Our SDK will automatically handle this for you.</span>
+  <span>Basis Theory encrypts the <code>data</code> attribute of the token with a one-time use <code>AES-256</code> symmetric encryption key and then encrypts the symmetric key with an asymmetric <code>RSA</code> public key. Our SDK will automatically handle this for you if you use our encryption modules to encrypt each token with your own encryption keys.</span>
 </aside>
 
 ### Encryption Key Object
