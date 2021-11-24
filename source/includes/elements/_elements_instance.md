@@ -35,6 +35,7 @@ Attribute     | Required | Type           | Eligible Elements                   
 `targetId`    | true     | *string*       | [TextElement](#element-types-text-element) | String used to identify your element
 `mask`        | false    | *ElementMask*  | [TextElement](#element-types-text-element) | [Array](#element-mask) used to restrict and fill user input using regex and static strings
 `placeholder` | false    | *string*       | [TextElement](#element-types-text-element) | String used to customize the [placeholder attribute](https://developer.mozilla.org/docs/Web/HTML/Element/input#attr-placeholder) of the input
+`aria-label`  | false    | *string*       | [TextElement](#element-types-text-element) | String used to customize the [aria-label attribute](https://developer.mozilla.org/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-label_attribute) of the input
 
 ## Mount Element
 
@@ -81,6 +82,7 @@ Attribute     | Required | Type           | Eligible elements                   
 ------------- | -------- | -------------- | ------------------------------------------- | -----------
 `style`       | false    | *ElementStyle* | All                                         | [Object](#element-style) used to customize the element appearance
 `placeholder` | false    | *string*       | [TextElement](#element-types-text-element)  | String used to customize the [placeholder attribute](https://developer.mozilla.org/docs/Web/HTML/Element/input#attr-placeholder) of the input
+`aria-label`  | false    | *string*       | [TextElement](#element-types-text-element)  | String used to customize the [aria-label attribute](https://developer.mozilla.org/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-label_attribute) of the input
 
 
 ## Clear Element
