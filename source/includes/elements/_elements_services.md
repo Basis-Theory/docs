@@ -111,6 +111,10 @@ You can fetch this same data later with [Get a Token API](/api-reference#tokens-
 </aside>
 
 <aside class="warning">
+  <span>Note that when submitting <code>plainText</code> values, data will be HTML encoded before storage for security reasons.
+</aside>
+
+<aside class="warning">
   <span>Currently only the <code>token</code> type is supported. Support for more types will be added in the future.</span>
 </aside>
 
