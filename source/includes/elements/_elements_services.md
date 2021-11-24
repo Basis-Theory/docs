@@ -90,7 +90,13 @@ Attribute    | Type       | Scope  | Description
 BasisTheory.elements.tokens.create({
   type: 'token',
   data: {
-    sensitiveData: sensitiveDataElement | 'plainText',  // values can be either a TextElement or plain text (see warning).
+    sensitiveData: sensitiveDataElement,
+    nonSensitiveData: 'plainText', // see warning on plain text data
+    otherData: {
+      someInteger: 20,
+      someBoolean: false,
+    },
+    someOtherData: ['plainText1', 'plainText2'],
   },
   metadata: {
     nonSensitiveField: 'nonSensitiveValue'
