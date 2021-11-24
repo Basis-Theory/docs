@@ -645,6 +645,9 @@
                     </li>
                 </ul>
             </li>
+            <li>
+              <a href="#tokenize" class="toc-h1 toc-link" data-title="Tokenize">Tokenize</a>
+            </li>
         </ul>
 
         <h1 class="nav-title">Other Docs</h1>
@@ -2260,7 +2263,7 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
 </tr>
 </thead><tbody>
 <tr>
-<td><code>ractor_id</code></td>
+<td><code>reactor_id</code></td>
 <td>true</td>
 <td><em>uuid</em></td>
 <td><code>null</code></td>
@@ -2348,11 +2351,6 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
 <td>Card data</td>
 </tr>
 <tr>
-<td><code>billing_details</code></td>
-<td><em><a href="#atomic-cards-atomic-card-object-billing-details-object">billing details</a></em></td>
-<td>Billing details</td>
-</tr>
-<tr>
 <td><code>fingerprint</code></td>
 <td><em>string</em></td>
 <td>Uniquely identifies this particular card number. You can use this attribute to check whether two card tokens contain the same card number.</td>
@@ -2422,98 +2420,6 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
 <td>Three or four-digit card verification code</td>
 </tr>
 </tbody></table>
-<h3 id='atomic-cards-atomic-card-object-billing-details-object'>Billing Details Object</h3>
-<table><thead>
-<tr>
-<th>Attribute</th>
-<th>Required</th>
-<th>Type</th>
-<th>Default</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>name</code></td>
-<td>false</td>
-<td><em>string</em></td>
-<td><code>null</code></td>
-<td>The cardholder or customer&#39;s full name</td>
-</tr>
-<tr>
-<td><code>email</code></td>
-<td>false</td>
-<td><em>string</em></td>
-<td><code>null</code></td>
-<td>The cardholder or customer&#39;s email address</td>
-</tr>
-<tr>
-<td><code>phone</code></td>
-<td>false</td>
-<td><em>string</em></td>
-<td><code>null</code></td>
-<td>The cardholder or customer&#39;s phone number</td>
-</tr>
-<tr>
-<td><code>address</code></td>
-<td>false</td>
-<td><em>address</em></td>
-<td><code>null</code></td>
-<td>The cardholder or customer&#39;s <a href="#atomic-cards-atomic-card-object-address-object">address</a></td>
-</tr>
-</tbody></table>
-<h3 id='atomic-cards-atomic-card-object-address-object'>Address Object</h3>
-<table><thead>
-<tr>
-<th>Attribute</th>
-<th>Required</th>
-<th>Type</th>
-<th>Default</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>line1</code></td>
-<td>true</td>
-<td><em>string</em></td>
-<td><code>null</code></td>
-<td>Address line 1 (Street address / PO Box / Company name)</td>
-</tr>
-<tr>
-<td><code>line2</code></td>
-<td>false</td>
-<td><em>string</em></td>
-<td><code>null</code></td>
-<td>Address line 2 (Apartment / Suite / Unit / Building)</td>
-</tr>
-<tr>
-<td><code>city</code></td>
-<td>true</td>
-<td><em>string</em></td>
-<td><code>null</code></td>
-<td>City / District / Suburb / Town / Village</td>
-</tr>
-<tr>
-<td><code>state</code></td>
-<td>true</td>
-<td><em>string</em></td>
-<td><code>null</code></td>
-<td>State / County / Province / Region</td>
-</tr>
-<tr>
-<td><code>postal_code</code></td>
-<td>true</td>
-<td><em>string</em></td>
-<td><code>null</code></td>
-<td>Zip or postal code</td>
-</tr>
-<tr>
-<td><code>country</code></td>
-<td>true</td>
-<td><em>string</em></td>
-<td><code>null</code></td>
-<td>Two-character ISO country code (e.g. <code>US</code>)</td>
-</tr>
-</tbody></table>
 <h2 id='atomic-cards-create-atomic-card'>Create Atomic Card</h2>
 <blockquote>
 <p>Request</p>
@@ -2528,19 +2434,6 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
       "expiration_month": 12,
       "expiration_year": 2025,
       "cvc": "123"
-    },
-    "billing_details": {
-      "name": "John Doe",
-      "email": "johndoe@test.com",
-      "phone": "555-123-4567",
-      "address": {
-        "line1": "111 Test St.",
-        "line2": "Apt 304",
-        "city": "San Francisco",
-        "state": "CA",
-        "postal_code": "94141",
-        "country": "US"
-      }
     },
     "metadata": {
       "nonSensitiveField": "Non-Sensitive Value"
@@ -2557,19 +2450,6 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
     <span class="na">expirationYear</span><span class="p">:</span> <span class="mi">2025</span><span class="p">,</span>
     <span class="na">cvc</span><span class="p">:</span> <span class="dl">'</span><span class="s1">123</span><span class="dl">'</span><span class="p">,</span>
   <span class="p">},</span>
-  <span class="na">billingDetails</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">John Doe</span><span class="dl">'</span><span class="p">,</span>
-    <span class="na">email</span><span class="p">:</span> <span class="dl">'</span><span class="s1">johndoe@test.com</span><span class="dl">'</span><span class="p">,</span>
-    <span class="na">phone</span><span class="p">:</span> <span class="dl">'</span><span class="s1">555-123-4567</span><span class="dl">'</span><span class="p">,</span>
-    <span class="na">address</span><span class="p">:</span> <span class="p">{</span>
-      <span class="na">line1</span><span class="p">:</span> <span class="dl">'</span><span class="s1">111 Test St.</span><span class="dl">'</span><span class="p">,</span>
-      <span class="na">line2</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Apt 304</span><span class="dl">'</span><span class="p">,</span>
-      <span class="na">city</span><span class="p">:</span> <span class="dl">'</span><span class="s1">San Francisco</span><span class="dl">'</span><span class="p">,</span>
-      <span class="na">state</span><span class="p">:</span> <span class="dl">'</span><span class="s1">CA</span><span class="dl">'</span><span class="p">,</span>
-      <span class="na">postalCode</span><span class="p">:</span> <span class="dl">'</span><span class="s1">94141</span><span class="dl">'</span><span class="p">,</span>
-      <span class="na">country</span><span class="p">:</span> <span class="dl">'</span><span class="s1">US</span><span class="dl">'</span>
-    <span class="p">},</span>
-  <span class="p">},</span>
   <span class="na">metadata</span><span class="p">:</span> <span class="p">{</span>
     <span class="na">nonSensitiveField</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Non-Sensitive Value</span><span class="dl">'</span>
   <span class="p">},</span>
@@ -2584,19 +2464,6 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
     <span class="n">ExpirationMonth</span> <span class="p">=</span> <span class="m">12</span><span class="p">,</span>
     <span class="n">ExpirationYear</span> <span class="p">=</span> <span class="m">2025</span><span class="p">,</span>
     <span class="n">CardVerificationCode</span> <span class="p">=</span> <span class="s">"123"</span>
-  <span class="p">},</span>
-  <span class="n">BillingDetails</span> <span class="p">=</span> <span class="k">new</span> <span class="n">BillingDetails</span> <span class="p">{</span>
-    <span class="n">Name</span> <span class="p">=</span> <span class="s">"John Doe"</span><span class="p">,</span>
-    <span class="n">Email</span> <span class="p">=</span> <span class="s">"johndoe@test.com"</span><span class="p">,</span>
-    <span class="n">PhoneNumber</span> <span class="p">=</span> <span class="s">"555-123-4567"</span><span class="p">,</span>
-    <span class="n">Address</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Address</span> <span class="p">{</span>
-      <span class="n">LineOne</span> <span class="p">=</span> <span class="s">"111 Test St."</span><span class="p">,</span>
-      <span class="n">LineTwo</span> <span class="p">=</span> <span class="s">"Apt 304"</span><span class="p">,</span>
-      <span class="n">City</span> <span class="p">=</span> <span class="s">"San Francisco"</span><span class="p">,</span>
-      <span class="n">State</span> <span class="p">=</span> <span class="s">"CA"</span><span class="p">,</span>
-      <span class="n">PostalCode</span> <span class="p">=</span> <span class="s">"94141"</span><span class="p">,</span>
-      <span class="n">Country</span> <span class="p">=</span> <span class="s">"US"</span>
-    <span class="p">}</span>
   <span class="p">},</span>
   <span class="n">Metadata</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="kt">string</span><span class="p">&gt;</span> <span class="p">{</span>
     <span class="p">{</span> <span class="s">"nonSensitiveField"</span><span class="p">,</span> <span class="s">"Non-Sensitive Value"</span> <span class="p">}</span>
@@ -2614,19 +2481,6 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
     </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XXXXXXXXXXXX4242"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"expiration_month"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
     </span><span class="nl">"expiration_year"</span><span class="p">:</span><span class="w"> </span><span class="mi">2025</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"billing_details"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"johndoe@test.com"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"555-123-4567"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"line1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"111 Test St."</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"line2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Apt 304"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"San Francisco"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CA"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"postal_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"94141"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="nl">"fingerprint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EVYsSLRyb86Z5awJksvnjVMEC4iP7KX639GtHVUFpzER"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -2664,13 +2518,6 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
 <td><em><a href="#atomic-cards-atomic-card-object-card-object">card</a></em></td>
 <td><code>null</code></td>
 <td>Card data</td>
-</tr>
-<tr>
-<td><code>billing_details</code></td>
-<td>false</td>
-<td><em><a href="#atomic-cards-atomic-card-object-billing-details-object">billing details</a></em></td>
-<td><code>null</code></td>
-<td>Billing details</td>
 </tr>
 <tr>
 <td><code>metadata</code></td>
@@ -2713,19 +2560,6 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
         </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XXXXXXXXXXXX4242"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"expiration_month"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
         </span><span class="nl">"expiration_year"</span><span class="p">:</span><span class="w"> </span><span class="mi">2025</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="nl">"billing_details"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"johndoe@test.com"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"555-123-4567"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"line1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"111 Test St."</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"line2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Apt 304"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"San Francisco"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CA"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"postal_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"94141"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="nl">"fingerprint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EVYsSLRyb86Z5awJksvnjVMEC4iP7KX639GtHVUFpzER"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -2780,19 +2614,6 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
     </span><span class="nl">"expiration_month"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
     </span><span class="nl">"expiration_year"</span><span class="p">:</span><span class="w"> </span><span class="mi">2025</span><span class="w">
   </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"billing_details"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"johndoe@test.com"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"555-123-4567"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"line1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"111 Test St."</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"line2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Apt 304"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"San Francisco"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CA"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"postal_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"94141"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">},</span><span class="w">
   </span><span class="nl">"fingerprint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EVYsSLRyb86Z5awJksvnjVMEC4iP7KX639GtHVUFpzER"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"nonSensitiveField"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Non-Sensitive Value"</span><span class="w">
@@ -2845,19 +2666,6 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
       "expiration_month": 12,
       "expiration_year": 2025,
       "cvc": "123"
-    },
-    "billing_details": {
-      "name": "John Doe",
-      "email": "johndoe@test.com",
-      "phone": "555-123-4567",
-      "address": {
-        "line1": "111 Test St.",
-        "line2": "Apt 304",
-        "city": "San Francisco",
-        "state": "CA",
-        "postal_code": "94141",
-        "country": "US"
-      }
     }
   }'</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">BasisTheory</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@basis-theory/basis-theory-js</span><span class="dl">'</span><span class="p">;</span>
@@ -2870,19 +2678,6 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
     <span class="na">expirationMonth</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span>
     <span class="na">expirationYear</span><span class="p">:</span> <span class="mi">2025</span><span class="p">,</span>
     <span class="na">cvc</span><span class="p">:</span> <span class="dl">'</span><span class="s1">123</span><span class="dl">'</span><span class="p">,</span>
-  <span class="p">},</span>
-  <span class="na">billingDetails</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">John Doe</span><span class="dl">'</span><span class="p">,</span>
-    <span class="na">email</span><span class="p">:</span> <span class="dl">'</span><span class="s1">johndoe@test.com</span><span class="dl">'</span><span class="p">,</span>
-    <span class="na">phone</span><span class="p">:</span> <span class="dl">'</span><span class="s1">555-123-4567</span><span class="dl">'</span><span class="p">,</span>
-    <span class="na">address</span><span class="p">:</span> <span class="p">{</span>
-      <span class="na">line1</span><span class="p">:</span> <span class="dl">'</span><span class="s1">111 Test St.</span><span class="dl">'</span><span class="p">,</span>
-      <span class="na">line2</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Apt 304</span><span class="dl">'</span><span class="p">,</span>
-      <span class="na">city</span><span class="p">:</span> <span class="dl">'</span><span class="s1">San Francisco</span><span class="dl">'</span><span class="p">,</span>
-      <span class="na">state</span><span class="p">:</span> <span class="dl">'</span><span class="s1">CA</span><span class="dl">'</span><span class="p">,</span>
-      <span class="na">postalCode</span><span class="p">:</span> <span class="dl">'</span><span class="s1">94141</span><span class="dl">'</span><span class="p">,</span>
-      <span class="na">country</span><span class="p">:</span> <span class="dl">'</span><span class="s1">US</span><span class="dl">'</span>
-    <span class="p">},</span>
   <span class="p">}</span>
 <span class="p">});</span>
 </code></pre></div><div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="k">using</span> <span class="nn">BasisTheory.net.Atomic.Cards</span><span class="p">;</span>
@@ -2895,19 +2690,6 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
     <span class="n">ExpirationMonth</span> <span class="p">=</span> <span class="m">12</span><span class="p">,</span>
     <span class="n">ExpirationYear</span> <span class="p">=</span> <span class="m">2025</span><span class="p">,</span>
     <span class="n">CardVerificationCode</span> <span class="p">=</span> <span class="s">"123"</span>
-  <span class="p">},</span>
-  <span class="n">BillingDetails</span> <span class="p">=</span> <span class="k">new</span> <span class="n">BillingDetails</span> <span class="p">{</span>
-    <span class="n">Name</span> <span class="p">=</span> <span class="s">"John Doe"</span><span class="p">,</span>
-    <span class="n">Email</span> <span class="p">=</span> <span class="s">"johndoe@test.com"</span><span class="p">,</span>
-    <span class="n">PhoneNumber</span> <span class="p">=</span> <span class="s">"555-123-4567"</span><span class="p">,</span>
-    <span class="n">Address</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Address</span> <span class="p">{</span>
-      <span class="n">LineOne</span> <span class="p">=</span> <span class="s">"111 Test St."</span><span class="p">,</span>
-      <span class="n">LineTwo</span> <span class="p">=</span> <span class="s">"Apt 304"</span><span class="p">,</span>
-      <span class="n">City</span> <span class="p">=</span> <span class="s">"San Francisco"</span><span class="p">,</span>
-      <span class="n">State</span> <span class="p">=</span> <span class="s">"CA"</span><span class="p">,</span>
-      <span class="n">PostalCode</span> <span class="p">=</span> <span class="s">"94141"</span><span class="p">,</span>
-      <span class="n">Country</span> <span class="p">=</span> <span class="s">"US"</span>
-    <span class="p">}</span>
   <span class="p">}</span>
 <span class="p">});</span>
 </code></pre></div>
@@ -2922,19 +2704,6 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
     </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XXXXXXXXXXXX4242"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"expiration_month"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
     </span><span class="nl">"expiration_year"</span><span class="p">:</span><span class="w"> </span><span class="mi">2025</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"billing_details"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"johndoe@test.com"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"555-123-4567"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"line1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"111 Test St."</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"line2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Apt 304"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"San Francisco"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CA"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"postal_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"94141"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="nl">"fingerprint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EVYsSLRyb86Z5awJksvnjVMEC4iP7KX639GtHVUFpzER"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -2972,13 +2741,6 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
 <td><em><a href="#atomic-cards-atomic-card-object-card-object">card</a></em></td>
 <td><code>null</code></td>
 <td>Card data</td>
-</tr>
-<tr>
-<td><code>billing_details</code></td>
-<td>false</td>
-<td><em><a href="#atomic-cards-atomic-card-object-billing-details-object">billing details</a></em></td>
-<td><code>null</code></td>
-<td>Billing details</td>
 </tr>
 </tbody></table>
 <h3 id='atomic-cards-update-atomic-card-response'>Response</h3>
@@ -5348,11 +5110,6 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
 <td>Encryption metadata for an encrypted token data value</td>
 </tr>
 <tr>
-<td><code>children</code></td>
-<td><em>array</em></td>
-<td>Array of child tokens where this token is the parent in an <a href="#token-associations">association</a></td>
-</tr>
-<tr>
 <td><code>created_by</code></td>
 <td><em>uuid</em></td>
 <td>(Optional) The <a href="#applications-application-object">Application</a> ID which created the token</td>
@@ -5392,6 +5149,10 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
 <td>Key encryption key</td>
 </tr>
 </tbody></table>
+
+<aside class="success">
+  <span>Basis Theory encrypts the <code>data</code> attribute of the token with a one-time use <code>AES-256</code> symmetric encryption key and then encrypts the symmetric key with an asymmetric <code>RSA</code> public key. Our SDK will automatically handle this for you if you use our encryption modules to encrypt each token with your own encryption keys.</span>
+</aside>
 <h3 id='tokens-token-object-encryption-key-object'>Encryption Key Object</h3>
 <table><thead>
 <tr>
@@ -5450,25 +5211,10 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
   <span class="nt">-X</span> <span class="s2">"POST"</span> <span class="se">\</span>
   <span class="nt">-d</span> <span class="s1">'{
     "type": "token",
-    "data": "ebSG3IohNmg5gTOjN2HBwBbhjDZ6BY3fCWZJfXSucVMfQ+7YNMXQYrPuRSXgSkhuTMYS+BNfVUur4qZSvUbgCA==",
+    "data": "Sensitive Value",
     "metadata": {
       "nonSensitiveField": "Non-Sensitive Value"
-    },
-    "encryption": {
-      "cek": {
-        "key": "JLrtGbYSN5/dbqdKtLVG8tHu3QefcZnKsFOPBBXlXcG4zL9US01mW2MqZs6Px4ckSQM8CrRakwLKilrQ0f37Iw==",
-        "alg": "AES"
-      },
-      "kek": {
-        "key": "vpXn45HnsoQPR1q8ptngmPvPaqIDJ4vO+FFyQclglePCt8d1SyTDJU0T+F54T7GnAz7vz5OKsjgsFNo9lVB3UA==",
-        "prov": "AWS",
-        "alg": "RSA"
-      }
-    },
-    "children": [
-      {...},
-      {...}
-    ]
+    }
   }'</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">BasisTheory</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@basis-theory/basis-theory-js</span><span class="dl">'</span><span class="p">;</span>
 
@@ -5476,25 +5222,10 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
 
 <span class="kd">const</span> <span class="nx">token</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">bt</span><span class="p">.</span><span class="nx">tokens</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
   <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">token</span><span class="dl">'</span><span class="p">,</span>
-  <span class="na">data</span><span class="p">:</span> <span class="dl">'</span><span class="s1">ebSG3IohNmg5gTOjN2HBwBbhjDZ6BY3fCWZJfXSucVMfQ+7YNMXQYrPuRSXgSkhuTMYS+BNfVUur4qZSvUbgCA==</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">data</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Sensitive Value</span><span class="dl">'</span><span class="p">,</span>
   <span class="na">metadata</span><span class="p">:</span> <span class="p">{</span>
     <span class="na">nonSensitiveField</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Non-Sensitive Value</span><span class="dl">'</span>
-  <span class="p">},</span>
-  <span class="na">encryption</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">cek</span><span class="p">:</span> <span class="p">{</span>
-      <span class="na">key</span><span class="p">:</span> <span class="dl">'</span><span class="s1">JLrtGbYSN5/dbqdKtLVG8tHu3QefcZnKsFOPBBXlXcG4zL9US01mW2MqZs6Px4ckSQM8CrRakwLKilrQ0f37Iw==</span><span class="dl">'</span><span class="p">,</span>
-      <span class="na">alg</span><span class="p">:</span> <span class="dl">'</span><span class="s1">AES</span><span class="dl">'</span>
-    <span class="p">},</span>
-    <span class="na">kek</span><span class="p">:</span> <span class="p">{</span>
-      <span class="na">key</span><span class="p">:</span> <span class="dl">'</span><span class="s1">vpXn45HnsoQPR1q8ptngmPvPaqIDJ4vO+FFyQclglePCt8d1SyTDJU0T+F54T7GnAz7vz5OKsjgsFNo9lVB3UA==</span><span class="dl">'</span><span class="p">,</span>
-      <span class="na">prov</span><span class="p">:</span> <span class="dl">'</span><span class="s1">AWS</span><span class="dl">'</span><span class="p">,</span>
-      <span class="na">alg</span><span class="p">:</span> <span class="dl">'</span><span class="s1">RSA</span><span class="dl">'</span>
-    <span class="p">}</span>
-  <span class="p">},</span>
-  <span class="na">children</span><span class="p">:</span> <span class="p">[</span>
-    <span class="p">{</span> <span class="p">...</span> <span class="p">},</span>
-    <span class="p">{</span> <span class="p">...</span> <span class="p">}</span>
-  <span class="p">]</span>
+  <span class="p">}</span>
 <span class="p">});</span>
 </code></pre></div><div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="k">using</span> <span class="nn">BasisTheory.net.Tokens</span><span class="p">;</span>
 
@@ -5502,24 +5233,9 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
 
 <span class="kt">var</span> <span class="n">token</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">CreateAsync</span><span class="p">(</span><span class="k">new</span> <span class="n">Token</span> <span class="p">{</span>
   <span class="n">Type</span> <span class="p">=</span> <span class="s">"token"</span><span class="p">,</span>
-  <span class="n">Data</span> <span class="p">=</span> <span class="s">"ebSG3IohNmg5gTOjN2HBwBbhjDZ6BY3fCWZJfXSucVMfQ+7YNMXQYrPuRSXgSkhuTMYS+BNfVUur4qZSvUbgCA=="</span><span class="p">,</span>
+  <span class="n">Data</span> <span class="p">=</span> <span class="s">"Sensitive Value"</span><span class="p">,</span>
   <span class="n">Metadata</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="kt">string</span><span class="p">&gt;</span> <span class="p">{</span>
     <span class="p">{</span> <span class="s">"nonSensitiveField"</span><span class="p">,</span>  <span class="s">"Non-Sensitive Value"</span> <span class="p">}</span>
-  <span class="p">},</span>
-  <span class="n">Encryption</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Encryption</span> <span class="p">{</span>
-    <span class="n">ContentEncryptionKey</span> <span class="p">=</span> <span class="k">new</span> <span class="n">EncryptionKey</span> <span class="p">{</span>
-      <span class="n">Key</span> <span class="p">=</span> <span class="s">"JLrtGbYSN5/dbqdKtLVG8tHu3QefcZnKsFOPBBXlXcG4zL9US01mW2MqZs6Px4ckSQM8CrRakwLKilrQ0f37Iw=="</span><span class="p">,</span>
-      <span class="n">Algorithm</span><span class="p">:</span> <span class="s">"AES"</span>
-    <span class="p">},</span>
-    <span class="n">KeyEncryptionKey</span> <span class="p">=</span> <span class="k">new</span> <span class="n">EncryptionKey</span> <span class="p">{</span>
-      <span class="n">Key</span> <span class="p">=</span> <span class="s">"vpXn45HnsoQPR1q8ptngmPvPaqIDJ4vO+FFyQclglePCt8d1SyTDJU0T+F54T7GnAz7vz5OKsjgsFNo9lVB3UA=="</span><span class="p">,</span>
-      <span class="n">Provider</span><span class="p">:</span> <span class="s">"AWS"</span><span class="p">,</span>
-      <span class="n">Algorithm</span><span class="p">:</span> <span class="s">"RSA"</span>
-    <span class="p">}</span>
-  <span class="p">},</span>
-  <span class="n">Children</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Token</span><span class="p">&gt;</span> <span class="p">{</span>
-    <span class="k">new</span> <span class="n">Token</span> <span class="p">{</span> <span class="p">...</span> <span class="p">},</span>
-    <span class="k">new</span> <span class="n">Token</span> <span class="p">{</span> <span class="p">...</span> <span class="p">}</span>
   <span class="p">}</span>
 <span class="p">});</span>
 </code></pre></div>
@@ -5533,10 +5249,6 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
   </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"nonSensitiveField"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Non-Sensitive Value"</span><span class="w">
   </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"children"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="err">...</span><span class="p">}</span><span class="w">
-  </span><span class="p">],</span><span class="w">
   </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -5589,21 +5301,10 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
 <td><code>null</code></td>
 <td>Encryption metadata for an encrypted token data value</td>
 </tr>
-<tr>
-<td><code>children</code></td>
-<td>false</td>
-<td><em>array</em></td>
-<td><code>[]</code></td>
-<td>An array of <a href="#tokens-token-object">tokens</a>. Can be used to bulk create tokens with <a href="#token-associations-create-token-association">token associations</a></td>
-</tr>
 </tbody></table>
 
-<aside class="success">
-  <span>Basis Theory recommends encrypting the <code>data</code> attribute of the token. Our recommendation is that you encrypt the data with a one-time use symmetric encryption key such as <code>AES-256</code> and then encrypt the symmetric key with an asymmetric public key such as <code>RSA</code>. Our SDK will automatically handle this for you.</span>
-</aside>
-
 <aside class="warning">
-  <span>WARNING - Never store sensitive plaintext information in your token such as plaintext <code>data</code>, <code>metadata</code> or plaintext, private encryption keys in the <code>encryption</code> attributes of your token.</span>
+  <span>WARNING - Never store sensitive plaintext information in the <code>metadata</code> or plaintext, private encryption keys in the <code>encryption</code> attributes of your token.</span>
 </aside>
 <h3 id='tokens-create-token-response'>Response</h3>
 <p>Returns a <a href="#tokens-token-object">token</a> if the token was created. Returns <a href="#errors">an error</a> if there were validation errors, or the token failed to create.</p>
@@ -5649,10 +5350,6 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
           </span><span class="nl">"alg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RSA"</span><span class="w"> 
         </span><span class="p">}</span><span class="w">
       </span><span class="p">},</span><span class="w">
-      </span><span class="nl">"children"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="err">...</span><span class="p">}</span><span class="w">
-      </span><span class="p">],</span><span class="w">
       </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-01T08:23:14+00:00"</span><span class="w">
     </span><span class="p">},</span><span class="w">
@@ -5695,20 +5392,6 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
 <td><code>[]</code></td>
 <td>An optional array of <a href="#tokens-token-types">token types</a> to filter the list of tokens by</td>
 </tr>
-<tr>
-<td><code>children</code></td>
-<td>false</td>
-<td><em>boolean</em></td>
-<td><code>false</code></td>
-<td>Include child tokens where the token is a parent in <a href="#token-associations">token association</a></td>
-</tr>
-<tr>
-<td><code>children_type</code></td>
-<td>false</td>
-<td><em>array</em></td>
-<td><code>[]</code></td>
-<td>An optional array of <a href="#tokens-token-types">token types</a> to filter child tokens where the token is a parent in the <a href="#token-associations">token association</a></td>
-</tr>
 </tbody></table>
 <h3 id='tokens-list-tokens-response'>Response</h3>
 <p>Returns a <a href="#pagination">paginated object</a> with the <code>data</code> property containing an array of <a href="#tokens-token-object">tokens</a>. Providing any query parameters will filter the results. Returns <a href="#errors">an error</a> if tokens could not be retrieved.</p>
@@ -5739,14 +5422,10 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
       </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c06d0789-0a38-40be-b7cc-c28a718f76f1"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"token"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"tenant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77cb0024-123e-41a8-8ff8-a3d5a0fa8a08"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ebSG3IohNmg5gTOjN2HBwBbhjDZ6BY3fCWZJfXSucVMfQ+7YNMXQYrPuRSXgSkhuTMYS+BNfVUur4qZSvUbgCA=="</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sensitive Value"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"nonSensitiveField"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Non-Sensitive Value"</span><span class="w">
       </span><span class="p">},</span><span class="w">
-      </span><span class="nl">"children"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="err">...</span><span class="p">}</span><span class="w">
-      </span><span class="p">],</span><span class="w">
       </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-01T08:23:14+00:00"</span><span class="w">
     </span><span class="p">},</span><span class="w">
@@ -5788,20 +5467,6 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
 <td><em>array</em></td>
 <td><code>[]</code></td>
 <td>An optional array of <a href="#tokens-token-types">token types</a> to filter the list of tokens by</td>
-</tr>
-<tr>
-<td><code>children</code></td>
-<td>false</td>
-<td><em>boolean</em></td>
-<td><code>false</code></td>
-<td>Include child tokens where the token is a parent in <a href="#token-associations">token association</a></td>
-</tr>
-<tr>
-<td><code>children_type</code></td>
-<td>false</td>
-<td><em>array</em></td>
-<td><code>[]</code></td>
-<td>An optional array of <a href="#tokens-token-types">token types</a> to filter child tokens where the token is a parent in the <a href="#token-associations">token association</a></td>
 </tr>
 <tr>
 <td><code>decrypt_type</code></td>
@@ -5853,10 +5518,6 @@ Token types other than <code>token</code> or non-BasisTheory encrypted tokens wi
       </span><span class="nl">"alg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RSA"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"children"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="err">...</span><span class="p">}</span><span class="w">
-  </span><span class="p">],</span><span class="w">
   </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-01T08:23:14+00:00"</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -5889,31 +5550,6 @@ Token types other than <code>token</code> or non-BasisTheory encrypted tokens wi
 <td>The ID of the token</td>
 </tr>
 </tbody></table>
-<h3 id='tokens-get-a-token-query-parameters'>Query Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Required</th>
-<th>Type</th>
-<th>Default</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>children</code></td>
-<td>false</td>
-<td><em>boolean</em></td>
-<td><code>false</code></td>
-<td>Include child tokens where the token is a parent in <a href="#token-associations">token association</a></td>
-</tr>
-<tr>
-<td><code>children_type</code></td>
-<td>false</td>
-<td><em>array</em></td>
-<td><code>[]</code></td>
-<td>An optional array of <a href="#tokens-token-types">token types</a> to filter child tokens where the token is a parent in the <a href="#token-associations">token association</a></td>
-</tr>
-</tbody></table>
 <h3 id='tokens-get-a-token-response'>Response</h3>
 <p>Returns a <a href="#tokens-token-object">token</a> with the <code>id</code> provided. Returns <a href="#errors">an error</a> if the token could not be retrieved.</p>
 <h2 id='tokens-get-a-decrypted-token'>Get a Decrypted Token</h2>
@@ -5940,14 +5576,10 @@ Token types other than <code>token</code> or non-BasisTheory encrypted tokens wi
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c06d0789-0a38-40be-b7cc-c28a718f76f1"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"token"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"tenant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77cb0024-123e-41a8-8ff8-a3d5a0fa8a08"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ebSG3IohNmg5gTOjN2HBwBbhjDZ6BY3fCWZJfXSucVMfQ+7YNMXQYrPuRSXgSkhuTMYS+BNfVUur4qZSvUbgCA=="</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sensitive Value"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"nonSensitiveField"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Non-Sensitive Value"</span><span class="w">
   </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"children"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="err">...</span><span class="p">}</span><span class="w">
-  </span><span class="p">],</span><span class="w">
   </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-01T08:23:14+00:00"</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -5990,20 +5622,6 @@ Token types other than <code>token</code> or non-BasisTheory encrypted tokens wi
 <th>Description</th>
 </tr>
 </thead><tbody>
-<tr>
-<td><code>children</code></td>
-<td>false</td>
-<td><em>boolean</em></td>
-<td><code>false</code></td>
-<td>Include child tokens where the token is a parent in <a href="#token-associations">token association</a></td>
-</tr>
-<tr>
-<td><code>children_type</code></td>
-<td>false</td>
-<td><em>array</em></td>
-<td><code>[]</code></td>
-<td>An optional array of <a href="#tokens-token-types">token types</a> to filter child tokens where the token is a parent in the <a href="#token-associations">token association</a></td>
-</tr>
 <tr>
 <td><code>decrypt_type</code></td>
 <td>false</td>
@@ -6212,11 +5830,7 @@ Token types other than <code>token</code> or non-BasisTheory encrypted tokens wi
         "key": "vpXn45HnsoQPR1q8ptngmPvPaqIDJ4vO+FFyQclglePCt8d1SyTDJU0T+F54T7GnAz7vz5OKsjgsFNo9lVB3UA==",
         "alg": "RSA"
       }
-    },
-    "children": [
-      {...},
-      {...}
-    ]
+    }
   }'</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">BasisTheory</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@basis-theory/basis-theory-js</span><span class="dl">'</span><span class="p">;</span>
 
@@ -6237,11 +5851,7 @@ Token types other than <code>token</code> or non-BasisTheory encrypted tokens wi
       <span class="na">key</span><span class="p">:</span> <span class="dl">'</span><span class="s1">vpXn45HnsoQPR1q8ptngmPvPaqIDJ4vO+FFyQclglePCt8d1SyTDJU0T+F54T7GnAz7vz5OKsjgsFNo9lVB3UA==</span><span class="dl">'</span><span class="p">,</span>
       <span class="na">alg</span><span class="p">:</span> <span class="dl">'</span><span class="s1">RSA</span><span class="dl">'</span>
     <span class="p">}</span>
-  <span class="p">},</span>
-  <span class="na">children</span><span class="p">:</span> <span class="p">[</span>
-    <span class="p">{</span> <span class="p">...</span> <span class="p">},</span>
-    <span class="p">{</span> <span class="p">...</span> <span class="p">}</span>
-  <span class="p">]</span>
+  <span class="p">}</span>
 <span class="p">});</span>
 </code></pre></div><div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="k">using</span> <span class="nn">BasisTheory.net.Tokens</span><span class="p">;</span>
 
@@ -6263,10 +5873,6 @@ Token types other than <code>token</code> or non-BasisTheory encrypted tokens wi
         <span class="n">Key</span> <span class="p">=</span> <span class="s">"vpXn45HnsoQPR1q8ptngmPvPaqIDJ4vO+FFyQclglePCt8d1SyTDJU0T+F54T7GnAz7vz5OKsjgsFNo9lVB3UA=="</span><span class="p">,</span>
         <span class="n">Algorithm</span><span class="p">:</span> <span class="s">"RSA"</span>
       <span class="p">}</span>
-    <span class="p">},</span>
-    <span class="n">Children</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Token</span><span class="p">&gt;</span> <span class="p">{</span>
-      <span class="k">new</span> <span class="n">Token</span> <span class="p">{</span> <span class="p">...</span> <span class="p">},</span>
-      <span class="k">new</span> <span class="n">Token</span> <span class="p">{</span> <span class="p">...</span> <span class="p">}</span>
     <span class="p">}</span>
   <span class="p">}</span>
 <span class="p">);</span>
@@ -6282,11 +5888,7 @@ Token types other than <code>token</code> or non-BasisTheory encrypted tokens wi
   </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"nonSensitiveField"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Non-Sensitive Value"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"children"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="err">...</span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p><span class="http-method post">
@@ -6355,13 +5957,6 @@ Token types other than <code>token</code> or non-BasisTheory encrypted tokens wi
 <td><code>null</code></td>
 <td>Encryption metadata for an encrypted token data value</td>
 </tr>
-<tr>
-<td><code>children</code></td>
-<td>false</td>
-<td><em>array</em></td>
-<td><code>[]</code></td>
-<td>An array of <a href="#tokens-token-object">tokens</a>. Can be used to bulk create tokens with <a href="#token-associations-create-token-association">token associations</a></td>
-</tr>
 </tbody></table>
 <h3 id='token-associations-create-child-token-for-a-token-response'>Response</h3>
 <p>Returns a <a href="#tokens-token-object">token</a> if the child token was created for the parent token. Returns <a href="#errors">an error</a> if there were validation errors, or the token failed to create.</p>
@@ -6406,10 +6001,6 @@ Token types other than <code>token</code> or non-BasisTheory encrypted tokens wi
           </span><span class="nl">"alg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RSA"</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">},</span><span class="w">
-      </span><span class="nl">"children"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="err">...</span><span class="p">}</span><span class="w">
-      </span><span class="p">]</span><span class="w">
       </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-01T08:23:14+00:00"</span><span class="w">
     </span><span class="p">},</span><span class="w">
@@ -6470,23 +6061,381 @@ Token types other than <code>token</code> or non-BasisTheory encrypted tokens wi
 <td><code>[]</code></td>
 <td>An optional array of <a href="#tokens-token-types">token types</a> to filter the list of child tokens by</td>
 </tr>
-<tr>
-<td><code>children</code></td>
-<td>false</td>
-<td><em>boolean</em></td>
-<td><code>false</code></td>
-<td>Include child tokens where the child token is a parent in <a href="#token-associations">token association</a></td>
-</tr>
-<tr>
-<td><code>children_type</code></td>
-<td>false</td>
-<td><em>array</em></td>
-<td><code>[]</code></td>
-<td>An optional array of <a href="#tokens-token-types">token types</a> to filter child tokens where the child token is a parent in the <a href="#token-associations">token association</a></td>
-</tr>
 </tbody></table>
 <h3 id='token-associations-list-child-tokens-for-a-token-response'>Response</h3>
 <p>Returns a <a href="#pagination">paginated object</a> with the <code>data</code> property containing an array of <a href="#tokens-token-object">child tokens</a> for the parent token. Providing any query parameters will filter the child tokens. Returns <a href="#errors">an error</a> if tokens could not be retrieved.</p>
+<h1 id='tokenize'>Tokenize</h1>
+<p>The <code>tokenize</code> endpoint enables you to tokenize any request and tokenize several <a href="#tokens-token-types">types of tokens</a> in the same request. It can be utilized to combine multiple API calls into a single request to match your current data structure or bulk token creation.</p>
+
+<blockquote>
+<p>Create Basic Token Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/tokenize"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">-X</span> <span class="s2">"POST"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">'{
+    "first_name": "John",
+    "last_name": "Doe"
+  }'</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">BasisTheory</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@basis-theory/basis-theory-js</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">bt</span> <span class="o">=</span> <span class="k">await</span> <span class="k">new</span> <span class="nx">BasisTheory</span><span class="p">().</span><span class="nx">init</span><span class="p">(</span><span class="dl">'</span><span class="s1">key_N88mVGsp3sCXkykyN2EFED</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">token</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">bt</span><span class="p">.</span><span class="nx">tokenize</span><span class="p">.</span><span class="nx">tokenize</span><span class="p">({</span>
+  <span class="na">first_name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">John</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">last_name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Doe</span><span class="dl">'</span>
+<span class="p">});</span>
+</code></pre></div><div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="k">using</span> <span class="nn">BasisTheory.net.Tokenize</span><span class="p">;</span>
+
+<span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">TokenizeClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
+
+<span class="kt">var</span> <span class="n">token</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">Tokenize</span><span class="p">(</span><span class="k">new</span> <span class="p">{</span>
+  <span class="n">first_name</span> <span class="p">=</span> <span class="s">"John"</span><span class="p">,</span>
+  <span class="n">last_name</span> <span class="p">=</span> <span class="s">"Doe"</span>
+<span class="p">});</span>
+</code></pre></div>
+<blockquote>
+<p>Create Basic Token Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b0804096-5a47-4b8c-8fb7-b9ecc5e72eec"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"814a6416-3410-4224-8ea9-c0b4d453c9ce"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>Create Token Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/tokenize"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">-X</span> <span class="s2">"POST"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">'{
+    "type": "token",
+    "data": "Sensitive Value",
+    "metadata": {
+      "nonSensitiveField": "Non-Sensitive Value"
+    }
+  }'</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">BasisTheory</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@basis-theory/basis-theory-js</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">bt</span> <span class="o">=</span> <span class="k">await</span> <span class="k">new</span> <span class="nx">BasisTheory</span><span class="p">().</span><span class="nx">init</span><span class="p">(</span><span class="dl">'</span><span class="s1">key_N88mVGsp3sCXkykyN2EFED</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">token</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">bt</span><span class="p">.</span><span class="nx">tokenize</span><span class="p">.</span><span class="nx">tokenize</span><span class="p">({</span>
+  <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">token</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">data</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Sensitive Value</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">metadata</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">nonSensitiveField</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Non-Sensitive Value</span><span class="dl">'</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div><div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="k">using</span> <span class="nn">BasisTheory.net.Tokenize</span><span class="p">;</span>
+
+<span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">TokenizeClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
+
+<span class="kt">var</span> <span class="n">token</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">Tokenize</span><span class="p">(</span><span class="k">new</span> <span class="n">Token</span> <span class="p">{</span>
+  <span class="n">Type</span> <span class="p">=</span> <span class="s">"token"</span><span class="p">,</span>
+  <span class="n">Data</span> <span class="p">=</span> <span class="s">"Sensitive Value"</span><span class="p">,</span>
+  <span class="n">Metadata</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="kt">string</span><span class="p">&gt;</span> <span class="p">{</span>
+    <span class="p">{</span> <span class="s">"nonSensitiveField"</span><span class="p">,</span>  <span class="s">"Non-Sensitive Value"</span> <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div>
+<blockquote>
+<p>Create Token Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c06d0789-0a38-40be-b7cc-c28a718f76f1"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"tenant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77cb0024-123e-41a8-8ff8-a3d5a0fa8a08"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"token"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"nonSensitiveField"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Non-Sensitive Value"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>Create Card Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/tokenize"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">-X</span> <span class="s2">"POST"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">'{
+    "type": "card",
+    "data": {
+      "number": "4242424242424242",
+      "expiration_month": 12,
+      "expiration_year": 2025,
+      "cvc": "123"
+    },
+    "metadata": {
+      "nonSensitiveField": "Non-Sensitive Value"
+    }
+  }'</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">BasisTheory</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@basis-theory/basis-theory-js</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">bt</span> <span class="o">=</span> <span class="k">await</span> <span class="k">new</span> <span class="nx">BasisTheory</span><span class="p">().</span><span class="nx">init</span><span class="p">(</span><span class="dl">'</span><span class="s1">key_N88mVGsp3sCXkykyN2EFED</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">token</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">bt</span><span class="p">.</span><span class="nx">tokenize</span><span class="p">.</span><span class="nx">tokenize</span><span class="p">({</span>
+  <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">card</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">number</span><span class="p">:</span> <span class="dl">'</span><span class="s1">4242424242424242</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">expiration_month</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span>
+    <span class="na">expiration_year</span><span class="p">:</span> <span class="mi">2025</span><span class="p">,</span>
+    <span class="na">cvc</span><span class="p">:</span> <span class="dl">'</span><span class="s1">123</span><span class="dl">'</span>
+  <span class="p">},</span>
+  <span class="na">metadata</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">nonSensitiveField</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Non-Sensitive Value</span><span class="dl">'</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div><div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="k">using</span> <span class="nn">BasisTheory.net.Tokenize</span><span class="p">;</span>
+
+<span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">TokenizeClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
+
+<span class="kt">var</span> <span class="n">token</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">Tokenize</span><span class="p">(</span><span class="k">new</span> <span class="n">Token</span> <span class="p">{</span>
+  <span class="n">Type</span> <span class="p">=</span> <span class="s">"card"</span><span class="p">,</span>
+  <span class="n">Data</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Card</span> <span class="p">{</span>
+    <span class="n">CardNumber</span> <span class="p">=</span> <span class="s">"4242424242424242"</span><span class="p">,</span>
+    <span class="n">ExpirationMonth</span> <span class="p">=</span> <span class="m">12</span><span class="p">,</span>
+    <span class="n">ExpirationYear</span> <span class="p">=</span> <span class="m">2025</span><span class="p">,</span>
+    <span class="n">CardVerificationCode</span> <span class="p">=</span> <span class="s">"123"</span>
+  <span class="p">},</span>
+  <span class="n">Metadata</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="kt">string</span><span class="p">&gt;</span> <span class="p">{</span>
+    <span class="p">{</span> <span class="s">"nonSensitiveField"</span><span class="p">,</span>  <span class="s">"Non-Sensitive Value"</span> <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div>
+<blockquote>
+<p>Create Card Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c06d0789-0a38-40be-b7cc-c28a718f76f1"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"tenant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77cb0024-123e-41a8-8ff8-a3d5a0fa8a08"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"card"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"mask"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XXXXXXXXXXXX4242"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"expiration_month"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"expiration_year"</span><span class="p">:</span><span class="w"> </span><span class="mi">2025</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"nonSensitiveField"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Non-Sensitive Value"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>Tokenize Array Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/tokenize"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">-X</span> <span class="s2">"POST"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">'[
+    "John",
+    "Doe",
+    {
+      "type": "card",
+      "data": {
+        "number": "4242424242424242",
+        "expiration_month": 12,
+        "expiration_year": 2025,
+        "cvc": "123"
+      }
+    },
+    {
+      "type": "token",
+      "data": "Sensitive Value"
+    }
+  ]'</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">BasisTheory</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@basis-theory/basis-theory-js</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">bt</span> <span class="o">=</span> <span class="k">await</span> <span class="k">new</span> <span class="nx">BasisTheory</span><span class="p">().</span><span class="nx">init</span><span class="p">(</span><span class="dl">'</span><span class="s1">key_N88mVGsp3sCXkykyN2EFED</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">token</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">bt</span><span class="p">.</span><span class="nx">tokenize</span><span class="p">.</span><span class="nx">tokenize</span><span class="p">([</span>
+  <span class="dl">'</span><span class="s1">John</span><span class="dl">'</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">Doe</span><span class="dl">'</span><span class="p">,</span>
+  <span class="p">{</span>
+    <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">card</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">number</span><span class="p">:</span> <span class="dl">'</span><span class="s1">4242424242424242</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">expiration_month</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span>
+      <span class="na">expiration_year</span><span class="p">:</span> <span class="mi">2025</span><span class="p">,</span>
+      <span class="na">cvc</span><span class="p">:</span> <span class="dl">'</span><span class="s1">123</span><span class="dl">'</span>
+    <span class="p">},</span>
+    <span class="na">metadata</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">nonSensitiveField</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Non-Sensitive Value</span><span class="dl">'</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">token</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">data</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Sensitive Value</span><span class="dl">'</span>
+  <span class="p">}</span>
+<span class="p">]);</span>
+</code></pre></div><div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="k">using</span> <span class="nn">BasisTheory.net.Tokenize</span><span class="p">;</span>
+
+<span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">TokenizeClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
+
+<span class="kt">var</span> <span class="n">token</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">Tokenize</span><span class="p">(</span><span class="k">new</span> <span class="kt">object</span><span class="p">[</span>
+  <span class="s">"John"</span><span class="p">,</span>
+  <span class="s">"Doe"</span><span class="p">,</span>
+  <span class="k">new</span> <span class="n">Token</span> <span class="p">{</span>
+    <span class="n">Type</span> <span class="p">=</span> <span class="s">"card"</span><span class="p">,</span>
+    <span class="n">Data</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Card</span> <span class="p">{</span>
+      <span class="n">CardNumber</span> <span class="p">=</span> <span class="s">"4242424242424242"</span><span class="p">,</span>
+      <span class="n">ExpirationMonth</span> <span class="p">=</span> <span class="m">12</span><span class="p">,</span>
+      <span class="n">ExpirationYear</span> <span class="p">=</span> <span class="m">2025</span><span class="p">,</span>
+      <span class="n">CardVerificationCode</span> <span class="p">=</span> <span class="s">"123"</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="k">new</span> <span class="n">Token</span> <span class="p">{</span>
+    <span class="n">Type</span> <span class="p">=</span> <span class="s">"token"</span><span class="p">,</span>
+    <span class="n">Data</span> <span class="p">=</span> <span class="s">"Sensitive Value"</span>
+  <span class="p">}</span>
+<span class="p">]);</span>
+</code></pre></div>
+<blockquote>
+<p>Tokenize Array Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="s2">"b0804096-5a47-4b8c-8fb7-b9ecc5e72eec"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"814a6416-3410-4224-8ea9-c0b4d453c9ce"</span><span class="p">,</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c06d0789-0a38-40be-b7cc-c28a718f76f1"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"tenant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77cb0024-123e-41a8-8ff8-a3d5a0fa8a08"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"card"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"mask"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XXXXXXXXXXXX4242"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"expiration_month"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"expiration_year"</span><span class="p">:</span><span class="w"> </span><span class="mi">2025</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c06d0789-0a38-40be-b7cc-c28a718f76f1"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"tenant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77cb0024-123e-41a8-8ff8-a3d5a0fa8a08"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"token"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>Composite Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/tokenize"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">-X</span> <span class="s2">"POST"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">'{
+    "first_name": "John",
+    "last_name": "Doe",
+    "primary_card": {
+      "type": "card",
+      "data": {
+        "number": "4242424242424242",
+        "expiration_month": 12,
+        "expiration_year": 2025,
+        "cvc": "123"
+      }
+    },
+    "sensitive_tags": [
+      "preferred",
+      {
+        "type": "token",
+        "data": "vip"
+      }
+    ]
+  }'</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">BasisTheory</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@basis-theory/basis-theory-js</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">bt</span> <span class="o">=</span> <span class="k">await</span> <span class="k">new</span> <span class="nx">BasisTheory</span><span class="p">().</span><span class="nx">init</span><span class="p">(</span><span class="dl">'</span><span class="s1">key_N88mVGsp3sCXkykyN2EFED</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">token</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">bt</span><span class="p">.</span><span class="nx">tokenize</span><span class="p">.</span><span class="nx">tokenize</span><span class="p">({</span>
+  <span class="na">first_name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">John</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">last_name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Doe</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">primary_card</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">card</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">number</span><span class="p">:</span> <span class="dl">'</span><span class="s1">4242424242424242</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">expiration_month</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span>
+      <span class="na">expiration_year</span><span class="p">:</span> <span class="mi">2025</span><span class="p">,</span>
+      <span class="na">cvc</span><span class="p">:</span> <span class="dl">'</span><span class="s1">123</span><span class="dl">'</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="na">sensitive_tags</span><span class="p">:</span> <span class="p">[</span>
+    <span class="dl">'</span><span class="s1">preferred</span><span class="dl">'</span><span class="p">,</span>
+    <span class="p">{</span>
+      <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">token</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">data</span><span class="p">:</span> <span class="dl">'</span><span class="s1">vip</span><span class="dl">'</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">});</span>
+</code></pre></div><div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="k">using</span> <span class="nn">BasisTheory.net.Tokenize</span><span class="p">;</span>
+
+<span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">TokenizeClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
+
+<span class="kt">var</span> <span class="n">token</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">Tokenize</span><span class="p">(</span><span class="k">new</span> <span class="p">{</span>
+  <span class="n">first_name</span> <span class="p">=</span> <span class="s">"John"</span><span class="p">,</span>
+  <span class="n">last_name</span> <span class="p">=</span> <span class="s">"Doe"</span><span class="p">,</span>
+  <span class="n">primary_card</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Token</span> <span class="p">{</span>
+    <span class="n">Type</span> <span class="p">=</span> <span class="s">"card"</span><span class="p">,</span>
+    <span class="n">Data</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Card</span> <span class="p">{</span>
+      <span class="n">CardNumber</span> <span class="p">=</span> <span class="s">"4242424242424242"</span><span class="p">,</span>
+      <span class="n">ExpirationMonth</span> <span class="p">=</span> <span class="m">12</span><span class="p">,</span>
+      <span class="n">ExpirationYear</span> <span class="p">=</span> <span class="m">2025</span><span class="p">,</span>
+      <span class="n">CardVerificationCode</span> <span class="p">=</span> <span class="s">"123"</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="n">sensitive_tags</span> <span class="p">=</span> <span class="k">new</span> <span class="kt">object</span><span class="p">[]</span> <span class="p">{</span>
+    <span class="s">"preferred"</span><span class="p">,</span>
+    <span class="k">new</span> <span class="n">Token</span> <span class="p">{</span>
+      <span class="n">Type</span> <span class="p">=</span> <span class="s">"token"</span><span class="p">,</span>
+      <span class="n">Data</span> <span class="p">=</span> <span class="s">"vip"</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div>
+<blockquote>
+<p>Composite Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b0804096-5a47-4b8c-8fb7-b9ecc5e72eec"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"814a6416-3410-4224-8ea9-c0b4d453c9ce"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"primary_card"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c06d0789-0a38-40be-b7cc-c28a718f76f1"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"tenant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77cb0024-123e-41a8-8ff8-a3d5a0fa8a08"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"card"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"mask"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XXXXXXXXXXXX4242"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"expiration_month"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"expiration_year"</span><span class="p">:</span><span class="w"> </span><span class="mi">2025</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"sensitive_tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"be3dff7a-4e01-4a52-93e6-9f8ef03f3cd9"</span><span class="p">,</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aaed779a-3152-437d-8e8a-10afeb0fe620"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"tenant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77cb0024-123e-41a8-8ff8-a3d5a0fa8a08"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"token"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p><span class="http-method post">
+  <span class="box-method">POST</span>
+  <code>https://api.basistheory.com/tokenize</code>
+</span></p>
+
+<p>Tokenize one to many tokens for the Tenant.</p>
+<h3 id='tokenize-list-child-tokens-for-a-token-permissions'>Permissions</h3>
+<p>Permissions are determined by the <a href="#tokens-token-types">token types</a> being tokenized.</p>
 
         
       </div>
