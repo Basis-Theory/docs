@@ -1,3 +1,10 @@
+# [1.15.0](https://github.com/Basis-Theory/docs/compare/v1.14.0...v1.15.0) (2021-11-25)
+
+
+### Features
+
+* adds transform attribute for text elements ([#122](https://github.com/Basis-Theory/docs/issues/122)) ([606a660](https://github.com/Basis-Theory/docs/commit/606a6602aa3fad1fffbbbd3ae9beb41b2aee9818))
+
 # [1.14.0](https://github.com/Basis-Theory/docs/compare/v1.13.0...v1.14.0) (2021-11-25)
 
 
