@@ -454,6 +454,9 @@
                     <li>
                       <a href="#elements-services-atomic-banks" class="toc-h2 toc-link" data-title="Atomic Banks">Atomic Banks</a>
                     </li>
+                    <li>
+                      <a href="#elements-services-tokens" class="toc-h2 toc-link" data-title="Tokens">Tokens</a>
+                    </li>
                 </ul>
             </li>
         </ul>
@@ -1347,6 +1350,78 @@ used with that text element.</p>
 <span class="p">});</span>
 </code></pre></div>
 <p>In case <code>atomicBank.create</code> throws an error, that could be related to client-side validation or an unaccepted request from the server.</p>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Scope</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>validation</code></td>
+<td><em>array</em></td>
+<td>client</td>
+<td>Array of <a href="#element-events-on-change-fielderror">FieldError</a>, in case of client-side error.</td>
+</tr>
+<tr>
+<td><code>data</code></td>
+<td><em>object</em></td>
+<td>server</td>
+<td>Response body sent from the server.</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td><em>number</em></td>
+<td>both</td>
+<td>Response HTTP status or <code>-1</code> if the request never left the client (i.e. connection issues)</td>
+</tr>
+</tbody></table>
+<h2 id='elements-services-tokens'>Tokens</h2><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">elements</span><span class="p">.</span><span class="nx">tokens</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
+  <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">token</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">sensitiveData</span><span class="p">:</span> <span class="nx">sensitiveDataElement</span><span class="p">,</span>
+    <span class="na">nonSensitiveData</span><span class="p">:</span> <span class="dl">'</span><span class="s1">plainText</span><span class="dl">'</span><span class="p">,</span> <span class="c1">// see warning on plain text data</span>
+    <span class="na">otherData</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">someInteger</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span>
+      <span class="na">someBoolean</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="na">someOtherData</span><span class="p">:</span> <span class="p">[</span><span class="dl">'</span><span class="s1">plainText1</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">plainText2</span><span class="dl">'</span><span class="p">],</span>
+  <span class="p">},</span>
+  <span class="na">metadata</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">nonSensitiveField</span><span class="p">:</span> <span class="dl">'</span><span class="s1">nonSensitiveValue</span><span class="dl">'</span>
+  <span class="p">}</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">((</span><span class="nx">token</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">token</span><span class="p">));</span> <span class="c1">// encrypted token data</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>Allows secure submission and tokenization of string data. Returns a <code>Promise</code> that resolves to the created token.</p>
+
+<p>Internally, <code>BasisTheory.elements.tokens.create</code> calls <a href="/api-reference#tokens-create-token">Create Token API</a>.</p>
+
+<p>You can fetch this same data later with <a href="/api-reference#tokens-get-a-token">Get a Token API</a> or <a href="/api-reference#tokens-get-a-decrypted-token">Get a Decrypted Token API</a></p>
+
+<aside class="notice">
+  <span>Notice that the actual input data never leaves the element (iframe) other than to hit our secure API endpoints.</span>
+</aside>
+
+<aside class="warning">
+  <span>Note that when submitting <code>plainText</code> values, data will be HTML encoded before storage for security reasons.
+</aside>
+
+<aside class="warning">
+  <span>Currently only the <code>token</code> type is supported. Support for more types will be added in the future.</span>
+</aside>
+
+<aside class="warning">
+  <span>The <code>encryption</code> and <code>children</code> attributes supported by the API are <strong>NOT</strong> supported when creating a token with elements.</span>
+</aside>
+<h3 id='elements-services-tokens-tokens-errors'>tokens Errors</h3><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">elements</span><span class="p">.</span><span class="nx">tokens</span><span class="p">.</span><span class="nx">create</span><span class="p">(...).</span><span class="k">catch</span><span class="p">(</span><span class="nx">error</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="c1">// handle error</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>In case <code>tokens.create</code> throws an error, that could be related to client-side validation or an unaccepted request from the server.</p>
 
 <table><thead>
 <tr>
