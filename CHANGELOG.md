@@ -1,3 +1,10 @@
+# [1.14.0](https://github.com/Basis-Theory/docs/compare/v1.13.0...v1.14.0) (2021-11-25)
+
+
+### Features
+
+* Create generic tokens with elements ([#119](https://github.com/Basis-Theory/docs/issues/119)) ([7884365](https://github.com/Basis-Theory/docs/commit/78843653e43d5d67316c36f1d703d6436e5d67f2))
+
 # [1.13.0](https://github.com/Basis-Theory/docs/compare/v1.12.0...v1.13.0) (2021-11-24)
 
 
