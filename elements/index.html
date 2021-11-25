@@ -446,6 +446,9 @@
               <a href="#element-mask" class="toc-h1 toc-link" data-title="Element Mask">Element Mask</a>
             </li>
             <li>
+              <a href="#element-transform" class="toc-h1 toc-link" data-title="Element Transform">Element Transform</a>
+            </li>
+            <li>
               <a href="#elements-services" class="toc-h1 toc-link" data-title="Elements Services">Elements Services</a>
                 <ul class="toc-list-h2">
                     <li>
@@ -762,6 +765,13 @@
 <td><a href="#element-mask">Array</a> used to restrict and fill user input using regex and static strings</td>
 </tr>
 <tr>
+<td><code>transform</code></td>
+<td>false</td>
+<td><em>ElementTransform</em></td>
+<td><a href="#element-types-text-element">TextElement</a></td>
+<td><code>RegExp</code> object or <a href="#element-transform">array</a> used to modify user input before sending input to any <a href="#elements-services">services</a></td>
+</tr>
+<tr>
 <td><code>placeholder</code></td>
 <td>false</td>
 <td><em>string</em></td>
@@ -827,7 +837,7 @@
 </tr>
 </tbody></table>
 <h3 id='elements-instance-update-element-updateelementoptions'>UpdateElementOptions</h3>
-<p>UpdateElementOptions provide a quick way to change an existing (mounted) Element appearance.</p>
+<p>UpdateElementOptions provide a quick way to change an existing (mounted) Element&#39;s appearance and functionality.</p>
 
 <table><thead>
 <tr>
@@ -844,6 +854,13 @@
 <td><em>ElementStyle</em></td>
 <td>All</td>
 <td><a href="#element-style">Object</a> used to customize the element appearance</td>
+</tr>
+<tr>
+<td><code>transform</code></td>
+<td>false</td>
+<td><em>ElementTransform</em></td>
+<td><a href="#element-types-text-element">TextElement</a></td>
+<td><code>RegExp</code> object or <a href="#element-transform">array</a> used to modify user input before sending input to any <a href="#elements-services">services</a></td>
 </tr>
 <tr>
 <td><code>placeholder</code></td>
@@ -1261,7 +1278,8 @@ rules:</p>
 </ul>
 
 <p>The mask will be displayed as the user is typing, and will be used as the value for any <a href="#elements-services">services</a>
-used with that text element.</p>
+used with that text element. The <a href="#element-transform">transform</a> attribute can be used to modify this value before any
+requests to any <a href="#elements-services">services</a>.</p>
 
 <aside class="notice">
   <span>Once set, we do not currently allow updating the mask. If you need to update the mask programmatically, don't hesitate to <a href="mailto:support@basistheory.com">reach out</a>.</span>
@@ -1269,6 +1287,28 @@ used with that text element.</p>
 
 <aside class="warning">
   <span>For security and performance reasons, we attempt to detect that the regex provided is valid and not susceptible to catastrophic backtracking. If it fails this validation, we will reject the <a href="#elements-instance-mount-element">mount</a> promise.</span>
+</aside>
+<h1 id='element-transform'>Element Transform</h1><div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="kd">var</span> <span class="nx">phoneNumberElement</span> <span class="o">=</span> <span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">elements</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="dl">'</span><span class="s1">text</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">targetId</span><span class="p">:</span> <span class="dl">'</span><span class="s1">myPhoneNumberElement</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">mask</span><span class="p">:</span> <span class="p">[</span><span class="dl">'</span><span class="s1">(</span><span class="dl">'</span><span class="p">,</span> <span class="sr">/</span><span class="se">\d</span><span class="sr">/</span><span class="p">,</span> <span class="sr">/</span><span class="se">\d</span><span class="sr">/</span><span class="p">,</span> <span class="sr">/</span><span class="se">\d</span><span class="sr">/</span><span class="p">,</span> <span class="dl">'</span><span class="s1">)</span><span class="dl">'</span><span class="p">,</span> <span class="sr">/</span><span class="se">\d</span><span class="sr">/</span><span class="p">,</span> <span class="sr">/</span><span class="se">\d</span><span class="sr">/</span><span class="p">,</span> <span class="sr">/</span><span class="se">\d</span><span class="sr">/</span><span class="p">,</span> <span class="dl">'</span><span class="s1">-</span><span class="dl">'</span><span class="p">,</span> <span class="sr">/</span><span class="se">\d</span><span class="sr">/</span><span class="p">,</span> <span class="sr">/</span><span class="se">\d</span><span class="sr">/</span><span class="p">,</span> <span class="sr">/</span><span class="se">\d</span><span class="sr">/</span><span class="p">,</span> <span class="sr">/</span><span class="se">\d</span><span class="sr">/</span><span class="p">],</span>
+  <span class="na">transform</span><span class="p">:</span> <span class="sr">/</span><span class="se">[</span><span class="sr">()-</span><span class="se">]</span><span class="sr">/</span><span class="p">,</span>
+<span class="p">})</span>
+</code></pre></div>
+<p>Text elements allow you to modify user input before sending it to any <a href="#elements-services">services</a> through the
+<code>transform</code> attribute. It can be set as a <code>RegExp</code> object, an array with a <code>RegExp</code> object, or an array with a <code>RegExp</code>
+object at the first index and a string at the second. It works by making use of the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace">String replace</a>
+function. The <code>RegExp</code> object and string defined will be used as the first and second argument for the <code>replace</code> function,
+respectively. If no string is defined, an empty string will be used as the second argument. For instance, the mask for a
+US based phone number shown on the right will modify user input to look like this: <code>(123)456-7890</code>. The <code>transform</code>
+attribute, in this case, will modify the user input to remove <code>(</code>, <code>)</code>, and <code>-</code> from the input. The resulting value is
+<code>1234567890</code> which will be what gets sent to any <a href="#elements-services">services</a>.</p>
+
+<aside class="notice">
+  <span>We strip all <code>RegExp</code> object flags defined in the <code>transform</code> and set <code>gu</code> as the flags.</span>
+</aside>
+
+<aside class="warning">
+  <span>For security and performance reasons, we attempt to detect that the regex provided is valid and not susceptible to catastrophic backtracking. If it fails this validation, we will reject the <a href="#elements-instance-mount-element">mount</a> or <a href="#elements-instance-update-element">update</a> promise.</span>
 </aside>
 <h1 id='elements-services'>Elements Services</h1><h2 id='elements-services-store-credit-card'>Store Credit Card</h2><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">elements</span><span class="p">.</span><span class="nx">storeCreditCard</span><span class="p">({</span>
   <span class="na">card</span><span class="p">:</span> <span class="nx">cardElement</span><span class="p">,</span>
