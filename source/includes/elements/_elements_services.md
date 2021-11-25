@@ -106,7 +106,7 @@ BasisTheory.elements.tokens.create({
 });
 ```
 
-Allows secure submission and tokenization of generic data. Returns a `Promise` that resolves to the created token.
+Allows secure submission and tokenization of string data. Returns a `Promise` that resolves to the created token.
 
 Internally, `BasisTheory.elements.tokens.create` calls [Create Token API](/api-reference#tokens-create-token).
 
