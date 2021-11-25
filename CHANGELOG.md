@@ -1,3 +1,17 @@
+# [1.13.0](https://github.com/Basis-Theory/docs/compare/v1.12.0...v1.13.0) (2021-11-24)
+
+
+### Features
+
+* add tokenize docs, remove billing details, cleanup encryption examples ([#120](https://github.com/Basis-Theory/docs/issues/120)) ([d775c8f](https://github.com/Basis-Theory/docs/commit/d775c8f5546f799731415f8bf7f35245181910a6))
+
+# [1.12.0](https://github.com/Basis-Theory/docs/compare/v1.11.0...v1.12.0) (2021-11-24)
+
+
+### Features
+
+* add aria-label ([#121](https://github.com/Basis-Theory/docs/issues/121)) ([d6af127](https://github.com/Basis-Theory/docs/commit/d6af12783c2c8bdddaf6d36ef36eda455fb5296c))
+
 # [1.11.0](https://github.com/Basis-Theory/docs/compare/v1.10.0...v1.11.0) (2021-11-23)
 
 

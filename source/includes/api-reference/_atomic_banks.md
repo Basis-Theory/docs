@@ -549,7 +549,7 @@ React with an Atomic Bank by ID.
 ### Request Parameters
 | Parameter            | Required | Type   | Default | Description                                                                                                                                                        |
 |----------------------|----------|--------|---------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `ractor_id`          | true     | *uuid* | `null`  | The ID of the reactor                                                                                                                                              |
+| `reactor_id`          | true     | *uuid* | `null`  | The ID of the reactor                                                                                                                                              |
 | `request_parameters` | false    | *map*  | `null`  | A key-value map of [request parameters](#reactor-forumula-request-parameter-object) names and values for the reactor                                               |
 | `metadata`           | false    | *map*  | `null`  | A key-value map of non-sensitive data. We overwrite the following keys: `correlation_id`, `reactor_id`, `reactor_name`, `source_token_id`, and `source_token_type` |
 

@@ -15,7 +15,6 @@
 | `fingerprint` | *string*                                                      | Uniquely identifies the contents of this token. Fingerprints are only available for Atomic Card and Atomic Bank token types. |
 | `metadata`    | *map*                                                         | A key-value map of non-sensitive data.                                                                                       |
 | `encryption`  | *[encryption object](#tokens-token-object-encryption-object)* | Encryption metadata for an encrypted token data value                                                                        |
-| `children`    | *array*                                                       | Array of child tokens where this token is the parent in an [association](#token-associations)                                |
 | `created_by`  | *uuid*                                                        | (Optional) The [Application](#applications-application-object) ID which created the token                                    |
 | `created_at`  | *date*                                                        | (Optional) Created date of the token in ISO 8601 format                                                                      |
 | `modified_by` | *uuid*                                                        | (Optional) The [Application](#applications) ID which last modified the token                                                 |
@@ -27,6 +26,10 @@
 |-----------|----------------------------------------------------------------|------------------------|
 | `cek`     | *[encryption key](#tokens-token-object-encryption-key-object)* | Content encryption key |
 | `kek`     | *[encryption key](#tokens-token-object-encryption-key-object)* | Key encryption key     |
+
+<aside class="success">
+  <span>Basis Theory encrypts the <code>data</code> attribute of the token with a one-time use <code>AES-256</code> symmetric encryption key and then encrypts the symmetric key with an asymmetric <code>RSA</code> public key. Our SDK will automatically handle this for you if you use our encryption modules to encrypt each token with your own encryption keys.</span>
+</aside>
 
 ### Encryption Key Object
 
@@ -55,25 +58,10 @@ curl "https://api.basistheory.com/tokens" \
   -X "POST" \
   -d '{
     "type": "token",
-    "data": "ebSG3IohNmg5gTOjN2HBwBbhjDZ6BY3fCWZJfXSucVMfQ+7YNMXQYrPuRSXgSkhuTMYS+BNfVUur4qZSvUbgCA==",
+    "data": "Sensitive Value",
     "metadata": {
       "nonSensitiveField": "Non-Sensitive Value"
-    },
-    "encryption": {
-      "cek": {
-        "key": "JLrtGbYSN5/dbqdKtLVG8tHu3QefcZnKsFOPBBXlXcG4zL9US01mW2MqZs6Px4ckSQM8CrRakwLKilrQ0f37Iw==",
-        "alg": "AES"
-      },
-      "kek": {
-        "key": "vpXn45HnsoQPR1q8ptngmPvPaqIDJ4vO+FFyQclglePCt8d1SyTDJU0T+F54T7GnAz7vz5OKsjgsFNo9lVB3UA==",
-        "prov": "AWS",
-        "alg": "RSA"
-      }
-    },
-    "children": [
-      {...},
-      {...}
-    ]
+    }
   }'
 ```
 
@@ -84,25 +72,10 @@ const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
 
 const token = await bt.tokens.create({
   type: 'token',
-  data: 'ebSG3IohNmg5gTOjN2HBwBbhjDZ6BY3fCWZJfXSucVMfQ+7YNMXQYrPuRSXgSkhuTMYS+BNfVUur4qZSvUbgCA==',
+  data: 'Sensitive Value',
   metadata: {
     nonSensitiveField: 'Non-Sensitive Value'
-  },
-  encryption: {
-    cek: {
-      key: 'JLrtGbYSN5/dbqdKtLVG8tHu3QefcZnKsFOPBBXlXcG4zL9US01mW2MqZs6Px4ckSQM8CrRakwLKilrQ0f37Iw==',
-      alg: 'AES'
-    },
-    kek: {
-      key: 'vpXn45HnsoQPR1q8ptngmPvPaqIDJ4vO+FFyQclglePCt8d1SyTDJU0T+F54T7GnAz7vz5OKsjgsFNo9lVB3UA==',
-      prov: 'AWS',
-      alg: 'RSA'
-    }
-  },
-  children: [
-    { ... },
-    { ... }
-  ]
+  }
 });
 ```
 
@@ -113,24 +86,9 @@ var client = new TokenClient("key_N88mVGsp3sCXkykyN2EFED");
 
 var token = await client.CreateAsync(new Token {
   Type = "token",
-  Data = "ebSG3IohNmg5gTOjN2HBwBbhjDZ6BY3fCWZJfXSucVMfQ+7YNMXQYrPuRSXgSkhuTMYS+BNfVUur4qZSvUbgCA==",
+  Data = "Sensitive Value",
   Metadata = new Dictionary<string, string> {
     { "nonSensitiveField",  "Non-Sensitive Value" }
-  },
-  Encryption = new Encryption {
-    ContentEncryptionKey = new EncryptionKey {
-      Key = "JLrtGbYSN5/dbqdKtLVG8tHu3QefcZnKsFOPBBXlXcG4zL9US01mW2MqZs6Px4ckSQM8CrRakwLKilrQ0f37Iw==",
-      Algorithm: "AES"
-    },
-    KeyEncryptionKey = new EncryptionKey {
-      Key = "vpXn45HnsoQPR1q8ptngmPvPaqIDJ4vO+FFyQclglePCt8d1SyTDJU0T+F54T7GnAz7vz5OKsjgsFNo9lVB3UA==",
-      Provider: "AWS",
-      Algorithm: "RSA"
-    }
-  },
-  Children = new List<Token> {
-    new Token { ... },
-    new Token { ... }
   }
 });
 ```
@@ -145,10 +103,6 @@ var token = await client.CreateAsync(new Token {
   "metadata": {
     "nonSensitiveField": "Non-Sensitive Value"
   },
-  "children": [
-    {...},
-    {...}
-  ],
   "created_by": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
   "created_at": "2020-09-15T15:53:00+00:00"
 }
@@ -175,14 +129,9 @@ Create a new token for the Tenant.
 | `data`       | true     | *any*                                                         | `null`  | Token data. Can be an object, array, or any primitive type such as an integer, boolean, or string                                                     |
 | `metadata`   | false    | *map*                                                         | `null`  | A key-value map of non-sensitive data.                                                                                                                |
 | `encryption` | false    | *[encryption object](#tokens-token-object-encryption-object)* | `null`  | Encryption metadata for an encrypted token data value                                                                                                 |
-| `children`   | false    | *array*                                                       | `[]`    | An array of [tokens](#tokens-token-object). Can be used to bulk create tokens with [token associations](#token-associations-create-token-association) |
-
-<aside class="success">
-  <span>Basis Theory recommends encrypting the <code>data</code> attribute of the token. Our recommendation is that you encrypt the data with a one-time use symmetric encryption key such as <code>AES-256</code> and then encrypt the symmetric key with an asymmetric public key such as <code>RSA</code>. Our SDK will automatically handle this for you.</span>
-</aside>
 
 <aside class="warning">
-  <span>WARNING - Never store sensitive plaintext information in your token such as plaintext <code>data</code>, <code>metadata</code> or plaintext, private encryption keys in the <code>encryption</code> attributes of your token.</span>
+  <span>WARNING - Never store sensitive plaintext information in the <code>metadata</code> or plaintext, private encryption keys in the <code>encryption</code> attributes of your token.</span>
 </aside>
 
 
@@ -241,10 +190,6 @@ var tokens = await client.GetAsync();
           "alg": "RSA" 
         }
       },
-      "children": [
-        {...},
-        {...}
-      ],
       "created_by": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
       "created_at": "2021-03-01T08:23:14+00:00"
     },
@@ -273,8 +218,6 @@ Get a list of tokens for the Tenant.
 |-----------------|----------|-----------|---------|------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `id`            | false    | *array*   | `[]`    | An optional list of token ID's to filter the list of tokens by                                                                                             |
 | `type`          | false    | *array*   | `[]`    | An optional array of [token types](#tokens-token-types) to filter the list of tokens by                                                                    |
-| `children`      | false    | *boolean* | `false` | Include child tokens where the token is a parent in [token association](#token-associations)                                                               |
-| `children_type` | false    | *array*   | `[]`    | An optional array of [token types](#tokens-token-types) to filter child tokens where the token is a parent in the [token association](#token-associations) |
 
 ### Response
 
@@ -316,14 +259,10 @@ var tokens = await client.GetAsync(new TokenGetRequest { Decrypt = true });
       "id": "c06d0789-0a38-40be-b7cc-c28a718f76f1",
       "type": "token",
       "tenant_id": "77cb0024-123e-41a8-8ff8-a3d5a0fa8a08",
-      "data": "ebSG3IohNmg5gTOjN2HBwBbhjDZ6BY3fCWZJfXSucVMfQ+7YNMXQYrPuRSXgSkhuTMYS+BNfVUur4qZSvUbgCA==",
+      "data": "Sensitive Value",
       "metadata": {
         "nonSensitiveField": "Non-Sensitive Value"
       },
-      "children": [
-        {...},
-        {...}
-      ],
       "created_by": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
       "created_at": "2021-03-01T08:23:14+00:00"
     },
@@ -352,8 +291,6 @@ Get a list of decrypted tokens for the Tenant.
 |-----------------|----------|-----------|---------|------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `id`            | false    | *array*   | `[]`    | An optional list of token ID's to filter the list of tokens by                                                                                             |
 | `type`          | false    | *array*   | `[]`    | An optional array of [token types](#tokens-token-types) to filter the list of tokens by                                                                    |
-| `children`      | false    | *boolean* | `false` | Include child tokens where the token is a parent in [token association](#token-associations)                                                               |
-| `children_type` | false    | *array*   | `[]`    | An optional array of [token types](#tokens-token-types) to filter child tokens where the token is a parent in the [token association](#token-associations) |
 | `decrypt_type`  | false    | *array*   | `[]`    | An optional array of [token types](#tokens-token-types) to filter token types that should be decrypted                                                     |
 
 ### Response
@@ -409,10 +346,6 @@ var token = await client.GetByIdAsync("c06d0789-0a38-40be-b7cc-c28a718f76f1");
       "alg": "RSA"
     }
   },
-  "children": [
-    {...},
-    {...}
-  ],
   "created_by": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
   "created_at": "2021-03-01T08:23:14+00:00"
 }
@@ -436,13 +369,6 @@ Get a token by ID in the Tenant.
 | Parameter | Required | Type   | Default | Description         |
 |-----------|----------|--------|---------|---------------------|
 | `id`      | true     | *uuid* | `null`  | The ID of the token |
-
-### Query Parameters
-
-| Parameter       | Required | Type      | Default | Description                                                                                                                                                |
-|-----------------|----------|-----------|---------|------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `children`      | false    | *boolean* | `false` | Include child tokens where the token is a parent in [token association](#token-associations)                                                               |
-| `children_type` | false    | *array*   | `[]`    | An optional array of [token types](#tokens-token-types) to filter child tokens where the token is a parent in the [token association](#token-associations) |
 
 ### Response
 
@@ -481,14 +407,10 @@ var token = await client.GetByIdAsync("c06d0789-0a38-40be-b7cc-c28a718f76f1", ne
   "id": "c06d0789-0a38-40be-b7cc-c28a718f76f1",
   "type": "token",
   "tenant_id": "77cb0024-123e-41a8-8ff8-a3d5a0fa8a08",
-  "data": "ebSG3IohNmg5gTOjN2HBwBbhjDZ6BY3fCWZJfXSucVMfQ+7YNMXQYrPuRSXgSkhuTMYS+BNfVUur4qZSvUbgCA==",
+  "data": "Sensitive Value",
   "metadata": {
     "nonSensitiveField": "Non-Sensitive Value"
   },
-  "children": [
-    {...},
-    {...}
-  ],
   "created_by": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
   "created_at": "2021-03-01T08:23:14+00:00"
 }
@@ -517,8 +439,6 @@ Get a decrypted token by ID in the Tenant.
 
 | Parameter       | Required | Type      | Default | Description                                                                                                                                                |
 |-----------------|----------|-----------|---------|------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `children`      | false    | *boolean* | `false` | Include child tokens where the token is a parent in [token association](#token-associations)                                                               |
-| `children_type` | false    | *array*   | `[]`    | An optional array of [token types](#tokens-token-types) to filter child tokens where the token is a parent in the [token association](#token-associations) |
 | `decrypt_type`  | false    | *array*   | `[]`    | An optional array of [token types](#tokens-token-types) to filter token types that should be decrypted                                                     |
 
 ### Response

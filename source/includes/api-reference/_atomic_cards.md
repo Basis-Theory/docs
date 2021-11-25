@@ -8,7 +8,6 @@
 | `tenant_id`       | *uuid*                                                                       | The [Tenant](#tenants) ID which owns the card                                                                                              |
 | `type`            | *string*                                                                     | `Card` [token type](#tokens-token-types)                                                                                                   |
 | `card`            | *[card](#atomic-cards-atomic-card-object-card-object)*                       | Card data                                                                                                                                  |
-| `billing_details` | *[billing details](#atomic-cards-atomic-card-object-billing-details-object)* | Billing details                                                                                                                            |
 | `fingerprint`     | *string*                                                                     | Uniquely identifies this particular card number. You can use this attribute to check whether two card tokens contain the same card number. |
 | `metadata`        | *map*                                                                        | A key-value map of non-sensitive data.                                                                                                     |
 | `created_by`      | *uuid*                                                                       | (Optional) The [Application](#applications) ID which created the Atomic Card                                                               |
@@ -24,26 +23,6 @@
 | `expiration_month` | false    | *integer* | `null`  | Two-digit number representing the card's expiration month |
 | `expiration_year`  | false    | *integer* | `null`  | Four-digit number representing the card's expiration year |
 | `cvc`              | false    | *string*  | `null`  | Three or four-digit card verification code                |
-
-### Billing Details Object
-
-| Attribute | Required | Type      | Default | Description                                                                             |
-|-----------|----------|-----------|---------|-----------------------------------------------------------------------------------------|
-| `name`    | false    | *string*  | `null`  | The cardholder or customer's full name                                                  |
-| `email`   | false    | *string*  | `null`  | The cardholder or customer's email address                                              |
-| `phone`   | false    | *string*  | `null`  | The cardholder or customer's phone number                                               |
-| `address` | false    | *address* | `null`  | The cardholder or customer's [address](#atomic-cards-atomic-card-object-address-object) |
-
-### Address Object
-
-| Attribute     | Required | Type     | Default | Description                                             |
-|---------------|----------|----------|---------|---------------------------------------------------------|
-| `line1`       | true     | *string* | `null`  | Address line 1 (Street address / PO Box / Company name) |
-| `line2`       | false    | *string* | `null`  | Address line 2 (Apartment / Suite / Unit / Building)    |
-| `city`        | true     | *string* | `null`  | City / District / Suburb / Town / Village               |
-| `state`       | true     | *string* | `null`  | State / County / Province / Region                      |
-| `postal_code` | true     | *string* | `null`  | Zip or postal code                                      |
-| `country`     | true     | *string* | `null`  | Two-character ISO country code (e.g. `US`)              |
 
 
 ## Create Atomic Card
@@ -61,19 +40,6 @@ curl "https://api.basistheory.com/atomic/cards" \
       "expiration_month": 12,
       "expiration_year": 2025,
       "cvc": "123"
-    },
-    "billing_details": {
-      "name": "John Doe",
-      "email": "johndoe@test.com",
-      "phone": "555-123-4567",
-      "address": {
-        "line1": "111 Test St.",
-        "line2": "Apt 304",
-        "city": "San Francisco",
-        "state": "CA",
-        "postal_code": "94141",
-        "country": "US"
-      }
     },
     "metadata": {
       "nonSensitiveField": "Non-Sensitive Value"
@@ -93,19 +59,6 @@ const atomicCard = await bt.atomicCards.create({
     expirationYear: 2025,
     cvc: '123',
   },
-  billingDetails: {
-    name: 'John Doe',
-    email: 'johndoe@test.com',
-    phone: '555-123-4567',
-    address: {
-      line1: '111 Test St.',
-      line2: 'Apt 304',
-      city: 'San Francisco',
-      state: 'CA',
-      postalCode: '94141',
-      country: 'US'
-    },
-  },
   metadata: {
     nonSensitiveField: 'Non-Sensitive Value'
   },
@@ -124,19 +77,6 @@ var atomicCard = await client.CreateAsync(new AtomicCard {
     ExpirationYear = 2025,
     CardVerificationCode = "123"
   },
-  BillingDetails = new BillingDetails {
-    Name = "John Doe",
-    Email = "johndoe@test.com",
-    PhoneNumber = "555-123-4567",
-    Address = new Address {
-      LineOne = "111 Test St.",
-      LineTwo = "Apt 304",
-      City = "San Francisco",
-      State = "CA",
-      PostalCode = "94141",
-      Country = "US"
-    }
-  },
   Metadata = new Dictionary<string, string> {
     { "nonSensitiveField", "Non-Sensitive Value" }
   }
@@ -154,19 +94,6 @@ var atomicCard = await client.CreateAsync(new AtomicCard {
     "number": "XXXXXXXXXXXX4242",
     "expiration_month": 12,
     "expiration_year": 2025
-  },
-  "billing_details": {
-    "name": "John Doe",
-    "email": "johndoe@test.com",
-    "phone": "555-123-4567",
-    "address": {
-      "line1": "111 Test St.",
-      "line2": "Apt 304",
-      "city": "San Francisco",
-      "state": "CA",
-      "postal_code": "94141",
-      "country": "US"
-    }
   },
   "fingerprint": "EVYsSLRyb86Z5awJksvnjVMEC4iP7KX639GtHVUFpzER",
   "metadata": {
@@ -197,7 +124,6 @@ Create a new Atomic Card for the Tenant.
 | Attribute         | Required | Type                                                                         | Default | Description                            |
 |-------------------|----------|------------------------------------------------------------------------------|---------|----------------------------------------|
 | `card`            | true     | *[card](#atomic-cards-atomic-card-object-card-object)*                       | `null`  | Card data                              |
-| `billing_details` | false    | *[billing details](#atomic-cards-atomic-card-object-billing-details-object)* | `null`  | Billing details                        |
 | `metadata`        | false    | *map*                                                                        | `null`  | A key-value map of non-sensitive data. |
 
 ### Response
@@ -244,19 +170,6 @@ var atomicCards = await client.GetAsync();
         "number": "XXXXXXXXXXXX4242",
         "expiration_month": 12,
         "expiration_year": 2025
-      },
-      "billing_details": {
-        "name": "John Doe",
-        "email": "johndoe@test.com",
-        "phone": "555-123-4567",
-        "address": {
-          "line1": "111 Test St.",
-          "line2": "Apt 304",
-          "city": "San Francisco",
-          "state": "CA",
-          "postal_code": "94141",
-          "country": "US"
-        }
       },
       "fingerprint": "EVYsSLRyb86Z5awJksvnjVMEC4iP7KX639GtHVUFpzER",
       "metadata": {
@@ -326,19 +239,6 @@ var atomicCard = await client.GetByIdAsync("c1e565009-1984-4638-8fca-dce8a82cc2a
     "expiration_month": 12,
     "expiration_year": 2025
   },
-  "billing_details": {
-    "name": "John Doe",
-    "email": "johndoe@test.com",
-    "phone": "555-123-4567",
-    "address": {
-      "line1": "111 Test St.",
-      "line2": "Apt 304",
-      "city": "San Francisco",
-      "state": "CA",
-      "postal_code": "94141",
-      "country": "US"
-    }
-  },
   "fingerprint": "EVYsSLRyb86Z5awJksvnjVMEC4iP7KX639GtHVUFpzER",
   "metadata": {
     "nonSensitiveField": "Non-Sensitive Value"
@@ -387,19 +287,6 @@ curl "https://api.basistheory.com/atomic/cards/c1e565009-1984-4638-8fca-dce8a82c
       "expiration_month": 12,
       "expiration_year": 2025,
       "cvc": "123"
-    },
-    "billing_details": {
-      "name": "John Doe",
-      "email": "johndoe@test.com",
-      "phone": "555-123-4567",
-      "address": {
-        "line1": "111 Test St.",
-        "line2": "Apt 304",
-        "city": "San Francisco",
-        "state": "CA",
-        "postal_code": "94141",
-        "country": "US"
-      }
     }
   }'
 ```
@@ -415,19 +302,6 @@ const atomicCard = await bt.atomicCards.update("c1e565009-1984-4638-8fca-dce8a82
     expirationMonth: 12,
     expirationYear: 2025,
     cvc: '123',
-  },
-  billingDetails: {
-    name: 'John Doe',
-    email: 'johndoe@test.com',
-    phone: '555-123-4567',
-    address: {
-      line1: '111 Test St.',
-      line2: 'Apt 304',
-      city: 'San Francisco',
-      state: 'CA',
-      postalCode: '94141',
-      country: 'US'
-    },
   }
 });
 ```
@@ -443,19 +317,6 @@ var atomicCard = await client.UpdateAsync("c1e565009-1984-4638-8fca-dce8a82cc2af
     ExpirationMonth = 12,
     ExpirationYear = 2025,
     CardVerificationCode = "123"
-  },
-  BillingDetails = new BillingDetails {
-    Name = "John Doe",
-    Email = "johndoe@test.com",
-    PhoneNumber = "555-123-4567",
-    Address = new Address {
-      LineOne = "111 Test St.",
-      LineTwo = "Apt 304",
-      City = "San Francisco",
-      State = "CA",
-      PostalCode = "94141",
-      Country = "US"
-    }
   }
 });
 ```
@@ -471,19 +332,6 @@ var atomicCard = await client.UpdateAsync("c1e565009-1984-4638-8fca-dce8a82cc2af
     "number": "XXXXXXXXXXXX4242",
     "expiration_month": 12,
     "expiration_year": 2025
-  },
-  "billing_details": {
-    "name": "John Doe",
-    "email": "johndoe@test.com",
-    "phone": "555-123-4567",
-    "address": {
-      "line1": "111 Test St.",
-      "line2": "Apt 304",
-      "city": "San Francisco",
-      "state": "CA",
-      "postal_code": "94141",
-      "country": "US"
-    }
   },
   "fingerprint": "EVYsSLRyb86Z5awJksvnjVMEC4iP7KX639GtHVUFpzER",
   "metadata": {
@@ -514,7 +362,6 @@ Update an Atomic Card for the Tenant. At least one property on the request body 
 | Attribute         | Required | Type                                                                         | Default | Description     |
 |-------------------|----------|------------------------------------------------------------------------------|---------|-----------------|
 | `card`            | false    | *[card](#atomic-cards-atomic-card-object-card-object)*                       | `null`  | Card data       |
-| `billing_details` | false    | *[billing details](#atomic-cards-atomic-card-object-billing-details-object)* | `null`  | Billing details |
 
 ### Response
 
