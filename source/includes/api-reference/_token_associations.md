@@ -138,11 +138,7 @@ curl "https://api.basistheory.com/tokens/c06d0789-0a38-40be-b7cc-c28a718f76f1/ch
         "key": "vpXn45HnsoQPR1q8ptngmPvPaqIDJ4vO+FFyQclglePCt8d1SyTDJU0T+F54T7GnAz7vz5OKsjgsFNo9lVB3UA==",
         "alg": "RSA"
       }
-    },
-    "children": [
-      {...},
-      {...}
-    ]
+    }
   }'
 ```
 
@@ -166,11 +162,7 @@ const token = await bt.tokens.createChild('c06d0789-0a38-40be-b7cc-c28a718f76f1'
       key: 'vpXn45HnsoQPR1q8ptngmPvPaqIDJ4vO+FFyQclglePCt8d1SyTDJU0T+F54T7GnAz7vz5OKsjgsFNo9lVB3UA==',
       alg: 'RSA'
     }
-  },
-  children: [
-    { ... },
-    { ... }
-  ]
+  }
 });
 ```
 
@@ -195,10 +187,6 @@ var token = await client.CreateChildAsync("c06d0789-0a38-40be-b7cc-c28a718f76f1"
         Key = "vpXn45HnsoQPR1q8ptngmPvPaqIDJ4vO+FFyQclglePCt8d1SyTDJU0T+F54T7GnAz7vz5OKsjgsFNo9lVB3UA==",
         Algorithm: "RSA"
       }
-    },
-    Children = new List<Token> {
-      new Token { ... },
-      new Token { ... }
     }
   }
 );
@@ -215,11 +203,7 @@ var token = await client.CreateChildAsync("c06d0789-0a38-40be-b7cc-c28a718f76f1"
   "created_at": "2020-09-15T15:53:00+00:00",
   "metadata": {
     "nonSensitiveField": "Non-Sensitive Value"
-  },
-  "children": [
-    {...},
-    {...}
-  ]
+  }
 }
 ```
 
@@ -250,7 +234,6 @@ Attribute | Required | Type | Default | Description
 `data` | true | *any* | `null` | Token data
 `metadata` | false | *map* | `null` | A key-value map of non-sensitive data.
 `encryption` | false | *[encryption object](#tokens-token-object-encryption-object)* | `null` | Encryption metadata for an encrypted token data value
-`children` | false | *array* | `[]` | An array of [tokens](#tokens-token-object). Can be used to bulk create tokens with [token associations](#token-associations-create-token-association)
 
 ### Response
 
@@ -306,10 +289,6 @@ var tokens = await client.GetChildrenAsync("c06d0789-0a38-40be-b7cc-c28a718f76f1
           "alg": "RSA"
         }
       },
-      "children": [
-        {...},
-        {...}
-      ]
       "created_by": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
       "created_at": "2021-03-01T08:23:14+00:00"
     },
@@ -344,8 +323,6 @@ Parameter | Required | Type | Default | Description
 --------- | -------- | ---- | ------- | -----------
 `id` | false | *array* | `[]` | An optional list of token ID's to filter the list of child tokens by
 `type` | false | *array* | `[]` | An optional array of [token types](#tokens-token-types) to filter the list of child tokens by
-`children` | false | *boolean* | `false` | Include child tokens where the child token is a parent in [token association](#token-associations)
-`children_type` | false | *array* | `[]` | An optional array of [token types](#tokens-token-types) to filter child tokens where the child token is a parent in the [token association](#token-associations)
 
 ### Response
 
