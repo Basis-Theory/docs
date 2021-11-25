@@ -37,6 +37,7 @@ Attribute     | Required | Type                 | Eligible Elements             
 `transform`   | false    | *ElementTransform*   | [TextElement](#element-types-text-element) | `RegExp` object or [array](#element-transform) used to modify user input before sending input to any [services](#elements-services)
 `placeholder` | false    | *string*             | [TextElement](#element-types-text-element) | String used to customize the [placeholder attribute](https://developer.mozilla.org/docs/Web/HTML/Element/input#attr-placeholder) of the input
 `aria-label`  | false    | *string*             | [TextElement](#element-types-text-element) | String used to customize the [aria-label attribute](https://developer.mozilla.org/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-label_attribute) of the input
+`disabled`    | false    | *boolean*      | [TextElement](#element-types-text-element) | Boolean used to set the [disabled attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled) of the input
 
 ## Mount Element
 
@@ -85,7 +86,7 @@ Attribute     | Required | Type                 | Eligible elements             
 `transform`   | false    | *ElementTransform*   | [TextElement](#element-types-text-element)  | `RegExp` object or [array](#element-transform) used to modify user input before sending input to any [services](#elements-services)
 `placeholder` | false    | *string*             | [TextElement](#element-types-text-element)  | String used to customize the [placeholder attribute](https://developer.mozilla.org/docs/Web/HTML/Element/input#attr-placeholder) of the input
 `aria-label`  | false    | *string*             | [TextElement](#element-types-text-element)  | String used to customize the [aria-label attribute](https://developer.mozilla.org/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-label_attribute) of the input
-
+`disabled`    | false    | *boolean*      | [TextElement](#element-types-text-element) | Boolean used to set the [disabled attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled) of the input
 
 ## Clear Element
 
