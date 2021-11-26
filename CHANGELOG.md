@@ -1,3 +1,10 @@
+# [1.16.0](https://github.com/Basis-Theory/docs/compare/v1.15.0...v1.16.0) (2021-11-26)
+
+
+### Features
+
+* add disabled attribute to text element docs ([#123](https://github.com/Basis-Theory/docs/issues/123)) ([d95e623](https://github.com/Basis-Theory/docs/commit/d95e6235e2a549dc569b2c8df1c5ae8019c8a322))
+
 # [1.15.0](https://github.com/Basis-Theory/docs/compare/v1.14.0...v1.15.0) (2021-11-25)
 
 
