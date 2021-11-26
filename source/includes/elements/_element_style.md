@@ -15,13 +15,16 @@ var cardElement = BasisTheory.elements.create('card', {
       "::placeholder": {
         color: "#6b7294"
       },
-      invalid: {
-        color: "#ffc7ee"
+      ":disabled": {
+        backgroundColor: "#f0f0f4"
       },
-      complete: {
-        color: "#1ad1db"
-      }
-    }
+    },
+    invalid: {
+      color: "#ffc7ee"
+    },
+    complete: {
+      color: "#1ad1db"
+    }    
   }
 })
 ```
@@ -40,6 +43,7 @@ You can customize the following pseudo-classes and pseudo-elements inside each v
 
 - `:hover`
 - `:focus`
+- `:disabled`  
 - `::placeholder`
 - `::selection`
 
