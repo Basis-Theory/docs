@@ -751,6 +751,13 @@
 <td><a href="#element-style">Object</a> used to customize the element appearance</td>
 </tr>
 <tr>
+<td><code>disabled</code></td>
+<td>false</td>
+<td><em>boolean</em></td>
+<td>All</td>
+<td>Boolean used to set the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled">disabled attribute</a> of the input(s)</td>
+</tr>
+<tr>
 <td><code>targetId</code></td>
 <td>true</td>
 <td><em>string</em></td>
@@ -854,6 +861,13 @@
 <td><em>ElementStyle</em></td>
 <td>All</td>
 <td><a href="#element-style">Object</a> used to customize the element appearance</td>
+</tr>
+<tr>
+<td><code>disabled</code></td>
+<td>false</td>
+<td><em>boolean</em></td>
+<td>All</td>
+<td>Boolean used to set the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled">disabled attribute</a> of the input(s)</td>
 </tr>
 <tr>
 <td><code>transform</code></td>
@@ -1170,13 +1184,16 @@
       <span class="dl">"</span><span class="s2">::placeholder</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
         <span class="na">color</span><span class="p">:</span> <span class="dl">"</span><span class="s2">#6b7294</span><span class="dl">"</span>
       <span class="p">},</span>
-      <span class="na">invalid</span><span class="p">:</span> <span class="p">{</span>
-        <span class="na">color</span><span class="p">:</span> <span class="dl">"</span><span class="s2">#ffc7ee</span><span class="dl">"</span>
+      <span class="dl">"</span><span class="s2">:disabled</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">backgroundColor</span><span class="p">:</span> <span class="dl">"</span><span class="s2">#f0f0f4</span><span class="dl">"</span>
       <span class="p">},</span>
-      <span class="na">complete</span><span class="p">:</span> <span class="p">{</span>
-        <span class="na">color</span><span class="p">:</span> <span class="dl">"</span><span class="s2">#1ad1db</span><span class="dl">"</span>
-      <span class="p">}</span>
-    <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="na">invalid</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">color</span><span class="p">:</span> <span class="dl">"</span><span class="s2">#ffc7ee</span><span class="dl">"</span>
+    <span class="p">},</span>
+    <span class="na">complete</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">color</span><span class="p">:</span> <span class="dl">"</span><span class="s2">#1ad1db</span><span class="dl">"</span>
+    <span class="p">}</span>    
   <span class="p">}</span>
 <span class="p">})</span>
 </code></pre></div>
@@ -1227,6 +1244,7 @@
 <ul>
 <li><code>:hover</code></li>
 <li><code>:focus</code></li>
+<li><code>:disabled</code><br></li>
 <li><code>::placeholder</code></li>
 <li><code>::selection</code></li>
 </ul>
