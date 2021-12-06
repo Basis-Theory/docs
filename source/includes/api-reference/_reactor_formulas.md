@@ -2,8 +2,8 @@
 
 Reactor formulas give you the ability to pre-configure custom integrations to securely process, enrich, and associate your tokens.
 
-<aside class="notice">
-  <span>Creating Reactor Formula is currently in beta status. If you would like to be added to the beta program, please <a href="mailto:support@basistheory.com?subject=Reactor Beta Access">contact us</a>!</span>
+<aside class="warning">
+  <span>Creating custom Reactor Formulas is currently in beta status. If you would like to be added to the beta program, please <a href="mailto:support@basistheory.com?subject=Reactor Beta Access">contact us</a>!</span>
 </aside>
 
 
