@@ -1,13 +1,13 @@
 # Proxy <span class="beta menu">BETA</span>
 
 <aside class="warning">
-  <span>The Basis Theory Proxy is currently available publicly but is still in beta status. The features listed below are subject to change. If you are interested in using the proxy and your use case is not currently supported, please <a href="mailto:support@basistheory.com?subject=Proxy Feature Request">submit a feature request</a>!</span>
+  <span>The Basis Theory Proxy is currently available in Public Beta. The features listed below are subject to change. If you are interested in using the proxy and your use case is not currently supported, please <a href="mailto:support@basistheory.com?subject=Proxy Feature Request">submit a feature request</a>!</span>
 </aside>
 
 ## Proxying Outbound Requests
 
-The Basis Theory Proxy provides a simple mechanism to use your token data stored in the Basis Theory Vault in outbound requests to a third party API.
-Requests containing tokens can be sent to a third party through the proxy and Basis Theory will detect the presence of these tokens and substitute the raw token data within the request that is forwarded to the third party API. The third party will receive the detokenized data in the request without your system needing to interact with this sensitive data on your own servers.
+The Basis Theory Proxy provides a simple mechanism to use the data you've stored with Basis Theory in outbound requests to a third party API.
+Basis Theory token identifiers included in the request will be replaced with the raw token data and then the modified request will be forwarded to the destination specified in the `BT-PROXY-URL` request header. The destination will receive the raw data in the request without your system needing to interact with sensitive data on your own servers.
 
 ### Proxy Requests
 
@@ -67,29 +67,29 @@ Proxy requests must be authenticated using an `X-API-KEY` header (see [Authentic
 
 **Permissions**
 
-At least one of the following permissions is required:
+Depending on the type of data you need to forward to a third party, at least one of the following permissions is required:
 
 <p class="scopes">
-  <span class="scope">token:use</span>
-  <span class="scope">card:use</span>
   <span class="scope">bank:use</span>
+  <span class="scope">card:use</span>
+  <span class="scope">token:use</span>
 </p>
 
 **Configuration**
 
-Proxy requests require a `BT-PROXY-URL` header to be included. The value of this header defines the destination url to which the request will be proxied.
-We require that the destination url uses HTTPS with >= TLSv1.2 on port 443. The url must specify the url using DNS - direct IP addresses are not supported.
+Proxy requests require a `BT-PROXY-URL` request header to be set. The value of the `BT-PROXY-URL` header defines the base URL to which the request will be proxied.
+The `BT-PROXY-URL` request header must use HTTPS with DNS as the host. Destinations must use HTTPS >= TLSv1.2 over port 443.
   
-The `BT-PROXY-URL` header and the `/proxy` endpoint both support urls that include routes or query string parameters and these values will be included in the proxied request. 
+The `BT-PROXY-URL` request header will serve as the base URL for the proxied request. Any path and/or query parameters under `/proxy/**` will be appended to the base URL before forwarding the request.
 
 For example, sending a proxy request to `https://api.basistheory.com/proxy/foo/bar?param=value` and including the header `BT-PROXY-URL=https://example.com/api` will result in the request being forwarded to `https://example.com/api/foo/bar?param=value`.
 
 **Detokenization**
 
-Detokenization is the process of exchanging a non-sensitive token for the senstitive data that token represents. The Basis Theory Proxy will attempt to detokenize certain interpolation patterns in the request body before sending the request to the downstream destination.
+The Basis Theory Proxy will attempt to detokenize certain interpolation patterns and inject the raw token data in the request body before sending the request to the downstream destination.
 
 The proxy will substitute any patterns of the form `{{tokenId}}` within the request with the raw token data represented by that `tokenId`. For example,
-given a token of the form:
+given a token:
 
 <div class="center-column"></div>
 ```json
@@ -99,7 +99,7 @@ given a token of the form:
 }
 ```  
 
-and a proxy request with a body of the form:
+and a proxy request with the body:
 
 <div class="center-column"></div>
 ```json
@@ -109,7 +109,7 @@ and a proxy request with a body of the form:
 }
 ```  
 
-then the following request body will sent to the desintation url:
+then the following request body will sent to the desintation:
 
 <div class="center-column"></div>
 ```json
@@ -119,7 +119,7 @@ then the following request body will sent to the desintation url:
 }
 ```
 
-Note that requests may contain a mixture of both token interpolation patterns and non-interpolated raw data. The `<token_type>:use` permission is required in order to detokenize tokens of type `<token_type>` within a proxy request. At most 100 unique tokens may be detokenized within a single proxy request.
+Requests may contain a mixture of both token interpolation patterns and non-interpolated raw data. The `<token_type>:use` permission is required in order to detokenize tokens of type `<token_type>` within a proxy request. At most 100 unique tokens may be detokenized within a single proxy request.
 
 <aside class="notice">
   <span>In the current beta version of the proxy, only primitive generic tokens (of type <code>token</code>) can be interpolated in proxy requests. Proxy requests that contain <code>card</code> or <code>bank</code> tokens, or generic tokens containing complex structured json data will be rejected with a 400 error.</span>

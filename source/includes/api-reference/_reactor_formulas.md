@@ -241,7 +241,7 @@ var reactorFormula = await client.CreateAsync(new ReactorFormula {
 ```
 
 <aside class="warning">
-  <span>Creating custom Reactor Formulas is currently in beta status. If you would like to be added to the beta program, please <a href="mailto:support@basistheory.com?subject=Reactor Beta Access">contact us</a>!</span>
+  <span>Creating custom Reactor Formulas is currently in Private Beta. If you would like to be added to the beta program, please <a href="mailto:support@basistheory.com?subject=Reactor Beta Access">contact us</a>!</span>
 </aside>
 
 <span class="http-method post">
