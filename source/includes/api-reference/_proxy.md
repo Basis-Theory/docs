@@ -25,16 +25,41 @@ curl "https://api.basistheory.com/proxy" \
 ```
 
 <span class="http-method post">
+  <span class="method-wrapper">
+    <span class="box-method">POST</span>
+  </span>
   `https://api.basistheory.com/proxy`
 </span>
 
-Proxy a request to a third party API. The following HTTP verbs are supported:  
+<span class="http-method put">
+  <span class="method-wrapper">
+    <span class="box-method">PUT</span>
+  </span>
+  `https://api.basistheory.com/proxy`
+</span>
 
-- POST
-- PUT
-- PATCH
-- DELETE
-- GET
+<span class="http-method patch">
+  <span class="method-wrapper">
+    <span class="box-method">PATCH</span>
+  </span>
+  `https://api.basistheory.com/proxy`
+</span>
+
+<span class="http-method delete">
+  <span class="method-wrapper">
+    <span class="box-method">DELETE</span>
+  </span>
+  `https://api.basistheory.com/proxy`
+</span>
+
+<span class="http-method get">
+  <span class="method-wrapper">
+    <span class="box-method">GET</span>
+  </span>
+  `https://api.basistheory.com/proxy`
+</span>
+
+Proxy a request to a third party API.
 
 **Authentication**
 

@@ -717,6 +717,12 @@ html, body {
     text-transform: uppercase;
     box-sizing: border-box;
     border-radius: 2px;
+    display: inline-block;
+  }
+
+  .method-wrapper {
+    min-width: 80px;
+    display: inline-block;
   }
 
   &.get {
@@ -724,17 +730,27 @@ html, body {
     border: 1px solid $http-method-get-border;
 
     .box-method {
-      background-color: $primary;
+      background-color: $http-method-get-bg;
     }
 
   }
 
-  &.post, &.put {
+  &.post {
     background-color: $http-method-post-container-bg;
     border: 1px solid $http-method-post-border;
 
     .box-method {
       background-color: $http-method-post-bg;
+    }
+
+  }
+
+  &.put {
+    background-color: $http-method-put-container-bg;
+    border: 1px solid $http-method-put-border;
+
+    .box-method {
+      background-color: $http-method-put-bg;
     }
 
   }
