@@ -413,16 +413,29 @@ html, body {
   }
 }
 
+@media (min-width: $phone-width) {
+  .content {
+    .center-column + .highlight {
+      background-color: transparent;
+      pre {
+        position: static;
+        float: none;
+        clear: none;
+        margin: 0 28px 18px 28px;
+        width: calc(50% - 56px);
+        left: 0;
+      }
+    }
+  }
+}
+
 .content {
   .center-column + .highlight {
-    background-color: transparent;
     pre {
-      position: static;
-      float: none;
-      clear: none;
-      margin: 0 28px;
-      width: 50%;
-      left: 0;
+      margin-bottom: 18px;
+    }
+    .copy-clipboard {
+      display: none;
     }
   }
 }
@@ -580,6 +593,7 @@ html, body {
     border-radius: 2px;
     @extend %break-words;
     @extend %code-font;
+    word-break: break-word;
   }
 
   pre>code {
