@@ -33,6 +33,7 @@ api_includes:
   - api-reference/atomic_cards
   - api-reference/logs  
   - api-reference/permissions
+  - api-reference/proxy
   - api-reference/reactor_formulas
   - api-reference/reactors
   - api-reference/tenants
