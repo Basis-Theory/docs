@@ -2,11 +2,6 @@
 
 Reactor formulas give you the ability to pre-configure custom integrations to securely process, enrich, and associate your tokens.
 
-<aside class="warning">
-  <span>Creating custom Reactor Formulas is currently in beta status. If you would like to be added to the beta program, please <a href="mailto:support@basistheory.com?subject=Reactor Beta Access">contact us</a>!</span>
-</aside>
-
-
 ## Reactor Formula Object
 
 Attribute | Type | Description
@@ -63,7 +58,7 @@ Type | Description
 `private` | Private formulas which are only available to your Tenant
 
 
-## Create Reactor Formula
+## Create Reactor Formula <span class="beta menu">BETA</span>
 
 > Request
 
@@ -244,6 +239,10 @@ var reactorFormula = await client.CreateAsync(new ReactorFormula {
   "created_at": "2020-09-15T15:53:00+00:00"
 }
 ```
+
+<aside class="warning">
+  <span>Creating custom Reactor Formulas is currently in beta status. If you would like to be added to the beta program, please <a href="mailto:support@basistheory.com?subject=Reactor Beta Access">contact us</a>!</span>
+</aside>
 
 <span class="http-method post">
   <span class="box-method">POST</span>

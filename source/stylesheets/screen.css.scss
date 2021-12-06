@@ -322,6 +322,17 @@ html, body {
   &.open {left: $nav-width}
 }
 
+.beta {
+  padding: 3px 6px 4px;
+  color: #FFD582;
+  background: rgba(255, 213, 130, 0.14);
+  border-radius: 2px;
+  font-size: 10px;
+  margin-left: 6px;
+  vertical-align: text-bottom;
+  font-weight: 600;
+}
+
 
 ////////////////////////////////////////////////////////////////////////////////
 // PAGE LAYOUT AND CODE SAMPLE BACKGROUND
@@ -438,6 +449,12 @@ html, body {
       display: none;
     }
   }
+
+    .beta {
+      background: #FFD582;
+      color: $main-text;
+      line-height: 20px;
+    }
 }
 
 .content {
