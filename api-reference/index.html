@@ -286,13 +286,13 @@
   color: #859900;
 }
     </style>
-    <link href="../stylesheets/screen-300fc6bc.css" rel="stylesheet" media="screen" />
-    <link href="../stylesheets/home-ca08ab6b.css" rel="stylesheet" media="screen" />
+    <link href="../stylesheets/screen-2cf215ca.css" rel="stylesheet" media="screen" />
+    <link href="../stylesheets/home-400c8cb3.css" rel="stylesheet" media="screen" />
     <link href="../stylesheets/guides.css" rel="stylesheet" media="screen" />
     <link href="../stylesheets/iubenda-4a9ea063.css" rel="stylesheet" media="screen" />
     <script src="https://kit.fontawesome.com/86c3cd0147.js" crossorigin="anonymous"></script>
     <link href="../stylesheets/print-fac0743d.css" rel="stylesheet" media="print" />
-      <script src="../javascripts/all-187a2431.js"></script>
+      <script src="../javascripts/all-0b3a32eb.js"></script>
 
     <script>
       $(function() { setupCodeCopy(); });
@@ -519,6 +519,14 @@
                 </ul>
             </li>
             <li>
+              <a href="#proxy-beta" class="toc-h1 toc-link" data-title="Proxy BETA">Proxy <span class="beta menu">BETA</span></a>
+                <ul class="toc-list-h2">
+                    <li>
+                      <a href="#proxy-span-class-beta-menu-beta-span-proxying-outbound-requests" class="toc-h2 toc-link" data-title="Proxying Outbound Requests">Proxying Outbound Requests</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
               <a href="#reactor-formulas" class="toc-h1 toc-link" data-title="Reactor Formulas">Reactor Formulas</a>
                 <ul class="toc-list-h2">
                     <li>
@@ -531,7 +539,7 @@
                       <a href="#reactor-formulas-reactor-formula-types" class="toc-h2 toc-link" data-title="Reactor Formula Types">Reactor Formula Types</a>
                     </li>
                     <li>
-                      <a href="#reactor-formulas-create-reactor-formula" class="toc-h2 toc-link" data-title="Create Reactor Formula">Create Reactor Formula</a>
+                      <a href="#reactor-formulas-create-reactor-formula-beta" class="toc-h2 toc-link" data-title="Create Reactor Formula BETA">Create Reactor Formula <span class="beta menu">BETA</span></a>
                     </li>
                     <li>
                       <a href="#reactor-formulas-list-reactor-formulas" class="toc-h2 toc-link" data-title="List Reactor Formulas">List Reactor Formulas</a>
@@ -3334,12 +3342,140 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
 </span></p>
 <h3 id='permissions-list-permissions-response'>Response</h3>
 <p>Returns an array of <a href="#permissions-permission-object">permission objects</a>. Returns <a href="#errors">an error</a> if permissions could not be retrieved.</p>
-<h1 id='reactor-formulas'>Reactor Formulas</h1>
-<p>Reactor formulas give you the ability to pre-configure custom integrations to securely process, enrich, and associate your tokens.</p>
+<h1 id='proxy-beta'>Proxy <span class="beta menu">BETA</span></h1>
+<aside class="warning">
+  <span>The Basis Theory Proxy is currently available in Public Beta. The features listed below are subject to change. If you are interested in using the proxy and your use case is not currently supported, please <a href="mailto:support@basistheory.com?subject=Proxy Feature Request">submit a feature request</a>!</span>
+</aside>
+<h2 id='proxy-span-class-beta-menu-beta-span-proxying-outbound-requests'>Proxying Outbound Requests</h2>
+<p>The Basis Theory Proxy provides a simple mechanism to use the data you&#39;ve stored with Basis Theory in outbound requests to a third party API.
+Basis Theory token identifiers included in the request will be replaced with the raw token data and then the modified request will be forwarded to the destination specified in the <code>BT-PROXY-URL</code> request header. The destination will receive the raw data in the request without your system needing to interact with sensitive data on your own servers.</p>
+<h3 id='proxy-span-class-beta-menu-beta-span-proxying-outbound-requests-proxy-requests'>Proxy Requests</h3>
+<blockquote>
+<p>Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/proxy"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"BT-PROXY-URL: https://example.com/api"</span> <span class="se">\</span>
+  <span class="nt">-X</span> <span class="s2">"POST"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">'{
+    "parameter1": "{{26818785-547b-4b28-b0fa-531377e99f4e}}",
+    "parameter2": "non-interpolated"
+  }'</span>
+</code></pre></div>
+<p><span class="http-method post">
+  <span class="method-wrapper">
+    <span class="box-method">POST</span>
+  </span>
+  <code>https://api.basistheory.com/proxy</code>
+</span></p>
+
+<p><span class="http-method put">
+  <span class="method-wrapper">
+    <span class="box-method">PUT</span>
+  </span>
+  <code>https://api.basistheory.com/proxy</code>
+</span></p>
+
+<p><span class="http-method patch">
+  <span class="method-wrapper">
+    <span class="box-method">PATCH</span>
+  </span>
+  <code>https://api.basistheory.com/proxy</code>
+</span></p>
+
+<p><span class="http-method delete">
+  <span class="method-wrapper">
+    <span class="box-method">DELETE</span>
+  </span>
+  <code>https://api.basistheory.com/proxy</code>
+</span></p>
+
+<p><span class="http-method get">
+  <span class="method-wrapper">
+    <span class="box-method">GET</span>
+  </span>
+  <code>https://api.basistheory.com/proxy</code>
+</span></p>
+
+<p>Proxy a request to a third party API.</p>
+
+<p><strong>Authentication</strong></p>
+
+<p>Proxy requests must be authenticated using an <code>X-API-KEY</code> header (see <a href="#authentication">Authentication</a>). </p>
+
+<p><strong>Permissions</strong></p>
+
+<p>Depending on the type of data you need to forward to a third party, at least one of the following permissions is required:</p>
+
+<p class="scopes">
+  <span class="scope">bank:use</span>
+  <span class="scope">card:use</span>
+  <span class="scope">token:use</span>
+</p>
+
+<p><strong>Configuration</strong></p>
+
+<p>Proxy requests require a <code>BT-PROXY-URL</code> request header to be set. The value of the <code>BT-PROXY-URL</code> header defines the base URL to which the request will be proxied.
+The <code>BT-PROXY-URL</code> request header must use HTTPS with DNS as the host. Destinations must use HTTPS &gt;= TLSv1.2 over port 443.</p>
+
+<p>The <code>BT-PROXY-URL</code> request header will serve as the base URL for the proxied request. Any path and/or query parameters under <code>/proxy/**</code> will be appended to the base URL before forwarding the request.</p>
+
+<p>For example, sending a proxy request to <code>https://api.basistheory.com/proxy/foo/bar?param=value</code> and including the header <code>BT-PROXY-URL=https://example.com/api</code> will result in the request being forwarded to <code>https://example.com/api/foo/bar?param=value</code>.</p>
+
+<p><strong>Detokenization</strong></p>
+
+<p>The Basis Theory Proxy will attempt to detokenize certain interpolation patterns and inject the raw token data in the request body before sending the request to the downstream destination.</p>
+
+<p>The proxy will substitute any patterns of the form <code>{{tokenId}}</code> within the request with the raw token data represented by that <code>tokenId</code>. For example,
+given a token:</p>
+
+<div class="center-column"></div>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"26818785-547b-4b28-b0fa-531377e99f4e"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sensitive data"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>and a proxy request with the body:</p>
+
+<div class="center-column"></div>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"parameter1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{{26818785-547b-4b28-b0fa-531377e99f4e}}"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"parameter2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"non-interpolated"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>then the following request body will sent to the desintation:</p>
+
+<div class="center-column"></div>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"parameter1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"senstive data"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"parameter2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"non-interpolated"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Requests may contain a mixture of both token interpolation patterns and non-interpolated raw data. The <code>&lt;token_type&gt;:use</code> permission is required in order to detokenize tokens of type <code>&lt;token_type&gt;</code> within a proxy request. At most 100 unique tokens may be detokenized within a single proxy request.</p>
 
 <aside class="notice">
-  <span>Creating Reactor Formula is currently in beta status. If you would like to be added to the beta program, please <a href="mailto:support@basistheory.com?subject=Reactor Beta Access">contact us</a>!</span>
+  <span>In the current beta version of the proxy, only primitive generic tokens (of type <code>token</code>) can be interpolated in proxy requests. Proxy requests that contain <code>card</code> or <code>bank</code> tokens, or generic tokens containing complex structured json data will be rejected with a 400 error.</span>
 </aside>
+<h3 id='proxy-span-class-beta-menu-beta-span-proxying-outbound-requests-proxy-responses'>Proxy Responses</h3>
+<p>Unless an error occurs within the Basis Theory Proxy, the raw response from the destination will be returned from the proxy.</p>
+
+<p>If an error occurs within the proxy (eg. missing or invalid <code>BT-PROXY-URL</code> header), then the following error response will be returned:</p>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>proxy_error</code></td>
+<td><em>any</em></td>
+<td>A standard Basis Theory <a href="#errors">error</a></td>
+</tr>
+</tbody></table>
+<h1 id='reactor-formulas'>Reactor Formulas</h1>
+<p>Reactor formulas give you the ability to pre-configure custom integrations to securely process, enrich, and associate your tokens.</p>
 <h2 id='reactor-formulas-reactor-formula-object'>Reactor Formula Object</h2>
 <table><thead>
 <tr>
@@ -3522,7 +3658,7 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
 <td>Private formulas which are only available to your Tenant</td>
 </tr>
 </tbody></table>
-<h2 id='reactor-formulas-create-reactor-formula'>Create Reactor Formula</h2>
+<h2 id='reactor-formulas-create-reactor-formula-beta'>Create Reactor Formula <span class="beta menu">BETA</span></h2>
 <blockquote>
 <p>Request</p>
 </blockquote>
@@ -3695,17 +3831,21 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
   </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
+<aside class="warning">
+  <span>Creating custom Reactor Formulas is currently in Private Beta. If you would like to be added to the beta program, please <a href="mailto:support@basistheory.com?subject=Reactor Beta Access">contact us</a>!</span>
+</aside>
+
 <p><span class="http-method post">
   <span class="box-method">POST</span>
   <code>https://api.basistheory.com/reactor-formulas</code>
 </span></p>
 
 <p>Create a new Reactor Formula for the Tenant.</p>
-<h3 id='reactor-formulas-create-reactor-formula-permissions'>Permissions</h3>
+<h3 id='reactor-formulas-create-reactor-formula-span-class-beta-menu-beta-span-permissions'>Permissions</h3>
 <p class="scopes">
   <span class="scope">reactor:create</span>
 </p>
-<h3 id='reactor-formulas-create-reactor-formula-request-parameters'>Request Parameters</h3>
+<h3 id='reactor-formulas-create-reactor-formula-span-class-beta-menu-beta-span-request-parameters'>Request Parameters</h3>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -3772,7 +3912,7 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
 <td>Array of <a href="#reactor-formulas-reactor-formula-object-reactor-formula-request-parameter-object">request parameters</a> which will be passed when executing the Reactor</td>
 </tr>
 </tbody></table>
-<h3 id='reactor-formulas-create-reactor-formula-response'>Response</h3>
+<h3 id='reactor-formulas-create-reactor-formula-span-class-beta-menu-beta-span-response'>Response</h3>
 <p>Returns an <a href="#reactor-formulas-reactor-formula-object">Reactor Formula</a> if the Reactor Formula was created. Returns <a href="#errors">an error</a> if there were validation errors, or the Reactor Formula failed to create.</p>
 <h2 id='reactor-formulas-list-reactor-formulas'>List Reactor Formulas</h2>
 <blockquote>
