@@ -1,3 +1,10 @@
+## [1.16.1](https://github.com/Basis-Theory/docs/compare/v1.16.0...v1.16.1) (2021-12-07)
+
+
+### Bug Fixes
+
+* adds validation details for mask ([#131](https://github.com/Basis-Theory/docs/issues/131)) ([636d1d9](https://github.com/Basis-Theory/docs/commit/636d1d9a7ffadb2f10112cf85799aaa245e74352))
+
 # [1.16.0](https://github.com/Basis-Theory/docs/compare/v1.15.0...v1.16.0) (2021-11-26)
 
 
