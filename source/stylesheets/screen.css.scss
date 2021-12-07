@@ -322,6 +322,17 @@ html, body {
   &.open {left: $nav-width}
 }
 
+.beta {
+  padding: 3px 6px 4px;
+  color: #FFD582;
+  background: rgba(255, 213, 130, 0.14);
+  border-radius: 2px;
+  font-size: 10px;
+  margin-left: 6px;
+  vertical-align: text-bottom;
+  font-weight: 600;
+}
+
 
 ////////////////////////////////////////////////////////////////////////////////
 // PAGE LAYOUT AND CODE SAMPLE BACKGROUND
@@ -413,18 +424,37 @@ html, body {
   }
 }
 
-.content {
-  .center-column + .highlight {
-    background-color: transparent;
-    pre {
-      position: static;
-      float: none;
-      clear: none;
-      margin: 0 28px;
-      width: 50%;
-      left: 0;
+@media (min-width: $phone-width) {
+  .content {
+    .center-column + .highlight {
+      background-color: transparent;
+      pre {
+        position: static;
+        float: none;
+        clear: none;
+        margin: 0 28px 18px 28px;
+        width: calc(50% - 56px);
+        left: 0;
+      }
     }
   }
+}
+
+.content {
+  .center-column + .highlight {
+    pre {
+      margin-bottom: 18px;
+    }
+    .copy-clipboard {
+      display: none;
+    }
+  }
+
+    .beta {
+      background: #FFD582;
+      color: $main-text;
+      line-height: 20px;
+    }
 }
 
 .content {
@@ -580,6 +610,7 @@ html, body {
     border-radius: 2px;
     @extend %break-words;
     @extend %code-font;
+    word-break: break-word;
   }
 
   pre>code {
@@ -703,6 +734,12 @@ html, body {
     text-transform: uppercase;
     box-sizing: border-box;
     border-radius: 2px;
+    display: inline-block;
+  }
+
+  .method-wrapper {
+    min-width: 80px;
+    display: inline-block;
   }
 
   &.get {
@@ -710,17 +747,27 @@ html, body {
     border: 1px solid $http-method-get-border;
 
     .box-method {
-      background-color: $primary;
+      background-color: $http-method-get-bg;
     }
 
   }
 
-  &.post, &.put {
+  &.post {
     background-color: $http-method-post-container-bg;
     border: 1px solid $http-method-post-border;
 
     .box-method {
       background-color: $http-method-post-bg;
+    }
+
+  }
+
+  &.put {
+    background-color: $http-method-put-container-bg;
+    border: 1px solid $http-method-put-border;
+
+    .box-method {
+      background-color: $http-method-put-bg;
     }
 
   }
