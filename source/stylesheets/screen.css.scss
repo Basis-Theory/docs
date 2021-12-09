@@ -324,7 +324,7 @@ html, body {
 
 .beta {
   padding: 3px 6px 4px;
-  color: #FFD582;
+  color: $aside-warning-bg;
   background: rgba(255, 213, 130, 0.14);
   border-radius: 2px;
   font-size: 10px;
@@ -335,8 +335,8 @@ html, body {
 
 .deprecated {
   padding: 3px 6px 4px;
-  color: #ff8282;
-  background: rgba(255, 130, 130, 0.14);
+  color: rgba(7, 10, 27, 0.85);
+  background: $aside-danger-bg;
   border-radius: 2px;
   font-size: 10px;
   margin-left: 6px;
@@ -646,6 +646,10 @@ html, body {
     &.success {
       background-color: $aside-success-bg;
     }
+
+    &.danger {
+      background-color: $aside-danger-bg;
+    }
   }
 
   aside:before {
@@ -663,6 +667,10 @@ html, body {
 
   aside.success:before {
     @extend %icon-ok-sign;
+  }
+
+  aside.danger:before {
+    @extend %icon-danger;
   }
 
   .search-highlight {

@@ -151,7 +151,11 @@ Attribute    | Type       | Scope  | Description
 `status`     | *number*   | both   | Response HTTP status or `-1` if the request never left the client (i.e. connection issues)
 
 
-## Store Credit Card <span class="deprecated menu">Deprecated</span>
+## Store Credit Card <span class="deprecated menu">DEPRECATED</span>
+
+<aside class="danger">
+  <span>This endpoint has been deprecated in favor of <a href="#elements-services-atomic-cards">Atomic Cards</a></span>
+</aside>
 
 ```javascript
 BasisTheory.elements.storeCreditCard({
