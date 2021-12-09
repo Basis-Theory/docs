@@ -42,6 +42,10 @@ html, body {
     font-weight: 600;
     line-height: 21px;
     text-align: left;
+
+    &.black-link {
+      color: $grey-900;
+    }
   }
 }
 
@@ -334,14 +338,7 @@ html, body {
 }
 
 .deprecated {
-  padding: 3px 6px 4px;
-  color: rgba(7, 10, 27, 0.85);
-  background: $aside-danger-bg;
-  border-radius: 2px;
-  font-size: 10px;
-  margin-left: 6px;
-  vertical-align: text-bottom;
-  font-weight: 600;
+  display: none;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -460,11 +457,23 @@ html, body {
     }
   }
 
-    .beta {
-      background: #FFD582;
-      color: $main-text;
-      line-height: 20px;
-    }
+  .beta {
+    background: #FFD582;
+    color: $main-text;
+    line-height: 20px;
+  }
+
+  .deprecated {
+    padding: 3px 6px 4px;
+    color: rgba(7, 10, 27, 0.85);
+    background: $aside-danger-bg;
+    border-radius: 2px;
+    font-size: 10px;
+    margin-left: 6px;
+    vertical-align: bottom;
+    font-weight: 600;
+    display: inline;
+  }
 }
 
 .content {

@@ -154,7 +154,7 @@ Attribute    | Type       | Scope  | Description
 ## Store Credit Card <span class="deprecated menu">DEPRECATED</span>
 
 <aside class="danger">
-  <span>This endpoint has been deprecated in favor of <a href="#elements-services-atomic-cards">Atomic Cards</a></span>
+  <span>This endpoint has been deprecated in favor of <a class="black-link" href="#elements-services-atomic-cards">Atomic Cards</a></span>
 </aside>
 
 ```javascript
