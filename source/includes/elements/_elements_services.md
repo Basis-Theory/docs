@@ -3,7 +3,7 @@
 ## Atomic Cards
 
 ```javascript
-BasisTheory.elements.atomicCard.create({
+BasisTheory.elements.atomicCards.create({
   card: cardElement
 }).then((token) => {
   console.log(token.id); // token to store
@@ -15,7 +15,7 @@ Allows secure submission and tokenization of a card element. Returns a `Promise`
 See [CardModel](#element-types-card-element) for the resolved value type. The `Promise` will reject with an [error](#elements-services-errors)
 if the response status is not in the 2xx range.
 
-Internally, `BasisTheory.elements.atomicCard.create` calls [Create Atomic Card API](/api-reference/#atomic-cards-create-atomic-card).
+Internally, `BasisTheory.elements.atomicCards.create` calls [Create Atomic Card API](/api-reference/#atomic-cards-create-atomic-card).
 
 You can fetch this same data later with [Get an Atomic Card API](/api-reference/#atomic-cards-get-an-atomic-card).
 
@@ -26,7 +26,7 @@ You can fetch this same data later with [Get an Atomic Card API](/api-reference/
 ## Atomic Banks
 
 ```javascript
-BasisTheory.elements.atomicBank.create({
+BasisTheory.elements.atomicBanks.create({
   bank: {
     routingNumber: routingNumberElement | 'plainText',  // values can be either a TextElement or plain text (see warning).
     accountNumber: accountNumberElement | 'plainText',
