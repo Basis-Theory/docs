@@ -160,16 +160,15 @@ Attribute    | Type       | Scope  | Description
 ```javascript
 BasisTheory.elements.storeCreditCard({
   card: cardElement,
-  billingDetails: {
-    name: 'Fiona Theory'  
-  }
 }).then((token) => {
   console.log(token.id); // token to store
   console.log(JSON.stringify(token.card)); // redacted card data
 });
 ```
 
-Allows secure submission and tokenization of a card element. Returns a `Promise` that resolves to the tokenized card data. See [CardModel](#element-types-card-element) for the resolved value type.
+Allows secure submission and tokenization of a card element. Returns a `Promise` that resolves to the tokenized card
+data. See [CardModel](#element-types-card-element) for the resolved value type. The `Promise` will reject with an
+[error](#elements-services-errors) if the response status is not in the 2xx range.
 
 Internally, `BasisTheory.elements.storeCreditCard` calls [Create Atomic Card API](/api-reference/#atomic-cards-create-atomic-card).
 
