@@ -333,6 +333,16 @@ html, body {
   font-weight: 600;
 }
 
+.deprecated {
+  padding: 3px 6px 4px;
+  color: #ff8282;
+  background: rgba(255, 130, 130, 0.14);
+  border-radius: 2px;
+  font-size: 10px;
+  margin-left: 6px;
+  vertical-align: text-bottom;
+  font-weight: 600;
+}
 
 ////////////////////////////////////////////////////////////////////////////////
 // PAGE LAYOUT AND CODE SAMPLE BACKGROUND

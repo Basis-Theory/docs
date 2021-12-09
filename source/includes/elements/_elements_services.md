@@ -11,7 +11,9 @@ BasisTheory.elements.atomicCard.create({
 });
 ```
 
-Allows secure submission and tokenization of a card element. Returns a `Promise` that resolves to the tokenized card data. See [CardModel](#element-types-card-element) for the resolved value type.
+Allows secure submission and tokenization of a card element. Returns a `Promise` that resolves to the tokenized card data.
+See [CardModel](#element-types-card-element) for the resolved value type. The `Promise` will reject with an [error](#elements-services-errors)
+if the response status is not in the 2xx range.
 
 Internally, `BasisTheory.elements.atomicCard.create` calls [Create Atomic Card API](/api-reference/#atomic-cards-create-atomic-card).
 
@@ -35,7 +37,9 @@ BasisTheory.elements.atomicBank.create({
 });
 ```
 
-Allows secure submission and tokenization of a bank element. Returns a `Promise` that resolves to the tokenized bank data.
+Allows secure submission and tokenization of a bank element. Returns a `Promise` that resolves to the tokenized bank
+data. The `Promise` will reject with an [error](#elements-services-errors) if the response status is not in the 2xx
+range.
 
 Internally, `BasisTheory.elements.atomicBanks.create` calls [Create Atomic Bank API](/api-reference#atomic-banks-create-atomic-bank).
 
@@ -71,7 +75,8 @@ BasisTheory.elements.tokens.create({
 });
 ```
 
-Allows secure submission and tokenization of string data. Returns a `Promise` that resolves to the created token.
+Allows secure submission and tokenization of string data. Returns a `Promise` that resolves to the created token. The
+`Promise` will reject with an [error](#elements-services-errors) if the response status is not in the 2xx range.
 
 Internally, `BasisTheory.elements.tokens.create` calls [Create Token API](/api-reference#tokens-create-token).
 
@@ -95,6 +100,38 @@ You can fetch this same data later with [Get a Token API](/api-reference#tokens-
 
 ## Tokenize
 
+```javascript
+BasisTheory.elements.tokenize.tokenize({
+  sensitiveData: sensitiveDataElement,
+  nonSensitiveData: 'plainText', // see warning on plain text data
+  otherData: {
+    someInteger: 20,
+    someBoolean: false,
+  },
+  someOtherData: ['plainText1', 'plainText2'],
+}).then((token) => {
+  console.log(JSON.stringify(token)); // encrypted token data
+});
+```
+
+Allows secure submission and tokenization of string data. Returns a `Promise` that resolves to the created tokens. The
+`Promise` will reject with an [error](#elements-services-errors) if the response status is not in the 2xx range.
+
+Internally, `BasisTheory.elements.tokenize.tokenize` calls [Tokenize API](/api-reference#tokenize).
+
+You can fetch this same data later with [Get a Token API](/api-reference#tokens-get-a-token) or [Get a Decrypted Token API](/api-reference#tokens-get-a-decrypted-token).
+
+<aside class="notice">
+  <span>Notice that the actual input data never leaves the element (iframe) other than to hit our secure API endpoints.</span>
+</aside>
+
+<aside class="warning">
+  <span>Note that when submitting <code>plainText</code> values, data will be HTML encoded before storage for security reasons.
+</aside>
+
+<aside class="warning">
+  <span>The <code>encryption</code> and <code>children</code> attributes supported by the API are <strong>NOT</strong> supported when creating a token with elements.</span>
+</aside>
 
 
 ## Errors
@@ -114,7 +151,7 @@ Attribute    | Type       | Scope  | Description
 `status`     | *number*   | both   | Response HTTP status or `-1` if the request never left the client (i.e. connection issues)
 
 
-## Store Credit Card
+## Store Credit Card <span class="deprecated menu">Deprecated</span>
 
 ```javascript
 BasisTheory.elements.storeCreditCard({
@@ -127,7 +164,6 @@ BasisTheory.elements.storeCreditCard({
   console.log(JSON.stringify(token.card)); // redacted card data
 });
 ```
-[Deprecated]
 
 Allows secure submission and tokenization of a card element. Returns a `Promise` that resolves to the tokenized card data. See [CardModel](#element-types-card-element) for the resolved value type.
 
