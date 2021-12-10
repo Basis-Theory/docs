@@ -24,14 +24,17 @@
   @extend %icon;
   content: url(../images/icon/warning.svg);
 }
+
 %icon-info-sign {
   @extend %icon;
   content: url(../images/icon/info.svg);
 }
+
 %icon-ok-sign {
   @extend %icon;
   content: url(../images/icon/check-circle.svg);
 }
+
 %icon-search {
   @extend %icon;
   content: url(../images/icon/search.svg);
@@ -40,4 +43,9 @@
 %icon-go-back {
   @extend %icon;
   content: url(../images/icon/chevron-left.svg);
+}
+
+%icon-danger {
+  @extend %icon;
+  content: url(../images/icon/danger.svg);
 }
