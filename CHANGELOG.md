@@ -1,3 +1,10 @@
+# [1.17.0](https://github.com/Basis-Theory/docs/compare/v1.16.1...v1.17.0) (2021-12-10)
+
+
+### Features
+
+* **ENG-1909:** adds tokenize and atomic cards service. deprecates store credit card service ([#132](https://github.com/Basis-Theory/docs/issues/132)) ([562dd26](https://github.com/Basis-Theory/docs/commit/562dd262fb5fe686b3e01aeb0f61dd789f4a6444))
+
 ## [1.16.1](https://github.com/Basis-Theory/docs/compare/v1.16.0...v1.16.1) (2021-12-07)
 
 
