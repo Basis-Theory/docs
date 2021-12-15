@@ -47,7 +47,7 @@ Default privacy settings can be overridden at the time of creation, but only to 
 
 | Attribute            | Type     | Description                                                                                                                                                                            |
 |----------------------|----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `classification`     | *string* | [Impact level](#tokens-token-classifications) of the Token (e.g. `general`, `bank`, `pci`)                                                                                             |
+| `classification`     | *string* | [Classification](#tokens-token-classifications) of the Token (e.g. `general`, `bank`, `pci`)                                                                                           |
 | `impact_level`       | *string* | [Impact level](#tokens-token-impact-levels) of the Token (i.e. `low`, `moderate`, `high`)                                                                                              |
 | `restriction_policy` | *string* | [Restriction policy](#tokens-token-restriction-policies) applied to the Token when read by a User or Application with read permissions at a lower impact level (i.e. `mask`, `redact`) |
 
