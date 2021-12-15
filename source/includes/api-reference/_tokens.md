@@ -74,7 +74,7 @@ The following data classifications are supported:
 
 ## Token Impact Levels
 
-Basis Theory follows the standard **[NIST-defined impact levels](https://blog.netwrix.com/2020/03/17/data-classification-for-compliance/#:~:text=NIST%20recommends%20using%20three%20categories,operations%2C%20agency%20assets%20or%20individuals.)** of low, moderate, and high to classify the impact unauthorized exposure of a particular piece of data would have on an organization.
+Basis Theory follows the standard **[NIST-defined impact levels](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.199.pdf)** of low, moderate, and high to classify the impact unauthorized exposure of a particular piece of data would have on an organization.
 Token impact levels are used to further classify and permit access to Tokens within a [Token Classification](#tokens-token-classifications).
 
 | Name       | Description                                                                                                        | Specificity Level |
