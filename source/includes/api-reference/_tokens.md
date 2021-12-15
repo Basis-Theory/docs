@@ -74,7 +74,7 @@ The following data classifications are supported:
 
 ## Token Impact Levels
 
-Basis Theory follows the standard **[NIST-defined impact levels](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.199.pdf#page=6)** of low, moderate, and high to classify the impact unauthorized exposure of a particular piece of data would have on an organization.
+Basis Theory follows the standard **<a href="https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.199.pdf#page=6" target="_blank">NIST-defined impact levels</a>** of low, moderate, and high to classify the impact unauthorized exposure of a particular piece of data would have on an organization.
 Token impact levels are used to further classify and permit access to Tokens within a [Token Classification](#tokens-token-classifications).
 
 | Name       | Description                                                                                                        | Specificity Level |
