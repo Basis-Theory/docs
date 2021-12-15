@@ -13,6 +13,7 @@
 | `type`        | *string*                                                      | [Token type](#tokens-token-types)                                                                                            |
 | `data`        | *any*                                                         | Token data                                                                                                                   |
 | `fingerprint` | *string*                                                      | Uniquely identifies the contents of this token. Fingerprints are only available for Atomic Card and Atomic Bank token types. |
+| `privacy`     | *[privacy object](#tokens-token-object-privacy-object)*       | Token Privacy Settings                                                                                                       |
 | `metadata`    | *map*                                                         | A key-value map of non-sensitive data.                                                                                       |
 | `encryption`  | *[encryption object](#tokens-token-object-encryption-object)* | Encryption metadata for an encrypted token data value                                                                        |
 | `created_by`  | *uuid*                                                        | (Optional) The [Application](#applications-application-object) ID which created the token                                    |
@@ -39,13 +40,60 @@
 | `prov`    | *string* | Optional encryption provider (e.g. AWS, AZURE, GCP, etc.) |
 | `alg`     | *string* | Encryption algorithm (e.g. AES, RSA, etc)                 |
 
+### Privacy Object
+
+Token Privacy defines the privacy settings applied to a Token. By default, privacy settings will be applied based on the [Token Type](#tokens-token-types).
+Default privacy settings can be overridden at the time of creation, but only to a setting with a higher specificity level.
+
+| Attribute            | Type     | Description                                                                                                                                                                            |
+|----------------------|----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `classification`     | *string* | [Impact level](#tokens-token-classifications) of the Token (e.g. `general`, `bank`, `pci`)                                                                                             |
+| `impact_level`       | *string* | [Impact level](#tokens-token-impact-levels) of the Token (i.e. `low`, `moderate`, `high`)                                                                                              |
+| `restriction_policy` | *string* | [Restriction policy](#tokens-token-restriction-policies) applied to the Token when read by a User or Application with read permissions at a lower impact level (i.e. `mask`, `redact`) |
+
 ## Token Types
 
-| Name  | Type    | Description                             |
-|-------|---------|-----------------------------------------|
-| Token | `token` | Generic token type                      |
-| Card  | `card`  | [Atomic card](#atomic-cards) token type |
-| Bank  | `bank`  | [Atomic bank](#atomic-banks) token type |
+| Name  | Type    | Description                             | Default Classification | Default Impact Level | Default Restriction Policy |
+|-------|---------|-----------------------------------------|------------------------|----------------------|----------------------------|
+| Token | `token` | Generic token type                      | `general`              | `low`                | `redact`                   |
+| Card  | `card`  | [Atomic card](#atomic-cards) token type | `pci`                  | `high`               | `mask`                     |
+| Bank  | `bank`  | [Atomic bank](#atomic-banks) token type | `bank`                 | `high`               | `mask`                     |
+
+## Token Classifications
+
+Each token has a data classification associated with it which defines the type of data it contains.
+Basis Theory permissions access to Tokens based on data classifications (see [Token Permissions](#permissions-token-permissions) for more details). 
+The following data classifications are supported:
+
+| Name      | Description | Specificity Level |
+|-----------|-------------|-------------------|
+| `general` | TODO        | 0                 |
+| `bank`    | TODO        | 10                |
+| `pci`     | TODO        | 10                |
+| `pii`     | TODO        | 10                |
+
+## Token Impact Levels
+
+Basis Theory follows the standard **[NIST-defined impact levels](https://blog.netwrix.com/2020/03/17/data-classification-for-compliance/#:~:text=NIST%20recommends%20using%20three%20categories,operations%2C%20agency%20assets%20or%20individuals.)** of low, moderate, and high to classify the impact unauthorized exposure of a particular piece of data would have on an organization.
+Token impact levels are used to further classify and permit access to Tokens within a [Token Classification](#tokens-token-classifications).
+
+| Name       | Description                                                                                                        | Specificity Level |
+|------------|--------------------------------------------------------------------------------------------------------------------|-------------------|
+| `low`      | Loss of data confidentiality, integrity, or availability is expected to have limited adverse effect                | 0                 |
+| `moderate` | Loss of data confidentiality, integrity, or availability is expected to have serious adverse effect                | 1                 |
+| `high`     | Loss of data confidentiality, integrity, or availability is expected to have severe or catastrophic adverse effect | 2                 |
+
+
+## Token Restriction Policies
+
+A Token Restriction Policy defines the policy to enforce on a Token's data when read by a User or Application
+with permission to read the Token's classification but at a lower impact level.
+
+| Name     | Description                                                                                                                 | Specificity Level |
+|----------|-----------------------------------------------------------------------------------------------------------------------------|-------------------|
+| `mask`   | Token data will be masked if available, falling back to `redact` restriction policy if mask is undefined for the Token Type | 0                 |
+| `redact` | Token data will be completely removed in the response                                                                       | 1                 |
+
 
 ## Create Token
 
