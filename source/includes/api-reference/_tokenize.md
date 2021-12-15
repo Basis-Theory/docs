@@ -417,4 +417,4 @@ Tokenize one to many tokens for the Tenant.
 
 ### Permissions
 
-Permissions are determined by the [token types](#tokens-token-types) being tokenized.
+Permissions are determined by the [token types](#tokens-token-types) being tokenized and require the appropriate `token:<classification>:create` permission(s) based on the request.

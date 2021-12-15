@@ -166,7 +166,8 @@ Create a new token for the Tenant.
 ### Permissions
 
 <p class="scopes">
-  <span class="scope">token:create</span>
+  <span class="scope">token:create (deprecated)</span>
+  <span class="scope">token:&lt;classification&gt;:create</span>
 </p>
 
 ### Request Parameters
@@ -257,7 +258,8 @@ Get a list of tokens for the Tenant.
 ### Permissions
 
 <p class="scopes">
-  <span class="scope">token:read</span>
+  <span class="scope">token:read (deprecated)</span>
+  <span class="scope">token:&lt;classification&gt;:read:&lt;impact_level&gt;</span>
 </p>
 
 ### Query Parameters
@@ -330,7 +332,7 @@ Get a list of decrypted tokens for the Tenant.
 ### Permissions
 
 <p class="scopes">
-  <span class="scope">token:decrypt</span>
+  <span class="scope">token:decrypt (deprecated)</span>
 </p>
 
 ### Query Parameters
@@ -409,7 +411,8 @@ Get a token by ID in the Tenant.
 ### Permissions
 
 <p class="scopes">
-  <span class="scope">token:read</span>
+  <span class="scope">token:read (deprecated)</span>
+  <span class="scope">token:&lt;classification&gt;:read:&lt;impact_level&gt;</span>
 </p>
 
 ### URI Parameters
@@ -535,7 +538,8 @@ Delete a token by ID in the Tenant.
 ### Permissions
 
 <p class="scopes">
-  <span class="scope">token:delete</span>
+  <span class="scope">token:delete (deprecated)</span>
+  <span class="scope">token:&lt;classification&gt;:delete</span>
 </p>
 
 ### URI Parameters

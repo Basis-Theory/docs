@@ -105,7 +105,8 @@ Create a new Atomic Bank for the Tenant.
 ### Permissions
 
 <p class="scopes">
-  <span class="scope">bank:create</span>
+  <span class="scope">bank:create (deprecated)</span>
+  <span class="scope">token:bank:create</span>
 </p>
 
 ### Request Parameters
@@ -182,7 +183,8 @@ Get a list of Atomic Banks for the Tenant.
 ### Permissions
 
 <p class="scopes">
-  <span class="scope">bank:read</span>
+  <span class="scope">bank:read (deprecated)</span>
+  <span class="scope">token:bank:read:&lt;impact_level&gt;</span>
 </p>
 
 ### Response
@@ -245,7 +247,8 @@ Get an Atomic Bank by ID in the Tenant.
 ### Permissions
 
 <p class="scopes">
-  <span class="scope">bank:read</span>
+  <span class="scope">bank:read (deprecated)</span>
+  <span class="scope">token:bank:read:&lt;impact_level&gt;</span>
 </p>
 
 ### URI Parameters
@@ -334,7 +337,8 @@ Update an Atomic Bank for the Tenant. At least one property on the request body 
 ### Permissions
 
 <p class="scopes">
-  <span class="scope">bank:update</span>
+  <span class="scope">bank:update (deprecated)</span>
+  <span class="scope">token:bank:update</span>
 </p>
 
 ### Request Parameters
@@ -388,7 +392,8 @@ Delete an Atomic Bank by ID in the Tenant.
 ### Permissions
 
 <p class="scopes">
-  <span class="scope">bank:delete</span>
+  <span class="scope">bank:delete (deprecated)</span>
+  <span class="scope">token:bank:delete</span>
 </p>
 
 ### URI Parameters
@@ -460,7 +465,7 @@ Decrypt an Atomic Bank by ID in the Tenant.
 ### Permissions
 
 <p class="scopes">
-  <span class="scope">bank:decrypt</span>
+  <span class="scope">bank:decrypt (deprecated)</span>
 </p>
 
 ### URI Parameters
@@ -536,8 +541,8 @@ React with an Atomic Bank by ID.
 ### Permissions
 
 <p class="scopes">
-  <span class="scope">reactor:read</span>
-  <span class="scope">bank:read</span>
+  <span class="scope">bank:read (deprecated)</span>
+  <span class="scope">token:bank:use:reactor</span>
 </p>
 
 ### URI Parameters
