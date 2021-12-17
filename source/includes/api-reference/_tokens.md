@@ -107,6 +107,9 @@ curl "https://api.basistheory.com/tokens" \
   -d '{
     "type": "token",
     "data": "Sensitive Value",
+    "privacy": {
+      "impact_level": "moderate"
+    },
     "metadata": {
       "nonSensitiveField": "Non-Sensitive Value"
     }
@@ -121,6 +124,9 @@ const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
 const token = await bt.tokens.create({
   type: 'token',
   data: 'Sensitive Value',
+  privacy: {
+    impactLevel: "moderate"
+  },
   metadata: {
     nonSensitiveField: 'Non-Sensitive Value'
   }
@@ -135,6 +141,9 @@ var client = new TokenClient("key_N88mVGsp3sCXkykyN2EFED");
 var token = await client.CreateAsync(new Token {
   Type = "token",
   Data = "Sensitive Value",
+  Privacy = new DataPrivacy {
+    ImpactLevel = DataImpactLevel.MODERATE
+  },
   Metadata = new Dictionary<string, string> {
     { "nonSensitiveField",  "Non-Sensitive Value" }
   }
@@ -148,6 +157,11 @@ var token = await client.CreateAsync(new Token {
   "id": "c06d0789-0a38-40be-b7cc-c28a718f76f1",
   "tenant_id": "77cb0024-123e-41a8-8ff8-a3d5a0fa8a08",
   "type": "token",
+  "privacy": {
+    "classification": "general",
+    "impact_level": "moderate",
+    "restriction_policy": "redact"
+  },
   "metadata": {
     "nonSensitiveField": "Non-Sensitive Value"
   },
@@ -172,12 +186,13 @@ Create a new token for the Tenant.
 
 ### Request Parameters
 
-| Attribute    | Required | Type                                                          | Default | Description                                                                                                                                           |
-|--------------|----------|---------------------------------------------------------------|---------|-------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `type`       | true     | *string*                                                      | `null`  | [Token type](#tokens-token-types) of the token                                                                                                        |
-| `data`       | true     | *any*                                                         | `null`  | Token data. Can be an object, array, or any primitive type such as an integer, boolean, or string                                                     |
-| `metadata`   | false    | *map*                                                         | `null`  | A key-value map of non-sensitive data.                                                                                                                |
-| `encryption` | false    | *[encryption object](#tokens-token-object-encryption-object)* | `null`  | Encryption metadata for an encrypted token data value                                                                                                 |
+| Attribute    | Required | Type                                                          | Default | Description                                                                                                                         |
+|--------------|----------|---------------------------------------------------------------|---------|-------------------------------------------------------------------------------------------------------------------------------------|
+| `type`       | true     | *string*                                                      | `null`  | [Token type](#tokens-token-types) of the token                                                                                      |
+| `data`       | true     | *any*                                                         | `null`  | Token data. Can be an object, array, or any primitive type such as an integer, boolean, or string                                   |
+| `privacy`    | false    | *[privacy object](#tokens-token-object-privacy-object)*       | `null`  | Token Privacy Settings overrides. Settings must be a higher specificity level than the default privacy settings for the Token type. |
+| `metadata`   | false    | *map*                                                         | `null`  | A key-value map of non-sensitive data.                                                                                              |
+| `encryption` | false    | *[encryption object](#tokens-token-object-encryption-object)* | `null`  | Encryption metadata for an encrypted token data value                                                                               |
 
 <aside class="warning">
   <span>WARNING - Never store sensitive plaintext information in the <code>metadata</code> or plaintext, private encryption keys in the <code>encryption</code> attributes of your token.</span>
@@ -224,20 +239,14 @@ var tokens = await client.GetAsync();
       "id": "c06d0789-0a38-40be-b7cc-c28a718f76f1",
       "type": "token",
       "tenant_id": "77cb0024-123e-41a8-8ff8-a3d5a0fa8a08",
-      "data": "ebSG3IohNmg5gTOjN2HBwBbhjDZ6BY3fCWZJfXSucVMfQ+7YNMXQYrPuRSXgSkhuTMYS+BNfVUur4qZSvUbgCA==",
+      "data": null, // Redacted based on Restriction Policy
+      "privacy": {
+        "classification": "general",
+        "impact_level": "moderate",
+        "restriction_policy": "redact"
+      },
       "metadata": {
         "nonSensitiveField": "Non-Sensitive Value"
-      },
-      "encryption": {
-        "cek": {
-          "key": "JLrtGbYSN5/dbqdKtLVG8tHu3QefcZnKsFOPBBXlXcG4zL9US01mW2MqZs6Px4ckSQM8CrRakwLKilrQ0f37Iw==",
-          "alg": "AES"
-        },
-        "kek": {
-          "key": "vpXn45HnsoQPR1q8ptngmPvPaqIDJ4vO+FFyQclglePCt8d1SyTDJU0T+F54T7GnAz7vz5OKsjgsFNo9lVB3UA==",
-          "prov": "AWS",
-          "alg": "RSA" 
-        }
       },
       "created_by": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
       "created_at": "2021-03-01T08:23:14+00:00"
@@ -310,6 +319,11 @@ var tokens = await client.GetAsync(new TokenGetRequest { Decrypt = true });
       "type": "token",
       "tenant_id": "77cb0024-123e-41a8-8ff8-a3d5a0fa8a08",
       "data": "Sensitive Value",
+      "privacy": {
+        "classification": "general",
+        "impact_level": "moderate",
+        "restriction_policy": "redact"
+      },
       "metadata": {
         "nonSensitiveField": "Non-Sensitive Value"
       },
@@ -381,20 +395,14 @@ var token = await client.GetByIdAsync("c06d0789-0a38-40be-b7cc-c28a718f76f1");
   "id": "c06d0789-0a38-40be-b7cc-c28a718f76f1",
   "type": "token",
   "tenant_id": "77cb0024-123e-41a8-8ff8-a3d5a0fa8a08",
-  "data": "ebSG3IohNmg5gTOjN2HBwBbhjDZ6BY3fCWZJfXSucVMfQ+7YNMXQYrPuRSXgSkhuTMYS+BNfVUur4qZSvUbgCA==",
+  "data": null, // Redacted based on Restriction Policy
+  "privacy": {
+    "classification": "general",
+    "impact_level": "moderate",
+    "restriction_policy": "redact"
+  },
   "metadata": {
     "nonSensitiveField": "Non-Sensitive Value"
-  },
-  "encryption": {
-    "cek": {
-      "key": "JLrtGbYSN5/dbqdKtLVG8tHu3QefcZnKsFOPBBXlXcG4zL9US01mW2MqZs6Px4ckSQM8CrRakwLKilrQ0f37Iw==",
-      "alg": "AES"
-    },
-    "kek": {
-      "key": "vpXn45HnsoQPR1q8ptngmPvPaqIDJ4vO+FFyQclglePCt8d1SyTDJU0T+F54T7GnAz7vz5OKsjgsFNo9lVB3UA==",
-      "prov": "AWS",
-      "alg": "RSA"
-    }
   },
   "created_by": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
   "created_at": "2021-03-01T08:23:14+00:00"
@@ -459,6 +467,11 @@ var token = await client.GetByIdAsync("c06d0789-0a38-40be-b7cc-c28a718f76f1", ne
   "type": "token",
   "tenant_id": "77cb0024-123e-41a8-8ff8-a3d5a0fa8a08",
   "data": "Sensitive Value",
+  "privacy": {
+    "classification": "general",
+    "impact_level": "moderate",
+    "restriction_policy": "redact"
+  },
   "metadata": {
     "nonSensitiveField": "Non-Sensitive Value"
   },
