@@ -53,11 +53,11 @@ Default privacy settings can be overridden at the time of creation, but only to 
 
 ## Token Types
 
-| Name  | Type    | Description                             | Default Classification | Default Impact Level | Default Restriction Policy |
-|-------|---------|-----------------------------------------|------------------------|----------------------|----------------------------|
-| Token | `token` | Generic token type                      | `general`              | `low`                | `redact`                   |
-| Card  | `card`  | [Atomic card](#atomic-cards) token type | `pci`                  | `high`               | `mask`                     |
-| Bank  | `bank`  | [Atomic bank](#atomic-banks) token type | `bank`                 | `high`               | `mask`                     |
+| Name  | Type    | Description                             | Default Classification | Default Impact Level | Minimum Impact Level | Default Restriction Policy |
+|-------|---------|-----------------------------------------|------------------------|----------------------|----------------------|----------------------------|
+| Token | `token` | Generic token type                      | `general`              | `high`               | `low`                | `redact`                   |
+| Card  | `card`  | [Atomic card](#atomic-cards) token type | `pci`                  | `high`               | `high`               | `mask`                     |
+| Bank  | `bank`  | [Atomic bank](#atomic-banks) token type | `bank`                 | `high`               | `high`               | `mask`                     |
 
 ## Token Classifications
 
