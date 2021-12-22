@@ -1,3 +1,10 @@
+# [1.18.0](https://github.com/Basis-Theory/docs/compare/v1.17.0...v1.18.0) (2021-12-22)
+
+
+### Features
+
+* add python sdk to docs, change code example font ([#134](https://github.com/Basis-Theory/docs/issues/134)) ([4931d6d](https://github.com/Basis-Theory/docs/commit/4931d6de85979d2017133cd336e0ecf633472bf3))
+
 # [1.17.0](https://github.com/Basis-Theory/docs/compare/v1.16.1...v1.17.0) (2021-12-10)
 
 
