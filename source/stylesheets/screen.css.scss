@@ -337,6 +337,14 @@ html, body {
   font-weight: 600;
 }
 
+.beta-lang-selector {
+  margin-left: 8px !important;
+  height: 12px;
+  justify-content: center;
+  display: flex;
+  flex-flow: column;
+}
+
 .deprecated {
   display: none;
 }

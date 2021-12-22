@@ -75,6 +75,10 @@ var atomicBank = await client.CreateAsync(new AtomicBank {
 });
 ```
 
+```python
+# Coming Soon!
+```
+
 > Response
 
 ```json
@@ -145,6 +149,10 @@ var client = new AtomicBankClient("key_N88mVGsp3sCXkykyN2EFED");
 var atomicBanks = await client.GetAsync();
 ```
 
+```python
+# Coming Soon!
+```
+
 > Response
 
 ```json
@@ -213,6 +221,10 @@ import { BasisTheory } from '@basis-theory/basis-theory-js';
 const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
 
 const atomicBank = await bt.atomicBanks.retrieve('1485efb9-6b1f-4248-a5d1-cf9b3907164c');
+```
+
+```python
+# Coming Soon!
 ```
 
 > Response
@@ -302,6 +314,10 @@ var atomicBank = await client.UpdateAsync("1485efb9-6b1f-4248-a5d1-cf9b3907164c"
 });
 ```
 
+```python
+# Coming Soon!
+```
+
 > Response
 
 ```json
@@ -374,6 +390,10 @@ var client = new AtomicBankClient("key_N88mVGsp3sCXkykyN2EFED");
 await client.DeleteAsync("1485efb9-6b1f-4248-a5d1-cf9b3907164c");
 ```
 
+```python
+# Coming Soon!
+```
+
 <span class="http-method delete">
   <span class="box-method">DELETE</span>
   `https://api.basistheory.com/atomic/banks/{id}`
@@ -428,6 +448,10 @@ var atomicBank = await client.GetByIdAsync("1485efb9-6b1f-4248-a5d1-cf9b3907164c
   new BankGetByIdRequest {
     Decrypt = true
   });
+```
+
+```python
+# Coming Soon!
 ```
 
 > Response
@@ -524,6 +548,10 @@ var reactResponse = await client.ReactAsync("1485efb9-6b1f-4248-a5d1-cf9b3907164
       { "nonSensitiveField",  "Non-Sensitive Value" }
     }
   });
+```
+
+```python
+# Coming Soon!
 ```
 
 <span class="http-method post">

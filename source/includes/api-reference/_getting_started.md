@@ -25,6 +25,10 @@ npm install --save @basis-theory/basis-theory-js
 dotnet add package BasisTheory.net 
 ```
 
+```python
+pip install basistheory
+```
+
 Our SDKs enable you to quickly and easily integrate with the API. Select one of the language tabs to see instructions on how to install the SDK and view code examples in that language.
 
 If you don't see your language listed, <a href="mailto:support@basistheory.com?subject=API SDK Language Support">contact us</a> about getting an official SDK added in your preferred language.

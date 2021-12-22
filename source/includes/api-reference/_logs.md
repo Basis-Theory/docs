@@ -39,6 +39,10 @@ var client = new LogClient("key_N88mVGsp3sCXkykyN2EFED");
 var logs = await client.GetAsync();
 ```
 
+```python
+# Coming Soon!
+```
+
 > Response
 
 ```json

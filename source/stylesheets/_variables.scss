@@ -111,6 +111,7 @@ $phone-width: $tablet-width - $nav-width !default; // min width before reverting
 
 %code-font {
   @extend %default-font;
+  font-family: "Source Code Pro", "Source Sans Pro", sans-serif;
   font-weight: 500;
   line-height: 17.6px;
   font-style: normal;

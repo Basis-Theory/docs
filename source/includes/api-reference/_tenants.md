@@ -61,6 +61,10 @@ var client = new TenantClient("key_N88mVGsp3sCXkykyN2EFED");
 var tenant = await client.GetSelfAsync();
 ```
 
+```python
+# Coming Soon!
+```
+
 > Response
 
 ```json
@@ -127,6 +131,10 @@ var tenant = await client.UpdateAsync(new Tenant {
 });
 ```
 
+```python
+# Coming Soon!
+```
+
 > Response
 
 ```json
@@ -191,6 +199,10 @@ var client = new TenantClient("key_N88mVGsp3sCXkykyN2EFED");
 await client.DeleteAsync();
 ```
 
+```python
+# Coming Soon!
+```
+
 <span class="http-method delete">
   <span class="box-method">DELETE</span>
   `https://api.basistheory.com/tenants/self`
@@ -232,6 +244,10 @@ using BasisTheory.net.Tenants;
 var client = new TenantClient("key_N88mVGsp3sCXkykyN2EFED");
 
 var tenantUsageReport = await client.GetTenantUsageReportAsync();
+```
+
+```python
+# Coming Soon!
 ```
 
 > Response
