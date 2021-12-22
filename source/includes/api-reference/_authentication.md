@@ -35,6 +35,18 @@ client.GetAsync(requestOptions: new RequestOptions {
 });
 ```
 
+```python
+import basistheory
+from basistheory.api import tokens_api
+
+# At instance
+api_client = basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_N88mVGsp3sCXkykyN2EFED"))
+client = tokens_api.TokensApi(api_client)
+
+# Per call
+client.list(request_options=basistheory.RequestOptions(api_key="key_N88mVGsp3sCXkykyN2EFED"))
+```
+
 Basis Theory uses API keys to allow access to the API.
 
 Basis Theory requires the API key to be included in all API requests to the server in a header that looks like the following:

@@ -28,6 +28,18 @@ client.GetAsync(requestOptions: new RequestOptions {
 });
 ```
 
+```python
+import basistheory
+from basistheory.api import tokens_api
+
+# At instance
+api_client = basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_N88mVGsp3sCXkykyN2EFED"))
+client = tokens_api.TokensApi(api_client)
+
+# Per call
+client.list(request_options=basistheory.RequestOptions(correlation_id="aa5d3379-6385-4ef4-9fdb-ca1341572153"))
+```
+
 Basis Theory utilizes Correlation IDs to assist with request tracing, logging, and debugging.
 
 All API endpoints accept a client-provided Correlation ID if sent with the `bt-trace-id` HTTP header within POST, PUT, PATCH, DELETE methods.

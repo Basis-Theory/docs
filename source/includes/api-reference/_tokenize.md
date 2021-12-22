@@ -38,6 +38,10 @@ var token = await client.Tokenize(new {
 });
 ```
 
+```python
+# Coming Soon!
+```
+
 > Create Basic Token Response
 
 ```json
@@ -90,6 +94,10 @@ var token = await client.Tokenize(new Token {
     { "nonSensitiveField",  "Non-Sensitive Value" }
   }
 });
+```
+
+```python
+# Coming Soon!
 ```
 
 > Create Token Response
@@ -165,6 +173,10 @@ var token = await client.Tokenize(new Token {
     { "nonSensitiveField",  "Non-Sensitive Value" }
   }
 });
+```
+
+```python
+# Coming Soon!
 ```
 
 > Create Card Response
@@ -262,6 +274,10 @@ var token = await client.Tokenize(new object[
     Data = "Sensitive Value"
   }
 ]);
+```
+
+```python
+# Coming Soon!
 ```
 
 > Tokenize Array Response
@@ -374,6 +390,10 @@ var token = await client.Tokenize(new {
     }
   }
 });
+```
+
+```python
+# Coming Soon!
 ```
 
 > Composite Response

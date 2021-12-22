@@ -191,6 +191,10 @@ var reactorFormula = await client.CreateAsync(new ReactorFormula {
 });
 ```
 
+```python
+# Coming Soon!
+```
+
 > Response
 
 ```json
@@ -301,6 +305,10 @@ var client = new ReactorFormulaClient("key_N88mVGsp3sCXkykyN2EFED");
 var reactorFormulas = await client.GetAsync();
 ```
 
+```python
+# Coming Soon!
+```
+
 > Response
 
 ```json
@@ -407,6 +415,10 @@ using BasisTheory.net.ReactorFormulas;
 var client = new ReactorFormulaClient("key_N88mVGsp3sCXkykyN2EFED");
 
 var reactorFormula = await client.GetByIdAsync("17069df1-80f4-439e-86a7-4121863e4678");
+```
+
+```python
+# Coming Soon!
 ```
 
 > Response
@@ -619,6 +631,10 @@ var reactorFormula = await client.UpdateAsync("17069df1-80f4-439e-86a7-4121863e4
 );
 ```
 
+```python
+# Coming Soon!
+```
+
 > Response
 
 ```json
@@ -731,6 +747,10 @@ using BasisTheory.net.ReactorFormulas;
 var client = new ReactorFormulaClient("key_N88mVGsp3sCXkykyN2EFED");
 
 await client.DeleteAsync("17069df1-80f4-439e-86a7-4121863e4678");
+```
+
+```python
+# Coming Soon!
 ```
 
 <span class="http-method delete">
