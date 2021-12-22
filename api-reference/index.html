@@ -286,12 +286,12 @@
   color: #859900;
 }
     </style>
-    <link href="../stylesheets/screen-71d86e69.css" rel="stylesheet" media="screen" />
+    <link href="../stylesheets/screen-0417e3ba.css" rel="stylesheet" media="screen" />
     <link href="../stylesheets/home-400c8cb3.css" rel="stylesheet" media="screen" />
     <link href="../stylesheets/guides.css" rel="stylesheet" media="screen" />
     <link href="../stylesheets/iubenda-4a9ea063.css" rel="stylesheet" media="screen" />
     <script src="https://kit.fontawesome.com/86c3cd0147.js" crossorigin="anonymous"></script>
-    <link href="../stylesheets/print-fac0743d.css" rel="stylesheet" media="print" />
+    <link href="../stylesheets/print-963dbb1c.css" rel="stylesheet" media="print" />
       <script src="../javascripts/all-0b3a32eb.js"></script>
 
     <script>
@@ -317,7 +317,7 @@
 
   </head>
 
-  <body class="api-reference api-reference_index" data-languages="[&quot;shell&quot;,&quot;javascript&quot;,&quot;csharp&quot;]">
+  <body class="api-reference api-reference_index" data-languages="[&quot;shell&quot;,&quot;javascript&quot;,&quot;csharp&quot;,&quot;python&quot;]">
     <a href="/#" id="nav-button">
       <span>
         NAV
@@ -339,6 +339,7 @@
               <a href="#" data-language-name="shell">cURL</a>
               <a href="#" data-language-name="javascript">Node.js</a>
               <a href="#" data-language-name="csharp">.NET</a>
+              <a href="#" data-language-name="python">Python <span class="beta beta-lang-selector">BETA</span></a>
         </div>
 
         <div class="search">
@@ -713,6 +714,7 @@
 </blockquote>
 <div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">npm</span> <span class="nx">install</span> <span class="o">--</span><span class="nx">save</span> <span class="p">@</span><span class="nd">basis</span><span class="o">-</span><span class="nx">theory</span><span class="o">/</span><span class="nx">basis</span><span class="o">-</span><span class="nx">theory</span><span class="o">-</span><span class="nx">js</span>
 </code></pre></div><div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="n">dotnet</span> <span class="k">add</span> <span class="n">package</span> <span class="n">BasisTheory</span><span class="p">.</span><span class="n">net</span> 
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="n">pip</span> <span class="n">install</span> <span class="n">basistheory</span>
 </code></pre></div>
 <p>Our SDKs enable you to quickly and easily integrate with the API. Select one of the language tabs to see instructions on how to install the SDK and view code examples in that language.</p>
 
@@ -745,6 +747,15 @@
 <span class="n">client</span><span class="p">.</span><span class="nf">GetAsync</span><span class="p">(</span><span class="n">requestOptions</span><span class="p">:</span> <span class="k">new</span> <span class="n">RequestOptions</span> <span class="p">{</span>
   <span class="n">ApiKey</span> <span class="p">=</span> <span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span>
 <span class="p">});</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">basistheory</span>
+<span class="kn">from</span> <span class="nn">basistheory.api</span> <span class="kn">import</span> <span class="n">tokens_api</span>
+
+<span class="c1"># At instance
+</span><span class="n">api_client</span> <span class="o">=</span> <span class="n">basistheory</span><span class="p">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="n">configuration</span><span class="o">=</span><span class="n">basistheory</span><span class="p">.</span><span class="n">Configuration</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">))</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">tokens_api</span><span class="p">.</span><span class="n">TokensApi</span><span class="p">(</span><span class="n">api_client</span><span class="p">)</span>
+
+<span class="c1"># Per call
+</span><span class="n">client</span><span class="p">.</span><span class="nb">list</span><span class="p">(</span><span class="n">request_options</span><span class="o">=</span><span class="n">basistheory</span><span class="p">.</span><span class="n">RequestOptions</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">))</span>
 </code></pre></div>
 <p>Basis Theory uses API keys to allow access to the API.</p>
 
@@ -776,6 +787,15 @@
 <span class="n">client</span><span class="p">.</span><span class="nf">GetAsync</span><span class="p">(</span><span class="n">requestOptions</span><span class="p">:</span> <span class="k">new</span> <span class="n">RequestOptions</span> <span class="p">{</span>
   <span class="n">CorrelationId</span> <span class="p">=</span> <span class="s">"aa5d3379-6385-4ef4-9fdb-ca1341572153"</span>
 <span class="p">});</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">basistheory</span>
+<span class="kn">from</span> <span class="nn">basistheory.api</span> <span class="kn">import</span> <span class="n">tokens_api</span>
+
+<span class="c1"># At instance
+</span><span class="n">api_client</span> <span class="o">=</span> <span class="n">basistheory</span><span class="p">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="n">configuration</span><span class="o">=</span><span class="n">basistheory</span><span class="p">.</span><span class="n">Configuration</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">))</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">tokens_api</span><span class="p">.</span><span class="n">TokensApi</span><span class="p">(</span><span class="n">api_client</span><span class="p">)</span>
+
+<span class="c1"># Per call
+</span><span class="n">client</span><span class="p">.</span><span class="nb">list</span><span class="p">(</span><span class="n">request_options</span><span class="o">=</span><span class="n">basistheory</span><span class="p">.</span><span class="n">RequestOptions</span><span class="p">(</span><span class="n">correlation_id</span><span class="o">=</span><span class="s">"aa5d3379-6385-4ef4-9fdb-ca1341572153"</span><span class="p">))</span>
 </code></pre></div>
 <p>Basis Theory utilizes Correlation IDs to assist with request tracing, logging, and debugging.</p>
 
@@ -1189,7 +1209,8 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
     <span class="s">"token:read"</span>
   <span class="p">}</span>
 <span class="p">});</span>
-</code></pre></div>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Coming Soon!
+</span></code></pre></div>
 <blockquote>
 <p>Response</p>
 </blockquote>
@@ -1269,7 +1290,8 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
 <span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">ApplicationClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
 
 <span class="kt">var</span> <span class="n">applications</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">GetAsync</span><span class="p">();</span>
-</code></pre></div>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Coming Soon!
+</span></code></pre></div>
 <blockquote>
 <p>Response</p>
 </blockquote>
@@ -1343,7 +1365,8 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
 <span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">ApplicationClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
 
 <span class="kt">var</span> <span class="n">application</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">GetByIdAsync</span><span class="p">(</span><span class="s">"fe1f9ba4-474e-44b9-b949-110cdba9d662"</span><span class="p">);</span>
-</code></pre></div>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Coming Soon!
+</span></code></pre></div>
 <blockquote>
 <p>Response</p>
 </blockquote>
@@ -1408,7 +1431,8 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
 <span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">ApplicationClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
 
 <span class="kt">var</span> <span class="n">application</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">GetByKeyAsync</span><span class="p">();</span>
-</code></pre></div>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Coming Soon!
+</span></code></pre></div>
 <blockquote>
 <p>Response</p>
 </blockquote>
@@ -1482,7 +1506,8 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
     <span class="p">}</span>
   <span class="p">}</span>
 <span class="p">);</span>
-</code></pre></div>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Coming Soon!
+</span></code></pre></div>
 <blockquote>
 <p>Response</p>
 </blockquote>
@@ -1573,7 +1598,8 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
 <span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">ApplicationClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
 
 <span class="kt">var</span> <span class="n">application</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">RegenerateKeyAsync</span><span class="p">(</span><span class="s">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">);</span>
-</code></pre></div>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Coming Soon!
+</span></code></pre></div>
 <blockquote>
 <p>Response</p>
 </blockquote>
@@ -1646,7 +1672,8 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
 <span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">ApplicationClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
 
 <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">DeleteAsync</span><span class="p">(</span><span class="s">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">);</span>
-</code></pre></div>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Coming Soon!
+</span></code></pre></div>
 <p><span class="http-method delete">
   <span class="box-method">DELETE</span>
   <code>https://api.basistheory.com/applications/{id}</code>
@@ -1802,7 +1829,8 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
     <span class="p">{</span> <span class="s">"nonSensitiveField"</span><span class="p">,</span> <span class="s">"Non-Sensitive Value"</span> <span class="p">}</span>
   <span class="p">}</span>
 <span class="p">});</span>
-</code></pre></div>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Coming Soon!
+</span></code></pre></div>
 <blockquote>
 <p>Response</p>
 </blockquote>
@@ -1875,7 +1903,8 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
 <span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">AtomicBankClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
 
 <span class="kt">var</span> <span class="n">atomicBanks</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">GetAsync</span><span class="p">();</span>
-</code></pre></div>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Coming Soon!
+</span></code></pre></div>
 <blockquote>
 <p>Response</p>
 </blockquote>
@@ -1930,7 +1959,8 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
 <span class="kd">const</span> <span class="nx">bt</span> <span class="o">=</span> <span class="k">await</span> <span class="k">new</span> <span class="nx">BasisTheory</span><span class="p">().</span><span class="nx">init</span><span class="p">(</span><span class="dl">'</span><span class="s1">key_N88mVGsp3sCXkykyN2EFED</span><span class="dl">'</span><span class="p">);</span>
 
 <span class="kd">const</span> <span class="nx">atomicBank</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">bt</span><span class="p">.</span><span class="nx">atomicBanks</span><span class="p">.</span><span class="nx">retrieve</span><span class="p">(</span><span class="dl">'</span><span class="s1">1485efb9-6b1f-4248-a5d1-cf9b3907164c</span><span class="dl">'</span><span class="p">);</span>
-</code></pre></div>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Coming Soon!
+</span></code></pre></div>
 <blockquote>
 <p>Response</p>
 </blockquote>
@@ -2014,7 +2044,8 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
     <span class="n">AccountNumber</span> <span class="p">=</span> <span class="s">"1234567890"</span>
   <span class="p">},</span>
 <span class="p">});</span>
-</code></pre></div>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Coming Soon!
+</span></code></pre></div>
 <blockquote>
 <p>Response</p>
 </blockquote>
@@ -2083,7 +2114,8 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
 <span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">AtomicBankClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
 
 <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">DeleteAsync</span><span class="p">(</span><span class="s">"1485efb9-6b1f-4248-a5d1-cf9b3907164c"</span><span class="p">);</span>
-</code></pre></div>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Coming Soon!
+</span></code></pre></div>
 <p><span class="http-method delete">
   <span class="box-method">DELETE</span>
   <code>https://api.basistheory.com/atomic/banks/{id}</code>
@@ -2137,7 +2169,8 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
   <span class="k">new</span> <span class="n">BankGetByIdRequest</span> <span class="p">{</span>
     <span class="n">Decrypt</span> <span class="p">=</span> <span class="k">true</span>
   <span class="p">});</span>
-</code></pre></div>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Coming Soon!
+</span></code></pre></div>
 <blockquote>
 <p>Response</p>
 </blockquote>
@@ -2230,7 +2263,8 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
       <span class="p">{</span> <span class="s">"nonSensitiveField"</span><span class="p">,</span>  <span class="s">"Non-Sensitive Value"</span> <span class="p">}</span>
     <span class="p">}</span>
   <span class="p">});</span>
-</code></pre></div>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Coming Soon!
+</span></code></pre></div>
 <p><span class="http-method post">
   <span class="box-method">POST</span>
   <code>https://api.basistheory.com/atomic/banks/{id}/react</code>
@@ -2477,7 +2511,8 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
     <span class="p">{</span> <span class="s">"nonSensitiveField"</span><span class="p">,</span> <span class="s">"Non-Sensitive Value"</span> <span class="p">}</span>
   <span class="p">}</span>
 <span class="p">});</span>
-</code></pre></div>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Coming Soon!
+</span></code></pre></div>
 <blockquote>
 <p>Response</p>
 </blockquote>
@@ -2553,7 +2588,8 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
 <span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">AtomicCardClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
 
 <span class="kt">var</span> <span class="n">atomicCards</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">GetAsync</span><span class="p">();</span>
-</code></pre></div>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Coming Soon!
+</span></code></pre></div>
 <blockquote>
 <p>Response</p>
 </blockquote>
@@ -2609,7 +2645,8 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
 <span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">AtomicCardClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
 
 <span class="kt">var</span> <span class="n">atomicCard</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">GetByIdAsync</span><span class="p">(</span><span class="s">"c1e565009-1984-4638-8fca-dce8a82cc2af"</span><span class="p">);</span>
-</code></pre></div>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Coming Soon!
+</span></code></pre></div>
 <blockquote>
 <p>Response</p>
 </blockquote>
@@ -2700,7 +2737,8 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
     <span class="n">CardVerificationCode</span> <span class="p">=</span> <span class="s">"123"</span>
   <span class="p">}</span>
 <span class="p">});</span>
-</code></pre></div>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Coming Soon!
+</span></code></pre></div>
 <blockquote>
 <p>Response</p>
 </blockquote>
@@ -2770,7 +2808,8 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
 <span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">AtomicCardClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
 
 <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">DeleteAsync</span><span class="p">(</span><span class="s">"c1e565009-1984-4638-8fca-dce8a82cc2af"</span><span class="p">);</span>
-</code></pre></div>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Coming Soon!
+</span></code></pre></div>
 <p><span class="http-method delete">
   <span class="box-method">DELETE</span>
   <code>https://api.basistheory.com/atomic/cards/{id}</code>
@@ -2848,7 +2887,8 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
       <span class="p">{</span> <span class="s">"nonSensitiveField"</span><span class="p">,</span>  <span class="s">"Non-Sensitive Value"</span> <span class="p">}</span>
     <span class="p">}</span>
   <span class="p">});</span>
-</code></pre></div>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Coming Soon!
+</span></code></pre></div>
 <p><span class="http-method post">
   <span class="box-method">POST</span>
   <code>https://api.basistheory.com/atomic/cards/{id}/react</code>
@@ -3067,7 +3107,8 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
 <span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">LogClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
 
 <span class="kt">var</span> <span class="n">logs</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">GetAsync</span><span class="p">();</span>
-</code></pre></div>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Coming Soon!
+</span></code></pre></div>
 <blockquote>
 <p>Response</p>
 </blockquote>
@@ -3320,7 +3361,8 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
 <span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">PermissionClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
 
 <span class="kt">var</span> <span class="n">permissions</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">GetAsync</span><span class="p">();</span>
-</code></pre></div>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Coming Soon!
+</span></code></pre></div>
 <blockquote>
 <p>Response</p>
 </blockquote>
@@ -3782,7 +3824,8 @@ given a token:</p>
     <span class="p">}</span>
   <span class="p">}</span>
 <span class="p">});</span>
-</code></pre></div>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Coming Soon!
+</span></code></pre></div>
 <blockquote>
 <p>Response</p>
 </blockquote>
@@ -3930,7 +3973,8 @@ given a token:</p>
 <span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">ReactorFormulaClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
 
 <span class="kt">var</span> <span class="n">reactorFormulas</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">GetAsync</span><span class="p">();</span>
-</code></pre></div>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Coming Soon!
+</span></code></pre></div>
 <blockquote>
 <p>Response</p>
 </blockquote>
@@ -4041,7 +4085,8 @@ given a token:</p>
 <span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">ReactorFormulaClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
 
 <span class="kt">var</span> <span class="n">reactorFormula</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">GetByIdAsync</span><span class="p">(</span><span class="s">"17069df1-80f4-439e-86a7-4121863e4678"</span><span class="p">);</span>
-</code></pre></div>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Coming Soon!
+</span></code></pre></div>
 <blockquote>
 <p>Response</p>
 </blockquote>
@@ -4248,7 +4293,8 @@ given a token:</p>
     <span class="p">}</span>
   <span class="p">}</span>
 <span class="p">);</span>
-</code></pre></div>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Coming Soon!
+</span></code></pre></div>
 <blockquote>
 <p>Response</p>
 </blockquote>
@@ -4413,7 +4459,8 @@ given a token:</p>
 <span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">ReactorFormulaClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
 
 <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">DeleteAsync</span><span class="p">(</span><span class="s">"17069df1-80f4-439e-86a7-4121863e4678"</span><span class="p">);</span>
-</code></pre></div>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Coming Soon!
+</span></code></pre></div>
 <p><span class="http-method delete">
   <span class="box-method">DELETE</span>
   <code>https://api.basistheory.com/reactor-formulas/{id}</code>
@@ -4541,7 +4588,8 @@ given a token:</p>
     <span class="n">Id</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Guid</span><span class="p">(</span><span class="s">"17069df1-80f4-439e-86a7-4121863e4678"</span><span class="p">)</span>
   <span class="p">}</span>
 <span class="p">});</span>
-</code></pre></div>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Coming Soon!
+</span></code></pre></div>
 <blockquote>
 <p>Response</p>
 </blockquote>
@@ -4617,7 +4665,8 @@ given a token:</p>
 <span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">ReactorClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
 
 <span class="kt">var</span> <span class="n">reactors</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">GetAsync</span><span class="p">();</span>
-</code></pre></div>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Coming Soon!
+</span></code></pre></div>
 <blockquote>
 <p>Response</p>
 </blockquote>
@@ -4702,7 +4751,8 @@ given a token:</p>
 <span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">ReactorClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
 
 <span class="kt">var</span> <span class="n">reactor</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">GetByIdAsync</span><span class="p">(</span><span class="s">"5b493235-6917-4307-906a-2cd6f1a90b13"</span><span class="p">);</span>
-</code></pre></div>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Coming Soon!
+</span></code></pre></div>
 <blockquote>
 <p>Response</p>
 </blockquote>
@@ -4786,7 +4836,8 @@ given a token:</p>
     <span class="p">}</span>
   <span class="p">}</span>
 <span class="p">);</span>
-</code></pre></div>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Coming Soon!
+</span></code></pre></div>
 <blockquote>
 <p>Response</p>
 </blockquote>
@@ -4876,7 +4927,8 @@ given a token:</p>
 <span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">ReactorClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
 
 <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">DeleteAsync</span><span class="p">(</span><span class="s">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">);</span>
-</code></pre></div>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Coming Soon!
+</span></code></pre></div>
 <p><span class="http-method delete">
   <span class="box-method">DELETE</span>
   <code>https://api.basistheory.com/reactors/{id}</code>
@@ -5024,7 +5076,8 @@ given a token:</p>
 <span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">TenantClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
 
 <span class="kt">var</span> <span class="n">tenant</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">GetSelfAsync</span><span class="p">();</span>
-</code></pre></div>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Coming Soon!
+</span></code></pre></div>
 <blockquote>
 <p>Response</p>
 </blockquote>
@@ -5075,7 +5128,8 @@ given a token:</p>
 <span class="kt">var</span> <span class="n">tenant</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">UpdateAsync</span><span class="p">(</span><span class="k">new</span> <span class="n">Tenant</span> <span class="p">{</span>
   <span class="n">Name</span> <span class="p">=</span> <span class="s">"My Example Tenant"</span>
 <span class="p">});</span>
-</code></pre></div>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Coming Soon!
+</span></code></pre></div>
 <blockquote>
 <p>Response</p>
 </blockquote>
@@ -5136,7 +5190,8 @@ given a token:</p>
 <span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">TenantClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
 
 <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">DeleteAsync</span><span class="p">();</span>
-</code></pre></div>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Coming Soon!
+</span></code></pre></div>
 <p><span class="http-method delete">
   <span class="box-method">DELETE</span>
   <code>https://api.basistheory.com/tenants/self</code>
@@ -5165,7 +5220,8 @@ given a token:</p>
 <span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">TenantClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
 
 <span class="kt">var</span> <span class="n">tenantUsageReport</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">GetTenantUsageReportAsync</span><span class="p">();</span>
-</code></pre></div>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Coming Soon!
+</span></code></pre></div>
 <blockquote>
 <p>Response</p>
 </blockquote>
@@ -5378,6 +5434,20 @@ given a token:</p>
     <span class="p">{</span> <span class="s">"nonSensitiveField"</span><span class="p">,</span>  <span class="s">"Non-Sensitive Value"</span> <span class="p">}</span>
   <span class="p">}</span>
 <span class="p">});</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">basistheory</span>
+<span class="kn">from</span> <span class="nn">basistheory.api</span> <span class="kn">import</span> <span class="n">tokens_api</span>
+<span class="kn">from</span> <span class="nn">basistheory.model.token</span> <span class="kn">import</span> <span class="n">Token</span>
+
+<span class="k">with</span> <span class="n">basistheory</span><span class="p">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="n">configuration</span><span class="o">=</span><span class="n">basistheory</span><span class="p">.</span><span class="n">Configuration</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">))</span> <span class="k">as</span> <span class="n">api_client</span><span class="p">:</span>
+    <span class="n">token_client</span> <span class="o">=</span> <span class="n">tokens_api</span><span class="p">.</span><span class="n">TokensApi</span><span class="p">(</span><span class="n">api_client</span><span class="p">)</span>
+
+    <span class="n">token</span> <span class="o">=</span> <span class="n">token_client</span><span class="p">.</span><span class="n">create</span><span class="p">(</span><span class="n">token</span><span class="o">=</span><span class="n">Token</span><span class="p">(</span>
+        <span class="nb">type</span><span class="o">=</span><span class="s">"token"</span><span class="p">,</span>
+        <span class="n">data</span><span class="o">=</span><span class="s">"Sensitive Value"</span><span class="p">,</span>
+        <span class="n">metadata</span><span class="o">=</span><span class="p">{</span>
+            <span class="s">"nonSensitiveField"</span><span class="p">:</span> <span class="s">"Non-Sensitive Value"</span>
+        <span class="p">}</span>
+    <span class="p">))</span>
 </code></pre></div>
 <blockquote>
 <p>Response</p>
@@ -5464,6 +5534,13 @@ given a token:</p>
 <span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">TokenClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
 
 <span class="kt">var</span> <span class="n">tokens</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">GetAsync</span><span class="p">();</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">basistheory</span>
+<span class="kn">from</span> <span class="nn">basistheory.api</span> <span class="kn">import</span> <span class="n">tokens_api</span>
+
+<span class="k">with</span> <span class="n">basistheory</span><span class="p">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="n">configuration</span><span class="o">=</span><span class="n">basistheory</span><span class="p">.</span><span class="n">Configuration</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">))</span> <span class="k">as</span> <span class="n">api_client</span><span class="p">:</span>
+    <span class="n">token_client</span> <span class="o">=</span> <span class="n">tokens_api</span><span class="p">.</span><span class="n">TokensApi</span><span class="p">(</span><span class="n">api_client</span><span class="p">)</span>
+
+    <span class="n">tokens</span> <span class="o">=</span> <span class="n">token_client</span><span class="p">.</span><span class="nb">list</span><span class="p">()</span>
 </code></pre></div>
 <blockquote>
 <p>Response</p>
@@ -5551,6 +5628,13 @@ given a token:</p>
 <span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">TokenClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
 
 <span class="kt">var</span> <span class="n">tokens</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">GetAsync</span><span class="p">(</span><span class="k">new</span> <span class="n">TokenGetRequest</span> <span class="p">{</span> <span class="n">Decrypt</span> <span class="p">=</span> <span class="k">true</span> <span class="p">});</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">basistheory</span>
+<span class="kn">from</span> <span class="nn">basistheory.api</span> <span class="kn">import</span> <span class="n">tokens_api</span>
+
+<span class="k">with</span> <span class="n">basistheory</span><span class="p">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="n">configuration</span><span class="o">=</span><span class="n">basistheory</span><span class="p">.</span><span class="n">Configuration</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">))</span> <span class="k">as</span> <span class="n">api_client</span><span class="p">:</span>
+    <span class="n">token_client</span> <span class="o">=</span> <span class="n">tokens_api</span><span class="p">.</span><span class="n">TokensApi</span><span class="p">(</span><span class="n">api_client</span><span class="p">)</span>
+
+    <span class="n">tokens</span> <span class="o">=</span> <span class="n">token_client</span><span class="p">.</span><span class="n">list_decrypted</span><span class="p">()</span>
 </code></pre></div>
 <blockquote>
 <p>Response</p>
@@ -5635,6 +5719,13 @@ Token types other than <code>token</code> or non-BasisTheory encrypted tokens wi
 <span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">TokenClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
 
 <span class="kt">var</span> <span class="n">token</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">GetByIdAsync</span><span class="p">(</span><span class="s">"c06d0789-0a38-40be-b7cc-c28a718f76f1"</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">basistheory</span>
+<span class="kn">from</span> <span class="nn">basistheory.api</span> <span class="kn">import</span> <span class="n">tokens_api</span>
+
+<span class="k">with</span> <span class="n">basistheory</span><span class="p">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="n">configuration</span><span class="o">=</span><span class="n">basistheory</span><span class="p">.</span><span class="n">Configuration</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">))</span> <span class="k">as</span> <span class="n">api_client</span><span class="p">:</span>
+    <span class="n">token_client</span> <span class="o">=</span> <span class="n">tokens_api</span><span class="p">.</span><span class="n">TokensApi</span><span class="p">(</span><span class="n">api_client</span><span class="p">)</span>
+
+    <span class="n">token</span> <span class="o">=</span> <span class="n">token_client</span><span class="p">.</span><span class="n">get_by_id</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s">"c06d0789-0a38-40be-b7cc-c28a718f76f1"</span><span class="p">)</span>
 </code></pre></div>
 <blockquote>
 <p>Response</p>
@@ -5708,6 +5799,13 @@ Token types other than <code>token</code> or non-BasisTheory encrypted tokens wi
 <span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">TokenClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
 
 <span class="kt">var</span> <span class="n">token</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">GetByIdAsync</span><span class="p">(</span><span class="s">"c06d0789-0a38-40be-b7cc-c28a718f76f1"</span><span class="p">,</span> <span class="k">new</span> <span class="n">TokenGetByIdRequest</span> <span class="p">{</span> <span class="n">Decrypt</span> <span class="p">=</span> <span class="k">true</span> <span class="p">});</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">basistheory</span>
+<span class="kn">from</span> <span class="nn">basistheory.api</span> <span class="kn">import</span> <span class="n">tokens_api</span>
+
+<span class="k">with</span> <span class="n">basistheory</span><span class="p">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="n">configuration</span><span class="o">=</span><span class="n">basistheory</span><span class="p">.</span><span class="n">Configuration</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">))</span> <span class="k">as</span> <span class="n">api_client</span><span class="p">:</span>
+    <span class="n">token_client</span> <span class="o">=</span> <span class="n">tokens_api</span><span class="p">.</span><span class="n">TokensApi</span><span class="p">(</span><span class="n">api_client</span><span class="p">)</span>
+
+    <span class="n">token</span> <span class="o">=</span> <span class="n">token_client</span><span class="p">.</span><span class="n">get_decrypted</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s">"c06d0789-0a38-40be-b7cc-c28a718f76f1"</span><span class="p">)</span>
 </code></pre></div>
 <blockquote>
 <p>Response</p>
@@ -5790,6 +5888,13 @@ Token types other than <code>token</code> or non-BasisTheory encrypted tokens wi
 <span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">TokenClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
 
 <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">DeleteAsync</span><span class="p">(</span><span class="s">"c06d0789-0a38-40be-b7cc-c28a718f76f1"</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">basistheory</span>
+<span class="kn">from</span> <span class="nn">basistheory.api</span> <span class="kn">import</span> <span class="n">tokens_api</span>
+
+<span class="k">with</span> <span class="n">basistheory</span><span class="p">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="n">configuration</span><span class="o">=</span><span class="n">basistheory</span><span class="p">.</span><span class="n">Configuration</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">))</span> <span class="k">as</span> <span class="n">api_client</span><span class="p">:</span>
+    <span class="n">token_client</span> <span class="o">=</span> <span class="n">tokens_api</span><span class="p">.</span><span class="n">TokensApi</span><span class="p">(</span><span class="n">api_client</span><span class="p">)</span>
+
+    <span class="n">token_client</span><span class="p">.</span><span class="n">delete</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s">"c06d0789-0a38-40be-b7cc-c28a718f76f1"</span><span class="p">)</span>
 </code></pre></div>
 <p><span class="http-method delete">
   <span class="box-method">DELETE</span>
@@ -5847,7 +5952,8 @@ Token types other than <code>token</code> or non-BasisTheory encrypted tokens wi
 
 <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">CreateAssociationAsync</span><span class="p">(</span><span class="s">"c06d0789-0a38-40be-b7cc-c28a718f76f1"</span><span class="p">,</span> 
   <span class="s">"c1e565009-1984-4638-8fca-dce8a82cc2af"</span><span class="p">);</span>
-</code></pre></div>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Coming Soon!
+</span></code></pre></div>
 <p><span class="http-method post">
   <span class="box-method">POST</span>
   <code>https://api.basistheory.com/tokens/{parent_id}/children/{child_id}</code>
@@ -5909,7 +6015,8 @@ Token types other than <code>token</code> or non-BasisTheory encrypted tokens wi
 
 <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">DeleteAssociationAsync</span><span class="p">(</span><span class="s">"c06d0789-0a38-40be-b7cc-c28a718f76f1"</span><span class="p">,</span> 
   <span class="s">"c1e565009-1984-4638-8fca-dce8a82cc2af"</span><span class="p">);</span>
-</code></pre></div>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Coming Soon!
+</span></code></pre></div>
 <p><span class="http-method delete">
   <span class="box-method">DELETE</span>
   <code>https://api.basistheory.com/tokens/{parent_id}/children/{child_id}</code>
@@ -6016,7 +6123,8 @@ Token types other than <code>token</code> or non-BasisTheory encrypted tokens wi
     <span class="p">}</span>
   <span class="p">}</span>
 <span class="p">);</span>
-</code></pre></div>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Coming Soon!
+</span></code></pre></div>
 <blockquote>
 <p>Response</p>
 </blockquote>
@@ -6116,7 +6224,8 @@ Token types other than <code>token</code> or non-BasisTheory encrypted tokens wi
 <span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">TokenClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
 
 <span class="kt">var</span> <span class="n">tokens</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">GetChildrenAsync</span><span class="p">(</span><span class="s">"c06d0789-0a38-40be-b7cc-c28a718f76f1"</span><span class="p">);</span>
-</code></pre></div>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Coming Soon!
+</span></code></pre></div>
 <blockquote>
 <p>Response</p>
 </blockquote>
@@ -6234,7 +6343,8 @@ Token types other than <code>token</code> or non-BasisTheory encrypted tokens wi
   <span class="n">first_name</span> <span class="p">=</span> <span class="s">"John"</span><span class="p">,</span>
   <span class="n">last_name</span> <span class="p">=</span> <span class="s">"Doe"</span>
 <span class="p">});</span>
-</code></pre></div>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Coming Soon!
+</span></code></pre></div>
 <blockquote>
 <p>Create Basic Token Response</p>
 </blockquote>
@@ -6279,7 +6389,8 @@ Token types other than <code>token</code> or non-BasisTheory encrypted tokens wi
     <span class="p">{</span> <span class="s">"nonSensitiveField"</span><span class="p">,</span>  <span class="s">"Non-Sensitive Value"</span> <span class="p">}</span>
   <span class="p">}</span>
 <span class="p">});</span>
-</code></pre></div>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Coming Soon!
+</span></code></pre></div>
 <blockquote>
 <p>Create Token Response</p>
 </blockquote>
@@ -6345,7 +6456,8 @@ Token types other than <code>token</code> or non-BasisTheory encrypted tokens wi
     <span class="p">{</span> <span class="s">"nonSensitiveField"</span><span class="p">,</span>  <span class="s">"Non-Sensitive Value"</span> <span class="p">}</span>
   <span class="p">}</span>
 <span class="p">});</span>
-</code></pre></div>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Coming Soon!
+</span></code></pre></div>
 <blockquote>
 <p>Create Card Response</p>
 </blockquote>
@@ -6434,7 +6546,8 @@ Token types other than <code>token</code> or non-BasisTheory encrypted tokens wi
     <span class="n">Data</span> <span class="p">=</span> <span class="s">"Sensitive Value"</span>
   <span class="p">}</span>
 <span class="p">]);</span>
-</code></pre></div>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Coming Soon!
+</span></code></pre></div>
 <blockquote>
 <p>Tokenize Array Response</p>
 </blockquote>
@@ -6537,7 +6650,8 @@ Token types other than <code>token</code> or non-BasisTheory encrypted tokens wi
     <span class="p">}</span>
   <span class="p">}</span>
 <span class="p">});</span>
-</code></pre></div>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Coming Soon!
+</span></code></pre></div>
 <blockquote>
 <p>Composite Response</p>
 </blockquote>
@@ -6584,6 +6698,7 @@ Token types other than <code>token</code> or non-BasisTheory encrypted tokens wi
                 <a href="#" data-language-name="shell">cURL</a>
                 <a href="#" data-language-name="javascript">Node.js</a>
                 <a href="#" data-language-name="csharp">.NET</a>
+                <a href="#" data-language-name="python">Python <span class="beta beta-lang-selector">BETA</span></a>
           </div>
       </div>
     </div>
