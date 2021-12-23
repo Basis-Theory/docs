@@ -4,19 +4,18 @@ Your ability to authenticate to the API is granted by creating Applications, eac
 
 ## Application Object
 
-Attribute | Type | Description
---------- | ---- | -----------
-`id` | *uuid* | Unique identifier of the Application which can be used to [get an Application](#applications-get-an-application)
-`tenant_id` | *uuid* | The [Tenant](#tenants) ID which owns the Application
-`name` | *string* | The name of the Application
-`key` | *string* | The API key which should be used for authenticating against Basis Theory API endpoints
-`type` | *string* | [Application type](#applications-application-types) of the Application
-`permissions` | *array* | List of [permissions](#permissions-permission-types) for the Application
-`created_by` | *uuid* | (Optional) The ID of the user or [Application](#applications) that created the Application
-`created_at` | *date* | (Optional) Created date of the Application in ISO 8601 format
-`modified_by` | *uuid* | (Optional) The ID of the user or [Application](#applications) that last modified the Application
-`modified_at` | *date* | (Optional) Last modified date of the Application in ISO 8601 format
-
+| Attribute     | Type     | Description                                                                                                      |
+|---------------|----------|------------------------------------------------------------------------------------------------------------------|
+| `id`          | *uuid*   | Unique identifier of the Application which can be used to [get an Application](#applications-get-an-application) |
+| `tenant_id`   | *uuid*   | The [Tenant](#tenants) ID which owns the Application                                                             |
+| `name`        | *string* | The name of the Application                                                                                      |
+| `key`         | *string* | The API key which should be used for authenticating against Basis Theory API endpoints                           |
+| `type`        | *string* | [Application type](#applications-application-types) of the Application                                           |
+| `permissions` | *array*  | List of [permissions](#permissions-permission-types) for the Application                                         |
+| `created_by`  | *uuid*   | (Optional) The ID of the user or [Application](#applications) that created the Application                       |
+| `created_at`  | *date*   | (Optional) Created date of the Application in ISO 8601 format                                                    |
+| `modified_by` | *uuid*   | (Optional) The ID of the user or [Application](#applications) that last modified the Application                 |
+| `modified_at` | *date*   | (Optional) Last modified date of the Application in ISO 8601 format                                              |
 
 ## Application Types
 
@@ -442,16 +441,16 @@ Update an application by ID in the Tenant.
 
 ### URI Parameters
 
-Parameter | Required | Type | Default | Description
---------- | -------- | ---- | ------- | -----------
-`id` | true | *uuid* | `null` | The ID of the application
+| Parameter | Required | Type   | Default | Description               |
+|-----------|----------|--------|---------|---------------------------|
+| `id`      | true     | *uuid* | `null`  | The ID of the application |
 
 ### Request Parameters
 
-Attribute | Required | Type | Default | Description
---------- | -------- | ---- | ------- | -----------
-`name` | true | *string* | `null` | The name of the application. Has a maximum length of `200`
-`permissions` | false | *array* | `[]` | [Permissions](#permissions-permission-types) for the application
+| Attribute     | Required | Type     | Default | Description                                                      |
+|---------------|----------|----------|---------|------------------------------------------------------------------|
+| `name`        | true     | *string* | `null`  | The name of the application. Has a maximum length of `200`       |
+| `permissions` | false    | *array*  | `[]`    | [Permissions](#permissions-permission-types) for the application |
 
 ### Response
 

@@ -62,15 +62,15 @@ Default privacy settings can be overridden at the time of creation, but only to 
 ## Token Classifications
 
 Each token has a data classification associated with it which defines the type of data it contains.
-Basis Theory permissions access to Tokens based on data classifications (see [Token Permissions](#permissions-token-permissions) for more details). 
+Basis Theory permissions access to Tokens based on data classifications (see [Token Permissions](#permissions-permission-types-token-permissions) for more details). 
 The following data classifications are supported:
 
-| Name      | Description | Specificity Level |
-|-----------|-------------|-------------------|
-| `general` | Contains sensitive data that does not fall under a more specific classification or compliance requirements        | 0                 |
-| `bank`    | Contains data that falls under banking compliance (e.g. Nacha)        | 10                |
-| `pci`     | Contains data that falls under PCI compliance        | 10                |
-| `pii`     | Contains user or customer specific identifiers (e.g. email, date of birth, address)        | 10                |
+| Name      | Description                                                                                                | Specificity Level |
+|-----------|------------------------------------------------------------------------------------------------------------|-------------------|
+| `general` | Contains sensitive data that does not fall under a more specific classification or compliance requirements | 0                 |
+| `bank`    | Contains data that falls under banking compliance (e.g. Nacha)                                             | 10                |
+| `pci`     | Contains data that falls under PCI compliance                                                              | 10                |
+| `pii`     | Contains user or customer specific identifiers (e.g. email, date of birth, address)                        | 10                |
 
 ## Token Impact Levels
 
@@ -89,10 +89,10 @@ Token impact levels are used to further classify and permit access to Tokens wit
 A Token Restriction Policy defines the policy to enforce on a Token's data when read by a User or Application
 with permission to read the Token's classification but at a lower impact level.
 
-| Name     | Description                                                                                                                 | Specificity Level |
-|----------|-----------------------------------------------------------------------------------------------------------------------------|-------------------|
+| Name     | Description                                                                                                                          | Specificity Level |
+|----------|--------------------------------------------------------------------------------------------------------------------------------------|-------------------|
 | `mask`   | Token data will be masked in the response, falling back to `redact` restriction policy if a mask is not available for the Token Type | 0                 |
-| `redact` | Token data will be completely removed in the response                                                                       | 1                 |
+| `redact` | Token data will be completely removed in the response                                                                                | 1                 |
 
 
 ## Create Token
@@ -202,13 +202,13 @@ Create a new token for the Tenant.
 
 ### Request Parameters
 
-| Attribute    | Required | Type                                                          | Default | Description                                                                                                                         |
-|--------------|----------|---------------------------------------------------------------|---------|-------------------------------------------------------------------------------------------------------------------------------------|
-| `type`       | true     | *string*                                                      | `null`  | [Token type](#tokens-token-types) of the token                                                                                      |
-| `data`       | true     | *any*                                                         | `null`  | Token data. Can be an object, array, or any primitive type such as an integer, boolean, or string                                   |
+| Attribute    | Required | Type                                                          | Default | Description                                                                                                                                                  |
+|--------------|----------|---------------------------------------------------------------|---------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `type`       | true     | *string*                                                      | `null`  | [Token type](#tokens-token-types) of the token                                                                                                               |
+| `data`       | true     | *any*                                                         | `null`  | Token data. Can be an object, array, or any primitive type such as an integer, boolean, or string                                                            |
 | `privacy`    | false    | *[privacy object](#tokens-token-object-privacy-object)*       | `null`  | Token Privacy Settings overrides. Overrides must be a higher specificity level than the default or minimum setting for the [Token Type](#token-token-types). |
-| `metadata`   | false    | *map*                                                         | `null`  | A key-value map of non-sensitive data.                                                                                              |
-| `encryption` | false    | *[encryption object](#tokens-token-object-encryption-object)* | `null`  | Encryption metadata for an encrypted token data value                                                                               |
+| `metadata`   | false    | *map*                                                         | `null`  | A key-value map of non-sensitive data.                                                                                                                       |
+| `encryption` | false    | *[encryption object](#tokens-token-object-encryption-object)* | `null`  | Encryption metadata for an encrypted token data value                                                                                                        |
 
 <aside class="warning">
   <span>WARNING - Never store sensitive plaintext information in the <code>metadata</code> or plaintext, private encryption keys in the <code>encryption</code> attributes of your token.</span>
@@ -546,7 +546,7 @@ Get a decrypted token by ID in the Tenant.
 ### Permissions
 
 <p class="scopes">
-  <span class="scope">token:decrypt</span>
+  <span class="scope">token:&lt;classification&gt;:read:&lt;impact_level&gt;</span>
 </p>
 
 ### URI Parameters

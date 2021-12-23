@@ -23,33 +23,35 @@ Every API endpoint will document the required permissions needed to perform the 
 
 ## Permission Types
 
-| Permission           | Description                                                                                                                                                                      | Application Types                        |
-|----------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------|
-| `tenant:read`        | Read Tenants                                                                                                                                                                     | `management`                             |
-| `tenant:update`      | Update Tenants                                                                                                                                                                   | `management`                             |
-| `tenant:delete`      | Delete Tenants                                                                                                                                                                   | `management`                             |
-| `application:read`   | Read Applications                                                                                                                                                                | `management`                             |
-| `application:create` | Create Applications                                                                                                                                                              | `management`                             |
-| `application:update` | Update and regenerate API keys for Applications                                                                                                                                  | `management`                             |
-| `application:create` | Delete Applications                                                                                                                                                              | `management`                             |
-| `reactor:read`       | Read Reactor Formulas and Reactors                                                                                                                                               | `management`         |
-| `reactor:create`     | Create Reactors Formulas and Reactors                                                                                                                                            | `management`                             |
-| `reactor:update`     | Update Reactors Formulas and Reactors                                                                                                                                            | `management`                             |
-| `reactor:delete`     | Delete Reactors Formulas and Reactors                                                                                                                                            | `management`                             |
-| `log:read`           | Read audit logs                                                                                                                                                                  | `management`                             |
+### Management Permissions
 
-## Token Permission Types
+| Permission           | Description                                     | Application Types |
+|----------------------|-------------------------------------------------|-------------------|
+| `tenant:read`        | Read Tenants                                    | `management`      |
+| `tenant:update`      | Update Tenants                                  | `management`      |
+| `tenant:delete`      | Delete Tenants                                  | `management`      |
+| `application:read`   | Read Applications                               | `management`      |
+| `application:create` | Create Applications                             | `management`      |
+| `application:update` | Update and regenerate API keys for Applications | `management`      |
+| `application:create` | Delete Applications                             | `management`      |
+| `reactor:read`       | Read Reactor Formulas and Reactors              | `management`      |
+| `reactor:create`     | Create Reactors Formulas and Reactors           | `management`      |
+| `reactor:update`     | Update Reactors Formulas and Reactors           | `management`      |
+| `reactor:delete`     | Delete Reactors Formulas and Reactors           | `management`      |
+| `log:read`           | Read audit logs                                 | `management`      |
+
+### Token Permissions
 
 All Token permissions follow the form of `token:<classification>:<operation>:<scope?>`.
 
-| Permission                                   | Description                                                                                                                                                          | Application Types                        |
-|----------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------|
-| `token:<classification>:create`              | Create Tokens in [\<classification\>](#tokens-token-classifications) (e.g. `token:general:create`)                                                                   | `public`, `elements`, `server_to_server` |
+| Permission                                   | Description                                                                                                                                                                                                      | Application Types                        |
+|----------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------|
+| `token:<classification>:create`              | Create Tokens in [\<classification\>](#tokens-token-classifications) (e.g. `token:general:create`)                                                                                                               | `public`, `elements`, `server_to_server` |
 | `token:<classification>:read:<impact_level>` | Read Tokens in [\<classification\>](#tokens-token-classifications) at [\<impact_level\>](#tokens-token-impact-levels) and lower (e.g. `token:general:read:moderate` includes access to `token:general:read:low`) | `server_to_server`                       |
-| `token:<classification>:update`              | Update Tokens in [\<classification\>](#tokens-token-classifications) (e.g. `token:general:update`)                                                                   | `server_to_server`                       |
-| `token:<classification>:delete`              | Delete Tokens in [\<classification\>](#tokens-token-classifications) (e.g. `token:general:delete`)                                                                   | `server_to_server`                       |
-| `token:<classification>:use:proxy`           | Use Tokens in [\<classification\>](#tokens-token-classifications) via [Proxy](#proxy) (e.g. `token:general:use:proxy`)                                               | `server_to_server`                       |
-| `token:<classification>:use:reactor`         | Use Tokens in [\<classification\>](#tokens-token-classifications) via [Reactor](#reactors) (e.g. `token:general:use:reactor`)                                        | `server_to_server`                       |
+| `token:<classification>:update`              | Update Tokens in [\<classification\>](#tokens-token-classifications) (e.g. `token:general:update`)                                                                                                               | `server_to_server`                       |
+| `token:<classification>:delete`              | Delete Tokens in [\<classification\>](#tokens-token-classifications) (e.g. `token:general:delete`)                                                                                                               | `server_to_server`                       |
+| `token:<classification>:use:proxy`           | Use Tokens in [\<classification\>](#tokens-token-classifications) via [Proxy](#proxy) (e.g. `token:general:use:proxy`)                                                                                           | `server_to_server`                       |
+| `token:<classification>:use:reactor`         | Use Tokens in [\<classification\>](#tokens-token-classifications) via [Reactor](#reactors) (e.g. `token:general:use:reactor`)                                                                                    | `server_to_server`                       |
 
 ## List Permissions
 
