@@ -79,9 +79,9 @@ Token impact levels are used to further classify and permit access to Tokens wit
 
 | Name       | Description                                                                                                        | Specificity Level |
 |------------|--------------------------------------------------------------------------------------------------------------------|-------------------|
-| `low`      | Loss of data confidentiality, integrity, or availability is expected to have limited adverse effect                | 0                 |
-| `moderate` | Loss of data confidentiality, integrity, or availability is expected to have serious adverse effect                | 1                 |
-| `high`     | Loss of data confidentiality, integrity, or availability is expected to have severe or catastrophic adverse effect | 2                 |
+| `low`      | Loss of data confidentiality, integrity, or availability is expected to have **limited** adverse effect                | 0                 |
+| `moderate` | Loss of data confidentiality, integrity, or availability is expected to have **serious** adverse effect                | 1                 |
+| `high`     | Loss of data confidentiality, integrity, or availability is expected to have **severe or catastrophic** adverse effect | 2                 |
 
 
 ## Token Restriction Policies
