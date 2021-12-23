@@ -67,10 +67,10 @@ The following data classifications are supported:
 
 | Name      | Description | Specificity Level |
 |-----------|-------------|-------------------|
-| `general` | TODO        | 0                 |
-| `bank`    | TODO        | 10                |
-| `pci`     | TODO        | 10                |
-| `pii`     | TODO        | 10                |
+| `general` | Contains sensitive data that does not fall under a more specific classification or compliance requirements        | 0                 |
+| `bank`    | Contains data that falls under banking compliance (e.g. Nacha)        | 10                |
+| `pci`     | Contains data that falls under PCI compliance        | 10                |
+| `pii`     | Contains user or customer specific identifiers (e.g. email, date of birth, address)        | 10                |
 
 ## Token Impact Levels
 
@@ -91,7 +91,7 @@ with permission to read the Token's classification but at a lower impact level.
 
 | Name     | Description                                                                                                                 | Specificity Level |
 |----------|-----------------------------------------------------------------------------------------------------------------------------|-------------------|
-| `mask`   | Token data will be masked if available, falling back to `redact` restriction policy if mask is undefined for the Token Type | 0                 |
+| `mask`   | Token data will be masked in the response, falling back to `redact` restriction policy if a mask is not available for the Token Type | 0                 |
 | `redact` | Token data will be completely removed in the response                                                                       | 1                 |
 
 
@@ -197,7 +197,6 @@ Create a new token for the Tenant.
 ### Permissions
 
 <p class="scopes">
-  <span class="scope">token:create (deprecated)</span>
   <span class="scope">token:&lt;classification&gt;:create</span>
 </p>
 
@@ -207,7 +206,7 @@ Create a new token for the Tenant.
 |--------------|----------|---------------------------------------------------------------|---------|-------------------------------------------------------------------------------------------------------------------------------------|
 | `type`       | true     | *string*                                                      | `null`  | [Token type](#tokens-token-types) of the token                                                                                      |
 | `data`       | true     | *any*                                                         | `null`  | Token data. Can be an object, array, or any primitive type such as an integer, boolean, or string                                   |
-| `privacy`    | false    | *[privacy object](#tokens-token-object-privacy-object)*       | `null`  | Token Privacy Settings overrides. Settings must be a higher specificity level than the default privacy settings for the Token type. |
+| `privacy`    | false    | *[privacy object](#tokens-token-object-privacy-object)*       | `null`  | Token Privacy Settings overrides. Overrides must be a higher specificity level than the default or minimum setting for the [Token Type](#token-token-types). |
 | `metadata`   | false    | *map*                                                         | `null`  | A key-value map of non-sensitive data.                                                                                              |
 | `encryption` | false    | *[encryption object](#tokens-token-object-encryption-object)* | `null`  | Encryption metadata for an encrypted token data value                                                                               |
 
@@ -295,7 +294,6 @@ Get a list of tokens for the Tenant.
 ### Permissions
 
 <p class="scopes">
-  <span class="scope">token:read (deprecated)</span>
   <span class="scope">token:&lt;classification&gt;:read:&lt;impact_level&gt;</span>
 </p>
 
@@ -385,7 +383,7 @@ Get a list of decrypted tokens for the Tenant.
 ### Permissions
 
 <p class="scopes">
-  <span class="scope">token:decrypt (deprecated)</span>
+  <span class="scope">token:&lt;classification&gt;:read:&lt;impact_level&gt;</span>
 </p>
 
 ### Query Parameters
@@ -468,7 +466,6 @@ Get a token by ID in the Tenant.
 ### Permissions
 
 <p class="scopes">
-  <span class="scope">token:read (deprecated)</span>
   <span class="scope">token:&lt;classification&gt;:read:&lt;impact_level&gt;</span>
 </p>
 
@@ -620,7 +617,6 @@ Delete a token by ID in the Tenant.
 ### Permissions
 
 <p class="scopes">
-  <span class="scope">token:delete (deprecated)</span>
   <span class="scope">token:&lt;classification&gt;:delete</span>
 </p>
 

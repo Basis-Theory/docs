@@ -120,7 +120,6 @@ Create a new Atomic Card for the Tenant.
 ### Permissions
 
 <p class="scopes">
-  <span class="scope">card:create (deprecated)</span>
   <span class="scope">token:pci:create</span>
 </p>
 
@@ -203,7 +202,6 @@ Get a list of Atomic Cards for the Tenant.
 ### Permissions
 
 <p class="scopes">
-  <span class="scope">card:read (deprecated)</span>
   <span class="scope">token:pci:read:&lt;impact_level&gt;</span>
 </p>
 
@@ -272,7 +270,6 @@ Get an Atomic Card by ID in the Tenant.
 ### Permissions
 
 <p class="scopes">
-  <span class="scope">card:read (deprecated)</span>
   <span class="scope">token:pci:read:&lt;impact_level&gt;</span>
 </p>
 
@@ -373,7 +370,6 @@ Update an Atomic Card for the Tenant. At least one property on the request body 
 ### Permissions
 
 <p class="scopes">
-  <span class="scope">card:update (deprecated)</span>
   <span class="scope">token:pci:update</span>
 </p>
 
@@ -432,7 +428,6 @@ Delete an Atomic Card by ID in the Tenant.
 ### Permissions
 
 <p class="scopes">
-  <span class="scope">card:delete (deprecated)</span>
   <span class="scope">token:pci:delete</span>
 </p>
 
@@ -513,7 +508,6 @@ React with an Atomic Card by ID.
 ### Permissions
 
 <p class="scopes">
-  <span class="scope">card:read (deprecated)</span>
   <span class="scope">token:pci:use:reactor</span>
 </p>
 
