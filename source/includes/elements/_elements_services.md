@@ -17,7 +17,6 @@ Allows secure submission and tokenization of a card element. Returns a `Promise`
 See [CardModel](#element-types-card-element) for the resolved value type. The `Promise` will reject with an [error](#elements-services-errors)
 if the response status is not in the 2xx range.
 
-Internally, `BasisTheory.atomicCards.create` calls [Create Atomic Card API](/api-reference/#atomic-cards-create-atomic-card).
 
 You can fetch this same data later with [Get an Atomic Card API](/api-reference/#atomic-cards-get-an-atomic-card).
 
@@ -43,7 +42,6 @@ Allows secure submission and tokenization of a bank element. Returns a `Promise`
 data. The `Promise` will reject with an [error](#elements-services-errors) if the response status is not in the 2xx
 range.
 
-Internally, `BasisTheory.atomicBanks.create` calls [Create Atomic Bank API](/api-reference#atomic-banks-create-atomic-bank).
 
 You can fetch this same data later with [Get an Atomic Bank API](/api-reference#atomic-banks-get-an-atomic-bank).
 
@@ -79,8 +77,6 @@ BasisTheory.tokens.create({
 
 Allows secure submission and tokenization of string data. Returns a `Promise` that resolves to the created token. The
 `Promise` will reject with an [error](#elements-services-errors) if the response status is not in the 2xx range.
-
-Internally, `BasisTheory.tokens.create` calls [Create Token API](/api-reference#tokens-create-token).
 
 You can fetch this same data later with [Get a Token API](/api-reference#tokens-get-a-token) or [Get a Decrypted Token API](/api-reference#tokens-get-a-decrypted-token)
 
@@ -118,8 +114,6 @@ BasisTheory.tokenize.tokenize({
 
 Allows secure submission and tokenization of string data. Returns a `Promise` that resolves to the created tokens. The
 `Promise` will reject with an [error](#elements-services-errors) if the response status is not in the 2xx range.
-
-Internally, `BasisTheory.tokenize.tokenize` calls [Tokenize API](/api-reference#tokenize).
 
 You can fetch this same data later with [Get a Token API](/api-reference#tokens-get-a-token) or [Get a Decrypted Token API](/api-reference#tokens-get-a-decrypted-token).
 
