@@ -1,9 +1,11 @@
 # Elements Services
 
+The following **BasisTheory.js** services are capable of recognizing Elements instances in the payload and securely tokenizing their data directly to Basis Theory vault. 
+
 ## Atomic Cards
 
 ```javascript
-BasisTheory.elements.atomicCards.create({
+BasisTheory.atomicCards.create({
   card: cardElement
 }).then((token) => {
   console.log(token.id); // token to store
@@ -15,7 +17,7 @@ Allows secure submission and tokenization of a card element. Returns a `Promise`
 See [CardModel](#element-types-card-element) for the resolved value type. The `Promise` will reject with an [error](#elements-services-errors)
 if the response status is not in the 2xx range.
 
-Internally, `BasisTheory.elements.atomicCards.create` calls [Create Atomic Card API](/api-reference/#atomic-cards-create-atomic-card).
+Internally, `BasisTheory.atomicCards.create` calls [Create Atomic Card API](/api-reference/#atomic-cards-create-atomic-card).
 
 You can fetch this same data later with [Get an Atomic Card API](/api-reference/#atomic-cards-get-an-atomic-card).
 
@@ -26,7 +28,7 @@ You can fetch this same data later with [Get an Atomic Card API](/api-reference/
 ## Atomic Banks
 
 ```javascript
-BasisTheory.elements.atomicBanks.create({
+BasisTheory.atomicBanks.create({
   bank: {
     routingNumber: routingNumberElement | 'plainText',  // values can be either a TextElement or plain text (see warning).
     accountNumber: accountNumberElement | 'plainText',
@@ -41,7 +43,7 @@ Allows secure submission and tokenization of a bank element. Returns a `Promise`
 data. The `Promise` will reject with an [error](#elements-services-errors) if the response status is not in the 2xx
 range.
 
-Internally, `BasisTheory.elements.atomicBanks.create` calls [Create Atomic Bank API](/api-reference#atomic-banks-create-atomic-bank).
+Internally, `BasisTheory.atomicBanks.create` calls [Create Atomic Bank API](/api-reference#atomic-banks-create-atomic-bank).
 
 You can fetch this same data later with [Get an Atomic Bank API](/api-reference#atomic-banks-get-an-atomic-bank).
 
@@ -56,7 +58,7 @@ You can fetch this same data later with [Get an Atomic Bank API](/api-reference#
 ## Tokens
 
 ```javascript
-BasisTheory.elements.tokens.create({
+BasisTheory.tokens.create({
   type: 'token',
   data: {
     sensitiveData: sensitiveDataElement,
@@ -78,7 +80,7 @@ BasisTheory.elements.tokens.create({
 Allows secure submission and tokenization of string data. Returns a `Promise` that resolves to the created token. The
 `Promise` will reject with an [error](#elements-services-errors) if the response status is not in the 2xx range.
 
-Internally, `BasisTheory.elements.tokens.create` calls [Create Token API](/api-reference#tokens-create-token).
+Internally, `BasisTheory.tokens.create` calls [Create Token API](/api-reference#tokens-create-token).
 
 You can fetch this same data later with [Get a Token API](/api-reference#tokens-get-a-token) or [Get a Decrypted Token API](/api-reference#tokens-get-a-decrypted-token)
 
@@ -101,7 +103,7 @@ You can fetch this same data later with [Get a Token API](/api-reference#tokens-
 ## Tokenize
 
 ```javascript
-BasisTheory.elements.tokenize.tokenize({
+BasisTheory.tokenize.tokenize({
   sensitiveData: sensitiveDataElement,
   nonSensitiveData: 'plainText', // see warning on plain text data
   otherData: {
@@ -117,7 +119,7 @@ BasisTheory.elements.tokenize.tokenize({
 Allows secure submission and tokenization of string data. Returns a `Promise` that resolves to the created tokens. The
 `Promise` will reject with an [error](#elements-services-errors) if the response status is not in the 2xx range.
 
-Internally, `BasisTheory.elements.tokenize.tokenize` calls [Tokenize API](/api-reference#tokenize).
+Internally, `BasisTheory.tokenize.tokenize` calls [Tokenize API](/api-reference#tokenize).
 
 You can fetch this same data later with [Get a Token API](/api-reference#tokens-get-a-token) or [Get a Decrypted Token API](/api-reference#tokens-get-a-decrypted-token).
 
@@ -137,7 +139,7 @@ You can fetch this same data later with [Get a Token API](/api-reference#tokens-
 ## Errors
 
 ```javascript
-BasisTheory.elements.tokens.create(...).catch(error => {
+BasisTheory.tokens.create(...).catch(error => {
   // handle error
 });
 ```
