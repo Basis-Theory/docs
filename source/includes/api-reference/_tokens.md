@@ -150,6 +150,23 @@ var token = await client.CreateAsync(new Token {
 });
 ```
 
+```python
+import basistheory
+from basistheory.api import tokens_api
+from basistheory.model.token import Token
+
+with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_N88mVGsp3sCXkykyN2EFED")) as api_client:
+    token_client = tokens_api.TokensApi(api_client)
+
+    token = token_client.create(token=Token(
+        type="token",
+        data="Sensitive Value",
+        metadata={
+            "nonSensitiveField": "Non-Sensitive Value"
+        }
+    ))
+```
+
 > Response
 
 ```json
@@ -229,6 +246,17 @@ var client = new TokenClient("key_N88mVGsp3sCXkykyN2EFED");
 var tokens = await client.GetAsync();
 ```
 
+```python
+import basistheory
+from basistheory.api import tokens_api
+
+with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_N88mVGsp3sCXkykyN2EFED")) as api_client:
+    token_client = tokens_api.TokensApi(api_client)
+
+    tokens = token_client.list()
+```
+
+
 > Response
 
 ```json
@@ -307,6 +335,17 @@ var client = new TokenClient("key_N88mVGsp3sCXkykyN2EFED");
 
 var tokens = await client.GetAsync(new TokenGetRequest { Decrypt = true });
 ```
+
+```python
+import basistheory
+from basistheory.api import tokens_api
+
+with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_N88mVGsp3sCXkykyN2EFED")) as api_client:
+    token_client = tokens_api.TokensApi(api_client)
+
+    tokens = token_client.list_decrypted()
+```
+
 
 > Response
 
@@ -388,6 +427,16 @@ var client = new TokenClient("key_N88mVGsp3sCXkykyN2EFED");
 var token = await client.GetByIdAsync("c06d0789-0a38-40be-b7cc-c28a718f76f1");
 ```
 
+```python
+import basistheory
+from basistheory.api import tokens_api
+
+with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_N88mVGsp3sCXkykyN2EFED")) as api_client:
+    token_client = tokens_api.TokensApi(api_client)
+
+    token = token_client.get_by_id(id="c06d0789-0a38-40be-b7cc-c28a718f76f1")
+```
+
 > Response
 
 ```json
@@ -457,6 +506,16 @@ using BasisTheory.net.Tokens;
 var client = new TokenClient("key_N88mVGsp3sCXkykyN2EFED");
 
 var token = await client.GetByIdAsync("c06d0789-0a38-40be-b7cc-c28a718f76f1", new TokenGetByIdRequest { Decrypt = true });
+```
+
+```python
+import basistheory
+from basistheory.api import tokens_api
+
+with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_N88mVGsp3sCXkykyN2EFED")) as api_client:
+    token_client = tokens_api.TokensApi(api_client)
+
+    token = token_client.get_decrypted(id="c06d0789-0a38-40be-b7cc-c28a718f76f1")
 ```
 
 > Response
@@ -535,6 +594,16 @@ using BasisTheory.net.Tokens;
 var client = new TokenClient("key_N88mVGsp3sCXkykyN2EFED");
 
 await client.DeleteAsync("c06d0789-0a38-40be-b7cc-c28a718f76f1");
+```
+
+```python
+import basistheory
+from basistheory.api import tokens_api
+
+with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_N88mVGsp3sCXkykyN2EFED")) as api_client:
+    token_client = tokens_api.TokensApi(api_client)
+
+    token_client.delete(id="c06d0789-0a38-40be-b7cc-c28a718f76f1")
 ```
 
 <span class="http-method delete">

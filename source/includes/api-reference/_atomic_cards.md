@@ -83,6 +83,10 @@ var atomicCard = await client.CreateAsync(new AtomicCard {
 });
 ```
 
+```python
+# Coming Soon!
+```
+
 > Response
 
 ```json
@@ -157,6 +161,10 @@ var client = new AtomicCardClient("key_N88mVGsp3sCXkykyN2EFED");
 var atomicCards = await client.GetAsync();
 ```
 
+```python
+# Coming Soon!
+```
+
 > Response
 
 ```json
@@ -227,6 +235,10 @@ using BasisTheory.net.Atomic.Cards;
 var client = new AtomicCardClient("key_N88mVGsp3sCXkykyN2EFED");
 
 var atomicCard = await client.GetByIdAsync("c1e565009-1984-4638-8fca-dce8a82cc2af");
+```
+
+```python
+# Coming Soon!
 ```
 
 > Response
@@ -324,6 +336,10 @@ var atomicCard = await client.UpdateAsync("c1e565009-1984-4638-8fca-dce8a82cc2af
 });
 ```
 
+```python
+# Coming Soon!
+```
+
 > Response
 
 ```json
@@ -396,6 +412,10 @@ using BasisTheory.net.Atomic.Cards;
 var client = new AtomicCardClient("key_N88mVGsp3sCXkykyN2EFED");
 
 await client.DeleteAsync("c1e565009-1984-4638-8fca-dce8a82cc2af");
+```
+
+```python
+# Coming Soon!
 ```
 
 <span class="http-method delete">
@@ -477,6 +497,10 @@ var reactResponse = await client.ReactAsync("c1e565009-1984-4638-8fca-dce8a82cc2
       { "nonSensitiveField",  "Non-Sensitive Value" }
     }
   });
+```
+
+```python
+# Coming Soon!
 ```
 
 <span class="http-method post">

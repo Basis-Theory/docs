@@ -83,6 +83,10 @@ var application = await client.CreateAsync(new Application {
 });
 ```
 
+```python
+# Coming Soon!
+```
+
 > Response
 
 ```json
@@ -152,6 +156,10 @@ using BasisTheory.net.Applications;
 var client = new ApplicationClient("key_N88mVGsp3sCXkykyN2EFED");
 
 var applications = await client.GetAsync();
+```
+
+```python
+# Coming Soon!
 ```
 
 > Response
@@ -231,6 +239,10 @@ var client = new ApplicationClient("key_N88mVGsp3sCXkykyN2EFED");
 var application = await client.GetByIdAsync("fe1f9ba4-474e-44b9-b949-110cdba9d662");
 ```
 
+```python
+# Coming Soon!
+```
+
 > Response
 
 ```json
@@ -297,6 +309,10 @@ using BasisTheory.net.Applications;
 var client = new ApplicationClient("key_N88mVGsp3sCXkykyN2EFED");
 
 var application = await client.GetByKeyAsync();
+```
+
+```python
+# Coming Soon!
 ```
 
 > Response
@@ -388,6 +404,10 @@ var application = await client.UpdateAsync("fb124bba-f90d-45f0-9a59-5edca27b3b4a
 );
 ```
 
+```python
+# Coming Soon!
+```
+
 > Response
 
 ```json
@@ -464,6 +484,10 @@ var client = new ApplicationClient("key_N88mVGsp3sCXkykyN2EFED");
 var application = await client.RegenerateKeyAsync("fb124bba-f90d-45f0-9a59-5edca27b3b4a");
 ```
 
+```python
+# Coming Soon!
+```
+
 > Response
 
 ```json
@@ -538,6 +562,10 @@ using BasisTheory.net.Applications;
 var client = new ApplicationClient("key_N88mVGsp3sCXkykyN2EFED");
 
 await client.DeleteAsync("fb124bba-f90d-45f0-9a59-5edca27b3b4a");
+```
+
+```python
+# Coming Soon!
 ```
 
 <span class="http-method delete">

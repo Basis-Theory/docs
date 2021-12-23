@@ -91,6 +91,10 @@ var client = new PermissionClient("key_N88mVGsp3sCXkykyN2EFED");
 var permissions = await client.GetAsync();
 ```
 
+```python
+# Coming Soon!
+```
+
 > Response
 
 ```json

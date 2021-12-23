@@ -31,6 +31,10 @@ await client.CreateAssociationAsync("c06d0789-0a38-40be-b7cc-c28a718f76f1",
   "c1e565009-1984-4638-8fca-dce8a82cc2af");
 ```
 
+```python
+# Coming Soon!
+```
+
 <span class="http-method post">
   <span class="box-method">POST</span>
   `https://api.basistheory.com/tokens/{parent_id}/children/{child_id}`
@@ -87,6 +91,10 @@ var client = new TokenClient("key_N88mVGsp3sCXkykyN2EFED");
 
 await client.DeleteAssociationAsync("c06d0789-0a38-40be-b7cc-c28a718f76f1", 
   "c1e565009-1984-4638-8fca-dce8a82cc2af");
+```
+
+```python
+# Coming Soon!
 ```
 
 <span class="http-method delete">
@@ -192,6 +200,10 @@ var token = await client.CreateChildAsync("c06d0789-0a38-40be-b7cc-c28a718f76f1"
 );
 ```
 
+```python
+# Coming Soon!
+```
+
 > Response
 
 ```json
@@ -263,6 +275,10 @@ using BasisTheory.net.Tokens;
 var client = new TokenClient("key_N88mVGsp3sCXkykyN2EFED");
 
 var tokens = await client.GetChildrenAsync("c06d0789-0a38-40be-b7cc-c28a718f76f1");
+```
+
+```python
+# Coming Soon!
 ```
 
 > Response
