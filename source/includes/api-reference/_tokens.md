@@ -77,8 +77,8 @@ The following data classifications are supported:
 Basis Theory follows the standard **<a href="https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.199.pdf#page=6" target="_blank">NIST-defined impact levels</a>** of low, moderate, and high to classify the impact unauthorized exposure of a particular piece of data would have on an organization.
 Token impact levels are used to further classify and permit access to Tokens within a [Token Classification](#tokens-token-classifications).
 
-| Name       | Description                                                                                                        | Specificity Level |
-|------------|--------------------------------------------------------------------------------------------------------------------|-------------------|
+| Name       | Description                                                                                                            | Specificity Level |
+|------------|------------------------------------------------------------------------------------------------------------------------|-------------------|
 | `low`      | Loss of data confidentiality, integrity, or availability is expected to have **limited** adverse effect                | 0                 |
 | `moderate` | Loss of data confidentiality, integrity, or availability is expected to have **serious** adverse effect                | 1                 |
 | `high`     | Loss of data confidentiality, integrity, or availability is expected to have **severe or catastrophic** adverse effect | 2                 |
