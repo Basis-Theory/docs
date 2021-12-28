@@ -12,14 +12,11 @@ Every API endpoint will document the required permissions needed to perform the 
 
 ## Permission Object
 
-| Attribute           | Type                                                                                        | Description |
-|---------------------|---------------------------------------------------------------------------------------------|-------------|
-| `type`              | *                                                                                           |             |
-| string*             | Permission type referenced by Basis Theory API endpoints                                    |             |
-| `description`       | *                                                                                           |             |
-| string*             | Description of the permission                                                               |             |
-| `application_types` | *                                                                                           |             |
-| array*              | List of [application types](#applications-application-types) that can assign the permission |             |
+| Attribute           | Type     | Description                                                                                 |
+|---------------------|----------|---------------------------------------------------------------------------------------------|
+| `type`              | *string* | Permission type referenced by Basis Theory API endpoints                                    |
+| `description`       | *string* | Description of the permission                                                               |
+| `application_types` | *array*  | List of [application types](#applications-application-types) that can assign the permission |
 
 ## Permission Types
 
