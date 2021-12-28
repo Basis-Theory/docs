@@ -33,7 +33,7 @@ Every API endpoint will document the required permissions needed to perform the 
 | `application:read`   | Read Applications                               | `management`      |
 | `application:create` | Create Applications                             | `management`      |
 | `application:update` | Update and regenerate API keys for Applications | `management`      |
-| `application:create` | Delete Applications                             | `management`      |
+| `application:delete` | Delete Applications                             | `management`      |
 | `reactor:read`       | Read Reactor Formulas and Reactors              | `management`      |
 | `reactor:create`     | Create Reactors Formulas and Reactors           | `management`      |
 | `reactor:update`     | Update Reactors Formulas and Reactors           | `management`      |
