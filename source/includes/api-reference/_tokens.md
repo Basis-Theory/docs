@@ -306,10 +306,17 @@ Get a list of tokens for the Tenant.
 
 ### Response
 
-Returns a [paginated object](#pagination) with the `data` property containing an array of [tokens](#tokens-token-object). Providing any query parameters will filter the results. Returns [an error](#errors) if tokens could not be retrieved.
+Returns a [paginated object](#pagination) with the `data` property containing an array of [tokens](#tokens-token-object).
+Plaintext token data will be returned when the requester has read permissions on the token classification at equal or greater impact level.
+Token data will be restricted based on the token's [restriction policy](#tokens-token-restriction-policies) when the requester has read permissions on the token classification at a lower impact level.
+Providing any query parameters will filter the results. Returns [an error](#errors) if tokens could not be retrieved.
 
 
-## List Decrypted Tokens
+## List Decrypted Tokens <span class="deprecated menu">DEPRECATED</span>
+
+<aside class="danger">
+  <span>This endpoint has been deprecated in favor of <a class="black-link" href="#tokens-list-tokens">List Tokens</a>.</span>
+</aside>
 
 > Request
 
@@ -477,10 +484,17 @@ Get a token by ID in the Tenant.
 
 ### Response
 
-Returns a [token](#tokens-token-object) with the `id` provided. Returns [an error](#errors) if the token could not be retrieved.
+Returns a [token](#tokens-token-object) with the `id` provided.
+Plaintext token data will be returned when the requester has read permissions on the token classification at equal or greater impact level.
+Token data will be restricted based on the token's [restriction policy](#tokens-token-restriction-policies) when the requester has read permissions on the token classification at a lower impact level.
+Returns [an error](#errors) if the token could not be retrieved.
 
 
-## Get a Decrypted Token
+## Get a Decrypted Token <span class="deprecated menu">DEPRECATED</span>
+
+<aside class="danger">
+  <span>This endpoint has been deprecated in favor of <a class="black-link" href="#tokens-get-a-token">Get a Token</a>.</span>
+</aside>
 
 > Request
 
@@ -611,7 +625,7 @@ with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_
 Delete a token by ID in the Tenant.
 
 <aside class="warning">
-  <span>WARNING - The data associated with a deleted token will be removed forever. The reference will still exists for audit purposes</span>
+  <span>WARNING - The data associated with a deleted token will be removed forever. The reference will still exist for audit purposes</span>
 </aside>
 
 ### Permissions

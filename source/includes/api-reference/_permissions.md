@@ -44,14 +44,16 @@ Every API endpoint will document the required permissions needed to perform the 
 
 All Token permissions follow the form of `token:<classification>:<operation>:<scope?>`.
 
-| Permission                                   | Description                                                                                                                                                                                                      | Application Types                        |
-|----------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------|
-| `token:<classification>:create`              | Create Tokens in [\<classification\>](#tokens-token-classifications) (e.g. `token:general:create`)                                                                                                               | `public`, `elements`, `server_to_server` |
-| `token:<classification>:read:<impact_level>` | Read Tokens in [\<classification\>](#tokens-token-classifications) at [\<impact_level\>](#tokens-token-impact-levels) and lower (e.g. `token:general:read:moderate` includes access to `token:general:read:low`) | `server_to_server`                       |
-| `token:<classification>:update`              | Update Tokens in [\<classification\>](#tokens-token-classifications) (e.g. `token:general:update`)                                                                                                               | `server_to_server`                       |
-| `token:<classification>:delete`              | Delete Tokens in [\<classification\>](#tokens-token-classifications) (e.g. `token:general:delete`)                                                                                                               | `server_to_server`                       |
-| `token:<classification>:use:proxy`           | Use Tokens in [\<classification\>](#tokens-token-classifications) via [Proxy](#proxy) (e.g. `token:general:use:proxy`)                                                                                           | `server_to_server`                       |
-| `token:<classification>:use:reactor`         | Use Tokens in [\<classification\>](#tokens-token-classifications) via [Reactor](#reactors) (e.g. `token:general:use:reactor`)                                                                                    | `server_to_server`                       |
+| Permission                             | Description                                                                                                                                                                                                                                                                                                        | Application Types                        |
+|----------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------|
+| `token:<classification>:create`        | Create Tokens in [\<classification\>](#tokens-token-classifications) (e.g. `token:general:create`)                                                                                                                                                                                                                 | `public`, `elements`, `server_to_server` |
+| `token:<classification>:read:low`      | Read plaintext token data in [\<classification\>](#tokens-token-classifications) with `low` [\<impact_level\>](#tokens-token-impact-levels). Tokens in `<classification>` with higher impact level will be restricted based on the token's [restriction policy](#tokens-token-restriction-policies)                | `server_to_server`                       |
+| `token:<classification>:read:moderate` | Read plaintext token data in [\<classification\>](#tokens-token-classifications) with `moderate` [\<impact_level\>](#tokens-token-impact-levels) and lower. Tokens in `<classification>` with higher impact level will be restricted based on the token's [restriction policy](#tokens-token-restriction-policies) | `server_to_server`                       |
+| `token:<classification>:read:high`     | Read plaintext token data in [\<classification\>](#tokens-token-classifications) with `high` [\<impact_level\>](#tokens-token-impact-levels) and lower (i.e. `low` and `moderate`).                                                                                                                                | `server_to_server`                       |
+| `token:<classification>:update`        | Update Tokens in [\<classification\>](#tokens-token-classifications) (e.g. `token:general:update`)                                                                                                                                                                                                                 | `server_to_server`                       |
+| `token:<classification>:delete`        | Delete Tokens in [\<classification\>](#tokens-token-classifications) (e.g. `token:general:delete`)                                                                                                                                                                                                                 | `server_to_server`                       |
+| `token:<classification>:use:proxy`     | Use Tokens in [\<classification\>](#tokens-token-classifications) via [Proxy](#proxy) (e.g. `token:general:use:proxy`)                                                                                                                                                                                             | `server_to_server`                       |
+| `token:<classification>:use:reactor`   | Use Tokens in [\<classification\>](#tokens-token-classifications) via [Reactor](#reactors) (e.g. `token:general:use:reactor`)                                                                                                                                                                                      | `server_to_server`                       |
 
 ## List Permissions
 
@@ -87,18 +89,14 @@ var permissions = await client.GetAsync();
 ```json
 [
   {
-    "type": "card:read",
-    "description": "Read Payment Card tokens",
+    "type": "token:pci:read:low",
+    "description": "Read tokens with PCI classification of low impact level",
     "application_types": [
       "server_to_server"
     ]
   },
-  {
-    ...
-  },
-  {
-    ...
-  }
+  {...},
+  {...}
 ]
 ```
 

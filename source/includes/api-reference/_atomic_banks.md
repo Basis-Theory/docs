@@ -195,7 +195,10 @@ Get a list of Atomic Banks for the Tenant.
 
 ### Response
 
-Returns a [paginated object](#pagination) with the `data` property containing an array of [Atomic Banks](#atomic-banks-atomic-bank-object). Providing any query parameters will filter the results. Returns [an error](#errors) if Atomic Banks could not be retrieved.
+Returns a [paginated object](#pagination) with the `data` property containing an array of [Atomic Banks](#atomic-banks-atomic-bank-object). Providing any query parameters will filter the results.
+Plaintext Bank data will be returned when the requester has `token:bank:read:high` permission.
+Bank data will be masked when the requester has read permissions on `bank` classification at a lower impact level (i.e. `token:bank:read:low`, `token:bank:read:moderate`).
+Returns [an error](#errors) if Atomic Banks could not be retrieved.
 
 
 ## Get an Atomic Bank
@@ -268,7 +271,10 @@ Get an Atomic Bank by ID in the Tenant.
 
 ### Response
 
-Returns an [Atomic Bank](#atomic-banks-atomic-bank-object) with the `id` provided. Returns [an error](#errors) if the Atomic Bank could not be retrieved.
+Returns an [Atomic Bank](#atomic-banks-atomic-bank-object) with the `id` provided.
+Plaintext Bank data will be returned when the requester has `token:bank:read:high` permission.
+Bank data will be masked when the requester has read permissions on `bank` classification at a lower impact level (i.e. `token:bank:read:low`, `token:bank:read:moderate`).
+Returns [an error](#errors) if the Atomic Bank could not be retrieved.
 
 
 ## Update Atomic Bank
@@ -402,7 +408,7 @@ await client.DeleteAsync("1485efb9-6b1f-4248-a5d1-cf9b3907164c");
 Delete an Atomic Bank by ID in the Tenant.
 
 <aside class="warning">
-<span>WARNING - The data associated with a deleted Atomic Bank will be removed forever. The reference will still exists for audit purposes</span>
+<span>WARNING - The data associated with a deleted Atomic Bank will be removed forever. The reference will still exist for audit purposes</span>
 </aside>
 
 ### Permissions
@@ -422,7 +428,11 @@ Delete an Atomic Bank by ID in the Tenant.
 Returns [an error](#errors) if the Atomic Bank failed to delete.
 
 
-## Decrypt Atomic Bank
+## Decrypt Atomic Bank <span class="deprecated menu">DEPRECATED</span>
+
+<aside class="danger">
+  <span>This endpoint has been deprecated in favor of <a class="black-link" href="#atomic-banks-get-an-atomic-bank">Get an Atomic Bank</a>.</span>
+</aside>
 
 > Request
 
@@ -576,7 +586,7 @@ React with an Atomic Bank by ID.
 ### Request Parameters
 | Parameter            | Required | Type   | Default | Description                                                                                                                                                        |
 |----------------------|----------|--------|---------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `reactor_id`          | true     | *uuid* | `null`  | The ID of the reactor                                                                                                                                              |
+| `reactor_id`         | true     | *uuid* | `null`  | The ID of the reactor                                                                                                                                              |
 | `request_parameters` | false    | *map*  | `null`  | A key-value map of [request parameters](#reactor-forumula-request-parameter-object) names and values for the reactor                                               |
 | `metadata`           | false    | *map*  | `null`  | A key-value map of non-sensitive data. We overwrite the following keys: `correlation_id`, `reactor_id`, `reactor_name`, `source_token_id`, and `source_token_type` |
 

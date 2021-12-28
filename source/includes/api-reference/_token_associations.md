@@ -44,16 +44,19 @@ Create a new parent/child association between two tokens in the Tenants.
 
 ### Permissions
 
+Creating an association between two existing tokens requires the appropriate read permission based on the parent and child
+tokens' privacy settings.
+
 <p class="scopes">
-  <span class="scope">token:create</span>
+  <span class="scope">token:&lt;classification&gt;:read:&lt;impact_level&gt;</span>
 </p>
 
 ### URI Parameters
 
-Parameter | Required | Type | Default | Description
---------- | -------- | ---- | ------- | -----------
-`parent_id` | true | *uuid* | `null` | The ID of the parent token
-`child_id` | true | *uuid* | `null` | The ID of the child token
+| Parameter   | Required | Type   | Default | Description                |
+|-------------|----------|--------|---------|----------------------------|
+| `parent_id` | true     | *uuid* | `null`  | The ID of the parent token |
+| `child_id`  | true     | *uuid* | `null`  | The ID of the child token  |
 
 <aside class="notice">
   <span>Bi-directional associations can be made between two tokens by creating a token association and swapping the <code>parent_id</code> and <code>child_id</code>.</span>
@@ -107,15 +110,15 @@ Delete a parent/child association between two tokens in the Tenant.
 ### Permissions
 
 <p class="scopes">
-  <span class="scope">token:delete</span>
+  <span class="scope">token:&lt;classification&gt;:delete</span>
 </p>
 
 ### URI Parameters
 
-Parameter | Required | Type | Default | Description
---------- | -------- | ---- | ------- | -----------
-`parent_id` | true | *uuid* | `null` | The ID of the parent token
-`child_id` | true | *uuid* | `null` | The ID of the child token
+| Parameter   | Required | Type   | Default | Description                |
+|-------------|----------|--------|---------|----------------------------|
+| `parent_id` | true     | *uuid* | `null`  | The ID of the parent token |
+| `child_id`  | true     | *uuid* | `null`  | The ID of the child token  |
 
 ### Response
 
@@ -228,24 +231,28 @@ Create a new child token a token in the Tenant.
 
 ### Permissions
 
+Creating a child token requires the appropriate create permission based on the child's classification as well as the appropriate `read`
+permission based on the parent token's privacy settings.
+
 <p class="scopes">
-  <span class="scope">token:create</span>
+  <span class="scope">token:&lt;classification&gt;:create</span>
+  <span class="scope">token:&lt;classification&gt;:read:&lt;impact_level&gt;</span>
 </p>
 
 ### URI Parameters
 
-Parameter | Required | Type | Default | Description
---------- | -------- | ---- | ------- | -----------
-`parent_id` | true | *string* | `null` | The ID of the parent token
+| Parameter   | Required | Type     | Default | Description                |
+|-------------|----------|----------|---------|----------------------------|
+| `parent_id` | true     | *string* | `null`  | The ID of the parent token |
 
 ### Request Parameters
 
-Attribute | Required | Type | Default | Description
---------- | -------- | ---- | ------- | -----------
-`type` | true | *string* | `null` | [Token type](#tokens-token-types) of the token
-`data` | true | *any* | `null` | Token data
-`metadata` | false | *map* | `null` | A key-value map of non-sensitive data.
-`encryption` | false | *[encryption object](#tokens-token-object-encryption-object)* | `null` | Encryption metadata for an encrypted token data value
+| Attribute    | Required | Type                                                          | Default | Description                                           |
+|--------------|----------|---------------------------------------------------------------|---------|-------------------------------------------------------|
+| `type`       | true     | *string*                                                      | `null`  | [Token type](#tokens-token-types) of the token        |
+| `data`       | true     | *any*                                                         | `null`  | Token data                                            |
+| `metadata`   | false    | *map*                                                         | `null`  | A key-value map of non-sensitive data.                |
+| `encryption` | false    | *[encryption object](#tokens-token-object-encryption-object)* | `null`  | Encryption metadata for an encrypted token data value |
 
 ### Response
 
@@ -285,7 +292,7 @@ var tokens = await client.GetChildrenAsync("c06d0789-0a38-40be-b7cc-c28a718f76f1
 
 ```json
 {
-  "pagination": {...}
+  "pagination": {...},
   "data": [
     {
       "id": "c1e565009-1984-4638-8fca-dce8a82cc2af",
@@ -324,21 +331,21 @@ Get a list of child tokens for a token in the Tenant.
 ### Permissions
 
 <p class="scopes">
-  <span class="scope">token:read</span>
+  <span class="scope">token:&lt;classification&gt;:read:&lt;impact_level&gt;</span>
 </p>
 
 ### URI Parameters
 
-Parameter | Required | Type | Default | Description
---------- | -------- | ---- | ------- | -----------
-`parent_id` | true | *string* | `null` | The ID of the parent token
+| Parameter   | Required | Type     | Default | Description                |
+|-------------|----------|----------|---------|----------------------------|
+| `parent_id` | true     | *string* | `null`  | The ID of the parent token |
 
 ### Query Parameters
 
-Parameter | Required | Type | Default | Description
---------- | -------- | ---- | ------- | -----------
-`id` | false | *array* | `[]` | An optional list of token ID's to filter the list of child tokens by
-`type` | false | *array* | `[]` | An optional array of [token types](#tokens-token-types) to filter the list of child tokens by
+| Parameter | Required | Type    | Default | Description                                                                                   |
+|-----------|----------|---------|---------|-----------------------------------------------------------------------------------------------|
+| `id`      | false    | *array* | `[]`    | An optional list of token ID's to filter the list of child tokens by                          |
+| `type`    | false    | *array* | `[]`    | An optional array of [token types](#tokens-token-types) to filter the list of child tokens by |
 
 ### Response
 
