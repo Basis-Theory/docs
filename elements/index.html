@@ -590,18 +590,10 @@
   <span><em>Failed to set the 'src' property on 'HTMLScriptElement': This document requires 'TrustedScriptURL' assignment.</em></span>
 </aside>
 <h2 id='getting-started-usage-with-typescript'>Usage with TypeScript</h2>
-<p>In order to facilitate usage with TypeScript, an optional typings NPM module is available for installation.</p>
+<p>Starting at <code>1.14.0</code>, <a href="https://www.npmjs.com/package/@basis-theory/basis-theory-js">BasisTheory.js</a> bundles all TypeScript definitions for Elements features. You don&#39;t have to take any extra steps in order to use it.</p>
 
-<blockquote>
-<p>NPM</p>
-</blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>npm <span class="nb">install</span> <span class="nt">--save-dev</span> @basis-theory/basis-theory-elements
-</code></pre></div>
-<blockquote>
-<p>Yarn</p>
-</blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>yarn add @basis-theory/basis-theory-elements <span class="nt">--dev</span>
-</code></pre></div><h1 id='permissions'>Permissions</h1>
+<p>If you can&#39;t upgrade past <code>1.13.1</code>, <a href="https://www.npmjs.com/package/@basis-theory/basis-theory-elements">Basis Theory Elements</a> offers unmaintained definitions for deprecated Elements features.</p>
+<h1 id='permissions'>Permissions</h1>
 <p>Permissions offer fine-grained control over your Application&#39;s access to different aspects of your token infrastructure. We suggest limiting the scope of your Application to the least amount possible, and to not share them across your internal services.</p>
 
 <p>Permissions are associated with every Application and can be configured when you <a href="/api-reference#applications-create-application">create an Application</a> or <a href="/api-reference#applications-update-application">update an Application</a>. </p>
@@ -665,7 +657,7 @@
     <span class="k">try</span> <span class="p">{</span>
       <span class="c1">// global/window variable BasisTheory is an instance, but requires initialization</span>
       <span class="k">await</span> <span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">init</span><span class="p">(</span><span class="dl">'</span><span class="s1">test_1234567890</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span> <span class="na">elements</span><span class="p">:</span> <span class="kc">true</span> <span class="p">});</span>      
-      <span class="c1">// use BasisTheory.elements</span>
+      <span class="c1">// use Elements</span>
     <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
       <span class="c1">// handle errors that could happen while loading elements script</span>
     <span class="p">}</span> 
@@ -679,7 +671,7 @@
 
 <span class="c1">// In this context BasisTheory is a class</span>
 <span class="kd">const</span> <span class="nx">bt</span> <span class="o">=</span> <span class="k">await</span> <span class="k">new</span> <span class="nx">BasisTheory</span><span class="p">().</span><span class="nx">init</span><span class="p">(</span><span class="dl">'</span><span class="s1">test_1234567890</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span> <span class="na">elements</span><span class="p">:</span> <span class="kc">true</span> <span class="p">});</span>
-<span class="c1">// use bt.elements</span>
+<span class="c1">// use Elements</span>
 </code></pre></div>
 <p>After <a href="#getting-started-install-sdk">installing</a> <strong>BasisTheory.js</strong>, simply initialize it with <code>elements: true</code> so it dynamically loads <strong>Elements</strong> module.</p>
 
@@ -688,7 +680,7 @@
 </aside>
 
 <aside class="warning">
-  <span>If you try to call <code>BasisTheory.elements</code> before calling <code>BasisTheory.init</code>, or before its Promise has been fulfilled, you will get an error.</span>
+  <span>If you try to to use any Elements feature before calling <code>BasisTheory.init</code>, or before its Promise has been fulfilled, you will get an error.</span>
 </aside>
 
 <aside class="notice">
@@ -706,12 +698,11 @@
 <p>The <code>&quot;text&quot;</code> element type features a regular text input for collecting any input data.</p>
 
 <!-- Add codesandbox credit card example here -->
-<h1 id='elements-instance'>Elements Instance</h1><div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">elements</span>
-</code></pre></div>
+<h1 id='elements-instance'>Elements Instance</h1>
 <p>After <a href="#initialize">initialization</a>, <strong>Elements</strong> are available through <code>BasisTheory</code> instance.</p>
-<h2 id='elements-instance-create-element'>Create Element</h2><div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="kd">var</span> <span class="nx">cardElement</span> <span class="o">=</span> <span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">elements</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="dl">'</span><span class="s1">card</span><span class="dl">'</span><span class="p">,</span> <span class="nx">options</span><span class="p">);</span>
+<h2 id='elements-instance-create-element'>Create Element</h2><div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="kd">var</span> <span class="nx">cardElement</span> <span class="o">=</span> <span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">'</span><span class="s1">card</span><span class="dl">'</span><span class="p">,</span> <span class="nx">options</span><span class="p">);</span>
 
-<span class="kd">var</span> <span class="nx">textElement</span> <span class="o">=</span> <span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">elements</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="dl">'</span><span class="s1">text</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span> <span class="na">targetId</span><span class="p">:</span> <span class="dl">'</span><span class="s1">myInputId</span><span class="dl">'</span> <span class="p">});</span>
+<span class="kd">var</span> <span class="nx">textElement</span> <span class="o">=</span> <span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">'</span><span class="s1">text</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span> <span class="na">targetId</span><span class="p">:</span> <span class="dl">'</span><span class="s1">myInputId</span><span class="dl">'</span> <span class="p">});</span>
 </code></pre></div>
 <p>This method returns a new instance of an element type.</p>
 
@@ -1179,7 +1170,7 @@
 <td>Flag indicating <a href="https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/metaKey" target="_blank"><code>meta</code> key</a> was pressed when the event occurred.</td>
 </tr>
 </tbody></table>
-<h1 id='element-style'>Element Style</h1><div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="kd">var</span> <span class="nx">cardElement</span> <span class="o">=</span> <span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">elements</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="dl">'</span><span class="s1">card</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+<h1 id='element-style'>Element Style</h1><div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="kd">var</span> <span class="nx">cardElement</span> <span class="o">=</span> <span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">'</span><span class="s1">card</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">style</span><span class="p">:</span> <span class="p">{</span>
     <span class="na">fonts</span><span class="p">:</span> <span class="p">[</span>
       <span class="dl">"</span><span class="s2">https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&amp;display=swap</span><span class="dl">"</span>
@@ -1285,7 +1276,7 @@
 <aside class="warning">
   <span>For security reasons, we currently support only the 1000+ Google Fonts families. If you need a custom font in your <strong>Basis Theory Elements</strong>, don't hesitate to <a href="mailto:support@basistheory.com">reach out</a>.</span>
 </aside>
-<h1 id='element-mask'>Element Mask</h1><div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="kd">var</span> <span class="nx">phoneNumberElement</span> <span class="o">=</span> <span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">elements</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="dl">'</span><span class="s1">text</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+<h1 id='element-mask'>Element Mask</h1><div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="kd">var</span> <span class="nx">phoneNumberElement</span> <span class="o">=</span> <span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">'</span><span class="s1">text</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">targetId</span><span class="p">:</span> <span class="dl">'</span><span class="s1">myPhoneNumberElement</span><span class="dl">'</span><span class="p">,</span>
   <span class="na">mask</span><span class="p">:</span> <span class="p">[</span><span class="dl">'</span><span class="s1">(</span><span class="dl">'</span><span class="p">,</span> <span class="sr">/</span><span class="se">\d</span><span class="sr">/</span><span class="p">,</span> <span class="sr">/</span><span class="se">\d</span><span class="sr">/</span><span class="p">,</span> <span class="sr">/</span><span class="se">\d</span><span class="sr">/</span><span class="p">,</span> <span class="dl">'</span><span class="s1">)</span><span class="dl">'</span><span class="p">,</span> <span class="sr">/</span><span class="se">\d</span><span class="sr">/</span><span class="p">,</span> <span class="sr">/</span><span class="se">\d</span><span class="sr">/</span><span class="p">,</span> <span class="sr">/</span><span class="se">\d</span><span class="sr">/</span><span class="p">,</span> <span class="dl">'</span><span class="s1">-</span><span class="dl">'</span><span class="p">,</span> <span class="sr">/</span><span class="se">\d</span><span class="sr">/</span><span class="p">,</span> <span class="sr">/</span><span class="se">\d</span><span class="sr">/</span><span class="p">,</span> <span class="sr">/</span><span class="se">\d</span><span class="sr">/</span><span class="p">,</span> <span class="sr">/</span><span class="se">\d</span><span class="sr">/</span><span class="p">]</span>
 <span class="p">})</span>
@@ -1317,7 +1308,7 @@ before tokenizing data with any <a href="#elements-services">services</a>.</p>
 <aside class="warning">
   <span>For security and performance reasons, we attempt to detect that the regex provided is valid and not susceptible to catastrophic backtracking. If it fails this validation, we will reject the <a href="#elements-instance-mount-element">mount</a> promise.</span>
 </aside>
-<h1 id='element-transform'>Element Transform</h1><div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="kd">var</span> <span class="nx">phoneNumberElement</span> <span class="o">=</span> <span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">elements</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="dl">'</span><span class="s1">text</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+<h1 id='element-transform'>Element Transform</h1><div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="kd">var</span> <span class="nx">phoneNumberElement</span> <span class="o">=</span> <span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">'</span><span class="s1">text</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">targetId</span><span class="p">:</span> <span class="dl">'</span><span class="s1">myPhoneNumberElement</span><span class="dl">'</span><span class="p">,</span>
   <span class="na">mask</span><span class="p">:</span> <span class="p">[</span><span class="dl">'</span><span class="s1">(</span><span class="dl">'</span><span class="p">,</span> <span class="sr">/</span><span class="se">\d</span><span class="sr">/</span><span class="p">,</span> <span class="sr">/</span><span class="se">\d</span><span class="sr">/</span><span class="p">,</span> <span class="sr">/</span><span class="se">\d</span><span class="sr">/</span><span class="p">,</span> <span class="dl">'</span><span class="s1">)</span><span class="dl">'</span><span class="p">,</span> <span class="sr">/</span><span class="se">\d</span><span class="sr">/</span><span class="p">,</span> <span class="sr">/</span><span class="se">\d</span><span class="sr">/</span><span class="p">,</span> <span class="sr">/</span><span class="se">\d</span><span class="sr">/</span><span class="p">,</span> <span class="dl">'</span><span class="s1">-</span><span class="dl">'</span><span class="p">,</span> <span class="sr">/</span><span class="se">\d</span><span class="sr">/</span><span class="p">,</span> <span class="sr">/</span><span class="se">\d</span><span class="sr">/</span><span class="p">,</span> <span class="sr">/</span><span class="se">\d</span><span class="sr">/</span><span class="p">,</span> <span class="sr">/</span><span class="se">\d</span><span class="sr">/</span><span class="p">],</span>
   <span class="na">transform</span><span class="p">:</span> <span class="sr">/</span><span class="se">[</span><span class="sr">()-</span><span class="se">]</span><span class="sr">/</span><span class="p">,</span>
@@ -1339,7 +1330,9 @@ attribute, in this case, will modify the user input to remove <code>(</code>, <c
 <aside class="warning">
   <span>For security and performance reasons, we attempt to detect that the regex provided is valid and not susceptible to catastrophic backtracking. If it fails this validation, we will reject the <a href="#elements-instance-mount-element">mount</a> or <a href="#elements-instance-update-element">update</a> promise.</span>
 </aside>
-<h1 id='elements-services'>Elements Services</h1><h2 id='elements-services-atomic-cards'>Atomic Cards</h2><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">elements</span><span class="p">.</span><span class="nx">atomicCards</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
+<h1 id='elements-services'>Elements Services</h1>
+<p>The following <strong>BasisTheory.js</strong> services are capable of recognizing Elements instances in the payload and securely tokenizing their data directly to Basis Theory vault. </p>
+<h2 id='elements-services-atomic-cards'>Atomic Cards</h2><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">atomicCards</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
   <span class="na">card</span><span class="p">:</span> <span class="nx">cardElement</span>
 <span class="p">}).</span><span class="nx">then</span><span class="p">((</span><span class="nx">token</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">token</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span> <span class="c1">// token to store</span>
@@ -1350,14 +1343,12 @@ attribute, in this case, will modify the user input to remove <code>(</code>, <c
 See <a href="#element-types-card-element">CardModel</a> for the resolved value type. The <code>Promise</code> will reject with an <a href="#elements-services-errors">error</a>
 if the response status is not in the 2xx range.</p>
 
-<p>Internally, <code>BasisTheory.elements.atomicCards.create</code> calls <a href="/api-reference/#atomic-cards-create-atomic-card">Create Atomic Card API</a>.</p>
-
 <p>You can fetch this same data later with <a href="/api-reference/#atomic-cards-get-an-atomic-card">Get an Atomic Card API</a>.</p>
 
 <aside class="notice">
   <span>Notice that the actual card data never leaves the element (iframe) other than to hit our secure API endpoints.</span>
 </aside>
-<h2 id='elements-services-atomic-banks'>Atomic Banks</h2><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">elements</span><span class="p">.</span><span class="nx">atomicBanks</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
+<h2 id='elements-services-atomic-banks'>Atomic Banks</h2><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">atomicBanks</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
   <span class="na">bank</span><span class="p">:</span> <span class="p">{</span>
     <span class="na">routingNumber</span><span class="p">:</span> <span class="nx">routingNumberElement</span> <span class="o">|</span> <span class="dl">'</span><span class="s1">plainText</span><span class="dl">'</span><span class="p">,</span>  <span class="c1">// values can be either a TextElement or plain text (see warning).</span>
     <span class="na">accountNumber</span><span class="p">:</span> <span class="nx">accountNumberElement</span> <span class="o">|</span> <span class="dl">'</span><span class="s1">plainText</span><span class="dl">'</span><span class="p">,</span>
@@ -1371,8 +1362,6 @@ if the response status is not in the 2xx range.</p>
 data. The <code>Promise</code> will reject with an <a href="#elements-services-errors">error</a> if the response status is not in the 2xx
 range.</p>
 
-<p>Internally, <code>BasisTheory.elements.atomicBanks.create</code> calls <a href="/api-reference#atomic-banks-create-atomic-bank">Create Atomic Bank API</a>.</p>
-
 <p>You can fetch this same data later with <a href="/api-reference#atomic-banks-get-an-atomic-bank">Get an Atomic Bank API</a>.</p>
 
 <aside class="notice">
@@ -1382,7 +1371,7 @@ range.</p>
 <aside class="warning">
   <span>Note that when submitting <code>plainText</code> values, data will be HTML encoded before storage for security reasons.
 </aside>
-<h2 id='elements-services-tokens'>Tokens</h2><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">elements</span><span class="p">.</span><span class="nx">tokens</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
+<h2 id='elements-services-tokens'>Tokens</h2><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">tokens</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
   <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">token</span><span class="dl">'</span><span class="p">,</span>
   <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
     <span class="na">sensitiveData</span><span class="p">:</span> <span class="nx">sensitiveDataElement</span><span class="p">,</span>
@@ -1403,8 +1392,6 @@ range.</p>
 <p>Allows secure submission and tokenization of string data. Returns a <code>Promise</code> that resolves to the created token. The
 <code>Promise</code> will reject with an <a href="#elements-services-errors">error</a> if the response status is not in the 2xx range.</p>
 
-<p>Internally, <code>BasisTheory.elements.tokens.create</code> calls <a href="/api-reference#tokens-create-token">Create Token API</a>.</p>
-
 <p>You can fetch this same data later with <a href="/api-reference#tokens-get-a-token">Get a Token API</a> or <a href="/api-reference#tokens-get-a-decrypted-token">Get a Decrypted Token API</a></p>
 
 <aside class="notice">
@@ -1422,7 +1409,7 @@ range.</p>
 <aside class="warning">
   <span>The <code>encryption</code> and <code>children</code> attributes supported by the API are <strong>NOT</strong> supported when creating a token with elements.</span>
 </aside>
-<h2 id='elements-services-tokenize'>Tokenize</h2><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">elements</span><span class="p">.</span><span class="nx">tokenize</span><span class="p">.</span><span class="nx">tokenize</span><span class="p">({</span>
+<h2 id='elements-services-tokenize'>Tokenize</h2><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">tokenize</span><span class="p">.</span><span class="nx">tokenize</span><span class="p">({</span>
   <span class="na">sensitiveData</span><span class="p">:</span> <span class="nx">sensitiveDataElement</span><span class="p">,</span>
   <span class="na">nonSensitiveData</span><span class="p">:</span> <span class="dl">'</span><span class="s1">plainText</span><span class="dl">'</span><span class="p">,</span> <span class="c1">// see warning on plain text data</span>
   <span class="na">otherData</span><span class="p">:</span> <span class="p">{</span>
@@ -1437,8 +1424,6 @@ range.</p>
 <p>Allows secure submission and tokenization of string data. Returns a <code>Promise</code> that resolves to the created tokens. The
 <code>Promise</code> will reject with an <a href="#elements-services-errors">error</a> if the response status is not in the 2xx range.</p>
 
-<p>Internally, <code>BasisTheory.elements.tokenize.tokenize</code> calls <a href="/api-reference#tokenize">Tokenize API</a>.</p>
-
 <p>You can fetch this same data later with <a href="/api-reference#tokens-get-a-token">Get a Token API</a> or <a href="/api-reference#tokens-get-a-decrypted-token">Get a Decrypted Token API</a>.</p>
 
 <aside class="notice">
@@ -1452,7 +1437,7 @@ range.</p>
 <aside class="warning">
   <span>The <code>encryption</code> and <code>children</code> attributes supported by the API are <strong>NOT</strong> supported when creating a token with elements.</span>
 </aside>
-<h2 id='elements-services-errors'>Errors</h2><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">elements</span><span class="p">.</span><span class="nx">tokens</span><span class="p">.</span><span class="nx">create</span><span class="p">(...).</span><span class="k">catch</span><span class="p">(</span><span class="nx">error</span> <span class="o">=&gt;</span> <span class="p">{</span>
+<h2 id='elements-services-errors'>Errors</h2><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">tokens</span><span class="p">.</span><span class="nx">create</span><span class="p">(...).</span><span class="k">catch</span><span class="p">(</span><span class="nx">error</span> <span class="o">=&gt;</span> <span class="p">{</span>
   <span class="c1">// handle error</span>
 <span class="p">});</span>
 </code></pre></div>
