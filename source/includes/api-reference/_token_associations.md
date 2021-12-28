@@ -136,19 +136,9 @@ curl "https://api.basistheory.com/tokens/c06d0789-0a38-40be-b7cc-c28a718f76f1/ch
   -X "POST" \
   -d '{
     "type": "token",
-    "data": "ebSG3IohNmg5gTOjN2HBwBbhjDZ6BY3fCWZJfXSucVMfQ+7YNMXQYrPuRSXgSkhuTMYS+BNfVUur4qZSvUbgCA==",
+    "data": "Sensitive Value",
     "metadata": {
       "nonSensitiveField": "Non-Sensitive Value"
-    }
-    "encryption": {
-      "cek": {
-        "key": "JLrtGbYSN5/dbqdKtLVG8tHu3QefcZnKsFOPBBXlXcG4zL9US01mW2MqZs6Px4ckSQM8CrRakwLKilrQ0f37Iw==",
-        "alg": "AES"
-      },
-      "kek": {
-        "key": "vpXn45HnsoQPR1q8ptngmPvPaqIDJ4vO+FFyQclglePCt8d1SyTDJU0T+F54T7GnAz7vz5OKsjgsFNo9lVB3UA==",
-        "alg": "RSA"
-      }
     }
   }'
 ```
@@ -160,19 +150,9 @@ const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
 
 const token = await bt.tokens.createChild('c06d0789-0a38-40be-b7cc-c28a718f76f1', {
   type: 'token',
-  data: 'ebSG3IohNmg5gTOjN2HBwBbhjDZ6BY3fCWZJfXSucVMfQ+7YNMXQYrPuRSXgSkhuTMYS+BNfVUur4qZSvUbgCA==',
+  data: 'Sensitive Value',
   metadata: {
     nonSensitiveField: 'Non-Sensitive Value'
-  },
-  encryption: {
-    cek: {
-      key: 'JLrtGbYSN5/dbqdKtLVG8tHu3QefcZnKsFOPBBXlXcG4zL9US01mW2MqZs6Px4ckSQM8CrRakwLKilrQ0f37Iw==',
-      alg: 'AES'
-    },
-    kek: {
-      key: 'vpXn45HnsoQPR1q8ptngmPvPaqIDJ4vO+FFyQclglePCt8d1SyTDJU0T+F54T7GnAz7vz5OKsjgsFNo9lVB3UA==',
-      alg: 'RSA'
-    }
   }
 });
 ```
@@ -185,19 +165,9 @@ var client = new TokenClient("key_N88mVGsp3sCXkykyN2EFED");
 var token = await client.CreateChildAsync("c06d0789-0a38-40be-b7cc-c28a718f76f1", 
   new Token {
     Type = "token",
-    Data = "ebSG3IohNmg5gTOjN2HBwBbhjDZ6BY3fCWZJfXSucVMfQ+7YNMXQYrPuRSXgSkhuTMYS+BNfVUur4qZSvUbgCA==",
+    Data = "Sensitive Value",
     Metadata = new Dictionary<string, string> {
       { "nonSensitiveField", "Non-Sensitive Value" }
-    },
-    Encryption = new Encryption {
-      ContentEncryptionKey = new EncryptionKey {
-        Key = "JLrtGbYSN5/dbqdKtLVG8tHu3QefcZnKsFOPBBXlXcG4zL9US01mW2MqZs6Px4ckSQM8CrRakwLKilrQ0f37Iw==",
-        Algorithm: "AES"
-      },
-      KeyEncryptionKey = new EncryptionKey {
-        Key = "vpXn45HnsoQPR1q8ptngmPvPaqIDJ4vO+FFyQclglePCt8d1SyTDJU0T+F54T7GnAz7vz5OKsjgsFNo9lVB3UA==",
-        Algorithm: "RSA"
-      }
     }
   }
 );
@@ -214,6 +184,11 @@ var token = await client.CreateChildAsync("c06d0789-0a38-40be-b7cc-c28a718f76f1"
   "id": "c1e565009-1984-4638-8fca-dce8a82cc2af",
   "tenant_id": "77cb0024-123e-41a8-8ff8-a3d5a0fa8a08",
   "type": "token",
+  "privacy": {
+    "classification": "general",
+    "impact_level": "high",
+    "restriction_policy": "redact"  
+  },
   "created_by": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
   "created_at": "2020-09-15T15:53:00+00:00",
   "metadata": {
@@ -298,19 +273,14 @@ var tokens = await client.GetChildrenAsync("c06d0789-0a38-40be-b7cc-c28a718f76f1
       "id": "c1e565009-1984-4638-8fca-dce8a82cc2af",
       "type": "token",
       "tenant_id": "77cb0024-123e-41a8-8ff8-a3d5a0fa8a08",
-      "data": "ebSG3IohNmg5gTOjN2HBwBbhjDZ6BY3fCWZJfXSucVMfQ+7YNMXQYrPuRSXgSkhuTMYS+BNfVUur4qZSvUbgCA==",
+      "data": null, // Redacted based on restriction policy
+      "privacy": {
+        "classification": "general",
+        "impact_level": "high",
+        "restriction_policy": "redact"
+      },
       "metadata": {
         "nonSensitiveField": "Non-Sensitive Value"
-      }
-      "encryption": {
-        "cek": {
-          "key": "JLrtGbYSN5/dbqdKtLVG8tHu3QefcZnKsFOPBBXlXcG4zL9US01mW2MqZs6Px4ckSQM8CrRakwLKilrQ0f37Iw==",
-          "alg": "AES"
-        },
-        "kek": {
-          "key": "vpXn45HnsoQPR1q8ptngmPvPaqIDJ4vO+FFyQclglePCt8d1SyTDJU0T+F54T7GnAz7vz5OKsjgsFNo9lVB3UA==",
-          "alg": "RSA"
-        }
       },
       "created_by": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
       "created_at": "2021-03-01T08:23:14+00:00"
