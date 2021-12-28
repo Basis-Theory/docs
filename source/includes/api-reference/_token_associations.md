@@ -226,6 +226,7 @@ permission based on the parent token's privacy settings.
 |--------------|----------|---------------------------------------------------------------|---------|-------------------------------------------------------|
 | `type`       | true     | *string*                                                      | `null`  | [Token type](#tokens-token-types) of the token        |
 | `data`       | true     | *any*                                                         | `null`  | Token data                                            |
+| `privacy`    | false    | *[privacy object](#tokens-token-object-privacy-object)*       | `null`  | Token Privacy Settings                                |
 | `metadata`   | false    | *map*                                                         | `null`  | A key-value map of non-sensitive data.                |
 | `encryption` | false    | *[encryption object](#tokens-token-object-encryption-object)* | `null`  | Encryption metadata for an encrypted token data value |
 
