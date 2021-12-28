@@ -1,7 +1,7 @@
 # Element Transform
 
 ```jsx
-var phoneNumberElement = BasisTheory.elements.create('text', {
+var phoneNumberElement = BasisTheory.createElement('text', {
   targetId: 'myPhoneNumberElement',
   mask: ['(', /\d/, /\d/, /\d/, ')', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/],
   transform: /[()-]/,

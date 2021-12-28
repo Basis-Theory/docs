@@ -87,16 +87,6 @@ The setup above is recommended to avoid errors similar to these:
 
 ## Usage with TypeScript
 
-In order to facilitate usage with TypeScript, an optional typings NPM module is available for installation.
+Starting at `1.14.0`, [BasisTheory.js](https://www.npmjs.com/package/@basis-theory/basis-theory-js) bundles all TypeScript definitions for Elements features. You don't have to take any extra steps in order to use it.
 
-> NPM
-
-```shell
-npm install --save-dev @basis-theory/basis-theory-elements
-```
-
-> Yarn
-
-```shell
-yarn add @basis-theory/basis-theory-elements --dev
-```
+If you can't upgrade past `1.13.1`, [Basis Theory Elements](https://www.npmjs.com/package/@basis-theory/basis-theory-elements) offers unmaintained definitions for deprecated Elements features.
