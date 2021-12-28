@@ -1,17 +1,13 @@
 # Elements Instance
 
-```jsx
-BasisTheory.elements
-```
-
 After [initialization](#initialize), **Elements** are available through `BasisTheory` instance.
 
 ## Create Element
 
 ```jsx
-var cardElement = BasisTheory.elements.create('card', options);
+var cardElement = BasisTheory.createElement('card', options);
 
-var textElement = BasisTheory.elements.create('text', { targetId: 'myInputId' });
+var textElement = BasisTheory.createElement('text', { targetId: 'myInputId' });
 ```
 
 This method returns a new instance of an element type.

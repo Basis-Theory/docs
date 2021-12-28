@@ -12,7 +12,7 @@
     try {
       // global/window variable BasisTheory is an instance, but requires initialization
       await BasisTheory.init('test_1234567890', { elements: true });      
-      // use BasisTheory.elements
+      // use Elements
     } catch (e) {
       // handle errors that could happen while loading elements script
     } 
@@ -27,7 +27,7 @@ import { BasisTheory } from '@basis-theory/basis-theory-js';
 
 // In this context BasisTheory is a class
 const bt = await new BasisTheory().init('test_1234567890', { elements: true });
-// use bt.elements
+// use Elements
 ```
 
 
@@ -38,7 +38,7 @@ After [installing](#getting-started-install-sdk) **BasisTheory.js**, simply init
 </aside>
 
 <aside class="warning">
-  <span>If you try to call <code>BasisTheory.elements</code> before calling <code>BasisTheory.init</code>, or before its Promise has been fulfilled, you will get an error.</span>
+  <span>If you try to to use any Elements feature before calling <code>BasisTheory.init</code>, or before its Promise has been fulfilled, you will get an error.</span>
 </aside>
 
 <aside class="notice">

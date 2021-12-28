@@ -1,3 +1,10 @@
+# [1.19.0](https://github.com/Basis-Theory/docs/compare/v1.18.0...v1.19.0) (2021-12-28)
+
+
+### Features
+
+* refer to new Elements consolidated interfaces ([#135](https://github.com/Basis-Theory/docs/issues/135)) ([9349e13](https://github.com/Basis-Theory/docs/commit/9349e13ea757a995d78648d724e6bbc5399641b2))
+
 # [1.18.0](https://github.com/Basis-Theory/docs/compare/v1.17.0...v1.18.0) (2021-12-22)
 
 
