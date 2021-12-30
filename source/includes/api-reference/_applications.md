@@ -123,7 +123,7 @@ Create a new Application for the Tenant.
 | Attribute     | Required | Type     | Default | Description                                                       |
 |---------------|----------|----------|---------|-------------------------------------------------------------------|
 | `name`        | true     | *string* | `null`  | The name of the Application. Has a maximum length of `200`        |
-| `type`        | true     | *string* | `null`  | [Application](#applications-application-types) of the application |
+| `type`        | true     | *string* | `null`  | [Application type](#applications-application-types) of the application |
 | `permissions` | false    | *array*  | `[]`    | [Permissions](#permissions-permission-types) for the application  |
 
 ### Response
