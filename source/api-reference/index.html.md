@@ -41,6 +41,7 @@ api_includes:
   - api-reference/tokens
   - api-reference/token_associations
   - api-reference/tokenize
+  - api-reference/deprecations
 
 aux_links:
   - <a class="toc-h2 toc-link" href="https://discord.gg/NSvXxaW5Fv" target="_blank">Join Discord</a>

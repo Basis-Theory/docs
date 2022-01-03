@@ -399,7 +399,6 @@ Get a list of decrypted tokens for the Tenant.
 |-----------------|----------|-----------|---------|------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `id`            | false    | *array*   | `[]`    | An optional list of token ID's to filter the list of tokens by                                                                                             |
 | `type`          | false    | *array*   | `[]`    | An optional array of [token types](#tokens-token-types) to filter the list of tokens by                                                                    |
-| `decrypt_type`  | false    | *array*   | `[]`    | An optional array of [token types](#tokens-token-types) to filter token types that should be decrypted                                                     |
 
 ### Response
 
@@ -568,12 +567,6 @@ Get a decrypted token by ID in the Tenant.
 | Parameter | Required | Type   | Default | Description         |
 |-----------|----------|--------|---------|---------------------|
 | `id`      | true     | *uuid* | `null`  | The ID of the token |
-
-### Query Parameters
-
-| Parameter       | Required | Type      | Default | Description                                                                                                                                                |
-|-----------------|----------|-----------|---------|------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `decrypt_type`  | false    | *array*   | `[]`    | An optional array of [token types](#tokens-token-types) to filter token types that should be decrypted                                                     |
 
 ### Response
 
