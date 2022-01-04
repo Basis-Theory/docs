@@ -8,8 +8,8 @@ Permissions are associated with every Application and can be configured when you
 
 ## Permission Types
 
-Permission | Description | Dependencies
----------  | ----------- | ------------
-`token:create` | Create tokens in the vault | *N/A*
-`card:create` | Create Atomic Card tokens | `token:create`
-`bank:create` | Create Atomic Bank tokens | `token:create`
+| Permission             | Description                |
+|------------------------|----------------------------|
+| `token:general:create` | Create tokens in the vault |
+| `token:pci:create`     | Create Atomic Card tokens  |
+| `token:bank:create`    | Create Atomic Bank tokens  |

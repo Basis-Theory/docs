@@ -13,6 +13,7 @@
 | `type`        | *string*                                                      | [Token type](#tokens-token-types)                                                                                            |
 | `data`        | *any*                                                         | Token data                                                                                                                   |
 | `fingerprint` | *string*                                                      | Uniquely identifies the contents of this token. Fingerprints are only available for Atomic Card and Atomic Bank token types. |
+| `privacy`     | *[privacy object](#tokens-token-object-privacy-object)*       | Token Privacy Settings                                                                                                       |
 | `metadata`    | *map*                                                         | A key-value map of non-sensitive data.                                                                                       |
 | `encryption`  | *[encryption object](#tokens-token-object-encryption-object)* | Encryption metadata for an encrypted token data value                                                                        |
 | `created_by`  | *uuid*                                                        | (Optional) The [Application](#applications-application-object) ID which created the token                                    |
@@ -39,13 +40,60 @@
 | `prov`    | *string* | Optional encryption provider (e.g. AWS, AZURE, GCP, etc.) |
 | `alg`     | *string* | Encryption algorithm (e.g. AES, RSA, etc)                 |
 
+### Privacy Object
+
+Token Privacy defines the privacy settings applied to a Token. By default, privacy settings will be applied based on the [Token Type](#tokens-token-types).
+Default privacy settings can be overridden at the time of creation, but only to a setting with a higher specificity level.
+
+| Attribute            | Type     | Description                                                                                                                                                                            |
+|----------------------|----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `classification`     | *string* | [Classification](#tokens-token-classifications) of the Token (e.g. `general`, `bank`, `pci`)                                                                                           |
+| `impact_level`       | *string* | [Impact level](#tokens-token-impact-levels) of the Token (i.e. `low`, `moderate`, `high`)                                                                                              |
+| `restriction_policy` | *string* | [Restriction policy](#tokens-token-restriction-policies) applied to the Token when read by a User or Application with read permissions at a lower impact level (i.e. `mask`, `redact`) |
+
 ## Token Types
 
-| Name  | Type    | Description                             |
-|-------|---------|-----------------------------------------|
-| Token | `token` | Generic token type                      |
-| Card  | `card`  | [Atomic card](#atomic-cards) token type |
-| Bank  | `bank`  | [Atomic bank](#atomic-banks) token type |
+| Name  | Type    | Description                             | Default Classification | Default Impact Level | Minimum Impact Level | Default Restriction Policy |
+|-------|---------|-----------------------------------------|------------------------|----------------------|----------------------|----------------------------|
+| Token | `token` | Generic token type                      | `general`              | `high`               | `low`                | `redact`                   |
+| Card  | `card`  | [Atomic card](#atomic-cards) token type | `pci`                  | `high`               | `high`               | `mask`                     |
+| Bank  | `bank`  | [Atomic bank](#atomic-banks) token type | `bank`                 | `high`               | `high`               | `mask`                     |
+
+## Token Classifications
+
+Each token has a data classification associated with it which defines the type of data it contains.
+Basis Theory permissions access to Tokens based on data classifications (see [Token Permissions](#permissions-permission-types-token-permissions) for more details). 
+The following data classifications are supported:
+
+| Name      | Description                                                                                                | Specificity Level |
+|-----------|------------------------------------------------------------------------------------------------------------|-------------------|
+| `general` | Contains sensitive data that does not fall under a more specific classification or compliance requirements | 0                 |
+| `bank`    | Contains data that falls under banking compliance (e.g. Nacha)                                             | 10                |
+| `pci`     | Contains data that falls under PCI compliance                                                              | 10                |
+| `pii`     | Contains user or customer specific identifiers (e.g. email, date of birth, address)                        | 10                |
+
+## Token Impact Levels
+
+Basis Theory follows the standard **<a href="https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.199.pdf#page=6" target="_blank">NIST-defined impact levels</a>** of low, moderate, and high to classify the impact unauthorized exposure of a particular piece of data would have on an organization.
+Token impact levels are used to further classify and permit access to Tokens within a [Token Classification](#tokens-token-classifications).
+
+| Name       | Description                                                                                                            | Specificity Level |
+|------------|------------------------------------------------------------------------------------------------------------------------|-------------------|
+| `low`      | Loss of data confidentiality, integrity, or availability is expected to have **limited** adverse effect                | 0                 |
+| `moderate` | Loss of data confidentiality, integrity, or availability is expected to have **serious** adverse effect                | 1                 |
+| `high`     | Loss of data confidentiality, integrity, or availability is expected to have **severe or catastrophic** adverse effect | 2                 |
+
+
+## Token Restriction Policies
+
+A Token Restriction Policy defines the policy to enforce on a Token's data when read by a User or Application
+with permission to read the Token's classification but at a lower impact level.
+
+| Name     | Description                                                                                                                          | Specificity Level |
+|----------|--------------------------------------------------------------------------------------------------------------------------------------|-------------------|
+| `mask`   | Token data will be masked in the response, falling back to `redact` restriction policy if a mask is not available for the Token Type | 0                 |
+| `redact` | Token data will be completely removed in the response                                                                                | 1                 |
+
 
 ## Create Token
 
@@ -59,6 +107,9 @@ curl "https://api.basistheory.com/tokens" \
   -d '{
     "type": "token",
     "data": "Sensitive Value",
+    "privacy": {
+      "impact_level": "moderate"
+    },
     "metadata": {
       "nonSensitiveField": "Non-Sensitive Value"
     }
@@ -73,6 +124,9 @@ const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
 const token = await bt.tokens.create({
   type: 'token',
   data: 'Sensitive Value',
+  privacy: {
+    impactLevel: "moderate"
+  },
   metadata: {
     nonSensitiveField: 'Non-Sensitive Value'
   }
@@ -87,6 +141,9 @@ var client = new TokenClient("key_N88mVGsp3sCXkykyN2EFED");
 var token = await client.CreateAsync(new Token {
   Type = "token",
   Data = "Sensitive Value",
+  Privacy = new DataPrivacy {
+    ImpactLevel = DataImpactLevel.MODERATE
+  },
   Metadata = new Dictionary<string, string> {
     { "nonSensitiveField",  "Non-Sensitive Value" }
   }
@@ -117,6 +174,11 @@ with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_
   "id": "c06d0789-0a38-40be-b7cc-c28a718f76f1",
   "tenant_id": "77cb0024-123e-41a8-8ff8-a3d5a0fa8a08",
   "type": "token",
+  "privacy": {
+    "classification": "general",
+    "impact_level": "moderate",
+    "restriction_policy": "redact"
+  },
   "metadata": {
     "nonSensitiveField": "Non-Sensitive Value"
   },
@@ -135,17 +197,18 @@ Create a new token for the Tenant.
 ### Permissions
 
 <p class="scopes">
-  <span class="scope">token:create</span>
+  <span class="scope">token:&lt;classification&gt;:create</span>
 </p>
 
 ### Request Parameters
 
-| Attribute    | Required | Type                                                          | Default | Description                                                                                                                                           |
-|--------------|----------|---------------------------------------------------------------|---------|-------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `type`       | true     | *string*                                                      | `null`  | [Token type](#tokens-token-types) of the token                                                                                                        |
-| `data`       | true     | *any*                                                         | `null`  | Token data. Can be an object, array, or any primitive type such as an integer, boolean, or string                                                     |
-| `metadata`   | false    | *map*                                                         | `null`  | A key-value map of non-sensitive data.                                                                                                                |
-| `encryption` | false    | *[encryption object](#tokens-token-object-encryption-object)* | `null`  | Encryption metadata for an encrypted token data value                                                                                                 |
+| Attribute    | Required | Type                                                          | Default | Description                                                                                                                                                  |
+|--------------|----------|---------------------------------------------------------------|---------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `type`       | true     | *string*                                                      | `null`  | [Token type](#tokens-token-types) of the token                                                                                                               |
+| `data`       | true     | *any*                                                         | `null`  | Token data. Can be an object, array, or any primitive type such as an integer, boolean, or string                                                            |
+| `privacy`    | false    | *[privacy object](#tokens-token-object-privacy-object)*       | `null`  | Token Privacy Settings overrides. Overrides must be a higher specificity level than the default or minimum setting for the [Token Type](#token-token-types). |
+| `metadata`   | false    | *map*                                                         | `null`  | A key-value map of non-sensitive data.                                                                                                                       |
+| `encryption` | false    | *[encryption object](#tokens-token-object-encryption-object)* | `null`  | Encryption metadata for an encrypted token data value                                                                                                        |
 
 <aside class="warning">
   <span>WARNING - Never store sensitive plaintext information in the <code>metadata</code> or plaintext, private encryption keys in the <code>encryption</code> attributes of your token.</span>
@@ -203,20 +266,14 @@ with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_
       "id": "c06d0789-0a38-40be-b7cc-c28a718f76f1",
       "type": "token",
       "tenant_id": "77cb0024-123e-41a8-8ff8-a3d5a0fa8a08",
-      "data": "ebSG3IohNmg5gTOjN2HBwBbhjDZ6BY3fCWZJfXSucVMfQ+7YNMXQYrPuRSXgSkhuTMYS+BNfVUur4qZSvUbgCA==",
+      "data": null, // Redacted based on Restriction Policy
+      "privacy": {
+        "classification": "general",
+        "impact_level": "moderate",
+        "restriction_policy": "redact"
+      },
       "metadata": {
         "nonSensitiveField": "Non-Sensitive Value"
-      },
-      "encryption": {
-        "cek": {
-          "key": "JLrtGbYSN5/dbqdKtLVG8tHu3QefcZnKsFOPBBXlXcG4zL9US01mW2MqZs6Px4ckSQM8CrRakwLKilrQ0f37Iw==",
-          "alg": "AES"
-        },
-        "kek": {
-          "key": "vpXn45HnsoQPR1q8ptngmPvPaqIDJ4vO+FFyQclglePCt8d1SyTDJU0T+F54T7GnAz7vz5OKsjgsFNo9lVB3UA==",
-          "prov": "AWS",
-          "alg": "RSA" 
-        }
       },
       "created_by": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
       "created_at": "2021-03-01T08:23:14+00:00"
@@ -237,7 +294,7 @@ Get a list of tokens for the Tenant.
 ### Permissions
 
 <p class="scopes">
-  <span class="scope">token:read</span>
+  <span class="scope">token:&lt;classification&gt;:read:&lt;impact_level&gt;</span>
 </p>
 
 ### Query Parameters
@@ -249,10 +306,17 @@ Get a list of tokens for the Tenant.
 
 ### Response
 
-Returns a [paginated object](#pagination) with the `data` property containing an array of [tokens](#tokens-token-object). Providing any query parameters will filter the results. Returns [an error](#errors) if tokens could not be retrieved.
+Returns a [paginated object](#pagination) with the `data` property containing an array of [tokens](#tokens-token-object).
+Plaintext token data will be returned when the requester has read permissions on the token classification at equal or greater impact level.
+Token data will be restricted based on the token's [restriction policy](#tokens-token-restriction-policies) when the requester has read permissions on the token classification at a lower impact level.
+Providing any query parameters will filter the results. Returns [an error](#errors) if tokens could not be retrieved.
 
 
-## List Decrypted Tokens
+## List Decrypted Tokens <span class="deprecated menu">DEPRECATED</span>
+
+<aside class="danger">
+  <span>This endpoint has been deprecated in favor of <a class="black-link" href="#tokens-list-tokens">List Tokens</a>.</span>
+</aside>
 
 > Request
 
@@ -299,6 +363,11 @@ with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_
       "type": "token",
       "tenant_id": "77cb0024-123e-41a8-8ff8-a3d5a0fa8a08",
       "data": "Sensitive Value",
+      "privacy": {
+        "classification": "general",
+        "impact_level": "moderate",
+        "restriction_policy": "redact"
+      },
       "metadata": {
         "nonSensitiveField": "Non-Sensitive Value"
       },
@@ -321,7 +390,7 @@ Get a list of decrypted tokens for the Tenant.
 ### Permissions
 
 <p class="scopes">
-  <span class="scope">token:decrypt</span>
+  <span class="scope">token:&lt;classification&gt;:read:&lt;impact_level&gt;</span>
 </p>
 
 ### Query Parameters
@@ -330,7 +399,6 @@ Get a list of decrypted tokens for the Tenant.
 |-----------------|----------|-----------|---------|------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `id`            | false    | *array*   | `[]`    | An optional list of token ID's to filter the list of tokens by                                                                                             |
 | `type`          | false    | *array*   | `[]`    | An optional array of [token types](#tokens-token-types) to filter the list of tokens by                                                                    |
-| `decrypt_type`  | false    | *array*   | `[]`    | An optional array of [token types](#tokens-token-types) to filter token types that should be decrypted                                                     |
 
 ### Response
 
@@ -380,20 +448,14 @@ with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_
   "id": "c06d0789-0a38-40be-b7cc-c28a718f76f1",
   "type": "token",
   "tenant_id": "77cb0024-123e-41a8-8ff8-a3d5a0fa8a08",
-  "data": "ebSG3IohNmg5gTOjN2HBwBbhjDZ6BY3fCWZJfXSucVMfQ+7YNMXQYrPuRSXgSkhuTMYS+BNfVUur4qZSvUbgCA==",
+  "data": null, // Redacted based on Restriction Policy
+  "privacy": {
+    "classification": "general",
+    "impact_level": "moderate",
+    "restriction_policy": "redact"
+  },
   "metadata": {
     "nonSensitiveField": "Non-Sensitive Value"
-  },
-  "encryption": {
-    "cek": {
-      "key": "JLrtGbYSN5/dbqdKtLVG8tHu3QefcZnKsFOPBBXlXcG4zL9US01mW2MqZs6Px4ckSQM8CrRakwLKilrQ0f37Iw==",
-      "alg": "AES"
-    },
-    "kek": {
-      "key": "vpXn45HnsoQPR1q8ptngmPvPaqIDJ4vO+FFyQclglePCt8d1SyTDJU0T+F54T7GnAz7vz5OKsjgsFNo9lVB3UA==",
-      "prov": "AWS",
-      "alg": "RSA"
-    }
   },
   "created_by": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
   "created_at": "2021-03-01T08:23:14+00:00"
@@ -410,7 +472,7 @@ Get a token by ID in the Tenant.
 ### Permissions
 
 <p class="scopes">
-  <span class="scope">token:read</span>
+  <span class="scope">token:&lt;classification&gt;:read:&lt;impact_level&gt;</span>
 </p>
 
 ### URI Parameters
@@ -421,10 +483,17 @@ Get a token by ID in the Tenant.
 
 ### Response
 
-Returns a [token](#tokens-token-object) with the `id` provided. Returns [an error](#errors) if the token could not be retrieved.
+Returns a [token](#tokens-token-object) with the `id` provided.
+Plaintext token data will be returned when the requester has read permissions on the token classification at equal or greater impact level.
+Token data will be restricted based on the token's [restriction policy](#tokens-token-restriction-policies) when the requester has read permissions on the token classification at a lower impact level.
+Returns [an error](#errors) if the token could not be retrieved.
 
 
-## Get a Decrypted Token
+## Get a Decrypted Token <span class="deprecated menu">DEPRECATED</span>
+
+<aside class="danger">
+  <span>This endpoint has been deprecated in favor of <a class="black-link" href="#tokens-get-a-token">Get a Token</a>.</span>
+</aside>
 
 > Request
 
@@ -467,6 +536,11 @@ with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_
   "type": "token",
   "tenant_id": "77cb0024-123e-41a8-8ff8-a3d5a0fa8a08",
   "data": "Sensitive Value",
+  "privacy": {
+    "classification": "general",
+    "impact_level": "moderate",
+    "restriction_policy": "redact"
+  },
   "metadata": {
     "nonSensitiveField": "Non-Sensitive Value"
   },
@@ -485,7 +559,7 @@ Get a decrypted token by ID in the Tenant.
 ### Permissions
 
 <p class="scopes">
-  <span class="scope">token:decrypt</span>
+  <span class="scope">token:&lt;classification&gt;:read:&lt;impact_level&gt;</span>
 </p>
 
 ### URI Parameters
@@ -493,12 +567,6 @@ Get a decrypted token by ID in the Tenant.
 | Parameter | Required | Type   | Default | Description         |
 |-----------|----------|--------|---------|---------------------|
 | `id`      | true     | *uuid* | `null`  | The ID of the token |
-
-### Query Parameters
-
-| Parameter       | Required | Type      | Default | Description                                                                                                                                                |
-|-----------------|----------|-----------|---------|------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `decrypt_type`  | false    | *array*   | `[]`    | An optional array of [token types](#tokens-token-types) to filter token types that should be decrypted                                                     |
 
 ### Response
 
@@ -550,13 +618,13 @@ with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_
 Delete a token by ID in the Tenant.
 
 <aside class="warning">
-  <span>WARNING - The data associated with a deleted token will be removed forever. The reference will still exists for audit purposes</span>
+  <span>WARNING - The data associated with a deleted token will be removed forever. The reference will still exist for audit purposes</span>
 </aside>
 
 ### Permissions
 
 <p class="scopes">
-  <span class="scope">token:delete</span>
+  <span class="scope">token:&lt;classification&gt;:delete</span>
 </p>
 
 ### URI Parameters

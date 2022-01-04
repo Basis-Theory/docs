@@ -67,12 +67,13 @@ Proxy requests must be authenticated using an `X-API-KEY` header (see [Authentic
 
 **Permissions**
 
-Depending on the type of data you need to forward to a third party, at least one of the following permissions is required:
+Depending on the [classification(s)](#tokens-token-classifications) of Tokens you need to forward to a third party, the corresponding `token:<classification>:use:proxy` permission is required.
+At least one `token:<classification>:use:proxy` permission is required, for example:
 
 <p class="scopes">
-  <span class="scope">bank:use</span>
-  <span class="scope">card:use</span>
-  <span class="scope">token:use</span>
+  <span class="scope">token:general:use:proxy</span>
+  <span class="scope">token:pci:use:proxy</span>
+  <span class="scope">token:bank:use:proxy</span>
 </p>
 
 **Configuration**
@@ -119,7 +120,7 @@ then the following request body will sent to the desintation:
 }
 ```
 
-Requests may contain a mixture of both token interpolation patterns and non-interpolated raw data. The `<token_type>:use` permission is required in order to detokenize tokens of type `<token_type>` within a proxy request. At most 100 unique tokens may be detokenized within a single proxy request.
+Requests may contain a mixture of both token interpolation patterns and non-interpolated raw data. The `token:<classification>:use:proxy` permission is required in order to detokenize tokens classified as `<classification>` within a proxy request. At most, 100 unique tokens may be detokenized within a single proxy request.
 
 <aside class="notice">
   <span>In the current beta version of the proxy, only primitive generic tokens (of type <code>token</code>) can be interpolated in proxy requests. Proxy requests that contain <code>card</code> or <code>bank</code> tokens, or generic tokens containing complex structured json data will be rejected with a 400 error.</span>
@@ -134,4 +135,3 @@ If an error occurs within the proxy (eg. missing or invalid `BT-PROXY-URL` heade
 | Attribute     | Type  | Description                              |
 |---------------|-------|------------------------------------------|
 | `proxy_error` | *any* | A standard Basis Theory [error](#errors) |
-  

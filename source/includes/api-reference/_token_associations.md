@@ -44,16 +44,19 @@ Create a new parent/child association between two tokens in the Tenants.
 
 ### Permissions
 
+Creating an association between two existing tokens requires the appropriate read permission based on the parent and child
+tokens' privacy settings.
+
 <p class="scopes">
-  <span class="scope">token:create</span>
+  <span class="scope">token:&lt;classification&gt;:read:&lt;impact_level&gt;</span>
 </p>
 
 ### URI Parameters
 
-Parameter | Required | Type | Default | Description
---------- | -------- | ---- | ------- | -----------
-`parent_id` | true | *uuid* | `null` | The ID of the parent token
-`child_id` | true | *uuid* | `null` | The ID of the child token
+| Parameter   | Required | Type   | Default | Description                |
+|-------------|----------|--------|---------|----------------------------|
+| `parent_id` | true     | *uuid* | `null`  | The ID of the parent token |
+| `child_id`  | true     | *uuid* | `null`  | The ID of the child token  |
 
 <aside class="notice">
   <span>Bi-directional associations can be made between two tokens by creating a token association and swapping the <code>parent_id</code> and <code>child_id</code>.</span>
@@ -107,15 +110,15 @@ Delete a parent/child association between two tokens in the Tenant.
 ### Permissions
 
 <p class="scopes">
-  <span class="scope">token:delete</span>
+  <span class="scope">token:&lt;classification&gt;:delete</span>
 </p>
 
 ### URI Parameters
 
-Parameter | Required | Type | Default | Description
---------- | -------- | ---- | ------- | -----------
-`parent_id` | true | *uuid* | `null` | The ID of the parent token
-`child_id` | true | *uuid* | `null` | The ID of the child token
+| Parameter   | Required | Type   | Default | Description                |
+|-------------|----------|--------|---------|----------------------------|
+| `parent_id` | true     | *uuid* | `null`  | The ID of the parent token |
+| `child_id`  | true     | *uuid* | `null`  | The ID of the child token  |
 
 ### Response
 
@@ -133,19 +136,9 @@ curl "https://api.basistheory.com/tokens/c06d0789-0a38-40be-b7cc-c28a718f76f1/ch
   -X "POST" \
   -d '{
     "type": "token",
-    "data": "ebSG3IohNmg5gTOjN2HBwBbhjDZ6BY3fCWZJfXSucVMfQ+7YNMXQYrPuRSXgSkhuTMYS+BNfVUur4qZSvUbgCA==",
+    "data": "Sensitive Value",
     "metadata": {
       "nonSensitiveField": "Non-Sensitive Value"
-    }
-    "encryption": {
-      "cek": {
-        "key": "JLrtGbYSN5/dbqdKtLVG8tHu3QefcZnKsFOPBBXlXcG4zL9US01mW2MqZs6Px4ckSQM8CrRakwLKilrQ0f37Iw==",
-        "alg": "AES"
-      },
-      "kek": {
-        "key": "vpXn45HnsoQPR1q8ptngmPvPaqIDJ4vO+FFyQclglePCt8d1SyTDJU0T+F54T7GnAz7vz5OKsjgsFNo9lVB3UA==",
-        "alg": "RSA"
-      }
     }
   }'
 ```
@@ -157,19 +150,9 @@ const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
 
 const token = await bt.tokens.createChild('c06d0789-0a38-40be-b7cc-c28a718f76f1', {
   type: 'token',
-  data: 'ebSG3IohNmg5gTOjN2HBwBbhjDZ6BY3fCWZJfXSucVMfQ+7YNMXQYrPuRSXgSkhuTMYS+BNfVUur4qZSvUbgCA==',
+  data: 'Sensitive Value',
   metadata: {
     nonSensitiveField: 'Non-Sensitive Value'
-  },
-  encryption: {
-    cek: {
-      key: 'JLrtGbYSN5/dbqdKtLVG8tHu3QefcZnKsFOPBBXlXcG4zL9US01mW2MqZs6Px4ckSQM8CrRakwLKilrQ0f37Iw==',
-      alg: 'AES'
-    },
-    kek: {
-      key: 'vpXn45HnsoQPR1q8ptngmPvPaqIDJ4vO+FFyQclglePCt8d1SyTDJU0T+F54T7GnAz7vz5OKsjgsFNo9lVB3UA==',
-      alg: 'RSA'
-    }
   }
 });
 ```
@@ -182,19 +165,9 @@ var client = new TokenClient("key_N88mVGsp3sCXkykyN2EFED");
 var token = await client.CreateChildAsync("c06d0789-0a38-40be-b7cc-c28a718f76f1", 
   new Token {
     Type = "token",
-    Data = "ebSG3IohNmg5gTOjN2HBwBbhjDZ6BY3fCWZJfXSucVMfQ+7YNMXQYrPuRSXgSkhuTMYS+BNfVUur4qZSvUbgCA==",
+    Data = "Sensitive Value",
     Metadata = new Dictionary<string, string> {
       { "nonSensitiveField", "Non-Sensitive Value" }
-    },
-    Encryption = new Encryption {
-      ContentEncryptionKey = new EncryptionKey {
-        Key = "JLrtGbYSN5/dbqdKtLVG8tHu3QefcZnKsFOPBBXlXcG4zL9US01mW2MqZs6Px4ckSQM8CrRakwLKilrQ0f37Iw==",
-        Algorithm: "AES"
-      },
-      KeyEncryptionKey = new EncryptionKey {
-        Key = "vpXn45HnsoQPR1q8ptngmPvPaqIDJ4vO+FFyQclglePCt8d1SyTDJU0T+F54T7GnAz7vz5OKsjgsFNo9lVB3UA==",
-        Algorithm: "RSA"
-      }
     }
   }
 );
@@ -211,6 +184,11 @@ var token = await client.CreateChildAsync("c06d0789-0a38-40be-b7cc-c28a718f76f1"
   "id": "c1e565009-1984-4638-8fca-dce8a82cc2af",
   "tenant_id": "77cb0024-123e-41a8-8ff8-a3d5a0fa8a08",
   "type": "token",
+  "privacy": {
+    "classification": "general",
+    "impact_level": "high",
+    "restriction_policy": "redact"  
+  },
   "created_by": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
   "created_at": "2020-09-15T15:53:00+00:00",
   "metadata": {
@@ -228,24 +206,29 @@ Create a new child token a token in the Tenant.
 
 ### Permissions
 
+Creating a child token requires the appropriate create permission based on the child's classification as well as the appropriate `read`
+permission based on the parent token's privacy settings.
+
 <p class="scopes">
-  <span class="scope">token:create</span>
+  <span class="scope">token:&lt;classification&gt;:create</span>
+  <span class="scope">token:&lt;classification&gt;:read:&lt;impact_level&gt;</span>
 </p>
 
 ### URI Parameters
 
-Parameter | Required | Type | Default | Description
---------- | -------- | ---- | ------- | -----------
-`parent_id` | true | *string* | `null` | The ID of the parent token
+| Parameter   | Required | Type     | Default | Description                |
+|-------------|----------|----------|---------|----------------------------|
+| `parent_id` | true     | *string* | `null`  | The ID of the parent token |
 
 ### Request Parameters
 
-Attribute | Required | Type | Default | Description
---------- | -------- | ---- | ------- | -----------
-`type` | true | *string* | `null` | [Token type](#tokens-token-types) of the token
-`data` | true | *any* | `null` | Token data
-`metadata` | false | *map* | `null` | A key-value map of non-sensitive data.
-`encryption` | false | *[encryption object](#tokens-token-object-encryption-object)* | `null` | Encryption metadata for an encrypted token data value
+| Attribute    | Required | Type                                                          | Default | Description                                           |
+|--------------|----------|---------------------------------------------------------------|---------|-------------------------------------------------------|
+| `type`       | true     | *string*                                                      | `null`  | [Token type](#tokens-token-types) of the token        |
+| `data`       | true     | *any*                                                         | `null`  | Token data                                            |
+| `privacy`    | false    | *[privacy object](#tokens-token-object-privacy-object)*       | `null`  | Token Privacy Settings                                |
+| `metadata`   | false    | *map*                                                         | `null`  | A key-value map of non-sensitive data.                |
+| `encryption` | false    | *[encryption object](#tokens-token-object-encryption-object)* | `null`  | Encryption metadata for an encrypted token data value |
 
 ### Response
 
@@ -285,25 +268,20 @@ var tokens = await client.GetChildrenAsync("c06d0789-0a38-40be-b7cc-c28a718f76f1
 
 ```json
 {
-  "pagination": {...}
+  "pagination": {...},
   "data": [
     {
       "id": "c1e565009-1984-4638-8fca-dce8a82cc2af",
       "type": "token",
       "tenant_id": "77cb0024-123e-41a8-8ff8-a3d5a0fa8a08",
-      "data": "ebSG3IohNmg5gTOjN2HBwBbhjDZ6BY3fCWZJfXSucVMfQ+7YNMXQYrPuRSXgSkhuTMYS+BNfVUur4qZSvUbgCA==",
+      "data": null, // Redacted based on restriction policy
+      "privacy": {
+        "classification": "general",
+        "impact_level": "high",
+        "restriction_policy": "redact"
+      },
       "metadata": {
         "nonSensitiveField": "Non-Sensitive Value"
-      }
-      "encryption": {
-        "cek": {
-          "key": "JLrtGbYSN5/dbqdKtLVG8tHu3QefcZnKsFOPBBXlXcG4zL9US01mW2MqZs6Px4ckSQM8CrRakwLKilrQ0f37Iw==",
-          "alg": "AES"
-        },
-        "kek": {
-          "key": "vpXn45HnsoQPR1q8ptngmPvPaqIDJ4vO+FFyQclglePCt8d1SyTDJU0T+F54T7GnAz7vz5OKsjgsFNo9lVB3UA==",
-          "alg": "RSA"
-        }
       },
       "created_by": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
       "created_at": "2021-03-01T08:23:14+00:00"
@@ -324,21 +302,21 @@ Get a list of child tokens for a token in the Tenant.
 ### Permissions
 
 <p class="scopes">
-  <span class="scope">token:read</span>
+  <span class="scope">token:&lt;classification&gt;:read:&lt;impact_level&gt;</span>
 </p>
 
 ### URI Parameters
 
-Parameter | Required | Type | Default | Description
---------- | -------- | ---- | ------- | -----------
-`parent_id` | true | *string* | `null` | The ID of the parent token
+| Parameter   | Required | Type     | Default | Description                |
+|-------------|----------|----------|---------|----------------------------|
+| `parent_id` | true     | *string* | `null`  | The ID of the parent token |
 
 ### Query Parameters
 
-Parameter | Required | Type | Default | Description
---------- | -------- | ---- | ------- | -----------
-`id` | false | *array* | `[]` | An optional list of token ID's to filter the list of child tokens by
-`type` | false | *array* | `[]` | An optional array of [token types](#tokens-token-types) to filter the list of child tokens by
+| Parameter | Required | Type    | Default | Description                                                                                   |
+|-----------|----------|---------|---------|-----------------------------------------------------------------------------------------------|
+| `id`      | false    | *array* | `[]`    | An optional list of token ID's to filter the list of child tokens by                          |
+| `type`    | false    | *array* | `[]`    | An optional array of [token types](#tokens-token-types) to filter the list of child tokens by |
 
 ### Response
 

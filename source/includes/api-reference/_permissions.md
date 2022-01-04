@@ -1,51 +1,56 @@
 # Permissions
 
-Permissions offer fine-grained control over your Application's access to different aspects of your token infrastructure. We suggest limiting the scope of your Application to the least amount possible, and to not share them across your internal services.
+Permissions offer fine-grained control over your Application's access to different aspects of your token infrastructure.
+We suggest limiting the scope of your Application to the least amount possible, and to not share them across your
+internal services.
 
-Permissions are associated with every Application and can be configured when you [create an Application](#applications-create-application) or [update an Application](#applications-update-application). 
+Permissions are associated with every Application and can be configured when
+you [create an Application](#applications-create-application)
+or [update an Application](#applications-update-application).
 
 Every API endpoint will document the required permissions needed to perform the operation against the endpoint.
 
-
 ## Permission Object
 
-Attribute | Type | Description
---------- | ---- | -----------
-`type` | *string* | Permission type referenced by Basis Theory API endpoints
-`description` | *string* | Description of the permission
-`application_types` | *array* | List of [application types](#applications-application-types) that can assign the permission
-
+| Attribute           | Type     | Description                                                                                 |
+|---------------------|----------|---------------------------------------------------------------------------------------------|
+| `type`              | *string* | Permission type referenced by Basis Theory API endpoints                                    |
+| `description`       | *string* | Description of the permission                                                               |
+| `application_types` | *array*  | List of [application types](#applications-application-types) that can assign the permission |
 
 ## Permission Types
 
-Permission | Description | Application Types
----------  | ----------- | -----------------
-`tenant:read` | Read Tenants | `management`
-`tenant:update` | Update Tenants | `management`
-`tenant:delete` | Delete Tenants | `management`
-`application:read` | Read Applications | `management`
-`application:create` | Create Applications | `management`
-`application:update` | Update and regenerate API keys for Applications | `management`
-`application:create` | Delete Applications | `management`
-`reactor:read` | Read Reactor Formulas and Reactors | `server_to_server`, `management` | `token:read`
-`reactor:create` | Create Reactors Formulas and Reactors | `management`
-`reactor:update` | Update Reactors Formulas and Reactors | `management`
-`reactor:delete` | Delete Reactors Formulas and Reactors | `management`
-`log:read` | Read audit logs | `management`
-`token:read` | Read tokens from the vault | `server_to_server`
-`token:create` | Create tokens in the vault | `public`, `elements`, `server_to_server`
-`token:delete` | Delete tokens from the vault | `server_to_server`
-`token:decrypt` | Decrypt tokens | `server_to_server`
-`card:read` | Read Atomic Card tokens | `server_to_server`
-`card:create` | Create Atomic Card tokens | `public`, `elements`, `server_to_server`
-`card:update` | Update Atomic Card tokens | `server_to_server`
-`card:delete` | Delete Atomic Card tokens | `server_to_server`
-`bank:read` | Read Atomic Bank tokens | `server_to_server`
-`bank:create` | Create Atomic Bank tokens | `public`, `elements`, `server_to_server`
-`bank:update` | Update Atomic Bank tokens | `server_to_server`
-`bank:delete` | Delete Atomic Bank tokens | `server_to_server`
-`bank:decrypt` | Decrypt Atomic Bank tokens | `server_to_server`
+### Management Permissions
 
+| Permission           | Description                                     | Application Types |
+|----------------------|-------------------------------------------------|-------------------|
+| `tenant:read`        | Read Tenants                                    | `management`      |
+| `tenant:update`      | Update Tenants                                  | `management`      |
+| `tenant:delete`      | Delete Tenants                                  | `management`      |
+| `application:read`   | Read Applications                               | `management`      |
+| `application:create` | Create Applications                             | `management`      |
+| `application:update` | Update and regenerate API keys for Applications | `management`      |
+| `application:delete` | Delete Applications                             | `management`      |
+| `reactor:read`       | Read Reactor Formulas and Reactors              | `management`      |
+| `reactor:create`     | Create Reactors Formulas and Reactors           | `management`      |
+| `reactor:update`     | Update Reactors Formulas and Reactors           | `management`      |
+| `reactor:delete`     | Delete Reactors Formulas and Reactors           | `management`      |
+| `log:read`           | Read audit logs                                 | `management`      |
+
+### Token Permissions
+
+All Token permissions follow the form of `token:<classification>:<operation>:<scope?>`.
+
+| Permission                             | Description                                                                                                                                                                                                                                                                                                        | Application Types                        |
+|----------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------|
+| `token:<classification>:create`        | Create Tokens in [\<classification\>](#tokens-token-classifications) (e.g. `token:general:create`)                                                                                                                                                                                                                 | `public`, `elements`, `server_to_server` |
+| `token:<classification>:read:low`      | Read plaintext token data in [\<classification\>](#tokens-token-classifications) with `low` [\<impact_level\>](#tokens-token-impact-levels). Tokens in `<classification>` with higher impact level will be restricted based on the token's [restriction policy](#tokens-token-restriction-policies)                | `server_to_server`                       |
+| `token:<classification>:read:moderate` | Read plaintext token data in [\<classification\>](#tokens-token-classifications) with `moderate` [\<impact_level\>](#tokens-token-impact-levels) and lower. Tokens in `<classification>` with higher impact level will be restricted based on the token's [restriction policy](#tokens-token-restriction-policies) | `server_to_server`                       |
+| `token:<classification>:read:high`     | Read plaintext token data in [\<classification\>](#tokens-token-classifications) with `high` [\<impact_level\>](#tokens-token-impact-levels) and lower (i.e. `low` and `moderate`).                                                                                                                                | `server_to_server`                       |
+| `token:<classification>:update`        | Update Tokens in [\<classification\>](#tokens-token-classifications) (e.g. `token:general:update`)                                                                                                                                                                                                                 | `server_to_server`                       |
+| `token:<classification>:delete`        | Delete Tokens in [\<classification\>](#tokens-token-classifications) (e.g. `token:general:delete`)                                                                                                                                                                                                                 | `server_to_server`                       |
+| `token:<classification>:use:proxy`     | Use Tokens in [\<classification\>](#tokens-token-classifications) via [Proxy](#proxy) (e.g. `token:general:use:proxy`)                                                                                                                                                                                             | `server_to_server`                       |
+| `token:<classification>:use:reactor`   | Use Tokens in [\<classification\>](#tokens-token-classifications) via [Reactor](#reactors) (e.g. `token:general:use:reactor`)                                                                                                                                                                                      | `server_to_server`                       |
 
 ## List Permissions
 
@@ -57,7 +62,7 @@ curl "https://api.basistheory.com/permissions" \
 ```
 
 ```javascript
-import { BasisTheory } from '@basis-theory/basis-theory-js';
+import {BasisTheory} from '@basis-theory/basis-theory-js';
 
 const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
 
@@ -81,12 +86,12 @@ var permissions = await client.GetAsync();
 ```json
 [
   {
-    "type": "card:read",
-    "description": "Read Payment Card tokens",
+    "type": "token:pci:read:low",
+    "description": "Read tokens with PCI classification of low impact level",
     "application_types": [
       "server_to_server"
     ]
-  }, 
+  },
   {...},
   {...}
 ]
@@ -97,7 +102,7 @@ var permissions = await client.GetAsync();
   `https://api.basistheory.com/permissions`
 </span>
 
-
 ### Response
 
-Returns an array of [permission objects](#permissions-permission-object). Returns [an error](#errors) if permissions could not be retrieved.
+Returns an array of [permission objects](#permissions-permission-object). Returns [an error](#errors) if permissions
+could not be retrieved.

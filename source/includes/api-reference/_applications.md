@@ -4,29 +4,27 @@ Your ability to authenticate to the API is granted by creating Applications, eac
 
 ## Application Object
 
-Attribute | Type | Description
---------- | ---- | -----------
-`id` | *uuid* | Unique identifier of the Application which can be used to [get an Application](#applications-get-an-application)
-`tenant_id` | *uuid* | The [Tenant](#tenants) ID which owns the Application
-`name` | *string* | The name of the Application
-`key` | *string* | The API key which should be used for authenticating against Basis Theory API endpoints
-`type` | *string* | [Application type](#applications-application-types) of the Application
-`permissions` | *array* | List of [permissions](#permissions-permission-types) for the Application
-`created_by` | *uuid* | (Optional) The ID of the user or [Application](#applications) that created the Application
-`created_at` | *date* | (Optional) Created date of the Application in ISO 8601 format
-`modified_by` | *uuid* | (Optional) The ID of the user or [Application](#applications) that last modified the Application
-`modified_at` | *date* | (Optional) Last modified date of the Application in ISO 8601 format
-
+| Attribute     | Type     | Description                                                                                                      |
+|---------------|----------|------------------------------------------------------------------------------------------------------------------|
+| `id`          | *uuid*   | Unique identifier of the Application which can be used to [get an Application](#applications-get-an-application) |
+| `tenant_id`   | *uuid*   | The [Tenant](#tenants) ID which owns the Application                                                             |
+| `name`        | *string* | The name of the Application                                                                                      |
+| `key`         | *string* | The API key which should be used for authenticating against Basis Theory API endpoints                           |
+| `type`        | *string* | [Application type](#applications-application-types) of the Application                                           |
+| `permissions` | *array*  | List of [permissions](#permissions-permission-types) for the Application                                         |
+| `created_by`  | *uuid*   | (Optional) The ID of the user or [Application](#applications) that created the Application                       |
+| `created_at`  | *date*   | (Optional) Created date of the Application in ISO 8601 format                                                    |
+| `modified_by` | *uuid*   | (Optional) The ID of the user or [Application](#applications) that last modified the Application                 |
+| `modified_at` | *date*   | (Optional) Last modified date of the Application in ISO 8601 format                                              |
 
 ## Application Types
 
-Name | Type | Description
----- | ---- | -----------
-Server-to-Server | `server_to_server` | Used for tokenizing, retrieving, and decrypting data within backend services where the `API key` can be secured
-Client-side Application | `public` | Used for tokenizing data directly within your mobile or browser application
-Elements | `elements` | Used for tokenizing data with the Basis Theory Elements module 
-Management | `management` | Used for managing all aspects of your token infrastructure such as [creating an Application](#applications-create-application)
-
+| Name                    | Type               | Description                                                                                                                    |
+|-------------------------|--------------------|--------------------------------------------------------------------------------------------------------------------------------|
+| Server-to-Server        | `server_to_server` | Used for tokenizing, retrieving, and decrypting data within backend services where the `API key` can be secured                |
+| Client-side Application | `public`           | Used for tokenizing data directly within your mobile or browser application                                                    |
+| Elements                | `elements`         | Used for tokenizing data with the Basis Theory Elements module                                                                 |
+| Management              | `management`       | Used for managing all aspects of your token infrastructure such as [creating an Application](#applications-create-application) |
 
 ## Create Application
 
@@ -41,10 +39,10 @@ curl "https://api.basistheory.com/applications" \
     "name": "My Example App",
     "type": "server_to_server",
     "permissions": [
-      "card:create",
-      "card:read",
-      "token:create",
-      "token:read"
+      "token:general:create",
+      "token:general:read:low"
+      "token:pci:create",
+      "token:pci:read:low",
     ]
   }'
 ```
@@ -58,10 +56,10 @@ const application = await bt.applications.create({
   name: 'My Example App',
   type: 'server_to_server',
   permissions: [
-    'card:create',
-    'card:read',
-    'token:create',
-    'token:read',
+    'token:general:create',
+    'token:general:read:low',
+    'token:pci:create',
+    'token:pci:read:low',
   ],
 });
 ```
@@ -75,10 +73,10 @@ var application = await client.CreateAsync(new Application {
   Name = "My Example App",
   Type = "server_to_server",
   Permissions = new List<string> {
-    "card:create",
-    "card:read",
-    "token:create",
-    "token:read"
+    "token:general:create",
+    "token:general:read:low",
+    "token:pci:create",
+    "token:pci:read:low"
   }
 });
 ```
@@ -97,10 +95,10 @@ var application = await client.CreateAsync(new Application {
   "key": "key_FZ8RmaxoGc73lbmF2cpmUJ",
   "type": "server_to_server",
   "permissions": [
-    "card:create",
-    "card:read",
-    "token:create",
-    "token:read"
+    "token:general:create",
+    "token:general:read:low",
+    "token:pci:create",
+    "token:pci:read:low"
   ],
   "created_by": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
   "created_at": "2020-09-15T15:53:00+00:00"
@@ -122,11 +120,11 @@ Create a new Application for the Tenant.
 
 ### Request Parameters
 
-Attribute | Required | Type | Default | Description
---------- | -------- | ---- | ------- | -----------
-`name` | true | *string* | `null` | The name of the Application. Has a maximum length of `200`
-`type` | true | *string* | `null` | [Application](#applications-application-types) of the application
-`permissions` | false | *array* | `[]` | [Permissions](#permissions-permission-types) for the application
+| Attribute     | Required | Type     | Default | Description                                                       |
+|---------------|----------|----------|---------|-------------------------------------------------------------------|
+| `name`        | true     | *string* | `null`  | The name of the Application. Has a maximum length of `200`        |
+| `type`        | true     | *string* | `null`  | [Application type](#applications-application-types) of the application |
+| `permissions` | false    | *array*  | `[]`    | [Permissions](#permissions-permission-types) for the application  |
 
 ### Response
 
@@ -174,10 +172,10 @@ var applications = await client.GetAsync();
       "name": "My Example App",
       "type": "server_to_server",
       "permissions": [
-        "card:create",
-        "card:read",
-        "token:create",
-        "token:read"
+        "token:general:create",
+        "token:general:read:low",
+        "token:pci:create",
+        "token:pci:read:low"
       ],
       "created_by": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
       "created_at": "2020-09-15T15:53:00+00:00",
@@ -205,9 +203,9 @@ Get a list of applications for the Tenant.
 
 ### Query Parameters
 
-Parameter | Required | Type | Default | Description
---------- | -------- | ---- | ------- | -----------
-`id` | false | *array* | `[]` | An optional list of application ID's to filter the list of applications by
+| Parameter | Required | Type    | Default | Description                                                                |
+|-----------|----------|---------|---------|----------------------------------------------------------------------------|
+| `id`      | false    | *array* | `[]`    | An optional list of application ID's to filter the list of applications by |
 
 ### Response
 
@@ -252,8 +250,8 @@ var application = await client.GetByIdAsync("fe1f9ba4-474e-44b9-b949-110cdba9d66
   "name": "My Management App",
   "type": "management",
   "permissions": [
-    "application:read",
-    "application:write"
+    "application:create",
+    "application:read"
   ],
   "created_by": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
   "created_at": "2020-09-15T15:53:00+00:00",
@@ -277,9 +275,9 @@ Get an application by ID in the Tenant.
 
 ### URI Parameters
 
-Parameter | Required | Type | Default | Description
---------- | -------- | ---- | ------- | -----------
-`id` | true | *uuid* | `null` | The ID of the application
+| Parameter | Required | Type   | Default | Description               |
+|-----------|----------|--------|---------|---------------------------|
+| `id`      | true     | *uuid* | `null`  | The ID of the application |
 
 ### Response
 
@@ -324,8 +322,8 @@ var application = await client.GetByKeyAsync();
   "name": "My Management App",
   "type": "management",
   "permissions": [
-    "application:read",
-    "application:write"
+    "application:create",
+    "application:read"
   ],
   "created_by": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
   "created_at": "2020-09-15T15:53:00+00:00",
@@ -364,8 +362,8 @@ curl "https://api.basistheory.com/applications/fb124bba-f90d-45f0-9a59-5edca27b3
   -d '{
     "name": "My Example App",
     "permissions": [
-      "application:read",
-      "application:write"
+      "application:create",
+      "application:read"
     ]
   }'
 ```
@@ -378,10 +376,10 @@ const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
 const application = await bt.applications.update('fb124bba-f90d-45f0-9a59-5edca27b3b4a', {
   name: 'My Example App',
   permissions: [
-    'card:create',
-    'card:read',
-    'token:create',
-    'token:read',
+    'token:general:create',
+    'token:general:read:low',
+    'token:pci:create',
+    'token:pci:read:low',
   ],
 });
 ```
@@ -395,10 +393,10 @@ var application = await client.UpdateAsync("fb124bba-f90d-45f0-9a59-5edca27b3b4a
   new Application {
     Name = "My Example App",
     Permissions = new List<string> {
-      "card:create",
-      "card:read",
-      "token:create",
-      "token:read"
+      "token:general:create",
+      "token:general:read:low",
+      "token:pci:create",
+      "token:pci:read:low"
     }
   }
 );
@@ -417,8 +415,8 @@ var application = await client.UpdateAsync("fb124bba-f90d-45f0-9a59-5edca27b3b4a
   "name": "My Example App",
   "type": "management",
   "permissions": [
-    "application:read",
-    "application:write"
+    "application:create",
+    "application:read"
   ],
   "created_by": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
   "created_at": "2020-09-15T15:53:00+00:00",
@@ -442,16 +440,16 @@ Update an application by ID in the Tenant.
 
 ### URI Parameters
 
-Parameter | Required | Type | Default | Description
---------- | -------- | ---- | ------- | -----------
-`id` | true | *uuid* | `null` | The ID of the application
+| Parameter | Required | Type   | Default | Description               |
+|-----------|----------|--------|---------|---------------------------|
+| `id`      | true     | *uuid* | `null`  | The ID of the application |
 
 ### Request Parameters
 
-Attribute | Required | Type | Default | Description
---------- | -------- | ---- | ------- | -----------
-`name` | true | *string* | `null` | The name of the application. Has a maximum length of `200`
-`permissions` | false | *array* | `[]` | [Permissions](#permissions-permission-types) for the application
+| Attribute     | Required | Type     | Default | Description                                                      |
+|---------------|----------|----------|---------|------------------------------------------------------------------|
+| `name`        | true     | *string* | `null`  | The name of the application. Has a maximum length of `200`       |
+| `permissions` | false    | *array*  | `[]`    | [Permissions](#permissions-permission-types) for the application |
 
 ### Response
 
@@ -498,10 +496,10 @@ var application = await client.RegenerateKeyAsync("fb124bba-f90d-45f0-9a59-5edca
   "key": "key_FZ8RmaxoGc73lbmF2cpmUJ",
   "type": "server_to_server",
   "permissions": [
-    "card:create",
-    "card:read",
-    "token:create",
-    "token:read"
+    "token:general:create",
+    "token:general:read:low",
+    "token:pci:create",
+    "token:pci:read:low"
   ],
   "created_by": "c57a0d0d-e8e6-495f-9c79-a317cc21996c",
   "created_at": "2020-09-15T15:53:00+00:00",
@@ -529,9 +527,9 @@ Regenerate the API key for an application.
 
 ### URI Parameters
 
-Parameter | Required | Type | Default | Description
---------- | -------- | ---- | ------- | -----------
-`id` | true | *uuid* | `null` | The ID of the application
+| Parameter | Required | Type   | Default | Description               |
+|-----------|----------|--------|---------|---------------------------|
+| `id`      | true     | *uuid* | `null`  | The ID of the application |
 
 ### Response
 
@@ -581,9 +579,9 @@ Delete an application by ID in the Tenant.
 
 ### URI Parameters
 
-Parameter | Required | Type | Default | Description
---------- | -------- | ---- | ------- | -----------
-`id` | true | *uuid* | `null` | The ID of the application
+| Parameter | Required | Type   | Default | Description               |
+|-----------|----------|--------|---------|---------------------------|
+| `id`      | true     | *uuid* | `null`  | The ID of the application |
 
 ### Response
 

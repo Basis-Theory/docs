@@ -120,7 +120,7 @@ Create a new Atomic Card for the Tenant.
 ### Permissions
 
 <p class="scopes">
-  <span class="scope">card:create</span>
+  <span class="scope">token:pci:create</span>
 </p>
 
 ### Request Parameters
@@ -202,7 +202,7 @@ Get a list of Atomic Cards for the Tenant.
 ### Permissions
 
 <p class="scopes">
-  <span class="scope">card:read</span>
+  <span class="scope">token:pci:read:&lt;impact_level&gt;</span>
 </p>
 
 ### Response
@@ -270,7 +270,7 @@ Get an Atomic Card by ID in the Tenant.
 ### Permissions
 
 <p class="scopes">
-  <span class="scope">card:read</span>
+  <span class="scope">token:pci:read:&lt;impact_level&gt;</span>
 </p>
 
 ### URI Parameters
@@ -370,7 +370,7 @@ Update an Atomic Card for the Tenant. At least one property on the request body 
 ### Permissions
 
 <p class="scopes">
-  <span class="scope">card:update</span>
+  <span class="scope">token:pci:update</span>
 </p>
 
 ### Request Parameters
@@ -428,7 +428,7 @@ Delete an Atomic Card by ID in the Tenant.
 ### Permissions
 
 <p class="scopes">
-  <span class="scope">card:delete</span>
+  <span class="scope">token:pci:delete</span>
 </p>
 
 ### URI Parameters
@@ -508,8 +508,7 @@ React with an Atomic Card by ID.
 ### Permissions
 
 <p class="scopes">
-  <span class="scope">reactor:read</span>
-  <span class="scope">card:read</span>
+  <span class="scope">token:pci:use:reactor</span>
 </p>
 
 ### URI Parameters
