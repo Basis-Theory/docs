@@ -1,3 +1,10 @@
+# [1.20.0](https://github.com/Basis-Theory/docs/compare/v1.19.0...v1.20.0) (2022-01-04)
+
+
+### Features
+
+* add new Token Permissions and Token Privacy Settings ([#133](https://github.com/Basis-Theory/docs/issues/133)) ([4730b2a](https://github.com/Basis-Theory/docs/commit/4730b2aede80429c5b1d5b48c9fbd1cadd05ae4d))
+
 # [1.19.0](https://github.com/Basis-Theory/docs/compare/v1.18.0...v1.19.0) (2021-12-28)
 
 
