@@ -5774,6 +5774,13 @@ with permission to read the Token&#39;s classification but at a lower impact lev
 <td><code>[]</code></td>
 <td>An optional array of <a href="#tokens-token-types">token types</a> to filter the list of tokens by</td>
 </tr>
+<tr>
+<td><code>metadata.[key]</code></td>
+<td>false</td>
+<td><em>map</em></td>
+<td><code>{}</code></td>
+<td>Map of key-value pairs to filter tokens with matching metadata in the form <code>?metadata.key1=value1&amp;metadata.key2=value2</code>. <em>Note</em>, <code>[key]</code> must be unique and repeated keys will be ignored. Metadata will be searched for a case-insensitive, exact match. Multiple parameters will be <code>AND</code>ed together.</td>
+</tr>
 </tbody></table>
 <h3 id='tokens-list-tokens-response'>Response</h3>
 <p>Returns a <a href="#pagination">paginated object</a> with the <code>data</code> property containing an array of <a href="#tokens-token-object">tokens</a>.
