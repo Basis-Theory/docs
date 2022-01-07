@@ -520,10 +520,10 @@
                 </ul>
             </li>
             <li>
-              <a href="#proxy-beta" class="toc-h1 toc-link" data-title="Proxy BETA">Proxy <span class="beta menu">BETA</span></a>
+              <a href="#proxy" class="toc-h1 toc-link" data-title="Proxy BETA">Proxy <span class="beta menu">BETA</span></a>
                 <ul class="toc-list-h2">
                     <li>
-                      <a href="#proxy-span-class-beta-menu-beta-span-proxying-outbound-requests" class="toc-h2 toc-link" data-title="Proxying Outbound Requests">Proxying Outbound Requests</a>
+                      <a href="#permissions-proxying-outbound-requests" class="toc-h2 toc-link" data-title="Proxying Outbound Requests">Proxying Outbound Requests</a>
                     </li>
                 </ul>
             </li>
@@ -540,7 +540,7 @@
                       <a href="#reactor-formulas-reactor-formula-types" class="toc-h2 toc-link" data-title="Reactor Formula Types">Reactor Formula Types</a>
                     </li>
                     <li>
-                      <a href="#reactor-formulas-create-reactor-formula-beta" class="toc-h2 toc-link" data-title="Create Reactor Formula BETA">Create Reactor Formula <span class="beta menu">BETA</span></a>
+                      <a href="#reactor-formulas-create-reactor-formula" class="toc-h2 toc-link" data-title="Create Reactor Formula BETA">Create Reactor Formula <span class="beta menu">BETA</span></a>
                     </li>
                     <li>
                       <a href="#reactor-formulas-list-reactor-formulas" class="toc-h2 toc-link" data-title="List Reactor Formulas">List Reactor Formulas</a>
@@ -3403,14 +3403,15 @@ or <a href="#applications-update-application">update an Application</a>.</p>
 <h3 id='permissions-list-permissions-response'>Response</h3>
 <p>Returns an array of <a href="#permissions-permission-object">permission objects</a>. Returns <a href="#errors">an error</a> if permissions
 could not be retrieved.</p>
-<h1 id='proxy-beta'>Proxy <span class="beta menu">BETA</span></h1>
+<h1 id="proxy">Proxy <span class="beta menu">BETA</span></h1>
+
 <aside class="warning">
   <span>The Basis Theory Proxy is currently available in Public Beta. The features listed below are subject to change. If you are interested in using the proxy and your use case is not currently supported, please <a href="mailto:support@basistheory.com?subject=Proxy Feature Request">submit a feature request</a>!</span>
 </aside>
-<h2 id='proxy-span-class-beta-menu-beta-span-proxying-outbound-requests'>Proxying Outbound Requests</h2>
+<h2 id='permissions-proxying-outbound-requests'>Proxying Outbound Requests</h2>
 <p>The Basis Theory Proxy provides a simple mechanism to use the data you&#39;ve stored with Basis Theory in outbound requests to a third party API.
 Basis Theory token identifiers included in the request will be replaced with the raw token data and then the modified request will be forwarded to the destination specified in the <code>BT-PROXY-URL</code> request header. The destination will receive the raw data in the request without your system needing to interact with sensitive data on your own servers.</p>
-<h3 id='proxy-span-class-beta-menu-beta-span-proxying-outbound-requests-proxy-requests'>Proxy Requests</h3>
+<h3 id='permissions-proxying-outbound-requests-proxy-requests'>Proxy Requests</h3>
 <blockquote>
 <p>Request</p>
 </blockquote>
@@ -3518,7 +3519,7 @@ given a token:</p>
 <aside class="notice">
   <span>In the current beta version of the proxy, only primitive generic tokens (of type <code>token</code>) can be interpolated in proxy requests. Proxy requests that contain <code>card</code> or <code>bank</code> tokens, or generic tokens containing complex structured json data will be rejected with a 400 error.</span>
 </aside>
-<h3 id='proxy-span-class-beta-menu-beta-span-proxying-outbound-requests-proxy-responses'>Proxy Responses</h3>
+<h3 id='permissions-proxying-outbound-requests-proxy-responses'>Proxy Responses</h3>
 <p>Unless an error occurs within the Basis Theory Proxy, the raw response from the destination will be returned from the proxy.</p>
 
 <p>If an error occurs within the proxy (eg. missing or invalid <code>BT-PROXY-URL</code> header), then the following error response will be returned:</p>
@@ -3720,7 +3721,9 @@ given a token:</p>
 <td>Private formulas which are only available to your Tenant</td>
 </tr>
 </tbody></table>
-<h2 id='reactor-formulas-create-reactor-formula-beta'>Create Reactor Formula <span class="beta menu">BETA</span></h2>
+
+<h2 id="reactor-formulas-create-reactor-formula">Create Reactor Formula <span class="beta menu">BETA</span></h2>
+
 <blockquote>
 <p>Request</p>
 </blockquote>
@@ -3904,11 +3907,11 @@ given a token:</p>
 </span></p>
 
 <p>Create a new Reactor Formula for the Tenant.</p>
-<h3 id='reactor-formulas-create-reactor-formula-span-class-beta-menu-beta-span-permissions'>Permissions</h3>
+<h3 id='reactor-formulas-reactor-formula-types-permissions'>Permissions</h3>
 <p class="scopes">
   <span class="scope">reactor:create</span>
 </p>
-<h3 id='reactor-formulas-create-reactor-formula-span-class-beta-menu-beta-span-request-parameters'>Request Parameters</h3>
+<h3 id='reactor-formulas-reactor-formula-types-request-parameters'>Request Parameters</h3>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -3975,7 +3978,7 @@ given a token:</p>
 <td>Array of <a href="#reactor-formulas-reactor-formula-object-reactor-formula-request-parameter-object">request parameters</a> which will be passed when executing the Reactor</td>
 </tr>
 </tbody></table>
-<h3 id='reactor-formulas-create-reactor-formula-span-class-beta-menu-beta-span-response'>Response</h3>
+<h3 id='reactor-formulas-reactor-formula-types-response'>Response</h3>
 <p>Returns an <a href="#reactor-formulas-reactor-formula-object">Reactor Formula</a> if the Reactor Formula was created. Returns <a href="#errors">an error</a> if there were validation errors, or the Reactor Formula failed to create.</p>
 <h2 id='reactor-formulas-list-reactor-formulas'>List Reactor Formulas</h2>
 <blockquote>
