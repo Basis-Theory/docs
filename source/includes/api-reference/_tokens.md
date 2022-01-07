@@ -299,10 +299,11 @@ Get a list of tokens for the Tenant.
 
 ### Query Parameters
 
-| Parameter       | Required | Type      | Default | Description                                                                                                                                                |
-|-----------------|----------|-----------|---------|------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `id`            | false    | *array*   | `[]`    | An optional list of token ID's to filter the list of tokens by                                                                                             |
-| `type`          | false    | *array*   | `[]`    | An optional array of [token types](#tokens-token-types) to filter the list of tokens by                                                                    |
+| Parameter        | Required | Type    | Default | Description                                                                                                                                                                                                                                                                                             |
+|------------------|----------|---------|---------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `id`             | false    | *array* | `[]`    | An optional list of token ID's to filter the list of tokens by                                                                                                                                                                                                                                          |
+| `type`           | false    | *array* | `[]`    | An optional array of [token types](#tokens-token-types) to filter the list of tokens by                                                                                                                                                                                                                 |
+| `metadata.[key]` | false    | *map*   | `{}`    | Map of key-value pairs to filter tokens with matching metadata in the form `?metadata.key1=value1&metadata.key2=value2`. *Note*, `[key]` must be unique and repeated keys will be ignored. Metadata will be searched for a case-insensitive, exact match. Multiple parameters will be `AND`ed together. |
 
 ### Response
 
