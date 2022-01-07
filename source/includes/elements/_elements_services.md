@@ -99,7 +99,7 @@ You can fetch this same data later with [Get a Token API](/api-reference#tokens-
 ## Tokenize
 
 ```javascript
-BasisTheory.tokenize.tokenize({
+BasisTheory.tokenize({
   sensitiveData: sensitiveDataElement,
   nonSensitiveData: 'plainText', // see warning on plain text data
   otherData: {
