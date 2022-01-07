@@ -58,7 +58,7 @@ Type | Description
 `private` | Private formulas which are only available to your Tenant
 
 
-## Create Reactor Formula <span class="beta menu">BETA</span>
+<h2 id="reactor-formulas-create-reactor-formula">Create Reactor Formula <span class="beta menu">BETA</span></h2>
 
 > Request
 

@@ -1,4 +1,4 @@
-# Proxy <span class="beta menu">BETA</span>
+<h1 id="proxy">Proxy <span class="beta menu">BETA</span></h1>
 
 <aside class="warning">
   <span>The Basis Theory Proxy is currently available in Public Beta. The features listed below are subject to change. If you are interested in using the proxy and your use case is not currently supported, please <a href="mailto:support@basistheory.com?subject=Proxy Feature Request">submit a feature request</a>!</span>
