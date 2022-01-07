@@ -1,3 +1,10 @@
+# [1.21.0](https://github.com/Basis-Theory/docs/compare/v1.20.0...v1.21.0) (2022-01-07)
+
+
+### Features
+
+* add docs for searching tokens by metadata ([#139](https://github.com/Basis-Theory/docs/issues/139)) ([cd9dda0](https://github.com/Basis-Theory/docs/commit/cd9dda06dd6278e7d783bcd7c00116a61b9e2744))
+
 # [1.20.0](https://github.com/Basis-Theory/docs/compare/v1.19.0...v1.20.0) (2022-01-04)
 
 
