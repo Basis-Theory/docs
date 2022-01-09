@@ -20,7 +20,7 @@ Attribute | Type | Description
 
 ```shell
 curl "https://api.basistheory.com/logs" \
-  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
+  -H "BT-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
 ```
 
 ```javascript

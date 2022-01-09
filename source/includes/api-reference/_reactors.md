@@ -22,7 +22,7 @@ Attribute | Type | Description
 
 ```shell
 curl "https://api.basistheory.com/reactors" \
-  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED" \
+  -H "BT-API-KEY: key_N88mVGsp3sCXkykyN2EFED" \
   -H "Content-Type: application/json" \
   -X "POST" \
   -d '{
@@ -120,7 +120,7 @@ Returns an [reactor](#reactors-reactor-object) if the Reactor was created. Retur
 
 ```shell
 curl "https://api.basistheory.com/reactors" \
-  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
+  -H "BT-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
 ```
 
 ```javascript
@@ -200,7 +200,7 @@ Returns a [paginated object](#pagination) with the `data` property containing an
 
 ```shell
 curl "https://api.basistheory.com/reactors/5b493235-6917-4307-906a-2cd6f1a90b13" \
-  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
+  -H "BT-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
 ```
 
 ```javascript
@@ -271,7 +271,7 @@ Returns an [reactor](#reactors-reactor-object) with the `id` provided. Returns [
 
 ```shell
 curl "https://api.basistheory.com/reactors/5b493235-6917-4307-906a-2cd6f1a90b13" \
-  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED" \
+  -H "BT-API-KEY: key_N88mVGsp3sCXkykyN2EFED" \
   -H "Content-Type: application/json" \
   -X "PUT" \
   -d '{
@@ -369,7 +369,7 @@ Returns an [reactor](#reactors-reactor-object) if the Reactor was updated. Retur
 
 ```shell
 curl "https://api.basistheory.com/reactors/fb124bba-f90d-45f0-9a59-5edca27b3b4a" \
-  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED" \
+  -H "BT-API-KEY: key_N88mVGsp3sCXkykyN2EFED" \
   -X "DELETE"
 ```
 

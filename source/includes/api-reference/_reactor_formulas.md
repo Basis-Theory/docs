@@ -64,7 +64,7 @@ Type | Description
 
 ```shell
 curl "https://api.basistheory.com/reactor-formulas" \
-  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED" \
+  -H "BT-API-KEY: key_N88mVGsp3sCXkykyN2EFED" \
   -H "Content-Type: application/json" \
   -X "POST" \
   -d '{
@@ -286,7 +286,7 @@ Returns an [Reactor Formula](#reactor-formulas-reactor-formula-object) if the Re
 
 ```shell
 curl "https://api.basistheory.com/reactor-formulas" \
-  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
+  -H "BT-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
 ```
 
 ```javascript
@@ -398,7 +398,7 @@ Returns a [paginated object](#pagination) with the `data` property containing an
 
 ```shell
 curl "https://api.basistheory.com/reactor-formulas/17069df1-80f4-439e-86a7-4121863e4678" \
-  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
+  -H "BT-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
 ```
 
 ```javascript
@@ -502,7 +502,7 @@ Returns an [Reactor Formula](#reactor-formulas-reactor-formula-object) with the 
 
 ```shell
 curl "https://api.basistheory.com/reator-formula/17069df1-80f4-439e-86a7-4121863e4678" \
-  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED" \
+  -H "BT-API-KEY: key_N88mVGsp3sCXkykyN2EFED" \
   -H "Content-Type: application/json" \
   -X "PUT" \
   -d '{
@@ -729,7 +729,7 @@ Returns an [Reactor Formula](#reactor-formulas-reactor-formula-object) if the Re
 
 ```shell
 curl "https://api.basistheory.com/reactor-formulas/17069df1-80f4-439e-86a7-4121863e4678" \
-  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED" \
+  -H "BT-API-KEY: key_N88mVGsp3sCXkykyN2EFED" \
   -X "DELETE"
 ```
 

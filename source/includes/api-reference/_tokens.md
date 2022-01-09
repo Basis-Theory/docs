@@ -101,7 +101,7 @@ with permission to read the Token's classification but at a lower impact level.
 
 ```shell
 curl "https://api.basistheory.com/tokens" \
-  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED" \
+  -H "BT-API-KEY: key_N88mVGsp3sCXkykyN2EFED" \
   -H "Content-Type: application/json" \
   -X "POST" \
   -d '{
@@ -226,7 +226,7 @@ Returns a [token](#tokens-token-object) if the token was created. Returns [an er
 
 ```shell
 curl "https://api.basistheory.com/tokens" \
-  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
+  -H "BT-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
 ```
 
 ```javascript
@@ -323,7 +323,7 @@ Providing any query parameters will filter the results. Returns [an error](#erro
 
 ```shell
 curl "https://api.basistheory.com/tokens/decrypt" \
-  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
+  -H "BT-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
 ```
 
 ```javascript
@@ -413,7 +413,7 @@ Token types other than `token` or non-BasisTheory encrypted tokens will not be d
 
 ```shell
 curl "https://api.basistheory.com/tokens/c06d0789-0a38-40be-b7cc-c28a718f76f1" \
-  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
+  -H "BT-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
 ```
 
 ```javascript
@@ -500,7 +500,7 @@ Returns [an error](#errors) if the token could not be retrieved.
 
 ```shell
 curl "https://api.basistheory.com/tokens/c06d0789-0a38-40be-b7cc-c28a718f76f1/decrypt" \
-  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
+  -H "BT-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
 ```
 
 ```javascript
@@ -581,7 +581,7 @@ Token types other than `token` or non-BasisTheory encrypted tokens will not be d
 
 ```shell
 curl "https://api.basistheory.com/tokens/c06d0789-0a38-40be-b7cc-c28a718f76f1" \
-  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED" \
+  -H "BT-API-KEY: key_N88mVGsp3sCXkykyN2EFED" \
   -X "DELETE"
 ```
 
