@@ -1,3 +1,10 @@
+# [1.23.0](https://github.com/Basis-Theory/docs/compare/v1.22.0...v1.23.0) (2022-01-10)
+
+
+### Features
+
+* cutover to use new BT-API-KEY header authentication ([#141](https://github.com/Basis-Theory/docs/issues/141)) ([2ec9a82](https://github.com/Basis-Theory/docs/commit/2ec9a8233f950d17ac412fb4d970097c96aeebb4))
+
 # [1.22.0](https://github.com/Basis-Theory/docs/compare/v1.21.1...v1.22.0) (2022-01-10)
 
 
