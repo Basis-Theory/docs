@@ -1,3 +1,10 @@
+# [1.22.0](https://github.com/Basis-Theory/docs/compare/v1.21.1...v1.22.0) (2022-01-10)
+
+
+### Features
+
+* add docs for text element password option ([#140](https://github.com/Basis-Theory/docs/issues/140)) ([551f1f1](https://github.com/Basis-Theory/docs/commit/551f1f104ff14a10442bcda467442e01fd82286e))
+
 ## [1.21.1](https://github.com/Basis-Theory/docs/compare/v1.21.0...v1.21.1) (2022-01-07)
 
 
