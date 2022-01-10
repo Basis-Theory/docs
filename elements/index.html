@@ -788,7 +788,18 @@
 <td><a href="#element-types-text-element">TextElement</a></td>
 <td>String used to customize the <a href="https://developer.mozilla.org/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-label_attribute">aria-label attribute</a> of the input</td>
 </tr>
+<tr>
+<td><code>password</code></td>
+<td>false</td>
+<td><em>boolean</em></td>
+<td><a href="#element-types-text-element">TextElement</a></td>
+<td>Boolean used to set the text element input type as <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/password">password</a></td>
+</tr>
 </tbody></table>
+
+<aside class="warning">
+  <span>The <code>mask</code> option cannot be used when the <code>password</code> option is set as <code>true</code>.</span>
+</aside>
 <h2 id='elements-instance-mount-element'>Mount Element</h2><div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="p">=</span><span class="s">"my-card"</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 
 <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
@@ -886,7 +897,18 @@
 <td><a href="#element-types-text-element">TextElement</a></td>
 <td>String used to customize the <a href="https://developer.mozilla.org/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-label_attribute">aria-label attribute</a> of the input</td>
 </tr>
+<tr>
+<td><code>password</code></td>
+<td>false</td>
+<td><em>boolean</em></td>
+<td><a href="#element-types-text-element">TextElement</a></td>
+<td>Boolean used to set the text element input type as <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/password">password</a></td>
+</tr>
 </tbody></table>
+
+<aside class="warning">
+  <span>The <code>password</code> option cannot be set as <code>true</code> if the text element has a <code>mask</code> set.</span>
+</aside>
 <h2 id='elements-instance-clear-element'>Clear Element</h2><div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="nx">cardElement</span><span class="p">.</span><span class="nx">clear</span><span class="p">();</span>
 </code></pre></div>
 <p>Clears the element input values.</p>
