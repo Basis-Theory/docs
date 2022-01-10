@@ -15,7 +15,7 @@ Basis Theory token identifiers included in the request will be replaced with the
 
 ```shell
 curl "https://api.basistheory.com/proxy" \
-  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED" \
+  -H "BT-API-KEY: key_N88mVGsp3sCXkykyN2EFED" \
   -H "BT-PROXY-URL: https://example.com/api" \
   -X "POST" \
   -d '{
@@ -63,7 +63,7 @@ Proxy a request to a third party API.
 
 **Authentication**
 
-Proxy requests must be authenticated using an `X-API-KEY` header (see [Authentication](#authentication)). 
+Proxy requests must be authenticated using an `BT-API-KEY` header (see [Authentication](#authentication)). 
 
 **Permissions**
 
