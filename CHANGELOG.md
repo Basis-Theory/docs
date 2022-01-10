@@ -1,3 +1,17 @@
+## [1.21.1](https://github.com/Basis-Theory/docs/compare/v1.21.0...v1.21.1) (2022-01-07)
+
+
+### Bug Fixes
+
+* remove -beta suffix from section anchors ([#138](https://github.com/Basis-Theory/docs/issues/138)) ([9daab0b](https://github.com/Basis-Theory/docs/commit/9daab0b9ce2c64a4632d9263fca69100110bacf9))
+
+# [1.21.0](https://github.com/Basis-Theory/docs/compare/v1.20.0...v1.21.0) (2022-01-07)
+
+
+### Features
+
+* add docs for searching tokens by metadata ([#139](https://github.com/Basis-Theory/docs/issues/139)) ([cd9dda0](https://github.com/Basis-Theory/docs/commit/cd9dda06dd6278e7d783bcd7c00116a61b9e2744))
+
 # [1.20.0](https://github.com/Basis-Theory/docs/compare/v1.19.0...v1.20.0) (2022-01-04)
 
 
