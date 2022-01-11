@@ -4,7 +4,7 @@
 
 ```shell
 curl "https://api.basistheory.com/applications?page=2&size=10" \
-  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
+  -H "BT-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
 ```
 
 ```javascript

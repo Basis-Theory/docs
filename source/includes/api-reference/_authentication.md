@@ -4,7 +4,7 @@
 
 ```shell
 curl "https://api.basistheory.com" \
-  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
+  -H "BT-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
 ```
 
 ```javascript
@@ -51,7 +51,7 @@ Basis Theory uses API keys to allow access to the API.
 
 Basis Theory requires the API key to be included in all API requests to the server in a header that looks like the following:
 
-`X-API-KEY: key_N88mVGsp3sCXkykyN2EFED`
+`BT-API-KEY: key_N88mVGsp3sCXkykyN2EFED`
 
 <aside class="notice">
   <span>You must replace <code>key_N88mVGsp3sCXkykyN2EFED</code> with your API key supplied when you <a href="#applications-create-application">created an Application</a>.</span>

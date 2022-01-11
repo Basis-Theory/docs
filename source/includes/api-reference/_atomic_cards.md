@@ -31,7 +31,7 @@
 
 ```shell
 curl "https://api.basistheory.com/atomic/cards" \
-  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED" \
+  -H "BT-API-KEY: key_N88mVGsp3sCXkykyN2EFED" \
   -H "Content-Type: application/json" \
   -X "POST" \
   -d '{
@@ -141,7 +141,7 @@ Returns an [Atomic Card](#atomic-cards-atomic-card-object) with masked [card dat
 
 ```shell
 curl "https://api.basistheory.com/atomic/cards" \
-  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
+  -H "BT-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
 ```
 
 ```javascript
@@ -216,7 +216,7 @@ Returns a [paginated object](#pagination) with the `data` property containing an
 
 ```shell
 curl "https://api.basistheory.com/atomic/cards/c1e565009-1984-4638-8fca-dce8a82cc2af" \
-  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
+  -H "BT-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
 ```
 
 ```javascript
@@ -290,7 +290,7 @@ Returns an [Atomic Card](#atomic-cards-atomic-card-object) with the `id` provide
 
 ```shell
 curl "https://api.basistheory.com/atomic/cards/c1e565009-1984-4638-8fca-dce8a82cc2af" \
-  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED" \
+  -H "BT-API-KEY: key_N88mVGsp3sCXkykyN2EFED" \
   -H "Content-Type: application/json" \
   -X "PATCH" \
   -d '{
@@ -390,7 +390,7 @@ Returns an [Atomic Card](#atomic-cards-atomic-card-object) with masked [card dat
 
 ```shell
 curl "https://api.basistheory.com/atomic/cards/c1e565009-1984-4638-8fca-dce8a82cc2af" \
-  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED" \
+  -H "BT-API-KEY: key_N88mVGsp3sCXkykyN2EFED" \
   -X "DELETE"
 ```
 
@@ -448,7 +448,7 @@ Returns [an error](#errors) if the Atomic Card failed to delete.
 
 ```shell
 curl "https://api.basistheory.com/atomic/cards/c1e565009-1984-4638-8fca-dce8a82cc2af/react" \
-  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED" \
+  -H "BT-API-KEY: key_N88mVGsp3sCXkykyN2EFED" \
   -X "POST" \
   -d '{
     "reactor_id": "5b493235-6917-4307-906a-2cd6f1a90b13",

@@ -49,8 +49,8 @@ Attribute | Type | Description
 Error Code | Meaning
 ---------- | -------
 `400` | Invalid request body
-`401` | A missing or invalid `X-API-KEY` was provided
-`403` | The provided `X-API-KEY` does not have the required permissions
+`401` | A missing or invalid `BT-API-KEY` was provided
+`403` | The provided `BT-API-KEY` does not have the required permissions
 `404` | Request entity was not found
 `422` | Request does not satisfy requirements for processing
 `429` | Request has been [rate limited](#limits)

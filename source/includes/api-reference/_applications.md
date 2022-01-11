@@ -32,7 +32,7 @@ Your ability to authenticate to the API is granted by creating Applications, eac
 
 ```shell
 curl "https://api.basistheory.com/applications" \
-  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED" \
+  -H "BT-API-KEY: key_N88mVGsp3sCXkykyN2EFED" \
   -H "Content-Type: application/json" \
   -X "POST" \
   -d '{
@@ -137,7 +137,7 @@ Returns an [Application](#applications-application-object) if the application wa
 
 ```shell
 curl "https://api.basistheory.com/applications" \
-  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
+  -H "BT-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
 ```
 
 ```javascript
@@ -218,7 +218,7 @@ Returns a [paginated object](#pagination) with the `data` property containing an
 
 ```shell
 curl "https://api.basistheory.com/applications/fe1f9ba4-474e-44b9-b949-110cdba9d662" \
-  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
+  -H "BT-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
 ```
 
 ```javascript
@@ -290,7 +290,7 @@ Returns an [Application](#applications-application-object) with the `id` provide
 
 ```shell
 curl "https://api.basistheory.com/applications/key" \
-  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
+  -H "BT-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
 ```
 
 ```javascript
@@ -337,7 +337,7 @@ var application = await client.GetByKeyAsync();
   `https://api.basistheory.com/applications/key`
 </span>
 
-Get an application by key in the Tenant. Will use the `X-API-KEY` header to lookup the application.
+Get an application by key in the Tenant. Will use the `BT-API-KEY` header to lookup the application.
 
 ### Permissions
 
@@ -347,7 +347,7 @@ Get an application by key in the Tenant. Will use the `X-API-KEY` header to look
 
 ### Response
 
-Returns an [Application](#applications-application-object) for the provided `X-API-KEY`. Returns [an error](#errors) if the application could not be retrieved.
+Returns an [Application](#applications-application-object) for the provided `BT-API-KEY`. Returns [an error](#errors) if the application could not be retrieved.
 
 
 ## Update Application
@@ -356,7 +356,7 @@ Returns an [Application](#applications-application-object) for the provided `X-A
 
 ```shell
 curl "https://api.basistheory.com/applications/fb124bba-f90d-45f0-9a59-5edca27b3b4a" \
-  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED" \
+  -H "BT-API-KEY: key_N88mVGsp3sCXkykyN2EFED" \
   -H "Content-Type: application/json"
   -X "PUT" \
   -d '{
@@ -462,7 +462,7 @@ Returns an [Application](#applications-application-object) if the application wa
 
 ```shell
 curl "https://api.basistheory.com/applications/fb124bba-f90d-45f0-9a59-5edca27b3b4a/regenerate" \
-  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED" \
+  -H "BT-API-KEY: key_N88mVGsp3sCXkykyN2EFED" \
   -X "POST"
 ```
 
@@ -542,7 +542,7 @@ Returns an [Application](#applications-application-object) with the new `key` pr
 
 ```shell
 curl "https://api.basistheory.com/applications/fb124bba-f90d-45f0-9a59-5edca27b3b4a" \
-  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED" \
+  -H "BT-API-KEY: key_N88mVGsp3sCXkykyN2EFED" \
   -X "DELETE"
 ```
 

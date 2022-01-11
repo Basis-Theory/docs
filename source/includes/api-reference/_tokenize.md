@@ -7,7 +7,7 @@ The `tokenize` endpoint enables you to tokenize any request and tokenize several
 
 ```shell
 curl "https://api.basistheory.com/tokenize" \
-  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED" \
+  -H "BT-API-KEY: key_N88mVGsp3sCXkykyN2EFED" \
   -H "Content-Type: application/json" \
   -X "POST" \
   -d '{
@@ -56,7 +56,7 @@ var token = await client.Tokenize(new {
 
 ```shell
 curl "https://api.basistheory.com/tokenize" \
-  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED" \
+  -H "BT-API-KEY: key_N88mVGsp3sCXkykyN2EFED" \
   -H "Content-Type: application/json" \
   -X "POST" \
   -d '{
@@ -120,7 +120,7 @@ var token = await client.Tokenize(new Token {
 
 ```shell
 curl "https://api.basistheory.com/tokenize" \
-  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED" \
+  -H "BT-API-KEY: key_N88mVGsp3sCXkykyN2EFED" \
   -H "Content-Type: application/json" \
   -X "POST" \
   -d '{
@@ -203,7 +203,7 @@ var token = await client.Tokenize(new Token {
 
 ```shell
 curl "https://api.basistheory.com/tokenize" \
-  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED" \
+  -H "BT-API-KEY: key_N88mVGsp3sCXkykyN2EFED" \
   -H "Content-Type: application/json" \
   -X "POST" \
   -d '[
@@ -313,7 +313,7 @@ var token = await client.Tokenize(new object[
 
 ```shell
 curl "https://api.basistheory.com/tokenize" \
-  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED" \
+  -H "BT-API-KEY: key_N88mVGsp3sCXkykyN2EFED" \
   -H "Content-Type: application/json" \
   -X "POST" \
   -d '{

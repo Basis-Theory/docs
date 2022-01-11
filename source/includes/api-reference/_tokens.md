@@ -101,7 +101,7 @@ with permission to read the Token's classification but at a lower impact level.
 
 ```shell
 curl "https://api.basistheory.com/tokens" \
-  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED" \
+  -H "BT-API-KEY: key_N88mVGsp3sCXkykyN2EFED" \
   -H "Content-Type: application/json" \
   -X "POST" \
   -d '{
@@ -226,7 +226,7 @@ Returns a [token](#tokens-token-object) if the token was created. Returns [an er
 
 ```shell
 curl "https://api.basistheory.com/tokens" \
-  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
+  -H "BT-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
 ```
 
 ```javascript
@@ -299,10 +299,11 @@ Get a list of tokens for the Tenant.
 
 ### Query Parameters
 
-| Parameter       | Required | Type      | Default | Description                                                                                                                                                |
-|-----------------|----------|-----------|---------|------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `id`            | false    | *array*   | `[]`    | An optional list of token ID's to filter the list of tokens by                                                                                             |
-| `type`          | false    | *array*   | `[]`    | An optional array of [token types](#tokens-token-types) to filter the list of tokens by                                                                    |
+| Parameter        | Required | Type    | Default | Description                                                                                                                                                                                                                                                                                             |
+|------------------|----------|---------|---------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `id`             | false    | *array* | `[]`    | An optional list of token ID's to filter the list of tokens by                                                                                                                                                                                                                                          |
+| `type`           | false    | *array* | `[]`    | An optional array of [token types](#tokens-token-types) to filter the list of tokens by                                                                                                                                                                                                                 |
+| `metadata.[key]` | false    | *map*   | `{}`    | Map of key-value pairs to filter tokens with matching metadata in the form `?metadata.key1=value1&metadata.key2=value2`. *Note*, `[key]` must be unique and repeated keys will be ignored. Metadata will be searched for a case-insensitive, exact match. Multiple parameters will be `AND`ed together. |
 
 ### Response
 
@@ -322,7 +323,7 @@ Providing any query parameters will filter the results. Returns [an error](#erro
 
 ```shell
 curl "https://api.basistheory.com/tokens/decrypt" \
-  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
+  -H "BT-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
 ```
 
 ```javascript
@@ -412,7 +413,7 @@ Token types other than `token` or non-BasisTheory encrypted tokens will not be d
 
 ```shell
 curl "https://api.basistheory.com/tokens/c06d0789-0a38-40be-b7cc-c28a718f76f1" \
-  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
+  -H "BT-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
 ```
 
 ```javascript
@@ -499,7 +500,7 @@ Returns [an error](#errors) if the token could not be retrieved.
 
 ```shell
 curl "https://api.basistheory.com/tokens/c06d0789-0a38-40be-b7cc-c28a718f76f1/decrypt" \
-  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
+  -H "BT-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
 ```
 
 ```javascript
@@ -580,7 +581,7 @@ Token types other than `token` or non-BasisTheory encrypted tokens will not be d
 
 ```shell
 curl "https://api.basistheory.com/tokens/c06d0789-0a38-40be-b7cc-c28a718f76f1" \
-  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED" \
+  -H "BT-API-KEY: key_N88mVGsp3sCXkykyN2EFED" \
   -X "DELETE"
 ```
 

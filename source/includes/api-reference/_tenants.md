@@ -42,7 +42,7 @@ Attribute | Type | Description
 
 ```shell
 curl "https://api.basistheory.com/tenants/self" \
-  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
+  -H "BT-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
 ```
 
 ```javascript
@@ -84,7 +84,7 @@ var tenant = await client.GetSelfAsync();
   `https://api.basistheory.com/tenants/self`
 </span>
 
-Retrieves the Tenant associated with the provided `X-API-KEY`.
+Retrieves the Tenant associated with the provided `BT-API-KEY`.
 
 ### Permissions
 
@@ -94,7 +94,7 @@ Retrieves the Tenant associated with the provided `X-API-KEY`.
 
 ### Response
 
-Returns a [Tenants](#tenants-tenant-object) for the provided `X-API-KEY`. Returns [an error](#errors) if the Tenant could not be retrieved.
+Returns a [Tenants](#tenants-tenant-object) for the provided `BT-API-KEY`. Returns [an error](#errors) if the Tenant could not be retrieved.
 
 
 ## Update Tenant
@@ -103,7 +103,7 @@ Returns a [Tenants](#tenants-tenant-object) for the provided `X-API-KEY`. Return
 
 ```shell
 curl "https://api.basistheory.com/tenants/self" \
-  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED" \
+  -H "BT-API-KEY: key_N88mVGsp3sCXkykyN2EFED" \
   -H "Content-Type: application/json" \
   -X "PUT" \
   -d '{
@@ -154,7 +154,7 @@ var tenant = await client.UpdateAsync(new Tenant {
   `https://api.basistheory.com/tenants/self`
 </span>
 
-Update the Tenant associated with the provided `X-API-KEY`.
+Update the Tenant associated with the provided `BT-API-KEY`.
 
 ### Permissions
 
@@ -179,7 +179,7 @@ Returns a [tenant](#tenants-tenant-object) if the Tenant was updated. Returns [a
 
 ```shell
 curl "https://api.basistheory.com/tenants/self" \
-  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED" \
+  -H "BT-API-KEY: key_N88mVGsp3sCXkykyN2EFED" \
   -X "DELETE"
 ```
 
@@ -208,7 +208,7 @@ await client.DeleteAsync();
   `https://api.basistheory.com/tenants/self`
 </span>
 
-Delete the Tenant associated with the provided `X-API-KEY`.
+Delete the Tenant associated with the provided `BT-API-KEY`.
 
 ### Permissions
 
@@ -227,7 +227,7 @@ Returns [an error](#errors) if the Tenant failed to delete.
 
 ```shell
 curl "https://api.basistheory.com/tenants/self/reports/usage" \
-  -H "X-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
+  -H "BT-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
 ```
 
 ```javascript
@@ -280,7 +280,7 @@ var tenantUsageReport = await client.GetTenantUsageReportAsync();
   `https://api.basistheory.com/tenants/self/reports/usage`
 </span>
 
-Retrieves the Tenant Usage Report associated with the provided `X-API-KEY`.
+Retrieves the Tenant Usage Report associated with the provided `BT-API-KEY`.
 
 ### Permissions
 
@@ -290,4 +290,4 @@ Retrieves the Tenant Usage Report associated with the provided `X-API-KEY`.
 
 ### Response
 
-Returns a [Tenant Usage Report](#tenants-tenant-usage-report-object) for the provided `X-API-KEY`. Returns [an error](#errors) if the Tenant Usage Report could not be retrieved.
+Returns a [Tenant Usage Report](#tenants-tenant-usage-report-object) for the provided `BT-API-KEY`. Returns [an error](#errors) if the Tenant Usage Report could not be retrieved.
