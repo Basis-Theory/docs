@@ -1,3 +1,10 @@
+# [1.24.0](https://github.com/Basis-Theory/docs/compare/v1.23.0...v1.24.0) (2022-01-11)
+
+
+### Features
+
+* update tokenize usage in JS ([#137](https://github.com/Basis-Theory/docs/issues/137)) ([bf14878](https://github.com/Basis-Theory/docs/commit/bf14878161a13bc6a4262d062112e76172bdf0b9))
+
 # [1.23.0](https://github.com/Basis-Theory/docs/compare/v1.22.0...v1.23.0) (2022-01-10)
 
 
