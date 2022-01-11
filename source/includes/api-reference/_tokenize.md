@@ -21,7 +21,7 @@ import { BasisTheory } from '@basis-theory/basis-theory-js';
 
 const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
 
-const token = await bt.tokenize.tokenize({
+const token = await bt.tokenize({
   first_name: 'John',
   last_name: 'Doe'
 });
@@ -73,7 +73,7 @@ import { BasisTheory } from '@basis-theory/basis-theory-js';
 
 const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
 
-const token = await bt.tokenize.tokenize({
+const token = await bt.tokenize({
   type: 'token',
   data: 'Sensitive Value',
   metadata: {
@@ -142,7 +142,7 @@ import { BasisTheory } from '@basis-theory/basis-theory-js';
 
 const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
 
-const token = await bt.tokenize.tokenize({
+const token = await bt.tokenize({
   type: 'card',
   data: {
     number: '4242424242424242',
@@ -230,7 +230,7 @@ import { BasisTheory } from '@basis-theory/basis-theory-js';
 
 const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
 
-const token = await bt.tokenize.tokenize([
+const token = await bt.tokenize([
   'John',
   'Doe',
   {
@@ -343,7 +343,7 @@ import { BasisTheory } from '@basis-theory/basis-theory-js';
 
 const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
 
-const token = await bt.tokenize.tokenize({
+const token = await bt.tokenize({
   first_name: 'John',
   last_name: 'Doe',
   primary_card: {
