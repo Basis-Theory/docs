@@ -10,7 +10,7 @@
 |---------------|---------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------|
 | `id`          | *uuid*                                                        | Unique identifier of the token which can be used to [get a token](#get-a-token)                                              |
 | `tenant_id`   | *uuid*                                                        | The [Tenant](#tenants-tenant-object) ID which owns the token                                                                 |
-| `type`        | *string*                                                      | [Token type](#tokens-token-types)                                                                                            |
+| `type`        | *string*                                                      | [Token type](#token-types)                                                                                            |
 | `data`        | *any*                                                         | Token data                                                                                                                   |
 | `fingerprint` | *string*                                                      | Uniquely identifies the contents of this token. Fingerprints are only available for Atomic Card and Atomic Bank token types. |
 | `privacy`     | *[privacy object](#tokens-token-object-privacy-object)*       | Token Privacy Settings                                                                                                       |
@@ -42,7 +42,7 @@
 
 ### Privacy Object
 
-Token Privacy defines the privacy settings applied to a Token. By default, privacy settings will be applied based on the [Token Type](#tokens-token-types).
+Token Privacy defines the privacy settings applied to a Token. By default, privacy settings will be applied based on the [Token Type](#token-types).
 Default privacy settings can be overridden at the time of creation, but only to a setting with a higher specificity level.
 
 | Attribute            | Type     | Description                                                                                                                                                                            |
@@ -51,13 +51,6 @@ Default privacy settings can be overridden at the time of creation, but only to 
 | `impact_level`       | *string* | [Impact level](#tokens-token-impact-levels) of the Token (i.e. `low`, `moderate`, `high`)                                                                                              |
 | `restriction_policy` | *string* | [Restriction policy](#tokens-token-restriction-policies) applied to the Token when read by a User or Application with read permissions at a lower impact level (i.e. `mask`, `redact`) |
 
-## Token Types
-
-| Name  | Type    | Description                             | Default Classification | Default Impact Level | Minimum Impact Level | Default Restriction Policy |
-|-------|---------|-----------------------------------------|------------------------|----------------------|----------------------|----------------------------|
-| Token | `token` | Generic token type                      | `general`              | `high`               | `low`                | `redact`                   |
-| Card  | `card`  | [Atomic card](#atomic-cards) token type | `pci`                  | `high`               | `high`               | `mask`                     |
-| Bank  | `bank`  | [Atomic bank](#atomic-banks) token type | `bank`                 | `high`               | `high`               | `mask`                     |
 
 ## Token Classifications
 
@@ -204,7 +197,7 @@ Create a new token for the Tenant.
 
 | Attribute    | Required | Type                                                          | Default | Description                                                                                                                                                  |
 |--------------|----------|---------------------------------------------------------------|---------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `type`       | true     | *string*                                                      | `null`  | [Token type](#tokens-token-types) of the token                                                                                                               |
+| `type`       | true     | *string*                                                      | `null`  | [Token type](#token-types) of the token                                                                                                               |
 | `data`       | true     | *any*                                                         | `null`  | Token data. Can be an object, array, or any primitive type such as an integer, boolean, or string                                                            |
 | `privacy`    | false    | *[privacy object](#tokens-token-object-privacy-object)*       | `null`  | Token Privacy Settings overrides. Overrides must be a higher specificity level than the default or minimum setting for the [Token Type](#token-token-types). |
 | `metadata`   | false    | *map*                                                         | `null`  | A key-value map of non-sensitive data.                                                                                                                       |
@@ -302,7 +295,7 @@ Get a list of tokens for the Tenant.
 | Parameter        | Required | Type    | Default | Description                                                                                                                                                                                                                                                                                             |
 |------------------|----------|---------|---------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `id`             | false    | *array* | `[]`    | An optional list of token ID's to filter the list of tokens by                                                                                                                                                                                                                                          |
-| `type`           | false    | *array* | `[]`    | An optional array of [token types](#tokens-token-types) to filter the list of tokens by                                                                                                                                                                                                                 |
+| `type`           | false    | *array* | `[]`    | An optional array of [token types](#token-types) to filter the list of tokens by                                                                                                                                                                                                                 |
 | `metadata.[key]` | false    | *map*   | `{}`    | Map of key-value pairs to filter tokens with matching metadata in the form `?metadata.key1=value1&metadata.key2=value2`. *Note*, `[key]` must be unique and repeated keys will be ignored. Metadata will be searched for a case-insensitive, exact match. Multiple parameters will be `AND`ed together. |
 
 ### Response
@@ -399,7 +392,7 @@ Get a list of decrypted tokens for the Tenant.
 | Parameter       | Required | Type      | Default | Description                                                                                                                                                |
 |-----------------|----------|-----------|---------|------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `id`            | false    | *array*   | `[]`    | An optional list of token ID's to filter the list of tokens by                                                                                             |
-| `type`          | false    | *array*   | `[]`    | An optional array of [token types](#tokens-token-types) to filter the list of tokens by                                                                    |
+| `type`          | false    | *array*   | `[]`    | An optional array of [token types](#token-types) to filter the list of tokens by                                                                    |
 
 ### Response
 

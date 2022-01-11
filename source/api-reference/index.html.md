@@ -38,6 +38,7 @@ api_includes:
   - api-reference/reactor_formulas
   - api-reference/reactors
   - api-reference/tenants
+  - api-reference/token-types
   - api-reference/tokens
   - api-reference/token_associations
   - api-reference/tokenize
