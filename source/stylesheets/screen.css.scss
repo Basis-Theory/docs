@@ -644,6 +644,14 @@ html, body {
     background-color: transparent;
   }
 
+  // code style in headers
+  h1, h2, h3, h4, h5, h6 {
+    code {
+      background-color: inherit;
+      font-size: inherit;
+    }
+  }
+
   aside {
     padding-top: 1em;
     padding-bottom: 1em;

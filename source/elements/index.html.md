@@ -23,15 +23,20 @@ intro_includes:
   - elements/authentication
   - elements/limits
 
-api_includes:
-  - elements/initialize
-  - elements/element_types
-  - elements/elements_instance
-  - elements/element_events
-  - elements/element_style
-  - elements/element_mask
-  - elements/element_transform
-  - elements/elements_services
+vanilla_includes:
+  - elements/vanilla/initialize
+  - elements/vanilla/element_types
+  - elements/vanilla/elements_instance
+  - elements/vanilla/element_events
+  - elements/vanilla/element_style
+  - elements/vanilla/element_mask
+  - elements/vanilla/element_transform
+  - elements/vanilla/elements_services
+
+react_includes:
+  - elements/react/package
+  - elements/react/use_basis_theory
+  - elements/react/basis_theory_provider
 
 aux_links:
   - <a class="toc-h2 toc-link" href="https://discord.gg/NSvXxaW5Fv" target="_blank">Join Discord</a>

@@ -1,0 +1,44 @@
+# `BasisTheoryProvider`
+
+```jsx
+import { 
+  useBasisTheory, 
+  BasisTheoryProvider
+} from '@basis-theory/basis-theory-react';
+import { TextElement } from '@basis-theory/basis-theory-react/elements';
+
+const App = () => {
+  // creates a new instance of BasisTheory class
+  const { bt } = useBasisTheory('test_1234567890', { elements: true });
+  
+  // bt variable stays undefined until properly initialized
+  if (bt) {
+    // able to call BasisTheory methods
+  }
+  
+  return <BasisTheoryProvider bt={bt}>
+      <MyComponent />
+    </BasisTheoryProvider>;
+}
+
+const MyComponent = () => {
+  // calling this hook with no attributes grabs the BasisTheory instance from Context  
+  const { bt } = useBasisTheory();
+
+  if (bt) {
+    // able to call BasisTheory methods
+  }
+  
+  return <TextElement /> ; // Element will also grab it from the Context
+}
+```
+
+This <a href="https://reactjs.org/docs/context.html" target="_blank">Context Provider</a> is useful for sharing a `BasisTheory` instance in your component tree, making it available for Basis Theory Elements or custom components. 
+
+Attribute  | Required | Type           | Description
+---------- | -------- | -------------- | -----------
+`bt`       | false    | *BasisTheory*  | Instance to be provided in the context. <br>Note: this is not required because initialization happens asynchronously. See [`useBasisTheory`](#usebasistheory).
+
+<aside class="notice">
+  <span>Elements can consume the <code>BasisTheory</code> instance from Context if nested under <code>BasisTheoryProvider</code>, but will prioritize their <code>bt</code> prop over it.</span>
+</aside>

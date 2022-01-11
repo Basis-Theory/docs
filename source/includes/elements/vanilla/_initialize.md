@@ -30,8 +30,19 @@ const bt = await new BasisTheory().init('test_1234567890', { elements: true });
 // use Elements
 ```
 
+Initialize `BasisTheory` with `elements: true` so it dynamically loads **Elements** module.
 
-After [installing](#getting-started-install-sdk) **BasisTheory.js**, simply initialize it with `elements: true` so it dynamically loads **Elements** module.
+Parameter | Required | Type                     | Description
+--------- | -------- | ------------------------ | -----------
+`apiKey`  | true     | *string*                 | The API Key used to identify an [Application](/api-reference#applications).
+`options` | false    | *BasisTheoryInitOptions* | [Options](#initialize-permission-types-basis-theory-init-options) for initializing the `BasisTheory` instance.
+<!-- Options link above looks weird because of how Slate generates them -->
+
+### Basis Theory Init Options
+
+Attribute  | Required | Type       | Description
+---------- | -------- | ---------- | -----------
+`elements` | false    | *boolean*  | Boolean used to indicate whether the `BasisTheory` instance will have Elements capabilities.
 
 <aside class="warning">
   <span>Elements are meant to be used in browser environments only. If you installed <code>BasisTheory.js</code> as a module, make sure the instance that loads elements runs on the browser-side code.</span>

@@ -29,6 +29,10 @@ yarn add @basis-theory/basis-theory-js
 <script src="https://js.basistheory.com"></script> 
 ```
 
+```tsx
+// Check out the Javascript tab
+```
+
 You don't have to install **Elements** as a separate module or include additional script tags besides **BasisTheory.js**. It will dynamically load them from our secure domain, which enables us to keep the highest compliance standards (e.g. PCI compliance).
 
 To install **BasisTheory.js** you can choose either our NPM module or CDN hosted bundle through a `script` tag.
@@ -46,6 +50,9 @@ To install **BasisTheory.js** you can choose either our NPM module or CDN hosted
 </head>
 
 ```
+```tsx
+// Check out the Javascript tab
+```
 
 > Trusted Types
 
@@ -59,6 +66,9 @@ trustedTypes.createPolicy("default", {
     return undefined;
   }
 });
+```
+```tsx
+// Check out the Javascript tab
 ```
 
 If you have a <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP" target="_blank">CSP</a> deployed in your website, you must include the following directives:
