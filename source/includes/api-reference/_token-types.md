@@ -55,24 +55,23 @@ The `token` type is used for general data types that don't require input validat
 
 ## Card Number
 
-| Token Attribute                | Value                                                         |
-|--------------------------------|---------------------------------------------------------------|
-| **Type**                       | `card_number`                                                 |
-| **Default Classification**     | `pci`                                                         |
-| **Default Impact Level**       | `high`                                                        |
-| **Minimum Impact Level**       | `high`                                                        |
-| **Default Restriction Policy** | `mask`                                                        |
-| **Input Validation**           | Luhn-valid, numeric with optional delimiter of `"-"` or `" "` |
-| **Input Length**               | 13 - 19                                                       |
-| **Fingerprinted**              | Yes                                                           |
+| Token Attribute                | Value               |
+|--------------------------------|---------------------|
+| **Type**                       | `card_number`       |
+| **Default Classification**     | `pci`               |
+| **Default Impact Level**       | `high`              |
+| **Minimum Impact Level**       | `high`              |
+| **Default Restriction Policy** | `mask`              |
+| **Input Validation**           | Luhn-valid, numeric |
+| **Input Length**               | 13 - 19             |
+| **Fingerprinted**              | Yes                 |
 
 Examples:
 
-| Input Data          | Masked Value        |
-|---------------------|---------------------|
-| 4242424242424242    | XXXXXXXXXXXX4242    |
-| 4242 4242 4242 4242 | XXXX XXXX XXXX 4242 |
-| 4242-4242-4242-4242 | XXXX-XXXX-XXXX-4242 |
+| Input Data       | Masked Value     |
+|------------------|------------------|
+| 4242424242424242 | XXXXXXXXXXXX4242 |
+| 36227206271667   | XXXXXXXXXX1667   |
 
 
 ## US Bank Account Number
@@ -119,7 +118,7 @@ Examples:
 | **Minimum Impact Level**       | `high`                                   |
 | **Default Restriction Policy** | `mask`                                   |
 | **Input Validation**           | Numeric with optional delimiter of `"-"` |
-| **Input Length**               | 9 digits                                 |
+| **Input Length**               | 9 or 11 with delimiter                   |
 | **Fingerprinted**              | Yes                                      |
 
 Examples:
