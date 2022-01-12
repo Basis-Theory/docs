@@ -686,6 +686,11 @@ html, body {
     &.danger {
       background-color: $aside-danger-bg;
     }
+
+    &.block {
+      border: 1px solid $aside-block-border;
+      border-radius: 9px;
+    }
   }
 
   aside:before {
@@ -707,6 +712,10 @@ html, body {
 
   aside.danger:before {
     @extend %icon-danger;
+  }
+
+  aside.react:before {
+    @extend %icon-react;
   }
 
   .search-highlight {
