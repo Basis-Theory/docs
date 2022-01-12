@@ -10,7 +10,7 @@
 |---------------|---------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------|
 | `id`          | *uuid*                                                        | Unique identifier of the token which can be used to [get a token](#get-a-token)                                              |
 | `tenant_id`   | *uuid*                                                        | The [Tenant](#tenants-tenant-object) ID which owns the token                                                                 |
-| `type`        | *string*                                                      | [Token type](#token-types)                                                                                            |
+| `type`        | *string*                                                      | [Token type](#token-types)                                                                                                   |
 | `data`        | *any*                                                         | Token data                                                                                                                   |
 | `fingerprint` | *string*                                                      | Uniquely identifies the contents of this token. Fingerprints are only available for Atomic Card and Atomic Bank token types. |
 | `privacy`     | *[privacy object](#tokens-token-object-privacy-object)*       | Token Privacy Settings                                                                                                       |
@@ -197,7 +197,7 @@ Create a new token for the Tenant.
 
 | Attribute    | Required | Type                                                          | Default | Description                                                                                                                                                  |
 |--------------|----------|---------------------------------------------------------------|---------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `type`       | true     | *string*                                                      | `null`  | [Token type](#token-types) of the token                                                                                                               |
+| `type`       | true     | *string*                                                      | `null`  | [Token type](#token-types) of the token                                                                                                                      |
 | `data`       | true     | *any*                                                         | `null`  | Token data. Can be an object, array, or any primitive type such as an integer, boolean, or string                                                            |
 | `privacy`    | false    | *[privacy object](#tokens-token-object-privacy-object)*       | `null`  | Token Privacy Settings overrides. Overrides must be a higher specificity level than the default or minimum setting for the [Token Type](#token-token-types). |
 | `metadata`   | false    | *map*                                                         | `null`  | A key-value map of non-sensitive data.                                                                                                                       |
@@ -292,11 +292,11 @@ Get a list of tokens for the Tenant.
 
 ### Query Parameters
 
-| Parameter        | Required | Type    | Default | Description                                                                                                                                                                                                                                                                                             |
-|------------------|----------|---------|---------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `id`             | false    | *array* | `[]`    | An optional list of token ID's to filter the list of tokens by                                                                                                                                                                                                                                          |
-| `type`           | false    | *array* | `[]`    | An optional array of [token types](#token-types) to filter the list of tokens by                                                                                                                                                                                                                 |
-| `metadata.[key]` | false    | *map*   | `{}`    | Map of key-value pairs to filter tokens with matching metadata in the form `?metadata.key1=value1&metadata.key2=value2`. *Note*, `[key]` must be unique and repeated keys will be ignored. Metadata will be searched for a case-insensitive, exact match. Multiple parameters will be `AND`ed together. |
+| Parameter        | Required | Type     | Default | Description                                                                                                                                                                                                                                                                                             |
+|------------------|----------|----------|---------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `id`             | false    | *uuid*   | `null`  | One to many Token IDs to retrieve. Multiple IDs can be passed in the form `?id=<value1>&id=<value2>`.                                                                                                                                                                                                   |
+| `type`           | false    | *string* | `null`  | One to many [token types](#token-types) to filter the list of tokens by. Can be repeated in the form `?type=<value1>&type=<value2>`.                                                                                                                                                                    |
+| `metadata.[key]` | false    | *map*    | `{}`    | Map of key-value pairs to filter tokens with matching metadata in the form `?metadata.key1=value1&metadata.key2=value2`. *Note*, `[key]` must be unique and repeated keys will be ignored. Metadata will be searched for a case-insensitive, exact match. Multiple parameters will be `AND`ed together. |
 
 ### Response
 
@@ -389,10 +389,10 @@ Get a list of decrypted tokens for the Tenant.
 
 ### Query Parameters
 
-| Parameter       | Required | Type      | Default | Description                                                                                                                                                |
-|-----------------|----------|-----------|---------|------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `id`            | false    | *array*   | `[]`    | An optional list of token ID's to filter the list of tokens by                                                                                             |
-| `type`          | false    | *array*   | `[]`    | An optional array of [token types](#token-types) to filter the list of tokens by                                                                    |
+| Parameter       | Required | Type     | Default | Description                                                                                                                          |
+|-----------------|----------|----------|---------|--------------------------------------------------------------------------------------------------------------------------------------|
+| `id`            | false    | *uuid*   | `null`  | One to many Token IDs to retrieve. Multiple IDs can be passed in the form `?id=<value1>&id=<value2>`.                                |
+| `type`          | false    | *string* | `null`  | One to many [token types](#token-types) to filter the list of tokens by. Can be repeated in the form `?type=<value1>&type=<value2>`. |
 
 ### Response
 

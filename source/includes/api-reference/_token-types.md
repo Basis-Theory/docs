@@ -1,7 +1,8 @@
 # Token Types
 
 Basis Theory offers several pre-configured token types for various use-cases and compliance requirements.
-Token Types define the rules around a data type such as validation requirements, data classification and data impact level.
+Token Types define the rules around a data type such as validation requirements, [data classification](#tokens-token-classifications), 
+[data impact level](#tokens-token-impact-levels), and [data restriction policy](#tokens-token-restriction-policies).
 
 - [Token](#token-types-token)
 - [Atomic Card](#token-types-atomic-card)
