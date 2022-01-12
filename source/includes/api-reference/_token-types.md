@@ -118,7 +118,7 @@ Examples:
 | **Minimum Impact Level**       | `high`                                   |
 | **Default Restriction Policy** | `mask`                                   |
 | **Input Validation**           | Numeric with optional delimiter of `"-"` |
-| **Input Length**               | 9 or 11 with delimiter                   |
+| **Input Length**               | 9 (not including delimiting characters)  |
 | **Fingerprinted**              | Yes                                      |
 
 Examples:
