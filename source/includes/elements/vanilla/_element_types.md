@@ -2,7 +2,7 @@
 
 ## Card Element
 
-The `CardElement` element features a full credit card collector containing the following inputs:
+The `"card"` element type features a full credit card collector containing the following inputs:
 
 - *cardNumber*
 - *expirationDate*
@@ -10,4 +10,4 @@ The `CardElement` element features a full credit card collector containing the f
 
 ## Text Element
 
-The `TextElement` element features a regular text input for collecting any input data.
+The `"text"` element type features a regular text input for collecting any input data.

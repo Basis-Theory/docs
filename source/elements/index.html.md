@@ -37,6 +37,10 @@ react_includes:
   - elements/react/package
   - elements/react/use_basis_theory
   - elements/react/basis_theory_provider
+  - elements/react/card_element
+  - elements/react/text_element
+  - elements/react/basis_theory_react
+
 
 aux_links:
   - <a class="toc-h2 toc-link" href="https://discord.gg/NSvXxaW5Fv" target="_blank">Join Discord</a>

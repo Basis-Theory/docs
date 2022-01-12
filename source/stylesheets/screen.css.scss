@@ -96,6 +96,10 @@ html, body {
     margin-bottom: 16px;
   }
 
+  code {
+    @extend %code-font;
+  }
+
   // language selector for mobile devices
   .lang-selector {
     display: none;
@@ -106,6 +110,7 @@ html, body {
       @extend %principal-title-font;
       text-transform: none;
     }
+
   }
 
   .nav-back {
@@ -632,6 +637,12 @@ html, body {
     max-width: 100%;
   }
 
+  a {
+    code {
+      font-weight: inherit;
+    }
+  }
+
   code {
     background-color: $code-bg;
     border-radius: 2px;
@@ -906,6 +917,9 @@ html, body {
       padding: $code-annotation-padding 2em;
       color: $grey-50;
       @extend %code-annotation-font;
+    }
+    code {
+      font-size: inherit;
     }
   }
   .header-border {
