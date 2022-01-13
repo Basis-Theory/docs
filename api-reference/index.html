@@ -609,13 +609,36 @@
                 </ul>
             </li>
             <li>
+              <a href="#token-types" class="toc-h1 toc-link" data-title="Token Types">Token Types</a>
+                <ul class="toc-list-h2">
+                    <li>
+                      <a href="#token-types-token" class="toc-h2 toc-link" data-title="Token">Token</a>
+                    </li>
+                    <li>
+                      <a href="#token-types-atomic-card" class="toc-h2 toc-link" data-title="Atomic Card">Atomic Card</a>
+                    </li>
+                    <li>
+                      <a href="#token-types-atomic-bank" class="toc-h2 toc-link" data-title="Atomic Bank">Atomic Bank</a>
+                    </li>
+                    <li>
+                      <a href="#token-types-card-number" class="toc-h2 toc-link" data-title="Card Number">Card Number</a>
+                    </li>
+                    <li>
+                      <a href="#token-types-us-bank-account-number" class="toc-h2 toc-link" data-title="US Bank Account Number">US Bank Account Number</a>
+                    </li>
+                    <li>
+                      <a href="#token-types-us-bank-routing-number" class="toc-h2 toc-link" data-title="US Bank Routing Number">US Bank Routing Number</a>
+                    </li>
+                    <li>
+                      <a href="#token-types-social-security-number" class="toc-h2 toc-link" data-title="Social Security Number">Social Security Number</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
               <a href="#tokens" class="toc-h1 toc-link" data-title="Tokens">Tokens</a>
                 <ul class="toc-list-h2">
                     <li>
                       <a href="#tokens-token-object" class="toc-h2 toc-link" data-title="Token Object">Token Object</a>
-                    </li>
-                    <li>
-                      <a href="#tokens-token-types" class="toc-h2 toc-link" data-title="Token Types">Token Types</a>
                     </li>
                     <li>
                       <a href="#tokens-token-classifications" class="toc-h2 toc-link" data-title="Token Classifications">Token Classifications</a>
@@ -1743,7 +1766,7 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
 <tr>
 <td><code>type</code></td>
 <td><em>string</em></td>
-<td><code>Bank</code> <a href="#tokens-token-types">token type</a></td>
+<td><code>Bank</code> <a href="#token-types">token type</a></td>
 </tr>
 <tr>
 <td><code>bank</code></td>
@@ -2414,7 +2437,7 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
 <tr>
 <td><code>type</code></td>
 <td><em>string</em></td>
-<td><code>Card</code> <a href="#tokens-token-types">token type</a></td>
+<td><code>Card</code> <a href="#token-types">token type</a></td>
 </tr>
 <tr>
 <td><code>card</code></td>
@@ -3570,7 +3593,7 @@ given a token:</p>
 <tr>
 <td><code>source_token_type</code></td>
 <td><em>string</em></td>
-<td><a href="#tokens-token-types">Source token type</a> of the Reactor Formula</td>
+<td><a href="#token-types">Source token type</a> of the Reactor Formula</td>
 </tr>
 <tr>
 <td><code>icon</code></td>
@@ -3947,7 +3970,7 @@ given a token:</p>
 <td>true</td>
 <td><em>string</em></td>
 <td><code>null</code></td>
-<td><a href="#tokens-token-types">Source token type</a> of the Reactor Formula</td>
+<td><a href="#token-types">Source token type</a> of the Reactor Formula</td>
 </tr>
 <tr>
 <td><code>icon</code></td>
@@ -4087,7 +4110,7 @@ given a token:</p>
 <td>false</td>
 <td><em>string</em></td>
 <td><code>null</code></td>
-<td>Filter Reactor Formulas by <a href="#tokens-token-types">source token type</a></td>
+<td>Filter Reactor Formulas by <a href="#token-types">source token type</a></td>
 </tr>
 </tbody></table>
 <h3 id='reactor-formulas-list-reactor-formulas-response'>Response</h3>
@@ -4432,7 +4455,7 @@ given a token:</p>
 <td>true</td>
 <td><em>string</em></td>
 <td><code>null</code></td>
-<td><a href="#tokens-token-types">Source token type</a> of the Reactor Formula</td>
+<td><a href="#token-types">Source token type</a> of the Reactor Formula</td>
 </tr>
 <tr>
 <td><code>icon</code></td>
@@ -4753,7 +4776,7 @@ given a token:</p>
 <td>false</td>
 <td><em>string</em></td>
 <td><code>null</code></td>
-<td>Filter reactors by Reactor Formulas <a href="#tokens-token-types">source token type</a></td>
+<td>Filter reactors by Reactor Formulas <a href="#token-types">source token type</a></td>
 </tr>
 </tbody></table>
 <h3 id='reactors-list-reactors-response'>Response</h3>
@@ -5051,7 +5074,7 @@ given a token:</p>
 <tr>
 <td><code>metrics_by_type</code></td>
 <td><em>map&lt;string, <a href="#tenants-token-type-metrics-object">TokenTypeMetrics</a>&gt;</em></td>
-<td>Token Metrics by <a href="#tokens-token-types">TokenType</a></td>
+<td>Token Metrics by <a href="#token-types">TokenType</a></td>
 </tr>
 <tr>
 <td><code>included_monthly_active_tokens</code></td>
@@ -5281,6 +5304,344 @@ given a token:</p>
 </p>
 <h3 id='tenants-get-tenant-usage-report-response'>Response</h3>
 <p>Returns a <a href="#tenants-tenant-usage-report-object">Tenant Usage Report</a> for the provided <code>BT-API-KEY</code>. Returns <a href="#errors">an error</a> if the Tenant Usage Report could not be retrieved.</p>
+<h1 id='token-types'>Token Types</h1>
+<p>Basis Theory offers several pre-configured token types for various use-cases and compliance requirements.
+Token Types define the rules around a data type such as validation requirements, <a href="#tokens-token-classifications">data classification</a>, 
+<a href="#tokens-token-impact-levels">data impact level</a>, and <a href="#tokens-token-restriction-policies">data restriction policy</a>.</p>
+
+<ul>
+<li><a href="#token-types-token">Token</a></li>
+<li><a href="#token-types-atomic-card">Atomic Card</a></li>
+<li><a href="#token-types-atomic-bank">Atomic Bank</a></li>
+<li><a href="#token-types-card-number">Card Number</a></li>
+<li><a href="#token-types-us-bank-account-number">US Bank Account Number</a></li>
+<li><a href="#token-types-us-bank-routing-number">US Bank Routing Number</a></li>
+<li><a href="#token-types-social-security-number">Social Security Number</a></li>
+</ul>
+<h2 id='token-types-token'>Token</h2>
+<p>The <code>token</code> type is used for general data types that don&#39;t require input validation or formatting restrictions.</p>
+
+<table><thead>
+<tr>
+<th>Token Attribute</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>Type</strong></td>
+<td><code>token</code></td>
+</tr>
+<tr>
+<td><strong>Default Classification</strong></td>
+<td><code>general</code></td>
+</tr>
+<tr>
+<td><strong>Default Impact Level</strong></td>
+<td><code>high</code></td>
+</tr>
+<tr>
+<td><strong>Minimum Impact Level</strong></td>
+<td><code>low</code></td>
+</tr>
+<tr>
+<td><strong>Default Restriction Policy</strong></td>
+<td><code>redact</code></td>
+</tr>
+<tr>
+<td><strong>Input Validation</strong></td>
+<td>None</td>
+</tr>
+<tr>
+<td><strong>Input Length</strong></td>
+<td>Any</td>
+</tr>
+<tr>
+<td><strong>Fingerprinted</strong></td>
+<td>No</td>
+</tr>
+</tbody></table>
+<h2 id='token-types-atomic-card'>Atomic Card</h2>
+<table><thead>
+<tr>
+<th>Token Attribute</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>Type</strong></td>
+<td><code>card</code></td>
+</tr>
+<tr>
+<td><strong>Default Classification</strong></td>
+<td><code>pci</code></td>
+</tr>
+<tr>
+<td><strong>Default Impact Level</strong></td>
+<td><code>high</code></td>
+</tr>
+<tr>
+<td><strong>Minimum Impact Level</strong></td>
+<td><code>high</code></td>
+</tr>
+<tr>
+<td><strong>Default Restriction Policy</strong></td>
+<td><code>mask</code></td>
+</tr>
+<tr>
+<td><strong>Input Validation</strong></td>
+<td>See <a href="#atomic-cards-card-object">Card Object</a> for validation requirements</td>
+</tr>
+<tr>
+<td><strong>Fingerprinted</strong></td>
+<td>Yes</td>
+</tr>
+</tbody></table>
+<h2 id='token-types-atomic-bank'>Atomic Bank</h2>
+<table><thead>
+<tr>
+<th>Token Attribute</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>Type</strong></td>
+<td><code>bank</code></td>
+</tr>
+<tr>
+<td><strong>Default Classification</strong></td>
+<td><code>bank</code></td>
+</tr>
+<tr>
+<td><strong>Default Impact Level</strong></td>
+<td><code>high</code></td>
+</tr>
+<tr>
+<td><strong>Minimum Impact Level</strong></td>
+<td><code>high</code></td>
+</tr>
+<tr>
+<td><strong>Default Restriction Policy</strong></td>
+<td><code>mask</code></td>
+</tr>
+<tr>
+<td><strong>Input Validation</strong></td>
+<td>See <a href="#atomic-banks-bank-object">Bank Object</a> for validation requirements</td>
+</tr>
+<tr>
+<td><strong>Fingerprinted</strong></td>
+<td>Yes</td>
+</tr>
+</tbody></table>
+<h2 id='token-types-card-number'>Card Number</h2>
+<table><thead>
+<tr>
+<th>Token Attribute</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>Type</strong></td>
+<td><code>card_number</code></td>
+</tr>
+<tr>
+<td><strong>Default Classification</strong></td>
+<td><code>pci</code></td>
+</tr>
+<tr>
+<td><strong>Default Impact Level</strong></td>
+<td><code>high</code></td>
+</tr>
+<tr>
+<td><strong>Minimum Impact Level</strong></td>
+<td><code>high</code></td>
+</tr>
+<tr>
+<td><strong>Default Restriction Policy</strong></td>
+<td><code>mask</code></td>
+</tr>
+<tr>
+<td><strong>Input Validation</strong></td>
+<td>Luhn-valid, numeric</td>
+</tr>
+<tr>
+<td><strong>Input Length</strong></td>
+<td>13 - 19</td>
+</tr>
+<tr>
+<td><strong>Fingerprinted</strong></td>
+<td>Yes</td>
+</tr>
+</tbody></table>
+
+<p>Examples:</p>
+
+<table><thead>
+<tr>
+<th>Input Data</th>
+<th>Masked Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>4242424242424242</td>
+<td>XXXXXXXXXXXX4242</td>
+</tr>
+<tr>
+<td>36227206271667</td>
+<td>XXXXXXXXXX1667</td>
+</tr>
+</tbody></table>
+<h2 id='token-types-us-bank-account-number'>US Bank Account Number</h2>
+<table><thead>
+<tr>
+<th>Token Attribute</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>Type</strong></td>
+<td><code>us_bank_account_number</code></td>
+</tr>
+<tr>
+<td><strong>Default Classification</strong></td>
+<td><code>bank</code></td>
+</tr>
+<tr>
+<td><strong>Default Impact Level</strong></td>
+<td><code>high</code></td>
+</tr>
+<tr>
+<td><strong>Minimum Impact Level</strong></td>
+<td><code>high</code></td>
+</tr>
+<tr>
+<td><strong>Default Restriction Policy</strong></td>
+<td><code>mask</code></td>
+</tr>
+<tr>
+<td><strong>Input Validation</strong></td>
+<td>Numeric</td>
+</tr>
+<tr>
+<td><strong>Input Length</strong></td>
+<td>3 - 17</td>
+</tr>
+<tr>
+<td><strong>Fingerprinted</strong></td>
+<td>Yes</td>
+</tr>
+</tbody></table>
+
+<p>Examples: </p>
+
+<table><thead>
+<tr>
+<th>Input Data</th>
+<th>Masked Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>1234567890</td>
+<td>XXXXXX7890</td>
+</tr>
+</tbody></table>
+<h2 id='token-types-us-bank-routing-number'>US Bank Routing Number</h2>
+<table><thead>
+<tr>
+<th>Token Attribute</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>Type</strong></td>
+<td><code>us_bank_routing_number</code></td>
+</tr>
+<tr>
+<td><strong>Default Classification</strong></td>
+<td><code>bank</code></td>
+</tr>
+<tr>
+<td><strong>Default Impact Level</strong></td>
+<td><code>low</code></td>
+</tr>
+<tr>
+<td><strong>Minimum Impact Level</strong></td>
+<td><code>low</code></td>
+</tr>
+<tr>
+<td><strong>Default Restriction Policy</strong></td>
+<td><code>redact</code></td>
+</tr>
+<tr>
+<td><strong>Input Validation</strong></td>
+<td>Numeric, ABA-valid</td>
+</tr>
+<tr>
+<td><strong>Input Length</strong></td>
+<td>9</td>
+</tr>
+<tr>
+<td><strong>Fingerprinted</strong></td>
+<td>Yes</td>
+</tr>
+</tbody></table>
+<h2 id='token-types-social-security-number'>Social Security Number</h2>
+<table><thead>
+<tr>
+<th>Token Attribute</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>Type</strong></td>
+<td><code>social_security_number</code></td>
+</tr>
+<tr>
+<td><strong>Default Classification</strong></td>
+<td><code>pii</code></td>
+</tr>
+<tr>
+<td><strong>Default Impact Level</strong></td>
+<td><code>high</code></td>
+</tr>
+<tr>
+<td><strong>Minimum Impact Level</strong></td>
+<td><code>high</code></td>
+</tr>
+<tr>
+<td><strong>Default Restriction Policy</strong></td>
+<td><code>mask</code></td>
+</tr>
+<tr>
+<td><strong>Input Validation</strong></td>
+<td>Numeric with optional delimiter of <code>&quot;-&quot;</code></td>
+</tr>
+<tr>
+<td><strong>Input Length</strong></td>
+<td>9 (not including delimiting characters)</td>
+</tr>
+<tr>
+<td><strong>Fingerprinted</strong></td>
+<td>Yes</td>
+</tr>
+</tbody></table>
+
+<p>Examples:</p>
+
+<table><thead>
+<tr>
+<th>Input Data</th>
+<th>Masked Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>123456789</td>
+<td>XXXXX6789</td>
+</tr>
+<tr>
+<td>123-45-6789</td>
+<td>XXX-XX-6789</td>
+</tr>
+</tbody></table>
 <h1 id='tokens'>Tokens</h1>
 <aside class="notice">
   <span>Want to understand how to own the encryption of your data? Checkout the <a href="https://guides.basistheory.com/guides/own-your-encryption-keys/" target="_blank">Own Your Encryption Keys Guide</a> and our <a href="/encryption">Encryption Reference Documentation</a>.</span>
@@ -5306,7 +5667,7 @@ given a token:</p>
 <tr>
 <td><code>type</code></td>
 <td><em>string</em></td>
-<td><a href="#tokens-token-types">Token type</a></td>
+<td><a href="#token-types">Token type</a></td>
 </tr>
 <tr>
 <td><code>data</code></td>
@@ -5402,7 +5763,7 @@ given a token:</p>
 </tr>
 </tbody></table>
 <h3 id='tokens-token-object-privacy-object'>Privacy Object</h3>
-<p>Token Privacy defines the privacy settings applied to a Token. By default, privacy settings will be applied based on the <a href="#tokens-token-types">Token Type</a>.
+<p>Token Privacy defines the privacy settings applied to a Token. By default, privacy settings will be applied based on the <a href="#token-types">Token Type</a>.
 Default privacy settings can be overridden at the time of creation, but only to a setting with a higher specificity level.</p>
 
 <table><thead>
@@ -5426,46 +5787,6 @@ Default privacy settings can be overridden at the time of creation, but only to 
 <td><code>restriction_policy</code></td>
 <td><em>string</em></td>
 <td><a href="#tokens-token-restriction-policies">Restriction policy</a> applied to the Token when read by a User or Application with read permissions at a lower impact level (i.e. <code>mask</code>, <code>redact</code>)</td>
-</tr>
-</tbody></table>
-<h2 id='tokens-token-types'>Token Types</h2>
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-<th>Default Classification</th>
-<th>Default Impact Level</th>
-<th>Minimum Impact Level</th>
-<th>Default Restriction Policy</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Token</td>
-<td><code>token</code></td>
-<td>Generic token type</td>
-<td><code>general</code></td>
-<td><code>high</code></td>
-<td><code>low</code></td>
-<td><code>redact</code></td>
-</tr>
-<tr>
-<td>Card</td>
-<td><code>card</code></td>
-<td><a href="#atomic-cards">Atomic card</a> token type</td>
-<td><code>pci</code></td>
-<td><code>high</code></td>
-<td><code>high</code></td>
-<td><code>mask</code></td>
-</tr>
-<tr>
-<td>Bank</td>
-<td><code>bank</code></td>
-<td><a href="#atomic-banks">Atomic bank</a> token type</td>
-<td><code>bank</code></td>
-<td><code>high</code></td>
-<td><code>high</code></td>
-<td><code>mask</code></td>
 </tr>
 </tbody></table>
 <h2 id='tokens-token-classifications'>Token Classifications</h2>
@@ -5655,7 +5976,7 @@ with permission to read the Token&#39;s classification but at a lower impact lev
 <td>true</td>
 <td><em>string</em></td>
 <td><code>null</code></td>
-<td><a href="#tokens-token-types">Token type</a> of the token</td>
+<td><a href="#token-types">Token type</a> of the token</td>
 </tr>
 <tr>
 <td><code>data</code></td>
@@ -5766,16 +6087,16 @@ with permission to read the Token&#39;s classification but at a lower impact lev
 <tr>
 <td><code>id</code></td>
 <td>false</td>
-<td><em>array</em></td>
-<td><code>[]</code></td>
-<td>An optional list of token ID&#39;s to filter the list of tokens by</td>
+<td><em>uuid</em></td>
+<td><code>null</code></td>
+<td>One to many Token IDs to retrieve. Multiple IDs can be passed in the form <code>?id=&lt;value1&gt;&amp;id=&lt;value2&gt;</code>.</td>
 </tr>
 <tr>
 <td><code>type</code></td>
 <td>false</td>
-<td><em>array</em></td>
-<td><code>[]</code></td>
-<td>An optional array of <a href="#tokens-token-types">token types</a> to filter the list of tokens by</td>
+<td><em>string</em></td>
+<td><code>null</code></td>
+<td>One to many <a href="#token-types">token types</a> to filter the list of tokens by. Can be repeated in the form <code>?type=&lt;value1&gt;&amp;type=&lt;value2&gt;</code>.</td>
 </tr>
 <tr>
 <td><code>metadata.[key]</code></td>
@@ -5868,16 +6189,16 @@ Providing any query parameters will filter the results. Returns <a href="#errors
 <tr>
 <td><code>id</code></td>
 <td>false</td>
-<td><em>array</em></td>
-<td><code>[]</code></td>
-<td>An optional list of token ID&#39;s to filter the list of tokens by</td>
+<td><em>uuid</em></td>
+<td><code>null</code></td>
+<td>One to many Token IDs to retrieve. Multiple IDs can be passed in the form <code>?id=&lt;value1&gt;&amp;id=&lt;value2&gt;</code>.</td>
 </tr>
 <tr>
 <td><code>type</code></td>
 <td>false</td>
-<td><em>array</em></td>
-<td><code>[]</code></td>
-<td>An optional array of <a href="#tokens-token-types">token types</a> to filter the list of tokens by</td>
+<td><em>string</em></td>
+<td><code>null</code></td>
+<td>One to many <a href="#token-types">token types</a> to filter the list of tokens by. Can be repeated in the form <code>?type=&lt;value1&gt;&amp;type=&lt;value2&gt;</code>.</td>
 </tr>
 </tbody></table>
 <h3 id='tokens-list-decrypted-tokens-span-class-deprecated-menu-deprecated-span-response'>Response</h3>
@@ -6332,7 +6653,7 @@ permission based on the parent token&#39;s privacy settings.</p>
 <td>true</td>
 <td><em>string</em></td>
 <td><code>null</code></td>
-<td><a href="#tokens-token-types">Token type</a> of the token</td>
+<td><a href="#token-types">Token type</a> of the token</td>
 </tr>
 <tr>
 <td><code>data</code></td>
@@ -6460,13 +6781,13 @@ permission based on the parent token&#39;s privacy settings.</p>
 <td>false</td>
 <td><em>array</em></td>
 <td><code>[]</code></td>
-<td>An optional array of <a href="#tokens-token-types">token types</a> to filter the list of child tokens by</td>
+<td>An optional array of <a href="#token-types">token types</a> to filter the list of child tokens by</td>
 </tr>
 </tbody></table>
 <h3 id='token-associations-list-child-tokens-for-a-token-response'>Response</h3>
 <p>Returns a <a href="#pagination">paginated object</a> with the <code>data</code> property containing an array of <a href="#tokens-token-object">child tokens</a> for the parent token. Providing any query parameters will filter the child tokens. Returns <a href="#errors">an error</a> if tokens could not be retrieved.</p>
 <h1 id='tokenize'>Tokenize</h1>
-<p>The <code>tokenize</code> endpoint enables you to tokenize any request and tokenize several <a href="#tokens-token-types">types of tokens</a> in the same request. It can be utilized to combine multiple API calls into a single request to match your current data structure or bulk token creation.</p>
+<p>The <code>tokenize</code> endpoint enables you to tokenize any request and tokenize several <a href="#token-types">types of tokens</a> in the same request. It can be utilized to combine multiple API calls into a single request to match your current data structure or bulk token creation.</p>
 
 <blockquote>
 <p>Create Basic Token Request</p>
