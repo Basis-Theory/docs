@@ -9,6 +9,7 @@ const App = () => {
   // creates a new instance of BasisTheory class
   const { bt, error } = useBasisTheory('test_1234567890', { elements: true });
   
+  // instance stays undefined during initialization
   if (bt) {
     // able to call BasisTheory methods
   }

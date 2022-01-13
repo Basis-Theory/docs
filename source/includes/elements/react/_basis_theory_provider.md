@@ -11,7 +11,6 @@ const App = () => {
   // creates a new instance of BasisTheory class
   const { bt } = useBasisTheory('test_1234567890', { elements: true });
   
-  // bt variable stays undefined until properly initialized
   if (bt) {
     // able to call BasisTheory methods
   }
@@ -35,9 +34,9 @@ const MyComponent = () => {
 
 This <a href="https://reactjs.org/docs/context.html" target="_blank">Context Provider</a> shares a `BasisTheory` instance to your component tree, making it available for Basis Theory Elements or other custom components. 
 
-Property   | Required | Type           | Description
----------- | -------- | -------------- | -----------
-`bt`       | false    | *BasisTheory*  | Instance to be provided in the context. <br><i>Note: this is not required because initialization happens asynchronously. See [`useBasisTheory`](#usebasistheory).</i>
+Property   | Required | Type                | Description
+---------- | -------- | ------------------- | -----------
+`bt`       | false    | *BasisTheoryReact*  | [Instance](#basistheoryreact) to be provided in the context. <br><i>Note: this is not required because initialization happens asynchronously. See [`useBasisTheory`](#usebasistheory).</i>
 
 <aside class="notice">
   <span>Elements will prioritize the <code>BasisTheory</code> instance passed to it's own <code>bt</code> property over an instance passed in to a parent <code>BasisTheoryProvider</code>.</span>
