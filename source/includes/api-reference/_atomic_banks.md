@@ -6,7 +6,7 @@
 |---------------|--------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------|
 | `id`          | *uuid*                                                 | Unique identifier of the token which can be used to [get an Atomic Bank](#atomic-banks-get-an-atomic-bank)                    |
 | `tenant_id`   | *uuid*                                                 | The [Tenant](#tenants) ID which owns the bank                                                                                 |
-| `type`        | *string*                                               | `Bank` [token type](#tokens-token-types)                                                                                      |
+| `type`        | *string*                                               | `Bank` [token type](#token-types)                                                                                      |
 | `bank`        | *[bank](#atomic-banks-atomic-bank-object-bank-object)* | Bank data                                                                                                                     |
 | `fingerprint` | *string*                                               | Uniquely identifies this particular bank account. You can use this attribute to check whether two bank accounts are the same. |
 | `metadata`    | *map*                                                  | A key-value map of non-sensitive data.                                                                                        |

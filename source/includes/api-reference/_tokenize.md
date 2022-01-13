@@ -1,6 +1,6 @@
 # Tokenize
 
-The `tokenize` endpoint enables you to tokenize any request and tokenize several [types of tokens](#tokens-token-types) in the same request. It can be utilized to combine multiple API calls into a single request to match your current data structure or bulk token creation.
+The `tokenize` endpoint enables you to tokenize any request and tokenize several [types of tokens](#token-types) in the same request. It can be utilized to combine multiple API calls into a single request to match your current data structure or bulk token creation.
 
 
 > Create Basic Token Request
