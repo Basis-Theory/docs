@@ -36,7 +36,7 @@ Gets the underlying Element instance to be used for tokenization. Returns `undef
 
 Parameter | Required | Type      | Description
 --------- | -------- | --------- | ------------
-`id`      | true     | *string*  | The Element's required `id` property
+`id`      | true     | *string*  | The `id` of the Element instance
 
 <aside class="warning">
   <span>When using React, it is not recommended to directly call lifecycle methods from the Element instance returned by the <code>getElement</code> method.</span>
