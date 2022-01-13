@@ -10,7 +10,7 @@ const MyForm = () => {
 }
 ```
 
-`TextElement` <a href="https://reactjs.org/docs/components-and-props.html" target="_blank">component</a> features a regular text input for collecting any input data, by wrapping the [text element type](#element-types-text-element) functionality and taking care of its lifecycle.
+`TextElement` <a href="https://reactjs.org/docs/components-and-props.html" target="_blank">component</a> features a regular text input for collecting any input data, by wrapping the [text element type](#element-types-text-element) functionality and taking care of the React lifecycle.
 
 
 Property      | Required | Type                 | Updatable | Description

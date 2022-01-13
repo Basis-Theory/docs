@@ -33,12 +33,12 @@ const MyComponent = () => {
 }
 ```
 
-This <a href="https://reactjs.org/docs/context.html" target="_blank">Context Provider</a> is useful for sharing a `BasisTheory` instance in your component tree, making it available for Basis Theory Elements or custom components. 
+This <a href="https://reactjs.org/docs/context.html" target="_blank">Context Provider</a> shares a `BasisTheory` instance to your component tree, making it available for Basis Theory Elements or other custom components. 
 
 Property   | Required | Type           | Description
 ---------- | -------- | -------------- | -----------
 `bt`       | false    | *BasisTheory*  | Instance to be provided in the context. <br><i>Note: this is not required because initialization happens asynchronously. See [`useBasisTheory`](#usebasistheory).</i>
 
 <aside class="notice">
-  <span>Elements can consume the <code>BasisTheory</code> instance from Context if nested under <code>BasisTheoryProvider</code>, but will prioritize their <code>bt</code> prop over it.</span>
+  <span>Elements will prioritize the <code>BasisTheory</code> instance passed to it's own <code>bt</code> property over an instance passed in to a parent <code>BasisTheoryProvider</code>.</span>
 </aside>

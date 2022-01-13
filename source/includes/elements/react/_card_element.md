@@ -10,7 +10,7 @@ const MyForm = () => {
 }
 ```
 
-`CardElement` <a href="https://reactjs.org/docs/components-and-props.html" target="_blank">component</a> features a full credit card collector, by wrapping the [card element type](#element-types-card-element) functionality and taking care of its lifecycle.
+`CardElement` <a href="https://reactjs.org/docs/components-and-props.html" target="_blank">component</a> features a full credit card form, wrapping the [card element type](#element-types-card-element) functionality and taking care of the React lifecycle.
 
 
 Property    | Required | Type           | Updatable | Description
