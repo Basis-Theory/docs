@@ -33,7 +33,7 @@ Our SDKs enable you to quickly and easily integrate with the API. Select one of 
 
 <aside class="block react">
   <span>
-    If you are a React user, we got you covered! Basis Theory has a React package wherewith you can make API calls from the browser with minimal setup. <a href="/elements#react-package">Go check it out</a>.
+Is your project using React? We got you covered! Basis Theory's React package enables you to use Elements and make API calls natively in React with minimal setup. <a href="/elements#react-package">Go check it out</a>.
   </span>
 </aside>
 

@@ -1,6 +1,6 @@
 # BasisTheoryReact
 
-`BasisTheoryReact` adds React-specific capabilities on top of `BasisTheory` class. All [API features](/api-reference) and [Elements Services](#elements-services) are still available, plus the methods below.
+`BasisTheoryReact` adds React-specific capabilities on top of the `BasisTheory` class. All [API features](/api-reference) and [Elements Services](#elements-services) are still available, plus the methods below.
 
 ## getElement
 
@@ -32,7 +32,7 @@ const MyForm = () => {
 }
 ```
 
-Gets the underlying Element instance to be used for tokenization. Returns `undefined` if can't match an Element with the provided `id`.
+Gets the underlying Element instance to be used for tokenization. Returns `undefined` if an Element with the provided `id` does not exist.
 
 Parameter | Required | Type      | Description
 --------- | -------- | --------- | ------------

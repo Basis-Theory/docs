@@ -32,8 +32,8 @@ It returns an object containing:
 Attribute  | Type                                  | Description
 ---------- | ------------------------------------- | -----------
 `bt`       | *BasisTheoryReact* &#124; *undefined* | [Enhanced `BasisTheory` instance](#basistheoryreact) to be provided in the context. <br><i>Note: this stays `undefined` during `BasisTheory` initialization, so you don't have to deal with `Promise` handling in your components code.</i>
-`error`    | *any* &#124; *undefined*              | Holds any initialization errors, i.e.: bad API key.
+`error`    | *any* &#124; *undefined*              | Holds any initialization errors (e.g. bad API key).
 
 <aside class="notice">
-  <span>Make sure your API key refers to the correct <a href="/api-reference#applications-application-types">Application Type</a> for the intended use.</span>
+  <span>Make sure your API key has an `Elements` or `Client-side Application` <a href="/api-reference#applications-application-types">Application Type</a>.</span>
 </aside>
