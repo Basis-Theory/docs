@@ -1,3 +1,10 @@
+# [1.25.0](https://github.com/Basis-Theory/docs/compare/v1.24.0...v1.25.0) (2022-01-13)
+
+
+### Features
+
+* add new Token Types section and document new types ([#142](https://github.com/Basis-Theory/docs/issues/142)) ([feee147](https://github.com/Basis-Theory/docs/commit/feee1477cbe17cc076dcba5c2ce842dd0336db38))
+
 # [1.24.0](https://github.com/Basis-Theory/docs/compare/v1.23.0...v1.24.0) (2022-01-11)
 
 

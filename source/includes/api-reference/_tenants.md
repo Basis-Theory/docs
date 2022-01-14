@@ -5,36 +5,36 @@ Tenants provide a way to logically group your Applications and tokens. Common us
 
 ## Tenant Object
 
-Attribute | Type | Description
---------- | ---- | -----------
-`id` | *uuid* | Unique identifier of the Tenants
-`owner_id` | *uuid* | The user ID which owns the Tenants
-`name` | *string* | The name of the Tenants
-`created_by` | *uuid* | (Optional) The ID of the user that created the Tenant
-`created_at` | *date* | (Optional) Created date of the Tenant in ISO 8601 format
-`modified_by` | *uuid* | (Optional) The ID of the user or [Application](#applications) that last modified the Tenant
-`modified_at` | *date* | (Optional) Last modified date of the Tenant in ISO 8601 format
+| Attribute     | Type     | Description                                                                                 |
+|---------------|----------|---------------------------------------------------------------------------------------------|
+| `id`          | *uuid*   | Unique identifier of the Tenants                                                            |
+| `owner_id`    | *uuid*   | The user ID which owns the Tenants                                                          |
+| `name`        | *string* | The name of the Tenants                                                                     |
+| `created_by`  | *uuid*   | (Optional) The ID of the user that created the Tenant                                       |
+| `created_at`  | *date*   | (Optional) Created date of the Tenant in ISO 8601 format                                    |
+| `modified_by` | *uuid*   | (Optional) The ID of the user or [Application](#applications) that last modified the Tenant |
+| `modified_at` | *date*   | (Optional) Last modified date of the Tenant in ISO 8601 format                              |
 
 ## Tenant Usage Report Object
 
-Attribute | Type | Description
---------- | ---- | -----------
-`token_report` | [Token Report](#tenants-token-report-object) | Token Usage Report for Tenant
+| Attribute      | Type                                         | Description                   |
+|----------------|----------------------------------------------|-------------------------------|
+| `token_report` | [Token Report](#tenants-token-report-object) | Token Usage Report for Tenant |
 
 ## Token Report Object
 
-Attribute | Type | Description
---------- | ---- | -----------
-`metrics_by_type` | *map\<string, [TokenTypeMetrics](#tenants-token-type-metrics-object)\>* | Token Metrics by [TokenType](#tokens-token-types)
-`included_monthly_active_tokens` | *long* | Number of included monthly active tokens for the billing plan
-`monthly_active_tokens` | *long* | Number of tokens that have been created, read, updated, or decrypted in the current month
+| Attribute                        | Type                                                                    | Description                                                                               |
+|----------------------------------|-------------------------------------------------------------------------|-------------------------------------------------------------------------------------------|
+| `metrics_by_type`                | *map\<string, [TokenTypeMetrics](#tenants-token-type-metrics-object)\>* | Token Metrics by [TokenType](#token-types)                                                |
+| `included_monthly_active_tokens` | *long*                                                                  | Number of included monthly active tokens for the billing plan                             |
+| `monthly_active_tokens`          | *long*                                                                  | Number of tokens that have been created, read, updated, or decrypted in the current month |
 
 ## Token Type Metrics Object
 
-Attribute | Type | Description
---------- | ---- | -----------
-`count` | *long* | Number of tokens
-`last_created_at` | *date* | (Optional) Last created date in ISO 8601 format
+| Attribute         | Type   | Description                                     |
+|-------------------|--------|-------------------------------------------------|
+| `count`           | *long* | Number of tokens                                |
+| `last_created_at` | *date* | (Optional) Last created date in ISO 8601 format |
 
 ## Get a Tenant
 
@@ -164,9 +164,9 @@ Update the Tenant associated with the provided `BT-API-KEY`.
 
 ### Request Parameters
 
-Attribute | Required | Type | Default | Description
---------- | -------- | ---- | ------- | -----------
-`name` | true | *string* | `null` | The name of the Tenant. Has a maximum length of `200`
+| Attribute | Required | Type     | Default | Description                                           |
+|-----------|----------|----------|---------|-------------------------------------------------------|
+| `name`    | true     | *string* | `null`  | The name of the Tenant. Has a maximum length of `200` |
 
 ### Response
 

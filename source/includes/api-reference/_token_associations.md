@@ -224,7 +224,7 @@ permission based on the parent token's privacy settings.
 
 | Attribute    | Required | Type                                                          | Default | Description                                           |
 |--------------|----------|---------------------------------------------------------------|---------|-------------------------------------------------------|
-| `type`       | true     | *string*                                                      | `null`  | [Token type](#tokens-token-types) of the token        |
+| `type`       | true     | *string*                                                      | `null`  | [Token type](#token-types) of the token        |
 | `data`       | true     | *any*                                                         | `null`  | Token data                                            |
 | `privacy`    | false    | *[privacy object](#tokens-token-object-privacy-object)*       | `null`  | Token Privacy Settings                                |
 | `metadata`   | false    | *map*                                                         | `null`  | A key-value map of non-sensitive data.                |
@@ -316,7 +316,7 @@ Get a list of child tokens for a token in the Tenant.
 | Parameter | Required | Type    | Default | Description                                                                                   |
 |-----------|----------|---------|---------|-----------------------------------------------------------------------------------------------|
 | `id`      | false    | *array* | `[]`    | An optional list of token ID's to filter the list of child tokens by                          |
-| `type`    | false    | *array* | `[]`    | An optional array of [token types](#tokens-token-types) to filter the list of child tokens by |
+| `type`    | false    | *array* | `[]`    | An optional array of [token types](#token-types) to filter the list of child tokens by |
 
 ### Response
 
