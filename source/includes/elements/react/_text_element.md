@@ -1,12 +1,42 @@
 # TextElement
 
+> Using `BasisTheoryProvider`
+
 ```jsx
 import {
-  TextElement
-} from '@basis-theory/basis-theory-react/elements';
+  BasisTheoryProvider,
+  TextElement,
+  useBasisTheory
+} from '@basis-theory/basis-theory-react';
 
-const MyForm = () => {  
-  return <TextElement id="myInput" />;
+const App = () => {
+  // creates a new instance of BasisTheory class
+  const { bt } = useBasisTheory('test_1234567890', { elements: true });
+
+  return <BasisTheoryProvider bt={bt}>
+    <MyComponent />
+  </BasisTheoryProvider>;
+}
+
+const MyComponent = () => {
+  return <TextElement id="myInput" /> ; // Element will grab instance from the Context
+}
+```
+
+
+> Using `bt` property
+
+```jsx
+import {
+  TextElement,
+  useBasisTheory
+} from '@basis-theory/basis-theory-react';
+
+const MyComponent = () => {
+  // creates a new instance of BasisTheory class
+  const { bt } = useBasisTheory('test_1234567890', { elements: true });
+  
+  return <TextElement id="myInput" bt={bt} /> ;
 }
 ```
 

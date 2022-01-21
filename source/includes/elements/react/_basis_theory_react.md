@@ -5,8 +5,10 @@
 ## getElement
 
 ```jsx
-import { useBasisTheory } from '@basis-theory/basis-theory-react';
-import { TextElement } from '@basis-theory/basis-theory-react/elements';
+import { 
+  TextElement, 
+  useBasisTheory 
+} from '@basis-theory/basis-theory-react';
 
 const ssnMask = [/\d/, /\d/, /\d/, "-", /\d/, /\d/, "-", /\d/, /\d/, /\d/, /\d/];
 

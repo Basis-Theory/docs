@@ -2,10 +2,10 @@
 
 ```jsx
 import { 
-  useBasisTheory, 
-  BasisTheoryProvider
+  BasisTheoryProvider,
+  TextElement,
+  useBasisTheory
 } from '@basis-theory/basis-theory-react';
-import { TextElement } from '@basis-theory/basis-theory-react/elements';
 
 const App = () => {
   // creates a new instance of BasisTheory class
@@ -21,7 +21,7 @@ const App = () => {
 }
 
 const MyComponent = () => {
-  // calling this hook with no attributes grabs the BasisTheory instance from Context  
+  // calling this hook with no attributes grabs the instance from Context  
   const { bt } = useBasisTheory();
 
   if (bt) {
@@ -32,7 +32,7 @@ const MyComponent = () => {
 }
 ```
 
-This <a href="https://reactjs.org/docs/context.html" target="_blank">Context Provider</a> shares a `BasisTheory` instance to your component tree, making it available for Basis Theory Elements or other custom components. 
+This <a href="https://reactjs.org/docs/context.html" target="_blank">Context Provider</a> shares a [`BasisTheoryReact`](#basistheoryreact) instance to your component tree, making it available for Basis Theory Elements or other custom components. 
 
 Property   | Required | Type                | Description
 ---------- | -------- | ------------------- | -----------

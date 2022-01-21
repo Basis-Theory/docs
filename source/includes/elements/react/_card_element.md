@@ -1,12 +1,42 @@
 # CardElement
 
+> Using `BasisTheoryProvider`
+
 ```jsx
 import {
-  CardElement
-} from '@basis-theory/basis-theory-react/elements';
+  BasisTheoryProvider,
+  CardElement,
+  useBasisTheory
+} from '@basis-theory/basis-theory-react';
 
-const MyForm = () => {  
-  return <CardElement id="myCard" />;
+const App = () => {
+  // creates a new instance of BasisTheory class
+  const { bt } = useBasisTheory('test_1234567890', { elements: true });
+
+  return <BasisTheoryProvider bt={bt}>
+    <MyComponent />
+  </BasisTheoryProvider>;
+}
+
+const MyComponent = () => {
+  return <CardElement id="myCard" /> ; // Element will grab instance from the Context
+}
+```
+
+
+> Using `bt` property
+
+```jsx
+import {
+  CardElement,
+  useBasisTheory
+} from '@basis-theory/basis-theory-react';
+
+const MyComponent = () => {
+  // creates a new instance of BasisTheory class
+  const { bt } = useBasisTheory('test_1234567890', { elements: true });
+
+  return <CardElement id="myCard" bt={bt} /> ;
 }
 ```
 
