@@ -28,7 +28,7 @@ const MyComponent = () => {
     // able to call BasisTheory methods
   }
   
-  return <TextElement /> ; // Element will also grab it from the Context
+  return <TextElement id="myInput" /> ; // Element will also grab it from the Context
 }
 ```
 
