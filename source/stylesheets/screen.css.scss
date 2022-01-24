@@ -942,7 +942,12 @@ html, body {
     padding: 0;
     margin-top: 0;
     display: grid;
-    grid-template-columns: auto 50%;
+    grid-template-columns: auto 40%;
+    margin-right: calc(45% + 1.5em);
+
+    .expanded-text {
+      max-width: 120%;
+    }
 
     h2 {
       margin: 0;
@@ -983,7 +988,8 @@ html, body {
       }
     }
     img {
-      align-self: end;
+      align-self: start;
+      justify-self: end;
     }
   }
   #introduction, #getting-started {
