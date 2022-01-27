@@ -1,3 +1,10 @@
+# [1.26.0](https://github.com/Basis-Theory/docs/compare/v1.25.0...v1.26.0) (2022-01-27)
+
+
+### Features
+
+* introduce React package documentation ([#143](https://github.com/Basis-Theory/docs/issues/143)) ([1f949ea](https://github.com/Basis-Theory/docs/commit/1f949eadf41d6b44697f93eeeefab6acd4e62637))
+
 # [1.25.0](https://github.com/Basis-Theory/docs/compare/v1.24.0...v1.25.0) (2022-01-13)
 
 
