@@ -286,7 +286,7 @@
   color: #859900;
 }
     </style>
-    <link href="../stylesheets/screen-0417e3ba.css" rel="stylesheet" media="screen" />
+    <link href="../stylesheets/screen-c793e25f.css" rel="stylesheet" media="screen" />
     <link href="../stylesheets/home-400c8cb3.css" rel="stylesheet" media="screen" />
     <link href="../stylesheets/guides.css" rel="stylesheet" media="screen" />
     <link href="../stylesheets/iubenda-4a9ea063.css" rel="stylesheet" media="screen" />
@@ -383,7 +383,8 @@
       </ul>
 
 
-        <h1 class="nav-title">Reference</h1>
+
+        <h1 class="nav-title">Vanilla JS</h1>
         <ul id="toc_api" class="toc-section toc-list-h1">
             <li>
               <a href="#initialize" class="toc-h1 toc-link" data-title="Initialize">Initialize</a>
@@ -473,6 +474,41 @@
             </li>
         </ul>
 
+        <h1 class="nav-title">React</h1>
+        <ul id="toc_api" class="toc-section toc-list-h1">
+            <li>
+              <a href="#react-package" class="toc-h1 toc-link" data-title="React Package">React Package</a>
+            </li>
+            <li>
+              <a href="#usebasistheory" class="toc-h1 toc-link" data-title="useBasisTheory">useBasisTheory</a>
+                <ul class="toc-list-h2">
+                    <li>
+                      <a href="#usebasistheory-initialize" class="toc-h2 toc-link" data-title="Initialize">Initialize</a>
+                    </li>
+                    <li>
+                      <a href="#usebasistheory-retrieve-from-context" class="toc-h2 toc-link" data-title="Retrieve from Context">Retrieve from Context</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+              <a href="#basistheoryprovider" class="toc-h1 toc-link" data-title="BasisTheoryProvider">BasisTheoryProvider</a>
+            </li>
+            <li>
+              <a href="#cardelement" class="toc-h1 toc-link" data-title="CardElement">CardElement</a>
+            </li>
+            <li>
+              <a href="#textelement" class="toc-h1 toc-link" data-title="TextElement">TextElement</a>
+            </li>
+            <li>
+              <a href="#basistheoryreact" class="toc-h1 toc-link" data-title="BasisTheoryReact">BasisTheoryReact</a>
+                <ul class="toc-list-h2">
+                    <li>
+                      <a href="#basistheoryreact-getelement" class="toc-h2 toc-link" data-title="getElement">getElement</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
         <h1 class="nav-title">Other Docs</h1>
         <ul id="toc_api" class="toc-section toc-list-h1">
              <li class="other-docs"><a class="toc-h2 toc-link" href="/">Home</a></li>
@@ -552,7 +588,6 @@
     <span class="na">content</span><span class="p">=</span><span class="s">"frame-src https://elements.basistheory.com; script-src https://js.basistheory.com"</span>
   <span class="p">/&gt;</span>
 <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
-
 </code></pre></div>
 <blockquote>
 <p>Trusted Types</p>
@@ -641,6 +676,7 @@
 </tr>
 </tbody></table>
 
+        
         <h1 id='initialize'>Initialize</h1>
 <blockquote>
 <p>CDN</p>
@@ -669,7 +705,47 @@
 <span class="kd">const</span> <span class="nx">bt</span> <span class="o">=</span> <span class="k">await</span> <span class="k">new</span> <span class="nx">BasisTheory</span><span class="p">().</span><span class="nx">init</span><span class="p">(</span><span class="dl">'</span><span class="s1">test_1234567890</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span> <span class="na">elements</span><span class="p">:</span> <span class="kc">true</span> <span class="p">});</span>
 <span class="c1">// use Elements</span>
 </code></pre></div>
-<p>After <a href="#getting-started-install-sdk">installing</a> <strong>BasisTheory.js</strong>, simply initialize it with <code>elements: true</code> so it dynamically loads <strong>Elements</strong> module.</p>
+<p>Initialize <code>BasisTheory</code> with <code>elements: true</code> so it dynamically loads <strong>Elements</strong> module.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>apiKey</code></td>
+<td>true</td>
+<td><em>string</em></td>
+<td>The API Key used to identify an <a href="/api-reference#applications">Application</a>.</td>
+</tr>
+<tr>
+<td><code>options</code></td>
+<td>false</td>
+<td><em>BasisTheoryInitOptions</em></td>
+<td><a href="#initialize-permission-types-basis-theory-init-options">Options</a> for initializing the <code>BasisTheory</code> instance.</td>
+</tr>
+</tbody></table>
+
+<!-- Options link above looks weird because of how Slate generates them -->
+<h3 id='initialize-permission-types-basis-theory-init-options'>Basis Theory Init Options</h3>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>elements</code></td>
+<td>false</td>
+<td><em>boolean</em></td>
+<td>Boolean used to indicate whether the <code>BasisTheory</code> instance will have Elements capabilities.</td>
+</tr>
+</tbody></table>
 
 <aside class="warning">
   <span>Elements are meant to be used in browser environments only. If you installed <code>BasisTheory.js</code> as a module, make sure the instance that loads elements runs on the browser-side code.</span>
@@ -691,16 +767,14 @@
 <li><em>cvc</em></li>
 </ul>
 <h2 id='element-types-text-element'>Text Element</h2>
-<p>The <code>&quot;text&quot;</code> element type features a regular text input for collecting any input data.</p>
-
-<!-- Add codesandbox credit card example here -->
+<p>The <code>&quot;text&quot;</code> element type is a replacement for the <code>&lt;input&gt;</code> tag and enables collecting user <code>string</code> data.</p>
 <h1 id='elements-instance'>Elements Instance</h1>
 <p>After <a href="#initialize">initialization</a>, <strong>Elements</strong> are available through <code>BasisTheory</code> instance.</p>
 <h2 id='elements-instance-create-element'>Create Element</h2><div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="kd">var</span> <span class="nx">cardElement</span> <span class="o">=</span> <span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">'</span><span class="s1">card</span><span class="dl">'</span><span class="p">,</span> <span class="nx">options</span><span class="p">);</span>
 
-<span class="kd">var</span> <span class="nx">textElement</span> <span class="o">=</span> <span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">'</span><span class="s1">text</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span> <span class="na">targetId</span><span class="p">:</span> <span class="dl">'</span><span class="s1">myInputId</span><span class="dl">'</span> <span class="p">});</span>
+<span class="kd">var</span> <span class="nx">textElement</span> <span class="o">=</span> <span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">'</span><span class="s1">text</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span> <span class="na">targetId</span><span class="p">:</span> <span class="dl">'</span><span class="s1">myInputId</span><span class="dl">'</span><span class="p">,</span> <span class="p">...</span><span class="nx">options</span> <span class="p">});</span>
 </code></pre></div>
-<p>This method returns a new instance of an element type.</p>
+<p>This lifecycle method returns a new instance of an element type.</p>
 
 <table><thead>
 <tr>
@@ -806,7 +880,7 @@
   cardElement.mount('#my-card')
 <span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 </code></pre></div>
-<p>This method attaches the element to the DOM, under a specific container.</p>
+<p>This lifecycle method attaches the element to the DOM, under a specific container.</p>
 
 <table><thead>
 <tr>
@@ -833,7 +907,7 @@
 </aside>
 <h2 id='elements-instance-update-element'>Update Element</h2><div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="nx">cardElement</span><span class="p">.</span><span class="nx">update</span><span class="p">(</span><span class="nx">options</span><span class="p">);</span>
 </code></pre></div>
-<p>Updates the element options the element was initialized with. The values are merged into the previous options.</p>
+<p>This lifecycle method updates the element options the element was initialized with. The values are merged into the previous options.</p>
 
 <table><thead>
 <tr>
@@ -914,7 +988,7 @@
 <p>Clears the element input values.</p>
 <h2 id='elements-instance-unmount-element'>Unmount Element</h2><div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="nx">cardElement</span><span class="p">.</span><span class="nx">unmount</span><span class="p">();</span>
 </code></pre></div>
-<p>Safely removes the element from the DOM, stopping any further communication with it.</p>
+<p>This lifecycle method safely removes the element from the DOM, stopping any further communication with it.</p>
 
 <aside class="warning">
   <span>Trying to mount an element that has been unmounted will result in an error.</span>
@@ -1509,6 +1583,471 @@ data. See <a href="#element-types-card-element">CardModel</a> for the resolved v
 
 <aside class="notice">
   <span>Notice that the actual card data never leaves the element (iframe) other than to hit our secure API endpoints.</span>
+</aside>
+
+        <h1 id='react-package'>React Package</h1>
+<blockquote>
+<p>NPM</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>npm <span class="nb">install</span> <span class="nt">--save</span> @basis-theory/basis-theory-react
+</code></pre></div>
+<blockquote>
+<p>Yarn</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>yarn add @basis-theory/basis-theory-react
+</code></pre></div>
+<aside class="header-intro-box">
+    <span class="expanded-text">
+      <p><strong>Basis Theory React</strong> is an <a href="https://github.com/Basis-Theory/basis-theory-react" target="_blank">open source</a> <a href="https://www.npmjs.com/package/@basis-theory/basis-theory-react" target="_blank">package</a> designed to allow you to easily integrate Basis Theory SDK and Elements features in your React solution.</p>
+      <p>
+        This section provides specific documentation for how to initialize a <code>BasisTheory</code> instance using <a href="https://reactjs.org/docs/hooks-intro.html" target="_blank">Hooks</a>, pass it to your component tree with <a href="https://reactjs.org/docs/context.html" target="_blank">Context</a> and then declare Elements <a href="https://reactjs.org/docs/components-and-props.html" target="_blank">Components</a> in your code use the underlying Element.
+      </p>      
+      <p>
+        Creating, mounting, updating and unmounting Elements is as simple as declaring them as a typical React Components and passing props.
+      </p>
+    </span>
+    <img src="../images/react-bt-37b2690a.svg"/>
+</aside>
+
+<aside class="notice">
+  <span>You don't need to install <code>@basis-theory/basis-theory-js</code> separately when using our React package, unless you need to direct import a capability from it.</span>
+</aside>
+<h1 id='usebasistheory'>useBasisTheory</h1>
+<p>The <code>useBasisTheory</code> <a href="https://reactjs.org/docs/hooks-intro.html" target="_blank">hook</a> makes it easy to initialize the SDK or retrieve a previously initialized instance of it.</p>
+
+<p>It returns an object containing:</p>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>bt</code></td>
+<td><em>BasisTheoryReact</em> &#124; <em>undefined</em></td>
+<td><a href="#basistheoryreact"><code>BasisTheoryReact</code></a> instance. <br><i>Note: this stays <code>undefined</code> during <code>BasisTheory</code> initialization, so you don&#39;t have to deal with <code>Promise</code> handling in your components code.</i></td>
+</tr>
+<tr>
+<td><code>error</code></td>
+<td><em>any</em> &#124; <em>undefined</em></td>
+<td>Holds any initialization errors (e.g. bad API key).</td>
+</tr>
+</tbody></table>
+<h2 id='usebasistheory-initialize'>Initialize</h2><div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="k">import</span> <span class="p">{</span> 
+  <span class="nx">useBasisTheory</span>
+<span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@basis-theory/basis-theory-react</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">App</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="c1">// creates a new instance of BasisTheory class</span>
+  <span class="kd">const</span> <span class="p">{</span> <span class="nx">bt</span><span class="p">,</span> <span class="nx">error</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">useBasisTheory</span><span class="p">(</span><span class="dl">'</span><span class="s1">test_1234567890</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span> <span class="na">elements</span><span class="p">:</span> <span class="kc">true</span> <span class="p">});</span>
+
+  <span class="c1">// instance stays undefined during initialization</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">bt</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// able to call BasisTheory methods</span>
+  <span class="p">}</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// initialization error</span>
+  <span class="p">}</span>
+
+  <span class="k">return</span> <span class="p">&lt;</span><span class="nc">MyComponent</span> <span class="p">/&gt;;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Calling the <code>useBasisTheory</code> hook with parameters creates a new instance of <a href="#basistheoryreact"><code>BasisTheoryReact</code></a> class and initializes it automatically.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>apiKey</code></td>
+<td>true</td>
+<td><em>string</em></td>
+<td>The API Key used to identify an <a href="/api-reference#applications">Application</a>.</td>
+</tr>
+<tr>
+<td><code>options</code></td>
+<td>false</td>
+<td><em>BasisTheoryInitOptions</em></td>
+<td><a href="#initialize-permission-types-basis-theory-init-options">Options</a> for initializing the <code>BasisTheoryReact</code> instance.</td>
+</tr>
+</tbody></table>
+
+<!-- Options link above looks weird because of how Slate generates them -->
+
+<aside class="notice">
+  <span>Make sure your API key has an <code>Elements</code> or <code>Client-side Application</code> <a href="/api-reference#applications-application-types">Application Type</a>.</span>
+</aside>
+<h2 id='usebasistheory-retrieve-from-context'>Retrieve from Context</h2>
+<p>Calling the <code>useBasisTheory</code> hook with no parameters will retrieve the  <a href="#basistheoryreact"><code>BasisTheoryReact</code></a> instance from the <code>Context</code>. See <a href="#basistheoryprovider">BasisTheoryProvider</a>.</p>
+<h1 id='basistheoryprovider'>BasisTheoryProvider</h1><div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="k">import</span> <span class="p">{</span> 
+  <span class="nx">BasisTheoryProvider</span><span class="p">,</span>
+  <span class="nx">TextElement</span><span class="p">,</span>
+  <span class="nx">useBasisTheory</span>
+<span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@basis-theory/basis-theory-react</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">App</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="c1">// creates a new instance of BasisTheory class</span>
+  <span class="kd">const</span> <span class="p">{</span> <span class="nx">bt</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">useBasisTheory</span><span class="p">(</span><span class="dl">'</span><span class="s1">test_1234567890</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span> <span class="na">elements</span><span class="p">:</span> <span class="kc">true</span> <span class="p">});</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="nx">bt</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// able to call BasisTheory methods</span>
+  <span class="p">}</span>
+
+  <span class="k">return</span> <span class="p">&lt;</span><span class="nc">BasisTheoryProvider</span> <span class="na">bt</span><span class="p">=</span><span class="si">{</span><span class="nx">bt</span><span class="si">}</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nc">MyComponent</span> <span class="p">/&gt;</span>
+    <span class="p">&lt;/</span><span class="nc">BasisTheoryProvider</span><span class="p">&gt;;</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">MyComponent</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="c1">// calling this hook with no attributes grabs the instance from Context  </span>
+  <span class="kd">const</span> <span class="p">{</span> <span class="nx">bt</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">useBasisTheory</span><span class="p">();</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="nx">bt</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// able to call BasisTheory methods</span>
+  <span class="p">}</span>
+
+  <span class="k">return</span> <span class="p">&lt;</span><span class="nc">TextElement</span> <span class="na">id</span><span class="p">=</span><span class="s">"myInput"</span> <span class="p">/&gt;</span> <span class="p">;</span> <span class="c1">// Element will also grab it from the Context</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>This <a href="https://reactjs.org/docs/context.html" target="_blank">Context Provider</a> shares a <a href="#basistheoryreact"><code>BasisTheoryReact</code></a> instance to your component tree, making it available for Basis Theory Elements or other custom components. </p>
+
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>bt</code></td>
+<td>false</td>
+<td><em>BasisTheoryReact</em></td>
+<td><a href="#basistheoryreact">Instance</a> to be provided in the context. <br><i>Note: this is not required because initialization happens asynchronously. See <a href="#usebasistheory"><code>useBasisTheory</code></a>.</i></td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+  <span>Elements will prioritize the <code>BasisTheory</code> instance passed to it's own <code>bt</code> property over an instance passed in to a parent <code>BasisTheoryProvider</code>.</span>
+</aside>
+<h1 id='cardelement'>CardElement</h1>
+<blockquote>
+<p>Using <code>BasisTheoryProvider</code></p>
+</blockquote>
+<div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="k">import</span> <span class="p">{</span>
+  <span class="nx">BasisTheoryProvider</span><span class="p">,</span>
+  <span class="nx">CardElement</span><span class="p">,</span>
+  <span class="nx">useBasisTheory</span>
+<span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@basis-theory/basis-theory-react</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">App</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="c1">// creates a new instance of BasisTheory class</span>
+  <span class="kd">const</span> <span class="p">{</span> <span class="nx">bt</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">useBasisTheory</span><span class="p">(</span><span class="dl">'</span><span class="s1">test_1234567890</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span> <span class="na">elements</span><span class="p">:</span> <span class="kc">true</span> <span class="p">});</span>
+
+  <span class="k">return</span> <span class="p">&lt;</span><span class="nc">BasisTheoryProvider</span> <span class="na">bt</span><span class="p">=</span><span class="si">{</span><span class="nx">bt</span><span class="si">}</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nc">MyComponent</span> <span class="p">/&gt;</span>
+  <span class="p">&lt;/</span><span class="nc">BasisTheoryProvider</span><span class="p">&gt;;</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">MyComponent</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">&lt;</span><span class="nc">CardElement</span> <span class="na">id</span><span class="p">=</span><span class="s">"myCard"</span> <span class="p">/&gt;</span> <span class="p">;</span> <span class="c1">// Element will grab instance from the Context</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<p>Using <code>bt</code> property</p>
+</blockquote>
+<div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="k">import</span> <span class="p">{</span>
+  <span class="nx">CardElement</span><span class="p">,</span>
+  <span class="nx">useBasisTheory</span>
+<span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@basis-theory/basis-theory-react</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">MyComponent</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="c1">// creates a new instance of BasisTheory class</span>
+  <span class="kd">const</span> <span class="p">{</span> <span class="nx">bt</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">useBasisTheory</span><span class="p">(</span><span class="dl">'</span><span class="s1">test_1234567890</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span> <span class="na">elements</span><span class="p">:</span> <span class="kc">true</span> <span class="p">});</span>
+
+  <span class="k">return</span> <span class="p">&lt;</span><span class="nc">CardElement</span> <span class="na">id</span><span class="p">=</span><span class="s">"myCard"</span> <span class="na">bt</span><span class="p">=</span><span class="si">{</span><span class="nx">bt</span><span class="si">}</span> <span class="p">/&gt;</span> <span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><code>CardElement</code> <a href="https://reactjs.org/docs/components-and-props.html" target="_blank">component</a> features a full credit card form, wrapping the <a href="#element-types-card-element">card element type</a> functionality and taking care of the React lifecycle.</p>
+
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Required</th>
+<th>Type</th>
+<th>Updatable</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>true</td>
+<td><em>string</em></td>
+<td>false</td>
+<td>String identifier used to retrieve the Element instance for tokenization.</td>
+</tr>
+<tr>
+<td><code>bt</code></td>
+<td>false</td>
+<td><em>BasisTheoryReact</em></td>
+<td>false</td>
+<td><a href="#basistheoryreact">Instance</a> used by the Element. <br><i>Note: this is not required because Elements are capable of consuming the instance from Context. See <a href="#basistheoryprovider"><code>BasisTheoryProvider</code></a>.</i></td>
+</tr>
+<tr>
+<td><code>style</code></td>
+<td>false</td>
+<td><em>ElementStyle</em></td>
+<td>true</td>
+<td><a href="#element-style">Object</a> used to customize the element appearance</td>
+</tr>
+<tr>
+<td><code>disabled</code></td>
+<td>false</td>
+<td><em>boolean</em></td>
+<td>true</td>
+<td>Boolean used to set the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled">disabled attribute</a> of the input(s)</td>
+</tr>
+<tr>
+<td><code>onReady</code></td>
+<td>false</td>
+<td><em>function</em></td>
+<td>true</td>
+<td>Event Listener. See <a href="#element-events-on-ready">On Ready</a></td>
+</tr>
+<tr>
+<td><code>onChange</code></td>
+<td>false</td>
+<td><em>function</em></td>
+<td>true</td>
+<td>Event Listener. See <a href="#element-events-on-change">On Change</a></td>
+</tr>
+<tr>
+<td><code>onFocus</code></td>
+<td>false</td>
+<td><em>function</em></td>
+<td>true</td>
+<td>Event Listener. See <a href="#element-events-on-focus">On Focus</a></td>
+</tr>
+<tr>
+<td><code>onBlur</code></td>
+<td>false</td>
+<td><em>function</em></td>
+<td>true</td>
+<td>Event Listener. See <a href="#element-events-on-blur">On Blur</a></td>
+</tr>
+<tr>
+<td><code>onKeyDown</code></td>
+<td>false</td>
+<td><em>function</em></td>
+<td>true</td>
+<td>Event Listener. See <a href="#element-events-on-keydown">On Keydown</a></td>
+</tr>
+</tbody></table>
+<h1 id='textelement'>TextElement</h1>
+<blockquote>
+<p>Using <code>BasisTheoryProvider</code></p>
+</blockquote>
+<div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="k">import</span> <span class="p">{</span>
+  <span class="nx">BasisTheoryProvider</span><span class="p">,</span>
+  <span class="nx">TextElement</span><span class="p">,</span>
+  <span class="nx">useBasisTheory</span>
+<span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@basis-theory/basis-theory-react</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">App</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="c1">// creates a new instance of BasisTheory class</span>
+  <span class="kd">const</span> <span class="p">{</span> <span class="nx">bt</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">useBasisTheory</span><span class="p">(</span><span class="dl">'</span><span class="s1">test_1234567890</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span> <span class="na">elements</span><span class="p">:</span> <span class="kc">true</span> <span class="p">});</span>
+
+  <span class="k">return</span> <span class="p">&lt;</span><span class="nc">BasisTheoryProvider</span> <span class="na">bt</span><span class="p">=</span><span class="si">{</span><span class="nx">bt</span><span class="si">}</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nc">MyComponent</span> <span class="p">/&gt;</span>
+  <span class="p">&lt;/</span><span class="nc">BasisTheoryProvider</span><span class="p">&gt;;</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">MyComponent</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">&lt;</span><span class="nc">TextElement</span> <span class="na">id</span><span class="p">=</span><span class="s">"myInput"</span> <span class="p">/&gt;</span> <span class="p">;</span> <span class="c1">// Element will grab instance from the Context</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<p>Using <code>bt</code> property</p>
+</blockquote>
+<div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="k">import</span> <span class="p">{</span>
+  <span class="nx">TextElement</span><span class="p">,</span>
+  <span class="nx">useBasisTheory</span>
+<span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@basis-theory/basis-theory-react</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">MyComponent</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="c1">// creates a new instance of BasisTheory class</span>
+  <span class="kd">const</span> <span class="p">{</span> <span class="nx">bt</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">useBasisTheory</span><span class="p">(</span><span class="dl">'</span><span class="s1">test_1234567890</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span> <span class="na">elements</span><span class="p">:</span> <span class="kc">true</span> <span class="p">});</span>
+
+  <span class="k">return</span> <span class="p">&lt;</span><span class="nc">TextElement</span> <span class="na">id</span><span class="p">=</span><span class="s">"myInput"</span> <span class="na">bt</span><span class="p">=</span><span class="si">{</span><span class="nx">bt</span><span class="si">}</span> <span class="p">/&gt;</span> <span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><code>TextElement</code> <a href="https://reactjs.org/docs/components-and-props.html" target="_blank">component</a> features a regular text input for collecting any input data, by wrapping the <a href="#element-types-text-element">text element type</a> functionality and taking care of the React lifecycle.</p>
+
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Required</th>
+<th>Type</th>
+<th>Updatable</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>true</td>
+<td><em>string</em></td>
+<td>false</td>
+<td>String identifier used to retrieve the Element instance for tokenization.<br><i>Note: This is passed through to the <code>targetId</code> option.</i></td>
+</tr>
+<tr>
+<td><code>bt</code></td>
+<td>false</td>
+<td><em>BasisTheoryReact</em></td>
+<td>false</td>
+<td><a href="#basistheoryreact">Instance</a> used by the Element. <br><i>Note: this is not required because Elements are capable of consuming the instance from Context. See <a href="#basistheoryprovider"><code>BasisTheoryProvider</code></a>.</i></td>
+</tr>
+<tr>
+<td><code>style</code></td>
+<td>false</td>
+<td><em>ElementStyle</em></td>
+<td>true</td>
+<td><a href="#element-style">Object</a> used to customize the element appearance</td>
+</tr>
+<tr>
+<td><code>disabled</code></td>
+<td>false</td>
+<td><em>boolean</em></td>
+<td>true</td>
+<td>Boolean used to set the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled">disabled attribute</a> of the input(s)</td>
+</tr>
+<tr>
+<td><code>mask</code></td>
+<td>false</td>
+<td><em>ElementMask</em></td>
+<td>false</td>
+<td><a href="#element-mask">Array</a> used to restrict and fill user input using regex and static strings</td>
+</tr>
+<tr>
+<td><code>transform</code></td>
+<td>false</td>
+<td><em>ElementTransform</em></td>
+<td>true</td>
+<td><code>RegExp</code> object or <a href="#element-transform">array</a> used to modify user input before sending input to any <a href="#elements-services">services</a></td>
+</tr>
+<tr>
+<td><code>placeholder</code></td>
+<td>false</td>
+<td><em>string</em></td>
+<td>true</td>
+<td>String used to customize the <a href="https://developer.mozilla.org/docs/Web/HTML/Element/input#attr-placeholder">placeholder attribute</a> of the input</td>
+</tr>
+<tr>
+<td><code>aria-label</code></td>
+<td>false</td>
+<td><em>string</em></td>
+<td>true</td>
+<td>String used to customize the <a href="https://developer.mozilla.org/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-label_attribute">aria-label attribute</a> of the input</td>
+</tr>
+<tr>
+<td><code>password</code></td>
+<td>false</td>
+<td><em>boolean</em></td>
+<td>true</td>
+<td>Boolean used to set the text element input type as <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/password">password</a></td>
+</tr>
+<tr>
+<td><code>onReady</code></td>
+<td>false</td>
+<td><em>function</em></td>
+<td>true</td>
+<td>Event listener. See <a href="#element-events-on-ready">On Ready</a></td>
+</tr>
+<tr>
+<td><code>onChange</code></td>
+<td>false</td>
+<td><em>function</em></td>
+<td>true</td>
+<td>Event listener. See <a href="#element-events-on-change">On Change</a></td>
+</tr>
+<tr>
+<td><code>onFocus</code></td>
+<td>false</td>
+<td><em>function</em></td>
+<td>true</td>
+<td>Event listener. See <a href="#element-events-on-focus">On Focus</a></td>
+</tr>
+<tr>
+<td><code>onBlur</code></td>
+<td>false</td>
+<td><em>function</em></td>
+<td>true</td>
+<td>Event listener. See <a href="#element-events-on-blur">On Blur</a></td>
+</tr>
+<tr>
+<td><code>onKeyDown</code></td>
+<td>false</td>
+<td><em>function</em></td>
+<td>true</td>
+<td>Event listener. See <a href="#element-events-on-keydown">On Keydown</a></td>
+</tr>
+</tbody></table>
+<h1 id='basistheoryreact'>BasisTheoryReact</h1>
+<p><code>BasisTheoryReact</code> adds React-specific capabilities on top of the <code>BasisTheory</code> class. All <a href="/api-reference">API features</a> and <a href="#elements-services">Elements Services</a> are still available, plus the methods below.</p>
+<h2 id='basistheoryreact-getelement'>getElement</h2><div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="k">import</span> <span class="p">{</span> 
+  <span class="nx">TextElement</span><span class="p">,</span> 
+  <span class="nx">useBasisTheory</span> 
+<span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@basis-theory/basis-theory-react</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">ssnMask</span> <span class="o">=</span> <span class="p">[</span><span class="sr">/</span><span class="se">\d</span><span class="sr">/</span><span class="p">,</span> <span class="sr">/</span><span class="se">\d</span><span class="sr">/</span><span class="p">,</span> <span class="sr">/</span><span class="se">\d</span><span class="sr">/</span><span class="p">,</span> <span class="dl">"</span><span class="s2">-</span><span class="dl">"</span><span class="p">,</span> <span class="sr">/</span><span class="se">\d</span><span class="sr">/</span><span class="p">,</span> <span class="sr">/</span><span class="se">\d</span><span class="sr">/</span><span class="p">,</span> <span class="dl">"</span><span class="s2">-</span><span class="dl">"</span><span class="p">,</span> <span class="sr">/</span><span class="se">\d</span><span class="sr">/</span><span class="p">,</span> <span class="sr">/</span><span class="se">\d</span><span class="sr">/</span><span class="p">,</span> <span class="sr">/</span><span class="se">\d</span><span class="sr">/</span><span class="p">,</span> <span class="sr">/</span><span class="se">\d</span><span class="sr">/</span><span class="p">];</span>
+
+<span class="kd">const</span> <span class="nx">MyForm</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="p">{</span> <span class="nx">bt</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">useBasisTheory</span><span class="p">(</span><span class="dl">'</span><span class="s1">test_1234567890</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span> <span class="na">elements</span><span class="p">:</span> <span class="kc">true</span> <span class="p">});</span>
+
+  <span class="kd">const</span> <span class="nx">submit</span> <span class="o">=</span> <span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">fullName</span> <span class="o">=</span> <span class="nx">bt</span><span class="p">.</span><span class="nx">getElement</span><span class="p">(</span><span class="dl">'</span><span class="s1">fullName</span><span class="dl">'</span><span class="p">);</span>
+    <span class="kd">const</span> <span class="nx">ssn</span> <span class="o">=</span> <span class="nx">bt</span><span class="p">.</span><span class="nx">getElement</span><span class="p">(</span><span class="dl">'</span><span class="s1">ssn</span><span class="dl">'</span><span class="p">);</span>
+    <span class="kd">const</span> <span class="nx">tokens</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">bt</span><span class="p">.</span><span class="nx">tokenize</span><span class="p">({</span>
+      <span class="nx">fullName</span><span class="p">,</span>
+      <span class="nx">ssn</span><span class="p">,</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+
+  <span class="k">return</span> <span class="p">&lt;</span><span class="nc">BasisTheoryProvider</span> <span class="na">bt</span><span class="p">=</span><span class="si">{</span><span class="nx">bt</span><span class="si">}</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nc">TextElement</span> <span class="na">id</span><span class="p">=</span><span class="s">"fullName"</span> <span class="na">placeholder</span><span class="p">=</span><span class="s">"Full name"</span> <span class="na">aria</span><span class="err">-</span><span class="na">label</span><span class="p">=</span><span class="s">"Full name"</span> <span class="p">/&gt;</span>
+    <span class="p">&lt;</span><span class="nc">TextElement</span> <span class="na">id</span><span class="p">=</span><span class="s">"ssn"</span> <span class="na">placeholder</span><span class="p">=</span><span class="s">"SSN"</span> <span class="na">aria</span><span class="err">-</span><span class="na">label</span><span class="p">=</span><span class="s">"Social Security Number"</span> <span class="na">mask</span><span class="p">=</span><span class="si">{</span><span class="nx">ssnMask</span><span class="si">}</span> <span class="na">transform</span><span class="p">=</span><span class="si">{</span><span class="sr">/</span><span class="se">[</span><span class="sr">-</span><span class="se">]</span><span class="sr">/</span><span class="si">}</span> <span class="p">/&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">button</span> <span class="na">type</span><span class="p">=</span><span class="s">"submit"</span> <span class="na">onClick</span><span class="p">=</span><span class="si">{</span><span class="nx">submit</span><span class="si">}</span> <span class="na">disabled</span><span class="p">=</span><span class="si">{</span><span class="o">!</span><span class="nx">bt</span><span class="si">}</span><span class="p">&gt;</span>Submit<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nc">BasisTheoryProvider</span><span class="p">&gt;;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Gets the underlying Element instance to be used for tokenization. Returns <code>undefined</code> if an Element with the provided <code>id</code> does not exist.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>true</td>
+<td><em>string</em></td>
+<td>The <code>id</code> of the Element instance</td>
+</tr>
+</tbody></table>
+
+<aside class="warning">
+  <span>When using React, it is not recommended to directly call lifecycle methods from the Element instance returned by the <code>getElement</code> method.</span>
 </aside>
 
         
