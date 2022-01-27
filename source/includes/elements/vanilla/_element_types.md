@@ -10,6 +10,4 @@ The `"card"` element type features a full credit card collector containing the f
 
 ## Text Element
 
-The `"text"` element type features a regular text input for collecting any input data.
-
-<!-- Add codesandbox credit card example here -->
+The `"text"` element type is a replacement for the `<input>` tag and enables collecting user `string` data.

@@ -7,10 +7,10 @@ After [initialization](#initialize), **Elements** are available through `BasisTh
 ```jsx
 var cardElement = BasisTheory.createElement('card', options);
 
-var textElement = BasisTheory.createElement('text', { targetId: 'myInputId' });
+var textElement = BasisTheory.createElement('text', { targetId: 'myInputId', ...options });
 ```
 
-This method returns a new instance of an element type.
+This lifecycle method returns a new instance of an element type.
 
 Parameter | Required | Type                   | Description
 --------- | -------- | ----------------       | -----------
@@ -50,7 +50,7 @@ Attribute     | Required | Type                 | Eligible Elements             
 </script>
 ```
 
-This method attaches the element to the DOM, under a specific container.
+This lifecycle method attaches the element to the DOM, under a specific container.
 
 Parameter  | Required | Type     | Description
 ---------- | -------- | -------- | -----------
@@ -70,7 +70,7 @@ Parameter  | Required | Type     | Description
 cardElement.update(options);
 ```
 
-Updates the element options the element was initialized with. The values are merged into the previous options.
+This lifecycle method updates the element options the element was initialized with. The values are merged into the previous options.
 
 Parameter | Required | Type                   | Description
 --------- | -------- | ----------------       | -----------
@@ -108,7 +108,7 @@ Clears the element input values.
 cardElement.unmount();
 ```
 
-Safely removes the element from the DOM, stopping any further communication with it.
+This lifecycle method safely removes the element from the DOM, stopping any further communication with it.
 
 <aside class="warning">
   <span>Trying to mount an element that has been unmounted will result in an error.</span>

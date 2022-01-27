@@ -44,7 +44,6 @@ To install **BasisTheory.js** you can choose either our NPM module or CDN hosted
     content="frame-src https://elements.basistheory.com; script-src https://js.basistheory.com"
   />
 </head>
-
 ```
 
 > Trusted Types

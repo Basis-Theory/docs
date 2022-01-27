@@ -96,6 +96,10 @@ html, body {
     margin-bottom: 16px;
   }
 
+  code {
+    @extend %code-font;
+  }
+
   // language selector for mobile devices
   .lang-selector {
     display: none;
@@ -106,6 +110,7 @@ html, body {
       @extend %principal-title-font;
       text-transform: none;
     }
+
   }
 
   .nav-back {
@@ -632,6 +637,12 @@ html, body {
     max-width: 100%;
   }
 
+  a {
+    code {
+      font-weight: inherit;
+    }
+  }
+
   code {
     background-color: $code-bg;
     border-radius: 2px;
@@ -642,6 +653,14 @@ html, body {
 
   pre>code {
     background-color: transparent;
+  }
+
+  // code style in headers
+  h1, h2, h3, h4, h5, h6 {
+    code {
+      background-color: inherit;
+      font-size: inherit;
+    }
   }
 
   aside {
@@ -667,6 +686,11 @@ html, body {
     &.danger {
       background-color: $aside-danger-bg;
     }
+
+    &.block {
+      border: 1px solid $aside-block-border;
+      border-radius: 9px;
+    }
   }
 
   aside:before {
@@ -688,6 +712,10 @@ html, body {
 
   aside.danger:before {
     @extend %icon-danger;
+  }
+
+  aside.react:before {
+    @extend %icon-react;
   }
 
   .search-highlight {
@@ -899,6 +927,9 @@ html, body {
       color: $grey-50;
       @extend %code-annotation-font;
     }
+    code {
+      font-size: inherit;
+    }
   }
   .header-border {
     background: $grey-50;
@@ -911,7 +942,12 @@ html, body {
     padding: 0;
     margin-top: 0;
     display: grid;
-    grid-template-columns: auto 50%;
+    grid-template-columns: auto 40%;
+    margin-right: calc(45% + 1.5em);
+
+    .expanded-text {
+      max-width: 120%;
+    }
 
     h2 {
       margin: 0;
@@ -952,7 +988,8 @@ html, body {
       }
     }
     img {
-      align-self: end;
+      align-self: start;
+      justify-self: end;
     }
   }
   #introduction, #getting-started {

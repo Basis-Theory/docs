@@ -49,3 +49,8 @@
   @extend %icon;
   content: url(../images/icon/danger.svg);
 }
+
+%icon-react {
+  @extend %icon;
+  content: url(../images/icon/react.svg);
+}

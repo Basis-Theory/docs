@@ -31,4 +31,10 @@ pip install basistheory
 
 Our SDKs enable you to quickly and easily integrate with the API. Select one of the language tabs to see instructions on how to install the SDK and view code examples in that language.
 
+<aside class="block react">
+  <span>
+Is your project using React? We got you covered! Basis Theory's React package enables you to use Elements and make API calls natively in React with minimal setup. <a href="/elements#react-package">Go check it out</a>.
+  </span>
+</aside>
+
 If you don't see your language listed, <a href="mailto:support@basistheory.com?subject=API SDK Language Support">contact us</a> about getting an official SDK added in your preferred language.

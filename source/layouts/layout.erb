@@ -17,6 +17,8 @@ under the License.
 <% intro_page_content = yield %>
 <% intro_page_quick_links = yield %>
 <% api_page_content = yield %>
+<% vanilla_page_content = yield %>
+<% react_page_content = yield %>
 <% module_page_content = yield %>
 <%
   if current_page.data.intro_quick_links
@@ -36,6 +38,20 @@ under the License.
   if current_page.data.api_includes
     current_page.data.api_includes.each do |include|
       api_page_content += partial("includes/#{include}")
+    end
+  end
+%>
+<%
+  if current_page.data.vanilla_includes
+    current_page.data.vanilla_includes.each do |include|
+      vanilla_page_content += partial("includes/#{include}")
+    end
+  end
+%>
+<%
+  if current_page.data.react_includes
+    current_page.data.react_includes.each do |include|
+      react_page_content += partial("includes/#{include}")
     end
   end
 %>
@@ -181,6 +197,46 @@ under the License.
         </ul>
       <% end %>
 
+      <% if current_page.data.vanilla_includes %>
+        <h1 class="nav-title">Vanilla JS</h1>
+        <ul id="toc_api" class="toc-section toc-list-h1">
+          <% toc_data(vanilla_page_content).each do |h1| %>
+            <li>
+              <a href="#<%= h1[:id] %>" class="toc-h1 toc-link" data-title="<%= h1[:title] %>"><%= h1[:content] %></a>
+              <% if h1[:children].length > 0 %>
+                <ul class="toc-list-h2">
+                  <% h1[:children].each do |h2| %>
+                    <li>
+                      <a href="#<%= h2[:id] %>" class="toc-h2 toc-link" data-title="<%= h2[:title] %>"><%= h2[:content] %></a>
+                    </li>
+                  <% end %>
+                </ul>
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+      <% end %>
+
+      <% if current_page.data.react_includes %>
+        <h1 class="nav-title">React</h1>
+        <ul id="toc_api" class="toc-section toc-list-h1">
+          <% toc_data(react_page_content).each do |h1| %>
+            <li>
+              <a href="#<%= h1[:id] %>" class="toc-h1 toc-link" data-title="<%= h1[:title] %>"><%= h1[:content] %></a>
+              <% if h1[:children].length > 0 %>
+                <ul class="toc-list-h2">
+                  <% h1[:children].each do |h2| %>
+                    <li>
+                      <a href="#<%= h2[:id] %>" class="toc-h2 toc-link" data-title="<%= h2[:title] %>"><%= h2[:content] %></a>
+                    </li>
+                  <% end %>
+                </ul>
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+      <% end %>
+
       <% if current_page.data.other_docs %>
         <h1 class="nav-title">Other Docs</h1>
         <ul id="toc_api" class="toc-section toc-list-h1">
@@ -215,6 +271,8 @@ under the License.
         <div class="header-border"></div>
         <%= intro_page_content %>
         <%= api_page_content %>
+        <%= vanilla_page_content %>
+        <%= react_page_content %>
         <%= module_page_content %>
       </div>
       <% if current_page.data.hide_code != true %>
