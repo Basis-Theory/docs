@@ -938,6 +938,8 @@ html, body {
       grid-template-columns: auto auto;
       align-items: center;
       gap: 10%;
+      position: sticky;
+      right: 0;
     }
   }
 
