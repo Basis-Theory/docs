@@ -784,11 +784,10 @@ html, body {
 .text-snippet {
   @extend %code-font;
   display: grid;
-  grid-template-columns: auto auto 1fr;
   align-items: center;
   padding: 1em;
   margin-top: 1em;
-  background: $code-annotation-bg;
+  background: $text-snippet-bg;
   color: $text-snippet-text;
 
   .text-snippet-copy {
