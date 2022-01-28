@@ -11,6 +11,7 @@ Token Types define the rules around a data type such as validation requirements,
 - [US Bank Account Number](#token-types-us-bank-account-number)
 - [US Bank Routing Number](#token-types-us-bank-routing-number)
 - [Social Security Number](#token-types-social-security-number)
+- [Employer Id Number](#token-types-employer-id-number)
 
 ## Token
 
@@ -82,7 +83,7 @@ Examples:
 | **Type**                       | `us_bank_account_number` |
 | **Default Classification**     | `bank`                   |
 | **Default Impact Level**       | `high`                   |
-| **Minimum Impact Level**       | `high`                   |
+| **Minimum Impact Level**       | `low`                    |
 | **Default Restriction Policy** | `mask`                   |
 | **Input Validation**           | Numeric                  |
 | **Input Length**               | 3 - 17                   |
@@ -116,7 +117,7 @@ Examples:
 | **Type**                       | `social_security_number`                 |
 | **Default Classification**     | `pii`                                    |
 | **Default Impact Level**       | `high`                                   |
-| **Minimum Impact Level**       | `high`                                   |
+| **Minimum Impact Level**       | `low`                                    |
 | **Default Restriction Policy** | `mask`                                   |
 | **Input Validation**           | Numeric with optional delimiter of `"-"` |
 | **Input Length**               | 9 (not including delimiting characters)  |
@@ -128,3 +129,24 @@ Examples:
 |-------------|--------------|
 | 123456789   | XXXXX6789    |
 | 123-45-6789 | XXX-XX-6789  |
+
+
+## Employer Id Number
+
+| Token Attribute                | Value                                    |
+|--------------------------------|------------------------------------------|
+| **Type**                       | `employer_id_number`                     |
+| **Default Classification**     | `pii`                                    |
+| **Default Impact Level**       | `high`                                   |
+| **Minimum Impact Level**       | `low`                                    |
+| **Default Restriction Policy** | `mask`                                   |
+| **Input Validation**           | Numeric with optional delimiter of `"-"` |
+| **Input Length**               | 9 (not including delimiting characters)  |
+| **Fingerprinted**              | Yes                                      |
+
+Examples:
+
+| Input Data | Masked Value |
+|------------|--------------|
+| 123456789  | XXXXX6789    |
+| 12-3456789 | XX-XXX6789   |

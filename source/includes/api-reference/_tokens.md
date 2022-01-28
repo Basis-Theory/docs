@@ -55,7 +55,7 @@ Default privacy settings can be overridden at the time of creation, but only to 
 ## Token Classifications
 
 Each token has a data classification associated with it which defines the type of data it contains.
-Basis Theory permissions access to Tokens based on data classifications (see [Token Permissions](#permissions-permission-types-token-permissions) for more details). 
+Basis Theory grants access to Tokens based on data classifications (see [Token Permissions](#permissions-permission-types-token-permissions) for more details). 
 The following data classifications are supported:
 
 | Name      | Description                                                                                                | Specificity Level |
@@ -80,13 +80,15 @@ Token impact levels are used to further classify and permit access to Tokens wit
 ## Token Restriction Policies
 
 A Token Restriction Policy defines the policy to enforce on a Token's data when read by a User or Application
-with permission to read the Token's classification but at a lower impact level.
+with [permission](#permissions-permission-types-token-permissions) to read the Token's [classification](#tokens-token-classifications) but at a lower [impact level](#tokens-token-impact-levels).
 
 | Name     | Description                                                                                                                          | Specificity Level |
 |----------|--------------------------------------------------------------------------------------------------------------------------------------|-------------------|
 | `mask`   | Token data will be masked in the response, falling back to `redact` restriction policy if a mask is not available for the Token Type | 0                 |
 | `redact` | Token data will be completely removed in the response                                                                                | 1                 |
 
+For example, an application with `token:pci:read:low` is allowed to read a `card_number` token (classified as `pci` with `high` impact level),
+but the plaintext card data will not be returned. Instead, the restriction policy associated with the `card_number` token (`mask`) will be applied and only masked card number data will be returned.
 
 ## Create Token
 
@@ -282,7 +284,8 @@ with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_
   `https://api.basistheory.com/tokens`
 </span>
 
-Get a list of tokens for the Tenant.
+Get a list of tokens for the Tenant, supporting basic search criteria. 
+If you need to perform a more advanced token search, see [Search Tokens](#tokens-search-tokens).
 
 ### Permissions
 
@@ -567,6 +570,192 @@ Get a decrypted token by ID in the Tenant.
 Returns a decrypted [token](#tokens-token-object) with the `id` provided. Returns [an error](#errors) if the token could not be retrieved.
 Token types other than `token` or non-BasisTheory encrypted tokens will not be decrypted.
 
+
+## Search Tokens
+
+> Request
+
+```shell
+curl "https://api.basistheory.com/tokens/search" \
+  -H "BT-API-KEY: key_N88mVGsp3sCXkykyN2EFED" \
+  -H "Content-Type: application/json" \
+  -X "POST" \
+  -d '{
+    "query": "data:6789 AND type:social_security_number",
+    "page": 1,
+    "size": 20
+  }'
+```
+
+```javascript
+import { BasisTheory } from '@basis-theory/basis-theory-js';
+
+const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
+
+const tokens = await bt.tokens.search({
+  query: 'data:6789 AND type:social_security_number',
+  page: 1,
+  size: 20
+});
+```
+
+```csharp
+using BasisTheory.net.Tokens;
+
+var client = new TokenClient("key_N88mVGsp3sCXkykyN2EFED");
+
+var tokens = await client.SearchAsync(new TokenSearchRequest {
+  Query = "data:6789 AND type:social_security_number",
+  Page = 1,
+  Size = 20);
+```
+
+```python
+import basistheory
+from basistheory.api import tokens_api
+
+with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_N88mVGsp3sCXkykyN2EFED")) as api_client:
+    token_client = tokens_api.TokensApi(api_client)
+
+    tokens = token_client.search(search=TokenSearchRequest(
+        query="data:6789 AND type:social_security_number",
+        page=1,
+        size=20
+    ))
+```
+
+
+> Response
+
+```json
+{
+  "pagination": {...},
+  "data": [
+    {
+      "id": "c06d0789-0a38-40be-b7cc-c28a718f76f1",
+      "type": "social_security_number",
+      "tenant_id": "77cb0024-123e-41a8-8ff8-a3d5a0fa8a08",
+      "data": "XXX-XX-6789",
+      "fingerprint": "AKCUXS83DokKo4pDRKSAy4d42t9i8dcP1X2jijwEBCQH",
+      "privacy": {
+        "classification": "pii",
+        "impact_level": "high",
+        "restriction_policy": "mask"
+      },
+      "metadata": {
+        "nonSensitiveField": "Non-Sensitive Value"
+      },
+      "created_by": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
+      "created_at": "2021-03-01T08:23:14+00:00"
+    },
+    {...},
+    {...}
+  ]
+}
+```
+
+<span class="http-method post">
+  <span class="box-method">POST</span>
+  `https://api.basistheory.com/tokens/search`
+</span>
+
+Search for tokens using a Lucene-based [query syntax](#tokens-search-tokens-query-syntax). 
+Use this endpoint to perform an advanced token search using token data or to build complex searches combining multiple terms with boolean operators.
+For simpler search use cases, see [List Tokens](#list-tokens).
+
+### Permissions
+
+<p class="scopes">
+  <span class="scope">token:&lt;classification&gt;:read:&lt;impact_level&gt;</span>
+</p>
+
+At least one token read [permission](#permissions-permission-types-token-permissions) is required in order to perform a token search. 
+A token search will only return tokens that your application or user is authorized to read. 
+
+Applications are permitted to search on the `data` field of a token only if the application's [permissions](#permissions-permission-types-token-permissions)
+enable reading the [unrestricted](#tokens-token-restriction-policies) plaintext token data. 
+Applications may search across non-data fields (eg. `metadata`, `type`) on tokens with any read permission for that data [classification](#tokens-token-classifications), even if that read permission only allows [restricted](#tokens-token-restriction-policies) access to the token data.
+
+### Request Parameters
+
+| Attribute | Required | Type      | Default | Description                                                                     |
+|-----------|----------|-----------|---------|---------------------------------------------------------------------------------|
+| `query`   | false    | *string*  | `null`  | A query string using [Lucene query syntax](#tokens-search-tokens-query-syntax). |
+| `page`    | false    | *integer* | `1`     | Page number of the results to return.                                           |
+| `size`    | false    | *integer* | `20`    | Number of results per page to return. Maximum size of 100 results.              |
+
+### Response
+
+Returns a [paginated object](#pagination) with the `data` property containing an array of [tokens](#tokens-token-object).
+Plaintext token data will be returned when the requester has read permissions on the token classification at equal or greater impact level.
+Token data will be restricted based on the token's [restriction policy](#tokens-token-restriction-policies) when the requester has read permissions on the token classification at a lower impact level.
+Returns [an error](#errors) if tokens could not be retrieved or when an invalid [query](#tokens-search-tokens-query-syntax) is submitted.
+
+### Query Syntax
+
+Token search supports a <a href="http://www.lucenetutorial.com/lucene-query-syntax.html" target="_blank">Lucene-based query syntax</a> to build complex search criteria. 
+A query string is comprised of one or more Terms that can be combined with the `AND` and `OR` Operators.
+
+Search terms are formed by combining a field name and a value to search with a `:` - `field:value`. 
+For example, to search for tokens having a `type` of `card_number`, submit the query `type:card_number`.
+
+See the [Searchable Token Fields](#tokens-search-tokens-searchable-token-fields) table below for a complete list of supported fields. 
+
+By default, including a search term without a field name prefix will apply the searched value to the `data` field.
+Data will be searched for a case-insensitive, exact match to one of the indexed data patterns. 
+For more information, see [Searching Data](#tokens-search-tokens-searching-data).
+
+Phrases or values containing spaces may be searched by wrapping the searched value in quotes, for example `data:"multiple words"`.
+
+Metadata search terms require both a key and value to be specified in the form of `metadata.key:value`. 
+Metadata will be searched for a case-insensitive, exact match.
+For example, to search for tokens having the metadata `{ customer_id: "123456" }`, include the search term `metadata.customer_id:123456`
+
+Date range searches are supported using the Lucene bracketed range syntax, `[START_DATE TO END_DATE]`. 
+Values are formatted as a string in ISO 8601 format and can either represent a date or date and time in UTC.
+For example, to search for tokens that were created in the year 2021, you can query: `created_at:[2021-01-01 TO 2021-12-31T23:59:59Z]`
+
+To search a range without a start or end date, use the wildcard `*` in place of the start or end date, for example: `created_at:[* TO 2022-01-01]`.
+
+Multiple terms may be combined using the `AND` and `OR` operators and grouped using parentheses. For example:
+`(type:social_security_number AND metadata.customer_id:123456) OR data:111-11-1111`
+
+<aside class="warning">
+  <span>
+    The supported Lucene syntax is currently limited to the operations documented above, and not all standard Lucene syntax is supported.
+    If you would like to have support for any additional Lucene features, please <a href="mailto:support@basistheory.com?subject=Token Search Feature Request" target="_blank">let us know</a>.
+  </span>
+</aside>
+
+### Searchable Token Fields
+
+| Fields           | Type     | Description                                                                                  |
+|------------------|----------|----------------------------------------------------------------------------------------------|
+| `data`           | *string* | Token data. See [Searching Data](#tokens-search-tokens-searching-data) for supported values. |
+| `type`           | *string* | The [token type](#token-types) of the token.                                                 |
+| `metadata.[key]` | *string* | Search against token metadata having the given `[key]`.                                      |
+| `created_at`     | *date*   | The date or date and time a token was created in ISO 8601 format.                            |
+
+### Searching Data
+
+Basis Theory currently supports data searches on `social_security_number` and `employer_id_number` token types.
+When creating tokens of these types, Basis Theory will securely index several data patterns to enable searching on these values:
+
+- The value with standard delimiters (`-`), eg. `123-45-6789`
+- The value without delimiters, eg. `123456789`
+- The last 4 digits of the value, eg. `6789`
+
+Token data searches will only return a token if there is an exact match on one of these data patterns; full wildcard search is not currently supported.
+
+For example, to search for a `social_security_number` token with the value `123-45-6789`, you may search for: `data:123-45-6789 AND type:social_security_number`
+
+To search for all `social_security_number` tokens with the last 4 digits of `6789`, you may search for: `data:6789 AND type:social_security_number`
+
+Note that the results returned by this query may not be unique if you have stored multiple `social_security_number` tokens ending with the same 4 digits.
+
+<aside class="notice">
+  <span>If you are interested in searching data on other token types or searching with custom data patterns, please <a href="mailto:support@basistheory.com?subject=Token Search Feature Request" target="_blank">contact us</a>!</span>
+</aside>
 
 ## Delete Token
 
