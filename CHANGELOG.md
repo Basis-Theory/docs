@@ -1,3 +1,10 @@
+## [1.26.1](https://github.com/Basis-Theory/docs/compare/v1.26.0...v1.26.1) (2022-01-28)
+
+
+### Bug Fixes
+
+* update pii js guide link ([#147](https://github.com/Basis-Theory/docs/issues/147)) ([7d4a574](https://github.com/Basis-Theory/docs/commit/7d4a57493044693aa0fa3dd73390386add1e45b8))
+
 # [1.26.0](https://github.com/Basis-Theory/docs/compare/v1.25.0...v1.26.0) (2022-01-27)
 
 
