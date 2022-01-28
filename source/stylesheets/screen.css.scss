@@ -781,6 +781,28 @@ html, body {
   }
 }
 
+.text-snippet {
+  @extend %code-font;
+  display: grid;
+  grid-template-columns: auto auto 1fr;
+  align-items: center;
+  padding: 1em;
+  margin-top: 1em;
+  background: $code-annotation-bg;
+  color: $text-snippet-text;
+
+  .text-snippet-copy {
+    justify-self: end;
+    cursor: pointer;
+    grid-column: 3;
+    grid-row: 1;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+}
+
 .http-method {
   border-radius: 1px;
   display: grid;

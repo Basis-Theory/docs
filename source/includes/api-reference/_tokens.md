@@ -697,28 +697,54 @@ Token search supports a <a href="http://www.lucenetutorial.com/lucene-query-synt
 A query string is comprised of one or more Terms that can be combined with the `AND` and `OR` Operators.
 
 Search terms are formed by combining a field name and a value to search with a `:` - `field:value`. 
-For example, to search for tokens having a `type` of `card_number`, submit the query `type:card_number`.
-
 See the [Searchable Token Fields](#tokens-search-tokens-searchable-token-fields) table below for a complete list of supported fields. 
+For example, to search for tokens having a `type` of `card_number`, query for:
+<span class="text-snippet">
+  `type:card_number`
+</span>
 
-By default, including a search term without a field name prefix will apply the searched value to the `data` field.
+By default, including a search term without a field name prefix will apply the searched value to the `data` field. 
+For example, the following query will search for tokens containing the data `123-45-6789`:
+<span class="text-snippet">
+  `123-45-6789`
+</span>
+
+is equivalent to:
+<span class="text-snippet">
+  `data:123-45-6789`
+</span>
+
 Data will be searched for a case-insensitive, exact match to one of the indexed data patterns. 
-For more information, see [Searching Data](#tokens-search-tokens-searching-data).
+For more detailed information about how to search the data field, see [Searching Data](#tokens-search-tokens-searching-data).
 
-Phrases or values containing spaces may be searched by wrapping the searched value in quotes, for example `data:"multiple words"`.
+Phrases or values containing spaces may be searched by wrapping the searched value in quotes, for example:
+<span class="text-snippet">
+  `data:"data containing multiple words"`
+</span>
 
 Metadata search terms require both a key and value to be specified in the form of `metadata.key:value`. 
 Metadata will be searched for a case-insensitive, exact match.
-For example, to search for tokens having the metadata `{ customer_id: "123456" }`, include the search term `metadata.customer_id:123456`
+For example, to search for tokens having the metadata `{ customer_id: "123456" }`, query for:
+<span class="text-snippet">
+  `metadata.customer_id:123456`
+</span>
 
 Date range searches are supported using the Lucene bracketed range syntax, `[START_DATE TO END_DATE]`. 
 Values are formatted as a string in ISO 8601 format and can either represent a date or date and time in UTC.
-For example, to search for tokens that were created in the year 2021, you can query: `created_at:[2021-01-01 TO 2021-12-31T23:59:59Z]`
+For example, to search for tokens that were created in the year 2021, you can query:
+<span class="text-snippet">
+  `created_at:[2021-01-01 TO 2021-12-31T23:59:59Z]`
+</span>
 
-To search a range without a start or end date, use the wildcard `*` in place of the start or end date, for example: `created_at:[* TO 2022-01-01]`.
+To search a range without a start or end date, use the wildcard `*` in place of the start or end date, for example:
+<span class="text-snippet">
+  `created_at:[* TO 2022-01-01]`
+</span>
 
 Multiple terms may be combined using the `AND` and `OR` operators and grouped using parentheses. For example:
-`(type:social_security_number AND metadata.customer_id:123456) OR data:111-11-1111`
+<span class="text-snippet">
+  `(type:social_security_number AND metadata.user_id:1234) OR data:111-11-1111`
+</span>
 
 <aside class="warning">
   <span>
@@ -747,9 +773,17 @@ When creating tokens of these types, Basis Theory will securely index several da
 
 Token data searches will only return a token if there is an exact match on one of these data patterns; full wildcard search is not currently supported.
 
-For example, to search for a `social_security_number` token with the value `123-45-6789`, you may search for: `data:123-45-6789 AND type:social_security_number`
+For example, to search for a `social_security_number` token with the value `123-45-6789`, you may search for: 
 
-To search for all `social_security_number` tokens with the last 4 digits of `6789`, you may search for: `data:6789 AND type:social_security_number`
+<span class="text-snippet">
+  `data:123-45-6789 AND type:social_security_number`
+</span>
+
+To search for all `social_security_number` tokens with the last 4 digits of `6789`, you may search for:
+
+<span class="text-snippet">
+  `data:6789 AND type:social_security_number`
+</span>
 
 Note that the results returned by this query may not be unique if you have stored multiple `social_security_number` tokens ending with the same 4 digits.
 
