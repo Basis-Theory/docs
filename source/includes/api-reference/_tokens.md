@@ -673,7 +673,7 @@ At least one token read [permission](#permissions-permission-types-token-permiss
 A token search will only return tokens that your application or user is authorized to read. 
 
 Applications are permitted to search on the `data` field of a token only if the application's [permissions](#permissions-permission-types-token-permissions)
-enable reading the [unrestricted](#tokens-token-restriction-policies) plaintext token data. 
+allow reading the [unrestricted](#tokens-token-restriction-policies) plaintext token data. 
 Applications may search across non-data fields (eg. `metadata`, `type`) on tokens with any read permission for that data [classification](#tokens-token-classifications), even if that read permission only allows [restricted](#tokens-token-restriction-policies) access to the token data.
 
 ### Request Parameters
@@ -709,7 +709,7 @@ For example, the following query will search for tokens containing the data `123
   `123-45-6789`
 </span>
 
-is equivalent to:
+and this query is equivalent to:
 <span class="text-snippet">
   `data:123-45-6789`
 </span>
