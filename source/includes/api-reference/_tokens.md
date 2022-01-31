@@ -703,19 +703,13 @@ For example, to search for tokens having a `type` of `card_number`, query for:
   `type:card_number`
 </span>
 
-By default, including a search term without a field name prefix will apply the searched value to the `data` field. 
-For example, the following query will search for tokens containing the data `123-45-6789`:
-<span class="text-snippet">
-  `123-45-6789`
-</span>
-
-and this query is equivalent to:
+Token data may be searched on some token types, by performing a case-insensitive exact match to one of several indexed data patterns.
+As an example, the following query will search for tokens containing the data `123-45-6789`:
 <span class="text-snippet">
   `data:123-45-6789`
 </span>
 
-Data will be searched for a case-insensitive, exact match to one of the indexed data patterns. 
-For more detailed information about how to search the data field, see [Searching Data](#tokens-search-tokens-searching-data).
+For more detailed information about supported data searches, see [Searching Data](#tokens-search-tokens-searching-data).
 
 Phrases or values containing spaces may be searched by wrapping the searched value in quotes, for example:
 <span class="text-snippet">
@@ -729,7 +723,8 @@ For example, to search for tokens having the metadata `{ customer_id: "123456" }
   `metadata.customer_id:123456`
 </span>
 
-Date range searches are supported using the Lucene bracketed range syntax, `[START_DATE TO END_DATE]`. 
+Date range searches are supported using the Lucene bracketed range syntax. 
+`[START_DATE TO END_DATE]` denotes a range inclusive of the endpoints and `{START_DATE TO END_DATE}` denotes a range exclusive of the endpoints. 
 Values are formatted as a string in ISO 8601 format and can either represent a date or date and time in UTC.
 For example, to search for tokens that were created in the year 2021, you can query:
 <span class="text-snippet">
@@ -738,7 +733,7 @@ For example, to search for tokens that were created in the year 2021, you can qu
 
 To search a range without a start or end date, use the wildcard `*` in place of the start or end date, for example:
 <span class="text-snippet">
-  `created_at:[* TO 2022-01-01]`
+  `created_at:{* TO 2022-01-01}`
 </span>
 
 Multiple terms may be combined using the `AND` and `OR` operators and grouped using parentheses. For example:
