@@ -724,7 +724,7 @@ For example, to search for tokens having the metadata `{ customer_id: "123456" }
 </span>
 
 Date range searches are supported using the Lucene bracketed range syntax. 
-`[START_DATE TO END_DATE]` denotes a range inclusive of the endpoints and `{START_DATE TO END_DATE}` denotes a range exclusive of the endpoints. 
+`[START_DATE TO END_DATE]` denotes an inclusive range and `{START_DATE TO END_DATE}` denotes an exclusive range. 
 Values are formatted as a string in ISO 8601 format and can either represent a date or date and time in UTC.
 For example, to search for tokens that were created in the year 2021, you can query:
 <span class="text-snippet">
