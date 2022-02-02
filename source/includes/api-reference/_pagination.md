@@ -53,7 +53,7 @@ All `List` endpoints support pagination to allow bulk fetching multiple items. E
 
 Parameter | Required | Type | Default | Description
 --------- | -------- | ---- | ------- | -----------
-`page` | false | *integer* | 1 | Page number of the results to return
+`page` | false | *integer* | 1 | Page number of the results to return.
 `size` | false | *integer* | 20 | Number of results per page to return. Maximum size of 100 results.
 
 ## Pagination Object
