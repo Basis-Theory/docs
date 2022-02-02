@@ -286,13 +286,13 @@
   color: #859900;
 }
     </style>
-    <link href="../stylesheets/screen-c793e25f.css" rel="stylesheet" media="screen" />
-    <link href="../stylesheets/home-400c8cb3.css" rel="stylesheet" media="screen" />
+    <link href="../stylesheets/screen-af5789fe.css" rel="stylesheet" media="screen" />
+    <link href="../stylesheets/home-8cd3efe1.css" rel="stylesheet" media="screen" />
     <link href="../stylesheets/guides.css" rel="stylesheet" media="screen" />
     <link href="../stylesheets/iubenda-4a9ea063.css" rel="stylesheet" media="screen" />
     <script src="https://kit.fontawesome.com/86c3cd0147.js" crossorigin="anonymous"></script>
     <link href="../stylesheets/print-963dbb1c.css" rel="stylesheet" media="print" />
-      <script src="../javascripts/all-0b3a32eb.js"></script>
+      <script src="../javascripts/all-7bc81646.js"></script>
 
     <script>
       $(function() { setupCodeCopy(); });
@@ -632,6 +632,9 @@
                     <li>
                       <a href="#token-types-social-security-number" class="toc-h2 toc-link" data-title="Social Security Number">Social Security Number</a>
                     </li>
+                    <li>
+                      <a href="#token-types-employer-id-number" class="toc-h2 toc-link" data-title="Employer Id Number">Employer Id Number</a>
+                    </li>
                 </ul>
             </li>
             <li>
@@ -663,6 +666,9 @@
                     </li>
                     <li>
                       <a href="#tokens-get-a-decrypted-token-deprecated" class="toc-h2 toc-link" data-title="Get a Decrypted Token DEPRECATED">Get a Decrypted Token <span class="deprecated menu">DEPRECATED</span></a>
+                    </li>
+                    <li>
+                      <a href="#tokens-search-tokens" class="toc-h2 toc-link" data-title="Search Tokens">Search Tokens</a>
                     </li>
                     <li>
                       <a href="#tokens-delete-token" class="toc-h2 toc-link" data-title="Delete Token">Delete Token</a>
@@ -909,7 +915,7 @@ Is your project using React? We got you covered! Basis Theory's React package en
 <td>false</td>
 <td><em>integer</em></td>
 <td>1</td>
-<td>Page number of the results to return</td>
+<td>Page number of the results to return.</td>
 </tr>
 <tr>
 <td><code>size</code></td>
@@ -5325,6 +5331,7 @@ Token Types define the rules around a data type such as validation requirements,
 <li><a href="#token-types-us-bank-account-number">US Bank Account Number</a></li>
 <li><a href="#token-types-us-bank-routing-number">US Bank Routing Number</a></li>
 <li><a href="#token-types-social-security-number">Social Security Number</a></li>
+<li><a href="#token-types-employer-id-number">Employer Id Number</a></li>
 </ul>
 <h2 id='token-types-token'>Token</h2>
 <p>The <code>token</code> type is used for general data types that don&#39;t require input validation or formatting restrictions.</p>
@@ -5519,7 +5526,7 @@ Token Types define the rules around a data type such as validation requirements,
 </tr>
 <tr>
 <td><strong>Minimum Impact Level</strong></td>
-<td><code>high</code></td>
+<td><code>low</code></td>
 </tr>
 <tr>
 <td><strong>Default Restriction Policy</strong></td>
@@ -5613,7 +5620,7 @@ Token Types define the rules around a data type such as validation requirements,
 </tr>
 <tr>
 <td><strong>Minimum Impact Level</strong></td>
-<td><code>high</code></td>
+<td><code>low</code></td>
 </tr>
 <tr>
 <td><strong>Default Restriction Policy</strong></td>
@@ -5648,6 +5655,64 @@ Token Types define the rules around a data type such as validation requirements,
 <tr>
 <td>123-45-6789</td>
 <td>XXX-XX-6789</td>
+</tr>
+</tbody></table>
+<h2 id='token-types-employer-id-number'>Employer Id Number</h2>
+<table><thead>
+<tr>
+<th>Token Attribute</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>Type</strong></td>
+<td><code>employer_id_number</code></td>
+</tr>
+<tr>
+<td><strong>Default Classification</strong></td>
+<td><code>pii</code></td>
+</tr>
+<tr>
+<td><strong>Default Impact Level</strong></td>
+<td><code>high</code></td>
+</tr>
+<tr>
+<td><strong>Minimum Impact Level</strong></td>
+<td><code>low</code></td>
+</tr>
+<tr>
+<td><strong>Default Restriction Policy</strong></td>
+<td><code>mask</code></td>
+</tr>
+<tr>
+<td><strong>Input Validation</strong></td>
+<td>Numeric with optional delimiter of <code>&quot;-&quot;</code></td>
+</tr>
+<tr>
+<td><strong>Input Length</strong></td>
+<td>9 (not including delimiting characters)</td>
+</tr>
+<tr>
+<td><strong>Fingerprinted</strong></td>
+<td>Yes</td>
+</tr>
+</tbody></table>
+
+<p>Examples:</p>
+
+<table><thead>
+<tr>
+<th>Input Data</th>
+<th>Masked Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>123456789</td>
+<td>XXXXX6789</td>
+</tr>
+<tr>
+<td>12-3456789</td>
+<td>XX-XXX6789</td>
 </tr>
 </tbody></table>
 <h1 id='tokens'>Tokens</h1>
@@ -5799,7 +5864,7 @@ Default privacy settings can be overridden at the time of creation, but only to 
 </tbody></table>
 <h2 id='tokens-token-classifications'>Token Classifications</h2>
 <p>Each token has a data classification associated with it which defines the type of data it contains.
-Basis Theory permissions access to Tokens based on data classifications (see <a href="#permissions-permission-types-token-permissions">Token Permissions</a> for more details). 
+Basis Theory grants access to Tokens based on data classifications (see <a href="#permissions-permission-types-token-permissions">Token Permissions</a> for more details). 
 The following data classifications are supported:</p>
 
 <table><thead>
@@ -5859,7 +5924,7 @@ Token impact levels are used to further classify and permit access to Tokens wit
 </tbody></table>
 <h2 id='tokens-token-restriction-policies'>Token Restriction Policies</h2>
 <p>A Token Restriction Policy defines the policy to enforce on a Token&#39;s data when read by a User or Application
-with permission to read the Token&#39;s classification but at a lower impact level.</p>
+with <a href="#permissions-permission-types-token-permissions">permission</a> to read the Token&#39;s <a href="#tokens-token-classifications">classification</a> but at a lower <a href="#tokens-token-impact-levels">impact level</a>.</p>
 
 <table><thead>
 <tr>
@@ -5879,6 +5944,9 @@ with permission to read the Token&#39;s classification but at a lower impact lev
 <td>1</td>
 </tr>
 </tbody></table>
+
+<p>For example, an application with <code>token:pci:read:low</code> is allowed to read a <code>card_number</code> token (classified as <code>pci</code> with <code>high</code> impact level),
+but the plaintext card data will not be returned. Instead, the restriction policy associated with the <code>card_number</code> token (<code>mask</code>) will be applied and only masked card number data will be returned.</p>
 <h2 id='tokens-create-token'>Create Token</h2>
 <blockquote>
 <p>Request</p>
@@ -6077,7 +6145,8 @@ with permission to read the Token&#39;s classification but at a lower impact lev
   <code>https://api.basistheory.com/tokens</code>
 </span></p>
 
-<p>Get a list of tokens for the Tenant.</p>
+<p>Get a list of tokens for the Tenant, supporting basic search criteria. 
+If you need to perform a more advanced token search, see <a href="#tokens-search-tokens">Search Tokens</a>.</p>
 <h3 id='tokens-list-tokens-permissions'>Permissions</h3>
 <p class="scopes">
   <span class="scope">token:&lt;classification&gt;:read:&lt;impact_level&gt;</span>
@@ -6368,6 +6437,245 @@ Returns <a href="#errors">an error</a> if the token could not be retrieved.</p>
 <h3 id='tokens-get-a-decrypted-token-span-class-deprecated-menu-deprecated-span-response'>Response</h3>
 <p>Returns a decrypted <a href="#tokens-token-object">token</a> with the <code>id</code> provided. Returns <a href="#errors">an error</a> if the token could not be retrieved.
 Token types other than <code>token</code> or non-BasisTheory encrypted tokens will not be decrypted.</p>
+<h2 id='tokens-search-tokens'>Search Tokens</h2>
+<blockquote>
+<p>Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/tokens/search"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"BT-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">-X</span> <span class="s2">"POST"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">'{
+    "query": "data:6789 AND type:social_security_number",
+    "page": 1,
+    "size": 20
+  }'</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">BasisTheory</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@basis-theory/basis-theory-js</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">bt</span> <span class="o">=</span> <span class="k">await</span> <span class="k">new</span> <span class="nx">BasisTheory</span><span class="p">().</span><span class="nx">init</span><span class="p">(</span><span class="dl">'</span><span class="s1">key_N88mVGsp3sCXkykyN2EFED</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">tokens</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">bt</span><span class="p">.</span><span class="nx">tokens</span><span class="p">.</span><span class="nx">search</span><span class="p">({</span>
+  <span class="na">query</span><span class="p">:</span> <span class="dl">'</span><span class="s1">data:6789 AND type:social_security_number</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">page</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+  <span class="na">size</span><span class="p">:</span> <span class="mi">20</span>
+<span class="p">});</span>
+</code></pre></div><div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="k">using</span> <span class="nn">BasisTheory.net.Tokens</span><span class="p">;</span>
+
+<span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">TokenClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
+
+<span class="kt">var</span> <span class="n">tokens</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">SearchAsync</span><span class="p">(</span><span class="k">new</span> <span class="n">TokenSearchRequest</span> <span class="p">{</span>
+  <span class="n">Query</span> <span class="p">=</span> <span class="s">"data:6789 AND type:social_security_number"</span><span class="p">,</span>
+  <span class="n">Page</span> <span class="p">=</span> <span class="m">1</span><span class="p">,</span>
+  <span class="n">Size</span> <span class="p">=</span> <span class="m">20</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">basistheory</span>
+<span class="kn">from</span> <span class="nn">basistheory.api</span> <span class="kn">import</span> <span class="n">tokens_api</span>
+
+<span class="k">with</span> <span class="n">basistheory</span><span class="p">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="n">configuration</span><span class="o">=</span><span class="n">basistheory</span><span class="p">.</span><span class="n">Configuration</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">))</span> <span class="k">as</span> <span class="n">api_client</span><span class="p">:</span>
+    <span class="n">token_client</span> <span class="o">=</span> <span class="n">tokens_api</span><span class="p">.</span><span class="n">TokensApi</span><span class="p">(</span><span class="n">api_client</span><span class="p">)</span>
+
+    <span class="n">tokens</span> <span class="o">=</span> <span class="n">token_client</span><span class="p">.</span><span class="n">search</span><span class="p">(</span><span class="n">search</span><span class="o">=</span><span class="n">TokenSearchRequest</span><span class="p">(</span>
+        <span class="n">query</span><span class="o">=</span><span class="s">"data:6789 AND type:social_security_number"</span><span class="p">,</span>
+        <span class="n">page</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">size</span><span class="o">=</span><span class="mi">20</span>
+    <span class="p">))</span>
+</code></pre></div>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"pagination"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c06d0789-0a38-40be-b7cc-c28a718f76f1"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"social_security_number"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"tenant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77cb0024-123e-41a8-8ff8-a3d5a0fa8a08"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XXX-XX-6789"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"fingerprint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AKCUXS83DokKo4pDRKSAy4d42t9i8dcP1X2jijwEBCQH"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"privacy"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"classification"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pii"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"impact_level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"high"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"restriction_policy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mask"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"nonSensitiveField"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Non-Sensitive Value"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-01T08:23:14+00:00"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="err">...</span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p><span class="http-method post">
+  <span class="box-method">POST</span>
+  <code>https://api.basistheory.com/tokens/search</code>
+</span></p>
+
+<p>Search for tokens using a Lucene-based <a href="#tokens-search-tokens-query-syntax">query syntax</a>. 
+Use this endpoint to perform an advanced token search using token data or to build complex searches combining multiple terms with boolean operators.
+For simpler search use cases, see <a href="#list-tokens">List Tokens</a>.</p>
+<h3 id='tokens-search-tokens-permissions'>Permissions</h3>
+<p class="scopes">
+  <span class="scope">token:&lt;classification&gt;:read:&lt;impact_level&gt;</span>
+</p>
+
+<p>At least one token read <a href="#permissions-permission-types-token-permissions">permission</a> is required in order to perform a token search. 
+A token search will only return tokens that your application or user is authorized to read. </p>
+
+<p>Applications are permitted to search on the <code>data</code> field of a token only if the application&#39;s <a href="#permissions-permission-types-token-permissions">permissions</a>
+allow reading the <a href="#tokens-token-restriction-policies">unrestricted</a> plaintext token data. 
+Applications may search across non-data fields (eg. <code>metadata</code>, <code>type</code>) on tokens with any read permission for that data <a href="#tokens-token-classifications">classification</a>, even if that read permission only allows <a href="#tokens-token-restriction-policies">restricted</a> access to the token data.</p>
+<h3 id='tokens-search-tokens-request-parameters'>Request Parameters</h3>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Required</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>query</code></td>
+<td>false</td>
+<td><em>string</em></td>
+<td><code>null</code></td>
+<td>A query string using <a href="#tokens-search-tokens-query-syntax">Lucene query syntax</a>.</td>
+</tr>
+<tr>
+<td><code>page</code></td>
+<td>false</td>
+<td><em>integer</em></td>
+<td><code>1</code></td>
+<td>Page number of the results to return.</td>
+</tr>
+<tr>
+<td><code>size</code></td>
+<td>false</td>
+<td><em>integer</em></td>
+<td><code>20</code></td>
+<td>Number of results per page to return. Maximum size of 100 results.</td>
+</tr>
+</tbody></table>
+<h3 id='tokens-search-tokens-response'>Response</h3>
+<p>Returns a <a href="#pagination">paginated object</a> with the <code>data</code> property containing an array of <a href="#tokens-token-object">tokens</a>.
+Plaintext token data will be returned when the requester has read permissions on the token classification at equal or greater impact level.
+Token data will be restricted based on the token&#39;s <a href="#tokens-token-restriction-policies">restriction policy</a> when the requester has read permissions on the token classification at a lower impact level.
+Returns <a href="#errors">an error</a> if tokens could not be retrieved or when an invalid <a href="#tokens-search-tokens-query-syntax">query</a> is submitted.</p>
+<h3 id='tokens-search-tokens-query-syntax'>Query Syntax</h3>
+<p>Token search supports a <a href="http://www.lucenetutorial.com/lucene-query-syntax.html" target="_blank">Lucene-based query syntax</a> to build complex search criteria. 
+A query string is comprised of one or more Terms that can be combined with the <code>AND</code> and <code>OR</code> Operators.</p>
+
+<p>Search terms are formed by combining a field name and a value to search with a <code>:</code> - <code>field:value</code>. 
+See the <a href="#tokens-search-tokens-searchable-token-fields">Searchable Token Fields</a> table below for a complete list of supported fields. 
+For example, to search for tokens having a <code>type</code> of <code>card_number</code>, query for:
+<span class="text-snippet">
+  <code>type:card_number</code>
+</span></p>
+
+<p>Token data may be searched on some token types, by performing a case-insensitive exact match to one of several indexed data patterns.
+As an example, the following query will search for tokens containing the data <code>123-45-6789</code>:
+<span class="text-snippet">
+  <code>data:123-45-6789</code>
+</span></p>
+
+<p>For more detailed information about supported data searches, see <a href="#tokens-search-tokens-searching-data">Searching Data</a>.</p>
+
+<p>Phrases or values containing spaces may be searched by wrapping the searched value in quotes, for example:
+<span class="text-snippet">
+  <code>data:&quot;data containing multiple words&quot;</code>
+</span></p>
+
+<p>Metadata search terms require both a key and value to be specified in the form of <code>metadata.key:value</code>. 
+Metadata will be searched for a case-insensitive, exact match.
+For example, to search for tokens having the metadata <code>{ customer_id: &quot;123456&quot; }</code>, query for:
+<span class="text-snippet">
+  <code>metadata.customer_id:123456</code>
+</span></p>
+
+<p>Date range searches are supported using the Lucene bracketed range syntax. 
+<code>[START_DATE TO END_DATE]</code> denotes an inclusive range and <code>{START_DATE TO END_DATE}</code> denotes an exclusive range. 
+Values are formatted as a string in ISO 8601 format and can either represent a date or date and time in UTC.
+For example, to search for tokens that were created in the year 2021, you can query:
+<span class="text-snippet">
+  <code>created_at:[2021-01-01 TO 2021-12-31T23:59:59Z]</code>
+</span></p>
+
+<p>To search a range without a start or end date, use the wildcard <code>*</code> in place of the start or end date, for example:
+<span class="text-snippet">
+  <code>created_at:{* TO 2022-01-01}</code>
+</span></p>
+
+<p>Multiple terms may be combined using the <code>AND</code> and <code>OR</code> operators and grouped using parentheses. For example:
+<span class="text-snippet">
+  <code>(type:social_security_number AND metadata.user_id:1234) OR data:111-11-1111</code>
+</span></p>
+
+<aside class="warning">
+  <span>
+    The supported Lucene syntax is currently limited to the operations documented above, and not all standard Lucene syntax is supported.
+    If you would like to have support for any additional Lucene features, please <a href="mailto:support@basistheory.com?subject=Token Search Feature Request" target="_blank">let us know</a>.
+  </span>
+</aside>
+<h3 id='tokens-search-tokens-searchable-token-fields'>Searchable Token Fields</h3>
+<table><thead>
+<tr>
+<th>Fields</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>data</code></td>
+<td><em>string</em></td>
+<td>Token data. See <a href="#tokens-search-tokens-searching-data">Searching Data</a> for supported values.</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td><em>string</em></td>
+<td>The <a href="#token-types">token type</a> of the token.</td>
+</tr>
+<tr>
+<td><code>metadata.[key]</code></td>
+<td><em>string</em></td>
+<td>Search against token metadata having the given <code>[key]</code>.</td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td><em>date</em></td>
+<td>The date or date and time a token was created in ISO 8601 format.</td>
+</tr>
+</tbody></table>
+<h3 id='tokens-search-tokens-searching-data'>Searching Data</h3>
+<p>Basis Theory currently supports data searches on <code>social_security_number</code> and <code>employer_id_number</code> token types.
+When creating tokens of these types, Basis Theory will securely index several data patterns to enable searching on these values:</p>
+
+<ul>
+<li>The value with standard delimiters (<code>-</code>), eg. <code>123-45-6789</code></li>
+<li>The value without delimiters, eg. <code>123456789</code></li>
+<li>The last 4 digits of the value, eg. <code>6789</code></li>
+</ul>
+
+<p>Token data searches will only return a token if there is an exact match on one of these data patterns; full wildcard search is not currently supported.</p>
+
+<p>For example, to search for a <code>social_security_number</code> token with the value <code>123-45-6789</code>, you may search for: </p>
+
+<p><span class="text-snippet">
+  <code>data:123-45-6789 AND type:social_security_number</code>
+</span></p>
+
+<p>To search for all <code>social_security_number</code> tokens with the last 4 digits of <code>6789</code>, you may search for:</p>
+
+<p><span class="text-snippet">
+  <code>data:6789 AND type:social_security_number</code>
+</span></p>
+
+<p>Note that the results returned by this query may not be unique if you have stored multiple <code>social_security_number</code> tokens ending with the same 4 digits.</p>
+
+<aside class="notice">
+  <span>If you are interested in searching data on other token types or searching with custom data patterns, please <a href="mailto:support@basistheory.com?subject=Token Search Feature Request" target="_blank">contact us</a>!</span>
+</aside>
 <h2 id='tokens-delete-token'>Delete Token</h2>
 <blockquote>
 <p>Request</p>
