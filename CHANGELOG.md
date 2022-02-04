@@ -1,3 +1,10 @@
+## [1.26.3](https://github.com/Basis-Theory/docs/compare/v1.26.2...v1.26.3) (2022-02-04)
+
+
+### Bug Fixes
+
+* **deps:** update NPM and Ruby dependencies to latest version ([#152](https://github.com/Basis-Theory/docs/issues/152)) ([56e66d2](https://github.com/Basis-Theory/docs/commit/56e66d23be8febef89cf5afe8e62359996c2e8c6))
+
 ## [1.26.2](https://github.com/Basis-Theory/docs/compare/v1.26.1...v1.26.2) (2022-02-04)
 
 
