@@ -286,7 +286,7 @@
   color: #859900;
 }
     </style>
-    <link href="../stylesheets/screen-af5789fe.css" rel="stylesheet" media="screen" />
+    <link href="../stylesheets/screen-3529f428.css" rel="stylesheet" media="screen" />
     <link href="../stylesheets/home-8cd3efe1.css" rel="stylesheet" media="screen" />
     <link href="../stylesheets/guides.css" rel="stylesheet" media="screen" />
     <link href="../stylesheets/iubenda-4a9ea063.css" rel="stylesheet" media="screen" />
@@ -584,7 +584,7 @@
 </blockquote>
 <div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">meta</span>
-    <span class="na">http</span><span class="err">-</span><span class="na">equiv</span><span class="p">=</span><span class="s">"Content-Security-Policy"</span>
+    <span class="na">http-equiv</span><span class="p">=</span><span class="s">"Content-Security-Policy"</span>
     <span class="na">content</span><span class="p">=</span><span class="s">"frame-src https://elements.basistheory.com; script-src https://js.basistheory.com"</span>
   <span class="p">/&gt;</span>
 <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
@@ -2020,8 +2020,8 @@ data. See <a href="#element-types-card-element">CardModel</a> for the resolved v
   <span class="p">}</span>
 
   <span class="k">return</span> <span class="p">&lt;</span><span class="nc">BasisTheoryProvider</span> <span class="na">bt</span><span class="p">=</span><span class="si">{</span><span class="nx">bt</span><span class="si">}</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nc">TextElement</span> <span class="na">id</span><span class="p">=</span><span class="s">"fullName"</span> <span class="na">placeholder</span><span class="p">=</span><span class="s">"Full name"</span> <span class="na">aria</span><span class="err">-</span><span class="na">label</span><span class="p">=</span><span class="s">"Full name"</span> <span class="p">/&gt;</span>
-    <span class="p">&lt;</span><span class="nc">TextElement</span> <span class="na">id</span><span class="p">=</span><span class="s">"ssn"</span> <span class="na">placeholder</span><span class="p">=</span><span class="s">"SSN"</span> <span class="na">aria</span><span class="err">-</span><span class="na">label</span><span class="p">=</span><span class="s">"Social Security Number"</span> <span class="na">mask</span><span class="p">=</span><span class="si">{</span><span class="nx">ssnMask</span><span class="si">}</span> <span class="na">transform</span><span class="p">=</span><span class="si">{</span><span class="sr">/</span><span class="se">[</span><span class="sr">-</span><span class="se">]</span><span class="sr">/</span><span class="si">}</span> <span class="p">/&gt;</span>
+    <span class="p">&lt;</span><span class="nc">TextElement</span> <span class="na">id</span><span class="p">=</span><span class="s">"fullName"</span> <span class="na">placeholder</span><span class="p">=</span><span class="s">"Full name"</span> <span class="na">aria-label</span><span class="p">=</span><span class="s">"Full name"</span> <span class="p">/&gt;</span>
+    <span class="p">&lt;</span><span class="nc">TextElement</span> <span class="na">id</span><span class="p">=</span><span class="s">"ssn"</span> <span class="na">placeholder</span><span class="p">=</span><span class="s">"SSN"</span> <span class="na">aria-label</span><span class="p">=</span><span class="s">"Social Security Number"</span> <span class="na">mask</span><span class="p">=</span><span class="si">{</span><span class="nx">ssnMask</span><span class="si">}</span> <span class="na">transform</span><span class="p">=</span><span class="si">{</span><span class="sr">/</span><span class="se">[</span><span class="sr">-</span><span class="se">]</span><span class="sr">/</span><span class="si">}</span> <span class="p">/&gt;</span>
     <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
       <span class="p">&lt;</span><span class="nt">button</span> <span class="na">type</span><span class="p">=</span><span class="s">"submit"</span> <span class="na">onClick</span><span class="p">=</span><span class="si">{</span><span class="nx">submit</span><span class="si">}</span> <span class="na">disabled</span><span class="p">=</span><span class="si">{</span><span class="o">!</span><span class="nx">bt</span><span class="si">}</span><span class="p">&gt;</span>Submit<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
     <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
