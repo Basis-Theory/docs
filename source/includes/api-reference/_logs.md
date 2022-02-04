@@ -2,16 +2,16 @@
 
 ## Log Object
 
-Attribute | Type | Description
---------- | ---- | -----------
-`tenant_id` | *uuid* | The [Tenant](#tenants) ID which owns the entity
-`actor_id` | *uuid* | (Optional) The ID of the actor which performed the operation
-`actor_type` | *string* | (Optional) The type of actor which performed the operation (e.g. `"user"`, `"application"`)
-`entity_type` | *string* | The entity type of the log
-`entity_id` | *string* | The unique identifier of the `entity_type`
-`operation` | *string* | The log operation (e.g. create, update, read, delete)
-`message` | *string* | The log message
-`created_at` | *date* | Created date of the token in ISO 8601 format
+| Attribute     | Type     | Description                                                                             |
+|---------------|----------|-----------------------------------------------------------------------------------------|
+| `tenant_id`   | *uuid*   | The [Tenant](#tenants) ID which owns the entity                                         |
+| `actor_id`    | *uuid*   | (Optional) The ID of the actor which performed the operation                            |
+| `actor_type`  | *string* | (Optional) The type of actor which performed the operation (e.g. `user`, `application`) |
+| `entity_type` | *string* | The entity type of the log (e.g. `token`, `card`, `bank`, `application`, `tenant`)      |
+| `entity_id`   | *string* | The unique identifier of the `entity_type`                                              |
+| `operation`   | *string* | The log operation (e.g. create, update, read, delete)                                   |
+| `message`     | *string* | The log message                                                                         |
+| `created_at`  | *date*   | Created date of the token in ISO 8601 format                                            |
 
 
 ## List Logs
@@ -80,12 +80,12 @@ Get a list of logs for the Tenant.
 
 ### Query Parameters
 
-Parameter | Required | Type | Default | Description
---------- | -------- | ---- | ------- | -----------
-`entity_type` | false | *string* | `null` | An optional entity type to filter the list of logs by. (e.g. card, bank, application, tenant)
-`entity_id` | false | *string* | `null` | The unique identifier of the `entity_type` to filter the list of logs by.
-`start_date` | false | *date* | `null` | An ISO 8601 formatted date to filter logs where `created_at` is greater than or equal to
-`end_date` | false | *date* | `null` | An ISO 8601 formatted date to filter logs where `created_at` is less than
+| Parameter     | Required | Type     | Default | Description                                                                                                    |
+|---------------|----------|----------|---------|----------------------------------------------------------------------------------------------------------------|
+| `entity_type` | false    | *string* | `null`  | An optional entity type to filter the list of logs by. (e.g. `token`, `card`, `bank`, `application`, `tenant`) |
+| `entity_id`   | false    | *string* | `null`  | The unique identifier of the `entity_type` to filter the list of logs by.                                      |
+| `start_date`  | false    | *date*   | `null`  | An ISO 8601 formatted date to filter logs where `created_at` is greater than or equal to                       |
+| `end_date`    | false    | *date*   | `null`  | An ISO 8601 formatted date to filter logs where `created_at` is less than                                      |
 
 ### Response
 
