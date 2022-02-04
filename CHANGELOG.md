@@ -1,3 +1,10 @@
+## [1.26.2](https://github.com/Basis-Theory/docs/compare/v1.26.1...v1.26.2) (2022-02-04)
+
+
+### Bug Fixes
+
+* add examples of entity_type property in Log Object ([#150](https://github.com/Basis-Theory/docs/issues/150)) ([d19caa8](https://github.com/Basis-Theory/docs/commit/d19caa8bf380bfb5791b627ed699c8ae705004bb))
+
 ## [1.26.1](https://github.com/Basis-Theory/docs/compare/v1.26.0...v1.26.1) (2022-01-28)
 
 
