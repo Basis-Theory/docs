@@ -7,7 +7,7 @@
 | `tenant_id`   | *uuid*   | The [Tenant](#tenants) ID which owns the entity                                         |
 | `actor_id`    | *uuid*   | (Optional) The ID of the actor which performed the operation                            |
 | `actor_type`  | *string* | (Optional) The type of actor which performed the operation (e.g. `user`, `application`) |
-| `entity_type` | *string* | The entity type of the log (e.g. a [Token Type](#token-types), `application`, `tenant`) |
+| `entity_type` | *string* | The entity type of the log (e.g. `token`, `card`, `bank`, `application`, `tenant`)      |
 | `entity_id`   | *string* | The unique identifier of the `entity_type`                                              |
 | `operation`   | *string* | The log operation (e.g. create, update, read, delete)                                   |
 | `message`     | *string* | The log message                                                                         |
