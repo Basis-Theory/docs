@@ -21,6 +21,27 @@ under the License.
 // Use these settings to help adjust the appearance of Slate
 
 
+// BT Colors
+$grey-200: #A4A9C5;
+$grey-600: #545A78;
+$grey-800: #1E233B;
+$grey-900: #1B1D32;
+$primary-text: #1AD1DB;
+$primary-dark: #009FA9;
+$side-bar-gray: #E5E6EC;
+$side-bar-background: #F2F4FF;
+$blue-light: #F2F3FF;
+$blue-shadow: #8B92B6;
+$magenta-light: #EEEBEE;
+$warning-bg: #FFD582 !default;
+$success-bg: #3AC3A2 !default;
+$info-bg: #1AD1DB !default;
+$danger-bg: #FB5B8B !default;
+$border-subtitles: rgba(65, 73, 112, 0.2);
+$dark-background-color: #070A1B;
+
+
+
 // BACKGROUND COLORS
 ////////////////////
 $nav-bg: #13172A !default;
@@ -61,7 +82,7 @@ $text-snippet-bg: #1B1D32 !default;
 
 // TEXT COLORS
 ////////////////////
-$main-text: #1B1D32 !default; // main content text color
+$main-text: #5c5962 !default; // main content text color
 $nav-text: #626582 !default;
 $lang-select-text: #FFF !default; // color of unselected language tab text
 $lang-select-active-text: #FFF !default; // color of selected language tab text
@@ -75,7 +96,6 @@ $http-method-text: #FFF !default;
 $primary: #1AD1DB !default;
 $links: #047F87;
 $secondary: #8B92B6 !default;
-$grey-600: #626582;
 $grey-50: #F2F3FF !default;
 $grey-900: #1B1D32 !default;
 $grey-800: #2D2F4A !default;
@@ -228,10 +248,9 @@ $phone-width: $tablet-width - $nav-width !default; // min width before reverting
 %nav-secondary-title {
   font-family: "Source Sans Pro", sans-serif;
   font-style: normal;
-  font-weight: 600;
-  font-size: 12px;
-  line-height: 157%;
-  letter-spacing: 0.1px;
+  font-weight: normal;
+  font-size: inherit;
+  line-height: 1.4;
 }
 
 %button-medium {

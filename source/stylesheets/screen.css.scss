@@ -29,8 +29,6 @@ html, body {
   color: $main-text;
   padding: 0;
   margin: 0;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   @extend %default-font;
   background-color: $main-bg;
   height: 100%;
@@ -49,11 +47,17 @@ html, body {
   }
 }
 
+:target::before {
+  content: "";
+  display: block;
+  height: 60px; /* fixed header height*/
+  margin: -60px 0 0; /* negative fixed header height */
+}
+
 ////////////////////////////////////////////////////////////////////////////////
-// TABLE OF CONTENTS
+// SIDEBAR
 ////////////////////////////////////////////////////////////////////////////////
 .toc-wrapper li.other-docs a, li.more a  {
-
   color: $secondary;
   text-decoration: none;
   font-size: 16px;
@@ -72,14 +76,13 @@ html, body {
   overflow-x: hidden;
   position: fixed;
   z-index: 30;
-  top: 0;
+  top: 60px;
   left: 0;
   bottom: 0;
   width: $nav-width;
-  background-color: $nav-bg;
+  background-color: $side-bar-background;
   font-size: 16px;
-  font-weight: 600;
-  border-right: 1px solid $grey-800;
+  border-right: 1px solid $magenta-light;
   padding-bottom: 200px;
 
   .toc-header {
@@ -132,6 +135,7 @@ html, body {
     position: relative;
     display: grid;
     align-items: center;
+    margin-top: 16px;
 
     input {
       background: $nav-bg-line;
@@ -141,7 +145,6 @@ html, body {
       width: 86%;
       outline: none;
       color: $nav-search-text;
-      opacity: 0.55;
       border: none;
       border-radius: 2px;
       @extend %search-font;
@@ -165,23 +168,24 @@ html, body {
     height: 0;
     overflow-y: auto;
     overflow-x: hidden;
-    transition-property: height, margin;
+    transition-property: height;
     transition-duration: 180ms;
     transition-timing-function: ease-in-out;
-    background: $nav-subitem-bg;
+    margin: 1px 18px 0 15px;
+    background: $nav-bg;
     &.visible {
       height: 30%;
-      margin: -1em 15px 1em;
     }
 
 
     li {
       margin: 1em $nav-padding;
       line-height: 1;
+      color: $blue-shadow;
     }
 
     a {
-      color: $links;
+      color: $primary-text !important;
       text-decoration: none;
 
       &:hover {
@@ -206,16 +210,19 @@ html, body {
   }
 
   li {
-    color: $nav-text;
     transition-property: background;
     transition-timing-function: linear;
     transition-duration: 200ms;
-    padding: 4px 0;
   }
 
   // This is the currently selected ToC entry
   .toc-link.active {
-    color: $primary;
+    color: $primary-dark;
+    font-weight: 600;
+    font-size: 14px;
+    background-image: linear-gradient(-90deg, #ebedf5 0%, rgba(235, 237, 245, 0.8) 80%, rgba(235, 237, 245, 0) 100%);
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
   }
 
   // this is parent links of the currently selected ToC entry
@@ -226,7 +233,7 @@ html, body {
     line-height: 20px;
     letter-spacing: 0.15px;
     text-align: left;
-    color: $primary;
+    color: $primary-dark;
   }
   // Section headers
   .toc-h1[data-title="API Reference"],
@@ -250,13 +257,6 @@ html, body {
     text-align: left;
   }
 
-  .toc-list-h2 li {
-    list-style: disc;
-  }
-
-  .toc-list-h2 li::marker {
-    margin-left: -12px;
-  }
 
   .toc-h2 {
     font-size: 14px;
@@ -295,7 +295,14 @@ html, body {
   transition-property: background;
   transition-timing-function: linear;
   transition-duration: 130ms;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
   @extend %subtitle-font;
+}
+
+.toc-link:hover {
+  color: inherit;
+  background-image: linear-gradient(-90deg, #ebedf5 0%, rgba(235, 237, 245, 0.8) 80%, rgba(235, 237, 245, 0) 100%);
 }
 
 // button to show navigation on mobile devices
@@ -333,7 +340,7 @@ html, body {
 
 .beta {
   padding: 3px 6px 4px;
-  color: $aside-warning-bg;
+  color: #e1ab3f;
   background: rgba(255, 213, 130, 0.14);
   border-radius: 2px;
   font-size: 10px;
@@ -353,6 +360,23 @@ html, body {
 .deprecated {
   display: none;
 }
+
+.nav-title {
+  font-family: "Source Sans Pro", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: inherit;
+  line-height: 1.4;
+  color: $grey-600;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: 20px;
+  cursor: pointer;
+  letter-spacing: 0;
+}
+
 
 ////////////////////////////////////////////////////////////////////////////////
 // PAGE LAYOUT AND CODE SAMPLE BACKGROUND
@@ -376,7 +400,7 @@ html, body {
     background-color: $examples-bg;
     position: absolute;
     right: 0;
-    top: 0;
+    top: 60px;
     bottom: 0;
   }
 
@@ -494,11 +518,12 @@ html, body {
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
 
-
-
   // to place content above the dark box
   position: relative;
   z-index: 30;
+
+  // to place after header
+  padding-top: 60px;
 
   &:after {
     content: '';
@@ -756,19 +781,7 @@ html, body {
   margin-top: 1em;
 }
 
-.nav-title {
-  @extend %nav-secondary-title;
-  color: $grey-600;
-  margin: 1em 1.7rem;
-  &::after {
-    display: inline-block;
-    content: "";
-    border: 1px solid $nav-bg-line;
-    width: 62%;
-    margin-left: 10px;
-    transform: translateY(-0.2rem);
-  }
-}
+
 
 .scopes {
   .scope {
@@ -958,7 +971,10 @@ html, body {
     background: $grey-50;
     border-bottom: 1px solid #E6E8F0;
     box-sizing: border-box;
-    padding: 36px;
+    height: 73px;
+    padding: 16px;
+    display: flex;
+    align-items: center;
   }
   .header-intro-box {
     border-bottom: 1px solid #CACDDB;
