@@ -26,6 +26,12 @@ under the License.
       intro_page_quick_links += partial("includes/#{include}")
     end
   end
+
+  if current_page.data.intro_includes
+    current_page.data.intro_includes.each do |include|
+      intro_page_content += partial("includes/#{include}")
+    end
+  end
 %>
 <%
   if current_page.data.intro_includes
@@ -66,11 +72,11 @@ under the License.
 <!doctype html>
 <html>
   <head>
+    <title><%= current_page.data.title || "API Documentation" %></title>
+    <%= favicon_tag 'https://cdn.basistheory.com/images/favicons/favicon.ico' %>
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title><%= current_page.data.title || "API Documentation" %></title>
-    <%= favicon_tag 'https://cdn.basistheory.com/images/favicons/favicon.ico' %>
     <meta name="description" content="API Reference documentation for the Basis Theory API. Includes code examples for all official Basis Theory SDKs and user guides for various use cases.">
     <meta property="og:description" content="API Reference documentation for the Basis Theory API. Includes code examples for all official Basis Theory SDKs and user guides for various use cases.">
     <meta property="og:image" content="https://cdn.basistheory.com/images/seo/docs-opengraph.png">
@@ -79,18 +85,18 @@ under the License.
       <%= Rouge::Themes::MonokaiSublimeSlate.render(:scope => '.highlight') %>
     </style>
     <style media="print">
-      * {
-        transition:none!important;
-      }
       <%= Rouge::Themes::Base16::Solarized.render(:scope => '.highlight') %>
     </style>
+
     <%= stylesheet_link_tag :header, media: :screen %>
     <%= stylesheet_link_tag :screen, media: :screen %>
     <%= stylesheet_link_tag :home, media: :screen %>
     <%= stylesheet_link_tag :guides, media: :screen %>
     <%= stylesheet_link_tag :iubenda, media: :screen %>
-    <script src="https://kit.fontawesome.com/86c3cd0147.js" crossorigin="anonymous"></script>
     <%= stylesheet_link_tag :print, media: :print %>
+
+    <script src="https://kit.fontawesome.com/86c3cd0147.js" crossorigin="anonymous"></script>
+    
     <% if current_page.data.search %>
       <%= javascript_include_tag  "all" %>
     <% else %>
@@ -98,28 +104,28 @@ under the License.
     <% end %>
 
     <% if current_page.data.code_clipboard %>
-    <script>
-      $(function() { setupCodeCopy(); });
-    </script>
+      <script>
+        $(function() { setupCodeCopy(); });
+      </script>
     <% end %>
+  
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-M56229L');</script>
-  <!-- End Google Tag Manager -->
+    <!-- End Google Tag Manager -->
 
   <!-- Iubenda -->
   <!-- IF YOU ARE UPDATING THIS, MAKE SURE YOU PUT THE CSS INTO THE source/stylesheets/iubenda.css.scss file and remove it here. -->
     <script type="text/javascript">
-    var _iub = _iub || [];
-    _iub.csConfiguration = {"enableCcpa":true,"ccpaApplies":true,"consentOnContinuedBrowsing":false,"ccpaAcknowledgeOnDisplay":true,"lang":"en","siteId":2378844,"floatingPreferencesButtonDisplay":false,"cookiePolicyId":13137791, "callback":{ "onPreferenceExpressedOrNotNeeded":function(preference) { dataLayer.push({iubenda_ccpa_opted_out: _iub.cs.api.isCcpaOptedOut()}); if (!preference) { dataLayer.push({event: "iubenda_preference_not_needed"});} else { if (preference.consent === true) { dataLayer.push({event: "iubenda_consent_given"});} else if (preference.consent === false) { dataLayer.push({event: "iubenda_consent_rejected"});} else if (preference.purposes) { for (var purposeId in preference.purposes) {if (preference.purposes[purposeId]) { dataLayer.push({event: "iubenda_consent_given_purpose_" + purposeId}); }}}}} }, "banner":{ "acceptButtonDisplay":true,"customizeButtonDisplay":true,"acceptButtonColor":"#1ad1db","acceptButtonCaptionColor":"#070a1b","customizeButtonColor":"#1a1e32","customizeButtonCaptionColor":"#d2d2d2","rejectButtonDisplay":true,"rejectButtonColor":"#1e2337","rejectButtonCaptionColor":"white","position":"bottom","textColor":"#e5e6ec","backgroundColor":"#141729","acceptButtonCaption":"Accept All","content":"<div id=\"iubenda-cs-title\">&#x1f36a;  &nbsp;Cookie Notice</div><div id=\"iubenda-cs-paragraph\">\n\nBy clicking \"Accept All\", you agree to the storing of cookies on your device to enhance site navigation, analyze site usage, and assist in our marketing efforts. View our <a href=\"https://basistheory.com/privacy-policy\" target=\"_blank\">Cookie Policy</a> for more information.\n</div>" }};
+      var _iub = _iub || [];
+      _iub.csConfiguration = {"enableCcpa":true,"ccpaApplies":true,"consentOnContinuedBrowsing":false,"ccpaAcknowledgeOnDisplay":true,"lang":"en","siteId":2378844,"floatingPreferencesButtonDisplay":false,"cookiePolicyId":13137791, "callback":{ "onPreferenceExpressedOrNotNeeded":function(preference) { dataLayer.push({iubenda_ccpa_opted_out: _iub.cs.api.isCcpaOptedOut()}); if (!preference) { dataLayer.push({event: "iubenda_preference_not_needed"});} else { if (preference.consent === true) { dataLayer.push({event: "iubenda_consent_given"});} else if (preference.consent === false) { dataLayer.push({event: "iubenda_consent_rejected"});} else if (preference.purposes) { for (var purposeId in preference.purposes) {if (preference.purposes[purposeId]) { dataLayer.push({event: "iubenda_consent_given_purpose_" + purposeId}); }}}}} }, "banner":{ "acceptButtonDisplay":true,"customizeButtonDisplay":true,"acceptButtonColor":"#1ad1db","acceptButtonCaptionColor":"#070a1b","customizeButtonColor":"#1a1e32","customizeButtonCaptionColor":"#d2d2d2","rejectButtonDisplay":true,"rejectButtonColor":"#1e2337","rejectButtonCaptionColor":"white","position":"bottom","textColor":"#e5e6ec","backgroundColor":"#141729","acceptButtonCaption":"Accept All","content":"<div id=\"iubenda-cs-title\">&#x1f36a;  &nbsp;Cookie Notice</div><div id=\"iubenda-cs-paragraph\">\n\nBy clicking \"Accept All\", you agree to the storing of cookies on your device to enhance site navigation, analyze site usage, and assist in our marketing efforts. View our <a href=\"https://basistheory.com/privacy-policy\" target=\"_blank\">Cookie Policy</a> for more information.\n</div>" }};
     </script>
     <script type="text/javascript" src="//cdn.iubenda.com/cs/ccpa/stub.js"></script>
     <script type="text/javascript" src="//cdn.iubenda.com/cs/iubenda_cs.js" charset="UTF-8" async></script>
   <!-- End Iubenda -->
-
   </head>
 
   <body class="<%= page_classes %>" data-languages="<%=h language_tabs.map{ |lang| lang.is_a?(Hash) ? lang.keys.first : lang }.to_json %>">
@@ -129,142 +135,49 @@ under the License.
         <%= image_tag('navbar.png') %>
       </span>
     </a>
-    <div class="toc-wrapper">
 
-      <% if language_tabs.any? %>
-        <div class="lang-selector">
-          <% language_tabs.each do |lang| %>
-            <% if lang.is_a? Hash %>
-              <a href="#" data-language-name="<%= lang.keys.first %>"><%= lang.values.first %></a>
-            <% else %>
-              <a href="#" data-language-name="<%= lang %>"><%= lang %></a>
-            <% end %>
-          <% end %>
-        </div>
-      <% end %>
+    <!-- Sidebar/TOC -->
+    <%= partial "partials/sidebar", 
+        locals: {
+          language_tabs: language_tabs, 
+          intro_page_content: intro_page_content, 
+          api_page_content: api_page_content,
+          vanilla_page_content: vanilla_page_content,
+          react_page_content: react_page_content,
+          current_page: current_page,
+       }  
+    %>
+    <!-- End Sidebar/TOC -->
 
-      <% if current_page.data.search %>
-        <div class="search">
-          <input type="text" class="search" id="input-search" placeholder="Search...">
-        </div>
-        <ul class="search-results"></ul>
-      <% end %>
-
-      <h1 class="nav-title">Get Started</h1>
-      <ul id="toc_intro" class="toc-section toc-list-h1">
-        <% toc_data(intro_page_content).each do |h1| %>
-          <li>
-            <a href="#<%= h1[:id] %>" class="toc-h1 toc-link" data-title="<%= h1[:title] %>"><%= h1[:content] %></a>
-            <% if h1[:children].length > 0 %>
-              <ul class="toc-list-h2">
-                <% h1[:children].each do |h2| %>
-                  <li>
-                    <a href="#<%= h2[:id] %>" class="toc-h2 toc-link" data-title="<%= h2[:title] %>"><%= h2[:content] %></a>
-                  </li>
-                <% end %>
-              </ul>
-            <% end %>
-          </li>
-        <% end %>
-      </ul>
-
-
-      <% if current_page.data.api_includes %>
-        <h1 class="nav-title">Reference</h1>
-        <ul id="toc_api" class="toc-section toc-list-h1">
-          <% toc_data(api_page_content).each do |h1| %>
-            <li>
-              <a href="#<%= h1[:id] %>" class="toc-h1 toc-link" data-title="<%= h1[:title] %>"><%= h1[:content] %></a>
-              <% if h1[:children].length > 0 %>
-                <ul class="toc-list-h2">
-                  <% h1[:children].each do |h2| %>
-                    <li>
-                      <a href="#<%= h2[:id] %>" class="toc-h2 toc-link" data-title="<%= h2[:title] %>"><%= h2[:content] %></a>
-                    </li>
-                  <% end %>
-                </ul>
-              <% end %>
-            </li>
-          <% end %>
-        </ul>
-      <% end %>
-
-      <% if current_page.data.vanilla_includes %>
-        <h1 class="nav-title">Vanilla JS</h1>
-        <ul id="toc_api" class="toc-section toc-list-h1">
-          <% toc_data(vanilla_page_content).each do |h1| %>
-            <li>
-              <a href="#<%= h1[:id] %>" class="toc-h1 toc-link" data-title="<%= h1[:title] %>"><%= h1[:content] %></a>
-              <% if h1[:children].length > 0 %>
-                <ul class="toc-list-h2">
-                  <% h1[:children].each do |h2| %>
-                    <li>
-                      <a href="#<%= h2[:id] %>" class="toc-h2 toc-link" data-title="<%= h2[:title] %>"><%= h2[:content] %></a>
-                    </li>
-                  <% end %>
-                </ul>
-              <% end %>
-            </li>
-          <% end %>
-        </ul>
-      <% end %>
-
-      <% if current_page.data.react_includes %>
-        <h1 class="nav-title">React</h1>
-        <ul id="toc_api" class="toc-section toc-list-h1">
-          <% toc_data(react_page_content).each do |h1| %>
-            <li>
-              <a href="#<%= h1[:id] %>" class="toc-h1 toc-link" data-title="<%= h1[:title] %>"><%= h1[:content] %></a>
-              <% if h1[:children].length > 0 %>
-                <ul class="toc-list-h2">
-                  <% h1[:children].each do |h2| %>
-                    <li>
-                      <a href="#<%= h2[:id] %>" class="toc-h2 toc-link" data-title="<%= h2[:title] %>"><%= h2[:content] %></a>
-                    </li>
-                  <% end %>
-                </ul>
-              <% end %>
-            </li>
-          <% end %>
-        </ul>
-      <% end %>
-
-      <% if current_page.data.other_docs %>
-        <h1 class="nav-title">Other Docs</h1>
-        <ul id="toc_api" class="toc-section toc-list-h1">
-          <% current_page.data.other_docs.each do |footer| %>
-             <li class="other-docs"><%= footer %></li>
-          <% end %>
-        </ul>
-      <% end %>
-      <% if current_page.data.aux_links %>
-        <h1 class="nav-title">More</h1>
-        <ul id="toc_api" class="toc-section toc-list-h1">
-          <% current_page.data.aux_links.each do |footer| %>
-            <li><%= footer %></li>
-          <% end %>
-        </ul>
-      <% end %>
-
-      <% if current_page.data.toc_footers %>
-        <ul class="toc-footer">
-          <% current_page.data.toc_footers.each do |footer| %>
-            <li><%= footer %></li>
-          <% end %>
-        </ul>
-      <% end %>
-    </div>
-
+    <!-- Header -->
     <%= partial "partials/header" %>
+    <!-- End Header -->
 
+    <!-- Main -->
     <div class="page-wrapper">
-      <% if current_page.data.hide_code != true %>
-        <div class="dark-box"></div>
-      <% end %>
 
+      <!-- Code Sidebar -->
+      <% if current_page.data.hide_code != true %>
+        <div class="dark-box">
+          <% if language_tabs.any? %>
+            <div class="lang-selector">
+              <% language_tabs.each do |lang| %>
+                <% if lang.is_a? Hash %>
+                  <a href="#" data-language-name="<%= lang.keys.first %>"><%= lang.values.first %></a>
+                <% else %>
+                  <a href="#" data-language-name="<%= lang %>"><%= lang %></a>
+                <% end %>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+      <!-- End Code Sidebar -->
+
+      <!-- Content -->
       <div class="<%= current_page.data.hide_code ? "content no-code-content" : "content" %>">
         <div class="header-border">
-
+          <!-- TODO: Move Search Here? -->
         </div>
         <%= intro_page_content %>
         <%= api_page_content %>
@@ -272,21 +185,7 @@ under the License.
         <%= react_page_content %>
         <%= module_page_content %>
       </div>
-      <% if current_page.data.hide_code != true %>
-      <div class="dark-box">
-        <% if language_tabs.any? %>
-          <div class="lang-selector">
-            <% language_tabs.each do |lang| %>
-              <% if lang.is_a? Hash %>
-                <a href="#" data-language-name="<%= lang.keys.first %>"><%= lang.values.first %></a>
-              <% else %>
-                <a href="#" data-language-name="<%= lang %>"><%= lang %></a>
-              <% end %>
-            <% end %>
-          </div>
-        <% end %>
-      </div>
-      <% end %>
+      <!-- End Content -->
     </div>
   </body>
 </html>
