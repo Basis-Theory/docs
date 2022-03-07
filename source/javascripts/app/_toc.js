@@ -44,7 +44,7 @@
     };
 
     var refreshToc = function() {
-      var currentTop = $(document).scrollTop() + scrollOffset;
+      var currentTop = $(document).scrollTop() + scrollOffset  + 60;
 
       if (currentTop + windowHeight >= pageHeight) {
         // at bottom of page, so just select last header by making currentTop very large

@@ -47,13 +47,6 @@ html, body {
   }
 }
 
-:target::before {
-  content: "";
-  display: block;
-  height: 60px; /* fixed header height*/
-  margin: -60px 0 0; /* negative fixed header height */
-}
-
 ////////////////////////////////////////////////////////////////////////////////
 // SIDEBAR
 ////////////////////////////////////////////////////////////////////////////////
@@ -559,6 +552,7 @@ html, body {
     margin-top: 2em;
     border: 1px solid #E6E8F0;
     background-color: $grey-50;
+    scroll-margin-top: 60px;
   }
 
   h1:first-child, div:first-child + h1 {
@@ -573,6 +567,7 @@ html, body {
     padding-top: 0;
     padding-bottom: 0.4em;
     background-image: linear-gradient(to bottom, rgba(#FFF, 0.2), rgba(#FFF, 0));
+    scroll-margin-top: 68px;
   }
 
   // h2s right after h1s should bump right up

@@ -32,36 +32,25 @@ under the License.
       intro_page_content += partial("includes/#{include}")
     end
   end
-%>
-<%
-  if current_page.data.intro_includes
-    current_page.data.intro_includes.each do |include|
-      intro_page_content += partial("includes/#{include}")
-    end
-  end
-%>
-<%
+
   if current_page.data.api_includes
     current_page.data.api_includes.each do |include|
       api_page_content += partial("includes/#{include}")
     end
   end
-%>
-<%
+
   if current_page.data.vanilla_includes
     current_page.data.vanilla_includes.each do |include|
       vanilla_page_content += partial("includes/#{include}")
     end
   end
-%>
-<%
+
   if current_page.data.react_includes
     current_page.data.react_includes.each do |include|
       react_page_content += partial("includes/#{include}")
     end
   end
-%>
-<%
+
   if current_page.data.module_includes
     current_page.data.module_includes.each do |include|
       module_page_content += partial("includes/#{include}")
@@ -152,6 +141,10 @@ under the License.
     <!-- Header -->
     <%= partial "partials/header" %>
     <!-- End Header -->
+
+    <!-- Header Spacer -->
+    <div class="header-spacer">
+    <!-- End Header Spacer -->
 
     <!-- Main -->
     <div class="page-wrapper">
