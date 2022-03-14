@@ -13,7 +13,7 @@ WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
 License for the specific language governing permissions and limitations
 under the License.
 %>
-<% language_tabs = current_page.data.language_tabs || [] %>
+
 <% intro_page_content = yield %>
 <% intro_page_quick_links = yield %>
 <% api_page_content = yield %>
@@ -57,6 +57,8 @@ under the License.
     end
   end
 %>
+
+<% language_tabs = current_page.data.language_tabs || [] %>
 
 <!doctype html>
 <html>
@@ -118,12 +120,14 @@ under the License.
   </head>
 
   <body class="<%= page_classes %>" data-languages="<%=h language_tabs.map{ |lang| lang.is_a?(Hash) ? lang.keys.first : lang }.to_json %>">
+    <!-- Mobile Nav Icon/Button -->
     <a href="/#" id="nav-button">
       <span>
         NAV
         <%= image_tag('navbar.png') %>
       </span>
     </a>
+    <!-- End Mobile Nav Icon/Button -->
 
     <!-- Sidebar/TOC -->
     <%= partial "partials/sidebar", 
@@ -139,7 +143,11 @@ under the License.
     <!-- End Sidebar/TOC -->
 
     <!-- Header -->
-    <%= partial "partials/header" %>
+    <%= partial "partials/header", 
+        locals: {
+          current_page: current_page
+        } 
+    %>
     <!-- End Header -->
 
     <!-- Header Spacer -->

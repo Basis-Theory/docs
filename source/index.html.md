@@ -45,9 +45,8 @@ api_includes:
   - api-reference/deprecations
 
 aux_links:
-  - <a class="toc-h2 toc-link" href="https://discord.gg/NSvXxaW5Fv" target="_blank">Join Discord</a>
-  - <a class="toc-h2 toc-link" href="https://github.com/Basis-Theory" target="_blank">GitHub</a>
-  - <a class="toc-h2 toc-link" href="https://support.basistheory.com" target="_blank">Get Support</a>
+  - <a class="toc-h1 toc-link" href="https://github.com/Basis-Theory" target="_blank">GitHub</a>
+  - <a class="toc-h1 toc-link" href="https://support.basistheory.com" target="_blank">Get Support</a>
 
 search: true
 

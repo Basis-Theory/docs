@@ -131,26 +131,27 @@ html, body {
     margin-top: 16px;
 
     input {
-      background: $nav-bg-line;
+      background: #E4E8FC;
       padding: 6px 8px;
       box-sizing: border-box;
       margin: 0 $nav-padding;
       width: 86%;
       outline: none;
-      color: $nav-search-text;
+      color: $grey-600;
       border: none;
       border-radius: 2px;
       @extend %search-font;
+      height: 32px;
 
       &::placeholder {
-        color: $nav-search-text;
+        color: $grey-400;
       }
     }
 
     &:after {
       position: absolute;
       right: $nav-padding*2;
-      color: $secondary;
+      color: $grey-600;
       @extend %icon-search;
     }
   }
@@ -165,7 +166,7 @@ html, body {
     transition-duration: 180ms;
     transition-timing-function: ease-in-out;
     margin: 1px 18px 0 15px;
-    background: $nav-bg;
+    background: #E4E8FC;
     &.visible {
       height: 30%;
     }
@@ -178,7 +179,7 @@ html, body {
     }
 
     a {
-      color: $primary-text !important;
+      color: #047F87 !important;
       text-decoration: none;
 
       &:hover {
@@ -240,6 +241,15 @@ html, body {
     @extend %principal-title-font;
   }
 
+  .toc-h1 {
+    font-size: 14px !important;
+    color: $grey-600;
+    font-weight: 600;
+    background-image: none !important;
+    padding-bottom: 6px !important;
+    padding-top: 6px !important;
+  }
+
   .toc-list-h2 {
     display: none;
     font-size: 12px;
@@ -253,6 +263,7 @@ html, body {
 
   .toc-h2 {
     font-size: 14px;
+    color: $grey-600;
   }
 
   .toc-footer {
@@ -358,16 +369,26 @@ html, body {
   font-family: "Source Sans Pro", sans-serif;
   font-style: normal;
   font-weight: 600;
-  font-size: inherit;
-  line-height: 1.4;
-  color: $grey-600;
+  font-size: 12px;
+  color: $grey-200;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
   margin-left: 20px;
-  cursor: pointer;
-  letter-spacing: 0;
+  letter-spacing: inherit;
+  margin-top: 16px !important;
+  margin-bottom: 16px !important;
+}
+
+.nav-title::after {
+    content: '';
+    flex: 1;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    height: 1px;
+    background-color: $grey-100;
+  
 }
 
 
@@ -1071,6 +1092,7 @@ html, body {
 
   %left-col {
     margin-right: 0;
+    margin-top: 16px;
   }
 
   .toc-wrapper .lang-selector {

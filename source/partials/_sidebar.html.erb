@@ -97,14 +97,6 @@
         </ul>
       <% end %>
 
-      <% if current_page.data.other_docs %>
-        <h1 class="nav-title">Other Docs</h1>
-        <ul id="toc_api" class="toc-section toc-list-h1">
-          <% current_page.data.other_docs.each do |footer| %>
-             <li class="other-docs"><%= footer %></li>
-          <% end %>
-        </ul>
-      <% end %>
       <% if current_page.data.aux_links %>
         <h1 class="nav-title">More</h1>
         <ul id="toc_api" class="toc-section toc-list-h1">
@@ -117,7 +109,7 @@
       <% if current_page.data.toc_footers %>
         <ul class="toc-footer">
           <% current_page.data.toc_footers.each do |footer| %>
-            <li><%= footer %></li>
+            <li class="toc-h1"><%= footer %></li>
           <% end %>
         </ul>
       <% end %>

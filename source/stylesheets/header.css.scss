@@ -69,6 +69,10 @@
   }
 }
 
+.header-active {
+  color: $primary !important;
+}
+
 .header-spacer {
   height: 60px;
 }
@@ -90,7 +94,6 @@
 
 @media (max-width: 800px) {
   .site-header {
-    position: absolute;
 
     .documentation-links {
       display: none;
