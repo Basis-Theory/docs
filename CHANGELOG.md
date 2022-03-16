@@ -1,3 +1,10 @@
+# [1.27.0](https://github.com/Basis-Theory/docs/compare/v1.26.3...v1.27.0) (2022-03-16)
+
+
+### Features
+
+* styles redesign, remove home ([#155](https://github.com/Basis-Theory/docs/issues/155)) ([fcfa21a](https://github.com/Basis-Theory/docs/commit/fcfa21affb9e87fc50e52411549733c29ad7c415))
+
 ## [1.26.3](https://github.com/Basis-Theory/docs/compare/v1.26.2...v1.26.3) (2022-02-04)
 
 
