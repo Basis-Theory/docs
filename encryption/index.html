@@ -1,12 +1,14 @@
 
+
+
 <!doctype html>
 <html>
   <head>
+    <title>Basis Theory Encryption Reference</title>
+    <link href="https://cdn.basistheory.com/images/favicons/favicon.ico" rel="icon" type="image/ico" />
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>Basis Theory Encryption Reference</title>
-    <link href="https://cdn.basistheory.com/images/favicons/favicon.ico" rel="icon" type="image/ico" />
     <meta name="description" content="API Reference documentation for the Basis Theory API. Includes code examples for all official Basis Theory SDKs and user guides for various use cases.">
     <meta property="og:description" content="API Reference documentation for the Basis Theory API. Includes code examples for all official Basis Theory SDKs and user guides for various use cases.">
     <meta property="og:image" content="https://cdn.basistheory.com/images/seo/docs-opengraph.png">
@@ -201,10 +203,6 @@
 }
     </style>
     <style media="print">
-      * {
-        -webkit-transition:none!important;
-        transition:none!important;
-      }
       .highlight table td { padding: 5px; }
 .highlight table pre { margin: 0; }
 .highlight, .highlight .w {
@@ -286,55 +284,53 @@
   color: #859900;
 }
     </style>
-    <link href="../stylesheets/screen-3529f428.css" rel="stylesheet" media="screen" />
-    <link href="../stylesheets/home-8cd3efe1.css" rel="stylesheet" media="screen" />
+
+    <link href="../stylesheets/header-70f9f668.css" rel="stylesheet" media="screen" />
+    <link href="../stylesheets/screen-a2f6f97c.css" rel="stylesheet" media="screen" />
+    <link href="../stylesheets/home-26d9d941.css" rel="stylesheet" media="screen" />
     <link href="../stylesheets/guides.css" rel="stylesheet" media="screen" />
     <link href="../stylesheets/iubenda-4a9ea063.css" rel="stylesheet" media="screen" />
-    <script src="https://kit.fontawesome.com/86c3cd0147.js" crossorigin="anonymous"></script>
     <link href="../stylesheets/print-963dbb1c.css" rel="stylesheet" media="print" />
-      <script src="../javascripts/all-7bc81646.js"></script>
 
-    <script>
-      $(function() { setupCodeCopy(); });
-    </script>
+    <script src="https://kit.fontawesome.com/86c3cd0147.js" crossorigin="anonymous"></script>
+    
+      <script src="../javascripts/all-8d003910.js"></script>
+
+      <script>
+        $(function() { setupCodeCopy(); });
+      </script>
+  
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-M56229L');</script>
-  <!-- End Google Tag Manager -->
+    <!-- End Google Tag Manager -->
 
   <!-- Iubenda -->
   <!-- IF YOU ARE UPDATING THIS, MAKE SURE YOU PUT THE CSS INTO THE source/stylesheets/iubenda.css.scss file and remove it here. -->
     <script type="text/javascript">
-    var _iub = _iub || [];
-    _iub.csConfiguration = {"enableCcpa":true,"ccpaApplies":true,"consentOnContinuedBrowsing":false,"ccpaAcknowledgeOnDisplay":true,"lang":"en","siteId":2378844,"floatingPreferencesButtonDisplay":false,"cookiePolicyId":13137791, "callback":{ "onPreferenceExpressedOrNotNeeded":function(preference) { dataLayer.push({iubenda_ccpa_opted_out: _iub.cs.api.isCcpaOptedOut()}); if (!preference) { dataLayer.push({event: "iubenda_preference_not_needed"});} else { if (preference.consent === true) { dataLayer.push({event: "iubenda_consent_given"});} else if (preference.consent === false) { dataLayer.push({event: "iubenda_consent_rejected"});} else if (preference.purposes) { for (var purposeId in preference.purposes) {if (preference.purposes[purposeId]) { dataLayer.push({event: "iubenda_consent_given_purpose_" + purposeId}); }}}}} }, "banner":{ "acceptButtonDisplay":true,"customizeButtonDisplay":true,"acceptButtonColor":"#1ad1db","acceptButtonCaptionColor":"#070a1b","customizeButtonColor":"#1a1e32","customizeButtonCaptionColor":"#d2d2d2","rejectButtonDisplay":true,"rejectButtonColor":"#1e2337","rejectButtonCaptionColor":"white","position":"bottom","textColor":"#e5e6ec","backgroundColor":"#141729","acceptButtonCaption":"Accept All","content":"<div id=\"iubenda-cs-title\">&#x1f36a;  &nbsp;Cookie Notice</div><div id=\"iubenda-cs-paragraph\">\n\nBy clicking \"Accept All\", you agree to the storing of cookies on your device to enhance site navigation, analyze site usage, and assist in our marketing efforts. View our <a href=\"https://basistheory.com/privacy-policy\" target=\"_blank\">Cookie Policy</a> for more information.\n</div>" }};
+      var _iub = _iub || [];
+      _iub.csConfiguration = {"enableCcpa":true,"ccpaApplies":true,"consentOnContinuedBrowsing":false,"ccpaAcknowledgeOnDisplay":true,"lang":"en","siteId":2378844,"floatingPreferencesButtonDisplay":false,"cookiePolicyId":13137791, "callback":{ "onPreferenceExpressedOrNotNeeded":function(preference) { dataLayer.push({iubenda_ccpa_opted_out: _iub.cs.api.isCcpaOptedOut()}); if (!preference) { dataLayer.push({event: "iubenda_preference_not_needed"});} else { if (preference.consent === true) { dataLayer.push({event: "iubenda_consent_given"});} else if (preference.consent === false) { dataLayer.push({event: "iubenda_consent_rejected"});} else if (preference.purposes) { for (var purposeId in preference.purposes) {if (preference.purposes[purposeId]) { dataLayer.push({event: "iubenda_consent_given_purpose_" + purposeId}); }}}}} }, "banner":{ "acceptButtonDisplay":true,"customizeButtonDisplay":true,"acceptButtonColor":"#1ad1db","acceptButtonCaptionColor":"#070a1b","customizeButtonColor":"#1a1e32","customizeButtonCaptionColor":"#d2d2d2","rejectButtonDisplay":true,"rejectButtonColor":"#1e2337","rejectButtonCaptionColor":"white","position":"bottom","textColor":"#e5e6ec","backgroundColor":"#141729","acceptButtonCaption":"Accept All","content":"<div id=\"iubenda-cs-title\">&#x1f36a;  &nbsp;Cookie Notice</div><div id=\"iubenda-cs-paragraph\">\n\nBy clicking \"Accept All\", you agree to the storing of cookies on your device to enhance site navigation, analyze site usage, and assist in our marketing efforts. View our <a href=\"https://basistheory.com/privacy-policy\" target=\"_blank\">Cookie Policy</a> for more information.\n</div>" }};
     </script>
     <script type="text/javascript" src="//cdn.iubenda.com/cs/ccpa/stub.js"></script>
     <script type="text/javascript" src="//cdn.iubenda.com/cs/iubenda_cs.js" charset="UTF-8" async></script>
   <!-- End Iubenda -->
-
   </head>
 
   <body class="encryption encryption_index" data-languages="[&quot;javascript&quot;,&quot;csharp&quot;]">
+    <!-- Mobile Nav Icon/Button -->
     <a href="/#" id="nav-button">
       <span>
         NAV
         <img src="../images/navbar-cad8cdcb.png" alt="" />
       </span>
     </a>
-    <div class="toc-wrapper">
+    <!-- End Mobile Nav Icon/Button -->
 
-        <div class="toc-header">
-            <a href='/'><img src="../images/logo-with-title-9a87de22.svg" class="logo" alt="" /></a>
-
-
-            <img src="../images/docs-80b82b5b.svg" class="section-DOCS" alt="" />
-        </div>
-
-      <div class="line"></div>
-
+    <!-- Sidebar/TOC -->
+        <div class="toc-wrapper">
         <div class="lang-selector">
               <a href="#" data-language-name="javascript">Javascript</a>
               <a href="#" data-language-name="csharp">.NET</a>
@@ -378,26 +374,52 @@
 
 
 
-        <h1 class="nav-title">Other Docs</h1>
-        <ul id="toc_api" class="toc-section toc-list-h1">
-             <li class="other-docs"><a class="toc-h2 toc-link" href="/">Home</a></li>
-             <li class="other-docs"><a class="toc-h2 toc-link" href="/api-reference">API Reference</a></li>
-             <li class="other-docs"><a class="toc-h2 toc-link" href="/elements">Elements</a></li>
-             <li class="other-docs"><a class="toc-h2 toc-link" href="https://guides.basistheory.com">Guides</a></li>
-        </ul>
         <h1 class="nav-title">More</h1>
         <ul id="toc_api" class="toc-section toc-list-h1">
-            <li><a class="toc-h2 toc-link" href="https://discord.gg/NSvXxaW5Fv" target="_blank">Join Discord</a></li>
-            <li><a class="toc-h2 toc-link" href="https://github.com/Basis-Theory" target="_blank">GitHub</a></li>
-            <li><a class="toc-h2 toc-link" href="mailto:support@basistheory.com?subject=Help!">Email Support</a></li>
+            <li><a class="toc-h1 toc-link" href="https://github.com/Basis-Theory" target="_blank">GitHub</a></li>
+            <li><a class="toc-h1 toc-link" href="mailto:support@basistheory.com?subject=Help!">Email Support</a></li>
         </ul>
 
     </div>
-    <div class="page-wrapper">
-        <div class="dark-box"></div>
+    <!-- End Sidebar/TOC -->
 
+    <!-- Header -->
+    <header class="site-header">
+  <a class="site-header-logo" href="https://developers.basistheory.com/"></a>
+  <div class="documentation-links">
+    <a class="documentation-link" href="https://developers.basistheory.com/getting-started">Get Started</a>
+    <a class="documentation-link " href="/">API Reference</a>
+    <a class="documentation-link " href="/elements">Elements</a>
+    <a class="documentation-link header-active" href="/encryption">Encryption</a>
+  </div>
+  <div class="portal-links">
+    <a class="portal-sign-in" href="https://portal.basistheory.com">Sign In</a>
+    <a class="portal-create-account" href="https://portal.basistheory.com/register">Create Account</a>
+  </div>
+</header>
+    <!-- End Header -->
+
+    <!-- Header Spacer -->
+    <div class="header-spacer">
+    <!-- End Header Spacer -->
+
+    <!-- Main -->
+    <div class="page-wrapper">
+
+      <!-- Code Sidebar -->
+        <div class="dark-box">
+            <div class="lang-selector">
+                  <a href="#" data-language-name="javascript">Javascript</a>
+                  <a href="#" data-language-name="csharp">.NET</a>
+            </div>
+        </div>
+      <!-- End Code Sidebar -->
+
+      <!-- Content -->
       <div class="content">
-        <div class="header-border"></div>
+        <div class="header-border">
+          <!-- TODO: Move Search Here? -->
+        </div>
         <h1 id='introduction'>Introduction</h1>
 <aside class="header-intro-box">
     <span>
@@ -513,12 +535,7 @@ More information can be found in the available <a href="https://guides.basistheo
         
         
       </div>
-      <div class="dark-box">
-          <div class="lang-selector">
-                <a href="#" data-language-name="javascript">Javascript</a>
-                <a href="#" data-language-name="csharp">.NET</a>
-          </div>
-      </div>
+      <!-- End Content -->
     </div>
   </body>
 </html>
