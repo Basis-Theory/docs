@@ -29,8 +29,6 @@ html, body {
   color: $main-text;
   padding: 0;
   margin: 0;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   @extend %default-font;
   background-color: $main-bg;
   height: 100%;
@@ -50,10 +48,9 @@ html, body {
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-// TABLE OF CONTENTS
+// SIDEBAR
 ////////////////////////////////////////////////////////////////////////////////
 .toc-wrapper li.other-docs a, li.more a  {
-
   color: $secondary;
   text-decoration: none;
   font-size: 16px;
@@ -72,14 +69,13 @@ html, body {
   overflow-x: hidden;
   position: fixed;
   z-index: 30;
-  top: 0;
+  top: 60px;
   left: 0;
   bottom: 0;
   width: $nav-width;
-  background-color: $nav-bg;
+  background-color: $side-bar-background;
   font-size: 16px;
-  font-weight: 600;
-  border-right: 1px solid $grey-800;
+  border-right: 1px solid $magenta-light;
   padding-bottom: 200px;
 
   .toc-header {
@@ -132,29 +128,30 @@ html, body {
     position: relative;
     display: grid;
     align-items: center;
+    margin-top: 16px;
 
     input {
-      background: $nav-bg-line;
+      background: #E4E8FC;
       padding: 6px 8px;
       box-sizing: border-box;
       margin: 0 $nav-padding;
       width: 86%;
       outline: none;
-      color: $nav-search-text;
-      opacity: 0.55;
+      color: $grey-600;
       border: none;
       border-radius: 2px;
       @extend %search-font;
+      height: 32px;
 
       &::placeholder {
-        color: $nav-search-text;
+        color: $grey-400;
       }
     }
 
     &:after {
       position: absolute;
       right: $nav-padding*2;
-      color: $secondary;
+      color: $grey-600;
       @extend %icon-search;
     }
   }
@@ -165,23 +162,24 @@ html, body {
     height: 0;
     overflow-y: auto;
     overflow-x: hidden;
-    transition-property: height, margin;
+    transition-property: height;
     transition-duration: 180ms;
     transition-timing-function: ease-in-out;
-    background: $nav-subitem-bg;
+    margin: 1px 18px 0 15px;
+    background: #E4E8FC;
     &.visible {
       height: 30%;
-      margin: -1em 15px 1em;
     }
 
 
     li {
       margin: 1em $nav-padding;
       line-height: 1;
+      color: $blue-shadow;
     }
 
     a {
-      color: $links;
+      color: #047F87 !important;
       text-decoration: none;
 
       &:hover {
@@ -206,16 +204,19 @@ html, body {
   }
 
   li {
-    color: $nav-text;
     transition-property: background;
     transition-timing-function: linear;
     transition-duration: 200ms;
-    padding: 4px 0;
   }
 
   // This is the currently selected ToC entry
   .toc-link.active {
-    color: $primary;
+    color: $primary-dark;
+    font-weight: 600;
+    font-size: 14px;
+    background-image: linear-gradient(-90deg, #ebedf5 0%, rgba(235, 237, 245, 0.8) 80%, rgba(235, 237, 245, 0) 100%);
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
   }
 
   // this is parent links of the currently selected ToC entry
@@ -226,7 +227,7 @@ html, body {
     line-height: 20px;
     letter-spacing: 0.15px;
     text-align: left;
-    color: $primary;
+    color: $primary-dark;
   }
   // Section headers
   .toc-h1[data-title="API Reference"],
@@ -240,6 +241,15 @@ html, body {
     @extend %principal-title-font;
   }
 
+  .toc-h1 {
+    font-size: 14px !important;
+    color: $grey-600;
+    font-weight: 600;
+    background-image: none !important;
+    padding-bottom: 6px !important;
+    padding-top: 6px !important;
+  }
+
   .toc-list-h2 {
     display: none;
     font-size: 12px;
@@ -250,16 +260,10 @@ html, body {
     text-align: left;
   }
 
-  .toc-list-h2 li {
-    list-style: disc;
-  }
-
-  .toc-list-h2 li::marker {
-    margin-left: -12px;
-  }
 
   .toc-h2 {
     font-size: 14px;
+    color: $grey-600;
   }
 
   .toc-footer {
@@ -295,7 +299,14 @@ html, body {
   transition-property: background;
   transition-timing-function: linear;
   transition-duration: 130ms;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
   @extend %subtitle-font;
+}
+
+.toc-link:hover {
+  color: inherit;
+  background-image: linear-gradient(-90deg, #ebedf5 0%, rgba(235, 237, 245, 0.8) 80%, rgba(235, 237, 245, 0) 100%);
 }
 
 // button to show navigation on mobile devices
@@ -333,7 +344,7 @@ html, body {
 
 .beta {
   padding: 3px 6px 4px;
-  color: $aside-warning-bg;
+  color: #e1ab3f;
   background: rgba(255, 213, 130, 0.14);
   border-radius: 2px;
   font-size: 10px;
@@ -353,6 +364,33 @@ html, body {
 .deprecated {
   display: none;
 }
+
+.nav-title {
+  font-family: "Source Sans Pro", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  color: $grey-200;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: 20px;
+  letter-spacing: inherit;
+  margin-top: 16px !important;
+  margin-bottom: 16px !important;
+}
+
+.nav-title::after {
+    content: '';
+    flex: 1;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    height: 1px;
+    background-color: $grey-100;
+  
+}
+
 
 ////////////////////////////////////////////////////////////////////////////////
 // PAGE LAYOUT AND CODE SAMPLE BACKGROUND
@@ -376,7 +414,7 @@ html, body {
     background-color: $examples-bg;
     position: absolute;
     right: 0;
-    top: 0;
+    top: 60px;
     bottom: 0;
   }
 
@@ -494,11 +532,12 @@ html, body {
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
 
-
-
   // to place content above the dark box
   position: relative;
   z-index: 30;
+
+  // to place after header
+  padding-top: 60px;
 
   &:after {
     content: '';
@@ -534,6 +573,7 @@ html, body {
     margin-top: 2em;
     border: 1px solid #E6E8F0;
     background-color: $grey-50;
+    scroll-margin-top: 60px;
   }
 
   h1:first-child, div:first-child + h1 {
@@ -548,6 +588,7 @@ html, body {
     padding-top: 0;
     padding-bottom: 0.4em;
     background-image: linear-gradient(to bottom, rgba(#FFF, 0.2), rgba(#FFF, 0));
+    scroll-margin-top: 68px;
   }
 
   // h2s right after h1s should bump right up
@@ -565,6 +606,10 @@ html, body {
 
   h4, h5, h6 {
     font-size: 10px;
+  }
+
+  h1, h2, h3 {
+    color: #1B1D32;
   }
 
   hr {
@@ -670,6 +715,7 @@ html, body {
     line-height: 1.6;
     display: flex;
     align-items: center;
+    color: #1E233B;
 
     &.notice {
       background-color: $primary;
@@ -756,19 +802,7 @@ html, body {
   margin-top: 1em;
 }
 
-.nav-title {
-  @extend %nav-secondary-title;
-  color: $grey-600;
-  margin: 1em 1.7rem;
-  &::after {
-    display: inline-block;
-    content: "";
-    border: 1px solid $nav-bg-line;
-    width: 62%;
-    margin-left: 10px;
-    transform: translateY(-0.2rem);
-  }
-}
+
 
 .scopes {
   .scope {
@@ -958,7 +992,10 @@ html, body {
     background: $grey-50;
     border-bottom: 1px solid #E6E8F0;
     box-sizing: border-box;
-    padding: 36px;
+    height: 73px;
+    padding: 16px;
+    display: flex;
+    align-items: center;
   }
   .header-intro-box {
     border-bottom: 1px solid #CACDDB;
@@ -1036,6 +1073,7 @@ html, body {
 
     &.open {
       left: 0;
+      top: 70px;
     }
   }
 
@@ -1060,6 +1098,7 @@ html, body {
 
   %left-col {
     margin-right: 0;
+    margin-top: 16px;
   }
 
   .toc-wrapper .lang-selector {

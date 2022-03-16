@@ -1,0 +1,106 @@
+@import 'variables';
+
+.site-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: $examples-bg;
+  padding-left: 16px;
+  padding-right: 16px;
+  height: 72px;
+  width: 100%;
+  border-bottom: none;
+  z-index: 99;
+  position: fixed;
+  min-height: 60px;
+  align-items: center;
+
+  .site-header-logo {
+    background-image: url(/images/bt-logo-icon-header.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 114px;
+    height: 40px;
+  }
+
+  .documentation-links {
+    .documentation-link {
+      color: $secondary;
+      text-decoration: none;
+      line-height: 21px;
+      text-align: left;
+      font-size: 16px;
+      letter-spacing: 0;
+      font-weight: normal;
+    }
+
+    a ~ a {
+      margin-left: 24px;
+    }
+  }
+
+  .portal-links {
+    .portal-sign-in {
+      color: $primary;
+      letter-spacing: 0;
+      margin-right: 24px;
+      font-weight: normal;
+    }
+
+    .portal-create-account {
+      color: $primary;
+      letter-spacing: 0;
+      padding: 8px 16px;
+      border: 1px solid #1ad1db75;
+      border-radius: 4px;
+      font-weight: normal;
+    }
+
+    padding-right: 32px;
+
+    a {
+      text-decoration: none;
+      font-size: 16px;
+    }
+  }
+
+  .site-button use {
+    color: $primary;
+  }
+}
+
+.header-active {
+  color: $primary !important;
+}
+
+.header-spacer {
+  height: 60px;
+}
+
+@media (min-width: 50rem) {
+  .site-header {
+    height: 60px;
+    max-height: 60px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .site-header {
+    .documentation-links {
+      display: none;
+    }
+  }
+}
+
+@media (max-width: 800px) {
+  .site-header {
+
+    .documentation-links {
+      display: none;
+    }
+
+    .portal-links {
+      display: none;
+    }
+  }
+}
