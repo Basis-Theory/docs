@@ -14,4 +14,4 @@
 
 Basis Theory Encryption provides a secure and developer-friendly way for consumers to control their data encryption.
 Our SDKs support multiple ways to manage your own encryption and those encryption keys, so only you can see your data.
-If you want step by step instructions on how to own your encryption and plug it back into our platform check out our official [guide](https://guides.basistheory.com/guides/own-your-encryption-keys/).
+If you want step by step instructions on how to own your encryption and plug it back into our platform check out our official [guide](https://developers.basistheory.com/guides/own-your-encryption-keys/).

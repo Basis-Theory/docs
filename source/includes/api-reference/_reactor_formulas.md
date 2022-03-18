@@ -20,7 +20,7 @@ Reactor formulas give you the ability to pre-configure custom integrations to se
 | `modified_by`        | *uuid*   | (Optional) The ID of the user or [Application](#applications) that last modified the Reactor Formula                                                             |
 
 The `configuration` array defines the contract that the `configuration` property must satisfy on all [Reactors](#reactors-reactor-object) created from this formula.
-Configuration is intended to hold key-value pairs of configuration values that can be defined once for the reactor and do not change between Reactor requests.
+Configuration is intended to hold key-value pairs of configuration values that can be defined once for the reactor and do not change between Reactor invocations.
 Complex nested objects are not currently supported within `configuration`.
 
 The `request_parameters` array defines the contract that the `args` property must satisfy on each request when [Invoking a Reactor](#reactors-invoke-a-reactor).
@@ -81,9 +81,6 @@ For more information, see [Tokenize](#tokenize).
 | `private`  | Private formulas which are only available to your Tenant                                   |
 
 <h2 id="reactor-formulas-create-reactor-formula">Create Reactor Formula <span class="beta menu">BETA</span></h2>
-
-TODO: describe request parameters in more detail. Object notation, type conversions, 
-For the react endpoint describe detokenization, tokenization limit.
 
 > Request
 

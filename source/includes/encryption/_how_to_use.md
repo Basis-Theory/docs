@@ -50,7 +50,7 @@ var plaintext = encryptionService.Decrypt(encryptedData, providerEncryptionKey);
 Data can be encrypted and decrypted using the Encryption Service provided by our language specific SDKs. In either SDK, the Encryption Service requires a Provider Key in order to Encrypt/Decrypt data, which can either be constructed by you or generated using the [Provider Key Service available in our SDKs](/encryption#js-sdks).
 
 See the sidebar for examples of how to instantiate and use the service for each language specific SDK.
-More information can be found in the available [guide](https://guides.basistheory.com/guides/own-your-encryption-keys/#encrypt-your-data).
+More information can be found in the available [guide](https://developers.basistheory.com/guides/own-your-encryption-keys/#encrypt-your-data).
 
 ## Key Management
 
@@ -85,4 +85,4 @@ providerEncryptionKey = providerKeyService.GetKeyByKeyIdAsync(providerEncryption
 Key creation and management is available using the Provider Key Service available in our language specific SDKs. The service can accept multiple key management solutions [(providers)](/encryption#js-sdks) which can be used interchangeably in your application.
 
 See the sidebar for examples of how to instantiate and use the service for each language specific SDK.
-More information can be found in the available [guide](https://guides.basistheory.com/guides/own-your-encryption-keys/#set-up-your-encryption-key).
+More information can be found in the available [guide](https://developers.basistheory.com/guides/own-your-encryption-keys/#set-up-your-encryption-key).

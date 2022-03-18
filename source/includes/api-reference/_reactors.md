@@ -494,7 +494,7 @@ At least one `token:<classification>:use:reactor` permission is required to invo
 
 ### Response
 
-Returns a [React Response](#reactors-invoke-a-reactor-reactor-response-object) if the Atomic Card was reacted successfully. Returns [an error](#errors) if the Atomic Card failed to react.
+Returns a [React Response](#reactors-invoke-a-reactor-reactor-response-object) if the Reactor completed successfully. Returns [an error](#errors) if the Reactor failed.
 Errors generated from Reactors will be translated to the common Basis Theory Error format. See [Reactor Errors](#errors-reactor-errors) for more details.
 
 ### Reactor Response Object
@@ -548,7 +548,7 @@ However, if the string value `"non-numeric"` were provided, a 400 error would be
 
 ### Detokenization
 
-In order to use tokenized data within a reactor, the `args` parameter may contain token interpolation patterns of the form `{{tokenId}}`.
+In order to use tokenized data within a reactor, the `args` parameter may contain token interpolation patterns of the form `{{<tokenId>}}`.
 When token interpolation patterns are detected, Basis Theory will attempt to detokenize and inject the raw token data into the `args` forwarded to the Reactor function.
 
 Reactor request `args` may contain a mixture of both token interpolation patterns and non-interpolated raw data. 
@@ -615,5 +615,5 @@ a single complex token that contains several of the request parameters.
 At most, 100 tokens may be detokenized within a single reactor request.
 
 <aside class="notice">
-  <span>For more detailed examples about the various ways to Invoke a Reactor, check out our [How to Invoke a Reactor](#todo) guide.</span>
+  <span>For more detailed examples about the various ways to Invoke a Reactor, check out our [How to Invoke a Reactor](https://developers.basistheory.com/) guide.</span>
 </aside>
