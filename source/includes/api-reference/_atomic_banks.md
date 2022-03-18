@@ -508,7 +508,11 @@ Decrypt an Atomic Bank by ID in the Tenant.
 Returns an [Atomic Bank](#atomic-banks-atomic-bank-object) with plaintext [bank](#atomic-banks-atomic-bank-object-bank-object) data with the `id` provided. Returns [an error](#errors) if the Atomic Bank could not be retrieved.
 
 
-## React with an Atomic Bank
+## React with an Atomic Bank <span class="deprecated menu">DEPRECATED</span>
+
+<aside class="danger">
+  <span>This endpoint has been deprecated in favor of <a class="black-link" href="#reactors-invoke-a-reactor">Invoke a Reactor</a>.</span>
+</aside>
 
 > Request
 
@@ -584,11 +588,11 @@ React with an Atomic Bank by ID.
 | `id`      | true     | *uuid* | `null`  | The ID of the Atomic Bank |
 
 ### Request Parameters
-| Parameter            | Required | Type   | Default | Description                                                                                                                                                        |
-|----------------------|----------|--------|---------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `reactor_id`         | true     | *uuid* | `null`  | The ID of the reactor                                                                                                                                              |
-| `request_parameters` | false    | *map*  | `null`  | A key-value map of [request parameters](#reactor-forumula-request-parameter-object) names and values for the reactor                                               |
-| `metadata`           | false    | *map*  | `null`  | A key-value map of non-sensitive data. We overwrite the following keys: `correlation_id`, `reactor_id`, `reactor_name`, `source_token_id`, and `source_token_type` |
+| Parameter            | Required | Type   | Default | Description                                                                                                        |
+|----------------------|----------|--------|---------|--------------------------------------------------------------------------------------------------------------------|
+| `reactor_id`         | true     | *uuid* | `null`  | The ID of the reactor                                                                                              |
+| `request_parameters` | false    | *map*  | `null`  | A key-value map of [request parameter](#reactor-formula-request-parameter-object) names and values for the reactor |
+| `metadata`           | false    | *map*  | `null`  | (Deprecated) A key-value map of non-sensitive data to be associated with any created tokens                        |
 
 ### Response
 
@@ -596,10 +600,10 @@ Returns a [React Response](#atomic-banks-react-with-an-atomic-bank-react-respons
 Errors generated from Reactors will be translated to the common Basis Theory Error format. See [Reactor Errors](#errors-reactor-errors) for more details.
 
 ### React Response Object
-| Attribute | Type  | Description                                                                                           |
-|-----------|-------|-------------------------------------------------------------------------------------------------------|
-| `tokens`  | *map* | (Optional) [Token(s)](#tokens-token-object) created from the `tokenize` block of the Reactor response |
-| `raw`     | *map* | (Optional) Raw output returned from the Reactor                                                       |
+| Attribute | Type  | Description                                                                                                                                                                             |
+|-----------|-------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `tokens`  | *map* | (Optional) [Token(s)](#tokens-token-object) created from the `tokenize` block of the Reactor Formula [response](#reactor-formulas-reactor-formula-code-reactor-formula-response-object) |
+| `raw`     | *map* | (Optional) Raw output returned from the Reactor                                                                                                                                         |
 
 
 ## Test Banks

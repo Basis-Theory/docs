@@ -2,18 +2,18 @@
 
 ## Atomic Card Object
 
-| Attribute         | Type                                                                         | Description                                                                                                                                |
-|-------------------|------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------|
-| `id`              | *uuid*                                                                       | Unique identifier of the token which can be used to [get an Atomic Card](#atomic-cards-get-an-atomic-card)                                 |
-| `tenant_id`       | *uuid*                                                                       | The [Tenant](#tenants) ID which owns the card                                                                                              |
-| `type`            | *string*                                                                     | `Card` [token type](#token-types)                                                                                                   |
-| `card`            | *[card](#atomic-cards-atomic-card-object-card-object)*                       | Card data                                                                                                                                  |
-| `fingerprint`     | *string*                                                                     | Uniquely identifies this particular card number. You can use this attribute to check whether two card tokens contain the same card number. |
-| `metadata`        | *map*                                                                        | A key-value map of non-sensitive data.                                                                                                     |
-| `created_by`      | *uuid*                                                                       | (Optional) The [Application](#applications) ID which created the Atomic Card                                                               |
-| `created_at`      | *date*                                                                       | (Optional) Created date of the Atomic Card in ISO 8601 format                                                                              |
-| `modified_by`     | *uuid*                                                                       | (Optional) The [Application](#applications) ID which last modified the Atomic Card                                                         |
-| `modified_at`     | *date*                                                                       | (Optional) Last modified date of the Atomic Card in ISO 8601 format                                                                        |
+| Attribute     | Type                                                   | Description                                                                                                                                |
+|---------------|--------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------|
+| `id`          | *uuid*                                                 | Unique identifier of the token which can be used to [get an Atomic Card](#atomic-cards-get-an-atomic-card)                                 |
+| `tenant_id`   | *uuid*                                                 | The [Tenant](#tenants) ID which owns the card                                                                                              |
+| `type`        | *string*                                               | `Card` [token type](#token-types)                                                                                                          |
+| `card`        | *[card](#atomic-cards-atomic-card-object-card-object)* | Card data                                                                                                                                  |
+| `fingerprint` | *string*                                               | Uniquely identifies this particular card number. You can use this attribute to check whether two card tokens contain the same card number. |
+| `metadata`    | *map*                                                  | A key-value map of non-sensitive data.                                                                                                     |
+| `created_by`  | *uuid*                                                 | (Optional) The [Application](#applications) ID which created the Atomic Card                                                               |
+| `created_at`  | *date*                                                 | (Optional) Created date of the Atomic Card in ISO 8601 format                                                                              |
+| `modified_by` | *uuid*                                                 | (Optional) The [Application](#applications) ID which last modified the Atomic Card                                                         |
+| `modified_at` | *date*                                                 | (Optional) Last modified date of the Atomic Card in ISO 8601 format                                                                        |
 
 ### Card Object
 
@@ -442,7 +442,12 @@ Delete an Atomic Card by ID in the Tenant.
 Returns [an error](#errors) if the Atomic Card failed to delete.
 
 
-## React with an Atomic Card
+## React with an Atomic Card <span class="deprecated menu">DEPRECATED</span>
+
+<aside class="danger">
+  <span>This endpoint has been deprecated in favor of <a class="black-link" href="#reactors-invoke-a-reactor">Invoke a Reactor</a>.</span>
+</aside>
+
 
 > Request
 
@@ -518,11 +523,11 @@ React with an Atomic Card by ID.
 | `id`      | true     | *uuid* | `null`  | The ID of the Atomic Card |
 
 ### Request Parameters
-| Parameter            | Required | Type   | Default | Description                                                                                                                                                        |
-|----------------------|----------|--------|---------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `reactor_id`         | true     | *uuid* | `null`  | The ID of the reactor                                                                                                                                              |
-| `request_parameters` | false    | *map*  | `null`  | A key-value map of [request parameters](#reactor-forumula-request-parameter-object) names and values for the reactor                                               |
-| `metadata`           | false    | *map*  | `null`  | A key-value map of non-sensitive data. We overwrite the following keys: `correlation_id`, `reactor_id`, `reactor_name`, `source_token_id`, and `source_token_type` |
+| Parameter            | Required | Type   | Default | Description                                                                                                        |
+|----------------------|----------|--------|---------|--------------------------------------------------------------------------------------------------------------------|
+| `reactor_id`         | true     | *uuid* | `null`  | The ID of the reactor                                                                                              |
+| `request_parameters` | false    | *map*  | `null`  | A key-value map of [request parameter](#reactor-formula-request-parameter-object) names and values for the reactor |
+| `metadata`           | false    | *map*  | `null`  | (Deprecated) A key-value map of non-sensitive data to be associated with any created tokens                        |
 
 ### Response
 
@@ -530,10 +535,10 @@ Returns a [React Response](#atomic-cards-react-with-an-atomic-card-react-respons
 Errors generated from Reactors will be translated to the common Basis Theory Error format. See [Reactor Errors](#errors-reactor-errors) for more details.
 
 ### React Response Object
-| Attribute | Type  | Description                                                                                           |
-|-----------|-------|-------------------------------------------------------------------------------------------------------|
-| `tokens`  | *map* | (Optional) [Token(s)](#tokens-token-object) created from the `tokenize` block of the Reactor response |
-| `raw`     | *map* | (Optional) Raw output returned from the Reactor                                                       |
+| Attribute | Type  | Description                                                                                                                                                                             |
+|-----------|-------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `tokens`  | *map* | (Optional) [Token(s)](#tokens-token-object) created from the `tokenize` block of the Reactor Formula [response](#reactor-formulas-reactor-formula-code-reactor-formula-response-object) |
+| `raw`     | *map* | (Optional) Raw output returned from the Reactor                                                                                                                                         |
 
 
 ## Test Cards

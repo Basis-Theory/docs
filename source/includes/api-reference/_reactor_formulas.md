@@ -4,61 +4,86 @@ Reactor formulas give you the ability to pre-configure custom integrations to se
 
 ## Reactor Formula Object
 
-Attribute | Type | Description
---------- | ---- | -----------
-`id` | *uuid* | Unique identifier of the Reactor Formula which can be used to [get a Reactor Formula](#reactor-formulas-get-a-reactor-formula)
-`name` | *string* | The name of the Reactor Formula. Has a maximum length of `200`
-`description` | *string* | The description of the Reactor Formula
-`type` | *string* | [Type](#reactor-formulas-reactor-formula-types) of the Reactor Formula
-`source_token_type` | *string* | [Source token type](#token-types) of the Reactor Formula
-`icon` | *string* | Base64 [data URL](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URIs) of the image
-`code` | *string* | [Reactor Formula code](#reactor-formulas-reactor-formula-code) which will be executed when the Reactor Formula is processed
-`configuration` | *array* | Array of [configuration](#reactor-formulas-reactor-formula-object-reactor-formula-configuration-object) options for configuring a reactor
-`request_parameters` | *array* | Array of [request parameters](#reactor-formulas-reactor-formula-object-reactor-formula-request-parameter-object) which will be passed when executing the reactor
-`created_at` | *date* | (Optional) Created date of the Reactor Formula in ISO 8601 format
-`created_by` | *uuid* | (Optional) The ID of the user or [Application](#applications) that created the Reactor Formula
-`modified_at` | *date* | (Optional) Last modified date of the Reactor Formula in ISO 8601 format
-`modified_by` | *uuid* | (Optional) The ID of the user or [Application](#applications) that last modified the Reactor Formula
+| Attribute            | Type     | Description                                                                                                                                                      |
+|----------------------|----------|------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `id`                 | *uuid*   | Unique identifier of the Reactor Formula which can be used to [get a Reactor Formula](#reactor-formulas-get-a-reactor-formula)                                   |
+| `name`               | *string* | The name of the Reactor Formula. Has a maximum length of `200`                                                                                                   |
+| `description`        | *string* | The description of the Reactor Formula                                                                                                                           |
+| `type`               | *string* | [Type](#reactor-formulas-reactor-formula-types) of the Reactor Formula                                                                                           |
+| `icon`               | *string* | Base64 [data URL](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URIs) of the image                                                       |
+| `code`               | *string* | [Reactor Formula code](#reactor-formulas-reactor-formula-code) which will be executed when the Reactor Formula is processed                                      |
+| `configuration`      | *array*  | Array of [configuration](#reactor-formulas-reactor-formula-object-reactor-formula-configuration-object) options for configuring a reactor                        |
+| `request_parameters` | *array*  | Array of [request parameters](#reactor-formulas-reactor-formula-object-reactor-formula-request-parameter-object) which will be passed when executing the reactor |
+| `created_at`         | *date*   | (Optional) Created date of the Reactor Formula in ISO 8601 format                                                                                                |
+| `created_by`         | *uuid*   | (Optional) The ID of the user or [Application](#applications) that created the Reactor Formula                                                                   |
+| `modified_at`        | *date*   | (Optional) Last modified date of the Reactor Formula in ISO 8601 format                                                                                          |
+| `modified_by`        | *uuid*   | (Optional) The ID of the user or [Application](#applications) that last modified the Reactor Formula                                                             |
+
+The `configuration` array defines the contract that the `configuration` property must satisfy on all [Reactors](#reactors-reactor-object) created from this formula.
+Configuration is intended to hold key-value pairs of configuration values that can be defined once for the reactor and do not change between Reactor requests.
+Complex nested objects are not currently supported within `configuration`.
+
+The `request_parameters` array defines the contract that the `args` property must satisfy on each request when [Invoking a Reactor](#reactors-invoke-a-reactor).
+Request parameters are intended to define any parameters that will be provided to a Reactor at request-time, and may change across Reactor invocations. 
+Complex objects can be passed within the `args` property to a Reactor, and these complex request parameters can be defined by dot-separating levels of the object hierarchy.
+For example, to pass a `card` object to a Reactor whose schema matches the [Card Object](#atomic-cards-atomic-card-object-card-object) stored within an [Atomic Card](#atomic-cards-atomic-card-object) token, a Reactor Formula should define the following request parameters:
+
+| name                    | type     | optional |
+|-------------------------|----------|----------|
+| `card.number`           | *string* | false    |
+| `card.expiration_month` | *number* | false    |
+| `card.expiration_year`  | *number* | false    |
+| `card.cvc`              | *string* | true     |
 
 ### Reactor Formula Configuration Object
 
-Attribute | Required | Type | Default | Description
---------- | -------- | ---- | ------- | -----------
-`name` | true | *string* | `null` | Name of the configuration setting
-`description` | false | *string* | `null` | Description of the configuration setting
-`type` | true | *string* | `null` | Data type of the configuration setting. Valid values are `string`, `boolean`, and `number`
+| Attribute     | Required | Type     | Default | Description                                                                                |
+|---------------|----------|----------|---------|--------------------------------------------------------------------------------------------|
+| `name`        | true     | *string* | `null`  | Name of the configuration setting                                                          |
+| `description` | false    | *string* | `null`  | Description of the configuration setting                                                   |
+| `type`        | true     | *string* | `null`  | Data type of the configuration setting. Valid values are `string`, `boolean`, and `number` |
 
 ### Reactor Formula Request Parameter Object
 
-Attribute | Required | Type | Default | Description
---------- | -------- | ---- | ------- | -----------
-`name` | true | *string* | `null` | Name of the request parameter
-`description` | false | *string* | `null` | Description of the request parameter
-`type` | true | *string* | `null` | Data type of the request parameter. Valid values are `string`, `boolean`, and `number`
-`optional` | false | *boolean* | `false` | If the request parameter is optional when executing the reactor
-
+| Attribute     | Required | Type      | Default | Description                                                                            |
+|---------------|----------|-----------|---------|----------------------------------------------------------------------------------------|
+| `name`        | true     | *string*  | `null`  | Name of the request parameter. Complex objects can be denoted as `[parent].[child]`    |
+| `description` | false    | *string*  | `null`  | Description of the request parameter                                                   |
+| `type`        | true     | *string*  | `null`  | Data type of the request parameter. Valid values are `string`, `boolean`, and `number` |
+| `optional`    | false    | *boolean* | `false` | If the request parameter is optional when executing the reactor                        |
 
 ## Reactor Formula Code
 
-All Reactor Formula code snippets must export a function which takes in a [context object](#reactor-formulas-reactor-formula-code-context-object) and returns a [token object](#tokens-token-object).
+All Reactor Formula code snippets must export a function which takes in a [request object](#reactor-formulas-reactor-formula-code-reactor-formula-request-object) and returns a [response object](#reactor-formulas-reactor-formula-code-reactor-formula-response-object).
 
-### Reactor Formula Code Context Object
+### Reactor Formula Request Object
 
-Attribute | Type | Description
---------- | ---- | -----------
-`sourceToken` | *object* | The source token that matches the `source_token_type` of the [reactor-formula](#reactor-formulas-reactor-formula-object)
-`configuration` | *array* | The configuration defined for the [Reactor object](#reactors-reactor-object)
+| Attribute       | Type     | Description                                                                                 |
+|-----------------|----------|---------------------------------------------------------------------------------------------|
+| `args`          | *object* | The arguments that were provided when the [reactor was invoked](#reactors-invoke-a-reactor) |
+| `configuration` | *object* | The configuration defined for the [Reactor object](#reactors-reactor-object)                |
 
+### Reactor Formula Response Object
+
+| Attribute  | Type     | Description                                                               |
+|------------|----------|---------------------------------------------------------------------------|
+| `tokenize` | *object* | (Optional) A payload that will be tokenized to produce one or more tokens |
+| `raw`      | *object* | (Optional) Raw output returned from the Reactor                           |
+
+The payload returned in the `tokenize` property will be tokenized in the same way that requests are tokenized via the Tokenize endpoint. 
+For more information, see [Tokenize](#tokenize).
 
 ## Reactor Formula Types
 
-Type | Description
----- | -----------
-`official` | Official formulas that are built and supported by Basis Theory and its authorized partners
-`private` | Private formulas which are only available to your Tenant
-
+| Type       | Description                                                                                |
+|------------|--------------------------------------------------------------------------------------------|
+| `official` | Official formulas that are built and supported by Basis Theory and its authorized partners |
+| `private`  | Private formulas which are only available to your Tenant                                   |
 
 <h2 id="reactor-formulas-create-reactor-formula">Create Reactor Formula <span class="beta menu">BETA</span></h2>
+
+TODO: describe request parameters in more detail. Object notation, type conversions, 
+For the react endpoint describe detokenization, tokenization limit.
 
 > Request
 
@@ -71,7 +96,6 @@ curl "https://api.basistheory.com/reactor-formulas" \
     "name": "My Private Reactor",
     "description": "Securely react a token for another token",
     "type": "private",
-    "source_token_type": "card",
     "icon": "data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==",
     "code": "
       module.exports = async function (context) {
@@ -203,7 +227,6 @@ var reactorFormula = await client.CreateAsync(new ReactorFormula {
   "name": "My Private Reactor",
   "description": "Securely exchange token for another token",
   "type": "private",
-  "source_token_type": "card",
   "icon": "data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==",
   "code": "
     module.exports = async function (context) {
@@ -263,17 +286,15 @@ Create a new Reactor Formula for the Tenant.
 
 ### Request Parameters
 
-Attribute | Required | Type | Default | Description
---------- | -------- | ---- | ------- | -----------
-`name` | true | *string* | `null` | The name of the Reactor Formula. Has a maximum length of `200`
-`description` | false | *string* | `null` | The description of the Reactor Formula
-`type` | true | *string* | `null` | [Type](#reactor-formulas-reactor-formula-types) of the Reactor Formula
-`source_token_type` | true | *string* | `null` | [Source token type](#token-types) of the Reactor Formula
-`icon` | false | *string* | `null` | Base64 [data URL](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URIs) of the image. Supported image types are: `image/png`, `image/jpg`, and `image/jpeg`
-`code` | true | *string* | `null` | [Reactor code](#reactor-formulas-reactor-formula-code) which will be executed when the Reactor Formula is processed
-`configuration` | true | *array* | `[]` | Array of [configuration](#reactor-formulas-reactor-formula-object-reactor-formula-configuration-object) options for configuring a Reactor
-`request_parameters` | true | *array* | `[]` | Array of [request parameters](#reactor-formulas-reactor-formula-object-reactor-formula-request-parameter-object) which will be passed when executing the Reactor
-
+| Attribute            | Required | Type     | Default | Description                                                                                                                                                                       |
+|----------------------|----------|----------|---------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `name`               | true     | *string* | `null`  | The name of the Reactor Formula. Has a maximum length of `200`                                                                                                                    |
+| `description`        | false    | *string* | `null`  | The description of the Reactor Formula                                                                                                                                            |
+| `type`               | true     | *string* | `null`  | [Type](#reactor-formulas-reactor-formula-types) of the Reactor Formula                                                                                                            |
+| `icon`               | false    | *string* | `null`  | Base64 [data URL](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URIs) of the image. Supported image types are: `image/png`, `image/jpg`, and `image/jpeg` |
+| `code`               | true     | *string* | `null`  | [Reactor code](#reactor-formulas-reactor-formula-code) which will be executed when the Reactor Formula is processed                                                               |
+| `configuration`      | true     | *array*  | `[]`    | Array of [configuration](#reactor-formulas-reactor-formula-object-reactor-formula-configuration-object) options for configuring a Reactor                                         |
+| `request_parameters` | true     | *array*  | `[]`    | Array of [request parameters](#reactor-formulas-reactor-formula-object-reactor-formula-request-parameter-object) which will be passed when executing the Reactor                  |
 
 ### Response
 
@@ -320,7 +341,6 @@ var reactorFormulas = await client.GetAsync();
       "name": "My Private Reactor",
       "description": "Securely exchange token for another token",
       "type": "private",
-      "source_token_type": "card",
       "icon": "data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==",
       "code": "
         module.exports = async function (context) {
@@ -382,10 +402,9 @@ Get a list of official Reactor Formula and private, Tenant-specific Reactor Form
 
 ### Query Parameters
 
-Parameter | Required | Type | Default | Description
---------- | -------- | ---- | ------- | -----------
-`name` | false | *string* | `null` | Wildcard search of Reactor Formulas by name
-`source_token_type` | false | *string* | `null` | Filter Reactor Formulas by [source token type](#token-types)
+| Parameter           | Required | Type     | Default | Description                                                  |
+|---------------------|----------|----------|---------|--------------------------------------------------------------|
+| `name`              | false    | *string* | `null`  | Wildcard search of Reactor Formulas by name                  |
 
 ### Response
 
@@ -429,7 +448,6 @@ var reactorFormula = await client.GetByIdAsync("17069df1-80f4-439e-86a7-4121863e
   "name": "My Private Reactor",
   "description": "Securely exchange token for another token",
   "type": "private",
-  "source_token_type": "card",
   "icon": "data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==",
   "code": "
     module.exports = async function (context) {
@@ -487,9 +505,9 @@ Get a Reactor Formula by ID in the Tenant.
 
 ### URI Parameters
 
-Parameter | Required | Type | Default | Description
---------- | -------- | ---- | ------- | -----------
-`id` | true | *uuid* | `null` | The ID of the Reactor Formula
+| Parameter | Required | Type   | Default | Description                   |
+|-----------|----------|--------|---------|-------------------------------|
+| `id`      | true     | *uuid* | `null`  | The ID of the Reactor Formula |
 
 ### Response
 
@@ -509,7 +527,6 @@ curl "https://api.basistheory.com/reator-formula/17069df1-80f4-439e-86a7-4121863
     "name": "My Private Reactor",
     "description": "Securely exchange token for another token",
     "type": "private",
-    "source_token_type": "card",
     "icon": "data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==",
     "code": "
       module.exports = async function (context) {
@@ -643,7 +660,6 @@ var reactorFormula = await client.UpdateAsync("17069df1-80f4-439e-86a7-4121863e4
   "name": "My Private Reactor",
   "description": "Securely exchange token for another token",
   "type": "private",
-  "source_token_type": "card",
   "icon": "data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==",
   "code": "
     module.exports = async function (context) {
@@ -701,22 +717,21 @@ Update a Reactor Formula by ID in the Tenant.
 
 ### URI Parameters
 
-Parameter | Required | Type | Default | Description
---------- | -------- | ---- | ------- | -----------
-`id` | true | *uuid* | `null` | The ID of the Reactor Formula
+| Parameter | Required | Type   | Default | Description                   |
+|-----------|----------|--------|---------|-------------------------------|
+| `id`      | true     | *uuid* | `null`  | The ID of the Reactor Formula |
 
 ### Request Parameters
 
-Attribute | Required | Type | Default | Description
---------- | -------- | ---- | ------- | -----------
-`name` | true | *string* | `null` | The name of the Reactor Formula. Has a maximum length of `200`
-`description` | false | *string* | `null` | The description of the Reactor Formula
-`type` | true | *string* | `null` | [Type](#reactor-reactor-types) of the Reactor Formula
-`source_token_type` | true | *string* | `null` | [Source token type](#token-types) of the Reactor Formula
-`icon` | false | *string* | `null` | Base64 [data URL](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URIs) of the image. Supported image types are: `image/png`, `image/jpg`, and `image/jpeg`
-`code` | true | *string* | `null` | [Reactor code](#reactor-formulas-reactor-formula-code) which will be executed when the Reactor Formula is processed
-`configuration` | true | *array* | `[]` | Array of [configuration](#reactor-formulas-reactor-formula-object-reactor-formula-configuration-object) options for configuring a Reactor
-`request_parameters` | true | *array* | `[]` | Array of [request parameters](#reactor-formulas-reactor-formula-object-reactor-formula-request-parameter-object) which will be passed when executing the Reactor
+| Attribute            | Required | Type     | Default | Description                                                                                                                                                                       |
+|----------------------|----------|----------|---------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `name`               | true     | *string* | `null`  | The name of the Reactor Formula. Has a maximum length of `200`                                                                                                                    |
+| `description`        | false    | *string* | `null`  | The description of the Reactor Formula                                                                                                                                            |
+| `type`               | true     | *string* | `null`  | [Type](#reactor-reactor-types) of the Reactor Formula                                                                                                                             |
+| `icon`               | false    | *string* | `null`  | Base64 [data URL](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URIs) of the image. Supported image types are: `image/png`, `image/jpg`, and `image/jpeg` |
+| `code`               | true     | *string* | `null`  | [Reactor code](#reactor-formulas-reactor-formula-code) which will be executed when the Reactor Formula is processed                                                               |
+| `configuration`      | true     | *array*  | `[]`    | Array of [configuration](#reactor-formulas-reactor-formula-object-reactor-formula-configuration-object) options for configuring a Reactor                                         |
+| `request_parameters` | true     | *array*  | `[]`    | Array of [request parameters](#reactor-formulas-reactor-formula-object-reactor-formula-request-parameter-object) which will be passed when executing the Reactor                  |
 
 ### Response
 
@@ -768,9 +783,9 @@ Delete a Reactor Formula by ID in the Tenant.
 
 ### URI Parameters
 
-Parameter | Required | Type | Default | Description
---------- | -------- | ---- | ------- | -----------
-`id` | true | *uuid* | `null` | The ID of the Reactor Formula
+| Parameter | Required | Type   | Default | Description                   |
+|-----------|----------|--------|---------|-------------------------------|
+| `id`      | true     | *uuid* | `null`  | The ID of the Reactor Formula |
 
 ### Response
 
