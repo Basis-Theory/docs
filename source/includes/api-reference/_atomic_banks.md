@@ -600,10 +600,10 @@ Returns a [Reactor Response](#reactors-invoke-a-reactor-reactor-response-object)
 Errors generated from Reactors will be translated to the common Basis Theory Error format. See [Reactor Errors](#errors-reactor-errors) for more details.
 
 ### Reactor Response Object
-| Attribute | Type  | Description                                                                                                                                                                             |
-|-----------|-------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `tokens`  | *map* | (Optional) [Token(s)](#tokens-token-object) created from the `tokenize` block of the Reactor Formula [response](#reactor-formulas-reactor-formula-code-reactor-formula-response-object) |
-| `raw`     | *map* | (Optional) Raw output returned from the Reactor                                                                                                                                         |
+| Attribute | Type     | Description                                                                                                                                                                             |
+|-----------|----------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `tokens`  | *object* | (Optional) [Token(s)](#tokens-token-object) created from the `tokenize` block of the Reactor Formula [response](#reactor-formulas-reactor-formula-code-reactor-formula-response-object) |
+| `raw`     | *object* | (Optional) Raw output returned from the Reactor                                                                                                                                         |
 
 
 ## Test Banks
