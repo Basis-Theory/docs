@@ -89,7 +89,7 @@ For example, sending a proxy request to `https://api.basistheory.com/proxy/foo/b
 
 The Basis Theory Proxy will attempt to detokenize certain interpolation patterns and inject the raw token data in the request body before sending the request to the downstream destination.
 
-The proxy will substitute any patterns of the form `{{<tokenId>}}` within the request with the raw token data represented by that `tokenId`. For example,
+The proxy will substitute any patterns of the form `{{<tokenId>}}` within the request with the raw token data represented by that `<tokenId>`. For example,
 given a token:
 
 <div class="center-column"></div>

@@ -95,11 +95,13 @@ curl "https://api.basistheory.com/reactor-formulas" \
     "type": "private",
     "icon": "data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==",
     "code": "
-      module.exports = async function (context) {
-        // Do something with `context.configuration.SERVICE_API_KEY`
+      module.exports = async function (req) {
+        // Do something with `req.configuration.SERVICE_API_KEY`
 
         return {
-          foo: 'bar',
+          raw: {
+            foo: 'bar'
+          }
         };
       };
     ",
@@ -112,12 +114,12 @@ curl "https://api.basistheory.com/reactor-formulas" \
     ],
     "request_parameters": [
       {
-        "name": "REQUEST_PARAMETER_1",
+        "name": "request_parameter_1",
         "description": "Request parameter description",
         "type": "string"
       },
       {
-        "name": "REQUEST_PARAMETER_2",
+        "name": "request_parameter_2",
         "description": "Request parameter description",
         "type": "boolean",
         "optional": true
@@ -135,14 +137,15 @@ const reactorFormula = await bt.reactorFormulas.create({
   name: 'My Private Reactor',
   description: 'Securely exchange token for another token',
   type: 'private',
-  sourceTokenType: 'card',
   icon: 'data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==',
   code: '
-    module.exports = async function (context) {
-      // Do something with `context.configuration.SERVICE_API_KEY`
+    module.exports = async function (req) {
+      // Do something with `req.configuration.SERVICE_API_KEY`
 
       return {
-        foo: 'bar',
+        raw: {
+          foo: 'bar'
+        }
       };
     };
   ',
@@ -155,12 +158,12 @@ const reactorFormula = await bt.reactorFormulas.create({
   ],
   requestParameters: [
     {
-      name: 'REQUEST_PARAMETER_1',
+      name: 'request_parameter_1',
       description: 'Request parameter description',
       type: 'string',
     },
     {
-      name: 'REQUEST_PARAMETER_2',
+      name: 'request_parameter_2',
       description: 'Request parameter description',
       type: 'boolean',
       optional: true
@@ -178,14 +181,15 @@ var reactorFormula = await client.CreateAsync(new ReactorFormula {
   Name = "My Private Reactor",
   Description = "Securely exchange token for another token",
   Type = "private",
-  SourceTokenType = "card",
   Icon = "data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==",
   Code = @"
-    module.exports = async function (context) {
-      // Do something with `context.configuration.SERVICE_API_KEY`
+    module.exports = async function (req) {
+      // Do something with `req.configuration.SERVICE_API_KEY`
 
       return {
-        foo: 'bar',
+        raw: {
+          foo: 'bar'
+        }
       };
     };
   ",
@@ -198,12 +202,12 @@ var reactorFormula = await client.CreateAsync(new ReactorFormula {
   },
   RequestParameters = new List<ReactorFormulaRequestParameter> {
     new ReactorFormulaRequestParameter {
-      Name = "REQUEST_PARAMETER_1",
+      Name = "request_parameter_1",
       Description = "Request parameter description",
       Type = "string"
     },
     new ReactorFormulaRequestParameter {
-      Name = "REQUEST_PARAMETER_2",
+      Name = "request_parameter_2",
       Description = "Request parameter description",
       Type = "boolean",
       IsOptional = true
@@ -226,15 +230,12 @@ var reactorFormula = await client.CreateAsync(new ReactorFormula {
   "type": "private",
   "icon": "data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==",
   "code": "
-    module.exports = async function (context) {
-      // Do something with `context.configuration.SERVICE_API_KEY`
+    module.exports = async function (req) {
+      // Do something with `req.configuration.SERVICE_API_KEY`
 
       return {
-        data: {
+        raw: {
           foo: 'bar',
-        },
-        metadata: {
-          nonSensitiveField: 'Non-Sensitive Value'
         }
       };
     };
@@ -248,12 +249,12 @@ var reactorFormula = await client.CreateAsync(new ReactorFormula {
   ],
   "request_parameters": [
     {
-      "name": "REQUEST_PARAMETER_1",
+      "name": "request_parameter_1",
       "description": "Request parameter description",
       "type": "string"
     },
     {
-      "name": "REQUEST_PARAMETER_2",
+      "name": "request_parameter_2",
       "description": "Request parameter description",
       "type": "boolean",
       "optional": true
@@ -295,7 +296,7 @@ Create a new Reactor Formula for the Tenant.
 
 ### Response
 
-Returns an [Reactor Formula](#reactor-formulas-reactor-formula-object) if the Reactor Formula was created. Returns [an error](#errors) if there were validation errors, or the Reactor Formula failed to create.
+Returns a [Reactor Formula](#reactor-formulas-reactor-formula-object) if the Reactor Formula was created. Returns [an error](#errors) if there were validation errors, or the Reactor Formula failed to create.
 
 
 ## List Reactor Formulas
@@ -340,15 +341,12 @@ var reactorFormulas = await client.GetAsync();
       "type": "private",
       "icon": "data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==",
       "code": "
-        module.exports = async function (context) {
-          // Do something with `context.configuration.SERVICE_API_KEY`
+        module.exports = async function (req) {
+          // Do something with `req.configuration.SERVICE_API_KEY`
 
           return {
-            data: {
-              foo: 'bar',
-            },
-            metadata: {
-              nonSensitiveField: 'Non-Sensitive Value'
+            raw: {
+              foo: 'bar'
             }
           };
         };
@@ -362,12 +360,12 @@ var reactorFormulas = await client.GetAsync();
       ],
       "request_parameters": [
         {
-          "name": "REQUEST_PARAMETER_1",
+          "name": "request_parameter_1",
           "description": "Request parameter description",
           "type": "string"
         },
         {
-          "name": "REQUEST_PARAMETER_2",
+          "name": "request_parameter_2",
           "description": "Request parameter description",
           "type": "boolean",
           "optional": true
@@ -447,15 +445,12 @@ var reactorFormula = await client.GetByIdAsync("17069df1-80f4-439e-86a7-4121863e
   "type": "private",
   "icon": "data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==",
   "code": "
-    module.exports = async function (context) {
-      // Do something with `context.configuration.SERVICE_API_KEY`
+    module.exports = async function (req) {
+      // Do something with `req.configuration.SERVICE_API_KEY`
 
       return {
-        data: {
+        raw: {
           foo: 'bar',
-        },
-        metadata: {
-          nonSensitiveField: 'Non-Sensitive Value'
         }
       };
     };
@@ -469,12 +464,12 @@ var reactorFormula = await client.GetByIdAsync("17069df1-80f4-439e-86a7-4121863e
   ],
   "request_parameters": [
     {
-      "name": "REQUEST_PARAMETER_1",
+      "name": "request_parameter_1",
       "description": "Request parameter description",
       "type": "string"
     },
     {
-      "name": "REQUEST_PARAMETER_2",
+      "name": "request_parameter_2",
       "description": "Request parameter description",
       "type": "boolean",
       "optional": true
@@ -508,7 +503,7 @@ Get a Reactor Formula by ID in the Tenant.
 
 ### Response
 
-Returns an [Reactor Formula](#reactor-formulas-reactor-formula-object) with the `id` provided. Returns [an error](#errors) if the Reactor Formula could not be retrieved.
+Returns a [Reactor Formula](#reactor-formulas-reactor-formula-object) with the `id` provided. Returns [an error](#errors) if the Reactor Formula could not be retrieved.
 
 
 ## Update Reactor Formula
@@ -526,11 +521,13 @@ curl "https://api.basistheory.com/reator-formula/17069df1-80f4-439e-86a7-4121863
     "type": "private",
     "icon": "data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==",
     "code": "
-      module.exports = async function (context) {
-        // Do something with `context.configuration.SERVICE_API_KEY`
+      module.exports = async function (req) {
+        // Do something with `req.configuration.SERVICE_API_KEY`
 
         return {
-          foo: 'bar',
+          raw: {
+            foo: 'bar'
+          }
         };
       };
     ",
@@ -543,12 +540,12 @@ curl "https://api.basistheory.com/reator-formula/17069df1-80f4-439e-86a7-4121863
     ],
     "request_parameters": [
       {
-        "name": "REQUEST_PARAMETER_1",
+        "name": "request_parameter_1",
         "description": "Request parameter description",
         "type": "string"
       },
       {
-        "name": "REQUEST_PARAMETER_2",
+        "name": "request_parameter_2",
         "description": "Request parameter description",
         "type": "boolean",
         "optional": true
@@ -566,14 +563,15 @@ const reactorFormula = await bt.reactorFormulas.update('17069df1-80f4-439e-86a7-
   name: 'My Private Reactor',
   description: 'Securely exchange token for another token',
   type: 'private',
-  sourceTokenType: 'card',
   icon: 'data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==',
   code: '
-    module.exports = async function (context) {
-      // Do something with `context.configuration.SERVICE_API_KEY`
+    module.exports = async function (req) {
+      // Do something with `req.configuration.SERVICE_API_KEY`
 
       return {
-        foo: 'bar',
+        raw: {
+          foo: 'bar',
+        }
       };
     };
   ',
@@ -586,12 +584,12 @@ const reactorFormula = await bt.reactorFormulas.update('17069df1-80f4-439e-86a7-
   ],
   requestParameters: [
     {
-      name: 'REQUEST_PARAMETER_1',
+      name: 'request_parameter_1',
       description: 'Request parameter description',
       type: 'string',
     },
     {
-      name: 'REQUEST_PARAMETER_2',
+      name: 'request_parameter_2',
       description: 'Request parameter description',
       type: 'boolean',
       optional: true
@@ -610,14 +608,15 @@ var reactorFormula = await client.UpdateAsync("17069df1-80f4-439e-86a7-4121863e4
     Name = "My Private Reactor",
     Description = "Securely exchange token for another token",
     Type = "private",
-    SourceTokenType = "card",
     Icon = "data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==",
     Code = @"
-      module.exports = async function (context) {
-        // Do something with `context.configuration.SERVICE_API_KEY`
+      module.exports = async function (req) {
+        // Do something with `req.configuration.SERVICE_API_KEY`
 
         return {
-          foo: 'bar',
+          raw: {
+            foo: 'bar'
+          }
         };
       };
     ",
@@ -630,12 +629,12 @@ var reactorFormula = await client.UpdateAsync("17069df1-80f4-439e-86a7-4121863e4
     },
     RequestParameters = new List<ReactorFormulaRequestParameter> {
       new ReactorFormulaRequestParameter {
-        Name = "REQUEST_PARAMETER_1",
+        Name = "request_parameter_1",
         Description = "Request parameter description",
         Type = "string"
       },
       new ReactorFormulaRequestParameter {
-        Name = "REQUEST_PARAMETER_2",
+        Name = "request_parameter_2",
         Description = "Request parameter description",
         Type = "boolean",
         IsOptional = true
@@ -659,15 +658,12 @@ var reactorFormula = await client.UpdateAsync("17069df1-80f4-439e-86a7-4121863e4
   "type": "private",
   "icon": "data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==",
   "code": "
-    module.exports = async function (context) {
-      // Do something with `context.configuration.SERVICE_API_KEY`
+    module.exports = async function (req) {
+      // Do something with `req.configuration.SERVICE_API_KEY`
 
       return {
-        data: {
+        raw: {
           foo: 'bar',
-        },
-        metadata: {
-          nonSensitiveField: 'Non-Sensitive Value'
         }
       };
     };
@@ -681,12 +677,12 @@ var reactorFormula = await client.UpdateAsync("17069df1-80f4-439e-86a7-4121863e4
   ],
   "request_parameters": [
     {
-      "name": "REQUEST_PARAMETER_1",
+      "name": "request_parameter_1",
       "description": "Request parameter description",
       "type": "string"
     },
     {
-      "name": "REQUEST_PARAMETER_2",
+      "name": "request_parameter_2",
       "description": "Request parameter description",
       "type": "boolean",
       "optional": true
@@ -732,7 +728,7 @@ Update a Reactor Formula by ID in the Tenant.
 
 ### Response
 
-Returns an [Reactor Formula](#reactor-formulas-reactor-formula-object) if the Reactor Formula was updated. Returns [an error](#errors) if there were validation errors, or the Reactor Formula failed to update.
+Returns a [Reactor Formula](#reactor-formulas-reactor-formula-object) if the Reactor Formula was updated. Returns [an error](#errors) if there were validation errors, or the Reactor Formula failed to update.
 
 
 ## Delete Reactor Formula

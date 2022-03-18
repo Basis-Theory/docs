@@ -458,7 +458,7 @@ curl "https://api.basistheory.com/atomic/cards/c1e565009-1984-4638-8fca-dce8a82c
   -d '{
     "reactor_id": "5b493235-6917-4307-906a-2cd6f1a90b13",
     "request_parameters": {
-      "REQUEST_PARAMETER_1": "Some request value"
+      "request_parameter_1": "Some request value"
     },
     "metadata": {
       "nonSensitiveField": "Non-Sensitive Value"
@@ -474,7 +474,7 @@ const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
 const reactResponse = await bt.atomicCards.react('c1e565009-1984-4638-8fca-dce8a82cc2af', {
   reactorId: '5b493235-6917-4307-906a-2cd6f1a90b13',
   requestParameters: {
-    REQUEST_PARAMETER_1: 'Some request value',
+    request_parameter_1: 'Some request value',
   },
   metadata: {
     nonSensitiveField: 'Non-Sensitive Value',
@@ -491,7 +491,7 @@ var reactResponse = await client.ReactAsync("c1e565009-1984-4638-8fca-dce8a82cc2
   new ReactRequest {
     ReactorId = "5b493235-6917-4307-906a-2cd6f1a90b13",
     RequestParameters = new Dictionary<string, object> {
-      { "REQUEST_PARAMETER_1",  "Some request value" }
+      { "request_parameter_1",  "Some request value" }
     },
     Metadata = new Dictionary<string, string> {
       { "nonSensitiveField",  "Non-Sensitive Value" }
@@ -531,10 +531,10 @@ React with an Atomic Card by ID.
 
 ### Response
 
-Returns a [React Response](#atomic-cards-react-with-an-atomic-card-react-response-object) if the Atomic Card was reacted successfully. Returns [an error](#errors) if the Atomic Card failed to react.
+Returns a [Reactor Response](#reactors-invoke-a-reactor-reactor-response-object) if the Atomic Card was reacted successfully. Returns [an error](#errors) if the Atomic Card failed to react.
 Errors generated from Reactors will be translated to the common Basis Theory Error format. See [Reactor Errors](#errors-reactor-errors) for more details.
 
-### React Response Object
+### Reactor Response Object
 | Attribute | Type  | Description                                                                                                                                                                             |
 |-----------|-------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `tokens`  | *map* | (Optional) [Token(s)](#tokens-token-object) created from the `tokenize` block of the Reactor Formula [response](#reactor-formulas-reactor-formula-code-reactor-formula-response-object) |

@@ -3,17 +3,17 @@
 
 ## Reactor Object
 
-| Attribute       | Type                                                          | Description                                                                                                                                                                |
-|-----------------|---------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `id`            | *uuid*                                                        | Unique identifier of the Reactor which can be used to [get a Reactor](#reactors-get-a-reactor)                                                                             |
-| `tenant_id`     | *uuid*                                                        | The [Tenant](#tenants) ID which owns the reactor                                                                                                                           |
-| `name`          | *string*                                                      | The name of the reactor                                                                                                                                                    |
-| `formula`       | *[Reactor Formula](#reactor-formulas-reactor-formula-object)* | Reactor Formula this Reactor is configured for                                                                                                                             |
-| `configuration` | *map*                                                         | A key-value map of all configuration name and values for an [Reactor Formula configuration](#reactor-formulas-reactor-formula-object-reactor-formula-configuration-object) |
-| `created_by`    | *uuid*                                                        | (Optional) The ID of the user or [Application](#applications) that created the Reactor                                                                                     |
-| `created_at`    | *string*                                                      | (Optional) Created date of the Reactor in ISO 8601 format                                                                                                                  |
-| `modified_by`   | *uuid*                                                        | (Optional) The ID of the user or [Application](#applications) that last modified the Reactor                                                                               |
-| `modified_at`   | *date*                                                        | (Optional) Last modified date of the Reactor in ISO 8601 format                                                                                                            |
+| Attribute       | Type                                                          | Description                                                                                                                                                               |
+|-----------------|---------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `id`            | *uuid*                                                        | Unique identifier of the Reactor which can be used to [get a Reactor](#reactors-get-a-reactor)                                                                            |
+| `tenant_id`     | *uuid*                                                        | The [Tenant](#tenants) ID which owns the reactor                                                                                                                          |
+| `name`          | *string*                                                      | The name of the reactor                                                                                                                                                   |
+| `formula`       | *[Reactor Formula](#reactor-formulas-reactor-formula-object)* | Reactor Formula this Reactor is configured for                                                                                                                            |
+| `configuration` | *map*                                                         | A key-value map of all configuration name and values for a [Reactor Formula configuration](#reactor-formulas-reactor-formula-object-reactor-formula-configuration-object) |
+| `created_by`    | *uuid*                                                        | (Optional) The ID of the user or [Application](#applications) that created the Reactor                                                                                    |
+| `created_at`    | *string*                                                      | (Optional) Created date of the Reactor in ISO 8601 format                                                                                                                 |
+| `modified_by`   | *uuid*                                                        | (Optional) The ID of the user or [Application](#applications) that last modified the Reactor                                                                              |
+| `modified_at`   | *date*                                                        | (Optional) Last modified date of the Reactor in ISO 8601 format                                                                                                           |
 
 ## Create Reactor
 
@@ -105,14 +105,14 @@ Create a new Reactor from a Reactor Formula for the Tenant.
 | Attribute       | Required | Type     | Default | Description                                                                                                                                                                |
 |-----------------|----------|----------|---------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `name`          | true     | *string* | `null`  | The name of the reactor. Has a maximum length of `200`                                                                                                                     |
-| `configuration` | true     | *object* | `null`  | A key-value map of all configuration name and values for an [Reactor Formula configuration](#reactor-formulas-reactor-formula-object-reactor-formula-configuration-object) |
+| `configuration` | true     | *object* | `null`  | A key-value map of all configuration name and values for a [Reactor Formula configuration](#reactor-formulas-reactor-formula-object-reactor-formula-configuration-object) |
 | `formula.id`    | true     | *uuid*   | `null`  | Unique identifier of the [Reactor Formula](#reactor-formulas-reactor-formula-object) to configure a Reactor for                                                            |
 
 The `configuration` object must satisfy the name and type constraints defined by the [Reactor Formula's](#reactor-formulas-reactor-formula-object) `configuration` property.
 
 ### Response
 
-Returns an [reactor](#reactors-reactor-object) if the Reactor was created. Returns [an error](#errors) if there were validation errors, or the Reactor failed to create.
+Returns a [Reactor](#reactors-reactor-object) if the Reactor was created. Returns [an error](#errors) if there were validation errors, or the Reactor failed to create.
 
 
 ## List Reactors
@@ -262,7 +262,7 @@ Get a Reactor by ID in the Tenant.
 
 ### Response
 
-Returns an [reactor](#reactors-reactor-object) with the `id` provided. Returns [an error](#errors) if the Reactor could not be retrieved.
+Returns a [Reactor](#reactors-reactor-object) with the `id` provided. Returns [an error](#errors) if the Reactor could not be retrieved.
 
 
 ## Update Reactor
@@ -353,14 +353,14 @@ Update a Reactor by ID in the Tenant.
 
 ### Request Parameters
 
-| Attribute       | Required | Type     | Default | Description                                                                                                                                                                |
-|-----------------|----------|----------|---------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `name`          | true     | *string* | `null`  | The name of the reactor. Has a maximum length of `200`                                                                                                                     |
-| `configuration` | true     | *object* | `null`  | A key-value map of all configuration name and values for an [Reactor Formula configuration](#reactor-formulas-reactor-formula-object-reactor-formula-configuration-object) |
+| Attribute       | Required | Type     | Default | Description                                                                                                                                                               |
+|-----------------|----------|----------|---------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `name`          | true     | *string* | `null`  | The name of the reactor. Has a maximum length of `200`                                                                                                                    |
+| `configuration` | true     | *object* | `null`  | A key-value map of all configuration name and values for a [Reactor Formula configuration](#reactor-formulas-reactor-formula-object-reactor-formula-configuration-object) |
 
 ### Response
 
-Returns an [reactor](#reactors-reactor-object) if the Reactor was updated. Returns [an error](#errors) if there were validation errors, or the Reactor failed to update.
+Returns a [Reactor](#reactors-reactor-object) if the Reactor was updated. Returns [an error](#errors) if there were validation errors, or the Reactor failed to update.
 
 
 ## Delete Reactor
@@ -494,7 +494,7 @@ At least one `token:<classification>:use:reactor` permission is required to invo
 
 ### Response
 
-Returns a [React Response](#reactors-invoke-a-reactor-reactor-response-object) if the Reactor completed successfully. Returns [an error](#errors) if the Reactor failed.
+Returns a [Reactor Response](#reactors-invoke-a-reactor-reactor-response-object) if the Reactor completed successfully. Returns [an error](#errors) if the Reactor failed.
 Errors generated from Reactors will be translated to the common Basis Theory Error format. See [Reactor Errors](#errors-reactor-errors) for more details.
 
 ### Reactor Response Object
