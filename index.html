@@ -454,7 +454,7 @@
                       <a href="#atomic-banks-decrypt-atomic-bank-deprecated" class="toc-h2 toc-link" data-title="Decrypt Atomic Bank DEPRECATED">Decrypt Atomic Bank <span class="deprecated menu">DEPRECATED</span></a>
                     </li>
                     <li>
-                      <a href="#atomic-banks-react-with-an-atomic-bank" class="toc-h2 toc-link" data-title="React with an Atomic Bank">React with an Atomic Bank</a>
+                      <a href="#atomic-banks-react-with-an-atomic-bank-deprecated" class="toc-h2 toc-link" data-title="React with an Atomic Bank DEPRECATED">React with an Atomic Bank <span class="deprecated menu">DEPRECATED</span></a>
                     </li>
                     <li>
                       <a href="#atomic-banks-test-banks" class="toc-h2 toc-link" data-title="Test Banks">Test Banks</a>
@@ -483,7 +483,7 @@
                       <a href="#atomic-cards-delete-atomic-card" class="toc-h2 toc-link" data-title="Delete Atomic Card">Delete Atomic Card</a>
                     </li>
                     <li>
-                      <a href="#atomic-cards-react-with-an-atomic-card" class="toc-h2 toc-link" data-title="React with an Atomic Card">React with an Atomic Card</a>
+                      <a href="#atomic-cards-react-with-an-atomic-card-deprecated" class="toc-h2 toc-link" data-title="React with an Atomic Card DEPRECATED">React with an Atomic Card <span class="deprecated menu">DEPRECATED</span></a>
                     </li>
                     <li>
                       <a href="#atomic-cards-test-cards" class="toc-h2 toc-link" data-title="Test Cards">Test Cards</a>
@@ -572,6 +572,9 @@
                     </li>
                     <li>
                       <a href="#reactors-delete-reactor" class="toc-h2 toc-link" data-title="Delete Reactor">Delete Reactor</a>
+                    </li>
+                    <li>
+                      <a href="#reactors-invoke-a-reactor" class="toc-h2 toc-link" data-title="Invoke a Reactor">Invoke a Reactor</a>
                     </li>
                 </ul>
             </li>
@@ -2311,7 +2314,11 @@ Returns <a href="#errors">an error</a> if the Atomic Bank could not be retrieved
 </tbody></table>
 <h3 id='atomic-banks-decrypt-atomic-bank-span-class-deprecated-menu-deprecated-span-response'>Response</h3>
 <p>Returns an <a href="#atomic-banks-atomic-bank-object">Atomic Bank</a> with plaintext <a href="#atomic-banks-atomic-bank-object-bank-object">bank</a> data with the <code>id</code> provided. Returns <a href="#errors">an error</a> if the Atomic Bank could not be retrieved.</p>
-<h2 id='atomic-banks-react-with-an-atomic-bank'>React with an Atomic Bank</h2>
+<h2 id='atomic-banks-react-with-an-atomic-bank-deprecated'>React with an Atomic Bank <span class="deprecated menu">DEPRECATED</span></h2>
+<aside class="danger">
+  <span>This endpoint has been deprecated in favor of <a class="black-link" href="#reactors-invoke-a-reactor">Invoke a Reactor</a>.</span>
+</aside>
+
 <blockquote>
 <p>Request</p>
 </blockquote>
@@ -2321,7 +2328,7 @@ Returns <a href="#errors">an error</a> if the Atomic Bank could not be retrieved
   <span class="nt">-d</span> <span class="s1">'{
     "reactor_id": "5b493235-6917-4307-906a-2cd6f1a90b13",
     "request_parameters": {
-      "REQUEST_PARAMETER_1": "Some request value"
+      "request_parameter_1": "Some request value"
     },
     "metadata": {
       "nonSensitiveField": "Non-Sensitive Value"
@@ -2334,7 +2341,7 @@ Returns <a href="#errors">an error</a> if the Atomic Bank could not be retrieved
 <span class="kd">const</span> <span class="nx">reactResponse</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">bt</span><span class="p">.</span><span class="nx">atomicBanks</span><span class="p">.</span><span class="nx">react</span><span class="p">(</span><span class="dl">'</span><span class="s1">1485efb9-6b1f-4248-a5d1-cf9b3907164c</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">reactorId</span><span class="p">:</span> <span class="dl">'</span><span class="s1">5b493235-6917-4307-906a-2cd6f1a90b13</span><span class="dl">'</span><span class="p">,</span>
   <span class="na">requestParameters</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">REQUEST_PARAMETER_1</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Some request value</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">request_parameter_1</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Some request value</span><span class="dl">'</span><span class="p">,</span>
   <span class="p">},</span>
   <span class="na">metadata</span><span class="p">:</span> <span class="p">{</span>
     <span class="na">nonSensitiveField</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Non-Sensitive value</span><span class="dl">'</span><span class="p">,</span>
@@ -2348,7 +2355,7 @@ Returns <a href="#errors">an error</a> if the Atomic Bank could not be retrieved
   <span class="k">new</span> <span class="n">ReactRequest</span> <span class="p">{</span>
     <span class="n">ReactorId</span> <span class="p">=</span> <span class="s">"5b493235-6917-4307-906a-2cd6f1a90b13"</span><span class="p">,</span>
     <span class="n">RequestParameters</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="kt">object</span><span class="p">&gt;</span> <span class="p">{</span>
-      <span class="p">{</span> <span class="s">"REQUEST_PARAMETER_1"</span><span class="p">,</span>  <span class="s">"Some request value"</span> <span class="p">}</span>
+      <span class="p">{</span> <span class="s">"request_parameter_1"</span><span class="p">,</span>  <span class="s">"Some request value"</span> <span class="p">}</span>
     <span class="p">},</span>
     <span class="n">Metadata</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="kt">string</span><span class="p">&gt;</span> <span class="p">{</span>
       <span class="p">{</span> <span class="s">"nonSensitiveField"</span><span class="p">,</span>  <span class="s">"Non-Sensitive Value"</span> <span class="p">}</span>
@@ -2362,11 +2369,11 @@ Returns <a href="#errors">an error</a> if the Atomic Bank could not be retrieved
 </span></p>
 
 <p>React with an Atomic Bank by ID.</p>
-<h3 id='atomic-banks-react-with-an-atomic-bank-permissions'>Permissions</h3>
+<h3 id='atomic-banks-react-with-an-atomic-bank-span-class-deprecated-menu-deprecated-span-permissions'>Permissions</h3>
 <p class="scopes">
   <span class="scope">token:bank:use:reactor</span>
 </p>
-<h3 id='atomic-banks-react-with-an-atomic-bank-uri-parameters'>URI Parameters</h3>
+<h3 id='atomic-banks-react-with-an-atomic-bank-span-class-deprecated-menu-deprecated-span-uri-parameters'>URI Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -2384,7 +2391,7 @@ Returns <a href="#errors">an error</a> if the Atomic Bank could not be retrieved
 <td>The ID of the Atomic Bank</td>
 </tr>
 </tbody></table>
-<h3 id='atomic-banks-react-with-an-atomic-bank-request-parameters'>Request Parameters</h3>
+<h3 id='atomic-banks-react-with-an-atomic-bank-span-class-deprecated-menu-deprecated-span-request-parameters'>Request Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -2406,20 +2413,20 @@ Returns <a href="#errors">an error</a> if the Atomic Bank could not be retrieved
 <td>false</td>
 <td><em>map</em></td>
 <td><code>null</code></td>
-<td>A key-value map of <a href="#reactor-forumula-request-parameter-object">request parameters</a> names and values for the reactor</td>
+<td>A key-value map of <a href="#reactor-formulas-reactor-formula-object-reactor-formula-request-parameter-object">request parameter</a> names and values for the reactor</td>
 </tr>
 <tr>
 <td><code>metadata</code></td>
 <td>false</td>
 <td><em>map</em></td>
 <td><code>null</code></td>
-<td>A key-value map of non-sensitive data. We overwrite the following keys: <code>correlation_id</code>, <code>reactor_id</code>, <code>reactor_name</code>, <code>source_token_id</code>, and <code>source_token_type</code></td>
+<td>(Deprecated) A key-value map of non-sensitive data to be associated with any created tokens</td>
 </tr>
 </tbody></table>
-<h3 id='atomic-banks-react-with-an-atomic-bank-response'>Response</h3>
-<p>Returns a <a href="#atomic-banks-react-with-an-atomic-bank-react-response-object">React Response</a> if the Atomic Bank was reacted successfully. Returns <a href="#errors">an error</a> if the Atomic Bank failed to react.
+<h3 id='atomic-banks-react-with-an-atomic-bank-span-class-deprecated-menu-deprecated-span-response'>Response</h3>
+<p>Returns a <a href="#reactors-invoke-a-reactor-reactor-response-object">Reactor Response</a> if the Atomic Bank was reacted successfully. Returns <a href="#errors">an error</a> if the Atomic Bank failed to react.
 Errors generated from Reactors will be translated to the common Basis Theory Error format. See <a href="#errors-reactor-errors">Reactor Errors</a> for more details.</p>
-<h3 id='atomic-banks-react-with-an-atomic-bank-react-response-object'>React Response Object</h3>
+<h3 id='atomic-banks-react-with-an-atomic-bank-span-class-deprecated-menu-deprecated-span-reactor-response-object'>Reactor Response Object</h3>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -2429,12 +2436,12 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
 </thead><tbody>
 <tr>
 <td><code>tokens</code></td>
-<td><em>map</em></td>
-<td>(Optional) <a href="#tokens-token-object">Token(s)</a> created from the <code>tokenize</code> block of the Reactor response</td>
+<td><em>object</em></td>
+<td>(Optional) <a href="#tokens-token-object">Token(s)</a> created from the <code>tokenize</code> block of the Reactor Formula <a href="#reactor-formulas-reactor-formula-code-reactor-formula-response-object">response</a></td>
 </tr>
 <tr>
 <td><code>raw</code></td>
-<td><em>map</em></td>
+<td><em>object</em></td>
 <td>(Optional) Raw output returned from the Reactor</td>
 </tr>
 </tbody></table>
@@ -2934,7 +2941,11 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
 </tbody></table>
 <h3 id='atomic-cards-delete-atomic-card-response'>Response</h3>
 <p>Returns <a href="#errors">an error</a> if the Atomic Card failed to delete.</p>
-<h2 id='atomic-cards-react-with-an-atomic-card'>React with an Atomic Card</h2>
+<h2 id='atomic-cards-react-with-an-atomic-card-deprecated'>React with an Atomic Card <span class="deprecated menu">DEPRECATED</span></h2>
+<aside class="danger">
+  <span>This endpoint has been deprecated in favor of <a class="black-link" href="#reactors-invoke-a-reactor">Invoke a Reactor</a>.</span>
+</aside>
+
 <blockquote>
 <p>Request</p>
 </blockquote>
@@ -2944,7 +2955,7 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
   <span class="nt">-d</span> <span class="s1">'{
     "reactor_id": "5b493235-6917-4307-906a-2cd6f1a90b13",
     "request_parameters": {
-      "REQUEST_PARAMETER_1": "Some request value"
+      "request_parameter_1": "Some request value"
     },
     "metadata": {
       "nonSensitiveField": "Non-Sensitive Value"
@@ -2957,7 +2968,7 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
 <span class="kd">const</span> <span class="nx">reactResponse</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">bt</span><span class="p">.</span><span class="nx">atomicCards</span><span class="p">.</span><span class="nx">react</span><span class="p">(</span><span class="dl">'</span><span class="s1">c1e565009-1984-4638-8fca-dce8a82cc2af</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">reactorId</span><span class="p">:</span> <span class="dl">'</span><span class="s1">5b493235-6917-4307-906a-2cd6f1a90b13</span><span class="dl">'</span><span class="p">,</span>
   <span class="na">requestParameters</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">REQUEST_PARAMETER_1</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Some request value</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">request_parameter_1</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Some request value</span><span class="dl">'</span><span class="p">,</span>
   <span class="p">},</span>
   <span class="na">metadata</span><span class="p">:</span> <span class="p">{</span>
     <span class="na">nonSensitiveField</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Non-Sensitive Value</span><span class="dl">'</span><span class="p">,</span>
@@ -2971,7 +2982,7 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
   <span class="k">new</span> <span class="n">ReactRequest</span> <span class="p">{</span>
     <span class="n">ReactorId</span> <span class="p">=</span> <span class="s">"5b493235-6917-4307-906a-2cd6f1a90b13"</span><span class="p">,</span>
     <span class="n">RequestParameters</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="kt">object</span><span class="p">&gt;</span> <span class="p">{</span>
-      <span class="p">{</span> <span class="s">"REQUEST_PARAMETER_1"</span><span class="p">,</span>  <span class="s">"Some request value"</span> <span class="p">}</span>
+      <span class="p">{</span> <span class="s">"request_parameter_1"</span><span class="p">,</span>  <span class="s">"Some request value"</span> <span class="p">}</span>
     <span class="p">},</span>
     <span class="n">Metadata</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="kt">string</span><span class="p">&gt;</span> <span class="p">{</span>
       <span class="p">{</span> <span class="s">"nonSensitiveField"</span><span class="p">,</span>  <span class="s">"Non-Sensitive Value"</span> <span class="p">}</span>
@@ -2985,11 +2996,11 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
 </span></p>
 
 <p>React with an Atomic Card by ID.</p>
-<h3 id='atomic-cards-react-with-an-atomic-card-permissions'>Permissions</h3>
+<h3 id='atomic-cards-react-with-an-atomic-card-span-class-deprecated-menu-deprecated-span-permissions'>Permissions</h3>
 <p class="scopes">
   <span class="scope">token:pci:use:reactor</span>
 </p>
-<h3 id='atomic-cards-react-with-an-atomic-card-uri-parameters'>URI Parameters</h3>
+<h3 id='atomic-cards-react-with-an-atomic-card-span-class-deprecated-menu-deprecated-span-uri-parameters'>URI Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -3007,7 +3018,7 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
 <td>The ID of the Atomic Card</td>
 </tr>
 </tbody></table>
-<h3 id='atomic-cards-react-with-an-atomic-card-request-parameters'>Request Parameters</h3>
+<h3 id='atomic-cards-react-with-an-atomic-card-span-class-deprecated-menu-deprecated-span-request-parameters'>Request Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -3029,20 +3040,20 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
 <td>false</td>
 <td><em>map</em></td>
 <td><code>null</code></td>
-<td>A key-value map of <a href="#reactor-forumula-request-parameter-object">request parameters</a> names and values for the reactor</td>
+<td>A key-value map of <a href="#reactor-formulas-reactor-formula-object-reactor-formula-request-parameter-object">request parameter</a> names and values for the reactor</td>
 </tr>
 <tr>
 <td><code>metadata</code></td>
 <td>false</td>
 <td><em>map</em></td>
 <td><code>null</code></td>
-<td>A key-value map of non-sensitive data. We overwrite the following keys: <code>correlation_id</code>, <code>reactor_id</code>, <code>reactor_name</code>, <code>source_token_id</code>, and <code>source_token_type</code></td>
+<td>(Deprecated) A key-value map of non-sensitive data to be associated with any created tokens</td>
 </tr>
 </tbody></table>
-<h3 id='atomic-cards-react-with-an-atomic-card-response'>Response</h3>
-<p>Returns a <a href="#atomic-cards-react-with-an-atomic-card-react-response-object">React Response</a> if the Atomic Card was reacted successfully. Returns <a href="#errors">an error</a> if the Atomic Card failed to react.
+<h3 id='atomic-cards-react-with-an-atomic-card-span-class-deprecated-menu-deprecated-span-response'>Response</h3>
+<p>Returns a <a href="#reactors-invoke-a-reactor-reactor-response-object">Reactor Response</a> if the Atomic Card was reacted successfully. Returns <a href="#errors">an error</a> if the Atomic Card failed to react.
 Errors generated from Reactors will be translated to the common Basis Theory Error format. See <a href="#errors-reactor-errors">Reactor Errors</a> for more details.</p>
-<h3 id='atomic-cards-react-with-an-atomic-card-react-response-object'>React Response Object</h3>
+<h3 id='atomic-cards-react-with-an-atomic-card-span-class-deprecated-menu-deprecated-span-reactor-response-object'>Reactor Response Object</h3>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -3052,12 +3063,12 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
 </thead><tbody>
 <tr>
 <td><code>tokens</code></td>
-<td><em>map</em></td>
-<td>(Optional) <a href="#tokens-token-object">Token(s)</a> created from the <code>tokenize</code> block of the Reactor response</td>
+<td><em>object</em></td>
+<td>(Optional) <a href="#tokens-token-object">Token(s)</a> created from the <code>tokenize</code> block of the Reactor Formula <a href="#reactor-formulas-reactor-formula-code-reactor-formula-response-object">response</a></td>
 </tr>
 <tr>
 <td><code>raw</code></td>
-<td><em>map</em></td>
+<td><em>object</em></td>
 <td>(Optional) Raw output returned from the Reactor</td>
 </tr>
 </tbody></table>
@@ -3550,7 +3561,7 @@ The <code>BT-PROXY-URL</code> request header must use HTTPS with DNS as the host
 
 <p>The Basis Theory Proxy will attempt to detokenize certain interpolation patterns and inject the raw token data in the request body before sending the request to the downstream destination.</p>
 
-<p>The proxy will substitute any patterns of the form <code>{{tokenId}}</code> within the request with the raw token data represented by that <code>tokenId</code>. For example,
+<p>The proxy will substitute any patterns of the form <code>{{&lt;tokenId&gt;}}</code> within the request with the raw token data represented by that <code>&lt;tokenId&gt;</code>. For example,
 given a token:</p>
 
 <div class="center-column"></div>
@@ -3575,7 +3586,7 @@ given a token:</p>
     </span><span class="nl">"parameter2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"non-interpolated"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>Requests may contain a mixture of both token interpolation patterns and non-interpolated raw data. The <code>token:&lt;classification&gt;:use:proxy</code> permission is required in order to detokenize tokens classified as <code>&lt;classification&gt;</code> within a proxy request. At most, 100 unique tokens may be detokenized within a single proxy request.</p>
+<p>Requests may contain a mixture of both token interpolation patterns and non-interpolated raw data. The <code>token:&lt;classification&gt;:use:proxy</code> permission is required in order to detokenize tokens classified as <code>&lt;classification&gt;</code> within a proxy request. At most, 100 tokens may be detokenized within a single proxy request.</p>
 
 <aside class="notice">
   <span>In the current beta version of the proxy, only primitive generic tokens (of type <code>token</code>) can be interpolated in proxy requests. Proxy requests that contain <code>card</code> or <code>bank</code> tokens, or generic tokens containing complex structured json data will be rejected with a 400 error.</span>
@@ -3629,11 +3640,6 @@ given a token:</p>
 <td><a href="#reactor-formulas-reactor-formula-types">Type</a> of the Reactor Formula</td>
 </tr>
 <tr>
-<td><code>source_token_type</code></td>
-<td><em>string</em></td>
-<td><a href="#token-types">Source token type</a> of the Reactor Formula</td>
-</tr>
-<tr>
 <td><code>icon</code></td>
 <td><em>string</em></td>
 <td>Base64 <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URIs">data URL</a> of the image</td>
@@ -3672,6 +3678,44 @@ given a token:</p>
 <td><code>modified_by</code></td>
 <td><em>uuid</em></td>
 <td>(Optional) The ID of the user or <a href="#applications">Application</a> that last modified the Reactor Formula</td>
+</tr>
+</tbody></table>
+
+<p>The <code>configuration</code> array defines the contract that the <code>configuration</code> property must satisfy on all <a href="#reactors-reactor-object">Reactors</a> created from this formula.
+Configuration is intended to hold key-value pairs of configuration values that can be defined once for the reactor and do not change between Reactor invocations.
+Complex nested objects are not currently supported within <code>configuration</code>.</p>
+
+<p>The <code>request_parameters</code> array defines the contract that the <code>args</code> property must satisfy on each request when <a href="#reactors-invoke-a-reactor">Invoking a Reactor</a>.
+Request parameters are intended to define any parameters that will be provided to a Reactor at request-time, and may change across Reactor invocations. 
+Complex objects can be passed within the <code>args</code> property to a Reactor, and these complex request parameters can be defined by dot-separating levels of the object hierarchy.
+For example, to pass a <code>card</code> object to a Reactor whose schema matches the <a href="#atomic-cards-atomic-card-object-card-object">Card Object</a> stored within an <a href="#atomic-cards-atomic-card-object">Atomic Card</a> token, a Reactor Formula should define the following request parameters:</p>
+
+<table><thead>
+<tr>
+<th>name</th>
+<th>type</th>
+<th>optional</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>card.number</code></td>
+<td><em>string</em></td>
+<td>false</td>
+</tr>
+<tr>
+<td><code>card.expiration_month</code></td>
+<td><em>number</em></td>
+<td>false</td>
+</tr>
+<tr>
+<td><code>card.expiration_year</code></td>
+<td><em>number</em></td>
+<td>false</td>
+</tr>
+<tr>
+<td><code>card.cvc</code></td>
+<td><em>string</em></td>
+<td>true</td>
 </tr>
 </tbody></table>
 <h3 id='reactor-formulas-reactor-formula-object-reactor-formula-configuration-object'>Reactor Formula Configuration Object</h3>
@@ -3721,7 +3765,7 @@ given a token:</p>
 <td>true</td>
 <td><em>string</em></td>
 <td><code>null</code></td>
-<td>Name of the request parameter</td>
+<td>Name of the request parameter. Complex objects can be denoted as <code>[parent].[child]</code></td>
 </tr>
 <tr>
 <td><code>description</code></td>
@@ -3746,8 +3790,8 @@ given a token:</p>
 </tr>
 </tbody></table>
 <h2 id='reactor-formulas-reactor-formula-code'>Reactor Formula Code</h2>
-<p>All Reactor Formula code snippets must export a function which takes in a <a href="#reactor-formulas-reactor-formula-code-context-object">context object</a> and returns a <a href="#tokens-token-object">token object</a>.</p>
-<h3 id='reactor-formulas-reactor-formula-code-reactor-formula-code-context-object'>Reactor Formula Code Context Object</h3>
+<p>All Reactor Formula code snippets must export a function which takes in a <a href="#reactor-formulas-reactor-formula-code-reactor-formula-request-object">request object</a> and returns a <a href="#reactor-formulas-reactor-formula-code-reactor-formula-response-object">response object</a>.</p>
+<h3 id='reactor-formulas-reactor-formula-code-reactor-formula-request-object'>Reactor Formula Request Object</h3>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -3756,16 +3800,38 @@ given a token:</p>
 </tr>
 </thead><tbody>
 <tr>
-<td><code>sourceToken</code></td>
+<td><code>args</code></td>
 <td><em>object</em></td>
-<td>The source token that matches the <code>source_token_type</code> of the <a href="#reactor-formulas-reactor-formula-object">reactor-formula</a></td>
+<td>The arguments that were provided when the <a href="#reactors-invoke-a-reactor">reactor was invoked</a></td>
 </tr>
 <tr>
 <td><code>configuration</code></td>
-<td><em>array</em></td>
+<td><em>object</em></td>
 <td>The configuration defined for the <a href="#reactors-reactor-object">Reactor object</a></td>
 </tr>
 </tbody></table>
+<h3 id='reactor-formulas-reactor-formula-code-reactor-formula-response-object'>Reactor Formula Response Object</h3>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>tokenize</code></td>
+<td><em>object</em></td>
+<td>(Optional) A payload that will be tokenized to produce one or more tokens</td>
+</tr>
+<tr>
+<td><code>raw</code></td>
+<td><em>object</em></td>
+<td>(Optional) Raw output returned from the Reactor</td>
+</tr>
+</tbody></table>
+
+<p>The payload returned in the <code>tokenize</code> property will be tokenized in the same way that requests are tokenized via the Tokenize endpoint. 
+For more information, see <a href="#tokenize">Tokenize</a>.</p>
 <h2 id='reactor-formulas-reactor-formula-types'>Reactor Formula Types</h2>
 <table><thead>
 <tr>
@@ -3796,14 +3862,15 @@ given a token:</p>
     "name": "My Private Reactor",
     "description": "Securely react a token for another token",
     "type": "private",
-    "source_token_type": "card",
     "icon": "data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==",
     "code": "
-      module.exports = async function (context) {
-        // Do something with `context.configuration.SERVICE_API_KEY`
+      module.exports = async function (req) {
+        // Do something with `req.configuration.SERVICE_API_KEY`
 
         return {
-          foo: '</span>bar<span class="s1">',
+          raw: {
+            foo: '</span>bar<span class="s1">'
+          }
         };
       };
     ",
@@ -3816,12 +3883,12 @@ given a token:</p>
     ],
     "request_parameters": [
       {
-        "name": "REQUEST_PARAMETER_1",
+        "name": "request_parameter_1",
         "description": "Request parameter description",
         "type": "string"
       },
       {
-        "name": "REQUEST_PARAMETER_2",
+        "name": "request_parameter_2",
         "description": "Request parameter description",
         "type": "boolean",
         "optional": true
@@ -3836,14 +3903,15 @@ given a token:</p>
   <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">My Private Reactor</span><span class="dl">'</span><span class="p">,</span>
   <span class="na">description</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Securely exchange token for another token</span><span class="dl">'</span><span class="p">,</span>
   <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">private</span><span class="dl">'</span><span class="p">,</span>
-  <span class="na">sourceTokenType</span><span class="p">:</span> <span class="dl">'</span><span class="s1">card</span><span class="dl">'</span><span class="p">,</span>
   <span class="na">icon</span><span class="p">:</span> <span class="dl">'</span><span class="s1">data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==</span><span class="dl">'</span><span class="p">,</span>
   <span class="na">code</span><span class="p">:</span> <span class="dl">'</span><span class="s1">
-    module.exports = async function (context) {
-      // Do something with `context.configuration.SERVICE_API_KEY`
+    module.exports = async function (req) {
+      // Do something with `req.configuration.SERVICE_API_KEY`
 
       return {
-        foo: </span><span class="dl">'</span><span class="nx">bar</span><span class="dl">'</span><span class="s1">,
+        raw: {
+          foo: </span><span class="dl">'</span><span class="nx">bar</span><span class="dl">'</span><span class="s1">
+        }
       };
     };
   </span><span class="dl">'</span><span class="p">,</span>
@@ -3856,12 +3924,12 @@ given a token:</p>
   <span class="p">],</span>
   <span class="na">requestParameters</span><span class="p">:</span> <span class="p">[</span>
     <span class="p">{</span>
-      <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">REQUEST_PARAMETER_1</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">request_parameter_1</span><span class="dl">'</span><span class="p">,</span>
       <span class="na">description</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Request parameter description</span><span class="dl">'</span><span class="p">,</span>
       <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">string</span><span class="dl">'</span><span class="p">,</span>
     <span class="p">},</span>
     <span class="p">{</span>
-      <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">REQUEST_PARAMETER_2</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">request_parameter_2</span><span class="dl">'</span><span class="p">,</span>
       <span class="na">description</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Request parameter description</span><span class="dl">'</span><span class="p">,</span>
       <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">boolean</span><span class="dl">'</span><span class="p">,</span>
       <span class="na">optional</span><span class="p">:</span> <span class="kc">true</span>
@@ -3876,14 +3944,15 @@ given a token:</p>
   <span class="n">Name</span> <span class="p">=</span> <span class="s">"My Private Reactor"</span><span class="p">,</span>
   <span class="n">Description</span> <span class="p">=</span> <span class="s">"Securely exchange token for another token"</span><span class="p">,</span>
   <span class="n">Type</span> <span class="p">=</span> <span class="s">"private"</span><span class="p">,</span>
-  <span class="n">SourceTokenType</span> <span class="p">=</span> <span class="s">"card"</span><span class="p">,</span>
   <span class="n">Icon</span> <span class="p">=</span> <span class="s">"data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg=="</span><span class="p">,</span>
   <span class="n">Code</span> <span class="p">=</span> <span class="s">@"
-    module.exports = async function (context) {
-      // Do something with `context.configuration.SERVICE_API_KEY`
+    module.exports = async function (req) {
+      // Do something with `req.configuration.SERVICE_API_KEY`
 
       return {
-        foo: 'bar',
+        raw: {
+          foo: 'bar'
+        }
       };
     };
   "</span><span class="p">,</span>
@@ -3896,12 +3965,12 @@ given a token:</p>
   <span class="p">},</span>
   <span class="n">RequestParameters</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">ReactorFormulaRequestParameter</span><span class="p">&gt;</span> <span class="p">{</span>
     <span class="k">new</span> <span class="n">ReactorFormulaRequestParameter</span> <span class="p">{</span>
-      <span class="n">Name</span> <span class="p">=</span> <span class="s">"REQUEST_PARAMETER_1"</span><span class="p">,</span>
+      <span class="n">Name</span> <span class="p">=</span> <span class="s">"request_parameter_1"</span><span class="p">,</span>
       <span class="n">Description</span> <span class="p">=</span> <span class="s">"Request parameter description"</span><span class="p">,</span>
       <span class="n">Type</span> <span class="p">=</span> <span class="s">"string"</span>
     <span class="p">},</span>
     <span class="k">new</span> <span class="n">ReactorFormulaRequestParameter</span> <span class="p">{</span>
-      <span class="n">Name</span> <span class="p">=</span> <span class="s">"REQUEST_PARAMETER_2"</span><span class="p">,</span>
+      <span class="n">Name</span> <span class="p">=</span> <span class="s">"request_parameter_2"</span><span class="p">,</span>
       <span class="n">Description</span> <span class="p">=</span> <span class="s">"Request parameter description"</span><span class="p">,</span>
       <span class="n">Type</span> <span class="p">=</span> <span class="s">"boolean"</span><span class="p">,</span>
       <span class="n">IsOptional</span> <span class="p">=</span> <span class="k">true</span>
@@ -3918,18 +3987,14 @@ given a token:</p>
   </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My Private Reactor"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Securely exchange token for another token"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"private"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"source_token_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"card"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"icon"</span><span class="p">:</span><span class="w"> </span><span class="s2">"data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg=="</span><span class="p">,</span><span class="w">
   </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"
-    module.exports = async function (context) {
-      // Do something with `context.configuration.SERVICE_API_KEY`
+    module.exports = async function (req) {
+      // Do something with `req.configuration.SERVICE_API_KEY`
 
       return {
-        data: {
+        raw: {
           foo: 'bar',
-        },
-        metadata: {
-          nonSensitiveField: 'Non-Sensitive Value'
         }
       };
     };
@@ -3943,12 +4008,12 @@ given a token:</p>
   </span><span class="p">],</span><span class="w">
   </span><span class="nl">"request_parameters"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"REQUEST_PARAMETER_1"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"request_parameter_1"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Request parameter description"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"REQUEST_PARAMETER_2"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"request_parameter_2"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Request parameter description"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"boolean"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"optional"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
@@ -4004,13 +4069,6 @@ given a token:</p>
 <td><a href="#reactor-formulas-reactor-formula-types">Type</a> of the Reactor Formula</td>
 </tr>
 <tr>
-<td><code>source_token_type</code></td>
-<td>true</td>
-<td><em>string</em></td>
-<td><code>null</code></td>
-<td><a href="#token-types">Source token type</a> of the Reactor Formula</td>
-</tr>
-<tr>
 <td><code>icon</code></td>
 <td>false</td>
 <td><em>string</em></td>
@@ -4040,7 +4098,7 @@ given a token:</p>
 </tr>
 </tbody></table>
 <h3 id='reactor-formulas-reactor-formula-types-response'>Response</h3>
-<p>Returns an <a href="#reactor-formulas-reactor-formula-object">Reactor Formula</a> if the Reactor Formula was created. Returns <a href="#errors">an error</a> if there were validation errors, or the Reactor Formula failed to create.</p>
+<p>Returns a <a href="#reactor-formulas-reactor-formula-object">Reactor Formula</a> if the Reactor Formula was created. Returns <a href="#errors">an error</a> if there were validation errors, or the Reactor Formula failed to create.</p>
 <h2 id='reactor-formulas-list-reactor-formulas'>List Reactor Formulas</h2>
 <blockquote>
 <p>Request</p>
@@ -4070,18 +4128,14 @@ given a token:</p>
       </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My Private Reactor"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Securely exchange token for another token"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"private"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"source_token_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"card"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"icon"</span><span class="p">:</span><span class="w"> </span><span class="s2">"data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg=="</span><span class="p">,</span><span class="w">
       </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"
-        module.exports = async function (context) {
-          // Do something with `context.configuration.SERVICE_API_KEY`
+        module.exports = async function (req) {
+          // Do something with `req.configuration.SERVICE_API_KEY`
 
           return {
-            data: {
-              foo: 'bar',
-            },
-            metadata: {
-              nonSensitiveField: 'Non-Sensitive Value'
+            raw: {
+              foo: 'bar'
             }
           };
         };
@@ -4095,12 +4149,12 @@ given a token:</p>
       </span><span class="p">],</span><span class="w">
       </span><span class="nl">"request_parameters"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"REQUEST_PARAMETER_1"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"request_parameter_1"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Request parameter description"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"REQUEST_PARAMETER_2"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"request_parameter_2"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Request parameter description"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"boolean"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"optional"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
@@ -4143,13 +4197,6 @@ given a token:</p>
 <td><code>null</code></td>
 <td>Wildcard search of Reactor Formulas by name</td>
 </tr>
-<tr>
-<td><code>source_token_type</code></td>
-<td>false</td>
-<td><em>string</em></td>
-<td><code>null</code></td>
-<td>Filter Reactor Formulas by <a href="#token-types">source token type</a></td>
-</tr>
 </tbody></table>
 <h3 id='reactor-formulas-list-reactor-formulas-response'>Response</h3>
 <p>Returns a <a href="#pagination">paginated object</a> with the <code>data</code> property containing an array of <a href="#reactor-formulas-reactor-formula-object">Reactor Formulas</a>. Providing any query parameters will filter the results. Returns <a href="#errors">an error</a> if Reactor Formulas could not be retrieved.</p>
@@ -4179,18 +4226,14 @@ given a token:</p>
   </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My Private Reactor"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Securely exchange token for another token"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"private"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"source_token_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"card"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"icon"</span><span class="p">:</span><span class="w"> </span><span class="s2">"data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg=="</span><span class="p">,</span><span class="w">
   </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"
-    module.exports = async function (context) {
-      // Do something with `context.configuration.SERVICE_API_KEY`
+    module.exports = async function (req) {
+      // Do something with `req.configuration.SERVICE_API_KEY`
 
       return {
-        data: {
+        raw: {
           foo: 'bar',
-        },
-        metadata: {
-          nonSensitiveField: 'Non-Sensitive Value'
         }
       };
     };
@@ -4204,12 +4247,12 @@ given a token:</p>
   </span><span class="p">],</span><span class="w">
   </span><span class="nl">"request_parameters"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"REQUEST_PARAMETER_1"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"request_parameter_1"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Request parameter description"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"REQUEST_PARAMETER_2"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"request_parameter_2"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Request parameter description"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"boolean"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"optional"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
@@ -4250,7 +4293,7 @@ given a token:</p>
 </tr>
 </tbody></table>
 <h3 id='reactor-formulas-get-a-reactor-formula-response'>Response</h3>
-<p>Returns an <a href="#reactor-formulas-reactor-formula-object">Reactor Formula</a> with the <code>id</code> provided. Returns <a href="#errors">an error</a> if the Reactor Formula could not be retrieved.</p>
+<p>Returns a <a href="#reactor-formulas-reactor-formula-object">Reactor Formula</a> with the <code>id</code> provided. Returns <a href="#errors">an error</a> if the Reactor Formula could not be retrieved.</p>
 <h2 id='reactor-formulas-update-reactor-formula'>Update Reactor Formula</h2>
 <blockquote>
 <p>Request</p>
@@ -4263,14 +4306,15 @@ given a token:</p>
     "name": "My Private Reactor",
     "description": "Securely exchange token for another token",
     "type": "private",
-    "source_token_type": "card",
     "icon": "data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==",
     "code": "
-      module.exports = async function (context) {
-        // Do something with `context.configuration.SERVICE_API_KEY`
+      module.exports = async function (req) {
+        // Do something with `req.configuration.SERVICE_API_KEY`
 
         return {
-          foo: '</span>bar<span class="s1">',
+          raw: {
+            foo: '</span>bar<span class="s1">'
+          }
         };
       };
     ",
@@ -4283,12 +4327,12 @@ given a token:</p>
     ],
     "request_parameters": [
       {
-        "name": "REQUEST_PARAMETER_1",
+        "name": "request_parameter_1",
         "description": "Request parameter description",
         "type": "string"
       },
       {
-        "name": "REQUEST_PARAMETER_2",
+        "name": "request_parameter_2",
         "description": "Request parameter description",
         "type": "boolean",
         "optional": true
@@ -4303,14 +4347,15 @@ given a token:</p>
   <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">My Private Reactor</span><span class="dl">'</span><span class="p">,</span>
   <span class="na">description</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Securely exchange token for another token</span><span class="dl">'</span><span class="p">,</span>
   <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">private</span><span class="dl">'</span><span class="p">,</span>
-  <span class="na">sourceTokenType</span><span class="p">:</span> <span class="dl">'</span><span class="s1">card</span><span class="dl">'</span><span class="p">,</span>
   <span class="na">icon</span><span class="p">:</span> <span class="dl">'</span><span class="s1">data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==</span><span class="dl">'</span><span class="p">,</span>
   <span class="na">code</span><span class="p">:</span> <span class="dl">'</span><span class="s1">
-    module.exports = async function (context) {
-      // Do something with `context.configuration.SERVICE_API_KEY`
+    module.exports = async function (req) {
+      // Do something with `req.configuration.SERVICE_API_KEY`
 
       return {
-        foo: </span><span class="dl">'</span><span class="nx">bar</span><span class="dl">'</span><span class="s1">,
+        raw: {
+          foo: </span><span class="dl">'</span><span class="nx">bar</span><span class="dl">'</span><span class="s1">,
+        }
       };
     };
   </span><span class="dl">'</span><span class="p">,</span>
@@ -4323,12 +4368,12 @@ given a token:</p>
   <span class="p">],</span>
   <span class="na">requestParameters</span><span class="p">:</span> <span class="p">[</span>
     <span class="p">{</span>
-      <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">REQUEST_PARAMETER_1</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">request_parameter_1</span><span class="dl">'</span><span class="p">,</span>
       <span class="na">description</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Request parameter description</span><span class="dl">'</span><span class="p">,</span>
       <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">string</span><span class="dl">'</span><span class="p">,</span>
     <span class="p">},</span>
     <span class="p">{</span>
-      <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">REQUEST_PARAMETER_2</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">request_parameter_2</span><span class="dl">'</span><span class="p">,</span>
       <span class="na">description</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Request parameter description</span><span class="dl">'</span><span class="p">,</span>
       <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">boolean</span><span class="dl">'</span><span class="p">,</span>
       <span class="na">optional</span><span class="p">:</span> <span class="kc">true</span>
@@ -4344,14 +4389,15 @@ given a token:</p>
     <span class="n">Name</span> <span class="p">=</span> <span class="s">"My Private Reactor"</span><span class="p">,</span>
     <span class="n">Description</span> <span class="p">=</span> <span class="s">"Securely exchange token for another token"</span><span class="p">,</span>
     <span class="n">Type</span> <span class="p">=</span> <span class="s">"private"</span><span class="p">,</span>
-    <span class="n">SourceTokenType</span> <span class="p">=</span> <span class="s">"card"</span><span class="p">,</span>
     <span class="n">Icon</span> <span class="p">=</span> <span class="s">"data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg=="</span><span class="p">,</span>
     <span class="n">Code</span> <span class="p">=</span> <span class="s">@"
-      module.exports = async function (context) {
-        // Do something with `context.configuration.SERVICE_API_KEY`
+      module.exports = async function (req) {
+        // Do something with `req.configuration.SERVICE_API_KEY`
 
         return {
-          foo: 'bar',
+          raw: {
+            foo: 'bar'
+          }
         };
       };
     "</span><span class="p">,</span>
@@ -4364,12 +4410,12 @@ given a token:</p>
     <span class="p">},</span>
     <span class="n">RequestParameters</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">ReactorFormulaRequestParameter</span><span class="p">&gt;</span> <span class="p">{</span>
       <span class="k">new</span> <span class="n">ReactorFormulaRequestParameter</span> <span class="p">{</span>
-        <span class="n">Name</span> <span class="p">=</span> <span class="s">"REQUEST_PARAMETER_1"</span><span class="p">,</span>
+        <span class="n">Name</span> <span class="p">=</span> <span class="s">"request_parameter_1"</span><span class="p">,</span>
         <span class="n">Description</span> <span class="p">=</span> <span class="s">"Request parameter description"</span><span class="p">,</span>
         <span class="n">Type</span> <span class="p">=</span> <span class="s">"string"</span>
       <span class="p">},</span>
       <span class="k">new</span> <span class="n">ReactorFormulaRequestParameter</span> <span class="p">{</span>
-        <span class="n">Name</span> <span class="p">=</span> <span class="s">"REQUEST_PARAMETER_2"</span><span class="p">,</span>
+        <span class="n">Name</span> <span class="p">=</span> <span class="s">"request_parameter_2"</span><span class="p">,</span>
         <span class="n">Description</span> <span class="p">=</span> <span class="s">"Request parameter description"</span><span class="p">,</span>
         <span class="n">Type</span> <span class="p">=</span> <span class="s">"boolean"</span><span class="p">,</span>
         <span class="n">IsOptional</span> <span class="p">=</span> <span class="k">true</span>
@@ -4387,18 +4433,14 @@ given a token:</p>
   </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My Private Reactor"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Securely exchange token for another token"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"private"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"source_token_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"card"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"icon"</span><span class="p">:</span><span class="w"> </span><span class="s2">"data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg=="</span><span class="p">,</span><span class="w">
   </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"
-    module.exports = async function (context) {
-      // Do something with `context.configuration.SERVICE_API_KEY`
+    module.exports = async function (req) {
+      // Do something with `req.configuration.SERVICE_API_KEY`
 
       return {
-        data: {
+        raw: {
           foo: 'bar',
-        },
-        metadata: {
-          nonSensitiveField: 'Non-Sensitive Value'
         }
       };
     };
@@ -4412,12 +4454,12 @@ given a token:</p>
   </span><span class="p">],</span><span class="w">
   </span><span class="nl">"request_parameters"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"REQUEST_PARAMETER_1"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"request_parameter_1"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Request parameter description"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"REQUEST_PARAMETER_2"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"request_parameter_2"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Request parameter description"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"boolean"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"optional"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
@@ -4489,13 +4531,6 @@ given a token:</p>
 <td><a href="#reactor-reactor-types">Type</a> of the Reactor Formula</td>
 </tr>
 <tr>
-<td><code>source_token_type</code></td>
-<td>true</td>
-<td><em>string</em></td>
-<td><code>null</code></td>
-<td><a href="#token-types">Source token type</a> of the Reactor Formula</td>
-</tr>
-<tr>
 <td><code>icon</code></td>
 <td>false</td>
 <td><em>string</em></td>
@@ -4525,7 +4560,7 @@ given a token:</p>
 </tr>
 </tbody></table>
 <h3 id='reactor-formulas-update-reactor-formula-response'>Response</h3>
-<p>Returns an <a href="#reactor-formulas-reactor-formula-object">Reactor Formula</a> if the Reactor Formula was updated. Returns <a href="#errors">an error</a> if there were validation errors, or the Reactor Formula failed to update.</p>
+<p>Returns a <a href="#reactor-formulas-reactor-formula-object">Reactor Formula</a> if the Reactor Formula was updated. Returns <a href="#errors">an error</a> if there were validation errors, or the Reactor Formula failed to update.</p>
 <h2 id='reactor-formulas-delete-reactor-formula'>Delete Reactor Formula</h2>
 <blockquote>
 <p>Request</p>
@@ -4606,7 +4641,7 @@ given a token:</p>
 <tr>
 <td><code>configuration</code></td>
 <td><em>map</em></td>
-<td>A key-value map of all configuration name and values for an <a href="#reactor-formulas-reactor-formula-object-reactor-formula-configuration-object">Reactor Formula configuration</a></td>
+<td>A key-value map of all configuration name and values for a <a href="#reactor-formulas-reactor-formula-object-reactor-formula-configuration-object">Reactor Formula configuration</a></td>
 </tr>
 <tr>
 <td><code>created_by</code></td>
@@ -4721,7 +4756,7 @@ given a token:</p>
 <td>true</td>
 <td><em>object</em></td>
 <td><code>null</code></td>
-<td>A key-value map of all configuration name and values for an <a href="#reactor-formulas-reactor-formula-object-reactor-formula-configuration-object">Reactor Formula configuration</a></td>
+<td>A key-value map of all configuration name and values for a <a href="#reactor-formulas-reactor-formula-object-reactor-formula-configuration-object">Reactor Formula configuration</a></td>
 </tr>
 <tr>
 <td><code>formula.id</code></td>
@@ -4731,8 +4766,10 @@ given a token:</p>
 <td>Unique identifier of the <a href="#reactor-formulas-reactor-formula-object">Reactor Formula</a> to configure a Reactor for</td>
 </tr>
 </tbody></table>
+
+<p>The <code>configuration</code> object must satisfy the name and type constraints defined by the <a href="#reactor-formulas-reactor-formula-object">Reactor Formula&#39;s</a> <code>configuration</code> property.</p>
 <h3 id='reactors-create-reactor-response'>Response</h3>
-<p>Returns an <a href="#reactors-reactor-object">reactor</a> if the Reactor was created. Returns <a href="#errors">an error</a> if there were validation errors, or the Reactor failed to create.</p>
+<p>Returns a <a href="#reactors-reactor-object">Reactor</a> if the Reactor was created. Returns <a href="#errors">an error</a> if there were validation errors, or the Reactor failed to create.</p>
 <h2 id='reactors-list-reactors'>List Reactors</h2>
 <blockquote>
 <p>Request</p>
@@ -4809,13 +4846,6 @@ given a token:</p>
 <td><code>null</code></td>
 <td>Wildcard search of reactors by name</td>
 </tr>
-<tr>
-<td><code>source_token_type</code></td>
-<td>false</td>
-<td><em>string</em></td>
-<td><code>null</code></td>
-<td>Filter reactors by Reactor Formulas <a href="#token-types">source token type</a></td>
-</tr>
 </tbody></table>
 <h3 id='reactors-list-reactors-response'>Response</h3>
 <p>Returns a <a href="#pagination">paginated object</a> with the <code>data</code> property containing an array of <a href="#reactors-reactor-object">reactors</a>. Providing any query parameters will filter the results. Returns <a href="#errors">an error</a> if reactors could not be retrieved.</p>
@@ -4883,7 +4913,7 @@ given a token:</p>
 </tr>
 </tbody></table>
 <h3 id='reactors-get-a-reactor-response'>Response</h3>
-<p>Returns an <a href="#reactors-reactor-object">reactor</a> with the <code>id</code> provided. Returns <a href="#errors">an error</a> if the Reactor could not be retrieved.</p>
+<p>Returns a <a href="#reactors-reactor-object">Reactor</a> with the <code>id</code> provided. Returns <a href="#errors">an error</a> if the Reactor could not be retrieved.</p>
 <h2 id='reactors-update-reactor'>Update Reactor</h2>
 <blockquote>
 <p>Request</p>
@@ -4989,11 +5019,11 @@ given a token:</p>
 <td>true</td>
 <td><em>object</em></td>
 <td><code>null</code></td>
-<td>A key-value map of all configuration name and values for an <a href="#reactor-formulas-reactor-formula-object-reactor-formula-configuration-object">Reactor Formula configuration</a></td>
+<td>A key-value map of all configuration name and values for a <a href="#reactor-formulas-reactor-formula-object-reactor-formula-configuration-object">Reactor Formula configuration</a></td>
 </tr>
 </tbody></table>
 <h3 id='reactors-update-reactor-response'>Response</h3>
-<p>Returns an <a href="#reactors-reactor-object">reactor</a> if the Reactor was updated. Returns <a href="#errors">an error</a> if there were validation errors, or the Reactor failed to update.</p>
+<p>Returns a <a href="#reactors-reactor-object">Reactor</a> if the Reactor was updated. Returns <a href="#errors">an error</a> if there were validation errors, or the Reactor failed to update.</p>
 <h2 id='reactors-delete-reactor'>Delete Reactor</h2>
 <blockquote>
 <p>Request</p>
@@ -5041,6 +5071,243 @@ given a token:</p>
 </tbody></table>
 <h3 id='reactors-delete-reactor-response'>Response</h3>
 <p>Returns <a href="#errors">an error</a> if the Reactor failed to delete.</p>
+<h2 id='reactors-invoke-a-reactor'>Invoke a Reactor</h2>
+<blockquote>
+<p>Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/reactors/5b493235-6917-4307-906a-2cd6f1a90b13/react"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"BT-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span> <span class="se">\</span>
+  <span class="nt">-X</span> <span class="s2">"POST"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">'{
+    "args": {
+      "card": "{{fe7c0a36-eb45-4f68-b0a0-791de28b29e4}}",
+      "customer_id": "myCustomerId1234"
+    }
+  }'</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">BasisTheory</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@basis-theory/basis-theory-js</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">bt</span> <span class="o">=</span> <span class="k">await</span> <span class="k">new</span> <span class="nx">BasisTheory</span><span class="p">().</span><span class="nx">init</span><span class="p">(</span><span class="dl">'</span><span class="s1">key_N88mVGsp3sCXkykyN2EFED</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">reactResponse</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">bt</span><span class="p">.</span><span class="nx">reactors</span><span class="p">.</span><span class="nx">react</span><span class="p">(</span><span class="dl">'</span><span class="s1">5b493235-6917-4307-906a-2cd6f1a90b13</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">args</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">card</span><span class="p">:</span> <span class="dl">'</span><span class="s1">{{fe7c0a36-eb45-4f68-b0a0-791de28b29e4}}</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">customer_id</span><span class="p">:</span> <span class="dl">'</span><span class="s1">myCustomerId1234</span><span class="dl">'</span><span class="p">,</span>
+  <span class="p">},</span>
+<span class="p">});</span>
+</code></pre></div><div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="k">using</span> <span class="nn">BasisTheory.net.Reactors</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">BasisTheory.net.Reactors.Requests</span><span class="p">;</span>
+
+<span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">ReactorClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
+
+<span class="kt">var</span> <span class="n">reactResponse</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">ReactAsync</span><span class="p">(</span><span class="s">"5b493235-6917-4307-906a-2cd6f1a90b13"</span><span class="p">,</span> 
+  <span class="k">new</span> <span class="n">ReactRequest</span> <span class="p">{</span>
+    <span class="n">Arguments</span> <span class="p">=</span> <span class="k">new</span> <span class="p">{</span>
+      <span class="n">card</span> <span class="p">=</span> <span class="s">"{{fe7c0a36-eb45-4f68-b0a0-791de28b29e4}}"</span><span class="p">,</span>
+      <span class="n">customer_id</span> <span class="p">=</span> <span class="s">"myCustomerId1234"</span>
+    <span class="p">}</span>
+  <span class="p">});</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Coming Soon!
+</span></code></pre></div>
+<p><span class="http-method post">
+  <span class="box-method">POST</span>
+  <code>https://api.basistheory.com/reactors/{id}/react</code>
+</span></p>
+
+<p>Invoke a reactor by ID.</p>
+<h3 id='reactors-invoke-a-reactor-permissions'>Permissions</h3>
+<p class="scopes">
+  <span class="scope">token:&lt;classification&gt;:use:reactor</span>
+</p>
+
+<p>Depending on the <a href="#tokens-token-classifications">classification(s)</a> of Tokens used within a Reactor, the corresponding <code>token:&lt;classification&gt;:use:reactor</code> permission is required - 
+this permission grants the Reactor access to detokenize tokens of any impact level with this classification.</p>
+
+<p>At least one <code>token:&lt;classification&gt;:use:reactor</code> permission is required to invoke a Reactor.</p>
+<h3 id='reactors-invoke-a-reactor-uri-parameters'>URI Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>true</td>
+<td><em>uuid</em></td>
+<td><code>null</code></td>
+<td>The ID of the Reactor</td>
+</tr>
+</tbody></table>
+<h3 id='reactors-invoke-a-reactor-request-parameters'>Request Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>args</code></td>
+<td>false</td>
+<td><em>object</em></td>
+<td><code>null</code></td>
+<td>Arguments to provide to the reactor. These arguments must match the declared <a href="#reactor-formulas-reactor-formula-object-reactor-formula-request-parameter-object">request parameters</a> for the reactor formula.</td>
+</tr>
+</tbody></table>
+<h3 id='reactors-invoke-a-reactor-response'>Response</h3>
+<p>Returns a <a href="#reactors-invoke-a-reactor-reactor-response-object">Reactor Response</a> if the Reactor completed successfully. Returns <a href="#errors">an error</a> if the Reactor failed.
+Errors generated from Reactors will be translated to the common Basis Theory Error format. See <a href="#errors-reactor-errors">Reactor Errors</a> for more details.</p>
+<h3 id='reactors-invoke-a-reactor-reactor-response-object'>Reactor Response Object</h3>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>tokens</code></td>
+<td><em>object</em></td>
+<td>(Optional) <a href="#tokens-token-object">Token(s)</a> created from the <code>tokenize</code> block of the Reactor Formula <a href="#reactor-formulas-reactor-formula-code-reactor-formula-response-object">response</a></td>
+</tr>
+<tr>
+<td><code>raw</code></td>
+<td><em>object</em></td>
+<td>(Optional) Raw output returned from the Reactor</td>
+</tr>
+</tbody></table>
+<h3 id='reactors-invoke-a-reactor-validation'>Validation</h3>
+<p>When invoking a reactor, the <code>args</code> must satisfy the <code>request_parameters</code> contract declared by the <a href="#reactor-formulas-reactor-formula-object">Reactor Formula</a>.
+The names of properties passed within <code>args</code> must match the names of each of the declared <code>request_parameters</code> - this comparison is case-sensitive.
+Additional arguments included within <code>args</code> that are not declared as request parameters will be removed from the request.</p>
+
+<p>Nested objects may be passed within <code>args</code>, as long as each sub-property is declared as a request parameter, dot-separating levels of the object hierarchy. 
+For example, we may have a Reactor Formula with complex request parameters declared as:</p>
+
+<table><thead>
+<tr>
+<th>name</th>
+<th>type</th>
+<th>optional</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>request_id</code></td>
+<td><em>string</em></td>
+<td>false</td>
+</tr>
+<tr>
+<td><code>user.first_name</code></td>
+<td><em>string</em></td>
+<td>false</td>
+</tr>
+<tr>
+<td><code>user.last_name</code></td>
+<td><em>string</em></td>
+<td>false</td>
+</tr>
+<tr>
+<td><code>user.address.city</code></td>
+<td><em>string</em></td>
+<td>true</td>
+</tr>
+<tr>
+<td><code>user.address.state</code></td>
+<td><em>string</em></td>
+<td>true</td>
+</tr>
+</tbody></table>
+
+<p>Then the following arguments would constitute a valid Reactor request:</p>
+
+<div class="center-column"></div>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"request_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d29e8a27-bfdb-4d26-9f13-29bdeafc9bfe"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Seattle"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WA"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>All required <code>request_parameters</code> must be included within the <code>args</code> on each request.
+If a request parameter was defined with <code>optional: false</code> and a value for this parameter is not provided within <code>args</code>, the request will be rejected with a 400 error.</p>
+
+<p>Each argument must match the <code>type</code> on the corresponding request parameter, and if the type does not match, auto casting to the declared type will be attempted. 
+For example, say a request parameter is declared with type <code>number</code> but the string value <code>&quot;123&quot;</code> is provided. This value can be cast to a number, so the reactor would receive the numeric value <code>123</code>. 
+However, if the string value <code>&quot;non-numeric&quot;</code> were provided, a 400 error would be returned because the value cannot be cast to a number.</p>
+<h3 id='reactors-invoke-a-reactor-detokenization'>Detokenization</h3>
+<p>In order to use tokenized data within a reactor, the <code>args</code> parameter may contain token interpolation patterns of the form <code>{{&lt;tokenId&gt;}}</code>.
+When token interpolation patterns are detected, Basis Theory will attempt to detokenize and inject the raw token data into the <code>args</code> forwarded to the Reactor function.</p>
+
+<p>Reactor request <code>args</code> may contain a mixture of both token interpolation patterns and non-interpolated raw data. </p>
+
+<p>Tokens containing complex data may be interpolated within a Reactor request, including Atomic Bank and Card token types.
+When tokens with complex data are interpolated, the entire JSON data payload will be included within the <code>args</code>, for example, given the token:</p>
+
+<div class="center-column"></div>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"542ee356-df96-4db2-a4e8-d40a297ec99e"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bank"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"account_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567891"</span><span class="p">,</span><span class="w"> 
+    </span><span class="nl">"routing_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"044002161"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>and the Reactor request:</p>
+
+<div class="center-column"></div>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"bank"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{{542ee356-df96-4db2-a4e8-d40a297ec99e}}"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>then the following request will sent to the reactor function:</p>
+
+<div class="center-column"></div>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"bank"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"account_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567891"</span><span class="p">,</span><span class="w"> 
+      </span><span class="nl">"routing_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"044002161"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>If a complex token contains additional properties that have not been declared as request parameters on the Reactor Formula,
+those properties will be removed and not sent on the request to the Reactor function. In the example above, if the Reactor Formula
+declared only the <code>bank.account_number</code> parameter, but not the <code>bank.routing_number</code> parameter, 
+then the Reactor function would receive the request:</p>
+
+<div class="center-column"></div>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"bank"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"account_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567891"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Validation is performed on the resulting request after token interpolation, so several required request parameters may be supplied by interpolating
+a single complex token that contains several of the request parameters.</p>
+
+<p>At most, 100 tokens may be detokenized within a single reactor request.</p>
+
+<aside class="notice">
+  <span>For more detailed examples about the various ways to Invoke a Reactor, check out our [How to Invoke a Reactor](https://developers.basistheory.com/) guide.</span>
+</aside>
 <h1 id='tenants'>Tenants</h1>
 <p>Tenants provide a way to logically group your Applications and tokens. Common use cases for Tenants may be to create one per environment such as development, QA, and production or to isolate business domains from each other. Tenant data is isolated from other tenants unless explicitly shared.</p>
 <h2 id='tenants-tenant-object'>Tenant Object</h2>
@@ -5741,7 +6008,7 @@ Token Types define the rules around a data type such as validation requirements,
 </tbody></table>
 <h1 id='tokens'>Tokens</h1>
 <aside class="notice">
-  <span>Want to understand how to own the encryption of your data? Checkout the <a href="https://guides.basistheory.com/guides/own-your-encryption-keys/" target="_blank">Own Your Encryption Keys Guide</a> and our <a href="/encryption">Encryption Reference Documentation</a>.</span>
+  <span>Want to understand how to own the encryption of your data? Checkout the <a href="https://developers.basistheory.com/guides/own-your-encryption-keys/" target="_blank">Own Your Encryption Keys Guide</a> and our <a href="/encryption">Encryption Reference Documentation</a>.</span>
 </aside>
 <h2 id='tokens-token-object'>Token Object</h2>
 <table><thead>
@@ -7516,24 +7783,38 @@ permission based on the parent token&#39;s privacy settings.</p>
 </tr>
 </thead><tbody>
 <tr>
+<td><code>/atomic/banks/{id}/react</code></td>
+<td><code>POST</code></td>
+<td>March 17, 2022</td>
+<td>June 17, 2022</td>
+<td><code>POST /atomic/banks/{id}/react</code> endpoint will be removed in an upcoming release. Instead, please use <a href="#reactors-invoke-a-reactor">Invoke a Reactor</a>.</td>
+</tr>
+<tr>
+<td><code>/atomic/cards/{id}/react</code></td>
+<td><code>POST</code></td>
+<td>March 17, 2022</td>
+<td>June 17, 2022</td>
+<td><code>POST /atomic/cards/{id}/react</code> endpoint will be removed in an upcoming release. Instead, please use <a href="#reactors-invoke-a-reactor">Invoke a Reactor</a>.</td>
+</tr>
+<tr>
 <td><code>/tokens/decrypt</code></td>
 <td><code>GET</code></td>
 <td>January 3, 2022</td>
-<td>TBD</td>
+<td>April 15, 2022</td>
 <td><code>GET /tokens/decrypt</code> endpoint will be removed in an upcoming release. Token data will now be returned based on the requester&#39;s read access. For more information, see <a href="#tokens-list-tokens">List Tokens</a>.</td>
 </tr>
 <tr>
 <td><code>/tokens/{id}/decrypt</code></td>
 <td><code>GET</code></td>
 <td>January 3, 2022</td>
-<td>TBD</td>
+<td>April 15, 2022</td>
 <td><code>GET /tokens/{id}/decrypt</code> endpoint will be removed in an upcoming release. Token data will now be returned based on the requester&#39;s read access. For more information, see <a href="#tokens-get-a-token">Get a Token</a>.</td>
 </tr>
 <tr>
 <td><code>/atomic/banks/{id}/decrypt</code></td>
 <td><code>GET</code></td>
 <td>January 3, 2022</td>
-<td>TBD</td>
+<td>April 15, 2022</td>
 <td><code>GET /atomic/banks/{id}/decrypt</code> endpoint will be removed in an upcoming release. Bank data will now be returned based on the requester&#39;s read access. For more information, see <a href="#atomic-banks-get-an-atomic-bank">Get an Atomic Bank</a>.</td>
 </tr>
 </tbody></table>
@@ -7548,6 +7829,12 @@ permission based on the parent token&#39;s privacy settings.</p>
 <th>Details</th>
 </tr>
 </thead><tbody>
+<tr>
+<td><code>source_token_type</code> removed from Reactor Formulas</td>
+<td>March 17, 2022</td>
+<td>March 17, 2022</td>
+<td>In order to support the creation of more flexible reactors that accept more than one token argument, Reactor Formulas no longer have a single <code>source_token_type</code> and this property has been removed.</td>
+</tr>
 <tr>
 <td><code>X-API-KEY</code> has been replaced with <code>BT-API-KEY</code></td>
 <td>January 9, 2022</td>
