@@ -1,3 +1,10 @@
+## [1.27.1](https://github.com/Basis-Theory/docs/compare/v1.27.0...v1.27.1) (2022-03-21)
+
+
+### Bug Fixes
+
+* add replace redirect for api-reference ([#158](https://github.com/Basis-Theory/docs/issues/158)) ([d5aee87](https://github.com/Basis-Theory/docs/commit/d5aee871a98e86db8eb4515b3ebceeaf1cf17dbb))
+
 # [1.27.0](https://github.com/Basis-Theory/docs/compare/v1.26.3...v1.27.0) (2022-03-16)
 
 
