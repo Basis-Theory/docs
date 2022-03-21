@@ -89,7 +89,7 @@ For example, sending a proxy request to `https://api.basistheory.com/proxy/foo/b
 
 The Basis Theory Proxy will attempt to detokenize certain interpolation patterns and inject the raw token data in the request body before sending the request to the downstream destination.
 
-The proxy will substitute any patterns of the form `{{tokenId}}` within the request with the raw token data represented by that `tokenId`. For example,
+The proxy will substitute any patterns of the form `{{<tokenId>}}` within the request with the raw token data represented by that `<tokenId>`. For example,
 given a token:
 
 <div class="center-column"></div>
@@ -120,7 +120,7 @@ then the following request body will sent to the desintation:
 }
 ```
 
-Requests may contain a mixture of both token interpolation patterns and non-interpolated raw data. The `token:<classification>:use:proxy` permission is required in order to detokenize tokens classified as `<classification>` within a proxy request. At most, 100 unique tokens may be detokenized within a single proxy request.
+Requests may contain a mixture of both token interpolation patterns and non-interpolated raw data. The `token:<classification>:use:proxy` permission is required in order to detokenize tokens classified as `<classification>` within a proxy request. At most, 100 tokens may be detokenized within a single proxy request.
 
 <aside class="notice">
   <span>In the current beta version of the proxy, only primitive generic tokens (of type <code>token</code>) can be interpolated in proxy requests. Proxy requests that contain <code>card</code> or <code>bank</code> tokens, or generic tokens containing complex structured json data will be rejected with a 400 error.</span>

@@ -52,7 +52,7 @@
   </div>
   <h2 class="no_toc">Guides</h2>
   <div class="card-container guides">
-    <a href="https://guides.basistheory.com/guides/basis-theory-sample-app/">
+    <a href="https://developers.basistheory.com/guides/basis-theory-sample-app/">
         <div class="card">
             <img src="./images/card/quickstart-guide-landing-page.svg">
             <div class="container">
@@ -61,7 +61,7 @@
             </div>
         </div>
     </a>
-    <a href="https://guides.basistheory.com/guides/collect-atomic-cards-with-elements/">
+    <a href="https://developers.basistheory.com/guides/collect-atomic-cards-with-elements/">
       <div class="card">
           <img src="../images/card/collect-atomic-card-landing-page.svg">
           <div class="container">
@@ -70,7 +70,7 @@
           </div>
       </div>
     </a>
-    <a href="https://guides.basistheory.com/guides/own-your-encryption-keys/">
+    <a href="https://developers.basistheory.com/guides/own-your-encryption-keys/">
       <div class="card">
           <img src="/images/card/own-your-encryption-keys-landing-page.svg">
           <div class="container">
@@ -79,7 +79,7 @@
           </div>
       </div>
     </a>
-    <a href="https://guides.basistheory.com/guides/collect-pii-js/">
+    <a href="https://developers.basistheory.com/guides/collect-pii-js/">
       <div class="card">
         <img src="/images/card/tokenize-costumer-data-landing-page.svg">
         <div class="container">
