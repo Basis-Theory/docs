@@ -12,7 +12,7 @@ other_docs:
   - <a class="toc-h2 toc-link" href="/">Home</a>
   - <a class="toc-h2 toc-link" href="/api-reference">API Reference</a>
   - <a class="toc-h2 toc-link" href="/elements">Elements</a>
-  - <a class="toc-h2 toc-link" href="https://guides.basistheory.com">Guides</a>
+  - <a class="toc-h2 toc-link" href="https://developers.basistheory.com">Guides</a>
 
 intro_quick_links:
   - encryption/quick_links

@@ -508,7 +508,11 @@ Decrypt an Atomic Bank by ID in the Tenant.
 Returns an [Atomic Bank](#atomic-banks-atomic-bank-object) with plaintext [bank](#atomic-banks-atomic-bank-object-bank-object) data with the `id` provided. Returns [an error](#errors) if the Atomic Bank could not be retrieved.
 
 
-## React with an Atomic Bank
+## React with an Atomic Bank <span class="deprecated menu">DEPRECATED</span>
+
+<aside class="danger">
+  <span>This endpoint has been deprecated in favor of <a class="black-link" href="#reactors-invoke-a-reactor">Invoke a Reactor</a>.</span>
+</aside>
 
 > Request
 
@@ -519,7 +523,7 @@ curl "https://api.basistheory.com/atomic/banks/1485efb9-6b1f-4248-a5d1-cf9b39071
   -d '{
     "reactor_id": "5b493235-6917-4307-906a-2cd6f1a90b13",
     "request_parameters": {
-      "REQUEST_PARAMETER_1": "Some request value"
+      "request_parameter_1": "Some request value"
     },
     "metadata": {
       "nonSensitiveField": "Non-Sensitive Value"
@@ -535,7 +539,7 @@ const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
 const reactResponse = await bt.atomicBanks.react('1485efb9-6b1f-4248-a5d1-cf9b3907164c', {
   reactorId: '5b493235-6917-4307-906a-2cd6f1a90b13',
   requestParameters: {
-    REQUEST_PARAMETER_1: 'Some request value',
+    request_parameter_1: 'Some request value',
   },
   metadata: {
     nonSensitiveField: 'Non-Sensitive value',
@@ -552,7 +556,7 @@ var reactResponse = await client.ReactAsync("1485efb9-6b1f-4248-a5d1-cf9b3907164
   new ReactRequest {
     ReactorId = "5b493235-6917-4307-906a-2cd6f1a90b13",
     RequestParameters = new Dictionary<string, object> {
-      { "REQUEST_PARAMETER_1",  "Some request value" }
+      { "request_parameter_1",  "Some request value" }
     },
     Metadata = new Dictionary<string, string> {
       { "nonSensitiveField",  "Non-Sensitive Value" }
@@ -584,22 +588,22 @@ React with an Atomic Bank by ID.
 | `id`      | true     | *uuid* | `null`  | The ID of the Atomic Bank |
 
 ### Request Parameters
-| Parameter            | Required | Type   | Default | Description                                                                                                                                                        |
-|----------------------|----------|--------|---------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `reactor_id`         | true     | *uuid* | `null`  | The ID of the reactor                                                                                                                                              |
-| `request_parameters` | false    | *map*  | `null`  | A key-value map of [request parameters](#reactor-forumula-request-parameter-object) names and values for the reactor                                               |
-| `metadata`           | false    | *map*  | `null`  | A key-value map of non-sensitive data. We overwrite the following keys: `correlation_id`, `reactor_id`, `reactor_name`, `source_token_id`, and `source_token_type` |
+| Parameter            | Required | Type   | Default | Description                                                                                                                                                |
+|----------------------|----------|--------|---------|------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `reactor_id`         | true     | *uuid* | `null`  | The ID of the reactor                                                                                                                                      |
+| `request_parameters` | false    | *map*  | `null`  | A key-value map of [request parameter](#reactor-formulas-reactor-formula-object-reactor-formula-request-parameter-object) names and values for the reactor |
+| `metadata`           | false    | *map*  | `null`  | (Deprecated) A key-value map of non-sensitive data to be associated with any created tokens                                                                |
 
 ### Response
 
-Returns a [React Response](#atomic-banks-react-with-an-atomic-bank-react-response-object) if the Atomic Bank was reacted successfully. Returns [an error](#errors) if the Atomic Bank failed to react.
+Returns a [Reactor Response](#reactors-invoke-a-reactor-reactor-response-object) if the Atomic Bank was reacted successfully. Returns [an error](#errors) if the Atomic Bank failed to react.
 Errors generated from Reactors will be translated to the common Basis Theory Error format. See [Reactor Errors](#errors-reactor-errors) for more details.
 
-### React Response Object
-| Attribute | Type  | Description                                                                                           |
-|-----------|-------|-------------------------------------------------------------------------------------------------------|
-| `tokens`  | *map* | (Optional) [Token(s)](#tokens-token-object) created from the `tokenize` block of the Reactor response |
-| `raw`     | *map* | (Optional) Raw output returned from the Reactor                                                       |
+### Reactor Response Object
+| Attribute | Type     | Description                                                                                                                                                                             |
+|-----------|----------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `tokens`  | *object* | (Optional) [Token(s)](#tokens-token-object) created from the `tokenize` block of the Reactor Formula [response](#reactor-formulas-reactor-formula-code-reactor-formula-response-object) |
+| `raw`     | *object* | (Optional) Raw output returned from the Reactor                                                                                                                                         |
 
 
 ## Test Banks
