@@ -344,8 +344,8 @@ html, body {
 
 .beta {
   padding: 3px 6px 4px;
-  color: #e1ab3f;
-  background: rgba(255, 213, 130, 0.14);
+  color: #787029;
+  background: #ffdb94;
   border-radius: 2px;
   font-size: 10px;
   margin-left: 6px;
@@ -359,6 +359,11 @@ html, body {
   justify-content: center;
   display: flex;
   flex-flow: column;
+
+  &.beta {
+    color: #e1ab3f;
+    background: rgba(255, 213, 130, 0.14);
+  }
 }
 
 .deprecated {
@@ -388,7 +393,7 @@ html, body {
     margin-right: 1rem;
     height: 1px;
     background-color: $grey-100;
-  
+
 }
 
 
