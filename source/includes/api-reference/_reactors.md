@@ -615,5 +615,5 @@ a single complex token that contains several of the request parameters.
 At most, 100 tokens may be detokenized within a single reactor request.
 
 <aside class="notice">
-  <span>For more detailed examples about the various ways to Invoke a Reactor, check out our [How to Invoke a Reactor](https://developers.basistheory.com/) guide.</span>
+  <span>For more detailed examples about the various ways to Invoke a Reactor, check out our guide to <a href="https://developers.basistheory.com/guides/use-token-data-in-reactors/" target="_blank">Use Token Data in Reactors</a>.</span>
 </aside>
