@@ -454,6 +454,7 @@ Returns [an error](#errors) if the Atomic Card failed to delete.
 ```shell
 curl "https://api.basistheory.com/atomic/cards/c1e565009-1984-4638-8fca-dce8a82cc2af/react" \
   -H "BT-API-KEY: key_N88mVGsp3sCXkykyN2EFED" \
+  -H "Content-Type: application/json" \
   -X "POST" \
   -d '{
     "reactor_id": "5b493235-6917-4307-906a-2cd6f1a90b13",
