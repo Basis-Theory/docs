@@ -2324,6 +2324,7 @@ Returns <a href="#errors">an error</a> if the Atomic Bank could not be retrieved
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/atomic/banks/1485efb9-6b1f-4248-a5d1-cf9b3907164c/react"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"BT-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   <span class="nt">-X</span> <span class="s2">"POST"</span> <span class="se">\</span>
   <span class="nt">-d</span> <span class="s1">'{
     "reactor_id": "5b493235-6917-4307-906a-2cd6f1a90b13",
@@ -2951,6 +2952,7 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/atomic/cards/c1e565009-1984-4638-8fca-dce8a82cc2af/react"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"BT-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   <span class="nt">-X</span> <span class="s2">"POST"</span> <span class="se">\</span>
   <span class="nt">-d</span> <span class="s1">'{
     "reactor_id": "5b493235-6917-4307-906a-2cd6f1a90b13",
@@ -5077,6 +5079,7 @@ For more information, see <a href="#tokenize">Tokenize</a>.</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/reactors/5b493235-6917-4307-906a-2cd6f1a90b13/react"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"BT-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   <span class="nt">-X</span> <span class="s2">"POST"</span> <span class="se">\</span>
   <span class="nt">-d</span> <span class="s1">'{
     "args": {
@@ -6041,7 +6044,7 @@ Token Types define the rules around a data type such as validation requirements,
 <tr>
 <td><code>fingerprint</code></td>
 <td><em>string</em></td>
-<td>Uniquely identifies the contents of this token. Fingerprints are only available for Atomic Card and Atomic Bank token types.</td>
+<td>Uniquely identifies the contents of this token. See <a href="#token-types">Token Types</a> for a list of which token types support fingerprinting.</td>
 </tr>
 <tr>
 <td><code>privacy</code></td>
