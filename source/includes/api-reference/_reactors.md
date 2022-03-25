@@ -422,6 +422,7 @@ Returns [an error](#errors) if the Reactor failed to delete.
 ```shell
 curl "https://api.basistheory.com/reactors/5b493235-6917-4307-906a-2cd6f1a90b13/react" \
   -H "BT-API-KEY: key_N88mVGsp3sCXkykyN2EFED" \
+  -H "Content-Type: application/json" \
   -X "POST" \
   -d '{
     "args": {

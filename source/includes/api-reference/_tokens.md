@@ -12,7 +12,7 @@
 | `tenant_id`   | *uuid*                                                        | The [Tenant](#tenants-tenant-object) ID which owns the token                                                                 |
 | `type`        | *string*                                                      | [Token type](#token-types)                                                                                                   |
 | `data`        | *any*                                                         | Token data                                                                                                                   |
-| `fingerprint` | *string*                                                      | Uniquely identifies the contents of this token. Fingerprints are only available for Atomic Card and Atomic Bank token types. |
+| `fingerprint` | *string*                                                      | Uniquely identifies the contents of this token. See [Token type](#token-types) for a list which token types support fingerprinting. |
 | `privacy`     | *[privacy object](#tokens-token-object-privacy-object)*       | Token Privacy Settings                                                                                                       |
 | `metadata`    | *map*                                                         | A key-value map of non-sensitive data.                                                                                       |
 | `encryption`  | *[encryption object](#tokens-token-object-encryption-object)* | Encryption metadata for an encrypted token data value                                                                        |

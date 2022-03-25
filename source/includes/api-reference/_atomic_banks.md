@@ -519,6 +519,7 @@ Returns an [Atomic Bank](#atomic-banks-atomic-bank-object) with plaintext [bank]
 ```shell
 curl "https://api.basistheory.com/atomic/banks/1485efb9-6b1f-4248-a5d1-cf9b3907164c/react" \
   -H "BT-API-KEY: key_N88mVGsp3sCXkykyN2EFED" \
+  -H "Content-Type: application/json" \
   -X "POST" \
   -d '{
     "reactor_id": "5b493235-6917-4307-906a-2cd6f1a90b13",
