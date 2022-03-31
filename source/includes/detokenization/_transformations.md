@@ -14,17 +14,17 @@ Multiple transformations can be chained together by "piping" the result of each 
 
 The following sections document the supported library of transformation functions.
 
-## JSON Path Expressions
+## JSON Path
 
 Complex data is typically tokenized as a JSON object within a token's data. In order to facilitate transformations on this
-JSON data, [JSON Path](https://tools.ietf.org/id/draft-goessner-dispatch-jsonpath-00.html) expressions can be applied to a token's data:  
+JSON data, arbitrary [JSON Path](https://tools.ietf.org/id/draft-goessner-dispatch-jsonpath-00.html) expressions can be applied to a token's data:  
 `{{<tokenId> | <jsonPathExpression>}}`
 
 All standard JSON Path syntax is supported, provided that the expression resolves to a single value. 
 If the expression resolves to multiple values, the request will result in a 400 error.
 If the expression does not resolve to any value, then the expression will resolve to the value `null`.
 
-## Examples
+### JSON Path Examples
 
 Given a token with the data:
 
