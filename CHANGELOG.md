@@ -1,3 +1,10 @@
+## [1.27.2](https://github.com/Basis-Theory/docs/compare/v1.27.1...v1.27.2) (2022-03-31)
+
+
+### Bug Fixes
+
+* correct anchor to model object for atomic token types ([#162](https://github.com/Basis-Theory/docs/issues/162)) ([ba8d747](https://github.com/Basis-Theory/docs/commit/ba8d747ecf050ccc54dcc8cbe8aeebf8ed4369db))
+
 ## [1.27.1](https://github.com/Basis-Theory/docs/compare/v1.27.0...v1.27.1) (2022-03-21)
 
 
