@@ -27,7 +27,6 @@ intro_includes:
 reference_links:
   - <a class="toc-h1 toc-link" href="/api-reference">API Reference</a>
   - <a class="toc-h1 toc-link" href="/elements">Elements</a>
-  - <a class="toc-h1 toc-link" href="/encryption">Encryption</a>
   - <a class="toc-h1 toc-link" href="/detokenization">Detokenization</a>
 
 aux_links:

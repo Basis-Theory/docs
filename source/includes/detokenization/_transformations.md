@@ -66,4 +66,3 @@ Given a token with the data:
 | <code>{{d35412f4-9d3b-45d8-b051-fe4b7d4e14c5 &#124; $.book[(@.price < 10)]}}.title</code> | "Moby Dick"                        |
 | <code>{{d35412f4-9d3b-45d8-b051-fe4b7d4e14c5 &#124; $.nonexistent</code>                  | `null`                             |
 | <code>{{d35412f4-9d3b-45d8-b051-fe4b7d4e14c5 &#124; $.book..author</code>                 | <400 Error>                        |
-

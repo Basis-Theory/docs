@@ -1,44 +1,20 @@
 # Tokens
 
-<aside class="notice">
-  <span>Want to understand how to own the encryption of your data? Checkout the <a href="https://developers.basistheory.com/guides/own-your-encryption-keys/" target="_blank">Own Your Encryption Keys Guide</a> and our <a href="/encryption">Encryption Reference Documentation</a>.</span>
-</aside>
-
 ## Token Object
 
-| Attribute     | Type                                                          | Description                                                                                                                  |
-|---------------|---------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------|
-| `id`          | *uuid*                                                        | Unique identifier of the token which can be used to [get a token](#get-a-token)                                              |
-| `tenant_id`   | *uuid*                                                        | The [Tenant](#tenants-tenant-object) ID which owns the token                                                                 |
-| `type`        | *string*                                                      | [Token type](#token-types)                                                                                                   |
-| `data`        | *any*                                                         | Token data                                                                                                                   |
+| Attribute     | Type                                                          | Description                                                                                                                             |
+|---------------|---------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------|
+| `id`          | *uuid*                                                        | Unique identifier of the token which can be used to [get a token](#get-a-token)                                                         |
+| `tenant_id`   | *uuid*                                                        | The [Tenant](#tenants-tenant-object) ID which owns the token                                                                            |
+| `type`        | *string*                                                      | [Token type](#token-types)                                                                                                              |
+| `data`        | *any*                                                         | Token data                                                                                                                              |
 | `fingerprint` | *string*                                                      | Uniquely identifies the contents of this token. See [Token Types](#token-types) for a list of which token types support fingerprinting. |
-| `privacy`     | *[privacy object](#tokens-token-object-privacy-object)*       | Token Privacy Settings                                                                                                       |
-| `metadata`    | *map*                                                         | A key-value map of non-sensitive data.                                                                                       |
-| `encryption`  | *[encryption object](#tokens-token-object-encryption-object)* | Encryption metadata for an encrypted token data value                                                                        |
-| `created_by`  | *uuid*                                                        | (Optional) The [Application](#applications-application-object) ID which created the token                                    |
-| `created_at`  | *date*                                                        | (Optional) Created date of the token in ISO 8601 format                                                                      |
-| `modified_by` | *uuid*                                                        | (Optional) The [Application](#applications) ID which last modified the token                                                 |
-| `modified_at` | *date*                                                        | (Optional) Last modified date of the token in ISO 8601 format                                                                |
-
-### Encryption Object
-
-| Attribute | Type                                                           | Description            |
-|-----------|----------------------------------------------------------------|------------------------|
-| `cek`     | *[encryption key](#tokens-token-object-encryption-key-object)* | Content encryption key |
-| `kek`     | *[encryption key](#tokens-token-object-encryption-key-object)* | Key encryption key     |
-
-<aside class="success">
-  <span>Basis Theory encrypts the <code>data</code> attribute of the token with a one-time use <code>AES-256</code> symmetric encryption key and then encrypts the symmetric key with an asymmetric <code>RSA</code> public key. Our SDK will automatically handle this for you if you use our encryption modules to encrypt each token with your own encryption keys.</span>
-</aside>
-
-### Encryption Key Object
-
-| Attribute | Type     | Description                                               |
-|-----------|----------|-----------------------------------------------------------|
-| `key`     | *string* | Encryption key or key identifier                          |
-| `prov`    | *string* | Optional encryption provider (e.g. AWS, AZURE, GCP, etc.) |
-| `alg`     | *string* | Encryption algorithm (e.g. AES, RSA, etc)                 |
+| `privacy`     | *[privacy object](#tokens-token-object-privacy-object)*       | Token Privacy Settings                                                                                                                  |
+| `metadata`    | *map*                                                         | A key-value map of non-sensitive data.                                                                                                  |
+| `created_by`  | *uuid*                                                        | (Optional) The [Application](#applications-application-object) ID which created the token                                               |
+| `created_at`  | *date*                                                        | (Optional) Created date of the token in ISO 8601 format                                                                                 |
+| `modified_by` | *uuid*                                                        | (Optional) The [Application](#applications) ID which last modified the token                                                            |
+| `modified_at` | *date*                                                        | (Optional) Last modified date of the token in ISO 8601 format                                                                           |
 
 ### Privacy Object
 
@@ -203,10 +179,9 @@ Create a new token for the Tenant.
 | `data`       | true     | *any*                                                         | `null`  | Token data. Can be an object, array, or any primitive type such as an integer, boolean, or string                                                            |
 | `privacy`    | false    | *[privacy object](#tokens-token-object-privacy-object)*       | `null`  | Token Privacy Settings overrides. Overrides must be a higher specificity level than the default or minimum setting for the [Token Type](#token-token-types). |
 | `metadata`   | false    | *map*                                                         | `null`  | A key-value map of non-sensitive data.                                                                                                                       |
-| `encryption` | false    | *[encryption object](#tokens-token-object-encryption-object)* | `null`  | Encryption metadata for an encrypted token data value                                                                                                        |
 
 <aside class="warning">
-  <span>WARNING - Never store sensitive plaintext information in the <code>metadata</code> or plaintext, private encryption keys in the <code>encryption</code> attributes of your token.</span>
+  <span>WARNING - Never store sensitive plaintext information in the <code>metadata</code> of your token.</span>
 </aside>
 
 

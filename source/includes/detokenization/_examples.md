@@ -90,7 +90,7 @@ curl "https://api.basistheory.com/proxy" \
                 "verification_value": "{{815029c2-29ec-4fc2-8cd4-99feb3ee582c | $.cvc}}",
                 "full_name": "John Doe"
               },
-              retained: true
+              "retained": true
             }
           }'
 ```
@@ -185,7 +185,7 @@ curl "https://api.basistheory.com/proxy" \
                 "verification_value": "987",
                 "full_name": "John Doe"
               },
-              retained: true
+              "retained": true
             }
           }'
 ```
@@ -266,7 +266,7 @@ curl "https://api.basistheory.com/proxy" \
                 "verification_value": "789",
                 "full_name": "{{f4d86311-1254-4155-b532-b651279a8cc0}}"
               },
-              retained: true
+              "retained": true
             }
           }'
 ```
@@ -368,7 +368,7 @@ curl "https://api.basistheory.com/proxy" \
                 "verification_value": "{{b78b4bee-5499-42dd-8671-f1d23d32355b | $.cvc}}",
                 "full_name": "{{523949a9-e32f-4b5b-a0ad-7a435c79deb4}} {{42af9170-e6ca-4ea7-a43b-730a0b47b6d0}}"
               },
-              retained: true
+              "retained": true
             }
           }'
 ```
@@ -480,7 +480,7 @@ curl "https://api.basistheory.com/proxy" \
                 "year": "{{9a48a051-972b-4569-8fd5-cbe17a604f96 | $.card.exp_year}}",
                 "full_name": "{{9a48a051-972b-4569-8fd5-cbe17a604f96 | $.card.owner}}"
               },
-              retained: true
+              "retained": true
             }
           }'
 ```
