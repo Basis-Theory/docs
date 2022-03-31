@@ -31,28 +31,28 @@ The `token` type is used for general data types that don't require input validat
 
 ## Atomic Card
 
-| Token Attribute                | Value                                                                    |
-|--------------------------------|--------------------------------------------------------------------------|
-| **Type**                       | `card`                                                                   |
-| **Default Classification**     | `pci`                                                                    |
-| **Default Impact Level**       | `high`                                                                   |
-| **Minimum Impact Level**       | `high`                                                                   |
-| **Default Restriction Policy** | `mask`                                                                   |
-| **Input Validation**           | See [Card Object](#atomic-cards-card-object) for validation requirements |
-| **Fingerprinted**              | Yes                                                                      |
+| Token Attribute                | Value                                                                                       |
+|--------------------------------|---------------------------------------------------------------------------------------------|
+| **Type**                       | `card`                                                                                      |
+| **Default Classification**     | `pci`                                                                                       |
+| **Default Impact Level**       | `high`                                                                                      |
+| **Minimum Impact Level**       | `high`                                                                                      |
+| **Default Restriction Policy** | `mask`                                                                                      |
+| **Input Validation**           | See [Card Object](#atomic-cards-atomic-card-object-card-object) for validation requirements |
+| **Fingerprinted**              | Yes                                                                                         |
 
 
 ## Atomic Bank
 
-| Token Attribute                | Value                                                                                 |
-|--------------------------------|---------------------------------------------------------------------------------------|
-| **Type**                       | `bank`                                                                                |
-| **Default Classification**     | `bank`                                                                                |
-| **Default Impact Level**       | `high`                                                                                |
-| **Minimum Impact Level**       | `high`                                                                                |
-| **Default Restriction Policy** | `mask`                                                                                |
-| **Input Validation**           | See [Bank Object](#atomic-banks-bank-object) for validation requirements              |
-| **Fingerprinted**              | Yes                                                                                   |
+| Token Attribute                | Value                                                                                                    |
+|--------------------------------|----------------------------------------------------------------------------------------------------------|
+| **Type**                       | `bank`                                                                                                   |
+| **Default Classification**     | `bank`                                                                                                   |
+| **Default Impact Level**       | `high`                                                                                                   |
+| **Minimum Impact Level**       | `high`                                                                                                   |
+| **Default Restriction Policy** | `mask`                                                                                                   |
+| **Input Validation**           | See [Bank Object](#atomic-banks-atomic-bank-object-bank-object) for validation requirements              |
+| **Fingerprinted**              | Yes                                                                                                      |
 
 
 ## Card Number
