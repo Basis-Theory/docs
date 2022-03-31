@@ -1,8 +1,8 @@
 # Introduction
 <aside class="header-intro-box">
     <span>
-        <h4>Documentation</h4>
-        <p class="header-intro-body2-font">Explore examples and guides to quickly start tokenizing anything.</p>
+        <h4>API Reference</h4>
+        <p class="header-intro-body2-font">Explore our API to quickly start tokenizing anything.</p>
         <h6>QUICK LINKS</h6>
         <span class="intro-quick-links">
             <a href="#getting-started">Before You Begin</a>
