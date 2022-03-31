@@ -93,7 +93,7 @@ You can fetch this same data later with [Get a Token API](/api-reference#tokens-
 </aside>
 
 <aside class="warning">
-  <span>The <code>encryption</code> and <code>children</code> attributes supported by the API are <strong>NOT</strong> supported when creating a token with elements.</span>
+  <span>The <code>children</code> attribute supported by the API is <strong>NOT</strong> supported when creating a token with elements.</span>
 </aside>
 
 ## Tokenize
@@ -126,7 +126,7 @@ You can fetch this same data later with [Get a Token API](/api-reference#tokens-
 </aside>
 
 <aside class="warning">
-  <span>The <code>encryption</code> and <code>children</code> attributes supported by the API are <strong>NOT</strong> supported when creating a token with elements.</span>
+  <span>The <code>children</code> attribute supported by the API is <strong>NOT</strong> supported when creating a token with elements.</span>
 </aside>
 
 
