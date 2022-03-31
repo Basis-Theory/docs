@@ -17,7 +17,7 @@ The following sections document the supported library of transformation function
 ## JSON Path Expressions
 
 Complex data is typically tokenized as a JSON object within a token's data. In order to facilitate transformations on this
-JSON data, [JSON Path](https://tools.ietf.org/id/draft-goessner-dispatch-jsonpath-00.html) expressions can be applied to a token's data:
+JSON data, [JSON Path](https://tools.ietf.org/id/draft-goessner-dispatch-jsonpath-00.html) expressions can be applied to a token's data:  
 `{{<tokenId> | <jsonPathExpression>}}`
 
 All standard JSON Path syntax is supported, provided that the expression resolves to a single value. 

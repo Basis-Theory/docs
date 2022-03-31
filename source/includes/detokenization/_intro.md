@@ -10,7 +10,7 @@
             <a href="#examples">Examples</a>
         </span>
     </span>
-    <img src="/images/encryption-intro.svg"/>
+    <img src="/images/detokenization-intro.svg"/>
 </aside>
 
 Detokenization refers to the process by which non-sensitive token identifiers are replaced with the original token data represented by those tokens.

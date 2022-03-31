@@ -1,8 +1,4 @@
-<h1 id="proxy">Proxy <span class="beta menu">BETA</span></h1>
-
-<aside class="warning">
-  <span>The Basis Theory Proxy is currently available in Public Beta. The features listed below are subject to change. If you are interested in using the proxy and your use case is not currently supported, please <a href="mailto:support@basistheory.com?subject=Proxy Feature Request">submit a feature request</a>!</span>
-</aside>
+# Proxy
 
 ## Proxying Outbound Requests
 
@@ -87,7 +83,7 @@ For example, sending a proxy request to `https://api.basistheory.com/proxy/foo/b
 
 **Detokenization**
 
-The Basis Theory Proxy will attempt to [detokenize](#detokenize) any [detokenization expressions](#detokenize-detokenization-expressions) present in the request and inject the raw token data in the request body before it is sent to the downstream destination.
+The Basis Theory Proxy will attempt to [detokenize](/detokenization) any [detokenization expressions](/detokenization#detokenization-expressions) present in the request and inject the raw token data in the request body before it is sent to the downstream destination.
 
 For example, given a token:
 
@@ -119,9 +115,12 @@ then the following request body will be sent to the destination:
 }
 ```
 
-The `token:<classification>:use:proxy` permission is required in order to detokenize tokens classified as `<classification>` within a proxy request. At most, 100 tokens may be detokenized within a single proxy request.
+The `token:<classification>:use:proxy` permission is required in order to detokenize tokens classified as `<classification>` within a proxy request. 
+At most, 100 tokens may be detokenized within a single proxy request. You can find more information about the supported detokenization expressions [here](/detokenization#detokenization-expressions).
 
-You can find more detailed information about supported detokenization expressions [here](#detokenize-detokenization-expressions)
+<aside class="notice">
+  <span>For more detailed examples about how to detokenize within the Proxy, check out our <a href="/detokenization#examples">Detokenization Examples</a>.</span>
+</aside>
 
 ### Proxy Responses
 
@@ -132,3 +131,7 @@ If an error occurs within the proxy (eg. missing or invalid `BT-PROXY-URL` heade
 | Attribute     | Type  | Description                              |
 |---------------|-------|------------------------------------------|
 | `proxy_error` | *any* | A standard Basis Theory [error](#errors) |
+
+<aside class="warning">
+  <span>If you are interested in using the proxy and your use case is not currently supported, please <a href="mailto:support@basistheory.com?subject=Proxy Feature Request">submit a feature request</a>!</span>
+</aside>

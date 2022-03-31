@@ -405,7 +405,7 @@ curl "https://api.basistheory.com/proxy" \
 }
 ```
 
-In this example, we will show how you can combine the data from multiple tokens within a single Reactor argument. Say we have
+In this example, we will show how you can combine the data from multiple tokens within a single field on a request. Say we have
 chosen to store the card holder's first and last names as separate tokens:
 
 <div class="center-column" style="clear: none;"></div>
@@ -517,6 +517,7 @@ curl "https://api.basistheory.com/proxy" \
 
 In this example, we will store our card data within a custom generic token that contains additional fields relevant to our application:
 
+<div class="center-column" style="clear: none;"></div>
 ```json
 {
   "id": "9a48a051-972b-4569-8fd5-cbe17a604f96",
