@@ -16,7 +16,7 @@ curl "https://api.basistheory.com/proxy" \
   -X "POST" \
   -d '{
     "parameter1": "{{26818785-547b-4b28-b0fa-531377e99f4e}}",
-    "parameter2": "non-interpolated"
+    "parameter2": "non-sensitive"
   }'
 ```
 
@@ -59,7 +59,10 @@ Proxy a request to a third party API.
 
 **Authentication**
 
-Proxy requests must be authenticated using an `BT-API-KEY` header (see [Authentication](#authentication)). 
+Proxy requests must be authenticated using an `BT-API-KEY` header (see [Authentication](#authentication)).
+
+Any authentication required by the destination service can be set on the request and will be forwarded through the proxy,
+(for example, by setting the `Authorization` header).
 
 **Permissions**
 
@@ -75,7 +78,7 @@ At least one `token:<classification>:use:proxy` permission is required, for exam
 **Configuration**
 
 Proxy requests require a `BT-PROXY-URL` request header to be set. The value of the `BT-PROXY-URL` header defines the base URL to which the request will be proxied.
-The `BT-PROXY-URL` request header must use HTTPS with DNS as the host. Destinations must use HTTPS >= TLSv1.2 over port 443.
+The `BT-PROXY-URL` request header must use HTTPS with DNS as the host (explicit IP addresses are not allowed). Destinations must use HTTPS >= TLSv1.2 over port 443.
   
 The `BT-PROXY-URL` request header will serve as the base URL for the proxied request. Any path and/or query parameters under `/proxy/**` will be appended to the base URL before forwarding the request.
 

@@ -16,8 +16,8 @@ or [Proxy](https://developers.basistheory.com/concepts/what-is-the-proxy) concep
 
 ### Reactor Prerequisites
 
-For the examples below, we will be using a Reactor created using the `Spreedly - Card` Reactor Formula, unless the
-example explicitly calls out otherwise. We will need the `id` of this Reactor in the examples below: `d08bc998-9301-495c-a2e5-04f8dc0916b4`.
+For the examples below, we will be using a Reactor created using the `Spreedly - Card` Reactor Formula. 
+We will need the `id` of this Reactor in the examples below: `d08bc998-9301-495c-a2e5-04f8dc0916b4`.
 
 This Reactor Formula accepts the following [request parameters](/#reactor-formulas-reactor-formula-object):
 
@@ -48,7 +48,7 @@ This API endpoint accepts POST requests with a body of the form:
       "verification_value": "123",
       "full_name": "Card Owner"
     },
-    "retained": true,
+    "retained": true
   }
 }
 ```
@@ -127,7 +127,7 @@ curl "https://api.basistheory.com/proxy" \
 }
 ```
 
-In this example, we show how you can use an [Atomic Card](https://docs.basistheory.com/#atomic-cards-atomic-card-object) token to create a Spreedly payment method.
+In this example, we show how you can use an [Atomic Card](/#atomic-cards) token to create a Spreedly payment method.
 
 Say you have created the Atomic Card token:
 
@@ -222,7 +222,7 @@ curl "https://api.basistheory.com/proxy" \
 }
 ```
 
-In this example, we show how you can use an [Atomic Card](https://docs.basistheory.com/#atomic-cards-atomic-card-object) token to create a Spreedly payment method,
+In this example, we show how you can use an [Atomic Card](/#atomic-cards) token to create a Spreedly payment method,
 but provide an updated CVC (`987`) that is different from the `cvc` value stored within the token.
 This could be desired if the updated CVC was collected directly from a user interface, possibly as a challenge to the user to prove they own the card.
 
@@ -280,7 +280,7 @@ curl "https://api.basistheory.com/proxy" \
       "number": "5555555555554444",
       "expiration_month": 10,
       "expiration_year": 2024,
-      "cvc": "123"
+      "cvc": "789"
     },
     "card_owner_full_name": "Jane Doe"
   }, 
@@ -303,7 +303,7 @@ curl "https://api.basistheory.com/proxy" \
 }
 ```
 
-In this example, we will show how you can use multiples tokens - a [Card Number](https://docs.basistheory.com/#token-types-card-number) token and a
+In this example, we will show how you can use multiples tokens - a [Card Number](/#token-types-card-number) token and a
 generic `PII` token to hold the card owner's name:
 
 <div class="center-column" style="clear: none;"></div>
@@ -460,7 +460,7 @@ curl "https://api.basistheory.com/reactors/d08bc998-9301-495c-a2e5-04f8dc0916b4/
                 "expiration_month": "{{9a48a051-972b-4569-8fd5-cbe17a604f96 | $.card.exp_month}}",
                 "expiration_year": "{{9a48a051-972b-4569-8fd5-cbe17a604f96 | $.card.exp_year}}",
               },
-              "card_owner_full_name": "{{9a48a051-972b-4569-8fd5-cbe17a604f96 | $.card.owner}}"
+              "card_owner_full_name": "{{9a48a051-972b-4569-8fd5-cbe17a604f96 | $.card.owner.first_name}} {{9a48a051-972b-4569-8fd5-cbe17a604f96 | $.card.owner.last_name}}"
             }
         }'
 ```
@@ -478,7 +478,7 @@ curl "https://api.basistheory.com/proxy" \
                 "number": "{{9a48a051-972b-4569-8fd5-cbe17a604f96 | $.card.card_number}}",
                 "month": "{{9a48a051-972b-4569-8fd5-cbe17a604f96 | $.card.exp_month}}",
                 "year": "{{9a48a051-972b-4569-8fd5-cbe17a604f96 | $.card.exp_year}}",
-                "full_name": "{{9a48a051-972b-4569-8fd5-cbe17a604f96 | $.card.owner}}"
+                "full_name": "{{9a48a051-972b-4569-8fd5-cbe17a604f96 | $.card.owner.first_name}} {{9a48a051-972b-4569-8fd5-cbe17a604f96 | $.card.owner.last_name}}"
               },
               "retained": true
             }
@@ -527,7 +527,11 @@ In this example, we will store our card data within a custom generic token that 
       "card_number": "4000056655665556",
       "exp_month": 4,
       "exp_year": 2026,
-      "owner": "John Smith"
+      "owner": {
+        "first_name": "John",
+        "middle_name": "Andrew"
+        "last_name": "Smith"
+      }
     },
     "billing_address": {
       "street_address": "175 5th Ave",
@@ -542,3 +546,6 @@ In this example, we will store our card data within a custom generic token that 
   }
 }
 ```
+
+Notice that the card owner's full name is constructed by concatenating the `card.owner.first_name` and `card.owner.last_name` 
+properties into a single string value.
