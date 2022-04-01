@@ -529,7 +529,7 @@ In this example, we will store our card data within a custom generic token that 
       "exp_year": 2026,
       "owner": {
         "first_name": "John",
-        "middle_name": "Andrew"
+        "middle_name": "Andrew",
         "last_name": "Smith"
       }
     },
