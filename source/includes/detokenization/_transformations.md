@@ -17,7 +17,7 @@ The following sections document the supported library of transformation function
 ## JSON Path
 
 Complex data is typically tokenized as a JSON object within a token's data. In order to facilitate transformations on this
-JSON data, arbitrary [JSON Path](https://tools.ietf.org/id/draft-goessner-dispatch-jsonpath-00.html) expressions can be applied to a token's data:  
+JSON data, arbitrary [JSON Path](https://goessner.net/articles/JsonPath/) expressions ([proposed spec](https://tools.ietf.org/id/draft-goessner-dispatch-jsonpath-00.html)) can be applied to a token's data:  
 `{{<tokenId> | <jsonPathExpression>}}`
 
 All standard JSON Path syntax is supported, provided that the expression resolves to a single value. 
@@ -58,11 +58,11 @@ Given a token with the data:
 }
 ```
 
-| Expression                                                                                | Result                             |
-|-------------------------------------------------------------------------------------------|------------------------------------|
-| <code>{{d35412f4-9d3b-45d8-b051-fe4b7d4e14c5 &#124; $.bicycle.color}}</code>              | "red"                              |
-| <code>{{d35412f4-9d3b-45d8-b051-fe4b7d4e14c5 &#124; $.bicycle}}</code>                    | { "color": "red", "price": 19.95 } |
-| <code>{{d35412f4-9d3b-45d8-b051-fe4b7d4e14c5 &#124; $.book[0]}}.author</code>             | "Herman Melville"                  |
-| <code>{{d35412f4-9d3b-45d8-b051-fe4b7d4e14c5 &#124; $.book[(@.price < 10)]}}.title</code> | "Moby Dick"                        |
-| <code>{{d35412f4-9d3b-45d8-b051-fe4b7d4e14c5 &#124; $.nonexistent</code>                  | `null`                             |
-| <code>{{d35412f4-9d3b-45d8-b051-fe4b7d4e14c5 &#124; $.book..author</code>                 | <400 Error>                        |
+| Expression                                                                                 | Result                             |
+|--------------------------------------------------------------------------------------------|------------------------------------|
+| <code>{{d35412f4-9d3b-45d8-b051-fe4b7d4e14c5 &#124; $.bicycle.color}}</code>               | "red"                              |
+| <code>{{d35412f4-9d3b-45d8-b051-fe4b7d4e14c5 &#124; $.bicycle}}</code>                     | { "color": "red", "price": 19.95 } |
+| <code>{{d35412f4-9d3b-45d8-b051-fe4b7d4e14c5 &#124; $.book[0].author}}</code>              | "Herman Melville"                  |
+| <code>{{d35412f4-9d3b-45d8-b051-fe4b7d4e14c5 &#124; $.book[?(@.price < 10)].title}}</code> | "Moby Dick"                        |
+| <code>{{d35412f4-9d3b-45d8-b051-fe4b7d4e14c5 &#124; $.nonexistent}}</code>                 | `null`                             |
+| <code>{{d35412f4-9d3b-45d8-b051-fe4b7d4e14c5 &#124; $.book..author}}</code>                | <400 Error>                        |

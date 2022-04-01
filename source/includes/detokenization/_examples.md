@@ -1,8 +1,8 @@
 # Examples
 
 Based on your use specific cases, you may prefer to store your sensitive data with Basis Theory using our
-[Atomic Tokens](/concepts/what-are-atomic-tokens), one of our pre-defined [Token Types](https://docs.basistheory.com/#token-types),
-or even use your own custom data schema within a schemaless [generic token](https://docs.basistheory.com/#token-types-token).
+[Atomic Tokens](https://developers.basistheory.com/concepts/what-are-atomic-tokens), one of our pre-defined [Token Types](/#token-types),
+or even use your own custom data schema within a schemaless [generic token](/#token-types-token).
 However you choose to tokenize your sensitive data, Basis Theory grants you the flexibility to use this data within
 our serverless Reactor platform or the Proxy.
 
@@ -11,15 +11,15 @@ regardless of how the data was tokenized.
 
 ## Prerequisites
 
-If Reactors or Proxy are completely new to you, we recommend you first read our [Reactors](/concepts/what-are-reactors) 
-or [Proxy](/concepts/what-is-the-proxy) concept pages.
+If Reactors or Proxy are completely new to you, we recommend you first read our [Reactors](https://developers.basistheory.com/concepts/what-are-reactors) 
+or [Proxy](https://developers.basistheory.com/concepts/what-is-the-proxy) concept pages.
 
 ### Reactor Prerequisites
 
 For the examples below, we will be using a Reactor created using the `Spreedly - Card` Reactor Formula, unless the
 example explicitly calls out otherwise. We will need the `id` of this Reactor in the examples below: `d08bc998-9301-495c-a2e5-04f8dc0916b4`.
 
-This Reactor Formula accepts the following [request parameters](https://docs.basistheory.com/#reactor-formulas-reactor-formula-object):
+This Reactor Formula accepts the following [request parameters](/#reactor-formulas-reactor-formula-object):
 
 | name                    | type     | optional |
 |:------------------------|:---------|:---------|
@@ -223,7 +223,7 @@ curl "https://api.basistheory.com/proxy" \
 ```
 
 In this example, we show how you can use an [Atomic Card](https://docs.basistheory.com/#atomic-cards-atomic-card-object) token to create a Spreedly payment method,
-but provide an updated CVC (`987`) that is different from the `cvc` value stored with the token.
+but provide an updated CVC (`987`) that is different from the `cvc` value stored within the token.
 This could be desired if the updated CVC was collected directly from a user interface, possibly as a challenge to the user to prove they own the card.
 
 Here, we will be using the same Atomic Card token and card owner name from the previous [Use Atomic Tokens](#examples-use-atomic-tokens) example.

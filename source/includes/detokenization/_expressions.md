@@ -6,13 +6,13 @@ In their simplest form, these are expressions of the form `{{<tokenId>}}` which 
 Any pattern that is wrapped in `{{ }}` will be evaluated for detokenization.
 Detokenization expressions containing non-uuid values, such as `{{non uuid value}}` will be ignored and the expression will not be replaced within the request.
 
-Any `uuid` value contained in a detokenization expression is expected to represent a the `id` of a token within your tenant. 
+Any `uuid` value contained in a detokenization expression is expected to represent the `id` of a token within your tenant. 
 If no such token is found with that identifier, the request will be rejected with a 400 error.
 
 If a token is found with the given `uuid` identifier, but the calling application is missing permission to use that 
 token, then the request will be rejected with a 403 error. 
 See the following links for more information about the permissions required to use tokens in a 
-[Reactor](/#reactors-invoke-a-reactor) or [Proxy](/#permissions-proxying-outbound-requests).
+[Reactor](/#reactors-invoke-a-reactor) or [Proxy](/#proxy-proxying-outbound-requests).
 
 Token data can also be transformed within a detokenization expression before including it in a request, for example,
 to project a single primitive value out of a complex object or to format a value.
@@ -57,7 +57,7 @@ will be detokenized into the request:
 
 ## Detokenizing Complex Data
 
-Atomic Card or Bank tokens or generic tokens containing complex JSON objects can all be detokenized as well.
+Atomic Card, Atomic Bank, or generic tokens containing complex JSON objects can all be detokenized as well.
 Detokenization of complex token data is performed by embedding the token's JSON data within the request.
 For example, say you have the Atomic Card token:
 
@@ -84,7 +84,7 @@ Then you can embed the entire [Card](/#atomic-cards-atomic-card-object) object w
 }
 ```
 
-will be detokenized into the request:
+which will be detokenized into the request:
 
 <div class="center-column"></div>
 ```json
