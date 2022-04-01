@@ -52,7 +52,11 @@ curl "https://api.basistheory.com/tenants/self/members" \
 ```
 
 ```javascript
-// Coming Soon!
+import { BasisTheory } from '@basis-theory/basis-theory-js';
+
+const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
+
+const tenantMembers = await bt.tenants.listMembers();
 ```
 
 ```csharp
@@ -128,7 +132,11 @@ curl "https://api.basistheory.com/tenants/self/members/5540a02f-99e7-46de-8f41-1
 ```
 
 ```javascript
-// Coming soon!
+import { BasisTheory } from '@basis-theory/basis-theory-js';
+
+const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
+
+await bt.tenants.deleteMember('5540a02f-99e7-46de-8f41-1b3cf7b2a3d2');
 ```
 
 ```csharp
@@ -176,7 +184,13 @@ curl "https://api.basistheory.com/tenants/self/invitations" \
 ```
 
 ```javascript
-// Coming soon!
+import { BasisTheory } from '@basis-theory/basis-theory-js';
+
+const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
+
+const createdInvitation = await bt.tenants.createInvitations({
+  email: 'jane@doe.com',
+});
 ```
 
 ```csharp
@@ -237,7 +251,11 @@ curl "https://api.basistheory.com/tenants/self/invitations/fb32ea26-2185-4ad2-a7
 ```
 
 ```javascript
-// Coming soon!
+import { BasisTheory } from '@basis-theory/basis-theory-js';
+
+const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
+
+const resentInvitation = await bt.tenants.resendInvitation('fb32ea26-2185-4ad2-a7bf-2fe69c00ae13');
 ```
 
 ```csharp
@@ -291,7 +309,11 @@ curl "https://api.basistheory.com/tenants/self/invitations" \
 ```
 
 ```javascript
-// Coming Soon!
+import { BasisTheory } from '@basis-theory/basis-theory-js';
+
+const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
+
+const invitations = await bt.tenants.listInvitations();
 ```
 
 ```csharp
@@ -360,7 +382,11 @@ curl "https://api.basistheory.com/tenants/self/invitations/fb32ea26-2185-4ad2-a7
 ```
 
 ```javascript
-// Coming soon!
+import { BasisTheory } from '@basis-theory/basis-theory-js';
+
+const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
+
+const invitations = await bt.tenants.retrieveInvitation('fb32ea26-2185-4ad2-a7bf-2fe69c00ae13');
 ```
 
 ```csharp
@@ -419,7 +445,11 @@ curl "https://api.basistheory.com/tenants/self/invitations/fb32ea26-2185-4ad2-a7
 ```
 
 ```javascript
-// Coming soon!
+import { BasisTheory } from '@basis-theory/basis-theory-js';
+
+const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
+
+await bt.tenants.deleteInvitation('fb32ea26-2185-4ad2-a7bf-2fe69c00ae13');
 ```
 
 ```csharp
