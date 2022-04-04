@@ -18,7 +18,7 @@
         <ul class="search-results"></ul>
       <% end %>
 
-      <h1 class="nav-title">Get Started</h1>
+      <h1 class="nav-title">Overview</h1>
       <ul id="toc_intro" class="toc-section toc-list-h1">
         <% toc_data(intro_page_content).each do |h1| %>
           <li>
@@ -36,9 +36,8 @@
         <% end %>
       </ul>
 
-
       <% if current_page.data.api_includes %>
-        <h1 class="nav-title">Reference</h1>
+        <h1 class="nav-title">API Endpoints</h1>
         <ul id="toc_api" class="toc-section toc-list-h1">
           <% toc_data(api_page_content).each do |h1| %>
             <li>
@@ -93,6 +92,15 @@
                 </ul>
               <% end %>
             </li>
+          <% end %>
+        </ul>
+      <% end %>
+
+      <% if current_page.data.reference_links %>
+        <h1 class="nav-title">Reference</h1>
+        <ul id="toc_api" class="toc-section toc-list-h1">
+          <% current_page.data.reference_links.each do |footer| %>
+            <li><%= footer %></li>
           <% end %>
         </ul>
       <% end %>

@@ -549,72 +549,23 @@ However, if the string value `"non-numeric"` were provided, a 400 error would be
 
 ### Detokenization
 
-In order to use tokenized data within a reactor, the `args` parameter may contain token interpolation patterns of the form `{{<tokenId>}}`.
-When token interpolation patterns are detected, Basis Theory will attempt to detokenize and inject the raw token data into the `args` forwarded to the Reactor function.
+In order to use tokenized data within a reactor, the `args` parameter may contain one or more [detokenization expressions](/detokenization#detokenization-expressions).
+When any detokenization expressions are detected, Basis Theory will attempt to [detokenize](/detokenization) and inject the raw token data into the `args` forwarded to the Reactor function.
 
-Reactor request `args` may contain a mixture of both token interpolation patterns and non-interpolated raw data. 
+Reactor request `args` may contain a mixture of detokenization expressions and raw plaintext data. 
 
-Tokens containing complex data may be interpolated within a Reactor request, including Atomic Bank and Card token types.
-When tokens with complex data are interpolated, the entire JSON data payload will be included within the `args`, for example, given the token:
+Tokens containing complex data may be detokenized into a Reactor request, including Atomic Bank and Atomic Card token types.
+When tokens with complex data are detokenized, the entire JSON data payload will be included within the `args`. 
+For an example, see [Use Atomic Tokens](/detokenization#examples-use-atomic-tokens).
 
-<div class="center-column"></div>
-```json
-{
-  "id": "542ee356-df96-4db2-a4e8-d40a297ec99e",
-  "type": "bank",
-  "data": {
-    "account_number": "1234567891", 
-    "routing_number": "044002161"
-  }
-}
-```
+If the `args` passed into a Reactor contain additional properties that have not been declared as request parameters on the Reactor Formula,
+those properties will be automatically removed and not sent on the request to the Reactor function.
 
-and the Reactor request:
+Validation is performed on the resulting request after detokenization, so several required request parameters may be supplied by detokenizing
+a single complex token that contains several of the request parameters. 
 
-<div class="center-column"></div>
-```json
-{
-  "args": {
-    "bank": "{{542ee356-df96-4db2-a4e8-d40a297ec99e}}"
-  }
-}
-```  
-
-then the following request will sent to the reactor function:
-
-<div class="center-column"></div>
-```json
-{
-  "args": {
-    "bank": {
-      "account_number": "1234567891", 
-      "routing_number": "044002161"
-    }
-  }
-}
-```
-
-If a complex token contains additional properties that have not been declared as request parameters on the Reactor Formula,
-those properties will be removed and not sent on the request to the Reactor function. In the example above, if the Reactor Formula
-declared only the `bank.account_number` parameter, but not the `bank.routing_number` parameter, 
-then the Reactor function would receive the request:
-
-<div class="center-column"></div>
-```json
-{
-  "args": {
-    "bank": {
-      "account_number": "1234567891"
-    }
-  }
-}
-```
-
-Validation is performed on the resulting request after token interpolation, so several required request parameters may be supplied by interpolating
-a single complex token that contains several of the request parameters.
-
-At most, 100 tokens may be detokenized within a single reactor request.
+At most, 100 tokens may be detokenized within a single Reactor request.
 
 <aside class="notice">
-  <span>For more detailed examples about the various ways to Invoke a Reactor, check out our guide to <a href="https://developers.basistheory.com/guides/use-token-data-in-reactors/" target="_blank">Use Token Data in Reactors</a>.</span>
+  <span>For more detailed examples about how to detokenize within Reactors, check out our <a href="/detokenization#examples">Detokenization Examples</a>.</span>
 </aside>

@@ -1,8 +1,4 @@
-<h1 id="proxy">Proxy <span class="beta menu">BETA</span></h1>
-
-<aside class="warning">
-  <span>The Basis Theory Proxy is currently available in Public Beta. The features listed below are subject to change. If you are interested in using the proxy and your use case is not currently supported, please <a href="mailto:support@basistheory.com?subject=Proxy Feature Request">submit a feature request</a>!</span>
-</aside>
+# Proxy
 
 ## Proxying Outbound Requests
 
@@ -20,7 +16,7 @@ curl "https://api.basistheory.com/proxy" \
   -X "POST" \
   -d '{
     "parameter1": "{{26818785-547b-4b28-b0fa-531377e99f4e}}",
-    "parameter2": "non-interpolated"
+    "parameter2": "non-sensitive"
   }'
 ```
 
@@ -63,7 +59,10 @@ Proxy a request to a third party API.
 
 **Authentication**
 
-Proxy requests must be authenticated using an `BT-API-KEY` header (see [Authentication](#authentication)). 
+Proxy requests must be authenticated using a `BT-API-KEY` header (see [Authentication](#authentication)).
+
+Any authentication required by the destination service can be set on the request and will be forwarded through the proxy,
+(for example, by setting the `Authorization` header).
 
 **Permissions**
 
@@ -79,7 +78,7 @@ At least one `token:<classification>:use:proxy` permission is required, for exam
 **Configuration**
 
 Proxy requests require a `BT-PROXY-URL` request header to be set. The value of the `BT-PROXY-URL` header defines the base URL to which the request will be proxied.
-The `BT-PROXY-URL` request header must use HTTPS with DNS as the host. Destinations must use HTTPS >= TLSv1.2 over port 443.
+The `BT-PROXY-URL` request header must use HTTPS with DNS as the host (explicit IP addresses are not allowed). Destinations must use HTTPS >= TLSv1.2 over port 443.
   
 The `BT-PROXY-URL` request header will serve as the base URL for the proxied request. Any path and/or query parameters under `/proxy/**` will be appended to the base URL before forwarding the request.
 
@@ -87,10 +86,9 @@ For example, sending a proxy request to `https://api.basistheory.com/proxy/foo/b
 
 **Detokenization**
 
-The Basis Theory Proxy will attempt to detokenize certain interpolation patterns and inject the raw token data in the request body before sending the request to the downstream destination.
+The Basis Theory Proxy will attempt to [detokenize](/detokenization) any [detokenization expressions](/detokenization#detokenization-expressions) present in the request and inject the raw token data in the request body before it is sent to the downstream destination.
 
-The proxy will substitute any patterns of the form `{{<tokenId>}}` within the request with the raw token data represented by that `<tokenId>`. For example,
-given a token:
+For example, given a token:
 
 <div class="center-column"></div>
 ```json
@@ -106,24 +104,25 @@ and a proxy request with the body:
 ```json
 {
     "parameter1": "{{26818785-547b-4b28-b0fa-531377e99f4e}}",
-    "parameter2": "non-interpolated"
+    "parameter2": "non-sensitive data"
 }
 ```  
 
-then the following request body will sent to the desintation:
+then the following request body will be sent to the destination:
 
 <div class="center-column"></div>
 ```json
 {
-    "parameter1": "senstive data",
-    "parameter2": "non-interpolated"
+    "parameter1": "sensitive data",
+    "parameter2": "non-sensitive data"
 }
 ```
 
-Requests may contain a mixture of both token interpolation patterns and non-interpolated raw data. The `token:<classification>:use:proxy` permission is required in order to detokenize tokens classified as `<classification>` within a proxy request. At most, 100 tokens may be detokenized within a single proxy request.
+The `token:<classification>:use:proxy` permission is required in order to detokenize tokens classified as `<classification>` within a proxy request. 
+At most, 100 tokens may be detokenized within a single proxy request. You can find more information about the supported detokenization expressions [here](/detokenization#detokenization-expressions).
 
 <aside class="notice">
-  <span>In the current beta version of the proxy, only primitive generic tokens (of type <code>token</code>) can be interpolated in proxy requests. Proxy requests that contain <code>card</code> or <code>bank</code> tokens, or generic tokens containing complex structured json data will be rejected with a 400 error.</span>
+  <span>For more detailed examples about how to detokenize within the Proxy, check out our <a href="/detokenization#examples">Detokenization Examples</a>.</span>
 </aside>
 
 ### Proxy Responses
@@ -135,3 +134,7 @@ If an error occurs within the proxy (eg. missing or invalid `BT-PROXY-URL` heade
 | Attribute     | Type  | Description                              |
 |---------------|-------|------------------------------------------|
 | `proxy_error` | *any* | A standard Basis Theory [error](#errors) |
+
+<aside class="warning">
+  <span>If you are interested in using the proxy and your use case is not currently supported, please <a href="mailto:support@basistheory.com?subject=Proxy Feature Request">submit a feature request</a>!</span>
+</aside>
