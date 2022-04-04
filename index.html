@@ -293,13 +293,13 @@
     <link href="stylesheets/print-963dbb1c.css" rel="stylesheet" media="print" />
 
     <script src="https://kit.fontawesome.com/86c3cd0147.js" crossorigin="anonymous"></script>
-    
+
       <script src="javascripts/all-8d003910.js"></script>
 
       <script>
         $(function() { setupCodeCopy(); });
       </script>
-  
+
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -343,7 +343,7 @@
         </div>
         <ul class="search-results"></ul>
 
-      <h1 class="nav-title">Get Started</h1>
+      <h1 class="nav-title">Overview</h1>
       <ul id="toc_intro" class="toc-section toc-list-h1">
           <li>
             <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
@@ -394,8 +394,7 @@
           </li>
       </ul>
 
-
-        <h1 class="nav-title">Reference</h1>
+        <h1 class="nav-title">API Endpoints</h1>
         <ul id="toc_api" class="toc-section toc-list-h1">
             <li>
               <a href="#applications" class="toc-h1 toc-link" data-title="Applications">Applications</a>
@@ -516,10 +515,10 @@
                 </ul>
             </li>
             <li>
-              <a href="#proxy" class="toc-h1 toc-link" data-title="Proxy BETA">Proxy <span class="beta menu">BETA</span></a>
+              <a href="#proxy" class="toc-h1 toc-link" data-title="Proxy">Proxy</a>
                 <ul class="toc-list-h2">
                     <li>
-                      <a href="#permissions-proxying-outbound-requests" class="toc-h2 toc-link" data-title="Proxying Outbound Requests">Proxying Outbound Requests</a>
+                      <a href="#proxy-proxying-outbound-requests" class="toc-h2 toc-link" data-title="Proxying Outbound Requests">Proxying Outbound Requests</a>
                     </li>
                 </ul>
             </li>
@@ -709,6 +708,13 @@
 
 
 
+        <h1 class="nav-title">Reference</h1>
+        <ul id="toc_api" class="toc-section toc-list-h1">
+            <li><a class="toc-h1 toc-link" href="/api-reference">API Reference</a></li>
+            <li><a class="toc-h1 toc-link" href="/elements">Elements</a></li>
+            <li><a class="toc-h1 toc-link" href="/detokenization">Detokenization</a></li>
+        </ul>
+
         <h1 class="nav-title">More</h1>
         <ul id="toc_api" class="toc-section toc-list-h1">
             <li><a class="toc-h1 toc-link" href="https://github.com/Basis-Theory" target="_blank">GitHub</a></li>
@@ -716,6 +722,7 @@
         </ul>
 
     </div>
+
     <!-- End Sidebar/TOC -->
 
     <!-- Header -->
@@ -723,15 +730,16 @@
   <a class="site-header-logo" href="https://developers.basistheory.com/"></a>
   <div class="documentation-links">
     <a class="documentation-link" href="https://developers.basistheory.com/getting-started">Get Started</a>
+    <a class="documentation-link" href="https://developers.basistheory.com">Documentation</a>
     <a class="documentation-link header-active" href="/">API Reference</a>
     <a class="documentation-link " href="/elements">Elements</a>
-    <a class="documentation-link " href="/encryption">Encryption</a>
   </div>
   <div class="portal-links">
     <a class="portal-sign-in" href="https://portal.basistheory.com">Sign In</a>
     <a class="portal-create-account" href="https://portal.basistheory.com/register">Create Account</a>
   </div>
 </header>
+
     <!-- End Header -->
 
     <!-- Header Spacer -->
@@ -760,8 +768,8 @@
         <h1 id='introduction'>Introduction</h1>
 <aside class="header-intro-box">
     <span>
-        <h4>Documentation</h4>
-        <p class="header-intro-body2-font">Explore examples and guides to quickly start tokenizing anything.</p>
+        <h4>API Reference</h4>
+        <p class="header-intro-body2-font">Explore our API to quickly start tokenizing anything.</p>
         <h6>QUICK LINKS</h6>
         <span class="intro-quick-links">
             <a href="#getting-started">Before You Begin</a>
@@ -3477,15 +3485,10 @@ or <a href="#applications-update-application">update an Application</a>.</p>
 <h3 id='permissions-list-permissions-response'>Response</h3>
 <p>Returns an array of <a href="#permissions-permission-object">permission objects</a>. Returns <a href="#errors">an error</a> if permissions
 could not be retrieved.</p>
-<h1 id="proxy">Proxy <span class="beta menu">BETA</span></h1>
-
-<aside class="warning">
-  <span>The Basis Theory Proxy is currently available in Public Beta. The features listed below are subject to change. If you are interested in using the proxy and your use case is not currently supported, please <a href="mailto:support@basistheory.com?subject=Proxy Feature Request">submit a feature request</a>!</span>
-</aside>
-<h2 id='permissions-proxying-outbound-requests'>Proxying Outbound Requests</h2>
+<h1 id='proxy'>Proxy</h1><h2 id='proxy-proxying-outbound-requests'>Proxying Outbound Requests</h2>
 <p>The Basis Theory Proxy provides a simple mechanism to use the data you&#39;ve stored with Basis Theory in outbound requests to a third party API.
 Basis Theory token identifiers included in the request will be replaced with the raw token data and then the modified request will be forwarded to the destination specified in the <code>BT-PROXY-URL</code> request header. The destination will receive the raw data in the request without your system needing to interact with sensitive data on your own servers.</p>
-<h3 id='permissions-proxying-outbound-requests-proxy-requests'>Proxy Requests</h3>
+<h3 id='proxy-proxying-outbound-requests-proxy-requests'>Proxy Requests</h3>
 <blockquote>
 <p>Request</p>
 </blockquote>
@@ -3495,7 +3498,7 @@ Basis Theory token identifiers included in the request will be replaced with the
   <span class="nt">-X</span> <span class="s2">"POST"</span> <span class="se">\</span>
   <span class="nt">-d</span> <span class="s1">'{
     "parameter1": "{{26818785-547b-4b28-b0fa-531377e99f4e}}",
-    "parameter2": "non-interpolated"
+    "parameter2": "non-sensitive"
   }'</span>
 </code></pre></div>
 <p><span class="http-method post">
@@ -3537,7 +3540,10 @@ Basis Theory token identifiers included in the request will be replaced with the
 
 <p><strong>Authentication</strong></p>
 
-<p>Proxy requests must be authenticated using an <code>BT-API-KEY</code> header (see <a href="#authentication">Authentication</a>). </p>
+<p>Proxy requests must be authenticated using a <code>BT-API-KEY</code> header (see <a href="#authentication">Authentication</a>).</p>
+
+<p>Any authentication required by the destination service can be set on the request and will be forwarded through the proxy,
+(for example, by setting the <code>Authorization</code> header).</p>
 
 <p><strong>Permissions</strong></p>
 
@@ -3553,7 +3559,7 @@ At least one <code>token:&lt;classification&gt;:use:proxy</code> permission is r
 <p><strong>Configuration</strong></p>
 
 <p>Proxy requests require a <code>BT-PROXY-URL</code> request header to be set. The value of the <code>BT-PROXY-URL</code> header defines the base URL to which the request will be proxied.
-The <code>BT-PROXY-URL</code> request header must use HTTPS with DNS as the host. Destinations must use HTTPS &gt;= TLSv1.2 over port 443.</p>
+The <code>BT-PROXY-URL</code> request header must use HTTPS with DNS as the host (explicit IP addresses are not allowed). Destinations must use HTTPS &gt;= TLSv1.2 over port 443.</p>
 
 <p>The <code>BT-PROXY-URL</code> request header will serve as the base URL for the proxied request. Any path and/or query parameters under <code>/proxy/**</code> will be appended to the base URL before forwarding the request.</p>
 
@@ -3561,10 +3567,9 @@ The <code>BT-PROXY-URL</code> request header must use HTTPS with DNS as the host
 
 <p><strong>Detokenization</strong></p>
 
-<p>The Basis Theory Proxy will attempt to detokenize certain interpolation patterns and inject the raw token data in the request body before sending the request to the downstream destination.</p>
+<p>The Basis Theory Proxy will attempt to <a href="/detokenization">detokenize</a> any <a href="/detokenization#detokenization-expressions">detokenization expressions</a> present in the request and inject the raw token data in the request body before it is sent to the downstream destination.</p>
 
-<p>The proxy will substitute any patterns of the form <code>{{&lt;tokenId&gt;}}</code> within the request with the raw token data represented by that <code>&lt;tokenId&gt;</code>. For example,
-given a token:</p>
+<p>For example, given a token:</p>
 
 <div class="center-column"></div>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -3577,23 +3582,24 @@ given a token:</p>
 <div class="center-column"></div>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"parameter1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{{26818785-547b-4b28-b0fa-531377e99f4e}}"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"parameter2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"non-interpolated"</span><span class="w">
+    </span><span class="nl">"parameter2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"non-sensitive data"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>then the following request body will sent to the desintation:</p>
+<p>then the following request body will be sent to the destination:</p>
 
 <div class="center-column"></div>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"parameter1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"senstive data"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"parameter2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"non-interpolated"</span><span class="w">
+    </span><span class="nl">"parameter1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sensitive data"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"parameter2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"non-sensitive data"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>Requests may contain a mixture of both token interpolation patterns and non-interpolated raw data. The <code>token:&lt;classification&gt;:use:proxy</code> permission is required in order to detokenize tokens classified as <code>&lt;classification&gt;</code> within a proxy request. At most, 100 tokens may be detokenized within a single proxy request.</p>
+<p>The <code>token:&lt;classification&gt;:use:proxy</code> permission is required in order to detokenize tokens classified as <code>&lt;classification&gt;</code> within a proxy request. 
+At most, 100 tokens may be detokenized within a single proxy request. You can find more information about the supported detokenization expressions <a href="/detokenization#detokenization-expressions">here</a>.</p>
 
 <aside class="notice">
-  <span>In the current beta version of the proxy, only primitive generic tokens (of type <code>token</code>) can be interpolated in proxy requests. Proxy requests that contain <code>card</code> or <code>bank</code> tokens, or generic tokens containing complex structured json data will be rejected with a 400 error.</span>
+  <span>For more detailed examples about how to detokenize within the Proxy, check out our <a href="/detokenization#examples">Detokenization Examples</a>.</span>
 </aside>
-<h3 id='permissions-proxying-outbound-requests-proxy-responses'>Proxy Responses</h3>
+<h3 id='proxy-proxying-outbound-requests-proxy-responses'>Proxy Responses</h3>
 <p>Unless an error occurs within the Basis Theory Proxy, the raw response from the destination will be returned from the proxy.</p>
 
 <p>If an error occurs within the proxy (eg. missing or invalid <code>BT-PROXY-URL</code> header), then the following error response will be returned:</p>
@@ -3611,6 +3617,10 @@ given a token:</p>
 <td>A standard Basis Theory <a href="#errors">error</a></td>
 </tr>
 </tbody></table>
+
+<aside class="warning">
+  <span>If you are interested in using the proxy and your use case is not currently supported, please <a href="mailto:support@basistheory.com?subject=Proxy Feature Request">submit a feature request</a>!</span>
+</aside>
 <h1 id='reactor-formulas'>Reactor Formulas</h1>
 <p>Reactor formulas give you the ability to pre-configure custom integrations to securely process, enrich, and associate your tokens.</p>
 <h2 id='reactor-formulas-reactor-formula-object'>Reactor Formula Object</h2>
@@ -5250,66 +5260,25 @@ If a request parameter was defined with <code>optional: false</code> and a value
 For example, say a request parameter is declared with type <code>number</code> but the string value <code>&quot;123&quot;</code> is provided. This value can be cast to a number, so the reactor would receive the numeric value <code>123</code>. 
 However, if the string value <code>&quot;non-numeric&quot;</code> were provided, a 400 error would be returned because the value cannot be cast to a number.</p>
 <h3 id='reactors-invoke-a-reactor-detokenization'>Detokenization</h3>
-<p>In order to use tokenized data within a reactor, the <code>args</code> parameter may contain token interpolation patterns of the form <code>{{&lt;tokenId&gt;}}</code>.
-When token interpolation patterns are detected, Basis Theory will attempt to detokenize and inject the raw token data into the <code>args</code> forwarded to the Reactor function.</p>
+<p>In order to use tokenized data within a reactor, the <code>args</code> parameter may contain one or more <a href="/detokenization#detokenization-expressions">detokenization expressions</a>.
+When any detokenization expressions are detected, Basis Theory will attempt to <a href="/detokenization">detokenize</a> and inject the raw token data into the <code>args</code> forwarded to the Reactor function.</p>
 
-<p>Reactor request <code>args</code> may contain a mixture of both token interpolation patterns and non-interpolated raw data. </p>
+<p>Reactor request <code>args</code> may contain a mixture of detokenization expressions and raw plaintext data. </p>
 
-<p>Tokens containing complex data may be interpolated within a Reactor request, including Atomic Bank and Card token types.
-When tokens with complex data are interpolated, the entire JSON data payload will be included within the <code>args</code>, for example, given the token:</p>
+<p>Tokens containing complex data may be detokenized into a Reactor request, including Atomic Bank and Atomic Card token types.
+When tokens with complex data are detokenized, the entire JSON data payload will be included within the <code>args</code>. 
+For an example, see <a href="/detokenization#examples-use-atomic-tokens">Use Atomic Tokens</a>.</p>
 
-<div class="center-column"></div>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"542ee356-df96-4db2-a4e8-d40a297ec99e"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bank"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"account_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567891"</span><span class="p">,</span><span class="w"> 
-    </span><span class="nl">"routing_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"044002161"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>and the Reactor request:</p>
+<p>If the <code>args</code> passed into a Reactor contain additional properties that have not been declared as request parameters on the Reactor Formula,
+those properties will be automatically removed and not sent on the request to the Reactor function.</p>
 
-<div class="center-column"></div>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"bank"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{{542ee356-df96-4db2-a4e8-d40a297ec99e}}"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>then the following request will sent to the reactor function:</p>
+<p>Validation is performed on the resulting request after detokenization, so several required request parameters may be supplied by detokenizing
+a single complex token that contains several of the request parameters. </p>
 
-<div class="center-column"></div>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"bank"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"account_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567891"</span><span class="p">,</span><span class="w"> 
-      </span><span class="nl">"routing_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"044002161"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>If a complex token contains additional properties that have not been declared as request parameters on the Reactor Formula,
-those properties will be removed and not sent on the request to the Reactor function. In the example above, if the Reactor Formula
-declared only the <code>bank.account_number</code> parameter, but not the <code>bank.routing_number</code> parameter, 
-then the Reactor function would receive the request:</p>
-
-<div class="center-column"></div>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"bank"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"account_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567891"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>Validation is performed on the resulting request after token interpolation, so several required request parameters may be supplied by interpolating
-a single complex token that contains several of the request parameters.</p>
-
-<p>At most, 100 tokens may be detokenized within a single reactor request.</p>
+<p>At most, 100 tokens may be detokenized within a single Reactor request.</p>
 
 <aside class="notice">
-  <span>For more detailed examples about the various ways to Invoke a Reactor, check out our guide to <a href="https://developers.basistheory.com/guides/use-token-data-in-reactors/" target="_blank">Use Token Data in Reactors</a>.</span>
+  <span>For more detailed examples about how to detokenize within Reactors, check out our <a href="/detokenization#examples">Detokenization Examples</a>.</span>
 </aside>
 <h1 id='tenants'>Tenants</h1>
 <p>Tenants provide a way to logically group your Applications and tokens. Common use cases for Tenants may be to create one per environment such as development, QA, and production or to isolate business domains from each other. Tenant data is isolated from other tenants unless explicitly shared.</p>
@@ -6009,11 +5978,7 @@ Token Types define the rules around a data type such as validation requirements,
 <td>XX-XXX6789</td>
 </tr>
 </tbody></table>
-<h1 id='tokens'>Tokens</h1>
-<aside class="notice">
-  <span>Want to understand how to own the encryption of your data? Checkout the <a href="https://developers.basistheory.com/guides/own-your-encryption-keys/" target="_blank">Own Your Encryption Keys Guide</a> and our <a href="/encryption">Encryption Reference Documentation</a>.</span>
-</aside>
-<h2 id='tokens-token-object'>Token Object</h2>
+<h1 id='tokens'>Tokens</h1><h2 id='tokens-token-object'>Token Object</h2>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -6057,11 +6022,6 @@ Token Types define the rules around a data type such as validation requirements,
 <td>A key-value map of non-sensitive data.</td>
 </tr>
 <tr>
-<td><code>encryption</code></td>
-<td><em><a href="#tokens-token-object-encryption-object">encryption object</a></em></td>
-<td>Encryption metadata for an encrypted token data value</td>
-</tr>
-<tr>
 <td><code>created_by</code></td>
 <td><em>uuid</em></td>
 <td>(Optional) The <a href="#applications-application-object">Application</a> ID which created the token</td>
@@ -6080,53 +6040,6 @@ Token Types define the rules around a data type such as validation requirements,
 <td><code>modified_at</code></td>
 <td><em>date</em></td>
 <td>(Optional) Last modified date of the token in ISO 8601 format</td>
-</tr>
-</tbody></table>
-<h3 id='tokens-token-object-encryption-object'>Encryption Object</h3>
-<table><thead>
-<tr>
-<th>Attribute</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>cek</code></td>
-<td><em><a href="#tokens-token-object-encryption-key-object">encryption key</a></em></td>
-<td>Content encryption key</td>
-</tr>
-<tr>
-<td><code>kek</code></td>
-<td><em><a href="#tokens-token-object-encryption-key-object">encryption key</a></em></td>
-<td>Key encryption key</td>
-</tr>
-</tbody></table>
-
-<aside class="success">
-  <span>Basis Theory encrypts the <code>data</code> attribute of the token with a one-time use <code>AES-256</code> symmetric encryption key and then encrypts the symmetric key with an asymmetric <code>RSA</code> public key. Our SDK will automatically handle this for you if you use our encryption modules to encrypt each token with your own encryption keys.</span>
-</aside>
-<h3 id='tokens-token-object-encryption-key-object'>Encryption Key Object</h3>
-<table><thead>
-<tr>
-<th>Attribute</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>key</code></td>
-<td><em>string</em></td>
-<td>Encryption key or key identifier</td>
-</tr>
-<tr>
-<td><code>prov</code></td>
-<td><em>string</em></td>
-<td>Optional encryption provider (e.g. AWS, AZURE, GCP, etc.)</td>
-</tr>
-<tr>
-<td><code>alg</code></td>
-<td><em>string</em></td>
-<td>Encryption algorithm (e.g. AES, RSA, etc)</td>
 </tr>
 </tbody></table>
 <h3 id='tokens-token-object-privacy-object'>Privacy Object</h3>
@@ -6369,17 +6282,10 @@ but the plaintext card data will not be returned. Instead, the restriction polic
 <td><code>null</code></td>
 <td>A key-value map of non-sensitive data.</td>
 </tr>
-<tr>
-<td><code>encryption</code></td>
-<td>false</td>
-<td><em><a href="#tokens-token-object-encryption-object">encryption object</a></em></td>
-<td><code>null</code></td>
-<td>Encryption metadata for an encrypted token data value</td>
-</tr>
 </tbody></table>
 
 <aside class="warning">
-  <span>WARNING - Never store sensitive plaintext information in the <code>metadata</code> or plaintext, private encryption keys in the <code>encryption</code> attributes of your token.</span>
+  <span>WARNING - Never store sensitive plaintext information in the <code>metadata</code> of your token.</span>
 </aside>
 <h3 id='tokens-create-token-response'>Response</h3>
 <p>Returns a <a href="#tokens-token-object">token</a> if the token was created. Returns <a href="#errors">an error</a> if there were validation errors, or the token failed to create.</p>
@@ -7285,13 +7191,6 @@ permission based on the parent token&#39;s privacy settings.</p>
 <td><em>map</em></td>
 <td><code>null</code></td>
 <td>A key-value map of non-sensitive data.</td>
-</tr>
-<tr>
-<td><code>encryption</code></td>
-<td>false</td>
-<td><em><a href="#tokens-token-object-encryption-object">encryption object</a></em></td>
-<td><code>null</code></td>
-<td>Encryption metadata for an encrypted token data value</td>
 </tr>
 </tbody></table>
 <h3 id='token-associations-create-child-token-for-a-token-response'>Response</h3>

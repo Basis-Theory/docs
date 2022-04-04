@@ -293,13 +293,13 @@
     <link href="../stylesheets/print-963dbb1c.css" rel="stylesheet" media="print" />
 
     <script src="https://kit.fontawesome.com/86c3cd0147.js" crossorigin="anonymous"></script>
-    
+
       <script src="../javascripts/all-8d003910.js"></script>
 
       <script>
         $(function() { setupCodeCopy(); });
       </script>
-  
+
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -340,7 +340,7 @@
         </div>
         <ul class="search-results"></ul>
 
-      <h1 class="nav-title">Get Started</h1>
+      <h1 class="nav-title">Overview</h1>
       <ul id="toc_intro" class="toc-section toc-list-h1">
           <li>
             <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
@@ -377,7 +377,6 @@
             <a href="#limits" class="toc-h1 toc-link" data-title="Limits">Limits</a>
           </li>
       </ul>
-
 
 
         <h1 class="nav-title">Vanilla JS</h1>
@@ -505,6 +504,13 @@
             </li>
         </ul>
 
+        <h1 class="nav-title">Reference</h1>
+        <ul id="toc_api" class="toc-section toc-list-h1">
+            <li><a class="toc-h1 toc-link" href="/api-reference">API Reference</a></li>
+            <li><a class="toc-h1 toc-link" href="/elements">Elements</a></li>
+            <li><a class="toc-h1 toc-link" href="/detokenization">Detokenization</a></li>
+        </ul>
+
         <h1 class="nav-title">More</h1>
         <ul id="toc_api" class="toc-section toc-list-h1">
             <li><a class="toc-h2 toc-link" href="https://community.basistheory.com" target="_blank">Join our Community</a></li>
@@ -513,6 +519,7 @@
         </ul>
 
     </div>
+
     <!-- End Sidebar/TOC -->
 
     <!-- Header -->
@@ -520,15 +527,16 @@
   <a class="site-header-logo" href="https://developers.basistheory.com/"></a>
   <div class="documentation-links">
     <a class="documentation-link" href="https://developers.basistheory.com/getting-started">Get Started</a>
+    <a class="documentation-link" href="https://developers.basistheory.com">Documentation</a>
     <a class="documentation-link " href="/">API Reference</a>
     <a class="documentation-link header-active" href="/elements">Elements</a>
-    <a class="documentation-link " href="/encryption">Encryption</a>
   </div>
   <div class="portal-links">
     <a class="portal-sign-in" href="https://portal.basistheory.com">Sign In</a>
     <a class="portal-create-account" href="https://portal.basistheory.com/register">Create Account</a>
   </div>
 </header>
+
     <!-- End Header -->
 
     <!-- Header Spacer -->
@@ -554,7 +562,7 @@
         <h1 id='introduction'>Introduction</h1>
 <aside class="header-intro-box">
     <span>
-        <h4>Elements Documentation</h4>
+        <h4>Elements</h4>
         <p class="header-intro-body2-font">Explore how to quickly start using our Elements to tokenize credit cards.</p>
         <h6>QUICK LINKS</h6>
         <span class="intro-quick-links">
@@ -1521,7 +1529,7 @@ range.</p>
 </aside>
 
 <aside class="warning">
-  <span>The <code>encryption</code> and <code>children</code> attributes supported by the API are <strong>NOT</strong> supported when creating a token with elements.</span>
+  <span>The <code>children</code> attribute supported by the API is <strong>NOT</strong> supported when creating a token with elements.</span>
 </aside>
 <h2 id='elements-services-tokenize'>Tokenize</h2><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">tokenize</span><span class="p">({</span>
   <span class="na">sensitiveData</span><span class="p">:</span> <span class="nx">sensitiveDataElement</span><span class="p">,</span>
@@ -1549,7 +1557,7 @@ range.</p>
 </aside>
 
 <aside class="warning">
-  <span>The <code>encryption</code> and <code>children</code> attributes supported by the API are <strong>NOT</strong> supported when creating a token with elements.</span>
+  <span>The <code>children</code> attribute supported by the API is <strong>NOT</strong> supported when creating a token with elements.</span>
 </aside>
 <h2 id='elements-services-errors'>Errors</h2><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">tokens</span><span class="p">.</span><span class="nx">create</span><span class="p">(...).</span><span class="k">catch</span><span class="p">(</span><span class="nx">error</span> <span class="o">=&gt;</span> <span class="p">{</span>
   <span class="c1">// handle error</span>
