@@ -1,3 +1,10 @@
+# [1.28.0](https://github.com/Basis-Theory/docs/compare/v1.27.2...v1.28.0) (2022-04-04)
+
+
+### Features
+
+* Adds Detokenization reference docs and removes encryption docs ([#163](https://github.com/Basis-Theory/docs/issues/163)) ([aecea16](https://github.com/Basis-Theory/docs/commit/aecea16fe9aa8024d4fb450ad0facd963cbfd361))
+
 ## [1.27.2](https://github.com/Basis-Theory/docs/compare/v1.27.1...v1.27.2) (2022-03-31)
 
 
