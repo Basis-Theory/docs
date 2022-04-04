@@ -59,7 +59,7 @@ Proxy a request to a third party API.
 
 **Authentication**
 
-Proxy requests must be authenticated using an `BT-API-KEY` header (see [Authentication](#authentication)).
+Proxy requests must be authenticated using a `BT-API-KEY` header (see [Authentication](#authentication)).
 
 Any authentication required by the destination service can be set on the request and will be forwarded through the proxy,
 (for example, by setting the `Authorization` header).

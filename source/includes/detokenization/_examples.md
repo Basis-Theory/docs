@@ -1,6 +1,6 @@
 # Examples
 
-Based on your use specific cases, you may prefer to store your sensitive data with Basis Theory using our
+Based on your use cases, you may prefer to store your sensitive data with Basis Theory using our
 [Atomic Tokens](https://developers.basistheory.com/concepts/what-are-atomic-tokens), one of our pre-defined [Token Types](/#token-types),
 or even use your own custom data schema within a schemaless [generic token](/#token-types-token).
 However you choose to tokenize your sensitive data, Basis Theory grants you the flexibility to use this data within
