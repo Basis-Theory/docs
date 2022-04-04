@@ -60,7 +60,11 @@ const tenantMembers = await bt.tenants.listMembers();
 ```
 
 ```csharp
-// Coming Soon!
+using BasisTheory.net.Tenants;
+
+var client = new TenantClient("key_N88mVGsp3sCXkykyN2EFED");
+
+var tenant = await client.GetMembersAsync();
 ```
 
 ```python
@@ -140,7 +144,11 @@ await bt.tenants.deleteMember('5540a02f-99e7-46de-8f41-1b3cf7b2a3d2');
 ```
 
 ```csharp
-# Coming Soon!
+using BasisTheory.net.Tenants;
+
+var client = new TenantClient("key_N88mVGsp3sCXkykyN2EFED");
+
+var tenant = await client.DeleteMemberAsync("5540a02f-99e7-46de-8f41-1b3cf7b2a3d2");
 ```
 
 ```python
@@ -194,7 +202,14 @@ const createdInvitation = await bt.tenants.createInvitations({
 ```
 
 ```csharp
-# Coming Soon!
+using BasisTheory.net.Tenants;
+
+var client = new TenantClient("key_N88mVGsp3sCXkykyN2EFED");
+
+var tenant = await client.CreateInvitationAsync(new TenantInvitation
+{
+    Email = "jane@doe.com"
+});
 ```
 
 ```python
@@ -259,7 +274,11 @@ const resentInvitation = await bt.tenants.resendInvitation('fb32ea26-2185-4ad2-a
 ```
 
 ```csharp
-# Coming Soon!
+using BasisTheory.net.Tenants;
+
+var client = new TenantClient("key_N88mVGsp3sCXkykyN2EFED");
+
+var tenant = await client.ResendInvitationAsync("fb32ea26-2185-4ad2-a7bf-2fe69c00ae13");
 ```
 
 ```python
@@ -317,7 +336,11 @@ const invitations = await bt.tenants.listInvitations();
 ```
 
 ```csharp
-// Coming Soon!
+using BasisTheory.net.Tenants;
+
+var client = new TenantClient("key_N88mVGsp3sCXkykyN2EFED");
+
+var tenant = await client.GetInvitationsAsync();
 ```
 
 ```python
@@ -390,7 +413,11 @@ const invitations = await bt.tenants.retrieveInvitation('fb32ea26-2185-4ad2-a7bf
 ```
 
 ```csharp
-# Coming soon!
+using BasisTheory.net.Tenants;
+
+var client = new TenantClient("key_N88mVGsp3sCXkykyN2EFED");
+
+var tenant = await client.GetInvitationByIdAsync("fb32ea26-2185-4ad2-a7bf-2fe69c00ae13");
 ```
 
 ```python
@@ -453,7 +480,11 @@ await bt.tenants.deleteInvitation('fb32ea26-2185-4ad2-a7bf-2fe69c00ae13');
 ```
 
 ```csharp
-# Coming Soon!
+using BasisTheory.net.Tenants;
+
+var client = new TenantClient("key_N88mVGsp3sCXkykyN2EFED");
+
+var tenant = await client.DeleteInvitationAsync("fb32ea26-2185-4ad2-a7bf-2fe69c00ae13");
 ```
 
 ```python
