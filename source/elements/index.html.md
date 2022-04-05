@@ -10,7 +10,7 @@ toc_footers:
 other_docs:
   - <a class="toc-h2 toc-link" href="/">Home</a>
   - <a class="toc-h2 toc-link" href="/api-reference">API Reference</a>
-  - <a class="toc-h2 toc-link" href="/encryption">Encryption</a>
+  - <a class="toc-h2 toc-link" href="/detokenization">Detokenization</a>
   - <a class="toc-h2 toc-link" href="https://developers.basistheory.com">Guides</a>
 
 intro_quick_links:
@@ -41,9 +41,13 @@ react_includes:
   - elements/react/text_element
   - elements/react/basis_theory_react
 
+reference_links:
+  - <a class="toc-h1 toc-link" href="/api-reference">API Reference</a>
+  - <a class="toc-h1 toc-link" href="/elements">Elements</a>
+  - <a class="toc-h1 toc-link" href="/detokenization">Detokenization</a>
 
 aux_links:
-  - <a class="toc-h2 toc-link" href="https://discord.gg/NSvXxaW5Fv" target="_blank">Join Discord</a>
+  - <a class="toc-h2 toc-link" href="https://community.basistheory.com" target="_blank">Join our Community</a>
   - <a class="toc-h2 toc-link" href="https://github.com/Basis-Theory" target="_blank">GitHub</a>
   - <a class="toc-h2 toc-link" href="mailto:support@basistheory.com?subject=Help!">Email Support</a>
 

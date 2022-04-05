@@ -1,7 +1,7 @@
 # Introduction
 <aside class="header-intro-box">
     <span>
-        <h4>Elements Documentation</h4>
+        <h4>Elements</h4>
         <p class="header-intro-body2-font">Explore how to quickly start using our Elements to tokenize credit cards.</p>
         <h6>QUICK LINKS</h6>
         <span class="intro-quick-links">

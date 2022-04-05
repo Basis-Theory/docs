@@ -87,7 +87,7 @@ under the License.
     <%= stylesheet_link_tag :print, media: :print %>
 
     <script src="https://kit.fontawesome.com/86c3cd0147.js" crossorigin="anonymous"></script>
-    
+
     <% if current_page.data.search %>
       <%= javascript_include_tag  "all" %>
     <% else %>
@@ -99,7 +99,7 @@ under the License.
         $(function() { setupCodeCopy(); });
       </script>
     <% end %>
-  
+
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -130,23 +130,23 @@ under the License.
     <!-- End Mobile Nav Icon/Button -->
 
     <!-- Sidebar/TOC -->
-    <%= partial "partials/sidebar", 
+    <%= partial "partials/sidebar",
         locals: {
-          language_tabs: language_tabs, 
-          intro_page_content: intro_page_content, 
+          language_tabs: language_tabs,
+          intro_page_content: intro_page_content,
           api_page_content: api_page_content,
           vanilla_page_content: vanilla_page_content,
           react_page_content: react_page_content,
           current_page: current_page,
-       }  
+       }
     %>
     <!-- End Sidebar/TOC -->
 
     <!-- Header -->
-    <%= partial "partials/header", 
+    <%= partial "partials/header",
         locals: {
           current_page: current_page
-        } 
+        }
     %>
     <!-- End Header -->
 
