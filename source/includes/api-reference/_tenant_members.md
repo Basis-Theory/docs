@@ -64,7 +64,7 @@ using BasisTheory.net.Tenants;
 
 var client = new TenantClient("key_N88mVGsp3sCXkykyN2EFED");
 
-var tenant = await client.GetMembersAsync();
+var tenantMembers = await client.GetMembersAsync();
 ```
 
 ```python
@@ -148,7 +148,7 @@ using BasisTheory.net.Tenants;
 
 var client = new TenantClient("key_N88mVGsp3sCXkykyN2EFED");
 
-var tenant = await client.DeleteMemberAsync("5540a02f-99e7-46de-8f41-1b3cf7b2a3d2");
+await client.DeleteMemberAsync("5540a02f-99e7-46de-8f41-1b3cf7b2a3d2");
 ```
 
 ```python
@@ -206,7 +206,7 @@ using BasisTheory.net.Tenants;
 
 var client = new TenantClient("key_N88mVGsp3sCXkykyN2EFED");
 
-var tenant = await client.CreateInvitationAsync(new TenantInvitation
+var createdInvitation = await client.CreateInvitationAsync(new TenantInvitation
 {
     Email = "jane@doe.com"
 });
@@ -278,7 +278,7 @@ using BasisTheory.net.Tenants;
 
 var client = new TenantClient("key_N88mVGsp3sCXkykyN2EFED");
 
-var tenant = await client.ResendInvitationAsync("fb32ea26-2185-4ad2-a7bf-2fe69c00ae13");
+var resentInvitation = await client.ResendInvitationAsync("fb32ea26-2185-4ad2-a7bf-2fe69c00ae13");
 ```
 
 ```python
@@ -340,7 +340,7 @@ using BasisTheory.net.Tenants;
 
 var client = new TenantClient("key_N88mVGsp3sCXkykyN2EFED");
 
-var tenant = await client.GetInvitationsAsync();
+var invitations = await client.GetInvitationsAsync();
 ```
 
 ```python
@@ -409,7 +409,7 @@ import { BasisTheory } from '@basis-theory/basis-theory-js';
 
 const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
 
-const invitations = await bt.tenants.retrieveInvitation('fb32ea26-2185-4ad2-a7bf-2fe69c00ae13');
+const invitation = await bt.tenants.retrieveInvitation('fb32ea26-2185-4ad2-a7bf-2fe69c00ae13');
 ```
 
 ```csharp
@@ -417,7 +417,7 @@ using BasisTheory.net.Tenants;
 
 var client = new TenantClient("key_N88mVGsp3sCXkykyN2EFED");
 
-var tenant = await client.GetInvitationByIdAsync("fb32ea26-2185-4ad2-a7bf-2fe69c00ae13");
+var invitation = await client.GetInvitationByIdAsync("fb32ea26-2185-4ad2-a7bf-2fe69c00ae13");
 ```
 
 ```python
@@ -484,7 +484,7 @@ using BasisTheory.net.Tenants;
 
 var client = new TenantClient("key_N88mVGsp3sCXkykyN2EFED");
 
-var tenant = await client.DeleteInvitationAsync("fb32ea26-2185-4ad2-a7bf-2fe69c00ae13");
+await client.DeleteInvitationAsync("fb32ea26-2185-4ad2-a7bf-2fe69c00ae13");
 ```
 
 ```python
