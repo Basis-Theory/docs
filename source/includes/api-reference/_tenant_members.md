@@ -10,12 +10,18 @@ Upon accepting a Tenant Invitation, a new Tenant Member will be created.
 |---------------|----------------------------------------------|----------------------------------------------------------------------------------------------------|
 | `id`          | *uuid*                                       | Unique identifier of the Tenant Member                                                             |
 | `tenant_id`   | *uuid*                                       | The [Tenant](#tenants-tenant-object) ID that the membership is attached                            |
-| `role`        | *string*                                     | The role assigned to the Tenant Member                                                             |
+| `role`        | *string*                                     | The [Role](#tenant-members-roles) assigned to the Tenant Member                                    |
 | `user`        | *[user object](#tenant-members-user-object)* | The User which this membership is attached to                                                      |
-| `created_by`  | *uuid*                                       | (Optional) The ID of the User that created the Tenant Member                                       |
+| `created_by`  | *uuid*                                       | (Optional) The ID of the User or [Application](#applications) that created the Tenant Member       |
 | `created_at`  | *date*                                       | (Optional) Created date of the Tenant Member in ISO 8601 format                                    |
 | `modified_by` | *uuid*                                       | (Optional) The ID of the User or [Application](#applications) that last modified the Tenant Member |
 | `modified_at` | *date*                                       | (Optional) Last modified date of the Tenant Member in ISO 8601 format                              |
+
+## Roles
+| Role    | Description                                                                                                                                  |
+|---------|----------------------------------------------------------------------------------------------------------------------------------------------|
+| `OWNER` | The `OWNER` role is automatically assigned to the Tenant Owner and grants full access to all features. The Tenant `OWNER` cannot be deleted. |
+| `ADMIN` | The `ADMIN` role is assigned by default to all members and grants full access to all features.                                               |
 
 ## User Object
 
@@ -36,7 +42,7 @@ Upon accepting a Tenant Invitation, a new Tenant Member will be created.
 | `email`       | *string* | The invitee's e-mail address                                                                                                                                                                                                                                           |
 | `status`      | *string* | The status of the invitation (i.e. `PENDING` or `EXPIRED`)                                                                                                                                                                                                             |
 | `expires_at`  | *date*   | The expiration date of the invitation is ISO 8601 format. By default, the invitation expires 72 hours from the time it was created. Invitations can be resent to extend the expiration, but doing so will invalidate the previous invitation link sent to the invitee. |
-| `created_by`  | *uuid*   | (Optional) The ID of the User that created the Tenant Invitation                                                                                                                                                                                                       |
+| `created_by`  | *uuid*   | (Optional) The ID of the User or [Application](#applications) that created the Tenant Invitation                                                                                                                                                                       |
 | `created_at`  | *date*   | (Optional) Created date of the Tenant Invitation in ISO 8601 format                                                                                                                                                                                                    |
 | `modified_by` | *uuid*   | (Optional) The ID of the User or [Application](#applications) that last modified the Tenant Invitation                                                                                                                                                                 |
 | `modified_at` | *date*   | (Optional) Last modified date of the Tenant Invitation in ISO 8601 format                                                                                                                                                                                              |
