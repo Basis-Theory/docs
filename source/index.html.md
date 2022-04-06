@@ -26,6 +26,7 @@ intro_includes:
   - api-reference/correlation_id
   - api-reference/pagination
   - api-reference/errors
+  - api-reference/ip_addresses
   - elements/limits
 
 api_includes:
