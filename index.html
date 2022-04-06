@@ -610,6 +610,44 @@
                 </ul>
             </li>
             <li>
+              <a href="#tenant-members" class="toc-h1 toc-link" data-title="Tenant Members">Tenant Members</a>
+                <ul class="toc-list-h2">
+                    <li>
+                      <a href="#tenant-members-tenant-member-object" class="toc-h2 toc-link" data-title="Tenant Member Object">Tenant Member Object</a>
+                    </li>
+                    <li>
+                      <a href="#tenant-members-roles" class="toc-h2 toc-link" data-title="Roles">Roles</a>
+                    </li>
+                    <li>
+                      <a href="#tenant-members-user-object" class="toc-h2 toc-link" data-title="User Object">User Object</a>
+                    </li>
+                    <li>
+                      <a href="#tenant-members-tenant-invitation-object" class="toc-h2 toc-link" data-title="Tenant Invitation Object">Tenant Invitation Object</a>
+                    </li>
+                    <li>
+                      <a href="#tenant-members-list-tenant-members" class="toc-h2 toc-link" data-title="List Tenant Members">List Tenant Members</a>
+                    </li>
+                    <li>
+                      <a href="#tenant-members-delete-tenant-member" class="toc-h2 toc-link" data-title="Delete Tenant Member">Delete Tenant Member</a>
+                    </li>
+                    <li>
+                      <a href="#tenant-members-create-tenant-invitation" class="toc-h2 toc-link" data-title="Create Tenant Invitation">Create Tenant Invitation</a>
+                    </li>
+                    <li>
+                      <a href="#tenant-members-resend-tenant-invitation" class="toc-h2 toc-link" data-title="Resend Tenant Invitation">Resend Tenant Invitation</a>
+                    </li>
+                    <li>
+                      <a href="#tenant-members-list-tenant-invitations" class="toc-h2 toc-link" data-title="List Tenant Invitations">List Tenant Invitations</a>
+                    </li>
+                    <li>
+                      <a href="#tenant-members-get-a-tenant-invitation" class="toc-h2 toc-link" data-title="Get a Tenant Invitation">Get a Tenant Invitation</a>
+                    </li>
+                    <li>
+                      <a href="#tenant-members-delete-tenant-invitation" class="toc-h2 toc-link" data-title="Delete Tenant Invitation">Delete Tenant Invitation</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
               <a href="#token-types" class="toc-h1 toc-link" data-title="Token Types">Token Types</a>
                 <ul class="toc-list-h2">
                     <li>
@@ -5593,6 +5631,602 @@ a single complex token that contains several of the request parameters. </p>
 </p>
 <h3 id='tenants-get-tenant-usage-report-response'>Response</h3>
 <p>Returns a <a href="#tenants-tenant-usage-report-object">Tenant Usage Report</a> for the provided <code>BT-API-KEY</code>. Returns <a href="#errors">an error</a> if the Tenant Usage Report could not be retrieved.</p>
+<h1 id='tenant-members'>Tenant Members</h1>
+<p>Tenant Members enable user management operations within the context of a Tenant.
+New members can be invited via e-mail to join an existing tenant. 
+Upon accepting a Tenant Invitation, a new Tenant Member will be created.</p>
+<h2 id='tenant-members-tenant-member-object'>Tenant Member Object</h2>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td><em>uuid</em></td>
+<td>Unique identifier of the Tenant Member</td>
+</tr>
+<tr>
+<td><code>tenant_id</code></td>
+<td><em>uuid</em></td>
+<td>The <a href="#tenants-tenant-object">Tenant</a> ID that the membership is attached</td>
+</tr>
+<tr>
+<td><code>role</code></td>
+<td><em>string</em></td>
+<td>The <a href="#tenant-members-roles">Role</a> assigned to the Tenant Member</td>
+</tr>
+<tr>
+<td><code>user</code></td>
+<td><em><a href="#tenant-members-user-object">user object</a></em></td>
+<td>The User which this membership is attached to</td>
+</tr>
+<tr>
+<td><code>created_by</code></td>
+<td><em>uuid</em></td>
+<td>(Optional) The ID of the User or <a href="#applications">Application</a> that created the Tenant Member</td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td><em>date</em></td>
+<td>(Optional) Created date of the Tenant Member in ISO 8601 format</td>
+</tr>
+<tr>
+<td><code>modified_by</code></td>
+<td><em>uuid</em></td>
+<td>(Optional) The ID of the User or <a href="#applications">Application</a> that last modified the Tenant Member</td>
+</tr>
+<tr>
+<td><code>modified_at</code></td>
+<td><em>date</em></td>
+<td>(Optional) Last modified date of the Tenant Member in ISO 8601 format</td>
+</tr>
+</tbody></table>
+<h2 id='tenant-members-roles'>Roles</h2>
+<table><thead>
+<tr>
+<th>Role</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>OWNER</code></td>
+<td>The <code>OWNER</code> role is automatically assigned to the Tenant Owner and grants full access to all features. The Tenant <code>OWNER</code> cannot be deleted.</td>
+</tr>
+<tr>
+<td><code>ADMIN</code></td>
+<td>The <code>ADMIN</code> role is assigned by default to all members and grants full access to all features.</td>
+</tr>
+</tbody></table>
+<h2 id='tenant-members-user-object'>User Object</h2>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td><em>uuid</em></td>
+<td>Unique identifier of the User</td>
+</tr>
+<tr>
+<td><code>email</code></td>
+<td><em>string</em></td>
+<td>(Optional) The e-mail address of the User</td>
+</tr>
+<tr>
+<td><code>first_name</code></td>
+<td><em>string</em></td>
+<td>(Optional) The User&#39;s first name</td>
+</tr>
+<tr>
+<td><code>last_name</code></td>
+<td><em>string</em></td>
+<td>(Optional) The User&#39;s last name</td>
+</tr>
+<tr>
+<td><code>picture</code></td>
+<td><em>string</em></td>
+<td>(Optional) A URI pointing to the User&#39;s picture</td>
+</tr>
+</tbody></table>
+<h2 id='tenant-members-tenant-invitation-object'>Tenant Invitation Object</h2>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td><em>uuid</em></td>
+<td>Unique identifier of the Tenant Invitation</td>
+</tr>
+<tr>
+<td><code>tenant_id</code></td>
+<td><em>uuid</em></td>
+<td>The <a href="#tenants-tenant-object">Tenant</a> ID that the invitation is tied to. When the invitation is accepted, a new Tenant Member will be created in this Tenant.</td>
+</tr>
+<tr>
+<td><code>email</code></td>
+<td><em>string</em></td>
+<td>The invitee&#39;s e-mail address</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td><em>string</em></td>
+<td>The status of the invitation (i.e. <code>PENDING</code> or <code>EXPIRED</code>)</td>
+</tr>
+<tr>
+<td><code>expires_at</code></td>
+<td><em>date</em></td>
+<td>The expiration date of the invitation is ISO 8601 format. By default, the invitation expires 72 hours from the time it was created. Invitations can be resent to extend the expiration, but doing so will invalidate the previous invitation link sent to the invitee.</td>
+</tr>
+<tr>
+<td><code>created_by</code></td>
+<td><em>uuid</em></td>
+<td>(Optional) The ID of the User or <a href="#applications">Application</a> that created the Tenant Invitation</td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td><em>date</em></td>
+<td>(Optional) Created date of the Tenant Invitation in ISO 8601 format</td>
+</tr>
+<tr>
+<td><code>modified_by</code></td>
+<td><em>uuid</em></td>
+<td>(Optional) The ID of the User or <a href="#applications">Application</a> that last modified the Tenant Invitation</td>
+</tr>
+<tr>
+<td><code>modified_at</code></td>
+<td><em>date</em></td>
+<td>(Optional) Last modified date of the Tenant Invitation in ISO 8601 format</td>
+</tr>
+</tbody></table>
+<h2 id='tenant-members-list-tenant-members'>List Tenant Members</h2>
+<blockquote>
+<p>Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/tenants/self/members"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"BT-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">BasisTheory</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@basis-theory/basis-theory-js</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">bt</span> <span class="o">=</span> <span class="k">await</span> <span class="k">new</span> <span class="nx">BasisTheory</span><span class="p">().</span><span class="nx">init</span><span class="p">(</span><span class="dl">'</span><span class="s1">key_N88mVGsp3sCXkykyN2EFED</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">tenantMembers</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">bt</span><span class="p">.</span><span class="nx">tenants</span><span class="p">.</span><span class="nx">listMembers</span><span class="p">();</span>
+</code></pre></div><div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="k">using</span> <span class="nn">BasisTheory.net.Tenants</span><span class="p">;</span>
+
+<span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">TenantClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
+
+<span class="kt">var</span> <span class="n">tenantMembers</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">GetMembersAsync</span><span class="p">();</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Coming Soon!
+</span></code></pre></div>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"pagination"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5540a02f-99e7-46de-8f41-1b3cf7b2a3d2"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"tenant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77cb0024-123e-41a8-8ff8-a3d5a0fa8a08"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ADMIN"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dc5fca8c-dd54-41df-98fc-50d7a1e7fb4d"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jane@doe.com"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jane"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"picture"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"modified_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"modified_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-01T08:23:14+00:00"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="err">...</span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p><span class="http-method get">
+  <span class="box-method">GET</span>
+  <code>https://api.basistheory.com/tenants/self/members</code>
+</span></p>
+
+<p>Get a list of Tenant Members for the Tenant.</p>
+<h3 id='tenant-members-list-tenant-members-permissions'>Permissions</h3>
+<p class="scopes">
+  <span class="scope">tenant:member:read</span>
+</p>
+<h3 id='tenant-members-list-tenant-members-query-parameters'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>user_id</code></td>
+<td>false</td>
+<td><em>uuid</em></td>
+<td><code>null</code></td>
+<td>One to many User IDs to query for. Multiple IDs can be passed in the form <code>?user_id=&lt;value1&gt;&amp;user_id=&lt;value2&gt;</code>.</td>
+</tr>
+<tr>
+<td><code>page</code></td>
+<td>false</td>
+<td><em>integer</em></td>
+<td><code>1</code></td>
+<td>Page number of the results to return.</td>
+</tr>
+<tr>
+<td><code>size</code></td>
+<td>false</td>
+<td><em>integer</em></td>
+<td><code>20</code></td>
+<td>Number of the results to return per page. Maximum size of 50 results.</td>
+</tr>
+</tbody></table>
+<h3 id='tenant-members-list-tenant-members-response'>Response</h3>
+<p>Returns a <a href="#pagination">paginated object</a> with the <code>data</code> property containing an array of <a href="#tenant-members-tenant-member-object">Tenant Members</a>. Providing any query parameters will filter the results. Returns <a href="#errors">an error</a> if Tenant Members could not be retrieved.</p>
+<h2 id='tenant-members-delete-tenant-member'>Delete Tenant Member</h2>
+<blockquote>
+<p>Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/tenants/self/members/5540a02f-99e7-46de-8f41-1b3cf7b2a3d2"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"BT-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span> <span class="se">\</span>
+  <span class="nt">-X</span> <span class="s2">"DELETE"</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">BasisTheory</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@basis-theory/basis-theory-js</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">bt</span> <span class="o">=</span> <span class="k">await</span> <span class="k">new</span> <span class="nx">BasisTheory</span><span class="p">().</span><span class="nx">init</span><span class="p">(</span><span class="dl">'</span><span class="s1">key_N88mVGsp3sCXkykyN2EFED</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="k">await</span> <span class="nx">bt</span><span class="p">.</span><span class="nx">tenants</span><span class="p">.</span><span class="nx">deleteMember</span><span class="p">(</span><span class="dl">'</span><span class="s1">5540a02f-99e7-46de-8f41-1b3cf7b2a3d2</span><span class="dl">'</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="k">using</span> <span class="nn">BasisTheory.net.Tenants</span><span class="p">;</span>
+
+<span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">TenantClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
+
+<span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">DeleteMemberAsync</span><span class="p">(</span><span class="s">"5540a02f-99e7-46de-8f41-1b3cf7b2a3d2"</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Coming Soon!
+</span></code></pre></div>
+<p><span class="http-method delete">
+  <span class="box-method">DELETE</span>
+  <code>https://api.basistheory.com/tenants/self/members/{id}</code>
+</span></p>
+
+<p>Delete a Tenant Member by ID from the Tenant. Deleting a Tenant Member will revoke all access from the Tenant.</p>
+<h3 id='tenant-members-delete-tenant-member-permissions'>Permissions</h3>
+<p><code>tenant:member:delete</code></p>
+<h3 id='tenant-members-delete-tenant-member-uri-parameters'>URI Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>true</td>
+<td><em>uuid</em></td>
+<td><code>null</code></td>
+<td>The ID of the Tenant Member</td>
+</tr>
+</tbody></table>
+<h3 id='tenant-members-delete-tenant-member-response'>Response</h3>
+<p>Returns <a href="#errors">an error</a> if the Tenant Member could not be deleted.</p>
+<h2 id='tenant-members-create-tenant-invitation'>Create Tenant Invitation</h2>
+<blockquote>
+<p>Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/tenants/self/invitations"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"BT-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">-X</span> <span class="s2">"POST"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">'{
+    "email": "jane@doe.com",
+  }'</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">BasisTheory</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@basis-theory/basis-theory-js</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">bt</span> <span class="o">=</span> <span class="k">await</span> <span class="k">new</span> <span class="nx">BasisTheory</span><span class="p">().</span><span class="nx">init</span><span class="p">(</span><span class="dl">'</span><span class="s1">key_N88mVGsp3sCXkykyN2EFED</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">createdInvitation</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">bt</span><span class="p">.</span><span class="nx">tenants</span><span class="p">.</span><span class="nx">createInvitations</span><span class="p">({</span>
+  <span class="na">email</span><span class="p">:</span> <span class="dl">'</span><span class="s1">jane@doe.com</span><span class="dl">'</span><span class="p">,</span>
+<span class="p">});</span>
+</code></pre></div><div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="k">using</span> <span class="nn">BasisTheory.net.Tenants</span><span class="p">;</span>
+
+<span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">TenantClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
+
+<span class="kt">var</span> <span class="n">createdInvitation</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">CreateInvitationAsync</span><span class="p">(</span><span class="k">new</span> <span class="n">TenantInvitation</span>
+<span class="p">{</span>
+    <span class="n">Email</span> <span class="p">=</span> <span class="s">"jane@doe.com"</span>
+<span class="p">});</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Coming Soon!
+</span></code></pre></div>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb32ea26-2185-4ad2-a7bf-2fe69c00ae13"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"tenant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77cb0024-123e-41a8-8ff8-a3d5a0fa8a08"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jane@doe.com"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PENDING"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"expires_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-18T15:53:00+00:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p><span class="http-method post">
+  <span class="box-method">POST</span>
+  <code>https://api.basistheory.com/tenants/self/invitations</code>
+</span></p>
+
+<p>Invite a new member to join this Tenant. Creating a Tenant Invitation will send an e-mail to the recipient containing a link to accept the invitation.</p>
+<h3 id='tenant-members-create-tenant-invitation-permissions'>Permissions</h3>
+<p class="scopes">
+  <span class="scope">tenant:invitation:create</span>
+</p>
+<h3 id='tenant-members-create-tenant-invitation-request-parameters'>Request Parameters</h3>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Required</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>email</code></td>
+<td>true</td>
+<td><em>string</em></td>
+<td><code>null</code></td>
+<td>The invitee&#39;s e-mail address. Has to be a well-formed e-mail address (<a href="https://datatracker.ietf.org/doc/html/rfc5322">RFC 5322</a>).</td>
+</tr>
+</tbody></table>
+<h3 id='tenant-members-create-tenant-invitation-response'>Response</h3>
+<p>Returns a <a href="#tenant-members-tenant-inviation-object">Tenant Invitation</a> if the Tenant Invitation was created. Returns <a href="#errors">an error</a> if there were validation errors, or the Tenant Invitation failed to create.</p>
+<h2 id='tenant-members-resend-tenant-invitation'>Resend Tenant Invitation</h2>
+<blockquote>
+<p>Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/tenants/self/invitations/fb32ea26-2185-4ad2-a7bf-2fe69c00ae13/resend"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"BT-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">-X</span> <span class="s2">"POST"</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">BasisTheory</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@basis-theory/basis-theory-js</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">bt</span> <span class="o">=</span> <span class="k">await</span> <span class="k">new</span> <span class="nx">BasisTheory</span><span class="p">().</span><span class="nx">init</span><span class="p">(</span><span class="dl">'</span><span class="s1">key_N88mVGsp3sCXkykyN2EFED</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">resentInvitation</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">bt</span><span class="p">.</span><span class="nx">tenants</span><span class="p">.</span><span class="nx">resendInvitation</span><span class="p">(</span><span class="dl">'</span><span class="s1">fb32ea26-2185-4ad2-a7bf-2fe69c00ae13</span><span class="dl">'</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="k">using</span> <span class="nn">BasisTheory.net.Tenants</span><span class="p">;</span>
+
+<span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">TenantClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
+
+<span class="kt">var</span> <span class="n">resentInvitation</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">ResendInvitationAsync</span><span class="p">(</span><span class="s">"fb32ea26-2185-4ad2-a7bf-2fe69c00ae13"</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Coming Soon!
+</span></code></pre></div>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb32ea26-2185-4ad2-a7bf-2fe69c00ae13"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"tenant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77cb0024-123e-41a8-8ff8-a3d5a0fa8a08"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jane@doe.com"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PENDING"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"expires_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-18T15:53:00+00:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p><span class="http-method post">
+  <span class="box-method">POST</span>
+  <code>https://api.basistheory.com/tenants/self/invitations/{id}/resend</code>
+</span></p>
+
+<p>Resend a pending or expired Tenant Invitation. Resending the invitation will extend the expiration by 72 hours and invalidate any previous invitation link(s) sent to the recipient.</p>
+<h3 id='tenant-members-resend-tenant-invitation-permissions'>Permissions</h3>
+<p class="scopes">
+  <span class="scope">tenant:invitation:create</span>
+  <span class="scope">tenant:invitation:update</span>
+</p>
+<h3 id='tenant-members-resend-tenant-invitation-response'>Response</h3>
+<p>Returns a <a href="#tenant-members-tenant-inviation-object">Tenant Invitation</a> if the Tenant Invitation was resent. Returns <a href="#errors">an error</a> if there were validation errors, or the Tenant Invitation failed to resend.</p>
+<h2 id='tenant-members-list-tenant-invitations'>List Tenant Invitations</h2>
+<blockquote>
+<p>Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/tenants/self/invitations"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"BT-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">BasisTheory</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@basis-theory/basis-theory-js</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">bt</span> <span class="o">=</span> <span class="k">await</span> <span class="k">new</span> <span class="nx">BasisTheory</span><span class="p">().</span><span class="nx">init</span><span class="p">(</span><span class="dl">'</span><span class="s1">key_N88mVGsp3sCXkykyN2EFED</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">invitations</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">bt</span><span class="p">.</span><span class="nx">tenants</span><span class="p">.</span><span class="nx">listInvitations</span><span class="p">();</span>
+</code></pre></div><div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="k">using</span> <span class="nn">BasisTheory.net.Tenants</span><span class="p">;</span>
+
+<span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">TenantClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
+
+<span class="kt">var</span> <span class="n">invitations</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">GetInvitationsAsync</span><span class="p">();</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Coming Soon!
+</span></code></pre></div>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"pagination"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb32ea26-2185-4ad2-a7bf-2fe69c00ae13"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"tenant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77cb0024-123e-41a8-8ff8-a3d5a0fa8a08"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jane@doe.com"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PENDING"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"expires_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-18T15:53:00+00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="err">...</span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p><span class="http-method get">
+  <span class="box-method">GET</span>
+  <code>https://api.basistheory.com/tenants/self/invitations</code>
+</span></p>
+
+<p>Get a list of Tenant Invitations for the Tenant.</p>
+<h3 id='tenant-members-list-tenant-invitations-permissions'>Permissions</h3>
+<p class="scopes">
+  <span class="scope">tenant:invitation:read</span>
+</p>
+<h3 id='tenant-members-list-tenant-invitations-query-parameters'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>page</code></td>
+<td>false</td>
+<td><em>integer</em></td>
+<td><code>1</code></td>
+<td>Page number of the results to return.</td>
+</tr>
+<tr>
+<td><code>size</code></td>
+<td>false</td>
+<td><em>integer</em></td>
+<td><code>20</code></td>
+<td>Number of the results to return per page. Maximum size of 100 results.</td>
+</tr>
+</tbody></table>
+<h3 id='tenant-members-list-tenant-invitations-response'>Response</h3>
+<p>Returns a <a href="#pagination">paginated object</a> with the <code>data</code> property containing an array of <a href="#tenant-members-tenant-invitation-object">Tenant Invitations</a>.
+Providing any query parameters will filter the results.
+Returns <a href="#errors">an error</a> if Tenant Invitations could not be retrieved.</p>
+<h2 id='tenant-members-get-a-tenant-invitation'>Get a Tenant Invitation</h2>
+<blockquote>
+<p>Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/tenants/self/invitations/fb32ea26-2185-4ad2-a7bf-2fe69c00ae13"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"BT-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">BasisTheory</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@basis-theory/basis-theory-js</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">bt</span> <span class="o">=</span> <span class="k">await</span> <span class="k">new</span> <span class="nx">BasisTheory</span><span class="p">().</span><span class="nx">init</span><span class="p">(</span><span class="dl">'</span><span class="s1">key_N88mVGsp3sCXkykyN2EFED</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">invitation</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">bt</span><span class="p">.</span><span class="nx">tenants</span><span class="p">.</span><span class="nx">retrieveInvitation</span><span class="p">(</span><span class="dl">'</span><span class="s1">fb32ea26-2185-4ad2-a7bf-2fe69c00ae13</span><span class="dl">'</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="k">using</span> <span class="nn">BasisTheory.net.Tenants</span><span class="p">;</span>
+
+<span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">TenantClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
+
+<span class="kt">var</span> <span class="n">invitation</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">GetInvitationByIdAsync</span><span class="p">(</span><span class="s">"fb32ea26-2185-4ad2-a7bf-2fe69c00ae13"</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Coming Soon!
+</span></code></pre></div>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb32ea26-2185-4ad2-a7bf-2fe69c00ae13"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"tenant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77cb0024-123e-41a8-8ff8-a3d5a0fa8a08"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jane@doe.com"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PENDING"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"expires_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-18T15:53:00+00:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p><span class="http-method get">
+  <span class="box-method">GET</span>
+  <code>https://api.basistheory.com/tenants/self/invitations/{id}</code>
+</span> </p>
+
+<p>Get a Tenant Invitation by ID in the Tenant.</p>
+<h3 id='tenant-members-get-a-tenant-invitation-permissions'>Permissions</h3>
+<p class="scopes">
+  <span class="scope">tenant:invitation:read</span>
+</p>
+<h3 id='tenant-members-get-a-tenant-invitation-uri-parameters'>URI Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>true</td>
+<td><em>uuid</em></td>
+<td><code>null</code></td>
+<td>The ID of the Tenant Invitation</td>
+</tr>
+</tbody></table>
+<h3 id='tenant-members-get-a-tenant-invitation-response'>Response</h3>
+<p>Returns a <a href="#tenant-members-tenant-invitation-object">Tenant Invitation</a> with the <code>id</code> provided. Returns <a href="#errors">an error</a> if the Tenant Invitation could not be retrieved.</p>
+<h2 id='tenant-members-delete-tenant-invitation'>Delete Tenant Invitation</h2>
+<blockquote>
+<p>Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/tenants/self/invitations/fb32ea26-2185-4ad2-a7bf-2fe69c00ae13"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"BT-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span> <span class="se">\</span>
+  <span class="nt">-X</span> <span class="s2">"DELETE"</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">BasisTheory</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@basis-theory/basis-theory-js</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">bt</span> <span class="o">=</span> <span class="k">await</span> <span class="k">new</span> <span class="nx">BasisTheory</span><span class="p">().</span><span class="nx">init</span><span class="p">(</span><span class="dl">'</span><span class="s1">key_N88mVGsp3sCXkykyN2EFED</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="k">await</span> <span class="nx">bt</span><span class="p">.</span><span class="nx">tenants</span><span class="p">.</span><span class="nx">deleteInvitation</span><span class="p">(</span><span class="dl">'</span><span class="s1">fb32ea26-2185-4ad2-a7bf-2fe69c00ae13</span><span class="dl">'</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="k">using</span> <span class="nn">BasisTheory.net.Tenants</span><span class="p">;</span>
+
+<span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">TenantClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
+
+<span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">DeleteInvitationAsync</span><span class="p">(</span><span class="s">"fb32ea26-2185-4ad2-a7bf-2fe69c00ae13"</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Coming Soon!
+</span></code></pre></div>
+<p><span class="http-method delete">
+  <span class="box-method">DELETE</span>
+  <code>https://api.basistheory.com/tenants/self/invitations/{id}</code>
+</span></p>
+
+<p>Delete a Tenant Invitation by ID from the Tenant.
+Deleting a Tenant Invitation will invalidate any outstanding invitation links sent to the recipient.</p>
+<h3 id='tenant-members-delete-tenant-invitation-permissions'>Permissions</h3>
+<p><code>tenant:invitation:delete</code></p>
+<h3 id='tenant-members-delete-tenant-invitation-uri-parameters'>URI Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>true</td>
+<td><em>uuid</em></td>
+<td><code>null</code></td>
+<td>The ID of the Tenant Invitation</td>
+</tr>
+</tbody></table>
+<h3 id='tenant-members-delete-tenant-invitation-response'>Response</h3>
+<p>Returns <a href="#errors">an error</a> if the Tenant Invitation could not be deleted.</p>
 <h1 id='token-types'>Token Types</h1>
 <p>Basis Theory offers several pre-configured token types for various use-cases and compliance requirements.
 Token Types define the rules around a data type such as validation requirements, <a href="#tokens-token-classifications">data classification</a>, 
