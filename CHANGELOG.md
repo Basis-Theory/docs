@@ -1,3 +1,10 @@
+# [1.30.0](https://github.com/Basis-Theory/docs/compare/v1.29.0...v1.30.0) (2022-04-06)
+
+
+### Features
+
+* add API reference for Tenant Members and Tenant Invitations ([#164](https://github.com/Basis-Theory/docs/issues/164)) ([4658df6](https://github.com/Basis-Theory/docs/commit/4658df6652a7097a5a33dd36da7bd3df892f58a5))
+
 # [1.29.0](https://github.com/Basis-Theory/docs/compare/v1.28.0...v1.29.0) (2022-04-06)
 
 
