@@ -1,3 +1,10 @@
+# [1.29.0](https://github.com/Basis-Theory/docs/compare/v1.28.0...v1.29.0) (2022-04-06)
+
+
+### Features
+
+* add static ip addresses ([#167](https://github.com/Basis-Theory/docs/issues/167)) ([0158ad9](https://github.com/Basis-Theory/docs/commit/0158ad98f895432b9b34bf6646eb6576e9f39517))
+
 # [1.28.0](https://github.com/Basis-Theory/docs/compare/v1.27.2...v1.28.0) (2022-04-04)
 
 
