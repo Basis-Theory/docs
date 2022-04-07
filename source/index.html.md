@@ -6,7 +6,7 @@ language_tabs: # must be one of https://git.io/vQNgJ
   - shell: cURL
   - javascript: Node.js
   - csharp: .NET
-  - python: Python <span class="beta beta-lang-selector">BETA</span>
+  - python: Python
 
 toc_footers:
 

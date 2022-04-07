@@ -124,12 +124,12 @@ var token = await client.CreateAsync(new Token {
 ```python
 import basistheory
 from basistheory.api import tokens_api
-from basistheory.model.token import Token
+from basistheory.model.create_token_request import CreateTokenRequest
 
 with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_N88mVGsp3sCXkykyN2EFED")) as api_client:
     token_client = tokens_api.TokensApi(api_client)
 
-    token = token_client.create(token=Token(
+    token = token_client.create(create_token_request=CreateTokenRequest(
         type="token",
         data="Sensitive Value",
         metadata={
@@ -222,7 +222,7 @@ from basistheory.api import tokens_api
 with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_N88mVGsp3sCXkykyN2EFED")) as api_client:
     token_client = tokens_api.TokensApi(api_client)
 
-    tokens = token_client.list()
+    tokens = token_client.get()
 ```
 
 
@@ -588,11 +588,12 @@ var tokens = await client.SearchAsync(new TokenSearchRequest {
 ```python
 import basistheory
 from basistheory.api import tokens_api
+from basistheory.model.search_tokens_request import SearchTokensRequest
 
 with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_N88mVGsp3sCXkykyN2EFED")) as api_client:
     token_client = tokens_api.TokensApi(api_client)
 
-    tokens = token_client.search(search=TokenSearchRequest(
+    tokens = token_client.search(search_tokens_request=SearchTokensRequest(
         query="data:6789 AND type:social_security_number",
         page=1,
         size=20

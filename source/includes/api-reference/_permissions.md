@@ -78,7 +78,13 @@ var permissions = await client.GetAsync();
 ```
 
 ```python
-# Coming Soon!
+import basistheory
+from basistheory.api import permissions_api
+
+with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_N88mVGsp3sCXkykyN2EFED")) as api_client:
+    permissions_client = permissions_api.PermissionsApi(api_client)
+
+    permissions = permissions_client.get()
 ```
 
 > Response

@@ -39,7 +39,16 @@ var token = await client.Tokenize(new {
 ```
 
 ```python
-# Coming Soon!
+import basistheory
+from basistheory.api import tokenize_api
+
+with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_N88mVGsp3sCXkykyN2EFED")) as api_client:
+    tokenize_client = tokenize_api.TokenizeApi(api_client)
+
+    token = tokenize_client.tokenize(body={
+      "first_name": "John",
+      "last_name": "Doe"
+    })
 ```
 
 > Create Basic Token Response
@@ -97,7 +106,20 @@ var token = await client.Tokenize(new Token {
 ```
 
 ```python
-# Coming Soon!
+import basistheory
+from basistheory.api import tokenize_api 
+from basistheory.model.token import Token
+
+with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_N88mVGsp3sCXkykyN2EFED")) as api_client:
+    tokenize_client = tokenize_api.TokenizeApi(api_client)
+
+    token = tokenize_client.tokenize(body=Token(
+      type="token",
+      data="Sensitive Value",
+      metadata={
+        "nonSensitive": "Non-Sensitive Value"
+      }
+    ))
 ```
 
 > Create Token Response
@@ -176,7 +198,25 @@ var token = await client.Tokenize(new Token {
 ```
 
 ```python
-# Coming Soon!
+import basistheory
+from basistheory.api import tokenize_api 
+from basistheory.model.token import Token
+
+with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_N88mVGsp3sCXkykyN2EFED")) as api_client:
+    tokenize_client = tokenize_api.TokenizeApi(api_client)
+
+    token = tokenize_client.tokenize(body=Token(
+      type="card",
+      data={
+          "number": "4242424242424242",
+          "expiration_month": 12,
+          "expiration_year": 2025,
+          "cvc": "123"
+      },
+      metadata={
+        "nonSensitive": "Non-Sensitive Value"
+      }
+    ))
 ```
 
 > Create Card Response
@@ -277,7 +317,32 @@ var token = await client.Tokenize(new object[
 ```
 
 ```python
-# Coming Soon!
+import basistheory
+from basistheory.api import tokenize_api
+from basistheory.model.token import Token
+
+with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_N88mVGsp3sCXkykyN2EFED")) as api_client:
+    tokenize_client = tokenize_api.TokenizeApi(api_client)
+
+    token = tokenize_client.tokenize(body=[
+        "John",
+        "Doe",
+        Token(
+            type="card",
+            data={
+                "number": "4242424242424242",
+                "expiration_month": 12,
+                "expiration_year": 2025,
+                "cvc": "123"
+            },
+            metadata={
+                "nonSensitive": "Non-Sensitive Value"
+            }
+        ),
+        Token(
+            type="token",
+            data="Sensitive Value"
+        )])
 ```
 
 > Tokenize Array Response
@@ -393,7 +458,32 @@ var token = await client.Tokenize(new {
 ```
 
 ```python
-# Coming Soon!
+import basistheory
+from basistheory.api import tokenize_api
+from basistheory.model.token import Token
+
+with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_N88mVGsp3sCXkykyN2EFED")) as api_client:
+    tokenize_client = tokenize_api.TokenizeApi(api_client)
+
+    token = tokenize_client.tokenize(body={
+        "first_name": "John",
+        "last_name": "Doe",
+        "primary_card": Token(
+            type="card",
+            data={
+                "number": "4242424242424242",
+                "expiration_month": 12,
+                "expiration_year": 2025,
+                "cvc": "123"
+            }),
+        "sensitive_tags": [
+            "preferred",
+            {
+                "type": "token",
+                "data": "vip"
+            }
+        ]
+    })
 ```
 
 > Composite Response

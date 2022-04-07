@@ -82,7 +82,23 @@ var application = await client.CreateAsync(new Application {
 ```
 
 ```python
-# Coming Soon!
+import basistheory
+from basistheory.api import applications_api
+from basistheory.model.create_application_request import CreateApplicationRequest
+
+with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_N88mVGsp3sCXkykyN2EFED")) as api_client:
+    application_client = applications_api.ApplicationsApi(api_client)
+
+    application = application_client.create(create_application_request=CreateApplicationRequest(
+        name="My Example App",
+        type="server_to_server",
+        permissions=[
+            "token:general:create",
+            "token:general:read:low",
+            "token:pci:create",
+            "token:pci:read:low"
+        ]
+    ))
 ```
 
 > Response
@@ -157,7 +173,13 @@ var applications = await client.GetAsync();
 ```
 
 ```python
-# Coming Soon!
+import basistheory
+from basistheory.api import applications_api
+
+with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_N88mVGsp3sCXkykyN2EFED")) as api_client:
+    application_client = applications_api.ApplicationsApi(api_client)
+
+    applications = application_client.get()
 ```
 
 > Response
@@ -238,7 +260,13 @@ var application = await client.GetByIdAsync("fe1f9ba4-474e-44b9-b949-110cdba9d66
 ```
 
 ```python
-# Coming Soon!
+import basistheory
+from basistheory.api import applications_api
+
+with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_N88mVGsp3sCXkykyN2EFED")) as api_client:
+    application_client = applications_api.ApplicationsApi(api_client)
+
+    application = application_client.get_by_id("fe1f9ba4-474e-44b9-b949-110cdba9d662")
 ```
 
 > Response
@@ -310,7 +338,13 @@ var application = await client.GetByKeyAsync();
 ```
 
 ```python
-# Coming Soon!
+import basistheory
+from basistheory.api import applications_api
+
+with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_N88mVGsp3sCXkykyN2EFED")) as api_client:
+    application_client = applications_api.ApplicationsApi(api_client)
+
+    application = application_client.get_by_key()
 ```
 
 > Response
@@ -403,7 +437,22 @@ var application = await client.UpdateAsync("fb124bba-f90d-45f0-9a59-5edca27b3b4a
 ```
 
 ```python
-# Coming Soon!
+import basistheory
+from basistheory.api import applications_api
+from basistheory.model.update_application_request import UpdateApplicationRequest
+
+with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_N88mVGsp3sCXkykyN2EFED")) as api_client:
+    application_client = applications_api.ApplicationsApi(api_client)
+
+    application = application_client.update("fb124bba-f90d-45f0-9a59-5edca27b3b4a", update_application_request=UpdateApplicationRequest(
+        name="My Example App",
+        permissions=[
+            "token:general:create",
+            "token:general:read:low",
+            "token:pci:create",
+            "token:pci:read:low"
+        ]
+    ))
 ```
 
 > Response
@@ -483,7 +532,13 @@ var application = await client.RegenerateKeyAsync("fb124bba-f90d-45f0-9a59-5edca
 ```
 
 ```python
-# Coming Soon!
+import basistheory
+from basistheory.api import applications_api
+
+with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_N88mVGsp3sCXkykyN2EFED")) as api_client:
+    application_client = applications_api.ApplicationsApi(api_client)
+
+    application = application_client.regenerate_key("fb124bba-f90d-45f0-9a59-5edca27b3b4a")
 ```
 
 > Response
@@ -563,7 +618,13 @@ await client.DeleteAsync("fb124bba-f90d-45f0-9a59-5edca27b3b4a");
 ```
 
 ```python
-# Coming Soon!
+import basistheory
+from basistheory.api import applications_api
+
+with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_N88mVGsp3sCXkykyN2EFED")) as api_client:
+    application_client = applications_api.ApplicationsApi(api_client)
+
+    application_client.delete("fb124bba-f90d-45f0-9a59-5edca27b3b4a")
 ```
 
 <span class="http-method delete">

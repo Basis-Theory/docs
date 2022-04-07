@@ -84,7 +84,9 @@ var atomicCard = await client.CreateAsync(new AtomicCard {
 ```
 
 ```python
-# Coming Soon!
+# Atomic methods are deprecated and as such were not added to the Python SDK.
+# For adding banks and cards to our platform, use the 'Tokens' endpoints.
+# For further information, check the Deprecations section.
 ```
 
 > Response
@@ -161,7 +163,9 @@ var atomicCards = await client.GetAsync();
 ```
 
 ```python
-# Coming Soon!
+# Atomic methods are deprecated and as such were not added to the Python SDK.
+# For adding banks and cards to our platform, use the 'Tokens' endpoints.
+# For further information, check the Deprecations section.
 ```
 
 > Response
@@ -236,7 +240,9 @@ var atomicCard = await client.GetByIdAsync("c1e565009-1984-4638-8fca-dce8a82cc2a
 ```
 
 ```python
-# Coming Soon!
+# Atomic methods are deprecated and as such were not added to the Python SDK.
+# For adding banks and cards to our platform, use the 'Tokens' endpoints.
+# For further information, check the Deprecations section.
 ```
 
 > Response
@@ -334,7 +340,9 @@ var atomicCard = await client.UpdateAsync("c1e565009-1984-4638-8fca-dce8a82cc2af
 ```
 
 ```python
-# Coming Soon!
+# Atomic methods are deprecated and as such were not added to the Python SDK.
+# For adding banks and cards to our platform, use the 'Tokens' endpoints.
+# For further information, check the Deprecations section.
 ```
 
 > Response
@@ -411,7 +419,9 @@ await client.DeleteAsync("c1e565009-1984-4638-8fca-dce8a82cc2af");
 ```
 
 ```python
-# Coming Soon!
+# Atomic methods are deprecated and as such were not added to the Python SDK.
+# For adding banks and cards to our platform, use the 'Tokens' endpoints.
+# For further information, check the Deprecations section.
 ```
 
 <span class="http-method delete">
@@ -501,7 +511,9 @@ var reactResponse = await client.ReactAsync("c1e565009-1984-4638-8fca-dce8a82cc2
 ```
 
 ```python
-# Coming Soon!
+# Atomic methods are deprecated and as such were not added to the Python SDK.
+# For adding banks and cards to our platform, use the 'Tokens' endpoints.
+# For further information, check the Deprecations section.
 ```
 
 <span class="http-method post">

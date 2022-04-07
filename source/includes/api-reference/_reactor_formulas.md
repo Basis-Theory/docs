@@ -217,7 +217,52 @@ var reactorFormula = await client.CreateAsync(new ReactorFormula {
 ```
 
 ```python
-# Coming Soon!
+import basistheory
+from basistheory.api import reactor_formulas_api
+from basistheory.model.create_reactor_formula_request import CreateReactorFormulaRequest
+from basistheory.model.reactor_formula_configuration import ReactorFormulaConfiguration
+from basistheory.model.reactor_formula_request_parameter import ReactorFormulaRequestParameter
+
+with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_N88mVGsp3sCXkykyN2EFED")) as api_client:
+    reactor_formulas_client = reactor_formulas_api.ReactorFormulasApi(
+        api_client)
+
+    reactor_formula = reactor_formulas_client.create(create_reactor_formula_request=CreateReactorFormulaRequest(
+        name="My Private Reactor",
+        description="Securely exchange token for another token",
+        type="private",
+        icon="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==",
+        code=" \
+            module.exports = async function (req) { \
+                // Do something with `req.configuration.SERVICE_API_KEY`" \
+
+                "return { \
+                    raw: { \
+                        foo: 'bar' \
+                    } \
+                }; \
+            };",
+        configuration=[
+            ReactorFormulaConfiguration(
+                name="SERVICE_API_KEY",
+                description="Configuration description",
+                type="string"
+            )
+        ],
+        request_parameters=[
+            ReactorFormulaRequestParameter(
+                name="request_parameter_1",
+                description="Request parameter description",
+                type="string"
+            ),
+            ReactorFormulaRequestParameter(
+                name="request_parameter_2",
+                description="Request parameter description",
+                type="boolean",
+                optional=True
+            )
+        ]
+    ))
 ```
 
 > Response
@@ -325,7 +370,14 @@ var reactorFormulas = await client.GetAsync();
 ```
 
 ```python
-# Coming Soon!
+import basistheory
+from basistheory.api import reactor_formulas_api
+
+with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_N88mVGsp3sCXkykyN2EFED")) as api_client:
+    reactor_formulas_client = reactor_formulas_api.ReactorFormulasApi(
+        api_client)
+    
+    reactor_formulas = reactor_formulas_client.get()
 ```
 
 > Response
@@ -432,7 +484,14 @@ var reactorFormula = await client.GetByIdAsync("17069df1-80f4-439e-86a7-4121863e
 ```
 
 ```python
-# Coming Soon!
+import basistheory
+from basistheory.api import reactor_formulas_api
+
+with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_N88mVGsp3sCXkykyN2EFED")) as api_client:
+    reactor_formulas_client = reactor_formulas_api.ReactorFormulasApi(
+        api_client)
+    
+    reactor_formula = reactor_formulas_client.get_by_id("17069df1-80f4-439e-86a7-4121863e4678")
 ```
 
 > Response
@@ -645,7 +704,53 @@ var reactorFormula = await client.UpdateAsync("17069df1-80f4-439e-86a7-4121863e4
 ```
 
 ```python
-# Coming Soon!
+import basistheory
+from basistheory.api import reactor_formulas_api
+from basistheory.model.update_reactor_formula_request import UpdateReactorFormulaRequest
+from basistheory.model.reactor_formula_configuration import ReactorFormulaConfiguration
+from basistheory.model.reactor_formula_request_parameter import ReactorFormulaRequestParameter
+
+with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_N88mVGsp3sCXkykyN2EFED")) as api_client:
+    reactor_formulas_client = reactor_formulas_api.ReactorFormulasApi(
+        api_client)
+
+    reactor_formula = reactor_formulas_client.update("17069df1-80f4-439e-86a7-4121863e4678", update_reactor_formula_request=UpdateReactorFormulaRequest(
+        name="My Private Reactor",
+        description="Securely exchange token for another token",
+        type="private",
+        icon="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==",
+        code=" \
+            module.exports = async function (req) { \
+                // Do something with `req.configuration.SERVICE_API_KEY`" \
+
+                "return { \
+                    raw: { \
+                        foo: 'bar' \
+                    } \
+                }; \
+            };",
+        configuration=[
+            ReactorFormulaConfiguration(
+                name="SERVICE_API_KEY",
+                description="Configuration description",
+                type="string"
+            )
+        ],
+        request_parameters=[
+            ReactorFormulaRequestParameter(
+                name="request_parameter_1",
+                description="Request parameter description",
+                type="string"
+            ),
+            ReactorFormulaRequestParameter(
+                name="request_parameter_2",
+                description="Request parameter description",
+                type="boolean",
+                optional=True
+            )
+        ]
+    ))
+
 ```
 
 > Response
@@ -758,7 +863,11 @@ await client.DeleteAsync("17069df1-80f4-439e-86a7-4121863e4678");
 ```
 
 ```python
-# Coming Soon!
+with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_N88mVGsp3sCXkykyN2EFED")) as api_client:
+    reactor_formulas_client = reactor_formulas_api.ReactorFormulasApi(
+        api_client)
+    
+    reactor_formulas = reactor_formulas_client.delete("17069df1-80f4-439e-86a7-4121863e4678")
 ```
 
 <span class="http-method delete">

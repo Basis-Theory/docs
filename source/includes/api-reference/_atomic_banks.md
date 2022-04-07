@@ -76,7 +76,9 @@ var atomicBank = await client.CreateAsync(new AtomicBank {
 ```
 
 ```python
-# Coming Soon!
+# Atomic methods are deprecated and as such were not added to the Python SDK.
+# For adding banks and cards to our platform, use the 'Tokens' endpoints.
+# For further information, check the Deprecations section.
 ```
 
 > Response
@@ -150,7 +152,9 @@ var atomicBanks = await client.GetAsync();
 ```
 
 ```python
-# Coming Soon!
+# Atomic methods are deprecated and as such were not added to the Python SDK.
+# For adding banks and cards to our platform, use the 'Tokens' endpoints.
+# For further information, check the Deprecations section.
 ```
 
 > Response
@@ -227,7 +231,9 @@ const atomicBank = await bt.atomicBanks.retrieve('1485efb9-6b1f-4248-a5d1-cf9b39
 ```
 
 ```python
-# Coming Soon!
+# Atomic methods are deprecated and as such were not added to the Python SDK.
+# For adding banks and cards to our platform, use the 'Tokens' endpoints.
+# For further information, check the Deprecations section.
 ```
 
 > Response
@@ -321,7 +327,9 @@ var atomicBank = await client.UpdateAsync("1485efb9-6b1f-4248-a5d1-cf9b3907164c"
 ```
 
 ```python
-# Coming Soon!
+# Atomic methods are deprecated and as such were not added to the Python SDK.
+# For adding banks and cards to our platform, use the 'Tokens' endpoints.
+# For further information, check the Deprecations section.
 ```
 
 > Response
@@ -397,7 +405,9 @@ await client.DeleteAsync("1485efb9-6b1f-4248-a5d1-cf9b3907164c");
 ```
 
 ```python
-# Coming Soon!
+# Atomic methods are deprecated and as such were not added to the Python SDK.
+# For adding banks and cards to our platform, use the 'Tokens' endpoints.
+# For further information, check the Deprecations section.
 ```
 
 <span class="http-method delete">
@@ -461,7 +471,9 @@ var atomicBank = await client.GetByIdAsync("1485efb9-6b1f-4248-a5d1-cf9b3907164c
 ```
 
 ```python
-# Coming Soon!
+# Atomic methods are deprecated and as such were not added to the Python SDK.
+# For adding banks and cards to our platform, use the 'Tokens' endpoints.
+# For further information, check the Deprecations section.
 ```
 
 > Response
@@ -566,7 +578,9 @@ var reactResponse = await client.ReactAsync("1485efb9-6b1f-4248-a5d1-cf9b3907164
 ```
 
 ```python
-# Coming Soon!
+# Atomic methods are deprecated and as such were not added to the Python SDK.
+# For adding banks and cards to our platform, use the 'Tokens' endpoints.
+# For further information, check the Deprecations section.
 ```
 
 <span class="http-method post">
