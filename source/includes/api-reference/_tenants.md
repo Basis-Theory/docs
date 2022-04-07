@@ -62,7 +62,13 @@ var tenant = await client.GetSelfAsync();
 ```
 
 ```python
-# Coming Soon!
+import basistheory
+from basistheory.api import tenants_api
+
+with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_N88mVGsp3sCXkykyN2EFED")) as api_client:
+    tenants_client = tenants_api.TenantsApi(api_client)
+
+    tenant = tenants_client.get()
 ```
 
 > Response
@@ -132,7 +138,16 @@ var tenant = await client.UpdateAsync(new Tenant {
 ```
 
 ```python
-# Coming Soon!
+import basistheory
+from basistheory.api import tenants_api
+from basistheory.model.update_tenant_request import UpdateTenantRequest
+
+with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_N88mVGsp3sCXkykyN2EFED")) as api_client:
+    tenants_client = tenants_api.TenantsApi(api_client)
+
+    tenant = tenants_client.update(update_tenant_request=UpdateTenantRequest(
+        name="My Example Tenant"
+    ))
 ```
 
 > Response
@@ -200,7 +215,13 @@ await client.DeleteAsync();
 ```
 
 ```python
-# Coming Soon!
+import basistheory
+from basistheory.api import tenants_api
+
+with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_CxEaZMmFu3UAcuNcCbvBVu")) as api_client:
+    tenants_client = tenants_api.TenantsApi(api_client)
+
+    tenants_client.delete()
 ```
 
 <span class="http-method delete">
@@ -247,7 +268,13 @@ var tenantUsageReport = await client.GetTenantUsageReportAsync();
 ```
 
 ```python
-# Coming Soon!
+import basistheory
+from basistheory.api import tenants_api
+
+with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_N88mVGsp3sCXkykyN2EFED")) as api_client:
+    tenants_client = tenants_api.TenantsApi(api_client)
+
+    tenant_usage_report = tenants_client.get_tenant_usage_report()
 ```
 
 > Response

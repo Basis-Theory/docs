@@ -32,7 +32,13 @@ await client.CreateAssociationAsync("c06d0789-0a38-40be-b7cc-c28a718f76f1",
 ```
 
 ```python
-# Coming Soon!
+import basistheory
+from basistheory.api import tokens_api
+
+with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_N88mVGsp3sCXkykyN2EFED")) as api_client:
+    tokens_client = tokens_api.TokensApi(api_client)
+
+    tokens_client.create_association("c06d0789-0a38-40be-b7cc-c28a718f76f1", "c1e565009-1984-4638-8fca-dce8a82cc2af")
 ```
 
 <span class="http-method post">
@@ -97,7 +103,13 @@ await client.DeleteAssociationAsync("c06d0789-0a38-40be-b7cc-c28a718f76f1",
 ```
 
 ```python
-# Coming Soon!
+import basistheory
+from basistheory.api import tokens_api
+
+with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_N88mVGsp3sCXkykyN2EFED")) as api_client:
+    tokens_client = tokens_api.TokensApi(api_client)
+
+    tokens_client.delete_association("c06d0789-0a38-40be-b7cc-c28a718f76f1", "c1e565009-1984-4638-8fca-dce8a82cc2af")
 ```
 
 <span class="http-method delete">
@@ -174,7 +186,20 @@ var token = await client.CreateChildAsync("c06d0789-0a38-40be-b7cc-c28a718f76f1"
 ```
 
 ```python
-# Coming Soon!
+import basistheory
+from basistheory.api import tokens_api
+from basistheory.model.create_token_request import CreateTokenRequest
+
+with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_N88mVGsp3sCXkykyN2EFED")) as api_client:
+    tokens_client = tokens_api.TokensApi(api_client)
+
+    token = tokens_client.create_child("c06d0789-0a38-40be-b7cc-c28a718f76f1", create_token_request=CreateTokenRequest(
+        type="token",
+        data="Sensitive Value",
+        metadata={
+            "nonSensitiveField": "Non-Sensitive Value"
+        }
+    ))
 ```
 
 > Response
@@ -260,7 +285,13 @@ var tokens = await client.GetChildrenAsync("c06d0789-0a38-40be-b7cc-c28a718f76f1
 ```
 
 ```python
-# Coming Soon!
+import basistheory
+from basistheory.api import tokens_api
+
+with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_N88mVGsp3sCXkykyN2EFED")) as api_client:
+    tokens_client = tokens_api.TokensApi(api_client)
+
+    tokens = tokens_client.get_children("c06d0789-0a38-40be-b7cc-c28a718f76f1")
 ```
 
 > Response

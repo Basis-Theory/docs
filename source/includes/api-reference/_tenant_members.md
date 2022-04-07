@@ -74,7 +74,13 @@ var tenantMembers = await client.GetMembersAsync();
 ```
 
 ```python
-# Coming Soon!
+import basistheory
+from basistheory.api import tenants_api
+
+with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_N88mVGsp3sCXkykyN2EFED")) as api_client:
+    tenant_client = tenants_api.TenantsApi(api_client)
+
+    tenant_members = tenant_client.get_members()
 ```
 
 > Response
@@ -158,7 +164,13 @@ await client.DeleteMemberAsync("5540a02f-99e7-46de-8f41-1b3cf7b2a3d2");
 ```
 
 ```python
-# Coming Soon!
+import basistheory
+from basistheory.api import tenants_api
+
+with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_N88mVGsp3sCXkykyN2EFED")) as api_client:
+    tenant_client = tenants_api.TenantsApi(api_client)
+
+    tenant_client.delete_member(member_id="5540a02f-99e7-46de-8f41-1b3cf7b2a3d2")
 ```
 
 <span class="http-method delete">
@@ -219,7 +231,16 @@ var createdInvitation = await client.CreateInvitationAsync(new TenantInvitation
 ```
 
 ```python
-# Coming Soon!
+import basistheory
+from basistheory.api import tenants_api
+from basistheory.model.create_tenant_invitation_request import CreateTenantInvitationRequest
+
+with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_N88mVGsp3sCXkykyN2EFED")) as api_client:
+    tenant_client = tenants_api.TenantsApi(api_client)
+
+    created_invitation = tenant_client.create_invitation(create_tenant_invitation_request=CreateTenantInvitationRequest(
+        email="jane@doe.com"
+    ))
 ```
 
 > Response
@@ -288,7 +309,13 @@ var resentInvitation = await client.ResendInvitationAsync("fb32ea26-2185-4ad2-a7
 ```
 
 ```python
-# Coming Soon!
+import basistheory
+from basistheory.api import tenants_api
+
+with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_N88mVGsp3sCXkykyN2EFED")) as api_client:
+    tenant_client = tenants_api.TenantsApi(api_client)
+
+    resent_invitation = tenant_client.resend_invitation(invitation_id="dfd0319e-e978-4d2a-9109-f8a9048088bd")
 ```
 
 > Response
@@ -350,7 +377,13 @@ var invitations = await client.GetInvitationsAsync();
 ```
 
 ```python
-# Coming Soon!
+import basistheory
+from basistheory.api import tenants_api
+
+with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_N88mVGsp3sCXkykyN2EFED")) as api_client:
+    tenant_client = tenants_api.TenantsApi(api_client)
+
+    invitations = tenant_client.get_invitations()
 ```
 
 > Response
@@ -427,7 +460,13 @@ var invitation = await client.GetInvitationByIdAsync("fb32ea26-2185-4ad2-a7bf-2f
 ```
 
 ```python
-# Coming Soon!
+import basistheory
+from basistheory.api import tenants_api
+
+with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_N88mVGsp3sCXkykyN2EFED")) as api_client:
+    tenant_client = tenants_api.TenantsApi(api_client)
+
+    invitation = tenant_client.get_invitation_by_id(invitation_id="fb32ea26-2185-4ad2-a7bf-2fe69c00ae13")
 ```
 
 > Response
@@ -494,7 +533,13 @@ await client.DeleteInvitationAsync("fb32ea26-2185-4ad2-a7bf-2fe69c00ae13");
 ```
 
 ```python
-# Coming Soon!
+import basistheory
+from basistheory.api import tenants_api
+
+with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_N88mVGsp3sCXkykyN2EFED")) as api_client:
+    tenant_client = tenants_api.TenantsApi(api_client)
+
+    tenant_client.delete_invitation(invitation_id="fb32ea26-2185-4ad2-a7bf-2fe69c00ae13")
 ```
 
 <span class="http-method delete">

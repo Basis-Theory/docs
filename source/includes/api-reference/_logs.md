@@ -40,7 +40,13 @@ var logs = await client.GetAsync();
 ```
 
 ```python
-# Coming Soon!
+import basistheory
+from basistheory.api import logs_api
+
+with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_N88mVGsp3sCXkykyN2EFED")) as api_client:
+    logs_client = logs_api.LogsApi(api_client)
+
+    logs = logs_client.get()
 ```
 
 > Response

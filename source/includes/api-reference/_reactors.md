@@ -68,7 +68,23 @@ var reactor = await client.CreateAsync(new Reactor {
 ```
 
 ```python
-# Coming Soon!
+import basistheory
+from basistheory.api import reactors_api
+from basistheory.model.create_reactor_request import CreateReactorRequest
+from basistheory.model.reactor_formula import ReactorFormula
+
+with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_N88mVGsp3sCXkykyN2EFED")) as api_client:
+    reactors_client = reactors_api.ReactorsApi(api_client)
+
+    reactor = reactors_client.create(create_reactor_request=CreateReactorRequest(
+        name="My Reactor",
+        configuration={
+            "SERVICE_API_KEY": "key_abcd134"
+        },
+        formula=ReactorFormula(
+            id="17069df1-80f4-439e-86a7-4121863e4678"
+        )
+    ))
 ```
 
 > Response
@@ -141,7 +157,13 @@ var reactors = await client.GetAsync();
 ```
 
 ```python
-# Coming Soon!
+import basistheory
+from basistheory.api import reactors_api
+
+with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_N88mVGsp3sCXkykyN2EFED")) as api_client:
+    reactors_client = reactors_api.ReactorsApi(api_client)
+
+    reactors = reactors_client.get()
 ```
 
 > Response
@@ -220,7 +242,13 @@ var reactor = await client.GetByIdAsync("5b493235-6917-4307-906a-2cd6f1a90b13");
 ```
 
 ```python
-# Coming Soon!
+import basistheory
+from basistheory.api import reactors_api
+
+with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_N88mVGsp3sCXkykyN2EFED")) as api_client:
+    reactors_client = reactors_api.ReactorsApi(api_client)
+
+    reactor = reactors_client.get_by_id("5b493235-6917-4307-906a-2cd6f1a90b13")
 ```
 
 > Response
@@ -311,7 +339,20 @@ var reactor = await client.UpdateAsync("5b493235-6917-4307-906a-2cd6f1a90b13",
 ```
 
 ```python
-# Coming Soon!
+import basistheory
+from basistheory.api import reactors_api
+from basistheory.model.update_reactor_request import UpdateReactorRequest
+from basistheory.model.reactor_formula import ReactorFormula
+
+with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_N88mVGsp3sCXkykyN2EFED")) as api_client:
+    reactors_client = reactors_api.ReactorsApi(api_client)
+
+    reactor = reactors_client.update("5b493235-6917-4307-906a-2cd6f1a90b13", update_reactor_request=UpdateReactorRequest(
+        name="My Reactor",
+        configuration={
+            "SERVICE_API_KEY": "key_abcd134"
+        }
+    ))
 ```
 
 > Response
@@ -390,7 +431,13 @@ await client.DeleteAsync("fb124bba-f90d-45f0-9a59-5edca27b3b4a");
 ```
 
 ```python
-# Coming Soon!
+import basistheory
+from basistheory.api import reactors_api
+
+with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_N88mVGsp3sCXkykyN2EFED")) as api_client:
+    reactors_client = reactors_api.ReactorsApi(api_client)
+
+    reactors_client.delete("fb124bba-f90d-45f0-9a59-5edca27b3b4a")
 ```
 
 <span class="http-method delete">
@@ -461,7 +508,19 @@ var reactResponse = await client.ReactAsync("5b493235-6917-4307-906a-2cd6f1a90b1
 ```
 
 ```python
-# Coming Soon!
+import basistheory
+from basistheory.api import reactors_api
+from basistheory.model.react_request import ReactRequest
+
+with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_N88mVGsp3sCXkykyN2EFED")) as api_client:
+    reactors_client = reactors_api.ReactorsApi(api_client)
+
+    react_response = reactors_client.react("5b493235-6917-4307-906a-2cd6f1a90b13", react_request=ReactRequest(
+        args={
+          "card":"{{fe7c0a36-eb45-4f68-b0a0-791de28b29e4}}",
+          "customer_id": "myCustomerId1234"
+        }
+    ))
 ```
 
 <span class="http-method post">
