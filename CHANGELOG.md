@@ -1,3 +1,10 @@
+# [1.31.0](https://github.com/Basis-Theory/docs/compare/v1.30.0...v1.31.0) (2022-04-07)
+
+
+### Features
+
+* add python sdk code examples for all clients ([#168](https://github.com/Basis-Theory/docs/issues/168)) ([bf3ccb2](https://github.com/Basis-Theory/docs/commit/bf3ccb23a91e2100ed5b4d2161f99d20bb2ffa20))
+
 # [1.30.0](https://github.com/Basis-Theory/docs/compare/v1.29.0...v1.30.0) (2022-04-06)
 
 
