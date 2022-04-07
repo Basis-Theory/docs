@@ -410,10 +410,8 @@ const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
 const application = await bt.applications.update('fb124bba-f90d-45f0-9a59-5edca27b3b4a', {
   name: 'My Example App',
   permissions: [
-    'token:general:create',
-    'token:general:read:low',
-    'token:pci:create',
-    'token:pci:read:low',
+    'application:create',
+    'application:read'
   ],
 });
 ```
@@ -427,10 +425,8 @@ var application = await client.UpdateAsync("fb124bba-f90d-45f0-9a59-5edca27b3b4a
   new Application {
     Name = "My Example App",
     Permissions = new List<string> {
-      "token:general:create",
-      "token:general:read:low",
-      "token:pci:create",
-      "token:pci:read:low"
+      "application:create",
+      "application:read"
     }
   }
 );
@@ -447,10 +443,8 @@ with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_
     application = application_client.update("fb124bba-f90d-45f0-9a59-5edca27b3b4a", update_application_request=UpdateApplicationRequest(
         name="My Example App",
         permissions=[
-            "token:general:create",
-            "token:general:read:low",
-            "token:pci:create",
-            "token:pci:read:low"
+          "application:create",
+          "application:read"
         ]
     ))
 ```

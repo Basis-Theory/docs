@@ -163,7 +163,7 @@ from basistheory.api import reactors_api
 with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_N88mVGsp3sCXkykyN2EFED")) as api_client:
     reactors_client = reactors_api.ReactorsApi(api_client)
 
-    reactor = reactors_client.get()
+    reactors = reactors_client.get()
 ```
 
 > Response

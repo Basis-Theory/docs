@@ -170,7 +170,7 @@ from basistheory.api import tenants_api
 with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_N88mVGsp3sCXkykyN2EFED")) as api_client:
     tenant_client = tenants_api.TenantsApi(api_client)
 
-    tenant_members = tenant_client.delete_member(member_id="5540a02f-99e7-46de-8f41-1b3cf7b2a3d2")
+    tenant_client.delete_member(member_id="5540a02f-99e7-46de-8f41-1b3cf7b2a3d2")
 ```
 
 <span class="http-method delete">
@@ -383,7 +383,7 @@ from basistheory.api import tenants_api
 with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_N88mVGsp3sCXkykyN2EFED")) as api_client:
     tenant_client = tenants_api.TenantsApi(api_client)
 
-    resent_invitation = tenant_client.get_invitations()
+    invitations = tenant_client.get_invitations()
 ```
 
 > Response
@@ -539,7 +539,7 @@ from basistheory.api import tenants_api
 with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_N88mVGsp3sCXkykyN2EFED")) as api_client:
     tenant_client = tenants_api.TenantsApi(api_client)
 
-    invitation = tenant_client.delete_invitation(invitation_id="fb32ea26-2185-4ad2-a7bf-2fe69c00ae13")
+    tenant_client.delete_invitation(invitation_id="fb32ea26-2185-4ad2-a7bf-2fe69c00ae13")
 ```
 
 <span class="http-method delete">
