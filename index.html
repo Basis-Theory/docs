@@ -335,7 +335,7 @@
               <a href="#" data-language-name="shell">cURL</a>
               <a href="#" data-language-name="javascript">Node.js</a>
               <a href="#" data-language-name="csharp">.NET</a>
-              <a href="#" data-language-name="python">Python <span class="beta beta-lang-selector">BETA</span></a>
+              <a href="#" data-language-name="python">Python</a>
         </div>
 
         <div class="search">
@@ -796,7 +796,7 @@
                   <a href="#" data-language-name="shell">cURL</a>
                   <a href="#" data-language-name="javascript">Node.js</a>
                   <a href="#" data-language-name="csharp">.NET</a>
-                  <a href="#" data-language-name="python">Python <span class="beta beta-lang-selector">BETA</span></a>
+                  <a href="#" data-language-name="python">Python</a>
             </div>
         </div>
       <!-- End Code Sidebar -->
@@ -957,6 +957,13 @@ Is your project using React? We got you covered! Basis Theory's React package en
   <span class="n">Page</span> <span class="p">=</span> <span class="m">2</span><span class="p">,</span>
   <span class="n">PageSize</span> <span class="p">=</span> <span class="m">10</span>
 <span class="p">});</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">basistheory</span>
+<span class="kn">from</span> <span class="nn">basistheory.api</span> <span class="kn">import</span> <span class="n">applications_api</span>
+
+<span class="k">with</span> <span class="n">basistheory</span><span class="p">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="n">configuration</span><span class="o">=</span><span class="n">basistheory</span><span class="p">.</span><span class="n">Configuration</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">))</span> <span class="k">as</span> <span class="n">api_client</span><span class="p">:</span>
+    <span class="n">applications_client</span> <span class="o">=</span> <span class="n">applications_api</span><span class="p">.</span><span class="n">ApplicationsApi</span><span class="p">(</span><span class="n">api_client</span><span class="p">)</span>
+
+    <span class="n">applications</span> <span class="o">=</span> <span class="n">applications_client</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="n">page</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 </code></pre></div>
 <blockquote>
 <p>Response</p>
@@ -1351,8 +1358,24 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
     <span class="s">"token:pci:read:low"</span>
   <span class="p">}</span>
 <span class="p">});</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Coming Soon!
-</span></code></pre></div>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">basistheory</span>
+<span class="kn">from</span> <span class="nn">basistheory.api</span> <span class="kn">import</span> <span class="n">applications_api</span>
+<span class="kn">from</span> <span class="nn">basistheory.model.create_application_request</span> <span class="kn">import</span> <span class="n">CreateApplicationRequest</span>
+
+<span class="k">with</span> <span class="n">basistheory</span><span class="p">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="n">configuration</span><span class="o">=</span><span class="n">basistheory</span><span class="p">.</span><span class="n">Configuration</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">))</span> <span class="k">as</span> <span class="n">api_client</span><span class="p">:</span>
+    <span class="n">application_client</span> <span class="o">=</span> <span class="n">applications_api</span><span class="p">.</span><span class="n">ApplicationsApi</span><span class="p">(</span><span class="n">api_client</span><span class="p">)</span>
+
+    <span class="n">application</span> <span class="o">=</span> <span class="n">application_client</span><span class="p">.</span><span class="n">create</span><span class="p">(</span><span class="n">create_application_request</span><span class="o">=</span><span class="n">CreateApplicationRequest</span><span class="p">(</span>
+        <span class="n">name</span><span class="o">=</span><span class="s">"My Example App"</span><span class="p">,</span>
+        <span class="nb">type</span><span class="o">=</span><span class="s">"server_to_server"</span><span class="p">,</span>
+        <span class="n">permissions</span><span class="o">=</span><span class="p">[</span>
+            <span class="s">"token:general:create"</span><span class="p">,</span>
+            <span class="s">"token:general:read:low"</span><span class="p">,</span>
+            <span class="s">"token:pci:create"</span><span class="p">,</span>
+            <span class="s">"token:pci:read:low"</span>
+        <span class="p">]</span>
+    <span class="p">))</span>
+</code></pre></div>
 <blockquote>
 <p>Response</p>
 </blockquote>
@@ -1432,8 +1455,14 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
 <span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">ApplicationClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
 
 <span class="kt">var</span> <span class="n">applications</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">GetAsync</span><span class="p">();</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Coming Soon!
-</span></code></pre></div>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">basistheory</span>
+<span class="kn">from</span> <span class="nn">basistheory.api</span> <span class="kn">import</span> <span class="n">applications_api</span>
+
+<span class="k">with</span> <span class="n">basistheory</span><span class="p">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="n">configuration</span><span class="o">=</span><span class="n">basistheory</span><span class="p">.</span><span class="n">Configuration</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">))</span> <span class="k">as</span> <span class="n">api_client</span><span class="p">:</span>
+    <span class="n">application_client</span> <span class="o">=</span> <span class="n">applications_api</span><span class="p">.</span><span class="n">ApplicationsApi</span><span class="p">(</span><span class="n">api_client</span><span class="p">)</span>
+
+    <span class="n">applications</span> <span class="o">=</span> <span class="n">application_client</span><span class="p">.</span><span class="n">get</span><span class="p">()</span>
+</code></pre></div>
 <blockquote>
 <p>Response</p>
 </blockquote>
@@ -1507,8 +1536,14 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
 <span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">ApplicationClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
 
 <span class="kt">var</span> <span class="n">application</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">GetByIdAsync</span><span class="p">(</span><span class="s">"fe1f9ba4-474e-44b9-b949-110cdba9d662"</span><span class="p">);</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Coming Soon!
-</span></code></pre></div>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">basistheory</span>
+<span class="kn">from</span> <span class="nn">basistheory.api</span> <span class="kn">import</span> <span class="n">applications_api</span>
+
+<span class="k">with</span> <span class="n">basistheory</span><span class="p">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="n">configuration</span><span class="o">=</span><span class="n">basistheory</span><span class="p">.</span><span class="n">Configuration</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">))</span> <span class="k">as</span> <span class="n">api_client</span><span class="p">:</span>
+    <span class="n">application_client</span> <span class="o">=</span> <span class="n">applications_api</span><span class="p">.</span><span class="n">ApplicationsApi</span><span class="p">(</span><span class="n">api_client</span><span class="p">)</span>
+
+    <span class="n">application</span> <span class="o">=</span> <span class="n">application_client</span><span class="p">.</span><span class="n">get_by_id</span><span class="p">(</span><span class="s">"fe1f9ba4-474e-44b9-b949-110cdba9d662"</span><span class="p">)</span>
+</code></pre></div>
 <blockquote>
 <p>Response</p>
 </blockquote>
@@ -1573,8 +1608,14 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
 <span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">ApplicationClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
 
 <span class="kt">var</span> <span class="n">application</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">GetByKeyAsync</span><span class="p">();</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Coming Soon!
-</span></code></pre></div>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">basistheory</span>
+<span class="kn">from</span> <span class="nn">basistheory.api</span> <span class="kn">import</span> <span class="n">applications_api</span>
+
+<span class="k">with</span> <span class="n">basistheory</span><span class="p">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="n">configuration</span><span class="o">=</span><span class="n">basistheory</span><span class="p">.</span><span class="n">Configuration</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">))</span> <span class="k">as</span> <span class="n">api_client</span><span class="p">:</span>
+    <span class="n">application_client</span> <span class="o">=</span> <span class="n">applications_api</span><span class="p">.</span><span class="n">ApplicationsApi</span><span class="p">(</span><span class="n">api_client</span><span class="p">)</span>
+
+    <span class="n">application</span> <span class="o">=</span> <span class="n">application_client</span><span class="p">.</span><span class="n">get_by_key</span><span class="p">()</span>
+</code></pre></div>
 <blockquote>
 <p>Response</p>
 </blockquote>
@@ -1627,10 +1668,8 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
 <span class="kd">const</span> <span class="nx">application</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">bt</span><span class="p">.</span><span class="nx">applications</span><span class="p">.</span><span class="nx">update</span><span class="p">(</span><span class="dl">'</span><span class="s1">fb124bba-f90d-45f0-9a59-5edca27b3b4a</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">My Example App</span><span class="dl">'</span><span class="p">,</span>
   <span class="na">permissions</span><span class="p">:</span> <span class="p">[</span>
-    <span class="dl">'</span><span class="s1">token:general:create</span><span class="dl">'</span><span class="p">,</span>
-    <span class="dl">'</span><span class="s1">token:general:read:low</span><span class="dl">'</span><span class="p">,</span>
-    <span class="dl">'</span><span class="s1">token:pci:create</span><span class="dl">'</span><span class="p">,</span>
-    <span class="dl">'</span><span class="s1">token:pci:read:low</span><span class="dl">'</span><span class="p">,</span>
+    <span class="dl">'</span><span class="s1">application:create</span><span class="dl">'</span><span class="p">,</span>
+    <span class="dl">'</span><span class="s1">application:read</span><span class="dl">'</span>
   <span class="p">],</span>
 <span class="p">});</span>
 </code></pre></div><div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="k">using</span> <span class="nn">BasisTheory.net.Applications</span><span class="p">;</span>
@@ -1641,15 +1680,26 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
   <span class="k">new</span> <span class="n">Application</span> <span class="p">{</span>
     <span class="n">Name</span> <span class="p">=</span> <span class="s">"My Example App"</span><span class="p">,</span>
     <span class="n">Permissions</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="p">{</span>
-      <span class="s">"token:general:create"</span><span class="p">,</span>
-      <span class="s">"token:general:read:low"</span><span class="p">,</span>
-      <span class="s">"token:pci:create"</span><span class="p">,</span>
-      <span class="s">"token:pci:read:low"</span>
+      <span class="s">"application:create"</span><span class="p">,</span>
+      <span class="s">"application:read"</span>
     <span class="p">}</span>
   <span class="p">}</span>
 <span class="p">);</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Coming Soon!
-</span></code></pre></div>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">basistheory</span>
+<span class="kn">from</span> <span class="nn">basistheory.api</span> <span class="kn">import</span> <span class="n">applications_api</span>
+<span class="kn">from</span> <span class="nn">basistheory.model.update_application_request</span> <span class="kn">import</span> <span class="n">UpdateApplicationRequest</span>
+
+<span class="k">with</span> <span class="n">basistheory</span><span class="p">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="n">configuration</span><span class="o">=</span><span class="n">basistheory</span><span class="p">.</span><span class="n">Configuration</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">))</span> <span class="k">as</span> <span class="n">api_client</span><span class="p">:</span>
+    <span class="n">application_client</span> <span class="o">=</span> <span class="n">applications_api</span><span class="p">.</span><span class="n">ApplicationsApi</span><span class="p">(</span><span class="n">api_client</span><span class="p">)</span>
+
+    <span class="n">application</span> <span class="o">=</span> <span class="n">application_client</span><span class="p">.</span><span class="n">update</span><span class="p">(</span><span class="s">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span> <span class="n">update_application_request</span><span class="o">=</span><span class="n">UpdateApplicationRequest</span><span class="p">(</span>
+        <span class="n">name</span><span class="o">=</span><span class="s">"My Example App"</span><span class="p">,</span>
+        <span class="n">permissions</span><span class="o">=</span><span class="p">[</span>
+          <span class="s">"application:create"</span><span class="p">,</span>
+          <span class="s">"application:read"</span>
+        <span class="p">]</span>
+    <span class="p">))</span>
+</code></pre></div>
 <blockquote>
 <p>Response</p>
 </blockquote>
@@ -1740,8 +1790,14 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
 <span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">ApplicationClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
 
 <span class="kt">var</span> <span class="n">application</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">RegenerateKeyAsync</span><span class="p">(</span><span class="s">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">);</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Coming Soon!
-</span></code></pre></div>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">basistheory</span>
+<span class="kn">from</span> <span class="nn">basistheory.api</span> <span class="kn">import</span> <span class="n">applications_api</span>
+
+<span class="k">with</span> <span class="n">basistheory</span><span class="p">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="n">configuration</span><span class="o">=</span><span class="n">basistheory</span><span class="p">.</span><span class="n">Configuration</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">))</span> <span class="k">as</span> <span class="n">api_client</span><span class="p">:</span>
+    <span class="n">application_client</span> <span class="o">=</span> <span class="n">applications_api</span><span class="p">.</span><span class="n">ApplicationsApi</span><span class="p">(</span><span class="n">api_client</span><span class="p">)</span>
+
+    <span class="n">application</span> <span class="o">=</span> <span class="n">application_client</span><span class="p">.</span><span class="n">regenerate_key</span><span class="p">(</span><span class="s">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">)</span>
+</code></pre></div>
 <blockquote>
 <p>Response</p>
 </blockquote>
@@ -1814,8 +1870,14 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
 <span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">ApplicationClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
 
 <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">DeleteAsync</span><span class="p">(</span><span class="s">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">);</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Coming Soon!
-</span></code></pre></div>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">basistheory</span>
+<span class="kn">from</span> <span class="nn">basistheory.api</span> <span class="kn">import</span> <span class="n">applications_api</span>
+
+<span class="k">with</span> <span class="n">basistheory</span><span class="p">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="n">configuration</span><span class="o">=</span><span class="n">basistheory</span><span class="p">.</span><span class="n">Configuration</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">))</span> <span class="k">as</span> <span class="n">api_client</span><span class="p">:</span>
+    <span class="n">application_client</span> <span class="o">=</span> <span class="n">applications_api</span><span class="p">.</span><span class="n">ApplicationsApi</span><span class="p">(</span><span class="n">api_client</span><span class="p">)</span>
+
+    <span class="n">application_client</span><span class="p">.</span><span class="n">delete</span><span class="p">(</span><span class="s">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">)</span>
+</code></pre></div>
 <p><span class="http-method delete">
   <span class="box-method">DELETE</span>
   <code>https://api.basistheory.com/applications/{id}</code>
@@ -1971,7 +2033,9 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
     <span class="p">{</span> <span class="s">"nonSensitiveField"</span><span class="p">,</span> <span class="s">"Non-Sensitive Value"</span> <span class="p">}</span>
   <span class="p">}</span>
 <span class="p">});</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Coming Soon!
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Atomic methods are deprecated and as such were not added to the Python SDK.
+# For adding banks and cards to our platform, use the 'Tokens' endpoints.
+# For further information, check the Deprecations section.
 </span></code></pre></div>
 <blockquote>
 <p>Response</p>
@@ -2045,7 +2109,9 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
 <span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">AtomicBankClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
 
 <span class="kt">var</span> <span class="n">atomicBanks</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">GetAsync</span><span class="p">();</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Coming Soon!
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Atomic methods are deprecated and as such were not added to the Python SDK.
+# For adding banks and cards to our platform, use the 'Tokens' endpoints.
+# For further information, check the Deprecations section.
 </span></code></pre></div>
 <blockquote>
 <p>Response</p>
@@ -2104,7 +2170,9 @@ Returns <a href="#errors">an error</a> if Atomic Banks could not be retrieved.</
 <span class="kd">const</span> <span class="nx">bt</span> <span class="o">=</span> <span class="k">await</span> <span class="k">new</span> <span class="nx">BasisTheory</span><span class="p">().</span><span class="nx">init</span><span class="p">(</span><span class="dl">'</span><span class="s1">key_N88mVGsp3sCXkykyN2EFED</span><span class="dl">'</span><span class="p">);</span>
 
 <span class="kd">const</span> <span class="nx">atomicBank</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">bt</span><span class="p">.</span><span class="nx">atomicBanks</span><span class="p">.</span><span class="nx">retrieve</span><span class="p">(</span><span class="dl">'</span><span class="s1">1485efb9-6b1f-4248-a5d1-cf9b3907164c</span><span class="dl">'</span><span class="p">);</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Coming Soon!
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Atomic methods are deprecated and as such were not added to the Python SDK.
+# For adding banks and cards to our platform, use the 'Tokens' endpoints.
+# For further information, check the Deprecations section.
 </span></code></pre></div>
 <blockquote>
 <p>Response</p>
@@ -2192,7 +2260,9 @@ Returns <a href="#errors">an error</a> if the Atomic Bank could not be retrieved
     <span class="n">AccountNumber</span> <span class="p">=</span> <span class="s">"1234567890"</span>
   <span class="p">},</span>
 <span class="p">});</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Coming Soon!
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Atomic methods are deprecated and as such were not added to the Python SDK.
+# For adding banks and cards to our platform, use the 'Tokens' endpoints.
+# For further information, check the Deprecations section.
 </span></code></pre></div>
 <blockquote>
 <p>Response</p>
@@ -2262,7 +2332,9 @@ Returns <a href="#errors">an error</a> if the Atomic Bank could not be retrieved
 <span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">AtomicBankClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
 
 <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">DeleteAsync</span><span class="p">(</span><span class="s">"1485efb9-6b1f-4248-a5d1-cf9b3907164c"</span><span class="p">);</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Coming Soon!
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Atomic methods are deprecated and as such were not added to the Python SDK.
+# For adding banks and cards to our platform, use the 'Tokens' endpoints.
+# For further information, check the Deprecations section.
 </span></code></pre></div>
 <p><span class="http-method delete">
   <span class="box-method">DELETE</span>
@@ -2321,7 +2393,9 @@ Returns <a href="#errors">an error</a> if the Atomic Bank could not be retrieved
   <span class="k">new</span> <span class="n">BankGetByIdRequest</span> <span class="p">{</span>
     <span class="n">Decrypt</span> <span class="p">=</span> <span class="k">true</span>
   <span class="p">});</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Coming Soon!
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Atomic methods are deprecated and as such were not added to the Python SDK.
+# For adding banks and cards to our platform, use the 'Tokens' endpoints.
+# For further information, check the Deprecations section.
 </span></code></pre></div>
 <blockquote>
 <p>Response</p>
@@ -2420,7 +2494,9 @@ Returns <a href="#errors">an error</a> if the Atomic Bank could not be retrieved
       <span class="p">{</span> <span class="s">"nonSensitiveField"</span><span class="p">,</span>  <span class="s">"Non-Sensitive Value"</span> <span class="p">}</span>
     <span class="p">}</span>
   <span class="p">});</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Coming Soon!
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Atomic methods are deprecated and as such were not added to the Python SDK.
+# For adding banks and cards to our platform, use the 'Tokens' endpoints.
+# For further information, check the Deprecations section.
 </span></code></pre></div>
 <p><span class="http-method post">
   <span class="box-method">POST</span>
@@ -2667,7 +2743,9 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
     <span class="p">{</span> <span class="s">"nonSensitiveField"</span><span class="p">,</span> <span class="s">"Non-Sensitive Value"</span> <span class="p">}</span>
   <span class="p">}</span>
 <span class="p">});</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Coming Soon!
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Atomic methods are deprecated and as such were not added to the Python SDK.
+# For adding banks and cards to our platform, use the 'Tokens' endpoints.
+# For further information, check the Deprecations section.
 </span></code></pre></div>
 <blockquote>
 <p>Response</p>
@@ -2744,7 +2822,9 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
 <span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">AtomicCardClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
 
 <span class="kt">var</span> <span class="n">atomicCards</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">GetAsync</span><span class="p">();</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Coming Soon!
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Atomic methods are deprecated and as such were not added to the Python SDK.
+# For adding banks and cards to our platform, use the 'Tokens' endpoints.
+# For further information, check the Deprecations section.
 </span></code></pre></div>
 <blockquote>
 <p>Response</p>
@@ -2801,7 +2881,9 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
 <span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">AtomicCardClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
 
 <span class="kt">var</span> <span class="n">atomicCard</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">GetByIdAsync</span><span class="p">(</span><span class="s">"c1e565009-1984-4638-8fca-dce8a82cc2af"</span><span class="p">);</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Coming Soon!
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Atomic methods are deprecated and as such were not added to the Python SDK.
+# For adding banks and cards to our platform, use the 'Tokens' endpoints.
+# For further information, check the Deprecations section.
 </span></code></pre></div>
 <blockquote>
 <p>Response</p>
@@ -2893,7 +2975,9 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
     <span class="n">CardVerificationCode</span> <span class="p">=</span> <span class="s">"123"</span>
   <span class="p">}</span>
 <span class="p">});</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Coming Soon!
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Atomic methods are deprecated and as such were not added to the Python SDK.
+# For adding banks and cards to our platform, use the 'Tokens' endpoints.
+# For further information, check the Deprecations section.
 </span></code></pre></div>
 <blockquote>
 <p>Response</p>
@@ -2964,7 +3048,9 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
 <span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">AtomicCardClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
 
 <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">DeleteAsync</span><span class="p">(</span><span class="s">"c1e565009-1984-4638-8fca-dce8a82cc2af"</span><span class="p">);</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Coming Soon!
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Atomic methods are deprecated and as such were not added to the Python SDK.
+# For adding banks and cards to our platform, use the 'Tokens' endpoints.
+# For further information, check the Deprecations section.
 </span></code></pre></div>
 <p><span class="http-method delete">
   <span class="box-method">DELETE</span>
@@ -3048,7 +3134,9 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
       <span class="p">{</span> <span class="s">"nonSensitiveField"</span><span class="p">,</span>  <span class="s">"Non-Sensitive Value"</span> <span class="p">}</span>
     <span class="p">}</span>
   <span class="p">});</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Coming Soon!
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Atomic methods are deprecated and as such were not added to the Python SDK.
+# For adding banks and cards to our platform, use the 'Tokens' endpoints.
+# For further information, check the Deprecations section.
 </span></code></pre></div>
 <p><span class="http-method post">
   <span class="box-method">POST</span>
@@ -3267,8 +3355,14 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
 <span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">LogClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
 
 <span class="kt">var</span> <span class="n">logs</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">GetAsync</span><span class="p">();</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Coming Soon!
-</span></code></pre></div>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">basistheory</span>
+<span class="kn">from</span> <span class="nn">basistheory.api</span> <span class="kn">import</span> <span class="n">logs_api</span>
+
+<span class="k">with</span> <span class="n">basistheory</span><span class="p">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="n">configuration</span><span class="o">=</span><span class="n">basistheory</span><span class="p">.</span><span class="n">Configuration</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">))</span> <span class="k">as</span> <span class="n">api_client</span><span class="p">:</span>
+    <span class="n">logs_client</span> <span class="o">=</span> <span class="n">logs_api</span><span class="p">.</span><span class="n">LogsApi</span><span class="p">(</span><span class="n">api_client</span><span class="p">)</span>
+
+    <span class="n">logs</span> <span class="o">=</span> <span class="n">logs_client</span><span class="p">.</span><span class="n">get</span><span class="p">()</span>
+</code></pre></div>
 <blockquote>
 <p>Response</p>
 </blockquote>
@@ -3511,8 +3605,14 @@ or <a href="#applications-update-application">update an Application</a>.</p>
 <span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">PermissionClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
 
 <span class="kt">var</span> <span class="n">permissions</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">GetAsync</span><span class="p">();</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Coming Soon!
-</span></code></pre></div>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">basistheory</span>
+<span class="kn">from</span> <span class="nn">basistheory.api</span> <span class="kn">import</span> <span class="n">permissions_api</span>
+
+<span class="k">with</span> <span class="n">basistheory</span><span class="p">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="n">configuration</span><span class="o">=</span><span class="n">basistheory</span><span class="p">.</span><span class="n">Configuration</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">))</span> <span class="k">as</span> <span class="n">api_client</span><span class="p">:</span>
+    <span class="n">permissions_client</span> <span class="o">=</span> <span class="n">permissions_api</span><span class="p">.</span><span class="n">PermissionsApi</span><span class="p">(</span><span class="n">api_client</span><span class="p">)</span>
+
+    <span class="n">permissions</span> <span class="o">=</span> <span class="n">permissions_client</span><span class="p">.</span><span class="n">get</span><span class="p">()</span>
+</code></pre></div>
 <blockquote>
 <p>Response</p>
 </blockquote>
@@ -4039,8 +4139,53 @@ For more information, see <a href="#tokenize">Tokenize</a>.</p>
     <span class="p">}</span>
   <span class="p">}</span>
 <span class="p">});</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Coming Soon!
-</span></code></pre></div>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">basistheory</span>
+<span class="kn">from</span> <span class="nn">basistheory.api</span> <span class="kn">import</span> <span class="n">reactor_formulas_api</span>
+<span class="kn">from</span> <span class="nn">basistheory.model.create_reactor_formula_request</span> <span class="kn">import</span> <span class="n">CreateReactorFormulaRequest</span>
+<span class="kn">from</span> <span class="nn">basistheory.model.reactor_formula_configuration</span> <span class="kn">import</span> <span class="n">ReactorFormulaConfiguration</span>
+<span class="kn">from</span> <span class="nn">basistheory.model.reactor_formula_request_parameter</span> <span class="kn">import</span> <span class="n">ReactorFormulaRequestParameter</span>
+
+<span class="k">with</span> <span class="n">basistheory</span><span class="p">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="n">configuration</span><span class="o">=</span><span class="n">basistheory</span><span class="p">.</span><span class="n">Configuration</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">))</span> <span class="k">as</span> <span class="n">api_client</span><span class="p">:</span>
+    <span class="n">reactor_formulas_client</span> <span class="o">=</span> <span class="n">reactor_formulas_api</span><span class="p">.</span><span class="n">ReactorFormulasApi</span><span class="p">(</span>
+        <span class="n">api_client</span><span class="p">)</span>
+
+    <span class="n">reactor_formula</span> <span class="o">=</span> <span class="n">reactor_formulas_client</span><span class="p">.</span><span class="n">create</span><span class="p">(</span><span class="n">create_reactor_formula_request</span><span class="o">=</span><span class="n">CreateReactorFormulaRequest</span><span class="p">(</span>
+        <span class="n">name</span><span class="o">=</span><span class="s">"My Private Reactor"</span><span class="p">,</span>
+        <span class="n">description</span><span class="o">=</span><span class="s">"Securely exchange token for another token"</span><span class="p">,</span>
+        <span class="nb">type</span><span class="o">=</span><span class="s">"private"</span><span class="p">,</span>
+        <span class="n">icon</span><span class="o">=</span><span class="s">"data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg=="</span><span class="p">,</span>
+        <span class="n">code</span><span class="o">=</span><span class="s">" </span><span class="se">\
+</span><span class="s">            module.exports = async function (req) { </span><span class="se">\
+</span><span class="s">                // Do something with `req.configuration.SERVICE_API_KEY`"</span> \
+
+                <span class="s">"return { </span><span class="se">\
+</span><span class="s">                    raw: { </span><span class="se">\
+</span><span class="s">                        foo: 'bar' </span><span class="se">\
+</span><span class="s">                    } </span><span class="se">\
+</span><span class="s">                }; </span><span class="se">\
+</span><span class="s">            };"</span><span class="p">,</span>
+        <span class="n">configuration</span><span class="o">=</span><span class="p">[</span>
+            <span class="n">ReactorFormulaConfiguration</span><span class="p">(</span>
+                <span class="n">name</span><span class="o">=</span><span class="s">"SERVICE_API_KEY"</span><span class="p">,</span>
+                <span class="n">description</span><span class="o">=</span><span class="s">"Configuration description"</span><span class="p">,</span>
+                <span class="nb">type</span><span class="o">=</span><span class="s">"string"</span>
+            <span class="p">)</span>
+        <span class="p">],</span>
+        <span class="n">request_parameters</span><span class="o">=</span><span class="p">[</span>
+            <span class="n">ReactorFormulaRequestParameter</span><span class="p">(</span>
+                <span class="n">name</span><span class="o">=</span><span class="s">"request_parameter_1"</span><span class="p">,</span>
+                <span class="n">description</span><span class="o">=</span><span class="s">"Request parameter description"</span><span class="p">,</span>
+                <span class="nb">type</span><span class="o">=</span><span class="s">"string"</span>
+            <span class="p">),</span>
+            <span class="n">ReactorFormulaRequestParameter</span><span class="p">(</span>
+                <span class="n">name</span><span class="o">=</span><span class="s">"request_parameter_2"</span><span class="p">,</span>
+                <span class="n">description</span><span class="o">=</span><span class="s">"Request parameter description"</span><span class="p">,</span>
+                <span class="nb">type</span><span class="o">=</span><span class="s">"boolean"</span><span class="p">,</span>
+                <span class="n">optional</span><span class="o">=</span><span class="bp">True</span>
+            <span class="p">)</span>
+        <span class="p">]</span>
+    <span class="p">))</span>
+</code></pre></div>
 <blockquote>
 <p>Response</p>
 </blockquote>
@@ -4177,8 +4322,15 @@ For more information, see <a href="#tokenize">Tokenize</a>.</p>
 <span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">ReactorFormulaClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
 
 <span class="kt">var</span> <span class="n">reactorFormulas</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">GetAsync</span><span class="p">();</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Coming Soon!
-</span></code></pre></div>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">basistheory</span>
+<span class="kn">from</span> <span class="nn">basistheory.api</span> <span class="kn">import</span> <span class="n">reactor_formulas_api</span>
+
+<span class="k">with</span> <span class="n">basistheory</span><span class="p">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="n">configuration</span><span class="o">=</span><span class="n">basistheory</span><span class="p">.</span><span class="n">Configuration</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">))</span> <span class="k">as</span> <span class="n">api_client</span><span class="p">:</span>
+    <span class="n">reactor_formulas_client</span> <span class="o">=</span> <span class="n">reactor_formulas_api</span><span class="p">.</span><span class="n">ReactorFormulasApi</span><span class="p">(</span>
+        <span class="n">api_client</span><span class="p">)</span>
+
+    <span class="n">reactor_formulas</span> <span class="o">=</span> <span class="n">reactor_formulas_client</span><span class="p">.</span><span class="n">get</span><span class="p">()</span>
+</code></pre></div>
 <blockquote>
 <p>Response</p>
 </blockquote>
@@ -4278,8 +4430,15 @@ For more information, see <a href="#tokenize">Tokenize</a>.</p>
 <span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">ReactorFormulaClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
 
 <span class="kt">var</span> <span class="n">reactorFormula</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">GetByIdAsync</span><span class="p">(</span><span class="s">"17069df1-80f4-439e-86a7-4121863e4678"</span><span class="p">);</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Coming Soon!
-</span></code></pre></div>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">basistheory</span>
+<span class="kn">from</span> <span class="nn">basistheory.api</span> <span class="kn">import</span> <span class="n">reactor_formulas_api</span>
+
+<span class="k">with</span> <span class="n">basistheory</span><span class="p">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="n">configuration</span><span class="o">=</span><span class="n">basistheory</span><span class="p">.</span><span class="n">Configuration</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">))</span> <span class="k">as</span> <span class="n">api_client</span><span class="p">:</span>
+    <span class="n">reactor_formulas_client</span> <span class="o">=</span> <span class="n">reactor_formulas_api</span><span class="p">.</span><span class="n">ReactorFormulasApi</span><span class="p">(</span>
+        <span class="n">api_client</span><span class="p">)</span>
+
+    <span class="n">reactor_formula</span> <span class="o">=</span> <span class="n">reactor_formulas_client</span><span class="p">.</span><span class="n">get_by_id</span><span class="p">(</span><span class="s">"17069df1-80f4-439e-86a7-4121863e4678"</span><span class="p">)</span>
+</code></pre></div>
 <blockquote>
 <p>Response</p>
 </blockquote>
@@ -4485,8 +4644,54 @@ For more information, see <a href="#tokenize">Tokenize</a>.</p>
     <span class="p">}</span>
   <span class="p">}</span>
 <span class="p">);</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Coming Soon!
-</span></code></pre></div>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">basistheory</span>
+<span class="kn">from</span> <span class="nn">basistheory.api</span> <span class="kn">import</span> <span class="n">reactor_formulas_api</span>
+<span class="kn">from</span> <span class="nn">basistheory.model.update_reactor_formula_request</span> <span class="kn">import</span> <span class="n">UpdateReactorFormulaRequest</span>
+<span class="kn">from</span> <span class="nn">basistheory.model.reactor_formula_configuration</span> <span class="kn">import</span> <span class="n">ReactorFormulaConfiguration</span>
+<span class="kn">from</span> <span class="nn">basistheory.model.reactor_formula_request_parameter</span> <span class="kn">import</span> <span class="n">ReactorFormulaRequestParameter</span>
+
+<span class="k">with</span> <span class="n">basistheory</span><span class="p">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="n">configuration</span><span class="o">=</span><span class="n">basistheory</span><span class="p">.</span><span class="n">Configuration</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">))</span> <span class="k">as</span> <span class="n">api_client</span><span class="p">:</span>
+    <span class="n">reactor_formulas_client</span> <span class="o">=</span> <span class="n">reactor_formulas_api</span><span class="p">.</span><span class="n">ReactorFormulasApi</span><span class="p">(</span>
+        <span class="n">api_client</span><span class="p">)</span>
+
+    <span class="n">reactor_formula</span> <span class="o">=</span> <span class="n">reactor_formulas_client</span><span class="p">.</span><span class="n">update</span><span class="p">(</span><span class="s">"17069df1-80f4-439e-86a7-4121863e4678"</span><span class="p">,</span> <span class="n">update_reactor_formula_request</span><span class="o">=</span><span class="n">UpdateReactorFormulaRequest</span><span class="p">(</span>
+        <span class="n">name</span><span class="o">=</span><span class="s">"My Private Reactor"</span><span class="p">,</span>
+        <span class="n">description</span><span class="o">=</span><span class="s">"Securely exchange token for another token"</span><span class="p">,</span>
+        <span class="nb">type</span><span class="o">=</span><span class="s">"private"</span><span class="p">,</span>
+        <span class="n">icon</span><span class="o">=</span><span class="s">"data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg=="</span><span class="p">,</span>
+        <span class="n">code</span><span class="o">=</span><span class="s">" </span><span class="se">\
+</span><span class="s">            module.exports = async function (req) { </span><span class="se">\
+</span><span class="s">                // Do something with `req.configuration.SERVICE_API_KEY`"</span> \
+
+                <span class="s">"return { </span><span class="se">\
+</span><span class="s">                    raw: { </span><span class="se">\
+</span><span class="s">                        foo: 'bar' </span><span class="se">\
+</span><span class="s">                    } </span><span class="se">\
+</span><span class="s">                }; </span><span class="se">\
+</span><span class="s">            };"</span><span class="p">,</span>
+        <span class="n">configuration</span><span class="o">=</span><span class="p">[</span>
+            <span class="n">ReactorFormulaConfiguration</span><span class="p">(</span>
+                <span class="n">name</span><span class="o">=</span><span class="s">"SERVICE_API_KEY"</span><span class="p">,</span>
+                <span class="n">description</span><span class="o">=</span><span class="s">"Configuration description"</span><span class="p">,</span>
+                <span class="nb">type</span><span class="o">=</span><span class="s">"string"</span>
+            <span class="p">)</span>
+        <span class="p">],</span>
+        <span class="n">request_parameters</span><span class="o">=</span><span class="p">[</span>
+            <span class="n">ReactorFormulaRequestParameter</span><span class="p">(</span>
+                <span class="n">name</span><span class="o">=</span><span class="s">"request_parameter_1"</span><span class="p">,</span>
+                <span class="n">description</span><span class="o">=</span><span class="s">"Request parameter description"</span><span class="p">,</span>
+                <span class="nb">type</span><span class="o">=</span><span class="s">"string"</span>
+            <span class="p">),</span>
+            <span class="n">ReactorFormulaRequestParameter</span><span class="p">(</span>
+                <span class="n">name</span><span class="o">=</span><span class="s">"request_parameter_2"</span><span class="p">,</span>
+                <span class="n">description</span><span class="o">=</span><span class="s">"Request parameter description"</span><span class="p">,</span>
+                <span class="nb">type</span><span class="o">=</span><span class="s">"boolean"</span><span class="p">,</span>
+                <span class="n">optional</span><span class="o">=</span><span class="bp">True</span>
+            <span class="p">)</span>
+        <span class="p">]</span>
+    <span class="p">))</span>
+
+</code></pre></div>
 <blockquote>
 <p>Response</p>
 </blockquote>
@@ -4640,8 +4845,12 @@ For more information, see <a href="#tokenize">Tokenize</a>.</p>
 <span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">ReactorFormulaClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
 
 <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">DeleteAsync</span><span class="p">(</span><span class="s">"17069df1-80f4-439e-86a7-4121863e4678"</span><span class="p">);</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Coming Soon!
-</span></code></pre></div>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="k">with</span> <span class="n">basistheory</span><span class="p">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="n">configuration</span><span class="o">=</span><span class="n">basistheory</span><span class="p">.</span><span class="n">Configuration</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">))</span> <span class="k">as</span> <span class="n">api_client</span><span class="p">:</span>
+    <span class="n">reactor_formulas_client</span> <span class="o">=</span> <span class="n">reactor_formulas_api</span><span class="p">.</span><span class="n">ReactorFormulasApi</span><span class="p">(</span>
+        <span class="n">api_client</span><span class="p">)</span>
+
+    <span class="n">reactor_formulas</span> <span class="o">=</span> <span class="n">reactor_formulas_client</span><span class="p">.</span><span class="n">delete</span><span class="p">(</span><span class="s">"17069df1-80f4-439e-86a7-4121863e4678"</span><span class="p">)</span>
+</code></pre></div>
 <p><span class="http-method delete">
   <span class="box-method">DELETE</span>
   <code>https://api.basistheory.com/reactor-formulas/{id}</code>
@@ -4769,8 +4978,24 @@ For more information, see <a href="#tokenize">Tokenize</a>.</p>
     <span class="n">Id</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Guid</span><span class="p">(</span><span class="s">"17069df1-80f4-439e-86a7-4121863e4678"</span><span class="p">)</span>
   <span class="p">}</span>
 <span class="p">});</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Coming Soon!
-</span></code></pre></div>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">basistheory</span>
+<span class="kn">from</span> <span class="nn">basistheory.api</span> <span class="kn">import</span> <span class="n">reactors_api</span>
+<span class="kn">from</span> <span class="nn">basistheory.model.create_reactor_request</span> <span class="kn">import</span> <span class="n">CreateReactorRequest</span>
+<span class="kn">from</span> <span class="nn">basistheory.model.reactor_formula</span> <span class="kn">import</span> <span class="n">ReactorFormula</span>
+
+<span class="k">with</span> <span class="n">basistheory</span><span class="p">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="n">configuration</span><span class="o">=</span><span class="n">basistheory</span><span class="p">.</span><span class="n">Configuration</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">))</span> <span class="k">as</span> <span class="n">api_client</span><span class="p">:</span>
+    <span class="n">reactors_client</span> <span class="o">=</span> <span class="n">reactors_api</span><span class="p">.</span><span class="n">ReactorsApi</span><span class="p">(</span><span class="n">api_client</span><span class="p">)</span>
+
+    <span class="n">reactor</span> <span class="o">=</span> <span class="n">reactors_client</span><span class="p">.</span><span class="n">create</span><span class="p">(</span><span class="n">create_reactor_request</span><span class="o">=</span><span class="n">CreateReactorRequest</span><span class="p">(</span>
+        <span class="n">name</span><span class="o">=</span><span class="s">"My Reactor"</span><span class="p">,</span>
+        <span class="n">configuration</span><span class="o">=</span><span class="p">{</span>
+            <span class="s">"SERVICE_API_KEY"</span><span class="p">:</span> <span class="s">"key_abcd134"</span>
+        <span class="p">},</span>
+        <span class="n">formula</span><span class="o">=</span><span class="n">ReactorFormula</span><span class="p">(</span>
+            <span class="nb">id</span><span class="o">=</span><span class="s">"17069df1-80f4-439e-86a7-4121863e4678"</span>
+        <span class="p">)</span>
+    <span class="p">))</span>
+</code></pre></div>
 <blockquote>
 <p>Response</p>
 </blockquote>
@@ -4848,8 +5073,14 @@ For more information, see <a href="#tokenize">Tokenize</a>.</p>
 <span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">ReactorClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
 
 <span class="kt">var</span> <span class="n">reactors</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">GetAsync</span><span class="p">();</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Coming Soon!
-</span></code></pre></div>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">basistheory</span>
+<span class="kn">from</span> <span class="nn">basistheory.api</span> <span class="kn">import</span> <span class="n">reactors_api</span>
+
+<span class="k">with</span> <span class="n">basistheory</span><span class="p">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="n">configuration</span><span class="o">=</span><span class="n">basistheory</span><span class="p">.</span><span class="n">Configuration</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">))</span> <span class="k">as</span> <span class="n">api_client</span><span class="p">:</span>
+    <span class="n">reactors_client</span> <span class="o">=</span> <span class="n">reactors_api</span><span class="p">.</span><span class="n">ReactorsApi</span><span class="p">(</span><span class="n">api_client</span><span class="p">)</span>
+
+    <span class="n">reactors</span> <span class="o">=</span> <span class="n">reactors_client</span><span class="p">.</span><span class="n">get</span><span class="p">()</span>
+</code></pre></div>
 <blockquote>
 <p>Response</p>
 </blockquote>
@@ -4927,8 +5158,14 @@ For more information, see <a href="#tokenize">Tokenize</a>.</p>
 <span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">ReactorClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
 
 <span class="kt">var</span> <span class="n">reactor</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">GetByIdAsync</span><span class="p">(</span><span class="s">"5b493235-6917-4307-906a-2cd6f1a90b13"</span><span class="p">);</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Coming Soon!
-</span></code></pre></div>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">basistheory</span>
+<span class="kn">from</span> <span class="nn">basistheory.api</span> <span class="kn">import</span> <span class="n">reactors_api</span>
+
+<span class="k">with</span> <span class="n">basistheory</span><span class="p">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="n">configuration</span><span class="o">=</span><span class="n">basistheory</span><span class="p">.</span><span class="n">Configuration</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">))</span> <span class="k">as</span> <span class="n">api_client</span><span class="p">:</span>
+    <span class="n">reactors_client</span> <span class="o">=</span> <span class="n">reactors_api</span><span class="p">.</span><span class="n">ReactorsApi</span><span class="p">(</span><span class="n">api_client</span><span class="p">)</span>
+
+    <span class="n">reactor</span> <span class="o">=</span> <span class="n">reactors_client</span><span class="p">.</span><span class="n">get_by_id</span><span class="p">(</span><span class="s">"5b493235-6917-4307-906a-2cd6f1a90b13"</span><span class="p">)</span>
+</code></pre></div>
 <blockquote>
 <p>Response</p>
 </blockquote>
@@ -5012,8 +5249,21 @@ For more information, see <a href="#tokenize">Tokenize</a>.</p>
     <span class="p">}</span>
   <span class="p">}</span>
 <span class="p">);</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Coming Soon!
-</span></code></pre></div>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">basistheory</span>
+<span class="kn">from</span> <span class="nn">basistheory.api</span> <span class="kn">import</span> <span class="n">reactors_api</span>
+<span class="kn">from</span> <span class="nn">basistheory.model.update_reactor_request</span> <span class="kn">import</span> <span class="n">UpdateReactorRequest</span>
+<span class="kn">from</span> <span class="nn">basistheory.model.reactor_formula</span> <span class="kn">import</span> <span class="n">ReactorFormula</span>
+
+<span class="k">with</span> <span class="n">basistheory</span><span class="p">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="n">configuration</span><span class="o">=</span><span class="n">basistheory</span><span class="p">.</span><span class="n">Configuration</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">))</span> <span class="k">as</span> <span class="n">api_client</span><span class="p">:</span>
+    <span class="n">reactors_client</span> <span class="o">=</span> <span class="n">reactors_api</span><span class="p">.</span><span class="n">ReactorsApi</span><span class="p">(</span><span class="n">api_client</span><span class="p">)</span>
+
+    <span class="n">reactor</span> <span class="o">=</span> <span class="n">reactors_client</span><span class="p">.</span><span class="n">update</span><span class="p">(</span><span class="s">"5b493235-6917-4307-906a-2cd6f1a90b13"</span><span class="p">,</span> <span class="n">update_reactor_request</span><span class="o">=</span><span class="n">UpdateReactorRequest</span><span class="p">(</span>
+        <span class="n">name</span><span class="o">=</span><span class="s">"My Reactor"</span><span class="p">,</span>
+        <span class="n">configuration</span><span class="o">=</span><span class="p">{</span>
+            <span class="s">"SERVICE_API_KEY"</span><span class="p">:</span> <span class="s">"key_abcd134"</span>
+        <span class="p">}</span>
+    <span class="p">))</span>
+</code></pre></div>
 <blockquote>
 <p>Response</p>
 </blockquote>
@@ -5103,8 +5353,14 @@ For more information, see <a href="#tokenize">Tokenize</a>.</p>
 <span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">ReactorClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
 
 <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">DeleteAsync</span><span class="p">(</span><span class="s">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">);</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Coming Soon!
-</span></code></pre></div>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">basistheory</span>
+<span class="kn">from</span> <span class="nn">basistheory.api</span> <span class="kn">import</span> <span class="n">reactors_api</span>
+
+<span class="k">with</span> <span class="n">basistheory</span><span class="p">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="n">configuration</span><span class="o">=</span><span class="n">basistheory</span><span class="p">.</span><span class="n">Configuration</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">))</span> <span class="k">as</span> <span class="n">api_client</span><span class="p">:</span>
+    <span class="n">reactors_client</span> <span class="o">=</span> <span class="n">reactors_api</span><span class="p">.</span><span class="n">ReactorsApi</span><span class="p">(</span><span class="n">api_client</span><span class="p">)</span>
+
+    <span class="n">reactors_client</span><span class="p">.</span><span class="n">delete</span><span class="p">(</span><span class="s">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">)</span>
+</code></pre></div>
 <p><span class="http-method delete">
   <span class="box-method">DELETE</span>
   <code>https://api.basistheory.com/reactors/{id}</code>
@@ -5169,8 +5425,20 @@ For more information, see <a href="#tokenize">Tokenize</a>.</p>
       <span class="n">customer_id</span> <span class="p">=</span> <span class="s">"myCustomerId1234"</span>
     <span class="p">}</span>
   <span class="p">});</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Coming Soon!
-</span></code></pre></div>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">basistheory</span>
+<span class="kn">from</span> <span class="nn">basistheory.api</span> <span class="kn">import</span> <span class="n">reactors_api</span>
+<span class="kn">from</span> <span class="nn">basistheory.model.react_request</span> <span class="kn">import</span> <span class="n">ReactRequest</span>
+
+<span class="k">with</span> <span class="n">basistheory</span><span class="p">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="n">configuration</span><span class="o">=</span><span class="n">basistheory</span><span class="p">.</span><span class="n">Configuration</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">))</span> <span class="k">as</span> <span class="n">api_client</span><span class="p">:</span>
+    <span class="n">reactors_client</span> <span class="o">=</span> <span class="n">reactors_api</span><span class="p">.</span><span class="n">ReactorsApi</span><span class="p">(</span><span class="n">api_client</span><span class="p">)</span>
+
+    <span class="n">react_response</span> <span class="o">=</span> <span class="n">reactors_client</span><span class="p">.</span><span class="n">react</span><span class="p">(</span><span class="s">"5b493235-6917-4307-906a-2cd6f1a90b13"</span><span class="p">,</span> <span class="n">react_request</span><span class="o">=</span><span class="n">ReactRequest</span><span class="p">(</span>
+        <span class="n">args</span><span class="o">=</span><span class="p">{</span>
+          <span class="s">"card"</span><span class="p">:</span><span class="s">"{{fe7c0a36-eb45-4f68-b0a0-791de28b29e4}}"</span><span class="p">,</span>
+          <span class="s">"customer_id"</span><span class="p">:</span> <span class="s">"myCustomerId1234"</span>
+        <span class="p">}</span>
+    <span class="p">))</span>
+</code></pre></div>
 <p><span class="http-method post">
   <span class="box-method">POST</span>
   <code>https://api.basistheory.com/reactors/{id}/react</code>
@@ -5449,8 +5717,14 @@ a single complex token that contains several of the request parameters. </p>
 <span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">TenantClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
 
 <span class="kt">var</span> <span class="n">tenant</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">GetSelfAsync</span><span class="p">();</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Coming Soon!
-</span></code></pre></div>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">basistheory</span>
+<span class="kn">from</span> <span class="nn">basistheory.api</span> <span class="kn">import</span> <span class="n">tenants_api</span>
+
+<span class="k">with</span> <span class="n">basistheory</span><span class="p">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="n">configuration</span><span class="o">=</span><span class="n">basistheory</span><span class="p">.</span><span class="n">Configuration</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">))</span> <span class="k">as</span> <span class="n">api_client</span><span class="p">:</span>
+    <span class="n">tenants_client</span> <span class="o">=</span> <span class="n">tenants_api</span><span class="p">.</span><span class="n">TenantsApi</span><span class="p">(</span><span class="n">api_client</span><span class="p">)</span>
+
+    <span class="n">tenant</span> <span class="o">=</span> <span class="n">tenants_client</span><span class="p">.</span><span class="n">get</span><span class="p">()</span>
+</code></pre></div>
 <blockquote>
 <p>Response</p>
 </blockquote>
@@ -5501,8 +5775,17 @@ a single complex token that contains several of the request parameters. </p>
 <span class="kt">var</span> <span class="n">tenant</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">UpdateAsync</span><span class="p">(</span><span class="k">new</span> <span class="n">Tenant</span> <span class="p">{</span>
   <span class="n">Name</span> <span class="p">=</span> <span class="s">"My Example Tenant"</span>
 <span class="p">});</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Coming Soon!
-</span></code></pre></div>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">basistheory</span>
+<span class="kn">from</span> <span class="nn">basistheory.api</span> <span class="kn">import</span> <span class="n">tenants_api</span>
+<span class="kn">from</span> <span class="nn">basistheory.model.update_tenant_request</span> <span class="kn">import</span> <span class="n">UpdateTenantRequest</span>
+
+<span class="k">with</span> <span class="n">basistheory</span><span class="p">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="n">configuration</span><span class="o">=</span><span class="n">basistheory</span><span class="p">.</span><span class="n">Configuration</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">))</span> <span class="k">as</span> <span class="n">api_client</span><span class="p">:</span>
+    <span class="n">tenants_client</span> <span class="o">=</span> <span class="n">tenants_api</span><span class="p">.</span><span class="n">TenantsApi</span><span class="p">(</span><span class="n">api_client</span><span class="p">)</span>
+
+    <span class="n">tenant</span> <span class="o">=</span> <span class="n">tenants_client</span><span class="p">.</span><span class="n">update</span><span class="p">(</span><span class="n">update_tenant_request</span><span class="o">=</span><span class="n">UpdateTenantRequest</span><span class="p">(</span>
+        <span class="n">name</span><span class="o">=</span><span class="s">"My Example Tenant"</span>
+    <span class="p">))</span>
+</code></pre></div>
 <blockquote>
 <p>Response</p>
 </blockquote>
@@ -5563,8 +5846,14 @@ a single complex token that contains several of the request parameters. </p>
 <span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">TenantClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
 
 <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">DeleteAsync</span><span class="p">();</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Coming Soon!
-</span></code></pre></div>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">basistheory</span>
+<span class="kn">from</span> <span class="nn">basistheory.api</span> <span class="kn">import</span> <span class="n">tenants_api</span>
+
+<span class="k">with</span> <span class="n">basistheory</span><span class="p">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="n">configuration</span><span class="o">=</span><span class="n">basistheory</span><span class="p">.</span><span class="n">Configuration</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s">"key_CxEaZMmFu3UAcuNcCbvBVu"</span><span class="p">))</span> <span class="k">as</span> <span class="n">api_client</span><span class="p">:</span>
+    <span class="n">tenants_client</span> <span class="o">=</span> <span class="n">tenants_api</span><span class="p">.</span><span class="n">TenantsApi</span><span class="p">(</span><span class="n">api_client</span><span class="p">)</span>
+
+    <span class="n">tenants_client</span><span class="p">.</span><span class="n">delete</span><span class="p">()</span>
+</code></pre></div>
 <p><span class="http-method delete">
   <span class="box-method">DELETE</span>
   <code>https://api.basistheory.com/tenants/self</code>
@@ -5593,8 +5882,14 @@ a single complex token that contains several of the request parameters. </p>
 <span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">TenantClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
 
 <span class="kt">var</span> <span class="n">tenantUsageReport</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">GetTenantUsageReportAsync</span><span class="p">();</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Coming Soon!
-</span></code></pre></div>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">basistheory</span>
+<span class="kn">from</span> <span class="nn">basistheory.api</span> <span class="kn">import</span> <span class="n">tenants_api</span>
+
+<span class="k">with</span> <span class="n">basistheory</span><span class="p">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="n">configuration</span><span class="o">=</span><span class="n">basistheory</span><span class="p">.</span><span class="n">Configuration</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">))</span> <span class="k">as</span> <span class="n">api_client</span><span class="p">:</span>
+    <span class="n">tenants_client</span> <span class="o">=</span> <span class="n">tenants_api</span><span class="p">.</span><span class="n">TenantsApi</span><span class="p">(</span><span class="n">api_client</span><span class="p">)</span>
+
+    <span class="n">tenant_usage_report</span> <span class="o">=</span> <span class="n">tenants_client</span><span class="p">.</span><span class="n">get_tenant_usage_report</span><span class="p">()</span>
+</code></pre></div>
 <blockquote>
 <p>Response</p>
 </blockquote>
@@ -5804,8 +6099,14 @@ Upon accepting a Tenant Invitation, a new Tenant Member will be created.</p>
 <span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">TenantClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
 
 <span class="kt">var</span> <span class="n">tenantMembers</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">GetMembersAsync</span><span class="p">();</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Coming Soon!
-</span></code></pre></div>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">basistheory</span>
+<span class="kn">from</span> <span class="nn">basistheory.api</span> <span class="kn">import</span> <span class="n">tenants_api</span>
+
+<span class="k">with</span> <span class="n">basistheory</span><span class="p">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="n">configuration</span><span class="o">=</span><span class="n">basistheory</span><span class="p">.</span><span class="n">Configuration</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">))</span> <span class="k">as</span> <span class="n">api_client</span><span class="p">:</span>
+    <span class="n">tenant_client</span> <span class="o">=</span> <span class="n">tenants_api</span><span class="p">.</span><span class="n">TenantsApi</span><span class="p">(</span><span class="n">api_client</span><span class="p">)</span>
+
+    <span class="n">tenant_members</span> <span class="o">=</span> <span class="n">tenant_client</span><span class="p">.</span><span class="n">get_members</span><span class="p">()</span>
+</code></pre></div>
 <blockquote>
 <p>Response</p>
 </blockquote>
@@ -5894,8 +6195,14 @@ Upon accepting a Tenant Invitation, a new Tenant Member will be created.</p>
 <span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">TenantClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
 
 <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">DeleteMemberAsync</span><span class="p">(</span><span class="s">"5540a02f-99e7-46de-8f41-1b3cf7b2a3d2"</span><span class="p">);</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Coming Soon!
-</span></code></pre></div>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">basistheory</span>
+<span class="kn">from</span> <span class="nn">basistheory.api</span> <span class="kn">import</span> <span class="n">tenants_api</span>
+
+<span class="k">with</span> <span class="n">basistheory</span><span class="p">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="n">configuration</span><span class="o">=</span><span class="n">basistheory</span><span class="p">.</span><span class="n">Configuration</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">))</span> <span class="k">as</span> <span class="n">api_client</span><span class="p">:</span>
+    <span class="n">tenant_client</span> <span class="o">=</span> <span class="n">tenants_api</span><span class="p">.</span><span class="n">TenantsApi</span><span class="p">(</span><span class="n">api_client</span><span class="p">)</span>
+
+    <span class="n">tenant_client</span><span class="p">.</span><span class="n">delete_member</span><span class="p">(</span><span class="n">member_id</span><span class="o">=</span><span class="s">"5540a02f-99e7-46de-8f41-1b3cf7b2a3d2"</span><span class="p">)</span>
+</code></pre></div>
 <p><span class="http-method delete">
   <span class="box-method">DELETE</span>
   <code>https://api.basistheory.com/tenants/self/members/{id}</code>
@@ -5950,8 +6257,17 @@ Upon accepting a Tenant Invitation, a new Tenant Member will be created.</p>
 <span class="p">{</span>
     <span class="n">Email</span> <span class="p">=</span> <span class="s">"jane@doe.com"</span>
 <span class="p">});</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Coming Soon!
-</span></code></pre></div>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">basistheory</span>
+<span class="kn">from</span> <span class="nn">basistheory.api</span> <span class="kn">import</span> <span class="n">tenants_api</span>
+<span class="kn">from</span> <span class="nn">basistheory.model.create_tenant_invitation_request</span> <span class="kn">import</span> <span class="n">CreateTenantInvitationRequest</span>
+
+<span class="k">with</span> <span class="n">basistheory</span><span class="p">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="n">configuration</span><span class="o">=</span><span class="n">basistheory</span><span class="p">.</span><span class="n">Configuration</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">))</span> <span class="k">as</span> <span class="n">api_client</span><span class="p">:</span>
+    <span class="n">tenant_client</span> <span class="o">=</span> <span class="n">tenants_api</span><span class="p">.</span><span class="n">TenantsApi</span><span class="p">(</span><span class="n">api_client</span><span class="p">)</span>
+
+    <span class="n">created_invitation</span> <span class="o">=</span> <span class="n">tenant_client</span><span class="p">.</span><span class="n">create_invitation</span><span class="p">(</span><span class="n">create_tenant_invitation_request</span><span class="o">=</span><span class="n">CreateTenantInvitationRequest</span><span class="p">(</span>
+        <span class="n">email</span><span class="o">=</span><span class="s">"jane@doe.com"</span>
+    <span class="p">))</span>
+</code></pre></div>
 <blockquote>
 <p>Response</p>
 </blockquote>
@@ -6013,8 +6329,14 @@ Upon accepting a Tenant Invitation, a new Tenant Member will be created.</p>
 <span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">TenantClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
 
 <span class="kt">var</span> <span class="n">resentInvitation</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">ResendInvitationAsync</span><span class="p">(</span><span class="s">"fb32ea26-2185-4ad2-a7bf-2fe69c00ae13"</span><span class="p">);</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Coming Soon!
-</span></code></pre></div>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">basistheory</span>
+<span class="kn">from</span> <span class="nn">basistheory.api</span> <span class="kn">import</span> <span class="n">tenants_api</span>
+
+<span class="k">with</span> <span class="n">basistheory</span><span class="p">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="n">configuration</span><span class="o">=</span><span class="n">basistheory</span><span class="p">.</span><span class="n">Configuration</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">))</span> <span class="k">as</span> <span class="n">api_client</span><span class="p">:</span>
+    <span class="n">tenant_client</span> <span class="o">=</span> <span class="n">tenants_api</span><span class="p">.</span><span class="n">TenantsApi</span><span class="p">(</span><span class="n">api_client</span><span class="p">)</span>
+
+    <span class="n">resent_invitation</span> <span class="o">=</span> <span class="n">tenant_client</span><span class="p">.</span><span class="n">resend_invitation</span><span class="p">(</span><span class="n">invitation_id</span><span class="o">=</span><span class="s">"dfd0319e-e978-4d2a-9109-f8a9048088bd"</span><span class="p">)</span>
+</code></pre></div>
 <blockquote>
 <p>Response</p>
 </blockquote>
@@ -6057,8 +6379,14 @@ Upon accepting a Tenant Invitation, a new Tenant Member will be created.</p>
 <span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">TenantClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
 
 <span class="kt">var</span> <span class="n">invitations</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">GetInvitationsAsync</span><span class="p">();</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Coming Soon!
-</span></code></pre></div>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">basistheory</span>
+<span class="kn">from</span> <span class="nn">basistheory.api</span> <span class="kn">import</span> <span class="n">tenants_api</span>
+
+<span class="k">with</span> <span class="n">basistheory</span><span class="p">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="n">configuration</span><span class="o">=</span><span class="n">basistheory</span><span class="p">.</span><span class="n">Configuration</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">))</span> <span class="k">as</span> <span class="n">api_client</span><span class="p">:</span>
+    <span class="n">tenant_client</span> <span class="o">=</span> <span class="n">tenants_api</span><span class="p">.</span><span class="n">TenantsApi</span><span class="p">(</span><span class="n">api_client</span><span class="p">)</span>
+
+    <span class="n">invitations</span> <span class="o">=</span> <span class="n">tenant_client</span><span class="p">.</span><span class="n">get_invitations</span><span class="p">()</span>
+</code></pre></div>
 <blockquote>
 <p>Response</p>
 </blockquote>
@@ -6134,8 +6462,14 @@ Returns <a href="#errors">an error</a> if Tenant Invitations could not be retrie
 <span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">TenantClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
 
 <span class="kt">var</span> <span class="n">invitation</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">GetInvitationByIdAsync</span><span class="p">(</span><span class="s">"fb32ea26-2185-4ad2-a7bf-2fe69c00ae13"</span><span class="p">);</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Coming Soon!
-</span></code></pre></div>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">basistheory</span>
+<span class="kn">from</span> <span class="nn">basistheory.api</span> <span class="kn">import</span> <span class="n">tenants_api</span>
+
+<span class="k">with</span> <span class="n">basistheory</span><span class="p">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="n">configuration</span><span class="o">=</span><span class="n">basistheory</span><span class="p">.</span><span class="n">Configuration</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">))</span> <span class="k">as</span> <span class="n">api_client</span><span class="p">:</span>
+    <span class="n">tenant_client</span> <span class="o">=</span> <span class="n">tenants_api</span><span class="p">.</span><span class="n">TenantsApi</span><span class="p">(</span><span class="n">api_client</span><span class="p">)</span>
+
+    <span class="n">invitation</span> <span class="o">=</span> <span class="n">tenant_client</span><span class="p">.</span><span class="n">get_invitation_by_id</span><span class="p">(</span><span class="n">invitation_id</span><span class="o">=</span><span class="s">"fb32ea26-2185-4ad2-a7bf-2fe69c00ae13"</span><span class="p">)</span>
+</code></pre></div>
 <blockquote>
 <p>Response</p>
 </blockquote>
@@ -6196,8 +6530,14 @@ Returns <a href="#errors">an error</a> if Tenant Invitations could not be retrie
 <span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">TenantClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
 
 <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">DeleteInvitationAsync</span><span class="p">(</span><span class="s">"fb32ea26-2185-4ad2-a7bf-2fe69c00ae13"</span><span class="p">);</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Coming Soon!
-</span></code></pre></div>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">basistheory</span>
+<span class="kn">from</span> <span class="nn">basistheory.api</span> <span class="kn">import</span> <span class="n">tenants_api</span>
+
+<span class="k">with</span> <span class="n">basistheory</span><span class="p">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="n">configuration</span><span class="o">=</span><span class="n">basistheory</span><span class="p">.</span><span class="n">Configuration</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">))</span> <span class="k">as</span> <span class="n">api_client</span><span class="p">:</span>
+    <span class="n">tenant_client</span> <span class="o">=</span> <span class="n">tenants_api</span><span class="p">.</span><span class="n">TenantsApi</span><span class="p">(</span><span class="n">api_client</span><span class="p">)</span>
+
+    <span class="n">tenant_client</span><span class="p">.</span><span class="n">delete_invitation</span><span class="p">(</span><span class="n">invitation_id</span><span class="o">=</span><span class="s">"fb32ea26-2185-4ad2-a7bf-2fe69c00ae13"</span><span class="p">)</span>
+</code></pre></div>
 <p><span class="http-method delete">
   <span class="box-method">DELETE</span>
   <code>https://api.basistheory.com/tenants/self/invitations/{id}</code>
@@ -6848,12 +7188,12 @@ but the plaintext card data will not be returned. Instead, the restriction polic
 <span class="p">});</span>
 </code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">basistheory</span>
 <span class="kn">from</span> <span class="nn">basistheory.api</span> <span class="kn">import</span> <span class="n">tokens_api</span>
-<span class="kn">from</span> <span class="nn">basistheory.model.token</span> <span class="kn">import</span> <span class="n">Token</span>
+<span class="kn">from</span> <span class="nn">basistheory.model.create_token_request</span> <span class="kn">import</span> <span class="n">CreateTokenRequest</span>
 
 <span class="k">with</span> <span class="n">basistheory</span><span class="p">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="n">configuration</span><span class="o">=</span><span class="n">basistheory</span><span class="p">.</span><span class="n">Configuration</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">))</span> <span class="k">as</span> <span class="n">api_client</span><span class="p">:</span>
     <span class="n">token_client</span> <span class="o">=</span> <span class="n">tokens_api</span><span class="p">.</span><span class="n">TokensApi</span><span class="p">(</span><span class="n">api_client</span><span class="p">)</span>
 
-    <span class="n">token</span> <span class="o">=</span> <span class="n">token_client</span><span class="p">.</span><span class="n">create</span><span class="p">(</span><span class="n">token</span><span class="o">=</span><span class="n">Token</span><span class="p">(</span>
+    <span class="n">token</span> <span class="o">=</span> <span class="n">token_client</span><span class="p">.</span><span class="n">create</span><span class="p">(</span><span class="n">create_token_request</span><span class="o">=</span><span class="n">CreateTokenRequest</span><span class="p">(</span>
         <span class="nb">type</span><span class="o">=</span><span class="s">"token"</span><span class="p">,</span>
         <span class="n">data</span><span class="o">=</span><span class="s">"Sensitive Value"</span><span class="p">,</span>
         <span class="n">metadata</span><span class="o">=</span><span class="p">{</span>
@@ -6957,7 +7297,7 @@ but the plaintext card data will not be returned. Instead, the restriction polic
 <span class="k">with</span> <span class="n">basistheory</span><span class="p">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="n">configuration</span><span class="o">=</span><span class="n">basistheory</span><span class="p">.</span><span class="n">Configuration</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">))</span> <span class="k">as</span> <span class="n">api_client</span><span class="p">:</span>
     <span class="n">token_client</span> <span class="o">=</span> <span class="n">tokens_api</span><span class="p">.</span><span class="n">TokensApi</span><span class="p">(</span><span class="n">api_client</span><span class="p">)</span>
 
-    <span class="n">tokens</span> <span class="o">=</span> <span class="n">token_client</span><span class="p">.</span><span class="nb">list</span><span class="p">()</span>
+    <span class="n">tokens</span> <span class="o">=</span> <span class="n">token_client</span><span class="p">.</span><span class="n">get</span><span class="p">()</span>
 </code></pre></div>
 <blockquote>
 <p>Response</p>
@@ -7315,11 +7655,12 @@ Token types other than <code>token</code> or non-BasisTheory encrypted tokens wi
   <span class="n">Size</span> <span class="p">=</span> <span class="m">20</span><span class="p">);</span>
 </code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">basistheory</span>
 <span class="kn">from</span> <span class="nn">basistheory.api</span> <span class="kn">import</span> <span class="n">tokens_api</span>
+<span class="kn">from</span> <span class="nn">basistheory.model.search_tokens_request</span> <span class="kn">import</span> <span class="n">SearchTokensRequest</span>
 
 <span class="k">with</span> <span class="n">basistheory</span><span class="p">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="n">configuration</span><span class="o">=</span><span class="n">basistheory</span><span class="p">.</span><span class="n">Configuration</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">))</span> <span class="k">as</span> <span class="n">api_client</span><span class="p">:</span>
     <span class="n">token_client</span> <span class="o">=</span> <span class="n">tokens_api</span><span class="p">.</span><span class="n">TokensApi</span><span class="p">(</span><span class="n">api_client</span><span class="p">)</span>
 
-    <span class="n">tokens</span> <span class="o">=</span> <span class="n">token_client</span><span class="p">.</span><span class="n">search</span><span class="p">(</span><span class="n">search</span><span class="o">=</span><span class="n">TokenSearchRequest</span><span class="p">(</span>
+    <span class="n">tokens</span> <span class="o">=</span> <span class="n">token_client</span><span class="p">.</span><span class="n">search</span><span class="p">(</span><span class="n">search_tokens_request</span><span class="o">=</span><span class="n">SearchTokensRequest</span><span class="p">(</span>
         <span class="n">query</span><span class="o">=</span><span class="s">"data:6789 AND type:social_security_number"</span><span class="p">,</span>
         <span class="n">page</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
         <span class="n">size</span><span class="o">=</span><span class="mi">20</span>
@@ -7603,8 +7944,14 @@ When creating tokens of these types, Basis Theory will securely index several da
 
 <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">CreateAssociationAsync</span><span class="p">(</span><span class="s">"c06d0789-0a38-40be-b7cc-c28a718f76f1"</span><span class="p">,</span> 
   <span class="s">"c1e565009-1984-4638-8fca-dce8a82cc2af"</span><span class="p">);</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Coming Soon!
-</span></code></pre></div>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">basistheory</span>
+<span class="kn">from</span> <span class="nn">basistheory.api</span> <span class="kn">import</span> <span class="n">tokens_api</span>
+
+<span class="k">with</span> <span class="n">basistheory</span><span class="p">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="n">configuration</span><span class="o">=</span><span class="n">basistheory</span><span class="p">.</span><span class="n">Configuration</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">))</span> <span class="k">as</span> <span class="n">api_client</span><span class="p">:</span>
+    <span class="n">tokens_client</span> <span class="o">=</span> <span class="n">tokens_api</span><span class="p">.</span><span class="n">TokensApi</span><span class="p">(</span><span class="n">api_client</span><span class="p">)</span>
+
+    <span class="n">tokens_client</span><span class="p">.</span><span class="n">create_association</span><span class="p">(</span><span class="s">"c06d0789-0a38-40be-b7cc-c28a718f76f1"</span><span class="p">,</span> <span class="s">"c1e565009-1984-4638-8fca-dce8a82cc2af"</span><span class="p">)</span>
+</code></pre></div>
 <p><span class="http-method post">
   <span class="box-method">POST</span>
   <code>https://api.basistheory.com/tokens/{parent_id}/children/{child_id}</code>
@@ -7669,8 +8016,14 @@ tokens&#39; privacy settings.</p>
 
 <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">DeleteAssociationAsync</span><span class="p">(</span><span class="s">"c06d0789-0a38-40be-b7cc-c28a718f76f1"</span><span class="p">,</span> 
   <span class="s">"c1e565009-1984-4638-8fca-dce8a82cc2af"</span><span class="p">);</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Coming Soon!
-</span></code></pre></div>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">basistheory</span>
+<span class="kn">from</span> <span class="nn">basistheory.api</span> <span class="kn">import</span> <span class="n">tokens_api</span>
+
+<span class="k">with</span> <span class="n">basistheory</span><span class="p">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="n">configuration</span><span class="o">=</span><span class="n">basistheory</span><span class="p">.</span><span class="n">Configuration</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">))</span> <span class="k">as</span> <span class="n">api_client</span><span class="p">:</span>
+    <span class="n">tokens_client</span> <span class="o">=</span> <span class="n">tokens_api</span><span class="p">.</span><span class="n">TokensApi</span><span class="p">(</span><span class="n">api_client</span><span class="p">)</span>
+
+    <span class="n">tokens_client</span><span class="p">.</span><span class="n">delete_association</span><span class="p">(</span><span class="s">"c06d0789-0a38-40be-b7cc-c28a718f76f1"</span><span class="p">,</span> <span class="s">"c1e565009-1984-4638-8fca-dce8a82cc2af"</span><span class="p">)</span>
+</code></pre></div>
 <p><span class="http-method delete">
   <span class="box-method">DELETE</span>
   <code>https://api.basistheory.com/tokens/{parent_id}/children/{child_id}</code>
@@ -7747,8 +8100,21 @@ tokens&#39; privacy settings.</p>
     <span class="p">}</span>
   <span class="p">}</span>
 <span class="p">);</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Coming Soon!
-</span></code></pre></div>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">basistheory</span>
+<span class="kn">from</span> <span class="nn">basistheory.api</span> <span class="kn">import</span> <span class="n">tokens_api</span>
+<span class="kn">from</span> <span class="nn">basistheory.model.create_token_request</span> <span class="kn">import</span> <span class="n">CreateTokenRequest</span>
+
+<span class="k">with</span> <span class="n">basistheory</span><span class="p">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="n">configuration</span><span class="o">=</span><span class="n">basistheory</span><span class="p">.</span><span class="n">Configuration</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">))</span> <span class="k">as</span> <span class="n">api_client</span><span class="p">:</span>
+    <span class="n">tokens_client</span> <span class="o">=</span> <span class="n">tokens_api</span><span class="p">.</span><span class="n">TokensApi</span><span class="p">(</span><span class="n">api_client</span><span class="p">)</span>
+
+    <span class="n">token</span> <span class="o">=</span> <span class="n">tokens_client</span><span class="p">.</span><span class="n">create_child</span><span class="p">(</span><span class="s">"c06d0789-0a38-40be-b7cc-c28a718f76f1"</span><span class="p">,</span> <span class="n">create_token_request</span><span class="o">=</span><span class="n">CreateTokenRequest</span><span class="p">(</span>
+        <span class="nb">type</span><span class="o">=</span><span class="s">"token"</span><span class="p">,</span>
+        <span class="n">data</span><span class="o">=</span><span class="s">"Sensitive Value"</span><span class="p">,</span>
+        <span class="n">metadata</span><span class="o">=</span><span class="p">{</span>
+            <span class="s">"nonSensitiveField"</span><span class="p">:</span> <span class="s">"Non-Sensitive Value"</span>
+        <span class="p">}</span>
+    <span class="p">))</span>
+</code></pre></div>
 <blockquote>
 <p>Response</p>
 </blockquote>
@@ -7857,8 +8223,14 @@ permission based on the parent token&#39;s privacy settings.</p>
 <span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">TokenClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
 
 <span class="kt">var</span> <span class="n">tokens</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">GetChildrenAsync</span><span class="p">(</span><span class="s">"c06d0789-0a38-40be-b7cc-c28a718f76f1"</span><span class="p">);</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Coming Soon!
-</span></code></pre></div>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">basistheory</span>
+<span class="kn">from</span> <span class="nn">basistheory.api</span> <span class="kn">import</span> <span class="n">tokens_api</span>
+
+<span class="k">with</span> <span class="n">basistheory</span><span class="p">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="n">configuration</span><span class="o">=</span><span class="n">basistheory</span><span class="p">.</span><span class="n">Configuration</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">))</span> <span class="k">as</span> <span class="n">api_client</span><span class="p">:</span>
+    <span class="n">tokens_client</span> <span class="o">=</span> <span class="n">tokens_api</span><span class="p">.</span><span class="n">TokensApi</span><span class="p">(</span><span class="n">api_client</span><span class="p">)</span>
+
+    <span class="n">tokens</span> <span class="o">=</span> <span class="n">tokens_client</span><span class="p">.</span><span class="n">get_children</span><span class="p">(</span><span class="s">"c06d0789-0a38-40be-b7cc-c28a718f76f1"</span><span class="p">)</span>
+</code></pre></div>
 <blockquote>
 <p>Response</p>
 </blockquote>
@@ -7971,8 +8343,17 @@ permission based on the parent token&#39;s privacy settings.</p>
   <span class="n">first_name</span> <span class="p">=</span> <span class="s">"John"</span><span class="p">,</span>
   <span class="n">last_name</span> <span class="p">=</span> <span class="s">"Doe"</span>
 <span class="p">});</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Coming Soon!
-</span></code></pre></div>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">basistheory</span>
+<span class="kn">from</span> <span class="nn">basistheory.api</span> <span class="kn">import</span> <span class="n">tokenize_api</span>
+
+<span class="k">with</span> <span class="n">basistheory</span><span class="p">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="n">configuration</span><span class="o">=</span><span class="n">basistheory</span><span class="p">.</span><span class="n">Configuration</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">))</span> <span class="k">as</span> <span class="n">api_client</span><span class="p">:</span>
+    <span class="n">tokenize_client</span> <span class="o">=</span> <span class="n">tokenize_api</span><span class="p">.</span><span class="n">TokenizeApi</span><span class="p">(</span><span class="n">api_client</span><span class="p">)</span>
+
+    <span class="n">token</span> <span class="o">=</span> <span class="n">tokenize_client</span><span class="p">.</span><span class="n">tokenize</span><span class="p">(</span><span class="n">body</span><span class="o">=</span><span class="p">{</span>
+      <span class="s">"first_name"</span><span class="p">:</span> <span class="s">"John"</span><span class="p">,</span>
+      <span class="s">"last_name"</span><span class="p">:</span> <span class="s">"Doe"</span>
+    <span class="p">})</span>
+</code></pre></div>
 <blockquote>
 <p>Create Basic Token Response</p>
 </blockquote>
@@ -8017,8 +8398,21 @@ permission based on the parent token&#39;s privacy settings.</p>
     <span class="p">{</span> <span class="s">"nonSensitiveField"</span><span class="p">,</span>  <span class="s">"Non-Sensitive Value"</span> <span class="p">}</span>
   <span class="p">}</span>
 <span class="p">});</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Coming Soon!
-</span></code></pre></div>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">basistheory</span>
+<span class="kn">from</span> <span class="nn">basistheory.api</span> <span class="kn">import</span> <span class="n">tokenize_api</span> 
+<span class="kn">from</span> <span class="nn">basistheory.model.token</span> <span class="kn">import</span> <span class="n">Token</span>
+
+<span class="k">with</span> <span class="n">basistheory</span><span class="p">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="n">configuration</span><span class="o">=</span><span class="n">basistheory</span><span class="p">.</span><span class="n">Configuration</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">))</span> <span class="k">as</span> <span class="n">api_client</span><span class="p">:</span>
+    <span class="n">tokenize_client</span> <span class="o">=</span> <span class="n">tokenize_api</span><span class="p">.</span><span class="n">TokenizeApi</span><span class="p">(</span><span class="n">api_client</span><span class="p">)</span>
+
+    <span class="n">token</span> <span class="o">=</span> <span class="n">tokenize_client</span><span class="p">.</span><span class="n">tokenize</span><span class="p">(</span><span class="n">body</span><span class="o">=</span><span class="n">Token</span><span class="p">(</span>
+      <span class="nb">type</span><span class="o">=</span><span class="s">"token"</span><span class="p">,</span>
+      <span class="n">data</span><span class="o">=</span><span class="s">"Sensitive Value"</span><span class="p">,</span>
+      <span class="n">metadata</span><span class="o">=</span><span class="p">{</span>
+        <span class="s">"nonSensitive"</span><span class="p">:</span> <span class="s">"Non-Sensitive Value"</span>
+      <span class="p">}</span>
+    <span class="p">))</span>
+</code></pre></div>
 <blockquote>
 <p>Create Token Response</p>
 </blockquote>
@@ -8084,8 +8478,26 @@ permission based on the parent token&#39;s privacy settings.</p>
     <span class="p">{</span> <span class="s">"nonSensitiveField"</span><span class="p">,</span>  <span class="s">"Non-Sensitive Value"</span> <span class="p">}</span>
   <span class="p">}</span>
 <span class="p">});</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Coming Soon!
-</span></code></pre></div>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">basistheory</span>
+<span class="kn">from</span> <span class="nn">basistheory.api</span> <span class="kn">import</span> <span class="n">tokenize_api</span> 
+<span class="kn">from</span> <span class="nn">basistheory.model.token</span> <span class="kn">import</span> <span class="n">Token</span>
+
+<span class="k">with</span> <span class="n">basistheory</span><span class="p">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="n">configuration</span><span class="o">=</span><span class="n">basistheory</span><span class="p">.</span><span class="n">Configuration</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">))</span> <span class="k">as</span> <span class="n">api_client</span><span class="p">:</span>
+    <span class="n">tokenize_client</span> <span class="o">=</span> <span class="n">tokenize_api</span><span class="p">.</span><span class="n">TokenizeApi</span><span class="p">(</span><span class="n">api_client</span><span class="p">)</span>
+
+    <span class="n">token</span> <span class="o">=</span> <span class="n">tokenize_client</span><span class="p">.</span><span class="n">tokenize</span><span class="p">(</span><span class="n">body</span><span class="o">=</span><span class="n">Token</span><span class="p">(</span>
+      <span class="nb">type</span><span class="o">=</span><span class="s">"card"</span><span class="p">,</span>
+      <span class="n">data</span><span class="o">=</span><span class="p">{</span>
+          <span class="s">"number"</span><span class="p">:</span> <span class="s">"4242424242424242"</span><span class="p">,</span>
+          <span class="s">"expiration_month"</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span>
+          <span class="s">"expiration_year"</span><span class="p">:</span> <span class="mi">2025</span><span class="p">,</span>
+          <span class="s">"cvc"</span><span class="p">:</span> <span class="s">"123"</span>
+      <span class="p">},</span>
+      <span class="n">metadata</span><span class="o">=</span><span class="p">{</span>
+        <span class="s">"nonSensitive"</span><span class="p">:</span> <span class="s">"Non-Sensitive Value"</span>
+      <span class="p">}</span>
+    <span class="p">))</span>
+</code></pre></div>
 <blockquote>
 <p>Create Card Response</p>
 </blockquote>
@@ -8174,8 +8586,33 @@ permission based on the parent token&#39;s privacy settings.</p>
     <span class="n">Data</span> <span class="p">=</span> <span class="s">"Sensitive Value"</span>
   <span class="p">}</span>
 <span class="p">]);</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Coming Soon!
-</span></code></pre></div>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">basistheory</span>
+<span class="kn">from</span> <span class="nn">basistheory.api</span> <span class="kn">import</span> <span class="n">tokenize_api</span>
+<span class="kn">from</span> <span class="nn">basistheory.model.token</span> <span class="kn">import</span> <span class="n">Token</span>
+
+<span class="k">with</span> <span class="n">basistheory</span><span class="p">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="n">configuration</span><span class="o">=</span><span class="n">basistheory</span><span class="p">.</span><span class="n">Configuration</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">))</span> <span class="k">as</span> <span class="n">api_client</span><span class="p">:</span>
+    <span class="n">tokenize_client</span> <span class="o">=</span> <span class="n">tokenize_api</span><span class="p">.</span><span class="n">TokenizeApi</span><span class="p">(</span><span class="n">api_client</span><span class="p">)</span>
+
+    <span class="n">token</span> <span class="o">=</span> <span class="n">tokenize_client</span><span class="p">.</span><span class="n">tokenize</span><span class="p">(</span><span class="n">body</span><span class="o">=</span><span class="p">[</span>
+        <span class="s">"John"</span><span class="p">,</span>
+        <span class="s">"Doe"</span><span class="p">,</span>
+        <span class="n">Token</span><span class="p">(</span>
+            <span class="nb">type</span><span class="o">=</span><span class="s">"card"</span><span class="p">,</span>
+            <span class="n">data</span><span class="o">=</span><span class="p">{</span>
+                <span class="s">"number"</span><span class="p">:</span> <span class="s">"4242424242424242"</span><span class="p">,</span>
+                <span class="s">"expiration_month"</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span>
+                <span class="s">"expiration_year"</span><span class="p">:</span> <span class="mi">2025</span><span class="p">,</span>
+                <span class="s">"cvc"</span><span class="p">:</span> <span class="s">"123"</span>
+            <span class="p">},</span>
+            <span class="n">metadata</span><span class="o">=</span><span class="p">{</span>
+                <span class="s">"nonSensitive"</span><span class="p">:</span> <span class="s">"Non-Sensitive Value"</span>
+            <span class="p">}</span>
+        <span class="p">),</span>
+        <span class="n">Token</span><span class="p">(</span>
+            <span class="nb">type</span><span class="o">=</span><span class="s">"token"</span><span class="p">,</span>
+            <span class="n">data</span><span class="o">=</span><span class="s">"Sensitive Value"</span>
+        <span class="p">)])</span>
+</code></pre></div>
 <blockquote>
 <p>Tokenize Array Response</p>
 </blockquote>
@@ -8278,8 +8715,33 @@ permission based on the parent token&#39;s privacy settings.</p>
     <span class="p">}</span>
   <span class="p">}</span>
 <span class="p">});</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Coming Soon!
-</span></code></pre></div>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">basistheory</span>
+<span class="kn">from</span> <span class="nn">basistheory.api</span> <span class="kn">import</span> <span class="n">tokenize_api</span>
+<span class="kn">from</span> <span class="nn">basistheory.model.token</span> <span class="kn">import</span> <span class="n">Token</span>
+
+<span class="k">with</span> <span class="n">basistheory</span><span class="p">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="n">configuration</span><span class="o">=</span><span class="n">basistheory</span><span class="p">.</span><span class="n">Configuration</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">))</span> <span class="k">as</span> <span class="n">api_client</span><span class="p">:</span>
+    <span class="n">tokenize_client</span> <span class="o">=</span> <span class="n">tokenize_api</span><span class="p">.</span><span class="n">TokenizeApi</span><span class="p">(</span><span class="n">api_client</span><span class="p">)</span>
+
+    <span class="n">token</span> <span class="o">=</span> <span class="n">tokenize_client</span><span class="p">.</span><span class="n">tokenize</span><span class="p">(</span><span class="n">body</span><span class="o">=</span><span class="p">{</span>
+        <span class="s">"first_name"</span><span class="p">:</span> <span class="s">"John"</span><span class="p">,</span>
+        <span class="s">"last_name"</span><span class="p">:</span> <span class="s">"Doe"</span><span class="p">,</span>
+        <span class="s">"primary_card"</span><span class="p">:</span> <span class="n">Token</span><span class="p">(</span>
+            <span class="nb">type</span><span class="o">=</span><span class="s">"card"</span><span class="p">,</span>
+            <span class="n">data</span><span class="o">=</span><span class="p">{</span>
+                <span class="s">"number"</span><span class="p">:</span> <span class="s">"4242424242424242"</span><span class="p">,</span>
+                <span class="s">"expiration_month"</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span>
+                <span class="s">"expiration_year"</span><span class="p">:</span> <span class="mi">2025</span><span class="p">,</span>
+                <span class="s">"cvc"</span><span class="p">:</span> <span class="s">"123"</span>
+            <span class="p">}),</span>
+        <span class="s">"sensitive_tags"</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s">"preferred"</span><span class="p">,</span>
+            <span class="p">{</span>
+                <span class="s">"type"</span><span class="p">:</span> <span class="s">"token"</span><span class="p">,</span>
+                <span class="s">"data"</span><span class="p">:</span> <span class="s">"vip"</span>
+            <span class="p">}</span>
+        <span class="p">]</span>
+    <span class="p">})</span>
+</code></pre></div>
 <blockquote>
 <p>Composite Response</p>
 </blockquote>
