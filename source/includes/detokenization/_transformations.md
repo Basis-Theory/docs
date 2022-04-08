@@ -1,7 +1,7 @@
 # Transformations
 
 Oftentimes data may be tokenized in one format, but you wish to use this data in a different format within a request.
-For example, several pieces of data may be stored together in a complex object such as an Atomic Card token,
+For example, several pieces of data may be stored together in a complex object such as a Card token,
 but you wish to only use a single piece of that data within a request.
 
 For this purpose, we offer the ability to apply transformation functions to a detokenization expression. 

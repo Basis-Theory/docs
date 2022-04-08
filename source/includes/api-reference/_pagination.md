@@ -57,7 +57,7 @@ with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_
 }
 ```
 
-All `List` endpoints support pagination to allow bulk fetching multiple items. Each `List` endpoint shares a common response structure. Examples of these requests can be seen in [List Applications](#applications-list-applications), [List Tokens](#tokens-list-tokens), and [List Atomic Cards](#atomic-cards-list-atomic-cards)
+All `List` endpoints support pagination to allow bulk fetching multiple items. Each `List` endpoint shares a common response structure. Examples of these requests can be seen in [List Applications](#applications-list-applications) and [List Tokens](#tokens-list-tokens).
 
 ### Query Parameters
 

@@ -26,7 +26,7 @@ Complex nested objects are not currently supported within `configuration`.
 The `request_parameters` array defines the contract that the `args` property must satisfy on each request when [Invoking a Reactor](#reactors-invoke-a-reactor).
 Request parameters are intended to define any parameters that will be provided to a Reactor at request-time, and may change across Reactor invocations. 
 Complex objects can be passed within the `args` property to a Reactor, and these complex request parameters can be defined by dot-separating levels of the object hierarchy.
-For example, to pass a `card` object to a Reactor whose schema matches the [Card Object](#atomic-cards-atomic-card-object-card-object) stored within an [Atomic Card](#atomic-cards-atomic-card-object) token, a Reactor Formula should define the following request parameters:
+For example, to pass a `card` object to a Reactor whose schema matches the [Card Object](#tokens-token-data-validations) stored within a [Token](#tokens-token-object), a Reactor Formula should define the following request parameters:
 
 | name                    | type     | optional |
 |-------------------------|----------|----------|

@@ -11,5 +11,5 @@ Permissions are associated with every Application and can be configured when you
 | Permission             | Description                |
 |------------------------|----------------------------|
 | `token:general:create` | Create tokens in the vault |
-| `token:pci:create`     | Create Atomic Card tokens  |
-| `token:bank:create`    | Create Atomic Bank tokens  |
+| `token:pci:create`     | Create Card tokens  |
+| `token:bank:create`    | Create Bank tokens  |

@@ -1,7 +1,6 @@
 # Examples
 
-Based on your use cases, you may prefer to store your sensitive data with Basis Theory using our
-[Atomic Tokens](https://developers.basistheory.com/concepts/what-are-atomic-tokens), one of our pre-defined [Token Types](/#token-types),
+Based on your use cases, you may prefer to store your sensitive data with Basis Theory using one of our pre-defined [Token Types](/#token-types)
 or even use your own custom data schema within a schemaless [generic token](/#token-types-token).
 However you choose to tokenize your sensitive data, Basis Theory grants you the flexibility to use this data within
 our serverless Reactor platform or the Proxy.
@@ -57,7 +56,7 @@ and it authenticates using [basic auth](https://docs.spreedly.com/reference/api/
 we will be passing a simulated value in the `Authorization` header on the example proxy requests - 
 replace this with your own authentication credentials if you want to follow along.
 
-## Use Atomic Tokens
+## Use Complex Tokens
 
 > Original Request
 
@@ -127,9 +126,9 @@ curl "https://api.basistheory.com/proxy" \
 }
 ```
 
-In this example, we show how you can use an [Atomic Card](/#atomic-cards) token to create a Spreedly payment method.
+In this example, we show how you can use a [Card](/#token-types-card) token to create a Spreedly payment method.
 
-Say you have created the Atomic Card token:
+Say you have created the Card token:
 
 <div class="center-column" style="clear: none;"></div>
 ```json
@@ -222,11 +221,11 @@ curl "https://api.basistheory.com/proxy" \
 }
 ```
 
-In this example, we show how you can use an [Atomic Card](/#atomic-cards) token to create a Spreedly payment method,
+In this example, we show how you can use a [Card](/#token-types-card) token to create a Spreedly payment method,
 but provide an updated CVC (`987`) that is different from the `cvc` value stored within the token.
 This could be desired if the updated CVC was collected directly from a user interface, possibly as a challenge to the user to prove they own the card.
 
-Here, we will be using the same Atomic Card token and card owner name from the previous [Use Atomic Tokens](#examples-use-atomic-tokens) example.
+Here, we will be using the same Card token and card owner name from the previous [Use Complex Tokens](#examples-use-complex-tokens) example.
 
 ## Use Multiple Tokens
 
@@ -426,7 +425,7 @@ chosen to store the card holder's first and last names as separate tokens:
 }
 ```
 
-Also, we have the Atomic Card token:
+Also, we have the Card token:
 
 <div class="center-column" style="clear: none;"></div>
 ```json

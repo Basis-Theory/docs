@@ -2,14 +2,15 @@
 
 The following **BasisTheory.js** services are capable of recognizing Elements instances in the payload and securely tokenizing their data directly to Basis Theory vault. 
 
-## Atomic Cards
+## Cards
 
 ```javascript
-BasisTheory.atomicCards.create({
-  card: cardElement
+BasisTheory.tokens.create({
+  type: 'card',
+  data: cardElement,
 }).then((token) => {
   console.log(token.id); // token to store
-  console.log(JSON.stringify(token.card)); // redacted card data
+  console.log(JSON.stringify(token.data)); // redacted card data
 });
 ```
 
@@ -18,23 +19,24 @@ See [CardModel](#element-types-card-element) for the resolved value type. The `P
 if the response status is not in the 2xx range.
 
 
-You can fetch this same data later with [Get an Atomic Card API](/api-reference/#atomic-cards-get-an-atomic-card).
+You can fetch this same data later with [Get a token API](/api-reference/#tokens-get-a-token).
 
 <aside class="notice">
   <span>Notice that the actual card data never leaves the element (iframe) other than to hit our secure API endpoints.</span>
 </aside>
 
-## Atomic Banks
+## Banks
 
 ```javascript
-BasisTheory.atomicBanks.create({
-  bank: {
+BasisTheory.tokens.create({
+  type: 'bank'
+  data: {
     routingNumber: routingNumberElement | 'plainText',  // values can be either a TextElement or plain text (see warning).
     accountNumber: accountNumberElement | 'plainText',
   },
 }).then((token) => {
   console.log(token.id); // token to store
-  console.log(JSON.stringify(token.bank)); // redacted bank data
+  console.log(JSON.stringify(token.data)); // redacted bank data
 });
 ```
 
@@ -43,7 +45,7 @@ data. The `Promise` will reject with an [error](#elements-services-errors) if th
 range.
 
 
-You can fetch this same data later with [Get an Atomic Bank API](/api-reference#atomic-banks-get-an-atomic-bank).
+You can fetch this same data later with [Get a token API](/api-reference#tokens-get-a-token).
 
 <aside class="notice">
   <span>Notice that the actual bank data never leaves the element (iframe) other than to hit our secure API endpoints.</span>
@@ -150,7 +152,7 @@ Attribute    | Type       | Scope  | Description
 ## Store Credit Card <span class="deprecated menu">DEPRECATED</span>
 
 <aside class="danger">
-  <span>This endpoint has been deprecated in favor of <a class="black-link" href="#elements-services-atomic-cards">Atomic Cards</a></span>
+  <span>This endpoint has been deprecated in favor of <a class="black-link" href="#elements-services-cards">Cards</a></span>
 </aside>
 
 ```javascript
@@ -166,9 +168,7 @@ Allows secure submission and tokenization of a card element. Returns a `Promise`
 data. See [CardModel](#element-types-card-element) for the resolved value type. The `Promise` will reject with an
 [error](#elements-services-errors) if the response status is not in the 2xx range.
 
-Internally, `BasisTheory.elements.storeCreditCard` calls [Create Atomic Card API](/api-reference/#atomic-cards-create-atomic-card).
-
-You can fetch this same data later with [Get an Atomic Card API](/api-reference/#atomic-cards-get-an-atomic-card).
+You can fetch this same data later with [Get a token API](/api-reference/#tokens-get-a-token).
 
 <aside class="notice">
   <span>Notice that the actual card data never leaves the element (iframe) other than to hit our secure API endpoints.</span>

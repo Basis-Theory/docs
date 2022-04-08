@@ -31,8 +31,6 @@ intro_includes:
 
 api_includes:
   - api-reference/applications  
-  - api-reference/atomic_banks
-  - api-reference/atomic_cards
   - api-reference/logs  
   - api-reference/permissions
   - api-reference/proxy
