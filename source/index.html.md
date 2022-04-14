@@ -7,6 +7,7 @@ language_tabs: # must be one of https://git.io/vQNgJ
   - javascript: Node.js
   - csharp: .NET
   - python: Python
+  - go: Go
 
 toc_footers:
 
