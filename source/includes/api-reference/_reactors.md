@@ -87,6 +87,34 @@ with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_
     ))
 ```
 
+```go
+package main
+
+import (
+  "context"
+  "github.com/Basis-Theory/basistheory-go"
+)
+
+func main() {
+  configuration := basistheory.NewConfiguration()
+  apiClient := basistheory.NewAPIClient(configuration)
+  contextWithAPIKey := context.WithValue(context.Background(), basistheory.ContextAPIKeys, map[string]basistheory.APIKey{
+    "ApiKey": {Key: "key_N88mVGsp3sCXkykyN2EFED"},
+  })
+
+  createReactorModel := *basistheory.NewCreateReactorModel()
+  createReactorModel.SetName("My Reactor")
+  createReactorModel.SetConfiguration(map[string]string{
+  	"SERVICE_API_KEY": "key_abcd134",
+  })
+  reactorFormula := *basistheory.NewReactorFormulaModel()
+  reactorFormula.SetId("17069df1-80f4-439e-86a7-4121863e4678")
+  createReactorModel.SetFormula(reactorFormula)
+
+  reactor, response, error := apiClient.ReactorsApi.ReactorCreate(contextWithAPIKey).CreateReactorModel(createReactorModel).Execute()
+}
+```
+
 > Response
 
 ```json
@@ -164,6 +192,25 @@ with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_
     reactors_client = reactors_api.ReactorsApi(api_client)
 
     reactors = reactors_client.get()
+```
+
+```go
+package main
+
+import (
+  "context"
+  "github.com/Basis-Theory/basistheory-go"
+)
+
+func main() {
+  configuration := basistheory.NewConfiguration()
+  apiClient := basistheory.NewAPIClient(configuration)
+  contextWithAPIKey := context.WithValue(context.Background(), basistheory.ContextAPIKeys, map[string]basistheory.APIKey{
+    "ApiKey": {Key: "key_N88mVGsp3sCXkykyN2EFED"},
+  })
+
+  reactors, response, err := apiClient.ReactorsApi.ReactorsGet(contextWithAPIKey).Execute()
+}
 ```
 
 > Response
@@ -249,6 +296,25 @@ with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_
     reactors_client = reactors_api.ReactorsApi(api_client)
 
     reactor = reactors_client.get_by_id("5b493235-6917-4307-906a-2cd6f1a90b13")
+```
+
+```go
+package main
+
+import (
+  "context"
+  "github.com/Basis-Theory/basistheory-go"
+)
+
+func main() {
+  configuration := basistheory.NewConfiguration()
+  apiClient := basistheory.NewAPIClient(configuration)
+  contextWithAPIKey := context.WithValue(context.Background(), basistheory.ContextAPIKeys, map[string]basistheory.APIKey{
+    "ApiKey": {Key: "key_N88mVGsp3sCXkykyN2EFED"},
+  })
+
+  reactors, response, err := apiClient.ReactorsApi.ReactorGetById(contextWithAPIKey, "5b493235-6917-4307-906a-2cd6f1a90b13").Execute()
+}
 ```
 
 > Response
@@ -355,6 +421,31 @@ with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_
     ))
 ```
 
+```go
+package main
+
+import (
+  "context"
+  "github.com/Basis-Theory/basistheory-go"
+)
+
+func main() {
+  configuration := basistheory.NewConfiguration()
+  apiClient := basistheory.NewAPIClient(configuration)
+  contextWithAPIKey := context.WithValue(context.Background(), basistheory.ContextAPIKeys, map[string]basistheory.APIKey{
+    "ApiKey": {Key: "key_N88mVGsp3sCXkykyN2EFED"},
+  })
+
+  updateReactorModel := *basistheory.NewUpdateReactorModel()
+  updateReactorModel.SetName("My Reactor")
+  updateReactorModel.SetConfiguration(map[string]string{
+  	"SERVICE_API_KEY": "key_abcd134",
+  })
+
+  reactor, response, err := apiClient.ReactorsApi.ReactorUpdate(contextWithAPIKey, "5b493235-6917-4307-906a-2cd6f1a90b13").UpdateReactorModel(updateReactorModel).Execute()
+}
+```
+
 > Response
 
 ```json
@@ -440,6 +531,25 @@ with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_
     reactors_client.delete("fb124bba-f90d-45f0-9a59-5edca27b3b4a")
 ```
 
+```go
+package main
+
+import (
+  "context"
+  "github.com/Basis-Theory/basistheory-go"
+)
+
+func main() {
+  configuration := basistheory.NewConfiguration()
+  apiClient := basistheory.NewAPIClient(configuration)
+  contextWithAPIKey := context.WithValue(context.Background(), basistheory.ContextAPIKeys, map[string]basistheory.APIKey{
+    "ApiKey": {Key: "key_N88mVGsp3sCXkykyN2EFED"},
+  })
+
+  reactors, response, err := apiClient.ReactorsApi.ReactorDelete(contextWithAPIKey, "fb124bba-f90d-45f0-9a59-5edca27b3b4a").Execute()
+}
+```
+
 <span class="http-method delete">
   <span class="box-method">DELETE</span>
   `https://api.basistheory.com/reactors/{id}`
@@ -522,6 +632,33 @@ with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_
         }
     ))
 ```
+
+
+```go
+package main
+
+import (
+  "context"
+  "github.com/Basis-Theory/basistheory-go"
+)
+
+func main() {
+  configuration := basistheory.NewConfiguration()
+  apiClient := basistheory.NewAPIClient(configuration)
+  contextWithAPIKey := context.WithValue(context.Background(), basistheory.ContextAPIKeys, map[string]basistheory.APIKey{
+    "ApiKey": {Key: "key_N88mVGsp3sCXkykyN2EFED"},
+  })
+
+  reactRequest := *basistheory.NewReactRequest()
+  reactRequest.SetArgs(map[string]interface{}{
+  	"card": "{{fe7c0a36-eb45-4f68-b0a0-791de28b29e4}}",
+  	"customer_id": "myCustomerId1234",
+  })
+
+  reactResponse, response, err := apiClient.ReactorsApi.ReactorReact(contextWithAPIKey, "5b493235-6917-4307-906a-2cd6f1a90b13").ReactRequest(reactRequest).Execute()
+}
+```
+
 
 <span class="http-method post">
   <span class="box-method">POST</span>
