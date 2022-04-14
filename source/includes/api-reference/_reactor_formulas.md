@@ -451,7 +451,7 @@ func main() {
     "ApiKey": {Key: "key_N88mVGsp3sCXkykyN2EFED"},
   })
 
-  reactorFormulas, response, err = apiClient.ReactorFormulasApi.ReactorFormulasGet(contextWithAPIKey).Execute()
+  reactorFormulas, response, err := apiClient.ReactorFormulasApi.ReactorFormulasGet(contextWithAPIKey).Execute()
 }
 ```
 
