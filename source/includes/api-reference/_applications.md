@@ -101,6 +101,34 @@ with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_
     ))
 ```
 
+```go
+package main
+
+import (
+  "context"
+  "github.com/Basis-Theory/basistheory-go"
+)
+
+func main() {
+  configuration := basistheory.NewConfiguration()
+  apiClient := basistheory.NewAPIClient(configuration)
+  contextWithAPIKey := context.WithValue(context.Background(), basistheory.ContextAPIKeys, map[string]basistheory.APIKey{
+    "ApiKey": {Key: "key_N88mVGsp3sCXkykyN2EFED"},
+  })
+
+  createApplicationModel := *basistheory.NewCreateApplicationModel()
+  createApplicationModel.SetName("My Example App")
+  createApplicationModel.SetType("server_to_server")
+  createApplicationModel.SetPermissions([]string{
+    "token:general:create",
+    "token:general:read:low",
+    "token:pci:create",
+    "token:pci:read:low",
+  })
+  application, response, err := apiClient.ApplicationsApi.ApplicationCreate(contextWithAPIKey).CreateApplicationModel(createApplicationModel).Execute()
+}
+```
+
 > Response
 
 ```json
@@ -180,6 +208,25 @@ with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_
     application_client = applications_api.ApplicationsApi(api_client)
 
     applications = application_client.get()
+```
+
+```go
+package main
+
+import (
+  "context"
+  "github.com/Basis-Theory/basistheory-go"
+)
+
+func main() {
+  configuration := basistheory.NewConfiguration()
+  apiClient := basistheory.NewAPIClient(configuration)
+  contextWithAPIKey := context.WithValue(context.Background(), basistheory.ContextAPIKeys, map[string]basistheory.APIKey{
+    "ApiKey": {Key: "key_N88mVGsp3sCXkykyN2EFED"},
+  })
+
+  applications, response, err := apiClient.ApplicationsApi.ApplicationsGet(contextWithAPIKey).Execute()
+}
 ```
 
 > Response
@@ -269,6 +316,25 @@ with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_
     application = application_client.get_by_id("fe1f9ba4-474e-44b9-b949-110cdba9d662")
 ```
 
+```go
+package main
+
+import (
+  "context"
+  "github.com/Basis-Theory/basistheory-go"
+)
+
+func main() {
+  configuration := basistheory.NewConfiguration()
+  apiClient := basistheory.NewAPIClient(configuration)
+  contextWithAPIKey := context.WithValue(context.Background(), basistheory.ContextAPIKeys, map[string]basistheory.APIKey{
+    "ApiKey": {Key: "key_N88mVGsp3sCXkykyN2EFED"},
+  })
+
+  application, response, err := apiClient.ApplicationsApi.ApplicationGetById(contextWithAPIKey, "fe1f9ba4-474e-44b9-b949-110cdba9d662").Execute()
+}
+```
+
 > Response
 
 ```json
@@ -345,6 +411,25 @@ with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_
     application_client = applications_api.ApplicationsApi(api_client)
 
     application = application_client.get_by_key()
+```
+
+```go
+package main
+
+import (
+  "context"
+  "github.com/Basis-Theory/basistheory-go"
+)
+
+func main() {
+  configuration := basistheory.NewConfiguration()
+  apiClient := basistheory.NewAPIClient(configuration)
+  contextWithAPIKey := context.WithValue(context.Background(), basistheory.ContextAPIKeys, map[string]basistheory.APIKey{
+    "ApiKey": {Key: "key_N88mVGsp3sCXkykyN2EFED"},
+  })
+
+  application, response, err := apiClient.ApplicationsApi.ApplicationKey(contextWithAPIKey).Execute()
+}
 ```
 
 > Response
@@ -449,6 +534,31 @@ with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_
     ))
 ```
 
+```go
+package main
+
+import (
+  "context"
+  "github.com/Basis-Theory/basistheory-go"
+)
+
+func main() {
+  configuration := basistheory.NewConfiguration()
+  apiClient := basistheory.NewAPIClient(configuration)
+  contextWithAPIKey := context.WithValue(context.Background(), basistheory.ContextAPIKeys, map[string]basistheory.APIKey{
+    "ApiKey": {Key: "key_N88mVGsp3sCXkykyN2EFED"},
+  })
+
+  updateApplicationModel := *basistheory.NewUpdateApplicationModel()
+  updateApplicationModel.SetName("My Example App")
+  updateApplicationModel.SetPermissions([]string{
+  	"application:create",
+  	"application:read",
+  })
+  application, response, err := apiClient.ApplicationsApi.ApplicationUpdate(contextWithAPIKey, "fb124bba-f90d-45f0-9a59-5edca27b3b4a").UpdateApplicationModel(updateApplicationModel).Execute()
+}
+```
+
 > Response
 
 ```json
@@ -535,6 +645,25 @@ with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_
     application = application_client.regenerate_key("fb124bba-f90d-45f0-9a59-5edca27b3b4a")
 ```
 
+```go
+package main
+
+import (
+  "context"
+  "github.com/Basis-Theory/basistheory-go"
+)
+
+func main() {
+  configuration := basistheory.NewConfiguration()
+  apiClient := basistheory.NewAPIClient(configuration)
+  contextWithAPIKey := context.WithValue(context.Background(), basistheory.ContextAPIKeys, map[string]basistheory.APIKey{
+    "ApiKey": {Key: "key_N88mVGsp3sCXkykyN2EFED"},
+  })
+
+  application, response, err := apiClient.ApplicationsApi.ApplicationRegenerate(contextWithAPIKey, "fb124bba-f90d-45f0-9a59-5edca27b3b4a").Execute()
+}
+```
+
 > Response
 
 ```json
@@ -619,6 +748,25 @@ with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_
     application_client = applications_api.ApplicationsApi(api_client)
 
     application_client.delete("fb124bba-f90d-45f0-9a59-5edca27b3b4a")
+```
+
+```go
+package main
+
+import (
+  "context"
+  "github.com/Basis-Theory/basistheory-go"
+)
+
+func main() {
+  configuration := basistheory.NewConfiguration()
+  apiClient := basistheory.NewAPIClient(configuration)
+  contextWithAPIKey := context.WithValue(context.Background(), basistheory.ContextAPIKeys, map[string]basistheory.APIKey{
+    "ApiKey": {Key: "key_N88mVGsp3sCXkykyN2EFED"},
+  })
+
+  response, err := apiClient.ApplicationsApi.ApplicationDelete(contextWithAPIKey, "fb124bba-f90d-45f0-9a59-5edca27b3b4a").Execute()
+}
 ```
 
 <span class="http-method delete">
