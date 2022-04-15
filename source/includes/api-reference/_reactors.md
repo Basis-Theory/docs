@@ -313,7 +313,7 @@ func main() {
     "ApiKey": {Key: "key_N88mVGsp3sCXkykyN2EFED"},
   })
 
-  reactors, response, err := apiClient.ReactorsApi.ReactorGetById(contextWithAPIKey, "5b493235-6917-4307-906a-2cd6f1a90b13").Execute()
+  reactor, response, err := apiClient.ReactorsApi.ReactorGetById(contextWithAPIKey, "5b493235-6917-4307-906a-2cd6f1a90b13").Execute()
 }
 ```
 
