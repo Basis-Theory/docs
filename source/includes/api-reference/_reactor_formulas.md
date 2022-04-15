@@ -1036,7 +1036,7 @@ func main() {
     "ApiKey": {Key: "key_N88mVGsp3sCXkykyN2EFED"},
   })
 
-  reactorFormula, response, err := apiClient.ReactorFormulasApi.ReactorFormulaDelete(contextWithAPIKey, "17069df1-80f4-439e-86a7-4121863e4678").Execute()
+  response, err := apiClient.ReactorFormulasApi.ReactorFormulaDelete(contextWithAPIKey, "17069df1-80f4-439e-86a7-4121863e4678").Execute()
 }
 ```
 
