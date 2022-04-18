@@ -66,6 +66,12 @@ Attribute  | Type       | Description
 `complete` | *boolean*  | If the element value is well-formed and is ready to be submitted.
 `empty`    | *boolean*  | Whether the element is empty. Multi-input Elements will be `empty` only if all inputs are.
 `errors`   | *array*    | Array of [FieldError](#element-events-on-change-fielderror).
+`error`   | *Error*    | Object of type [Error](#element-events-on-change-error).
+
+<aside class="danger">
+  <span><code>errors</code> property has been deprecated in favor of <code>error.details</code></span>
+</aside>
+
 
 ### FieldError
 
@@ -80,6 +86,36 @@ Attribute  | Type       | Description
 ---------- | ---------- | -----------
 `targetId` | *string*                        | Input id that triggered the error. Values vary per [element type](#element-types).
 `type`     | *"invalid"* or *"incomplete"*   | Type of the error.
+
+### PropertyError
+
+```jsx
+{
+  "type": "invalid"
+}
+```
+
+Attribute  | Type       | Description
+---------- | ---------- | -----------
+`type`     | *"invalid"* or *"incomplete"*   | Type of the error.
+
+### Error
+
+```jsx
+{
+  "details": {
+    card1: {
+      number: { type: 'invalid' },
+      cvc: { type: 'incomplete' }
+    },
+    card2: {}
+  }
+}
+```
+
+Attribute  | Type       | Description
+---------- | ---------- | -----------
+`details`     | *`Record<string, any>`*   | Error details. Each value will have a [PropertyError](#elements-events-on-change-propertyerror)
 
 ## On Focus
 

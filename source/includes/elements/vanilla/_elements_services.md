@@ -2,15 +2,18 @@
 
 The following **BasisTheory.js** services are capable of recognizing Elements instances in the payload and securely tokenizing their data directly to Basis Theory vault. 
 
-## Cards
+## Atomic Cards <span class="deprecated menu">DEPRECATED</span>
+
+<aside class="danger">
+  <span>This service has been deprecated in favor of <a class="black-link" href="#elements-services-tokens">Tokens</a></span>
+</aside>
 
 ```javascript
-BasisTheory.tokens.create({
-  type: 'card',
-  data: cardElement,
+BasisTheory.atomicCards.create({
+  card: cardElement,
 }).then((token) => {
   console.log(token.id); // token to store
-  console.log(JSON.stringify(token.data)); // redacted card data
+  console.log(JSON.stringify(token.card)); // redacted card data
 });
 ```
 
@@ -25,18 +28,21 @@ You can fetch this same data later with [Get a token API](/api-reference/#tokens
   <span>Notice that the actual card data never leaves the element (iframe) other than to hit our secure API endpoints.</span>
 </aside>
 
-## Banks
+## Atomic Banks <span class="deprecated menu">DEPRECATED</span>
+
+<aside class="danger">
+  <span>This service has been deprecated in favor of <a class="black-link" href="#elements-services-tokens">Tokens</a></span>
+</aside>
 
 ```javascript
-BasisTheory.tokens.create({
-  type: 'bank'
-  data: {
+BasisTheory.atomicBanks.create({
+  bank: {
     routingNumber: routingNumberElement | 'plainText',  // values can be either a TextElement or plain text (see warning).
     accountNumber: accountNumberElement | 'plainText',
   },
 }).then((token) => {
   console.log(token.id); // token to store
-  console.log(JSON.stringify(token.data)); // redacted bank data
+  console.log(JSON.stringify(token.bank)); // redacted bank data
 });
 ```
 
@@ -77,10 +83,35 @@ BasisTheory.tokens.create({
 });
 ```
 
-Allows secure submission and tokenization of string data. Returns a `Promise` that resolves to the created token. The
+```javascript
+// tokenizing card element
+BasisTheory.tokens.create({
+  type: 'card',
+  data: cardElement,
+}).then((token) => {
+  console.log(token.id); // token to store
+  console.log(JSON.stringify(token.data)); // redacted card data
+});
+```
+
+```javascript
+// tokenizing bank details with text element
+BasisTheory.tokens.create({
+  type: 'bank'
+  data: {
+    routingNumber: routingNumberElement | 'plainText',  // values can be either a TextElement or plain text (see warning).
+    accountNumber: accountNumberElement | 'plainText',
+  },
+}).then((token) => {
+  console.log(token.id); // token to store
+  console.log(JSON.stringify(token.data)); // redacted bank data
+});
+```
+
+Allows secure submission and tokenization of primitive data and card or text elements. Returns a `Promise` that resolves to the created token. The
 `Promise` will reject with an [error](#elements-services-errors) if the response status is not in the 2xx range.
 
-You can fetch this same data later with [Get a Token API](/api-reference#tokens-get-a-token) or [Get a Decrypted Token API](/api-reference#tokens-get-a-decrypted-token)
+You can fetch this same data later with [Get a Token API](/api-reference#tokens-get-a-token)
 
 <aside class="notice">
   <span>Notice that the actual input data never leaves the element (iframe) other than to hit our secure API endpoints.</span>
@@ -88,10 +119,6 @@ You can fetch this same data later with [Get a Token API](/api-reference#tokens-
 
 <aside class="warning">
   <span>Note that when submitting <code>plainText</code> values, data will be HTML encoded before storage for security reasons.
-</aside>
-
-<aside class="warning">
-  <span>Currently only the <code>token</code> type is supported. Support for more types will be added in the future.</span>
 </aside>
 
 <aside class="warning">
@@ -114,10 +141,47 @@ BasisTheory.tokenize({
 });
 ```
 
-Allows secure submission and tokenization of string data. Returns a `Promise` that resolves to the created tokens. The
+```javascript
+// tokenizing multiple card elements
+BasisTheory.tokenize({
+  card1: {
+  type: 'card',
+  data: cardElement1,
+},
+card2: {
+  type: 'card',
+  data: cardElement2,
+}
+}).then((token) => {
+  console.log(JSON.stringify(token)); // encrypted token data
+});
+```
+
+```javascript
+// tokenizing multiple bank details with text elements
+BasisTheory.tokenize({
+  bank1: {
+  type: 'bank'
+  data: {
+    routingNumber: routingNumberElement1 | 'plainText',  // values can be either a TextElement or plain text (see warning).
+    accountNumber: accountNumberElement1 | 'plainText',
+  },
+  bank2: {
+  type: 'bank'
+  data: {
+    routingNumber: routingNumberElement2 | 'plainText',  // values can be either a TextElement or plain text (see warning).
+    accountNumber: accountNumberElement2 | 'plainText',
+  },
+}
+}).then((token) => {
+  console.log(JSON.stringify(token)); // encrypted token data
+});
+```
+
+Allows secure submission and tokenization of primitive data and card or text elements. Returns a `Promise` that resolves to the created tokens. The
 `Promise` will reject with an [error](#elements-services-errors) if the response status is not in the 2xx range.
 
-You can fetch this same data later with [Get a Token API](/api-reference#tokens-get-a-token) or [Get a Decrypted Token API](/api-reference#tokens-get-a-decrypted-token).
+You can fetch this same data later with [Get a Token API](/api-reference#tokens-get-a-token)
 
 <aside class="notice">
   <span>Notice that the actual input data never leaves the element (iframe) other than to hit our secure API endpoints.</span>
@@ -148,28 +212,7 @@ Attribute    | Type       | Scope  | Description
 `data`       | *object*   | server | Response body sent from the server.
 `status`     | *number*   | both   | Response HTTP status or `-1` if the request never left the client (i.e. connection issues)
 
-
-## Store Credit Card <span class="deprecated menu">DEPRECATED</span>
-
 <aside class="danger">
-  <span>This endpoint has been deprecated in favor of <a class="black-link" href="#elements-services-cards">Cards</a></span>
+  <span><code>validation</code> property has been deprecated in favor of <code>details</code></span>
 </aside>
 
-```javascript
-BasisTheory.elements.storeCreditCard({
-  card: cardElement,
-}).then((token) => {
-  console.log(token.id); // token to store
-  console.log(JSON.stringify(token.card)); // redacted card data
-});
-```
-
-Allows secure submission and tokenization of a card element. Returns a `Promise` that resolves to the tokenized card
-data. See [CardModel](#element-types-card-element) for the resolved value type. The `Promise` will reject with an
-[error](#elements-services-errors) if the response status is not in the 2xx range.
-
-You can fetch this same data later with [Get a token API](/api-reference/#tokens-get-a-token).
-
-<aside class="notice">
-  <span>Notice that the actual card data never leaves the element (iframe) other than to hit our secure API endpoints.</span>
-</aside>
