@@ -1,3 +1,10 @@
+# [1.32.0](https://github.com/Basis-Theory/docs/compare/v1.31.0...v1.32.0) (2022-04-15)
+
+
+### Features
+
+* adds Go SDK docs ([#171](https://github.com/Basis-Theory/docs/issues/171)) ([a3fcc28](https://github.com/Basis-Theory/docs/commit/a3fcc28c2505c8cbc65888f95498de7baded2d47))
+
 # [1.31.0](https://github.com/Basis-Theory/docs/compare/v1.30.0...v1.31.0) (2022-04-07)
 
 
