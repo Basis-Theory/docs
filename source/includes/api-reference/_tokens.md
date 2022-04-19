@@ -33,7 +33,7 @@ Default privacy settings can be overridden at the time of creation, but only to 
 
 | Attribute        | Required | Type     | Default | Description                           |
 |------------------|----------|----------|---------|---------------------------------------|
-| `routing_number` | true     | *string* | `null`  | Nine-digit ABA routing number         |
+| `routing_number` | true     | *string* | `null`  | Nine-digit ABA routing number. Its checksum is validated.         |
 | `account_number` | true     | *string* | `null`  | Account number up to seventeen-digits |
 
 ### Card Object

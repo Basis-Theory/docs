@@ -14,7 +14,6 @@ The following table lists deprecated services and their respective shutdown date
 
 The following table lists deprecated features and their respective shutdown date.
 
-| Feature                      | Deprecated      | Shutdown Date  Details                                                                                                                                                                                                                   |
+| Feature                      | Deprecated      | Shutdown Date |  Details                                                                                                                                                                                                                   |
 |------------------------------|----------------|-----------------|----------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `errors` property in ChangeEvent   | April 22, 2022  | July 22, 2022  | `errors` property in ChangeEvent will be removed in an upcoming release. Instead, please use [error.details](#element-events-on-change) | 
 | `validation` property in error   | April 22, 2022  | July 22, 2022  | `validation` property in errors will be removed in an upcoming release. Instead, please use [details](#elements-services-errors) | 

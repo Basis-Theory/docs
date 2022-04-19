@@ -198,9 +198,35 @@ You can fetch this same data later with [Get a Token API](/api-reference#tokens-
 
 ## Errors
 
+```jsx
+// example of error details structure
+{
+  "details": {
+    card1: {
+      number: { type: 'invalid' },
+      cvc: { type: 'incomplete' }
+    },
+    card2: {}
+  }
+}
+```
+
 ```javascript
-BasisTheory.tokens.create(...).catch(error => {
+// handling the error
+BasisTheory.tokens.create(bt.tokenize({
+    card1: {
+      type: 'card', 
+      data: cardElement1
+    },
+    card2: {
+      type: 'card', 
+      data: cardElement2
+    },
+	  ssn: textElement
+  } as MyPayload)).catch(error => {
   // handle error
+  if(error.details.card1?.number?.type === 'incomplete') addMessage('Card 1 number is incomplete');
+  if(error.details.card2?.number?.type === 'invalid') addMessage('Card 2 number is invalid');
 });
 ```
 
@@ -208,11 +234,19 @@ In case any Elements service throws an error, that could be related to client-si
 
 Attribute    | Type       | Scope  | Description
 ------------ | ---------- | ------ | -----------
-`validation` | *array*    | client | Array of [FieldError](#element-events-on-change-fielderror), in case of client-side error.
+`details`     | *`Record<string, any>`*   | client | Error details. Each value will have a [PropertyError](#elements-services-errors-propertyerror)
 `data`       | *object*   | server | Response body sent from the server.
 `status`     | *number*   | both   | Response HTTP status or `-1` if the request never left the client (i.e. connection issues)
+~~`validation`~~ | *array*    | client | [Deprecated in favor of details](#deprecations-deprecated-features). Array of [FieldError](#element-events-on-change-fielderror), in case of client-side error. 
 
-<aside class="danger">
-  <span><code>validation</code> property has been deprecated in favor of <code>details</code></span>
-</aside>
+### PropertyError
 
+```jsx
+{
+  "type": "invalid"
+}
+```
+
+Attribute  | Type       | Description
+---------- | ---------- | -----------
+`type`     | *"invalid"* or *"incomplete"*   | Type of the error.
