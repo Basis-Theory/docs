@@ -30,9 +30,7 @@ Elements of a Reactor Formula's `configuration` array have the following schema:
 | `description` | false    | *string* | `null`  | Description of the configuration setting                                                   |
 | `type`        | true     | *string* | `null`  | Data type of the configuration setting. Valid values are `string`, `boolean`, and `number` |
 
-Reactor configuration is intended to configuration values that can be defined once per Reactor and do not change between Reactor invocations.
-Declare a `configuration` property on a Reactor Formula for each property you wish to be statically defined once for each Reactor derived from this formula.
-
+Reactor configuration is intended for properties that can be defined once per Reactor and do not change between Reactor invocations.
 Complex nested objects (dot-separated names) are not currently supported within a Reactor's `configuration`.
 
 ## Reactor Formula Request Parameters
@@ -85,19 +83,17 @@ Reactor Formula Code is written in Javascript (targeting Node.js v14) and genera
 <div class="center-column"></div>
 ```js
 module.exports = async function (req) {
-    const { my_arg } = req.args; // access any args provided with the request
-    const { MY_CONFIG } = req.configuration; // access any static config defined on the Reactor
-    
-    // do anything here!
-    
-    return {
-        raw: {}, // non-sensitive data that should be returned in plaintext
-        tokenize: {} // sensitive data that should be tokenized
-    };
+  const { my_arg } = req.args; // access any args provided with the request
+  const { MY_CONFIG } = req.configuration; // access any static config defined on the Reactor
+
+  // do anything here!
+
+  return {
+      raw: {}, // non-sensitive data that should be returned in plaintext
+      tokenize: {} // sensitive data that should be tokenized
+  };
 };
 ```
-
-For more information about writing your own Reactor Formulas, check out [our guide](https://developers.basistheory.com/guides/run-your-own-code-in-a-reactor/).
 
 ## Reactor Formula Types
 
