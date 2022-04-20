@@ -1,3 +1,10 @@
+# [1.34.0](https://github.com/Basis-Theory/docs/compare/v1.33.0...v1.34.0) (2022-04-20)
+
+
+### Features
+
+* deprecate atomic endpoints and remove atomic references ([#169](https://github.com/Basis-Theory/docs/issues/169)) ([b26b58a](https://github.com/Basis-Theory/docs/commit/b26b58a54fbd409fe26b777006a28e542d28eada))
+
 # [1.33.0](https://github.com/Basis-Theory/docs/compare/v1.32.0...v1.33.0) (2022-04-20)
 
 
