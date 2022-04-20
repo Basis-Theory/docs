@@ -1,3 +1,10 @@
+# [1.33.0](https://github.com/Basis-Theory/docs/compare/v1.32.0...v1.33.0) (2022-04-20)
+
+
+### Features
+
+* Improve docs around private reactor formulas ([#172](https://github.com/Basis-Theory/docs/issues/172)) ([3818e03](https://github.com/Basis-Theory/docs/commit/3818e03258a5a35c1e307135a8a4ef32f403dad3))
+
 # [1.32.0](https://github.com/Basis-Theory/docs/compare/v1.31.0...v1.32.0) (2022-04-15)
 
 
