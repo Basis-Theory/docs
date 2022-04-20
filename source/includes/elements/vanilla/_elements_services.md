@@ -4,7 +4,7 @@ The following **BasisTheory.js** services are capable of recognizing Elements in
 
 ## Tokens
 
-> Create Card token
+> Create generic token
 
 ```javascript
 BasisTheory.tokens.create({
