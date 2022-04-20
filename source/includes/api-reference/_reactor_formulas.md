@@ -95,6 +95,8 @@ module.exports = async function (req) {
 };
 ```
 
+For more information about writing your own code for a Reactor Formula, check out [our guide](https://developers.basistheory.com/guides/run-your-own-code-in-a-reactor/).
+
 ## Reactor Formula Types
 
 | Type       | Description                                                                                |
