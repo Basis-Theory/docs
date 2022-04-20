@@ -22,6 +22,7 @@ BasisTheory.tokens.create({
     nonSensitiveField: 'nonSensitiveValue'
   }
 }).then((token) => {
+  console.log(token.id); // token to store
   console.log(JSON.stringify(token)); // encrypted token data
 });
 ```
@@ -84,6 +85,7 @@ BasisTheory.tokenize({
   },
   someOtherData: ['plainText1', 'plainText2'],
 }).then((token) => {
+  console.log(token.id); // token to store
   console.log(JSON.stringify(token)); // encrypted token data
 });
 ```
@@ -101,6 +103,7 @@ card2: {
   data: cardElement2,
 }
 }).then((token) => {
+  console.log(token.id); // token to store
   console.log(JSON.stringify(token)); // encrypted token data
 });
 ```
@@ -123,6 +126,7 @@ BasisTheory.tokenize({
   },
 }
 }).then((token) => {
+  console.log(token.id); // token to store
   console.log(JSON.stringify(token)); // encrypted token data
 });
 ```
@@ -168,18 +172,18 @@ import { BasisTheoryApiError, BasisTheoryValidationError } from '@basis-theory/b
 
 BasisTheory.tokens.create(bt.tokenize({
     card1: {
-      type: 'card', 
-      data: cardElement1
+        type: 'card',
+        data: cardElement1
     },
     card2: {
-      type: 'card', 
-      data: cardElement2
+        type: 'card',
+        data: cardElement2
     },
-	  ssn: textElement
-  } as MyPayload)).catch(error => {
-  // handle error
-  if(error.details.card1?.number?.type === 'incomplete') addMessage('Card 1 number is incomplete');
-  if(error.details.card2?.number?.type === 'invalid') addMessage('Card 2 number is invalid');
+    ssn: textElement
+})).catch(error => {
+    // handle error
+    if (error.details.card1?.number?.type === 'incomplete') addMessage('Card 1 number is incomplete');
+    if (error.details.card2?.number?.type === 'invalid') addMessage('Card 2 number is invalid');
 });
 ```
 
