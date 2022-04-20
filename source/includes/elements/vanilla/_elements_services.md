@@ -2,58 +2,9 @@
 
 The following **BasisTheory.js** services are capable of recognizing Elements instances in the payload and securely tokenizing their data directly to Basis Theory vault. 
 
-## Atomic Cards
-
-```javascript
-BasisTheory.atomicCards.create({
-  card: cardElement
-}).then((token) => {
-  console.log(token.id); // token to store
-  console.log(JSON.stringify(token.card)); // redacted card data
-});
-```
-
-Allows secure submission and tokenization of a card element. Returns a `Promise` that resolves to the tokenized card data.
-See [CardModel](#element-types-card-element) for the resolved value type. The `Promise` will reject with an [error](#elements-services-errors)
-if the response status is not in the 2xx range.
-
-
-You can fetch this same data later with [Get an Atomic Card API](/api-reference/#atomic-cards-get-an-atomic-card).
-
-<aside class="notice">
-  <span>Notice that the actual card data never leaves the element (iframe) other than to hit our secure API endpoints.</span>
-</aside>
-
-## Atomic Banks
-
-```javascript
-BasisTheory.atomicBanks.create({
-  bank: {
-    routingNumber: routingNumberElement | 'plainText',  // values can be either a TextElement or plain text (see warning).
-    accountNumber: accountNumberElement | 'plainText',
-  },
-}).then((token) => {
-  console.log(token.id); // token to store
-  console.log(JSON.stringify(token.bank)); // redacted bank data
-});
-```
-
-Allows secure submission and tokenization of a bank element. Returns a `Promise` that resolves to the tokenized bank
-data. The `Promise` will reject with an [error](#elements-services-errors) if the response status is not in the 2xx
-range.
-
-
-You can fetch this same data later with [Get an Atomic Bank API](/api-reference#atomic-banks-get-an-atomic-bank).
-
-<aside class="notice">
-  <span>Notice that the actual bank data never leaves the element (iframe) other than to hit our secure API endpoints.</span>
-</aside>
-
-<aside class="warning">
-  <span>Note that when submitting <code>plainText</code> values, data will be HTML encoded before storage for security reasons.
-</aside>
-
 ## Tokens
+
+> Create generic token
 
 ```javascript
 BasisTheory.tokens.create({
@@ -71,14 +22,42 @@ BasisTheory.tokens.create({
     nonSensitiveField: 'nonSensitiveValue'
   }
 }).then((token) => {
+  console.log(token.id); // token to store
   console.log(JSON.stringify(token)); // encrypted token data
 });
 ```
 
-Allows secure submission and tokenization of string data. Returns a `Promise` that resolves to the created token. The
+> Tokenize card element
+
+```javascript
+BasisTheory.tokens.create({
+  type: 'card',
+  data: cardElement,
+}).then((token) => {
+  console.log(token.id); // token to store
+  console.log(JSON.stringify(token.data)); // redacted card data
+});
+```
+
+> Tokenize bank details
+
+```javascript
+BasisTheory.tokens.create({
+  type: 'bank',
+  data: {
+    routingNumber: routingNumberElement | 'plainText',  // values can be either a TextElement or plain text (see warning).
+    accountNumber: accountNumberElement | 'plainText',
+  }
+}).then((token) => {
+  console.log(token.id); // token to store
+  console.log(JSON.stringify(token.data)); // redacted bank data
+});
+```
+
+Allows secure submission and tokenization of primitive data and elements. Returns a `Promise` that resolves to the created token. The
 `Promise` will reject with an [error](#elements-services-errors) if the response status is not in the 2xx range.
 
-You can fetch this same data later with [Get a Token API](/api-reference#tokens-get-a-token) or [Get a Decrypted Token API](/api-reference#tokens-get-a-decrypted-token)
+You can fetch this same data later with [Get a Token API](/api-reference#tokens-get-a-token)
 
 <aside class="notice">
   <span>Notice that the actual input data never leaves the element (iframe) other than to hit our secure API endpoints.</span>
@@ -89,14 +68,12 @@ You can fetch this same data later with [Get a Token API](/api-reference#tokens-
 </aside>
 
 <aside class="warning">
-  <span>Currently only the <code>token</code> type is supported. Support for more types will be added in the future.</span>
-</aside>
-
-<aside class="warning">
   <span>The <code>children</code> attribute supported by the API is <strong>NOT</strong> supported when creating a token with elements.</span>
 </aside>
 
 ## Tokenize
+
+> Tokenize data
 
 ```javascript
 BasisTheory.tokenize({
@@ -108,14 +85,57 @@ BasisTheory.tokenize({
   },
   someOtherData: ['plainText1', 'plainText2'],
 }).then((token) => {
+  console.log(token.id); // token to store
   console.log(JSON.stringify(token)); // encrypted token data
 });
 ```
 
-Allows secure submission and tokenization of string data. Returns a `Promise` that resolves to the created tokens. The
+> Tokenize multiple card elements
+
+```javascript
+BasisTheory.tokenize({
+  card1: {
+    type: 'card',
+    data: cardElement1,
+  },
+  card2: {
+    type: 'card',
+    data: cardElement2,
+  }
+}).then((token) => {
+  console.log(token.id); // token to store
+  console.log(JSON.stringify(token)); // encrypted token data
+});
+```
+
+> Tokenize multiple bank details
+
+```javascript
+BasisTheory.tokenize({
+  bank1: {
+    type: 'bank',
+    data: {
+      routingNumber: routingNumberElement1 | 'plainText',  // values can be either a TextElement or plain text (see warning).
+      accountNumber: accountNumberElement1 | 'plainText',
+    }
+  },
+  bank2: {
+    type: 'bank',
+    data: {
+      routingNumber: routingNumberElement2 | 'plainText',  // values can be either a TextElement or plain text (see warning).
+      accountNumber: accountNumberElement2 | 'plainText',
+    }
+  }
+}).then((token) => {
+  console.log(token.id); // token to store
+  console.log(JSON.stringify(token)); // encrypted token data
+});
+```
+
+Allows secure submission and tokenization of primitive data and elements. Returns a `Promise` that resolves to the created tokens. The
 `Promise` will reject with an [error](#elements-services-errors) if the response status is not in the 2xx range.
 
-You can fetch this same data later with [Get a Token API](/api-reference#tokens-get-a-token) or [Get a Decrypted Token API](/api-reference#tokens-get-a-decrypted-token).
+You can fetch this same data later with [Get a Token API](/api-reference#tokens-get-a-token)
 
 <aside class="notice">
   <span>Notice that the actual input data never leaves the element (iframe) other than to hit our secure API endpoints.</span>
@@ -132,44 +152,76 @@ You can fetch this same data later with [Get a Token API](/api-reference#tokens-
 
 ## Errors
 
-```javascript
-BasisTheory.tokens.create(...).catch(error => {
-  // handle error
-});
+Any elements service could throw an error based on [client-side validations](#elements-services-errors-basistheoryvalidationerror) or if the [server rejects the request](#elements-services-errors-basistheoryapierror).
+
+### BasisTheoryValidationError
+
+> BasisTheoryValidationError
+
+```jsx
+{
+  details: {
+    card1: {
+      number: { type: 'invalid' },
+      cvc: { type: 'incomplete' }
+    },
+    card2: {}
+  },
+  validation: [] // deprecated
+}
 ```
 
-In case any Elements service throws an error, that could be related to client-side validation or an unaccepted request from the server.
-
-Attribute    | Type       | Scope  | Description
+Attribute    | Type        | Description
 ------------ | ---------- | ------ | -----------
-`validation` | *array*    | client | Array of [FieldError](#element-events-on-change-fielderror), in case of client-side error.
-`data`       | *object*   | server | Response body sent from the server.
-`status`     | *number*   | both   | Response HTTP status or `-1` if the request never left the client (i.e. connection issues)
+`name`       | string     | Error name, always `'BasisTheoryValidationError'`.
+`details`     | *object*    | Maps payload properties to their respective elements validation problems. 
+~~`validation`~~ | *array*    | [Deprecated in favor of details](#deprecations-deprecated-features). Array of [FieldError](#element-events-on-change-fielderror), in case of client-side error. 
 
 
-## Store Credit Card <span class="deprecated menu">DEPRECATED</span>
+### BasisTheoryApiError
 
-<aside class="danger">
-  <span>This endpoint has been deprecated in favor of <a class="black-link" href="#elements-services-atomic-cards">Atomic Cards</a></span>
-</aside>
+> BasisTheoryApiError
 
-```javascript
-BasisTheory.elements.storeCreditCard({
-  card: cardElement,
-}).then((token) => {
-  console.log(token.id); // token to store
-  console.log(JSON.stringify(token.card)); // redacted card data
-});
+```jsx
+{
+  data: {}, // API response body
+  status: 400
+}
 ```
 
-Allows secure submission and tokenization of a card element. Returns a `Promise` that resolves to the tokenized card
-data. See [CardModel](#element-types-card-element) for the resolved value type. The `Promise` will reject with an
-[error](#elements-services-errors) if the response status is not in the 2xx range.
-
-Internally, `BasisTheory.elements.storeCreditCard` calls [Create Atomic Card API](/api-reference/#atomic-cards-create-atomic-card).
-
-You can fetch this same data later with [Get an Atomic Card API](/api-reference/#atomic-cards-get-an-atomic-card).
+Attribute    | Type        | Description
+------------ | ---------- | ------ | -----------
+`name`       | string     | Error name, always `'BasisTheoryApiError'`.
+`data`       | *object*   | Response body [sent from the server](/#errors).
+`status`     | *number*   | Response HTTP status.
 
 <aside class="notice">
-  <span>Notice that the actual card data never leaves the element (iframe) other than to hit our secure API endpoints.</span>
+  <span>Error <code>name</code> property may be used instead of checking its instance type.</span>
 </aside>
+
+> Handling services errors
+
+```javascript
+import {
+  BasisTheoryApiError,
+  BasisTheoryValidationError
+} from '@basis-theory/basis-theory-js/common';
+
+BasisTheory.tokenize({
+  card1: {
+    type: 'card',
+    data: cardElement1
+  },
+  card2: {
+    type: 'card',
+    data: cardElement2
+  },
+  ssn: textElement
+}).catch(error => {
+  if (error instanceof BasisTheoryValidationError) {
+    // check error details
+  } else if (error instanceof BasisTheoryApiError) {
+    // check error data or status
+  }
+});
+```

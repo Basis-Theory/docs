@@ -11,6 +11,16 @@ The following table lists deprecated API endpoints and their respective shutdown
 | `/tokens/decrypt`            | `GET`          | January 3, 2022 | April 15, 2022 | `GET /tokens/decrypt` endpoint will be removed in an upcoming release. Token data will now be returned based on the requester's read access. For more information, see [List Tokens](#tokens-list-tokens).                               | 
 | `/tokens/{id}/decrypt`       | `GET`          | January 3, 2022 | April 15, 2022 | `GET /tokens/{id}/decrypt` endpoint will be removed in an upcoming release. Token data will now be returned based on the requester's read access. For more information, see [Get a Token](#tokens-get-a-token).                          | 
 | `/atomic/banks/{id}/decrypt` | `GET`          | January 3, 2022 | April 15, 2022 | `GET /atomic/banks/{id}/decrypt` endpoint will be removed in an upcoming release. Bank data will now be returned based on the requester's read access. For more information, see [Get an Atomic Bank](#atomic-banks-get-an-atomic-bank). | 
+| `/atomic/banks` | `GET`          | April 3, 2022 | July 8, 2022 | `GET /atomic/banks` endpoint will be removed in an upcoming release. Instead, please use [List Tokens](#tokens-list-tokens).  |
+| `/atomic/banks` | `POST`          | April 3, 2022 | July 8, 2022 | `POST /atomic/banks` endpoint will be removed in an upcoming release. Instead, please use [Create Tokens](#tokens-create-token).  |
+| `/atomic/banks/{id}` | `GET`          | April 3, 2022 | July 8, 2022 | `GET /atomic/banks/{id}` endpoint will be removed in an upcoming release. Instead, please use [Get a Token](#tokens-get-a-token).  |
+| `/atomic/banks/{id}` | `PATCH`          | April 3, 2022 | July 8, 2022 | `PATCH /atomic/banks/{id}` endpoint will be removed in an upcoming release.  |
+| `/atomic/banks/{id}` | `DELETE`          | April 3, 2022 | July 8, 2022 | `DELETE /atomic/banks/{id}` endpoint will be removed in an upcoming release. Instead, please use [Delete Token](#tokens-delete-token).  |
+| `/atomic/cards` | `GET`          | April 3, 2022 | July 8, 2022 | `GET /atomic/cards` endpoint will be removed in an upcoming release. Instead, please use [List Tokens](#tokens-list-tokens).  |
+| `/atomic/cards` | `POST`          | April 3, 2022 | July 8, 2022 | `POST /atomic/cards` endpoint will be removed in an upcoming release. Instead, please use [Create Tokens](#tokens-create-token).  |
+| `/atomic/cards/{id}` | `GET`          | April 3, 2022 | July 8, 2022 | `GET /atomic/cards/{id}` endpoint will be removed in an upcoming release. Instead, please use [Get a Token](#tokens-get-a-token).  |
+| `/atomic/cards/{id}` | `PATCH`          | April 3, 2022 | July 8, 2022 | `PATCH /atomic/cards/{id}` endpoint will be removed in an upcoming release.  |
+| `/atomic/cards/{id}` | `DELETE`          | April 3, 2022 | July 8, 2022 | `DELETE /atomic/cards/{id}` endpoint will be removed in an upcoming release. Instead, please use [Delete Token](#tokens-delete-token).  |
 
 
 ## Deprecated Features

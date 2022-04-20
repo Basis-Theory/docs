@@ -32,6 +32,7 @@ vanilla_includes:
   - elements/vanilla/element_mask
   - elements/vanilla/element_transform
   - elements/vanilla/elements_services
+  - elements/vanilla/deprecations
 
 react_includes:
   - elements/react/package

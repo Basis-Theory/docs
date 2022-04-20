@@ -5,8 +5,8 @@ Token Types define the rules around a data type such as validation requirements,
 [data impact level](#tokens-token-impact-levels), and [data restriction policy](#tokens-token-restriction-policies).
 
 - [Token](#token-types-token)
-- [Atomic Card](#token-types-atomic-card)
-- [Atomic Bank](#token-types-atomic-bank)
+- [Card](#token-types-card)
+- [Bank](#token-types-bank)
 - [Card Number](#token-types-card-number)
 - [US Bank Account Number](#token-types-us-bank-account-number)
 - [US Bank Routing Number](#token-types-us-bank-routing-number)
@@ -29,7 +29,7 @@ The `token` type is used for general data types that don't require input validat
 | **Fingerprinted**              | No        |
 
 
-## Atomic Card
+## Card
 
 | Token Attribute                | Value                                                                                       |
 |--------------------------------|---------------------------------------------------------------------------------------------|
@@ -38,11 +38,11 @@ The `token` type is used for general data types that don't require input validat
 | **Default Impact Level**       | `high`                                                                                      |
 | **Minimum Impact Level**       | `high`                                                                                      |
 | **Default Restriction Policy** | `mask`                                                                                      |
-| **Input Validation**           | See [Card Object](#atomic-cards-atomic-card-object-card-object) for validation requirements |
+| **Input Validation**           | See [Card Object](#tokens-token-data-validations) for validation requirements |
 | **Fingerprinted**              | Yes                                                                                         |
 
 
-## Atomic Bank
+## Bank
 
 | Token Attribute                | Value                                                                                                    |
 |--------------------------------|----------------------------------------------------------------------------------------------------------|
@@ -51,7 +51,7 @@ The `token` type is used for general data types that don't require input validat
 | **Default Impact Level**       | `high`                                                                                                   |
 | **Minimum Impact Level**       | `high`                                                                                                   |
 | **Default Restriction Policy** | `mask`                                                                                                   |
-| **Input Validation**           | See [Bank Object](#atomic-banks-atomic-bank-object-bank-object) for validation requirements              |
+| **Input Validation**           | See [Bank Object](#tokens-token-data-validations) for validation requirements              |
 | **Fingerprinted**              | Yes                                                                                                      |
 
 

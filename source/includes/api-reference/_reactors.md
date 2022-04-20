@@ -750,9 +750,9 @@ When any detokenization expressions are detected, Basis Theory will attempt to [
 
 Reactor request `args` may contain a mixture of detokenization expressions and raw plaintext data. 
 
-Tokens containing complex data may be detokenized into a Reactor request, including Atomic Bank and Atomic Card token types.
+Tokens containing complex data may be detokenized into a Reactor request, including Bank and Card token types.
 When tokens with complex data are detokenized, the entire JSON data payload will be included within the `args`. 
-For an example, see [Use Atomic Tokens](/detokenization#examples-use-atomic-tokens).
+For an example, see [Use Complex Tokens](/detokenization#examples-use-complex-tokens).
 
 If the `args` passed into a Reactor contain additional properties that have not been declared as request parameters on the Reactor Formula,
 those properties will be automatically removed and not sent on the request to the Reactor function.

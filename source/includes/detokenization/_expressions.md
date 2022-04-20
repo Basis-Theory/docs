@@ -57,9 +57,9 @@ will be detokenized into the request:
 
 ## Detokenizing Complex Data
 
-Atomic Card, Atomic Bank, or generic tokens containing complex JSON objects can all be detokenized as well.
+Card, Bank, or generic tokens containing complex JSON objects can all be detokenized as well.
 Detokenization of complex token data is performed by embedding the token's JSON data within the request.
-For example, say you have the Atomic Card token:
+For example, say you have the Card token:
 
 <div class="center-column"></div>
 ```json
@@ -75,7 +75,7 @@ For example, say you have the Atomic Card token:
 }
 ```
 
-Then you can embed the entire [Card](/#atomic-cards-atomic-card-object) object within a request with the detokenization expression:
+Then you can embed the entire [Card](/#token-types-card) object within a request with the detokenization expression:
 
 <div class="center-column"></div>
 ```json

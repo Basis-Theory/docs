@@ -27,6 +27,49 @@ Default privacy settings can be overridden at the time of creation, but only to 
 | `impact_level`       | *string* | [Impact level](#tokens-token-impact-levels) of the Token (i.e. `low`, `moderate`, `high`)                                                                                              |
 | `restriction_policy` | *string* | [Restriction policy](#tokens-token-restriction-policies) applied to the Token when read by a User or Application with read permissions at a lower impact level (i.e. `mask`, `redact`) |
 
+## Token Data Validations
+
+### Bank Object
+
+| Attribute        | Required | Type     | Default | Description                           |
+|------------------|----------|----------|---------|---------------------------------------|
+| `routing_number` | true     | *string* | `null`  | Nine-digit ABA routing number. Its checksum is validated.         |
+| `account_number` | true     | *string* | `null`  | Account number up to seventeen-digits |
+
+### Card Object
+
+| Attribute          | Required | Type      | Default | Description                                               |
+|--------------------|----------|-----------|---------|-----------------------------------------------------------|
+| `number`           | true     | *string*  | `null`  | The card number without any separators                    |
+| `expiration_month` | false    | *integer* | `null`  | Two-digit number representing the card's expiration month |
+| `expiration_year`  | false    | *integer* | `null`  | Four-digit number representing the card's expiration year |
+| `cvc`              | false    | *string*  | `null`  | Three or four-digit card verification code                |
+
+### Test Card Numbers
+
+To enable testing of Cards, we've implemented a list of acceptable test card numbers to ensure you are able to test with non-sensitive data.  
+
+<aside class="warning">
+<span>WARNING - while testing our system, these card numbers will be the only accepted cards available to test with.</span>
+</aside>
+
+| Card             | Description |
+|------------------|-------------|
+| 4242424242424242 | Test card   |
+| 4000056655665556 | Test card   |
+| 5555555555554444 | Test card   |
+| 2223003122003222 | Test card   |
+| 5200828282828210 | Test card   |
+| 5105105105105100 | Test card   |
+| 378282246310005  | Test card   |
+| 371449635398431  | Test card   |
+| 6011111111111117 | Test card   |
+| 6011000990139424 | Test card   |
+| 3056930009020004 | Test card   |
+| 36227206271667   | Test card   |
+| 3566002020360505 | Test card   |
+| 620000000000000  | Test card   |
+
 
 ## Token Classifications
 
