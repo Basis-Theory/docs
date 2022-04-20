@@ -533,6 +533,12 @@
                       <a href="#reactor-formulas-reactor-formula-object" class="toc-h2 toc-link" data-title="Reactor Formula Object">Reactor Formula Object</a>
                     </li>
                     <li>
+                      <a href="#reactor-formulas-reactor-formula-configuration" class="toc-h2 toc-link" data-title="Reactor Formula Configuration">Reactor Formula Configuration</a>
+                    </li>
+                    <li>
+                      <a href="#reactor-formulas-reactor-formula-request-parameters" class="toc-h2 toc-link" data-title="Reactor Formula Request Parameters">Reactor Formula Request Parameters</a>
+                    </li>
+                    <li>
                       <a href="#reactor-formulas-reactor-formula-code" class="toc-h2 toc-link" data-title="Reactor Formula Code">Reactor Formula Code</a>
                     </li>
                     <li>
@@ -2678,7 +2684,7 @@ Returns <a href="#errors">an error</a> if the Atomic Bank could not be retrieved
 <td>false</td>
 <td><em>map</em></td>
 <td><code>null</code></td>
-<td>A key-value map of <a href="#reactor-formulas-reactor-formula-object-reactor-formula-request-parameter-object">request parameter</a> names and values for the reactor</td>
+<td>A key-value map of <a href="#reactor-formulas-reactor-formula-request-parameters">request parameter</a> names and values for the reactor</td>
 </tr>
 <tr>
 <td><code>metadata</code></td>
@@ -3318,7 +3324,7 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
 <td>false</td>
 <td><em>map</em></td>
 <td><code>null</code></td>
-<td>A key-value map of <a href="#reactor-formulas-reactor-formula-object-reactor-formula-request-parameter-object">request parameter</a> names and values for the reactor</td>
+<td>A key-value map of <a href="#reactor-formulas-reactor-formula-request-parameters">request parameter</a> names and values for the reactor</td>
 </tr>
 <tr>
 <td><code>metadata</code></td>
@@ -3944,12 +3950,12 @@ At most, 100 tokens may be detokenized within a single proxy request. You can fi
 <tr>
 <td><code>configuration</code></td>
 <td><em>array</em></td>
-<td>Array of <a href="#reactor-formulas-reactor-formula-object-reactor-formula-configuration-object">configuration</a> options for configuring a reactor</td>
+<td>Array of <a href="#reactor-formulas-reactor-formula-configuration">configuration</a> options for configuring a reactor</td>
 </tr>
 <tr>
 <td><code>request_parameters</code></td>
 <td><em>array</em></td>
-<td>Array of <a href="#reactor-formulas-reactor-formula-object-reactor-formula-request-parameter-object">request parameters</a> which will be passed when executing the reactor</td>
+<td>Array of <a href="#reactor-formulas-reactor-formula-request-parameters">request parameters</a> which will be passed when executing the reactor</td>
 </tr>
 <tr>
 <td><code>created_at</code></td>
@@ -3972,45 +3978,10 @@ At most, 100 tokens may be detokenized within a single proxy request. You can fi
 <td>(Optional) The ID of the user or <a href="#applications">Application</a> that last modified the Reactor Formula</td>
 </tr>
 </tbody></table>
+<h2 id='reactor-formulas-reactor-formula-configuration'>Reactor Formula Configuration</h2>
+<p>The <code>configuration</code> property of a Reactor Formula defines the contract that the <code>configuration</code> property must satisfy on all <a href="#reactors-reactor-object">Reactors</a> created from this formula.
+Elements of a Reactor Formula&#39;s <code>configuration</code> array have the following schema:  </p>
 
-<p>The <code>configuration</code> array defines the contract that the <code>configuration</code> property must satisfy on all <a href="#reactors-reactor-object">Reactors</a> created from this formula.
-Configuration is intended to hold key-value pairs of configuration values that can be defined once for the reactor and do not change between Reactor invocations.
-Complex nested objects are not currently supported within <code>configuration</code>.</p>
-
-<p>The <code>request_parameters</code> array defines the contract that the <code>args</code> property must satisfy on each request when <a href="#reactors-invoke-a-reactor">Invoking a Reactor</a>.
-Request parameters are intended to define any parameters that will be provided to a Reactor at request-time, and may change across Reactor invocations. 
-Complex objects can be passed within the <code>args</code> property to a Reactor, and these complex request parameters can be defined by dot-separating levels of the object hierarchy.
-For example, to pass a <code>card</code> object to a Reactor whose schema matches the <a href="#atomic-cards-atomic-card-object-card-object">Card Object</a> stored within an <a href="#atomic-cards-atomic-card-object">Atomic Card</a> token, a Reactor Formula should define the following request parameters:</p>
-
-<table><thead>
-<tr>
-<th>name</th>
-<th>type</th>
-<th>optional</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>card.number</code></td>
-<td><em>string</em></td>
-<td>false</td>
-</tr>
-<tr>
-<td><code>card.expiration_month</code></td>
-<td><em>number</em></td>
-<td>false</td>
-</tr>
-<tr>
-<td><code>card.expiration_year</code></td>
-<td><em>number</em></td>
-<td>false</td>
-</tr>
-<tr>
-<td><code>card.cvc</code></td>
-<td><em>string</em></td>
-<td>true</td>
-</tr>
-</tbody></table>
-<h3 id='reactor-formulas-reactor-formula-object-reactor-formula-configuration-object'>Reactor Formula Configuration Object</h3>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -4042,7 +4013,13 @@ For example, to pass a <code>card</code> object to a Reactor whose schema matche
 <td>Data type of the configuration setting. Valid values are <code>string</code>, <code>boolean</code>, and <code>number</code></td>
 </tr>
 </tbody></table>
-<h3 id='reactor-formulas-reactor-formula-object-reactor-formula-request-parameter-object'>Reactor Formula Request Parameter Object</h3>
+
+<p>Reactor configuration is intended for properties that can be defined once per Reactor and do not change between Reactor invocations.
+Complex nested objects (dot-separated names) are not currently supported within a Reactor&#39;s <code>configuration</code>.</p>
+<h2 id='reactor-formulas-reactor-formula-request-parameters'>Reactor Formula Request Parameters</h2>
+<p>The <code>request_parameters</code> array on a Reactor Formula defines the contract that the <code>args</code> property must satisfy on each request when <a href="#reactors-invoke-a-reactor">Invoking a Reactor</a>. 
+Elements of a Reactor Formula&#39;s <code>request_parameters</code> array have the following schema:</p>
+
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -4081,6 +4058,40 @@ For example, to pass a <code>card</code> object to a Reactor whose schema matche
 <td>If the request parameter is optional when executing the reactor</td>
 </tr>
 </tbody></table>
+
+<p>Request parameters are intended to define any parameters that will be provided to a Reactor at request-time, and may change across Reactor invocations.
+Complex objects can be passed within the <code>args</code> property to a Reactor, and these complex request parameters can be defined by dot-separating levels of the object hierarchy.
+For example, to pass a <code>card</code> object to a Reactor whose schema matches the <a href="#atomic-cards-atomic-card-object-card-object">Card Object</a> stored within an <a href="#atomic-cards-atomic-card-object">Atomic Card</a> token, 
+a Reactor Formula should define the following request parameters:</p>
+
+<table><thead>
+<tr>
+<th>name</th>
+<th>type</th>
+<th>optional</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>card.number</code></td>
+<td><em>string</em></td>
+<td>false</td>
+</tr>
+<tr>
+<td><code>card.expiration_month</code></td>
+<td><em>number</em></td>
+<td>false</td>
+</tr>
+<tr>
+<td><code>card.expiration_year</code></td>
+<td><em>number</em></td>
+<td>false</td>
+</tr>
+<tr>
+<td><code>card.cvc</code></td>
+<td><em>string</em></td>
+<td>true</td>
+</tr>
+</tbody></table>
 <h2 id='reactor-formulas-reactor-formula-code'>Reactor Formula Code</h2>
 <p>All Reactor Formula code snippets must export a function which takes in a <a href="#reactor-formulas-reactor-formula-code-reactor-formula-request-object">request object</a> and returns a <a href="#reactor-formulas-reactor-formula-code-reactor-formula-response-object">response object</a>.</p>
 <h3 id='reactor-formulas-reactor-formula-code-reactor-formula-request-object'>Reactor Formula Request Object</h3>
@@ -4111,19 +4122,36 @@ For example, to pass a <code>card</code> object to a Reactor whose schema matche
 </tr>
 </thead><tbody>
 <tr>
-<td><code>tokenize</code></td>
-<td><em>object</em></td>
-<td>(Optional) A payload that will be tokenized to produce one or more tokens</td>
-</tr>
-<tr>
 <td><code>raw</code></td>
 <td><em>object</em></td>
 <td>(Optional) Raw output returned from the Reactor</td>
+</tr>
+<tr>
+<td><code>tokenize</code></td>
+<td><em>object</em></td>
+<td>(Optional) A payload that will be tokenized to produce one or more tokens</td>
 </tr>
 </tbody></table>
 
 <p>The payload returned in the <code>tokenize</code> property will be tokenized in the same way that requests are tokenized via the Tokenize endpoint. 
 For more information, see <a href="#tokenize">Tokenize</a>.</p>
+
+<p>Reactor Formula Code is written in Javascript (targeting Node.js v14) and generally follows the structure:</p>
+
+<div class="center-column"></div>
+<div class="highlight"><pre class="highlight javascript"><code><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="k">async</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="p">{</span> <span class="nx">my_arg</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">args</span><span class="p">;</span> <span class="c1">// access any args provided with the request</span>
+  <span class="kd">const</span> <span class="p">{</span> <span class="nx">MY_CONFIG</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">configuration</span><span class="p">;</span> <span class="c1">// access any static config defined on the Reactor</span>
+
+  <span class="c1">// do anything here!</span>
+
+  <span class="k">return</span> <span class="p">{</span>
+      <span class="na">raw</span><span class="p">:</span> <span class="p">{},</span> <span class="c1">// non-sensitive data that should be returned in plaintext</span>
+      <span class="na">tokenize</span><span class="p">:</span> <span class="p">{}</span> <span class="c1">// sensitive data that should be tokenized</span>
+  <span class="p">};</span>
+<span class="p">};</span>
+</code></pre></div>
+<p>For more information about writing your own code for a Reactor Formula, check out <a href="https://developers.basistheory.com/guides/run-your-own-code-in-a-reactor/">our guide</a>.</p>
 <h2 id='reactor-formulas-reactor-formula-types'>Reactor Formula Types</h2>
 <table><thead>
 <tr>
@@ -4477,14 +4505,14 @@ For more information, see <a href="#tokenize">Tokenize</a>.</p>
 <td>true</td>
 <td><em>array</em></td>
 <td><code>[]</code></td>
-<td>Array of <a href="#reactor-formulas-reactor-formula-object-reactor-formula-configuration-object">configuration</a> options for configuring a Reactor</td>
+<td>Array of <a href="#reactor-formulas-reactor-formula-configuration">configuration</a> options for configuring a Reactor</td>
 </tr>
 <tr>
 <td><code>request_parameters</code></td>
 <td>true</td>
 <td><em>array</em></td>
 <td><code>[]</code></td>
-<td>Array of <a href="#reactor-formulas-reactor-formula-object-reactor-formula-request-parameter-object">request parameters</a> which will be passed when executing the Reactor</td>
+<td>Array of <a href="#reactor-formulas-reactor-formula-request-parameters">request parameters</a> which will be passed when executing the Reactor</td>
 </tr>
 </tbody></table>
 <h3 id='reactor-formulas-reactor-formula-types-response'>Response</h3>
@@ -5085,14 +5113,14 @@ For more information, see <a href="#tokenize">Tokenize</a>.</p>
 <td>true</td>
 <td><em>array</em></td>
 <td><code>[]</code></td>
-<td>Array of <a href="#reactor-formulas-reactor-formula-object-reactor-formula-configuration-object">configuration</a> options for configuring a Reactor</td>
+<td>Array of <a href="#reactor-formulas-reactor-formula-configuration">configuration</a> options for configuring a Reactor</td>
 </tr>
 <tr>
 <td><code>request_parameters</code></td>
 <td>true</td>
 <td><em>array</em></td>
 <td><code>[]</code></td>
-<td>Array of <a href="#reactor-formulas-reactor-formula-object-reactor-formula-request-parameter-object">request parameters</a> which will be passed when executing the Reactor</td>
+<td>Array of <a href="#reactor-formulas-reactor-formula-request-parameters">request parameters</a> which will be passed when executing the Reactor</td>
 </tr>
 </tbody></table>
 <h3 id='reactor-formulas-update-reactor-formula-response'>Response</h3>
@@ -5197,7 +5225,7 @@ For more information, see <a href="#tokenize">Tokenize</a>.</p>
 <tr>
 <td><code>configuration</code></td>
 <td><em>map</em></td>
-<td>A key-value map of all configuration name and values for a <a href="#reactor-formulas-reactor-formula-object-reactor-formula-configuration-object">Reactor Formula configuration</a></td>
+<td>A key-value map of all configuration name and values for a <a href="#reactor-formulas-reactor-formula-configuration">Reactor Formula configuration</a></td>
 </tr>
 <tr>
 <td><code>created_by</code></td>
@@ -5353,7 +5381,7 @@ For more information, see <a href="#tokenize">Tokenize</a>.</p>
 <td>true</td>
 <td><em>object</em></td>
 <td><code>null</code></td>
-<td>A key-value map of all configuration name and values for a <a href="#reactor-formulas-reactor-formula-object-reactor-formula-configuration-object">Reactor Formula configuration</a></td>
+<td>A key-value map of all configuration name and values for a <a href="#reactor-formulas-reactor-formula-configuration">Reactor Formula configuration</a></td>
 </tr>
 <tr>
 <td><code>formula.id</code></td>
@@ -5695,7 +5723,7 @@ For more information, see <a href="#tokenize">Tokenize</a>.</p>
 <td>true</td>
 <td><em>object</em></td>
 <td><code>null</code></td>
-<td>A key-value map of all configuration name and values for a <a href="#reactor-formulas-reactor-formula-object-reactor-formula-configuration-object">Reactor Formula configuration</a></td>
+<td>A key-value map of all configuration name and values for a <a href="#reactor-formulas-reactor-formula-configuration">Reactor Formula configuration</a></td>
 </tr>
 </tbody></table>
 <h3 id='reactors-update-reactor-response'>Response</h3>
@@ -5889,7 +5917,7 @@ this permission grants the Reactor access to detokenize tokens of any impact lev
 <td>false</td>
 <td><em>object</em></td>
 <td><code>null</code></td>
-<td>Arguments to provide to the reactor. These arguments must match the declared <a href="#reactor-formulas-reactor-formula-object-reactor-formula-request-parameter-object">request parameters</a> for the reactor formula.</td>
+<td>Arguments to provide to the reactor. These arguments must match the declared <a href="#reactor-formulas-reactor-formula-request-parameters">request parameters</a> for the reactor formula.</td>
 </tr>
 </tbody></table>
 <h3 id='reactors-invoke-a-reactor-response'>Response</h3>
