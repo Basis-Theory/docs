@@ -433,67 +433,6 @@
                 </ul>
             </li>
             <li>
-              <a href="#atomic-banks" class="toc-h1 toc-link" data-title="Atomic Banks">Atomic Banks</a>
-                <ul class="toc-list-h2">
-                    <li>
-                      <a href="#atomic-banks-atomic-bank-object" class="toc-h2 toc-link" data-title="Atomic Bank Object">Atomic Bank Object</a>
-                    </li>
-                    <li>
-                      <a href="#atomic-banks-create-atomic-bank" class="toc-h2 toc-link" data-title="Create Atomic Bank">Create Atomic Bank</a>
-                    </li>
-                    <li>
-                      <a href="#atomic-banks-list-atomic-banks" class="toc-h2 toc-link" data-title="List Atomic Banks">List Atomic Banks</a>
-                    </li>
-                    <li>
-                      <a href="#atomic-banks-get-an-atomic-bank" class="toc-h2 toc-link" data-title="Get an Atomic Bank">Get an Atomic Bank</a>
-                    </li>
-                    <li>
-                      <a href="#atomic-banks-update-atomic-bank" class="toc-h2 toc-link" data-title="Update Atomic Bank">Update Atomic Bank</a>
-                    </li>
-                    <li>
-                      <a href="#atomic-banks-delete-atomic-bank" class="toc-h2 toc-link" data-title="Delete Atomic Bank">Delete Atomic Bank</a>
-                    </li>
-                    <li>
-                      <a href="#atomic-banks-decrypt-atomic-bank-deprecated" class="toc-h2 toc-link" data-title="Decrypt Atomic Bank DEPRECATED">Decrypt Atomic Bank <span class="deprecated menu">DEPRECATED</span></a>
-                    </li>
-                    <li>
-                      <a href="#atomic-banks-react-with-an-atomic-bank-deprecated" class="toc-h2 toc-link" data-title="React with an Atomic Bank DEPRECATED">React with an Atomic Bank <span class="deprecated menu">DEPRECATED</span></a>
-                    </li>
-                    <li>
-                      <a href="#atomic-banks-test-banks" class="toc-h2 toc-link" data-title="Test Banks">Test Banks</a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-              <a href="#atomic-cards" class="toc-h1 toc-link" data-title="Atomic Cards">Atomic Cards</a>
-                <ul class="toc-list-h2">
-                    <li>
-                      <a href="#atomic-cards-atomic-card-object" class="toc-h2 toc-link" data-title="Atomic Card Object">Atomic Card Object</a>
-                    </li>
-                    <li>
-                      <a href="#atomic-cards-create-atomic-card" class="toc-h2 toc-link" data-title="Create Atomic Card">Create Atomic Card</a>
-                    </li>
-                    <li>
-                      <a href="#atomic-cards-list-atomic-cards" class="toc-h2 toc-link" data-title="List Atomic Cards">List Atomic Cards</a>
-                    </li>
-                    <li>
-                      <a href="#atomic-cards-get-an-atomic-card" class="toc-h2 toc-link" data-title="Get an Atomic Card">Get an Atomic Card</a>
-                    </li>
-                    <li>
-                      <a href="#atomic-cards-update-atomic-card" class="toc-h2 toc-link" data-title="Update Atomic Card">Update Atomic Card</a>
-                    </li>
-                    <li>
-                      <a href="#atomic-cards-delete-atomic-card" class="toc-h2 toc-link" data-title="Delete Atomic Card">Delete Atomic Card</a>
-                    </li>
-                    <li>
-                      <a href="#atomic-cards-react-with-an-atomic-card-deprecated" class="toc-h2 toc-link" data-title="React with an Atomic Card DEPRECATED">React with an Atomic Card <span class="deprecated menu">DEPRECATED</span></a>
-                    </li>
-                    <li>
-                      <a href="#atomic-cards-test-cards" class="toc-h2 toc-link" data-title="Test Cards">Test Cards</a>
-                    </li>
-                </ul>
-            </li>
-            <li>
               <a href="#logs" class="toc-h1 toc-link" data-title="Logs">Logs</a>
                 <ul class="toc-list-h2">
                     <li>
@@ -661,10 +600,10 @@
                       <a href="#token-types-token" class="toc-h2 toc-link" data-title="Token">Token</a>
                     </li>
                     <li>
-                      <a href="#token-types-atomic-card" class="toc-h2 toc-link" data-title="Atomic Card">Atomic Card</a>
+                      <a href="#token-types-card" class="toc-h2 toc-link" data-title="Card">Card</a>
                     </li>
                     <li>
-                      <a href="#token-types-atomic-bank" class="toc-h2 toc-link" data-title="Atomic Bank">Atomic Bank</a>
+                      <a href="#token-types-bank" class="toc-h2 toc-link" data-title="Bank">Bank</a>
                     </li>
                     <li>
                       <a href="#token-types-card-number" class="toc-h2 toc-link" data-title="Card Number">Card Number</a>
@@ -688,6 +627,9 @@
                 <ul class="toc-list-h2">
                     <li>
                       <a href="#tokens-token-object" class="toc-h2 toc-link" data-title="Token Object">Token Object</a>
+                    </li>
+                    <li>
+                      <a href="#tokens-token-data-validations" class="toc-h2 toc-link" data-title="Token Data Validations">Token Data Validations</a>
                     </li>
                     <li>
                       <a href="#tokens-token-classifications" class="toc-h2 toc-link" data-title="Token Classifications">Token Classifications</a>
@@ -991,7 +933,7 @@ Is your project using React? We got you covered! Basis Theory's React package en
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>All <code>List</code> endpoints support pagination to allow bulk fetching multiple items. Each <code>List</code> endpoint shares a common response structure. Examples of these requests can be seen in <a href="#applications-list-applications">List Applications</a>, <a href="#tokens-list-tokens">List Tokens</a>, and <a href="#atomic-cards-list-atomic-cards">List Atomic Cards</a></p>
+<p>All <code>List</code> endpoints support pagination to allow bulk fetching multiple items. Each <code>List</code> endpoint shares a common response structure. Examples of these requests can be seen in <a href="#applications-list-applications">List Applications</a> and <a href="#tokens-list-tokens">List Tokens</a>.</p>
 <h3 id='pagination-install-sdk-query-parameters'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -2042,1390 +1984,6 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
 </tbody></table>
 <h3 id='applications-delete-application-response'>Response</h3>
 <p>Returns <a href="#errors">an error</a> if the application failed to delete.</p>
-<h1 id='atomic-banks'>Atomic Banks</h1><h2 id='atomic-banks-atomic-bank-object'>Atomic Bank Object</h2>
-<table><thead>
-<tr>
-<th>Attribute</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>id</code></td>
-<td><em>uuid</em></td>
-<td>Unique identifier of the token which can be used to <a href="#atomic-banks-get-an-atomic-bank">get an Atomic Bank</a></td>
-</tr>
-<tr>
-<td><code>tenant_id</code></td>
-<td><em>uuid</em></td>
-<td>The <a href="#tenants">Tenant</a> ID which owns the bank</td>
-</tr>
-<tr>
-<td><code>type</code></td>
-<td><em>string</em></td>
-<td><code>Bank</code> <a href="#token-types">token type</a></td>
-</tr>
-<tr>
-<td><code>bank</code></td>
-<td><em><a href="#atomic-banks-atomic-bank-object-bank-object">bank</a></em></td>
-<td>Bank data</td>
-</tr>
-<tr>
-<td><code>fingerprint</code></td>
-<td><em>string</em></td>
-<td>Uniquely identifies this particular bank account. You can use this attribute to check whether two bank accounts are the same.</td>
-</tr>
-<tr>
-<td><code>metadata</code></td>
-<td><em>map</em></td>
-<td>A key-value map of non-sensitive data.</td>
-</tr>
-<tr>
-<td><code>created_by</code></td>
-<td><em>uuid</em></td>
-<td>(Optional) The <a href="#applications">Application</a> ID which created the Atomic Bank</td>
-</tr>
-<tr>
-<td><code>created_at</code></td>
-<td><em>date</em></td>
-<td>(Optional) Created date of the Atomic Bank in ISO 8601 format</td>
-</tr>
-<tr>
-<td><code>modified_by</code></td>
-<td><em>uuid</em></td>
-<td>(Optional) The <a href="#applications">Application</a> ID which last modified the Atomic Bank</td>
-</tr>
-<tr>
-<td><code>modified_at</code></td>
-<td><em>date</em></td>
-<td>(Optional) Last modified date of the Atomic Bank in ISO 8601 format</td>
-</tr>
-</tbody></table>
-<h3 id='atomic-banks-atomic-bank-object-bank-object'>Bank Object</h3>
-<table><thead>
-<tr>
-<th>Attribute</th>
-<th>Required</th>
-<th>Type</th>
-<th>Default</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>routing_number</code></td>
-<td>true</td>
-<td><em>string</em></td>
-<td><code>null</code></td>
-<td>Nine-digit ABA routing number</td>
-</tr>
-<tr>
-<td><code>account_number</code></td>
-<td>true</td>
-<td><em>string</em></td>
-<td><code>null</code></td>
-<td>Account number up to seventeen-digits</td>
-</tr>
-</tbody></table>
-<h2 id='atomic-banks-create-atomic-bank'>Create Atomic Bank</h2>
-<blockquote>
-<p>Request</p>
-</blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/atomic/banks"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"BT-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  <span class="nt">-X</span> <span class="s2">"POST"</span> <span class="se">\</span>
-  <span class="nt">-d</span> <span class="s1">'{
-      "bank": {
-        "routing_number": "021000021",
-        "account_number": "1234567890"
-      },
-      "metadata": {
-        "nonSensitiveField": "Non-Sensitive Value"
-      }
-    }'</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">BasisTheory</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@basis-theory/basis-theory-js</span><span class="dl">'</span><span class="p">;</span>
-
-<span class="kd">const</span> <span class="nx">bt</span> <span class="o">=</span> <span class="k">await</span> <span class="k">new</span> <span class="nx">BasisTheory</span><span class="p">().</span><span class="nx">init</span><span class="p">(</span><span class="dl">'</span><span class="s1">key_N88mVGsp3sCXkykyN2EFED</span><span class="dl">'</span><span class="p">);</span>
-
-<span class="kd">const</span> <span class="nx">atomicBank</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">bt</span><span class="p">.</span><span class="nx">atomicBanks</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
-  <span class="na">bank</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">routingNumber</span><span class="p">:</span> <span class="dl">'</span><span class="s1">021000021</span><span class="dl">'</span><span class="p">,</span>
-    <span class="na">accountNumber</span><span class="p">:</span> <span class="dl">'</span><span class="s1">1234567890</span><span class="dl">'</span><span class="p">,</span>
-  <span class="p">},</span>
-  <span class="na">metadata</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">nonSensitiveField</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Non-Sensitive Value</span><span class="dl">'</span>
-  <span class="p">},</span>
-<span class="p">});</span>
-</code></pre></div><div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="k">using</span> <span class="nn">BasisTheory.net.Atomic.Banks</span><span class="p">;</span>
-
-<span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">AtomicBankClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
-
-<span class="kt">var</span> <span class="n">atomicBank</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">CreateAsync</span><span class="p">(</span><span class="k">new</span> <span class="n">AtomicBank</span> <span class="p">{</span>
-  <span class="n">Bank</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Bank</span> <span class="p">{</span>
-    <span class="n">RoutingNumber</span> <span class="p">=</span> <span class="s">"021000021"</span><span class="p">,</span>
-    <span class="n">AccountNumber</span> <span class="p">=</span> <span class="s">"1234567890"</span>
-  <span class="p">},</span>
-  <span class="n">Metadata</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="kt">string</span><span class="p">&gt;</span> <span class="p">{</span>
-    <span class="p">{</span> <span class="s">"nonSensitiveField"</span><span class="p">,</span> <span class="s">"Non-Sensitive Value"</span> <span class="p">}</span>
-  <span class="p">}</span>
-<span class="p">});</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Atomic methods are deprecated and as such were not added to the Python SDK.
-# For adding banks and cards to our platform, use the 'Tokens' endpoints.
-# For further information, check the Deprecations section.
-</span></code></pre></div>
-<blockquote>
-<p>Response</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1485efb9-6b1f-4248-a5d1-cf9b3907164c"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"tenant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77cb0024-123e-41a8-8ff8-a3d5a0fa8a08"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bank"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"bank"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"routing_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"021000021"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"account_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XXXXXX7890"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"fingerprint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8j6WJgk4Dz1qoJgrHrioUFJhYKQTnk75DfJAue5bNab2"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"nonSensitiveField"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Non-Sensitive Value"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p><span class="http-method post">
-  <span class="box-method">POST</span>
-  <code>https://api.basistheory.com/atomic/banks</code>
-</span></p>
-
-<p>Create a new Atomic Bank for the Tenant.</p>
-<h3 id='atomic-banks-create-atomic-bank-permissions'>Permissions</h3>
-<p class="scopes">
-  <span class="scope">token:bank:create</span>
-</p>
-<h3 id='atomic-banks-create-atomic-bank-request-parameters'>Request Parameters</h3>
-<table><thead>
-<tr>
-<th>Attribute</th>
-<th>Required</th>
-<th>Type</th>
-<th>Default</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>bank</code></td>
-<td>true</td>
-<td><em><a href="#atomic-banks-atomic-bank-object-bank-object">bank</a></em></td>
-<td><code>null</code></td>
-<td>Bank data</td>
-</tr>
-<tr>
-<td><code>metadata</code></td>
-<td>false</td>
-<td><em>map</em></td>
-<td><code>null</code></td>
-<td>A key-value map of non-sensitive data.</td>
-</tr>
-</tbody></table>
-<h3 id='atomic-banks-create-atomic-bank-response'>Response</h3>
-<p>Returns an <a href="#atomic-banks-atomic-bank-object">Atomic Bank</a> with masked <a href="#atomic-banks-atomic-bank-object-bank-object">bank data</a> if the Atomic Bank was created. Returns <a href="#errors">an error</a> if there were validation errors, or the Atomic Bank failed to create.</p>
-<h2 id='atomic-banks-list-atomic-banks'>List Atomic Banks</h2>
-<blockquote>
-<p>Request</p>
-</blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/atomic/banks"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"BT-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">BasisTheory</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@basis-theory/basis-theory-js</span><span class="dl">'</span><span class="p">;</span>
-
-<span class="kd">const</span> <span class="nx">bt</span> <span class="o">=</span> <span class="k">await</span> <span class="k">new</span> <span class="nx">BasisTheory</span><span class="p">().</span><span class="nx">init</span><span class="p">(</span><span class="dl">'</span><span class="s1">key_N88mVGsp3sCXkykyN2EFED</span><span class="dl">'</span><span class="p">);</span>
-
-<span class="kd">const</span> <span class="nx">atomicBanks</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">bt</span><span class="p">.</span><span class="nx">atomicBanks</span><span class="p">.</span><span class="nx">list</span><span class="p">();</span>
-</code></pre></div><div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="k">using</span> <span class="nn">BasisTheory.net.Atomic.Banks</span><span class="p">;</span>
-
-<span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">AtomicBankClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
-
-<span class="kt">var</span> <span class="n">atomicBanks</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">GetAsync</span><span class="p">();</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Atomic methods are deprecated and as such were not added to the Python SDK.
-# For adding banks and cards to our platform, use the 'Tokens' endpoints.
-# For further information, check the Deprecations section.
-</span></code></pre></div>
-<blockquote>
-<p>Response</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"pagination"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">}</span><span class="w">
-  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1485efb9-6b1f-4248-a5d1-cf9b3907164c"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"tenant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77cb0024-123e-41a8-8ff8-a3d5a0fa8a08"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bank"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"bank"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"routing_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"021000021"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"account_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XXXXXX7890"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="nl">"fingerprint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8j6WJgk4Dz1qoJgrHrioUFJhYKQTnk75DfJAue5bNab2"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"nonSensitiveField"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Non-Sensitive Value"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="err">...</span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p><span class="http-method get">
-  <span class="box-method">GET</span>
-  <code>https://api.basistheory.com/atomic/banks</code>
-</span></p>
-
-<p>Get a list of Atomic Banks for the Tenant.</p>
-<h3 id='atomic-banks-list-atomic-banks-permissions'>Permissions</h3>
-<p class="scopes">
-  <span class="scope">token:bank:read:&lt;impact_level&gt;</span>
-</p>
-<h3 id='atomic-banks-list-atomic-banks-response'>Response</h3>
-<p>Returns a <a href="#pagination">paginated object</a> with the <code>data</code> property containing an array of <a href="#atomic-banks-atomic-bank-object">Atomic Banks</a>. Providing any query parameters will filter the results.
-Plaintext Bank data will be returned when the requester has <code>token:bank:read:high</code> permission.
-Bank data will be masked when the requester has read permissions on <code>bank</code> classification at a lower impact level (i.e. <code>token:bank:read:low</code>, <code>token:bank:read:moderate</code>).
-Returns <a href="#errors">an error</a> if Atomic Banks could not be retrieved.</p>
-<h2 id='atomic-banks-get-an-atomic-bank'>Get an Atomic Bank</h2>
-<blockquote>
-<p>Request</p>
-</blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/atomic/banks/1485efb9-6b1f-4248-a5d1-cf9b3907164c"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"BT-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
-</code></pre></div><div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="k">using</span> <span class="nn">BasisTheory.net.Atomic.Banks</span><span class="p">;</span>
-
-<span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">AtomicBankClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
-
-<span class="kt">var</span> <span class="n">atomicBank</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">GetByIdAsync</span><span class="p">(</span><span class="s">"1485efb9-6b1f-4248-a5d1-cf9b3907164c"</span><span class="p">);</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">BasisTheory</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@basis-theory/basis-theory-js</span><span class="dl">'</span><span class="p">;</span>
-
-<span class="kd">const</span> <span class="nx">bt</span> <span class="o">=</span> <span class="k">await</span> <span class="k">new</span> <span class="nx">BasisTheory</span><span class="p">().</span><span class="nx">init</span><span class="p">(</span><span class="dl">'</span><span class="s1">key_N88mVGsp3sCXkykyN2EFED</span><span class="dl">'</span><span class="p">);</span>
-
-<span class="kd">const</span> <span class="nx">atomicBank</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">bt</span><span class="p">.</span><span class="nx">atomicBanks</span><span class="p">.</span><span class="nx">retrieve</span><span class="p">(</span><span class="dl">'</span><span class="s1">1485efb9-6b1f-4248-a5d1-cf9b3907164c</span><span class="dl">'</span><span class="p">);</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Atomic methods are deprecated and as such were not added to the Python SDK.
-# For adding banks and cards to our platform, use the 'Tokens' endpoints.
-# For further information, check the Deprecations section.
-</span></code></pre></div>
-<blockquote>
-<p>Response</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1485efb9-6b1f-4248-a5d1-cf9b3907164c"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"tenant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77cb0024-123e-41a8-8ff8-a3d5a0fa8a08"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bank"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"bank"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"routing_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"021000021"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"account_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XXXXXX7890"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"fingerprint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8j6WJgk4Dz1qoJgrHrioUFJhYKQTnk75DfJAue5bNab2"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"nonSensitiveField"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Non-Sensitive Value"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p><span class="http-method get">
-  <span class="box-method">GET</span>
-  <code>https://api.basistheory.com/atomic/banks/{id}</code>
-</span></p>
-
-<p>Get an Atomic Bank by ID in the Tenant.</p>
-<h3 id='atomic-banks-get-an-atomic-bank-permissions'>Permissions</h3>
-<p class="scopes">
-  <span class="scope">token:bank:read:&lt;impact_level&gt;</span>
-</p>
-<h3 id='atomic-banks-get-an-atomic-bank-uri-parameters'>URI Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Required</th>
-<th>Type</th>
-<th>Default</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>id</code></td>
-<td>true</td>
-<td><em>uuid</em></td>
-<td><code>null</code></td>
-<td>The ID of the Atomic Bank</td>
-</tr>
-</tbody></table>
-<h3 id='atomic-banks-get-an-atomic-bank-response'>Response</h3>
-<p>Returns an <a href="#atomic-banks-atomic-bank-object">Atomic Bank</a> with the <code>id</code> provided.
-Plaintext Bank data will be returned when the requester has <code>token:bank:read:high</code> permission.
-Bank data will be masked when the requester has read permissions on <code>bank</code> classification at a lower impact level (i.e. <code>token:bank:read:low</code>, <code>token:bank:read:moderate</code>).
-Returns <a href="#errors">an error</a> if the Atomic Bank could not be retrieved.</p>
-<h2 id='atomic-banks-update-atomic-bank'>Update Atomic Bank</h2>
-<blockquote>
-<p>Request</p>
-</blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/atomic/banks/1485efb9-6b1f-4248-a5d1-cf9b3907164c"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"BT-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  <span class="nt">-X</span> <span class="s2">"PATCH"</span> <span class="se">\</span>
-  <span class="nt">-d</span> <span class="s1">'{
-      "bank": {
-        "routing_number": "021000021",
-        "account_number": "1234567890"
-      },
-    }'</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">BasisTheory</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@basis-theory/basis-theory-js</span><span class="dl">'</span><span class="p">;</span>
-
-<span class="kd">const</span> <span class="nx">bt</span> <span class="o">=</span> <span class="k">await</span> <span class="k">new</span> <span class="nx">BasisTheory</span><span class="p">().</span><span class="nx">init</span><span class="p">(</span><span class="dl">'</span><span class="s1">key_N88mVGsp3sCXkykyN2EFED</span><span class="dl">'</span><span class="p">);</span>
-
-<span class="kd">const</span> <span class="nx">atomicBank</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">bt</span><span class="p">.</span><span class="nx">atomicBanks</span><span class="p">.</span><span class="nx">update</span><span class="p">(</span><span class="dl">"</span><span class="s2">1485efb9-6b1f-4248-a5d1-cf9b3907164c</span><span class="dl">"</span><span class="p">,</span> <span class="p">{</span>
-  <span class="na">bank</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">routingNumber</span><span class="p">:</span> <span class="dl">'</span><span class="s1">021000021</span><span class="dl">'</span><span class="p">,</span>
-    <span class="na">accountNumber</span><span class="p">:</span> <span class="dl">'</span><span class="s1">1234567890</span><span class="dl">'</span><span class="p">,</span>
-  <span class="p">},</span>
-<span class="p">});</span>
-</code></pre></div><div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="k">using</span> <span class="nn">BasisTheory.net.Atomic.Banks</span><span class="p">;</span>
-
-<span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">AtomicBankClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
-
-<span class="kt">var</span> <span class="n">atomicBank</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">UpdateAsync</span><span class="p">(</span><span class="s">"1485efb9-6b1f-4248-a5d1-cf9b3907164c"</span><span class="p">,</span> <span class="k">new</span> <span class="n">UpdateAtomicBankRequest</span> <span class="p">{</span>
-  <span class="n">Bank</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Bank</span> <span class="p">{</span>
-    <span class="n">RoutingNumber</span> <span class="p">=</span> <span class="s">"021000021"</span><span class="p">,</span>
-    <span class="n">AccountNumber</span> <span class="p">=</span> <span class="s">"1234567890"</span>
-  <span class="p">},</span>
-<span class="p">});</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Atomic methods are deprecated and as such were not added to the Python SDK.
-# For adding banks and cards to our platform, use the 'Tokens' endpoints.
-# For further information, check the Deprecations section.
-</span></code></pre></div>
-<blockquote>
-<p>Response</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1485efb9-6b1f-4248-a5d1-cf9b3907164c"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"tenant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77cb0024-123e-41a8-8ff8-a3d5a0fa8a08"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bank"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"bank"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"routing_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"021000021"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"account_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XXXXXX7890"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"fingerprint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8j6WJgk4Dz1qoJgrHrioUFJhYKQTnk75DfJAue5bNab2"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"nonSensitiveField"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Non-Sensitive Value"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"modified_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"34053374-d721-43d8-921c-5ee1d337ef21"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"modified_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-10-27T17:34:23+00:00"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p><span class="http-method patch">
-  <span class="box-method">PATCH</span>
-  <code>https://api.basistheory.com/atomic/banks/{id}</code>
-</span></p>
-
-<p>Update an Atomic Bank for the Tenant. At least one property on the request body is required.</p>
-<h3 id='atomic-banks-update-atomic-bank-permissions'>Permissions</h3>
-<p class="scopes">
-  <span class="scope">token:bank:update</span>
-</p>
-<h3 id='atomic-banks-update-atomic-bank-request-parameters'>Request Parameters</h3>
-<table><thead>
-<tr>
-<th>Attribute</th>
-<th>Required</th>
-<th>Type</th>
-<th>Default</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>bank</code></td>
-<td>true</td>
-<td><em><a href="#atomic-banks-atomic-bank-object-bank-object">bank</a></em></td>
-<td><code>null</code></td>
-<td>Bank data</td>
-</tr>
-</tbody></table>
-<h3 id='atomic-banks-update-atomic-bank-response'>Response</h3>
-<p>Returns an <a href="#atomic-banks-atomic-bank-object">Atomic Bank</a> with masked <a href="#atomic-banks-atomic-bank-object-bank-object">bank data</a> if the Atomic Bank was updated. Returns <a href="#errors">an error</a> if there were validation errors, or the Atomic Bank failed to update.</p>
-<h2 id='atomic-banks-delete-atomic-bank'>Delete Atomic Bank</h2>
-<blockquote>
-<p>Request</p>
-</blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/atomic/banks/1485efb9-6b1f-4248-a5d1-cf9b3907164c"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"BT-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span> <span class="se">\</span>
-  <span class="nt">-X</span> <span class="s2">"DELETE"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">BasisTheory</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@basis-theory/basis-theory-js</span><span class="dl">'</span><span class="p">;</span>
-
-<span class="kd">const</span> <span class="nx">bt</span> <span class="o">=</span> <span class="k">await</span> <span class="k">new</span> <span class="nx">BasisTheory</span><span class="p">().</span><span class="nx">init</span><span class="p">(</span><span class="dl">'</span><span class="s1">key_N88mVGsp3sCXkykyN2EFED</span><span class="dl">'</span><span class="p">);</span>
-
-<span class="k">await</span> <span class="nx">bt</span><span class="p">.</span><span class="nx">atomicBanks</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="dl">'</span><span class="s1">1485efb9-6b1f-4248-a5d1-cf9b3907164c</span><span class="dl">'</span><span class="p">);</span>
-</code></pre></div><div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="k">using</span> <span class="nn">BasisTheory.net.Atomic.Banks</span><span class="p">;</span>
-
-<span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">AtomicBankClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
-
-<span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">DeleteAsync</span><span class="p">(</span><span class="s">"1485efb9-6b1f-4248-a5d1-cf9b3907164c"</span><span class="p">);</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Atomic methods are deprecated and as such were not added to the Python SDK.
-# For adding banks and cards to our platform, use the 'Tokens' endpoints.
-# For further information, check the Deprecations section.
-</span></code></pre></div>
-<p><span class="http-method delete">
-  <span class="box-method">DELETE</span>
-  <code>https://api.basistheory.com/atomic/banks/{id}</code>
-</span></p>
-
-<p>Delete an Atomic Bank by ID in the Tenant.</p>
-
-<aside class="warning">
-<span>WARNING - The data associated with a deleted Atomic Bank will be removed forever. The reference will still exist for audit purposes</span>
-</aside>
-<h3 id='atomic-banks-delete-atomic-bank-permissions'>Permissions</h3>
-<p class="scopes">
-  <span class="scope">token:bank:delete</span>
-</p>
-<h3 id='atomic-banks-delete-atomic-bank-uri-parameters'>URI Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Required</th>
-<th>Type</th>
-<th>Default</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>id</code></td>
-<td>true</td>
-<td><em>uuid</em></td>
-<td><code>null</code></td>
-<td>The ID of the Atomic Bank</td>
-</tr>
-</tbody></table>
-<h3 id='atomic-banks-delete-atomic-bank-response'>Response</h3>
-<p>Returns <a href="#errors">an error</a> if the Atomic Bank failed to delete.</p>
-<h2 id='atomic-banks-decrypt-atomic-bank-deprecated'>Decrypt Atomic Bank <span class="deprecated menu">DEPRECATED</span></h2>
-<aside class="danger">
-  <span>This endpoint has been deprecated in favor of <a class="black-link" href="#atomic-banks-get-an-atomic-bank">Get an Atomic Bank</a>.</span>
-</aside>
-
-<blockquote>
-<p>Request</p>
-</blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/atomic/banks/1485efb9-6b1f-4248-a5d1-cf9b3907164c/decrypt"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"BT-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">BasisTheory</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@basis-theory/basis-theory-js</span><span class="dl">'</span><span class="p">;</span>
-
-<span class="kd">const</span> <span class="nx">bt</span> <span class="o">=</span> <span class="k">await</span> <span class="k">new</span> <span class="nx">BasisTheory</span><span class="p">().</span><span class="nx">init</span><span class="p">(</span><span class="dl">'</span><span class="s1">key_N88mVGsp3sCXkykyN2EFED</span><span class="dl">'</span><span class="p">);</span>
-
-<span class="kd">const</span> <span class="nx">atomicBank</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">bt</span><span class="p">.</span><span class="nx">atomicBanks</span><span class="p">.</span><span class="nx">retrieveDecrypted</span><span class="p">(</span><span class="dl">'</span><span class="s1">1485efb9-6b1f-4248-a5d1-cf9b3907164c</span><span class="dl">'</span><span class="p">);</span>
-</code></pre></div><div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="k">using</span> <span class="nn">BasisTheory.net.Atomic.Banks</span><span class="p">;</span>
-
-<span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">AtomicBankClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
-
-<span class="kt">var</span> <span class="n">atomicBank</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">GetByIdAsync</span><span class="p">(</span><span class="s">"1485efb9-6b1f-4248-a5d1-cf9b3907164c"</span><span class="p">,</span> 
-  <span class="k">new</span> <span class="n">BankGetByIdRequest</span> <span class="p">{</span>
-    <span class="n">Decrypt</span> <span class="p">=</span> <span class="k">true</span>
-  <span class="p">});</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Atomic methods are deprecated and as such were not added to the Python SDK.
-# For adding banks and cards to our platform, use the 'Tokens' endpoints.
-# For further information, check the Deprecations section.
-</span></code></pre></div>
-<blockquote>
-<p>Response</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1485efb9-6b1f-4248-a5d1-cf9b3907164c"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"tenant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77cb0024-123e-41a8-8ff8-a3d5a0fa8a08"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bank"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"bank"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"routing_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"021000021"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"account_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567890"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"fingerprint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8j6WJgk4Dz1qoJgrHrioUFJhYKQTnk75DfJAue5bNab2"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"nonSensitiveField"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Non-Sensitive Value"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p><span class="http-method get">
-  <span class="box-method">GET</span>
-  <code>https://api.basistheory.com/atomic/banks/{id}/decrypt</code>
-</span></p>
-
-<p>Decrypt an Atomic Bank by ID in the Tenant.</p>
-<h3 id='atomic-banks-decrypt-atomic-bank-span-class-deprecated-menu-deprecated-span-permissions'>Permissions</h3>
-<p class="scopes">
-  <span class="scope">token:bank:read:high</span>
-</p>
-<h3 id='atomic-banks-decrypt-atomic-bank-span-class-deprecated-menu-deprecated-span-uri-parameters'>URI Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Required</th>
-<th>Type</th>
-<th>Default</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>id</code></td>
-<td>true</td>
-<td><em>uuid</em></td>
-<td><code>null</code></td>
-<td>The ID of the Atomic Bank</td>
-</tr>
-</tbody></table>
-<h3 id='atomic-banks-decrypt-atomic-bank-span-class-deprecated-menu-deprecated-span-response'>Response</h3>
-<p>Returns an <a href="#atomic-banks-atomic-bank-object">Atomic Bank</a> with plaintext <a href="#atomic-banks-atomic-bank-object-bank-object">bank</a> data with the <code>id</code> provided. Returns <a href="#errors">an error</a> if the Atomic Bank could not be retrieved.</p>
-<h2 id='atomic-banks-react-with-an-atomic-bank-deprecated'>React with an Atomic Bank <span class="deprecated menu">DEPRECATED</span></h2>
-<aside class="danger">
-  <span>This endpoint has been deprecated in favor of <a class="black-link" href="#reactors-invoke-a-reactor">Invoke a Reactor</a>.</span>
-</aside>
-
-<blockquote>
-<p>Request</p>
-</blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/atomic/banks/1485efb9-6b1f-4248-a5d1-cf9b3907164c/react"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"BT-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  <span class="nt">-X</span> <span class="s2">"POST"</span> <span class="se">\</span>
-  <span class="nt">-d</span> <span class="s1">'{
-    "reactor_id": "5b493235-6917-4307-906a-2cd6f1a90b13",
-    "request_parameters": {
-      "request_parameter_1": "Some request value"
-    },
-    "metadata": {
-      "nonSensitiveField": "Non-Sensitive Value"
-    }
-  }'</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">BasisTheory</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@basis-theory/basis-theory-js</span><span class="dl">'</span><span class="p">;</span>
-
-<span class="kd">const</span> <span class="nx">bt</span> <span class="o">=</span> <span class="k">await</span> <span class="k">new</span> <span class="nx">BasisTheory</span><span class="p">().</span><span class="nx">init</span><span class="p">(</span><span class="dl">'</span><span class="s1">key_N88mVGsp3sCXkykyN2EFED</span><span class="dl">'</span><span class="p">);</span>
-
-<span class="kd">const</span> <span class="nx">reactResponse</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">bt</span><span class="p">.</span><span class="nx">atomicBanks</span><span class="p">.</span><span class="nx">react</span><span class="p">(</span><span class="dl">'</span><span class="s1">1485efb9-6b1f-4248-a5d1-cf9b3907164c</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
-  <span class="na">reactorId</span><span class="p">:</span> <span class="dl">'</span><span class="s1">5b493235-6917-4307-906a-2cd6f1a90b13</span><span class="dl">'</span><span class="p">,</span>
-  <span class="na">requestParameters</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">request_parameter_1</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Some request value</span><span class="dl">'</span><span class="p">,</span>
-  <span class="p">},</span>
-  <span class="na">metadata</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">nonSensitiveField</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Non-Sensitive value</span><span class="dl">'</span><span class="p">,</span>
-  <span class="p">},</span>
-<span class="p">});</span>
-</code></pre></div><div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="k">using</span> <span class="nn">BasisTheory.net.Atomic.Banks</span><span class="p">;</span>
-
-<span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">AtomicBankClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
-
-<span class="kt">var</span> <span class="n">reactResponse</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">ReactAsync</span><span class="p">(</span><span class="s">"1485efb9-6b1f-4248-a5d1-cf9b3907164c"</span><span class="p">,</span> 
-  <span class="k">new</span> <span class="n">ReactRequest</span> <span class="p">{</span>
-    <span class="n">ReactorId</span> <span class="p">=</span> <span class="s">"5b493235-6917-4307-906a-2cd6f1a90b13"</span><span class="p">,</span>
-    <span class="n">RequestParameters</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="kt">object</span><span class="p">&gt;</span> <span class="p">{</span>
-      <span class="p">{</span> <span class="s">"request_parameter_1"</span><span class="p">,</span>  <span class="s">"Some request value"</span> <span class="p">}</span>
-    <span class="p">},</span>
-    <span class="n">Metadata</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="kt">string</span><span class="p">&gt;</span> <span class="p">{</span>
-      <span class="p">{</span> <span class="s">"nonSensitiveField"</span><span class="p">,</span>  <span class="s">"Non-Sensitive Value"</span> <span class="p">}</span>
-    <span class="p">}</span>
-  <span class="p">});</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Atomic methods are deprecated and as such were not added to the Python SDK.
-# For adding banks and cards to our platform, use the 'Tokens' endpoints.
-# For further information, check the Deprecations section.
-</span></code></pre></div>
-<p><span class="http-method post">
-  <span class="box-method">POST</span>
-  <code>https://api.basistheory.com/atomic/banks/{id}/react</code>
-</span></p>
-
-<p>React with an Atomic Bank by ID.</p>
-<h3 id='atomic-banks-react-with-an-atomic-bank-span-class-deprecated-menu-deprecated-span-permissions'>Permissions</h3>
-<p class="scopes">
-  <span class="scope">token:bank:use:reactor</span>
-</p>
-<h3 id='atomic-banks-react-with-an-atomic-bank-span-class-deprecated-menu-deprecated-span-uri-parameters'>URI Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Required</th>
-<th>Type</th>
-<th>Default</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>id</code></td>
-<td>true</td>
-<td><em>uuid</em></td>
-<td><code>null</code></td>
-<td>The ID of the Atomic Bank</td>
-</tr>
-</tbody></table>
-<h3 id='atomic-banks-react-with-an-atomic-bank-span-class-deprecated-menu-deprecated-span-request-parameters'>Request Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Required</th>
-<th>Type</th>
-<th>Default</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>reactor_id</code></td>
-<td>true</td>
-<td><em>uuid</em></td>
-<td><code>null</code></td>
-<td>The ID of the reactor</td>
-</tr>
-<tr>
-<td><code>request_parameters</code></td>
-<td>false</td>
-<td><em>map</em></td>
-<td><code>null</code></td>
-<td>A key-value map of <a href="#reactor-formulas-reactor-formula-request-parameters">request parameter</a> names and values for the reactor</td>
-</tr>
-<tr>
-<td><code>metadata</code></td>
-<td>false</td>
-<td><em>map</em></td>
-<td><code>null</code></td>
-<td>(Deprecated) A key-value map of non-sensitive data to be associated with any created tokens</td>
-</tr>
-</tbody></table>
-<h3 id='atomic-banks-react-with-an-atomic-bank-span-class-deprecated-menu-deprecated-span-response'>Response</h3>
-<p>Returns a <a href="#reactors-invoke-a-reactor-reactor-response-object">Reactor Response</a> if the Atomic Bank was reacted successfully. Returns <a href="#errors">an error</a> if the Atomic Bank failed to react.
-Errors generated from Reactors will be translated to the common Basis Theory Error format. See <a href="#errors-reactor-errors">Reactor Errors</a> for more details.</p>
-<h3 id='atomic-banks-react-with-an-atomic-bank-span-class-deprecated-menu-deprecated-span-reactor-response-object'>Reactor Response Object</h3>
-<table><thead>
-<tr>
-<th>Attribute</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>tokens</code></td>
-<td><em>object</em></td>
-<td>(Optional) <a href="#tokens-token-object">Token(s)</a> created from the <code>tokenize</code> block of the Reactor Formula <a href="#reactor-formulas-reactor-formula-code-reactor-formula-response-object">response</a></td>
-</tr>
-<tr>
-<td><code>raw</code></td>
-<td><em>object</em></td>
-<td>(Optional) Raw output returned from the Reactor</td>
-</tr>
-</tbody></table>
-<h2 id='atomic-banks-test-banks'>Test Banks</h2>
-<p>To enable testing of Atomic Banks, we&#39;ve implemented a list of acceptable test bank accounts to ensure you are able to test with non-sensitive data.</p>
-<h3 id='atomic-banks-test-banks-test-bank-accounts'>Test bank accounts</h3>
-<table><thead>
-<tr>
-<th>Routing Number</th>
-<th>Account Number</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>110000000</td>
-<td>000123456789</td>
-<td>Successfully added bank</td>
-</tr>
-</tbody></table>
-<h1 id='atomic-cards'>Atomic Cards</h1><h2 id='atomic-cards-atomic-card-object'>Atomic Card Object</h2>
-<table><thead>
-<tr>
-<th>Attribute</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>id</code></td>
-<td><em>uuid</em></td>
-<td>Unique identifier of the token which can be used to <a href="#atomic-cards-get-an-atomic-card">get an Atomic Card</a></td>
-</tr>
-<tr>
-<td><code>tenant_id</code></td>
-<td><em>uuid</em></td>
-<td>The <a href="#tenants">Tenant</a> ID which owns the card</td>
-</tr>
-<tr>
-<td><code>type</code></td>
-<td><em>string</em></td>
-<td><code>Card</code> <a href="#token-types">token type</a></td>
-</tr>
-<tr>
-<td><code>card</code></td>
-<td><em><a href="#atomic-cards-atomic-card-object-card-object">card</a></em></td>
-<td>Card data</td>
-</tr>
-<tr>
-<td><code>fingerprint</code></td>
-<td><em>string</em></td>
-<td>Uniquely identifies this particular card number. You can use this attribute to check whether two card tokens contain the same card number.</td>
-</tr>
-<tr>
-<td><code>metadata</code></td>
-<td><em>map</em></td>
-<td>A key-value map of non-sensitive data.</td>
-</tr>
-<tr>
-<td><code>created_by</code></td>
-<td><em>uuid</em></td>
-<td>(Optional) The <a href="#applications">Application</a> ID which created the Atomic Card</td>
-</tr>
-<tr>
-<td><code>created_at</code></td>
-<td><em>date</em></td>
-<td>(Optional) Created date of the Atomic Card in ISO 8601 format</td>
-</tr>
-<tr>
-<td><code>modified_by</code></td>
-<td><em>uuid</em></td>
-<td>(Optional) The <a href="#applications">Application</a> ID which last modified the Atomic Card</td>
-</tr>
-<tr>
-<td><code>modified_at</code></td>
-<td><em>date</em></td>
-<td>(Optional) Last modified date of the Atomic Card in ISO 8601 format</td>
-</tr>
-</tbody></table>
-<h3 id='atomic-cards-atomic-card-object-card-object'>Card Object</h3>
-<table><thead>
-<tr>
-<th>Attribute</th>
-<th>Required</th>
-<th>Type</th>
-<th>Default</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>number</code></td>
-<td>true</td>
-<td><em>string</em></td>
-<td><code>null</code></td>
-<td>The card number without any separators</td>
-</tr>
-<tr>
-<td><code>expiration_month</code></td>
-<td>false</td>
-<td><em>integer</em></td>
-<td><code>null</code></td>
-<td>Two-digit number representing the card&#39;s expiration month</td>
-</tr>
-<tr>
-<td><code>expiration_year</code></td>
-<td>false</td>
-<td><em>integer</em></td>
-<td><code>null</code></td>
-<td>Four-digit number representing the card&#39;s expiration year</td>
-</tr>
-<tr>
-<td><code>cvc</code></td>
-<td>false</td>
-<td><em>string</em></td>
-<td><code>null</code></td>
-<td>Three or four-digit card verification code</td>
-</tr>
-</tbody></table>
-<h2 id='atomic-cards-create-atomic-card'>Create Atomic Card</h2>
-<blockquote>
-<p>Request</p>
-</blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/atomic/cards"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"BT-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  <span class="nt">-X</span> <span class="s2">"POST"</span> <span class="se">\</span>
-  <span class="nt">-d</span> <span class="s1">'{
-    "card": {
-      "number": "4242424242424242",
-      "expiration_month": 12,
-      "expiration_year": 2025,
-      "cvc": "123"
-    },
-    "metadata": {
-      "nonSensitiveField": "Non-Sensitive Value"
-    }
-  }'</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">BasisTheory</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@basis-theory/basis-theory-js</span><span class="dl">'</span><span class="p">;</span>
-
-<span class="kd">const</span> <span class="nx">bt</span> <span class="o">=</span> <span class="k">await</span> <span class="k">new</span> <span class="nx">BasisTheory</span><span class="p">().</span><span class="nx">init</span><span class="p">(</span><span class="dl">'</span><span class="s1">key_N88mVGsp3sCXkykyN2EFED</span><span class="dl">'</span><span class="p">);</span>
-
-<span class="kd">const</span> <span class="nx">atomicCard</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">bt</span><span class="p">.</span><span class="nx">atomicCards</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
-  <span class="na">card</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">number</span><span class="p">:</span> <span class="dl">'</span><span class="s1">4242424242424242</span><span class="dl">'</span><span class="p">,</span>
-    <span class="na">expirationMonth</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span>
-    <span class="na">expirationYear</span><span class="p">:</span> <span class="mi">2025</span><span class="p">,</span>
-    <span class="na">cvc</span><span class="p">:</span> <span class="dl">'</span><span class="s1">123</span><span class="dl">'</span><span class="p">,</span>
-  <span class="p">},</span>
-  <span class="na">metadata</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">nonSensitiveField</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Non-Sensitive Value</span><span class="dl">'</span>
-  <span class="p">},</span>
-<span class="p">});</span>
-</code></pre></div><div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="k">using</span> <span class="nn">BasisTheory.net.Atomic.Cards</span><span class="p">;</span>
-
-<span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">AtomicCardClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
-
-<span class="kt">var</span> <span class="n">atomicCard</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">CreateAsync</span><span class="p">(</span><span class="k">new</span> <span class="n">AtomicCard</span> <span class="p">{</span>
-  <span class="n">Card</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Card</span> <span class="p">{</span>
-    <span class="n">CardNumber</span> <span class="p">=</span> <span class="s">"4242424242424242"</span><span class="p">,</span>
-    <span class="n">ExpirationMonth</span> <span class="p">=</span> <span class="m">12</span><span class="p">,</span>
-    <span class="n">ExpirationYear</span> <span class="p">=</span> <span class="m">2025</span><span class="p">,</span>
-    <span class="n">CardVerificationCode</span> <span class="p">=</span> <span class="s">"123"</span>
-  <span class="p">},</span>
-  <span class="n">Metadata</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="kt">string</span><span class="p">&gt;</span> <span class="p">{</span>
-    <span class="p">{</span> <span class="s">"nonSensitiveField"</span><span class="p">,</span> <span class="s">"Non-Sensitive Value"</span> <span class="p">}</span>
-  <span class="p">}</span>
-<span class="p">});</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Atomic methods are deprecated and as such were not added to the Python SDK.
-# For adding banks and cards to our platform, use the 'Tokens' endpoints.
-# For further information, check the Deprecations section.
-</span></code></pre></div>
-<blockquote>
-<p>Response</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c1e565009-1984-4638-8fca-dce8a82cc2af"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"tenant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77cb0024-123e-41a8-8ff8-a3d5a0fa8a08"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"card"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"card"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XXXXXXXXXXXX4242"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"expiration_month"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"expiration_year"</span><span class="p">:</span><span class="w"> </span><span class="mi">2025</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"fingerprint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EVYsSLRyb86Z5awJksvnjVMEC4iP7KX639GtHVUFpzER"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"nonSensitiveField"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Non-Sensitive Value"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"modified_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"34053374-d721-43d8-921c-5ee1d337ef21"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"modified_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-10-27T17:34:23+00:00"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p><span class="http-method post">
-  <span class="box-method">POST</span>
-  <code>https://api.basistheory.com/atomic/cards</code>
-</span></p>
-
-<p>Create a new Atomic Card for the Tenant.</p>
-<h3 id='atomic-cards-create-atomic-card-permissions'>Permissions</h3>
-<p class="scopes">
-  <span class="scope">token:pci:create</span>
-</p>
-<h3 id='atomic-cards-create-atomic-card-request-parameters'>Request Parameters</h3>
-<table><thead>
-<tr>
-<th>Attribute</th>
-<th>Required</th>
-<th>Type</th>
-<th>Default</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>card</code></td>
-<td>true</td>
-<td><em><a href="#atomic-cards-atomic-card-object-card-object">card</a></em></td>
-<td><code>null</code></td>
-<td>Card data</td>
-</tr>
-<tr>
-<td><code>metadata</code></td>
-<td>false</td>
-<td><em>map</em></td>
-<td><code>null</code></td>
-<td>A key-value map of non-sensitive data.</td>
-</tr>
-</tbody></table>
-<h3 id='atomic-cards-create-atomic-card-response'>Response</h3>
-<p>Returns an <a href="#atomic-cards-atomic-card-object">Atomic Card</a> with masked <a href="#atomic-cards-atomic-card-object-card-object">card data</a> if the Atomic Card was created. Returns <a href="#errors">an error</a> if there were validation errors, or the Atomic Card failed to create.</p>
-<h2 id='atomic-cards-list-atomic-cards'>List Atomic Cards</h2>
-<blockquote>
-<p>Request</p>
-</blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/atomic/cards"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"BT-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">BasisTheory</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@basis-theory/basis-theory-js</span><span class="dl">'</span><span class="p">;</span>
-
-<span class="kd">const</span> <span class="nx">bt</span> <span class="o">=</span> <span class="k">await</span> <span class="k">new</span> <span class="nx">BasisTheory</span><span class="p">().</span><span class="nx">init</span><span class="p">(</span><span class="dl">'</span><span class="s1">key_N88mVGsp3sCXkykyN2EFED</span><span class="dl">'</span><span class="p">);</span>
-
-<span class="kd">const</span> <span class="nx">atomicCards</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">bt</span><span class="p">.</span><span class="nx">atomicCards</span><span class="p">.</span><span class="nx">list</span><span class="p">();</span>
-</code></pre></div><div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="k">using</span> <span class="nn">BasisTheory.net.Atomic.Cards</span><span class="p">;</span>
-
-<span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">AtomicCardClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
-
-<span class="kt">var</span> <span class="n">atomicCards</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">GetAsync</span><span class="p">();</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Atomic methods are deprecated and as such were not added to the Python SDK.
-# For adding banks and cards to our platform, use the 'Tokens' endpoints.
-# For further information, check the Deprecations section.
-</span></code></pre></div>
-<blockquote>
-<p>Response</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"pagination"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">}</span><span class="w">
-  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c1e565009-1984-4638-8fca-dce8a82cc2af"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"tenant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77cb0024-123e-41a8-8ff8-a3d5a0fa8a08"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"card"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"card"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XXXXXXXXXXXX4242"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"expiration_month"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"expiration_year"</span><span class="p">:</span><span class="w"> </span><span class="mi">2025</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="nl">"fingerprint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EVYsSLRyb86Z5awJksvnjVMEC4iP7KX639GtHVUFpzER"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"nonSensitiveField"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Non-Sensitive Value"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="err">...</span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p><span class="http-method get">
-  <span class="box-method">GET</span>
-  <code>https://api.basistheory.com/atomic/cards</code>
-</span></p>
-
-<p>Get a list of Atomic Cards for the Tenant.</p>
-<h3 id='atomic-cards-list-atomic-cards-permissions'>Permissions</h3>
-<p class="scopes">
-  <span class="scope">token:pci:read:&lt;impact_level&gt;</span>
-</p>
-<h3 id='atomic-cards-list-atomic-cards-response'>Response</h3>
-<p>Returns a <a href="#pagination">paginated object</a> with the <code>data</code> property containing an array of <a href="#atomic-cards-atomic-card-object">Atomic Cards</a>. Providing any query parameters will filter the results. Returns <a href="#errors">an error</a> if Atomic Cards could not be retrieved.</p>
-<h2 id='atomic-cards-get-an-atomic-card'>Get an Atomic Card</h2>
-<blockquote>
-<p>Request</p>
-</blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/atomic/cards/c1e565009-1984-4638-8fca-dce8a82cc2af"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"BT-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">BasisTheory</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@basis-theory/basis-theory-js</span><span class="dl">'</span><span class="p">;</span>
-
-<span class="kd">const</span> <span class="nx">bt</span> <span class="o">=</span> <span class="k">await</span> <span class="k">new</span> <span class="nx">BasisTheory</span><span class="p">().</span><span class="nx">init</span><span class="p">(</span><span class="dl">'</span><span class="s1">key_N88mVGsp3sCXkykyN2EFED</span><span class="dl">'</span><span class="p">);</span>
-
-<span class="kd">const</span> <span class="nx">atomicCard</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">bt</span><span class="p">.</span><span class="nx">atomicCards</span><span class="p">.</span><span class="nx">retrieve</span><span class="p">(</span><span class="dl">'</span><span class="s1">c1e565009-1984-4638-8fca-dce8a82cc2af</span><span class="dl">'</span><span class="p">);</span>
-</code></pre></div><div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="k">using</span> <span class="nn">BasisTheory.net.Atomic.Cards</span><span class="p">;</span>
-
-<span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">AtomicCardClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
-
-<span class="kt">var</span> <span class="n">atomicCard</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">GetByIdAsync</span><span class="p">(</span><span class="s">"c1e565009-1984-4638-8fca-dce8a82cc2af"</span><span class="p">);</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Atomic methods are deprecated and as such were not added to the Python SDK.
-# For adding banks and cards to our platform, use the 'Tokens' endpoints.
-# For further information, check the Deprecations section.
-</span></code></pre></div>
-<blockquote>
-<p>Response</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c1e565009-1984-4638-8fca-dce8a82cc2af"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"tenant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77cb0024-123e-41a8-8ff8-a3d5a0fa8a08"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"card"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"card"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XXXXXXXXXXXX4242"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"expiration_month"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"expiration_year"</span><span class="p">:</span><span class="w"> </span><span class="mi">2025</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"fingerprint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EVYsSLRyb86Z5awJksvnjVMEC4iP7KX639GtHVUFpzER"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"nonSensitiveField"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Non-Sensitive Value"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p><span class="http-method get">
-  <span class="box-method">GET</span>
-  <code>https://api.basistheory.com/atomic/cards/{id}</code>
-</span></p>
-
-<p>Get an Atomic Card by ID in the Tenant.</p>
-<h3 id='atomic-cards-get-an-atomic-card-permissions'>Permissions</h3>
-<p class="scopes">
-  <span class="scope">token:pci:read:&lt;impact_level&gt;</span>
-</p>
-<h3 id='atomic-cards-get-an-atomic-card-uri-parameters'>URI Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Required</th>
-<th>Type</th>
-<th>Default</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>id</code></td>
-<td>true</td>
-<td><em>uuid</em></td>
-<td><code>null</code></td>
-<td>The ID of the Atomic Card</td>
-</tr>
-</tbody></table>
-<h3 id='atomic-cards-get-an-atomic-card-response'>Response</h3>
-<p>Returns an <a href="#atomic-cards-atomic-card-object">Atomic Card</a> with the <code>id</code> provided. Returns <a href="#errors">an error</a> if the Atomic Card could not be retrieved.</p>
-<h2 id='atomic-cards-update-atomic-card'>Update Atomic Card</h2>
-<blockquote>
-<p>Request</p>
-</blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/atomic/cards/c1e565009-1984-4638-8fca-dce8a82cc2af"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"BT-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  <span class="nt">-X</span> <span class="s2">"PATCH"</span> <span class="se">\</span>
-  <span class="nt">-d</span> <span class="s1">'{
-    "card": {
-      "number": "4242424242424242",
-      "expiration_month": 12,
-      "expiration_year": 2025,
-      "cvc": "123"
-    }
-  }'</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">BasisTheory</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@basis-theory/basis-theory-js</span><span class="dl">'</span><span class="p">;</span>
-
-<span class="kd">const</span> <span class="nx">bt</span> <span class="o">=</span> <span class="k">await</span> <span class="k">new</span> <span class="nx">BasisTheory</span><span class="p">().</span><span class="nx">init</span><span class="p">(</span><span class="dl">'</span><span class="s1">key_N88mVGsp3sCXkykyN2EFED</span><span class="dl">'</span><span class="p">);</span>
-
-<span class="kd">const</span> <span class="nx">atomicCard</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">bt</span><span class="p">.</span><span class="nx">atomicCards</span><span class="p">.</span><span class="nx">update</span><span class="p">(</span><span class="dl">"</span><span class="s2">c1e565009-1984-4638-8fca-dce8a82cc2af</span><span class="dl">"</span><span class="p">,</span> <span class="p">{</span>
-  <span class="na">card</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">number</span><span class="p">:</span> <span class="dl">'</span><span class="s1">4242424242424242</span><span class="dl">'</span><span class="p">,</span>
-    <span class="na">expirationMonth</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span>
-    <span class="na">expirationYear</span><span class="p">:</span> <span class="mi">2025</span><span class="p">,</span>
-    <span class="na">cvc</span><span class="p">:</span> <span class="dl">'</span><span class="s1">123</span><span class="dl">'</span><span class="p">,</span>
-  <span class="p">}</span>
-<span class="p">});</span>
-</code></pre></div><div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="k">using</span> <span class="nn">BasisTheory.net.Atomic.Cards</span><span class="p">;</span>
-
-<span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">AtomicCardClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
-
-<span class="kt">var</span> <span class="n">atomicCard</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">UpdateAsync</span><span class="p">(</span><span class="s">"c1e565009-1984-4638-8fca-dce8a82cc2af"</span><span class="p">,</span> <span class="k">new</span> <span class="n">UpdateAtomicCardRequest</span> <span class="p">{</span>
-  <span class="n">Card</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Card</span> <span class="p">{</span>
-    <span class="n">CardNumber</span> <span class="p">=</span> <span class="s">"4242424242424242"</span><span class="p">,</span>
-    <span class="n">ExpirationMonth</span> <span class="p">=</span> <span class="m">12</span><span class="p">,</span>
-    <span class="n">ExpirationYear</span> <span class="p">=</span> <span class="m">2025</span><span class="p">,</span>
-    <span class="n">CardVerificationCode</span> <span class="p">=</span> <span class="s">"123"</span>
-  <span class="p">}</span>
-<span class="p">});</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Atomic methods are deprecated and as such were not added to the Python SDK.
-# For adding banks and cards to our platform, use the 'Tokens' endpoints.
-# For further information, check the Deprecations section.
-</span></code></pre></div>
-<blockquote>
-<p>Response</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c1e565009-1984-4638-8fca-dce8a82cc2af"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"tenant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77cb0024-123e-41a8-8ff8-a3d5a0fa8a08"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"card"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"card"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XXXXXXXXXXXX4242"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"expiration_month"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"expiration_year"</span><span class="p">:</span><span class="w"> </span><span class="mi">2025</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"fingerprint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EVYsSLRyb86Z5awJksvnjVMEC4iP7KX639GtHVUFpzER"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"nonSensitiveField"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Non-Sensitive Value"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"modified_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"34053374-d721-43d8-921c-5ee1d337ef21"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"modified_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-10-27T17:34:23+00:00"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p><span class="http-method patch">
-  <span class="box-method">PATCH</span>
-  <code>https://api.basistheory.com/atomic/cards/{id}</code>
-</span></p>
-
-<p>Update an Atomic Card for the Tenant. At least one property on the request body is required.</p>
-<h3 id='atomic-cards-update-atomic-card-permissions'>Permissions</h3>
-<p class="scopes">
-  <span class="scope">token:pci:update</span>
-</p>
-<h3 id='atomic-cards-update-atomic-card-request-parameters'>Request Parameters</h3>
-<table><thead>
-<tr>
-<th>Attribute</th>
-<th>Required</th>
-<th>Type</th>
-<th>Default</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>card</code></td>
-<td>false</td>
-<td><em><a href="#atomic-cards-atomic-card-object-card-object">card</a></em></td>
-<td><code>null</code></td>
-<td>Card data</td>
-</tr>
-</tbody></table>
-<h3 id='atomic-cards-update-atomic-card-response'>Response</h3>
-<p>Returns an <a href="#atomic-cards-atomic-card-object">Atomic Card</a> with masked <a href="#atomic-cards-atomic-card-object-card-object">card data</a> if the Atomic Card was updated. Returns <a href="#errors">an error</a> if there were validation errors, or the Atomic Card failed to update.</p>
-<h2 id='atomic-cards-delete-atomic-card'>Delete Atomic Card</h2>
-<blockquote>
-<p>Request</p>
-</blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/atomic/cards/c1e565009-1984-4638-8fca-dce8a82cc2af"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"BT-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span> <span class="se">\</span>
-  <span class="nt">-X</span> <span class="s2">"DELETE"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">BasisTheory</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@basis-theory/basis-theory-js</span><span class="dl">'</span><span class="p">;</span>
-
-<span class="kd">const</span> <span class="nx">bt</span> <span class="o">=</span> <span class="k">await</span> <span class="k">new</span> <span class="nx">BasisTheory</span><span class="p">().</span><span class="nx">init</span><span class="p">(</span><span class="dl">'</span><span class="s1">key_N88mVGsp3sCXkykyN2EFED</span><span class="dl">'</span><span class="p">);</span>
-
-<span class="k">await</span> <span class="nx">bt</span><span class="p">.</span><span class="nx">atomicCards</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="dl">'</span><span class="s1">c1e565009-1984-4638-8fca-dce8a82cc2af</span><span class="dl">'</span><span class="p">);</span>
-</code></pre></div><div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="k">using</span> <span class="nn">BasisTheory.net.Atomic.Cards</span><span class="p">;</span>
-
-<span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">AtomicCardClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
-
-<span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">DeleteAsync</span><span class="p">(</span><span class="s">"c1e565009-1984-4638-8fca-dce8a82cc2af"</span><span class="p">);</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Atomic methods are deprecated and as such were not added to the Python SDK.
-# For adding banks and cards to our platform, use the 'Tokens' endpoints.
-# For further information, check the Deprecations section.
-</span></code></pre></div>
-<p><span class="http-method delete">
-  <span class="box-method">DELETE</span>
-  <code>https://api.basistheory.com/atomic/cards/{id}</code>
-</span></p>
-
-<p>Delete an Atomic Card by ID in the Tenant.</p>
-
-<aside class="warning">
-<span>WARNING - The data associated with a deleted Atomic Card will be removed forever. The reference will still exists for audit purposes</span>
-</aside>
-<h3 id='atomic-cards-delete-atomic-card-permissions'>Permissions</h3>
-<p class="scopes">
-  <span class="scope">token:pci:delete</span>
-</p>
-<h3 id='atomic-cards-delete-atomic-card-uri-parameters'>URI Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Required</th>
-<th>Type</th>
-<th>Default</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>id</code></td>
-<td>true</td>
-<td><em>uuid</em></td>
-<td><code>null</code></td>
-<td>The ID of the Atomic Card</td>
-</tr>
-</tbody></table>
-<h3 id='atomic-cards-delete-atomic-card-response'>Response</h3>
-<p>Returns <a href="#errors">an error</a> if the Atomic Card failed to delete.</p>
-<h2 id='atomic-cards-react-with-an-atomic-card-deprecated'>React with an Atomic Card <span class="deprecated menu">DEPRECATED</span></h2>
-<aside class="danger">
-  <span>This endpoint has been deprecated in favor of <a class="black-link" href="#reactors-invoke-a-reactor">Invoke a Reactor</a>.</span>
-</aside>
-
-<blockquote>
-<p>Request</p>
-</blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/atomic/cards/c1e565009-1984-4638-8fca-dce8a82cc2af/react"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"BT-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  <span class="nt">-X</span> <span class="s2">"POST"</span> <span class="se">\</span>
-  <span class="nt">-d</span> <span class="s1">'{
-    "reactor_id": "5b493235-6917-4307-906a-2cd6f1a90b13",
-    "request_parameters": {
-      "request_parameter_1": "Some request value"
-    },
-    "metadata": {
-      "nonSensitiveField": "Non-Sensitive Value"
-    }
-  }'</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">BasisTheory</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@basis-theory/basis-theory-js</span><span class="dl">'</span><span class="p">;</span>
-
-<span class="kd">const</span> <span class="nx">bt</span> <span class="o">=</span> <span class="k">await</span> <span class="k">new</span> <span class="nx">BasisTheory</span><span class="p">().</span><span class="nx">init</span><span class="p">(</span><span class="dl">'</span><span class="s1">key_N88mVGsp3sCXkykyN2EFED</span><span class="dl">'</span><span class="p">);</span>
-
-<span class="kd">const</span> <span class="nx">reactResponse</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">bt</span><span class="p">.</span><span class="nx">atomicCards</span><span class="p">.</span><span class="nx">react</span><span class="p">(</span><span class="dl">'</span><span class="s1">c1e565009-1984-4638-8fca-dce8a82cc2af</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
-  <span class="na">reactorId</span><span class="p">:</span> <span class="dl">'</span><span class="s1">5b493235-6917-4307-906a-2cd6f1a90b13</span><span class="dl">'</span><span class="p">,</span>
-  <span class="na">requestParameters</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">request_parameter_1</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Some request value</span><span class="dl">'</span><span class="p">,</span>
-  <span class="p">},</span>
-  <span class="na">metadata</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">nonSensitiveField</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Non-Sensitive Value</span><span class="dl">'</span><span class="p">,</span>
-  <span class="p">},</span>
-<span class="p">});</span>
-</code></pre></div><div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="k">using</span> <span class="nn">BasisTheory.net.Atomic.Cards</span><span class="p">;</span>
-
-<span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">AtomicCardClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
-
-<span class="kt">var</span> <span class="n">reactResponse</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">ReactAsync</span><span class="p">(</span><span class="s">"c1e565009-1984-4638-8fca-dce8a82cc2af"</span><span class="p">,</span> 
-  <span class="k">new</span> <span class="n">ReactRequest</span> <span class="p">{</span>
-    <span class="n">ReactorId</span> <span class="p">=</span> <span class="s">"5b493235-6917-4307-906a-2cd6f1a90b13"</span><span class="p">,</span>
-    <span class="n">RequestParameters</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="kt">object</span><span class="p">&gt;</span> <span class="p">{</span>
-      <span class="p">{</span> <span class="s">"request_parameter_1"</span><span class="p">,</span>  <span class="s">"Some request value"</span> <span class="p">}</span>
-    <span class="p">},</span>
-    <span class="n">Metadata</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="kt">string</span><span class="p">&gt;</span> <span class="p">{</span>
-      <span class="p">{</span> <span class="s">"nonSensitiveField"</span><span class="p">,</span>  <span class="s">"Non-Sensitive Value"</span> <span class="p">}</span>
-    <span class="p">}</span>
-  <span class="p">});</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># Atomic methods are deprecated and as such were not added to the Python SDK.
-# For adding banks and cards to our platform, use the 'Tokens' endpoints.
-# For further information, check the Deprecations section.
-</span></code></pre></div>
-<p><span class="http-method post">
-  <span class="box-method">POST</span>
-  <code>https://api.basistheory.com/atomic/cards/{id}/react</code>
-</span></p>
-
-<p>React with an Atomic Card by ID.</p>
-<h3 id='atomic-cards-react-with-an-atomic-card-span-class-deprecated-menu-deprecated-span-permissions'>Permissions</h3>
-<p class="scopes">
-  <span class="scope">token:pci:use:reactor</span>
-</p>
-<h3 id='atomic-cards-react-with-an-atomic-card-span-class-deprecated-menu-deprecated-span-uri-parameters'>URI Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Required</th>
-<th>Type</th>
-<th>Default</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>id</code></td>
-<td>true</td>
-<td><em>uuid</em></td>
-<td><code>null</code></td>
-<td>The ID of the Atomic Card</td>
-</tr>
-</tbody></table>
-<h3 id='atomic-cards-react-with-an-atomic-card-span-class-deprecated-menu-deprecated-span-request-parameters'>Request Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Required</th>
-<th>Type</th>
-<th>Default</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>reactor_id</code></td>
-<td>true</td>
-<td><em>uuid</em></td>
-<td><code>null</code></td>
-<td>The ID of the reactor</td>
-</tr>
-<tr>
-<td><code>request_parameters</code></td>
-<td>false</td>
-<td><em>map</em></td>
-<td><code>null</code></td>
-<td>A key-value map of <a href="#reactor-formulas-reactor-formula-request-parameters">request parameter</a> names and values for the reactor</td>
-</tr>
-<tr>
-<td><code>metadata</code></td>
-<td>false</td>
-<td><em>map</em></td>
-<td><code>null</code></td>
-<td>(Deprecated) A key-value map of non-sensitive data to be associated with any created tokens</td>
-</tr>
-</tbody></table>
-<h3 id='atomic-cards-react-with-an-atomic-card-span-class-deprecated-menu-deprecated-span-response'>Response</h3>
-<p>Returns a <a href="#reactors-invoke-a-reactor-reactor-response-object">Reactor Response</a> if the Atomic Card was reacted successfully. Returns <a href="#errors">an error</a> if the Atomic Card failed to react.
-Errors generated from Reactors will be translated to the common Basis Theory Error format. See <a href="#errors-reactor-errors">Reactor Errors</a> for more details.</p>
-<h3 id='atomic-cards-react-with-an-atomic-card-span-class-deprecated-menu-deprecated-span-reactor-response-object'>Reactor Response Object</h3>
-<table><thead>
-<tr>
-<th>Attribute</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>tokens</code></td>
-<td><em>object</em></td>
-<td>(Optional) <a href="#tokens-token-object">Token(s)</a> created from the <code>tokenize</code> block of the Reactor Formula <a href="#reactor-formulas-reactor-formula-code-reactor-formula-response-object">response</a></td>
-</tr>
-<tr>
-<td><code>raw</code></td>
-<td><em>object</em></td>
-<td>(Optional) Raw output returned from the Reactor</td>
-</tr>
-</tbody></table>
-<h2 id='atomic-cards-test-cards'>Test Cards</h2>
-<p>To enable testing of Atomic Cards, we&#39;ve implemented a list of acceptable test card numbers to ensure you are able to test with non-sensitive data.  </p>
-
-<aside class="warning">
-<span>WARNING - while testing our system, these card numbers will be the only accepted cards available to test with.</span>
-</aside>
-<h3 id='atomic-cards-test-cards-test-card-numbers'>Test card numbers</h3>
-<table><thead>
-<tr>
-<th>Card</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>4242424242424242</td>
-<td>Test card</td>
-</tr>
-<tr>
-<td>4000056655665556</td>
-<td>Test card</td>
-</tr>
-<tr>
-<td>5555555555554444</td>
-<td>Test card</td>
-</tr>
-<tr>
-<td>2223003122003222</td>
-<td>Test card</td>
-</tr>
-<tr>
-<td>5200828282828210</td>
-<td>Test card</td>
-</tr>
-<tr>
-<td>5105105105105100</td>
-<td>Test card</td>
-</tr>
-<tr>
-<td>378282246310005</td>
-<td>Test card</td>
-</tr>
-<tr>
-<td>371449635398431</td>
-<td>Test card</td>
-</tr>
-<tr>
-<td>6011111111111117</td>
-<td>Test card</td>
-</tr>
-<tr>
-<td>6011000990139424</td>
-<td>Test card</td>
-</tr>
-<tr>
-<td>3056930009020004</td>
-<td>Test card</td>
-</tr>
-<tr>
-<td>36227206271667</td>
-<td>Test card</td>
-</tr>
-<tr>
-<td>3566002020360505</td>
-<td>Test card</td>
-</tr>
-<tr>
-<td>620000000000000</td>
-<td>Test card</td>
-</tr>
-</tbody></table>
 <h1 id='logs'>Logs</h1><h2 id='logs-log-object'>Log Object</h2>
 <table><thead>
 <tr>
@@ -6013,9 +4571,9 @@ When any detokenization expressions are detected, Basis Theory will attempt to <
 
 <p>Reactor request <code>args</code> may contain a mixture of detokenization expressions and raw plaintext data. </p>
 
-<p>Tokens containing complex data may be detokenized into a Reactor request, including Atomic Bank and Atomic Card token types.
+<p>Tokens containing complex data may be detokenized into a Reactor request, including Bank and Card token types.
 When tokens with complex data are detokenized, the entire JSON data payload will be included within the <code>args</code>. 
-For an example, see <a href="/detokenization#examples-use-atomic-tokens">Use Atomic Tokens</a>.</p>
+For an example, see <a href="/detokenization#examples-use-complex-tokens">Use Complex Tokens</a>.</p>
 
 <p>If the <code>args</code> passed into a Reactor contain additional properties that have not been declared as request parameters on the Reactor Formula,
 those properties will be automatically removed and not sent on the request to the Reactor function.</p>
@@ -7004,8 +5562,8 @@ Token Types define the rules around a data type such as validation requirements,
 
 <ul>
 <li><a href="#token-types-token">Token</a></li>
-<li><a href="#token-types-atomic-card">Atomic Card</a></li>
-<li><a href="#token-types-atomic-bank">Atomic Bank</a></li>
+<li><a href="#token-types-card">Card</a></li>
+<li><a href="#token-types-bank">Bank</a></li>
 <li><a href="#token-types-card-number">Card Number</a></li>
 <li><a href="#token-types-us-bank-account-number">US Bank Account Number</a></li>
 <li><a href="#token-types-us-bank-routing-number">US Bank Routing Number</a></li>
@@ -7054,7 +5612,7 @@ Token Types define the rules around a data type such as validation requirements,
 <td>No</td>
 </tr>
 </tbody></table>
-<h2 id='token-types-atomic-card'>Atomic Card</h2>
+<h2 id='token-types-card'>Card</h2>
 <table><thead>
 <tr>
 <th>Token Attribute</th>
@@ -7083,14 +5641,14 @@ Token Types define the rules around a data type such as validation requirements,
 </tr>
 <tr>
 <td><strong>Input Validation</strong></td>
-<td>See <a href="#atomic-cards-atomic-card-object-card-object">Card Object</a> for validation requirements</td>
+<td>See <a href="#tokens-token-data-validations">Card Object</a> for validation requirements</td>
 </tr>
 <tr>
 <td><strong>Fingerprinted</strong></td>
 <td>Yes</td>
 </tr>
 </tbody></table>
-<h2 id='token-types-atomic-bank'>Atomic Bank</h2>
+<h2 id='token-types-bank'>Bank</h2>
 <table><thead>
 <tr>
 <th>Token Attribute</th>
@@ -7119,7 +5677,7 @@ Token Types define the rules around a data type such as validation requirements,
 </tr>
 <tr>
 <td><strong>Input Validation</strong></td>
-<td>See <a href="#atomic-banks-atomic-bank-object-bank-object">Bank Object</a> for validation requirements</td>
+<td>See <a href="#tokens-token-data-validations">Bank Object</a> for validation requirements</td>
 </tr>
 <tr>
 <td><strong>Fingerprinted</strong></td>
@@ -7483,6 +6041,140 @@ Default privacy settings can be overridden at the time of creation, but only to 
 <td><code>restriction_policy</code></td>
 <td><em>string</em></td>
 <td><a href="#tokens-token-restriction-policies">Restriction policy</a> applied to the Token when read by a User or Application with read permissions at a lower impact level (i.e. <code>mask</code>, <code>redact</code>)</td>
+</tr>
+</tbody></table>
+<h2 id='tokens-token-data-validations'>Token Data Validations</h2><h3 id='tokens-token-data-validations-bank-object'>Bank Object</h3>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Required</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>routing_number</code></td>
+<td>true</td>
+<td><em>string</em></td>
+<td><code>null</code></td>
+<td>Nine-digit ABA routing number. Its checksum is validated.</td>
+</tr>
+<tr>
+<td><code>account_number</code></td>
+<td>true</td>
+<td><em>string</em></td>
+<td><code>null</code></td>
+<td>Account number up to seventeen-digits</td>
+</tr>
+</tbody></table>
+<h3 id='tokens-token-data-validations-card-object'>Card Object</h3>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Required</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>number</code></td>
+<td>true</td>
+<td><em>string</em></td>
+<td><code>null</code></td>
+<td>The card number without any separators</td>
+</tr>
+<tr>
+<td><code>expiration_month</code></td>
+<td>false</td>
+<td><em>integer</em></td>
+<td><code>null</code></td>
+<td>Two-digit number representing the card&#39;s expiration month</td>
+</tr>
+<tr>
+<td><code>expiration_year</code></td>
+<td>false</td>
+<td><em>integer</em></td>
+<td><code>null</code></td>
+<td>Four-digit number representing the card&#39;s expiration year</td>
+</tr>
+<tr>
+<td><code>cvc</code></td>
+<td>false</td>
+<td><em>string</em></td>
+<td><code>null</code></td>
+<td>Three or four-digit card verification code</td>
+</tr>
+</tbody></table>
+<h3 id='tokens-token-data-validations-test-card-numbers'>Test Card Numbers</h3>
+<p>To enable testing of Cards, we&#39;ve implemented a list of acceptable test card numbers to ensure you are able to test with non-sensitive data.  </p>
+
+<aside class="warning">
+<span>WARNING - while testing our system, these card numbers will be the only accepted cards available to test with.</span>
+</aside>
+
+<table><thead>
+<tr>
+<th>Card</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>4242424242424242</td>
+<td>Test card</td>
+</tr>
+<tr>
+<td>4000056655665556</td>
+<td>Test card</td>
+</tr>
+<tr>
+<td>5555555555554444</td>
+<td>Test card</td>
+</tr>
+<tr>
+<td>2223003122003222</td>
+<td>Test card</td>
+</tr>
+<tr>
+<td>5200828282828210</td>
+<td>Test card</td>
+</tr>
+<tr>
+<td>5105105105105100</td>
+<td>Test card</td>
+</tr>
+<tr>
+<td>378282246310005</td>
+<td>Test card</td>
+</tr>
+<tr>
+<td>371449635398431</td>
+<td>Test card</td>
+</tr>
+<tr>
+<td>6011111111111117</td>
+<td>Test card</td>
+</tr>
+<tr>
+<td>6011000990139424</td>
+<td>Test card</td>
+</tr>
+<tr>
+<td>3056930009020004</td>
+<td>Test card</td>
+</tr>
+<tr>
+<td>36227206271667</td>
+<td>Test card</td>
+</tr>
+<tr>
+<td>3566002020360505</td>
+<td>Test card</td>
+</tr>
+<tr>
+<td>620000000000000</td>
+<td>Test card</td>
 </tr>
 </tbody></table>
 <h2 id='tokens-token-classifications'>Token Classifications</h2>
@@ -9256,6 +7948,76 @@ permission based on the parent token&#39;s privacy settings.</p>
 <td>January 3, 2022</td>
 <td>April 15, 2022</td>
 <td><code>GET /atomic/banks/{id}/decrypt</code> endpoint will be removed in an upcoming release. Bank data will now be returned based on the requester&#39;s read access. For more information, see <a href="#atomic-banks-get-an-atomic-bank">Get an Atomic Bank</a>.</td>
+</tr>
+<tr>
+<td><code>/atomic/banks</code></td>
+<td><code>GET</code></td>
+<td>April 3, 2022</td>
+<td>July 8, 2022</td>
+<td><code>GET /atomic/banks</code> endpoint will be removed in an upcoming release. Instead, please use <a href="#tokens-list-tokens">List Tokens</a>.</td>
+</tr>
+<tr>
+<td><code>/atomic/banks</code></td>
+<td><code>POST</code></td>
+<td>April 3, 2022</td>
+<td>July 8, 2022</td>
+<td><code>POST /atomic/banks</code> endpoint will be removed in an upcoming release. Instead, please use <a href="#tokens-create-token">Create Tokens</a>.</td>
+</tr>
+<tr>
+<td><code>/atomic/banks/{id}</code></td>
+<td><code>GET</code></td>
+<td>April 3, 2022</td>
+<td>July 8, 2022</td>
+<td><code>GET /atomic/banks/{id}</code> endpoint will be removed in an upcoming release. Instead, please use <a href="#tokens-get-a-token">Get a Token</a>.</td>
+</tr>
+<tr>
+<td><code>/atomic/banks/{id}</code></td>
+<td><code>PATCH</code></td>
+<td>April 3, 2022</td>
+<td>July 8, 2022</td>
+<td><code>PATCH /atomic/banks/{id}</code> endpoint will be removed in an upcoming release.</td>
+</tr>
+<tr>
+<td><code>/atomic/banks/{id}</code></td>
+<td><code>DELETE</code></td>
+<td>April 3, 2022</td>
+<td>July 8, 2022</td>
+<td><code>DELETE /atomic/banks/{id}</code> endpoint will be removed in an upcoming release. Instead, please use <a href="#tokens-delete-token">Delete Token</a>.</td>
+</tr>
+<tr>
+<td><code>/atomic/cards</code></td>
+<td><code>GET</code></td>
+<td>April 3, 2022</td>
+<td>July 8, 2022</td>
+<td><code>GET /atomic/cards</code> endpoint will be removed in an upcoming release. Instead, please use <a href="#tokens-list-tokens">List Tokens</a>.</td>
+</tr>
+<tr>
+<td><code>/atomic/cards</code></td>
+<td><code>POST</code></td>
+<td>April 3, 2022</td>
+<td>July 8, 2022</td>
+<td><code>POST /atomic/cards</code> endpoint will be removed in an upcoming release. Instead, please use <a href="#tokens-create-token">Create Tokens</a>.</td>
+</tr>
+<tr>
+<td><code>/atomic/cards/{id}</code></td>
+<td><code>GET</code></td>
+<td>April 3, 2022</td>
+<td>July 8, 2022</td>
+<td><code>GET /atomic/cards/{id}</code> endpoint will be removed in an upcoming release. Instead, please use <a href="#tokens-get-a-token">Get a Token</a>.</td>
+</tr>
+<tr>
+<td><code>/atomic/cards/{id}</code></td>
+<td><code>PATCH</code></td>
+<td>April 3, 2022</td>
+<td>July 8, 2022</td>
+<td><code>PATCH /atomic/cards/{id}</code> endpoint will be removed in an upcoming release.</td>
+</tr>
+<tr>
+<td><code>/atomic/cards/{id}</code></td>
+<td><code>DELETE</code></td>
+<td>April 3, 2022</td>
+<td>July 8, 2022</td>
+<td><code>DELETE /atomic/cards/{id}</code> endpoint will be removed in an upcoming release. Instead, please use <a href="#tokens-delete-token">Delete Token</a>.</td>
 </tr>
 </tbody></table>
 <h2 id='deprecations-deprecated-features'>Deprecated Features</h2>

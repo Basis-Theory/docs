@@ -372,7 +372,7 @@
                     <a href="#examples-prerequisites" class="toc-h2 toc-link" data-title="Prerequisites">Prerequisites</a>
                   </li>
                   <li>
-                    <a href="#examples-use-atomic-tokens" class="toc-h2 toc-link" data-title="Use Atomic Tokens">Use Atomic Tokens</a>
+                    <a href="#examples-use-complex-tokens" class="toc-h2 toc-link" data-title="Use Complex Tokens">Use Complex Tokens</a>
                   </li>
                   <li>
                     <a href="#examples-override-a-field-on-a-token" class="toc-h2 toc-link" data-title="Override a Field on a Token">Override a Field on a Token</a>
@@ -513,9 +513,9 @@ request just by substituting the token data in place of the detokenization expre
   </span><span class="nl">"ssn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"111-22-3333"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h2 id='detokenization-expressions-detokenizing-complex-data'>Detokenizing Complex Data</h2>
-<p>Atomic Card, Atomic Bank, or generic tokens containing complex JSON objects can all be detokenized as well.
+<p>Card, Bank, or generic tokens containing complex JSON objects can all be detokenized as well.
 Detokenization of complex token data is performed by embedding the token&#39;s JSON data within the request.
-For example, say you have the Atomic Card token:</p>
+For example, say you have the Card token:</p>
 
 <div class="center-column"></div>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -529,7 +529,7 @@ For example, say you have the Atomic Card token:</p>
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>Then you can embed the entire <a href="/#atomic-cards-atomic-card-object">Card</a> object within a request with the detokenization expression:</p>
+<p>Then you can embed the entire <a href="/#token-types-card">Card</a> object within a request with the detokenization expression:</p>
 
 <div class="center-column"></div>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -549,7 +549,7 @@ For example, say you have the Atomic Card token:</p>
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h1 id='transformations'>Transformations</h1>
 <p>Oftentimes data may be tokenized in one format, but you wish to use this data in a different format within a request.
-For example, several pieces of data may be stored together in a complex object such as an Atomic Card token,
+For example, several pieces of data may be stored together in a complex object such as a Card token,
 but you wish to only use a single piece of that data within a request.</p>
 
 <p>For this purpose, we offer the ability to apply transformation functions to a detokenization expression. 
@@ -632,8 +632,7 @@ If the expression does not resolve to any value, then the expression will resolv
 </tr>
 </tbody></table>
 <h1 id='examples'>Examples</h1>
-<p>Based on your use cases, you may prefer to store your sensitive data with Basis Theory using our
-<a href="https://developers.basistheory.com/concepts/what-are-atomic-tokens">Atomic Tokens</a>, one of our pre-defined <a href="/#token-types">Token Types</a>,
+<p>Based on your use cases, you may prefer to store your sensitive data with Basis Theory using one of our pre-defined <a href="/#token-types">Token Types</a>
 or even use your own custom data schema within a schemaless <a href="/#token-types-token">generic token</a>.
 However you choose to tokenize your sensitive data, Basis Theory grants you the flexibility to use this data within
 our serverless Reactor platform or the Proxy.</p>
@@ -705,7 +704,7 @@ This is the same request that is being made from within the <code>Spreedly - Car
 <p>and it authenticates using <a href="https://docs.spreedly.com/reference/api/v1/#authentication">basic auth</a> -
 we will be passing a simulated value in the <code>Authorization</code> header on the example proxy requests - 
 replace this with your own authentication credentials if you want to follow along.</p>
-<h2 id='examples-use-atomic-tokens'>Use Atomic Tokens</h2>
+<h2 id='examples-use-complex-tokens'>Use Complex Tokens</h2>
 <blockquote>
 <p>Original Request</p>
 </blockquote>
@@ -766,9 +765,9 @@ replace this with your own authentication credentials if you want to follow alon
   <span class="o">}</span>
 <span class="o">}</span>
 </code></pre></div>
-<p>In this example, we show how you can use an <a href="/#atomic-cards">Atomic Card</a> token to create a Spreedly payment method.</p>
+<p>In this example, we show how you can use a <a href="/#token-types-card">Card</a> token to create a Spreedly payment method.</p>
 
-<p>Say you have created the Atomic Card token:</p>
+<p>Say you have created the Card token:</p>
 
 <div class="center-column" style="clear: none;"></div>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -849,11 +848,11 @@ replace this with your own authentication credentials if you want to follow alon
   <span class="o">}</span>
 <span class="o">}</span>
 </code></pre></div>
-<p>In this example, we show how you can use an <a href="/#atomic-cards">Atomic Card</a> token to create a Spreedly payment method,
+<p>In this example, we show how you can use a <a href="/#token-types-card">Card</a> token to create a Spreedly payment method,
 but provide an updated CVC (<code>987</code>) that is different from the <code>cvc</code> value stored within the token.
 This could be desired if the updated CVC was collected directly from a user interface, possibly as a challenge to the user to prove they own the card.</p>
 
-<p>Here, we will be using the same Atomic Card token and card owner name from the previous <a href="#examples-use-atomic-tokens">Use Atomic Tokens</a> example.</p>
+<p>Here, we will be using the same Card token and card owner name from the previous <a href="#examples-use-complex-tokens">Use Complex Tokens</a> example.</p>
 <h2 id='examples-use-multiple-tokens'>Use Multiple Tokens</h2>
 <blockquote>
 <p>Original Request</p>
@@ -1025,7 +1024,7 @@ chosen to store the card holder&#39;s first and last names as separate tokens:</
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Brown"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>Also, we have the Atomic Card token:</p>
+<p>Also, we have the Card token:</p>
 
 <div class="center-column" style="clear: none;"></div>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">

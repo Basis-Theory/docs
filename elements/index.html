@@ -448,12 +448,6 @@
               <a href="#elements-services" class="toc-h1 toc-link" data-title="Elements Services">Elements Services</a>
                 <ul class="toc-list-h2">
                     <li>
-                      <a href="#elements-services-atomic-cards" class="toc-h2 toc-link" data-title="Atomic Cards">Atomic Cards</a>
-                    </li>
-                    <li>
-                      <a href="#elements-services-atomic-banks" class="toc-h2 toc-link" data-title="Atomic Banks">Atomic Banks</a>
-                    </li>
-                    <li>
                       <a href="#elements-services-tokens" class="toc-h2 toc-link" data-title="Tokens">Tokens</a>
                     </li>
                     <li>
@@ -462,8 +456,16 @@
                     <li>
                       <a href="#elements-services-errors" class="toc-h2 toc-link" data-title="Errors">Errors</a>
                     </li>
+                </ul>
+            </li>
+            <li>
+              <a href="#deprecations" class="toc-h1 toc-link" data-title="Deprecations">Deprecations</a>
+                <ul class="toc-list-h2">
                     <li>
-                      <a href="#elements-services-store-credit-card-deprecated" class="toc-h2 toc-link" data-title="Store Credit Card DEPRECATED">Store Credit Card <span class="deprecated menu">DEPRECATED</span></a>
+                      <a href="#deprecations-deprecated-services" class="toc-h2 toc-link" data-title="Deprecated Services">Deprecated Services</a>
+                    </li>
+                    <li>
+                      <a href="#deprecations-deprecated-features" class="toc-h2 toc-link" data-title="Deprecated Features">Deprecated Features</a>
                     </li>
                 </ul>
             </li>
@@ -677,11 +679,11 @@
 </tr>
 <tr>
 <td><code>token:pci:create</code></td>
-<td>Create Atomic Card tokens</td>
+<td>Create Card tokens</td>
 </tr>
 <tr>
 <td><code>token:bank:create</code></td>
-<td>Create Atomic Bank tokens</td>
+<td>Create Bank tokens</td>
 </tr>
 </tbody></table>
 <h1 id='authentication'>Authentication</h1>
@@ -1454,46 +1456,11 @@ attribute, in this case, will modify the user input to remove <code>(</code>, <c
 </aside>
 <h1 id='elements-services'>Elements Services</h1>
 <p>The following <strong>BasisTheory.js</strong> services are capable of recognizing Elements instances in the payload and securely tokenizing their data directly to Basis Theory vault. </p>
-<h2 id='elements-services-atomic-cards'>Atomic Cards</h2><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">atomicCards</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
-  <span class="na">card</span><span class="p">:</span> <span class="nx">cardElement</span>
-<span class="p">}).</span><span class="nx">then</span><span class="p">((</span><span class="nx">token</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">token</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span> <span class="c1">// token to store</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">token</span><span class="p">.</span><span class="nx">card</span><span class="p">));</span> <span class="c1">// redacted card data</span>
-<span class="p">});</span>
-</code></pre></div>
-<p>Allows secure submission and tokenization of a card element. Returns a <code>Promise</code> that resolves to the tokenized card data.
-See <a href="#element-types-card-element">CardModel</a> for the resolved value type. The <code>Promise</code> will reject with an <a href="#elements-services-errors">error</a>
-if the response status is not in the 2xx range.</p>
-
-<p>You can fetch this same data later with <a href="/api-reference/#atomic-cards-get-an-atomic-card">Get an Atomic Card API</a>.</p>
-
-<aside class="notice">
-  <span>Notice that the actual card data never leaves the element (iframe) other than to hit our secure API endpoints.</span>
-</aside>
-<h2 id='elements-services-atomic-banks'>Atomic Banks</h2><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">atomicBanks</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
-  <span class="na">bank</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">routingNumber</span><span class="p">:</span> <span class="nx">routingNumberElement</span> <span class="o">|</span> <span class="dl">'</span><span class="s1">plainText</span><span class="dl">'</span><span class="p">,</span>  <span class="c1">// values can be either a TextElement or plain text (see warning).</span>
-    <span class="na">accountNumber</span><span class="p">:</span> <span class="nx">accountNumberElement</span> <span class="o">|</span> <span class="dl">'</span><span class="s1">plainText</span><span class="dl">'</span><span class="p">,</span>
-  <span class="p">},</span>
-<span class="p">}).</span><span class="nx">then</span><span class="p">((</span><span class="nx">token</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">token</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span> <span class="c1">// token to store</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">token</span><span class="p">.</span><span class="nx">bank</span><span class="p">));</span> <span class="c1">// redacted bank data</span>
-<span class="p">});</span>
-</code></pre></div>
-<p>Allows secure submission and tokenization of a bank element. Returns a <code>Promise</code> that resolves to the tokenized bank
-data. The <code>Promise</code> will reject with an <a href="#elements-services-errors">error</a> if the response status is not in the 2xx
-range.</p>
-
-<p>You can fetch this same data later with <a href="/api-reference#atomic-banks-get-an-atomic-bank">Get an Atomic Bank API</a>.</p>
-
-<aside class="notice">
-  <span>Notice that the actual bank data never leaves the element (iframe) other than to hit our secure API endpoints.</span>
-</aside>
-
-<aside class="warning">
-  <span>Note that when submitting <code>plainText</code> values, data will be HTML encoded before storage for security reasons.
-</aside>
-<h2 id='elements-services-tokens'>Tokens</h2><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">tokens</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
+<h2 id='elements-services-tokens'>Tokens</h2>
+<blockquote>
+<p>Create generic token</p>
+</blockquote>
+<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">tokens</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
   <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">token</span><span class="dl">'</span><span class="p">,</span>
   <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
     <span class="na">sensitiveData</span><span class="p">:</span> <span class="nx">sensitiveDataElement</span><span class="p">,</span>
@@ -1508,13 +1475,39 @@ range.</p>
     <span class="na">nonSensitiveField</span><span class="p">:</span> <span class="dl">'</span><span class="s1">nonSensitiveValue</span><span class="dl">'</span>
   <span class="p">}</span>
 <span class="p">}).</span><span class="nx">then</span><span class="p">((</span><span class="nx">token</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">token</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span> <span class="c1">// token to store</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">token</span><span class="p">));</span> <span class="c1">// encrypted token data</span>
 <span class="p">});</span>
 </code></pre></div>
-<p>Allows secure submission and tokenization of string data. Returns a <code>Promise</code> that resolves to the created token. The
+<blockquote>
+<p>Tokenize card element</p>
+</blockquote>
+<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">tokens</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
+  <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">card</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">data</span><span class="p">:</span> <span class="nx">cardElement</span><span class="p">,</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">((</span><span class="nx">token</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">token</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span> <span class="c1">// token to store</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">token</span><span class="p">.</span><span class="nx">data</span><span class="p">));</span> <span class="c1">// redacted card data</span>
+<span class="p">});</span>
+</code></pre></div>
+<blockquote>
+<p>Tokenize bank details</p>
+</blockquote>
+<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">tokens</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
+  <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">bank</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">routingNumber</span><span class="p">:</span> <span class="nx">routingNumberElement</span> <span class="o">|</span> <span class="dl">'</span><span class="s1">plainText</span><span class="dl">'</span><span class="p">,</span>  <span class="c1">// values can be either a TextElement or plain text (see warning).</span>
+    <span class="na">accountNumber</span><span class="p">:</span> <span class="nx">accountNumberElement</span> <span class="o">|</span> <span class="dl">'</span><span class="s1">plainText</span><span class="dl">'</span><span class="p">,</span>
+  <span class="p">}</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">((</span><span class="nx">token</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">token</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span> <span class="c1">// token to store</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">token</span><span class="p">.</span><span class="nx">data</span><span class="p">));</span> <span class="c1">// redacted bank data</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>Allows secure submission and tokenization of primitive data and elements. Returns a <code>Promise</code> that resolves to the created token. The
 <code>Promise</code> will reject with an <a href="#elements-services-errors">error</a> if the response status is not in the 2xx range.</p>
 
-<p>You can fetch this same data later with <a href="/api-reference#tokens-get-a-token">Get a Token API</a> or <a href="/api-reference#tokens-get-a-decrypted-token">Get a Decrypted Token API</a></p>
+<p>You can fetch this same data later with <a href="/api-reference#tokens-get-a-token">Get a Token API</a></p>
 
 <aside class="notice">
   <span>Notice that the actual input data never leaves the element (iframe) other than to hit our secure API endpoints.</span>
@@ -1525,13 +1518,13 @@ range.</p>
 </aside>
 
 <aside class="warning">
-  <span>Currently only the <code>token</code> type is supported. Support for more types will be added in the future.</span>
-</aside>
-
-<aside class="warning">
   <span>The <code>children</code> attribute supported by the API is <strong>NOT</strong> supported when creating a token with elements.</span>
 </aside>
-<h2 id='elements-services-tokenize'>Tokenize</h2><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">tokenize</span><span class="p">({</span>
+<h2 id='elements-services-tokenize'>Tokenize</h2>
+<blockquote>
+<p>Tokenize data</p>
+</blockquote>
+<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">tokenize</span><span class="p">({</span>
   <span class="na">sensitiveData</span><span class="p">:</span> <span class="nx">sensitiveDataElement</span><span class="p">,</span>
   <span class="na">nonSensitiveData</span><span class="p">:</span> <span class="dl">'</span><span class="s1">plainText</span><span class="dl">'</span><span class="p">,</span> <span class="c1">// see warning on plain text data</span>
   <span class="na">otherData</span><span class="p">:</span> <span class="p">{</span>
@@ -1540,13 +1533,54 @@ range.</p>
   <span class="p">},</span>
   <span class="na">someOtherData</span><span class="p">:</span> <span class="p">[</span><span class="dl">'</span><span class="s1">plainText1</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">plainText2</span><span class="dl">'</span><span class="p">],</span>
 <span class="p">}).</span><span class="nx">then</span><span class="p">((</span><span class="nx">token</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">token</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span> <span class="c1">// token to store</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">token</span><span class="p">));</span> <span class="c1">// encrypted token data</span>
 <span class="p">});</span>
 </code></pre></div>
-<p>Allows secure submission and tokenization of string data. Returns a <code>Promise</code> that resolves to the created tokens. The
+<blockquote>
+<p>Tokenize multiple card elements</p>
+</blockquote>
+<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">tokenize</span><span class="p">({</span>
+  <span class="na">card1</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">card</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">data</span><span class="p">:</span> <span class="nx">cardElement1</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="na">card2</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">card</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">data</span><span class="p">:</span> <span class="nx">cardElement2</span><span class="p">,</span>
+  <span class="p">}</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">((</span><span class="nx">token</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">token</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span> <span class="c1">// token to store</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">token</span><span class="p">));</span> <span class="c1">// encrypted token data</span>
+<span class="p">});</span>
+</code></pre></div>
+<blockquote>
+<p>Tokenize multiple bank details</p>
+</blockquote>
+<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">tokenize</span><span class="p">({</span>
+  <span class="na">bank1</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">bank</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">routingNumber</span><span class="p">:</span> <span class="nx">routingNumberElement1</span> <span class="o">|</span> <span class="dl">'</span><span class="s1">plainText</span><span class="dl">'</span><span class="p">,</span>  <span class="c1">// values can be either a TextElement or plain text (see warning).</span>
+      <span class="na">accountNumber</span><span class="p">:</span> <span class="nx">accountNumberElement1</span> <span class="o">|</span> <span class="dl">'</span><span class="s1">plainText</span><span class="dl">'</span><span class="p">,</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="na">bank2</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">bank</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">routingNumber</span><span class="p">:</span> <span class="nx">routingNumberElement2</span> <span class="o">|</span> <span class="dl">'</span><span class="s1">plainText</span><span class="dl">'</span><span class="p">,</span>  <span class="c1">// values can be either a TextElement or plain text (see warning).</span>
+      <span class="na">accountNumber</span><span class="p">:</span> <span class="nx">accountNumberElement2</span> <span class="o">|</span> <span class="dl">'</span><span class="s1">plainText</span><span class="dl">'</span><span class="p">,</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">((</span><span class="nx">token</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">token</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span> <span class="c1">// token to store</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">token</span><span class="p">));</span> <span class="c1">// encrypted token data</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>Allows secure submission and tokenization of primitive data and elements. Returns a <code>Promise</code> that resolves to the created tokens. The
 <code>Promise</code> will reject with an <a href="#elements-services-errors">error</a> if the response status is not in the 2xx range.</p>
 
-<p>You can fetch this same data later with <a href="/api-reference#tokens-get-a-token">Get a Token API</a> or <a href="/api-reference#tokens-get-a-decrypted-token">Get a Decrypted Token API</a>.</p>
+<p>You can fetch this same data later with <a href="/api-reference#tokens-get-a-token">Get a Token API</a></p>
 
 <aside class="notice">
   <span>Notice that the actual input data never leaves the element (iframe) other than to hit our secure API endpoints.</span>
@@ -1559,61 +1593,156 @@ range.</p>
 <aside class="warning">
   <span>The <code>children</code> attribute supported by the API is <strong>NOT</strong> supported when creating a token with elements.</span>
 </aside>
-<h2 id='elements-services-errors'>Errors</h2><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">tokens</span><span class="p">.</span><span class="nx">create</span><span class="p">(...).</span><span class="k">catch</span><span class="p">(</span><span class="nx">error</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="c1">// handle error</span>
-<span class="p">});</span>
+<h2 id='elements-services-errors'>Errors</h2>
+<p>Any elements service could throw an error based on <a href="#elements-services-errors-basistheoryvalidationerror">client-side validations</a> or if the <a href="#elements-services-errors-basistheoryapierror">server rejects the request</a>.</p>
+<h3 id='elements-services-errors-basistheoryvalidationerror'>BasisTheoryValidationError</h3>
+<blockquote>
+<p>BasisTheoryValidationError</p>
+</blockquote>
+<div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="p">{</span>
+  <span class="na">details</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">card1</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">number</span><span class="p">:</span> <span class="p">{</span> <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">invalid</span><span class="dl">'</span> <span class="p">},</span>
+      <span class="na">cvc</span><span class="p">:</span> <span class="p">{</span> <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">incomplete</span><span class="dl">'</span> <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="na">card2</span><span class="p">:</span> <span class="p">{}</span>
+  <span class="p">},</span>
+  <span class="na">validation</span><span class="p">:</span> <span class="p">[]</span> <span class="c1">// deprecated</span>
+<span class="p">}</span>
 </code></pre></div>
-<p>In case any Elements service throws an error, that could be related to client-side validation or an unaccepted request from the server.</p>
-
 <table><thead>
 <tr>
 <th>Attribute</th>
 <th>Type</th>
-<th>Scope</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td><code>validation</code></td>
+<td><code>name</code></td>
+<td>string</td>
+<td>Error name, always <code>&#39;BasisTheoryValidationError&#39;</code>.</td>
+</tr>
+<tr>
+<td><code>details</code></td>
+<td><em>object</em></td>
+<td>Maps payload properties to their respective elements validation problems.</td>
+</tr>
+<tr>
+<td><del><code>validation</code></del></td>
 <td><em>array</em></td>
-<td>client</td>
-<td>Array of <a href="#element-events-on-change-fielderror">FieldError</a>, in case of client-side error.</td>
+<td><a href="#deprecations-deprecated-features">Deprecated in favor of details</a>. Array of <a href="#element-events-on-change-fielderror">FieldError</a>, in case of client-side error.</td>
+</tr>
+</tbody></table>
+<h3 id='elements-services-errors-basistheoryapierror'>BasisTheoryApiError</h3>
+<blockquote>
+<p>BasisTheoryApiError</p>
+</blockquote>
+<div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="p">{</span>
+  <span class="na">data</span><span class="p">:</span> <span class="p">{},</span> <span class="c1">// API response body</span>
+  <span class="na">status</span><span class="p">:</span> <span class="mi">400</span>
+<span class="p">}</span>
+</code></pre></div>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>name</code></td>
+<td>string</td>
+<td>Error name, always <code>&#39;BasisTheoryApiError&#39;</code>.</td>
 </tr>
 <tr>
 <td><code>data</code></td>
 <td><em>object</em></td>
-<td>server</td>
-<td>Response body sent from the server.</td>
+<td>Response body <a href="/#errors">sent from the server</a>.</td>
 </tr>
 <tr>
 <td><code>status</code></td>
 <td><em>number</em></td>
-<td>both</td>
-<td>Response HTTP status or <code>-1</code> if the request never left the client (i.e. connection issues)</td>
+<td>Response HTTP status.</td>
 </tr>
 </tbody></table>
-<h2 id='elements-services-store-credit-card-deprecated'>Store Credit Card <span class="deprecated menu">DEPRECATED</span></h2>
-<aside class="danger">
-  <span>This endpoint has been deprecated in favor of <a class="black-link" href="#elements-services-atomic-cards">Atomic Cards</a></span>
-</aside>
-<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">elements</span><span class="p">.</span><span class="nx">storeCreditCard</span><span class="p">({</span>
-  <span class="na">card</span><span class="p">:</span> <span class="nx">cardElement</span><span class="p">,</span>
-<span class="p">}).</span><span class="nx">then</span><span class="p">((</span><span class="nx">token</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">token</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span> <span class="c1">// token to store</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">token</span><span class="p">.</span><span class="nx">card</span><span class="p">));</span> <span class="c1">// redacted card data</span>
-<span class="p">});</span>
-</code></pre></div>
-<p>Allows secure submission and tokenization of a card element. Returns a <code>Promise</code> that resolves to the tokenized card
-data. See <a href="#element-types-card-element">CardModel</a> for the resolved value type. The <code>Promise</code> will reject with an
-<a href="#elements-services-errors">error</a> if the response status is not in the 2xx range.</p>
-
-<p>Internally, <code>BasisTheory.elements.storeCreditCard</code> calls <a href="/api-reference/#atomic-cards-create-atomic-card">Create Atomic Card API</a>.</p>
-
-<p>You can fetch this same data later with <a href="/api-reference/#atomic-cards-get-an-atomic-card">Get an Atomic Card API</a>.</p>
 
 <aside class="notice">
-  <span>Notice that the actual card data never leaves the element (iframe) other than to hit our secure API endpoints.</span>
+  <span>Error <code>name</code> property may be used instead of checking its instance type.</span>
 </aside>
+
+<blockquote>
+<p>Handling services errors</p>
+</blockquote>
+<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="k">import</span> <span class="p">{</span>
+  <span class="nx">BasisTheoryApiError</span><span class="p">,</span>
+  <span class="nx">BasisTheoryValidationError</span>
+<span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@basis-theory/basis-theory-js/common</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">tokenize</span><span class="p">({</span>
+  <span class="na">card1</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">card</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">data</span><span class="p">:</span> <span class="nx">cardElement1</span>
+  <span class="p">},</span>
+  <span class="na">card2</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">card</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">data</span><span class="p">:</span> <span class="nx">cardElement2</span>
+  <span class="p">},</span>
+  <span class="na">ssn</span><span class="p">:</span> <span class="nx">textElement</span>
+<span class="p">}).</span><span class="k">catch</span><span class="p">(</span><span class="nx">error</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">error</span> <span class="k">instanceof</span> <span class="nx">BasisTheoryValidationError</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// check error details</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">error</span> <span class="k">instanceof</span> <span class="nx">BasisTheoryApiError</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// check error data or status</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div><h1 id='deprecations'>Deprecations</h1><h2 id='deprecations-deprecated-services'>Deprecated Services</h2>
+<p>The following table lists deprecated services and their respective shutdown date.</p>
+
+<table><thead>
+<tr>
+<th>Service</th>
+<th>Deprecated</th>
+<th>Shutdown Date</th>
+<th>Details</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>storeCreditCard</code></td>
+<td>December 10, 2021</td>
+<td>April 22, 2022</td>
+<td><code>storeCreditCard</code> service has been removed. Instead, please use <a href="#elements-services-tokens">Tokens</a>.</td>
+</tr>
+<tr>
+<td><code>atomicCards</code></td>
+<td>April 22, 2022</td>
+<td>July 22, 2022</td>
+<td><code>atomicCards</code> service will be removed in an upcoming release. Instead, please use <a href="#elements-services-tokens">Tokens</a>.</td>
+</tr>
+<tr>
+<td><code>atomicBanks</code></td>
+<td>April 22, 2022</td>
+<td>July 22, 2022</td>
+<td><code>atomicBanks</code> service will be removed in an upcoming release. Instead, please use <a href="#elements-services-tokens">Tokens</a>.</td>
+</tr>
+</tbody></table>
+<h2 id='deprecations-deprecated-features'>Deprecated Features</h2>
+<p>The following table lists deprecated features and their respective shutdown date.</p>
+
+<table><thead>
+<tr>
+<th>Feature</th>
+<th>Deprecated</th>
+<th>Shutdown Date</th>
+<th>Details</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>validation</code> property in error</td>
+<td>April 22, 2022</td>
+<td>July 22, 2022</td>
+<td><code>validation</code> property in errors will be removed in an upcoming release. Instead, please use <a href="#elements-services-errors">details</a></td>
+</tr>
+</tbody></table>
 
         <h1 id='react-package'>React Package</h1>
 <blockquote>
@@ -2031,8 +2160,10 @@ data. See <a href="#element-types-card-element">CardModel</a> for the resolved v
 <h1 id='basistheoryreact'>BasisTheoryReact</h1>
 <p><code>BasisTheoryReact</code> adds React-specific capabilities on top of the <code>BasisTheory</code> class. All <a href="/api-reference">API features</a> and <a href="#elements-services">Elements Services</a> are still available, plus the methods below.</p>
 <h2 id='basistheoryreact-getelement'>getElement</h2><div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="k">import</span> <span class="p">{</span> 
+  <span class="nx">BasisTheoryApiError</span><span class="p">,</span>
+  <span class="nx">BasisTheoryValidationError</span><span class="p">,</span>
   <span class="nx">TextElement</span><span class="p">,</span> 
-  <span class="nx">useBasisTheory</span> 
+  <span class="nx">useBasisTheory</span><span class="p">,</span> 
 <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@basis-theory/basis-theory-react</span><span class="dl">'</span><span class="p">;</span>
 
 <span class="kd">const</span> <span class="nx">ssnMask</span> <span class="o">=</span> <span class="p">[</span><span class="sr">/</span><span class="se">\d</span><span class="sr">/</span><span class="p">,</span> <span class="sr">/</span><span class="se">\d</span><span class="sr">/</span><span class="p">,</span> <span class="sr">/</span><span class="se">\d</span><span class="sr">/</span><span class="p">,</span> <span class="dl">"</span><span class="s2">-</span><span class="dl">"</span><span class="p">,</span> <span class="sr">/</span><span class="se">\d</span><span class="sr">/</span><span class="p">,</span> <span class="sr">/</span><span class="se">\d</span><span class="sr">/</span><span class="p">,</span> <span class="dl">"</span><span class="s2">-</span><span class="dl">"</span><span class="p">,</span> <span class="sr">/</span><span class="se">\d</span><span class="sr">/</span><span class="p">,</span> <span class="sr">/</span><span class="se">\d</span><span class="sr">/</span><span class="p">,</span> <span class="sr">/</span><span class="se">\d</span><span class="sr">/</span><span class="p">,</span> <span class="sr">/</span><span class="se">\d</span><span class="sr">/</span><span class="p">];</span>
@@ -2043,10 +2174,19 @@ data. See <a href="#element-types-card-element">CardModel</a> for the resolved v
   <span class="kd">const</span> <span class="nx">submit</span> <span class="o">=</span> <span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
     <span class="kd">const</span> <span class="nx">fullName</span> <span class="o">=</span> <span class="nx">bt</span><span class="p">.</span><span class="nx">getElement</span><span class="p">(</span><span class="dl">'</span><span class="s1">fullName</span><span class="dl">'</span><span class="p">);</span>
     <span class="kd">const</span> <span class="nx">ssn</span> <span class="o">=</span> <span class="nx">bt</span><span class="p">.</span><span class="nx">getElement</span><span class="p">(</span><span class="dl">'</span><span class="s1">ssn</span><span class="dl">'</span><span class="p">);</span>
-    <span class="kd">const</span> <span class="nx">tokens</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">bt</span><span class="p">.</span><span class="nx">tokenize</span><span class="p">({</span>
-      <span class="nx">fullName</span><span class="p">,</span>
-      <span class="nx">ssn</span><span class="p">,</span>
-    <span class="p">});</span>
+
+    <span class="k">try</span> <span class="p">{</span>
+      <span class="kd">const</span> <span class="nx">tokens</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">bt</span><span class="p">.</span><span class="nx">tokenize</span><span class="p">({</span>
+        <span class="nx">fullName</span><span class="p">,</span>
+        <span class="nx">ssn</span><span class="p">,</span>
+      <span class="p">});</span>
+    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">error</span> <span class="k">instanceof</span> <span class="nx">BasisTheoryValidationError</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// check error details</span>
+      <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">error</span> <span class="k">instanceof</span> <span class="nx">BasisTheoryApiError</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// check error data or status</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
   <span class="p">}</span>
 
   <span class="k">return</span> <span class="p">&lt;</span><span class="nc">BasisTheoryProvider</span> <span class="na">bt</span><span class="p">=</span><span class="si">{</span><span class="nx">bt</span><span class="si">}</span><span class="p">&gt;</span>
