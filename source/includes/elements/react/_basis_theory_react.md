@@ -22,18 +22,16 @@ const MyForm = () => {
     const ssn = bt.getElement('ssn');
 
     try {
-        const tokens = await bt.tokenize({
-            fullName,
-            ssn,
-        });
+      const tokens = await bt.tokenize({
+        fullName,
+        ssn,
+      });
     } catch (error) {
-        if (error instanceof BasisTheoryValidationError) {
-            // check error details
-        }
-
-        if (error instanceof BasisTheoryApiError) {
-            // check error data or status
-        }
+      if (error instanceof BasisTheoryValidationError) {
+        // check error details
+      } else if (error instanceof BasisTheoryApiError) {
+        // check error data or status
+      }
     }
   }
 
