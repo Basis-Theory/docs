@@ -4,38 +4,25 @@ Reactor formulas give you the ability to pre-configure custom integrations to se
 
 ## Reactor Formula Object
 
-| Attribute            | Type     | Description                                                                                                                                                      |
-|----------------------|----------|------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `id`                 | *uuid*   | Unique identifier of the Reactor Formula which can be used to [get a Reactor Formula](#reactor-formulas-get-a-reactor-formula)                                   |
-| `name`               | *string* | The name of the Reactor Formula. Has a maximum length of `200`                                                                                                   |
-| `description`        | *string* | The description of the Reactor Formula                                                                                                                           |
-| `type`               | *string* | [Type](#reactor-formulas-reactor-formula-types) of the Reactor Formula                                                                                           |
-| `icon`               | *string* | Base64 [data URL](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URIs) of the image                                                       |
-| `code`               | *string* | [Reactor Formula code](#reactor-formulas-reactor-formula-code) which will be executed when the Reactor Formula is processed                                      |
-| `configuration`      | *array*  | Array of [configuration](#reactor-formulas-reactor-formula-object-reactor-formula-configuration-object) options for configuring a reactor                        |
-| `request_parameters` | *array*  | Array of [request parameters](#reactor-formulas-reactor-formula-object-reactor-formula-request-parameter-object) which will be passed when executing the reactor |
-| `created_at`         | *date*   | (Optional) Created date of the Reactor Formula in ISO 8601 format                                                                                                |
-| `created_by`         | *uuid*   | (Optional) The ID of the user or [Application](#applications) that created the Reactor Formula                                                                   |
-| `modified_at`        | *date*   | (Optional) Last modified date of the Reactor Formula in ISO 8601 format                                                                                          |
-| `modified_by`        | *uuid*   | (Optional) The ID of the user or [Application](#applications) that last modified the Reactor Formula                                                             |
+| Attribute            | Type     | Description                                                                                                                         |
+|----------------------|----------|-------------------------------------------------------------------------------------------------------------------------------------|
+| `id`                 | *uuid*   | Unique identifier of the Reactor Formula which can be used to [get a Reactor Formula](#reactor-formulas-get-a-reactor-formula)      |
+| `name`               | *string* | The name of the Reactor Formula. Has a maximum length of `200`                                                                      |
+| `description`        | *string* | The description of the Reactor Formula                                                                                              |
+| `type`               | *string* | [Type](#reactor-formulas-reactor-formula-types) of the Reactor Formula                                                              |
+| `icon`               | *string* | Base64 [data URL](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URIs) of the image                          |
+| `code`               | *string* | [Reactor Formula code](#reactor-formulas-reactor-formula-code) which will be executed when the Reactor Formula is processed         |
+| `configuration`      | *array*  | Array of [configuration](#reactor-formulas-reactor-formula-configuration) options for configuring a reactor                         |
+| `request_parameters` | *array*  | Array of [request parameters](#reactor-formulas-reactor-formula-request-parameters) which will be passed when executing the reactor |
+| `created_at`         | *date*   | (Optional) Created date of the Reactor Formula in ISO 8601 format                                                                   |
+| `created_by`         | *uuid*   | (Optional) The ID of the user or [Application](#applications) that created the Reactor Formula                                      |
+| `modified_at`        | *date*   | (Optional) Last modified date of the Reactor Formula in ISO 8601 format                                                             |
+| `modified_by`        | *uuid*   | (Optional) The ID of the user or [Application](#applications) that last modified the Reactor Formula                                |
 
-The `configuration` array defines the contract that the `configuration` property must satisfy on all [Reactors](#reactors-reactor-object) created from this formula.
-Configuration is intended to hold key-value pairs of configuration values that can be defined once for the reactor and do not change between Reactor invocations.
-Complex nested objects are not currently supported within `configuration`.
+## Reactor Formula Configuration
 
-The `request_parameters` array defines the contract that the `args` property must satisfy on each request when [Invoking a Reactor](#reactors-invoke-a-reactor).
-Request parameters are intended to define any parameters that will be provided to a Reactor at request-time, and may change across Reactor invocations. 
-Complex objects can be passed within the `args` property to a Reactor, and these complex request parameters can be defined by dot-separating levels of the object hierarchy.
-For example, to pass a `card` object to a Reactor whose schema matches the [Card Object](#tokens-token-data-validations) stored within a [Token](#tokens-token-object), a Reactor Formula should define the following request parameters:
-
-| name                    | type     | optional |
-|-------------------------|----------|----------|
-| `card.number`           | *string* | false    |
-| `card.expiration_month` | *number* | false    |
-| `card.expiration_year`  | *number* | false    |
-| `card.cvc`              | *string* | true     |
-
-### Reactor Formula Configuration Object
+The `configuration` property of a Reactor Formula defines the contract that the `configuration` property must satisfy on all [Reactors](#reactors-reactor-object) created from this formula.
+Elements of a Reactor Formula's `configuration` array have the following schema:  
 
 | Attribute     | Required | Type     | Default | Description                                                                                |
 |---------------|----------|----------|---------|--------------------------------------------------------------------------------------------|
@@ -43,7 +30,13 @@ For example, to pass a `card` object to a Reactor whose schema matches the [Card
 | `description` | false    | *string* | `null`  | Description of the configuration setting                                                   |
 | `type`        | true     | *string* | `null`  | Data type of the configuration setting. Valid values are `string`, `boolean`, and `number` |
 
-### Reactor Formula Request Parameter Object
+Reactor configuration is intended for properties that can be defined once per Reactor and do not change between Reactor invocations.
+Complex nested objects (dot-separated names) are not currently supported within a Reactor's `configuration`.
+
+## Reactor Formula Request Parameters
+
+The `request_parameters` array on a Reactor Formula defines the contract that the `args` property must satisfy on each request when [Invoking a Reactor](#reactors-invoke-a-reactor). 
+Elements of a Reactor Formula's `request_parameters` array have the following schema:
 
 | Attribute     | Required | Type      | Default | Description                                                                            |
 |---------------|----------|-----------|---------|----------------------------------------------------------------------------------------|
@@ -51,6 +44,18 @@ For example, to pass a `card` object to a Reactor whose schema matches the [Card
 | `description` | false    | *string*  | `null`  | Description of the request parameter                                                   |
 | `type`        | true     | *string*  | `null`  | Data type of the request parameter. Valid values are `string`, `boolean`, and `number` |
 | `optional`    | false    | *boolean* | `false` | If the request parameter is optional when executing the reactor                        |
+
+Request parameters are intended to define any parameters that will be provided to a Reactor at request-time, and may change across Reactor invocations.
+Complex objects can be passed within the `args` property to a Reactor, and these complex request parameters can be defined by dot-separating levels of the object hierarchy.
+For example, to pass a `card` object to a Reactor whose schema matches the [Card Object](#atomic-cards-atomic-card-object-card-object) stored within an [Atomic Card](#atomic-cards-atomic-card-object) token, 
+a Reactor Formula should define the following request parameters:
+
+| name                    | type     | optional |
+|-------------------------|----------|----------|
+| `card.number`           | *string* | false    |
+| `card.expiration_month` | *number* | false    |
+| `card.expiration_year`  | *number* | false    |
+| `card.cvc`              | *string* | true     |
 
 ## Reactor Formula Code
 
@@ -67,11 +72,30 @@ All Reactor Formula code snippets must export a function which takes in a [reque
 
 | Attribute  | Type     | Description                                                               |
 |------------|----------|---------------------------------------------------------------------------|
-| `tokenize` | *object* | (Optional) A payload that will be tokenized to produce one or more tokens |
 | `raw`      | *object* | (Optional) Raw output returned from the Reactor                           |
+| `tokenize` | *object* | (Optional) A payload that will be tokenized to produce one or more tokens |
 
 The payload returned in the `tokenize` property will be tokenized in the same way that requests are tokenized via the Tokenize endpoint. 
 For more information, see [Tokenize](#tokenize).
+
+Reactor Formula Code is written in Javascript (targeting Node.js v14) and generally follows the structure:
+
+<div class="center-column"></div>
+```js
+module.exports = async function (req) {
+  const { my_arg } = req.args; // access any args provided with the request
+  const { MY_CONFIG } = req.configuration; // access any static config defined on the Reactor
+
+  // do anything here!
+
+  return {
+      raw: {}, // non-sensitive data that should be returned in plaintext
+      tokenize: {} // sensitive data that should be tokenized
+  };
+};
+```
+
+For more information about writing your own code for a Reactor Formula, check out [our guide](https://developers.basistheory.com/guides/run-your-own-code-in-a-reactor/).
 
 ## Reactor Formula Types
 
@@ -392,8 +416,8 @@ Create a new Reactor Formula for the Tenant.
 | `type`               | true     | *string* | `null`  | [Type](#reactor-formulas-reactor-formula-types) of the Reactor Formula                                                                                                            |
 | `icon`               | false    | *string* | `null`  | Base64 [data URL](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URIs) of the image. Supported image types are: `image/png`, `image/jpg`, and `image/jpeg` |
 | `code`               | true     | *string* | `null`  | [Reactor code](#reactor-formulas-reactor-formula-code) which will be executed when the Reactor Formula is processed                                                               |
-| `configuration`      | true     | *array*  | `[]`    | Array of [configuration](#reactor-formulas-reactor-formula-object-reactor-formula-configuration-object) options for configuring a Reactor                                         |
-| `request_parameters` | true     | *array*  | `[]`    | Array of [request parameters](#reactor-formulas-reactor-formula-object-reactor-formula-request-parameter-object) which will be passed when executing the Reactor                  |
+| `configuration`      | true     | *array*  | `[]`    | Array of [configuration](#reactor-formulas-reactor-formula-configuration) options for configuring a Reactor                                                                       |
+| `request_parameters` | true     | *array*  | `[]`    | Array of [request parameters](#reactor-formulas-reactor-formula-request-parameters) which will be passed when executing the Reactor                                               |
 
 ### Response
 
@@ -979,8 +1003,8 @@ Update a Reactor Formula by ID in the Tenant.
 | `type`               | true     | *string* | `null`  | [Type](#reactor-reactor-types) of the Reactor Formula                                                                                                                             |
 | `icon`               | false    | *string* | `null`  | Base64 [data URL](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URIs) of the image. Supported image types are: `image/png`, `image/jpg`, and `image/jpeg` |
 | `code`               | true     | *string* | `null`  | [Reactor code](#reactor-formulas-reactor-formula-code) which will be executed when the Reactor Formula is processed                                                               |
-| `configuration`      | true     | *array*  | `[]`    | Array of [configuration](#reactor-formulas-reactor-formula-object-reactor-formula-configuration-object) options for configuring a Reactor                                         |
-| `request_parameters` | true     | *array*  | `[]`    | Array of [request parameters](#reactor-formulas-reactor-formula-object-reactor-formula-request-parameter-object) which will be passed when executing the Reactor                  |
+| `configuration`      | true     | *array*  | `[]`    | Array of [configuration](#reactor-formulas-reactor-formula-configuration) options for configuring a Reactor                                         |
+| `request_parameters` | true     | *array*  | `[]`    | Array of [request parameters](#reactor-formulas-reactor-formula-request-parameters) which will be passed when executing the Reactor                  |
 
 ### Response
 

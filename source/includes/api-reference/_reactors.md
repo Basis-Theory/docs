@@ -9,7 +9,7 @@
 | `tenant_id`     | *uuid*                                                        | The [Tenant](#tenants) ID which owns the reactor                                                                                                                          |
 | `name`          | *string*                                                      | The name of the reactor                                                                                                                                                   |
 | `formula`       | *[Reactor Formula](#reactor-formulas-reactor-formula-object)* | Reactor Formula this Reactor is configured for                                                                                                                            |
-| `configuration` | *map*                                                         | A key-value map of all configuration name and values for a [Reactor Formula configuration](#reactor-formulas-reactor-formula-object-reactor-formula-configuration-object) |
+| `configuration` | *map*                                                         | A key-value map of all configuration name and values for a [Reactor Formula configuration](#reactor-formulas-reactor-formula-configuration) |
 | `created_by`    | *uuid*                                                        | (Optional) The ID of the user or [Application](#applications) that created the Reactor                                                                                    |
 | `created_at`    | *string*                                                      | (Optional) Created date of the Reactor in ISO 8601 format                                                                                                                 |
 | `modified_by`   | *uuid*                                                        | (Optional) The ID of the user or [Application](#applications) that last modified the Reactor                                                                              |
@@ -149,7 +149,7 @@ Create a new Reactor from a Reactor Formula for the Tenant.
 | Attribute       | Required | Type     | Default | Description                                                                                                                                                                |
 |-----------------|----------|----------|---------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `name`          | true     | *string* | `null`  | The name of the reactor. Has a maximum length of `200`                                                                                                                     |
-| `configuration` | true     | *object* | `null`  | A key-value map of all configuration name and values for a [Reactor Formula configuration](#reactor-formulas-reactor-formula-object-reactor-formula-configuration-object) |
+| `configuration` | true     | *object* | `null`  | A key-value map of all configuration name and values for a [Reactor Formula configuration](#reactor-formulas-reactor-formula-configuration) |
 | `formula.id`    | true     | *uuid*   | `null`  | Unique identifier of the [Reactor Formula](#reactor-formulas-reactor-formula-object) to configure a Reactor for                                                            |
 
 The `configuration` object must satisfy the name and type constraints defined by the [Reactor Formula's](#reactor-formulas-reactor-formula-object) `configuration` property.
@@ -488,7 +488,7 @@ Update a Reactor by ID in the Tenant.
 | Attribute       | Required | Type     | Default | Description                                                                                                                                                               |
 |-----------------|----------|----------|---------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `name`          | true     | *string* | `null`  | The name of the reactor. Has a maximum length of `200`                                                                                                                    |
-| `configuration` | true     | *object* | `null`  | A key-value map of all configuration name and values for a [Reactor Formula configuration](#reactor-formulas-reactor-formula-object-reactor-formula-configuration-object) |
+| `configuration` | true     | *object* | `null`  | A key-value map of all configuration name and values for a [Reactor Formula configuration](#reactor-formulas-reactor-formula-configuration) |
 
 ### Response
 
@@ -687,7 +687,7 @@ At least one `token:<classification>:use:reactor` permission is required to invo
 ### Request Parameters
 | Parameter | Required | Type     | Default | Description                                                                                                                                                                                                   |
 |-----------|----------|----------|---------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `args`    | false    | *object* | `null`  | Arguments to provide to the reactor. These arguments must match the declared [request parameters](#reactor-formulas-reactor-formula-object-reactor-formula-request-parameter-object) for the reactor formula. |
+| `args`    | false    | *object* | `null`  | Arguments to provide to the reactor. These arguments must match the declared [request parameters](#reactor-formulas-reactor-formula-request-parameters) for the reactor formula. |
 
 ### Response
 
