@@ -2,66 +2,9 @@
 
 The following **BasisTheory.js** services are capable of recognizing Elements instances in the payload and securely tokenizing their data directly to Basis Theory vault. 
 
-## Atomic Cards <span class="deprecated menu">DEPRECATED</span>
-
-<aside class="danger">
-  <span>This service has been deprecated in favor of <a class="black-link" href="#elements-services-tokens">Tokens</a></span>
-</aside>
-
-```javascript
-BasisTheory.atomicCards.create({
-  card: cardElement,
-}).then((token) => {
-  console.log(token.id); // token to store
-  console.log(JSON.stringify(token.card)); // redacted card data
-});
-```
-
-Allows secure submission and tokenization of a card element. Returns a `Promise` that resolves to the tokenized card data.
-See [CardModel](#element-types-card-element) for the resolved value type. The `Promise` will reject with an [error](#elements-services-errors)
-if the response status is not in the 2xx range.
-
-
-You can fetch this same data later with [Get a token API](/api-reference/#tokens-get-a-token).
-
-<aside class="notice">
-  <span>Notice that the actual card data never leaves the element (iframe) other than to hit our secure API endpoints.</span>
-</aside>
-
-## Atomic Banks <span class="deprecated menu">DEPRECATED</span>
-
-<aside class="danger">
-  <span>This service has been deprecated in favor of <a class="black-link" href="#elements-services-tokens">Tokens</a></span>
-</aside>
-
-```javascript
-BasisTheory.atomicBanks.create({
-  bank: {
-    routingNumber: routingNumberElement | 'plainText',  // values can be either a TextElement or plain text (see warning).
-    accountNumber: accountNumberElement | 'plainText',
-  },
-}).then((token) => {
-  console.log(token.id); // token to store
-  console.log(JSON.stringify(token.bank)); // redacted bank data
-});
-```
-
-Allows secure submission and tokenization of a bank element. Returns a `Promise` that resolves to the tokenized bank
-data. The `Promise` will reject with an [error](#elements-services-errors) if the response status is not in the 2xx
-range.
-
-
-You can fetch this same data later with [Get a token API](/api-reference#tokens-get-a-token).
-
-<aside class="notice">
-  <span>Notice that the actual bank data never leaves the element (iframe) other than to hit our secure API endpoints.</span>
-</aside>
-
-<aside class="warning">
-  <span>Note that when submitting <code>plainText</code> values, data will be HTML encoded before storage for security reasons.
-</aside>
-
 ## Tokens
+
+> Create Card token
 
 ```javascript
 BasisTheory.tokens.create({
@@ -83,8 +26,9 @@ BasisTheory.tokens.create({
 });
 ```
 
+> Tokenize card element
+
 ```javascript
-// tokenizing card element
 BasisTheory.tokens.create({
   type: 'card',
   data: cardElement,
@@ -94,8 +38,9 @@ BasisTheory.tokens.create({
 });
 ```
 
+> Tokenize bank details
+
 ```javascript
-// tokenizing bank details with text element
 BasisTheory.tokens.create({
   type: 'bank'
   data: {
@@ -108,7 +53,7 @@ BasisTheory.tokens.create({
 });
 ```
 
-Allows secure submission and tokenization of primitive data and card or text elements. Returns a `Promise` that resolves to the created token. The
+Allows secure submission and tokenization of primitive data and elements. Returns a `Promise` that resolves to the created token. The
 `Promise` will reject with an [error](#elements-services-errors) if the response status is not in the 2xx range.
 
 You can fetch this same data later with [Get a Token API](/api-reference#tokens-get-a-token)
@@ -127,6 +72,8 @@ You can fetch this same data later with [Get a Token API](/api-reference#tokens-
 
 ## Tokenize
 
+> Tokenize data
+
 ```javascript
 BasisTheory.tokenize({
   sensitiveData: sensitiveDataElement,
@@ -141,8 +88,9 @@ BasisTheory.tokenize({
 });
 ```
 
+> Tokenize multiple card elements
+
 ```javascript
-// tokenizing multiple card elements
 BasisTheory.tokenize({
   card1: {
   type: 'card',
@@ -157,8 +105,9 @@ card2: {
 });
 ```
 
+> Tokenize multiple bank details
+
 ```javascript
-// tokenizing multiple bank details with text elements
 BasisTheory.tokenize({
   bank1: {
   type: 'bank'
@@ -178,7 +127,7 @@ BasisTheory.tokenize({
 });
 ```
 
-Allows secure submission and tokenization of primitive data and card or text elements. Returns a `Promise` that resolves to the created tokens. The
+Allows secure submission and tokenization of primitive data and elements. Returns a `Promise` that resolves to the created tokens. The
 `Promise` will reject with an [error](#elements-services-errors) if the response status is not in the 2xx range.
 
 You can fetch this same data later with [Get a Token API](/api-reference#tokens-get-a-token)
@@ -198,8 +147,9 @@ You can fetch this same data later with [Get a Token API](/api-reference#tokens-
 
 ## Errors
 
+> Error details structure
+
 ```jsx
-// example of error details structure
 {
   "details": {
     card1: {
@@ -211,8 +161,11 @@ You can fetch this same data later with [Get a Token API](/api-reference#tokens-
 }
 ```
 
+> Handling an error
+
 ```javascript
-// handling the error
+import { BasisTheoryApiError, BasisTheoryValidationError } from '@basis-theory/basis-theory-js/common';
+
 BasisTheory.tokens.create(bt.tokenize({
     card1: {
       type: 'card', 
@@ -230,16 +183,18 @@ BasisTheory.tokens.create(bt.tokenize({
 });
 ```
 
-In case any Elements service throws an error, that could be related to client-side validation or an unaccepted request from the server.
+In case any Elements service throws an error, it could be related to client-side validation or an unaccepted request from the server.
 
 Attribute    | Type       | Scope  | Description
 ------------ | ---------- | ------ | -----------
-`details`     | *`Record<string, any>`*   | client | Error details. Each value will have a [PropertyError](#elements-services-errors-propertyerror)
+`details`     | *object*   | client | Maps payload properties to their respective elements errors. Each failing element value will translate to a [PropertyError](#elements-services-errors-propertyerror) object.
 `data`       | *object*   | server | Response body sent from the server.
 `status`     | *number*   | both   | Response HTTP status or `-1` if the request never left the client (i.e. connection issues)
 ~~`validation`~~ | *array*    | client | [Deprecated in favor of details](#deprecations-deprecated-features). Array of [FieldError](#element-events-on-change-fielderror), in case of client-side error. 
 
 ### PropertyError
+
+> Property error
 
 ```jsx
 {
