@@ -6,8 +6,10 @@
 
 ```jsx
 import { 
+  BasisTheoryApiError,
+  BasisTheoryValidationError,
   TextElement, 
-  useBasisTheory 
+  useBasisTheory, 
 } from '@basis-theory/basis-theory-react';
 
 const ssnMask = [/\d/, /\d/, /\d/, "-", /\d/, /\d/, "-", /\d/, /\d/, /\d/, /\d/];
@@ -18,10 +20,21 @@ const MyForm = () => {
   const submit = async () => {
     const fullName = bt.getElement('fullName');
     const ssn = bt.getElement('ssn');
-    const tokens = await bt.tokenize({
-      fullName,
-      ssn,
-    });
+
+    try {
+        const tokens = await bt.tokenize({
+            fullName,
+            ssn,
+        });
+    } catch (error) {
+        if (error instanceof BasisTheoryValidationError) {
+            // check error details
+        }
+
+        if (error instanceof BasisTheoryApiError) {
+            // check error data or status
+        }
+    }
   }
 
   return <BasisTheoryProvider bt={bt}>

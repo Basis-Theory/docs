@@ -151,6 +151,10 @@ You can fetch this same data later with [Get a Token API](/api-reference#tokens-
 
 ## Errors
 
+Any elements service could throw an error based on [client-side validations](#elements-services-errors-client) or if the [server rejects the request](#elements-services-errors-server).
+
+### Client
+
 > Error details structure
 
 ```jsx
@@ -165,10 +169,40 @@ You can fetch this same data later with [Get a Token API](/api-reference#tokens-
 }
 ```
 
+Attribute    | Type        | Description
+------------ | ---------- | ------ | -----------
+`details`     | *object*    | Maps payload properties to their respective elements errors. Each failing element value will translate to a [PropertyError](#elements-services-errors-propertyerror) object.
+~~`validation`~~ | *array*    | [Deprecated in favor of details](#deprecations-deprecated-features). Array of [FieldError](#element-events-on-change-fielderror), in case of client-side error. 
+
+#### PropertyError
+
+> Property error
+
+```jsx
+{
+  "type": "invalid"
+}
+```
+
+Attribute  | Type       | Description
+---------- | ---------- | -----------
+`type`     | *"invalid"* or *"incomplete"*   | Type of the error.
+
+
+### Server
+
+Attribute    | Type        | Description
+------------ | ---------- | ------ | -----------
+`data`       | *object*   | Response body sent from the server.
+`status`     | *number*   | Response HTTP status.
+
 > Handling an error
 
 ```javascript
-import { BasisTheoryApiError, BasisTheoryValidationError } from '@basis-theory/basis-theory-js/common';
+import {
+    BasisTheoryApiError,
+    BasisTheoryValidationError
+} from '@basis-theory/basis-theory-js/common';
 
 BasisTheory.tokens.create(bt.tokenize({
     card1: {
@@ -182,30 +216,13 @@ BasisTheory.tokens.create(bt.tokenize({
     ssn: textElement
 })).catch(error => {
     // handle error
-    if (error.details.card1?.number?.type === 'incomplete') addMessage('Card 1 number is incomplete');
-    if (error.details.card2?.number?.type === 'invalid') addMessage('Card 2 number is invalid');
+
+    if (error instanceof BasisTheoryValidationError) {
+        // check error details
+    }
+
+    if (error instanceof BasisTheoryApiError) {
+        // check error data or status
+    }
 });
 ```
-
-In case any Elements service throws an error, it could be related to client-side validation or an unaccepted request from the server.
-
-Attribute    | Type       | Scope  | Description
------------- | ---------- | ------ | -----------
-`details`     | *object*   | client | Maps payload properties to their respective elements errors. Each failing element value will translate to a [PropertyError](#elements-services-errors-propertyerror) object.
-`data`       | *object*   | server | Response body sent from the server.
-`status`     | *number*   | both   | Response HTTP status or `-1` if the request never left the client (i.e. connection issues)
-~~`validation`~~ | *array*    | client | [Deprecated in favor of details](#deprecations-deprecated-features). Array of [FieldError](#element-events-on-change-fielderror), in case of client-side error. 
-
-### PropertyError
-
-> Property error
-
-```jsx
-{
-  "type": "invalid"
-}
-```
-
-Attribute  | Type       | Description
----------- | ---------- | -----------
-`type`     | *"invalid"* or *"incomplete"*   | Type of the error.
