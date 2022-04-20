@@ -43,11 +43,11 @@ BasisTheory.tokens.create({
 
 ```javascript
 BasisTheory.tokens.create({
-  type: 'bank'
+  type: 'bank',
   data: {
     routingNumber: routingNumberElement | 'plainText',  // values can be either a TextElement or plain text (see warning).
     accountNumber: accountNumberElement | 'plainText',
-  },
+  }
 }).then((token) => {
   console.log(token.id); // token to store
   console.log(JSON.stringify(token.data)); // redacted bank data
@@ -95,13 +95,13 @@ BasisTheory.tokenize({
 ```javascript
 BasisTheory.tokenize({
   card1: {
-  type: 'card',
-  data: cardElement1,
-},
-card2: {
-  type: 'card',
-  data: cardElement2,
-}
+    type: 'card',
+    data: cardElement1,
+  },
+  card2: {
+    type: 'card',
+    data: cardElement2,
+  }
 }).then((token) => {
   console.log(token.id); // token to store
   console.log(JSON.stringify(token)); // encrypted token data
@@ -113,18 +113,19 @@ card2: {
 ```javascript
 BasisTheory.tokenize({
   bank1: {
-  type: 'bank'
-  data: {
-    routingNumber: routingNumberElement1 | 'plainText',  // values can be either a TextElement or plain text (see warning).
-    accountNumber: accountNumberElement1 | 'plainText',
+    type: 'bank',
+    data: {
+      routingNumber: routingNumberElement1 | 'plainText',  // values can be either a TextElement or plain text (see warning).
+      accountNumber: accountNumberElement1 | 'plainText',
+    }
   },
   bank2: {
-  type: 'bank'
-  data: {
-    routingNumber: routingNumberElement2 | 'plainText',  // values can be either a TextElement or plain text (see warning).
-    accountNumber: accountNumberElement2 | 'plainText',
-  },
-}
+    type: 'bank',
+    data: {
+      routingNumber: routingNumberElement2 | 'plainText',  // values can be either a TextElement or plain text (see warning).
+      accountNumber: accountNumberElement2 | 'plainText',
+    }
+  }
 }).then((token) => {
   console.log(token.id); // token to store
   console.log(JSON.stringify(token)); // encrypted token data
