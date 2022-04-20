@@ -539,7 +539,7 @@ React with an Atomic Card by ID.
 | Parameter            | Required | Type   | Default | Description                                                                                                                                                |
 |----------------------|----------|--------|---------|------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `reactor_id`         | true     | *uuid* | `null`  | The ID of the reactor                                                                                                                                      |
-| `request_parameters` | false    | *map*  | `null`  | A key-value map of [request parameter](#reactor-formulas-reactor-formula-object-reactor-formula-request-parameter-object) names and values for the reactor |
+| `request_parameters` | false    | *map*  | `null`  | A key-value map of [request parameter](#reactor-formulas-reactor-formula-request-parameters) names and values for the reactor |
 | `metadata`           | false    | *map*  | `null`  | (Deprecated) A key-value map of non-sensitive data to be associated with any created tokens                                                                |
 
 ### Response
