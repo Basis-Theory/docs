@@ -53,7 +53,7 @@ reference_links:
 aux_links:
   - <a class="toc-h1 toc-link" href="https://github.com/Basis-Theory" target="_blank">GitHub</a>
   - <a class="toc-h1 toc-link" href="https://support.basistheory.com" target="_blank">Get Support</a>
-  - <a class="toc-h1 toc-link" href="https://status.basistheory.com" target="_blank">API Status</a>
+  - <a class="toc-h1 toc-link" href="https://status.basistheory.com" target="_blank">System Status</a>
 
 search: true
 
