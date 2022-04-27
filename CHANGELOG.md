@@ -1,3 +1,10 @@
+# [1.35.0](https://github.com/Basis-Theory/docs/compare/v1.34.0...v1.35.0) (2022-04-27)
+
+
+### Features
+
+* add System Status to side nav ([#173](https://github.com/Basis-Theory/docs/issues/173)) ([3ae734e](https://github.com/Basis-Theory/docs/commit/3ae734ea1895adc13aeab4ffe9bc29362be0421c))
+
 # [1.34.0](https://github.com/Basis-Theory/docs/compare/v1.33.0...v1.34.0) (2022-04-20)
 
 
