@@ -6917,9 +6917,9 @@ For example, to search for tokens that were created in the year 2021, you can qu
   <code>created_at:{* TO 2022-01-01}</code>
 </span></p>
 
-<p>Multiple terms may be combined using the <code>AND</code> and <code>OR</code> operators and grouped using parentheses. For example:
+<p>Multiple terms may be combined using the <code>AND</code>, <code>OR</code> and <code>NOT</code> operators (case sensitive) and grouped using parentheses. The <code>NOT</code> operator could be interchanged with the <code>!</code> or <code>-</code> symbols. For example:
 <span class="text-snippet">
-  <code>(type:social_security_number AND metadata.user_id:1234) OR data:111-11-1111</code>
+  <code>(type:social_security_number AND !metadata.user_id:1234) OR data:111-11-1111</code>
 </span></p>
 
 <aside class="warning">
@@ -6934,27 +6934,68 @@ For example, to search for tokens that were created in the year 2021, you can qu
 <th>Fields</th>
 <th>Type</th>
 <th>Description</th>
+<th>Example</th>
 </tr>
 </thead><tbody>
 <tr>
-<td><code>data</code></td>
+<td><code>id</code></td>
 <td><em>string</em></td>
-<td>Token data. See <a href="#tokens-search-tokens-searching-data">Searching Data</a> for supported values.</td>
+<td>Token ID.</td>
+<td><code>id:fe24d4cc-de50-4d8c-8da7-8c7483ba21bf</code></td>
 </tr>
 <tr>
 <td><code>type</code></td>
 <td><em>string</em></td>
-<td>The <a href="#token-types">token type</a> of the token.</td>
+<td>The <a href="#token-types">token type</a>.</td>
+<td><code>type:card_number</code></td>
+</tr>
+<tr>
+<td><code>data</code></td>
+<td><em>string</em></td>
+<td>Token data. See <a href="#tokens-search-tokens-searching-data">Searching Data</a> for supported values.</td>
+<td><code>data:6789</code></td>
+</tr>
+<tr>
+<td><code>fingerprint</code></td>
+<td><em>string</em></td>
+<td>Token&#39;s content unique identifier.</td>
+<td><code>fingerprint:fe24d4cc-de50-4d8c-8da7-8c7483ba21bf</code></td>
+</tr>
+<tr>
+<td><code>privacy.[field]</code></td>
+<td><em>string</em></td>
+<td>Token <a href="#tokens-token-object-privacy-object">privacy settings</a>.</td>
+<td><code>privacy.classification:pci</code></td>
 </tr>
 <tr>
 <td><code>metadata.[key]</code></td>
 <td><em>string</em></td>
 <td>Search against token metadata having the given <code>[key]</code>.</td>
+<td><code>metadata.user_id:34445</code></td>
+</tr>
+<tr>
+<td><code>created_by</code></td>
+<td><em>string</em></td>
+<td>Application ID which created the token.</td>
+<td><code>created_by:fe24d4cc-de50-4d8c-8da7-8c7483ba21bf</code></td>
 </tr>
 <tr>
 <td><code>created_at</code></td>
 <td><em>date</em></td>
 <td>The date or date and time a token was created in ISO 8601 format.</td>
+<td><code>created_at:[2020-01-01 TO 2020-01-28]</code></td>
+</tr>
+<tr>
+<td><code>modified_by</code></td>
+<td><em>string</em></td>
+<td>Application ID which last modified the token.</td>
+<td><code>modified_by:fe24d4cc-de50-4d8c-8da7-8c7483ba21bf</code></td>
+</tr>
+<tr>
+<td><code>modified_at</code></td>
+<td><em>date</em></td>
+<td>The last date or date and time a token was modified in ISO 8601 format.</td>
+<td><code>modified_at:[2020-01-01 TO 2020-01-28]</code></td>
 </tr>
 </tbody></table>
 <h3 id='tokens-search-tokens-searching-data'>Searching Data</h3>
