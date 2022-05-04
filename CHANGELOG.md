@@ -1,3 +1,10 @@
+# [1.36.0](https://github.com/Basis-Theory/docs/compare/v1.35.0...v1.36.0) (2022-05-04)
+
+
+### Features
+
+* updating searchable token properties and ability to use the NOT operator ([#174](https://github.com/Basis-Theory/docs/issues/174)) ([1847a2b](https://github.com/Basis-Theory/docs/commit/1847a2b6ff3d1a39cb433c42a5f789a534bc74f2))
+
 # [1.35.0](https://github.com/Basis-Theory/docs/compare/v1.34.0...v1.35.0) (2022-04-27)
 
 
