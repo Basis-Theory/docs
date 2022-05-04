@@ -755,9 +755,9 @@ To search a range without a start or end date, use the wildcard `*` in place of 
   `created_at:{* TO 2022-01-01}`
 </span>
 
-Multiple terms may be combined using the `AND` and `OR` operators and grouped using parentheses. For example:
+Multiple terms may be combined using the `AND`, `OR` and `NOT` operators (case sensitive) and grouped using parentheses. The `NOT` operator could be interchanged with the `!` or `-` symbols. For example:
 <span class="text-snippet">
-  `(type:social_security_number AND metadata.user_id:1234) OR data:111-11-1111`
+  `(type:social_security_number AND !metadata.user_id:1234) OR data:111-11-1111`
 </span>
 
 <aside class="warning">
@@ -769,12 +769,18 @@ Multiple terms may be combined using the `AND` and `OR` operators and grouped us
 
 ### Searchable Token Fields
 
-| Fields           | Type     | Description                                                                                  |
-|------------------|----------|----------------------------------------------------------------------------------------------|
-| `data`           | *string* | Token data. See [Searching Data](#tokens-search-tokens-searching-data) for supported values. |
-| `type`           | *string* | The [token type](#token-types) of the token.                                                 |
-| `metadata.[key]` | *string* | Search against token metadata having the given `[key]`.                                      |
-| `created_at`     | *date*   | The date or date and time a token was created in ISO 8601 format.                            |
+| Fields           | Type     | Description                                                                                  | Example                                            |
+|------------------|----------|----------------------------------------------------------------------------------------------| -------------------------------------------------  |
+| `id`             | *string* | Token ID.                                                                                    | `id:fe24d4cc-de50-4d8c-8da7-8c7483ba21bf`          |
+| `type`           | *string* | The [token type](#token-types).                                                              | `type:card_number`                                 |
+| `data`           | *string* | Token data. See [Searching Data](#tokens-search-tokens-searching-data) for supported values. | `data:6789`                                        |
+| `fingerprint`    | *string* | Token's content unique identifier.                                                           | `fingerprint:fe24d4cc-de50-4d8c-8da7-8c7483ba21bf` |
+| `privacy.[field]`| *string* | Token [privacy settings](#tokens-token-object-privacy-object).                               | `privacy.classification:pci`                       |
+| `metadata.[key]` | *string* | Search against token metadata having the given `[key]`.                                      | `metadata.user_id:34445`                           |
+| `created_by`     | *string* | Application ID which created the token.                                                      | `created_by:fe24d4cc-de50-4d8c-8da7-8c7483ba21bf`  |
+| `created_at`     | *date*   | The date or date and time a token was created in ISO 8601 format.                            | `created_at:[2020-01-01 TO 2020-01-28]`            |
+| `modified_by`    | *string* | Application ID which last modified the token.                                                | `modified_by:fe24d4cc-de50-4d8c-8da7-8c7483ba21bf` |
+| `modified_at`    | *date*   | The last date or date and time a token was modified in ISO 8601 format.                      | `modified_at:[2020-01-01 TO 2020-01-28]`           |
 
 ### Searching Data
 
