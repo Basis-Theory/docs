@@ -1,3 +1,10 @@
+# [1.37.0](https://github.com/Basis-Theory/docs/compare/v1.36.0...v1.37.0) (2022-05-06)
+
+
+### Features
+
+* Removing deprecated sections on retrieving decrypted tokens ([#175](https://github.com/Basis-Theory/docs/issues/175)) ([8e8da50](https://github.com/Basis-Theory/docs/commit/8e8da506b85103ae4d130a64edf776b0506e085d))
+
 # [1.36.0](https://github.com/Basis-Theory/docs/compare/v1.35.0...v1.36.0) (2022-05-04)
 
 
