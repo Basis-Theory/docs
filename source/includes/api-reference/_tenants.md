@@ -23,11 +23,15 @@ Tenants provide a way to logically group your Applications and tokens. Common us
 
 ## Token Report Object
 
-| Attribute                        | Type                                                                    | Description                                                                               |
-|----------------------------------|-------------------------------------------------------------------------|-------------------------------------------------------------------------------------------|
-| `metrics_by_type`                | *map\<string, [TokenTypeMetrics](#tenants-token-type-metrics-object)\>* | Token Metrics by [TokenType](#token-types)                                                |
-| `included_monthly_active_tokens` | *long*                                                                  | Number of included monthly active tokens for the billing plan                             |
-| `monthly_active_tokens`          | *long*                                                                  | Number of tokens that have been created, read, updated, or decrypted in the current month |
+| Attribute                        | Type                                                                    | Description                                                                 |
+|----------------------------------|-------------------------------------------------------------------------|-----------------------------------------------------------------------------|
+| `metrics_by_type`                | *map\<string, [TokenTypeMetrics](#tenants-token-type-metrics-object)\>* | Token Metrics by [TokenType](#token-types)                                  |
+| `included_monthly_active_tokens` | *long*                                                                  | Number of included monthly active tokens for the billing plan               |
+| `monthly_active_tokens`          | *long*                                                                  | Number of tokens that have been created, read, or used in the current month |
+
+<aside class="notice">
+  <span><em>To learn more about Monthly Active Tokens (MATs), check out <a href="https://developers.basistheory.com/concepts/what-are-mats/" target="_blank">our guide</a>.</em></span>
+</aside>
 
 ## Token Type Metrics Object
 
