@@ -62,12 +62,12 @@ This event is triggered whenever element's value(s) change. For example, if the 
 }
 ```
 
-| Attribute   | Type      | Eligible Elements           | Description                                                                                |
-|-------------|-----------|-----------------------------|--------------------------------------------------------------------------------------------|
-| `complete`  | *boolean* | All                         | If the element value is well-formed and is ready to be submitted.                          |
-| `empty`     | *boolean* | All                         | Whether the element is empty. Multi-input Elements will be `empty` only if all inputs are. |
-| `errors`    | *array*   | All                         | Array of [FieldError](#element-events-on-change-fielderror).                               |
-| `cardBrand` | *string*  | [CardElement](#cardelement) | (Optional) The credit card brand (e.g. `'american-express'`, `'visa'`, `'unknown'`).       |
+| Attribute   | Type      | Eligible Elements           | Description                                                                                                                                                                                                          |
+|-------------|-----------|-----------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `complete`  | *boolean* | All                         | If the element value is well-formed and is ready to be submitted.                                                                                                                                                    |
+| `empty`     | *boolean* | All                         | Whether the element is empty. Multi-input Elements will be `empty` only if all inputs are.                                                                                                                           |
+| `errors`    | *array*   | All                         | Array of [FieldError](#element-events-on-change-fielderror).                                                                                                                                                         |
+| `cardBrand` | *string*  | [CardElement](#cardelement) | (Optional) The credit card brand (e.g. `'american-express'`, `'visa'`, `'unknown'`). The value is always set when using a [CardElement](#cardelement), and defaults to `'unknown'` until a card brand is recognized. |
 
 ### FieldError
 
