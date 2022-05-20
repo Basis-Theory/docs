@@ -74,3 +74,7 @@ The CardElement's `onChange` event will return the brand of the credit card. See
 | UnionPay         | `unionpay`         |
 | Visa             | `visa`             |
 | Unknown          | `unknown`          |
+
+<aside class="notice">
+  <span>If you don't see the card brand you're looking for, please <a href="mailto:support@basistheory.com?subject=CardElement request card brand" target="_blank">contact us</a>!</span>
+</aside>
