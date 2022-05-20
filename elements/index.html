@@ -492,6 +492,11 @@
             </li>
             <li>
               <a href="#cardelement" class="toc-h1 toc-link" data-title="CardElement">CardElement</a>
+                <ul class="toc-list-h2">
+                    <li>
+                      <a href="#cardelement-card-brands" class="toc-h2 toc-link" data-title="Card Brands">Card Brands</a>
+                    </li>
+                </ul>
             </li>
             <li>
               <a href="#textelement" class="toc-h1 toc-link" data-title="TextElement">TextElement</a>
@@ -1083,30 +1088,41 @@
   <span class="dl">"</span><span class="s2">errors</span><span class="dl">"</span><span class="p">:</span> <span class="p">[</span>
     <span class="p">{...},</span>
     <span class="p">{...}</span>
-  <span class="p">]</span>
+  <span class="p">],</span>
+  <span class="dl">"</span><span class="s2">cardBrand</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">american-express</span><span class="dl">"</span>
 <span class="p">}</span>
 </code></pre></div>
 <table><thead>
 <tr>
 <th>Attribute</th>
 <th>Type</th>
+<th>Eligible Elements</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td><code>complete</code></td>
 <td><em>boolean</em></td>
+<td>All</td>
 <td>If the element value is well-formed and is ready to be submitted.</td>
 </tr>
 <tr>
 <td><code>empty</code></td>
 <td><em>boolean</em></td>
+<td>All</td>
 <td>Whether the element is empty. Multi-input Elements will be <code>empty</code> only if all inputs are.</td>
 </tr>
 <tr>
 <td><code>errors</code></td>
 <td><em>array</em></td>
+<td>All</td>
 <td>Array of <a href="#element-events-on-change-fielderror">FieldError</a>.</td>
+</tr>
+<tr>
+<td><code>cardBrand</code></td>
+<td><em>string</em></td>
+<td><a href="#cardelement">CardElement</a></td>
+<td>(Optional) The credit card <a href="#cardelement-card-brands">brand</a> (e.g. <code>&#39;american-express&#39;</code>, <code>&#39;visa&#39;</code>, <code>&#39;unknown&#39;</code>). The value defaults to <code>&#39;unknown&#39;</code> until a card brand is recognized.</td>
 </tr>
 </tbody></table>
 <h3 id='element-events-on-change-fielderror'>FieldError</h3><div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="p">{</span>
@@ -2009,6 +2025,72 @@ attribute, in this case, will modify the user input to remove <code>(</code>, <c
 <td>Event Listener. See <a href="#element-events-on-keydown">On Keydown</a></td>
 </tr>
 </tbody></table>
+<h2 id='cardelement-card-brands'>Card Brands</h2>
+<p>The CardElement&#39;s <code>onChange</code> event will return the brand of the credit card. See the following list for possible values:</p>
+
+<table><thead>
+<tr>
+<th>Brand</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>American Express</td>
+<td><code>american-express</code></td>
+</tr>
+<tr>
+<td>Diners Club</td>
+<td><code>diners-club</code></td>
+</tr>
+<tr>
+<td>Discover</td>
+<td><code>discover</code></td>
+</tr>
+<tr>
+<td>Elo</td>
+<td><code>elo</code></td>
+</tr>
+<tr>
+<td>Hiper</td>
+<td><code>hiper</code></td>
+</tr>
+<tr>
+<td>HiperCard</td>
+<td><code>hipercard</code></td>
+</tr>
+<tr>
+<td>JCB</td>
+<td><code>jcb</code></td>
+</tr>
+<tr>
+<td>Maestro</td>
+<td><code>maestro</code></td>
+</tr>
+<tr>
+<td>Mastercard</td>
+<td><code>mastercard</code></td>
+</tr>
+<tr>
+<td>MIR</td>
+<td><code>mir</code></td>
+</tr>
+<tr>
+<td>UnionPay</td>
+<td><code>unionpay</code></td>
+</tr>
+<tr>
+<td>Visa</td>
+<td><code>visa</code></td>
+</tr>
+<tr>
+<td>Unknown</td>
+<td><code>unknown</code></td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+  <span>If you don't see the card brand you're looking for, please <a href="mailto:support@basistheory.com?subject=CardElement request card brand" target="_blank">contact us</a>!</span>
+</aside>
 <h1 id='textelement'>TextElement</h1>
 <blockquote>
 <p>Using <code>BasisTheoryProvider</code></p>
