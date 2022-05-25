@@ -1,3 +1,10 @@
+# [1.38.0](https://github.com/Basis-Theory/docs/compare/v1.37.0...v1.38.0) (2022-05-20)
+
+
+### Features
+
+* document cardBrand onChange event property ([#178](https://github.com/Basis-Theory/docs/issues/178)) ([21d89bf](https://github.com/Basis-Theory/docs/commit/21d89bf992f145101d65b73f4cf3d77f6bef8c74))
+
 # [1.37.0](https://github.com/Basis-Theory/docs/compare/v1.36.0...v1.37.0) (2022-05-06)
 
 
