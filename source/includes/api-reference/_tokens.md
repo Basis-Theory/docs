@@ -2,20 +2,20 @@
 
 ## Token Object
 
-| Attribute     | Type                                                          | Description                                                                                                                             |
-|---------------|---------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------|
-| `id`          | *uuid*                                                        | Unique identifier of the token which can be used to [get a token](#get-a-token)                                                         |
-| `tenant_id`   | *uuid*                                                        | The [Tenant](#tenants-tenant-object) ID which owns the token                                                                            |
-| `type`        | *string*                                                      | [Token type](#token-types)                                                                                                              |
-| `data`        | *any*                                                         | Token data                                                                                                                              |
-| `fingerprint` | *string*                                                      | Uniquely identifies the contents of this token. See [Token Types](#token-types) for a list of which token types support fingerprinting. |
-| `privacy`     | *[privacy object](#tokens-token-object-privacy-object)*       | Token Privacy Settings                                                                                                                  |
-| `metadata`    | *map*                                                         | A key-value map of non-sensitive data.                                                                                                  |
-| `created_by`  | *uuid*                                                        | (Optional) The [Application](#applications-application-object) ID which created the token                                               |
-| `created_at`  | *date*                                                        | (Optional) Created date of the token in ISO 8601 format                                                                                 |
-| `modified_by` | *uuid*                                                        | (Optional) The [Application](#applications) ID which last modified the token                                                            |
-| `modified_at` | *date*                                                        | (Optional) Last modified date of the token in ISO 8601 format                                                                          |
-| `search_indexes`            | *list*                                          | (Optional) List of search index expressions used when creating the token. |
+| Attribute        | Type                                                    | Description                                                                                                                             |
+|------------------|---------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------|
+| `id`             | *uuid*                                                  | Unique identifier of the token which can be used to [get a token](#get-a-token)                                                         |
+| `tenant_id`      | *uuid*                                                  | The [Tenant](#tenants-tenant-object) ID which owns the token                                                                            |
+| `type`           | *string*                                                | [Token type](#token-types)                                                                                                              |
+| `data`           | *any*                                                   | Token data                                                                                                                              |
+| `fingerprint`    | *string*                                                | Uniquely identifies the contents of this token. See [Token Types](#token-types) for a list of which token types support fingerprinting. |
+| `privacy`        | *[privacy object](#tokens-token-object-privacy-object)* | Token Privacy Settings                                                                                                                  |
+| `metadata`       | *map*                                                   | A key-value map of non-sensitive data.                                                                                                  |
+| `created_by`     | *uuid*                                                  | (Optional) The [Application](#applications-application-object) ID which created the token                                               |
+| `created_at`     | *date*                                                  | (Optional) Created date of the token in ISO 8601 format                                                                                 |
+| `modified_by`    | *uuid*                                                  | (Optional) The [Application](#applications) ID which last modified the token                                                            |
+| `modified_at`    | *date*                                                  | (Optional) Last modified date of the token in ISO 8601 format                                                                           |
+| `search_indexes` | *array*                                                 | (Optional) Array of search index expressions used when creating the token.                                                              |
 
 ### Privacy Object
 
@@ -32,10 +32,10 @@ Default privacy settings can be overridden at the time of creation, but only to 
 
 ### Bank Object
 
-| Attribute        | Required | Type     | Default | Description                           |
-|------------------|----------|----------|---------|---------------------------------------|
-| `routing_number` | true     | *string* | `null`  | Nine-digit ABA routing number. Its checksum is validated.         |
-| `account_number` | true     | *string* | `null`  | Account number up to seventeen-digits |
+| Attribute        | Required | Type     | Default | Description                                               |
+|------------------|----------|----------|---------|-----------------------------------------------------------|
+| `routing_number` | true     | *string* | `null`  | Nine-digit ABA routing number. Its checksum is validated. |
+| `account_number` | true     | *string* | `null`  | Account number up to seventeen-digits                     |
 
 ### Card Object
 
@@ -240,13 +240,13 @@ Create a new token for the Tenant.
 
 ### Request Parameters
 
-| Attribute    | Required | Type                                                          | Default | Description                                                                                                                                                  |
-|--------------|----------|---------------------------------------------------------------|---------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `type`       | true     | *string*                                                      | `null`  | [Token type](#token-types) of the token                                                                                                                      |
-| `data`       | true     | *any*                                                         | `null`  | Token data. Can be an object, array, or any primitive type such as an integer, boolean, or string                                                            |
-| `privacy`    | false    | *[privacy object](#tokens-token-object-privacy-object)*       | `null`  | Token Privacy Settings overrides. Overrides must be a higher specificity level than the default or minimum setting for the [Token Type](#token-token-types). |
-| `metadata`   | false    | *map*                                                         | `null`  | A key-value map of non-sensitive data.                                                                                                                       |
-| `search_indexes` | false | *list*                                                       | `null`  | List of [Liquid](https://shopify.github.io/liquid/) expressions to generate the token indexes to be able to search agains't later. |
+| Attribute        | Required | Type                                                    | Default | Description                                                                                                                                                  |
+|------------------|----------|---------------------------------------------------------|---------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `type`           | true     | *string*                                                | `null`  | [Token type](#token-types) of the token                                                                                                                      |
+| `data`           | true     | *any*                                                   | `null`  | Token data. Can be an object, array, or any primitive type such as an integer, boolean, or string                                                            |
+| `privacy`        | false    | *[privacy object](#tokens-token-object-privacy-object)* | `null`  | Token Privacy Settings overrides. Overrides must be a higher specificity level than the default or minimum setting for the [Token Type](#token-token-types). |
+| `metadata`       | false    | *map*                                                   | `null`  | A key-value map of non-sensitive data.                                                                                                                       |
+| `search_indexes` | false    | *array*                                                 | `null`  | Array of [expressions](#expressions) used to generate indexes to be able to search against.                                                                  |
 
 <aside class="warning">
   <span>WARNING - Never store sensitive plaintext information in the <code>metadata</code> of your token.</span>
@@ -619,34 +619,34 @@ Multiple terms may be combined using the `AND`, `OR` and `NOT` operators (case s
 
 ### Searchable Token Fields
 
-| Fields           | Type     | Description                                                                                  | Example                                            |
-|------------------|----------|----------------------------------------------------------------------------------------------| -------------------------------------------------  |
-| `id`             | *string* | Token ID.                                                                                    | `id:fe24d4cc-de50-4d8c-8da7-8c7483ba21bf`          |
-| `type`           | *string* | The [token type](#token-types).                                                              | `type:card_number`                                 |
-| `data`           | *string* | Token data. See [Searching Data](#tokens-search-tokens-searching-data) for supported values. | `data:6789`                                        |
-| `fingerprint`    | *string* | Token's content unique identifier.                                                           | `fingerprint:fe24d4cc-de50-4d8c-8da7-8c7483ba21bf` |
-| `privacy.[field]`| *string* | Token [privacy settings](#tokens-token-object-privacy-object).                               | `privacy.classification:pci`                       |
-| `metadata.[key]` | *string* | Search against token metadata having the given `[key]`.                                      | `metadata.user_id:34445`                           |
-| `created_by`     | *string* | Application ID which created the token.                                                      | `created_by:fe24d4cc-de50-4d8c-8da7-8c7483ba21bf`  |
-| `created_at`     | *date*   | The date or date and time a token was created in ISO 8601 format.                            | `created_at:[2020-01-01 TO 2020-01-28]`            |
-| `modified_by`    | *string* | Application ID which last modified the token.                                                | `modified_by:fe24d4cc-de50-4d8c-8da7-8c7483ba21bf` |
-| `modified_at`    | *date*   | The last date or date and time a token was modified in ISO 8601 format.                      | `modified_at:[2020-01-01 TO 2020-01-28]`           |
+| Fields            | Type     | Description                                                                                  | Example                                            |
+|-------------------|----------|----------------------------------------------------------------------------------------------|----------------------------------------------------|
+| `id`              | *string* | Token ID.                                                                                    | `id:fe24d4cc-de50-4d8c-8da7-8c7483ba21bf`          |
+| `type`            | *string* | The [token type](#token-types).                                                              | `type:card_number`                                 |
+| `data`            | *string* | Token data. See [Searching Data](#tokens-search-tokens-searching-data) for supported values. | `data:6789`                                        |
+| `fingerprint`     | *string* | Token's content unique identifier.                                                           | `fingerprint:fe24d4cc-de50-4d8c-8da7-8c7483ba21bf` |
+| `privacy.[field]` | *string* | Token [privacy settings](#tokens-token-object-privacy-object).                               | `privacy.classification:pci`                       |
+| `metadata.[key]`  | *string* | Search against token metadata having the given `[key]`.                                      | `metadata.user_id:34445`                           |
+| `created_by`      | *string* | Application ID which created the token.                                                      | `created_by:fe24d4cc-de50-4d8c-8da7-8c7483ba21bf`  |
+| `created_at`      | *date*   | The date or date and time a token was created in ISO 8601 format.                            | `created_at:[2020-01-01 TO 2020-01-28]`            |
+| `modified_by`     | *string* | Application ID which last modified the token.                                                | `modified_by:fe24d4cc-de50-4d8c-8da7-8c7483ba21bf` |
+| `modified_at`     | *date*   | The last date or date and time a token was modified in ISO 8601 format.                      | `modified_at:[2020-01-01 TO 2020-01-28]`           |
 
 ### Searching Data
 
 Basis Theory currently supports data searches on `social_security_number`, `employer_id_number` and `token` token types.
 When creating tokens of these types, Basis Theory will securely index several data patterns to enable searching on these values 
-based on the `search_indexes` expressions passed in the [Create Token Request](#tokens-create-token).
+based on the `search_indexes` provided in the [Create Token Request](#tokens-create-token) or [Tokenize Request](#tokenize).
 
-If `search_indexes` are not provided when creating a token, then `social_security_number` and `employer_id_number` will get the following default search indexes:
+If `search_indexes` are not provided when creating a token, then `social_security_number` and `employer_id_number` will have the following default search indexes:
 
-- `{{ data }}` which results in the value with standard delimiters (`-`), eg. `123-45-6789`
+- `{{ data }}` which results in the input value being indexed, eg. `123-45-6789`
 - `{{ data | remove: '-'}}` which results in the value without delimiters, eg. `123456789`
 - `{{ data | last4 }}` which results in the last 4 digits of the value, eg. `6789`
 
-For generic tokens (type `token`), default indexes are not applied and you are free to generate your custom data patterns by providing `search_indexes` expressions during [token creation](#tokens-create-token), which are based on [Liquid templating language expressions](https://shopify.github.io/liquid/). Each expression must result in a single value, which cannot be null or empty, otherwise a 400 error will be returned.
+For generic tokens (type `token`), default indexes are not applied, and you are free to specify any desired indexes within the `search_indexes` property during [token creation](#tokens-create-token). The `search_indexes` property supports the use of [expressions](#expressions), which are based on the [Liquid templating language](https://shopify.github.io/liquid/). Each expression must result in a single value, which cannot be null or empty, otherwise a 400 error will be returned.
 
-Token data searches will only return a token if there is an exact match on one of these data patterns produced by the `search_indexes` expressions; full wildcard search is not currently supported.
+Any expressions contained within `search_indexes` will be evaluated against the token data before generating indexes. Token data searches will only return a token if there is an exact match on one of the evaluated `search_indexes`; full wildcard search is not currently supported.
 
 For example, to search for a `social_security_number` token with the value `123-45-6789`, you may search for: 
 
@@ -724,80 +724,3 @@ Delete a token by ID in the Tenant.
 ### Response
 
 Returns [an error](#errors) if the token failed to delete.
-
-## Custom filters
-
-Filters allow you to format the data in the way you need it, regardless of how it is formatted within your token's data. For example, if your data consists of a card number, you may want to only use the last 4 digits, which is possible using filters.
-
-Filters are placed within your Liquid expression `{{ }}`, are denoted by the pipe character `|` and it is possible to chain them together: 
-`{{ <liquid_expression> | <filter1> | <filter2> ... }}`.
-
- In addition to the broad list of [filters](https://shopify.github.io/liquid/filters/abs/) supported by Liquid, we provide several custom filters that will allow you to format your data easily. 
-
-### last4 
-
- Returns the last 4 characters of a string. If the string's length is less than 4, the whole value is returned. 
-
-Given a token with the data:
-
-<div class="center-column" style="clear: none;"></div>
-```json
-{
-  "id": "d35412f4-9d3b-45d8-b051-fe4b7d4e14c5",
-  "type": "token",
-  "data": "36227206271667"
-}
-```
-
-| Expression                                                                                 | Result                            |
-|--------------------------------------------------------------------------------------------|------------------------------------|
-| <code>{{ data &#124; last4 }}</code>                                                       | "1667"                              |
-| <code>{{ data &#124; slice: 12, 13 &#124; last4 }}</code>                                     | "67"                                |
-
-### json
-
-Allows formatting JSON data by applying [JSON Path](https://goessner.net/articles/JsonPath/) expressions ([proposed spec](https://tools.ietf.org/id/draft-goessner-dispatch-jsonpath-00.html)).
-
-All standard JSON Path syntax is supported, provided that the expression resolves to a single value. 
-If the expression resolves to multiple values, the request will result in a 400 error.
-
-Given a token with the data:
-
-<div class="center-column" style="clear: none;"></div>
-```json
-{
-  "id": "d35412f4-9d3b-45d8-b051-fe4b7d4e14c5",
-  "type": "token",
-  "data": { 
-    "books": [
-      { 
-        "category": "fiction",
-        "author": "Herman Melville",
-        "title": "Moby Dick",
-        "isbn": "0-553-21311-3",
-        "price": 8.99
-      },
-      { 
-        "category": "fantasy",
-        "author": "J. R. R. Tolkien",
-        "title": "The Lord of the Rings",
-        "isbn": "0-395-19395-8",
-        "price": 22.99
-      }
-    ],
-    "bicycle": {
-      "color": "red",
-      "price": 19.95
-    }
-  }
-}
-```
-
-| Expression                                                           | Result                             |
-|----------------------------------------------------------------------|------------------------------------|
-| <code>{{ data &#124; json: '$.bicycle.color'}}</code>                | "red"                              |
-| <code>{{ data &#124; json: '$.bicycle'}}</code>                      | { "color": "red", "price": 19.95 } |
-| <code>{{ data &#124; json: '$.books[0].author' }}</code>             | "Herman Melville"                 |
-| <code>{{ data &#124; json: '$.books[?(@.price < 10)].title' }}</code>| "Moby Dick"                       |
-| <code>{{ data &#124; json: '$.nonexistent' }}</code>                 | `null`                             |
-| <code>{{ data &#124; json: '$.book..author' }}</code>                | <400 Error>                        |
