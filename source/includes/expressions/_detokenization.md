@@ -1,4 +1,7 @@
-# Detokenization Expressions
+# Detokenization
+
+Detokenization refers to the process by which non-sensitive token identifiers are replaced with the original token data represented by those tokens.
+Basis Theory supports detokenization through our serverless [Reactor](/#reactors) platform and the [Proxy](/#proxy).
 
 Detokenization is performed whenever a **detokenization expression** is identified within a request.
 In their simplest form, these are expressions of the form `{{<tokenId>}}` which will be replaced with the token data contained within the token with id `<tokenId>`.

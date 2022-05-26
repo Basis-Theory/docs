@@ -1,5 +1,5 @@
 ---
-title: Basis Theory Detokenization Reference
+title: Basis Theory Expression Reference
 docs_logo: 
 
 language_tabs: # must be one of https://git.io/vQNgJ
@@ -15,18 +15,20 @@ other_docs:
   - <a class="toc-h2 toc-link" href="https://developers.basistheory.com">Guides</a>
 
 intro_quick_links:
-  - detokenization/quick_links
+  - expressions/quick_links
 
 intro_includes:
-  - detokenization/intro
-  - detokenization/expressions
-  - detokenization/transformations
-  - detokenization/examples
+  - expressions/intro
+  - expressions/language
+  - expressions/filters
+  - expressions/detokenization
+  - expressions/search_indexes
+  - expressions/fingerprints
 
 reference_links:
   - <a class="toc-h1 toc-link" href="/api-reference">API Reference</a>
   - <a class="toc-h1 toc-link" href="/elements">Elements</a>
-  - <a class="toc-h1 toc-link" href="/detokenization">Detokenization</a>
+  - <a class="toc-h1 toc-link" href="/expressions">Expressions</a>
 
 aux_links:
   - <a class="toc-h1 toc-link" href="https://github.com/Basis-Theory" target="_blank">GitHub</a>
