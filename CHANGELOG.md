@@ -1,3 +1,10 @@
+# [1.39.0](https://github.com/Basis-Theory/docs/compare/v1.38.0...v1.39.0) (2022-05-26)
+
+
+### Features
+
+* Adding search_indexes docs and section for Expressions ([#179](https://github.com/Basis-Theory/docs/issues/179)) ([b549fce](https://github.com/Basis-Theory/docs/commit/b549fce0241786d0f5c1ce5c32a51c95171b6dbb))
+
 # [1.38.0](https://github.com/Basis-Theory/docs/compare/v1.37.0...v1.38.0) (2022-05-20)
 
 
