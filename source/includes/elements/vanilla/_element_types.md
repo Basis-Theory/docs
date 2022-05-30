@@ -63,7 +63,7 @@ The `"text"` element type is a secure replacement for the `<input>` tag and enab
 
 ## Card Number Element
 
-The `"cardNumber"` element type renders a card number input that features automatic brand detection, input validation
+The `"cardNumber"` element type renders a card number input and an optional card icon, featuring automatic brand detection, input validation
 and masking.
 
 <div class="hero_elements-example">

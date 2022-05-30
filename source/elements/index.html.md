@@ -42,6 +42,9 @@ react_includes:
   - elements/react/basis_theory_provider
   - elements/react/card_element
   - elements/react/text_element
+  - elements/react/card_number_element
+  - elements/react/card_expiration_date_element
+  - elements/react/card_verification_code_element
   - elements/react/basis_theory_react
 
 reference_links:
