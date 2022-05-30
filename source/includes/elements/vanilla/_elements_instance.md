@@ -4,7 +4,7 @@ After [initialization](#initialize), **Elements** are available through `BasisTh
 
 ## Create Element
 
-```jsx
+```tsx
 var cardElement = BasisTheory.createElement('card', options);
 
 var textElement = BasisTheory.createElement('text', { targetId: 'myInputId', ...options });
@@ -23,7 +23,7 @@ This lifecycle method returns a new instance of an element type.
 
 ## Mount Element
 
-```jsx
+```tsx
 <div id="my-card"></div>
 
 <script>
@@ -47,7 +47,7 @@ This lifecycle method attaches the element to the DOM, under a specific containe
 
 ## Update Element
 
-```jsx
+```tsx
 cardElement.update(options);
 ```
 
@@ -59,7 +59,7 @@ This lifecycle method updates the element options the element was initialized wi
 
 ## Clear Element
 
-```jsx
+```tsx
 cardElement.clear();
 ```
 
@@ -67,7 +67,7 @@ Clears the element input(s) value.
 
 ## Unmount Element
 
-```jsx
+```tsx
 cardElement.unmount();
 ```
 

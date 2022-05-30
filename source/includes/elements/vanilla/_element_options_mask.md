@@ -1,6 +1,6 @@
 ## Mask
 
-```jsx
+```tsx
 var phoneNumberElement = BasisTheory.createElement('text', {
   targetId: 'myPhoneNumberElement',
   mask: ['(', /\d/, /\d/, /\d/, ')', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]
@@ -19,11 +19,10 @@ rules:
 * ')' will be filled in the 5 position
 * '-' will be filled in the 8 position
 
-The mask will be displayed as the user is typing, and will be used as the value for any [services](#elements-services)
-used with that text element. The [transform](#element-options-transform) attribute can be used to modify this value before any
-requests to any [services](#elements-services). If the value does not satisfy the mask in its entirety, the field is
+The mask will be displayed as the user is typing, and will be used as the value for [tokenization](#tokenization)
+performed with that text element. If the value does not satisfy the mask in its entirety, the field is
 considered incomplete. This is reflected in the [on change events](#element-events-on-change) and will fail validation
-before tokenizing data with any [services](#elements-services).
+before [tokenization](#tokenization).
 
 <aside class="notice">
   <span>Once set, we do not currently allow updating the mask. If you need to update the mask programmatically, don't hesitate to <a href="mailto:support@basistheory.com">reach out</a>.</span>

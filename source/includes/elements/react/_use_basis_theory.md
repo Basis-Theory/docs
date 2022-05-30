@@ -11,7 +11,7 @@ Attribute  | Type                                  | Description
 
 ## Initialize
 
-```jsx
+```tsx
 import { 
   useBasisTheory
 } from '@basis-theory/basis-theory-react';

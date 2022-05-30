@@ -1,6 +1,6 @@
 # Element Events
 
-```jsx
+```tsx
 var subscription = cardElement.on('event-type', (event) => {
   // handle event  
 });
@@ -20,7 +20,7 @@ You can communicate with Elements by listening to events. When you subscribe to 
 
 ## On Ready
 
-```jsx
+```tsx
 cardElement.on('ready', () => {
   // handle ready event 
 })
@@ -30,7 +30,7 @@ This event is triggered when the element has rendered and user is able to start 
 
 ## On Change
 
-```jsx
+```tsx
 cardElement.on('change', (changeEvent) => {
   if (changeEvent.complete) {
     // enable submit button  
@@ -50,7 +50,7 @@ This event is triggered whenever element's value(s) change. For example, if the 
 
 ### ChangeEvent
 
-```jsx
+```tsx
 {
   "complete": false,
   "empty": false,
@@ -71,7 +71,7 @@ This event is triggered whenever element's value(s) change. For example, if the 
 
 ### FieldError
 
-```jsx
+```tsx
 {
   "targetId": "cardNumber",
   "type": "invalid"
@@ -85,7 +85,7 @@ This event is triggered whenever element's value(s) change. For example, if the 
 
 ## On Focus
 
-```jsx
+```tsx
 cardElement.on('focus', (focusEvent) => {
   
 })
@@ -100,7 +100,7 @@ Triggered when an element input is focused.
 
 ### FocusEvent
 
-```jsx
+```tsx
 {
   "targetId": "cardNumber"  
 }
@@ -112,7 +112,7 @@ Triggered when an element input is focused.
 
 ## On Blur
 
-```jsx
+```tsx
 cardElement.on('blur', (blurEvent) => {
   
 })
@@ -127,7 +127,7 @@ Triggered when an element input focus is lost.
 
 ### BlurEvent
 
-```jsx
+```tsx
 {
   "targetId": "cardNumber"  
 }
@@ -139,7 +139,7 @@ Triggered when an element input focus is lost.
 
 ## On Keydown
 
-```jsx
+```tsx
 cardElement.on('keydown', (keydownEvent) => {
   
 })
@@ -154,7 +154,7 @@ Triggered when user hits a special key inside an element input.
 
 ### KeydownEvent
 
-```jsx
+```tsx
 {
   "targetId": "cardNumber",
   "key": "Enter",

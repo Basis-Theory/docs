@@ -2,7 +2,7 @@
 
 > Using `BasisTheoryProvider`
 
-```jsx
+```tsx
 import {
   BasisTheoryProvider,
   TextElement,
@@ -26,7 +26,7 @@ const MyComponent = () => {
 
 > Using `bt` property
 
-```jsx
+```tsx
 import {
   TextElement,
   useBasisTheory
@@ -50,7 +50,7 @@ const MyComponent = () => {
 | `style`       | false    | *ElementStyle*     | true      | [Object](#element-options-style) used to customize the element appearance                                                                                                                                        |
 | `disabled`    | false    | *boolean*          | true      | Boolean used to set the [disabled attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled) of the input(s)                                                                              |
 | `mask`        | false    | *ElementMask*      | false     | [Array](#element-options-mask) used to restrict and fill user input using regex and static strings                                                                                                               |
-| `transform`   | false    | *ElementTransform* | true      | `RegExp` object or [array](#element-options-transform) used to modify user input before sending input to any [services](#elements-services)                                                                      |
+| `transform`   | false    | *ElementTransform* | true      | `RegExp` object or [array](#element-options-transform) used to modify user input before [tokenization](#tokenization)                                                                                            |
 | `placeholder` | false    | *string*           | true      | String used to customize the [placeholder attribute](https://developer.mozilla.org/docs/Web/HTML/Element/input#attr-placeholder) of the input                                                                    |
 | `aria-label`  | false    | *string*           | true      | String used to customize the [aria-label attribute](https://developer.mozilla.org/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-label_attribute) of the input                                       |
 | `password`    | false    | *boolean*          | true      | Boolean used to set the text element input type as [password](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/password)                                                                          |

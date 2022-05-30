@@ -24,7 +24,7 @@ yarn add @basis-theory/basis-theory-js
 
 > CDN
 
-```jsx
+```tsx
 <!-- Including this tag will export a global/window "BasisTheory" variable -->
 <script src="https://js.basistheory.com"></script> 
 ```
@@ -37,7 +37,7 @@ To install **BasisTheory.js** you can choose either our NPM module or CDN hosted
 
 > CSP
 
-```jsx
+```tsx
 <head>
   <meta
     http-equiv="Content-Security-Policy"
@@ -48,7 +48,7 @@ To install **BasisTheory.js** you can choose either our NPM module or CDN hosted
 
 > Trusted Types
 
-```jsx
+```tsx
 
 trustedTypes.createPolicy("default", {
   createScriptURL: (input) => {

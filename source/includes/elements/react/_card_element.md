@@ -2,7 +2,7 @@
 
 > Using `BasisTheoryProvider`
 
-```jsx
+```tsx
 import {
   BasisTheoryProvider,
   CardElement,
@@ -26,7 +26,7 @@ const MyComponent = () => {
 
 > Using `bt` property
 
-```jsx
+```tsx
 import {
   CardElement,
   useBasisTheory
