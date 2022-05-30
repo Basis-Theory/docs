@@ -47,34 +47,10 @@ const MyComponent = () => {
 |-------------|----------|--------------------|-----------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `id`        | true     | *string*           | false     | String identifier used to retrieve the Element instance for tokenization.                                                                                                                                        |
 | `bt`        | false    | *BasisTheoryReact* | false     | [Instance](#basistheoryreact) used by the Element. <br><i>Note: this is not required because Elements are capable of consuming the instance from Context. See [`BasisTheoryProvider`](#basistheoryprovider).</i> |
-| `style`     | false    | *ElementStyle*     | true      | [Object](#element-style) used to customize the element appearance                                                                                                                                                |
+| `style`     | false    | *ElementStyle*     | true      | [Object](#element-options-style) used to customize the element appearance                                                                                                                                                |
 | `disabled`  | false    | *boolean*          | true      | Boolean used to set the [disabled attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled) of the input(s)                                                                              |
 | `onReady`   | false    | *function*         | true      | Event Listener. See [On Ready](#element-events-on-ready)                                                                                                                                                         |
 | `onChange`  | false    | *function*         | true      | Event Listener. See [On Change](#element-events-on-change)                                                                                                                                                       |
 | `onFocus`   | false    | *function*         | true      | Event Listener. See [On Focus](#element-events-on-focus)                                                                                                                                                         |
 | `onBlur`    | false    | *function*         | true      | Event Listener. See [On Blur](#element-events-on-blur)                                                                                                                                                           |
 | `onKeyDown` | false    | *function*         | true      | Event Listener. See [On Keydown](#element-events-on-keydown)                                                                                                                                                     |
-
-## Card Brands
-
-The CardElement's `onChange` event will return the brand of the credit card. See the following list for possible values:
-
-| Brand            | Value              |
-|------------------|--------------------|
-| American Express | `american-express` |
-| Diners Club      | `diners-club`      |
-| Discover         | `discover`         |
-| Elo              | `elo`              |
-| Hiper            | `hiper`            |
-| HiperCard        | `hipercard`        |
-| JCB              | `jcb`              |
-| Maestro          | `maestro`          |
-| Mastercard       | `mastercard`       |
-| MIR              | `mir`              |
-| UnionPay         | `unionpay`         |
-| Visa             | `visa`             |
-| Unknown          | `unknown`          |
-
-<aside class="notice">
-  <span>If you don't see the card brand you're looking for, please <a href="mailto:support@basistheory.com?subject=CardElement request card brand" target="_blank">contact us</a>!</span>
-</aside>

@@ -6,7 +6,7 @@
         <h6>QUICK LINKS</h6>
         <span class="intro-quick-links">
             <a href="#getting-started">Before You Begin</a>
-            <a href="#element-style">Styling Elements</a>
+            <a href="#element-options-style">Styling Elements</a>
             <a href="#element-types-card-element">Create an Element</a>
             <a href="#store-credit-card">Store Credit Card</a>
         </span>

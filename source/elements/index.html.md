@@ -27,10 +27,12 @@ vanilla_includes:
   - elements/vanilla/initialize
   - elements/vanilla/element_types
   - elements/vanilla/elements_instance
+  - elements/vanilla/element_options
+  - elements/vanilla/element_options_style
+  - elements/vanilla/element_options_mask
+  - elements/vanilla/element_options_transform
+  - elements/vanilla/element_options_card_brands
   - elements/vanilla/element_events
-  - elements/vanilla/element_style
-  - elements/vanilla/element_mask
-  - elements/vanilla/element_transform
   - elements/vanilla/elements_services
   - elements/vanilla/deprecations
 

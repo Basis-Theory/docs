@@ -1,4 +1,4 @@
-# Element Mask
+## Mask
 
 ```jsx
 var phoneNumberElement = BasisTheory.createElement('text', {
@@ -20,7 +20,7 @@ rules:
 * '-' will be filled in the 8 position
 
 The mask will be displayed as the user is typing, and will be used as the value for any [services](#elements-services)
-used with that text element. The [transform](#element-transform) attribute can be used to modify this value before any
+used with that text element. The [transform](#element-options-transform) attribute can be used to modify this value before any
 requests to any [services](#elements-services). If the value does not satisfy the mask in its entirety, the field is
 considered incomplete. This is reflected in the [on change events](#element-events-on-change) and will fail validation
 before tokenizing data with any [services](#elements-services).

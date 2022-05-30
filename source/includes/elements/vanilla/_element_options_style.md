@@ -1,4 +1,4 @@
-# Element Style
+## Style
 
 ```jsx
 var cardElement = BasisTheory.createElement('card', {

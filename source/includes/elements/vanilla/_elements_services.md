@@ -217,7 +217,7 @@ BasisTheory.tokenize({
     data: cardElement2
   },
   ssn: textElement
-}).catch(error => {
+}).catch((error) => {
   if (error instanceof BasisTheoryValidationError) {
     // check error details
   } else if (error instanceof BasisTheoryApiError) {
