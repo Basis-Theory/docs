@@ -96,7 +96,7 @@ and masking.
 
 ## Card Expiration Date Element
 
-The `"cardExpirationDate"` element type features a month/year formatted input.
+The `"cardExpirationDate"` element type features a month/year formatted input with validation. The date must be between current month and 20 years in the future.
 
 <div class="hero_elements-example">
   <div class="elements-example-content">
