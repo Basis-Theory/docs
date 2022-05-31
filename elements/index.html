@@ -286,7 +286,7 @@
     </style>
 
     <link href="../stylesheets/header-70f9f668.css" rel="stylesheet" media="screen" />
-    <link href="../stylesheets/screen-a8b04fca.css" rel="stylesheet" media="screen" />
+    <link href="../stylesheets/screen-05d97172.css" rel="stylesheet" media="screen" />
     <link href="../stylesheets/home-26d9d941.css" rel="stylesheet" media="screen" />
     <link href="../stylesheets/guides.css" rel="stylesheet" media="screen" />
     <link href="../stylesheets/iubenda-4a9ea063.css" rel="stylesheet" media="screen" />
@@ -317,9 +317,15 @@
     <script type="text/javascript" src="//cdn.iubenda.com/cs/ccpa/stub.js"></script>
     <script type="text/javascript" src="//cdn.iubenda.com/cs/iubenda_cs.js" charset="UTF-8" async></script>
   <!-- End Iubenda -->
+
+    <!-- BasisTheory Elements -->
+    <script type="text/javascript" src="//js.basistheory.com"></script>
+    <script async>
+      BasisTheory.init('key_XVB48UzHJ57TdPtmLhJa9e', { elements: true });
+    </script>
   </head>
 
-  <body class="elements elements_index" data-languages="[&quot;jsx&quot;]">
+  <body class="elements elements_index" data-languages="[&quot;tsx&quot;]">
     <!-- Mobile Nav Icon/Button -->
     <a href="/#" id="nav-button">
       <span>
@@ -332,7 +338,7 @@
     <!-- Sidebar/TOC -->
         <div class="toc-wrapper">
         <div class="lang-selector">
-              <a href="#" data-language-name="jsx">Javascript</a>
+              <a href="#" data-language-name="tsx">Javascript</a>
         </div>
 
         <div class="search">
@@ -393,6 +399,15 @@
                     <li>
                       <a href="#element-types-text-element" class="toc-h2 toc-link" data-title="Text Element">Text Element</a>
                     </li>
+                    <li>
+                      <a href="#element-types-card-number-element" class="toc-h2 toc-link" data-title="Card Number Element">Card Number Element</a>
+                    </li>
+                    <li>
+                      <a href="#element-types-card-expiration-date-element" class="toc-h2 toc-link" data-title="Card Expiration Date Element">Card Expiration Date Element</a>
+                    </li>
+                    <li>
+                      <a href="#element-types-card-verification-code-element" class="toc-h2 toc-link" data-title="Card Verification Code Element">Card Verification Code Element</a>
+                    </li>
                 </ul>
             </li>
             <li>
@@ -412,6 +427,23 @@
                     </li>
                     <li>
                       <a href="#elements-instance-unmount-element" class="toc-h2 toc-link" data-title="Unmount Element">Unmount Element</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+              <a href="#element-options" class="toc-h1 toc-link" data-title="Element Options">Element Options</a>
+                <ul class="toc-list-h2">
+                    <li>
+                      <a href="#element-options-style" class="toc-h2 toc-link" data-title="Style">Style</a>
+                    </li>
+                    <li>
+                      <a href="#element-options-mask" class="toc-h2 toc-link" data-title="Mask">Mask</a>
+                    </li>
+                    <li>
+                      <a href="#element-options-transform" class="toc-h2 toc-link" data-title="Transform">Transform</a>
+                    </li>
+                    <li>
+                      <a href="#element-options-card-brands" class="toc-h2 toc-link" data-title="Card Brands">Card Brands</a>
                     </li>
                 </ul>
             </li>
@@ -436,25 +468,10 @@
                 </ul>
             </li>
             <li>
-              <a href="#element-style" class="toc-h1 toc-link" data-title="Element Style">Element Style</a>
-            </li>
-            <li>
-              <a href="#element-mask" class="toc-h1 toc-link" data-title="Element Mask">Element Mask</a>
-            </li>
-            <li>
-              <a href="#element-transform" class="toc-h1 toc-link" data-title="Element Transform">Element Transform</a>
-            </li>
-            <li>
-              <a href="#elements-services" class="toc-h1 toc-link" data-title="Elements Services">Elements Services</a>
+              <a href="#tokenization" class="toc-h1 toc-link" data-title="Tokenization">Tokenization</a>
                 <ul class="toc-list-h2">
                     <li>
-                      <a href="#elements-services-tokens" class="toc-h2 toc-link" data-title="Tokens">Tokens</a>
-                    </li>
-                    <li>
-                      <a href="#elements-services-tokenize" class="toc-h2 toc-link" data-title="Tokenize">Tokenize</a>
-                    </li>
-                    <li>
-                      <a href="#elements-services-errors" class="toc-h2 toc-link" data-title="Errors">Errors</a>
+                      <a href="#tokenization-errors" class="toc-h2 toc-link" data-title="Errors">Errors</a>
                     </li>
                 </ul>
             </li>
@@ -492,14 +509,18 @@
             </li>
             <li>
               <a href="#cardelement" class="toc-h1 toc-link" data-title="CardElement">CardElement</a>
-                <ul class="toc-list-h2">
-                    <li>
-                      <a href="#cardelement-card-brands" class="toc-h2 toc-link" data-title="Card Brands">Card Brands</a>
-                    </li>
-                </ul>
             </li>
             <li>
               <a href="#textelement" class="toc-h1 toc-link" data-title="TextElement">TextElement</a>
+            </li>
+            <li>
+              <a href="#cardnumberelement" class="toc-h1 toc-link" data-title="CardNumberElement">CardNumberElement</a>
+            </li>
+            <li>
+              <a href="#cardexpirationdateelement" class="toc-h1 toc-link" data-title="CardExpirationDateElement">CardExpirationDateElement</a>
+            </li>
+            <li>
+              <a href="#cardverificationcodeelement" class="toc-h1 toc-link" data-title="CardVerificationCodeElement">CardVerificationCodeElement</a>
             </li>
             <li>
               <a href="#basistheoryreact" class="toc-h1 toc-link" data-title="BasisTheoryReact">BasisTheoryReact</a>
@@ -556,7 +577,7 @@
       <!-- Code Sidebar -->
         <div class="dark-box">
             <div class="lang-selector">
-                  <a href="#" data-language-name="jsx">Javascript</a>
+                  <a href="#" data-language-name="tsx">Javascript</a>
             </div>
         </div>
       <!-- End Code Sidebar -->
@@ -574,7 +595,7 @@
         <h6>QUICK LINKS</h6>
         <span class="intro-quick-links">
             <a href="#getting-started">Before You Begin</a>
-            <a href="#element-style">Styling Elements</a>
+            <a href="#element-options-style">Styling Elements</a>
             <a href="#element-types-card-element">Create an Element</a>
             <a href="#store-credit-card">Store Credit Card</a>
         </span>
@@ -609,7 +630,7 @@
 <blockquote>
 <p>CDN</p>
 </blockquote>
-<div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="p">&lt;</span><span class="err">!--</span> <span class="na">Including</span> <span class="na">this</span> <span class="na">tag</span> <span class="na">will</span> <span class="na">export</span> <span class="na">a</span> <span class="na">global</span><span class="err">/</span><span class="na">window</span> <span class="s">"BasisTheory"</span> <span class="na">variable</span> <span class="err">--</span><span class="p">&gt;</span>
+<div class="highlight"><pre class="highlight tsx tab-tsx"><code><span class="p">&lt;</span><span class="err">!--</span> <span class="na">Including</span> <span class="na">this</span> <span class="na">tag</span> <span class="na">will</span> <span class="na">export</span> <span class="na">a</span> <span class="na">global</span><span class="err">/</span><span class="na">window</span> <span class="s">"BasisTheory"</span> <span class="na">variable</span> <span class="err">--</span><span class="p">&gt;</span>
 <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="p">=</span><span class="s">"https://js.basistheory.com"</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span> 
 </code></pre></div>
 <p>You don&#39;t have to install <strong>Elements</strong> as a separate module or include additional script tags besides <strong>BasisTheory.js</strong>. It will dynamically load them from our secure domain, which enables us to keep the highest compliance standards (e.g. PCI compliance).</p>
@@ -619,7 +640,7 @@
 <blockquote>
 <p>CSP</p>
 </blockquote>
-<div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+<div class="highlight"><pre class="highlight tsx tab-tsx"><code><span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">meta</span>
     <span class="na">http-equiv</span><span class="p">=</span><span class="s">"Content-Security-Policy"</span>
     <span class="na">content</span><span class="p">=</span><span class="s">"frame-src https://elements.basistheory.com; script-src https://js.basistheory.com"</span>
@@ -629,7 +650,7 @@
 <blockquote>
 <p>Trusted Types</p>
 </blockquote>
-<div class="highlight"><pre class="highlight jsx tab-jsx"><code>
+<div class="highlight"><pre class="highlight tsx tab-tsx"><code>
 <span class="nx">trustedTypes</span><span class="p">.</span><span class="nx">createPolicy</span><span class="p">(</span><span class="dl">"</span><span class="s2">default</span><span class="dl">"</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">createScriptURL</span><span class="p">:</span> <span class="p">(</span><span class="nx">input</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="k">new</span> <span class="nx">URL</span><span class="p">(</span><span class="nx">input</span><span class="p">).</span><span class="nx">origin</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">https://js.basistheory.com</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
@@ -718,7 +739,7 @@
 <blockquote>
 <p>CDN</p>
 </blockquote>
-<div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+<div class="highlight"><pre class="highlight tsx tab-tsx"><code><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
   // you can initialize it wherever it suits your workflow best
   // here we are waiting for the window to load, to make sure BasisTheory instance
   // has been injected in the window variable
@@ -736,7 +757,7 @@
 <blockquote>
 <p>Module</p>
 </blockquote>
-<div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">BasisTheory</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@basis-theory/basis-theory-js</span><span class="dl">'</span><span class="p">;</span>
+<div class="highlight"><pre class="highlight tsx tab-tsx"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">BasisTheory</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@basis-theory/basis-theory-js</span><span class="dl">'</span><span class="p">;</span>
 
 <span class="c1">// In this context BasisTheory is a class</span>
 <span class="kd">const</span> <span class="nx">bt</span> <span class="o">=</span> <span class="k">await</span> <span class="k">new</span> <span class="nx">BasisTheory</span><span class="p">().</span><span class="nx">init</span><span class="p">(</span><span class="dl">'</span><span class="s1">test_1234567890</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span> <span class="na">elements</span><span class="p">:</span> <span class="kc">true</span> <span class="p">});</span>
@@ -796,18 +817,152 @@
   <span>Friendly reminder to replace <code>test_1234567890</code> with a valid <a href="/api-reference/#applications-application-types">Elements Application key</a>.</span>
 </aside>
 <h1 id='element-types'>Element Types</h1><h2 id='element-types-card-element'>Card Element</h2>
-<p>The <code>&quot;card&quot;</code> element type features a full credit card collector containing the following inputs:</p>
+<p>The <code>&quot;card&quot;</code> element type features a one-liner credit card collector containing the following inputs:</p>
 
 <ul>
 <li><em>cardNumber</em></li>
 <li><em>expirationDate</em></li>
 <li><em>cvc</em></li>
 </ul>
+
+<div class="hero_elements-example">
+  <div class="elements-example-content">
+    <div class="elements-example-header">
+      <div class="elements-example-window">
+        <div class="elements-example-action"></div>
+        <div class="elements-example-action"></div>
+        <div class="elements-example-action"></div>
+      </div>
+      <span>Live Card Element</span>
+    </div>
+    <div class="elements-example-form-wrapper">
+      <div class="element" id="types-card-element"></div>
+    </div>
+  </div>
+</div>
+
+<script defer>
+  window.addEventListener('load', () => {
+    window.cardElement = BasisTheory.createElement('card');
+    cardElement.mount('#types-card-element');  
+  });
+</script>
 <h2 id='element-types-text-element'>Text Element</h2>
-<p>The <code>&quot;text&quot;</code> element type is a replacement for the <code>&lt;input&gt;</code> tag and enables collecting user <code>string</code> data.</p>
+<p>The <code>&quot;text&quot;</code> element type is a secure replacement for the <code>&lt;input&gt;</code> tag and enables collecting user <code>string</code> data.</p>
+
+<div class="hero_elements-example">
+  <div class="elements-example-content">
+    <div class="elements-example-header">
+      <div class="elements-example-window">
+        <div class="elements-example-action"></div>
+        <div class="elements-example-action"></div>
+        <div class="elements-example-action"></div>
+      </div>
+      <span>Live Text Element</span>
+    </div>
+    <div class="elements-example-form-wrapper">
+      <div class="element" id="types-text-element"></div>
+    </div>
+  </div>
+</div>
+
+<script defer>
+  window.addEventListener('load', () => {
+    window.textElement = BasisTheory.createElement('text', {
+      targetId: 'elementTypesTextElement',
+      placeholder: 'John Doe',
+    });
+    textElement.mount('#types-text-element');  
+  });
+</script>
+<h2 id='element-types-card-number-element'>Card Number Element</h2>
+<p>The <code>&quot;cardNumber&quot;</code> element type renders a card number input and an optional card icon, featuring automatic brand detection, input validation
+and masking.</p>
+
+<div class="hero_elements-example">
+  <div class="elements-example-content">
+    <div class="elements-example-header">
+      <div class="elements-example-window">
+        <div class="elements-example-action"></div>
+        <div class="elements-example-action"></div>
+        <div class="elements-example-action"></div>
+      </div>
+      <span>Live Card Number Element</span>
+    </div>
+    <div class="elements-example-form-wrapper">
+      <div class="element" id="types-card-number-element"></div>
+    </div>
+  </div>
+</div>
+
+<script defer>
+  window.addEventListener('load', () => {
+    window.cardNumberElement = BasisTheory.createElement('cardNumber', {
+      targetId: 'elementTypesCardNumberElement',
+    });
+    window.cardNumberElement.mount('#types-card-number-element');
+    window.cardNumberElement.on('change', ({ cardBrand }) => {
+      window.cardVerificationCodeElement?.update({ cardBrand });
+    });
+  });
+</script>
+<h2 id='element-types-card-expiration-date-element'>Card Expiration Date Element</h2>
+<p>The <code>&quot;cardExpirationDate&quot;</code> element type features a month/year formatted input with validation. The date must be between current month and 20 years in the future.</p>
+
+<div class="hero_elements-example">
+  <div class="elements-example-content">
+    <div class="elements-example-header">
+      <div class="elements-example-window">
+        <div class="elements-example-action"></div>
+        <div class="elements-example-action"></div>
+        <div class="elements-example-action"></div>
+      </div>
+      <span>Live Card Expiration Date Element</span>
+    </div>
+    <div class="elements-example-form-wrapper">
+      <div class="element" id="types-card-expiration-date-element"></div>
+    </div>
+  </div>
+</div>
+
+<script defer>
+  window.addEventListener('load', () => {
+    window.cardExpirationDateElement = BasisTheory.createElement('cardExpirationDate', {
+      targetId: 'elementTypesCardExpirationDateElement',
+    });
+    window.cardExpirationDateElement.mount('#types-card-expiration-date-element');  
+  });
+</script>
+<h2 id='element-types-card-verification-code-element'>Card Verification Code Element</h2>
+<p>The <code>&quot;cardVerificationCode&quot;</code> element type is used to collect the card security code.</p>
+
+<div class="hero_elements-example">
+  <div class="elements-example-content">
+    <div class="elements-example-header">
+      <div class="elements-example-window">
+        <div class="elements-example-action"></div>
+        <div class="elements-example-action"></div>
+        <div class="elements-example-action"></div>
+      </div>
+      <span>Live Card Verification Code Element</span>
+    </div>
+    <div class="elements-example-form-wrapper">
+      <div class="element" id="types-card-verification-code-element"></div>
+    </div>
+  </div>
+</div>
+
+<script defer>
+  window.addEventListener('load', () => {
+    window.cardVerificationCodeElement = BasisTheory.createElement('cardVerificationCode', {
+      targetId: 'elementTypesCardVerificationCodeElement',
+    });
+    window.cardVerificationCodeElement.mount('#types-card-verification-code-element');  
+  });
+</script>
 <h1 id='elements-instance'>Elements Instance</h1>
 <p>After <a href="#initialize">initialization</a>, <strong>Elements</strong> are available through <code>BasisTheory</code> instance.</p>
-<h2 id='elements-instance-create-element'>Create Element</h2><div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="kd">var</span> <span class="nx">cardElement</span> <span class="o">=</span> <span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">'</span><span class="s1">card</span><span class="dl">'</span><span class="p">,</span> <span class="nx">options</span><span class="p">);</span>
+<h2 id='elements-instance-create-element'>Create Element</h2><div class="highlight"><pre class="highlight tsx tab-tsx"><code><span class="kd">var</span> <span class="nx">cardElement</span> <span class="o">=</span> <span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">'</span><span class="s1">card</span><span class="dl">'</span><span class="p">,</span> <span class="nx">options</span><span class="p">);</span>
 
 <span class="kd">var</span> <span class="nx">textElement</span> <span class="o">=</span> <span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">'</span><span class="s1">text</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span> <span class="na">targetId</span><span class="p">:</span> <span class="dl">'</span><span class="s1">myInputId</span><span class="dl">'</span><span class="p">,</span> <span class="p">...</span><span class="nx">options</span> <span class="p">});</span>
 </code></pre></div>
@@ -830,88 +985,15 @@
 <tr>
 <td><code>options</code></td>
 <td>false</td>
-<td><em>CreateElementOptions</em></td>
-<td><a href="#elements-instance-create-element-create-element-options">Options</a> for customizing the element</td>
+<td><em>object</em></td>
+<td><a href="#element-options">Options</a> for customizing the element</td>
 </tr>
 </tbody></table>
 
 <aside class="warning">
   <span>Unknown <code>type</code> values will throw an error.</span>
 </aside>
-<h3 id='elements-instance-create-element-create-element-options'>Create Element Options</h3>
-<p>CreateElementOptions provide a quick way to customize an Element before mounting it to your website.</p>
-
-<table><thead>
-<tr>
-<th>Attribute</th>
-<th>Required</th>
-<th>Type</th>
-<th>Eligible Elements</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>style</code></td>
-<td>false</td>
-<td><em>ElementStyle</em></td>
-<td>All</td>
-<td><a href="#element-style">Object</a> used to customize the element appearance</td>
-</tr>
-<tr>
-<td><code>disabled</code></td>
-<td>false</td>
-<td><em>boolean</em></td>
-<td>All</td>
-<td>Boolean used to set the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled">disabled attribute</a> of the input(s)</td>
-</tr>
-<tr>
-<td><code>targetId</code></td>
-<td>true</td>
-<td><em>string</em></td>
-<td><a href="#element-types-text-element">TextElement</a></td>
-<td>String used to identify your element</td>
-</tr>
-<tr>
-<td><code>mask</code></td>
-<td>false</td>
-<td><em>ElementMask</em></td>
-<td><a href="#element-types-text-element">TextElement</a></td>
-<td><a href="#element-mask">Array</a> used to restrict and fill user input using regex and static strings</td>
-</tr>
-<tr>
-<td><code>transform</code></td>
-<td>false</td>
-<td><em>ElementTransform</em></td>
-<td><a href="#element-types-text-element">TextElement</a></td>
-<td><code>RegExp</code> object or <a href="#element-transform">array</a> used to modify user input before sending input to any <a href="#elements-services">services</a></td>
-</tr>
-<tr>
-<td><code>placeholder</code></td>
-<td>false</td>
-<td><em>string</em></td>
-<td><a href="#element-types-text-element">TextElement</a></td>
-<td>String used to customize the <a href="https://developer.mozilla.org/docs/Web/HTML/Element/input#attr-placeholder">placeholder attribute</a> of the input</td>
-</tr>
-<tr>
-<td><code>aria-label</code></td>
-<td>false</td>
-<td><em>string</em></td>
-<td><a href="#element-types-text-element">TextElement</a></td>
-<td>String used to customize the <a href="https://developer.mozilla.org/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-label_attribute">aria-label attribute</a> of the input</td>
-</tr>
-<tr>
-<td><code>password</code></td>
-<td>false</td>
-<td><em>boolean</em></td>
-<td><a href="#element-types-text-element">TextElement</a></td>
-<td>Boolean used to set the text element input type as <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/password">password</a></td>
-</tr>
-</tbody></table>
-
-<aside class="warning">
-  <span>The <code>mask</code> option cannot be used when the <code>password</code> option is set as <code>true</code>.</span>
-</aside>
-<h2 id='elements-instance-mount-element'>Mount Element</h2><div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="p">=</span><span class="s">"my-card"</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<h2 id='elements-instance-mount-element'>Mount Element</h2><div class="highlight"><pre class="highlight tsx tab-tsx"><code><span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="p">=</span><span class="s">"my-card"</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 
 <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
   cardElement.mount('#my-card')
@@ -940,9 +1022,9 @@
 </aside>
 
 <aside class="warning">
-  <span>If the Application key used to initialize `BasisTheory` doesn't exist or doesn't have the required <a href="#permissions">permissions</a>, an error will be thrown by this method.</span>
+  <span>If the Application key used to initialize <code>BasisTheory</code> doesn't exist or doesn't have the required <a href="#permissions">permissions</a>, an error will be thrown by this method.</span>
 </aside>
-<h2 id='elements-instance-update-element'>Update Element</h2><div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="nx">cardElement</span><span class="p">.</span><span class="nx">update</span><span class="p">(</span><span class="nx">options</span><span class="p">);</span>
+<h2 id='elements-instance-update-element'>Update Element</h2><div class="highlight"><pre class="highlight tsx tab-tsx"><code><span class="nx">cardElement</span><span class="p">.</span><span class="nx">update</span><span class="p">(</span><span class="nx">options</span><span class="p">);</span>
 </code></pre></div>
 <p>This lifecycle method updates the element options the element was initialized with. The values are merged into the previous options.</p>
 
@@ -957,360 +1039,119 @@
 <tr>
 <td><code>options</code></td>
 <td>false</td>
-<td><em>UpdateElementOptions</em></td>
-<td><a href="#elements-instance-update-element-updateelementoptions">Options</a> for customizing the element</td>
+<td><em>object</em></td>
+<td><a href="#element-options">Options</a> for customizing the element</td>
 </tr>
 </tbody></table>
-<h3 id='elements-instance-update-element-updateelementoptions'>UpdateElementOptions</h3>
-<p>UpdateElementOptions provide a quick way to change an existing (mounted) Element&#39;s appearance and functionality.</p>
-
-<table><thead>
-<tr>
-<th>Attribute</th>
-<th>Required</th>
-<th>Type</th>
-<th>Eligible elements</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>style</code></td>
-<td>false</td>
-<td><em>ElementStyle</em></td>
-<td>All</td>
-<td><a href="#element-style">Object</a> used to customize the element appearance</td>
-</tr>
-<tr>
-<td><code>disabled</code></td>
-<td>false</td>
-<td><em>boolean</em></td>
-<td>All</td>
-<td>Boolean used to set the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled">disabled attribute</a> of the input(s)</td>
-</tr>
-<tr>
-<td><code>transform</code></td>
-<td>false</td>
-<td><em>ElementTransform</em></td>
-<td><a href="#element-types-text-element">TextElement</a></td>
-<td><code>RegExp</code> object or <a href="#element-transform">array</a> used to modify user input before sending input to any <a href="#elements-services">services</a></td>
-</tr>
-<tr>
-<td><code>placeholder</code></td>
-<td>false</td>
-<td><em>string</em></td>
-<td><a href="#element-types-text-element">TextElement</a></td>
-<td>String used to customize the <a href="https://developer.mozilla.org/docs/Web/HTML/Element/input#attr-placeholder">placeholder attribute</a> of the input</td>
-</tr>
-<tr>
-<td><code>aria-label</code></td>
-<td>false</td>
-<td><em>string</em></td>
-<td><a href="#element-types-text-element">TextElement</a></td>
-<td>String used to customize the <a href="https://developer.mozilla.org/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-label_attribute">aria-label attribute</a> of the input</td>
-</tr>
-<tr>
-<td><code>password</code></td>
-<td>false</td>
-<td><em>boolean</em></td>
-<td><a href="#element-types-text-element">TextElement</a></td>
-<td>Boolean used to set the text element input type as <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/password">password</a></td>
-</tr>
-</tbody></table>
-
-<aside class="warning">
-  <span>The <code>password</code> option cannot be set as <code>true</code> if the text element has a <code>mask</code> set.</span>
-</aside>
-<h2 id='elements-instance-clear-element'>Clear Element</h2><div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="nx">cardElement</span><span class="p">.</span><span class="nx">clear</span><span class="p">();</span>
+<h2 id='elements-instance-clear-element'>Clear Element</h2><div class="highlight"><pre class="highlight tsx tab-tsx"><code><span class="nx">cardElement</span><span class="p">.</span><span class="nx">clear</span><span class="p">();</span>
 </code></pre></div>
-<p>Clears the element input values.</p>
-<h2 id='elements-instance-unmount-element'>Unmount Element</h2><div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="nx">cardElement</span><span class="p">.</span><span class="nx">unmount</span><span class="p">();</span>
+<p>Clears the element input(s) value.</p>
+<h2 id='elements-instance-unmount-element'>Unmount Element</h2><div class="highlight"><pre class="highlight tsx tab-tsx"><code><span class="nx">cardElement</span><span class="p">.</span><span class="nx">unmount</span><span class="p">();</span>
 </code></pre></div>
 <p>This lifecycle method safely removes the element from the DOM, stopping any further communication with it.</p>
 
 <aside class="warning">
   <span>Trying to mount an element that has been unmounted will result in an error.</span>
 </aside>
-<h1 id='element-events'>Element Events</h1><div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="kd">var</span> <span class="nx">subscription</span> <span class="o">=</span> <span class="nx">cardElement</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">event-type</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="c1">// handle event  </span>
-<span class="p">});</span>
+<h1 id='element-options'>Element Options</h1>
+<p>You can customize the behavior of your Elements using the following options:</p>
 
-<span class="nx">subscription</span><span class="p">.</span><span class="nx">unsubscribe</span><span class="p">();</span> <span class="c1">// stops listening to the event type</span>
-</code></pre></div>
-<p>You can communicate with Elements by listening to events. When you subscribe to an event, you&#39;ll get back a <a href="https://rxjs.dev/guide/subscription" target="_blank">Subscription</a> that you can unsubscribe if/when it fits your workflow.</p>
-
-<aside class="notice">
-  <span>Make sure to replace 'event-type' with an actual event type.</span>
-</aside>
-
-<aside class="warning">
-  <span>Calling <code>on</code> using an unknown <code>event</code> type will result in an error.</span>
-</aside>
-<h2 id='element-events-on-ready'>On Ready</h2><div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="nx">cardElement</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">ready</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="c1">// handle ready event </span>
-<span class="p">})</span>
-</code></pre></div>
-<p>This event is triggered when the element has rendered and user is able to start interacting with it.</p>
-<h2 id='element-events-on-change'>On Change</h2><div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="nx">cardElement</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">change</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">changeEvent</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nx">changeEvent</span><span class="p">.</span><span class="nx">complete</span><span class="p">)</span> <span class="p">{</span>
-    <span class="c1">// enable submit button  </span>
-  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-    <span class="c1">// disable submit button</span>
-    <span class="c1">// present validation message</span>
-  <span class="p">}</span>
-<span class="p">})</span>
-</code></pre></div>
-<p>This event is triggered whenever element&#39;s value(s) change. For example, if the user types data that doesn&#39;t change the state of a field between valid/invalid or empty/filled, you shouldn&#39;t expect the event to trigger.</p>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Required</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>event</code></td>
-<td>true</td>
-<td><em>&quot;change&quot;</em></td>
-<td>The event type to listen to.</td>
-</tr>
-<tr>
-<td><code>handler</code></td>
-<td>true</td>
-<td><em>function</em></td>
-<td>Callback function to be called when the event is fired. Takes in a <a href="#element-events-on-change-changeevent">ChangeEvent</a>.</td>
-</tr>
-</tbody></table>
-<h3 id='element-events-on-change-changeevent'>ChangeEvent</h3><div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="p">{</span>
-  <span class="dl">"</span><span class="s2">complete</span><span class="dl">"</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-  <span class="dl">"</span><span class="s2">empty</span><span class="dl">"</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-  <span class="dl">"</span><span class="s2">errors</span><span class="dl">"</span><span class="p">:</span> <span class="p">[</span>
-    <span class="p">{...},</span>
-    <span class="p">{...}</span>
-  <span class="p">],</span>
-  <span class="dl">"</span><span class="s2">cardBrand</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">american-express</span><span class="dl">"</span>
-<span class="p">}</span>
-</code></pre></div>
 <table><thead>
 <tr>
 <th>Attribute</th>
+<th>Required</th>
 <th>Type</th>
+<th>Updatable</th>
 <th>Eligible Elements</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td><code>complete</code></td>
-<td><em>boolean</em></td>
+<td><code>style</code></td>
+<td>false</td>
+<td><em>object</em></td>
+<td>true</td>
 <td>All</td>
-<td>If the element value is well-formed and is ready to be submitted.</td>
+<td><a href="#element-options-style">Object</a> used to customize the element appearance</td>
 </tr>
 <tr>
-<td><code>empty</code></td>
+<td><code>disabled</code></td>
+<td>false</td>
 <td><em>boolean</em></td>
+<td>true</td>
 <td>All</td>
-<td>Whether the element is empty. Multi-input Elements will be <code>empty</code> only if all inputs are.</td>
+<td>Boolean used to set the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled">disabled attribute</a> of the input(s)</td>
 </tr>
 <tr>
-<td><code>errors</code></td>
+<td><code>targetId</code></td>
+<td>true</td>
+<td><em>string</em></td>
+<td>false</td>
+<td><a href="#element-types-text-element"><code>text</code></a><br><a href="#element-types-card-number-element"><code>cardNumber</code></a><br><a href="#element-types-card-expiration-date-element"><code>cardExpirationDate</code></a><br><a href="#element-types-card-verification-code-element"><code>cardVerificationCode</code></a></td>
+<td>String used to identify your element</td>
+</tr>
+<tr>
+<td><code>placeholder</code></td>
+<td>false</td>
+<td><em>string</em></td>
+<td>true</td>
+<td><a href="#element-types-text-element"><code>text</code></a><br><a href="#element-types-card-number-element"><code>cardNumber</code></a><br><a href="#element-types-card-expiration-date-element"><code>cardExpirationDate</code></a><br><a href="#element-types-card-verification-code-element"><code>cardVerificationCode</code></a></td>
+<td>String used to customize the <a href="https://developer.mozilla.org/docs/Web/HTML/Element/input#attr-placeholder">placeholder attribute</a> of the input</td>
+</tr>
+<tr>
+<td><code>aria-label</code></td>
+<td>false</td>
+<td><em>string</em></td>
+<td>true</td>
+<td><a href="#element-types-text-element"><code>text</code></a><br><a href="#element-types-card-number-element"><code>cardNumber</code></a><br><a href="#element-types-card-expiration-date-element"><code>cardExpirationDate</code></a><br><a href="#element-types-card-verification-code-element"><code>cardVerificationCode</code></a></td>
+<td>String used to customize the <a href="https://developer.mozilla.org/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-label_attribute">aria-label attribute</a> of the input</td>
+</tr>
+<tr>
+<td><code>mask</code></td>
+<td>false</td>
 <td><em>array</em></td>
-<td>All</td>
-<td>Array of <a href="#element-events-on-change-fielderror">FieldError</a>.</td>
+<td>false</td>
+<td><a href="#element-types-text-element"><code>text</code></a></td>
+<td><a href="#element-options-mask">Array</a> used to restrict and fill user input using regex and static strings</td>
+</tr>
+<tr>
+<td><code>transform</code></td>
+<td>false</td>
+<td><em>RegExp</em></td>
+<td>true</td>
+<td><a href="#element-types-text-element"><code>text</code></a></td>
+<td><a href="#element-options-transform"><code>RegExp</code> object or array</a> used to modify user input before <a href="#tokenization">tokenization</a></td>
+</tr>
+<tr>
+<td><code>password</code></td>
+<td>false</td>
+<td><em>boolean</em></td>
+<td>true</td>
+<td><a href="#element-types-text-element"><code>text</code></a></td>
+<td>Boolean used to set the text element input type as <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/password">password</a></td>
+</tr>
+<tr>
+<td><code>iconPosition</code></td>
+<td>false</td>
+<td><em>string</em></td>
+<td>true</td>
+<td><a href="#element-types-card-number-element"><code>cardNumber</code></a></td>
+<td>String used to determine the position of the card element icon. Expected values are: <code>left</code> (default), <code>right</code> or <code>none</code>.</td>
 </tr>
 <tr>
 <td><code>cardBrand</code></td>
+<td>false</td>
 <td><em>string</em></td>
-<td><a href="#cardelement">CardElement</a></td>
-<td>(Optional) The credit card <a href="#cardelement-card-brands">brand</a> (e.g. <code>&#39;american-express&#39;</code>, <code>&#39;visa&#39;</code>, <code>&#39;unknown&#39;</code>). The value defaults to <code>&#39;unknown&#39;</code> until a card brand is recognized.</td>
-</tr>
-</tbody></table>
-<h3 id='element-events-on-change-fielderror'>FieldError</h3><div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="p">{</span>
-  <span class="dl">"</span><span class="s2">targetId</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">cardNumber</span><span class="dl">"</span><span class="p">,</span>
-  <span class="dl">"</span><span class="s2">type</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">invalid</span><span class="dl">"</span>
-<span class="p">}</span>
-</code></pre></div>
-<table><thead>
-<tr>
-<th>Attribute</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>targetId</code></td>
-<td><em>string</em></td>
-<td>Input id that triggered the error. Values vary per <a href="#element-types">element type</a>.</td>
-</tr>
-<tr>
-<td><code>type</code></td>
-<td><em>&quot;invalid&quot;</em> or <em>&quot;incomplete&quot;</em></td>
-<td>Type of the error.</td>
-</tr>
-</tbody></table>
-<h2 id='element-events-on-focus'>On Focus</h2><div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="nx">cardElement</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">focus</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">focusEvent</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-
-<span class="p">})</span>
-</code></pre></div>
-<p>Triggered when an element input is focused.</p>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Required</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>event</code></td>
 <td>true</td>
-<td><em>&quot;focus&quot;</em></td>
-<td>The event type to listen to.</td>
-</tr>
-<tr>
-<td><code>handler</code></td>
-<td>true</td>
-<td><em>function</em></td>
-<td>Callback function to be called when the event is fired. Takes in a <a href="#element-events-on-focus-focusevent">FocusEvent</a>.</td>
+<td><a href="#element-types-card-verification-code-element"><code>cardVerificationCode</code></a></td>
+<td><a href="#element-options-card-brands">String</a> used to determine proper input format and default placeholder/aria-label</td>
 </tr>
 </tbody></table>
-<h3 id='element-events-on-focus-focusevent'>FocusEvent</h3><div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="p">{</span>
-  <span class="dl">"</span><span class="s2">targetId</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">cardNumber</span><span class="dl">"</span>  
-<span class="p">}</span>
-</code></pre></div>
-<table><thead>
-<tr>
-<th>Attribute</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>targetId</code></td>
-<td><em>string</em></td>
-<td>Input id that triggered the event. Values vary per <a href="#element-types">element type</a>.</td>
-</tr>
-</tbody></table>
-<h2 id='element-events-on-blur'>On Blur</h2><div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="nx">cardElement</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">blur</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">blurEvent</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
 
-<span class="p">})</span>
-</code></pre></div>
-<p>Triggered when an element input focus is lost.</p>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Required</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>event</code></td>
-<td>true</td>
-<td><em>&quot;blur&quot;</em></td>
-<td>The event type to listen to.</td>
-</tr>
-<tr>
-<td><code>handler</code></td>
-<td>true</td>
-<td><em>function</em></td>
-<td>Callback function to be called when the event is fired. Takes in a <a href="#element-events-on-blur-blurevent">BlurEvent</a>.</td>
-</tr>
-</tbody></table>
-<h3 id='element-events-on-blur-blurevent'>BlurEvent</h3><div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="p">{</span>
-  <span class="dl">"</span><span class="s2">targetId</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">cardNumber</span><span class="dl">"</span>  
-<span class="p">}</span>
-</code></pre></div>
-<table><thead>
-<tr>
-<th>Attribute</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>targetId</code></td>
-<td><em>string</em></td>
-<td>Input id that triggered the event. Values vary per <a href="#element-types">element type</a>.</td>
-</tr>
-</tbody></table>
-<h2 id='element-events-on-keydown'>On Keydown</h2><div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="nx">cardElement</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">keydown</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">keydownEvent</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-
-<span class="p">})</span>
-</code></pre></div>
-<p>Triggered when user hits a special key inside an element input.</p>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Required</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>event</code></td>
-<td>true</td>
-<td><em>&quot;keydown&quot;</em></td>
-<td>The event type to listen to.</td>
-</tr>
-<tr>
-<td><code>handler</code></td>
-<td>true</td>
-<td><em>function</em></td>
-<td>Callback function to be called when the event is fired. Takes in a <a href="#element-events-on-keydown-keydownevent">KeydownEvent</a>.</td>
-</tr>
-</tbody></table>
-<h3 id='element-events-on-keydown-keydownevent'>KeydownEvent</h3><div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="p">{</span>
-  <span class="dl">"</span><span class="s2">targetId</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">cardNumber</span><span class="dl">"</span><span class="p">,</span>
-  <span class="dl">"</span><span class="s2">key</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Enter</span><span class="dl">"</span><span class="p">,</span>
-  <span class="dl">"</span><span class="s2">ctrlKey</span><span class="dl">"</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-  <span class="dl">"</span><span class="s2">altKey</span><span class="dl">"</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-  <span class="dl">"</span><span class="s2">shiftKey</span><span class="dl">"</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-  <span class="dl">"</span><span class="s2">metaKey</span><span class="dl">"</span><span class="p">:</span> <span class="kc">false</span>
-<span class="p">}</span>
-</code></pre></div>
-<table><thead>
-<tr>
-<th>Attribute</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>targetId</code></td>
-<td><em>string</em></td>
-<td>Input targetId that triggered the event. Values vary per <a href="#element-types">element type</a>.</td>
-</tr>
-<tr>
-<td><code>key</code></td>
-<td><em>Escape</em> or <em>Enter</em></td>
-<td>Key pressed by the user.</td>
-</tr>
-<tr>
-<td><code>ctrlKey</code></td>
-<td><em>boolean</em></td>
-<td>Flag indicating <a href="https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/ctrlKey" target="_blank"><code>control</code> key</a> was pressed when the event occurred.</td>
-</tr>
-<tr>
-<td><code>altKey</code></td>
-<td><em>boolean</em></td>
-<td>Flag indicating <a href="https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/altKey" target="_blank"><code>alt</code> key</a> was pressed when the event occurred.</td>
-</tr>
-<tr>
-<td><code>shiftKey</code></td>
-<td><em>boolean</em></td>
-<td>Flag indicating <a href="https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/shiftKey" target="_blank"><code>shift</code> key</a> was pressed when the event occurred.</td>
-</tr>
-<tr>
-<td><code>metaKey</code></td>
-<td><em>boolean</em></td>
-<td>Flag indicating <a href="https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/metaKey" target="_blank"><code>meta</code> key</a> was pressed when the event occurred.</td>
-</tr>
-</tbody></table>
-<h1 id='element-style'>Element Style</h1><div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="kd">var</span> <span class="nx">cardElement</span> <span class="o">=</span> <span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">'</span><span class="s1">card</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+<aside class="warning">
+  <span>The <code>mask</code> option cannot be used when the <code>password</code> option is set as <code>true</code>.</span>
+</aside>
+<h2 id='element-options-style'>Style</h2><div class="highlight"><pre class="highlight tsx tab-tsx"><code><span class="kd">var</span> <span class="nx">cardElement</span> <span class="o">=</span> <span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">'</span><span class="s1">card</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">style</span><span class="p">:</span> <span class="p">{</span>
     <span class="na">fonts</span><span class="p">:</span> <span class="p">[</span>
       <span class="dl">"</span><span class="s2">https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&amp;display=swap</span><span class="dl">"</span>
@@ -1416,7 +1257,7 @@
 <aside class="warning">
   <span>For security reasons, we currently support only the 1000+ Google Fonts families. If you need a custom font in your <strong>Basis Theory Elements</strong>, don't hesitate to <a href="mailto:support@basistheory.com">reach out</a>.</span>
 </aside>
-<h1 id='element-mask'>Element Mask</h1><div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="kd">var</span> <span class="nx">phoneNumberElement</span> <span class="o">=</span> <span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">'</span><span class="s1">text</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+<h2 id='element-options-mask'>Mask</h2><div class="highlight"><pre class="highlight tsx tab-tsx"><code><span class="kd">var</span> <span class="nx">phoneNumberElement</span> <span class="o">=</span> <span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">'</span><span class="s1">text</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">targetId</span><span class="p">:</span> <span class="dl">'</span><span class="s1">myPhoneNumberElement</span><span class="dl">'</span><span class="p">,</span>
   <span class="na">mask</span><span class="p">:</span> <span class="p">[</span><span class="dl">'</span><span class="s1">(</span><span class="dl">'</span><span class="p">,</span> <span class="sr">/</span><span class="se">\d</span><span class="sr">/</span><span class="p">,</span> <span class="sr">/</span><span class="se">\d</span><span class="sr">/</span><span class="p">,</span> <span class="sr">/</span><span class="se">\d</span><span class="sr">/</span><span class="p">,</span> <span class="dl">'</span><span class="s1">)</span><span class="dl">'</span><span class="p">,</span> <span class="sr">/</span><span class="se">\d</span><span class="sr">/</span><span class="p">,</span> <span class="sr">/</span><span class="se">\d</span><span class="sr">/</span><span class="p">,</span> <span class="sr">/</span><span class="se">\d</span><span class="sr">/</span><span class="p">,</span> <span class="dl">'</span><span class="s1">-</span><span class="dl">'</span><span class="p">,</span> <span class="sr">/</span><span class="se">\d</span><span class="sr">/</span><span class="p">,</span> <span class="sr">/</span><span class="se">\d</span><span class="sr">/</span><span class="p">,</span> <span class="sr">/</span><span class="se">\d</span><span class="sr">/</span><span class="p">,</span> <span class="sr">/</span><span class="se">\d</span><span class="sr">/</span><span class="p">]</span>
 <span class="p">})</span>
@@ -1435,11 +1276,10 @@ rules:</p>
 <li>&#39;-&#39; will be filled in the 8 position</li>
 </ul>
 
-<p>The mask will be displayed as the user is typing, and will be used as the value for any <a href="#elements-services">services</a>
-used with that text element. The <a href="#element-transform">transform</a> attribute can be used to modify this value before any
-requests to any <a href="#elements-services">services</a>. If the value does not satisfy the mask in its entirety, the field is
+<p>The mask will be displayed as the user is typing, and will be used as the value for <a href="#tokenization">tokenization</a>
+performed with that text element. If the value does not satisfy the mask in its entirety, the field is
 considered incomplete. This is reflected in the <a href="#element-events-on-change">on change events</a> and will fail validation
-before tokenizing data with any <a href="#elements-services">services</a>.</p>
+before <a href="#tokenization">tokenization</a>.</p>
 
 <aside class="notice">
   <span>Once set, we do not currently allow updating the mask. If you need to update the mask programmatically, don't hesitate to <a href="mailto:support@basistheory.com">reach out</a>.</span>
@@ -1448,20 +1288,20 @@ before tokenizing data with any <a href="#elements-services">services</a>.</p>
 <aside class="warning">
   <span>For security and performance reasons, we attempt to detect that the regex provided is valid and not susceptible to catastrophic backtracking. If it fails this validation, we will reject the <a href="#elements-instance-mount-element">mount</a> promise.</span>
 </aside>
-<h1 id='element-transform'>Element Transform</h1><div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="kd">var</span> <span class="nx">phoneNumberElement</span> <span class="o">=</span> <span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">'</span><span class="s1">text</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+<h2 id='element-options-transform'>Transform</h2><div class="highlight"><pre class="highlight tsx tab-tsx"><code><span class="kd">var</span> <span class="nx">phoneNumberElement</span> <span class="o">=</span> <span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">'</span><span class="s1">text</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">targetId</span><span class="p">:</span> <span class="dl">'</span><span class="s1">myPhoneNumberElement</span><span class="dl">'</span><span class="p">,</span>
   <span class="na">mask</span><span class="p">:</span> <span class="p">[</span><span class="dl">'</span><span class="s1">(</span><span class="dl">'</span><span class="p">,</span> <span class="sr">/</span><span class="se">\d</span><span class="sr">/</span><span class="p">,</span> <span class="sr">/</span><span class="se">\d</span><span class="sr">/</span><span class="p">,</span> <span class="sr">/</span><span class="se">\d</span><span class="sr">/</span><span class="p">,</span> <span class="dl">'</span><span class="s1">)</span><span class="dl">'</span><span class="p">,</span> <span class="sr">/</span><span class="se">\d</span><span class="sr">/</span><span class="p">,</span> <span class="sr">/</span><span class="se">\d</span><span class="sr">/</span><span class="p">,</span> <span class="sr">/</span><span class="se">\d</span><span class="sr">/</span><span class="p">,</span> <span class="dl">'</span><span class="s1">-</span><span class="dl">'</span><span class="p">,</span> <span class="sr">/</span><span class="se">\d</span><span class="sr">/</span><span class="p">,</span> <span class="sr">/</span><span class="se">\d</span><span class="sr">/</span><span class="p">,</span> <span class="sr">/</span><span class="se">\d</span><span class="sr">/</span><span class="p">,</span> <span class="sr">/</span><span class="se">\d</span><span class="sr">/</span><span class="p">],</span>
   <span class="na">transform</span><span class="p">:</span> <span class="sr">/</span><span class="se">[</span><span class="sr">()-</span><span class="se">]</span><span class="sr">/</span><span class="p">,</span>
 <span class="p">})</span>
 </code></pre></div>
-<p>Text elements allow you to modify user input before sending it to any <a href="#elements-services">services</a> through the
+<p>Text elements allow you to modify user input before <a href="#tokenization">tokenization</a> through the
 <code>transform</code> attribute. It can be set as a <code>RegExp</code> object, an array with a <code>RegExp</code> object, or an array with a <code>RegExp</code>
 object at the first index and a string at the second. It works by making use of the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace">String replace</a>
 function. The <code>RegExp</code> object and string defined will be used as the first and second argument for the <code>replace</code> function,
 respectively. If no string is defined, an empty string will be used as the second argument. For instance, the mask for a
 US based phone number shown on the right will modify user input to look like this: <code>(123)456-7890</code>. The <code>transform</code>
 attribute, in this case, will modify the user input to remove <code>(</code>, <code>)</code>, and <code>-</code> from the input. The resulting value is
-<code>1234567890</code> which will be what gets sent to any <a href="#elements-services">services</a>.</p>
+<code>1234567890</code> which will be what gets <a href="#tokenization">tokenized</a>.</p>
 
 <aside class="notice">
   <span>We strip all <code>RegExp</code> object flags defined in the <code>transform</code> and set <code>gu</code> as the flags.</span>
@@ -1470,563 +1310,8 @@ attribute, in this case, will modify the user input to remove <code>(</code>, <c
 <aside class="warning">
   <span>For security and performance reasons, we attempt to detect that the regex provided is valid and not susceptible to catastrophic backtracking. If it fails this validation, we will reject the <a href="#elements-instance-mount-element">mount</a> or <a href="#elements-instance-update-element">update</a> promise.</span>
 </aside>
-<h1 id='elements-services'>Elements Services</h1>
-<p>The following <strong>BasisTheory.js</strong> services are capable of recognizing Elements instances in the payload and securely tokenizing their data directly to Basis Theory vault. </p>
-<h2 id='elements-services-tokens'>Tokens</h2>
-<blockquote>
-<p>Create generic token</p>
-</blockquote>
-<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">tokens</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
-  <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">token</span><span class="dl">'</span><span class="p">,</span>
-  <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">sensitiveData</span><span class="p">:</span> <span class="nx">sensitiveDataElement</span><span class="p">,</span>
-    <span class="na">nonSensitiveData</span><span class="p">:</span> <span class="dl">'</span><span class="s1">plainText</span><span class="dl">'</span><span class="p">,</span> <span class="c1">// see warning on plain text data</span>
-    <span class="na">otherData</span><span class="p">:</span> <span class="p">{</span>
-      <span class="na">someInteger</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span>
-      <span class="na">someBoolean</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-    <span class="p">},</span>
-    <span class="na">someOtherData</span><span class="p">:</span> <span class="p">[</span><span class="dl">'</span><span class="s1">plainText1</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">plainText2</span><span class="dl">'</span><span class="p">],</span>
-  <span class="p">},</span>
-  <span class="na">metadata</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">nonSensitiveField</span><span class="p">:</span> <span class="dl">'</span><span class="s1">nonSensitiveValue</span><span class="dl">'</span>
-  <span class="p">}</span>
-<span class="p">}).</span><span class="nx">then</span><span class="p">((</span><span class="nx">token</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">token</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span> <span class="c1">// token to store</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">token</span><span class="p">));</span> <span class="c1">// encrypted token data</span>
-<span class="p">});</span>
-</code></pre></div>
-<blockquote>
-<p>Tokenize card element</p>
-</blockquote>
-<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">tokens</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
-  <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">card</span><span class="dl">'</span><span class="p">,</span>
-  <span class="na">data</span><span class="p">:</span> <span class="nx">cardElement</span><span class="p">,</span>
-<span class="p">}).</span><span class="nx">then</span><span class="p">((</span><span class="nx">token</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">token</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span> <span class="c1">// token to store</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">token</span><span class="p">.</span><span class="nx">data</span><span class="p">));</span> <span class="c1">// redacted card data</span>
-<span class="p">});</span>
-</code></pre></div>
-<blockquote>
-<p>Tokenize bank details</p>
-</blockquote>
-<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">tokens</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
-  <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">bank</span><span class="dl">'</span><span class="p">,</span>
-  <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">routingNumber</span><span class="p">:</span> <span class="nx">routingNumberElement</span> <span class="o">|</span> <span class="dl">'</span><span class="s1">plainText</span><span class="dl">'</span><span class="p">,</span>  <span class="c1">// values can be either a TextElement or plain text (see warning).</span>
-    <span class="na">accountNumber</span><span class="p">:</span> <span class="nx">accountNumberElement</span> <span class="o">|</span> <span class="dl">'</span><span class="s1">plainText</span><span class="dl">'</span><span class="p">,</span>
-  <span class="p">}</span>
-<span class="p">}).</span><span class="nx">then</span><span class="p">((</span><span class="nx">token</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">token</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span> <span class="c1">// token to store</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">token</span><span class="p">.</span><span class="nx">data</span><span class="p">));</span> <span class="c1">// redacted bank data</span>
-<span class="p">});</span>
-</code></pre></div>
-<p>Allows secure submission and tokenization of primitive data and elements. Returns a <code>Promise</code> that resolves to the created token. The
-<code>Promise</code> will reject with an <a href="#elements-services-errors">error</a> if the response status is not in the 2xx range.</p>
-
-<p>You can fetch this same data later with <a href="/api-reference#tokens-get-a-token">Get a Token API</a></p>
-
-<aside class="notice">
-  <span>Notice that the actual input data never leaves the element (iframe) other than to hit our secure API endpoints.</span>
-</aside>
-
-<aside class="warning">
-  <span>Note that when submitting <code>plainText</code> values, data will be HTML encoded before storage for security reasons.
-</aside>
-
-<aside class="warning">
-  <span>The <code>children</code> attribute supported by the API is <strong>NOT</strong> supported when creating a token with elements.</span>
-</aside>
-<h2 id='elements-services-tokenize'>Tokenize</h2>
-<blockquote>
-<p>Tokenize data</p>
-</blockquote>
-<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">tokenize</span><span class="p">({</span>
-  <span class="na">sensitiveData</span><span class="p">:</span> <span class="nx">sensitiveDataElement</span><span class="p">,</span>
-  <span class="na">nonSensitiveData</span><span class="p">:</span> <span class="dl">'</span><span class="s1">plainText</span><span class="dl">'</span><span class="p">,</span> <span class="c1">// see warning on plain text data</span>
-  <span class="na">otherData</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">someInteger</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span>
-    <span class="na">someBoolean</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-  <span class="p">},</span>
-  <span class="na">someOtherData</span><span class="p">:</span> <span class="p">[</span><span class="dl">'</span><span class="s1">plainText1</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">plainText2</span><span class="dl">'</span><span class="p">],</span>
-<span class="p">}).</span><span class="nx">then</span><span class="p">((</span><span class="nx">token</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">token</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span> <span class="c1">// token to store</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">token</span><span class="p">));</span> <span class="c1">// encrypted token data</span>
-<span class="p">});</span>
-</code></pre></div>
-<blockquote>
-<p>Tokenize multiple card elements</p>
-</blockquote>
-<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">tokenize</span><span class="p">({</span>
-  <span class="na">card1</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">card</span><span class="dl">'</span><span class="p">,</span>
-    <span class="na">data</span><span class="p">:</span> <span class="nx">cardElement1</span><span class="p">,</span>
-  <span class="p">},</span>
-  <span class="na">card2</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">card</span><span class="dl">'</span><span class="p">,</span>
-    <span class="na">data</span><span class="p">:</span> <span class="nx">cardElement2</span><span class="p">,</span>
-  <span class="p">}</span>
-<span class="p">}).</span><span class="nx">then</span><span class="p">((</span><span class="nx">token</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">token</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span> <span class="c1">// token to store</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">token</span><span class="p">));</span> <span class="c1">// encrypted token data</span>
-<span class="p">});</span>
-</code></pre></div>
-<blockquote>
-<p>Tokenize multiple bank details</p>
-</blockquote>
-<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">tokenize</span><span class="p">({</span>
-  <span class="na">bank1</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">bank</span><span class="dl">'</span><span class="p">,</span>
-    <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
-      <span class="na">routingNumber</span><span class="p">:</span> <span class="nx">routingNumberElement1</span> <span class="o">|</span> <span class="dl">'</span><span class="s1">plainText</span><span class="dl">'</span><span class="p">,</span>  <span class="c1">// values can be either a TextElement or plain text (see warning).</span>
-      <span class="na">accountNumber</span><span class="p">:</span> <span class="nx">accountNumberElement1</span> <span class="o">|</span> <span class="dl">'</span><span class="s1">plainText</span><span class="dl">'</span><span class="p">,</span>
-    <span class="p">}</span>
-  <span class="p">},</span>
-  <span class="na">bank2</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">bank</span><span class="dl">'</span><span class="p">,</span>
-    <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
-      <span class="na">routingNumber</span><span class="p">:</span> <span class="nx">routingNumberElement2</span> <span class="o">|</span> <span class="dl">'</span><span class="s1">plainText</span><span class="dl">'</span><span class="p">,</span>  <span class="c1">// values can be either a TextElement or plain text (see warning).</span>
-      <span class="na">accountNumber</span><span class="p">:</span> <span class="nx">accountNumberElement2</span> <span class="o">|</span> <span class="dl">'</span><span class="s1">plainText</span><span class="dl">'</span><span class="p">,</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
-<span class="p">}).</span><span class="nx">then</span><span class="p">((</span><span class="nx">token</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">token</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span> <span class="c1">// token to store</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">token</span><span class="p">));</span> <span class="c1">// encrypted token data</span>
-<span class="p">});</span>
-</code></pre></div>
-<p>Allows secure submission and tokenization of primitive data and elements. Returns a <code>Promise</code> that resolves to the created tokens. The
-<code>Promise</code> will reject with an <a href="#elements-services-errors">error</a> if the response status is not in the 2xx range.</p>
-
-<p>You can fetch this same data later with <a href="/api-reference#tokens-get-a-token">Get a Token API</a></p>
-
-<aside class="notice">
-  <span>Notice that the actual input data never leaves the element (iframe) other than to hit our secure API endpoints.</span>
-</aside>
-
-<aside class="warning">
-  <span>Note that when submitting <code>plainText</code> values, data will be HTML encoded before storage for security reasons.
-</aside>
-
-<aside class="warning">
-  <span>The <code>children</code> attribute supported by the API is <strong>NOT</strong> supported when creating a token with elements.</span>
-</aside>
-<h2 id='elements-services-errors'>Errors</h2>
-<p>Any elements service could throw an error based on <a href="#elements-services-errors-basistheoryvalidationerror">client-side validations</a> or if the <a href="#elements-services-errors-basistheoryapierror">server rejects the request</a>.</p>
-<h3 id='elements-services-errors-basistheoryvalidationerror'>BasisTheoryValidationError</h3>
-<blockquote>
-<p>BasisTheoryValidationError</p>
-</blockquote>
-<div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="p">{</span>
-  <span class="na">details</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">card1</span><span class="p">:</span> <span class="p">{</span>
-      <span class="na">number</span><span class="p">:</span> <span class="p">{</span> <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">invalid</span><span class="dl">'</span> <span class="p">},</span>
-      <span class="na">cvc</span><span class="p">:</span> <span class="p">{</span> <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">incomplete</span><span class="dl">'</span> <span class="p">}</span>
-    <span class="p">},</span>
-    <span class="na">card2</span><span class="p">:</span> <span class="p">{}</span>
-  <span class="p">},</span>
-  <span class="na">validation</span><span class="p">:</span> <span class="p">[]</span> <span class="c1">// deprecated</span>
-<span class="p">}</span>
-</code></pre></div>
-<table><thead>
-<tr>
-<th>Attribute</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>name</code></td>
-<td>string</td>
-<td>Error name, always <code>&#39;BasisTheoryValidationError&#39;</code>.</td>
-</tr>
-<tr>
-<td><code>details</code></td>
-<td><em>object</em></td>
-<td>Maps payload properties to their respective elements validation problems.</td>
-</tr>
-<tr>
-<td><del><code>validation</code></del></td>
-<td><em>array</em></td>
-<td><a href="#deprecations-deprecated-features">Deprecated in favor of details</a>. Array of <a href="#element-events-on-change-fielderror">FieldError</a>, in case of client-side error.</td>
-</tr>
-</tbody></table>
-<h3 id='elements-services-errors-basistheoryapierror'>BasisTheoryApiError</h3>
-<blockquote>
-<p>BasisTheoryApiError</p>
-</blockquote>
-<div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="p">{</span>
-  <span class="na">data</span><span class="p">:</span> <span class="p">{},</span> <span class="c1">// API response body</span>
-  <span class="na">status</span><span class="p">:</span> <span class="mi">400</span>
-<span class="p">}</span>
-</code></pre></div>
-<table><thead>
-<tr>
-<th>Attribute</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>name</code></td>
-<td>string</td>
-<td>Error name, always <code>&#39;BasisTheoryApiError&#39;</code>.</td>
-</tr>
-<tr>
-<td><code>data</code></td>
-<td><em>object</em></td>
-<td>Response body <a href="/#errors">sent from the server</a>.</td>
-</tr>
-<tr>
-<td><code>status</code></td>
-<td><em>number</em></td>
-<td>Response HTTP status.</td>
-</tr>
-</tbody></table>
-
-<aside class="notice">
-  <span>Error <code>name</code> property may be used instead of checking its instance type.</span>
-</aside>
-
-<blockquote>
-<p>Handling services errors</p>
-</blockquote>
-<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="k">import</span> <span class="p">{</span>
-  <span class="nx">BasisTheoryApiError</span><span class="p">,</span>
-  <span class="nx">BasisTheoryValidationError</span>
-<span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@basis-theory/basis-theory-js/common</span><span class="dl">'</span><span class="p">;</span>
-
-<span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">tokenize</span><span class="p">({</span>
-  <span class="na">card1</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">card</span><span class="dl">'</span><span class="p">,</span>
-    <span class="na">data</span><span class="p">:</span> <span class="nx">cardElement1</span>
-  <span class="p">},</span>
-  <span class="na">card2</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">card</span><span class="dl">'</span><span class="p">,</span>
-    <span class="na">data</span><span class="p">:</span> <span class="nx">cardElement2</span>
-  <span class="p">},</span>
-  <span class="na">ssn</span><span class="p">:</span> <span class="nx">textElement</span>
-<span class="p">}).</span><span class="k">catch</span><span class="p">(</span><span class="nx">error</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nx">error</span> <span class="k">instanceof</span> <span class="nx">BasisTheoryValidationError</span><span class="p">)</span> <span class="p">{</span>
-    <span class="c1">// check error details</span>
-  <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">error</span> <span class="k">instanceof</span> <span class="nx">BasisTheoryApiError</span><span class="p">)</span> <span class="p">{</span>
-    <span class="c1">// check error data or status</span>
-  <span class="p">}</span>
-<span class="p">});</span>
-</code></pre></div><h1 id='deprecations'>Deprecations</h1><h2 id='deprecations-deprecated-services'>Deprecated Services</h2>
-<p>The following table lists deprecated services and their respective shutdown date.</p>
-
-<table><thead>
-<tr>
-<th>Service</th>
-<th>Deprecated</th>
-<th>Shutdown Date</th>
-<th>Details</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>storeCreditCard</code></td>
-<td>December 10, 2021</td>
-<td>April 22, 2022</td>
-<td><code>storeCreditCard</code> service has been removed. Instead, please use <a href="#elements-services-tokens">Tokens</a>.</td>
-</tr>
-<tr>
-<td><code>atomicCards</code></td>
-<td>April 22, 2022</td>
-<td>July 22, 2022</td>
-<td><code>atomicCards</code> service will be removed in an upcoming release. Instead, please use <a href="#elements-services-tokens">Tokens</a>.</td>
-</tr>
-<tr>
-<td><code>atomicBanks</code></td>
-<td>April 22, 2022</td>
-<td>July 22, 2022</td>
-<td><code>atomicBanks</code> service will be removed in an upcoming release. Instead, please use <a href="#elements-services-tokens">Tokens</a>.</td>
-</tr>
-</tbody></table>
-<h2 id='deprecations-deprecated-features'>Deprecated Features</h2>
-<p>The following table lists deprecated features and their respective shutdown date.</p>
-
-<table><thead>
-<tr>
-<th>Feature</th>
-<th>Deprecated</th>
-<th>Shutdown Date</th>
-<th>Details</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>validation</code> property in error</td>
-<td>April 22, 2022</td>
-<td>July 22, 2022</td>
-<td><code>validation</code> property in errors will be removed in an upcoming release. Instead, please use <a href="#elements-services-errors">details</a></td>
-</tr>
-</tbody></table>
-
-        <h1 id='react-package'>React Package</h1>
-<blockquote>
-<p>NPM</p>
-</blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>npm <span class="nb">install</span> <span class="nt">--save</span> @basis-theory/basis-theory-react
-</code></pre></div>
-<blockquote>
-<p>Yarn</p>
-</blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>yarn add @basis-theory/basis-theory-react
-</code></pre></div>
-<aside class="header-intro-box">
-    <span class="expanded-text">
-      <p><strong>Basis Theory React</strong> is an <a href="https://github.com/Basis-Theory/basis-theory-react" target="_blank">open source</a> <a href="https://www.npmjs.com/package/@basis-theory/basis-theory-react" target="_blank">package</a> designed to allow you to easily integrate Basis Theory SDK and Elements features in your React solution.</p>
-      <p>
-        This section provides specific documentation for how to initialize a <code>BasisTheory</code> instance using <a href="https://reactjs.org/docs/hooks-intro.html" target="_blank">Hooks</a>, pass it to your component tree with <a href="https://reactjs.org/docs/context.html" target="_blank">Context</a> and then declare Elements <a href="https://reactjs.org/docs/components-and-props.html" target="_blank">Components</a> in your code use the underlying Element.
-      </p>      
-      <p>
-        Creating, mounting, updating and unmounting Elements is as simple as declaring them as a typical React Components and passing props.
-      </p>
-    </span>
-    <img src="../images/react-bt-37b2690a.svg"/>
-</aside>
-
-<aside class="notice">
-  <span>You don't need to install <code>@basis-theory/basis-theory-js</code> separately when using our React package, unless you need to direct import a capability from it.</span>
-</aside>
-<h1 id='usebasistheory'>useBasisTheory</h1>
-<p>The <code>useBasisTheory</code> <a href="https://reactjs.org/docs/hooks-intro.html" target="_blank">hook</a> makes it easy to initialize the SDK or retrieve a previously initialized instance of it.</p>
-
-<p>It returns an object containing:</p>
-
-<table><thead>
-<tr>
-<th>Attribute</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>bt</code></td>
-<td><em>BasisTheoryReact</em> &#124; <em>undefined</em></td>
-<td><a href="#basistheoryreact"><code>BasisTheoryReact</code></a> instance. <br><i>Note: this stays <code>undefined</code> during <code>BasisTheory</code> initialization, so you don&#39;t have to deal with <code>Promise</code> handling in your components code.</i></td>
-</tr>
-<tr>
-<td><code>error</code></td>
-<td><em>any</em> &#124; <em>undefined</em></td>
-<td>Holds any initialization errors (e.g. bad API key).</td>
-</tr>
-</tbody></table>
-<h2 id='usebasistheory-initialize'>Initialize</h2><div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="k">import</span> <span class="p">{</span> 
-  <span class="nx">useBasisTheory</span>
-<span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@basis-theory/basis-theory-react</span><span class="dl">'</span><span class="p">;</span>
-
-<span class="kd">const</span> <span class="nx">App</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="c1">// creates a new instance of BasisTheory class</span>
-  <span class="kd">const</span> <span class="p">{</span> <span class="nx">bt</span><span class="p">,</span> <span class="nx">error</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">useBasisTheory</span><span class="p">(</span><span class="dl">'</span><span class="s1">test_1234567890</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span> <span class="na">elements</span><span class="p">:</span> <span class="kc">true</span> <span class="p">});</span>
-
-  <span class="c1">// instance stays undefined during initialization</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nx">bt</span><span class="p">)</span> <span class="p">{</span>
-    <span class="c1">// able to call BasisTheory methods</span>
-  <span class="p">}</span>
-
-  <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-    <span class="c1">// initialization error</span>
-  <span class="p">}</span>
-
-  <span class="k">return</span> <span class="p">&lt;</span><span class="nc">MyComponent</span> <span class="p">/&gt;;</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>Calling the <code>useBasisTheory</code> hook with parameters creates a new instance of <a href="#basistheoryreact"><code>BasisTheoryReact</code></a> class and initializes it automatically.</p>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Required</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>apiKey</code></td>
-<td>true</td>
-<td><em>string</em></td>
-<td>The API Key used to identify an <a href="/api-reference#applications">Application</a>.</td>
-</tr>
-<tr>
-<td><code>options</code></td>
-<td>false</td>
-<td><em>BasisTheoryInitOptions</em></td>
-<td><a href="#initialize-permission-types-basis-theory-init-options">Options</a> for initializing the <code>BasisTheoryReact</code> instance.</td>
-</tr>
-</tbody></table>
-
-<!-- Options link above looks weird because of how Slate generates them -->
-
-<aside class="notice">
-  <span>Make sure your API key has an <code>Elements</code> or <code>Client-side Application</code> <a href="/api-reference#applications-application-types">Application Type</a>.</span>
-</aside>
-<h2 id='usebasistheory-retrieve-from-context'>Retrieve from Context</h2>
-<p>Calling the <code>useBasisTheory</code> hook with no parameters will retrieve the  <a href="#basistheoryreact"><code>BasisTheoryReact</code></a> instance from the <code>Context</code>. See <a href="#basistheoryprovider">BasisTheoryProvider</a>.</p>
-<h1 id='basistheoryprovider'>BasisTheoryProvider</h1><div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="k">import</span> <span class="p">{</span> 
-  <span class="nx">BasisTheoryProvider</span><span class="p">,</span>
-  <span class="nx">TextElement</span><span class="p">,</span>
-  <span class="nx">useBasisTheory</span>
-<span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@basis-theory/basis-theory-react</span><span class="dl">'</span><span class="p">;</span>
-
-<span class="kd">const</span> <span class="nx">App</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="c1">// creates a new instance of BasisTheory class</span>
-  <span class="kd">const</span> <span class="p">{</span> <span class="nx">bt</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">useBasisTheory</span><span class="p">(</span><span class="dl">'</span><span class="s1">test_1234567890</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span> <span class="na">elements</span><span class="p">:</span> <span class="kc">true</span> <span class="p">});</span>
-
-  <span class="k">if</span> <span class="p">(</span><span class="nx">bt</span><span class="p">)</span> <span class="p">{</span>
-    <span class="c1">// able to call BasisTheory methods</span>
-  <span class="p">}</span>
-
-  <span class="k">return</span> <span class="p">&lt;</span><span class="nc">BasisTheoryProvider</span> <span class="na">bt</span><span class="p">=</span><span class="si">{</span><span class="nx">bt</span><span class="si">}</span><span class="p">&gt;</span>
-      <span class="p">&lt;</span><span class="nc">MyComponent</span> <span class="p">/&gt;</span>
-    <span class="p">&lt;/</span><span class="nc">BasisTheoryProvider</span><span class="p">&gt;;</span>
-<span class="p">}</span>
-
-<span class="kd">const</span> <span class="nx">MyComponent</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="c1">// calling this hook with no attributes grabs the instance from Context  </span>
-  <span class="kd">const</span> <span class="p">{</span> <span class="nx">bt</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">useBasisTheory</span><span class="p">();</span>
-
-  <span class="k">if</span> <span class="p">(</span><span class="nx">bt</span><span class="p">)</span> <span class="p">{</span>
-    <span class="c1">// able to call BasisTheory methods</span>
-  <span class="p">}</span>
-
-  <span class="k">return</span> <span class="p">&lt;</span><span class="nc">TextElement</span> <span class="na">id</span><span class="p">=</span><span class="s">"myInput"</span> <span class="p">/&gt;</span> <span class="p">;</span> <span class="c1">// Element will also grab it from the Context</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>This <a href="https://reactjs.org/docs/context.html" target="_blank">Context Provider</a> shares a <a href="#basistheoryreact"><code>BasisTheoryReact</code></a> instance to your component tree, making it available for Basis Theory Elements or other custom components. </p>
-
-<table><thead>
-<tr>
-<th>Property</th>
-<th>Required</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>bt</code></td>
-<td>false</td>
-<td><em>BasisTheoryReact</em></td>
-<td><a href="#basistheoryreact">Instance</a> to be provided in the context. <br><i>Note: this is not required because initialization happens asynchronously. See <a href="#usebasistheory"><code>useBasisTheory</code></a>.</i></td>
-</tr>
-</tbody></table>
-
-<aside class="notice">
-  <span>Elements will prioritize the <code>BasisTheory</code> instance passed to it's own <code>bt</code> property over an instance passed in to a parent <code>BasisTheoryProvider</code>.</span>
-</aside>
-<h1 id='cardelement'>CardElement</h1>
-<blockquote>
-<p>Using <code>BasisTheoryProvider</code></p>
-</blockquote>
-<div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="k">import</span> <span class="p">{</span>
-  <span class="nx">BasisTheoryProvider</span><span class="p">,</span>
-  <span class="nx">CardElement</span><span class="p">,</span>
-  <span class="nx">useBasisTheory</span>
-<span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@basis-theory/basis-theory-react</span><span class="dl">'</span><span class="p">;</span>
-
-<span class="kd">const</span> <span class="nx">App</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="c1">// creates a new instance of BasisTheory class</span>
-  <span class="kd">const</span> <span class="p">{</span> <span class="nx">bt</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">useBasisTheory</span><span class="p">(</span><span class="dl">'</span><span class="s1">test_1234567890</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span> <span class="na">elements</span><span class="p">:</span> <span class="kc">true</span> <span class="p">});</span>
-
-  <span class="k">return</span> <span class="p">&lt;</span><span class="nc">BasisTheoryProvider</span> <span class="na">bt</span><span class="p">=</span><span class="si">{</span><span class="nx">bt</span><span class="si">}</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nc">MyComponent</span> <span class="p">/&gt;</span>
-  <span class="p">&lt;/</span><span class="nc">BasisTheoryProvider</span><span class="p">&gt;;</span>
-<span class="p">}</span>
-
-<span class="kd">const</span> <span class="nx">MyComponent</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="k">return</span> <span class="p">&lt;</span><span class="nc">CardElement</span> <span class="na">id</span><span class="p">=</span><span class="s">"myCard"</span> <span class="p">/&gt;</span> <span class="p">;</span> <span class="c1">// Element will grab instance from the Context</span>
-<span class="p">}</span>
-</code></pre></div>
-<blockquote>
-<p>Using <code>bt</code> property</p>
-</blockquote>
-<div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="k">import</span> <span class="p">{</span>
-  <span class="nx">CardElement</span><span class="p">,</span>
-  <span class="nx">useBasisTheory</span>
-<span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@basis-theory/basis-theory-react</span><span class="dl">'</span><span class="p">;</span>
-
-<span class="kd">const</span> <span class="nx">MyComponent</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="c1">// creates a new instance of BasisTheory class</span>
-  <span class="kd">const</span> <span class="p">{</span> <span class="nx">bt</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">useBasisTheory</span><span class="p">(</span><span class="dl">'</span><span class="s1">test_1234567890</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span> <span class="na">elements</span><span class="p">:</span> <span class="kc">true</span> <span class="p">});</span>
-
-  <span class="k">return</span> <span class="p">&lt;</span><span class="nc">CardElement</span> <span class="na">id</span><span class="p">=</span><span class="s">"myCard"</span> <span class="na">bt</span><span class="p">=</span><span class="si">{</span><span class="nx">bt</span><span class="si">}</span> <span class="p">/&gt;</span> <span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
-<p><code>CardElement</code> <a href="https://reactjs.org/docs/components-and-props.html" target="_blank">component</a> features a full credit card form, wrapping the <a href="#element-types-card-element">card element type</a> functionality and taking care of the React lifecycle.</p>
-
-<table><thead>
-<tr>
-<th>Property</th>
-<th>Required</th>
-<th>Type</th>
-<th>Updatable</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>id</code></td>
-<td>true</td>
-<td><em>string</em></td>
-<td>false</td>
-<td>String identifier used to retrieve the Element instance for tokenization.</td>
-</tr>
-<tr>
-<td><code>bt</code></td>
-<td>false</td>
-<td><em>BasisTheoryReact</em></td>
-<td>false</td>
-<td><a href="#basistheoryreact">Instance</a> used by the Element. <br><i>Note: this is not required because Elements are capable of consuming the instance from Context. See <a href="#basistheoryprovider"><code>BasisTheoryProvider</code></a>.</i></td>
-</tr>
-<tr>
-<td><code>style</code></td>
-<td>false</td>
-<td><em>ElementStyle</em></td>
-<td>true</td>
-<td><a href="#element-style">Object</a> used to customize the element appearance</td>
-</tr>
-<tr>
-<td><code>disabled</code></td>
-<td>false</td>
-<td><em>boolean</em></td>
-<td>true</td>
-<td>Boolean used to set the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled">disabled attribute</a> of the input(s)</td>
-</tr>
-<tr>
-<td><code>onReady</code></td>
-<td>false</td>
-<td><em>function</em></td>
-<td>true</td>
-<td>Event Listener. See <a href="#element-events-on-ready">On Ready</a></td>
-</tr>
-<tr>
-<td><code>onChange</code></td>
-<td>false</td>
-<td><em>function</em></td>
-<td>true</td>
-<td>Event Listener. See <a href="#element-events-on-change">On Change</a></td>
-</tr>
-<tr>
-<td><code>onFocus</code></td>
-<td>false</td>
-<td><em>function</em></td>
-<td>true</td>
-<td>Event Listener. See <a href="#element-events-on-focus">On Focus</a></td>
-</tr>
-<tr>
-<td><code>onBlur</code></td>
-<td>false</td>
-<td><em>function</em></td>
-<td>true</td>
-<td>Event Listener. See <a href="#element-events-on-blur">On Blur</a></td>
-</tr>
-<tr>
-<td><code>onKeyDown</code></td>
-<td>false</td>
-<td><em>function</em></td>
-<td>true</td>
-<td>Event Listener. See <a href="#element-events-on-keydown">On Keydown</a></td>
-</tr>
-</tbody></table>
-<h2 id='cardelement-card-brands'>Card Brands</h2>
-<p>The CardElement&#39;s <code>onChange</code> event will return the brand of the credit card. See the following list for possible values:</p>
+<h2 id='element-options-card-brands'>Card Brands</h2>
+<p>The following list maps supported Card Brands to their values:</p>
 
 <table><thead>
 <tr>
@@ -2091,11 +1376,831 @@ attribute, in this case, will modify the user input to remove <code>(</code>, <c
 <aside class="notice">
   <span>If you don't see the card brand you're looking for, please <a href="mailto:support@basistheory.com?subject=CardElement request card brand" target="_blank">contact us</a>!</span>
 </aside>
+<h1 id='element-events'>Element Events</h1><div class="highlight"><pre class="highlight tsx tab-tsx"><code><span class="kd">var</span> <span class="nx">subscription</span> <span class="o">=</span> <span class="nx">cardElement</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">event-type</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="c1">// handle event  </span>
+<span class="p">});</span>
+
+<span class="nx">subscription</span><span class="p">.</span><span class="nx">unsubscribe</span><span class="p">();</span> <span class="c1">// stops listening to the event type</span>
+</code></pre></div>
+<p>You can communicate with Elements by listening to events. When you subscribe to an event, you&#39;ll get back a <a href="https://rxjs.dev/guide/subscription" target="_blank">Subscription</a> that you can unsubscribe if/when it fits your workflow.</p>
+
+<aside class="notice">
+  <span>Make sure to replace 'event-type' with an actual event type.</span>
+</aside>
+
+<aside class="warning">
+  <span>Calling <code>on</code> using an unknown <code>event</code> type will result in an error.</span>
+</aside>
+<h2 id='element-events-on-ready'>On Ready</h2><div class="highlight"><pre class="highlight tsx tab-tsx"><code><span class="nx">cardElement</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">ready</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="c1">// handle ready event </span>
+<span class="p">})</span>
+</code></pre></div>
+<p>This event is triggered when the element has rendered and user is able to start interacting with it.</p>
+<h2 id='element-events-on-change'>On Change</h2><div class="highlight"><pre class="highlight tsx tab-tsx"><code><span class="nx">cardElement</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">change</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">changeEvent</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">changeEvent</span><span class="p">.</span><span class="nx">complete</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// enable submit button  </span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="c1">// disable submit button</span>
+    <span class="c1">// present validation message</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+</code></pre></div>
+<p>This event is triggered whenever element&#39;s value(s) change. For example, if the user types data that doesn&#39;t change the state of a field between valid/invalid or empty/filled, you shouldn&#39;t expect the event to trigger.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>event</code></td>
+<td>true</td>
+<td><em>&quot;change&quot;</em></td>
+<td>The event type to listen to.</td>
+</tr>
+<tr>
+<td><code>handler</code></td>
+<td>true</td>
+<td><em>function</em></td>
+<td>Callback function to be called when the event is fired. Takes in a <a href="#element-events-on-change-changeevent">ChangeEvent</a>.</td>
+</tr>
+</tbody></table>
+<h3 id='element-events-on-change-changeevent'>ChangeEvent</h3><div class="highlight"><pre class="highlight tsx tab-tsx"><code><span class="p">{</span>
+  <span class="dl">"</span><span class="s2">complete</span><span class="dl">"</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">empty</span><span class="dl">"</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">errors</span><span class="dl">"</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{...},</span>
+    <span class="p">{...}</span>
+  <span class="p">],</span>
+  <span class="dl">"</span><span class="s2">cardBrand</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">american-express</span><span class="dl">"</span>
+<span class="p">}</span>
+</code></pre></div>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Eligible Elements</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>complete</code></td>
+<td><em>boolean</em></td>
+<td>All</td>
+<td>If the element value is well-formed and is ready to be submitted.</td>
+</tr>
+<tr>
+<td><code>empty</code></td>
+<td><em>boolean</em></td>
+<td>All</td>
+<td>Whether the element is empty. Multi-input Elements will be <code>empty</code> only if all inputs are.</td>
+</tr>
+<tr>
+<td><code>errors</code></td>
+<td><em>array</em></td>
+<td>All</td>
+<td>Array of <a href="#element-events-on-change-fielderror">FieldError</a>.</td>
+</tr>
+<tr>
+<td><code>cardBrand</code></td>
+<td><em>string</em></td>
+<td><a href="#element-types-card-element">card</a><br><a href="#element-types-card-number-element">cardNumber</a></td>
+<td>(Optional) The credit card <a href="#element-options-card-brands">brand</a> (e.g. <code>&#39;american-express&#39;</code>, <code>&#39;visa&#39;</code>, <code>&#39;unknown&#39;</code>). The value defaults to <code>&#39;unknown&#39;</code> until a card brand is recognized.</td>
+</tr>
+</tbody></table>
+<h3 id='element-events-on-change-fielderror'>FieldError</h3><div class="highlight"><pre class="highlight tsx tab-tsx"><code><span class="p">{</span>
+  <span class="dl">"</span><span class="s2">targetId</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">cardNumber</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">type</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">invalid</span><span class="dl">"</span>
+<span class="p">}</span>
+</code></pre></div>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>targetId</code></td>
+<td><em>string</em></td>
+<td>Input id that triggered the error. Values vary per <a href="#element-types">element type</a>.</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td><em>&quot;invalid&quot;</em> or <em>&quot;incomplete&quot;</em></td>
+<td>Type of the error.</td>
+</tr>
+</tbody></table>
+<h2 id='element-events-on-focus'>On Focus</h2><div class="highlight"><pre class="highlight tsx tab-tsx"><code><span class="nx">cardElement</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">focus</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">focusEvent</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+
+<span class="p">})</span>
+</code></pre></div>
+<p>Triggered when an element input is focused.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>event</code></td>
+<td>true</td>
+<td><em>&quot;focus&quot;</em></td>
+<td>The event type to listen to.</td>
+</tr>
+<tr>
+<td><code>handler</code></td>
+<td>true</td>
+<td><em>function</em></td>
+<td>Callback function to be called when the event is fired. Takes in a <a href="#element-events-on-focus-focusevent">FocusEvent</a>.</td>
+</tr>
+</tbody></table>
+<h3 id='element-events-on-focus-focusevent'>FocusEvent</h3><div class="highlight"><pre class="highlight tsx tab-tsx"><code><span class="p">{</span>
+  <span class="dl">"</span><span class="s2">targetId</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">cardNumber</span><span class="dl">"</span>  
+<span class="p">}</span>
+</code></pre></div>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>targetId</code></td>
+<td><em>string</em></td>
+<td>Input id that triggered the event. Values vary per <a href="#element-types">element type</a>.</td>
+</tr>
+</tbody></table>
+<h2 id='element-events-on-blur'>On Blur</h2><div class="highlight"><pre class="highlight tsx tab-tsx"><code><span class="nx">cardElement</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">blur</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">blurEvent</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+
+<span class="p">})</span>
+</code></pre></div>
+<p>Triggered when an element input focus is lost.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>event</code></td>
+<td>true</td>
+<td><em>&quot;blur&quot;</em></td>
+<td>The event type to listen to.</td>
+</tr>
+<tr>
+<td><code>handler</code></td>
+<td>true</td>
+<td><em>function</em></td>
+<td>Callback function to be called when the event is fired. Takes in a <a href="#element-events-on-blur-blurevent">BlurEvent</a>.</td>
+</tr>
+</tbody></table>
+<h3 id='element-events-on-blur-blurevent'>BlurEvent</h3><div class="highlight"><pre class="highlight tsx tab-tsx"><code><span class="p">{</span>
+  <span class="dl">"</span><span class="s2">targetId</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">cardNumber</span><span class="dl">"</span>  
+<span class="p">}</span>
+</code></pre></div>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>targetId</code></td>
+<td><em>string</em></td>
+<td>Input id that triggered the event. Values vary per <a href="#element-types">element type</a>.</td>
+</tr>
+</tbody></table>
+<h2 id='element-events-on-keydown'>On Keydown</h2><div class="highlight"><pre class="highlight tsx tab-tsx"><code><span class="nx">cardElement</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">keydown</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">keydownEvent</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+
+<span class="p">})</span>
+</code></pre></div>
+<p>Triggered when user hits a special key inside an element input.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>event</code></td>
+<td>true</td>
+<td><em>&quot;keydown&quot;</em></td>
+<td>The event type to listen to.</td>
+</tr>
+<tr>
+<td><code>handler</code></td>
+<td>true</td>
+<td><em>function</em></td>
+<td>Callback function to be called when the event is fired. Takes in a <a href="#element-events-on-keydown-keydownevent">KeydownEvent</a>.</td>
+</tr>
+</tbody></table>
+<h3 id='element-events-on-keydown-keydownevent'>KeydownEvent</h3><div class="highlight"><pre class="highlight tsx tab-tsx"><code><span class="p">{</span>
+  <span class="dl">"</span><span class="s2">targetId</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">cardNumber</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">key</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Enter</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">ctrlKey</span><span class="dl">"</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">altKey</span><span class="dl">"</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">shiftKey</span><span class="dl">"</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">metaKey</span><span class="dl">"</span><span class="p">:</span> <span class="kc">false</span>
+<span class="p">}</span>
+</code></pre></div>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>targetId</code></td>
+<td><em>string</em></td>
+<td>Input targetId that triggered the event. Values vary per <a href="#element-types">element type</a>.</td>
+</tr>
+<tr>
+<td><code>key</code></td>
+<td><em>Escape</em> or <em>Enter</em></td>
+<td>Key pressed by the user.</td>
+</tr>
+<tr>
+<td><code>ctrlKey</code></td>
+<td><em>boolean</em></td>
+<td>Flag indicating <a href="https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/ctrlKey" target="_blank"><code>control</code> key</a> was pressed when the event occurred.</td>
+</tr>
+<tr>
+<td><code>altKey</code></td>
+<td><em>boolean</em></td>
+<td>Flag indicating <a href="https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/altKey" target="_blank"><code>alt</code> key</a> was pressed when the event occurred.</td>
+</tr>
+<tr>
+<td><code>shiftKey</code></td>
+<td><em>boolean</em></td>
+<td>Flag indicating <a href="https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/shiftKey" target="_blank"><code>shift</code> key</a> was pressed when the event occurred.</td>
+</tr>
+<tr>
+<td><code>metaKey</code></td>
+<td><em>boolean</em></td>
+<td>Flag indicating <a href="https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/metaKey" target="_blank"><code>meta</code> key</a> was pressed when the event occurred.</td>
+</tr>
+</tbody></table>
+<h1 id='tokenization'>Tokenization</h1>
+<blockquote>
+<p>Create generic token</p>
+</blockquote>
+<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">tokens</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
+  <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">token</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">sensitiveData</span><span class="p">:</span> <span class="nx">sensitiveDataElement</span><span class="p">,</span>
+    <span class="na">nonSensitiveData</span><span class="p">:</span> <span class="dl">'</span><span class="s1">plainText</span><span class="dl">'</span><span class="p">,</span> <span class="c1">// see warning on plain text data</span>
+    <span class="na">otherData</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">someInteger</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span>
+      <span class="na">someBoolean</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="na">someOtherData</span><span class="p">:</span> <span class="p">[</span><span class="dl">'</span><span class="s1">plainText1</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">plainText2</span><span class="dl">'</span><span class="p">],</span>
+  <span class="p">},</span>
+  <span class="na">metadata</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">nonSensitiveField</span><span class="p">:</span> <span class="dl">'</span><span class="s1">nonSensitiveValue</span><span class="dl">'</span>
+  <span class="p">}</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">((</span><span class="nx">token</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">token</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span> <span class="c1">// token to store</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">token</span><span class="p">));</span> <span class="c1">// full response</span>
+<span class="p">});</span>
+</code></pre></div>
+<blockquote>
+<p>Create card token</p>
+</blockquote>
+<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">tokens</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
+  <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">card</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">data</span><span class="p">:</span> <span class="nx">cardElement</span><span class="p">,</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">((</span><span class="nx">token</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">token</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span> <span class="c1">// token to store</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">token</span><span class="p">.</span><span class="nx">data</span><span class="p">));</span> <span class="c1">// redacted card data</span>
+<span class="p">});</span>
+</code></pre></div>
+<blockquote>
+<p>Create bank token</p>
+</blockquote>
+<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">tokens</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
+  <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">bank</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">routingNumber</span><span class="p">:</span> <span class="nx">routingNumberElement</span><span class="p">,</span>
+    <span class="na">accountNumber</span><span class="p">:</span> <span class="nx">accountNumberElement</span><span class="p">,</span>
+  <span class="p">}</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">((</span><span class="nx">token</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">token</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span> <span class="c1">// token to store</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">token</span><span class="p">.</span><span class="nx">data</span><span class="p">));</span> <span class="c1">// redacted bank data</span>
+<span class="p">});</span>
+</code></pre></div>
+<blockquote>
+<p>Tokenize data</p>
+</blockquote>
+<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">tokenize</span><span class="p">({</span>
+  <span class="na">card1</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">card</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">data</span><span class="p">:</span> <span class="nx">cardElement</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="na">card2</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">card</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">number</span><span class="p">:</span> <span class="nx">cardNumberElement</span><span class="p">,</span>
+      <span class="na">expiration_month</span><span class="p">:</span> <span class="nx">cardExpirationDateElement</span><span class="p">.</span><span class="nx">month</span><span class="p">(),</span>
+      <span class="na">expiration_year</span><span class="p">:</span> <span class="nx">cardExpirationDateElement</span><span class="p">.</span><span class="nx">year</span><span class="p">(),</span>
+      <span class="na">cvc</span><span class="p">:</span> <span class="nx">cardVerificationCodeElement</span>
+    <span class="p">},</span>
+  <span class="p">},</span>
+  <span class="na">sensitiveData</span><span class="p">:</span> <span class="nx">sensitiveDataElement</span><span class="p">,</span>
+  <span class="na">nonSensitiveData</span><span class="p">:</span> <span class="dl">'</span><span class="s1">plainText</span><span class="dl">'</span><span class="p">,</span> <span class="c1">// see warning on plain text data</span>
+  <span class="na">otherData</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">someInteger</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span>
+    <span class="na">someBoolean</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="na">someOtherData</span><span class="p">:</span> <span class="p">[</span><span class="dl">'</span><span class="s1">plainText1</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">plainText2</span><span class="dl">'</span><span class="p">],</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">((</span><span class="nx">tokens</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">tokens</span><span class="p">.</span><span class="nx">card1</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span> <span class="nx">tokens</span><span class="p">.</span><span class="nx">card2</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span> <span class="nx">tokens</span><span class="p">.</span><span class="nx">sensitiveData</span><span class="p">);</span> <span class="c1">// token to store</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">tokens</span><span class="p">));</span> <span class="c1">// full response</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>Elements&#39; values can be securely tokenized using <a href="/#tokens-create-token"><code>tokens.create</code></a> and <a href="/#tokenize"><code>tokenize</code></a>
+services. To do that, simply pass the Element instance (or one of its data parsing methods) in the payload.</p>
+
+<p>You can fetch this same data later with <a href="/api-reference#tokens-get-a-token">Get a Token API</a></p>
+
+<aside class="notice">
+  <span>Notice that the actual input data never leaves the element (iframe) other than to hit our secure API endpoints.</span>
+</aside>
+
+<aside class="warning">
+  <span>Note that when submitting <code>plainText</code> values, data will be HTML encoded before storage for security reasons.
+</aside>
+<h3 id='tokenization-on-keydown-data-parsing'>Data Parsing</h3>
+<p>The following methods can be called to parse the Element value for proper tokenization. </p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Resulting Type</th>
+<th>Eligible Elements</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>month</code></td>
+<td><em>number</em></td>
+<td><a href="#element-types-card-expiration-date-element">cardExpirationDate</a></td>
+<td>Resolves to the one-based month value of the input date</td>
+</tr>
+<tr>
+<td><code>year</code></td>
+<td><em>number</em></td>
+<td><a href="#element-types-card-expiration-date-element">cardExpirationDate</a></td>
+<td>Resolves to the four-digit year value of the input date</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+  <span>If you need more Elements' data parsing methods, don't hesitate to <a href="mailto:support@basistheory.com?subject=Elements Data Parsing Feature Request">reach out</a>.</span>
+</aside>
+<h2 id='tokenization-errors'>Errors</h2>
+<p>Elements services could throw an error based on client-side validations or if the server rejects the request.</p>
+<h3 id='tokenization-errors-basistheoryvalidationerror'>BasisTheoryValidationError</h3>
+<blockquote>
+<p>BasisTheoryValidationError</p>
+</blockquote>
+<div class="highlight"><pre class="highlight tsx tab-tsx"><code><span class="p">{</span>
+  <span class="na">details</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">card1</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">number</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">invalid</span><span class="dl">'</span>
+      <span class="p">},</span>
+      <span class="na">cvc</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">incomplete</span><span class="dl">'</span>
+      <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="na">card2</span><span class="p">:</span> <span class="p">{</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="na">validation</span><span class="p">:</span> <span class="p">[]</span> <span class="c1">// deprecated</span>
+<span class="p">}</span>
+</code></pre></div>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>name</code></td>
+<td>string</td>
+<td>Error name, always <code>&#39;BasisTheoryValidationError&#39;</code>.</td>
+</tr>
+<tr>
+<td><code>details</code></td>
+<td><em>object</em></td>
+<td>Maps payload properties to their respective element&#39;s validation problems.</td>
+</tr>
+<tr>
+<td><del><code>validation</code></del></td>
+<td><em>array</em></td>
+<td><a href="#deprecations-deprecated-features">Deprecated in favor of details</a>. Array of <a href="#element-events-on-change-fielderror">FieldError</a>, in case of client-side error.</td>
+</tr>
+</tbody></table>
+<h3 id='tokenization-errors-basistheoryapierror'>BasisTheoryApiError</h3>
+<blockquote>
+<p>BasisTheoryApiError</p>
+</blockquote>
+<div class="highlight"><pre class="highlight tsx tab-tsx"><code><span class="p">{</span>
+  <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
+    <span class="c1">// API response body</span>
+  <span class="p">},</span>
+  <span class="na">status</span><span class="p">:</span> <span class="mi">400</span>
+<span class="p">}</span>
+</code></pre></div>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>name</code></td>
+<td>string</td>
+<td>Error name, always <code>&#39;BasisTheoryApiError&#39;</code>.</td>
+</tr>
+<tr>
+<td><code>data</code></td>
+<td><em>object</em></td>
+<td>Response body <a href="/#errors">sent from the server</a>.</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td><em>number</em></td>
+<td>Response HTTP status.</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+  <span>Error <code>name</code> property may be used instead of checking its instance type.</span>
+</aside>
+
+<blockquote>
+<p>Handling services errors</p>
+</blockquote>
+<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="k">import</span> <span class="p">{</span>
+  <span class="nx">BasisTheoryApiError</span><span class="p">,</span>
+  <span class="nx">BasisTheoryValidationError</span>
+<span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@basis-theory/basis-theory-js/common</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">tokenize</span><span class="p">({</span>
+  <span class="na">card1</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">card</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">data</span><span class="p">:</span> <span class="nx">cardElement1</span>
+  <span class="p">},</span>
+  <span class="na">card2</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">card</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">data</span><span class="p">:</span> <span class="nx">cardElement2</span>
+  <span class="p">},</span>
+  <span class="na">ssn</span><span class="p">:</span> <span class="nx">textElement</span>
+<span class="p">}).</span><span class="k">catch</span><span class="p">((</span><span class="nx">error</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">error</span> <span class="k">instanceof</span> <span class="nx">BasisTheoryValidationError</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// check error details</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">error</span> <span class="k">instanceof</span> <span class="nx">BasisTheoryApiError</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// check error data or status</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div><h1 id='deprecations'>Deprecations</h1><h2 id='deprecations-deprecated-services'>Deprecated Services</h2>
+<p>The following table lists deprecated services and their respective shutdown date.</p>
+
+<table><thead>
+<tr>
+<th>Service</th>
+<th>Deprecated</th>
+<th>Shutdown Date</th>
+<th>Details</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>storeCreditCard</code></td>
+<td>December 10, 2021</td>
+<td>April 22, 2022</td>
+<td><code>storeCreditCard</code> service has been removed. Instead, please use <a href="#tokenization">Tokenization Services</a>.</td>
+</tr>
+<tr>
+<td><code>atomicCards</code></td>
+<td>April 22, 2022</td>
+<td>July 22, 2022</td>
+<td><code>atomicCards</code> service will be removed in an upcoming release. Instead, please use <a href="#tokenization">Tokenization Services</a>.</td>
+</tr>
+<tr>
+<td><code>atomicBanks</code></td>
+<td>April 22, 2022</td>
+<td>July 22, 2022</td>
+<td><code>atomicBanks</code> service will be removed in an upcoming release. Instead, please use <a href="#tokenization">Tokenization Services</a>.</td>
+</tr>
+</tbody></table>
+<h2 id='deprecations-deprecated-features'>Deprecated Features</h2>
+<p>The following table lists deprecated features and their respective shutdown date.</p>
+
+<table><thead>
+<tr>
+<th>Feature</th>
+<th>Deprecated</th>
+<th>Shutdown Date</th>
+<th>Details</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>validation</code> property in error</td>
+<td>April 22, 2022</td>
+<td>July 22, 2022</td>
+<td><code>validation</code> property in errors will be removed in an upcoming release. Instead, please use <a href="#tokenization-errors">details</a></td>
+</tr>
+</tbody></table>
+
+        <h1 id='react-package'>React Package</h1>
+<blockquote>
+<p>NPM</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>npm <span class="nb">install</span> <span class="nt">--save</span> @basis-theory/basis-theory-react
+</code></pre></div>
+<blockquote>
+<p>Yarn</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>yarn add @basis-theory/basis-theory-react
+</code></pre></div>
+<aside class="header-intro-box">
+    <span class="expanded-text">
+      <p><strong>Basis Theory React</strong> is an <a href="https://github.com/Basis-Theory/basis-theory-react" target="_blank">open source</a> <a href="https://www.npmjs.com/package/@basis-theory/basis-theory-react" target="_blank">package</a> designed to allow you to easily integrate Basis Theory SDK and Elements features in your React solution.</p>
+      <p>
+        This section provides specific documentation for how to initialize a <code>BasisTheory</code> instance using <a href="https://reactjs.org/docs/hooks-intro.html" target="_blank">Hooks</a>, pass it to your component tree with <a href="https://reactjs.org/docs/context.html" target="_blank">Context</a> and then declare Elements <a href="https://reactjs.org/docs/components-and-props.html" target="_blank">Components</a> in your code use the underlying Element.
+      </p>      
+      <p>
+        Creating, mounting, updating and unmounting Elements is as simple as declaring them as a typical React Components and passing props.
+      </p>
+    </span>
+    <img src="../images/react-bt-37b2690a.svg"/>
+</aside>
+
+<aside class="notice">
+  <span>You don't need to install <code>@basis-theory/basis-theory-js</code> separately when using our React package, unless you need to direct import a capability from it.</span>
+</aside>
+<h1 id='usebasistheory'>useBasisTheory</h1>
+<p>The <code>useBasisTheory</code> <a href="https://reactjs.org/docs/hooks-intro.html" target="_blank">hook</a> makes it easy to initialize the SDK or retrieve a previously initialized instance of it.</p>
+
+<p>It returns an object containing:</p>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>bt</code></td>
+<td><em>BasisTheoryReact</em> &#124; <em>undefined</em></td>
+<td><a href="#basistheoryreact"><code>BasisTheoryReact</code></a> instance. <br><i>Note: this stays <code>undefined</code> during <code>BasisTheory</code> initialization, so you don&#39;t have to deal with <code>Promise</code> handling in your components code.</i></td>
+</tr>
+<tr>
+<td><code>error</code></td>
+<td><em>any</em> &#124; <em>undefined</em></td>
+<td>Holds any initialization errors (e.g. bad API key).</td>
+</tr>
+</tbody></table>
+<h2 id='usebasistheory-initialize'>Initialize</h2><div class="highlight"><pre class="highlight tsx tab-tsx"><code><span class="k">import</span> <span class="p">{</span> 
+  <span class="nx">useBasisTheory</span>
+<span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@basis-theory/basis-theory-react</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">App</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="c1">// creates a new instance of BasisTheory class</span>
+  <span class="kd">const</span> <span class="p">{</span> <span class="nx">bt</span><span class="p">,</span> <span class="nx">error</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">useBasisTheory</span><span class="p">(</span><span class="dl">'</span><span class="s1">test_1234567890</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span> <span class="na">elements</span><span class="p">:</span> <span class="kc">true</span> <span class="p">});</span>
+
+  <span class="c1">// instance stays undefined during initialization</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">bt</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// able to call BasisTheory methods</span>
+  <span class="p">}</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// initialization error</span>
+  <span class="p">}</span>
+
+  <span class="k">return</span> <span class="p">&lt;</span><span class="nc">MyComponent</span> <span class="p">/&gt;;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Calling the <code>useBasisTheory</code> hook with parameters creates a new instance of <a href="#basistheoryreact"><code>BasisTheoryReact</code></a> class and initializes it automatically.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>apiKey</code></td>
+<td>true</td>
+<td><em>string</em></td>
+<td>The API Key used to identify an <a href="/api-reference#applications">Application</a>.</td>
+</tr>
+<tr>
+<td><code>options</code></td>
+<td>false</td>
+<td><em>BasisTheoryInitOptions</em></td>
+<td><a href="#initialize-permission-types-basis-theory-init-options">Options</a> for initializing the <code>BasisTheoryReact</code> instance.</td>
+</tr>
+</tbody></table>
+
+<!-- Options link above looks weird because of how Slate generates them -->
+
+<aside class="notice">
+  <span>Make sure your API key has an <code>Elements</code> or <code>Client-side Application</code> <a href="/api-reference#applications-application-types">Application Type</a>.</span>
+</aside>
+<h2 id='usebasistheory-retrieve-from-context'>Retrieve from Context</h2>
+<p>Calling the <code>useBasisTheory</code> hook with no parameters will retrieve the  <a href="#basistheoryreact"><code>BasisTheoryReact</code></a> instance from the <code>Context</code>. See <a href="#basistheoryprovider">BasisTheoryProvider</a>.</p>
+<h1 id='basistheoryprovider'>BasisTheoryProvider</h1><div class="highlight"><pre class="highlight tsx tab-tsx"><code><span class="k">import</span> <span class="p">{</span> 
+  <span class="nx">BasisTheoryProvider</span><span class="p">,</span>
+  <span class="nx">TextElement</span><span class="p">,</span>
+  <span class="nx">useBasisTheory</span>
+<span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@basis-theory/basis-theory-react</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">App</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="c1">// creates a new instance of BasisTheory class</span>
+  <span class="kd">const</span> <span class="p">{</span> <span class="nx">bt</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">useBasisTheory</span><span class="p">(</span><span class="dl">'</span><span class="s1">test_1234567890</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span> <span class="na">elements</span><span class="p">:</span> <span class="kc">true</span> <span class="p">});</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="nx">bt</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// able to call BasisTheory methods</span>
+  <span class="p">}</span>
+
+  <span class="k">return</span> <span class="p">&lt;</span><span class="nc">BasisTheoryProvider</span> <span class="na">bt</span><span class="p">=</span><span class="si">{</span><span class="nx">bt</span><span class="si">}</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nc">MyComponent</span> <span class="p">/&gt;</span>
+    <span class="p">&lt;/</span><span class="nc">BasisTheoryProvider</span><span class="p">&gt;;</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">MyComponent</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="c1">// calling this hook with no attributes grabs the instance from Context  </span>
+  <span class="kd">const</span> <span class="p">{</span> <span class="nx">bt</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">useBasisTheory</span><span class="p">();</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="nx">bt</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// able to call BasisTheory methods</span>
+  <span class="p">}</span>
+
+  <span class="k">return</span> <span class="p">&lt;</span><span class="nc">TextElement</span> <span class="na">id</span><span class="p">=</span><span class="s">"myInput"</span> <span class="p">/&gt;</span> <span class="p">;</span> <span class="c1">// Element will also grab it from the Context</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>This <a href="https://reactjs.org/docs/context.html" target="_blank">Context Provider</a> shares a <a href="#basistheoryreact"><code>BasisTheoryReact</code></a> instance to your component tree, making it available for Basis Theory Elements or other custom components. </p>
+
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>bt</code></td>
+<td>false</td>
+<td><em>BasisTheoryReact</em></td>
+<td><a href="#basistheoryreact">Instance</a> to be provided in the context. <br><i>Note: this is not required because initialization happens asynchronously. See <a href="#usebasistheory"><code>useBasisTheory</code></a>.</i></td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+  <span>Elements will prioritize the <code>BasisTheory</code> instance passed to it's own <code>bt</code> property over an instance passed in to a parent <code>BasisTheoryProvider</code>.</span>
+</aside>
+<h1 id='cardelement'>CardElement</h1>
+<blockquote>
+<p>Using <code>BasisTheoryProvider</code></p>
+</blockquote>
+<div class="highlight"><pre class="highlight tsx tab-tsx"><code><span class="k">import</span> <span class="p">{</span>
+  <span class="nx">BasisTheoryProvider</span><span class="p">,</span>
+  <span class="nx">CardElement</span><span class="p">,</span>
+  <span class="nx">useBasisTheory</span>
+<span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@basis-theory/basis-theory-react</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">App</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="c1">// creates a new instance of BasisTheory class</span>
+  <span class="kd">const</span> <span class="p">{</span> <span class="nx">bt</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">useBasisTheory</span><span class="p">(</span><span class="dl">'</span><span class="s1">test_1234567890</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span> <span class="na">elements</span><span class="p">:</span> <span class="kc">true</span> <span class="p">});</span>
+
+  <span class="k">return</span> <span class="p">&lt;</span><span class="nc">BasisTheoryProvider</span> <span class="na">bt</span><span class="p">=</span><span class="si">{</span><span class="nx">bt</span><span class="si">}</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nc">MyComponent</span> <span class="p">/&gt;</span>
+  <span class="p">&lt;/</span><span class="nc">BasisTheoryProvider</span><span class="p">&gt;;</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">MyComponent</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">&lt;</span><span class="nc">CardElement</span> <span class="na">id</span><span class="p">=</span><span class="s">"myCard"</span> <span class="p">/&gt;</span> <span class="p">;</span> <span class="c1">// Element will grab instance from the Context</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<p>Using <code>bt</code> property</p>
+</blockquote>
+<div class="highlight"><pre class="highlight tsx tab-tsx"><code><span class="k">import</span> <span class="p">{</span>
+  <span class="nx">CardElement</span><span class="p">,</span>
+  <span class="nx">useBasisTheory</span>
+<span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@basis-theory/basis-theory-react</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">MyComponent</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="c1">// creates a new instance of BasisTheory class</span>
+  <span class="kd">const</span> <span class="p">{</span> <span class="nx">bt</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">useBasisTheory</span><span class="p">(</span><span class="dl">'</span><span class="s1">test_1234567890</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span> <span class="na">elements</span><span class="p">:</span> <span class="kc">true</span> <span class="p">});</span>
+
+  <span class="k">return</span> <span class="p">&lt;</span><span class="nc">CardElement</span> <span class="na">id</span><span class="p">=</span><span class="s">"myCard"</span> <span class="na">bt</span><span class="p">=</span><span class="si">{</span><span class="nx">bt</span><span class="si">}</span> <span class="p">/&gt;</span> <span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>The <code>CardElement</code> <a href="https://reactjs.org/docs/components-and-props.html" target="_blank">component</a> features a full credit card form, wrapping the <a href="#element-types-card-element">card element type</a> functionality and taking care of the React lifecycle.</p>
+
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Required</th>
+<th>Type</th>
+<th>Updatable</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>true</td>
+<td><em>string</em></td>
+<td>false</td>
+<td>String identifier used to retrieve the Element instance for tokenization.</td>
+</tr>
+<tr>
+<td><code>bt</code></td>
+<td>false</td>
+<td><em>BasisTheoryReact</em></td>
+<td>false</td>
+<td><a href="#basistheoryreact">Instance</a> used by the Element. <br><i>Note: this is not required because Elements are capable of consuming the instance from Context. See <a href="#basistheoryprovider"><code>BasisTheoryProvider</code></a>.</i></td>
+</tr>
+<tr>
+<td><code>style</code></td>
+<td>false</td>
+<td><em>object</em></td>
+<td>true</td>
+<td><a href="#element-options-style">Object</a> used to customize the element appearance</td>
+</tr>
+<tr>
+<td><code>disabled</code></td>
+<td>false</td>
+<td><em>boolean</em></td>
+<td>true</td>
+<td>Boolean used to set the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled">disabled attribute</a> of the input(s)</td>
+</tr>
+<tr>
+<td><code>onReady</code></td>
+<td>false</td>
+<td><em>function</em></td>
+<td>true</td>
+<td>Event Listener. See <a href="#element-events-on-ready">On Ready</a></td>
+</tr>
+<tr>
+<td><code>onChange</code></td>
+<td>false</td>
+<td><em>function</em></td>
+<td>true</td>
+<td>Event Listener. See <a href="#element-events-on-change">On Change</a></td>
+</tr>
+<tr>
+<td><code>onFocus</code></td>
+<td>false</td>
+<td><em>function</em></td>
+<td>true</td>
+<td>Event Listener. See <a href="#element-events-on-focus">On Focus</a></td>
+</tr>
+<tr>
+<td><code>onBlur</code></td>
+<td>false</td>
+<td><em>function</em></td>
+<td>true</td>
+<td>Event Listener. See <a href="#element-events-on-blur">On Blur</a></td>
+</tr>
+<tr>
+<td><code>onKeyDown</code></td>
+<td>false</td>
+<td><em>function</em></td>
+<td>true</td>
+<td>Event Listener. See <a href="#element-events-on-keydown">On Keydown</a></td>
+</tr>
+</tbody></table>
 <h1 id='textelement'>TextElement</h1>
 <blockquote>
 <p>Using <code>BasisTheoryProvider</code></p>
 </blockquote>
-<div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="k">import</span> <span class="p">{</span>
+<div class="highlight"><pre class="highlight tsx tab-tsx"><code><span class="k">import</span> <span class="p">{</span>
   <span class="nx">BasisTheoryProvider</span><span class="p">,</span>
   <span class="nx">TextElement</span><span class="p">,</span>
   <span class="nx">useBasisTheory</span>
@@ -2117,7 +2222,7 @@ attribute, in this case, will modify the user input to remove <code>(</code>, <c
 <blockquote>
 <p>Using <code>bt</code> property</p>
 </blockquote>
-<div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="k">import</span> <span class="p">{</span>
+<div class="highlight"><pre class="highlight tsx tab-tsx"><code><span class="k">import</span> <span class="p">{</span>
   <span class="nx">TextElement</span><span class="p">,</span>
   <span class="nx">useBasisTheory</span>
 <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@basis-theory/basis-theory-react</span><span class="dl">'</span><span class="p">;</span>
@@ -2129,7 +2234,7 @@ attribute, in this case, will modify the user input to remove <code>(</code>, <c
   <span class="k">return</span> <span class="p">&lt;</span><span class="nc">TextElement</span> <span class="na">id</span><span class="p">=</span><span class="s">"myInput"</span> <span class="na">bt</span><span class="p">=</span><span class="si">{</span><span class="nx">bt</span><span class="si">}</span> <span class="p">/&gt;</span> <span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<p><code>TextElement</code> <a href="https://reactjs.org/docs/components-and-props.html" target="_blank">component</a> features a regular text input for collecting any input data, by wrapping the <a href="#element-types-text-element">text element type</a> functionality and taking care of the React lifecycle.</p>
+<p>The <code>TextElement</code> <a href="https://reactjs.org/docs/components-and-props.html" target="_blank">component</a> features a regular text input for collecting any input data, by wrapping the <a href="#element-types-text-element">text element type</a> functionality and taking care of the React lifecycle.</p>
 
 <table><thead>
 <tr>
@@ -2157,9 +2262,9 @@ attribute, in this case, will modify the user input to remove <code>(</code>, <c
 <tr>
 <td><code>style</code></td>
 <td>false</td>
-<td><em>ElementStyle</em></td>
+<td><em>object</em></td>
 <td>true</td>
-<td><a href="#element-style">Object</a> used to customize the element appearance</td>
+<td><a href="#element-options-style">Object</a> used to customize the element appearance</td>
 </tr>
 <tr>
 <td><code>disabled</code></td>
@@ -2171,16 +2276,16 @@ attribute, in this case, will modify the user input to remove <code>(</code>, <c
 <tr>
 <td><code>mask</code></td>
 <td>false</td>
-<td><em>ElementMask</em></td>
+<td><em>array</em></td>
 <td>false</td>
-<td><a href="#element-mask">Array</a> used to restrict and fill user input using regex and static strings</td>
+<td><a href="#element-options-mask">Array</a> used to restrict and fill user input using regex and static strings</td>
 </tr>
 <tr>
 <td><code>transform</code></td>
 <td>false</td>
-<td><em>ElementTransform</em></td>
+<td><em>RegExp</em></td>
 <td>true</td>
-<td><code>RegExp</code> object or <a href="#element-transform">array</a> used to modify user input before sending input to any <a href="#elements-services">services</a></td>
+<td><code>RegExp</code> object or <a href="#element-options-transform">array</a> used to modify user input before <a href="#tokenization">tokenization</a></td>
 </tr>
 <tr>
 <td><code>placeholder</code></td>
@@ -2239,9 +2344,404 @@ attribute, in this case, will modify the user input to remove <code>(</code>, <c
 <td>Event listener. See <a href="#element-events-on-keydown">On Keydown</a></td>
 </tr>
 </tbody></table>
+<h1 id='cardnumberelement'>CardNumberElement</h1>
+<blockquote>
+<p>Using <code>BasisTheoryProvider</code></p>
+</blockquote>
+<div class="highlight"><pre class="highlight tsx tab-tsx"><code><span class="k">import</span> <span class="p">{</span>
+  <span class="nx">BasisTheoryProvider</span><span class="p">,</span>
+  <span class="nx">CardNumberElement</span><span class="p">,</span>
+  <span class="nx">useBasisTheory</span>
+<span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@basis-theory/basis-theory-react</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">App</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="c1">// creates a new instance of BasisTheory class</span>
+  <span class="kd">const</span> <span class="p">{</span> <span class="nx">bt</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">useBasisTheory</span><span class="p">(</span><span class="dl">'</span><span class="s1">test_1234567890</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span> <span class="na">elements</span><span class="p">:</span> <span class="kc">true</span> <span class="p">});</span>
+
+  <span class="k">return</span> <span class="p">&lt;</span><span class="nc">BasisTheoryProvider</span> <span class="na">bt</span><span class="p">=</span><span class="si">{</span><span class="nx">bt</span><span class="si">}</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nc">MyComponent</span> <span class="p">/&gt;</span>
+  <span class="p">&lt;/</span><span class="nc">BasisTheoryProvider</span><span class="p">&gt;;</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">MyComponent</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">&lt;</span><span class="nc">CardNumberElement</span> <span class="na">id</span><span class="p">=</span><span class="s">"cardNumber"</span> <span class="p">/&gt;</span> <span class="p">;</span> <span class="c1">// Element will grab instance from the Context</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<p>Using <code>bt</code> property</p>
+</blockquote>
+<div class="highlight"><pre class="highlight tsx tab-tsx"><code><span class="k">import</span> <span class="p">{</span>
+  <span class="nx">CardNumberElement</span><span class="p">,</span>
+  <span class="nx">useBasisTheory</span>
+<span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@basis-theory/basis-theory-react</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">MyComponent</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="c1">// creates a new instance of BasisTheory class</span>
+  <span class="kd">const</span> <span class="p">{</span> <span class="nx">bt</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">useBasisTheory</span><span class="p">(</span><span class="dl">'</span><span class="s1">test_1234567890</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span> <span class="na">elements</span><span class="p">:</span> <span class="kc">true</span> <span class="p">});</span>
+
+  <span class="k">return</span> <span class="p">&lt;</span><span class="nc">CardNumberElement</span> <span class="na">id</span><span class="p">=</span><span class="s">"cardNumber"</span> <span class="na">bt</span><span class="p">=</span><span class="si">{</span><span class="nx">bt</span><span class="si">}</span> <span class="p">/&gt;</span> <span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>The <code>CardNumberElement</code> <a href="https://reactjs.org/docs/components-and-props.html" target="_blank">component</a> features a card number input, by wrapping the <a href="#element-types-card-number-element"><code>cardNumber</code> element type</a> functionality and taking care of the React lifecycle.</p>
+
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Required</th>
+<th>Type</th>
+<th>Updatable</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>true</td>
+<td><em>string</em></td>
+<td>false</td>
+<td>String identifier used to retrieve the Element instance for tokenization.<br><i>Note: This is passed through to the <code>targetId</code> option.</i></td>
+</tr>
+<tr>
+<td><code>bt</code></td>
+<td>false</td>
+<td><em>BasisTheoryReact</em></td>
+<td>false</td>
+<td><a href="#basistheoryreact">Instance</a> used by the Element. <br><i>Note: this is not required because Elements are capable of consuming the instance from Context. See <a href="#basistheoryprovider"><code>BasisTheoryProvider</code></a>.</i></td>
+</tr>
+<tr>
+<td><code>style</code></td>
+<td>false</td>
+<td><em>object</em></td>
+<td>true</td>
+<td><a href="#element-options-style">Object</a> used to customize the element appearance</td>
+</tr>
+<tr>
+<td><code>disabled</code></td>
+<td>false</td>
+<td><em>boolean</em></td>
+<td>true</td>
+<td>Boolean used to set the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled">disabled attribute</a> of the input(s)</td>
+</tr>
+<tr>
+<td><code>iconPosition</code></td>
+<td>false</td>
+<td><em>string</em></td>
+<td>true</td>
+<td>String used to determine the position of the card brand icon. Expected values are: <code>left</code> (default), <code>right</code> or <code>none</code>.</td>
+</tr>
+<tr>
+<td><code>placeholder</code></td>
+<td>false</td>
+<td><em>string</em></td>
+<td>true</td>
+<td>String used to customize the <a href="https://developer.mozilla.org/docs/Web/HTML/Element/input#attr-placeholder">placeholder attribute</a> of the input</td>
+</tr>
+<tr>
+<td><code>aria-label</code></td>
+<td>false</td>
+<td><em>string</em></td>
+<td>true</td>
+<td>String used to customize the <a href="https://developer.mozilla.org/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-label_attribute">aria-label attribute</a> of the input</td>
+</tr>
+<tr>
+<td><code>onReady</code></td>
+<td>false</td>
+<td><em>function</em></td>
+<td>true</td>
+<td>Event listener. See <a href="#element-events-on-ready">On Ready</a></td>
+</tr>
+<tr>
+<td><code>onChange</code></td>
+<td>false</td>
+<td><em>function</em></td>
+<td>true</td>
+<td>Event listener. See <a href="#element-events-on-change">On Change</a></td>
+</tr>
+<tr>
+<td><code>onFocus</code></td>
+<td>false</td>
+<td><em>function</em></td>
+<td>true</td>
+<td>Event listener. See <a href="#element-events-on-focus">On Focus</a></td>
+</tr>
+<tr>
+<td><code>onBlur</code></td>
+<td>false</td>
+<td><em>function</em></td>
+<td>true</td>
+<td>Event listener. See <a href="#element-events-on-blur">On Blur</a></td>
+</tr>
+<tr>
+<td><code>onKeyDown</code></td>
+<td>false</td>
+<td><em>function</em></td>
+<td>true</td>
+<td>Event listener. See <a href="#element-events-on-keydown">On Keydown</a></td>
+</tr>
+</tbody></table>
+<h1 id='cardexpirationdateelement'>CardExpirationDateElement</h1>
+<blockquote>
+<p>Using <code>BasisTheoryProvider</code></p>
+</blockquote>
+<div class="highlight"><pre class="highlight tsx tab-tsx"><code><span class="k">import</span> <span class="p">{</span>
+  <span class="nx">BasisTheoryProvider</span><span class="p">,</span>
+  <span class="nx">CardExpirationDateElement</span><span class="p">,</span>
+  <span class="nx">useBasisTheory</span>
+<span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@basis-theory/basis-theory-react</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">App</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="c1">// creates a new instance of BasisTheory class</span>
+  <span class="kd">const</span> <span class="p">{</span> <span class="nx">bt</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">useBasisTheory</span><span class="p">(</span><span class="dl">'</span><span class="s1">test_1234567890</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span> <span class="na">elements</span><span class="p">:</span> <span class="kc">true</span> <span class="p">});</span>
+
+  <span class="k">return</span> <span class="p">&lt;</span><span class="nc">BasisTheoryProvider</span> <span class="na">bt</span><span class="p">=</span><span class="si">{</span><span class="nx">bt</span><span class="si">}</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nc">MyComponent</span> <span class="p">/&gt;</span>
+  <span class="p">&lt;/</span><span class="nc">BasisTheoryProvider</span><span class="p">&gt;;</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">MyComponent</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">&lt;</span><span class="nc">CardExpirationDateElement</span> <span class="na">id</span><span class="p">=</span><span class="s">"cardExpirationDate"</span> <span class="p">/&gt;</span> <span class="p">;</span> <span class="c1">// Element will grab instance from the Context</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<p>Using <code>bt</code> property</p>
+</blockquote>
+<div class="highlight"><pre class="highlight tsx tab-tsx"><code><span class="k">import</span> <span class="p">{</span>
+  <span class="nx">CardExpirationDateElement</span><span class="p">,</span>
+  <span class="nx">useBasisTheory</span>
+<span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@basis-theory/basis-theory-react</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">MyComponent</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="c1">// creates a new instance of BasisTheory class</span>
+  <span class="kd">const</span> <span class="p">{</span> <span class="nx">bt</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">useBasisTheory</span><span class="p">(</span><span class="dl">'</span><span class="s1">test_1234567890</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span> <span class="na">elements</span><span class="p">:</span> <span class="kc">true</span> <span class="p">});</span>
+
+  <span class="k">return</span> <span class="p">&lt;</span><span class="nc">CardExpirationDateElement</span> <span class="na">id</span><span class="p">=</span><span class="s">"cardExpirationDate"</span> <span class="na">bt</span><span class="p">=</span><span class="si">{</span><span class="nx">bt</span><span class="si">}</span> <span class="p">/&gt;</span> <span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>The <code>CardExpirationDateElement</code> <a href="https://reactjs.org/docs/components-and-props.html" target="_blank">component</a> features a card expiration date input, by wrapping the <a href="#element-types-card-expiration-date-element"><code>cardExpirationDate</code> element type</a> functionality and taking care of the React lifecycle.</p>
+
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Required</th>
+<th>Type</th>
+<th>Updatable</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>true</td>
+<td><em>string</em></td>
+<td>false</td>
+<td>String identifier used to retrieve the Element instance for tokenization.<br><i>Note: This is passed through to the <code>targetId</code> option.</i></td>
+</tr>
+<tr>
+<td><code>bt</code></td>
+<td>false</td>
+<td><em>BasisTheoryReact</em></td>
+<td>false</td>
+<td><a href="#basistheoryreact">Instance</a> used by the Element. <br><i>Note: this is not required because Elements are capable of consuming the instance from Context. See <a href="#basistheoryprovider"><code>BasisTheoryProvider</code></a>.</i></td>
+</tr>
+<tr>
+<td><code>style</code></td>
+<td>false</td>
+<td><em>object</em></td>
+<td>true</td>
+<td><a href="#element-options-style">Object</a> used to customize the element appearance</td>
+</tr>
+<tr>
+<td><code>disabled</code></td>
+<td>false</td>
+<td><em>boolean</em></td>
+<td>true</td>
+<td>Boolean used to set the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled">disabled attribute</a> of the input(s)</td>
+</tr>
+<tr>
+<td><code>placeholder</code></td>
+<td>false</td>
+<td><em>string</em></td>
+<td>true</td>
+<td>String used to customize the <a href="https://developer.mozilla.org/docs/Web/HTML/Element/input#attr-placeholder">placeholder attribute</a> of the input</td>
+</tr>
+<tr>
+<td><code>aria-label</code></td>
+<td>false</td>
+<td><em>string</em></td>
+<td>true</td>
+<td>String used to customize the <a href="https://developer.mozilla.org/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-label_attribute">aria-label attribute</a> of the input</td>
+</tr>
+<tr>
+<td><code>onReady</code></td>
+<td>false</td>
+<td><em>function</em></td>
+<td>true</td>
+<td>Event listener. See <a href="#element-events-on-ready">On Ready</a></td>
+</tr>
+<tr>
+<td><code>onChange</code></td>
+<td>false</td>
+<td><em>function</em></td>
+<td>true</td>
+<td>Event listener. See <a href="#element-events-on-change">On Change</a></td>
+</tr>
+<tr>
+<td><code>onFocus</code></td>
+<td>false</td>
+<td><em>function</em></td>
+<td>true</td>
+<td>Event listener. See <a href="#element-events-on-focus">On Focus</a></td>
+</tr>
+<tr>
+<td><code>onBlur</code></td>
+<td>false</td>
+<td><em>function</em></td>
+<td>true</td>
+<td>Event listener. See <a href="#element-events-on-blur">On Blur</a></td>
+</tr>
+<tr>
+<td><code>onKeyDown</code></td>
+<td>false</td>
+<td><em>function</em></td>
+<td>true</td>
+<td>Event listener. See <a href="#element-events-on-keydown">On Keydown</a></td>
+</tr>
+</tbody></table>
+<h1 id='cardverificationcodeelement'>CardVerificationCodeElement</h1>
+<blockquote>
+<p>Using <code>BasisTheoryProvider</code></p>
+</blockquote>
+<div class="highlight"><pre class="highlight tsx tab-tsx"><code><span class="k">import</span> <span class="p">{</span>
+  <span class="nx">BasisTheoryProvider</span><span class="p">,</span>
+  <span class="nx">CardVerificationCodeElement</span><span class="p">,</span>
+  <span class="nx">useBasisTheory</span>
+<span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@basis-theory/basis-theory-react</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">App</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="c1">// creates a new instance of BasisTheory class</span>
+  <span class="kd">const</span> <span class="p">{</span> <span class="nx">bt</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">useBasisTheory</span><span class="p">(</span><span class="dl">'</span><span class="s1">test_1234567890</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span> <span class="na">elements</span><span class="p">:</span> <span class="kc">true</span> <span class="p">});</span>
+
+  <span class="k">return</span> <span class="p">&lt;</span><span class="nc">BasisTheoryProvider</span> <span class="na">bt</span><span class="p">=</span><span class="si">{</span><span class="nx">bt</span><span class="si">}</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nc">MyComponent</span> <span class="p">/&gt;</span>
+  <span class="p">&lt;/</span><span class="nc">BasisTheoryProvider</span><span class="p">&gt;;</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">MyComponent</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">&lt;</span><span class="nc">CardVerificationCodeElement</span> <span class="na">id</span><span class="p">=</span><span class="s">"cardVerificationCode"</span> <span class="p">/&gt;</span> <span class="p">;</span> <span class="c1">// Element will grab instance from the Context</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<p>Using <code>bt</code> property</p>
+</blockquote>
+<div class="highlight"><pre class="highlight tsx tab-tsx"><code><span class="k">import</span> <span class="p">{</span>
+  <span class="nx">CardVerificationCodeElement</span><span class="p">,</span>
+  <span class="nx">useBasisTheory</span>
+<span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@basis-theory/basis-theory-react</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">MyComponent</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="c1">// creates a new instance of BasisTheory class</span>
+  <span class="kd">const</span> <span class="p">{</span> <span class="nx">bt</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">useBasisTheory</span><span class="p">(</span><span class="dl">'</span><span class="s1">test_1234567890</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span> <span class="na">elements</span><span class="p">:</span> <span class="kc">true</span> <span class="p">});</span>
+
+  <span class="k">return</span> <span class="p">&lt;</span><span class="nc">CardVerificationCodeElement</span> <span class="na">id</span><span class="p">=</span><span class="s">"cardVerificationCode"</span> <span class="na">bt</span><span class="p">=</span><span class="si">{</span><span class="nx">bt</span><span class="si">}</span> <span class="p">/&gt;</span> <span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>The <code>CardVerificationCodeElement</code> <a href="https://reactjs.org/docs/components-and-props.html" target="_blank">component</a> features a card security code input, by wrapping the <a href="#element-types-card-verification-code-element"><code>cardVerificationCode</code> element type</a> functionality and taking care of the React lifecycle.</p>
+
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Required</th>
+<th>Type</th>
+<th>Updatable</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>true</td>
+<td><em>string</em></td>
+<td>false</td>
+<td>String identifier used to retrieve the Element instance for tokenization.<br><i>Note: This is passed through to the <code>targetId</code> option.</i></td>
+</tr>
+<tr>
+<td><code>bt</code></td>
+<td>false</td>
+<td><em>BasisTheoryReact</em></td>
+<td>false</td>
+<td><a href="#basistheoryreact">Instance</a> used by the Element. <br><i>Note: this is not required because Elements are capable of consuming the instance from Context. See <a href="#basistheoryprovider"><code>BasisTheoryProvider</code></a>.</i></td>
+</tr>
+<tr>
+<td><code>style</code></td>
+<td>false</td>
+<td><em>object</em></td>
+<td>true</td>
+<td><a href="#element-options-style">Object</a> used to customize the element appearance</td>
+</tr>
+<tr>
+<td><code>disabled</code></td>
+<td>false</td>
+<td><em>boolean</em></td>
+<td>true</td>
+<td>Boolean used to set the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled">disabled attribute</a> of the input(s)</td>
+</tr>
+<tr>
+<td><code>cardBrand</code></td>
+<td>false</td>
+<td><em>string</em></td>
+<td>true</td>
+<td><a href="#element-options-card-brands">String</a> used to determine proper input format and default placeholder/aria-label</td>
+</tr>
+<tr>
+<td><code>placeholder</code></td>
+<td>false</td>
+<td><em>string</em></td>
+<td>true</td>
+<td>String used to customize the <a href="https://developer.mozilla.org/docs/Web/HTML/Element/input#attr-placeholder">placeholder attribute</a> of the input</td>
+</tr>
+<tr>
+<td><code>aria-label</code></td>
+<td>false</td>
+<td><em>string</em></td>
+<td>true</td>
+<td>String used to customize the <a href="https://developer.mozilla.org/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-label_attribute">aria-label attribute</a> of the input</td>
+</tr>
+<tr>
+<td><code>onReady</code></td>
+<td>false</td>
+<td><em>function</em></td>
+<td>true</td>
+<td>Event listener. See <a href="#element-events-on-ready">On Ready</a></td>
+</tr>
+<tr>
+<td><code>onChange</code></td>
+<td>false</td>
+<td><em>function</em></td>
+<td>true</td>
+<td>Event listener. See <a href="#element-events-on-change">On Change</a></td>
+</tr>
+<tr>
+<td><code>onFocus</code></td>
+<td>false</td>
+<td><em>function</em></td>
+<td>true</td>
+<td>Event listener. See <a href="#element-events-on-focus">On Focus</a></td>
+</tr>
+<tr>
+<td><code>onBlur</code></td>
+<td>false</td>
+<td><em>function</em></td>
+<td>true</td>
+<td>Event listener. See <a href="#element-events-on-blur">On Blur</a></td>
+</tr>
+<tr>
+<td><code>onKeyDown</code></td>
+<td>false</td>
+<td><em>function</em></td>
+<td>true</td>
+<td>Event listener. See <a href="#element-events-on-keydown">On Keydown</a></td>
+</tr>
+</tbody></table>
 <h1 id='basistheoryreact'>BasisTheoryReact</h1>
-<p><code>BasisTheoryReact</code> adds React-specific capabilities on top of the <code>BasisTheory</code> class. All <a href="/api-reference">API features</a> and <a href="#elements-services">Elements Services</a> are still available, plus the methods below.</p>
-<h2 id='basistheoryreact-getelement'>getElement</h2><div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="k">import</span> <span class="p">{</span> 
+<p><code>BasisTheoryReact</code> adds React-specific capabilities on top of the <code>BasisTheory</code> class. All <a href="/api-reference">API features</a> and <a href="#tokenization">Tokenization Features</a> are still available, plus the methods below.</p>
+<h2 id='basistheoryreact-getelement'>getElement</h2><div class="highlight"><pre class="highlight tsx tab-tsx"><code><span class="k">import</span> <span class="p">{</span> 
   <span class="nx">BasisTheoryApiError</span><span class="p">,</span>
   <span class="nx">BasisTheoryValidationError</span><span class="p">,</span>
   <span class="nx">TextElement</span><span class="p">,</span> 
@@ -2280,7 +2780,23 @@ attribute, in this case, will modify the user input to remove <code>(</code>, <c
   <span class="p">&lt;/</span><span class="nc">BasisTheoryProvider</span><span class="p">&gt;;</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>Gets the underlying Element instance to be used for tokenization. Returns <code>undefined</code> if an Element with the provided <code>id</code> does not exist.</p>
+<blockquote>
+<p>Typescript</p>
+</blockquote>
+<div class="highlight"><pre class="highlight tsx tab-tsx"><code><span class="k">import</span> <span class="kd">type</span> <span class="p">{</span> 
+  <span class="nx">CardExpirationDateElement</span> <span class="k">as</span> <span class="nx">ICardExpirationDateElement</span> 
+<span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@basis-theory/basis-theory-react/types</span><span class="dl">'</span><span class="p">;</span>
+
+
+<span class="nx">bt</span><span class="p">.</span><span class="nx">getElement</span><span class="p">(</span><span class="dl">'</span><span class="s1">expDate</span><span class="dl">'</span><span class="p">).</span><span class="nx">month</span><span class="p">();</span> <span class="c1">// Error TS2551: property doesn't exist </span>
+
+<span class="p">(</span><span class="nx">bt</span><span class="p">.</span><span class="nx">getElement</span><span class="p">(</span><span class="dl">'</span><span class="s1">expDate</span><span class="dl">'</span><span class="p">)</span> <span class="k">as</span> <span class="nx">ICardExpirationDateElement</span><span class="p">).</span><span class="nx">month</span><span class="p">();</span> <span class="c1">// no error</span>
+
+<span class="nx">bt</span><span class="p">.</span><span class="nx">getElement</span><span class="o">&lt;</span><span class="nx">ICardExpirationDateElement</span><span class="o">&gt;</span><span class="p">(</span><span class="dl">'</span><span class="s1">expDate</span><span class="dl">'</span><span class="p">).</span><span class="nx">month</span><span class="p">()</span> <span class="c1">// no error</span>
+</code></pre></div>
+<p>Gets the underlying Element instance. Given the declarative nature of React, this method enables referencing the Element value for tokenization.</p>
+
+<p>The targeted Element must be present in your component tree (virtual DOM) when invoking this method.</p>
 
 <table><thead>
 <tr>
@@ -2299,8 +2815,14 @@ attribute, in this case, will modify the user input to remove <code>(</code>, <c
 </tbody></table>
 
 <aside class="warning">
+  <span>Passing an unknown id to the <code>getElement</code> will throw an error at runtime.</span>
+</aside>
+
+<aside class="warning">
   <span>When using React, it is not recommended to directly call lifecycle methods from the Element instance returned by the <code>getElement</code> method.</span>
 </aside>
+
+<p>You can type-cast <code>getElement</code> method to safely call specific Elements methods.</p>
 
         
       </div>
