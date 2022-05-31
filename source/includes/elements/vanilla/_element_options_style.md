@@ -1,6 +1,6 @@
-# Element Style
+## Style
 
-```jsx
+```tsx
 var cardElement = BasisTheory.createElement('card', {
   style: {
     fonts: [

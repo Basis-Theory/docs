@@ -1,6 +1,6 @@
 # BasisTheoryProvider
 
-```jsx
+```tsx
 import { 
   BasisTheoryProvider,
   TextElement,

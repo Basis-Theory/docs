@@ -50,7 +50,7 @@ html, body {
 ////////////////////////////////////////////////////////////////////////////////
 // SIDEBAR
 ////////////////////////////////////////////////////////////////////////////////
-.toc-wrapper li.other-docs a, li.more a  {
+.toc-wrapper li.other-docs a, li.more a {
   color: $secondary;
   text-decoration: none;
   font-size: 16px;
@@ -87,6 +87,7 @@ html, body {
     justify-content: space-between;
     align-items: center;
   }
+
   .line {
     border-bottom: 1px solid $grey-800;
     margin-bottom: 16px;
@@ -99,6 +100,7 @@ html, body {
   // language selector for mobile devices
   .lang-selector {
     display: none;
+
     a {
       padding-top: 0.5em;
       padding-bottom: 0.5em;
@@ -124,7 +126,7 @@ html, body {
     }
   }
 
-  &>.search {
+  & > .search {
     position: relative;
     display: grid;
     align-items: center;
@@ -167,6 +169,7 @@ html, body {
     transition-timing-function: ease-in-out;
     margin: 1px 18px 0 15px;
     background: #E4E8FC;
+
     &.visible {
       height: 30%;
     }
@@ -229,6 +232,7 @@ html, body {
     text-align: left;
     color: $primary-dark;
   }
+
   // Section headers
   .toc-h1[data-title="API Reference"],
   .toc-h1[data-title="Basis Theory JS"],
@@ -271,7 +275,7 @@ html, body {
     margin-top: 1em;
     border-top: 1px dashed $nav-footer-border-color;
 
-    li,a {
+    li, a {
       color: $links;
       text-decoration: none;
     }
@@ -320,6 +324,7 @@ html, body {
     transform: rotate(-90deg) translate(-100%, 0);
     border-radius: 0 0 0 5px;
   }
+
   padding: 0 1.5em 5em 0; // increase touch size area
   display: none;
   position: fixed;
@@ -331,6 +336,7 @@ html, body {
   font-weight: bold;
   opacity: 0.7;
   line-height: 16px;
+
   img {
     height: 16px;
     vertical-align: bottom;
@@ -338,8 +344,13 @@ html, body {
 
   transition: left 0.3s ease-in-out;
 
-  &:hover { opacity: 1; }
-  &.open {left: $nav-width}
+  &:hover {
+    opacity: 1;
+  }
+
+  &.open {
+    left: $nav-width
+  }
 }
 
 .beta {
@@ -387,12 +398,12 @@ html, body {
 }
 
 .nav-title::after {
-    content: '';
-    flex: 1;
-    margin-left: 1rem;
-    margin-right: 1rem;
-    height: 1px;
-    background-color: $grey-100;
+  content: '';
+  flex: 1;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  height: 1px;
+  background-color: $grey-100;
 
 }
 
@@ -436,6 +447,7 @@ html, body {
   width: 100%;
   font-weight: bold;
   overflow-x: auto;
+
   a {
     @extend %principal-title-font;
     color: $secondary;
@@ -481,7 +493,7 @@ html, body {
 // This is all the stuff with the light background in the left half of the page
 
 .no-code-content {
-  &>h1, &>h2, &>h3, &>h4, &>h5, &>h6, &>p, &>table, &>ul, &>ol, &>aside, &>dl {
+  & > h1, & > h2, & > h3, & > h4, & > h5, & > h6, & > p, & > table, & > ul, & > ol, & > aside, & > dl {
     margin: 0 120px;
     padding: 0 40px;
   }
@@ -491,6 +503,7 @@ html, body {
   .content {
     .center-column + .highlight {
       background-color: transparent;
+
       pre {
         position: static;
         float: none;
@@ -508,6 +521,7 @@ html, body {
     pre {
       margin-bottom: 18px;
     }
+
     .copy-clipboard {
       display: none;
     }
@@ -550,7 +564,7 @@ html, body {
     clear: both;
   }
 
-  &>h1, &>h2, &>h3, &>h4, &>h5, &>h6, &>p, &>table, &>ul, &>ol, &>aside, &>dl {
+  & > h1, & > h2, & > h3, & > h4, & > h5, & > h6, & > p, & > table, & > ul, & > ol, & > aside, & > dl, & > .hero_elements-example {
     margin-right: $examples-width;
     padding: 0px $main-padding;
     box-sizing: border-box;
@@ -559,13 +573,13 @@ html, body {
     @extend %left-col;
   }
 
-  &>ul, &>ol {
+  & > ul, & > ol {
     padding-left: $main-padding + 24px;
   }
 
   // the div is the tocify hidden div for placeholding stuff
-  &>h1, &>h2, &>div {
-    clear:both;
+  & > h1, & > h2, & > div {
+    clear: both;
   }
 
   h1 {
@@ -626,16 +640,21 @@ html, body {
   table {
     margin-bottom: 1em;
     overflow: auto;
+
     td {
       text-align: left;
       vertical-align: top;
       line-height: 1.6;
+
       code {
+        font-size: 12px;
         white-space: nowrap;
       }
+
       em {
         @extend %tc-type-font;
       }
+
       a {
         color: $links;
       }
@@ -653,11 +672,11 @@ html, body {
       padding: 10px;
     }
 
-    tr:nth-child(odd)>td {
+    tr:nth-child(odd) > td {
       background-color: $grey-50;
     }
 
-    tr:nth-child(even)>td {
+    tr:nth-child(even) > td {
       background-color: #E8EBF8;
     }
   }
@@ -669,6 +688,7 @@ html, body {
   dd {
     margin-left: 15px;
   }
+
   p {
     @extend %body1-font;
     color: $grey-800;
@@ -701,7 +721,7 @@ html, body {
     word-break: break-word;
   }
 
-  pre>code {
+  pre > code {
     background-color: transparent;
   }
 
@@ -790,7 +810,7 @@ html, body {
 .copy-clipboard {
   cursor: pointer;
 
-  .copy-clipboard-text{
+  .copy-clipboard-text {
     color: $primary;
     @extend %button-medium-font
   }
@@ -806,7 +826,6 @@ html, body {
   margin-left: 1.70rem;
   margin-top: 1em;
 }
-
 
 
 .scopes {
@@ -918,6 +937,7 @@ html, body {
   code {
     background-color: rgba(0, 0, 0, 0);
   }
+
   .http-method-copy {
     justify-self: end;
     cursor: pointer;
@@ -930,14 +950,91 @@ html, body {
   }
 }
 
+//////////////////////
+//  HERO ELEMENT STYLES
+/////////////////////
+.hero_elements-example {
+  border-radius: 12px;
+
+  .elements-example-content {
+    display: flex;
+    overflow: hidden;
+    flex-direction: column;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    border-radius: 11px;
+    background-color: #f9f9ff;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(hsla(0, 0%, 100%, .1)), to(hsla(0, 0%, 100%, 0)));
+    background-image: linear-gradient(180deg, hsla(0, 0%, 100%, .1), hsla(0, 0%, 100%, 0));
+    border: 1px solid #E6E8F1;
+
+    .elements-example-header {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      height: 32px;
+      padding: 8px 14px;
+      -webkit-box-pack: justify;
+      -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+      justify-content: space-between;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+      -ms-flex-align: center;
+      align-items: center;
+      background-color: #eaedff;
+      color: rgba(150, 158, 194, .9);
+      font-size: 10px;
+      text-shadow: 0 1px 0 hsla(0, 0%, 100%, .16);
+
+      .elements-example-window {
+        display: flex;
+        align-items: center;
+        grid-column-gap: 4px;
+        grid-row-gap: 4px;
+
+        .elements-example-action {
+          width: 10px;
+          height: 10px;
+          border-radius: 20px;
+          background-color: rgba(171, 176, 204, .46);
+          box-shadow: 0 1px 0 0 hsla(0, 0%, 100%, .15), inset 0 1px 1px 0 rgba(139, 146, 182, .06);
+        }
+      }
+
+    }
+
+    .elements-example-form-wrapper {
+      padding: 24px 24px 40px;
+
+      .element {
+        display: flex;
+        align-items: center;
+        height: 40px;
+        margin-bottom: 0;
+        padding-right: 16px;
+        padding-left: 16px;
+        align-items: center;
+        border: 1px solid #c3c8dd;
+        border-radius: 4px;
+        box-shadow: 0 3px 1px 0 rgba(0, 0, 0, .04), 0 2px 1px 0 rgba(0, 0, 0, .02);
+      }
+
+    }
+  }
+
+}
+
+
 ////////////////////////////////////////////////////////////////////////////////
 // CODE SAMPLE STYLES
 ////////////////////////////////////////////////////////////////////////////////
 // This is all the stuff that appears in the right half of the page
 
 .content {
-  &>div.highlight {
-    clear:none;
+  & > div.highlight {
+    clear: none;
   }
 
   pre, blockquote {
@@ -947,14 +1044,16 @@ html, body {
     margin: 0;
     width: $examples-width;
 
-    float:right;
-    clear:right;
+    float: right;
+    clear: right;
 
     box-sizing: border-box;
 
     @extend %right-col;
 
-    &>p { margin: 0; }
+    & > p {
+      margin: 0;
+    }
 
     a {
       color: $links;
@@ -983,16 +1082,18 @@ html, body {
   }
 
   blockquote {
-    &>p {
+    & > p {
       background-color: $code-annotation-title-bg;
       padding: $code-annotation-padding 2em;
       color: $grey-50;
       @extend %code-annotation-font;
     }
+
     code {
       font-size: inherit;
     }
   }
+
   .header-border {
     background: $grey-50;
     border-bottom: 1px solid #E6E8F0;
@@ -1002,6 +1103,7 @@ html, body {
     display: flex;
     align-items: center;
   }
+
   .header-intro-box {
     border-bottom: 1px solid #CACDDB;
     padding: 0;
@@ -1052,11 +1154,13 @@ html, body {
         text-decoration-line: none;
       }
     }
+
     img {
       align-self: start;
       justify-self: end;
     }
   }
+
   #introduction, #getting-started {
     visibility: hidden;
     padding: 0;
@@ -1127,8 +1231,9 @@ html, body {
     .header-intro-box {
       grid-template-columns: auto;
       padding: 0px 24px;
+
       img {
-          display: none;
+        display: none;
       }
     }
   }
