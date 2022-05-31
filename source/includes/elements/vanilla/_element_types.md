@@ -85,7 +85,7 @@ and masking.
 <script defer>
   window.addEventListener('load', () => {
     window.cardNumberElement = BasisTheory.createElement('cardNumber', {
-      targetId: 'elementTypesTextElement',
+      targetId: 'elementTypesCardNumberElement',
     });
     window.cardNumberElement.mount('#types-card-number-element');
     window.cardNumberElement.on('change', ({ cardBrand }) => {
