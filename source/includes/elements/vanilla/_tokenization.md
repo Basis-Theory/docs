@@ -136,7 +136,7 @@ Elements services could throw an error based on client-side validations or if th
 | Attribute        | Type     | Description                                                                                                                                                     | 
 |------------------|----------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `name`           | string   | Error name, always `'BasisTheoryValidationError'`.                                                                                                              |
-| `details`        | *object* | Maps payload properties to their respective elements validation problems.                                                                                       |
+| `details`        | *object* | Maps payload properties to their respective element's validation problems.                                                                                       |
 | ~~`validation`~~ | *array*  | [Deprecated in favor of details](#deprecations-deprecated-features). Array of [FieldError](#element-events-on-change-fielderror), in case of client-side error. |
 
 ### BasisTheoryApiError
