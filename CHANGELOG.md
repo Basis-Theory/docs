@@ -1,3 +1,10 @@
+# [1.40.0](https://github.com/Basis-Theory/docs/compare/v1.39.0...v1.40.0) (2022-05-31)
+
+
+### Features
+
+* Document new Card Elements ([#181](https://github.com/Basis-Theory/docs/issues/181)) ([ac47555](https://github.com/Basis-Theory/docs/commit/ac47555f2fed209ac768f8f3e8b5d9948d635ae3))
+
 # [1.39.0](https://github.com/Basis-Theory/docs/compare/v1.38.0...v1.39.0) (2022-05-26)
 
 
