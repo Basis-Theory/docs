@@ -117,7 +117,7 @@ The `"cardExpirationDate"` element type features a month/year formatted input.
 <script defer>
   window.addEventListener('load', () => {
     window.cardExpirationDateElement = BasisTheory.createElement('cardExpirationDate', {
-      targetId: 'elementTypesTextElement',
+      targetId: 'elementTypesCardExpirationDateElement',
     });
     window.cardExpirationDateElement.mount('#types-card-expiration-date-element');  
   });
