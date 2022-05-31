@@ -146,7 +146,7 @@ The `"cardVerificationCode"` element type is used to collect the card security c
 <script defer>
   window.addEventListener('load', () => {
     window.cardVerificationCodeElement = BasisTheory.createElement('cardVerificationCode', {
-      targetId: 'elementTypesTextElement',
+      targetId: 'elementTypesCardVerificationCodeElement',
     });
     window.cardVerificationCodeElement.mount('#types-card-verification-code-element');  
   });
