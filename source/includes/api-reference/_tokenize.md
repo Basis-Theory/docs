@@ -74,7 +74,8 @@ curl "https://api.basistheory.com/tokenize" \
     "metadata": {
       "nonSensitiveField": "Non-Sensitive Value"
     },
-    "search_indexes": [ "{{ data }}" ]
+    "search_indexes": [ "{{ data }}" ],
+    "fingerprint_expression": [ "{{ data }}" ]
   }'
 ```
 
@@ -89,7 +90,8 @@ const token = await bt.tokenize({
   metadata: {
     nonSensitiveField: 'Non-Sensitive Value'
   },
-  searchIndexes: [ "{{ data }}" ]
+  searchIndexes: [ "{{ data }}" ],
+  fingerprintExpression: [ "{{ data }}" ]
 });
 ```
 
@@ -106,7 +108,8 @@ var token = await client.Tokenize(new Token {
   },
   SearchIndexes = new List<string> {
     "{{ data }}"
-  }
+  },
+  FingerprintExpression: [ "{{ data }}" ]
 });
 ```
 
@@ -126,7 +129,8 @@ with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_
       },
       search_indexes=[
         "{{ data }}"
-      ]
+      ],
+      fingerprint_expression="{{ data }}"
     ))
 ```
 
@@ -141,6 +145,7 @@ with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_
     "nonSensitiveField": "Non-Sensitive Value"
   },
   "search_indexes": [ "{{ data }}" ],
+  "fingerprint_expression": "{{ data }}",
   "created_by": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
   "created_at": "2020-09-15T15:53:00+00:00"
 }
@@ -243,6 +248,7 @@ with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_
   "metadata": {
     "nonSensitiveField": "Non-Sensitive Value"
   },
+  "fingerprint_expression": "{{ data.number }}",
   "created_by": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
   "created_at": "2020-09-15T15:53:00+00:00"
 }
@@ -364,11 +370,12 @@ with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_
     "id": "c06d0789-0a38-40be-b7cc-c28a718f76f1",
     "tenant_id": "77cb0024-123e-41a8-8ff8-a3d5a0fa8a08",
     "type": "card",
-    "mask": {
+    "data": {
       "number": "XXXXXXXXXXXX4242",
       "expiration_month": 12,
       "expiration_year": 2025
     },
+    "fingerprint_expression": "{{ data.number }}",
     "created_by": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
     "created_at": "2020-09-15T15:53:00+00:00"
   },
@@ -505,11 +512,12 @@ with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_
     "id": "c06d0789-0a38-40be-b7cc-c28a718f76f1",
     "tenant_id": "77cb0024-123e-41a8-8ff8-a3d5a0fa8a08",
     "type": "card",
-    "mask": {
+    "data": {
       "number": "XXXXXXXXXXXX4242",
       "expiration_month": 12,
       "expiration_year": 2025
     },
+    "fingerprint_expression": "{{ data.number }}",
     "created_by": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
     "created_at": "2020-09-15T15:53:00+00:00"
   },
