@@ -3,7 +3,7 @@
 Oftentimes data may be tokenized in one format, but you wish to use this data in a different format within a request.
 Several pieces of data may be stored together in a single token (e.g. a user record containing first and last names and contact information), 
 but you wish to only use a single piece of that data within a Proxy or Reactor request, 
-or you may wish to reformat the data before indexing it for search (e.g. normalize the last name by uppercasing it).
+or you may wish to reformat the data before indexing it for search (e.g. use only the last name, but normalize by uppercasing it).
 
 To allow you complete flexibility, transformation functions called **filters** can be applied within any expression. 
 Generally, a variable's value can be transformed by specifying a filter after the `|` symbol:   
@@ -14,7 +14,7 @@ Multiple filters can be chained together by "piping" the result of each filter i
 `{{ <variable> | <filter1> | <filter2> | ... }}`
 
 All standard [Liquid filters](https://shopify.github.io/liquid/filters/) are supported within expressions. 
-For example, given a token containing a name property containing both first and last name:
+For example, given a token containing a `name` object containing both first and last name properties:
 
 <div class="center-column" style="clear: none;"></div>
 ```json
@@ -26,7 +26,7 @@ For example, given a token containing a name property containing both first and 
 }
 ```
 
-We can create an expression to return the upper-cased last name by spliting on the space character, grabing the last element, and upper-casing:
+We can create an expression to return the upper-cased last name by splitting on the space character, grabbing the last element, and upper-casing:
 
 <div class="center-column" style="clear: none;"></div>
 ```js

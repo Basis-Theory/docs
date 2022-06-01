@@ -5,7 +5,7 @@ Basis Theory supports detokenization through the use of expressions within our s
 platform and the [Proxy](https://developers.basistheory.com/concepts/what-is-the-proxy).
 
 Detokenization is performed whenever a **detokenization expression** is identified within a request.
-In their simplest form, these are Liquid [objects](#language/objects) of the form `{{<tokenId>}}`. 
+In their simplest form, these are Liquid [objects](#language-objects) of the form `{{<tokenId>}}`. 
 This expression will be replaced with the token data contained within the token with id `<tokenId>`.
 
 Detokenization expressions containing non-uuid values, such as `{{non uuid value}}` will evaluate to `null` and will be removed from the request.
@@ -22,7 +22,7 @@ Token data can also be transformed before including it in a request by applying 
 In general, filters are applied during detokenization using the syntax:   
 `{{ <tokenId> | <filter1> | <filter2> | ... }}`
  
-Check out the [detokenization examples](#detokenization/examples) below to see some examples of filters in action.
+Check out the [detokenization examples](#detokenization-examples) below to see some examples of filters in action.
 
 ## Detokenizing Primitive Data
 

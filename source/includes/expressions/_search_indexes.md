@@ -1,10 +1,10 @@
 # Search Indexes
 
-Several token attributes can be [searched](https://developers.basistheory.com/concepts/what-is-search/) through the [token search](#tokens-search-tokens) API.
-Token data can be included in a search query, provided that the token has been indexed for search at the time of its creation.
+Several token attributes can be [searched](https://developers.basistheory.com/concepts/what-is-search/) through the [token search](/#tokens-search-tokens) API.
+A token's data can also be searched, provided that the token has been indexed for search at the time of its creation.
 
-When [creating a token](#tokens-create-token), an array of search index expressions can be specified within the request.
-You are able to reference the `data` variable within [object](#language/objects) expressions - 
+When [creating a token](/#tokens-create-token), an array of search index expressions can be specified within the request.
+You are able to reference the `data` variable within [object](#language-objects) expressions - 
 `data` will be bound to the provided token data, which may either be a complex or primitive value, based on your usage.
 
 ## Examples

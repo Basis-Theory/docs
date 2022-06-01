@@ -512,7 +512,6 @@ with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_
       "tenant_id": "77cb0024-123e-41a8-8ff8-a3d5a0fa8a08",
       "data": "XXX-XX-6789",
       "fingerprint": "AKCUXS83DokKo4pDRKSAy4d42t9i8dcP1X2jijwEBCQH",
-      "fingerprint_expression": "{{ data }}",
       "privacy": {
         "classification": "pii",
         "impact_level": "high",
@@ -526,6 +525,7 @@ with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_
         "{{ data | replace: '-' }}",
         "{{ data | last4 }}"
       ],
+      "fingerprint_expression": "{{ data }}",
       "created_by": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
       "created_at": "2021-03-01T08:23:14+00:00"
     },
