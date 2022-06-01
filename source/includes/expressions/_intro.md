@@ -21,7 +21,7 @@ Expressions provide a flexible templating language that can be used to apply cus
 
 Expressions can be used within many API endpoints, including:
 
-- [Reactor](/#reactors) args, to detokenize and transform tokens
-- [Proxy](/#proxy) requests, to detokenize and transform tokens
-- `search_indexes` when [creating a token](#tokens-create-token) or [tokenizing](#tokenize), to define indexes to enable [searching tokens](#tokens-search-tokens)
-- `fingerprint_expression` when [creating a token](#tokens-create-token) or [tokenizing](#tokenize), to define a value used to generate a token fingerprint
+- [Reactor](https://developers.basistheory.com/concepts/what-are-reactors) args, to [detokenize](#detokenize) and transform tokens
+- [Proxy](https://developers.basistheory.com/concepts/what-is-the-proxy) requests, to [detokenize](#detokenize) and transform tokens
+- [search_indexes](#search-indexes) when [creating a token](#tokens-create-token) or [tokenizing](#tokenize), to define indexes to enable [searching tokens](#tokens-search-tokens)
+- [fingerprint_expression](#fingerprints) when [creating a token](#tokens-create-token) or [tokenizing](#tokenize), to define a value used to generate a token fingerprint
