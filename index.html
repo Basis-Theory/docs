@@ -3766,52 +3766,68 @@ For more information, see <a href="#tokenize">Tokenize</a>.</p>
 <tr>
 <th>Attribute</th>
 <th>Type</th>
+<th style="text-align: left"></th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td><code>id</code></td>
 <td><em>uuid</em></td>
+<td style="text-align: left"></td>
 <td>Unique identifier of the Reactor which can be used to <a href="#reactors-get-a-reactor">get a Reactor</a></td>
 </tr>
 <tr>
 <td><code>tenant_id</code></td>
 <td><em>uuid</em></td>
+<td style="text-align: left"></td>
 <td>The <a href="#tenants">Tenant</a> ID which owns the reactor</td>
 </tr>
 <tr>
 <td><code>name</code></td>
 <td><em>string</em></td>
+<td style="text-align: left"></td>
 <td>The name of the reactor</td>
 </tr>
 <tr>
 <td><code>formula</code></td>
 <td><em><a href="#reactor-formulas-reactor-formula-object">Reactor Formula</a></em></td>
+<td style="text-align: left"></td>
 <td>Reactor Formula this Reactor is configured for</td>
 </tr>
 <tr>
 <td><code>configuration</code></td>
 <td><em>map</em></td>
+<td style="text-align: left"></td>
 <td>A key-value map of all configuration name and values for a <a href="#reactor-formulas-reactor-formula-configuration">Reactor Formula configuration</a></td>
+</tr>
+<tr>
+<td><code>application</code></td>
+<td><em><a href="#applications-application-object">Application</a></em></td>
+<td style="text-align: left"></td>
+<td>(Optional) This Application&#39;s permissions are injected into a pre-configured <a href="https://www.npmjs.com/package/@basis-theory/basis-theory-js" target="_blank">Node.js BasisTheory</a> instance passed into the Reactor&#39;s runtime.</td>
 </tr>
 <tr>
 <td><code>created_by</code></td>
 <td><em>uuid</em></td>
+<td style="text-align: left"></td>
 <td>(Optional) The ID of the user or <a href="#applications">Application</a> that created the Reactor</td>
 </tr>
 <tr>
 <td><code>created_at</code></td>
 <td><em>string</em></td>
+<td style="text-align: left"></td>
 <td>(Optional) Created date of the Reactor in ISO 8601 format</td>
 </tr>
 <tr>
 <td><code>modified_by</code></td>
 <td><em>uuid</em></td>
+<td style="text-align: left"></td>
 <td>(Optional) The ID of the user or <a href="#applications">Application</a> that last modified the Reactor</td>
 </tr>
 <tr>
 <td><code>modified_at</code></td>
 <td><em>date</em></td>
+<td style="text-align: left"></td>
 <td>(Optional) Last modified date of the Reactor in ISO 8601 format</td>
 </tr>
 </tbody></table>
@@ -3830,6 +3846,9 @@ For more information, see <a href="#tokenize">Tokenize</a>.</p>
     },
     "formula": {
       "id": "17069df1-80f4-439e-86a7-4121863e4678"
+    },
+    "application": {
+      "id": "45c124e7-6ab2-4899-b4d9-1388b0ba9d04"
     }
   }'</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">BasisTheory</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@basis-theory/basis-theory-js</span><span class="dl">'</span><span class="p">;</span>
@@ -3844,6 +3863,9 @@ For more information, see <a href="#tokenize">Tokenize</a>.</p>
   <span class="na">formula</span><span class="p">:</span> <span class="p">{</span>
     <span class="na">id</span><span class="p">:</span> <span class="dl">'</span><span class="s1">17069df1-80f4-439e-86a7-4121863e4678</span><span class="dl">'</span><span class="p">,</span>
   <span class="p">},</span>
+  <span class="na">application</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">id</span><span class="p">:</span> <span class="dl">'</span><span class="s1">45c124e7-6ab2-4899-b4d9-1388b0ba9d04</span><span class="dl">'</span>
+  <span class="p">}</span>
 <span class="p">});</span>
 </code></pre></div><div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="k">using</span> <span class="nn">BasisTheory.net.Reactors</span><span class="p">;</span>
 
@@ -3856,12 +3878,16 @@ For more information, see <a href="#tokenize">Tokenize</a>.</p>
   <span class="p">},</span>
   <span class="n">Formula</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Formula</span> <span class="p">{</span>
     <span class="n">Id</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Guid</span><span class="p">(</span><span class="s">"17069df1-80f4-439e-86a7-4121863e4678"</span><span class="p">)</span>
+  <span class="p">},</span>
+  <span class="n">Application</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Application</span> <span class="p">{</span>
+    <span class="n">Id</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Guid</span><span class="p">(</span><span class="s">"45c124e7-6ab2-4899-b4d9-1388b0ba9d04"</span><span class="p">)</span>
   <span class="p">}</span>
 <span class="p">});</span>
 </code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">basistheory</span>
 <span class="kn">from</span> <span class="nn">basistheory.api</span> <span class="kn">import</span> <span class="n">reactors_api</span>
 <span class="kn">from</span> <span class="nn">basistheory.model.create_reactor_request</span> <span class="kn">import</span> <span class="n">CreateReactorRequest</span>
 <span class="kn">from</span> <span class="nn">basistheory.model.reactor_formula</span> <span class="kn">import</span> <span class="n">ReactorFormula</span>
+<span class="kn">from</span> <span class="nn">basistheory.model.application</span> <span class="kn">import</span> <span class="n">Application</span>
 
 <span class="k">with</span> <span class="n">basistheory</span><span class="p">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="n">configuration</span><span class="o">=</span><span class="n">basistheory</span><span class="p">.</span><span class="n">Configuration</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">))</span> <span class="k">as</span> <span class="n">api_client</span><span class="p">:</span>
     <span class="n">reactors_client</span> <span class="o">=</span> <span class="n">reactors_api</span><span class="p">.</span><span class="n">ReactorsApi</span><span class="p">(</span><span class="n">api_client</span><span class="p">)</span>
@@ -3873,6 +3899,9 @@ For more information, see <a href="#tokenize">Tokenize</a>.</p>
         <span class="p">},</span>
         <span class="n">formula</span><span class="o">=</span><span class="n">ReactorFormula</span><span class="p">(</span>
             <span class="nb">id</span><span class="o">=</span><span class="s">"17069df1-80f4-439e-86a7-4121863e4678"</span>
+        <span class="p">),</span>
+        <span class="n">application</span><span class="o">=</span><span class="n">Application</span><span class="p">(</span>
+            <span class="nb">id</span><span class="o">=</span><span class="s">"45c124e7-6ab2-4899-b4d9-1388b0ba9d04"</span>
         <span class="p">)</span>
     <span class="p">))</span>
 </code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
@@ -3897,6 +3926,9 @@ For more information, see <a href="#tokenize">Tokenize</a>.</p>
   <span class="n">reactorFormula</span> <span class="o">:=</span> <span class="o">*</span><span class="n">basistheory</span><span class="o">.</span><span class="n">NewReactorFormulaModel</span><span class="p">()</span>
   <span class="n">reactorFormula</span><span class="o">.</span><span class="n">SetId</span><span class="p">(</span><span class="s">"17069df1-80f4-439e-86a7-4121863e4678"</span><span class="p">)</span>
   <span class="n">createReactorModel</span><span class="o">.</span><span class="n">SetFormula</span><span class="p">(</span><span class="n">reactorFormula</span><span class="p">)</span>
+  <span class="n">application</span> <span class="o">:=</span> <span class="o">*</span><span class="n">basistheory</span><span class="o">.</span><span class="n">NewApplicationModel</span><span class="p">()</span>
+  <span class="n">application</span><span class="o">.</span><span class="n">SetId</span><span class="p">(</span><span class="s">"45c124e7-6ab2-4899-b4d9-1388b0ba9d04"</span><span class="p">)</span>
+  <span class="n">createReactorModel</span><span class="o">.</span><span class="n">SetApplication</span><span class="p">(</span><span class="n">application</span><span class="p">)</span>
 
   <span class="n">reactor</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="kt">error</span> <span class="o">:=</span> <span class="n">apiClient</span><span class="o">.</span><span class="n">ReactorsApi</span><span class="o">.</span><span class="n">ReactorCreate</span><span class="p">(</span><span class="n">contextWithAPIKey</span><span class="p">)</span><span class="o">.</span><span class="n">CreateReactorModel</span><span class="p">(</span><span class="n">createReactorModel</span><span class="p">)</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
 <span class="p">}</span>
@@ -3909,6 +3941,7 @@ For more information, see <a href="#tokenize">Tokenize</a>.</p>
   </span><span class="nl">"tenant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77cb0024-123e-41a8-8ff8-a3d5a0fa8a08"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My Reactor"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"formula"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
+  </span><span class="nl">"application"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
   </span><span class="nl">"configuration"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"SERVICE_API_KEY"</span><span class="p">:</span><span class="w"> </span><span class="s2">"key_abcd1234"</span><span class="w">
   </span><span class="p">},</span><span class="w">
@@ -3956,6 +3989,13 @@ For more information, see <a href="#tokenize">Tokenize</a>.</p>
 <td><em>uuid</em></td>
 <td><code>null</code></td>
 <td>Unique identifier of the <a href="#reactor-formulas-reactor-formula-object">Reactor Formula</a> to configure a Reactor for</td>
+</tr>
+<tr>
+<td><code>application.id</code></td>
+<td>false</td>
+<td><em>uuid</em></td>
+<td><code>null</code></td>
+<td>Unique identifier of the <a href="#applications-application-object">Application</a> to configure a Reactor with</td>
 </tr>
 </tbody></table>
 
@@ -4162,6 +4202,9 @@ For more information, see <a href="#tokenize">Tokenize</a>.</p>
     "name": "My Reactor",
     "configuration": {
       "SERVICE_API_KEY": "key_abcd1234"
+    },
+    "application": {
+      "id": "45c124e7-6ab2-4899-b4d9-1388b0ba9d04"
     }
   }'</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">BasisTheory</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@basis-theory/basis-theory-js</span><span class="dl">'</span><span class="p">;</span>
@@ -4173,6 +4216,9 @@ For more information, see <a href="#tokenize">Tokenize</a>.</p>
   <span class="na">configuration</span><span class="p">:</span> <span class="p">{</span>
     <span class="na">SERVICE_API_KEY</span><span class="p">:</span> <span class="dl">'</span><span class="s1">key_abcd1234</span><span class="dl">'</span><span class="p">,</span>
   <span class="p">},</span>
+  <span class="na">application</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">id</span><span class="p">:</span> <span class="dl">'</span><span class="s1">45c124e7-6ab2-4899-b4d9-1388b0ba9d04</span><span class="dl">'</span>
+  <span class="p">}</span>
 <span class="p">});</span>
 </code></pre></div><div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="k">using</span> <span class="nn">BasisTheory.net.Reactors</span><span class="p">;</span>
 
@@ -4183,13 +4229,16 @@ For more information, see <a href="#tokenize">Tokenize</a>.</p>
     <span class="n">Name</span> <span class="p">=</span> <span class="s">"My Reactor"</span><span class="p">,</span>
     <span class="n">Configuration</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="kt">string</span><span class="p">&gt;</span> <span class="p">{</span>
       <span class="p">{</span> <span class="s">"SERVICE_API_KEY"</span><span class="p">,</span> <span class="s">"key_abcd1234"</span> <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="n">Application</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Application</span> <span class="p">{</span>
+      <span class="n">Id</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Guid</span><span class="p">(</span><span class="s">"45c124e7-6ab2-4899-b4d9-1388b0ba9d04"</span><span class="p">)</span>
     <span class="p">}</span>
   <span class="p">}</span>
 <span class="p">);</span>
 </code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">basistheory</span>
 <span class="kn">from</span> <span class="nn">basistheory.api</span> <span class="kn">import</span> <span class="n">reactors_api</span>
 <span class="kn">from</span> <span class="nn">basistheory.model.update_reactor_request</span> <span class="kn">import</span> <span class="n">UpdateReactorRequest</span>
-<span class="kn">from</span> <span class="nn">basistheory.model.reactor_formula</span> <span class="kn">import</span> <span class="n">ReactorFormula</span>
+<span class="kn">from</span> <span class="nn">basistheory.model.application</span> <span class="kn">import</span> <span class="n">Application</span>
 
 <span class="k">with</span> <span class="n">basistheory</span><span class="p">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="n">configuration</span><span class="o">=</span><span class="n">basistheory</span><span class="p">.</span><span class="n">Configuration</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">))</span> <span class="k">as</span> <span class="n">api_client</span><span class="p">:</span>
     <span class="n">reactors_client</span> <span class="o">=</span> <span class="n">reactors_api</span><span class="p">.</span><span class="n">ReactorsApi</span><span class="p">(</span><span class="n">api_client</span><span class="p">)</span>
@@ -4198,7 +4247,10 @@ For more information, see <a href="#tokenize">Tokenize</a>.</p>
         <span class="n">name</span><span class="o">=</span><span class="s">"My Reactor"</span><span class="p">,</span>
         <span class="n">configuration</span><span class="o">=</span><span class="p">{</span>
             <span class="s">"SERVICE_API_KEY"</span><span class="p">:</span> <span class="s">"key_abcd134"</span>
-        <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="n">application</span><span class="o">=</span><span class="n">Application</span><span class="p">(</span>
+            <span class="nb">id</span><span class="o">=</span><span class="s">"45c124e7-6ab2-4899-b4d9-1388b0ba9d04"</span>
+        <span class="p">)</span>
     <span class="p">))</span>
 </code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
 
@@ -4219,6 +4271,9 @@ For more information, see <a href="#tokenize">Tokenize</a>.</p>
   <span class="n">updateReactorModel</span><span class="o">.</span><span class="n">SetConfiguration</span><span class="p">(</span><span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">string</span><span class="p">{</span>
     <span class="s">"SERVICE_API_KEY"</span><span class="o">:</span> <span class="s">"key_abcd134"</span><span class="p">,</span>
   <span class="p">})</span>
+  <span class="n">application</span> <span class="o">:=</span> <span class="o">*</span><span class="n">basistheory</span><span class="o">.</span><span class="n">NewApplicationModel</span><span class="p">()</span>
+  <span class="n">application</span><span class="o">.</span><span class="n">SetId</span><span class="p">(</span><span class="s">"45c124e7-6ab2-4899-b4d9-1388b0ba9d04"</span><span class="p">)</span>
+  <span class="n">updateReactorModel</span><span class="o">.</span><span class="n">SetApplication</span><span class="p">(</span><span class="n">application</span><span class="p">)</span>
 
   <span class="n">reactor</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">apiClient</span><span class="o">.</span><span class="n">ReactorsApi</span><span class="o">.</span><span class="n">ReactorUpdate</span><span class="p">(</span><span class="n">contextWithAPIKey</span><span class="p">,</span> <span class="s">"5b493235-6917-4307-906a-2cd6f1a90b13"</span><span class="p">)</span><span class="o">.</span><span class="n">UpdateReactorModel</span><span class="p">(</span><span class="n">updateReactorModel</span><span class="p">)</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
 <span class="p">}</span>
@@ -4291,6 +4346,13 @@ For more information, see <a href="#tokenize">Tokenize</a>.</p>
 <td><em>object</em></td>
 <td><code>null</code></td>
 <td>A key-value map of all configuration name and values for a <a href="#reactor-formulas-reactor-formula-configuration">Reactor Formula configuration</a></td>
+</tr>
+<tr>
+<td><code>application.id</code></td>
+<td>false</td>
+<td><em>uuid</em></td>
+<td><code>null</code></td>
+<td>Unique identifier of the <a href="#applications-application-object">Application</a> to configure a Reactor with</td>
 </tr>
 </tbody></table>
 <h3 id='reactors-update-reactor-response'>Response</h3>
