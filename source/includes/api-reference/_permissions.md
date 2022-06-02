@@ -35,6 +35,10 @@ Every API endpoint will document the required permissions needed to perform the 
 | `reactor:create`     | Create Reactors Formulas and Reactors           | `management`      |
 | `reactor:update`     | Update Reactors Formulas and Reactors           | `management`      |
 | `reactor:delete`     | Delete Reactors Formulas and Reactors           | `management`      |
+| `proxy:read`         | Read Proxies                                    | `management`      |
+| `proxy:create`       | Create Proxies                                  | `management`      |
+| `proxy:update`       | Update Proxies                                  | `management`      |
+| `proxy:delete`       | Delete Proxies                                  | `management`      |
 | `log:read`           | Read audit logs                                 | `management`      |
 
 ### Token Permissions
