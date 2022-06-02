@@ -1,3 +1,31 @@
+# [1.41.0](https://github.com/Basis-Theory/docs/compare/v1.40.0...v1.41.0) (2022-06-02)
+
+
+### Features
+
+* add reactor application ([#185](https://github.com/Basis-Theory/docs/issues/185)) ([285697e](https://github.com/Basis-Theory/docs/commit/285697eab133a08968e32c6a1bc06be4b7b9c7a1))
+
+# [1.40.0](https://github.com/Basis-Theory/docs/compare/v1.39.0...v1.40.0) (2022-05-31)
+
+
+### Features
+
+* Document new Card Elements ([#181](https://github.com/Basis-Theory/docs/issues/181)) ([ac47555](https://github.com/Basis-Theory/docs/commit/ac47555f2fed209ac768f8f3e8b5d9948d635ae3))
+
+# [1.39.0](https://github.com/Basis-Theory/docs/compare/v1.38.0...v1.39.0) (2022-05-26)
+
+
+### Features
+
+* Adding search_indexes docs and section for Expressions ([#179](https://github.com/Basis-Theory/docs/issues/179)) ([b549fce](https://github.com/Basis-Theory/docs/commit/b549fce0241786d0f5c1ce5c32a51c95171b6dbb))
+
+# [1.38.0](https://github.com/Basis-Theory/docs/compare/v1.37.0...v1.38.0) (2022-05-20)
+
+
+### Features
+
+* document cardBrand onChange event property ([#178](https://github.com/Basis-Theory/docs/issues/178)) ([21d89bf](https://github.com/Basis-Theory/docs/commit/21d89bf992f145101d65b73f4cf3d77f6bef8c74))
+
 # [1.37.0](https://github.com/Basis-Theory/docs/compare/v1.36.0...v1.37.0) (2022-05-06)
 
 

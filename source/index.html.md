@@ -43,6 +43,7 @@ api_includes:
   - api-reference/tokens
   - api-reference/token_associations
   - api-reference/tokenize
+  - api-reference/expressions
   - api-reference/deprecations
 
 reference_links:

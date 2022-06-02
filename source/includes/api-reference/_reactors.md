@@ -3,17 +3,18 @@
 
 ## Reactor Object
 
-| Attribute       | Type                                                          | Description                                                                                                                                                               |
-|-----------------|---------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `id`            | *uuid*                                                        | Unique identifier of the Reactor which can be used to [get a Reactor](#reactors-get-a-reactor)                                                                            |
-| `tenant_id`     | *uuid*                                                        | The [Tenant](#tenants) ID which owns the reactor                                                                                                                          |
-| `name`          | *string*                                                      | The name of the reactor                                                                                                                                                   |
-| `formula`       | *[Reactor Formula](#reactor-formulas-reactor-formula-object)* | Reactor Formula this Reactor is configured for                                                                                                                            |
-| `configuration` | *map*                                                         | A key-value map of all configuration name and values for a [Reactor Formula configuration](#reactor-formulas-reactor-formula-configuration) |
-| `created_by`    | *uuid*                                                        | (Optional) The ID of the user or [Application](#applications) that created the Reactor                                                                                    |
-| `created_at`    | *string*                                                      | (Optional) Created date of the Reactor in ISO 8601 format                                                                                                                 |
-| `modified_by`   | *uuid*                                                        | (Optional) The ID of the user or [Application](#applications) that last modified the Reactor                                                                              |
-| `modified_at`   | *date*                                                        | (Optional) Last modified date of the Reactor in ISO 8601 format                                                                                                           |
+| Attribute       | Type                                                          |     | Description                                                                                                                                                                                                                            |
+|-----------------|---------------------------------------------------------------|:----|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `id`            | *uuid*                                                        |     | Unique identifier of the Reactor which can be used to [get a Reactor](#reactors-get-a-reactor)                                                                                                                                         |
+| `tenant_id`     | *uuid*                                                        |     | The [Tenant](#tenants) ID which owns the reactor                                                                                                                                                                                       |
+| `name`          | *string*                                                      |     | The name of the reactor                                                                                                                                                                                                                |
+| `formula`       | *[Reactor Formula](#reactor-formulas-reactor-formula-object)* |     | Reactor Formula this Reactor is configured for                                                                                                                                                                                         |
+| `configuration` | *map*                                                         |     | A key-value map of all configuration name and values for a [Reactor Formula configuration](#reactor-formulas-reactor-formula-configuration)                                                                                            |
+| `application`   | *[Application](#applications-application-object)*             |     | (Optional) This Application's permissions are injected into a pre-configured <a href="https://www.npmjs.com/package/@basis-theory/basis-theory-js" target="_blank">Node.js BasisTheory</a> instance passed into the Reactor's runtime. |
+| `created_by`    | *uuid*                                                        |     | (Optional) The ID of the user or [Application](#applications) that created the Reactor                                                                                                                                                 |
+| `created_at`    | *string*                                                      |     | (Optional) Created date of the Reactor in ISO 8601 format                                                                                                                                                                              |
+| `modified_by`   | *uuid*                                                        |     | (Optional) The ID of the user or [Application](#applications) that last modified the Reactor                                                                                                                                           |
+| `modified_at`   | *date*                                                        |     | (Optional) Last modified date of the Reactor in ISO 8601 format                                                                                                                                                                        |
 
 ## Create Reactor
 
@@ -31,6 +32,9 @@ curl "https://api.basistheory.com/reactors" \
     },
     "formula": {
       "id": "17069df1-80f4-439e-86a7-4121863e4678"
+    },
+    "application": {
+      "id": "45c124e7-6ab2-4899-b4d9-1388b0ba9d04"
     }
   }'
 ```
@@ -48,6 +52,9 @@ const reactor = await bt.reactors.create({
   formula: {
     id: '17069df1-80f4-439e-86a7-4121863e4678',
   },
+  application: {
+    id: '45c124e7-6ab2-4899-b4d9-1388b0ba9d04'
+  }
 });
 ```
 
@@ -63,6 +70,9 @@ var reactor = await client.CreateAsync(new Reactor {
   },
   Formula = new Formula {
     Id = new Guid("17069df1-80f4-439e-86a7-4121863e4678")
+  },
+  Application = new Application {
+    Id = new Guid("45c124e7-6ab2-4899-b4d9-1388b0ba9d04")
   }
 });
 ```
@@ -72,6 +82,7 @@ import basistheory
 from basistheory.api import reactors_api
 from basistheory.model.create_reactor_request import CreateReactorRequest
 from basistheory.model.reactor_formula import ReactorFormula
+from basistheory.model.application import Application
 
 with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_N88mVGsp3sCXkykyN2EFED")) as api_client:
     reactors_client = reactors_api.ReactorsApi(api_client)
@@ -83,6 +94,9 @@ with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_
         },
         formula=ReactorFormula(
             id="17069df1-80f4-439e-86a7-4121863e4678"
+        ),
+        application=Application(
+            id="45c124e7-6ab2-4899-b4d9-1388b0ba9d04"
         )
     ))
 ```
@@ -110,6 +124,9 @@ func main() {
   reactorFormula := *basistheory.NewReactorFormulaModel()
   reactorFormula.SetId("17069df1-80f4-439e-86a7-4121863e4678")
   createReactorModel.SetFormula(reactorFormula)
+  application := *basistheory.NewApplicationModel()
+  application.SetId("45c124e7-6ab2-4899-b4d9-1388b0ba9d04")
+  createReactorModel.SetApplication(application)
 
   reactor, response, error := apiClient.ReactorsApi.ReactorCreate(contextWithAPIKey).CreateReactorModel(createReactorModel).Execute()
 }
@@ -123,6 +140,7 @@ func main() {
   "tenant_id": "77cb0024-123e-41a8-8ff8-a3d5a0fa8a08",
   "name": "My Reactor",
   "formula": {...},
+  "application": {...},
   "configuration": {
     "SERVICE_API_KEY": "key_abcd1234"
   },
@@ -146,11 +164,12 @@ Create a new Reactor from a Reactor Formula for the Tenant.
 
 ### Request Parameters
 
-| Attribute       | Required | Type     | Default | Description                                                                                                                                                                |
-|-----------------|----------|----------|---------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `name`          | true     | *string* | `null`  | The name of the reactor. Has a maximum length of `200`                                                                                                                     |
-| `configuration` | true     | *object* | `null`  | A key-value map of all configuration name and values for a [Reactor Formula configuration](#reactor-formulas-reactor-formula-configuration) |
-| `formula.id`    | true     | *uuid*   | `null`  | Unique identifier of the [Reactor Formula](#reactor-formulas-reactor-formula-object) to configure a Reactor for                                                            |
+| Attribute        | Required | Type     | Default | Description                                                                                                                                 |
+|------------------|----------|----------|---------|---------------------------------------------------------------------------------------------------------------------------------------------|
+| `name`           | true     | *string* | `null`  | The name of the reactor. Has a maximum length of `200`                                                                                      |
+| `configuration`  | true     | *object* | `null`  | A key-value map of all configuration name and values for a [Reactor Formula configuration](#reactor-formulas-reactor-formula-configuration) |
+| `formula.id`     | true     | *uuid*   | `null`  | Unique identifier of the [Reactor Formula](#reactor-formulas-reactor-formula-object) to configure a Reactor for                             |
+| `application.id` | false    | *uuid*   | `null`  | Unique identifier of the [Application](#applications-application-object) to configure a Reactor with                                        |
 
 The `configuration` object must satisfy the name and type constraints defined by the [Reactor Formula's](#reactor-formulas-reactor-formula-object) `configuration` property.
 
@@ -372,6 +391,9 @@ curl "https://api.basistheory.com/reactors/5b493235-6917-4307-906a-2cd6f1a90b13"
     "name": "My Reactor",
     "configuration": {
       "SERVICE_API_KEY": "key_abcd1234"
+    },
+    "application": {
+      "id": "45c124e7-6ab2-4899-b4d9-1388b0ba9d04"
     }
   }'
 ```
@@ -386,6 +408,9 @@ const reactor = await bt.reactors.update('5b493235-6917-4307-906a-2cd6f1a90b13',
   configuration: {
     SERVICE_API_KEY: 'key_abcd1234',
   },
+  application: {
+    id: '45c124e7-6ab2-4899-b4d9-1388b0ba9d04'
+  }
 });
 ```
 
@@ -399,6 +424,9 @@ var reactor = await client.UpdateAsync("5b493235-6917-4307-906a-2cd6f1a90b13",
     Name = "My Reactor",
     Configuration = new Dictionary<string, string> {
       { "SERVICE_API_KEY", "key_abcd1234" }
+    },
+    Application = new Application {
+      Id = new Guid("45c124e7-6ab2-4899-b4d9-1388b0ba9d04")
     }
   }
 );
@@ -408,7 +436,7 @@ var reactor = await client.UpdateAsync("5b493235-6917-4307-906a-2cd6f1a90b13",
 import basistheory
 from basistheory.api import reactors_api
 from basistheory.model.update_reactor_request import UpdateReactorRequest
-from basistheory.model.reactor_formula import ReactorFormula
+from basistheory.model.application import Application
 
 with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_N88mVGsp3sCXkykyN2EFED")) as api_client:
     reactors_client = reactors_api.ReactorsApi(api_client)
@@ -417,7 +445,10 @@ with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_
         name="My Reactor",
         configuration={
             "SERVICE_API_KEY": "key_abcd134"
-        }
+        },
+        application=Application(
+            id="45c124e7-6ab2-4899-b4d9-1388b0ba9d04"
+        )
     ))
 ```
 
@@ -441,6 +472,9 @@ func main() {
   updateReactorModel.SetConfiguration(map[string]string{
   	"SERVICE_API_KEY": "key_abcd134",
   })
+  application := *basistheory.NewApplicationModel()
+  application.SetId("45c124e7-6ab2-4899-b4d9-1388b0ba9d04")
+  updateReactorModel.SetApplication(application)
 
   reactor, response, err := apiClient.ReactorsApi.ReactorUpdate(contextWithAPIKey, "5b493235-6917-4307-906a-2cd6f1a90b13").UpdateReactorModel(updateReactorModel).Execute()
 }
@@ -485,10 +519,11 @@ Update a Reactor by ID in the Tenant.
 
 ### Request Parameters
 
-| Attribute       | Required | Type     | Default | Description                                                                                                                                                               |
-|-----------------|----------|----------|---------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `name`          | true     | *string* | `null`  | The name of the reactor. Has a maximum length of `200`                                                                                                                    |
-| `configuration` | true     | *object* | `null`  | A key-value map of all configuration name and values for a [Reactor Formula configuration](#reactor-formulas-reactor-formula-configuration) |
+| Attribute        | Required | Type     | Default | Description                                                                                                                                 |
+|------------------|----------|----------|---------|---------------------------------------------------------------------------------------------------------------------------------------------|
+| `name`           | true     | *string* | `null`  | The name of the reactor. Has a maximum length of `200`                                                                                      |
+| `configuration`  | true     | *object* | `null`  | A key-value map of all configuration name and values for a [Reactor Formula configuration](#reactor-formulas-reactor-formula-configuration) |
+| `application.id` | false    | *uuid*   | `null`  | Unique identifier of the [Application](#applications-application-object) to configure a Reactor with                                        |
 
 ### Response
 

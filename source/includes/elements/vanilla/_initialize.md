@@ -3,7 +3,7 @@
 
 > CDN
 
-```jsx
+```tsx
 <script>
   // you can initialize it wherever it suits your workflow best
   // here we are waiting for the window to load, to make sure BasisTheory instance
@@ -22,7 +22,7 @@
 
 > Module
 
-```jsx
+```tsx
 import { BasisTheory } from '@basis-theory/basis-theory-js';
 
 // In this context BasisTheory is a class

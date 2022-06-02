@@ -1,6 +1,6 @@
 # Element Events
 
-```jsx
+```tsx
 var subscription = cardElement.on('event-type', (event) => {
   // handle event  
 });
@@ -20,7 +20,7 @@ You can communicate with Elements by listening to events. When you subscribe to 
 
 ## On Ready
 
-```jsx
+```tsx
 cardElement.on('ready', () => {
   // handle ready event 
 })
@@ -30,7 +30,7 @@ This event is triggered when the element has rendered and user is able to start 
 
 ## On Change
 
-```jsx
+```tsx
 cardElement.on('change', (changeEvent) => {
   if (changeEvent.complete) {
     // enable submit button  
@@ -43,47 +43,49 @@ cardElement.on('change', (changeEvent) => {
 
 This event is triggered whenever element's value(s) change. For example, if the user types data that doesn't change the state of a field between valid/invalid or empty/filled, you shouldn't expect the event to trigger.
 
-Parameter | Required | Type       | Description
---------- | -------- | ---------- | -----------
-`event`   | true     | *"change"* | The event type to listen to.
-`handler` | true     | *function* | Callback function to be called when the event is fired. Takes in a [ChangeEvent](#element-events-on-change-changeevent).
+| Parameter | Required | Type       | Description                                                                                                              |
+|-----------|----------|------------|--------------------------------------------------------------------------------------------------------------------------|
+| `event`   | true     | *"change"* | The event type to listen to.                                                                                             |
+| `handler` | true     | *function* | Callback function to be called when the event is fired. Takes in a [ChangeEvent](#element-events-on-change-changeevent). |
 
 ### ChangeEvent
 
-```jsx
+```tsx
 {
   "complete": false,
   "empty": false,
   "errors": [
     {...},
     {...}
-  ]
+  ],
+  "cardBrand": "american-express"
 }
 ```
 
-Attribute  | Type       | Description
----------- | ---------- | -----------
-`complete` | *boolean*  | If the element value is well-formed and is ready to be submitted.
-`empty`    | *boolean*  | Whether the element is empty. Multi-input Elements will be `empty` only if all inputs are.
-`errors`   | *array*    | Array of [FieldError](#element-events-on-change-fielderror).
+| Attribute   | Type      | Eligible Elements                                                                       | Description                                                                                                                                                                              |
+|-------------|-----------|-----------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `complete`  | *boolean* | All                                                                                     | If the element value is well-formed and is ready to be submitted.                                                                                                                        |
+| `empty`     | *boolean* | All                                                                                     | Whether the element is empty. Multi-input Elements will be `empty` only if all inputs are.                                                                                               |
+| `errors`    | *array*   | All                                                                                     | Array of [FieldError](#element-events-on-change-fielderror).                                                                                                                             |
+| `cardBrand` | *string*  | [card](#element-types-card-element)<br>[cardNumber](#element-types-card-number-element) | (Optional) The credit card [brand](#element-options-card-brands) (e.g. `'american-express'`, `'visa'`, `'unknown'`). The value defaults to `'unknown'` until a card brand is recognized. |
 
 ### FieldError
 
-```jsx
+```tsx
 {
   "targetId": "cardNumber",
   "type": "invalid"
 }
 ```
 
-Attribute  | Type       | Description
----------- | ---------- | -----------
-`targetId` | *string*                        | Input id that triggered the error. Values vary per [element type](#element-types).
-`type`     | *"invalid"* or *"incomplete"*   | Type of the error.
+| Attribute  | Type                          | Description                                                                        |
+|------------|-------------------------------|------------------------------------------------------------------------------------|
+| `targetId` | *string*                      | Input id that triggered the error. Values vary per [element type](#element-types). |
+| `type`     | *"invalid"* or *"incomplete"* | Type of the error.                                                                 |
 
 ## On Focus
 
-```jsx
+```tsx
 cardElement.on('focus', (focusEvent) => {
   
 })
@@ -91,26 +93,26 @@ cardElement.on('focus', (focusEvent) => {
 
 Triggered when an element input is focused.
 
-Parameter | Required | Type       | Description
---------- | -------- | ---------- | -----------
-`event`   | true     | *"focus"* | The event type to listen to.
-`handler` | true     | *function* | Callback function to be called when the event is fired. Takes in a [FocusEvent](#element-events-on-focus-focusevent).
+| Parameter | Required | Type       | Description                                                                                                           |
+|-----------|----------|------------|-----------------------------------------------------------------------------------------------------------------------|
+| `event`   | true     | *"focus"*  | The event type to listen to.                                                                                          |
+| `handler` | true     | *function* | Callback function to be called when the event is fired. Takes in a [FocusEvent](#element-events-on-focus-focusevent). |
 
 ### FocusEvent
 
-```jsx
+```tsx
 {
   "targetId": "cardNumber"  
 }
 ```
 
-Attribute  | Type       | Description
----------- | ---------- | -----------
-`targetId`       | *string*   | Input id that triggered the event. Values vary per [element type](#element-types).
+| Attribute  | Type     | Description                                                                        |
+|------------|----------|------------------------------------------------------------------------------------|
+| `targetId` | *string* | Input id that triggered the event. Values vary per [element type](#element-types). |
 
 ## On Blur
 
-```jsx
+```tsx
 cardElement.on('blur', (blurEvent) => {
   
 })
@@ -118,26 +120,26 @@ cardElement.on('blur', (blurEvent) => {
 
 Triggered when an element input focus is lost.
 
-Parameter | Required | Type       | Description
---------- | -------- | ---------- | -----------
-`event`   | true     | *"blur"* | The event type to listen to.
-`handler` | true     | *function* | Callback function to be called when the event is fired. Takes in a [BlurEvent](#element-events-on-blur-blurevent).
+| Parameter | Required | Type       | Description                                                                                                        |
+|-----------|----------|------------|--------------------------------------------------------------------------------------------------------------------|
+| `event`   | true     | *"blur"*   | The event type to listen to.                                                                                       |
+| `handler` | true     | *function* | Callback function to be called when the event is fired. Takes in a [BlurEvent](#element-events-on-blur-blurevent). |
 
 ### BlurEvent
 
-```jsx
+```tsx
 {
   "targetId": "cardNumber"  
 }
 ```
 
-Attribute  | Type       | Description
----------- | ---------- | -----------
-`targetId`       | *string*   | Input id that triggered the event. Values vary per [element type](#element-types).
+| Attribute  | Type     | Description                                                                        |
+|------------|----------|------------------------------------------------------------------------------------|
+| `targetId` | *string* | Input id that triggered the event. Values vary per [element type](#element-types). |
 
 ## On Keydown
 
-```jsx
+```tsx
 cardElement.on('keydown', (keydownEvent) => {
   
 })
@@ -145,14 +147,14 @@ cardElement.on('keydown', (keydownEvent) => {
 
 Triggered when user hits a special key inside an element input.
 
-Parameter | Required | Type       | Description
---------- | -------- | ---------- | -----------
-`event`   | true     | *"keydown"* | The event type to listen to.
-`handler` | true     | *function* | Callback function to be called when the event is fired. Takes in a [KeydownEvent](#element-events-on-keydown-keydownevent).
+| Parameter | Required | Type        | Description                                                                                                                 |
+|-----------|----------|-------------|-----------------------------------------------------------------------------------------------------------------------------|
+| `event`   | true     | *"keydown"* | The event type to listen to.                                                                                                |
+| `handler` | true     | *function*  | Callback function to be called when the event is fired. Takes in a [KeydownEvent](#element-events-on-keydown-keydownevent). |
 
 ### KeydownEvent
 
-```jsx
+```tsx
 {
   "targetId": "cardNumber",
   "key": "Enter",
@@ -163,11 +165,11 @@ Parameter | Required | Type       | Description
 }
 ```
 
-Attribute  | Type                  | Description
----------- | ----------            | -----------
-`targetId` | *string*              | Input targetId that triggered the event. Values vary per [element type](#element-types).
-`key`      | *Escape* or *Enter*   | Key pressed by the user.
-`ctrlKey`  | *boolean*             | Flag indicating <a href="https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/ctrlKey" target="_blank">`control` key</a> was pressed when the event occurred.
-`altKey`   | *boolean*             | Flag indicating <a href="https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/altKey" target="_blank">`alt` key</a> was pressed when the event occurred.
-`shiftKey` | *boolean*             | Flag indicating <a href="https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/shiftKey" target="_blank">`shift` key</a> was pressed when the event occurred.
-`metaKey`  | *boolean*             | Flag indicating <a href="https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/metaKey" target="_blank">`meta` key</a> was pressed when the event occurred.
+| Attribute  | Type                | Description                                                                                                                                                             |
+|------------|---------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `targetId` | *string*            | Input targetId that triggered the event. Values vary per [element type](#element-types).                                                                                |
+| `key`      | *Escape* or *Enter* | Key pressed by the user.                                                                                                                                                |
+| `ctrlKey`  | *boolean*           | Flag indicating <a href="https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/ctrlKey" target="_blank">`control` key</a> was pressed when the event occurred. |
+| `altKey`   | *boolean*           | Flag indicating <a href="https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/altKey" target="_blank">`alt` key</a> was pressed when the event occurred.      |
+| `shiftKey` | *boolean*           | Flag indicating <a href="https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/shiftKey" target="_blank">`shift` key</a> was pressed when the event occurred.  |
+| `metaKey`  | *boolean*           | Flag indicating <a href="https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/metaKey" target="_blank">`meta` key</a> was pressed when the event occurred.    |

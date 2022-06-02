@@ -73,7 +73,8 @@ curl "https://api.basistheory.com/tokenize" \
     "data": "Sensitive Value",
     "metadata": {
       "nonSensitiveField": "Non-Sensitive Value"
-    }
+    },
+    "search_indexes": [ "{{ data }}" ]
   }'
 ```
 
@@ -87,7 +88,8 @@ const token = await bt.tokenize({
   data: 'Sensitive Value',
   metadata: {
     nonSensitiveField: 'Non-Sensitive Value'
-  }
+  },
+  searchIndexes: [ "{{ data }}" ]
 });
 ```
 
@@ -101,6 +103,9 @@ var token = await client.Tokenize(new Token {
   Data = "Sensitive Value",
   Metadata = new Dictionary<string, string> {
     { "nonSensitiveField",  "Non-Sensitive Value" }
+  },
+  SearchIndexes = new List<string> {
+    "{{ data }}"
   }
 });
 ```
@@ -118,7 +123,10 @@ with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_
       data="Sensitive Value",
       metadata={
         "nonSensitive": "Non-Sensitive Value"
-      }
+      },
+      search_indexes=[
+        "{{ data }}"
+      ]
     ))
 ```
 
@@ -132,6 +140,7 @@ with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_
   "metadata": {
     "nonSensitiveField": "Non-Sensitive Value"
   },
+  "search_indexes": [ "{{ data }}" ],
   "created_by": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
   "created_at": "2020-09-15T15:53:00+00:00"
 }

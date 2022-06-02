@@ -3,7 +3,7 @@ title: Basis Theory Elements Reference
 docs_logo: elements-logo.svg
 
 language_tabs: # must be one of https://git.io/vQNgJ
-  - jsx: Javascript
+  - tsx: Javascript
 
 toc_footers:
 
@@ -27,11 +27,13 @@ vanilla_includes:
   - elements/vanilla/initialize
   - elements/vanilla/element_types
   - elements/vanilla/elements_instance
+  - elements/vanilla/element_options
+  - elements/vanilla/element_options_style
+  - elements/vanilla/element_options_mask
+  - elements/vanilla/element_options_transform
+  - elements/vanilla/element_options_card_brands
   - elements/vanilla/element_events
-  - elements/vanilla/element_style
-  - elements/vanilla/element_mask
-  - elements/vanilla/element_transform
-  - elements/vanilla/elements_services
+  - elements/vanilla/tokenization
   - elements/vanilla/deprecations
 
 react_includes:
@@ -40,6 +42,9 @@ react_includes:
   - elements/react/basis_theory_provider
   - elements/react/card_element
   - elements/react/text_element
+  - elements/react/card_number_element
+  - elements/react/card_expiration_date_element
+  - elements/react/card_verification_code_element
   - elements/react/basis_theory_react
 
 reference_links:

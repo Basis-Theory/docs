@@ -116,6 +116,12 @@ _iub.csConfiguration = {"ccpaAcknowledgeOnLoad":true,"consentOnContinuedBrowsing
 </script>
 <script type="text/javascript" src="//cdn.iubenda.com/cs/iubenda_cs.js" charset="UTF-8" async></script>
   <!-- End Iubenda -->
+
+    <!-- BasisTheory Elements -->
+    <script type="text/javascript" src="//js.basistheory.com"></script>
+    <script async>
+      BasisTheory.init('key_XVB48UzHJ57TdPtmLhJa9e', { elements: true });
+    </script>
   </head>
 
   <body class="<%= page_classes %>" data-languages="<%=h language_tabs.map{ |lang| lang.is_a?(Hash) ? lang.keys.first : lang }.to_json %>">
