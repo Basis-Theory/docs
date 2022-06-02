@@ -17,56 +17,56 @@ Token Types define the rules around a data type such as validation requirements,
 
 The `token` type is used for general data types that don't require input validation or formatting restrictions.
 
-| Token Attribute                | Value     |
-|--------------------------------|-----------|
-| **Type**                       | `token`   |
-| **Default Classification**     | `general` |
-| **Default Impact Level**       | `high`    |
-| **Minimum Impact Level**       | `low`     |
-| **Default Restriction Policy** | `redact`  |
-| **Input Validation**           | None      |
-| **Input Length**               | Any       |
-| **Fingerprinted**              | No        |
+| Token Attribute                    | Value     |
+|------------------------------------|-----------|
+| **Type**                           | `token`   |
+| **Default Classification**         | `general` |
+| **Default Impact Level**           | `high`    |
+| **Minimum Impact Level**           | `low`     |
+| **Default Restriction Policy**     | `redact`  |
+| **Input Validation**               | None      |
+| **Input Length**                   | Any       |
+| **Default Fingerprint Expression** | None      |
 
 
 ## Card
 
-| Token Attribute                | Value                                                                                       |
-|--------------------------------|---------------------------------------------------------------------------------------------|
-| **Type**                       | `card`                                                                                      |
-| **Default Classification**     | `pci`                                                                                       |
-| **Default Impact Level**       | `high`                                                                                      |
-| **Minimum Impact Level**       | `high`                                                                                      |
-| **Default Restriction Policy** | `mask`                                                                                      |
-| **Input Validation**           | See [Card Object](#tokens-token-data-validations) for validation requirements |
-| **Fingerprinted**              | Yes                                                                                         |
+| Token Attribute                    | Value                                                                         |
+|------------------------------------|-------------------------------------------------------------------------------|
+| **Type**                           | `card`                                                                        |
+| **Default Classification**         | `pci`                                                                         |
+| **Default Impact Level**           | `high`                                                                        |
+| **Minimum Impact Level**           | `high`                                                                        |
+| **Default Restriction Policy**     | `mask`                                                                        |
+| **Input Validation**               | See [Card Object](#tokens-token-data-validations) for validation requirements |
+| **Default Fingerprint Expression** | `{{ data.number }}`                                                           |
 
 
 ## Bank
 
-| Token Attribute                | Value                                                                                                    |
-|--------------------------------|----------------------------------------------------------------------------------------------------------|
-| **Type**                       | `bank`                                                                                                   |
-| **Default Classification**     | `bank`                                                                                                   |
-| **Default Impact Level**       | `high`                                                                                                   |
-| **Minimum Impact Level**       | `high`                                                                                                   |
-| **Default Restriction Policy** | `mask`                                                                                                   |
-| **Input Validation**           | See [Bank Object](#tokens-token-data-validations) for validation requirements              |
-| **Fingerprinted**              | Yes                                                                                                      |
+| Token Attribute                    | Value                                                                         |
+|------------------------------------|-------------------------------------------------------------------------------|
+| **Type**                           | `bank`                                                                        |
+| **Default Classification**         | `bank`                                                                        |
+| **Default Impact Level**           | `high`                                                                        |
+| **Minimum Impact Level**           | `high`                                                                        |
+| **Default Restriction Policy**     | `mask`                                                                        |
+| **Input Validation**               | See [Bank Object](#tokens-token-data-validations) for validation requirements |
+| **Default Fingerprint Expression** | <code>{{ data.account_number }}&#124;{{ data.routing_number }}</code>         |
 
 
 ## Card Number
 
-| Token Attribute                | Value               |
-|--------------------------------|---------------------|
-| **Type**                       | `card_number`       |
-| **Default Classification**     | `pci`               |
-| **Default Impact Level**       | `high`              |
-| **Minimum Impact Level**       | `high`              |
-| **Default Restriction Policy** | `mask`              |
-| **Input Validation**           | Luhn-valid, numeric |
-| **Input Length**               | 13 - 19             |
-| **Fingerprinted**              | Yes                 |
+| Token Attribute                    | Value               |
+|------------------------------------|---------------------|
+| **Type**                           | `card_number`       |
+| **Default Classification**         | `pci`               |
+| **Default Impact Level**           | `high`              |
+| **Minimum Impact Level**           | `high`              |
+| **Default Restriction Policy**     | `mask`              |
+| **Input Validation**               | Luhn-valid, numeric |
+| **Input Length**                   | 13 - 19             |
+| **Default Fingerprint Expression** | `{{ data }}`        |
 
 Examples:
 
@@ -78,16 +78,16 @@ Examples:
 
 ## US Bank Account Number
 
-| Token Attribute                | Value                    |
-|--------------------------------|--------------------------|
-| **Type**                       | `us_bank_account_number` |
-| **Default Classification**     | `bank`                   |
-| **Default Impact Level**       | `high`                   |
-| **Minimum Impact Level**       | `low`                    |
-| **Default Restriction Policy** | `mask`                   |
-| **Input Validation**           | Numeric                  |
-| **Input Length**               | 3 - 17                   |
-| **Fingerprinted**              | Yes                      |
+| Token Attribute                    | Value                    |
+|------------------------------------|--------------------------|
+| **Type**                           | `us_bank_account_number` |
+| **Default Classification**         | `bank`                   |
+| **Default Impact Level**           | `high`                   |
+| **Minimum Impact Level**           | `low`                    |
+| **Default Restriction Policy**     | `mask`                   |
+| **Input Validation**               | Numeric                  |
+| **Input Length**                   | 3 - 17                   |
+| **Default Fingerprint Expression** | `{{ data }}`             |
 
 Examples: 
 
@@ -98,30 +98,30 @@ Examples:
 
 ## US Bank Routing Number
 
-| Token Attribute                | Value                        |
-|--------------------------------|------------------------------|
-| **Type**                       | `us_bank_routing_number`     |
-| **Default Classification**     | `bank`                       |
-| **Default Impact Level**       | `low`                        |
-| **Minimum Impact Level**       | `low`                        |
-| **Default Restriction Policy** | `redact`                     |
-| **Input Validation**           | Numeric, ABA-valid           |
-| **Input Length**               | 9                            |
-| **Fingerprinted**              | Yes                          |
+| Token Attribute                    | Value                    |
+|------------------------------------|--------------------------|
+| **Type**                           | `us_bank_routing_number` |
+| **Default Classification**         | `bank`                   |
+| **Default Impact Level**           | `low`                    |
+| **Minimum Impact Level**           | `low`                    |
+| **Default Restriction Policy**     | `redact`                 |
+| **Input Validation**               | Numeric, ABA-valid       |
+| **Input Length**                   | 9                        |
+| **Default Fingerprint Expression** | `{{ data }}`             |
 
 
 ## Social Security Number
 
-| Token Attribute                | Value                                    |
-|--------------------------------|------------------------------------------|
-| **Type**                       | `social_security_number`                 |
-| **Default Classification**     | `pii`                                    |
-| **Default Impact Level**       | `high`                                   |
-| **Minimum Impact Level**       | `low`                                    |
-| **Default Restriction Policy** | `mask`                                   |
-| **Input Validation**           | Numeric with optional delimiter of `"-"` |
-| **Input Length**               | 9 (not including delimiting characters)  |
-| **Fingerprinted**              | Yes                                      |
+| Token Attribute                    | Value                                      |
+|------------------------------------|--------------------------------------------|
+| **Type**                           | `social_security_number`                   |
+| **Default Classification**         | `pii`                                      |
+| **Default Impact Level**           | `high`                                     |
+| **Minimum Impact Level**           | `low`                                      |
+| **Default Restriction Policy**     | `mask`                                     |
+| **Input Validation**               | Numeric with optional delimiter of `"-"`   |
+| **Input Length**                   | 9 (not including delimiting characters)    |
+| **Default Fingerprint Expression** | <code>{{ data &#124; remove: '-' }}</code> |
 
 Examples:
 
@@ -133,16 +133,16 @@ Examples:
 
 ## Employer Id Number
 
-| Token Attribute                | Value                                    |
-|--------------------------------|------------------------------------------|
-| **Type**                       | `employer_id_number`                     |
-| **Default Classification**     | `pii`                                    |
-| **Default Impact Level**       | `high`                                   |
-| **Minimum Impact Level**       | `low`                                    |
-| **Default Restriction Policy** | `mask`                                   |
-| **Input Validation**           | Numeric with optional delimiter of `"-"` |
-| **Input Length**               | 9 (not including delimiting characters)  |
-| **Fingerprinted**              | Yes                                      |
+| Token Attribute                    | Value                                      |
+|------------------------------------|--------------------------------------------|
+| **Type**                           | `employer_id_number`                       |
+| **Default Classification**         | `pii`                                      |
+| **Default Impact Level**           | `high`                                     |
+| **Minimum Impact Level**           | `low`                                      |
+| **Default Restriction Policy**     | `mask`                                     |
+| **Input Validation**               | Numeric with optional delimiter of `"-"`   |
+| **Input Length**                   | 9 (not including delimiting characters)    |
+| **Default Fingerprint Expression** | <code>{{ data &#124; remove: '-' }}</code> |
 
 Examples:
 

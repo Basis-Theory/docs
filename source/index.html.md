@@ -14,7 +14,7 @@ toc_footers:
 other_docs:
   - <a class="toc-h2 toc-link" href="https://developers.basistheory.com/">Home</a>
   - <a class="toc-h2 toc-link" href="/elements">Elements</a>
-  - <a class="toc-h2 toc-link" href="/detokenization">Detokenization</a>
+  - <a class="toc-h2 toc-link" href="/expressions">Expressions</a>
   - <a class="toc-h2 toc-link" href="https://developers.basistheory.com/getting-started">Guides</a>
 
 intro_quick_links:
@@ -43,13 +43,12 @@ api_includes:
   - api-reference/tokens
   - api-reference/token_associations
   - api-reference/tokenize
-  - api-reference/expressions
   - api-reference/deprecations
 
 reference_links:
   - <a class="toc-h1 toc-link" href="/api-reference">API Reference</a>
   - <a class="toc-h1 toc-link" href="/elements">Elements</a>
-  - <a class="toc-h1 toc-link" href="/detokenization">Detokenization</a>
+  - <a class="toc-h1 toc-link" href="/expressions">Expressions</a>
 
 aux_links:
   - <a class="toc-h1 toc-link" href="https://github.com/Basis-Theory" target="_blank">GitHub</a>
