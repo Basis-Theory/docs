@@ -226,7 +226,7 @@ curl "https://api.basistheory.com/proxy" \
 
 In this example, we show how you can use a [Card](/#token-types-card) token to create a Spreedly payment method.
 
-Say you have created the 'card' token:
+Say you have created the `card` token:
 
 <div class="center-column" style="clear: none;"></div>
 ```json

@@ -75,7 +75,7 @@ curl "https://api.basistheory.com/tokenize" \
       "nonSensitiveField": "Non-Sensitive Value"
     },
     "search_indexes": [ "{{ data }}" ],
-    "fingerprint_expression": [ "{{ data }}" ]
+    "fingerprint_expression": "{{ data }}"
   }'
 ```
 
@@ -90,8 +90,8 @@ const token = await bt.tokenize({
   metadata: {
     nonSensitiveField: 'Non-Sensitive Value'
   },
-  searchIndexes: [ "{{ data }}" ],
-  fingerprintExpression: [ "{{ data }}" ]
+  searchIndexes: [ '{{ data }}' ],
+  fingerprintExpression: '{{ data }}',
 });
 ```
 
@@ -109,7 +109,7 @@ var token = await client.Tokenize(new Token {
   SearchIndexes = new List<string> {
     "{{ data }}"
   },
-  FingerprintExpression: [ "{{ data }}" ]
+  FingerprintExpression = "{{ data }}" 
 });
 ```
 

@@ -188,7 +188,7 @@ Given a token with the data:
 
 | Expression                                      | Result   |
 |-------------------------------------------------|----------|
-| <code>{{ data &#124; pad_left: 6, '0' }}</code> | "123400" |
-| <code>{{ data &#124; pad_left: 6, 'X' }}</code> | "1234XX" |
-| <code>{{ data &#124; pad_left: 4, '0' }}</code> | "1234"   |
-| <code>{{ data &#124; pad_left: 2, '0' }}</code> | "1234"   |
+| <code>{{ data &#124; pad_right: 6, '0' }}</code> | "123400" |
+| <code>{{ data &#124; pad_right: 6, 'X' }}</code> | "1234XX" |
+| <code>{{ data &#124; pad_right: 4, '0' }}</code> | "1234"   |
+| <code>{{ data &#124; pad_right: 2, '0' }}</code> | "1234"   |
