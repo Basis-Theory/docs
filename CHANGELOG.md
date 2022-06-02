@@ -1,3 +1,10 @@
+# [1.41.0](https://github.com/Basis-Theory/docs/compare/v1.40.0...v1.41.0) (2022-06-02)
+
+
+### Features
+
+* add reactor application ([#185](https://github.com/Basis-Theory/docs/issues/185)) ([285697e](https://github.com/Basis-Theory/docs/commit/285697eab133a08968e32c6a1bc06be4b7b9c7a1))
+
 # [1.40.0](https://github.com/Basis-Theory/docs/compare/v1.39.0...v1.40.0) (2022-05-31)
 
 
