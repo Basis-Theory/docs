@@ -1,0 +1,1675 @@
+
+
+
+<!doctype html>
+<html>
+  <head>
+    <title>Basis Theory Expression Reference</title>
+    <link href="https://cdn.basistheory.com/images/favicons/favicon.ico" rel="icon" type="image/ico" />
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="API Reference documentation for the Basis Theory API. Includes code examples for all official Basis Theory SDKs and user guides for various use cases.">
+    <meta property="og:description" content="API Reference documentation for the Basis Theory API. Includes code examples for all official Basis Theory SDKs and user guides for various use cases.">
+    <meta property="og:image" content="https://cdn.basistheory.com/images/seo/docs-opengraph.png">
+
+    <style media="screen">
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .gh {
+  color: #999999;
+}
+.highlight .sr {
+  color: #f6aa11;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .nb {
+  color: #f6aa11;
+}
+.highlight .cm {
+  color: #75715e;
+}
+.highlight .cp {
+  color: #75715e;
+}
+.highlight .c1 {
+  color: #75715e;
+}
+.highlight .cs {
+  color: #75715e;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf {
+  color: #75715e;
+}
+.highlight .err {
+  color: #960050;
+}
+.highlight .gr {
+  color: #960050;
+}
+.highlight .gt {
+  color: #960050;
+}
+.highlight .gd {
+  color: #49483e;
+}
+.highlight .gi {
+  color: #49483e;
+}
+.highlight .ge {
+  color: #49483e;
+}
+.highlight .kc {
+  color: #66d9ef;
+}
+.highlight .kd {
+  color: #66d9ef;
+}
+.highlight .kr {
+  color: #66d9ef;
+}
+.highlight .no {
+  color: #66d9ef;
+}
+.highlight .kt {
+  color: #66d9ef;
+}
+.highlight .mf {
+  color: #ae81ff;
+}
+.highlight .mh {
+  color: #ae81ff;
+}
+.highlight .il {
+  color: #ae81ff;
+}
+.highlight .mi {
+  color: #ae81ff;
+}
+.highlight .mo {
+  color: #ae81ff;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #ae81ff;
+}
+.highlight .sc {
+  color: #ae81ff;
+}
+.highlight .se {
+  color: #ae81ff;
+}
+.highlight .ss {
+  color: #ae81ff;
+}
+.highlight .sd {
+  color: #e6db74;
+}
+.highlight .s2 {
+  color: #e6db74;
+}
+.highlight .sb {
+  color: #e6db74;
+}
+.highlight .sh {
+  color: #e6db74;
+}
+.highlight .si {
+  color: #e6db74;
+}
+.highlight .sx {
+  color: #e6db74;
+}
+.highlight .s1 {
+  color: #e6db74;
+}
+.highlight .s, .highlight .sa, .highlight .dl {
+  color: #e6db74;
+}
+.highlight .na {
+  color: #a6e22e;
+}
+.highlight .nc {
+  color: #a6e22e;
+}
+.highlight .nd {
+  color: #a6e22e;
+}
+.highlight .ne {
+  color: #a6e22e;
+}
+.highlight .nf, .highlight .fm {
+  color: #a6e22e;
+}
+.highlight .vc {
+  color: #ffffff;
+}
+.highlight .nn {
+  color: #ffffff;
+}
+.highlight .ni {
+  color: #ffffff;
+}
+.highlight .bp {
+  color: #ffffff;
+}
+.highlight .vg {
+  color: #ffffff;
+}
+.highlight .vi {
+  color: #ffffff;
+}
+.highlight .nv, .highlight .vm {
+  color: #ffffff;
+}
+.highlight .w {
+  color: #ffffff;
+}
+.highlight {
+  color: #ffffff;
+}
+.highlight .n, .highlight .py, .highlight .nx {
+  color: #ffffff;
+}
+.highlight .nl {
+  color: #f92672;
+}
+.highlight .ow {
+  color: #f92672;
+}
+.highlight .nt {
+  color: #f92672;
+}
+.highlight .k, .highlight .kv {
+  color: #f92672;
+}
+.highlight .kn {
+  color: #f92672;
+}
+.highlight .kp {
+  color: #f92672;
+}
+.highlight .o {
+  color: #f92672;
+}
+    </style>
+    <style media="print">
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight, .highlight .w {
+  color: #586e75;
+}
+.highlight .err {
+  color: #002b36;
+  background-color: #dc322f;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cm, .highlight .cpf, .highlight .c1, .highlight .cs {
+  color: #657b83;
+}
+.highlight .cp {
+  color: #b58900;
+}
+.highlight .nt {
+  color: #b58900;
+}
+.highlight .o, .highlight .ow {
+  color: #93a1a1;
+}
+.highlight .p, .highlight .pi {
+  color: #93a1a1;
+}
+.highlight .gi {
+  color: #859900;
+}
+.highlight .gd {
+  color: #dc322f;
+}
+.highlight .gh {
+  color: #268bd2;
+  background-color: #002b36;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kv {
+  color: #6c71c4;
+}
+.highlight .kc {
+  color: #cb4b16;
+}
+.highlight .kt {
+  color: #cb4b16;
+}
+.highlight .kd {
+  color: #cb4b16;
+}
+.highlight .s, .highlight .sb, .highlight .sc, .highlight .dl, .highlight .sd, .highlight .s2, .highlight .sh, .highlight .sx, .highlight .s1 {
+  color: #859900;
+}
+.highlight .sa {
+  color: #6c71c4;
+}
+.highlight .sr {
+  color: #2aa198;
+}
+.highlight .si {
+  color: #d33682;
+}
+.highlight .se {
+  color: #d33682;
+}
+.highlight .nn {
+  color: #b58900;
+}
+.highlight .nc {
+  color: #b58900;
+}
+.highlight .no {
+  color: #b58900;
+}
+.highlight .na {
+  color: #268bd2;
+}
+.highlight .m, .highlight .mb, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mx {
+  color: #859900;
+}
+.highlight .ss {
+  color: #859900;
+}
+    </style>
+
+    <link href="../stylesheets/header-70f9f668.css" rel="stylesheet" media="screen" />
+    <link href="../stylesheets/screen-05d97172.css" rel="stylesheet" media="screen" />
+    <link href="../stylesheets/home-26d9d941.css" rel="stylesheet" media="screen" />
+    <link href="../stylesheets/guides.css" rel="stylesheet" media="screen" />
+    <link href="../stylesheets/iubenda-a04c1f72.css" rel="stylesheet" media="screen" />
+    <link href="../stylesheets/print-963dbb1c.css" rel="stylesheet" media="print" />
+
+    <script src="https://kit.fontawesome.com/86c3cd0147.js" crossorigin="anonymous"></script>
+
+      <script src="../javascripts/all-8d003910.js"></script>
+
+      <script>
+        $(function() { setupCodeCopy(); });
+      </script>
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-M56229L');</script>
+    <!-- End Google Tag Manager -->
+
+  <!-- Iubenda -->
+  <!-- IF YOU ARE UPDATING THIS, MAKE SURE YOU PUT THE CSS INTO THE source/stylesheets/iubenda.css.scss file and remove it here. -->
+  <script type="text/javascript">
+var _iub = _iub || [];
+_iub.csConfiguration = {"ccpaAcknowledgeOnLoad":true,"consentOnContinuedBrowsing":false,"countryDetection":true,"gdprAppliesGlobally":false,"lang":"en","siteId":2378844,"cookiePolicyId":13137791, "callback":{ "onPreferenceExpressedOrNotNeeded":function(preference) { dataLayer.push({iubenda_ccpa_opted_out: _iub.cs.api.isCcpaOptedOut()}); if (!preference) { dataLayer.push({event: "iubenda_preference_not_needed"});} else { if (preference.consent === true) { dataLayer.push({event: "iubenda_consent_given"});} else if (preference.consent === false) { dataLayer.push({event: "iubenda_consent_rejected"});} else if (preference.purposes) { for (var purposeId in preference.purposes) {if (preference.purposes[purposeId]) { dataLayer.push({event: "iubenda_consent_given_purpose_" + purposeId}); }}}}} }, "banner":{ "acceptButtonCaptionColor":"#070a1b","acceptButtonColor":"#1ad1db","acceptButtonDisplay":true,"backgroundColor":"#141729","closeButtonDisplay":false,"customizeButtonCaptionColor":"#d2d2d2","customizeButtonColor":"#1a1e32","customizeButtonDisplay":true,"position":"bottom","rejectButtonCaptionColor":"white","rejectButtonColor":"#1e2337","rejectButtonDisplay":true,"textColor":"#e5e6ec","acceptButtonCaption":"Accept All","content":"<link rel=\"preconnect\" href=\"https://fonts.googleapis.com\" />\n<link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossOrigin=\"true\" />\n<link href=\"https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap\" rel=\"stylesheet\" />\n<div id=\"iubenda-cs-title\">&#x1f36a;  &nbsp;Cookie Notice</div><div id=\"iubenda-cs-paragraph\">\n\nBy clicking \"Accept All\", you agree to the storing of cookies on your device to enhance site navigation, analyze site usage, and assist in our marketing efforts. View our <a href=\"https://basistheory.com/privacy-policy\" target=\"_blank\">Cookie Policy</a> for more information.\n</div>","rejectButtonCaption":"" }};
+</script>
+<script type="text/javascript" src="//cdn.iubenda.com/cs/iubenda_cs.js" charset="UTF-8" async></script>
+  <!-- End Iubenda -->
+
+    <!-- BasisTheory Elements -->
+    <script type="text/javascript" src="//js.basistheory.com"></script>
+    <script async>
+      BasisTheory.init('key_XVB48UzHJ57TdPtmLhJa9e', { elements: true });
+    </script>
+  </head>
+
+  <body class="expressions expressions_index" data-languages="[&quot;shell--reactor&quot;,&quot;shell--proxy&quot;]">
+    <!-- Mobile Nav Icon/Button -->
+    <a href="/#" id="nav-button">
+      <span>
+        NAV
+        <img src="../images/navbar-cad8cdcb.png" alt="" />
+      </span>
+    </a>
+    <!-- End Mobile Nav Icon/Button -->
+
+    <!-- Sidebar/TOC -->
+        <div class="toc-wrapper">
+        <div class="lang-selector">
+              <a href="#" data-language-name="shell--reactor">Reactor</a>
+              <a href="#" data-language-name="shell--proxy">Proxy</a>
+        </div>
+
+        <div class="search">
+          <input type="text" class="search" id="input-search" placeholder="Search...">
+        </div>
+        <ul class="search-results"></ul>
+
+      <h1 class="nav-title">Overview</h1>
+      <ul id="toc_intro" class="toc-section toc-list-h1">
+          <li>
+            <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#language" class="toc-h1 toc-link" data-title="Language">Language</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#language-objects" class="toc-h2 toc-link" data-title="Objects">Objects</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#filters" class="toc-h1 toc-link" data-title="Filters">Filters</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#filters-json" class="toc-h2 toc-link" data-title="json">json</a>
+                  </li>
+                  <li>
+                    <a href="#filters-last4" class="toc-h2 toc-link" data-title="last4">last4</a>
+                  </li>
+                  <li>
+                    <a href="#filters-pad_left" class="toc-h2 toc-link" data-title="pad_left">pad_left</a>
+                  </li>
+                  <li>
+                    <a href="#filters-pad_right" class="toc-h2 toc-link" data-title="pad_right">pad_right</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#detokenization" class="toc-h1 toc-link" data-title="Detokenization">Detokenization</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#detokenization-detokenizing-primitive-data" class="toc-h2 toc-link" data-title="Detokenizing Primitive Data">Detokenizing Primitive Data</a>
+                  </li>
+                  <li>
+                    <a href="#detokenization-detokenizing-complex-data" class="toc-h2 toc-link" data-title="Detokenizing Complex Data">Detokenizing Complex Data</a>
+                  </li>
+                  <li>
+                    <a href="#detokenization-examples" class="toc-h2 toc-link" data-title="Examples">Examples</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#search-indexes" class="toc-h1 toc-link" data-title="Search Indexes">Search Indexes</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#search-indexes-examples" class="toc-h2 toc-link" data-title="Examples">Examples</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#fingerprints" class="toc-h1 toc-link" data-title="Fingerprints">Fingerprints</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#fingerprints-examples" class="toc-h2 toc-link" data-title="Examples">Examples</a>
+                  </li>
+              </ul>
+          </li>
+      </ul>
+
+
+
+
+        <h1 class="nav-title">Reference</h1>
+        <ul id="toc_api" class="toc-section toc-list-h1">
+            <li><a class="toc-h1 toc-link" href="/api-reference">API Reference</a></li>
+            <li><a class="toc-h1 toc-link" href="/elements">Elements</a></li>
+            <li><a class="toc-h1 toc-link" href="/expressions">Expressions</a></li>
+        </ul>
+
+        <h1 class="nav-title">More</h1>
+        <ul id="toc_api" class="toc-section toc-list-h1">
+            <li><a class="toc-h1 toc-link" href="https://github.com/Basis-Theory" target="_blank">GitHub</a></li>
+            <li><a class="toc-h1 toc-link" href="mailto:support@basistheory.com?subject=Help!">Email Support</a></li>
+        </ul>
+
+    </div>
+
+    <!-- End Sidebar/TOC -->
+
+    <!-- Header -->
+    <header class="site-header">
+  <a class="site-header-logo" href="https://developers.basistheory.com/"></a>
+  <div class="documentation-links">
+    <a class="documentation-link" href="https://developers.basistheory.com/getting-started">Get Started</a>
+    <a class="documentation-link" href="https://developers.basistheory.com">Documentation</a>
+    <a class="documentation-link " href="/">API Reference</a>
+    <a class="documentation-link " href="/elements">Elements</a>
+  </div>
+  <div class="portal-links">
+    <a class="portal-sign-in" href="https://portal.basistheory.com">Sign In</a>
+    <a class="portal-create-account" href="https://portal.basistheory.com/register">Create Account</a>
+  </div>
+</header>
+
+    <!-- End Header -->
+
+    <!-- Header Spacer -->
+    <div class="header-spacer">
+    <!-- End Header Spacer -->
+
+    <!-- Main -->
+    <div class="page-wrapper">
+
+      <!-- Code Sidebar -->
+        <div class="dark-box">
+            <div class="lang-selector">
+                  <a href="#" data-language-name="shell--reactor">Reactor</a>
+                  <a href="#" data-language-name="shell--proxy">Proxy</a>
+            </div>
+        </div>
+      <!-- End Code Sidebar -->
+
+      <!-- Content -->
+      <div class="content">
+        <div class="header-border">
+          <!-- TODO: Move Search Here? -->
+        </div>
+        <h1 id='introduction'>Introduction</h1>
+<aside class="header-intro-box">
+    <span>
+        <h4>Expressions</h4>
+        <p class="header-intro-body2-font">
+          Explore the expression language used throughout the Basis Theory API.
+        </p>
+        <h6>QUICK LINKS</h6>
+        <span class="intro-quick-links">
+            <a href="#language">Language</a>
+            <a href="#filters">Filters</a>
+            <a href="#detokenization">Detokenization</a>
+            <a href="#search-indexes">Search Indexes</a>
+            <a href="#fingerprints">Fingerprints</a>
+        </span>
+    </span>
+    <img src="../images/expressions-intro-536e8367.svg"/>
+</aside>
+
+<p>Expressions provide a flexible templating language that can be used to apply custom transformations to token data.</p>
+
+<p>Expressions can be used within many API endpoints, including:</p>
+
+<ul>
+<li><a href="https://developers.basistheory.com/concepts/what-are-reactors">Reactor</a> args, to <a href="#detokenization">detokenize</a> and transform tokens</li>
+<li><a href="https://developers.basistheory.com/concepts/what-is-the-proxy">Proxy</a> requests, to <a href="#detokenization">detokenize</a> and transform tokens</li>
+<li><a href="#search-indexes">search_indexes</a> when <a href="/api-reference/#tokens-create-token">creating a token</a> or <a href="/api-reference/#tokenize">tokenizing</a>, to define indexes to enable <a href="/api-reference/#tokens-search-tokens">searching tokens</a></li>
+<li><a href="#fingerprints">fingerprint_expression</a> when <a href="/api-reference/#tokens-create-token">creating a token</a> or <a href="/api-reference/#tokenize">tokenizing</a>, to define a value used to generate a token fingerprint</li>
+</ul>
+<h1 id='language'>Language</h1>
+<p>The expression language used within the Basis Theory API is based on the <a href="https://shopify.github.io/liquid">Liquid template language</a>.
+While all valid Liquid syntax is supported, Basis Theory expressions are typically formed from a combination of 
+<a href="#language-objects">objects</a> and <a href="#filters">filters</a>.</p>
+<h2 id='language-objects'>Objects</h2>
+<p><a href="https://shopify.github.io/liquid/basics/introduction/#objects">Objects</a> contain content that will be
+rendered when the expression is evaluated, and they are formed by wrapping a statement within double curly braces. For example,
+<code>{{ data.card_number }}</code> would be evaluated by rendering the <code>card_number</code> property within the <code>data</code> object.</p>
+
+<p>The variables that are available for reference within an object expression depends on the context in which the expression is used.
+When including expressions during token creation (e.g. within <code>search_indexes</code> or <code>fingerprint_expression</code>), 
+the <code>data</code> variable is automatically bound to the token&#39;s <code>data</code> value.</p>
+
+<p>When including expressions within Reactor or Proxy requests, token ids may be specified within object expressions, 
+and each token id will be bound to the corresponding token&#39;s data value. 
+See <a href="#detokenization">detokenization</a> for further details about this process. </p>
+<h1 id='filters'>Filters</h1>
+<p>Oftentimes data may be tokenized in one format, but you wish to use this data in a different format within a request.
+Several pieces of data may be stored together in a single token (e.g. a user record containing first and last names and contact information), 
+but you wish to only use a single piece of that data within a Proxy or Reactor request, 
+or you may wish to reformat the data before indexing it for search (e.g. use only the last name, but normalize by uppercasing it).</p>
+
+<p>To allow you complete flexibility, transformation functions called <strong>filters</strong> can be applied within any expression. 
+Generally, a variable&#39;s value can be transformed by specifying a filter after the <code>|</code> symbol:<br>
+<code>{{ &lt;variable&gt; | &lt;filter&gt; }}</code></p>
+
+<p>You can effectively think of this as &quot;piping&quot; a variable into the filter in the same way you may be familiar with the &quot;pipe&quot; operator from Unix-like systems.
+Multiple filters can be chained together by &quot;piping&quot; the result of each filter into the next, applying in order from left to right:<br>
+<code>{{ &lt;variable&gt; | &lt;filter1&gt; | &lt;filter2&gt; | ... }}</code></p>
+
+<p>All standard <a href="https://shopify.github.io/liquid/filters/">Liquid filters</a> are supported within expressions. 
+For example, given a token containing a <code>name</code> object containing both first and last name properties:</p>
+
+<div class="center-column" style="clear: none;"></div>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="err">...</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>We can create an expression to return the upper-cased last name by splitting on the space character, grabbing the last element, and upper-casing:</p>
+
+<div class="center-column" style="clear: none;"></div>
+<div class="highlight"><pre class="highlight javascript"><code><span class="p">{{</span> <span class="nx">data</span><span class="p">.</span><span class="nx">name</span> <span class="o">|</span> <span class="na">split</span><span class="p">:</span> <span class="dl">'</span><span class="s1"> </span><span class="dl">'</span> <span class="o">|</span> <span class="nx">last</span> <span class="o">|</span> <span class="nx">upcase</span> <span class="p">}}</span>
+</code></pre></div>
+<p>This expression would evaluate to the value <code>&quot;DOE&quot;</code>.</p>
+
+<p>In addition to the standard Liquid filters, several custom filters are also available:</p>
+<h2 id='filters-json'>json</h2>
+<p>Evaluates a <a href="https://goessner.net/articles/JsonPath/">JSON Path</a> expression (<a href="https://tools.ietf.org/id/draft-goessner-dispatch-jsonpath-00.html">proposed spec</a>) on the input object.</p>
+
+<p>All standard JSON Path syntax is supported, provided that the expression resolves to a single value.
+If the expression resolves to multiple values, the request will result in a 400 error.</p>
+
+<p>While Liquid supports a very similar syntax to JSON path when selecting properties within a JSON object (e.g. <code>{{ data.bicycle.color }}</code>),
+it does not support more complex JSON Path expressions (e.g. array filter expressions like <code>$.books[?(@.price &lt; 10)].title</code>).
+The <code>json</code> filter provides further flexibility for evaluating complex JSON Path expressions.</p>
+<h3 id='filters-json-parameters'>Parameters</h3>
+<table><thead>
+<tr>
+<th>Position</th>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>0</td>
+<td>jsonPathExpression</td>
+<td><em>string</em></td>
+<td>true</td>
+<td>A JSON Path expression</td>
+</tr>
+</tbody></table>
+<h3 id='filters-json-examples'>Examples</h3>
+<p>Given a token with the data:</p>
+
+<div class="center-column" style="clear: none;"></div>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d35412f4-9d3b-45d8-b051-fe4b7d4e14c5"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"token"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> 
+    </span><span class="nl">"books"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w"> 
+        </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fiction"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"author"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Herman Melville"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Moby Dick"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"isbn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0-553-21311-3"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">8.99</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w"> 
+        </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fantasy"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"author"</span><span class="p">:</span><span class="w"> </span><span class="s2">"J. R. R. Tolkien"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The Lord of the Rings"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"isbn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0-395-19395-8"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">22.99</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"bicycle"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"red"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.95</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Expression</th>
+<th>Result</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>{{ data.bicycle.color }}</code></td>
+<td>&quot;red&quot;</td>
+</tr>
+<tr>
+<td><code>{{ data &#124; json: &#39;$.bicycle.color&#39; }}</code></td>
+<td>&quot;red&quot;</td>
+</tr>
+<tr>
+<td><code>{{ data.bicycle }}</code></td>
+<td>{ &quot;color&quot;: &quot;red&quot;, &quot;price&quot;: 19.95 }</td>
+</tr>
+<tr>
+<td><code>{{ data &#124; json: &#39;$.books[0].author&#39; }}</code></td>
+<td>&quot;Herman Melville&quot;</td>
+</tr>
+<tr>
+<td><code>{{ data &#124; json: &#39;$.books[?(@.price &lt; 10)].title&#39; }}</code></td>
+<td>&quot;Moby Dick&quot;</td>
+</tr>
+<tr>
+<td><code>{{ data.nonexistent }}</code></td>
+<td><code>null</code></td>
+</tr>
+<tr>
+<td><code>{{ data &#124; json: &#39;$.book..author&#39; }}</code></td>
+<td><400 Error></td>
+</tr>
+</tbody></table>
+<h2 id='filters-last4'>last4</h2>
+<p>Returns the last 4 characters of a string. If the string&#39;s length is less than 4, the whole value is returned.</p>
+<h3 id='filters-last4-parameters'>Parameters</h3>
+<p>N/A</p>
+<h3 id='filters-last4-examples'>Examples</h3>
+<p>Given a token with the data:</p>
+
+<div class="center-column" style="clear: none;"></div>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d35412f4-9d3b-45d8-b051-fe4b7d4e14c5"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"token"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"36227206271667"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Expression</th>
+<th>Result</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>{{ data &#124; last4 }}</code></td>
+<td>&quot;1667&quot;</td>
+</tr>
+<tr>
+<td><code>{{ data &#124; slice: 12, 2 &#124; last4 }}</code></td>
+<td>&quot;67&quot;</td>
+</tr>
+</tbody></table>
+<h2 id='filters-pad_left'>pad_left</h2>
+<p>Returns a new string of the desired length by padding the input string on the left with the specified <code>padChar</code>.</p>
+
+<p>Returns null when provided a null input value.</p>
+<h3 id='filters-pad_left-parameters'>Parameters</h3>
+<table><thead>
+<tr>
+<th>Position</th>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>0</td>
+<td>length</td>
+<td><em>int</em></td>
+<td>true</td>
+<td>The number of characters in the resulting string</td>
+</tr>
+<tr>
+<td>1</td>
+<td>padChar</td>
+<td><em>char</em></td>
+<td>true</td>
+<td>A padding character</td>
+</tr>
+</tbody></table>
+<h3 id='filters-pad_left-examples'>Examples</h3>
+<p>Given a token with the data:</p>
+
+<div class="center-column" style="clear: none;"></div>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d35412f4-9d3b-45d8-b051-fe4b7d4e14c5"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"token"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Expression</th>
+<th>Result</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>{{ data &#124; pad_left: 6, &#39;0&#39; }}</code></td>
+<td>&quot;001234&quot;</td>
+</tr>
+<tr>
+<td><code>{{ data &#124; pad_left: 6, &#39;X&#39; }}</code></td>
+<td>&quot;XX1234&quot;</td>
+</tr>
+<tr>
+<td><code>{{ data &#124; pad_left: 4, &#39;0&#39; }}</code></td>
+<td>&quot;1234&quot;</td>
+</tr>
+<tr>
+<td><code>{{ data &#124; pad_left: 2, &#39;0&#39; }}</code></td>
+<td>&quot;1234&quot;</td>
+</tr>
+</tbody></table>
+<h2 id='filters-pad_right'>pad_right</h2>
+<p>Returns a new string of the desired length by padding the input string on the right with the specified <code>padChar</code>.</p>
+
+<p>Returns null when provided a null input value.</p>
+<h3 id='filters-pad_right-parameters'>Parameters</h3>
+<table><thead>
+<tr>
+<th>Position</th>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>0</td>
+<td>length</td>
+<td><em>int</em></td>
+<td>true</td>
+<td>The number of characters in the resulting string</td>
+</tr>
+<tr>
+<td>1</td>
+<td>padChar</td>
+<td><em>char</em></td>
+<td>true</td>
+<td>A padding character</td>
+</tr>
+</tbody></table>
+<h3 id='filters-pad_right-examples'>Examples</h3>
+<p>Given a token with the data:</p>
+
+<div class="center-column" style="clear: none;"></div>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d35412f4-9d3b-45d8-b051-fe4b7d4e14c5"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"token"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Expression</th>
+<th>Result</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>{{ data &#124; pad_right: 6, &#39;0&#39; }}</code></td>
+<td>&quot;123400&quot;</td>
+</tr>
+<tr>
+<td><code>{{ data &#124; pad_right: 6, &#39;X&#39; }}</code></td>
+<td>&quot;1234XX&quot;</td>
+</tr>
+<tr>
+<td><code>{{ data &#124; pad_right: 4, &#39;0&#39; }}</code></td>
+<td>&quot;1234&quot;</td>
+</tr>
+<tr>
+<td><code>{{ data &#124; pad_right: 2, &#39;0&#39; }}</code></td>
+<td>&quot;1234&quot;</td>
+</tr>
+</tbody></table>
+<h1 id='detokenization'>Detokenization</h1>
+<p>Detokenization refers to the process by which non-sensitive token identifiers are replaced with the original token data represented by those tokens.
+Basis Theory supports detokenization through the use of expressions within our serverless <a href="https://developers.basistheory.com/concepts/what-are-reactors">Reactor</a> 
+platform and the <a href="https://developers.basistheory.com/concepts/what-is-the-proxy">Proxy</a>.</p>
+
+<p>Detokenization is performed whenever a <strong>detokenization expression</strong> is identified within a request.
+In their simplest form, these are Liquid <a href="#language-objects">objects</a> of the form <code>{{&lt;tokenId&gt;}}</code>. 
+This expression will be replaced with the token data contained within the token with id <code>&lt;tokenId&gt;</code>.</p>
+
+<p>Detokenization expressions containing non-uuid values, such as <code>{{non uuid value}}</code> will evaluate to <code>null</code> and will be removed from the request.</p>
+
+<p>Any <code>uuid</code> value contained in a detokenization expression is expected to represent the <code>id</code> of a token within your tenant. 
+If no such token is found with that identifier, the request will be rejected with a 400 error.</p>
+
+<p>If a token is found with the given <code>uuid</code> identifier, but the calling application is missing permission to use that 
+token, then the request will be rejected with a 403 error. 
+See the following links for more information about the permissions required to use tokens in a 
+<a href="/#reactors-invoke-a-reactor">Reactor</a> or <a href="/#proxy-proxying-outbound-requests">Proxy</a>.</p>
+
+<p>Token data can also be transformed before including it in a request by applying <a href="#filters">filters</a> within an expression.
+In general, filters are applied during detokenization using the syntax:<br>
+<code>{{ &lt;tokenId&gt; | &lt;filter1&gt; | &lt;filter2&gt; | ... }}</code></p>
+
+<p>Check out the <a href="#detokenization-examples">detokenization examples</a> below to see some examples of filters in action.</p>
+<h2 id='detokenization-detokenizing-primitive-data'>Detokenizing Primitive Data</h2>
+<p>Tokens containing primitive data values, such as a single string or numeric value, can be easily detokenized within a 
+request just by substituting the token data in place of the detokenization expression. For example, say you have the token:</p>
+
+<div class="center-column"></div>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1d08babf-456a-4bef-993d-aece3c1a2f66"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"social_security_number"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"111-22-3333"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Then a request containing the detokenization expression: </p>
+
+<div class="center-column"></div>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"ssn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{{1d08babf-456a-4bef-993d-aece3c1a2f66}}"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>will be detokenized into the request:   </p>
+
+<div class="center-column"></div>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"ssn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"111-22-3333"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h2 id='detokenization-detokenizing-complex-data'>Detokenizing Complex Data</h2>
+<p>Card, Bank, or generic tokens containing complex JSON objects can all be detokenized as well.
+Detokenization of complex token data is performed by embedding the token&#39;s JSON data within the request.
+For example, say you have the <code>card</code> token:</p>
+
+<div class="center-column"></div>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5c20545b-52dc-4a60-b9b5-5b7c84f22369"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"card"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4242424242424242"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"expiration_month"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"expiration_year"</span><span class="p">:</span><span class="w"> </span><span class="mi">2025</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cvc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Then you can embed the entire <a href="/#token-types-card">Card</a> object within a request with the detokenization expression:</p>
+
+<div class="center-column"></div>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"card"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{{5c20545b-52dc-4a60-b9b5-5b7c84f22369}}"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>which will be detokenized into the request:</p>
+
+<div class="center-column"></div>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"card"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4242424242424242"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"expiration_month"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"expiration_year"</span><span class="p">:</span><span class="w"> </span><span class="mi">2025</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cvc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h2 id='detokenization-examples'>Examples</h2>
+<p>Each of the use cases shown below include an example for both Reactors and the Proxy - 
+select the appropriate tab at the top of the right-hand column to choose which examples to show.</p>
+
+<ul>
+<li><a href="#detokenization-examples-use-complex-tokens">Use Complex Tokens</a></li>
+<li><a href="#detokenization-examples-override-a-field-on-a-token">Override a Field on a Token</a></li>
+<li><a href="#detokenization-examples-use-multiple-tokens">Use Multiple Tokens</a></li>
+<li><a href="#detokenization-examples-combine-multiple-tokens-within-a-single-argument">Combine Multiple Tokens within a Single Argument</a></li>
+<li><a href="#detokenization-examples-using-custom-token-schemas">Using Custom Token Schemas</a></li>
+<li><a href="#detokenization-examples-transforming-token-data">Transforming Token Data</a></li>
+</ul>
+<h3 id='detokenization-examples-reactor-prerequisites'>Reactor Prerequisites</h3>
+<p>For the examples below, we will be using a <a href="https://developers.basistheory.com/concepts/what-are-reactors">Reactor</a> created using the <code>Spreedly - Card</code> Reactor Formula.
+We will need the <code>id</code> of this Reactor in the examples below: <code>d08bc998-9301-495c-a2e5-04f8dc0916b4</code>.</p>
+
+<p>This Reactor Formula accepts the following <a href="/#reactor-formulas-reactor-formula-object">request parameters</a>:</p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">name</th>
+<th style="text-align: left">type</th>
+<th style="text-align: left">optional</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left"><code>card.number</code></td>
+<td style="text-align: left"><em>string</em></td>
+<td style="text-align: left">false</td>
+</tr>
+<tr>
+<td style="text-align: left"><code>card.expiration_month</code></td>
+<td style="text-align: left"><em>number</em></td>
+<td style="text-align: left">false</td>
+</tr>
+<tr>
+<td style="text-align: left"><code>card.expiration_year</code></td>
+<td style="text-align: left"><em>number</em></td>
+<td style="text-align: left">false</td>
+</tr>
+<tr>
+<td style="text-align: left"><code>card.cvc</code></td>
+<td style="text-align: left"><em>string</em></td>
+<td style="text-align: left">true</td>
+</tr>
+<tr>
+<td style="text-align: left"><code>card_owner_full_name</code></td>
+<td style="text-align: left"><em>string</em></td>
+<td style="text-align: left">false</td>
+</tr>
+</tbody></table>
+<h3 id='detokenization-examples-proxy-prerequisites'>Proxy Prerequisites</h3>
+<p>Also in the examples below, we will <a href="https://developers.basistheory.com/concepts/what-is-the-proxy">proxy</a> requests to Spreedly using their <a href="https://docs.spreedly.com/reference/api/v1/#create-credit-card">Payment Methods API</a>.
+This is the same request that is being made from within the <code>Spreedly - Card</code> Reactor Formula.</p>
+
+<p>This API endpoint accepts POST requests with a body of the form:</p>
+
+<div class="center-column"></div>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"payment_method"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"credit_card"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4242424242424242"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"month"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"year"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"verification_value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"full_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Card Owner"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"retained"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>and it authenticates using <a href="https://docs.spreedly.com/reference/api/v1/#authentication">basic auth</a> -
+we will be passing a simulated value in the <code>Authorization</code> header on the example proxy requests -
+replace this with your own authentication credentials if you want to follow along.</p>
+<h3 id='detokenization-examples-use-complex-tokens'>Use Complex Tokens</h3>
+<blockquote>
+<p>Original Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell--reactor"><code>curl <span class="s2">"https://api.basistheory.com/reactors/d08bc998-9301-495c-a2e5-04f8dc0916b4/react"</span> <span class="se">\</span>
+      <span class="nt">-H</span> <span class="s2">"BT-API-KEY: key_NS21v84n7epsSc5WzoFjM6"</span> <span class="se">\</span>
+      <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+      <span class="nt">-X</span> <span class="s2">"POST"</span> <span class="se">\</span>
+      <span class="nt">-d</span> <span class="s1">'{
+            "args": {
+              "card": "{{815029c2-29ec-4fc2-8cd4-99feb3ee582c}}",
+              "card_owner_full_name": "John Doe"
+            }
+        }'</span>
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--proxy"><code>curl <span class="s2">"https://api.basistheory.com/proxy"</span> <span class="se">\</span>
+      <span class="nt">-H</span> <span class="s2">"BT-API-KEY: key_NS21v84n7epsSc5WzoFjM6"</span> <span class="se">\</span>
+      <span class="nt">-H</span> <span class="s2">"BT-PROXY-URL: https://core.spreedly.com/v1/payment_methods.json"</span> <span class="se">\</span>
+      <span class="nt">-H</span> <span class="s2">"Authorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ=="</span> <span class="se">\</span>
+      <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+      <span class="nt">-X</span> <span class="s2">"POST"</span> <span class="se">\</span>
+      <span class="nt">-d</span> <span class="s1">'{
+            "payment_method": {
+              "credit_card": {
+                "number": "{{815029c2-29ec-4fc2-8cd4-99feb3ee582c | json: '</span><span class="nv">$.</span>number<span class="s1">'}}",
+                "month": "{{815029c2-29ec-4fc2-8cd4-99feb3ee582c | json: '</span><span class="nv">$.</span>expiration_month<span class="s1">'}}",
+                "year": "{{815029c2-29ec-4fc2-8cd4-99feb3ee582c | json: '</span><span class="nv">$.</span>expiration_year<span class="s1">'}}",
+                "verification_value": "{{815029c2-29ec-4fc2-8cd4-99feb3ee582c | json: '</span><span class="nv">$.</span>cvc<span class="s1">'}}",
+                "full_name": "John Doe"
+              },
+              "retained": true
+            }
+          }'</span>
+</code></pre></div>
+<blockquote>
+<p>Detokenized Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell--reactor"><code><span class="o">{</span>
+  <span class="s2">"args"</span>: <span class="o">{</span>
+    <span class="s2">"card"</span>: <span class="o">{</span>
+      <span class="s2">"number"</span>: <span class="s2">"4242424242424242"</span>,
+      <span class="s2">"expiration_month"</span>: 11,
+      <span class="s2">"expiration_year"</span>: 2025,
+      <span class="s2">"cvc"</span>: <span class="s2">"123"</span>
+    <span class="o">}</span>,
+    <span class="s2">"card_owner_full_name"</span>: <span class="s2">"John Doe"</span>
+  <span class="o">}</span>, 
+  <span class="s2">"configuration"</span>: <span class="o">{</span>...<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--proxy"><code><span class="o">{</span>
+  <span class="s2">"payment_method"</span>: <span class="o">{</span>
+    <span class="s2">"credit_card"</span>: <span class="o">{</span>
+      <span class="s2">"number"</span>: <span class="s2">"4242424242424242"</span>,
+      <span class="s2">"month"</span>: <span class="s2">"11"</span>,
+      <span class="s2">"year"</span>: <span class="s2">"2025"</span>,
+      <span class="s2">"verification_value"</span>: <span class="s2">"123"</span>,
+      <span class="s2">"full_name"</span>: <span class="s2">"John Doe"</span>
+    <span class="o">}</span>,
+    <span class="s2">"retained"</span>: <span class="nb">true</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>
+<p>In this example, we show how you can use a <a href="/#token-types-card">Card</a> token to create a Spreedly payment method.</p>
+
+<p>Say you have created the <code>card</code> token:</p>
+
+<div class="center-column" style="clear: none;"></div>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"815029c2-29ec-4fc2-8cd4-99feb3ee582c"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"card"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4242424242424242"</span><span class="p">,</span><span class="w"> 
+    </span><span class="nl">"expiration_month"</span><span class="p">:</span><span class="w"> </span><span class="mi">11</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"expiration_year"</span><span class="p">:</span><span class="w"> </span><span class="mi">2025</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cvc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>We have not tokenized the card owner&#39;s name, <code>John Doe</code>. Assume that we have this plaintext value directly available to our application to pass into the Reactor or Proxy request.</p>
+
+<div></div>
+<h3 id='detokenization-examples-override-a-field-on-a-token'>Override a Field on a Token</h3>
+<blockquote>
+<p>Original Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell--reactor"><code>curl <span class="s2">"https://api.basistheory.com/reactors/d08bc998-9301-495c-a2e5-04f8dc0916b4/react"</span> <span class="se">\</span>
+      <span class="nt">-H</span> <span class="s2">"BT-API-KEY: key_NS21v84n7epsSc5WzoFjM6"</span> <span class="se">\</span>
+      <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+      <span class="nt">-X</span> <span class="s2">"POST"</span> <span class="se">\</span>
+      <span class="nt">-d</span> <span class="s1">'{
+            "args": {
+              "card": {
+                "number": "{{815029c2-29ec-4fc2-8cd4-99feb3ee582c | json: '</span><span class="nv">$.</span>number<span class="s1">'}}",
+                "expiration_month": "{{815029c2-29ec-4fc2-8cd4-99feb3ee582c | json: '</span><span class="nv">$.</span>expiration_month<span class="s1">'}}",
+                "expiration_year": "{{815029c2-29ec-4fc2-8cd4-99feb3ee582c | json: '</span><span class="nv">$.</span>expiration_year<span class="s1">'}}",
+                "cvc": "987"
+              },
+              "card_owner_full_name": "John Doe"
+            }
+        }'</span>
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--proxy"><code>curl <span class="s2">"https://api.basistheory.com/proxy"</span> <span class="se">\</span>
+      <span class="nt">-H</span> <span class="s2">"BT-API-KEY: key_NS21v84n7epsSc5WzoFjM6"</span> <span class="se">\</span>
+      <span class="nt">-H</span> <span class="s2">"BT-PROXY-URL: https://core.spreedly.com/v1/payment_methods.json"</span> <span class="se">\</span>
+      <span class="nt">-H</span> <span class="s2">"Authorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ=="</span> <span class="se">\</span>
+      <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+      <span class="nt">-X</span> <span class="s2">"POST"</span> <span class="se">\</span>
+      <span class="nt">-d</span> <span class="s1">'{
+            "payment_method": {
+              "credit_card": {
+                "number": "{{815029c2-29ec-4fc2-8cd4-99feb3ee582c | json: '</span><span class="nv">$.</span>number<span class="s1">'}}"
+                "month": "{{815029c2-29ec-4fc2-8cd4-99feb3ee582c | json: '</span><span class="nv">$.</span>expiration_month<span class="s1">'}}",
+                "year": "{{815029c2-29ec-4fc2-8cd4-99feb3ee582c | json: '</span><span class="nv">$.</span>expiration_year<span class="s1">'}}",
+                "verification_value": "987",
+                "full_name": "John Doe"
+              },
+              "retained": true
+            }
+          }'</span>
+</code></pre></div>
+<blockquote>
+<p>Detokenized Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell--reactor"><code><span class="o">{</span>
+  <span class="s2">"args"</span>: <span class="o">{</span>
+    <span class="s2">"card"</span>: <span class="o">{</span>
+      <span class="s2">"number"</span>: <span class="s2">"4242424242424242"</span>,
+      <span class="s2">"expiration_month"</span>: 11,
+      <span class="s2">"expiration_year"</span>: 2025,
+      <span class="s2">"cvc"</span>: <span class="s2">"987"</span>
+    <span class="o">}</span>,
+    <span class="s2">"card_owner_full_name"</span>: <span class="s2">"John Doe"</span>
+  <span class="o">}</span>, 
+  <span class="s2">"configuration"</span>: <span class="o">{</span>...<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--proxy"><code><span class="o">{</span>
+  <span class="s2">"payment_method"</span>: <span class="o">{</span>
+    <span class="s2">"credit_card"</span>: <span class="o">{</span>
+      <span class="s2">"number"</span>: <span class="s2">"4242424242424242"</span>,
+      <span class="s2">"month"</span>: <span class="s2">"11"</span>,
+      <span class="s2">"year"</span>: <span class="s2">"2025"</span>,
+      <span class="s2">"verification_value"</span>: <span class="s2">"987"</span>,
+      <span class="s2">"full_name"</span>: <span class="s2">"John Doe"</span>
+    <span class="o">}</span>,
+    <span class="s2">"retained"</span>: <span class="nb">true</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>
+<p>In this example, we show how you can use a <a href="/#token-types-card">Card</a> token to create a Spreedly payment method,
+but provide an updated CVC (<code>987</code>) that is different from the <code>cvc</code> value stored within the token.
+This could be desired if the updated CVC was collected directly from a user interface, possibly as a challenge to the user to prove they own the card.</p>
+
+<p>Here, we will be using the same <code>card</code> token and card owner name from the previous <a href="#detokenization-examples-use-complex-tokens">Use Complex Tokens</a> example.</p>
+
+<div></div>
+<h3 id='detokenization-examples-use-multiple-tokens'>Use Multiple Tokens</h3>
+<blockquote>
+<p>Original Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell--reactor"><code>curl <span class="s2">"https://api.basistheory.com/reactors/d08bc998-9301-495c-a2e5-04f8dc0916b4/react"</span> <span class="se">\</span>
+      <span class="nt">-H</span> <span class="s2">"BT-API-KEY: key_NS21v84n7epsSc5WzoFjM6"</span> <span class="se">\</span>
+      <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+      <span class="nt">-X</span> <span class="s2">"POST"</span> <span class="se">\</span>
+      <span class="nt">-d</span> <span class="s1">'{
+            "args": {
+              "card": {
+                "number": "{{d9939ddc-d7be-423b-a0f5-69f65fec57df}}"
+                "expiration_month": 10,
+                "expiration_year": 2024,
+                "cvc": "789"
+              },
+              "card_owner_full_name": "{{f4d86311-1254-4155-b532-b651279a8cc0}}"
+            }
+        }'</span>
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--proxy"><code>curl <span class="s2">"https://api.basistheory.com/proxy"</span> <span class="se">\</span>
+      <span class="nt">-H</span> <span class="s2">"BT-API-KEY: key_NS21v84n7epsSc5WzoFjM6"</span> <span class="se">\</span>
+      <span class="nt">-H</span> <span class="s2">"BT-PROXY-URL: https://core.spreedly.com/v1/payment_methods.json"</span> <span class="se">\</span>
+      <span class="nt">-H</span> <span class="s2">"Authorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ=="</span> <span class="se">\</span>
+      <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+      <span class="nt">-X</span> <span class="s2">"POST"</span> <span class="se">\</span>
+      <span class="nt">-d</span> <span class="s1">'{
+            "payment_method": {
+              "credit_card": {
+                "number": "{{d9939ddc-d7be-423b-a0f5-69f65fec57df}}",
+                "month": "10",
+                "year": "2024",
+                "verification_value": "789",
+                "full_name": "{{f4d86311-1254-4155-b532-b651279a8cc0}}"
+              },
+              "retained": true
+            }
+          }'</span>
+</code></pre></div>
+<blockquote>
+<p>Detokenized Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell--reactor"><code><span class="o">{</span>
+  <span class="s2">"args"</span>: <span class="o">{</span>
+    <span class="s2">"card"</span>: <span class="o">{</span>
+      <span class="s2">"number"</span>: <span class="s2">"5555555555554444"</span>,
+      <span class="s2">"expiration_month"</span>: 10,
+      <span class="s2">"expiration_year"</span>: 2024,
+      <span class="s2">"cvc"</span>: <span class="s2">"789"</span>
+    <span class="o">}</span>,
+    <span class="s2">"card_owner_full_name"</span>: <span class="s2">"Jane Doe"</span>
+  <span class="o">}</span>, 
+  <span class="s2">"configuration"</span>: <span class="o">{</span>...<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--proxy"><code><span class="o">{</span>
+  <span class="s2">"payment_method"</span>: <span class="o">{</span>
+    <span class="s2">"credit_card"</span>: <span class="o">{</span>
+      <span class="s2">"number"</span>: <span class="s2">"5555555555554444"</span>,
+      <span class="s2">"month"</span>: <span class="s2">"10"</span>,
+      <span class="s2">"year"</span>: <span class="s2">"2024"</span>,
+      <span class="s2">"verification_value"</span>: <span class="s2">"789"</span>,
+      <span class="s2">"full_name"</span>: <span class="s2">"Jane Doe"</span>
+    <span class="o">}</span>,
+    <span class="s2">"retained"</span>: <span class="nb">true</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>
+<p>In this example, we will show how you can use multiples tokens - a <a href="/#token-types-card-number">Card Number</a> token and a
+generic <code>PII</code> token to hold the card owner&#39;s name:</p>
+
+<div class="center-column" style="clear: none;"></div>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d9939ddc-d7be-423b-a0f5-69f65fec57df"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"card_number"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5555555555554444"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"privacy"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"classification"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pci"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"impact_level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"high"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<div class="center-column" style="clear: none;"></div>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f4d86311-1254-4155-b532-b651279a8cc0"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"token"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jane Doe"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"privacy"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"classification"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pii"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"impact_level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"moderate"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>In this example, we have not tokenized the card&#39;s expiration date or CVC - say our application accepts these values in
+plaintext and forwards them directly into the request.</p>
+
+<div></div>
+<h3 id='detokenization-examples-combine-multiple-tokens-within-a-single-argument'>Combine Multiple Tokens within a Single Argument</h3>
+<blockquote>
+<p>Original Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell--reactor"><code>curl <span class="s2">"https://api.basistheory.com/reactors/d08bc998-9301-495c-a2e5-04f8dc0916b4/react"</span> <span class="se">\</span>
+      <span class="nt">-H</span> <span class="s2">"BT-API-KEY: key_NS21v84n7epsSc5WzoFjM6"</span> <span class="se">\</span>
+      <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+      <span class="nt">-X</span> <span class="s2">"POST"</span> <span class="se">\</span>
+      <span class="nt">-d</span> <span class="s1">'{
+            "args": {
+              "card": "{{b78b4bee-5499-42dd-8671-f1d23d32355b}}",
+              "card_owner_full_name": "{{523949a9-e32f-4b5b-a0ad-7a435c79deb4}} {{42af9170-e6ca-4ea7-a43b-730a0b47b6d0}}"
+            }
+        }'</span>
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--proxy"><code>curl <span class="s2">"https://api.basistheory.com/proxy"</span> <span class="se">\</span>
+      <span class="nt">-H</span> <span class="s2">"BT-API-KEY: key_NS21v84n7epsSc5WzoFjM6"</span> <span class="se">\</span>
+      <span class="nt">-H</span> <span class="s2">"BT-PROXY-URL: https://core.spreedly.com/v1/payment_methods.json"</span> <span class="se">\</span>
+      <span class="nt">-H</span> <span class="s2">"Authorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ=="</span> <span class="se">\</span>
+      <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+      <span class="nt">-X</span> <span class="s2">"POST"</span> <span class="se">\</span>
+      <span class="nt">-d</span> <span class="s1">'{
+            "payment_method": {
+              "credit_card": {
+                "number": "{{b78b4bee-5499-42dd-8671-f1d23d32355b | json: '</span><span class="nv">$.</span>number<span class="s1">'}}",
+                "month": "{{b78b4bee-5499-42dd-8671-f1d23d32355b | json: '</span><span class="nv">$.</span>expiration_month<span class="s1">'}}",
+                "year": "{{b78b4bee-5499-42dd-8671-f1d23d32355b | json: '</span><span class="nv">$.</span>expiration_year<span class="s1">'}}",
+                "verification_value": "{{b78b4bee-5499-42dd-8671-f1d23d32355b | json: '</span><span class="nv">$.</span>cvc<span class="s1">'}}",
+                "full_name": "{{523949a9-e32f-4b5b-a0ad-7a435c79deb4}} {{42af9170-e6ca-4ea7-a43b-730a0b47b6d0}}"
+              },
+              "retained": true
+            }
+          }'</span>
+</code></pre></div>
+<blockquote>
+<p>Detokenized Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell--reactor"><code><span class="o">{</span>
+  <span class="s2">"args"</span>: <span class="o">{</span>
+    <span class="s2">"card"</span>: <span class="o">{</span>
+      <span class="s2">"number"</span>: <span class="s2">"5105105105105100"</span>,
+      <span class="s2">"expiration_month"</span>: 5,
+      <span class="s2">"expiration_year"</span>: 2025,
+      <span class="s2">"cvc"</span>: <span class="s2">"123"</span>
+    <span class="o">}</span>,
+    <span class="s2">"card_owner_full_name"</span>: <span class="s2">"John Brown"</span>
+  <span class="o">}</span>, 
+  <span class="s2">"configuration"</span>: <span class="o">{</span>...<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--proxy"><code><span class="o">{</span>
+  <span class="s2">"payment_method"</span>: <span class="o">{</span>
+    <span class="s2">"credit_card"</span>: <span class="o">{</span>
+      <span class="s2">"number"</span>: <span class="s2">"5105105105105100"</span>,
+      <span class="s2">"month"</span>: <span class="s2">"5"</span>,
+      <span class="s2">"year"</span>: <span class="s2">"2025"</span>,
+      <span class="s2">"verification_value"</span>: <span class="s2">"123"</span>,
+      <span class="s2">"full_name"</span>: <span class="s2">"John Brown"</span>
+    <span class="o">}</span>,
+    <span class="s2">"retained"</span>: <span class="nb">true</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>
+<p>In this example, we will show how you can combine the data from multiple tokens within a single field on a request. Say we have
+chosen to store the card holder&#39;s first and last names as separate tokens:</p>
+
+<div class="center-column" style="clear: none;"></div>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"523949a9-e32f-4b5b-a0ad-7a435c79deb4"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"token"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<div class="center-column" style="clear: none;"></div>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"42af9170-e6ca-4ea7-a43b-730a0b47b6d0"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"token"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Brown"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Also, we have the <code>card</code> token:</p>
+
+<div class="center-column" style="clear: none;"></div>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b78b4bee-5499-42dd-8671-f1d23d32355b"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"card"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5105105105105100"</span><span class="p">,</span><span class="w"> 
+    </span><span class="nl">"expiration_month"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"expiration_year"</span><span class="p">:</span><span class="w"> </span><span class="mi">2025</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cvc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Then we can concatenate the first and last name tokens within the request as shown in the sample requests.</p>
+
+<div></div>
+<h3 id='detokenization-examples-using-custom-token-schemas'>Using Custom Token Schemas</h3>
+<blockquote>
+<p>Original Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell--reactor"><code>curl <span class="s2">"https://api.basistheory.com/reactors/d08bc998-9301-495c-a2e5-04f8dc0916b4/react"</span> <span class="se">\</span>
+      <span class="nt">-H</span> <span class="s2">"BT-API-KEY: key_NS21v84n7epsSc5WzoFjM6"</span> <span class="se">\</span>
+      <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+      <span class="nt">-X</span> <span class="s2">"POST"</span> <span class="se">\</span>
+      <span class="nt">-d</span> <span class="s1">'{
+            "args": {
+              "card": {
+                "number": "{{9a48a051-972b-4569-8fd5-cbe17a604f96 | json: '</span><span class="nv">$.</span>card.card_number<span class="s1">'}}",
+                "expiration_month": "{{9a48a051-972b-4569-8fd5-cbe17a604f96 | json: '</span><span class="nv">$.</span>card.exp_month<span class="s1">'}}",
+                "expiration_year": "{{9a48a051-972b-4569-8fd5-cbe17a604f96 | json: '</span><span class="nv">$.</span>card.exp_year<span class="s1">'}}",
+              },
+              "card_owner_full_name": "{{9a48a051-972b-4569-8fd5-cbe17a604f96 | json: '</span><span class="nv">$.</span>card.owner.first_name<span class="s1">'}} {{9a48a051-972b-4569-8fd5-cbe17a604f96 | json: '</span><span class="nv">$.</span>card.owner.last_name<span class="s1">'}}"
+            }
+        }'</span>
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--proxy"><code>curl <span class="s2">"https://api.basistheory.com/proxy"</span> <span class="se">\</span>
+      <span class="nt">-H</span> <span class="s2">"BT-API-KEY: key_NS21v84n7epsSc5WzoFjM6"</span> <span class="se">\</span>
+      <span class="nt">-H</span> <span class="s2">"BT-PROXY-URL: https://core.spreedly.com/v1/payment_methods.json"</span> <span class="se">\</span>
+      <span class="nt">-H</span> <span class="s2">"Authorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ=="</span> <span class="se">\</span>
+      <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+      <span class="nt">-X</span> <span class="s2">"POST"</span> <span class="se">\</span>
+      <span class="nt">-d</span> <span class="s1">'{
+            "payment_method": {
+              "credit_card": {
+                "number": "{{9a48a051-972b-4569-8fd5-cbe17a604f96 | json: '</span><span class="nv">$.</span>card.card_number<span class="s1">'}}",
+                "month": "{{9a48a051-972b-4569-8fd5-cbe17a604f96 | json: '</span><span class="nv">$.</span>card.exp_month<span class="s1">'}}",
+                "year": "{{9a48a051-972b-4569-8fd5-cbe17a604f96 | json: '</span><span class="nv">$.</span>card.exp_year<span class="s1">'}}",
+                "full_name": "{{9a48a051-972b-4569-8fd5-cbe17a604f96 | json: '</span><span class="nv">$.</span>card.owner.first_name<span class="s1">'}} {{9a48a051-972b-4569-8fd5-cbe17a604f96 | json: '</span><span class="nv">$.</span>card.owner.last_name<span class="s1">'}}"
+              },
+              "retained": true
+            }
+          }'</span>
+</code></pre></div>
+<blockquote>
+<p>Detokenized Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell--reactor"><code><span class="o">{</span>
+  <span class="s2">"args"</span>: <span class="o">{</span>
+    <span class="s2">"card"</span>: <span class="o">{</span>
+      <span class="s2">"number"</span>: <span class="s2">"4000056655665556"</span>,
+      <span class="s2">"expiration_month"</span>: 4,
+      <span class="s2">"expiration_year"</span>: 2026,
+    <span class="o">}</span>,
+    <span class="s2">"card_owner_full_name"</span>: <span class="s2">"John Smith"</span>
+  <span class="o">}</span>, 
+  <span class="s2">"configuration"</span>: <span class="o">{</span>...<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--proxy"><code><span class="o">{</span>
+  <span class="s2">"payment_method"</span>: <span class="o">{</span>
+    <span class="s2">"credit_card"</span>: <span class="o">{</span>
+      <span class="s2">"number"</span>: <span class="s2">"4000056655665556"</span>,
+      <span class="s2">"month"</span>: <span class="s2">"4"</span>,
+      <span class="s2">"year"</span>: <span class="s2">"2026"</span>,
+      <span class="s2">"full_name"</span>: <span class="s2">"John Smith"</span>
+    <span class="o">}</span>,
+    <span class="s2">"retained"</span>: <span class="nb">true</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>
+<p>In this example, we will store our card data within a custom generic token that contains additional fields relevant to our application:</p>
+
+<div class="center-column" style="clear: none;"></div>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9a48a051-972b-4569-8fd5-cbe17a604f96"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"token"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"card"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"card_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4000056655665556"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"exp_month"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"exp_year"</span><span class="p">:</span><span class="w"> </span><span class="mi">2026</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"owner"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"middle_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Andrew"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Smith"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"billing_address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"street_address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"175 5th Ave"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New York"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NY"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"zip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10010"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"privacy"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"classification"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pci"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"impact_level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"high"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Notice that the card owner&#39;s full name is constructed by concatenating the <code>card.owner.first_name</code> and <code>card.owner.last_name</code>
+properties into a single string value.</p>
+
+<div></div>
+<h3 id='detokenization-examples-transforming-token-data'>Transforming Token Data</h3>
+<blockquote>
+<p>Original Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell--reactor"><code>curl <span class="s2">"https://api.basistheory.com/reactors/d08bc998-9301-495c-a2e5-04f8dc0916b4/react"</span> <span class="se">\</span>
+      <span class="nt">-H</span> <span class="s2">"BT-API-KEY: key_NS21v84n7epsSc5WzoFjM6"</span> <span class="se">\</span>
+      <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+      <span class="nt">-X</span> <span class="s2">"POST"</span> <span class="se">\</span>
+      <span class="nt">-d</span> <span class="s1">'{
+            "args": {
+              "card": {
+                "number": "{{67d76cd0-bc2a-4a73-be8c-6539c81db465 | json: '</span><span class="nv">$.</span>card_number<span class="s1">'}}",
+                "expiration_month": "{{67d76cd0-bc2a-4a73-be8c-6539c81db465 | json: '</span><span class="nv">$.</span>expiration_month<span class="s1">' | pad_left: 2, '</span>0<span class="s1">'}}",
+                "expiration_year": "{{67d76cd0-bc2a-4a73-be8c-6539c81db465 | json: '</span><span class="nv">$.</span>expiration_year<span class="s1">' | slice: -2, 2}}",
+              },
+              "card_owner_full_name": "John Doe"
+            }
+        }'</span>
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--proxy"><code>curl <span class="s2">"https://api.basistheory.com/proxy"</span> <span class="se">\</span>
+      <span class="nt">-H</span> <span class="s2">"BT-API-KEY: key_NS21v84n7epsSc5WzoFjM6"</span> <span class="se">\</span>
+      <span class="nt">-H</span> <span class="s2">"BT-PROXY-URL: https://core.spreedly.com/v1/payment_methods.json"</span> <span class="se">\</span>
+      <span class="nt">-H</span> <span class="s2">"Authorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ=="</span> <span class="se">\</span>
+      <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+      <span class="nt">-X</span> <span class="s2">"POST"</span> <span class="se">\</span>
+      <span class="nt">-d</span> <span class="s1">'{
+            "payment_method": {
+              "credit_card": {
+                "number": "{{67d76cd0-bc2a-4a73-be8c-6539c81db465 | json: '</span><span class="nv">$.</span>card_number<span class="s1">'}}",
+                "month": "{{67d76cd0-bc2a-4a73-be8c-6539c81db465 | json: '</span><span class="nv">$.</span>expiration_month<span class="s1">' | pad_left: 2, '</span>0<span class="s1">'}}",
+                "year": "{{67d76cd0-bc2a-4a73-be8c-6539c81db465 | json: '</span><span class="nv">$.</span>expiration_year<span class="s1">' | slice: -2, 2}}",
+                "full_name": "John Doe"
+              },
+              "retained": true
+            }
+          }'</span>
+</code></pre></div>
+<blockquote>
+<p>Detokenized Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell--reactor"><code><span class="o">{</span>
+  <span class="s2">"args"</span>: <span class="o">{</span>
+    <span class="s2">"card"</span>: <span class="o">{</span>
+      <span class="s2">"number"</span>: <span class="s2">"4000056655665556"</span>,
+      <span class="s2">"expiration_month"</span>: <span class="s2">"03"</span>,
+      <span class="s2">"expiration_year"</span>: <span class="s2">"25"</span>
+    <span class="o">}</span>,
+    <span class="s2">"card_owner_full_name"</span>: <span class="s2">"John Smith"</span>
+  <span class="o">}</span>, 
+  <span class="s2">"configuration"</span>: <span class="o">{</span>...<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--proxy"><code><span class="o">{</span>
+  <span class="s2">"payment_method"</span>: <span class="o">{</span>
+    <span class="s2">"credit_card"</span>: <span class="o">{</span>
+      <span class="s2">"number"</span>: <span class="s2">"4000056655665556"</span>,
+      <span class="s2">"month"</span>: <span class="s2">"03"</span>,
+      <span class="s2">"year"</span>: <span class="s2">"25"</span>,
+      <span class="s2">"full_name"</span>: <span class="s2">"John Doe"</span>
+    <span class="o">}</span>,
+    <span class="s2">"retained"</span>: <span class="nb">true</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>
+<p>In this example, we will be using the <code>card</code> token:</p>
+
+<div class="center-column" style="clear: none;"></div>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"67d76cd0-bc2a-4a73-be8c-6539c81db465"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"card"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4242424242424242"</span><span class="p">,</span><span class="w"> 
+    </span><span class="nl">"expiration_month"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"expiration_year"</span><span class="p">:</span><span class="w"> </span><span class="mi">2025</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cvc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>We will transform the <code>expiration_month</code> property within this token to be padded on the left with a <code>0</code> to two characters, 
+and to only provide the last two digits of the expiration year.</p>
+<h1 id='search-indexes'>Search Indexes</h1>
+<p>Several token attributes can be <a href="https://developers.basistheory.com/concepts/what-is-search/">searched</a> through the <a href="/#tokens-search-tokens">token search</a> API.
+A token&#39;s data can also be searched, provided that the token has been indexed for search at the time of its creation.</p>
+
+<p>When <a href="/#tokens-create-token">creating a token</a>, an array of search index expressions can be specified within the request.
+You are able to reference the <code>data</code> variable within <a href="#language-objects">object</a> expressions - 
+<code>data</code> will be bound to the provided token data, which may either be a complex or primitive value, based on your usage.</p>
+<h2 id='search-indexes-examples'>Examples</h2>
+<ul>
+<li><a href="#search-indexes-examples-indexing-primitive-tokens">Indexing Primitive Tokens</a></li>
+<li><a href="#search-indexes-examples-indexing-properties-of-a-complex-token">Indexing Properties of a Complex Token</a></li>
+<li><a href="#search-indexes-examples-transforming-data-before-indexing">Transforming Data Before Indexing</a></li>
+</ul>
+<h3 id='search-indexes-examples-indexing-primitive-tokens'>Indexing Primitive Tokens</h3>
+<p>Request:</p>
+
+<div class="center-column"></div>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"token"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"111-22-3333"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"search_indexes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"{{ data }}"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"{{ data | last4 }}"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"{{ data | remove: '-' }}"</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Created Indexes:</p>
+
+<ul>
+<li><code>&quot;111-22-3333&quot;</code></li>
+<li><code>&quot;3333&quot;</code></li>
+<li><code>&quot;111223333&quot;</code></li>
+</ul>
+<h3 id='search-indexes-examples-indexing-properties-of-a-complex-token'>Indexing Properties of a Complex Token</h3>
+<p>Request:</p>
+
+<div class="center-column"></div>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"token"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"card"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"card_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4000056655665556"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"exp_month"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"exp_year"</span><span class="p">:</span><span class="w"> </span><span class="mi">2026</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"owner"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"middle_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Andrew"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Smith"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"billing_address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"street_address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"175 5th Ave"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New York"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NY"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"zip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10010"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"search_indexes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"{{ data.card.card_number }}"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"{{ data.card.owner.last_name }}"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"{{ data.billing_address.zip }}"</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Created Indexes:</p>
+
+<ul>
+<li><code>&quot;4000056655665556&quot;</code></li>
+<li><code>&quot;Smith&quot;</code></li>
+<li><code>&quot;10010&quot;</code></li>
+</ul>
+<h3 id='search-indexes-examples-transforming-data-before-indexing'>Transforming Data Before Indexing</h3>
+<p>Request:</p>
+
+<div class="center-column"></div>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"token"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"card"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"card_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4000056655665556"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"exp_month"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"exp_year"</span><span class="p">:</span><span class="w"> </span><span class="mi">2026</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"owner"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"middle_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Andrew"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Smith"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"billing_address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"street_address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"175 5th Ave"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New York"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NY"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"zip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10010"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"search_indexes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"{{ data.card.card_number | last4 }}"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"{{ data.card.owner.last_name | upcase }}"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"{{ data.card.owner.first_name | upcase }} {{ data.card.owner.last_name | upcase }}"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"{{ data.billing_address.zip | slice: 0, 5 }}"</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Created Indexes:</p>
+
+<ul>
+<li><code>&quot;5556&quot;</code></li>
+<li><code>&quot;SMITH&quot;</code></li>
+<li><code>&quot;JOHN SMITH&quot;</code></li>
+<li><code>&quot;10010&quot;</code></li>
+</ul>
+<h1 id='fingerprints'>Fingerprints</h1>
+<p>A <a href="https://developers.basistheory.com/concepts/what-are-fingerprints/">fingerprint</a> can be generated at the time a token is created, 
+which can be used to uniquely identify the contents of a token for its type. You will get different fingerprints for the same content
+across different token types, but the same fingerprints for the same content across the same token types.
+Fingerprints are cryptographically secure and cannot be reversed to recover the original token&#39;s data, 
+so they are safe to store in your application and used to compare tokens without retrieving plaintext token data (e.g. for token de-duplication).</p>
+
+<p>When <a href="/#tokens-create-token">creating a token</a>, fingerprint expression can be specified within the request.
+You are able to reference the <code>data</code> variable within an <a href="#language-objects">object</a> expression -
+<code>data</code> will be bound to the provided token data, which may either be a complex or primitive value, based on your usage.</p>
+<h2 id='fingerprints-examples'>Examples</h2>
+<ul>
+<li><a href="#search-indexes-examples-indexing-primitive-tokens">Fingerprinting Primitive Tokens</a></li>
+<li><a href="#search-indexes-examples-indexing-properties-of-a-complex-token">Fingerprinting a Property of a Complex Token</a></li>
+<li><a href="#search-indexes-examples-indexing-properties-of-a-complex-token">Fingerprinting Multiple Properties of a Complex Token</a></li>
+<li><a href="#search-indexes-examples-indexing-properties-of-a-complex-token">Transforming Data Before Fingerprinting</a></li>
+</ul>
+<h3 id='fingerprints-examples-fingerprinting-primitive-tokens'>Fingerprinting Primitive Tokens</h3>
+<p>Request:</p>
+
+<div class="center-column"></div>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"token"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"111-22-3333"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"fingerprint_expression"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{{ data }}"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Fingerprinted Value: <code>&quot;111-22-3333&quot;</code></p>
+<h3 id='fingerprints-examples-fingerprinting-a-property-of-a-complex-token'>Fingerprinting a Property of a Complex Token</h3>
+<p>Request:</p>
+
+<div class="center-column"></div>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"token"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"bank"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"routing_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"021000021"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"account_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567890"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"account_owner"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"middle_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Andrew"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Smith"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"fingerprint_expression"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{{ data.account_number }}"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Fingerprinted Value: <code>&quot;1234567890&quot;</code></p>
+<h3 id='fingerprints-examples-fingerprinting-multiple-properties-of-a-complex-token'>Fingerprinting Multiple Properties of a Complex Token</h3>
+<p>Request:</p>
+
+<div class="center-column"></div>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"token"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"bank"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"routing_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"021000021"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"account_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567890"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"account_owner"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"middle_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Andrew"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Smith"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"fingerprint_expression"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{{ data.bank.routing_number }}|{{ data.bank.account_number }}"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Fingerprinted Value: <code>&quot;021000021|1234567890&quot;</code></p>
+<h3 id='fingerprints-examples-transforming-data-before-fingerprinting'>Transforming Data Before Fingerprinting</h3>
+<p>Request:</p>
+
+<div class="center-column"></div>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"token"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"middle_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Andrew"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Smith"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"fingerprint_expression"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{{ data.name.first_name | upcase }} {{ data.last_name | upcase }}"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Fingerprinted Value: <code>&quot;JOHN SMITH&quot;</code></p>
+
+        
+        
+        
+        
+      </div>
+      <!-- End Content -->
+    </div>
+  </body>
+</html>
