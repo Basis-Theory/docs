@@ -1,3 +1,10 @@
+## [1.41.1](https://github.com/Basis-Theory/docs/compare/v1.41.0...v1.41.1) (2022-06-02)
+
+
+### Bug Fixes
+
+* updating cookie notice ([cabc834](https://github.com/Basis-Theory/docs/commit/cabc8348854d771f1c5063e7788b1eeb12e44052))
+
 # [1.41.0](https://github.com/Basis-Theory/docs/compare/v1.40.0...v1.41.0) (2022-06-02)
 
 
