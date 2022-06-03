@@ -1,8 +1,9 @@
 # Proxy
 
-## Proxying Outbound Requests
+## Proxying Requests
 
-The Basis Theory Proxy provides a simple mechanism to use the data you've stored with Basis Theory in outbound requests to a third party API.
+The Basis Theory Proxy provides a simple way to facilitate the transfer of sensitive data via HTTP API calls. This Proxy can be configured to sit in front of your API to tokenize or transform an inbound request and also between you and a 3rd Party, keeping the sensitive data from touching your systems. To learn more, check out our [Proxy Concept](https://developers.basistheory.com/concepts/what-is-the-proxy/).
+
 Basis Theory token identifiers included in the request will be replaced with the raw token data and then the modified request will be forwarded to the destination specified in the `BT-PROXY-URL` request header. The destination will receive the raw data in the request without your system needing to interact with sensitive data on your own servers.
 
 ### Proxy Requests
@@ -77,12 +78,68 @@ At least one `token:<classification>:use:proxy` permission is required, for exam
 
 **Configuration**
 
-Proxy requests require a `BT-PROXY-URL` request header to be set. The value of the `BT-PROXY-URL` header defines the base URL to which the request will be proxied.
-The `BT-PROXY-URL` request header must use HTTPS with DNS as the host (explicit IP addresses are not allowed). Destinations must use HTTPS >= TLSv1.2 over port 443.
+Basis Theory's Proxy provides two ways to configure a request. The first option is to [create a pre-configured Proxy](#proxies-create-a-proxy) and set the `BT-PROXY-KEY` header which will route traffic to the configured `destination_url`.
+
+The alternative is to set the `BT-PROXY-URL` request header. The value of the `BT-PROXY-URL` header defines the base URL to which the request will be proxied. 
+
+The configured proxy URL must use HTTPS with DNS as the host (explicit IP addresses are not allowed). Destinations must use HTTPS >= TLSv1.2.
   
-The `BT-PROXY-URL` request header will serve as the base URL for the proxied request. Any path and/or query parameters under `/proxy/**` will be appended to the base URL before forwarding the request.
+The proxy URL will serve as the base URL for the proxied request. Any path and/or query parameters under `/proxy/**` will be appended to the base URL before forwarding the request.
 
 For example, sending a proxy request to `https://api.basistheory.com/proxy/foo/bar?param=value` and including the header `BT-PROXY-URL=https://example.com/api` will result in the request being forwarded to `https://example.com/api/foo/bar?param=value`.
+
+**Reactors**
+
+Basis Theory's Proxy supports executing reactors when making requests. When pre-configuring a [Proxy](#proxies-create-a-proxy), the `request_reactor_id` property can be set to the ID of an existing [Reactor](#reactors). This reactor will be executed when the request is made allow you to transform the request body and headers.
+
+The reactor will receive a JSON object with the following payload:
+
+<div class="center-column"></div>
+```js
+{
+  args: {
+    body, // detokenized request body
+    headers //request headers
+  }
+}
+```
+
+The Reactor must respond with the following object:
+
+<div class="center-column"></div>
+```js
+{
+  raw: {
+    body,
+    headers
+  }
+}
+```
+
+Within the reactor, the headers and body of the request can be changed.
+
+In some situations, you may want to tokenize or detokenize part of the request body. In order to do this, set the `application.id` property when [creating your reactor](#reactors-create-reactor). This will inject a pre-configured Basis Theory JS instance into the request:
+
+<div class="center-column"></div>
+```js
+module.exports = async function (req) {
+   const token = await req.bt.tokenize({
+      type: 'token',
+      data: req.args.body.sensitive_value
+  });
+
+  req.args.body.sensitive_value = token.id;
+
+  return {
+    raw {
+      body: req.args.body,
+      headers: req.args.headers
+    }
+  }
+}
+```
+
+In the above example, we utilized the injected Basis Theory JS instance to tokenize a property called `sensitive_value` on our request body and passed the token back as the updated `sensitive_value` to be forwarded to the configured `destination_url` on our [Proxy](#proxies).
 
 **Detokenization**
 

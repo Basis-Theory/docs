@@ -13,7 +13,7 @@ Every API endpoint will document the required permissions needed to perform the 
 ## Permission Object
 
 | Attribute           | Type     | Description                                                                                 |
-|---------------------|----------|---------------------------------------------------------------------------------------------|
+| ------------------- | -------- | ------------------------------------------------------------------------------------------- |
 | `type`              | *string* | Permission type referenced by Basis Theory API endpoints                                    |
 | `description`       | *string* | Description of the permission                                                               |
 | `application_types` | *array*  | List of [application types](#applications-application-types) that can assign the permission |
@@ -23,7 +23,7 @@ Every API endpoint will document the required permissions needed to perform the 
 ### Management Permissions
 
 | Permission           | Description                                     | Application Types |
-|----------------------|-------------------------------------------------|-------------------|
+| -------------------- | ----------------------------------------------- | ----------------- |
 | `tenant:read`        | Read Tenants                                    | `management`      |
 | `tenant:update`      | Update Tenants                                  | `management`      |
 | `tenant:delete`      | Delete Tenants                                  | `management`      |
@@ -35,6 +35,10 @@ Every API endpoint will document the required permissions needed to perform the 
 | `reactor:create`     | Create Reactors Formulas and Reactors           | `management`      |
 | `reactor:update`     | Update Reactors Formulas and Reactors           | `management`      |
 | `reactor:delete`     | Delete Reactors Formulas and Reactors           | `management`      |
+| `proxy:read`         | Read Proxies                                    | `management`      |
+| `proxy:create`       | Create Proxies                                  | `management`      |
+| `proxy:update`       | Update Proxies                                  | `management`      |
+| `proxy:delete`       | Delete Proxies                                  | `management`      |
 | `log:read`           | Read audit logs                                 | `management`      |
 
 ### Token Permissions
@@ -42,7 +46,7 @@ Every API endpoint will document the required permissions needed to perform the 
 All Token permissions follow the form of `token:<classification>:<operation>:<scope?>`.
 
 | Permission                             | Description                                                                                                                                                                                                                                                                                                        | Application Types                        |
-|----------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------|
+| -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------- |
 | `token:<classification>:create`        | Create Tokens in [\<classification\>](#tokens-token-classifications) (e.g. `token:general:create`)                                                                                                                                                                                                                 | `public`, `elements`, `server_to_server` |
 | `token:<classification>:read:low`      | Read plaintext token data in [\<classification\>](#tokens-token-classifications) with `low` [\<impact_level\>](#tokens-token-impact-levels). Tokens in `<classification>` with higher impact level will be restricted based on the token's [restriction policy](#tokens-token-restriction-policies)                | `server_to_server`                       |
 | `token:<classification>:read:moderate` | Read plaintext token data in [\<classification\>](#tokens-token-classifications) with `moderate` [\<impact_level\>](#tokens-token-impact-levels) and lower. Tokens in `<classification>` with higher impact level will be restricted based on the token's [restriction policy](#tokens-token-restriction-policies) | `server_to_server`                       |
@@ -86,6 +90,12 @@ with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_
 
     permissions = permissions_client.get()
 ```
+
+### Query Parameters
+
+| Parameter          | Required | Type     | Default | Description                                                                  |
+| ------------------ | -------- | -------- | ------- | ---------------------------------------------------------------------------- |
+| `application_type` | false    | *string* | `null`  | [Application type](#applications-application-types) to filter permissions by |
 
 > Response
 

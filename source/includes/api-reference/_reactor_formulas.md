@@ -109,7 +109,7 @@ For more information about writing your own code for a Reactor Formula, check ou
 | `official` | Official formulas that are built and supported by Basis Theory and its authorized partners |
 | `private`  | Private formulas which are only available to your Tenant                                   |
 
-<h2 id="reactor-formulas-create-reactor-formula">Create Reactor Formula <span class="beta menu">BETA</span></h2>
+<h2 id="reactor-formulas-create-reactor-formula">Create Reactor Formula</h2>
 
 > Request
 
@@ -394,10 +394,6 @@ func main() {
   "created_at": "2020-09-15T15:53:00+00:00"
 }
 ```
-
-<aside class="warning">
-  <span>Creating custom Reactor Formulas is currently in Private Beta. If you would like to be added to the beta program, please <a href="mailto:support@basistheory.com?subject=Reactor Beta Access">contact us</a>!</span>
-</aside>
 
 <span class="http-method post">
   <span class="box-method">POST</span>

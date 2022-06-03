@@ -35,6 +35,7 @@ api_includes:
   - api-reference/logs  
   - api-reference/permissions
   - api-reference/proxy
+  - api-reference/proxies
   - api-reference/reactor_formulas
   - api-reference/reactors
   - api-reference/tenants
