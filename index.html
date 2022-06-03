@@ -2618,8 +2618,11 @@ Elements of a Reactor Formula&#39;s <code>request_parameters</code> array have t
 </tbody></table>
 
 <p>Request parameters are intended to define any parameters that will be provided to a Reactor at request-time, and may change across Reactor invocations.
-Complex objects can be passed within the <code>args</code> property to a Reactor, and these complex request parameters can be defined by dot-separating levels of the object hierarchy.
-For example, to pass a <code>card</code> object to a Reactor whose schema matches the <a href="#atomic-cards-atomic-card-object-card-object">Card Object</a> stored within an <a href="#atomic-cards-atomic-card-object">Atomic Card</a> token, 
+Complex objects properties can be passed within the <code>args</code> property to a Reactor, and they can be defined by dot-separating levels of the object hierarchy.</p>
+
+<p>Any <code>args</code> property not associated with a request parameter is still forwarded to the reactor. This allows you to provide complete complex objects including arrays, in which no type checking is applied. For instance, if no request parameters are declared, it means you can provide any payload when invoking the reactor. </p>
+
+<p>For example, to pass a <code>card</code> object whose schema matches the <a href="#atomic-cards-atomic-card-object-card-object">Card Object</a> stored within an <a href="#atomic-cards-atomic-card-object">Atomic Card</a> token and an array of any type, 
 a Reactor Formula should define the following request parameters:</p>
 
 <table><thead>
@@ -2650,6 +2653,8 @@ a Reactor Formula should define the following request parameters:</p>
 <td>true</td>
 </tr>
 </tbody></table>
+
+<p>As you can see, only the primitive typed request parameters are defined. You could even omit them completely and they would still be forwarded to the Reactor and no validation would be applied.</p>
 <h2 id='reactor-formulas-reactor-formula-code'>Reactor Formula Code</h2>
 <p>All Reactor Formula code snippets must export a function which takes in a <a href="#reactor-formulas-reactor-formula-code-reactor-formula-request-object">request object</a> and returns a <a href="#reactor-formulas-reactor-formula-code-reactor-formula-response-object">response object</a>.</p>
 <h3 id='reactor-formulas-reactor-formula-code-reactor-formula-request-object'>Reactor Formula Request Object</h3>
