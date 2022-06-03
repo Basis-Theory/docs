@@ -299,7 +299,7 @@ package main
 
 import (
   "context"
-  "github.com/Basis-Theory/basistheory-go"
+  "github.com/Basis-Theory/basistheory-go/v2"
 )
 
 func main() {
@@ -309,12 +309,10 @@ func main() {
     "ApiKey": {Key: "key_N88mVGsp3sCXkykyN2EFED"},
   })
 
-  createReactorFormulaModel := *basistheory.NewCreateReactorFormulaModel()
-  createReactorFormulaModel.SetName("My Private Reactor")
-  createReactorFormulaModel.SetDescription("Securely exchange token for another token")
-  createReactorFormulaModel.SetType("private")
-  createReactorFormulaModel.SetIcon("data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==")
-  createReactorFormulaModel.SetCode(`
+  createReactorFormulaRequest := *basistheory.NewCreateReactorFormulaRequest("private", "My Private Reactor")
+  createReactorFormulaRequest.SetDescription("Securely exchange token for another token")
+  createReactorFormulaRequest.SetIcon("data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==")
+  createReactorFormulaRequest.SetCode(`
   	module.exports = async function (req) {
   	  // Do something with req.configuration.SERVICE_API_KEY
   
@@ -326,27 +324,21 @@ func main() {
   	};
   `)
   var configurations []basistheory.ReactorFormulaConfigurationModel
-  reactorFormulaConfiguration := *basistheory.NewReactorFormulaConfigurationModel()
-  reactorFormulaConfiguration.SetName("SERVICE_API_KEY")
+  reactorFormulaConfiguration := *basistheory.NewReactorFormulaConfiguration("SERVICE_API_KEY", "string")
   reactorFormulaConfiguration.SetDescription("Configuration description")
-  reactorFormulaConfiguration.SetType("string")
   configurations = append(configurations, reactorFormulaConfiguration)
-  createReactorFormulaModel.SetConfiguration(configurations)
+  createReactorFormulaRequest.SetConfiguration(configurations)
   var requestParameters []basistheory.ReactorFormulaRequestParameterModel
-  reactorFormulaRequestParameter1 := *basistheory.NewReactorFormulaRequestParameterModel()
-  reactorFormulaRequestParameter1.SetName("request_parameter_1")
+  reactorFormulaRequestParameter1 := *basistheory.NewReactorFormulaRequestParameter("request_parameter_1", "string")
   reactorFormulaRequestParameter1.SetDescription("Request parameter description")
-  reactorFormulaRequestParameter1.SetType("string")
   requestParameters = append(requestParameters, reactorFormulaRequestParameter1)
-  reactorFormulaRequestParameter2 := *basistheory.NewReactorFormulaRequestParameterModel()
-  reactorFormulaRequestParameter2.SetName("request_parameter_2")
+  reactorFormulaRequestParameter2 := *basistheory.NewReactorFormulaRequestParameter("request_parameter_2", "boolean")
   reactorFormulaRequestParameter2.SetDescription("Request parameter description")
-  reactorFormulaRequestParameter2.SetType("boolean")
   reactorFormulaRequestParameter2.SetOptional(true)
   requestParameters = append(requestParameters, reactorFormulaRequestParameter2)
-  createReactorFormulaModel.SetRequestParameters(requestParameters)
+  createReactorFormulaRequest.SetRequestParameters(requestParameters)
 
-  reactorFormula, response, err := apiClient.ReactorFormulasApi.ReactorFormulaCreate(contextWithAPIKey).CreateReactorFormulaModel(createReactorFormulaModel).Execute()
+  reactorFormula, response, err := apiClient.ReactorFormulasApi.ReactorFormulasCreate(contextWithAPIKey).CreateReactorFormulaRequest(createReactorFormulaRequest).Execute()
 }
 ```
 
@@ -466,7 +458,7 @@ package main
 
 import (
   "context"
-  "github.com/Basis-Theory/basistheory-go"
+  "github.com/Basis-Theory/basistheory-go/v2"
 )
 
 func main() {
@@ -599,7 +591,7 @@ package main
 
 import (
   "context"
-  "github.com/Basis-Theory/basistheory-go"
+  "github.com/Basis-Theory/basistheory-go/v2"
 )
 
 func main() {
@@ -609,7 +601,7 @@ func main() {
     "ApiKey": {Key: "key_N88mVGsp3sCXkykyN2EFED"},
   })
 
-  reactorFormula, response, err := apiClient.ReactorFormulasApi.ReactorFormulaGetById(contextWithAPIKey, "17069df1-80f4-439e-86a7-4121863e4678").Execute()
+  reactorFormula, response, err := apiClient.ReactorFormulasApi.ReactorFormulasGetById(contextWithAPIKey, "17069df1-80f4-439e-86a7-4121863e4678").Execute()
 }
 ```
 
@@ -877,7 +869,7 @@ package main
 
 import (
   "context"
-  "github.com/Basis-Theory/basistheory-go"
+  "github.com/Basis-Theory/basistheory-go/v2"
 )
 
 func main() {
@@ -887,12 +879,10 @@ func main() {
     "ApiKey": {Key: "key_N88mVGsp3sCXkykyN2EFED"},
   })
 
-  updateReactorFormulaModel := *basistheory.NewUpdateReactorFormulaModel()
-  updateReactorFormulaModel.SetName("My Private Reactor")
-  updateReactorFormulaModel.SetDescription("Securely exchange token for another token")
-  updateReactorFormulaModel.SetType("private")
-  updateReactorFormulaModel.SetIcon("data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==")
-  updateReactorFormulaModel.SetCode(`
+  updateReactorFormulaRequest := *basistheory.NewUpdateReactorFormulaRequest("private", "My Private Reactor")
+  updateReactorFormulaRequest.SetDescription("Securely exchange token for another token")
+  updateReactorFormulaRequest.SetIcon("data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==")
+  updateReactorFormulaRequest.SetCode(`
   	module.exports = async function (req) {
   	  // Do something with req.configuration.SERVICE_API_KEY
   
@@ -905,27 +895,21 @@ func main() {
   `)
 
   var configurations []basistheory.ReactorFormulaConfigurationModel
-  reactorFormulaConfiguration := *basistheory.NewReactorFormulaConfigurationModel()
-  reactorFormulaConfiguration.SetName("SERVICE_API_KEY")
+  reactorFormulaConfiguration := *basistheory.NewReactorFormulaConfiguration("SERVICE_API_KEY", "string")
   reactorFormulaConfiguration.SetDescription("Configuration description")
-  reactorFormulaConfiguration.SetType("string")
   configurations = append(configurations, reactorFormulaConfiguration)
-  updateReactorFormulaModel.SetConfiguration(configurations)
+  updateReactorFormulaRequest.SetConfiguration(configurations)
   var requestParameters []basistheory.ReactorFormulaRequestParameterModel
-  reactorFormulaRequestParameter1 := *basistheory.NewReactorFormulaRequestParameterModel()
-  reactorFormulaRequestParameter1.SetName("request_parameter_1")
+  reactorFormulaRequestParameter1 := *basistheory.NewReactorFormulaRequestParameter("request_parameter_1", "string")
   reactorFormulaRequestParameter1.SetDescription("Request parameter description")
-  reactorFormulaRequestParameter1.SetType("string")
   requestParameters = append(requestParameters, reactorFormulaRequestParameter1)
-  reactorFormulaRequestParameter2 := *basistheory.NewReactorFormulaRequestParameterModel()
-  reactorFormulaRequestParameter2.SetName("request_parameter_2")
+  reactorFormulaRequestParameter2 := *basistheory.NewReactorFormulaRequestParameter("request_parameter_2", "boolean")
   reactorFormulaRequestParameter2.SetDescription("Request parameter description")
-  reactorFormulaRequestParameter2.SetType("boolean")
   reactorFormulaRequestParameter2.SetOptional(true)
   requestParameters = append(requestParameters, reactorFormulaRequestParameter2)
-  updateReactorFormulaModel.SetRequestParameters(requestParameters)
+  updateReactorFormulaRequest.SetRequestParameters(requestParameters)
 
-  reactorFormula, response, err := apiClient.ReactorFormulasApi.ReactorFormulaUpdate(contextWithAPIKey, "17069df1-80f4-439e-86a7-4121863e4678").UpdateReactorFormulaModel(updateReactorFormulaModel).Execute()
+  reactorFormula, response, err := apiClient.ReactorFormulasApi.ReactorFormulasUpdate(contextWithAPIKey, "17069df1-80f4-439e-86a7-4121863e4678").UpdateReactorFormulaRequest(updateReactorFormulaRequest).Execute()
 }
 ```
 
@@ -1051,7 +1035,7 @@ package main
 
 import (
   "context"
-  "github.com/Basis-Theory/basistheory-go"
+  "github.com/Basis-Theory/basistheory-go/v2"
 )
 
 func main() {
@@ -1061,7 +1045,7 @@ func main() {
     "ApiKey": {Key: "key_N88mVGsp3sCXkykyN2EFED"},
   })
 
-  response, err := apiClient.ReactorFormulasApi.ReactorFormulaDelete(contextWithAPIKey, "17069df1-80f4-439e-86a7-4121863e4678").Execute()
+  response, err := apiClient.ReactorFormulasApi.ReactorFormulasDelete(contextWithAPIKey, "17069df1-80f4-439e-86a7-4121863e4678").Execute()
 }
 ```
 

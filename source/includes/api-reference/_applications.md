@@ -106,7 +106,7 @@ package main
 
 import (
   "context"
-  "github.com/Basis-Theory/basistheory-go"
+  "github.com/Basis-Theory/basistheory-go/v2"
 )
 
 func main() {
@@ -116,16 +116,15 @@ func main() {
     "ApiKey": {Key: "key_N88mVGsp3sCXkykyN2EFED"},
   })
 
-  createApplicationModel := *basistheory.NewCreateApplicationModel()
-  createApplicationModel.SetName("My Example App")
-  createApplicationModel.SetType("server_to_server")
-  createApplicationModel.SetPermissions([]string{
+  createApplicationRequest := *basistheory.NewCreateApplicationRequest(applicationName, applicationType)
+	createApplicationRequest.SetPermissions([]string{
     "token:general:create",
     "token:general:read:low",
     "token:pci:create",
     "token:pci:read:low",
   })
-  application, response, err := apiClient.ApplicationsApi.ApplicationCreate(contextWithAPIKey).CreateApplicationModel(createApplicationModel).Execute()
+
+  application, response, err := apiClient.ApplicationsApi.ApplicationsCreate(contextWithAPIKey).CreateApplicationRequest(createApplicationRequest).Execute()
 }
 ```
 
@@ -215,7 +214,7 @@ package main
 
 import (
   "context"
-  "github.com/Basis-Theory/basistheory-go"
+  "github.com/Basis-Theory/basistheory-go/v2"
 )
 
 func main() {
@@ -321,7 +320,7 @@ package main
 
 import (
   "context"
-  "github.com/Basis-Theory/basistheory-go"
+  "github.com/Basis-Theory/basistheory-go/v2"
 )
 
 func main() {
@@ -330,8 +329,8 @@ func main() {
   contextWithAPIKey := context.WithValue(context.Background(), basistheory.ContextAPIKeys, map[string]basistheory.APIKey{
     "ApiKey": {Key: "key_N88mVGsp3sCXkykyN2EFED"},
   })
-
-  application, response, err := apiClient.ApplicationsApi.ApplicationGetById(contextWithAPIKey, "fe1f9ba4-474e-44b9-b949-110cdba9d662").Execute()
+  
+  application, response, err := apiClient.ApplicationsApi.ApplicationsGetById(contextWithAPIKey, "fe1f9ba4-474e-44b9-b949-110cdba9d662").Execute()
 }
 ```
 
@@ -418,7 +417,7 @@ package main
 
 import (
   "context"
-  "github.com/Basis-Theory/basistheory-go"
+  "github.com/Basis-Theory/basistheory-go/v2"
 )
 
 func main() {
@@ -428,7 +427,7 @@ func main() {
     "ApiKey": {Key: "key_N88mVGsp3sCXkykyN2EFED"},
   })
 
-  application, response, err := apiClient.ApplicationsApi.ApplicationKey(contextWithAPIKey).Execute()
+  application, response, err := apiClient.ApplicationsApi.ApplicationsGetByKey(contextWithCreatedAppAPIKey).Execute()
 }
 ```
 
@@ -539,7 +538,7 @@ package main
 
 import (
   "context"
-  "github.com/Basis-Theory/basistheory-go"
+  "github.com/Basis-Theory/basistheory-go/v2"
 )
 
 func main() {
@@ -549,13 +548,13 @@ func main() {
     "ApiKey": {Key: "key_N88mVGsp3sCXkykyN2EFED"},
   })
 
-  updateApplicationModel := *basistheory.NewUpdateApplicationModel()
-  updateApplicationModel.SetName("My Example App")
-  updateApplicationModel.SetPermissions([]string{
+  updateApplicationRequest := basistheory.NewUpdateApplicationRequest(updatedApplicationName)
+  updateApplicationRequest.SetPermissions([]string{
   	"application:create",
   	"application:read",
   })
-  application, response, err := apiClient.ApplicationsApi.ApplicationUpdate(contextWithAPIKey, "fb124bba-f90d-45f0-9a59-5edca27b3b4a").UpdateApplicationModel(updateApplicationModel).Execute()
+
+  application, response, err := apiClient.ApplicationsApi.ApplicationsUpdate(contextWithAPIKey, "fb124bba-f90d-45f0-9a59-5edca27b3b4a").UpdateApplicationRequest(updateApplicationRequest).Execute()
 }
 ```
 
@@ -650,7 +649,7 @@ package main
 
 import (
   "context"
-  "github.com/Basis-Theory/basistheory-go"
+  "github.com/Basis-Theory/basistheory-go/v2"
 )
 
 func main() {
@@ -660,7 +659,7 @@ func main() {
     "ApiKey": {Key: "key_N88mVGsp3sCXkykyN2EFED"},
   })
 
-  application, response, err := apiClient.ApplicationsApi.ApplicationRegenerate(contextWithAPIKey, "fb124bba-f90d-45f0-9a59-5edca27b3b4a").Execute()
+  application, response, err := apiClient.ApplicationsApi.ApplicationsRegenerateKey(contextWithAPIKey, "fb124bba-f90d-45f0-9a59-5edca27b3b4a").Execute()
 }
 ```
 
@@ -755,7 +754,7 @@ package main
 
 import (
   "context"
-  "github.com/Basis-Theory/basistheory-go"
+  "github.com/Basis-Theory/basistheory-go/v2"
 )
 
 func main() {
@@ -765,7 +764,7 @@ func main() {
     "ApiKey": {Key: "key_N88mVGsp3sCXkykyN2EFED"},
   })
 
-  response, err := apiClient.ApplicationsApi.ApplicationDelete(contextWithAPIKey, "fb124bba-f90d-45f0-9a59-5edca27b3b4a").Execute()
+  response, err := apiClient.ApplicationsApi.ApplicationsDelete(contextWithAPIKey, "fb124bba-f90d-45f0-9a59-5edca27b3b4a").Execute()
 }
 ```
 

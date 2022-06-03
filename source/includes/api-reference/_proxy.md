@@ -8,7 +8,20 @@ Basis Theory token identifiers included in the request will be replaced with the
 
 ### Proxy Requests
 
-> Request
+> Request with BT-PROXY-KEY
+
+```shell
+curl "https://api.basistheory.com/proxy" \
+  -H "BT-API-KEY: key_N88mVGsp3sCXkykyN2EFED" \
+  -H "BT-PROXY-KEY: e29a50980ca5" \
+  -X "POST" \
+  -d '{
+    "parameter1": "{{26818785-547b-4b28-b0fa-531377e99f4e}}",
+    "parameter2": "non-sensitive"
+  }'
+```
+
+> Request with BT-PROXY-URL
 
 ```shell
 curl "https://api.basistheory.com/proxy" \
