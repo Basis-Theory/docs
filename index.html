@@ -466,7 +466,30 @@ _iub.csConfiguration = {"ccpaAcknowledgeOnLoad":true,"consentOnContinuedBrowsing
               <a href="#proxy" class="toc-h1 toc-link" data-title="Proxy">Proxy</a>
                 <ul class="toc-list-h2">
                     <li>
-                      <a href="#proxy-proxying-outbound-requests" class="toc-h2 toc-link" data-title="Proxying Outbound Requests">Proxying Outbound Requests</a>
+                      <a href="#proxy-proxying-requests" class="toc-h2 toc-link" data-title="Proxying Requests">Proxying Requests</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+              <a href="#proxies" class="toc-h1 toc-link" data-title="Proxies">Proxies</a>
+                <ul class="toc-list-h2">
+                    <li>
+                      <a href="#proxies-proxy-object" class="toc-h2 toc-link" data-title="Proxy Object">Proxy Object</a>
+                    </li>
+                    <li>
+                      <a href="#proxies-create-a-proxy" class="toc-h2 toc-link" data-title="Create a Proxy">Create a Proxy</a>
+                    </li>
+                    <li>
+                      <a href="#proxies-list-proxies" class="toc-h2 toc-link" data-title="List Proxies">List Proxies</a>
+                    </li>
+                    <li>
+                      <a href="#proxies-get-a-proxy" class="toc-h2 toc-link" data-title="Get a Proxy">Get a Proxy</a>
+                    </li>
+                    <li>
+                      <a href="#proxies-update-proxy" class="toc-h2 toc-link" data-title="Update Proxy">Update Proxy</a>
+                    </li>
+                    <li>
+                      <a href="#proxies-delete-proxy" class="toc-h2 toc-link" data-title="Delete Proxy">Delete Proxy</a>
                     </li>
                 </ul>
             </li>
@@ -489,7 +512,7 @@ _iub.csConfiguration = {"ccpaAcknowledgeOnLoad":true,"consentOnContinuedBrowsing
                       <a href="#reactor-formulas-reactor-formula-types" class="toc-h2 toc-link" data-title="Reactor Formula Types">Reactor Formula Types</a>
                     </li>
                     <li>
-                      <a href="#reactor-formulas-create-reactor-formula" class="toc-h2 toc-link" data-title="Create Reactor Formula BETA">Create Reactor Formula <span class="beta menu">BETA</span></a>
+                      <a href="#reactor-formulas-create-reactor-formula" class="toc-h2 toc-link" data-title="Create Reactor Formula">Create Reactor Formula</a>
                     </li>
                     <li>
                       <a href="#reactor-formulas-list-reactor-formulas" class="toc-h2 toc-link" data-title="List Reactor Formulas">List Reactor Formulas</a>
@@ -2227,6 +2250,26 @@ or <a href="#applications-update-application">update an Application</a>.</p>
 <td><code>management</code></td>
 </tr>
 <tr>
+<td><code>proxy:read</code></td>
+<td>Read Proxies</td>
+<td><code>management</code></td>
+</tr>
+<tr>
+<td><code>proxy:create</code></td>
+<td>Create Proxies</td>
+<td><code>management</code></td>
+</tr>
+<tr>
+<td><code>proxy:update</code></td>
+<td>Update Proxies</td>
+<td><code>management</code></td>
+</tr>
+<tr>
+<td><code>proxy:delete</code></td>
+<td>Delete Proxies</td>
+<td><code>management</code></td>
+</tr>
+<tr>
 <td><code>log:read</code></td>
 <td>Read audit logs</td>
 <td><code>management</code></td>
@@ -2306,7 +2349,25 @@ or <a href="#applications-update-application">update an Application</a>.</p>
     <span class="n">permissions_client</span> <span class="o">=</span> <span class="n">permissions_api</span><span class="p">.</span><span class="n">PermissionsApi</span><span class="p">(</span><span class="n">api_client</span><span class="p">)</span>
 
     <span class="n">permissions</span> <span class="o">=</span> <span class="n">permissions_client</span><span class="p">.</span><span class="n">get</span><span class="p">()</span>
-</code></pre></div>
+</code></pre></div><h3 id='permissions-list-permissions-query-parameters'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>application_type</code></td>
+<td>false</td>
+<td><em>string</em></td>
+<td><code>null</code></td>
+<td><a href="#applications-application-types">Application type</a> to filter permissions by</td>
+</tr>
+</tbody></table>
+
 <blockquote>
 <p>Response</p>
 </blockquote>
@@ -2329,10 +2390,11 @@ or <a href="#applications-update-application">update an Application</a>.</p>
 <h3 id='permissions-list-permissions-response'>Response</h3>
 <p>Returns an array of <a href="#permissions-permission-object">permission objects</a>. Returns <a href="#errors">an error</a> if permissions
 could not be retrieved.</p>
-<h1 id='proxy'>Proxy</h1><h2 id='proxy-proxying-outbound-requests'>Proxying Outbound Requests</h2>
-<p>The Basis Theory Proxy provides a simple mechanism to use the data you&#39;ve stored with Basis Theory in outbound requests to a third party API.
-Basis Theory token identifiers included in the request will be replaced with the raw token data and then the modified request will be forwarded to the destination specified in the <code>BT-PROXY-URL</code> request header. The destination will receive the raw data in the request without your system needing to interact with sensitive data on your own servers.</p>
-<h3 id='proxy-proxying-outbound-requests-proxy-requests'>Proxy Requests</h3>
+<h1 id='proxy'>Proxy</h1><h2 id='proxy-proxying-requests'>Proxying Requests</h2>
+<p>The Basis Theory Proxy provides a simple way to facilitate the transfer of sensitive data via HTTP API calls. This Proxy can be configured to sit in front of your API to tokenize or transform an inbound request and also between you and a 3rd Party, keeping the sensitive data from touching your systems. To learn more, check out our <a href="https://developers.basistheory.com/concepts/what-is-the-proxy/">Proxy Concept</a>.</p>
+
+<p>Basis Theory token identifiers included in the request will be replaced with the raw token data and then the modified request will be forwarded to the destination specified in the <code>BT-PROXY-URL</code> request header. The destination will receive the raw data in the request without your system needing to interact with sensitive data on your own servers.</p>
+<h3 id='proxy-proxying-requests-proxy-requests'>Proxy Requests</h3>
 <blockquote>
 <p>Request</p>
 </blockquote>
@@ -2402,12 +2464,62 @@ At least one <code>token:&lt;classification&gt;:use:proxy</code> permission is r
 
 <p><strong>Configuration</strong></p>
 
-<p>Proxy requests require a <code>BT-PROXY-URL</code> request header to be set. The value of the <code>BT-PROXY-URL</code> header defines the base URL to which the request will be proxied.
-The <code>BT-PROXY-URL</code> request header must use HTTPS with DNS as the host (explicit IP addresses are not allowed). Destinations must use HTTPS &gt;= TLSv1.2 over port 443.</p>
+<p>Basis Theory&#39;s Proxy provides two ways to configure a request. The first option is to <a href="#proxies-create-a-proxy">create a pre-configured Proxy</a> and set the <code>BT-PROXY-KEY</code> header which will route traffic to the configured <code>destination_url</code>.</p>
 
-<p>The <code>BT-PROXY-URL</code> request header will serve as the base URL for the proxied request. Any path and/or query parameters under <code>/proxy/**</code> will be appended to the base URL before forwarding the request.</p>
+<p>The alternative is to set the <code>BT-PROXY-URL</code> request header. The value of the <code>BT-PROXY-URL</code> header defines the base URL to which the request will be proxied. </p>
+
+<p>The configured proxy URL must use HTTPS with DNS as the host (explicit IP addresses are not allowed). Destinations must use HTTPS &gt;= TLSv1.2.</p>
+
+<p>The proxy URL will serve as the base URL for the proxied request. Any path and/or query parameters under <code>/proxy/**</code> will be appended to the base URL before forwarding the request.</p>
 
 <p>For example, sending a proxy request to <code>https://api.basistheory.com/proxy/foo/bar?param=value</code> and including the header <code>BT-PROXY-URL=https://example.com/api</code> will result in the request being forwarded to <code>https://example.com/api/foo/bar?param=value</code>.</p>
+
+<p><strong>Reactors</strong></p>
+
+<p>Basis Theory&#39;s Proxy supports executing reactors when making requests. When pre-configuring a <a href="#proxies-create-a-proxy">Proxy</a>, the <code>request_reactor_id</code> property can be set to the ID of an existing <a href="#reactors">Reactor</a>. This reactor will be executed when the request is made allow you to transform the request body and headers.</p>
+
+<p>The reactor will receive a JSON object with the following payload:</p>
+
+<div class="center-column"></div>
+<div class="highlight"><pre class="highlight javascript"><code><span class="p">{</span>
+  <span class="nl">args</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nx">body</span><span class="p">,</span> <span class="c1">// detokenized request body</span>
+    <span class="nx">headers</span> <span class="c1">//request headers</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>The Reactor must respond with the following object:</p>
+
+<div class="center-column"></div>
+<div class="highlight"><pre class="highlight javascript"><code><span class="p">{</span>
+  <span class="nl">raw</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nx">body</span><span class="p">,</span>
+    <span class="nx">headers</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Within the reactor, the headers and body of the request can be changed.</p>
+
+<p>In some situations, you may want to tokenize or detokenize part of the request body. In order to do this, set the <code>application.id</code> property when <a href="#reactors-create-reactor">creating your reactor</a>. This will inject a pre-configured Basis Theory JS instance into the request:</p>
+
+<div class="center-column"></div>
+<div class="highlight"><pre class="highlight javascript"><code><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="k">async</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
+   <span class="kd">const</span> <span class="nx">token</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">req</span><span class="p">.</span><span class="nx">bt</span><span class="p">.</span><span class="nx">tokenize</span><span class="p">({</span>
+      <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">token</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">data</span><span class="p">:</span> <span class="nx">req</span><span class="p">.</span><span class="nx">args</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">sensitive_value</span>
+  <span class="p">});</span>
+
+  <span class="nx">req</span><span class="p">.</span><span class="nx">args</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">sensitive_value</span> <span class="o">=</span> <span class="nx">token</span><span class="p">.</span><span class="nx">id</span><span class="p">;</span>
+
+  <span class="k">return</span> <span class="p">{</span>
+    <span class="nx">raw</span> <span class="p">{</span>
+      <span class="na">body</span><span class="p">:</span> <span class="nx">req</span><span class="p">.</span><span class="nx">args</span><span class="p">.</span><span class="nx">body</span><span class="p">,</span>
+      <span class="na">headers</span><span class="p">:</span> <span class="nx">req</span><span class="p">.</span><span class="nx">args</span><span class="p">.</span><span class="nx">headers</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>In the above example, we utilized the injected Basis Theory JS instance to tokenize a property called <code>sensitive_value</code> on our request body and passed the token back as the updated <code>sensitive_value</code> to be forwarded to the configured <code>destination_url</code> on our <a href="#proxies">Proxy</a>.</p>
 
 <p><strong>Detokenization</strong></p>
 
@@ -2443,7 +2555,7 @@ At most, 100 tokens may be detokenized within a single proxy request. You can fi
 <aside class="notice">
   <span>For more detailed examples about how to detokenize within the Proxy, check out our <a href="/detokenization#examples">Detokenization Examples</a>.</span>
 </aside>
-<h3 id='proxy-proxying-outbound-requests-proxy-responses'>Proxy Responses</h3>
+<h3 id='proxy-proxying-requests-proxy-responses'>Proxy Responses</h3>
 <p>Unless an error occurs within the Basis Theory Proxy, the raw response from the destination will be returned from the proxy.</p>
 
 <p>If an error occurs within the proxy (eg. missing or invalid <code>BT-PROXY-URL</code> header), then the following error response will be returned:</p>
@@ -2465,6 +2577,628 @@ At most, 100 tokens may be detokenized within a single proxy request. You can fi
 <aside class="warning">
   <span>If you are interested in using the proxy and your use case is not currently supported, please <a href="mailto:support@basistheory.com?subject=Proxy Feature Request">submit a feature request</a>!</span>
 </aside>
+<h1 id='proxies'>Proxies</h1>
+<p>Proxies provide a way to pre-configure static routes when calling <a href="#proxy">Basis Theory&#39;s Proxy</a>. They require you to set a destination URL for where the request will be forwarded to, require authentication to call the proxy, and configure a <a href="#reactors">Reactor</a> which can be executed as part of the request to transform the request body and headers.</p>
+
+<p>Proxies can be utilized for both inbound and outbound calls for things such as webhooks, enabling 3rd parties to call your API or making API calls to 3rd party partners and providers.</p>
+
+<aside class="notice">
+  <span>If you are looking for how to invoke a Proxy, head over <a href="#proxy">here</a>.</span>
+</aside>
+<h2 id='proxies-proxy-object'>Proxy Object</h2>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td><em>uuid</em></td>
+<td>Unique identifier of the Proxy which can be used to <a href="#proxies-get-a-proxy">get a Proxy</a></td>
+</tr>
+<tr>
+<td><code>key</code></td>
+<td><em>string</em></td>
+<td>Auto-generated key used to <a href="#proxy-todo">invoke a particular Proxy</a></td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><em>string</em></td>
+<td>The name of the Proxy</td>
+</tr>
+<tr>
+<td><code>destination_url</code></td>
+<td><em>string</em></td>
+<td>The URL to proxy requests to</td>
+</tr>
+<tr>
+<td><code>request_reactor_id</code></td>
+<td><em>string</em></td>
+<td>The <a href="#reactors">Reactor</a> to invoke when the Proxy is requested</td>
+</tr>
+<tr>
+<td><code>tenant_id</code></td>
+<td><em>uuid</em></td>
+<td>The <a href="#tenants">Tenant</a> ID which owns the Proxy</td>
+</tr>
+<tr>
+<td><code>require_auth</code></td>
+<td><em>boolean</em></td>
+<td>Require a <code>BT-API-KEY</code> request header for authentication and authorization</td>
+</tr>
+<tr>
+<td><code>created_by</code></td>
+<td><em>uuid</em></td>
+<td>(Optional) The ID of the user or <a href="#applications">Application</a> that created the Proxy</td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td><em>string</em></td>
+<td>(Optional) Created date of the Proxy in ISO 8601 format</td>
+</tr>
+<tr>
+<td><code>modified_by</code></td>
+<td><em>uuid</em></td>
+<td>(Optional) The ID of the user or <a href="#applications">Application</a> that last modified the Proxy</td>
+</tr>
+<tr>
+<td><code>modified_at</code></td>
+<td><em>date</em></td>
+<td>(Optional) Last modified date of the Proxy in ISO 8601 format</td>
+</tr>
+</tbody></table>
+<h2 id='proxies-create-a-proxy'>Create a Proxy</h2>
+<blockquote>
+<p>Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/proxies"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"BT-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">-X</span> <span class="s2">"POST"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">'{
+    "name": "My Proxy",
+    "destination_url": "https://example.com/api",
+    "request_reactor_id": "5b493235-6917-4307-906a-2cd6f1a90b13",
+    "require_auth": true
+  }'</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">BasisTheory</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@basis-theory/basis-theory-js</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">bt</span> <span class="o">=</span> <span class="k">await</span> <span class="k">new</span> <span class="nx">BasisTheory</span><span class="p">().</span><span class="nx">init</span><span class="p">(</span><span class="dl">'</span><span class="s1">key_N88mVGsp3sCXkykyN2EFED</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">proxy</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">bt</span><span class="p">.</span><span class="nx">proxies</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
+  <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">My Proxy</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">destinationUrl</span><span class="p">:</span> <span class="dl">'</span><span class="s1">https://example.com/api</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">requestReactorId</span><span class="p">:</span> <span class="dl">'</span><span class="s1">5b493235-6917-4307-906a-2cd6f1a90b13</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">requireAuth</span><span class="p">:</span> <span class="kc">true</span>
+<span class="p">});</span>
+</code></pre></div><div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="k">using</span> <span class="nn">BasisTheory.net.Proxies</span><span class="p">;</span>
+
+<span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">ProxyClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
+
+<span class="kt">var</span> <span class="n">proxy</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">CreateAsync</span><span class="p">(</span><span class="k">new</span> <span class="n">Proxy</span> <span class="p">{</span>
+  <span class="n">Name</span> <span class="p">=</span> <span class="s">"My Proxy"</span><span class="p">,</span>
+  <span class="n">DestinationUrl</span> <span class="p">=</span> <span class="s">"https://example.com/api"</span><span class="p">,</span>
+  <span class="n">RequestReactorId</span> <span class="p">=</span> <span class="s">"5b493235-6917-4307-906a-2cd6f1a90b13"</span><span class="p">,</span>
+  <span class="n">RequireAuthentication</span><span class="p">:</span> <span class="k">true</span>
+<span class="p">});</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">basistheory</span>
+<span class="kn">from</span> <span class="nn">basistheory.api</span> <span class="kn">import</span> <span class="n">proxies_api</span>
+<span class="kn">from</span> <span class="nn">basistheory.model.create_proxy_request</span> <span class="kn">import</span> <span class="n">CreateProxyRequest</span>
+
+<span class="k">with</span> <span class="n">basistheory</span><span class="p">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="n">configuration</span><span class="o">=</span><span class="n">basistheory</span><span class="p">.</span><span class="n">Configuration</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">))</span> <span class="k">as</span> <span class="n">api_client</span><span class="p">:</span>
+    <span class="n">proxy_client</span> <span class="o">=</span> <span class="n">proxies_api</span><span class="p">.</span><span class="n">ProxiesApi</span><span class="p">(</span><span class="n">api_client</span><span class="p">)</span>
+
+    <span class="n">proxy</span> <span class="o">=</span> <span class="n">proxy_client</span><span class="p">.</span><span class="n">create</span><span class="p">(</span><span class="n">create_proxy_request</span><span class="o">=</span><span class="n">CreateProxyRequest</span><span class="p">(</span>
+        <span class="n">name</span><span class="o">=</span><span class="s">"My Proxy"</span><span class="p">,</span>
+        <span class="n">destination_url</span><span class="o">=</span><span class="s">"https://example.com/api"</span><span class="p">,</span>
+        <span class="n">request_reactor_id</span><span class="o">=</span><span class="s">"5b493235-6917-4307-906a-2cd6f1a90b13"</span><span class="p">,</span>
+        <span class="n">require_auth</span><span class="o">=</span><span class="bp">True</span>
+    <span class="p">))</span>
+</code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
+
+<span class="k">import</span> <span class="p">(</span>
+  <span class="s">"context"</span>
+  <span class="s">"github.com/Basis-Theory/basistheory-go"</span>
+<span class="p">)</span>
+
+<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">configuration</span> <span class="o">:=</span> <span class="n">basistheory</span><span class="o">.</span><span class="n">NewConfiguration</span><span class="p">()</span>
+  <span class="n">apiClient</span> <span class="o">:=</span> <span class="n">basistheory</span><span class="o">.</span><span class="n">NewAPIClient</span><span class="p">(</span><span class="n">configuration</span><span class="p">)</span>
+  <span class="n">contextWithAPIKey</span> <span class="o">:=</span> <span class="n">context</span><span class="o">.</span><span class="n">WithValue</span><span class="p">(</span><span class="n">context</span><span class="o">.</span><span class="n">Background</span><span class="p">(),</span> <span class="n">basistheory</span><span class="o">.</span><span class="n">ContextAPIKeys</span><span class="p">,</span> <span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="n">basistheory</span><span class="o">.</span><span class="n">APIKey</span><span class="p">{</span>
+    <span class="s">"ApiKey"</span><span class="o">:</span> <span class="p">{</span><span class="n">Key</span><span class="o">:</span> <span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">},</span>
+  <span class="p">})</span>
+
+  <span class="n">createProxyRequest</span> <span class="o">:=</span> <span class="o">*</span><span class="n">basistheory</span><span class="o">.</span><span class="n">NewCreateProxyRequest</span><span class="p">()</span>
+  <span class="n">createProxyRequest</span><span class="o">.</span><span class="n">SetName</span><span class="p">(</span><span class="s">"My Proxy"</span><span class="p">)</span>
+  <span class="n">createProxyRequest</span><span class="o">.</span><span class="n">SetDestinationUrl</span><span class="p">(</span><span class="s">"https://example.com/api"</span><span class="p">)</span>
+  <span class="n">createProxyRequest</span><span class="o">.</span><span class="n">SetRequestReactorId</span><span class="p">(</span><span class="s">"5b493235-6917-4307-906a-2cd6f1a90b13"</span><span class="p">)</span>
+  <span class="n">createProxyRequest</span><span class="o">.</span><span class="n">SetRequireAuth</span><span class="p">(</span><span class="no">true</span><span class="p">)</span>
+  <span class="n">proxy</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">apiClient</span><span class="o">.</span><span class="n">ProxiesApi</span><span class="o">.</span><span class="n">ProxyCreate</span><span class="p">(</span><span class="n">contextWithAPIKey</span><span class="p">)</span><span class="o">.</span><span class="n">CreateProxyRequest</span><span class="p">(</span><span class="n">createProxyRequest</span><span class="p">)</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
+</code></pre></div>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"433013a6-a614-4e1e-b2aa-5fba67aa85e6"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"tenant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77cb0024-123e-41a8-8ff8-a3d5a0fa8a08"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My Proxy"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"e29a50980ca5"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"destination_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/api"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"request_reactor_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5b493235-6917-4307-906a-2cd6f1a90b13"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"require_auth"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3ce0dceb-fd0b-4471-8006-c51243c9ef7a"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p><span class="http-method post">
+  <span class="box-method">POST</span>
+  <code>https://api.basistheory.com/proxies</code>
+</span></p>
+
+<p>Creates a new Proxy for the Tenant.</p>
+<h3 id='proxies-create-a-proxy-permissions'>Permissions</h3>
+<p class="scopes">
+  <span class="scope">proxy:create</span>
+</p>
+<h3 id='proxies-create-a-proxy-request-parameters'>Request Parameters</h3>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Required</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>name</code></td>
+<td>true</td>
+<td><em>string</em></td>
+<td><code>null</code></td>
+<td>The name of the Proxy. Has a maximum length of <code>200</code></td>
+</tr>
+<tr>
+<td><code>destination_url</code></td>
+<td>true</td>
+<td><em>string</em></td>
+<td><code>null</code></td>
+<td>The URL to proxy requests to</td>
+</tr>
+<tr>
+<td><code>request_reactor_id</code></td>
+<td>true</td>
+<td><em>string</em></td>
+<td><code>null</code></td>
+<td>The <a href="#reactors">Reactor</a> to invoke when the Proxy is requested</td>
+</tr>
+<tr>
+<td><code>require_auth</code></td>
+<td>false</td>
+<td><em>boolean</em></td>
+<td><code>true</code></td>
+<td>Require a <code>BT-API-KEY</code> request header for authentication and authorization</td>
+</tr>
+</tbody></table>
+<h3 id='proxies-create-a-proxy-response'>Response</h3>
+<p>Returns a <a href="#proxies-proxy-object">Proxy</a> if the Proxy was created. Returns <a href="#errors">an error</a> if there were validation errors, or the Proxy failed to create.</p>
+<h2 id='proxies-list-proxies'>List Proxies</h2>
+<blockquote>
+<p>Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/proxies"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"BT-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">BasisTheory</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@basis-theory/basis-theory-js</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">bt</span> <span class="o">=</span> <span class="k">await</span> <span class="k">new</span> <span class="nx">BasisTheory</span><span class="p">().</span><span class="nx">init</span><span class="p">(</span><span class="dl">'</span><span class="s1">key_N88mVGsp3sCXkykyN2EFED</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">proxies</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">bt</span><span class="p">.</span><span class="nx">proxies</span><span class="p">.</span><span class="nx">list</span><span class="p">();</span>
+</code></pre></div><div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="k">using</span> <span class="nn">BasisTheory.net.Proxies</span><span class="p">;</span>
+
+<span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">ProxyClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
+
+<span class="kt">var</span> <span class="n">proxies</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">GetAsync</span><span class="p">();</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">basistheory</span>
+<span class="kn">from</span> <span class="nn">basistheory.api</span> <span class="kn">import</span> <span class="n">proxies_api</span>
+
+<span class="k">with</span> <span class="n">basistheory</span><span class="p">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="n">configuration</span><span class="o">=</span><span class="n">basistheory</span><span class="p">.</span><span class="n">Configuration</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">))</span> <span class="k">as</span> <span class="n">api_client</span><span class="p">:</span>
+    <span class="n">proxy_client</span> <span class="o">=</span> <span class="n">proxies_api</span><span class="p">.</span><span class="n">ProxiesApi</span><span class="p">(</span><span class="n">api_client</span><span class="p">)</span>
+
+    <span class="n">proxies</span> <span class="o">=</span> <span class="n">proxy_client</span><span class="p">.</span><span class="n">get</span><span class="p">()</span>
+</code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
+
+<span class="k">import</span> <span class="p">(</span>
+  <span class="s">"context"</span>
+  <span class="s">"github.com/Basis-Theory/basistheory-go"</span>
+<span class="p">)</span>
+
+<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">configuration</span> <span class="o">:=</span> <span class="n">basistheory</span><span class="o">.</span><span class="n">NewConfiguration</span><span class="p">()</span>
+  <span class="n">apiClient</span> <span class="o">:=</span> <span class="n">basistheory</span><span class="o">.</span><span class="n">NewAPIClient</span><span class="p">(</span><span class="n">configuration</span><span class="p">)</span>
+  <span class="n">contextWithAPIKey</span> <span class="o">:=</span> <span class="n">context</span><span class="o">.</span><span class="n">WithValue</span><span class="p">(</span><span class="n">context</span><span class="o">.</span><span class="n">Background</span><span class="p">(),</span> <span class="n">basistheory</span><span class="o">.</span><span class="n">ContextAPIKeys</span><span class="p">,</span> <span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="n">basistheory</span><span class="o">.</span><span class="n">APIKey</span><span class="p">{</span>
+    <span class="s">"ApiKey"</span><span class="o">:</span> <span class="p">{</span><span class="n">Key</span><span class="o">:</span> <span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">},</span>
+  <span class="p">})</span>
+
+  <span class="n">proxies</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">apiClient</span><span class="o">.</span><span class="n">ProxiesApi</span><span class="o">.</span><span class="n">ProxiesGet</span><span class="p">(</span><span class="n">contextWithAPIKey</span><span class="p">)</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"pagination"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">}</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"433013a6-a614-4e1e-b2aa-5fba67aa85e6"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"tenant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77cb0024-123e-41a8-8ff8-a3d5a0fa8a08"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My Proxy"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"e29a50980ca5"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"destination_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/api"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"request_reactor_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5b493235-6917-4307-906a-2cd6f1a90b13"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"require_auth"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"modified_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"modified_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-01T08:23:14+00:00"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="err">...</span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p><span class="http-method get">
+  <span class="box-method">GET</span>
+  <code>https://api.basistheory.com/proxies</code>
+</span></p>
+
+<p>Get a list of proxies for the Tenant.</p>
+<h3 id='proxies-list-proxies-permissions'>Permissions</h3>
+<p class="scopes">
+  <span class="scope">proxy:read</span>
+</p>
+<h3 id='proxies-list-proxies-query-parameters'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>false</td>
+<td><em>array</em></td>
+<td><code>[]</code></td>
+<td>An optional list of Proxy ID&#39;s to filter the list of proxies by</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>false</td>
+<td><em>string</em></td>
+<td><code>null</code></td>
+<td>Wildcard search of proxies by name</td>
+</tr>
+</tbody></table>
+<h3 id='proxies-list-proxies-response'>Response</h3>
+<p>Returns a <a href="#pagination">paginated object</a> with the <code>data</code> property containing an array of <a href="#proxies-proxy-object">proxies</a>. Providing any query parameters will filter the results. Returns <a href="#errors">an error</a> if proxies could not be retrieved.</p>
+<h2 id='proxies-get-a-proxy'>Get a Proxy</h2>
+<blockquote>
+<p>Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/proxies/5b493235-6917-4307-906a-2cd6f1a90b13"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"BT-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">BasisTheory</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@basis-theory/basis-theory-js</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">bt</span> <span class="o">=</span> <span class="k">await</span> <span class="k">new</span> <span class="nx">BasisTheory</span><span class="p">().</span><span class="nx">init</span><span class="p">(</span><span class="dl">'</span><span class="s1">key_N88mVGsp3sCXkykyN2EFED</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">proxy</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">bt</span><span class="p">.</span><span class="nx">proxies</span><span class="p">.</span><span class="nx">retrieve</span><span class="p">(</span><span class="dl">'</span><span class="s1">5b493235-6917-4307-906a-2cd6f1a90b13</span><span class="dl">'</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="k">using</span> <span class="nn">BasisTheory.net.Proxies</span><span class="p">;</span>
+
+<span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">ProxyClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
+
+<span class="kt">var</span> <span class="n">proxy</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">GetByIdAsync</span><span class="p">(</span><span class="s">"5b493235-6917-4307-906a-2cd6f1a90b13"</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">basistheory</span>
+<span class="kn">from</span> <span class="nn">basistheory.api</span> <span class="kn">import</span> <span class="n">proxies_api</span>
+
+<span class="k">with</span> <span class="n">basistheory</span><span class="p">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="n">configuration</span><span class="o">=</span><span class="n">basistheory</span><span class="p">.</span><span class="n">Configuration</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">))</span> <span class="k">as</span> <span class="n">api_client</span><span class="p">:</span>
+    <span class="n">proxy_client</span> <span class="o">=</span> <span class="n">proxies_api</span><span class="p">.</span><span class="n">ProxiesApi</span><span class="p">(</span><span class="n">api_client</span><span class="p">)</span>
+
+    <span class="n">application</span> <span class="o">=</span> <span class="n">proxy_client</span><span class="p">.</span><span class="n">get_by_id</span><span class="p">(</span><span class="s">"5b493235-6917-4307-906a-2cd6f1a90b13"</span><span class="p">)</span>
+
+</code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
+
+<span class="k">import</span> <span class="p">(</span>
+  <span class="s">"context"</span>
+  <span class="s">"github.com/Basis-Theory/basistheory-go"</span>
+<span class="p">)</span>
+
+<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">configuration</span> <span class="o">:=</span> <span class="n">basistheory</span><span class="o">.</span><span class="n">NewConfiguration</span><span class="p">()</span>
+  <span class="n">apiClient</span> <span class="o">:=</span> <span class="n">basistheory</span><span class="o">.</span><span class="n">NewAPIClient</span><span class="p">(</span><span class="n">configuration</span><span class="p">)</span>
+  <span class="n">contextWithAPIKey</span> <span class="o">:=</span> <span class="n">context</span><span class="o">.</span><span class="n">WithValue</span><span class="p">(</span><span class="n">context</span><span class="o">.</span><span class="n">Background</span><span class="p">(),</span> <span class="n">basistheory</span><span class="o">.</span><span class="n">ContextAPIKeys</span><span class="p">,</span> <span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="n">basistheory</span><span class="o">.</span><span class="n">APIKey</span><span class="p">{</span>
+    <span class="s">"ApiKey"</span><span class="o">:</span> <span class="p">{</span><span class="n">Key</span><span class="o">:</span> <span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">},</span>
+  <span class="p">})</span>
+
+  <span class="n">proxy</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">apiClient</span><span class="o">.</span><span class="n">ProxiesApi</span><span class="o">.</span><span class="n">ProxyGetById</span><span class="p">(</span><span class="n">contextWithAPIKey</span><span class="p">,</span> <span class="s">"5b493235-6917-4307-906a-2cd6f1a90b13"</span><span class="p">)</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"433013a6-a614-4e1e-b2aa-5fba67aa85e6"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"tenant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77cb0024-123e-41a8-8ff8-a3d5a0fa8a08"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My Proxy"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"e29a50980ca5"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"destination_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/api"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"request_reactor_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5b493235-6917-4307-906a-2cd6f1a90b13"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"require_auth"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"modified_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"modified_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-01T08:23:14+00:00"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p><span class="http-method get">
+  <span class="box-method">GET</span>
+  <code>https://api.basistheory.com/proxies/{id}</code>
+</span> </p>
+
+<p>Get a Proxy by ID in the Tenant.</p>
+<h3 id='proxies-get-a-proxy-permissions'>Permissions</h3>
+<p class="scopes">
+  <span class="scope">proxy:read</span>
+</p>
+<h3 id='proxies-get-a-proxy-uri-parameters'>URI Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>true</td>
+<td><em>uuid</em></td>
+<td><code>null</code></td>
+<td>The ID of the proxy</td>
+</tr>
+</tbody></table>
+<h3 id='proxies-get-a-proxy-response'>Response</h3>
+<p>Returns a <a href="#proxies-proxy-object">Proxy</a> with the <code>id</code> provided. Returns <a href="#errors">an error</a> if the Proxy could not be retrieved.</p>
+<h2 id='proxies-update-proxy'>Update Proxy</h2>
+<blockquote>
+<p>Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/proxies/5b493235-6917-4307-906a-2cd6f1a90b13"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"BT-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">-X</span> <span class="s2">"PUT"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">'{
+    "name": "My Proxy",
+    "destination_url": "https://example.com/api",
+    "request_reactor_id": "5b493235-6917-4307-906a-2cd6f1a90b13",
+    "require_auth": true
+  }'</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">BasisTheory</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@basis-theory/basis-theory-js</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">bt</span> <span class="o">=</span> <span class="k">await</span> <span class="k">new</span> <span class="nx">BasisTheory</span><span class="p">().</span><span class="nx">init</span><span class="p">(</span><span class="dl">'</span><span class="s1">key_N88mVGsp3sCXkykyN2EFED</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">proxy</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">bt</span><span class="p">.</span><span class="nx">proxies</span><span class="p">.</span><span class="nx">update</span><span class="p">(</span><span class="dl">'</span><span class="s1">5b493235-6917-4307-906a-2cd6f1a90b13</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">My Proxy</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">destinationUrl</span><span class="p">:</span> <span class="dl">'</span><span class="s1">https://example.com/api</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">requestReactorId</span><span class="p">:</span> <span class="dl">'</span><span class="s1">5b493235-6917-4307-906a-2cd6f1a90b13</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">requireAuth</span><span class="p">:</span> <span class="kc">true</span>
+<span class="p">});</span>
+</code></pre></div><div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="k">using</span> <span class="nn">BasisTheory.net.Proxies</span><span class="p">;</span>
+
+<span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">ProxyClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
+
+<span class="kt">var</span> <span class="n">proxy</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">UpdateAsync</span><span class="p">(</span><span class="s">"5b493235-6917-4307-906a-2cd6f1a90b13"</span><span class="p">,</span> 
+  <span class="k">new</span> <span class="n">Proxy</span> <span class="p">{</span>
+    <span class="n">Name</span> <span class="p">=</span> <span class="s">"My Proxy"</span><span class="p">,</span>
+    <span class="n">DestinationUrl</span> <span class="p">=</span> <span class="s">"https://example.com/api"</span><span class="p">,</span>
+    <span class="n">RequestReactorId</span> <span class="p">=</span> <span class="s">"5b493235-6917-4307-906a-2cd6f1a90b13"</span><span class="p">,</span>
+    <span class="n">RequireAuthentication</span> <span class="p">=</span> <span class="k">true</span>
+  <span class="p">}</span>
+<span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">basistheory</span>
+<span class="kn">from</span> <span class="nn">basistheory.api</span> <span class="kn">import</span> <span class="n">proxies_api</span>
+<span class="kn">from</span> <span class="nn">basistheory.model.update_proxy_request</span> <span class="kn">import</span> <span class="n">UpdateProxyRequest</span>
+
+<span class="k">with</span> <span class="n">basistheory</span><span class="p">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="n">configuration</span><span class="o">=</span><span class="n">basistheory</span><span class="p">.</span><span class="n">Configuration</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">))</span> <span class="k">as</span> <span class="n">api_client</span><span class="p">:</span>
+    <span class="n">proxy_client</span> <span class="o">=</span> <span class="n">proxies_api</span><span class="p">.</span><span class="n">ProxiesApi</span><span class="p">(</span><span class="n">api_client</span><span class="p">)</span>
+
+    <span class="n">application</span> <span class="o">=</span> <span class="n">proxy_client</span><span class="p">.</span><span class="n">update</span><span class="p">(</span><span class="s">"5b493235-6917-4307-906a-2cd6f1a90b13"</span><span class="p">,</span> <span class="n">update_proxy_request</span><span class="o">=</span><span class="n">UpdateProxyRequest</span><span class="p">(</span>
+        <span class="n">name</span><span class="o">=</span><span class="s">"My Proxy"</span><span class="p">,</span>
+        <span class="n">destination_url</span><span class="o">=</span><span class="s">"https://example.com/api"</span><span class="p">,</span>
+        <span class="n">request_reactor_id</span><span class="o">=</span><span class="s">"5b493235-6917-4307-906a-2cd6f1a90b13"</span><span class="p">,</span>
+        <span class="n">require_auth</span><span class="o">=</span><span class="bp">True</span>
+    <span class="p">))</span>
+</code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
+
+<span class="k">import</span> <span class="p">(</span>
+  <span class="s">"context"</span>
+  <span class="s">"github.com/Basis-Theory/basistheory-go"</span>
+<span class="p">)</span>
+
+<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">configuration</span> <span class="o">:=</span> <span class="n">basistheory</span><span class="o">.</span><span class="n">NewConfiguration</span><span class="p">()</span>
+  <span class="n">apiClient</span> <span class="o">:=</span> <span class="n">basistheory</span><span class="o">.</span><span class="n">NewAPIClient</span><span class="p">(</span><span class="n">configuration</span><span class="p">)</span>
+  <span class="n">contextWithAPIKey</span> <span class="o">:=</span> <span class="n">context</span><span class="o">.</span><span class="n">WithValue</span><span class="p">(</span><span class="n">context</span><span class="o">.</span><span class="n">Background</span><span class="p">(),</span> <span class="n">basistheory</span><span class="o">.</span><span class="n">ContextAPIKeys</span><span class="p">,</span> <span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="n">basistheory</span><span class="o">.</span><span class="n">APIKey</span><span class="p">{</span>
+    <span class="s">"ApiKey"</span><span class="o">:</span> <span class="p">{</span><span class="n">Key</span><span class="o">:</span> <span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">},</span>
+  <span class="p">})</span>
+
+  <span class="n">updateProxyRequest</span> <span class="o">:=</span> <span class="o">*</span><span class="n">basistheory</span><span class="o">.</span><span class="n">NewUpdateProxyRequest</span><span class="p">()</span>
+  <span class="n">updateProxyRequest</span><span class="o">.</span><span class="n">SetName</span><span class="p">(</span><span class="s">"My Proxy"</span><span class="p">)</span>
+  <span class="n">updateProxyRequest</span><span class="o">.</span><span class="n">SetDestinationUrl</span><span class="p">(</span><span class="s">"https://example.com/api"</span><span class="p">)</span>
+  <span class="n">updateProxyRequest</span><span class="o">.</span><span class="n">SetRequestReactorId</span><span class="p">(</span><span class="s">"5b493235-6917-4307-906a-2cd6f1a90b13"</span><span class="p">)</span>
+  <span class="n">updateProxyRequest</span><span class="o">.</span><span class="n">SetRequireAuth</span><span class="p">(</span><span class="no">true</span><span class="p">)</span>
+  <span class="n">proxy</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">apiClient</span><span class="o">.</span><span class="n">ProxiesApi</span><span class="o">.</span><span class="n">ProxyUpdate</span><span class="p">(</span><span class="n">contextWithAPIKey</span><span class="p">,</span> <span class="s">"5b493235-6917-4307-906a-2cd6f1a90b13"</span><span class="p">)</span><span class="o">.</span><span class="n">NewUpdateProxyRequest</span><span class="p">(</span><span class="n">updateProxyRequest</span><span class="p">)</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"433013a6-a614-4e1e-b2aa-5fba67aa85e6"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"tenant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77cb0024-123e-41a8-8ff8-a3d5a0fa8a08"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My Proxy"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"e29a50980ca5"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"destination_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/api"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"request_reactor_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5b493235-6917-4307-906a-2cd6f1a90b13"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"require_auth"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3ce0dceb-fd0b-4471-8006-c51243c9ef7a"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"modified_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"34053374-d721-43d8-921c-5ee1d337ef21"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"modified_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-01T08:23:14+00:00"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p><span class="http-method put">
+  <span class="box-method">PUT</span>
+  <code>https://api.basistheory.com/proxies/{id}</code>
+</span></p>
+
+<p>Update a Proxy by ID in the Tenant.</p>
+<h3 id='proxies-update-proxy-permissions'>Permissions</h3>
+<p class="scopes">
+  <span class="scope">proxy:update</span>
+</p>
+<h3 id='proxies-update-proxy-uri-parameters'>URI Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>true</td>
+<td><em>uuid</em></td>
+<td><code>null</code></td>
+<td>The ID of the proxy</td>
+</tr>
+</tbody></table>
+<h3 id='proxies-update-proxy-request-parameters'>Request Parameters</h3>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Required</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>name</code></td>
+<td>true</td>
+<td><em>string</em></td>
+<td><code>null</code></td>
+<td>The name of the Proxy. Has a maximum length of <code>200</code></td>
+</tr>
+<tr>
+<td><code>destination_url</code></td>
+<td>true</td>
+<td><em>string</em></td>
+<td><code>null</code></td>
+<td>The URL to proxy requests to</td>
+</tr>
+<tr>
+<td><code>request_reactor_id</code></td>
+<td>true</td>
+<td><em>string</em></td>
+<td><code>null</code></td>
+<td>The <a href="#reactors">Reactor</a> to invoke when the Proxy is requested</td>
+</tr>
+<tr>
+<td><code>require_auth</code></td>
+<td>false</td>
+<td><em>boolean</em></td>
+<td><code>true</code></td>
+<td>Require a <code>BT-API-KEY</code> request header for authentication and authorization</td>
+</tr>
+</tbody></table>
+<h3 id='proxies-update-proxy-response'>Response</h3>
+<p>Returns a <a href="#proxies-proxy-object">Proxy</a> if the Proxy was updated. Returns <a href="#errors">an error</a> if there were validation errors, or the Proxy failed to update.</p>
+<h2 id='proxies-delete-proxy'>Delete Proxy</h2>
+<blockquote>
+<p>Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/proxies/fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"BT-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span> <span class="se">\</span>
+  <span class="nt">-X</span> <span class="s2">"DELETE"</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">BasisTheory</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@basis-theory/basis-theory-js</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">bt</span> <span class="o">=</span> <span class="k">await</span> <span class="k">new</span> <span class="nx">BasisTheory</span><span class="p">().</span><span class="nx">init</span><span class="p">(</span><span class="dl">'</span><span class="s1">key_N88mVGsp3sCXkykyN2EFED</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="k">await</span> <span class="nx">bt</span><span class="p">.</span><span class="nx">proxies</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="dl">'</span><span class="s1">fb124bba-f90d-45f0-9a59-5edca27b3b4a</span><span class="dl">'</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="k">using</span> <span class="nn">BasisTheory.net.Proxies</span><span class="p">;</span>
+
+<span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">ProxyClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
+
+<span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">DeleteAsync</span><span class="p">(</span><span class="s">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">basistheory</span>
+<span class="kn">from</span> <span class="nn">basistheory.api</span> <span class="kn">import</span> <span class="n">proxies_api</span>
+
+<span class="k">with</span> <span class="n">basistheory</span><span class="p">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="n">configuration</span><span class="o">=</span><span class="n">basistheory</span><span class="p">.</span><span class="n">Configuration</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">))</span> <span class="k">as</span> <span class="n">api_client</span><span class="p">:</span>
+    <span class="n">proxies_client</span> <span class="o">=</span> <span class="n">proxies_api</span><span class="p">.</span><span class="n">ProxiesApi</span><span class="p">(</span><span class="n">api_client</span><span class="p">)</span>
+
+    <span class="n">proxies_client</span><span class="p">.</span><span class="n">delete</span><span class="p">(</span><span class="s">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
+
+<span class="k">import</span> <span class="p">(</span>
+  <span class="s">"context"</span>
+  <span class="s">"github.com/Basis-Theory/basistheory-go"</span>
+<span class="p">)</span>
+
+<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">configuration</span> <span class="o">:=</span> <span class="n">basistheory</span><span class="o">.</span><span class="n">NewConfiguration</span><span class="p">()</span>
+  <span class="n">apiClient</span> <span class="o">:=</span> <span class="n">basistheory</span><span class="o">.</span><span class="n">NewAPIClient</span><span class="p">(</span><span class="n">configuration</span><span class="p">)</span>
+  <span class="n">contextWithAPIKey</span> <span class="o">:=</span> <span class="n">context</span><span class="o">.</span><span class="n">WithValue</span><span class="p">(</span><span class="n">context</span><span class="o">.</span><span class="n">Background</span><span class="p">(),</span> <span class="n">basistheory</span><span class="o">.</span><span class="n">ContextAPIKeys</span><span class="p">,</span> <span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="n">basistheory</span><span class="o">.</span><span class="n">APIKey</span><span class="p">{</span>
+    <span class="s">"ApiKey"</span><span class="o">:</span> <span class="p">{</span><span class="n">Key</span><span class="o">:</span> <span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">},</span>
+  <span class="p">})</span>
+
+  <span class="n">response</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">apiClient</span><span class="o">.</span><span class="n">ProxiesApi</span><span class="o">.</span><span class="n">ProxyDelete</span><span class="p">(</span><span class="n">contextWithAPIKey</span><span class="p">,</span> <span class="s">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">)</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><span class="http-method delete">
+  <span class="box-method">DELETE</span>
+  <code>https://api.basistheory.com/proxies/{id}</code>
+</span></p>
+
+<p>Delete a Proxy by ID in the Tenant.</p>
+<h3 id='proxies-delete-proxy-permissions'>Permissions</h3>
+<p><code>proxy:delete</code></p>
+<h3 id='proxies-delete-proxy-uri-parameters'>URI Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>true</td>
+<td><em>uuid</em></td>
+<td><code>null</code></td>
+<td>The ID of the proxy</td>
+</tr>
+</tbody></table>
+<h3 id='proxies-delete-proxy-response'>Response</h3>
+<p>Returns <a href="#errors">an error</a> if the Proxy failed to delete.</p>
 <h1 id='reactor-formulas'>Reactor Formulas</h1>
 <p>Reactor formulas give you the ability to pre-configure custom integrations to securely process, enrich, and associate your tokens.</p>
 <h2 id='reactor-formulas-reactor-formula-object'>Reactor Formula Object</h2>
@@ -2732,7 +3466,7 @@ For more information, see <a href="#tokenize">Tokenize</a>.</p>
 </tr>
 </tbody></table>
 
-<h2 id="reactor-formulas-create-reactor-formula">Create Reactor Formula <span class="beta menu">BETA</span></h2>
+<h2 id="reactor-formulas-create-reactor-formula">Create Reactor Formula</h2>
 
 <blockquote>
 <p>Request</p>
@@ -3004,10 +3738,6 @@ For more information, see <a href="#tokenize">Tokenize</a>.</p>
   </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<aside class="warning">
-  <span>Creating custom Reactor Formulas is currently in Private Beta. If you would like to be added to the beta program, please <a href="mailto:support@basistheory.com?subject=Reactor Beta Access">contact us</a>!</span>
-</aside>
-
 <p><span class="http-method post">
   <span class="box-method">POST</span>
   <code>https://api.basistheory.com/reactor-formulas</code>
@@ -4542,7 +5272,37 @@ this permission grants the Reactor access to detokenize tokens of any impact lev
 <td>false</td>
 <td><em>object</em></td>
 <td><code>null</code></td>
-<td>Arguments to provide to the reactor. These arguments must match the declared <a href="#reactor-formulas-reactor-formula-request-parameters">request parameters</a> for the reactor formula.</td>
+<td>Arguments to provide to the reactor. These arguments must contain the declared <a href="#reactor-formulas-reactor-formula-request-parameters">request parameters</a> for the reactor formula.</td>
+</tr>
+</tbody></table>
+<h3 id='reactors-invoke-a-reactor-reactor-request-parameters'>Reactor Request Parameters</h3>
+<p>The reactor will be executed with a <code>req</code> object that contains the following properties</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>args</code></td>
+<td>Detokenized arguments to provided to the reactor.</td>
+</tr>
+<tr>
+<td><code>args.body</code></td>
+<td>Detokenized request body when executed in the context of a <a href="#proxy">proxy</a> request.</td>
+</tr>
+<tr>
+<td><code>args.headers</code></td>
+<td>Request headers when executed in the context of a <a href="#proxy">proxy</a> request.</td>
+</tr>
+<tr>
+<td><code>configuration</code></td>
+<td>A key-value map of all configuration name and values when creating the <a href="#reactor-reactor-object">Reactor</a></td>
+</tr>
+<tr>
+<td><code>bt</code></td>
+<td>A pre-configured Basis Theory JS instance for the <a href="#reactors-reactor-object">application</a> defined with the Reactor. This will be <code>null</code> if no application was defined.</td>
 </tr>
 </tbody></table>
 <h3 id='reactors-invoke-a-reactor-response'>Response</h3>
@@ -4565,6 +5325,16 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
 <td><code>raw</code></td>
 <td><em>object</em></td>
 <td>(Optional) Raw output returned from the Reactor</td>
+</tr>
+<tr>
+<td><code>raw.body</code></td>
+<td><em>object</em></td>
+<td>(Required if <a href="#proxy">proxy</a> request) The <code>body</code> forwarded to the destination for the <a href="https://docs.basistheory.com/#proxy">proxy</a> request</td>
+</tr>
+<tr>
+<td><code>raw.headers</code></td>
+<td><em>object</em></td>
+<td>(Required if <a href="#proxy">proxy</a> request) The <code>headers</code> forwarded to the destination for the <a href="https://docs.basistheory.com/#proxy">proxy</a> request</td>
 </tr>
 </tbody></table>
 <h3 id='reactors-invoke-a-reactor-validation'>Validation</h3>
