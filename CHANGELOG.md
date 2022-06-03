@@ -1,3 +1,10 @@
+# [1.44.0](https://github.com/Basis-Theory/docs/compare/v1.43.0...v1.44.0) (2022-06-03)
+
+
+### Features
+
+* add proxies section ([#188](https://github.com/Basis-Theory/docs/issues/188)) ([b6a8335](https://github.com/Basis-Theory/docs/commit/b6a8335be0534a5af69fd036ca224c2e6904a0ca))
+
 # [1.43.0](https://github.com/Basis-Theory/docs/compare/v1.42.0...v1.43.0) (2022-06-03)
 
 
