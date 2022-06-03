@@ -46,8 +46,11 @@ Elements of a Reactor Formula's `request_parameters` array have the following sc
 | `optional`    | false    | *boolean* | `false` | If the request parameter is optional when executing the reactor                        |
 
 Request parameters are intended to define any parameters that will be provided to a Reactor at request-time, and may change across Reactor invocations.
-Complex objects can be passed within the `args` property to a Reactor, and these complex request parameters can be defined by dot-separating levels of the object hierarchy.
-For example, to pass a `card` object to a Reactor whose schema matches the [Card Object](#atomic-cards-atomic-card-object-card-object) stored within an [Atomic Card](#atomic-cards-atomic-card-object) token, 
+Complex objects properties can be passed within the `args` property to a Reactor, and they can be defined by dot-separating levels of the object hierarchy.
+
+Any `args` property not associated with a request parameter is still forwarded to the reactor. This allows you to provide complete complex objects including arrays, in which no type checking is applied. For instance, if no request parameters are declared, it means you can provide any payload when invoking the reactor. 
+
+For example, to pass a `card` object whose schema matches the [Card Object](#atomic-cards-atomic-card-object-card-object) stored within an [Atomic Card](#atomic-cards-atomic-card-object) token and an array of any type, 
 a Reactor Formula should define the following request parameters:
 
 | name                    | type     | optional |
@@ -56,6 +59,8 @@ a Reactor Formula should define the following request parameters:
 | `card.expiration_month` | *number* | false    |
 | `card.expiration_year`  | *number* | false    |
 | `card.cvc`              | *string* | true     |
+
+As you can see, only the primitive typed request parameters are defined. You could even omit them completely and they would still be forwarded to the Reactor and no validation would be applied.
 
 ## Reactor Formula Code
 
