@@ -11,9 +11,9 @@ Proxies can be utilized for both inbound and outbound calls for things such as w
 ## Proxy Object
 
 | Attribute            | Type      | Description                                                                                |
-| -------------------- | --------- | ------------------------------------------------------------------------------------------ |
+| -------------------- | --------- |--------------------------------------------------------------------------------------------|
 | `id`                 | *uuid*    | Unique identifier of the Proxy which can be used to [get a Proxy](#proxies-get-a-proxy)    |
-| `key`                | *string*  | Auto-generated key used to [invoke a particular Proxy](#proxy-todo)                        |
+| `key`                | *string*  | Auto-generated key used to [invoke a particular Proxy](#proxy-proxying-requests)           |
 | `name`               | *string*  | The name of the Proxy                                                                      |
 | `destination_url`    | *string*  | The URL to proxy requests to                                                               |
 | `request_reactor_id` | *string*  | The [Reactor](#reactors) to invoke when the Proxy is requested                             |
