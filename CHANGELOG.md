@@ -1,3 +1,10 @@
+# [1.43.0](https://github.com/Basis-Theory/docs/compare/v1.42.0...v1.43.0) (2022-06-03)
+
+
+### Features
+
+* updating reactor formula request params docs ([#189](https://github.com/Basis-Theory/docs/issues/189)) ([7fd967a](https://github.com/Basis-Theory/docs/commit/7fd967a840f12a6a10a92d1ad7df8204bd7346c8))
+
 # [1.42.0](https://github.com/Basis-Theory/docs/compare/v1.41.1...v1.42.0) (2022-06-02)
 
 
