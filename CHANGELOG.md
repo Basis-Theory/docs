@@ -1,3 +1,10 @@
+## [1.44.1](https://github.com/Basis-Theory/docs/compare/v1.44.0...v1.44.1) (2022-06-03)
+
+
+### Bug Fixes
+
+* fixes and updates all Go SDK calls to v2 ([#191](https://github.com/Basis-Theory/docs/issues/191)) ([94aad17](https://github.com/Basis-Theory/docs/commit/94aad175ca3f269bc12ee2512869e5ecc3d399e8))
+
 # [1.44.0](https://github.com/Basis-Theory/docs/compare/v1.43.0...v1.44.0) (2022-06-03)
 
 
