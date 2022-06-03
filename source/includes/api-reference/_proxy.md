@@ -90,7 +90,7 @@ For example, sending a proxy request to `https://api.basistheory.com/proxy/foo/b
 
 **Reactors**
 
-Basis Theory's Proxy supports executing reactors when making requests. When creating a [Proxy](#proxies-create-a-proxy), the `request_reactor_id` property can be set to the ID of an existing [Reactor](#reactors). This reactor will be executed when the request is made allow you to transform the request body and headers.
+Basis Theory's Proxy supports executing reactors when making requests. When pre-configuring a [Proxy](#proxies-create-a-proxy), the `request_reactor_id` property can be set to the ID of an existing [Reactor](#reactors). This reactor will be executed when the request is made allow you to transform the request body and headers.
 
 The reactor will receive a JSON object with the following payload:
 
