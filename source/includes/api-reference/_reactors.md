@@ -3,18 +3,18 @@
 
 ## Reactor Object
 
-| Attribute       | Type                                                          |     | Description                                                                                                                                                                                                                            |
-|-----------------|---------------------------------------------------------------|:----|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `id`            | *uuid*                                                        |     | Unique identifier of the Reactor which can be used to [get a Reactor](#reactors-get-a-reactor)                                                                                                                                         |
-| `tenant_id`     | *uuid*                                                        |     | The [Tenant](#tenants) ID which owns the reactor                                                                                                                                                                                       |
-| `name`          | *string*                                                      |     | The name of the reactor                                                                                                                                                                                                                |
-| `formula`       | *[Reactor Formula](#reactor-formulas-reactor-formula-object)* |     | Reactor Formula this Reactor is configured for                                                                                                                                                                                         |
-| `configuration` | *map*                                                         |     | A key-value map of all configuration name and values for a [Reactor Formula configuration](#reactor-formulas-reactor-formula-configuration)                                                                                            |
-| `application`   | *[Application](#applications-application-object)*             |     | (Optional) This Application's permissions are injected into a pre-configured <a href="https://www.npmjs.com/package/@basis-theory/basis-theory-js" target="_blank">Node.js BasisTheory</a> instance passed into the Reactor's runtime. |
-| `created_by`    | *uuid*                                                        |     | (Optional) The ID of the user or [Application](#applications) that created the Reactor                                                                                                                                                 |
-| `created_at`    | *string*                                                      |     | (Optional) Created date of the Reactor in ISO 8601 format                                                                                                                                                                              |
-| `modified_by`   | *uuid*                                                        |     | (Optional) The ID of the user or [Application](#applications) that last modified the Reactor                                                                                                                                           |
-| `modified_at`   | *date*                                                        |     | (Optional) Last modified date of the Reactor in ISO 8601 format                                                                                                                                                                        |
+| Attribute       | Type                                                          |      | Description                                                                                                                                                                                                                            |
+| --------------- | ------------------------------------------------------------- | :--- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `id`            | *uuid*                                                        |      | Unique identifier of the Reactor which can be used to [get a Reactor](#reactors-get-a-reactor)                                                                                                                                         |
+| `tenant_id`     | *uuid*                                                        |      | The [Tenant](#tenants) ID which owns the reactor                                                                                                                                                                                       |
+| `name`          | *string*                                                      |      | The name of the reactor                                                                                                                                                                                                                |
+| `formula`       | *[Reactor Formula](#reactor-formulas-reactor-formula-object)* |      | Reactor Formula this Reactor is configured for                                                                                                                                                                                         |
+| `configuration` | *map*                                                         |      | A key-value map of all configuration name and values for a [Reactor Formula configuration](#reactor-formulas-reactor-formula-configuration)                                                                                            |
+| `application`   | *[Application](#applications-application-object)*             |      | (Optional) This Application's permissions are injected into a pre-configured <a href="https://www.npmjs.com/package/@basis-theory/basis-theory-js" target="_blank">Node.js BasisTheory</a> instance passed into the Reactor's runtime. |
+| `created_by`    | *uuid*                                                        |      | (Optional) The ID of the user or [Application](#applications) that created the Reactor                                                                                                                                                 |
+| `created_at`    | *string*                                                      |      | (Optional) Created date of the Reactor in ISO 8601 format                                                                                                                                                                              |
+| `modified_by`   | *uuid*                                                        |      | (Optional) The ID of the user or [Application](#applications) that last modified the Reactor                                                                                                                                           |
+| `modified_at`   | *date*                                                        |      | (Optional) Last modified date of the Reactor in ISO 8601 format                                                                                                                                                                        |
 
 ## Create Reactor
 
@@ -165,7 +165,7 @@ Create a new Reactor from a Reactor Formula for the Tenant.
 ### Request Parameters
 
 | Attribute        | Required | Type     | Default | Description                                                                                                                                 |
-|------------------|----------|----------|---------|---------------------------------------------------------------------------------------------------------------------------------------------|
+| ---------------- | -------- | -------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
 | `name`           | true     | *string* | `null`  | The name of the reactor. Has a maximum length of `200`                                                                                      |
 | `configuration`  | true     | *object* | `null`  | A key-value map of all configuration name and values for a [Reactor Formula configuration](#reactor-formulas-reactor-formula-configuration) |
 | `formula.id`     | true     | *uuid*   | `null`  | Unique identifier of the [Reactor Formula](#reactor-formulas-reactor-formula-object) to configure a Reactor for                             |
@@ -272,10 +272,10 @@ Get a list of reactors for the Tenant.
 
 ### Query Parameters
 
-| Parameter           | Required | Type     | Default | Description                                                           |
-|---------------------|----------|----------|---------|-----------------------------------------------------------------------|
-| `id`                | false    | *array*  | `[]`    | An optional list of Reactor ID's to filter the list of reactors by    |
-| `name`              | false    | *string* | `null`  | Wildcard search of reactors by name                                   |
+| Parameter | Required | Type     | Default | Description                                                        |
+| --------- | -------- | -------- | ------- | ------------------------------------------------------------------ |
+| `id`      | false    | *array*  | `[]`    | An optional list of Reactor ID's to filter the list of reactors by |
+| `name`    | false    | *string* | `null`  | Wildcard search of reactors by name                                |
 
 ### Response
 
@@ -370,7 +370,7 @@ Get a Reactor by ID in the Tenant.
 ### URI Parameters
 
 | Parameter | Required | Type   | Default | Description           |
-|-----------|----------|--------|---------|-----------------------|
+| --------- | -------- | ------ | ------- | --------------------- |
 | `id`      | true     | *uuid* | `null`  | The ID of the reactor |
 
 ### Response
@@ -514,13 +514,13 @@ Update a Reactor by ID in the Tenant.
 ### URI Parameters
 
 | Parameter | Required | Type   | Default | Description           |
-|-----------|----------|--------|---------|-----------------------|
+| --------- | -------- | ------ | ------- | --------------------- |
 | `id`      | true     | *uuid* | `null`  | The ID of the reactor |
 
 ### Request Parameters
 
 | Attribute        | Required | Type     | Default | Description                                                                                                                                 |
-|------------------|----------|----------|---------|---------------------------------------------------------------------------------------------------------------------------------------------|
+| ---------------- | -------- | -------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
 | `name`           | true     | *string* | `null`  | The name of the reactor. Has a maximum length of `200`                                                                                      |
 | `configuration`  | true     | *object* | `null`  | A key-value map of all configuration name and values for a [Reactor Formula configuration](#reactor-formulas-reactor-formula-configuration) |
 | `application.id` | false    | *uuid*   | `null`  | Unique identifier of the [Application](#applications-application-object) to configure a Reactor with                                        |
@@ -599,7 +599,7 @@ Delete a Reactor by ID in the Tenant.
 ### URI Parameters
 
 | Parameter | Required | Type   | Default | Description           |
-|-----------|----------|--------|---------|-----------------------|
+| --------- | -------- | ------ | ------- | --------------------- |
 | `id`      | true     | *uuid* | `null`  | The ID of the reactor |
 
 ### Response
@@ -716,12 +716,12 @@ At least one `token:<classification>:use:reactor` permission is required to invo
 ### URI Parameters
 
 | Parameter | Required | Type   | Default | Description           |
-|-----------|----------|--------|---------|-----------------------|
+| --------- | -------- | ------ | ------- | --------------------- |
 | `id`      | true     | *uuid* | `null`  | The ID of the Reactor |
 
 ### Request Parameters
-| Parameter | Required | Type     | Default | Description                                                                                                                                                                                                   |
-|-----------|----------|----------|---------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Parameter | Required | Type     | Default | Description                                                                                                                                                                      |
+| --------- | -------- | -------- | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `args`    | false    | *object* | `null`  | Arguments to provide to the reactor. These arguments must match the declared [request parameters](#reactor-formulas-reactor-formula-request-parameters) for the reactor formula. |
 
 ### Response
@@ -731,7 +731,7 @@ Errors generated from Reactors will be translated to the common Basis Theory Err
 
 ### Reactor Response Object
 | Attribute | Type     | Description                                                                                                                                                                             |
-|-----------|----------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| --------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `tokens`  | *object* | (Optional) [Token(s)](#tokens-token-object) created from the `tokenize` block of the Reactor Formula [response](#reactor-formulas-reactor-formula-code-reactor-formula-response-object) |
 | `raw`     | *object* | (Optional) Raw output returned from the Reactor                                                                                                                                         |
 
@@ -745,7 +745,7 @@ Nested objects may be passed within `args`, as long as each sub-property is decl
 For example, we may have a Reactor Formula with complex request parameters declared as:
 
 | name                 | type     | optional |
-|----------------------|----------|----------|
+| -------------------- | -------- | -------- |
 | `request_id`         | *string* | false    |
 | `user.first_name`    | *string* | false    |
 | `user.last_name`     | *string* | false    |
