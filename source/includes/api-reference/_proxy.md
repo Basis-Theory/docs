@@ -2,7 +2,7 @@
 
 ## Proxying Requests
 
-The Basis Theory Proxy provides a simple mechanism to make API calls and securely tokenize sensitive data before it touches your systems or detokenize data to be able to securely share it with 3rd parties.
+The Basis Theory Proxy provides a simple way to facilitate the transfer of sensitive data via HTTP API calls. This Proxy can be configured to sit in front of your API to tokenize or transform an inbound request and also between you and a 3rd Party, keeping the sensitive data from touching your systems. To learn more, check out our [Proxy Concept](https://developers.basistheory.com/concepts/what-is-the-proxy/).
 
 Basis Theory token identifiers included in the request will be replaced with the raw token data and then the modified request will be forwarded to the destination specified in the `BT-PROXY-URL` request header. The destination will receive the raw data in the request without your system needing to interact with sensitive data on your own servers.
 
