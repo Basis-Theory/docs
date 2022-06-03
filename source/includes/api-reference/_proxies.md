@@ -88,7 +88,7 @@ package main
 
 import (
   "context"
-  "github.com/Basis-Theory/basistheory-go"
+  "github.com/Basis-Theory/basistheory-go/v2"
 )
 
 func main() {
@@ -98,12 +98,9 @@ func main() {
     "ApiKey": {Key: "key_N88mVGsp3sCXkykyN2EFED"},
   })
 
-  createProxyRequest := *basistheory.NewCreateProxyRequest()
-  createProxyRequest.SetName("My Proxy")
-  createProxyRequest.SetDestinationUrl("https://example.com/api")
-  createProxyRequest.SetRequestReactorId("5b493235-6917-4307-906a-2cd6f1a90b13")
-  createProxyRequest.SetRequireAuth(true)
-  proxy, response, err := apiClient.ProxiesApi.ProxyCreate(contextWithAPIKey).CreateProxyRequest(createProxyRequest).Execute()
+  createProxyRequest := *basistheory.NewCreateProxyRequest("My Proxy", "https://example.com/api", "5b493235-6917-4307-906a-2cd6f1a90b13")
+	createProxyRequest.SetRequireAuth(true)
+	proxy, response, err := apiClient.ProxiesApi.ProxiesCreate(contextWithAPIKey).CreateProxyRequest(createProxyRequest).Execute()
 ```
 
 > Response
@@ -190,7 +187,7 @@ package main
 
 import (
   "context"
-  "github.com/Basis-Theory/basistheory-go"
+  "github.com/Basis-Theory/basistheory-go/v2"
 )
 
 func main() {
@@ -295,7 +292,7 @@ package main
 
 import (
   "context"
-  "github.com/Basis-Theory/basistheory-go"
+  "github.com/Basis-Theory/basistheory-go/v2"
 )
 
 func main() {
@@ -305,7 +302,7 @@ func main() {
     "ApiKey": {Key: "key_N88mVGsp3sCXkykyN2EFED"},
   })
 
-  proxy, response, err := apiClient.ProxiesApi.ProxyGetById(contextWithAPIKey, "5b493235-6917-4307-906a-2cd6f1a90b13").Execute()
+  proxy, response, err := apiClient.ProxiesApi.ProxiesGetById(contextWithAPIKey, "5b493235-6917-4307-906a-2cd6f1a90b13").Execute()
 }
 ```
 
@@ -417,7 +414,7 @@ package main
 
 import (
   "context"
-  "github.com/Basis-Theory/basistheory-go"
+  "github.com/Basis-Theory/basistheory-go/v2"
 )
 
 func main() {
@@ -427,12 +424,9 @@ func main() {
     "ApiKey": {Key: "key_N88mVGsp3sCXkykyN2EFED"},
   })
 
-  updateProxyRequest := *basistheory.NewUpdateProxyRequest()
-  updateProxyRequest.SetName("My Proxy")
-  updateProxyRequest.SetDestinationUrl("https://example.com/api")
-  updateProxyRequest.SetRequestReactorId("5b493235-6917-4307-906a-2cd6f1a90b13")
-  updateProxyRequest.SetRequireAuth(true)
-  proxy, response, err := apiClient.ProxiesApi.ProxyUpdate(contextWithAPIKey, "5b493235-6917-4307-906a-2cd6f1a90b13").NewUpdateProxyRequest(updateProxyRequest).Execute()
+  updateProxyRequest := *basistheory.NewUpdateProxyRequest("My Proxy", "https://example.com/api", "5b493235-6917-4307-906a-2cd6f1a90b13")
+	updateProxyRequest.SetRequireAuth(true)
+  proxy, response, err := apiClient.ProxiesApi.ProxiesUpdate(contextWithAPIKey, "5b493235-6917-4307-906a-2cd6f1a90b13").UpdateProxyRequest(updateProxyRequest).Execute()
 }
 ```
 
@@ -529,7 +523,7 @@ package main
 
 import (
   "context"
-  "github.com/Basis-Theory/basistheory-go"
+  "github.com/Basis-Theory/basistheory-go/v2"
 )
 
 func main() {
@@ -539,7 +533,7 @@ func main() {
     "ApiKey": {Key: "key_N88mVGsp3sCXkykyN2EFED"},
   })
 
-  response, err := apiClient.ProxiesApi.ProxyDelete(contextWithAPIKey, "fb124bba-f90d-45f0-9a59-5edca27b3b4a").Execute()
+  response, err := apiClient.ProxiesApi.ProxiesDelete(contextWithAPIKey, "fb124bba-f90d-45f0-9a59-5edca27b3b4a").Execute()
 }
 ```
 

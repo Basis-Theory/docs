@@ -106,7 +106,7 @@ package main
 
 import (
   "context"
-  "github.com/Basis-Theory/basistheory-go"
+  "github.com/Basis-Theory/basistheory-go/v2"
 )
 
 func main() {
@@ -116,19 +116,18 @@ func main() {
     "ApiKey": {Key: "key_N88mVGsp3sCXkykyN2EFED"},
   })
 
-  createReactorModel := *basistheory.NewCreateReactorModel()
-  createReactorModel.SetName("My Reactor")
-  createReactorModel.SetConfiguration(map[string]string{
+  createReactorRequest := *basistheory.NewCreateReactorRequest("My Reactor")
+  createReactorRequest.SetConfiguration(map[string]string{
   	"SERVICE_API_KEY": "key_abcd134",
   })
-  reactorFormula := *basistheory.NewReactorFormulaModel()
+  reactorFormula := *basistheory.NewReactorFormula()
   reactorFormula.SetId("17069df1-80f4-439e-86a7-4121863e4678")
-  createReactorModel.SetFormula(reactorFormula)
-  application := *basistheory.NewApplicationModel()
+  createReactorRequest.SetFormula(reactorFormula)
+  application := *basistheory.NewApplication()
   application.SetId("45c124e7-6ab2-4899-b4d9-1388b0ba9d04")
-  createReactorModel.SetApplication(application)
+  createReactorRequest.SetApplication(application)
 
-  reactor, response, error := apiClient.ReactorsApi.ReactorCreate(contextWithAPIKey).CreateReactorModel(createReactorModel).Execute()
+  reactor, response, error := apiClient.ReactorsApi.ReactorsCreate(contextWithAPIKey).CreateReactorRequest(createReactorRequest).Execute()
 }
 ```
 
@@ -218,7 +217,7 @@ package main
 
 import (
   "context"
-  "github.com/Basis-Theory/basistheory-go"
+  "github.com/Basis-Theory/basistheory-go/v2"
 )
 
 func main() {
@@ -322,7 +321,7 @@ package main
 
 import (
   "context"
-  "github.com/Basis-Theory/basistheory-go"
+  "github.com/Basis-Theory/basistheory-go/v2"
 )
 
 func main() {
@@ -332,7 +331,7 @@ func main() {
     "ApiKey": {Key: "key_N88mVGsp3sCXkykyN2EFED"},
   })
 
-  reactor, response, err := apiClient.ReactorsApi.ReactorGetById(contextWithAPIKey, "5b493235-6917-4307-906a-2cd6f1a90b13").Execute()
+  reactor, response, err := apiClient.ReactorsApi.ReactorsGetById(contextWithAPIKey, "5b493235-6917-4307-906a-2cd6f1a90b13").Execute()
 }
 ```
 
@@ -457,7 +456,7 @@ package main
 
 import (
   "context"
-  "github.com/Basis-Theory/basistheory-go"
+  "github.com/Basis-Theory/basistheory-go/v2"
 )
 
 func main() {
@@ -467,16 +466,15 @@ func main() {
     "ApiKey": {Key: "key_N88mVGsp3sCXkykyN2EFED"},
   })
 
-  updateReactorModel := *basistheory.NewUpdateReactorModel()
-  updateReactorModel.SetName("My Reactor")
-  updateReactorModel.SetConfiguration(map[string]string{
+  updateReactorRequest := *basistheory.NewUpdateReactorRequest("My Reactor")
+  updateReactorRequest.SetConfiguration(map[string]string{
   	"SERVICE_API_KEY": "key_abcd134",
   })
-  application := *basistheory.NewApplicationModel()
+  application := *basistheory.NewApplication()
   application.SetId("45c124e7-6ab2-4899-b4d9-1388b0ba9d04")
-  updateReactorModel.SetApplication(application)
+  updateReactorRequest.SetApplication(application)
 
-  reactor, response, err := apiClient.ReactorsApi.ReactorUpdate(contextWithAPIKey, "5b493235-6917-4307-906a-2cd6f1a90b13").UpdateReactorModel(updateReactorModel).Execute()
+  reactor, response, err := apiClient.ReactorsApi.ReactorsUpdate(contextWithAPIKey, "5b493235-6917-4307-906a-2cd6f1a90b13").UpdateReactorRequest(updateReactorRequest).Execute()
 }
 ```
 
@@ -571,7 +569,7 @@ package main
 
 import (
   "context"
-  "github.com/Basis-Theory/basistheory-go"
+  "github.com/Basis-Theory/basistheory-go/v2"
 )
 
 func main() {
@@ -581,7 +579,7 @@ func main() {
     "ApiKey": {Key: "key_N88mVGsp3sCXkykyN2EFED"},
   })
 
-  response, err := apiClient.ReactorsApi.ReactorDelete(contextWithAPIKey, "fb124bba-f90d-45f0-9a59-5edca27b3b4a").Execute()
+  response, err := apiClient.ReactorsApi.ReactorsDelete(contextWithAPIKey, "fb124bba-f90d-45f0-9a59-5edca27b3b4a").Execute()
 }
 ```
 
@@ -674,7 +672,7 @@ package main
 
 import (
   "context"
-  "github.com/Basis-Theory/basistheory-go"
+  "github.com/Basis-Theory/basistheory-go/v2"
 )
 
 func main() {
@@ -690,7 +688,7 @@ func main() {
   	"customer_id": "myCustomerId1234",
   })
 
-  reactResponse, response, err := apiClient.ReactorsApi.ReactorReact(contextWithAPIKey, "5b493235-6917-4307-906a-2cd6f1a90b13").ReactRequest(reactRequest).Execute()
+  reactResponse, response, err := apiClient.ReactorsApi.ReactorsReact(contextWithAPIKey, "5b493235-6917-4307-906a-2cd6f1a90b13").ReactRequest(reactRequest).Execute()
 }
 ```
 
