@@ -720,9 +720,20 @@ At least one `token:<classification>:use:reactor` permission is required to invo
 | `id`      | true     | *uuid* | `null`  | The ID of the Reactor |
 
 ### Request Parameters
-| Parameter | Required | Type     | Default | Description                                                                                                                                                                      |
-| --------- | -------- | -------- | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `args`    | false    | *object* | `null`  | Arguments to provide to the reactor. These arguments must match the declared [request parameters](#reactor-formulas-reactor-formula-request-parameters) for the reactor formula. |
+| Parameter | Required | Type     | Default | Description                                                                                                                                                                        |
+| --------- | -------- | -------- | ------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `args`    | false    | *object* | `null`  | Arguments to provide to the reactor. These arguments must contain the declared [request parameters](#reactor-formulas-reactor-formula-request-parameters) for the reactor formula. |
+
+### Reactor Request Parameters
+The reactor will be executed with a `req` object that contains the following properties
+
+| Parameter       | Description                                                                                                                                                            |
+| --------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `args`          | Detokenized arguments to provided to the reactor.                                                                                                                      |
+| `args.body`     | Detokenized request body when executed in the context of a [proxy](#proxy) request.                                                                                    |
+| `args.headers`  | Request headers when executed in the context of a [proxy](#proxy) request.                                                                                             |
+| `configuration` | A key-value map of all configuration name and values when creating the [Reactor](#reactor-reactor-object)                                                              |
+| `bt`            | A pre-configured Basis Theory JS instance for the [application](#reactors-reactor-object) defined with the Reactor. This will be `null` if no application was defined. |
 
 ### Response
 
@@ -730,10 +741,12 @@ Returns a [Reactor Response](#reactors-invoke-a-reactor-reactor-response-object)
 Errors generated from Reactors will be translated to the common Basis Theory Error format. See [Reactor Errors](#errors-reactor-errors) for more details.
 
 ### Reactor Response Object
-| Attribute | Type     | Description                                                                                                                                                                             |
-| --------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `tokens`  | *object* | (Optional) [Token(s)](#tokens-token-object) created from the `tokenize` block of the Reactor Formula [response](#reactor-formulas-reactor-formula-code-reactor-formula-response-object) |
-| `raw`     | *object* | (Optional) Raw output returned from the Reactor                                                                                                                                         |
+| Attribute     | Type     | Description                                                                                                                                                                             |
+| ------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `tokens`      | *object* | (Optional) [Token(s)](#tokens-token-object) created from the `tokenize` block of the Reactor Formula [response](#reactor-formulas-reactor-formula-code-reactor-formula-response-object) |
+| `raw`         | *object* | (Optional) Raw output returned from the Reactor                                                                                                                                         |
+| `raw.body`    | *object* | (Required if [proxy](#proxy) request) The `body` forwarded to the destination for the [proxy](https://docs.basistheory.com/#proxy) request                                              |
+| `raw.headers` | *object* | (Required if [proxy](#proxy) request) The `headers` forwarded to the destination for the [proxy](https://docs.basistheory.com/#proxy) request                                           |
 
 ### Validation
 
