@@ -553,6 +553,7 @@ func main() {
   	"application:create",
   	"application:read",
   })
+
   application, response, err := apiClient.ApplicationsApi.ApplicationsUpdate(contextWithAPIKey, "fb124bba-f90d-45f0-9a59-5edca27b3b4a").UpdateApplicationRequest(updateApplicationRequest).Execute()
 }
 ```
