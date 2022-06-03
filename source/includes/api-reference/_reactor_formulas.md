@@ -60,7 +60,7 @@ a Reactor Formula should define the following request parameters:
 | `card.expiration_year`  | *number* | false    |
 | `card.cvc`              | *string* | true     |
 
-As you can see, only the primitive typed request parameters are defined. You could even omit them completely and they would still be forwarded to the Reactor, but no validation would be applied.
+As you can see, only the primitive typed request parameters are defined. You could even omit them completely and they would still be forwarded to the Reactor and no validation would be applied.
 
 ## Reactor Formula Code
 
