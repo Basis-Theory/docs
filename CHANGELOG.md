@@ -1,3 +1,10 @@
+## [1.44.2](https://github.com/Basis-Theory/docs/compare/v1.44.1...v1.44.2) (2022-06-06)
+
+
+### Bug Fixes
+
+* fixes whitespaces on Go SDK ([#193](https://github.com/Basis-Theory/docs/issues/193)) ([a9c3767](https://github.com/Basis-Theory/docs/commit/a9c376759c0cc08c7aabb4cea9ad4e69fa5da283))
+
 ## [1.44.1](https://github.com/Basis-Theory/docs/compare/v1.44.0...v1.44.1) (2022-06-03)
 
 
