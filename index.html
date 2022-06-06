@@ -1364,7 +1364,7 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
   <span class="p">})</span>
 
   <span class="n">createApplicationRequest</span> <span class="o">:=</span> <span class="o">*</span><span class="n">basistheory</span><span class="o">.</span><span class="n">NewCreateApplicationRequest</span><span class="p">(</span><span class="n">applicationName</span><span class="p">,</span> <span class="n">applicationType</span><span class="p">)</span>
-    <span class="n">createApplicationRequest</span><span class="o">.</span><span class="n">SetPermissions</span><span class="p">([]</span><span class="kt">string</span><span class="p">{</span>
+  <span class="n">createApplicationRequest</span><span class="o">.</span><span class="n">SetPermissions</span><span class="p">([]</span><span class="kt">string</span><span class="p">{</span>
     <span class="s">"token:general:create"</span><span class="p">,</span>
     <span class="s">"token:general:read:low"</span><span class="p">,</span>
     <span class="s">"token:pci:create"</span><span class="p">,</span>
@@ -2722,8 +2722,9 @@ At most, 100 tokens may be detokenized within a single proxy request. You can fi
   <span class="p">})</span>
 
   <span class="n">createProxyRequest</span> <span class="o">:=</span> <span class="o">*</span><span class="n">basistheory</span><span class="o">.</span><span class="n">NewCreateProxyRequest</span><span class="p">(</span><span class="s">"My Proxy"</span><span class="p">,</span> <span class="s">"https://example.com/api"</span><span class="p">,</span> <span class="s">"5b493235-6917-4307-906a-2cd6f1a90b13"</span><span class="p">)</span>
-    <span class="n">createProxyRequest</span><span class="o">.</span><span class="n">SetRequireAuth</span><span class="p">(</span><span class="no">true</span><span class="p">)</span>
-    <span class="n">proxy</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">apiClient</span><span class="o">.</span><span class="n">ProxiesApi</span><span class="o">.</span><span class="n">ProxiesCreate</span><span class="p">(</span><span class="n">contextWithAPIKey</span><span class="p">)</span><span class="o">.</span><span class="n">CreateProxyRequest</span><span class="p">(</span><span class="n">createProxyRequest</span><span class="p">)</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
+  <span class="n">createProxyRequest</span><span class="o">.</span><span class="n">SetRequireAuth</span><span class="p">(</span><span class="no">true</span><span class="p">)</span>
+  <span class="n">proxy</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">apiClient</span><span class="o">.</span><span class="n">ProxiesApi</span><span class="o">.</span><span class="n">ProxiesCreate</span><span class="p">(</span><span class="n">contextWithAPIKey</span><span class="p">)</span><span class="o">.</span><span class="n">CreateProxyRequest</span><span class="p">(</span><span class="n">createProxyRequest</span><span class="p">)</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
+<span class="p">}</span>
 </code></pre></div>
 <blockquote>
 <p>Response</p>
@@ -3044,7 +3045,7 @@ At most, 100 tokens may be detokenized within a single proxy request. You can fi
   <span class="p">})</span>
 
   <span class="n">updateProxyRequest</span> <span class="o">:=</span> <span class="o">*</span><span class="n">basistheory</span><span class="o">.</span><span class="n">NewUpdateProxyRequest</span><span class="p">(</span><span class="s">"My Proxy"</span><span class="p">,</span> <span class="s">"https://example.com/api"</span><span class="p">,</span> <span class="s">"5b493235-6917-4307-906a-2cd6f1a90b13"</span><span class="p">)</span>
-    <span class="n">updateProxyRequest</span><span class="o">.</span><span class="n">SetRequireAuth</span><span class="p">(</span><span class="no">true</span><span class="p">)</span>
+  <span class="n">updateProxyRequest</span><span class="o">.</span><span class="n">SetRequireAuth</span><span class="p">(</span><span class="no">true</span><span class="p">)</span>
   <span class="n">proxy</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">apiClient</span><span class="o">.</span><span class="n">ProxiesApi</span><span class="o">.</span><span class="n">ProxiesUpdate</span><span class="p">(</span><span class="n">contextWithAPIKey</span><span class="p">,</span> <span class="s">"5b493235-6917-4307-906a-2cd6f1a90b13"</span><span class="p">)</span><span class="o">.</span><span class="n">UpdateProxyRequest</span><span class="p">(</span><span class="n">updateProxyRequest</span><span class="p">)</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -3667,9 +3668,9 @@ For more information, see <a href="#tokenize">Tokenize</a>.</p>
       // Do something with req.configuration.SERVICE_API_KEY
 
       return {
-        raw: {
-          foo: 'bar'
-        }
+      raw: {
+        foo: 'bar'
+      }
       };
     };
   `</span><span class="p">)</span>
@@ -4246,9 +4247,9 @@ For more information, see <a href="#tokenize">Tokenize</a>.</p>
       // Do something with req.configuration.SERVICE_API_KEY
 
       return {
-        raw: {
-          foo: 'bar'
-        }
+      raw: {
+        foo: 'bar'
+      }
       };
     };
   `</span><span class="p">)</span>
