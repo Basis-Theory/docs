@@ -1,3 +1,10 @@
+## [1.44.3](https://github.com/Basis-Theory/docs/compare/v1.44.2...v1.44.3) (2022-06-06)
+
+
+### Bug Fixes
+
+* adds Content-Type header on proxy requests ([#194](https://github.com/Basis-Theory/docs/issues/194)) ([4ab4f86](https://github.com/Basis-Theory/docs/commit/4ab4f86a41e7b9882e15d1d26a28550235b57590))
+
 ## [1.44.2](https://github.com/Basis-Theory/docs/compare/v1.44.1...v1.44.2) (2022-06-06)
 
 
