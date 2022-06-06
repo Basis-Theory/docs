@@ -99,8 +99,9 @@ func main() {
   })
 
   createProxyRequest := *basistheory.NewCreateProxyRequest("My Proxy", "https://example.com/api", "5b493235-6917-4307-906a-2cd6f1a90b13")
-	createProxyRequest.SetRequireAuth(true)
-	proxy, response, err := apiClient.ProxiesApi.ProxiesCreate(contextWithAPIKey).CreateProxyRequest(createProxyRequest).Execute()
+  createProxyRequest.SetRequireAuth(true)
+  proxy, response, err := apiClient.ProxiesApi.ProxiesCreate(contextWithAPIKey).CreateProxyRequest(createProxyRequest).Execute()
+}
 ```
 
 > Response
@@ -425,7 +426,7 @@ func main() {
   })
 
   updateProxyRequest := *basistheory.NewUpdateProxyRequest("My Proxy", "https://example.com/api", "5b493235-6917-4307-906a-2cd6f1a90b13")
-	updateProxyRequest.SetRequireAuth(true)
+  updateProxyRequest.SetRequireAuth(true)
   proxy, response, err := apiClient.ProxiesApi.ProxiesUpdate(contextWithAPIKey, "5b493235-6917-4307-906a-2cd6f1a90b13").UpdateProxyRequest(updateProxyRequest).Execute()
 }
 ```

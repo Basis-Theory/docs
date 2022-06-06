@@ -118,7 +118,7 @@ func main() {
 
   createReactorRequest := *basistheory.NewCreateReactorRequest("My Reactor")
   createReactorRequest.SetConfiguration(map[string]string{
-  	"SERVICE_API_KEY": "key_abcd134",
+    "SERVICE_API_KEY": "key_abcd134",
   })
   reactorFormula := *basistheory.NewReactorFormula()
   reactorFormula.SetId("17069df1-80f4-439e-86a7-4121863e4678")
@@ -468,7 +468,7 @@ func main() {
 
   updateReactorRequest := *basistheory.NewUpdateReactorRequest("My Reactor")
   updateReactorRequest.SetConfiguration(map[string]string{
-  	"SERVICE_API_KEY": "key_abcd134",
+    "SERVICE_API_KEY": "key_abcd134",
   })
   application := *basistheory.NewApplication()
   application.SetId("45c124e7-6ab2-4899-b4d9-1388b0ba9d04")
@@ -684,8 +684,8 @@ func main() {
 
   reactRequest := *basistheory.NewReactRequest()
   reactRequest.SetArgs(map[string]interface{}{
-  	"card": "{{fe7c0a36-eb45-4f68-b0a0-791de28b29e4}}",
-  	"customer_id": "myCustomerId1234",
+    "card": "{{fe7c0a36-eb45-4f68-b0a0-791de28b29e4}}",
+    "customer_id": "myCustomerId1234",
   })
 
   reactResponse, response, err := apiClient.ReactorsApi.ReactorsReact(contextWithAPIKey, "5b493235-6917-4307-906a-2cd6f1a90b13").ReactRequest(reactRequest).Execute()

@@ -117,7 +117,7 @@ func main() {
   })
 
   createApplicationRequest := *basistheory.NewCreateApplicationRequest(applicationName, applicationType)
-	createApplicationRequest.SetPermissions([]string{
+  createApplicationRequest.SetPermissions([]string{
     "token:general:create",
     "token:general:read:low",
     "token:pci:create",
@@ -550,8 +550,8 @@ func main() {
 
   updateApplicationRequest := basistheory.NewUpdateApplicationRequest(updatedApplicationName)
   updateApplicationRequest.SetPermissions([]string{
-  	"application:create",
-  	"application:read",
+    "application:create",
+    "application:read",
   })
 
   application, response, err := apiClient.ApplicationsApi.ApplicationsUpdate(contextWithAPIKey, "fb124bba-f90d-45f0-9a59-5edca27b3b4a").UpdateApplicationRequest(updateApplicationRequest).Execute()

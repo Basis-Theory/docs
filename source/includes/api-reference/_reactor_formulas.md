@@ -313,15 +313,15 @@ func main() {
   createReactorFormulaRequest.SetDescription("Securely exchange token for another token")
   createReactorFormulaRequest.SetIcon("data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==")
   createReactorFormulaRequest.SetCode(`
-  	module.exports = async function (req) {
-  	  // Do something with req.configuration.SERVICE_API_KEY
+    module.exports = async function (req) {
+      // Do something with req.configuration.SERVICE_API_KEY
   
-  	  return {
-  		raw: {
-  		  foo: 'bar'
-  		}
-  	  };
-  	};
+      return {
+      raw: {
+        foo: 'bar'
+      }
+      };
+    };
   `)
   var configurations []basistheory.ReactorFormulaConfigurationModel
   reactorFormulaConfiguration := *basistheory.NewReactorFormulaConfiguration("SERVICE_API_KEY", "string")
@@ -883,15 +883,15 @@ func main() {
   updateReactorFormulaRequest.SetDescription("Securely exchange token for another token")
   updateReactorFormulaRequest.SetIcon("data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==")
   updateReactorFormulaRequest.SetCode(`
-  	module.exports = async function (req) {
-  	  // Do something with req.configuration.SERVICE_API_KEY
+    module.exports = async function (req) {
+      // Do something with req.configuration.SERVICE_API_KEY
   
-  	  return {
-  		raw: {
-  		  foo: 'bar'
-  		}
-  	  };
-  	};
+      return {
+      raw: {
+        foo: 'bar'
+      }
+      };
+    };
   `)
 
   var configurations []basistheory.ReactorFormulaConfigurationModel
