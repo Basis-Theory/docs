@@ -192,3 +192,57 @@ Given a token with the data:
 | <code>{{ data &#124; pad_right: 6, 'X' }}</code> | "1234XX" |
 | <code>{{ data &#124; pad_right: 4, '0' }}</code> | "1234"   |
 | <code>{{ data &#124; pad_right: 2, '0' }}</code> | "1234"   |
+
+## stringify
+
+Returns a JSON serialized string of the input object.
+
+Returns null when provided a null input value.
+
+### Parameters
+
+None
+
+### Examples
+
+Given a token with the data:
+
+<div class="center-column" style="clear: none;"></div>
+```json
+{
+  "id": "d35412f4-9d3b-45d8-b051-fe4b7d4e14c5",
+  "type": "token",
+  "data": { 
+    "books": [
+      { 
+        "category": "fiction",
+        "author": "Herman Melville",
+        "title": "Moby Dick",
+        "isbn": "0-553-21311-3",
+        "price": 8.99
+      },
+      { 
+        "category": "fantasy",
+        "author": "J. R. R. Tolkien",
+        "title": "The Lord of the Rings",
+        "isbn": "0-395-19395-8",
+        "price": 22.99
+      }
+    ],
+    "bicycles": [{
+      "color": "red",
+      "price": 19.95
+    }, {
+      "color": "blue",
+      "price": 24.95
+    }]
+  }
+}
+```
+
+| Expression                                              | Result                                                                       |
+|---------------------------------------------------------|------------------------------------------------------------------------------|
+| <code>{{ data.books[0].price &#124; stringify }}</code> | "8.99"                                                                       |
+| <code>{{ data.books[1].title &#124; stringify }}</code> | "The Lord of the Rings"                                                      |
+| <code>{{ data.bicycles[1] &#124; stringify }}</code>    | "{\"color\":\"red\",\"price\":19.95}"                                        |
+| <code>{{ data.bicycles &#124; stringify }}</code>       | "[{\"color\":\"red\",\"price\":19.95},{\"color\":\"blue\",\"price\":24.95}]" |
