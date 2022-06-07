@@ -1,3 +1,10 @@
+# [1.45.0](https://github.com/Basis-Theory/docs/compare/v1.44.3...v1.45.0) (2022-06-07)
+
+
+### Features
+
+* adds stringify custom filter ([#195](https://github.com/Basis-Theory/docs/issues/195)) ([d1d07df](https://github.com/Basis-Theory/docs/commit/d1d07dfa80fa9704e2cab244261bbf7f1b9692a1))
+
 ## [1.44.3](https://github.com/Basis-Theory/docs/compare/v1.44.2...v1.44.3) (2022-06-06)
 
 
