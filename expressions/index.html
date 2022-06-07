@@ -374,6 +374,9 @@ _iub.csConfiguration = {"ccpaAcknowledgeOnLoad":true,"consentOnContinuedBrowsing
                   <li>
                     <a href="#filters-pad_right" class="toc-h2 toc-link" data-title="pad_right">pad_right</a>
                   </li>
+                  <li>
+                    <a href="#filters-stringify" class="toc-h2 toc-link" data-title="stringify">stringify</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -788,6 +791,69 @@ The <code>json</code> filter provides further flexibility for evaluating complex
 <tr>
 <td><code>{{ data &#124; pad_right: 2, &#39;0&#39; }}</code></td>
 <td>&quot;1234&quot;</td>
+</tr>
+</tbody></table>
+<h2 id='filters-stringify'>stringify</h2>
+<p>Returns a JSON serialized string of the input object.</p>
+
+<p>Returns null when provided a null input value.</p>
+<h3 id='filters-stringify-parameters'>Parameters</h3>
+<p>None</p>
+<h3 id='filters-stringify-examples'>Examples</h3>
+<p>Given a token with the data:</p>
+
+<div class="center-column" style="clear: none;"></div>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d35412f4-9d3b-45d8-b051-fe4b7d4e14c5"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"token"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> 
+    </span><span class="nl">"books"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w"> 
+        </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fiction"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"author"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Herman Melville"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Moby Dick"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"isbn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0-553-21311-3"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">8.99</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w"> 
+        </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fantasy"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"author"</span><span class="p">:</span><span class="w"> </span><span class="s2">"J. R. R. Tolkien"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The Lord of the Rings"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"isbn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0-395-19395-8"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">22.99</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"bicycles"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+      </span><span class="nl">"color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"red"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.95</span><span class="w">
+    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"blue"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">24.95</span><span class="w">
+    </span><span class="p">}]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Expression</th>
+<th>Result</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>{{ data.books[0].price &#124; stringify }}</code></td>
+<td>&quot;8.99&quot;</td>
+</tr>
+<tr>
+<td><code>{{ data.books[1].title &#124; stringify }}</code></td>
+<td>&quot;The Lord of the Rings&quot;</td>
+</tr>
+<tr>
+<td><code>{{ data.bicycles[1] &#124; stringify }}</code></td>
+<td>&quot;{\&quot;color\&quot;:\&quot;red\&quot;,\&quot;price\&quot;:19.95}&quot;</td>
+</tr>
+<tr>
+<td><code>{{ data.bicycles &#124; stringify }}</code></td>
+<td>&quot;[{\&quot;color\&quot;:\&quot;red\&quot;,\&quot;price\&quot;:19.95},{\&quot;color\&quot;:\&quot;blue\&quot;,\&quot;price\&quot;:24.95}]&quot;</td>
 </tr>
 </tbody></table>
 <h1 id='detokenization'>Detokenization</h1>
