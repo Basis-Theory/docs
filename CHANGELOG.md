@@ -1,3 +1,10 @@
+# [1.46.0](https://github.com/Basis-Theory/docs/compare/v1.45.0...v1.46.0) (2022-06-08)
+
+
+### Features
+
+* add request reactor to proxy ([#196](https://github.com/Basis-Theory/docs/issues/196)) ([bbdc2de](https://github.com/Basis-Theory/docs/commit/bbdc2decc8a6954a601bd5127634641afedaa7f9))
+
 # [1.45.0](https://github.com/Basis-Theory/docs/compare/v1.44.3...v1.45.0) (2022-06-07)
 
 
