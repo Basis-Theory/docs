@@ -10,19 +10,20 @@ Proxies can be utilized for both inbound and outbound calls for things such as w
 
 ## Proxy Object
 
-| Attribute            | Type      | Description                                                                                |
-| -------------------- | --------- |--------------------------------------------------------------------------------------------|
-| `id`                 | *uuid*    | Unique identifier of the Proxy which can be used to [get a Proxy](#proxies-get-a-proxy)    |
-| `key`                | *string*  | Auto-generated key used to [invoke a particular Proxy](#proxy-proxying-requests)           |
-| `name`               | *string*  | The name of the Proxy                                                                      |
-| `destination_url`    | *string*  | The URL to proxy requests to                                                               |
-| `request_reactor_id` | *string*  | The [Reactor](#reactors) to invoke when the Proxy is requested                             |
-| `tenant_id`          | *uuid*    | The [Tenant](#tenants) ID which owns the Proxy                                             |
-| `require_auth`       | *boolean* | Require a `BT-API-KEY` request header for authentication and authorization                 |
-| `created_by`         | *uuid*    | (Optional) The ID of the user or [Application](#applications) that created the Proxy       |
-| `created_at`         | *string*  | (Optional) Created date of the Proxy in ISO 8601 format                                    |
-| `modified_by`        | *uuid*    | (Optional) The ID of the user or [Application](#applications) that last modified the Proxy |
-| `modified_at`        | *date*    | (Optional) Last modified date of the Proxy in ISO 8601 format                              |
+| Attribute             | Type      | Description                                                                                |
+| --------------------- | --------- | ------------------------------------------------------------------------------------------ |
+| `id`                  | *uuid*    | Unique identifier of the Proxy which can be used to [get a Proxy](#proxies-get-a-proxy)    |
+| `key`                 | *string*  | Auto-generated key used to [invoke a particular Proxy](#proxy-proxying-requests)           |
+| `name`                | *string*  | The name of the Proxy                                                                      |
+| `destination_url`     | *string*  | The URL to proxy requests to                                                               |
+| `request_reactor_id`  | *string*  | The [Reactor](#reactors) to invoke on the Proxy request                                    |
+| `response_reactor_id` | *string*  | The [Reactor](#reactors) to invoke on the Proxy response                                   |
+| `tenant_id`           | *uuid*    | The [Tenant](#tenants) ID which owns the Proxy                                             |
+| `require_auth`        | *boolean* | Require a `BT-API-KEY` request header for authentication and authorization                 |
+| `created_by`          | *uuid*    | (Optional) The ID of the user or [Application](#applications) that created the Proxy       |
+| `created_at`          | *string*  | (Optional) Created date of the Proxy in ISO 8601 format                                    |
+| `modified_by`         | *uuid*    | (Optional) The ID of the user or [Application](#applications) that last modified the Proxy |
+| `modified_at`         | *date*    | (Optional) Last modified date of the Proxy in ISO 8601 format                              |
 
 ## Create a Proxy
 
@@ -37,6 +38,7 @@ curl "https://api.basistheory.com/proxies" \
     "name": "My Proxy",
     "destination_url": "https://example.com/api",
     "request_reactor_id": "5b493235-6917-4307-906a-2cd6f1a90b13",
+    "response_reactor_id": "1cb923e6-ae89-407a-ba07-1564ebe99350",
     "require_auth": true
   }'
 ```
@@ -50,6 +52,7 @@ const proxy = await bt.proxies.create({
   name: 'My Proxy',
   destinationUrl: 'https://example.com/api',
   requestReactorId: '5b493235-6917-4307-906a-2cd6f1a90b13',
+  responseReactorId: '1cb923e6-ae89-407a-ba07-1564ebe99350',
   requireAuth: true
 });
 ```
@@ -63,6 +66,7 @@ var proxy = await client.CreateAsync(new Proxy {
   Name = "My Proxy",
   DestinationUrl = "https://example.com/api",
   RequestReactorId = "5b493235-6917-4307-906a-2cd6f1a90b13",
+  ResponseReactorId = "1cb923e6-ae89-407a-ba07-1564ebe99350",
   RequireAuthentication: true
 });
 ```
@@ -79,6 +83,7 @@ with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_
         name="My Proxy",
         destination_url="https://example.com/api",
         request_reactor_id="5b493235-6917-4307-906a-2cd6f1a90b13",
+        response_reactor_id="1cb923e6-ae89-407a-ba07-1564ebe99350",
         require_auth=True
     ))
 ```
@@ -98,7 +103,9 @@ func main() {
     "ApiKey": {Key: "key_N88mVGsp3sCXkykyN2EFED"},
   })
 
-  createProxyRequest := *basistheory.NewCreateProxyRequest("My Proxy", "https://example.com/api", "5b493235-6917-4307-906a-2cd6f1a90b13")
+  createProxyRequest := *basistheory.NewCreateProxyRequest("My Proxy", "https://example.com/api")
+  createProxyRequest.SetRequestReactorId("5b493235-6917-4307-906a-2cd6f1a90b13")
+  createProxyRequest.SetResponseReactorId("1cb923e6-ae89-407a-ba07-1564ebe99350")
   createProxyRequest.SetRequireAuth(true)
   proxy, response, err := apiClient.ProxiesApi.ProxiesCreate(contextWithAPIKey).CreateProxyRequest(createProxyRequest).Execute()
 }
@@ -114,6 +121,7 @@ func main() {
   "key": "e29a50980ca5",
   "destination_url": "https://example.com/api",
   "request_reactor_id": "5b493235-6917-4307-906a-2cd6f1a90b13",
+  "response_reactor_id": "1cb923e6-ae89-407a-ba07-1564ebe99350",
   "require_auth": true,
   "created_by": "3ce0dceb-fd0b-4471-8006-c51243c9ef7a",
   "created_at": "2020-09-15T15:53:00+00:00"
@@ -136,12 +144,13 @@ Creates a new Proxy for the Tenant.
 
 ### Request Parameters
 
-| Attribute            | Required | Type      | Default | Description                                                                |
-| -------------------- | -------- | --------- | ------- | -------------------------------------------------------------------------- |
-| `name`               | true     | *string*  | `null`  | The name of the Proxy. Has a maximum length of `200`                       |
-| `destination_url`    | true     | *string*  | `null`  | The URL to proxy requests to                                               |
-| `request_reactor_id` | true     | *string*  | `null`  | The [Reactor](#reactors) to invoke when the Proxy is requested             |
-| `require_auth`       | false    | *boolean* | `true`  | Require a `BT-API-KEY` request header for authentication and authorization |
+| Attribute             | Required | Type      | Default | Description                                                                |
+| --------------------- | -------- | --------- | ------- | -------------------------------------------------------------------------- |
+| `name`                | true     | *string*  | `null`  | The name of the Proxy. Has a maximum length of `200`                       |
+| `destination_url`     | true     | *string*  | `null`  | The URL to proxy requests to                                               |
+| `request_reactor_id`  | false    | *string*  | `null`  | The [Reactor](#reactors) to invoke on the Proxy request                    |
+| `response_reactor_id` | false    | *string*  | `null`  | The [Reactor](#reactors) to invoke on the Proxy response                   |
+| `require_auth`        | false    | *boolean* | `true`  | Require a `BT-API-KEY` request header for authentication and authorization |
 
 ### Response
 
@@ -215,6 +224,7 @@ func main() {
       "key": "e29a50980ca5",
       "destination_url": "https://example.com/api",
       "request_reactor_id": "5b493235-6917-4307-906a-2cd6f1a90b13",
+      "response_reactor_id": "1cb923e6-ae89-407a-ba07-1564ebe99350",
       "require_auth": true,
       "created_by": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
       "created_at": "2020-09-15T15:53:00+00:00",
@@ -303,7 +313,7 @@ func main() {
     "ApiKey": {Key: "key_N88mVGsp3sCXkykyN2EFED"},
   })
 
-  proxy, response, err := apiClient.ProxiesApi.ProxiesGetById(contextWithAPIKey, "5b493235-6917-4307-906a-2cd6f1a90b13").Execute()
+  proxy, response, err := apiClient.ProxiesApi.ProxiesGetById(contextWithAPIKey, "433013a6-a614-4e1e-b2aa-5fba67aa85e6").Execute()
 }
 ```
 
@@ -317,6 +327,7 @@ func main() {
   "key": "e29a50980ca5",
   "destination_url": "https://example.com/api",
   "request_reactor_id": "5b493235-6917-4307-906a-2cd6f1a90b13",
+  "response_reactor_id": "1cb923e6-ae89-407a-ba07-1564ebe99350",
   "require_auth": true,
   "created_by": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
   "created_at": "2020-09-15T15:53:00+00:00",
@@ -354,7 +365,7 @@ Returns a [Proxy](#proxies-proxy-object) with the `id` provided. Returns [an err
 > Request
 
 ```shell
-curl "https://api.basistheory.com/proxies/5b493235-6917-4307-906a-2cd6f1a90b13" \
+curl "https://api.basistheory.com/proxies/433013a6-a614-4e1e-b2aa-5fba67aa85e6" \
   -H "BT-API-KEY: key_N88mVGsp3sCXkykyN2EFED" \
   -H "Content-Type: application/json" \
   -X "PUT" \
@@ -362,6 +373,7 @@ curl "https://api.basistheory.com/proxies/5b493235-6917-4307-906a-2cd6f1a90b13" 
     "name": "My Proxy",
     "destination_url": "https://example.com/api",
     "request_reactor_id": "5b493235-6917-4307-906a-2cd6f1a90b13",
+    "response_reactor_id": "1cb923e6-ae89-407a-ba07-1564ebe99350",
     "require_auth": true
   }'
 ```
@@ -371,10 +383,11 @@ import { BasisTheory } from '@basis-theory/basis-theory-js';
 
 const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
 
-const proxy = await bt.proxies.update('5b493235-6917-4307-906a-2cd6f1a90b13', {
+const proxy = await bt.proxies.update('433013a6-a614-4e1e-b2aa-5fba67aa85e6', {
   name: 'My Proxy',
   destinationUrl: 'https://example.com/api',
   requestReactorId: '5b493235-6917-4307-906a-2cd6f1a90b13',
+  responseReactorId: '1cb923e6-ae89-407a-ba07-1564ebe99350',
   requireAuth: true
 });
 ```
@@ -384,11 +397,12 @@ using BasisTheory.net.Proxies;
 
 var client = new ProxyClient("key_N88mVGsp3sCXkykyN2EFED");
 
-var proxy = await client.UpdateAsync("5b493235-6917-4307-906a-2cd6f1a90b13", 
+var proxy = await client.UpdateAsync("433013a6-a614-4e1e-b2aa-5fba67aa85e6", 
   new Proxy {
     Name = "My Proxy",
     DestinationUrl = "https://example.com/api",
     RequestReactorId = "5b493235-6917-4307-906a-2cd6f1a90b13",
+    ResponseReactorId = "1cb923e6-ae89-407a-ba07-1564ebe99350",
     RequireAuthentication = true
   }
 );
@@ -402,10 +416,11 @@ from basistheory.model.update_proxy_request import UpdateProxyRequest
 with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_N88mVGsp3sCXkykyN2EFED")) as api_client:
     proxy_client = proxies_api.ProxiesApi(api_client)
 
-    application = proxy_client.update("5b493235-6917-4307-906a-2cd6f1a90b13", update_proxy_request=UpdateProxyRequest(
+    application = proxy_client.update("433013a6-a614-4e1e-b2aa-5fba67aa85e6", update_proxy_request=UpdateProxyRequest(
         name="My Proxy",
         destination_url="https://example.com/api",
         request_reactor_id="5b493235-6917-4307-906a-2cd6f1a90b13",
+        response_reactor_id="1cb923e6-ae89-407a-ba07-1564ebe99350",
         require_auth=True
     ))
 ```
@@ -425,9 +440,11 @@ func main() {
     "ApiKey": {Key: "key_N88mVGsp3sCXkykyN2EFED"},
   })
 
-  updateProxyRequest := *basistheory.NewUpdateProxyRequest("My Proxy", "https://example.com/api", "5b493235-6917-4307-906a-2cd6f1a90b13")
+  updateProxyRequest := *basistheory.NewUpdateProxyRequest("My Proxy", "https://example.com/api")
+  updateProxyRequest.SetRequestReactorId("5b493235-6917-4307-906a-2cd6f1a90b13")
+  updateProxyRequest.SetResponseReactorId("1cb923e6-ae89-407a-ba07-1564ebe99350")
   updateProxyRequest.SetRequireAuth(true)
-  proxy, response, err := apiClient.ProxiesApi.ProxiesUpdate(contextWithAPIKey, "5b493235-6917-4307-906a-2cd6f1a90b13").UpdateProxyRequest(updateProxyRequest).Execute()
+  proxy, response, err := apiClient.ProxiesApi.ProxiesUpdate(contextWithAPIKey, "433013a6-a614-4e1e-b2aa-5fba67aa85e6").UpdateProxyRequest(updateProxyRequest).Execute()
 }
 ```
 
@@ -442,6 +459,7 @@ func main() {
   "key": "e29a50980ca5",
   "destination_url": "https://example.com/api",
   "request_reactor_id": "5b493235-6917-4307-906a-2cd6f1a90b13",
+  "response_reactor_id": "1cb923e6-ae89-407a-ba07-1564ebe99350",
   "require_auth": true,
   "created_by": "3ce0dceb-fd0b-4471-8006-c51243c9ef7a",
   "created_at": "2020-09-15T15:53:00+00:00",
@@ -471,12 +489,13 @@ Update a Proxy by ID in the Tenant.
 
 ### Request Parameters
 
-| Attribute            | Required | Type      | Default | Description                                                                |
-| -------------------- | -------- | --------- | ------- | -------------------------------------------------------------------------- |
-| `name`               | true     | *string*  | `null`  | The name of the Proxy. Has a maximum length of `200`                       |
-| `destination_url`    | true     | *string*  | `null`  | The URL to proxy requests to                                               |
-| `request_reactor_id` | true     | *string*  | `null`  | The [Reactor](#reactors) to invoke when the Proxy is requested             |
-| `require_auth`       | false    | *boolean* | `true`  | Require a `BT-API-KEY` request header for authentication and authorization |
+| Attribute             | Required | Type      | Default | Description                                                                |
+| --------------------- | -------- | --------- | ------- | -------------------------------------------------------------------------- |
+| `name`                | true     | *string*  | `null`  | The name of the Proxy. Has a maximum length of `200`                       |
+| `destination_url`     | true     | *string*  | `null`  | The URL to proxy requests to                                               |
+| `request_reactor_id`  | false    | *string*  | `null`  | The [Reactor](#reactors) to invoke on the Proxy request                    |
+| `response_reactor_id` | false    | *string*  | `null`  | The [Reactor](#reactors) to invoke on the Proxy response                   |
+| `require_auth`        | false    | *boolean* | `true`  | Require a `BT-API-KEY` request header for authentication and authorization |
 
 ### Response
 
@@ -488,7 +507,7 @@ Returns a [Proxy](#proxies-proxy-object) if the Proxy was updated. Returns [an e
 > Request
 
 ```shell
-curl "https://api.basistheory.com/proxies/fb124bba-f90d-45f0-9a59-5edca27b3b4a" \
+curl "https://api.basistheory.com/proxies/433013a6-a614-4e1e-b2aa-5fba67aa85e6" \
   -H "BT-API-KEY: key_N88mVGsp3sCXkykyN2EFED" \
   -X "DELETE"
 ```
@@ -498,7 +517,7 @@ import { BasisTheory } from '@basis-theory/basis-theory-js';
 
 const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
 
-await bt.proxies.delete('fb124bba-f90d-45f0-9a59-5edca27b3b4a');
+await bt.proxies.delete('433013a6-a614-4e1e-b2aa-5fba67aa85e6');
 ```
 
 ```csharp
@@ -506,7 +525,7 @@ using BasisTheory.net.Proxies;
 
 var client = new ProxyClient("key_N88mVGsp3sCXkykyN2EFED");
 
-await client.DeleteAsync("fb124bba-f90d-45f0-9a59-5edca27b3b4a");
+await client.DeleteAsync("433013a6-a614-4e1e-b2aa-5fba67aa85e6");
 ```
 
 ```python
@@ -516,7 +535,7 @@ from basistheory.api import proxies_api
 with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_N88mVGsp3sCXkykyN2EFED")) as api_client:
     proxies_client = proxies_api.ProxiesApi(api_client)
 
-    proxies_client.delete("fb124bba-f90d-45f0-9a59-5edca27b3b4a")
+    proxies_client.delete("433013a6-a614-4e1e-b2aa-5fba67aa85e6")
 ```
 
 ```go
@@ -534,7 +553,7 @@ func main() {
     "ApiKey": {Key: "key_N88mVGsp3sCXkykyN2EFED"},
   })
 
-  response, err := apiClient.ProxiesApi.ProxiesDelete(contextWithAPIKey, "fb124bba-f90d-45f0-9a59-5edca27b3b4a").Execute()
+  response, err := apiClient.ProxiesApi.ProxiesDelete(contextWithAPIKey, "433013a6-a614-4e1e-b2aa-5fba67aa85e6").Execute()
 }
 ```
 
