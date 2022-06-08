@@ -2489,7 +2489,7 @@ At least one <code>token:&lt;classification&gt;:use:proxy</code> permission is r
 
 <p><strong>Reactors</strong></p>
 
-<p>Basis Theory&#39;s Proxy supports executing reactors when making requests. When pre-configuring a <a href="#proxies-create-a-proxy">Proxy</a>, the <code>request_reactor_id</code> property can be set to the ID of an existing <a href="#reactors">Reactor</a>. This reactor will be executed when the request is made allow you to transform the request body and headers.</p>
+<p>Basis Theory&#39;s Proxy supports executing reactors on the proxy request and response. When pre-configuring a <a href="#proxies-create-a-proxy">Proxy</a>, the <code>request_reactor_id</code> and <code>response_reactor_id</code> properties can optionally be set to the ID of an existing <a href="#reactors">Reactor</a>. When the <code>request_reactor_id</code> property is set, this reactor will be executed on the Proxy request and allow you to transform the request body and headers before sending the payload to the <code>destination_url</code>. When the <code>response_reactor_id</code> property is set, this reactor will be executed on the Proxy response and allow you to transform the response body and headers before sending the response to the originator of the request.</p>
 
 <p>The reactor will receive a JSON object with the following payload:</p>
 
@@ -2629,7 +2629,12 @@ At most, 100 tokens may be detokenized within a single proxy request. You can fi
 <tr>
 <td><code>request_reactor_id</code></td>
 <td><em>string</em></td>
-<td>The <a href="#reactors">Reactor</a> to invoke when the Proxy is requested</td>
+<td>The <a href="#reactors">Reactor</a> to invoke on the Proxy request</td>
+</tr>
+<tr>
+<td><code>response_reactor_id</code></td>
+<td><em>string</em></td>
+<td>The <a href="#reactors">Reactor</a> to invoke on the Proxy response</td>
 </tr>
 <tr>
 <td><code>tenant_id</code></td>
@@ -2674,6 +2679,7 @@ At most, 100 tokens may be detokenized within a single proxy request. You can fi
     "name": "My Proxy",
     "destination_url": "https://example.com/api",
     "request_reactor_id": "5b493235-6917-4307-906a-2cd6f1a90b13",
+    "response_reactor_id": "1cb923e6-ae89-407a-ba07-1564ebe99350",
     "require_auth": true
   }'</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">BasisTheory</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@basis-theory/basis-theory-js</span><span class="dl">'</span><span class="p">;</span>
@@ -2684,6 +2690,7 @@ At most, 100 tokens may be detokenized within a single proxy request. You can fi
   <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">My Proxy</span><span class="dl">'</span><span class="p">,</span>
   <span class="na">destinationUrl</span><span class="p">:</span> <span class="dl">'</span><span class="s1">https://example.com/api</span><span class="dl">'</span><span class="p">,</span>
   <span class="na">requestReactorId</span><span class="p">:</span> <span class="dl">'</span><span class="s1">5b493235-6917-4307-906a-2cd6f1a90b13</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">responseReactorId</span><span class="p">:</span> <span class="dl">'</span><span class="s1">1cb923e6-ae89-407a-ba07-1564ebe99350</span><span class="dl">'</span><span class="p">,</span>
   <span class="na">requireAuth</span><span class="p">:</span> <span class="kc">true</span>
 <span class="p">});</span>
 </code></pre></div><div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="k">using</span> <span class="nn">BasisTheory.net.Proxies</span><span class="p">;</span>
@@ -2694,6 +2701,7 @@ At most, 100 tokens may be detokenized within a single proxy request. You can fi
   <span class="n">Name</span> <span class="p">=</span> <span class="s">"My Proxy"</span><span class="p">,</span>
   <span class="n">DestinationUrl</span> <span class="p">=</span> <span class="s">"https://example.com/api"</span><span class="p">,</span>
   <span class="n">RequestReactorId</span> <span class="p">=</span> <span class="s">"5b493235-6917-4307-906a-2cd6f1a90b13"</span><span class="p">,</span>
+  <span class="n">ResponseReactorId</span> <span class="p">=</span> <span class="s">"1cb923e6-ae89-407a-ba07-1564ebe99350"</span><span class="p">,</span>
   <span class="n">RequireAuthentication</span><span class="p">:</span> <span class="k">true</span>
 <span class="p">});</span>
 </code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">basistheory</span>
@@ -2707,6 +2715,7 @@ At most, 100 tokens may be detokenized within a single proxy request. You can fi
         <span class="n">name</span><span class="o">=</span><span class="s">"My Proxy"</span><span class="p">,</span>
         <span class="n">destination_url</span><span class="o">=</span><span class="s">"https://example.com/api"</span><span class="p">,</span>
         <span class="n">request_reactor_id</span><span class="o">=</span><span class="s">"5b493235-6917-4307-906a-2cd6f1a90b13"</span><span class="p">,</span>
+        <span class="n">response_reactor_id</span><span class="o">=</span><span class="s">"1cb923e6-ae89-407a-ba07-1564ebe99350"</span><span class="p">,</span>
         <span class="n">require_auth</span><span class="o">=</span><span class="bp">True</span>
     <span class="p">))</span>
 </code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
@@ -2723,7 +2732,9 @@ At most, 100 tokens may be detokenized within a single proxy request. You can fi
     <span class="s">"ApiKey"</span><span class="o">:</span> <span class="p">{</span><span class="n">Key</span><span class="o">:</span> <span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">},</span>
   <span class="p">})</span>
 
-  <span class="n">createProxyRequest</span> <span class="o">:=</span> <span class="o">*</span><span class="n">basistheory</span><span class="o">.</span><span class="n">NewCreateProxyRequest</span><span class="p">(</span><span class="s">"My Proxy"</span><span class="p">,</span> <span class="s">"https://example.com/api"</span><span class="p">,</span> <span class="s">"5b493235-6917-4307-906a-2cd6f1a90b13"</span><span class="p">)</span>
+  <span class="n">createProxyRequest</span> <span class="o">:=</span> <span class="o">*</span><span class="n">basistheory</span><span class="o">.</span><span class="n">NewCreateProxyRequest</span><span class="p">(</span><span class="s">"My Proxy"</span><span class="p">,</span> <span class="s">"https://example.com/api"</span><span class="p">)</span>
+  <span class="n">createProxyRequest</span><span class="o">.</span><span class="n">SetRequestReactorId</span><span class="p">(</span><span class="s">"5b493235-6917-4307-906a-2cd6f1a90b13"</span><span class="p">)</span>
+  <span class="n">createProxyRequest</span><span class="o">.</span><span class="n">SetResponseReactorId</span><span class="p">(</span><span class="s">"1cb923e6-ae89-407a-ba07-1564ebe99350"</span><span class="p">)</span>
   <span class="n">createProxyRequest</span><span class="o">.</span><span class="n">SetRequireAuth</span><span class="p">(</span><span class="no">true</span><span class="p">)</span>
   <span class="n">proxy</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">apiClient</span><span class="o">.</span><span class="n">ProxiesApi</span><span class="o">.</span><span class="n">ProxiesCreate</span><span class="p">(</span><span class="n">contextWithAPIKey</span><span class="p">)</span><span class="o">.</span><span class="n">CreateProxyRequest</span><span class="p">(</span><span class="n">createProxyRequest</span><span class="p">)</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
 <span class="p">}</span>
@@ -2738,6 +2749,7 @@ At most, 100 tokens may be detokenized within a single proxy request. You can fi
   </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"e29a50980ca5"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"destination_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/api"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"request_reactor_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5b493235-6917-4307-906a-2cd6f1a90b13"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"response_reactor_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1cb923e6-ae89-407a-ba07-1564ebe99350"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"require_auth"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
   </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3ce0dceb-fd0b-4471-8006-c51243c9ef7a"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="w">
@@ -2779,10 +2791,17 @@ At most, 100 tokens may be detokenized within a single proxy request. You can fi
 </tr>
 <tr>
 <td><code>request_reactor_id</code></td>
-<td>true</td>
+<td>false</td>
 <td><em>string</em></td>
 <td><code>null</code></td>
-<td>The <a href="#reactors">Reactor</a> to invoke when the Proxy is requested</td>
+<td>The <a href="#reactors">Reactor</a> to invoke on the Proxy request</td>
+</tr>
+<tr>
+<td><code>response_reactor_id</code></td>
+<td>false</td>
+<td><em>string</em></td>
+<td><code>null</code></td>
+<td>The <a href="#reactors">Reactor</a> to invoke on the Proxy response</td>
 </tr>
 <tr>
 <td><code>require_auth</code></td>
@@ -2847,6 +2866,7 @@ At most, 100 tokens may be detokenized within a single proxy request. You can fi
       </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"e29a50980ca5"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"destination_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/api"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"request_reactor_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5b493235-6917-4307-906a-2cd6f1a90b13"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"response_reactor_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1cb923e6-ae89-407a-ba07-1564ebe99350"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"require_auth"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
       </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="p">,</span><span class="w">
@@ -2933,7 +2953,7 @@ At most, 100 tokens may be detokenized within a single proxy request. You can fi
     <span class="s">"ApiKey"</span><span class="o">:</span> <span class="p">{</span><span class="n">Key</span><span class="o">:</span> <span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">},</span>
   <span class="p">})</span>
 
-  <span class="n">proxy</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">apiClient</span><span class="o">.</span><span class="n">ProxiesApi</span><span class="o">.</span><span class="n">ProxiesGetById</span><span class="p">(</span><span class="n">contextWithAPIKey</span><span class="p">,</span> <span class="s">"5b493235-6917-4307-906a-2cd6f1a90b13"</span><span class="p">)</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
+  <span class="n">proxy</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">apiClient</span><span class="o">.</span><span class="n">ProxiesApi</span><span class="o">.</span><span class="n">ProxiesGetById</span><span class="p">(</span><span class="n">contextWithAPIKey</span><span class="p">,</span> <span class="s">"433013a6-a614-4e1e-b2aa-5fba67aa85e6"</span><span class="p">)</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
@@ -2946,6 +2966,7 @@ At most, 100 tokens may be detokenized within a single proxy request. You can fi
   </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"e29a50980ca5"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"destination_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/api"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"request_reactor_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5b493235-6917-4307-906a-2cd6f1a90b13"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"response_reactor_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1cb923e6-ae89-407a-ba07-1564ebe99350"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"require_auth"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
   </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="p">,</span><span class="w">
@@ -2987,7 +3008,7 @@ At most, 100 tokens may be detokenized within a single proxy request. You can fi
 <blockquote>
 <p>Request</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/proxies/5b493235-6917-4307-906a-2cd6f1a90b13"</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/proxies/433013a6-a614-4e1e-b2aa-5fba67aa85e6"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"BT-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   <span class="nt">-X</span> <span class="s2">"PUT"</span> <span class="se">\</span>
@@ -2995,27 +3016,30 @@ At most, 100 tokens may be detokenized within a single proxy request. You can fi
     "name": "My Proxy",
     "destination_url": "https://example.com/api",
     "request_reactor_id": "5b493235-6917-4307-906a-2cd6f1a90b13",
+    "response_reactor_id": "1cb923e6-ae89-407a-ba07-1564ebe99350",
     "require_auth": true
   }'</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">BasisTheory</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@basis-theory/basis-theory-js</span><span class="dl">'</span><span class="p">;</span>
 
 <span class="kd">const</span> <span class="nx">bt</span> <span class="o">=</span> <span class="k">await</span> <span class="k">new</span> <span class="nx">BasisTheory</span><span class="p">().</span><span class="nx">init</span><span class="p">(</span><span class="dl">'</span><span class="s1">key_N88mVGsp3sCXkykyN2EFED</span><span class="dl">'</span><span class="p">);</span>
 
-<span class="kd">const</span> <span class="nx">proxy</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">bt</span><span class="p">.</span><span class="nx">proxies</span><span class="p">.</span><span class="nx">update</span><span class="p">(</span><span class="dl">'</span><span class="s1">5b493235-6917-4307-906a-2cd6f1a90b13</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+<span class="kd">const</span> <span class="nx">proxy</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">bt</span><span class="p">.</span><span class="nx">proxies</span><span class="p">.</span><span class="nx">update</span><span class="p">(</span><span class="dl">'</span><span class="s1">433013a6-a614-4e1e-b2aa-5fba67aa85e6</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">My Proxy</span><span class="dl">'</span><span class="p">,</span>
   <span class="na">destinationUrl</span><span class="p">:</span> <span class="dl">'</span><span class="s1">https://example.com/api</span><span class="dl">'</span><span class="p">,</span>
   <span class="na">requestReactorId</span><span class="p">:</span> <span class="dl">'</span><span class="s1">5b493235-6917-4307-906a-2cd6f1a90b13</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">responseReactorId</span><span class="p">:</span> <span class="dl">'</span><span class="s1">1cb923e6-ae89-407a-ba07-1564ebe99350</span><span class="dl">'</span><span class="p">,</span>
   <span class="na">requireAuth</span><span class="p">:</span> <span class="kc">true</span>
 <span class="p">});</span>
 </code></pre></div><div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="k">using</span> <span class="nn">BasisTheory.net.Proxies</span><span class="p">;</span>
 
 <span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">ProxyClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
 
-<span class="kt">var</span> <span class="n">proxy</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">UpdateAsync</span><span class="p">(</span><span class="s">"5b493235-6917-4307-906a-2cd6f1a90b13"</span><span class="p">,</span> 
+<span class="kt">var</span> <span class="n">proxy</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">UpdateAsync</span><span class="p">(</span><span class="s">"433013a6-a614-4e1e-b2aa-5fba67aa85e6"</span><span class="p">,</span> 
   <span class="k">new</span> <span class="n">Proxy</span> <span class="p">{</span>
     <span class="n">Name</span> <span class="p">=</span> <span class="s">"My Proxy"</span><span class="p">,</span>
     <span class="n">DestinationUrl</span> <span class="p">=</span> <span class="s">"https://example.com/api"</span><span class="p">,</span>
     <span class="n">RequestReactorId</span> <span class="p">=</span> <span class="s">"5b493235-6917-4307-906a-2cd6f1a90b13"</span><span class="p">,</span>
+    <span class="n">ResponseReactorId</span> <span class="p">=</span> <span class="s">"1cb923e6-ae89-407a-ba07-1564ebe99350"</span><span class="p">,</span>
     <span class="n">RequireAuthentication</span> <span class="p">=</span> <span class="k">true</span>
   <span class="p">}</span>
 <span class="p">);</span>
@@ -3026,10 +3050,11 @@ At most, 100 tokens may be detokenized within a single proxy request. You can fi
 <span class="k">with</span> <span class="n">basistheory</span><span class="p">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="n">configuration</span><span class="o">=</span><span class="n">basistheory</span><span class="p">.</span><span class="n">Configuration</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">))</span> <span class="k">as</span> <span class="n">api_client</span><span class="p">:</span>
     <span class="n">proxy_client</span> <span class="o">=</span> <span class="n">proxies_api</span><span class="p">.</span><span class="n">ProxiesApi</span><span class="p">(</span><span class="n">api_client</span><span class="p">)</span>
 
-    <span class="n">application</span> <span class="o">=</span> <span class="n">proxy_client</span><span class="p">.</span><span class="n">update</span><span class="p">(</span><span class="s">"5b493235-6917-4307-906a-2cd6f1a90b13"</span><span class="p">,</span> <span class="n">update_proxy_request</span><span class="o">=</span><span class="n">UpdateProxyRequest</span><span class="p">(</span>
+    <span class="n">application</span> <span class="o">=</span> <span class="n">proxy_client</span><span class="p">.</span><span class="n">update</span><span class="p">(</span><span class="s">"433013a6-a614-4e1e-b2aa-5fba67aa85e6"</span><span class="p">,</span> <span class="n">update_proxy_request</span><span class="o">=</span><span class="n">UpdateProxyRequest</span><span class="p">(</span>
         <span class="n">name</span><span class="o">=</span><span class="s">"My Proxy"</span><span class="p">,</span>
         <span class="n">destination_url</span><span class="o">=</span><span class="s">"https://example.com/api"</span><span class="p">,</span>
         <span class="n">request_reactor_id</span><span class="o">=</span><span class="s">"5b493235-6917-4307-906a-2cd6f1a90b13"</span><span class="p">,</span>
+        <span class="n">response_reactor_id</span><span class="o">=</span><span class="s">"1cb923e6-ae89-407a-ba07-1564ebe99350"</span><span class="p">,</span>
         <span class="n">require_auth</span><span class="o">=</span><span class="bp">True</span>
     <span class="p">))</span>
 </code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
@@ -3046,9 +3071,11 @@ At most, 100 tokens may be detokenized within a single proxy request. You can fi
     <span class="s">"ApiKey"</span><span class="o">:</span> <span class="p">{</span><span class="n">Key</span><span class="o">:</span> <span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">},</span>
   <span class="p">})</span>
 
-  <span class="n">updateProxyRequest</span> <span class="o">:=</span> <span class="o">*</span><span class="n">basistheory</span><span class="o">.</span><span class="n">NewUpdateProxyRequest</span><span class="p">(</span><span class="s">"My Proxy"</span><span class="p">,</span> <span class="s">"https://example.com/api"</span><span class="p">,</span> <span class="s">"5b493235-6917-4307-906a-2cd6f1a90b13"</span><span class="p">)</span>
+  <span class="n">updateProxyRequest</span> <span class="o">:=</span> <span class="o">*</span><span class="n">basistheory</span><span class="o">.</span><span class="n">NewUpdateProxyRequest</span><span class="p">(</span><span class="s">"My Proxy"</span><span class="p">,</span> <span class="s">"https://example.com/api"</span><span class="p">)</span>
+  <span class="n">updateProxyRequest</span><span class="o">.</span><span class="n">SetRequestReactorId</span><span class="p">(</span><span class="s">"5b493235-6917-4307-906a-2cd6f1a90b13"</span><span class="p">)</span>
+  <span class="n">updateProxyRequest</span><span class="o">.</span><span class="n">SetResponseReactorId</span><span class="p">(</span><span class="s">"1cb923e6-ae89-407a-ba07-1564ebe99350"</span><span class="p">)</span>
   <span class="n">updateProxyRequest</span><span class="o">.</span><span class="n">SetRequireAuth</span><span class="p">(</span><span class="no">true</span><span class="p">)</span>
-  <span class="n">proxy</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">apiClient</span><span class="o">.</span><span class="n">ProxiesApi</span><span class="o">.</span><span class="n">ProxiesUpdate</span><span class="p">(</span><span class="n">contextWithAPIKey</span><span class="p">,</span> <span class="s">"5b493235-6917-4307-906a-2cd6f1a90b13"</span><span class="p">)</span><span class="o">.</span><span class="n">UpdateProxyRequest</span><span class="p">(</span><span class="n">updateProxyRequest</span><span class="p">)</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
+  <span class="n">proxy</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">apiClient</span><span class="o">.</span><span class="n">ProxiesApi</span><span class="o">.</span><span class="n">ProxiesUpdate</span><span class="p">(</span><span class="n">contextWithAPIKey</span><span class="p">,</span> <span class="s">"433013a6-a614-4e1e-b2aa-5fba67aa85e6"</span><span class="p">)</span><span class="o">.</span><span class="n">UpdateProxyRequest</span><span class="p">(</span><span class="n">updateProxyRequest</span><span class="p">)</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
@@ -3062,6 +3089,7 @@ At most, 100 tokens may be detokenized within a single proxy request. You can fi
   </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"e29a50980ca5"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"destination_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/api"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"request_reactor_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5b493235-6917-4307-906a-2cd6f1a90b13"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"response_reactor_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1cb923e6-ae89-407a-ba07-1564ebe99350"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"require_auth"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
   </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3ce0dceb-fd0b-4471-8006-c51243c9ef7a"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="p">,</span><span class="w">
@@ -3123,10 +3151,17 @@ At most, 100 tokens may be detokenized within a single proxy request. You can fi
 </tr>
 <tr>
 <td><code>request_reactor_id</code></td>
-<td>true</td>
+<td>false</td>
 <td><em>string</em></td>
 <td><code>null</code></td>
-<td>The <a href="#reactors">Reactor</a> to invoke when the Proxy is requested</td>
+<td>The <a href="#reactors">Reactor</a> to invoke on the Proxy request</td>
+</tr>
+<tr>
+<td><code>response_reactor_id</code></td>
+<td>false</td>
+<td><em>string</em></td>
+<td><code>null</code></td>
+<td>The <a href="#reactors">Reactor</a> to invoke on the Proxy response</td>
 </tr>
 <tr>
 <td><code>require_auth</code></td>
@@ -3142,26 +3177,26 @@ At most, 100 tokens may be detokenized within a single proxy request. You can fi
 <blockquote>
 <p>Request</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/proxies/fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/proxies/433013a6-a614-4e1e-b2aa-5fba67aa85e6"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"BT-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span> <span class="se">\</span>
   <span class="nt">-X</span> <span class="s2">"DELETE"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">BasisTheory</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@basis-theory/basis-theory-js</span><span class="dl">'</span><span class="p">;</span>
 
 <span class="kd">const</span> <span class="nx">bt</span> <span class="o">=</span> <span class="k">await</span> <span class="k">new</span> <span class="nx">BasisTheory</span><span class="p">().</span><span class="nx">init</span><span class="p">(</span><span class="dl">'</span><span class="s1">key_N88mVGsp3sCXkykyN2EFED</span><span class="dl">'</span><span class="p">);</span>
 
-<span class="k">await</span> <span class="nx">bt</span><span class="p">.</span><span class="nx">proxies</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="dl">'</span><span class="s1">fb124bba-f90d-45f0-9a59-5edca27b3b4a</span><span class="dl">'</span><span class="p">);</span>
+<span class="k">await</span> <span class="nx">bt</span><span class="p">.</span><span class="nx">proxies</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="dl">'</span><span class="s1">433013a6-a614-4e1e-b2aa-5fba67aa85e6</span><span class="dl">'</span><span class="p">);</span>
 </code></pre></div><div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="k">using</span> <span class="nn">BasisTheory.net.Proxies</span><span class="p">;</span>
 
 <span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">ProxyClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
 
-<span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">DeleteAsync</span><span class="p">(</span><span class="s">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">);</span>
+<span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">DeleteAsync</span><span class="p">(</span><span class="s">"433013a6-a614-4e1e-b2aa-5fba67aa85e6"</span><span class="p">);</span>
 </code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">basistheory</span>
 <span class="kn">from</span> <span class="nn">basistheory.api</span> <span class="kn">import</span> <span class="n">proxies_api</span>
 
 <span class="k">with</span> <span class="n">basistheory</span><span class="p">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="n">configuration</span><span class="o">=</span><span class="n">basistheory</span><span class="p">.</span><span class="n">Configuration</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">))</span> <span class="k">as</span> <span class="n">api_client</span><span class="p">:</span>
     <span class="n">proxies_client</span> <span class="o">=</span> <span class="n">proxies_api</span><span class="p">.</span><span class="n">ProxiesApi</span><span class="p">(</span><span class="n">api_client</span><span class="p">)</span>
 
-    <span class="n">proxies_client</span><span class="p">.</span><span class="n">delete</span><span class="p">(</span><span class="s">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">)</span>
+    <span class="n">proxies_client</span><span class="p">.</span><span class="n">delete</span><span class="p">(</span><span class="s">"433013a6-a614-4e1e-b2aa-5fba67aa85e6"</span><span class="p">)</span>
 </code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
 
 <span class="k">import</span> <span class="p">(</span>
@@ -3176,7 +3211,7 @@ At most, 100 tokens may be detokenized within a single proxy request. You can fi
     <span class="s">"ApiKey"</span><span class="o">:</span> <span class="p">{</span><span class="n">Key</span><span class="o">:</span> <span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">},</span>
   <span class="p">})</span>
 
-  <span class="n">response</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">apiClient</span><span class="o">.</span><span class="n">ProxiesApi</span><span class="o">.</span><span class="n">ProxiesDelete</span><span class="p">(</span><span class="n">contextWithAPIKey</span><span class="p">,</span> <span class="s">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">)</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
+  <span class="n">response</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">apiClient</span><span class="o">.</span><span class="n">ProxiesApi</span><span class="o">.</span><span class="n">ProxiesDelete</span><span class="p">(</span><span class="n">contextWithAPIKey</span><span class="p">,</span> <span class="s">"433013a6-a614-4e1e-b2aa-5fba67aa85e6"</span><span class="p">)</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
 <span class="p">}</span>
 </code></pre></div>
 <p><span class="http-method delete">
