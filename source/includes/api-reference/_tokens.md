@@ -17,6 +17,7 @@
 | `modified_at`            | *date*                                                  | (Optional) Last modified date of the token in ISO 8601 format                                                                           |
 | `search_indexes`         | *array*                                                 | (Optional) Array of search index [expressions](/expressions/#search-indexes) used when creating the token.                              |
 | `fingerprint_expression` | *string*                                                | (Optional) An [expression](/expressions/#fingerprints) defining the value to fingerprint when creating the token.                       |
+| `deduplicate_token`      | *bool*                                                  | (Optional) A boolean defining whether tokens are deduplicated when creating the token.                                                  |
 
 ### Privacy Object
 
@@ -133,7 +134,8 @@ curl "https://api.basistheory.com/tokens" \
       "{{ data }}",
       "{{ data | last4}}"
     ],
-    "fingerprint_expression": "{{ data }}"
+    "fingerprint_expression": "{{ data }}",
+    "deduplicate_token": true,
   }'
 ```
 
@@ -155,7 +157,8 @@ const token = await bt.tokens.create({
     '{{ data }}',
     '{{ data | last4}}'
   ],
-  fingerprintExpression: "{{ data }}"
+  fingerprintExpression: "{{ data }}",
+  deduplicateToken: true,
 });
 ```
 
@@ -177,7 +180,8 @@ var token = await client.CreateAsync(new Token {
     "{{ data }}",
     "{{ data | last4}}"
   }
-  FingerprintExpression = "{{ data }}"
+  FingerprintExpression = "{{ data }}",
+  DeduplicateToken = true,
 });
 ```
 
@@ -226,6 +230,7 @@ with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_
     "{{ data | last4}}"
   ],
   "fingerprint_expression": "{{ data }}",
+  "deduplicate_token": true,
   "created_by": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
   "created_at": "2020-09-15T15:53:00+00:00"
 }
