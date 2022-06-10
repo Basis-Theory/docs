@@ -7,8 +7,8 @@ Fingerprints are cryptographically secure and cannot be reversed to recover the 
 so they are safe to store in your application and used to compare tokens without retrieving plaintext token data (e.g. for token de-duplication).
 
 When [creating a token](/#tokens-create-token), fingerprint expression can be specified within the request.
-You are able to reference the `data` variable within an [object](#language-objects) expression -
-`data` will be bound to the provided token data, which may either be a complex or primitive value, based on your usage.
+You are able to reference the `data` and `metadata` variable within an [object](#language-objects) expression -
+`data` and `metadata` will be bound to the provided token data and metadata, respectively.
 
 ## Examples
 

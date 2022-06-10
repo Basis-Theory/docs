@@ -17,16 +17,16 @@ Token Types define the rules around a data type such as validation requirements,
 
 The `token` type is used for general data types that don't require input validation or formatting restrictions.
 
-| Token Attribute                    | Value     |
-|------------------------------------|-----------|
-| **Type**                           | `token`   |
-| **Default Classification**         | `general` |
-| **Default Impact Level**           | `high`    |
-| **Minimum Impact Level**           | `low`     |
-| **Default Restriction Policy**     | `redact`  |
-| **Input Validation**               | None      |
-| **Input Length**                   | Any       |
-| **Default Fingerprint Expression** | None      |
+| Token Attribute                    | Value                                   |
+|------------------------------------|-----------------------------------------|
+| **Type**                           | `token`                                 |
+| **Default Classification**         | `general`                               |
+| **Default Impact Level**           | `high`                                  |
+| **Minimum Impact Level**           | `low`                                   |
+| **Default Restriction Policy**     | `redact`                                |
+| **Input Validation**               | None                                    |
+| **Input Length**                   | Any                                     |
+| **Default Fingerprint Expression** | <code>{{ data &#124; stringify}}</code> |
 
 
 ## Card
