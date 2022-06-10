@@ -815,7 +815,7 @@ _iub.csConfiguration = {"ccpaAcknowledgeOnLoad":true,"consentOnContinuedBrowsing
 <div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">npm</span> <span class="nx">install</span> <span class="o">--</span><span class="nx">save</span> <span class="p">@</span><span class="nd">basis</span><span class="o">-</span><span class="nx">theory</span><span class="o">/</span><span class="nx">basis</span><span class="o">-</span><span class="nx">theory</span><span class="o">-</span><span class="nx">js</span>
 </code></pre></div><div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="n">dotnet</span> <span class="k">add</span> <span class="n">package</span> <span class="n">BasisTheory</span><span class="p">.</span><span class="n">net</span> 
 </code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="n">pip</span> <span class="n">install</span> <span class="n">basistheory</span>
-</code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">go</span> <span class="n">get</span> <span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">Basis</span><span class="o">-</span><span class="n">Theory</span><span class="o">/</span><span class="n">basistheory</span><span class="o">-</span><span class="k">go</span><span class="o">/</span><span class="n">v2</span>
+</code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">go</span> <span class="n">get</span> <span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">Basis</span><span class="o">-</span><span class="n">Theory</span><span class="o">/</span><span class="n">basistheory</span><span class="o">-</span><span class="k">go</span><span class="o">/</span><span class="n">v3</span>
 </code></pre></div>
 <p>Our SDKs enable you to quickly and easily integrate with the API. Select one of the language tabs to see instructions on how to install the SDK and view code examples in that language.</p>
 
@@ -938,6 +938,22 @@ Is your project using React? We got you covered! Basis Theory's React package en
     <span class="n">applications_client</span> <span class="o">=</span> <span class="n">applications_api</span><span class="p">.</span><span class="n">ApplicationsApi</span><span class="p">(</span><span class="n">api_client</span><span class="p">)</span>
 
     <span class="n">applications</span> <span class="o">=</span> <span class="n">applications_client</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="n">page</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
+
+<span class="k">import</span> <span class="p">(</span>
+  <span class="s">"context"</span>
+  <span class="s">"github.com/Basis-Theory/basistheory-go/v3"</span>
+<span class="p">)</span>
+
+<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">configuration</span> <span class="o">:=</span> <span class="n">basistheory</span><span class="o">.</span><span class="n">NewConfiguration</span><span class="p">()</span>
+  <span class="n">apiClient</span> <span class="o">:=</span> <span class="n">basistheory</span><span class="o">.</span><span class="n">NewAPIClient</span><span class="p">(</span><span class="n">configuration</span><span class="p">)</span>
+  <span class="n">contextWithAPIKey</span> <span class="o">:=</span> <span class="n">context</span><span class="o">.</span><span class="n">WithValue</span><span class="p">(</span><span class="n">context</span><span class="o">.</span><span class="n">Background</span><span class="p">(),</span> <span class="n">basistheory</span><span class="o">.</span><span class="n">ContextAPIKeys</span><span class="p">,</span> <span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="n">basistheory</span><span class="o">.</span><span class="n">APIKey</span><span class="p">{</span>
+    <span class="s">"ApiKey"</span><span class="o">:</span> <span class="p">{</span><span class="n">Key</span><span class="o">:</span> <span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">},</span>
+  <span class="p">})</span>
+
+  <span class="n">applications</span><span class="p">,</span> <span class="n">httpResponse</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">apiClient</span><span class="o">.</span><span class="n">ApplicationsApi</span><span class="o">.</span><span class="n">Get</span><span class="p">(</span><span class="n">contextWithAPIKey</span><span class="p">)</span><span class="o">.</span><span class="n">Page</span><span class="p">(</span><span class="m">2</span><span class="p">)</span><span class="o">.</span><span class="n">Size</span><span class="p">(</span><span class="m">10</span><span class="p">)</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
+<span class="p">}</span>
 </code></pre></div>
 <blockquote>
 <p>Response</p>
@@ -1353,7 +1369,7 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
 
 <span class="k">import</span> <span class="p">(</span>
   <span class="s">"context"</span>
-  <span class="s">"github.com/Basis-Theory/basistheory-go/v2"</span>
+  <span class="s">"github.com/Basis-Theory/basistheory-go/v3"</span>
 <span class="p">)</span>
 
 <span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
@@ -1371,7 +1387,7 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
     <span class="s">"token:pci:read:low"</span><span class="p">,</span>
   <span class="p">})</span>
 
-  <span class="n">application</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">apiClient</span><span class="o">.</span><span class="n">ApplicationsApi</span><span class="o">.</span><span class="n">ApplicationsCreate</span><span class="p">(</span><span class="n">contextWithAPIKey</span><span class="p">)</span><span class="o">.</span><span class="n">CreateApplicationRequest</span><span class="p">(</span><span class="n">createApplicationRequest</span><span class="p">)</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
+  <span class="n">application</span><span class="p">,</span> <span class="n">httpResponse</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">apiClient</span><span class="o">.</span><span class="n">ApplicationsApi</span><span class="o">.</span><span class="n">Create</span><span class="p">(</span><span class="n">contextWithAPIKey</span><span class="p">)</span><span class="o">.</span><span class="n">CreateApplicationRequest</span><span class="p">(</span><span class="n">createApplicationRequest</span><span class="p">)</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
@@ -1464,7 +1480,7 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
 
 <span class="k">import</span> <span class="p">(</span>
   <span class="s">"context"</span>
-  <span class="s">"github.com/Basis-Theory/basistheory-go/v2"</span>
+  <span class="s">"github.com/Basis-Theory/basistheory-go/v3"</span>
 <span class="p">)</span>
 
 <span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
@@ -1474,7 +1490,7 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
     <span class="s">"ApiKey"</span><span class="o">:</span> <span class="p">{</span><span class="n">Key</span><span class="o">:</span> <span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">},</span>
   <span class="p">})</span>
 
-  <span class="n">applications</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">apiClient</span><span class="o">.</span><span class="n">ApplicationsApi</span><span class="o">.</span><span class="n">ApplicationsGet</span><span class="p">(</span><span class="n">contextWithAPIKey</span><span class="p">)</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
+  <span class="n">applications</span><span class="p">,</span> <span class="n">httpResponse</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">apiClient</span><span class="o">.</span><span class="n">ApplicationsApi</span><span class="o">.</span><span class="n">Get</span><span class="p">(</span><span class="n">contextWithAPIKey</span><span class="p">)</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
@@ -1561,7 +1577,7 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
 
 <span class="k">import</span> <span class="p">(</span>
   <span class="s">"context"</span>
-  <span class="s">"github.com/Basis-Theory/basistheory-go/v2"</span>
+  <span class="s">"github.com/Basis-Theory/basistheory-go/v3"</span>
 <span class="p">)</span>
 
 <span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
@@ -1571,7 +1587,7 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
     <span class="s">"ApiKey"</span><span class="o">:</span> <span class="p">{</span><span class="n">Key</span><span class="o">:</span> <span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">},</span>
   <span class="p">})</span>
 
-  <span class="n">application</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">apiClient</span><span class="o">.</span><span class="n">ApplicationsApi</span><span class="o">.</span><span class="n">ApplicationsGetById</span><span class="p">(</span><span class="n">contextWithAPIKey</span><span class="p">,</span> <span class="s">"fe1f9ba4-474e-44b9-b949-110cdba9d662"</span><span class="p">)</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
+  <span class="n">application</span><span class="p">,</span> <span class="n">httpResponse</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">apiClient</span><span class="o">.</span><span class="n">ApplicationsApi</span><span class="o">.</span><span class="n">GetById</span><span class="p">(</span><span class="n">contextWithAPIKey</span><span class="p">,</span> <span class="s">"fe1f9ba4-474e-44b9-b949-110cdba9d662"</span><span class="p">)</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
@@ -1649,7 +1665,7 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
 
 <span class="k">import</span> <span class="p">(</span>
   <span class="s">"context"</span>
-  <span class="s">"github.com/Basis-Theory/basistheory-go/v2"</span>
+  <span class="s">"github.com/Basis-Theory/basistheory-go/v3"</span>
 <span class="p">)</span>
 
 <span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
@@ -1659,7 +1675,7 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
     <span class="s">"ApiKey"</span><span class="o">:</span> <span class="p">{</span><span class="n">Key</span><span class="o">:</span> <span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">},</span>
   <span class="p">})</span>
 
-  <span class="n">application</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">apiClient</span><span class="o">.</span><span class="n">ApplicationsApi</span><span class="o">.</span><span class="n">ApplicationsGetByKey</span><span class="p">(</span><span class="n">contextWithCreatedAppAPIKey</span><span class="p">)</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
+  <span class="n">application</span><span class="p">,</span> <span class="n">httpResponse</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">apiClient</span><span class="o">.</span><span class="n">ApplicationsApi</span><span class="o">.</span><span class="n">GetByKey</span><span class="p">(</span><span class="n">contextWithCreatedAppAPIKey</span><span class="p">)</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
@@ -1749,7 +1765,7 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
 
 <span class="k">import</span> <span class="p">(</span>
   <span class="s">"context"</span>
-  <span class="s">"github.com/Basis-Theory/basistheory-go/v2"</span>
+  <span class="s">"github.com/Basis-Theory/basistheory-go/v3"</span>
 <span class="p">)</span>
 
 <span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
@@ -1765,7 +1781,7 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
     <span class="s">"application:read"</span><span class="p">,</span>
   <span class="p">})</span>
 
-  <span class="n">application</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">apiClient</span><span class="o">.</span><span class="n">ApplicationsApi</span><span class="o">.</span><span class="n">ApplicationsUpdate</span><span class="p">(</span><span class="n">contextWithAPIKey</span><span class="p">,</span> <span class="s">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">)</span><span class="o">.</span><span class="n">UpdateApplicationRequest</span><span class="p">(</span><span class="n">updateApplicationRequest</span><span class="p">)</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
+  <span class="n">application</span><span class="p">,</span> <span class="n">httpResponse</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">apiClient</span><span class="o">.</span><span class="n">ApplicationsApi</span><span class="o">.</span><span class="n">Update</span><span class="p">(</span><span class="n">contextWithAPIKey</span><span class="p">,</span> <span class="s">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">)</span><span class="o">.</span><span class="n">UpdateApplicationRequest</span><span class="p">(</span><span class="n">updateApplicationRequest</span><span class="p">)</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
@@ -1869,7 +1885,7 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
 
 <span class="k">import</span> <span class="p">(</span>
   <span class="s">"context"</span>
-  <span class="s">"github.com/Basis-Theory/basistheory-go/v2"</span>
+  <span class="s">"github.com/Basis-Theory/basistheory-go/v3"</span>
 <span class="p">)</span>
 
 <span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
@@ -1879,7 +1895,7 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
     <span class="s">"ApiKey"</span><span class="o">:</span> <span class="p">{</span><span class="n">Key</span><span class="o">:</span> <span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">},</span>
   <span class="p">})</span>
 
-  <span class="n">application</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">apiClient</span><span class="o">.</span><span class="n">ApplicationsApi</span><span class="o">.</span><span class="n">ApplicationsRegenerateKey</span><span class="p">(</span><span class="n">contextWithAPIKey</span><span class="p">,</span> <span class="s">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">)</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
+  <span class="n">application</span><span class="p">,</span> <span class="n">httpResponse</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">apiClient</span><span class="o">.</span><span class="n">ApplicationsApi</span><span class="o">.</span><span class="n">RegenerateKey</span><span class="p">(</span><span class="n">contextWithAPIKey</span><span class="p">,</span> <span class="s">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">)</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
@@ -1965,7 +1981,7 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
 
 <span class="k">import</span> <span class="p">(</span>
   <span class="s">"context"</span>
-  <span class="s">"github.com/Basis-Theory/basistheory-go/v2"</span>
+  <span class="s">"github.com/Basis-Theory/basistheory-go/v3"</span>
 <span class="p">)</span>
 
 <span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
@@ -1975,7 +1991,7 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
     <span class="s">"ApiKey"</span><span class="o">:</span> <span class="p">{</span><span class="n">Key</span><span class="o">:</span> <span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">},</span>
   <span class="p">})</span>
 
-  <span class="n">response</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">apiClient</span><span class="o">.</span><span class="n">ApplicationsApi</span><span class="o">.</span><span class="n">ApplicationsDelete</span><span class="p">(</span><span class="n">contextWithAPIKey</span><span class="p">,</span> <span class="s">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">)</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
+  <span class="n">httpResponse</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">apiClient</span><span class="o">.</span><span class="n">ApplicationsApi</span><span class="o">.</span><span class="n">Delete</span><span class="p">(</span><span class="n">contextWithAPIKey</span><span class="p">,</span> <span class="s">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">)</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
 <span class="p">}</span>
 </code></pre></div>
 <p><span class="http-method delete">
@@ -2078,6 +2094,22 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
     <span class="n">logs_client</span> <span class="o">=</span> <span class="n">logs_api</span><span class="p">.</span><span class="n">LogsApi</span><span class="p">(</span><span class="n">api_client</span><span class="p">)</span>
 
     <span class="n">logs</span> <span class="o">=</span> <span class="n">logs_client</span><span class="p">.</span><span class="n">get</span><span class="p">()</span>
+</code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
+
+<span class="k">import</span> <span class="p">(</span>
+  <span class="s">"context"</span>
+  <span class="s">"github.com/Basis-Theory/basistheory-go/v3"</span>
+<span class="p">)</span>
+
+<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">configuration</span> <span class="o">:=</span> <span class="n">basistheory</span><span class="o">.</span><span class="n">NewConfiguration</span><span class="p">()</span>
+  <span class="n">apiClient</span> <span class="o">:=</span> <span class="n">basistheory</span><span class="o">.</span><span class="n">NewAPIClient</span><span class="p">(</span><span class="n">configuration</span><span class="p">)</span>
+  <span class="n">contextWithAPIKey</span> <span class="o">:=</span> <span class="n">context</span><span class="o">.</span><span class="n">WithValue</span><span class="p">(</span><span class="n">context</span><span class="o">.</span><span class="n">Background</span><span class="p">(),</span> <span class="n">basistheory</span><span class="o">.</span><span class="n">ContextAPIKeys</span><span class="p">,</span> <span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="n">basistheory</span><span class="o">.</span><span class="n">APIKey</span><span class="p">{</span>
+    <span class="s">"ApiKey"</span><span class="o">:</span> <span class="p">{</span><span class="n">Key</span><span class="o">:</span> <span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">},</span>
+  <span class="p">})</span>
+
+  <span class="n">logs</span><span class="p">,</span> <span class="n">httpResponse</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">apiClient</span><span class="o">.</span><span class="n">LogsApi</span><span class="o">.</span><span class="n">Get</span><span class="p">(</span><span class="n">contextWithAPIKey</span><span class="p">)</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
+<span class="p">}</span>
 </code></pre></div>
 <blockquote>
 <p>Response</p>
@@ -2348,6 +2380,22 @@ or <a href="#applications-update-application">update an Application</a>.</p>
     <span class="n">permissions_client</span> <span class="o">=</span> <span class="n">permissions_api</span><span class="p">.</span><span class="n">PermissionsApi</span><span class="p">(</span><span class="n">api_client</span><span class="p">)</span>
 
     <span class="n">permissions</span> <span class="o">=</span> <span class="n">permissions_client</span><span class="p">.</span><span class="n">get</span><span class="p">()</span>
+</code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
+
+<span class="k">import</span> <span class="p">(</span>
+  <span class="s">"context"</span>
+  <span class="s">"github.com/Basis-Theory/basistheory-go/v3"</span>
+<span class="p">)</span>
+
+<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">configuration</span> <span class="o">:=</span> <span class="n">basistheory</span><span class="o">.</span><span class="n">NewConfiguration</span><span class="p">()</span>
+  <span class="n">apiClient</span> <span class="o">:=</span> <span class="n">basistheory</span><span class="o">.</span><span class="n">NewAPIClient</span><span class="p">(</span><span class="n">configuration</span><span class="p">)</span>
+  <span class="n">contextWithAPIKey</span> <span class="o">:=</span> <span class="n">context</span><span class="o">.</span><span class="n">WithValue</span><span class="p">(</span><span class="n">context</span><span class="o">.</span><span class="n">Background</span><span class="p">(),</span> <span class="n">basistheory</span><span class="o">.</span><span class="n">ContextAPIKeys</span><span class="p">,</span> <span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="n">basistheory</span><span class="o">.</span><span class="n">APIKey</span><span class="p">{</span>
+    <span class="s">"ApiKey"</span><span class="o">:</span> <span class="p">{</span><span class="n">Key</span><span class="o">:</span> <span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">},</span>
+  <span class="p">})</span>
+
+  <span class="n">permissions</span><span class="p">,</span> <span class="n">httpResponse</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">apiClient</span><span class="o">.</span><span class="n">PermissionsApi</span><span class="o">.</span><span class="n">Get</span><span class="p">(</span><span class="n">contextWithAPIKey</span><span class="p">)</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
+<span class="p">}</span>
 </code></pre></div><h3 id='permissions-list-permissions-query-parameters'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -2722,7 +2770,7 @@ At most, 100 tokens may be detokenized within a single proxy request. You can fi
 
 <span class="k">import</span> <span class="p">(</span>
   <span class="s">"context"</span>
-  <span class="s">"github.com/Basis-Theory/basistheory-go/v2"</span>
+  <span class="s">"github.com/Basis-Theory/basistheory-go/v3"</span>
 <span class="p">)</span>
 
 <span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
@@ -2736,7 +2784,8 @@ At most, 100 tokens may be detokenized within a single proxy request. You can fi
   <span class="n">createProxyRequest</span><span class="o">.</span><span class="n">SetRequestReactorId</span><span class="p">(</span><span class="s">"5b493235-6917-4307-906a-2cd6f1a90b13"</span><span class="p">)</span>
   <span class="n">createProxyRequest</span><span class="o">.</span><span class="n">SetResponseReactorId</span><span class="p">(</span><span class="s">"1cb923e6-ae89-407a-ba07-1564ebe99350"</span><span class="p">)</span>
   <span class="n">createProxyRequest</span><span class="o">.</span><span class="n">SetRequireAuth</span><span class="p">(</span><span class="no">true</span><span class="p">)</span>
-  <span class="n">proxy</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">apiClient</span><span class="o">.</span><span class="n">ProxiesApi</span><span class="o">.</span><span class="n">ProxiesCreate</span><span class="p">(</span><span class="n">contextWithAPIKey</span><span class="p">)</span><span class="o">.</span><span class="n">CreateProxyRequest</span><span class="p">(</span><span class="n">createProxyRequest</span><span class="p">)</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
+
+  <span class="n">proxy</span><span class="p">,</span> <span class="n">httpResponse</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">apiClient</span><span class="o">.</span><span class="n">ProxiesApi</span><span class="o">.</span><span class="n">Create</span><span class="p">(</span><span class="n">contextWithAPIKey</span><span class="p">)</span><span class="o">.</span><span class="n">CreateProxyRequest</span><span class="p">(</span><span class="n">createProxyRequest</span><span class="p">)</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
@@ -2840,7 +2889,7 @@ At most, 100 tokens may be detokenized within a single proxy request. You can fi
 
 <span class="k">import</span> <span class="p">(</span>
   <span class="s">"context"</span>
-  <span class="s">"github.com/Basis-Theory/basistheory-go/v2"</span>
+  <span class="s">"github.com/Basis-Theory/basistheory-go/v3"</span>
 <span class="p">)</span>
 
 <span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
@@ -2850,7 +2899,7 @@ At most, 100 tokens may be detokenized within a single proxy request. You can fi
     <span class="s">"ApiKey"</span><span class="o">:</span> <span class="p">{</span><span class="n">Key</span><span class="o">:</span> <span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">},</span>
   <span class="p">})</span>
 
-  <span class="n">proxies</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">apiClient</span><span class="o">.</span><span class="n">ProxiesApi</span><span class="o">.</span><span class="n">ProxiesGet</span><span class="p">(</span><span class="n">contextWithAPIKey</span><span class="p">)</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
+  <span class="n">proxies</span><span class="p">,</span> <span class="n">httpResponse</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">apiClient</span><span class="o">.</span><span class="n">ProxiesApi</span><span class="o">.</span><span class="n">Get</span><span class="p">(</span><span class="n">contextWithAPIKey</span><span class="p">)</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
@@ -2943,7 +2992,7 @@ At most, 100 tokens may be detokenized within a single proxy request. You can fi
 
 <span class="k">import</span> <span class="p">(</span>
   <span class="s">"context"</span>
-  <span class="s">"github.com/Basis-Theory/basistheory-go/v2"</span>
+  <span class="s">"github.com/Basis-Theory/basistheory-go/v3"</span>
 <span class="p">)</span>
 
 <span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
@@ -2953,7 +3002,7 @@ At most, 100 tokens may be detokenized within a single proxy request. You can fi
     <span class="s">"ApiKey"</span><span class="o">:</span> <span class="p">{</span><span class="n">Key</span><span class="o">:</span> <span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">},</span>
   <span class="p">})</span>
 
-  <span class="n">proxy</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">apiClient</span><span class="o">.</span><span class="n">ProxiesApi</span><span class="o">.</span><span class="n">ProxiesGetById</span><span class="p">(</span><span class="n">contextWithAPIKey</span><span class="p">,</span> <span class="s">"433013a6-a614-4e1e-b2aa-5fba67aa85e6"</span><span class="p">)</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
+  <span class="n">proxy</span><span class="p">,</span> <span class="n">httpResponse</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">apiClient</span><span class="o">.</span><span class="n">ProxiesApi</span><span class="o">.</span><span class="n">GetById</span><span class="p">(</span><span class="n">contextWithAPIKey</span><span class="p">,</span> <span class="s">"433013a6-a614-4e1e-b2aa-5fba67aa85e6"</span><span class="p">)</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
@@ -3061,7 +3110,7 @@ At most, 100 tokens may be detokenized within a single proxy request. You can fi
 
 <span class="k">import</span> <span class="p">(</span>
   <span class="s">"context"</span>
-  <span class="s">"github.com/Basis-Theory/basistheory-go/v2"</span>
+  <span class="s">"github.com/Basis-Theory/basistheory-go/v3"</span>
 <span class="p">)</span>
 
 <span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
@@ -3075,7 +3124,8 @@ At most, 100 tokens may be detokenized within a single proxy request. You can fi
   <span class="n">updateProxyRequest</span><span class="o">.</span><span class="n">SetRequestReactorId</span><span class="p">(</span><span class="s">"5b493235-6917-4307-906a-2cd6f1a90b13"</span><span class="p">)</span>
   <span class="n">updateProxyRequest</span><span class="o">.</span><span class="n">SetResponseReactorId</span><span class="p">(</span><span class="s">"1cb923e6-ae89-407a-ba07-1564ebe99350"</span><span class="p">)</span>
   <span class="n">updateProxyRequest</span><span class="o">.</span><span class="n">SetRequireAuth</span><span class="p">(</span><span class="no">true</span><span class="p">)</span>
-  <span class="n">proxy</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">apiClient</span><span class="o">.</span><span class="n">ProxiesApi</span><span class="o">.</span><span class="n">ProxiesUpdate</span><span class="p">(</span><span class="n">contextWithAPIKey</span><span class="p">,</span> <span class="s">"433013a6-a614-4e1e-b2aa-5fba67aa85e6"</span><span class="p">)</span><span class="o">.</span><span class="n">UpdateProxyRequest</span><span class="p">(</span><span class="n">updateProxyRequest</span><span class="p">)</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
+
+  <span class="n">proxy</span><span class="p">,</span> <span class="n">httpResponse</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">apiClient</span><span class="o">.</span><span class="n">ProxiesApi</span><span class="o">.</span><span class="n">Update</span><span class="p">(</span><span class="n">contextWithAPIKey</span><span class="p">,</span> <span class="s">"433013a6-a614-4e1e-b2aa-5fba67aa85e6"</span><span class="p">)</span><span class="o">.</span><span class="n">UpdateProxyRequest</span><span class="p">(</span><span class="n">updateProxyRequest</span><span class="p">)</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
@@ -3201,7 +3251,7 @@ At most, 100 tokens may be detokenized within a single proxy request. You can fi
 
 <span class="k">import</span> <span class="p">(</span>
   <span class="s">"context"</span>
-  <span class="s">"github.com/Basis-Theory/basistheory-go/v2"</span>
+  <span class="s">"github.com/Basis-Theory/basistheory-go/v3"</span>
 <span class="p">)</span>
 
 <span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
@@ -3211,7 +3261,7 @@ At most, 100 tokens may be detokenized within a single proxy request. You can fi
     <span class="s">"ApiKey"</span><span class="o">:</span> <span class="p">{</span><span class="n">Key</span><span class="o">:</span> <span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">},</span>
   <span class="p">})</span>
 
-  <span class="n">response</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">apiClient</span><span class="o">.</span><span class="n">ProxiesApi</span><span class="o">.</span><span class="n">ProxiesDelete</span><span class="p">(</span><span class="n">contextWithAPIKey</span><span class="p">,</span> <span class="s">"433013a6-a614-4e1e-b2aa-5fba67aa85e6"</span><span class="p">)</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
+  <span class="n">httpResponse</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">apiClient</span><span class="o">.</span><span class="n">ProxiesApi</span><span class="o">.</span><span class="n">Delete</span><span class="p">(</span><span class="n">contextWithAPIKey</span><span class="p">,</span> <span class="s">"433013a6-a614-4e1e-b2aa-5fba67aa85e6"</span><span class="p">)</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
 <span class="p">}</span>
 </code></pre></div>
 <p><span class="http-method delete">
@@ -3687,7 +3737,7 @@ For more information, see <a href="#tokenize">Tokenize</a>.</p>
 
 <span class="k">import</span> <span class="p">(</span>
   <span class="s">"context"</span>
-  <span class="s">"github.com/Basis-Theory/basistheory-go/v2"</span>
+  <span class="s">"github.com/Basis-Theory/basistheory-go/v3"</span>
 <span class="p">)</span>
 
 <span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
@@ -3726,7 +3776,7 @@ For more information, see <a href="#tokenize">Tokenize</a>.</p>
   <span class="n">requestParameters</span> <span class="o">=</span> <span class="nb">append</span><span class="p">(</span><span class="n">requestParameters</span><span class="p">,</span> <span class="n">reactorFormulaRequestParameter2</span><span class="p">)</span>
   <span class="n">createReactorFormulaRequest</span><span class="o">.</span><span class="n">SetRequestParameters</span><span class="p">(</span><span class="n">requestParameters</span><span class="p">)</span>
 
-  <span class="n">reactorFormula</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">apiClient</span><span class="o">.</span><span class="n">ReactorFormulasApi</span><span class="o">.</span><span class="n">ReactorFormulasCreate</span><span class="p">(</span><span class="n">contextWithAPIKey</span><span class="p">)</span><span class="o">.</span><span class="n">CreateReactorFormulaRequest</span><span class="p">(</span><span class="n">createReactorFormulaRequest</span><span class="p">)</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
+  <span class="n">reactorFormula</span><span class="p">,</span> <span class="n">httpResponse</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">apiClient</span><span class="o">.</span><span class="n">ReactorFormulasApi</span><span class="o">.</span><span class="n">Create</span><span class="p">(</span><span class="n">contextWithAPIKey</span><span class="p">)</span><span class="o">.</span><span class="n">CreateReactorFormulaRequest</span><span class="p">(</span><span class="n">createReactorFormulaRequest</span><span class="p">)</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
@@ -3873,7 +3923,7 @@ For more information, see <a href="#tokenize">Tokenize</a>.</p>
 
 <span class="k">import</span> <span class="p">(</span>
   <span class="s">"context"</span>
-  <span class="s">"github.com/Basis-Theory/basistheory-go/v2"</span>
+  <span class="s">"github.com/Basis-Theory/basistheory-go/v3"</span>
 <span class="p">)</span>
 
 <span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
@@ -3883,7 +3933,7 @@ For more information, see <a href="#tokenize">Tokenize</a>.</p>
     <span class="s">"ApiKey"</span><span class="o">:</span> <span class="p">{</span><span class="n">Key</span><span class="o">:</span> <span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">},</span>
   <span class="p">})</span>
 
-  <span class="n">reactorFormulas</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">apiClient</span><span class="o">.</span><span class="n">ReactorFormulasApi</span><span class="o">.</span><span class="n">ReactorFormulasGet</span><span class="p">(</span><span class="n">contextWithAPIKey</span><span class="p">)</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
+  <span class="n">reactorFormulas</span><span class="p">,</span> <span class="n">httpResponse</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">apiClient</span><span class="o">.</span><span class="n">ReactorFormulasApi</span><span class="o">.</span><span class="n">Get</span><span class="p">(</span><span class="n">contextWithAPIKey</span><span class="p">)</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
@@ -3997,7 +4047,7 @@ For more information, see <a href="#tokenize">Tokenize</a>.</p>
 
 <span class="k">import</span> <span class="p">(</span>
   <span class="s">"context"</span>
-  <span class="s">"github.com/Basis-Theory/basistheory-go/v2"</span>
+  <span class="s">"github.com/Basis-Theory/basistheory-go/v3"</span>
 <span class="p">)</span>
 
 <span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
@@ -4007,7 +4057,7 @@ For more information, see <a href="#tokenize">Tokenize</a>.</p>
     <span class="s">"ApiKey"</span><span class="o">:</span> <span class="p">{</span><span class="n">Key</span><span class="o">:</span> <span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">},</span>
   <span class="p">})</span>
 
-  <span class="n">reactorFormula</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">apiClient</span><span class="o">.</span><span class="n">ReactorFormulasApi</span><span class="o">.</span><span class="n">ReactorFormulasGetById</span><span class="p">(</span><span class="n">contextWithAPIKey</span><span class="p">,</span> <span class="s">"17069df1-80f4-439e-86a7-4121863e4678"</span><span class="p">)</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
+  <span class="n">reactorFormula</span><span class="p">,</span> <span class="n">httpResponse</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">apiClient</span><span class="o">.</span><span class="n">ReactorFormulasApi</span><span class="o">.</span><span class="n">GetById</span><span class="p">(</span><span class="n">contextWithAPIKey</span><span class="p">,</span> <span class="s">"17069df1-80f4-439e-86a7-4121863e4678"</span><span class="p">)</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
@@ -4266,7 +4316,7 @@ For more information, see <a href="#tokenize">Tokenize</a>.</p>
 
 <span class="k">import</span> <span class="p">(</span>
   <span class="s">"context"</span>
-  <span class="s">"github.com/Basis-Theory/basistheory-go/v2"</span>
+  <span class="s">"github.com/Basis-Theory/basistheory-go/v3"</span>
 <span class="p">)</span>
 
 <span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
@@ -4306,7 +4356,7 @@ For more information, see <a href="#tokenize">Tokenize</a>.</p>
   <span class="n">requestParameters</span> <span class="o">=</span> <span class="nb">append</span><span class="p">(</span><span class="n">requestParameters</span><span class="p">,</span> <span class="n">reactorFormulaRequestParameter2</span><span class="p">)</span>
   <span class="n">updateReactorFormulaRequest</span><span class="o">.</span><span class="n">SetRequestParameters</span><span class="p">(</span><span class="n">requestParameters</span><span class="p">)</span>
 
-  <span class="n">reactorFormula</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">apiClient</span><span class="o">.</span><span class="n">ReactorFormulasApi</span><span class="o">.</span><span class="n">ReactorFormulasUpdate</span><span class="p">(</span><span class="n">contextWithAPIKey</span><span class="p">,</span> <span class="s">"17069df1-80f4-439e-86a7-4121863e4678"</span><span class="p">)</span><span class="o">.</span><span class="n">UpdateReactorFormulaRequest</span><span class="p">(</span><span class="n">updateReactorFormulaRequest</span><span class="p">)</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
+  <span class="n">reactorFormula</span><span class="p">,</span> <span class="n">httpResponse</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">apiClient</span><span class="o">.</span><span class="n">ReactorFormulasApi</span><span class="o">.</span><span class="n">Update</span><span class="p">(</span><span class="n">contextWithAPIKey</span><span class="p">,</span> <span class="s">"17069df1-80f4-439e-86a7-4121863e4678"</span><span class="p">)</span><span class="o">.</span><span class="n">UpdateReactorFormulaRequest</span><span class="p">(</span><span class="n">updateReactorFormulaRequest</span><span class="p">)</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
@@ -4471,7 +4521,7 @@ For more information, see <a href="#tokenize">Tokenize</a>.</p>
 
 <span class="k">import</span> <span class="p">(</span>
   <span class="s">"context"</span>
-  <span class="s">"github.com/Basis-Theory/basistheory-go/v2"</span>
+  <span class="s">"github.com/Basis-Theory/basistheory-go/v3"</span>
 <span class="p">)</span>
 
 <span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
@@ -4481,7 +4531,7 @@ For more information, see <a href="#tokenize">Tokenize</a>.</p>
     <span class="s">"ApiKey"</span><span class="o">:</span> <span class="p">{</span><span class="n">Key</span><span class="o">:</span> <span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">},</span>
   <span class="p">})</span>
 
-  <span class="n">response</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">apiClient</span><span class="o">.</span><span class="n">ReactorFormulasApi</span><span class="o">.</span><span class="n">ReactorFormulasDelete</span><span class="p">(</span><span class="n">contextWithAPIKey</span><span class="p">,</span> <span class="s">"17069df1-80f4-439e-86a7-4121863e4678"</span><span class="p">)</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
+  <span class="n">httpResponse</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">apiClient</span><span class="o">.</span><span class="n">ReactorFormulasApi</span><span class="o">.</span><span class="n">Delete</span><span class="p">(</span><span class="n">contextWithAPIKey</span><span class="p">,</span> <span class="s">"17069df1-80f4-439e-86a7-4121863e4678"</span><span class="p">)</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
 <span class="p">}</span>
 </code></pre></div>
 <p><span class="http-method delete">
@@ -4661,7 +4711,7 @@ For more information, see <a href="#tokenize">Tokenize</a>.</p>
 
 <span class="k">import</span> <span class="p">(</span>
   <span class="s">"context"</span>
-  <span class="s">"github.com/Basis-Theory/basistheory-go/v2"</span>
+  <span class="s">"github.com/Basis-Theory/basistheory-go/v3"</span>
 <span class="p">)</span>
 
 <span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
@@ -4682,7 +4732,7 @@ For more information, see <a href="#tokenize">Tokenize</a>.</p>
   <span class="n">application</span><span class="o">.</span><span class="n">SetId</span><span class="p">(</span><span class="s">"45c124e7-6ab2-4899-b4d9-1388b0ba9d04"</span><span class="p">)</span>
   <span class="n">createReactorRequest</span><span class="o">.</span><span class="n">SetApplication</span><span class="p">(</span><span class="n">application</span><span class="p">)</span>
 
-  <span class="n">reactor</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="kt">error</span> <span class="o">:=</span> <span class="n">apiClient</span><span class="o">.</span><span class="n">ReactorsApi</span><span class="o">.</span><span class="n">ReactorsCreate</span><span class="p">(</span><span class="n">contextWithAPIKey</span><span class="p">)</span><span class="o">.</span><span class="n">CreateReactorRequest</span><span class="p">(</span><span class="n">createReactorRequest</span><span class="p">)</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
+  <span class="n">reactor</span><span class="p">,</span> <span class="n">httpResponse</span><span class="p">,</span> <span class="kt">error</span> <span class="o">:=</span> <span class="n">apiClient</span><span class="o">.</span><span class="n">ReactorsApi</span><span class="o">.</span><span class="n">Create</span><span class="p">(</span><span class="n">contextWithAPIKey</span><span class="p">)</span><span class="o">.</span><span class="n">CreateReactorRequest</span><span class="p">(</span><span class="n">createReactorRequest</span><span class="p">)</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
@@ -4781,7 +4831,7 @@ For more information, see <a href="#tokenize">Tokenize</a>.</p>
 
 <span class="k">import</span> <span class="p">(</span>
   <span class="s">"context"</span>
-  <span class="s">"github.com/Basis-Theory/basistheory-go/v2"</span>
+  <span class="s">"github.com/Basis-Theory/basistheory-go/v3"</span>
 <span class="p">)</span>
 
 <span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
@@ -4791,7 +4841,7 @@ For more information, see <a href="#tokenize">Tokenize</a>.</p>
     <span class="s">"ApiKey"</span><span class="o">:</span> <span class="p">{</span><span class="n">Key</span><span class="o">:</span> <span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">},</span>
   <span class="p">})</span>
 
-  <span class="n">reactors</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">apiClient</span><span class="o">.</span><span class="n">ReactorsApi</span><span class="o">.</span><span class="n">ReactorsGet</span><span class="p">(</span><span class="n">contextWithAPIKey</span><span class="p">)</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
+  <span class="n">reactors</span><span class="p">,</span> <span class="n">httpResponse</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">apiClient</span><span class="o">.</span><span class="n">ReactorsApi</span><span class="o">.</span><span class="n">Get</span><span class="p">(</span><span class="n">contextWithAPIKey</span><span class="p">)</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
@@ -4882,7 +4932,7 @@ For more information, see <a href="#tokenize">Tokenize</a>.</p>
 
 <span class="k">import</span> <span class="p">(</span>
   <span class="s">"context"</span>
-  <span class="s">"github.com/Basis-Theory/basistheory-go/v2"</span>
+  <span class="s">"github.com/Basis-Theory/basistheory-go/v3"</span>
 <span class="p">)</span>
 
 <span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
@@ -4892,7 +4942,7 @@ For more information, see <a href="#tokenize">Tokenize</a>.</p>
     <span class="s">"ApiKey"</span><span class="o">:</span> <span class="p">{</span><span class="n">Key</span><span class="o">:</span> <span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">},</span>
   <span class="p">})</span>
 
-  <span class="n">reactor</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">apiClient</span><span class="o">.</span><span class="n">ReactorsApi</span><span class="o">.</span><span class="n">ReactorsGetById</span><span class="p">(</span><span class="n">contextWithAPIKey</span><span class="p">,</span> <span class="s">"5b493235-6917-4307-906a-2cd6f1a90b13"</span><span class="p">)</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
+  <span class="n">reactor</span><span class="p">,</span> <span class="n">httpResponse</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">apiClient</span><span class="o">.</span><span class="n">ReactorsApi</span><span class="o">.</span><span class="n">GetById</span><span class="p">(</span><span class="n">contextWithAPIKey</span><span class="p">,</span> <span class="s">"5b493235-6917-4307-906a-2cd6f1a90b13"</span><span class="p">)</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
@@ -5008,7 +5058,7 @@ For more information, see <a href="#tokenize">Tokenize</a>.</p>
 
 <span class="k">import</span> <span class="p">(</span>
   <span class="s">"context"</span>
-  <span class="s">"github.com/Basis-Theory/basistheory-go/v2"</span>
+  <span class="s">"github.com/Basis-Theory/basistheory-go/v3"</span>
 <span class="p">)</span>
 
 <span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
@@ -5026,7 +5076,7 @@ For more information, see <a href="#tokenize">Tokenize</a>.</p>
   <span class="n">application</span><span class="o">.</span><span class="n">SetId</span><span class="p">(</span><span class="s">"45c124e7-6ab2-4899-b4d9-1388b0ba9d04"</span><span class="p">)</span>
   <span class="n">updateReactorRequest</span><span class="o">.</span><span class="n">SetApplication</span><span class="p">(</span><span class="n">application</span><span class="p">)</span>
 
-  <span class="n">reactor</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">apiClient</span><span class="o">.</span><span class="n">ReactorsApi</span><span class="o">.</span><span class="n">ReactorsUpdate</span><span class="p">(</span><span class="n">contextWithAPIKey</span><span class="p">,</span> <span class="s">"5b493235-6917-4307-906a-2cd6f1a90b13"</span><span class="p">)</span><span class="o">.</span><span class="n">UpdateReactorRequest</span><span class="p">(</span><span class="n">updateReactorRequest</span><span class="p">)</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
+  <span class="n">reactor</span><span class="p">,</span> <span class="n">httpResponse</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">apiClient</span><span class="o">.</span><span class="n">ReactorsApi</span><span class="o">.</span><span class="n">Update</span><span class="p">(</span><span class="n">contextWithAPIKey</span><span class="p">,</span> <span class="s">"5b493235-6917-4307-906a-2cd6f1a90b13"</span><span class="p">)</span><span class="o">.</span><span class="n">UpdateReactorRequest</span><span class="p">(</span><span class="n">updateReactorRequest</span><span class="p">)</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
@@ -5136,7 +5186,7 @@ For more information, see <a href="#tokenize">Tokenize</a>.</p>
 
 <span class="k">import</span> <span class="p">(</span>
   <span class="s">"context"</span>
-  <span class="s">"github.com/Basis-Theory/basistheory-go/v2"</span>
+  <span class="s">"github.com/Basis-Theory/basistheory-go/v3"</span>
 <span class="p">)</span>
 
 <span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
@@ -5146,7 +5196,7 @@ For more information, see <a href="#tokenize">Tokenize</a>.</p>
     <span class="s">"ApiKey"</span><span class="o">:</span> <span class="p">{</span><span class="n">Key</span><span class="o">:</span> <span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">},</span>
   <span class="p">})</span>
 
-  <span class="n">response</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">apiClient</span><span class="o">.</span><span class="n">ReactorsApi</span><span class="o">.</span><span class="n">ReactorsDelete</span><span class="p">(</span><span class="n">contextWithAPIKey</span><span class="p">,</span> <span class="s">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">)</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
+  <span class="n">httpResponse</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">apiClient</span><span class="o">.</span><span class="n">ReactorsApi</span><span class="o">.</span><span class="n">Delete</span><span class="p">(</span><span class="n">contextWithAPIKey</span><span class="p">,</span> <span class="s">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">)</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
 <span class="p">}</span>
 </code></pre></div>
 <p><span class="http-method delete">
@@ -5230,7 +5280,7 @@ For more information, see <a href="#tokenize">Tokenize</a>.</p>
 
 <span class="k">import</span> <span class="p">(</span>
   <span class="s">"context"</span>
-  <span class="s">"github.com/Basis-Theory/basistheory-go/v2"</span>
+  <span class="s">"github.com/Basis-Theory/basistheory-go/v3"</span>
 <span class="p">)</span>
 
 <span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
@@ -5246,7 +5296,7 @@ For more information, see <a href="#tokenize">Tokenize</a>.</p>
     <span class="s">"customer_id"</span><span class="o">:</span> <span class="s">"myCustomerId1234"</span><span class="p">,</span>
   <span class="p">})</span>
 
-  <span class="n">reactResponse</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">apiClient</span><span class="o">.</span><span class="n">ReactorsApi</span><span class="o">.</span><span class="n">ReactorsReact</span><span class="p">(</span><span class="n">contextWithAPIKey</span><span class="p">,</span> <span class="s">"5b493235-6917-4307-906a-2cd6f1a90b13"</span><span class="p">)</span><span class="o">.</span><span class="n">ReactRequest</span><span class="p">(</span><span class="n">reactRequest</span><span class="p">)</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
+  <span class="n">reacthttpResponse</span><span class="p">,</span> <span class="n">httpResponse</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">apiClient</span><span class="o">.</span><span class="n">ReactorsApi</span><span class="o">.</span><span class="n">React</span><span class="p">(</span><span class="n">contextWithAPIKey</span><span class="p">,</span> <span class="s">"5b493235-6917-4307-906a-2cd6f1a90b13"</span><span class="p">)</span><span class="o">.</span><span class="n">ReactRequest</span><span class="p">(</span><span class="n">reactRequest</span><span class="p">)</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
 <span class="p">}</span>
 </code></pre></div>
 <p><span class="http-method post">
@@ -5578,6 +5628,22 @@ a single complex token that contains several of the request parameters. </p>
     <span class="n">tenants_client</span> <span class="o">=</span> <span class="n">tenants_api</span><span class="p">.</span><span class="n">TenantsApi</span><span class="p">(</span><span class="n">api_client</span><span class="p">)</span>
 
     <span class="n">tenant</span> <span class="o">=</span> <span class="n">tenants_client</span><span class="p">.</span><span class="n">get</span><span class="p">()</span>
+</code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
+
+<span class="k">import</span> <span class="p">(</span>
+  <span class="s">"context"</span>
+  <span class="s">"github.com/Basis-Theory/basistheory-go/v3"</span>
+<span class="p">)</span>
+
+<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">configuration</span> <span class="o">:=</span> <span class="n">basistheory</span><span class="o">.</span><span class="n">NewConfiguration</span><span class="p">()</span>
+  <span class="n">apiClient</span> <span class="o">:=</span> <span class="n">basistheory</span><span class="o">.</span><span class="n">NewAPIClient</span><span class="p">(</span><span class="n">configuration</span><span class="p">)</span>
+  <span class="n">contextWithAPIKey</span> <span class="o">:=</span> <span class="n">context</span><span class="o">.</span><span class="n">WithValue</span><span class="p">(</span><span class="n">context</span><span class="o">.</span><span class="n">Background</span><span class="p">(),</span> <span class="n">basistheory</span><span class="o">.</span><span class="n">ContextAPIKeys</span><span class="p">,</span> <span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="n">basistheory</span><span class="o">.</span><span class="n">APIKey</span><span class="p">{</span>
+    <span class="s">"ApiKey"</span><span class="o">:</span> <span class="p">{</span><span class="n">Key</span><span class="o">:</span> <span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">},</span>
+  <span class="p">})</span>
+
+  <span class="n">tenant</span><span class="p">,</span> <span class="n">httpResponse</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">apiClient</span><span class="o">.</span><span class="n">TenantsApi</span><span class="o">.</span><span class="n">Get</span><span class="p">(</span><span class="n">contextWithAPIKey</span><span class="p">)</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
+<span class="p">}</span>
 </code></pre></div>
 <blockquote>
 <p>Response</p>
@@ -5639,6 +5705,24 @@ a single complex token that contains several of the request parameters. </p>
     <span class="n">tenant</span> <span class="o">=</span> <span class="n">tenants_client</span><span class="p">.</span><span class="n">update</span><span class="p">(</span><span class="n">update_tenant_request</span><span class="o">=</span><span class="n">UpdateTenantRequest</span><span class="p">(</span>
         <span class="n">name</span><span class="o">=</span><span class="s">"My Example Tenant"</span>
     <span class="p">))</span>
+</code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
+
+<span class="k">import</span> <span class="p">(</span>
+  <span class="s">"context"</span>
+  <span class="s">"github.com/Basis-Theory/basistheory-go/v3"</span>
+<span class="p">)</span>
+
+<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">configuration</span> <span class="o">:=</span> <span class="n">basistheory</span><span class="o">.</span><span class="n">NewConfiguration</span><span class="p">()</span>
+  <span class="n">apiClient</span> <span class="o">:=</span> <span class="n">basistheory</span><span class="o">.</span><span class="n">NewAPIClient</span><span class="p">(</span><span class="n">configuration</span><span class="p">)</span>
+  <span class="n">contextWithAPIKey</span> <span class="o">:=</span> <span class="n">context</span><span class="o">.</span><span class="n">WithValue</span><span class="p">(</span><span class="n">context</span><span class="o">.</span><span class="n">Background</span><span class="p">(),</span> <span class="n">basistheory</span><span class="o">.</span><span class="n">ContextAPIKeys</span><span class="p">,</span> <span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="n">basistheory</span><span class="o">.</span><span class="n">APIKey</span><span class="p">{</span>
+    <span class="s">"ApiKey"</span><span class="o">:</span> <span class="p">{</span><span class="n">Key</span><span class="o">:</span> <span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">},</span>
+  <span class="p">})</span>
+
+  <span class="n">updateTenantRequest</span> <span class="o">:=</span> <span class="o">*</span><span class="n">basistheory</span><span class="o">.</span><span class="n">NewUpdateTenantRequest</span><span class="p">(</span><span class="s">"My Example Tenant"</span><span class="p">)</span>
+
+  <span class="n">tenant</span><span class="p">,</span> <span class="n">httpResponse</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">apiClient</span><span class="o">.</span><span class="n">TenantsApi</span><span class="o">.</span><span class="n">Update</span><span class="p">(</span><span class="n">contextWithAPIKey</span><span class="p">)</span><span class="o">.</span><span class="n">UpdateTenantRequest</span><span class="p">(</span><span class="n">updateTenantRequest</span><span class="p">)</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
+<span class="p">}</span>
 </code></pre></div>
 <blockquote>
 <p>Response</p>
@@ -5707,6 +5791,22 @@ a single complex token that contains several of the request parameters. </p>
     <span class="n">tenants_client</span> <span class="o">=</span> <span class="n">tenants_api</span><span class="p">.</span><span class="n">TenantsApi</span><span class="p">(</span><span class="n">api_client</span><span class="p">)</span>
 
     <span class="n">tenants_client</span><span class="p">.</span><span class="n">delete</span><span class="p">()</span>
+</code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
+
+<span class="k">import</span> <span class="p">(</span>
+  <span class="s">"context"</span>
+  <span class="s">"github.com/Basis-Theory/basistheory-go/v3"</span>
+<span class="p">)</span>
+
+<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">configuration</span> <span class="o">:=</span> <span class="n">basistheory</span><span class="o">.</span><span class="n">NewConfiguration</span><span class="p">()</span>
+  <span class="n">apiClient</span> <span class="o">:=</span> <span class="n">basistheory</span><span class="o">.</span><span class="n">NewAPIClient</span><span class="p">(</span><span class="n">configuration</span><span class="p">)</span>
+  <span class="n">contextWithAPIKey</span> <span class="o">:=</span> <span class="n">context</span><span class="o">.</span><span class="n">WithValue</span><span class="p">(</span><span class="n">context</span><span class="o">.</span><span class="n">Background</span><span class="p">(),</span> <span class="n">basistheory</span><span class="o">.</span><span class="n">ContextAPIKeys</span><span class="p">,</span> <span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="n">basistheory</span><span class="o">.</span><span class="n">APIKey</span><span class="p">{</span>
+    <span class="s">"ApiKey"</span><span class="o">:</span> <span class="p">{</span><span class="n">Key</span><span class="o">:</span> <span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">},</span>
+  <span class="p">})</span>
+
+  <span class="n">httpResponse</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">apiClient</span><span class="o">.</span><span class="n">TenantsApi</span><span class="o">.</span><span class="n">Delete</span><span class="p">(</span><span class="n">contextWithAPIKey</span><span class="p">)</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
+<span class="p">}</span>
 </code></pre></div>
 <p><span class="http-method delete">
   <span class="box-method">DELETE</span>
@@ -5743,6 +5843,22 @@ a single complex token that contains several of the request parameters. </p>
     <span class="n">tenants_client</span> <span class="o">=</span> <span class="n">tenants_api</span><span class="p">.</span><span class="n">TenantsApi</span><span class="p">(</span><span class="n">api_client</span><span class="p">)</span>
 
     <span class="n">tenant_usage_report</span> <span class="o">=</span> <span class="n">tenants_client</span><span class="p">.</span><span class="n">get_tenant_usage_report</span><span class="p">()</span>
+</code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
+
+<span class="k">import</span> <span class="p">(</span>
+  <span class="s">"context"</span>
+  <span class="s">"github.com/Basis-Theory/basistheory-go/v3"</span>
+<span class="p">)</span>
+
+<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">configuration</span> <span class="o">:=</span> <span class="n">basistheory</span><span class="o">.</span><span class="n">NewConfiguration</span><span class="p">()</span>
+  <span class="n">apiClient</span> <span class="o">:=</span> <span class="n">basistheory</span><span class="o">.</span><span class="n">NewAPIClient</span><span class="p">(</span><span class="n">configuration</span><span class="p">)</span>
+  <span class="n">contextWithAPIKey</span> <span class="o">:=</span> <span class="n">context</span><span class="o">.</span><span class="n">WithValue</span><span class="p">(</span><span class="n">context</span><span class="o">.</span><span class="n">Background</span><span class="p">(),</span> <span class="n">basistheory</span><span class="o">.</span><span class="n">ContextAPIKeys</span><span class="p">,</span> <span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="n">basistheory</span><span class="o">.</span><span class="n">APIKey</span><span class="p">{</span>
+    <span class="s">"ApiKey"</span><span class="o">:</span> <span class="p">{</span><span class="n">Key</span><span class="o">:</span> <span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">},</span>
+  <span class="p">})</span>
+
+  <span class="n">tenantUsageReport</span><span class="p">,</span> <span class="n">httpResponse</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">apiClient</span><span class="o">.</span><span class="n">TenantsApi</span><span class="o">.</span><span class="n">GetTenantUsageReport</span><span class="p">(</span><span class="n">contextWithAPIKey</span><span class="p">)</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
+<span class="p">}</span>
 </code></pre></div>
 <blockquote>
 <p>Response</p>
@@ -5960,6 +6076,22 @@ Upon accepting a Tenant Invitation, a new Tenant Member will be created.</p>
     <span class="n">tenant_client</span> <span class="o">=</span> <span class="n">tenants_api</span><span class="p">.</span><span class="n">TenantsApi</span><span class="p">(</span><span class="n">api_client</span><span class="p">)</span>
 
     <span class="n">tenant_members</span> <span class="o">=</span> <span class="n">tenant_client</span><span class="p">.</span><span class="n">get_members</span><span class="p">()</span>
+</code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
+
+<span class="k">import</span> <span class="p">(</span>
+  <span class="s">"context"</span>
+  <span class="s">"github.com/Basis-Theory/basistheory-go/v3"</span>
+<span class="p">)</span>
+
+<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">configuration</span> <span class="o">:=</span> <span class="n">basistheory</span><span class="o">.</span><span class="n">NewConfiguration</span><span class="p">()</span>
+  <span class="n">apiClient</span> <span class="o">:=</span> <span class="n">basistheory</span><span class="o">.</span><span class="n">NewAPIClient</span><span class="p">(</span><span class="n">configuration</span><span class="p">)</span>
+  <span class="n">contextWithAPIKey</span> <span class="o">:=</span> <span class="n">context</span><span class="o">.</span><span class="n">WithValue</span><span class="p">(</span><span class="n">context</span><span class="o">.</span><span class="n">Background</span><span class="p">(),</span> <span class="n">basistheory</span><span class="o">.</span><span class="n">ContextAPIKeys</span><span class="p">,</span> <span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="n">basistheory</span><span class="o">.</span><span class="n">APIKey</span><span class="p">{</span>
+    <span class="s">"ApiKey"</span><span class="o">:</span> <span class="p">{</span><span class="n">Key</span><span class="o">:</span> <span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">},</span>
+  <span class="p">})</span>
+
+  <span class="n">tenantMembers</span><span class="p">,</span> <span class="n">httpResponse</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">apiClient</span><span class="o">.</span><span class="n">TenantsApi</span><span class="o">.</span><span class="n">GetMembers</span><span class="p">(</span><span class="n">contextWithAPIKey</span><span class="p">)</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
+<span class="p">}</span>
 </code></pre></div>
 <blockquote>
 <p>Response</p>
@@ -6056,6 +6188,22 @@ Upon accepting a Tenant Invitation, a new Tenant Member will be created.</p>
     <span class="n">tenant_client</span> <span class="o">=</span> <span class="n">tenants_api</span><span class="p">.</span><span class="n">TenantsApi</span><span class="p">(</span><span class="n">api_client</span><span class="p">)</span>
 
     <span class="n">tenant_client</span><span class="p">.</span><span class="n">delete_member</span><span class="p">(</span><span class="n">member_id</span><span class="o">=</span><span class="s">"5540a02f-99e7-46de-8f41-1b3cf7b2a3d2"</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
+
+<span class="k">import</span> <span class="p">(</span>
+  <span class="s">"context"</span>
+  <span class="s">"github.com/Basis-Theory/basistheory-go/v3"</span>
+<span class="p">)</span>
+
+<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">configuration</span> <span class="o">:=</span> <span class="n">basistheory</span><span class="o">.</span><span class="n">NewConfiguration</span><span class="p">()</span>
+  <span class="n">apiClient</span> <span class="o">:=</span> <span class="n">basistheory</span><span class="o">.</span><span class="n">NewAPIClient</span><span class="p">(</span><span class="n">configuration</span><span class="p">)</span>
+  <span class="n">contextWithAPIKey</span> <span class="o">:=</span> <span class="n">context</span><span class="o">.</span><span class="n">WithValue</span><span class="p">(</span><span class="n">context</span><span class="o">.</span><span class="n">Background</span><span class="p">(),</span> <span class="n">basistheory</span><span class="o">.</span><span class="n">ContextAPIKeys</span><span class="p">,</span> <span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="n">basistheory</span><span class="o">.</span><span class="n">APIKey</span><span class="p">{</span>
+    <span class="s">"ApiKey"</span><span class="o">:</span> <span class="p">{</span><span class="n">Key</span><span class="o">:</span> <span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">},</span>
+  <span class="p">})</span>
+
+  <span class="n">httpResponse</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">apiClient</span><span class="o">.</span><span class="n">TenantsApi</span><span class="o">.</span><span class="n">DeleteMember</span><span class="p">(</span><span class="n">contextWithAPIKey</span><span class="p">,</span> <span class="s">"5540a02f-99e7-46de-8f41-1b3cf7b2a3d2"</span><span class="p">)</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
+<span class="p">}</span>
 </code></pre></div>
 <p><span class="http-method delete">
   <span class="box-method">DELETE</span>
@@ -6121,6 +6269,24 @@ Upon accepting a Tenant Invitation, a new Tenant Member will be created.</p>
     <span class="n">created_invitation</span> <span class="o">=</span> <span class="n">tenant_client</span><span class="p">.</span><span class="n">create_invitation</span><span class="p">(</span><span class="n">create_tenant_invitation_request</span><span class="o">=</span><span class="n">CreateTenantInvitationRequest</span><span class="p">(</span>
         <span class="n">email</span><span class="o">=</span><span class="s">"jane@doe.com"</span>
     <span class="p">))</span>
+</code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
+
+<span class="k">import</span> <span class="p">(</span>
+  <span class="s">"context"</span>
+  <span class="s">"github.com/Basis-Theory/basistheory-go/v3"</span>
+<span class="p">)</span>
+
+<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">configuration</span> <span class="o">:=</span> <span class="n">basistheory</span><span class="o">.</span><span class="n">NewConfiguration</span><span class="p">()</span>
+  <span class="n">apiClient</span> <span class="o">:=</span> <span class="n">basistheory</span><span class="o">.</span><span class="n">NewAPIClient</span><span class="p">(</span><span class="n">configuration</span><span class="p">)</span>
+  <span class="n">contextWithAPIKey</span> <span class="o">:=</span> <span class="n">context</span><span class="o">.</span><span class="n">WithValue</span><span class="p">(</span><span class="n">context</span><span class="o">.</span><span class="n">Background</span><span class="p">(),</span> <span class="n">basistheory</span><span class="o">.</span><span class="n">ContextAPIKeys</span><span class="p">,</span> <span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="n">basistheory</span><span class="o">.</span><span class="n">APIKey</span><span class="p">{</span>
+    <span class="s">"ApiKey"</span><span class="o">:</span> <span class="p">{</span><span class="n">Key</span><span class="o">:</span> <span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">},</span>
+  <span class="p">})</span>
+
+  <span class="n">createTenantInvitationRequest</span> <span class="o">:=</span> <span class="o">*</span><span class="n">basistheory</span><span class="o">.</span><span class="n">NewCreateTenantInvitationRequest</span><span class="p">(</span><span class="s">"jane@doe.com"</span><span class="p">)</span>
+
+  <span class="n">createdInvitation</span><span class="p">,</span> <span class="n">httpResponse</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">apiClient</span><span class="o">.</span><span class="n">TenantsApi</span><span class="o">.</span><span class="n">CreateInvitation</span><span class="p">(</span><span class="n">contextWithAPIKey</span><span class="p">)</span><span class="o">.</span><span class="n">CreateTenantInvitationRequest</span><span class="p">(</span><span class="n">createTenantInvitationRequest</span><span class="p">)</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
+<span class="p">}</span>
 </code></pre></div>
 <blockquote>
 <p>Response</p>
@@ -6190,6 +6356,22 @@ Upon accepting a Tenant Invitation, a new Tenant Member will be created.</p>
     <span class="n">tenant_client</span> <span class="o">=</span> <span class="n">tenants_api</span><span class="p">.</span><span class="n">TenantsApi</span><span class="p">(</span><span class="n">api_client</span><span class="p">)</span>
 
     <span class="n">resent_invitation</span> <span class="o">=</span> <span class="n">tenant_client</span><span class="p">.</span><span class="n">resend_invitation</span><span class="p">(</span><span class="n">invitation_id</span><span class="o">=</span><span class="s">"dfd0319e-e978-4d2a-9109-f8a9048088bd"</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
+
+<span class="k">import</span> <span class="p">(</span>
+  <span class="s">"context"</span>
+  <span class="s">"github.com/Basis-Theory/basistheory-go/v3"</span>
+<span class="p">)</span>
+
+<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">configuration</span> <span class="o">:=</span> <span class="n">basistheory</span><span class="o">.</span><span class="n">NewConfiguration</span><span class="p">()</span>
+  <span class="n">apiClient</span> <span class="o">:=</span> <span class="n">basistheory</span><span class="o">.</span><span class="n">NewAPIClient</span><span class="p">(</span><span class="n">configuration</span><span class="p">)</span>
+  <span class="n">contextWithAPIKey</span> <span class="o">:=</span> <span class="n">context</span><span class="o">.</span><span class="n">WithValue</span><span class="p">(</span><span class="n">context</span><span class="o">.</span><span class="n">Background</span><span class="p">(),</span> <span class="n">basistheory</span><span class="o">.</span><span class="n">ContextAPIKeys</span><span class="p">,</span> <span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="n">basistheory</span><span class="o">.</span><span class="n">APIKey</span><span class="p">{</span>
+    <span class="s">"ApiKey"</span><span class="o">:</span> <span class="p">{</span><span class="n">Key</span><span class="o">:</span> <span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">},</span>
+  <span class="p">})</span>
+
+  <span class="n">resentInvitation</span><span class="p">,</span> <span class="n">httpResponse</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">apiClient</span><span class="o">.</span><span class="n">TenantsApi</span><span class="o">.</span><span class="n">ResendInvitation</span><span class="p">(</span><span class="n">contextWithAPIKey</span><span class="p">,</span> <span class="s">"dfd0319e-e978-4d2a-9109-f8a9048088bd"</span><span class="p">)</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
+<span class="p">}</span>
 </code></pre></div>
 <blockquote>
 <p>Response</p>
@@ -6240,6 +6422,22 @@ Upon accepting a Tenant Invitation, a new Tenant Member will be created.</p>
     <span class="n">tenant_client</span> <span class="o">=</span> <span class="n">tenants_api</span><span class="p">.</span><span class="n">TenantsApi</span><span class="p">(</span><span class="n">api_client</span><span class="p">)</span>
 
     <span class="n">invitations</span> <span class="o">=</span> <span class="n">tenant_client</span><span class="p">.</span><span class="n">get_invitations</span><span class="p">()</span>
+</code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
+
+<span class="k">import</span> <span class="p">(</span>
+  <span class="s">"context"</span>
+  <span class="s">"github.com/Basis-Theory/basistheory-go/v3"</span>
+<span class="p">)</span>
+
+<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">configuration</span> <span class="o">:=</span> <span class="n">basistheory</span><span class="o">.</span><span class="n">NewConfiguration</span><span class="p">()</span>
+  <span class="n">apiClient</span> <span class="o">:=</span> <span class="n">basistheory</span><span class="o">.</span><span class="n">NewAPIClient</span><span class="p">(</span><span class="n">configuration</span><span class="p">)</span>
+  <span class="n">contextWithAPIKey</span> <span class="o">:=</span> <span class="n">context</span><span class="o">.</span><span class="n">WithValue</span><span class="p">(</span><span class="n">context</span><span class="o">.</span><span class="n">Background</span><span class="p">(),</span> <span class="n">basistheory</span><span class="o">.</span><span class="n">ContextAPIKeys</span><span class="p">,</span> <span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="n">basistheory</span><span class="o">.</span><span class="n">APIKey</span><span class="p">{</span>
+    <span class="s">"ApiKey"</span><span class="o">:</span> <span class="p">{</span><span class="n">Key</span><span class="o">:</span> <span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">},</span>
+  <span class="p">})</span>
+
+  <span class="n">invitations</span><span class="p">,</span> <span class="n">httpResponse</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">apiClient</span><span class="o">.</span><span class="n">TenantsApi</span><span class="o">.</span><span class="n">GetInvitations</span><span class="p">(</span><span class="n">contextWithAPIKey</span><span class="p">)</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
+<span class="p">}</span>
 </code></pre></div>
 <blockquote>
 <p>Response</p>
@@ -6391,6 +6589,22 @@ Returns <a href="#errors">an error</a> if Tenant Invitations could not be retrie
     <span class="n">tenant_client</span> <span class="o">=</span> <span class="n">tenants_api</span><span class="p">.</span><span class="n">TenantsApi</span><span class="p">(</span><span class="n">api_client</span><span class="p">)</span>
 
     <span class="n">tenant_client</span><span class="p">.</span><span class="n">delete_invitation</span><span class="p">(</span><span class="n">invitation_id</span><span class="o">=</span><span class="s">"fb32ea26-2185-4ad2-a7bf-2fe69c00ae13"</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
+
+<span class="k">import</span> <span class="p">(</span>
+  <span class="s">"context"</span>
+  <span class="s">"github.com/Basis-Theory/basistheory-go/v3"</span>
+<span class="p">)</span>
+
+<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">configuration</span> <span class="o">:=</span> <span class="n">basistheory</span><span class="o">.</span><span class="n">NewConfiguration</span><span class="p">()</span>
+  <span class="n">apiClient</span> <span class="o">:=</span> <span class="n">basistheory</span><span class="o">.</span><span class="n">NewAPIClient</span><span class="p">(</span><span class="n">configuration</span><span class="p">)</span>
+  <span class="n">contextWithAPIKey</span> <span class="o">:=</span> <span class="n">context</span><span class="o">.</span><span class="n">WithValue</span><span class="p">(</span><span class="n">context</span><span class="o">.</span><span class="n">Background</span><span class="p">(),</span> <span class="n">basistheory</span><span class="o">.</span><span class="n">ContextAPIKeys</span><span class="p">,</span> <span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="n">basistheory</span><span class="o">.</span><span class="n">APIKey</span><span class="p">{</span>
+    <span class="s">"ApiKey"</span><span class="o">:</span> <span class="p">{</span><span class="n">Key</span><span class="o">:</span> <span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">},</span>
+  <span class="p">})</span>
+
+  <span class="n">httpResponse</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">apiClient</span><span class="o">.</span><span class="n">TenantsApi</span><span class="o">.</span><span class="n">DeleteInvitation</span><span class="p">(</span><span class="n">contextWithAPIKey</span><span class="p">,</span> <span class="s">"fb32ea26-2185-4ad2-a7bf-2fe69c00ae13"</span><span class="p">)</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
+<span class="p">}</span>
 </code></pre></div>
 <p><span class="http-method delete">
   <span class="box-method">DELETE</span>
@@ -7221,6 +7435,34 @@ but the plaintext card data will not be returned. Instead, the restriction polic
         <span class="p">],</span>
         <span class="n">fingerprint_expression</span><span class="o">=</span><span class="s">"{{ data }}"</span>
     <span class="p">))</span>
+</code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
+
+<span class="k">import</span> <span class="p">(</span>
+  <span class="s">"context"</span>
+  <span class="s">"github.com/Basis-Theory/basistheory-go/v3"</span>
+<span class="p">)</span>
+
+<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">configuration</span> <span class="o">:=</span> <span class="n">basistheory</span><span class="o">.</span><span class="n">NewConfiguration</span><span class="p">()</span>
+  <span class="n">apiClient</span> <span class="o">:=</span> <span class="n">basistheory</span><span class="o">.</span><span class="n">NewAPIClient</span><span class="p">(</span><span class="n">configuration</span><span class="p">)</span>
+  <span class="n">contextWithAPIKey</span> <span class="o">:=</span> <span class="n">context</span><span class="o">.</span><span class="n">WithValue</span><span class="p">(</span><span class="n">context</span><span class="o">.</span><span class="n">Background</span><span class="p">(),</span> <span class="n">basistheory</span><span class="o">.</span><span class="n">ContextAPIKeys</span><span class="p">,</span> <span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="n">basistheory</span><span class="o">.</span><span class="n">APIKey</span><span class="p">{</span>
+    <span class="s">"ApiKey"</span><span class="o">:</span> <span class="p">{</span><span class="n">Key</span><span class="o">:</span> <span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">},</span>
+  <span class="p">})</span>
+
+  <span class="n">createTokenRequest</span> <span class="o">:=</span> <span class="o">*</span><span class="n">basistheory</span><span class="o">.</span><span class="n">NewCreateTokenRequest</span><span class="p">(</span><span class="s">"Sensitive Value"</span><span class="p">)</span>
+  <span class="n">createTokenRequest</span><span class="o">.</span><span class="n">SetType</span><span class="p">(</span><span class="s">"token"</span><span class="p">)</span>
+  <span class="n">createTokenRequest</span><span class="o">.</span><span class="n">SetMetadata</span><span class="p">(</span><span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">string</span><span class="p">{</span>
+    <span class="s">"myMetadata"</span><span class="o">:</span> <span class="s">"myMetadataValue"</span><span class="p">,</span>
+  <span class="p">})</span>
+  <span class="n">createTokenRequest</span><span class="o">.</span><span class="n">SetSearchIndexes</span><span class="p">([]</span><span class="kt">string</span><span class="p">{</span><span class="s">"{{ data }}"</span><span class="p">,</span> <span class="s">"{{ data | last4}}"</span><span class="p">})</span>
+  <span class="n">createTokenRequest</span><span class="o">.</span><span class="n">SetFingerprintExpression</span><span class="p">(</span><span class="s">"{{ data }}"</span><span class="p">)</span>
+
+  <span class="n">privacy</span> <span class="o">:=</span> <span class="o">*</span><span class="n">basistheory</span><span class="o">.</span><span class="n">NewPrivacy</span><span class="p">()</span>
+  <span class="n">privacy</span><span class="o">.</span><span class="n">SetImpactLevel</span><span class="p">(</span><span class="s">"moderate"</span><span class="p">)</span>
+  <span class="n">createTokenRequest</span><span class="o">.</span><span class="n">SetPrivacy</span><span class="p">(</span><span class="n">privacy</span><span class="p">)</span>
+
+  <span class="n">createTokenResponse</span><span class="p">,</span> <span class="n">createTokenHttpResponse</span><span class="p">,</span> <span class="n">createErr</span> <span class="o">:=</span> <span class="n">apiClient</span><span class="o">.</span><span class="n">TokensApi</span><span class="o">.</span><span class="n">Create</span><span class="p">(</span><span class="n">contextWithAPIKey</span><span class="p">)</span><span class="o">.</span><span class="n">CreateTokenRequest</span><span class="p">(</span><span class="n">createTokenRequest</span><span class="p">)</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
+<span class="p">}</span>
 </code></pre></div>
 <blockquote>
 <p>Response</p>
@@ -7335,6 +7577,22 @@ but the plaintext card data will not be returned. Instead, the restriction polic
     <span class="n">token_client</span> <span class="o">=</span> <span class="n">tokens_api</span><span class="p">.</span><span class="n">TokensApi</span><span class="p">(</span><span class="n">api_client</span><span class="p">)</span>
 
     <span class="n">tokens</span> <span class="o">=</span> <span class="n">token_client</span><span class="p">.</span><span class="n">get</span><span class="p">()</span>
+</code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
+
+<span class="k">import</span> <span class="p">(</span>
+  <span class="s">"context"</span>
+  <span class="s">"github.com/Basis-Theory/basistheory-go/v3"</span>
+<span class="p">)</span>
+
+<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">configuration</span> <span class="o">:=</span> <span class="n">basistheory</span><span class="o">.</span><span class="n">NewConfiguration</span><span class="p">()</span>
+  <span class="n">apiClient</span> <span class="o">:=</span> <span class="n">basistheory</span><span class="o">.</span><span class="n">NewAPIClient</span><span class="p">(</span><span class="n">configuration</span><span class="p">)</span>
+  <span class="n">contextWithAPIKey</span> <span class="o">:=</span> <span class="n">context</span><span class="o">.</span><span class="n">WithValue</span><span class="p">(</span><span class="n">context</span><span class="o">.</span><span class="n">Background</span><span class="p">(),</span> <span class="n">basistheory</span><span class="o">.</span><span class="n">ContextAPIKeys</span><span class="p">,</span> <span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="n">basistheory</span><span class="o">.</span><span class="n">APIKey</span><span class="p">{</span>
+    <span class="s">"ApiKey"</span><span class="o">:</span> <span class="p">{</span><span class="n">Key</span><span class="o">:</span> <span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">},</span>
+  <span class="p">})</span>
+
+  <span class="n">tokens</span><span class="p">,</span> <span class="n">httpResponse</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">apiClient</span><span class="o">.</span><span class="n">TokensApi</span><span class="o">.</span><span class="n">Get</span><span class="p">(</span><span class="n">contextWithAPIKey</span><span class="p">)</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
+<span class="p">}</span>
 </code></pre></div>
 <blockquote>
 <p>Response</p>
@@ -7434,6 +7692,22 @@ Providing any query parameters will filter the results. Returns <a href="#errors
     <span class="n">token_client</span> <span class="o">=</span> <span class="n">tokens_api</span><span class="p">.</span><span class="n">TokensApi</span><span class="p">(</span><span class="n">api_client</span><span class="p">)</span>
 
     <span class="n">token</span> <span class="o">=</span> <span class="n">token_client</span><span class="p">.</span><span class="n">get_by_id</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s">"c06d0789-0a38-40be-b7cc-c28a718f76f1"</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
+
+<span class="k">import</span> <span class="p">(</span>
+  <span class="s">"context"</span>
+  <span class="s">"github.com/Basis-Theory/basistheory-go/v3"</span>
+<span class="p">)</span>
+
+<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">configuration</span> <span class="o">:=</span> <span class="n">basistheory</span><span class="o">.</span><span class="n">NewConfiguration</span><span class="p">()</span>
+  <span class="n">apiClient</span> <span class="o">:=</span> <span class="n">basistheory</span><span class="o">.</span><span class="n">NewAPIClient</span><span class="p">(</span><span class="n">configuration</span><span class="p">)</span>
+  <span class="n">contextWithAPIKey</span> <span class="o">:=</span> <span class="n">context</span><span class="o">.</span><span class="n">WithValue</span><span class="p">(</span><span class="n">context</span><span class="o">.</span><span class="n">Background</span><span class="p">(),</span> <span class="n">basistheory</span><span class="o">.</span><span class="n">ContextAPIKeys</span><span class="p">,</span> <span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="n">basistheory</span><span class="o">.</span><span class="n">APIKey</span><span class="p">{</span>
+    <span class="s">"ApiKey"</span><span class="o">:</span> <span class="p">{</span><span class="n">Key</span><span class="o">:</span> <span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">},</span>
+  <span class="p">})</span>
+
+  <span class="n">token</span><span class="p">,</span> <span class="n">httpResponse</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">apiClient</span><span class="o">.</span><span class="n">TokensApi</span><span class="o">.</span><span class="n">GetById</span><span class="p">(</span><span class="n">contextWithAPIKey</span><span class="p">,</span> <span class="s">"c06d0789-0a38-40be-b7cc-c28a718f76f1"</span><span class="p">)</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
+<span class="p">}</span>
 </code></pre></div>
 <blockquote>
 <p>Response</p>
@@ -7530,6 +7804,27 @@ Returns <a href="#errors">an error</a> if the token could not be retrieved.</p>
         <span class="n">page</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
         <span class="n">size</span><span class="o">=</span><span class="mi">20</span>
     <span class="p">))</span>
+</code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
+
+<span class="k">import</span> <span class="p">(</span>
+  <span class="s">"context"</span>
+  <span class="s">"github.com/Basis-Theory/basistheory-go/v3"</span>
+<span class="p">)</span>
+
+<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">configuration</span> <span class="o">:=</span> <span class="n">basistheory</span><span class="o">.</span><span class="n">NewConfiguration</span><span class="p">()</span>
+  <span class="n">apiClient</span> <span class="o">:=</span> <span class="n">basistheory</span><span class="o">.</span><span class="n">NewAPIClient</span><span class="p">(</span><span class="n">configuration</span><span class="p">)</span>
+  <span class="n">contextWithAPIKey</span> <span class="o">:=</span> <span class="n">context</span><span class="o">.</span><span class="n">WithValue</span><span class="p">(</span><span class="n">context</span><span class="o">.</span><span class="n">Background</span><span class="p">(),</span> <span class="n">basistheory</span><span class="o">.</span><span class="n">ContextAPIKeys</span><span class="p">,</span> <span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="n">basistheory</span><span class="o">.</span><span class="n">APIKey</span><span class="p">{</span>
+    <span class="s">"ApiKey"</span><span class="o">:</span> <span class="p">{</span><span class="n">Key</span><span class="o">:</span> <span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">},</span>
+  <span class="p">})</span>
+
+  <span class="n">searchTokenRequest</span> <span class="o">:=</span> <span class="o">*</span><span class="n">basistheory</span><span class="o">.</span><span class="n">NewSearchTokensRequest</span><span class="p">()</span>
+  <span class="n">searchTokenRequest</span><span class="o">.</span><span class="n">SetQuery</span><span class="p">(</span><span class="s">"data:6789 AND type:social_security_number"</span><span class="p">)</span>
+  <span class="n">searchTokenRequest</span><span class="o">.</span><span class="n">SetPage</span><span class="p">(</span><span class="m">1</span><span class="p">)</span>
+  <span class="n">searchTokenRequest</span><span class="o">.</span><span class="n">SetSize</span><span class="p">(</span><span class="m">20</span><span class="p">)</span>
+
+  <span class="n">tokens</span><span class="p">,</span> <span class="n">httpResponse</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">apiClient</span><span class="o">.</span><span class="n">TokensApi</span><span class="o">.</span><span class="n">Search</span><span class="p">(</span><span class="n">contextWithAPIKey</span><span class="p">)</span><span class="o">.</span><span class="n">SearchTokensRequest</span><span class="p">(</span><span class="n">searchTokenRequest</span><span class="p">)</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
+<span class="p">}</span>
 </code></pre></div>
 <blockquote>
 <p>Response</p>
@@ -7800,6 +8095,22 @@ based on the <code>search_indexes</code> provided in the <a href="#tokens-create
     <span class="n">token_client</span> <span class="o">=</span> <span class="n">tokens_api</span><span class="p">.</span><span class="n">TokensApi</span><span class="p">(</span><span class="n">api_client</span><span class="p">)</span>
 
     <span class="n">token_client</span><span class="p">.</span><span class="n">delete</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s">"c06d0789-0a38-40be-b7cc-c28a718f76f1"</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
+
+<span class="k">import</span> <span class="p">(</span>
+  <span class="s">"context"</span>
+  <span class="s">"github.com/Basis-Theory/basistheory-go/v3"</span>
+<span class="p">)</span>
+
+<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">configuration</span> <span class="o">:=</span> <span class="n">basistheory</span><span class="o">.</span><span class="n">NewConfiguration</span><span class="p">()</span>
+  <span class="n">apiClient</span> <span class="o">:=</span> <span class="n">basistheory</span><span class="o">.</span><span class="n">NewAPIClient</span><span class="p">(</span><span class="n">configuration</span><span class="p">)</span>
+  <span class="n">contextWithAPIKey</span> <span class="o">:=</span> <span class="n">context</span><span class="o">.</span><span class="n">WithValue</span><span class="p">(</span><span class="n">context</span><span class="o">.</span><span class="n">Background</span><span class="p">(),</span> <span class="n">basistheory</span><span class="o">.</span><span class="n">ContextAPIKeys</span><span class="p">,</span> <span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="n">basistheory</span><span class="o">.</span><span class="n">APIKey</span><span class="p">{</span>
+    <span class="s">"ApiKey"</span><span class="o">:</span> <span class="p">{</span><span class="n">Key</span><span class="o">:</span> <span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">},</span>
+  <span class="p">})</span>
+
+  <span class="n">httpResponse</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">apiClient</span><span class="o">.</span><span class="n">TokensApi</span><span class="o">.</span><span class="n">Delete</span><span class="p">(</span><span class="n">contextWithAPIKey</span><span class="p">,</span> <span class="s">"c06d0789-0a38-40be-b7cc-c28a718f76f1"</span><span class="p">)</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
+<span class="p">}</span>
 </code></pre></div>
 <p><span class="http-method delete">
   <span class="box-method">DELETE</span>
@@ -7864,6 +8175,22 @@ based on the <code>search_indexes</code> provided in the <a href="#tokens-create
     <span class="n">tokens_client</span> <span class="o">=</span> <span class="n">tokens_api</span><span class="p">.</span><span class="n">TokensApi</span><span class="p">(</span><span class="n">api_client</span><span class="p">)</span>
 
     <span class="n">tokens_client</span><span class="p">.</span><span class="n">create_association</span><span class="p">(</span><span class="s">"c06d0789-0a38-40be-b7cc-c28a718f76f1"</span><span class="p">,</span> <span class="s">"c1e565009-1984-4638-8fca-dce8a82cc2af"</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
+
+<span class="k">import</span> <span class="p">(</span>
+  <span class="s">"context"</span>
+  <span class="s">"github.com/Basis-Theory/basistheory-go/v3"</span>
+<span class="p">)</span>
+
+<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">configuration</span> <span class="o">:=</span> <span class="n">basistheory</span><span class="o">.</span><span class="n">NewConfiguration</span><span class="p">()</span>
+  <span class="n">apiClient</span> <span class="o">:=</span> <span class="n">basistheory</span><span class="o">.</span><span class="n">NewAPIClient</span><span class="p">(</span><span class="n">configuration</span><span class="p">)</span>
+  <span class="n">contextWithAPIKey</span> <span class="o">:=</span> <span class="n">context</span><span class="o">.</span><span class="n">WithValue</span><span class="p">(</span><span class="n">context</span><span class="o">.</span><span class="n">Background</span><span class="p">(),</span> <span class="n">basistheory</span><span class="o">.</span><span class="n">ContextAPIKeys</span><span class="p">,</span> <span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="n">basistheory</span><span class="o">.</span><span class="n">APIKey</span><span class="p">{</span>
+    <span class="s">"ApiKey"</span><span class="o">:</span> <span class="p">{</span><span class="n">Key</span><span class="o">:</span> <span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">},</span>
+  <span class="p">})</span>
+
+  <span class="n">httpResponse</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">apiClient</span><span class="o">.</span><span class="n">TokensApi</span><span class="o">.</span><span class="n">CreateAssociation</span><span class="p">(</span><span class="n">contextWithAPIKey</span><span class="p">,</span> <span class="s">"c06d0789-0a38-40be-b7cc-c28a718f76f1"</span><span class="p">,</span> <span class="s">"c1e565009-1984-4638-8fca-dce8a82cc2af"</span><span class="p">)</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
+<span class="p">}</span>
 </code></pre></div>
 <p><span class="http-method post">
   <span class="box-method">POST</span>
@@ -7936,6 +8263,22 @@ tokens&#39; privacy settings.</p>
     <span class="n">tokens_client</span> <span class="o">=</span> <span class="n">tokens_api</span><span class="p">.</span><span class="n">TokensApi</span><span class="p">(</span><span class="n">api_client</span><span class="p">)</span>
 
     <span class="n">tokens_client</span><span class="p">.</span><span class="n">delete_association</span><span class="p">(</span><span class="s">"c06d0789-0a38-40be-b7cc-c28a718f76f1"</span><span class="p">,</span> <span class="s">"c1e565009-1984-4638-8fca-dce8a82cc2af"</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
+
+<span class="k">import</span> <span class="p">(</span>
+  <span class="s">"context"</span>
+  <span class="s">"github.com/Basis-Theory/basistheory-go/v3"</span>
+<span class="p">)</span>
+
+<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">configuration</span> <span class="o">:=</span> <span class="n">basistheory</span><span class="o">.</span><span class="n">NewConfiguration</span><span class="p">()</span>
+  <span class="n">apiClient</span> <span class="o">:=</span> <span class="n">basistheory</span><span class="o">.</span><span class="n">NewAPIClient</span><span class="p">(</span><span class="n">configuration</span><span class="p">)</span>
+  <span class="n">contextWithAPIKey</span> <span class="o">:=</span> <span class="n">context</span><span class="o">.</span><span class="n">WithValue</span><span class="p">(</span><span class="n">context</span><span class="o">.</span><span class="n">Background</span><span class="p">(),</span> <span class="n">basistheory</span><span class="o">.</span><span class="n">ContextAPIKeys</span><span class="p">,</span> <span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="n">basistheory</span><span class="o">.</span><span class="n">APIKey</span><span class="p">{</span>
+    <span class="s">"ApiKey"</span><span class="o">:</span> <span class="p">{</span><span class="n">Key</span><span class="o">:</span> <span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">},</span>
+  <span class="p">})</span>
+
+  <span class="n">httpResponse</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">apiClient</span><span class="o">.</span><span class="n">TokensApi</span><span class="o">.</span><span class="n">DeleteAssociation</span><span class="p">(</span><span class="n">contextWithAPIKey</span><span class="p">,</span> <span class="s">"c06d0789-0a38-40be-b7cc-c28a718f76f1"</span><span class="p">,</span> <span class="s">"c1e565009-1984-4638-8fca-dce8a82cc2af"</span><span class="p">)</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
+<span class="p">}</span>
 </code></pre></div>
 <p><span class="http-method delete">
   <span class="box-method">DELETE</span>
@@ -8027,6 +8370,28 @@ tokens&#39; privacy settings.</p>
             <span class="s">"nonSensitiveField"</span><span class="p">:</span> <span class="s">"Non-Sensitive Value"</span>
         <span class="p">}</span>
     <span class="p">))</span>
+</code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
+
+<span class="k">import</span> <span class="p">(</span>
+  <span class="s">"context"</span>
+  <span class="s">"github.com/Basis-Theory/basistheory-go/v3"</span>
+<span class="p">)</span>
+
+<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">configuration</span> <span class="o">:=</span> <span class="n">basistheory</span><span class="o">.</span><span class="n">NewConfiguration</span><span class="p">()</span>
+  <span class="n">apiClient</span> <span class="o">:=</span> <span class="n">basistheory</span><span class="o">.</span><span class="n">NewAPIClient</span><span class="p">(</span><span class="n">configuration</span><span class="p">)</span>
+  <span class="n">contextWithAPIKey</span> <span class="o">:=</span> <span class="n">context</span><span class="o">.</span><span class="n">WithValue</span><span class="p">(</span><span class="n">context</span><span class="o">.</span><span class="n">Background</span><span class="p">(),</span> <span class="n">basistheory</span><span class="o">.</span><span class="n">ContextAPIKeys</span><span class="p">,</span> <span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="n">basistheory</span><span class="o">.</span><span class="n">APIKey</span><span class="p">{</span>
+    <span class="s">"ApiKey"</span><span class="o">:</span> <span class="p">{</span><span class="n">Key</span><span class="o">:</span> <span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">},</span>
+  <span class="p">})</span>
+
+  <span class="n">createTokenRequest</span> <span class="o">:=</span> <span class="o">*</span><span class="n">basistheory</span><span class="o">.</span><span class="n">NewCreateTokenRequest</span><span class="p">(</span><span class="s">"Sensitive Value"</span><span class="p">)</span>
+  <span class="n">createTokenRequest</span><span class="o">.</span><span class="n">SetType</span><span class="p">(</span><span class="s">"token"</span><span class="p">)</span>
+  <span class="n">createTokenRequest</span><span class="o">.</span><span class="n">SetMetadata</span><span class="p">(</span><span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">string</span><span class="p">{</span>
+    <span class="s">"nonSensitiveField"</span><span class="o">:</span> <span class="s">"Non-Sensitive Value"</span><span class="p">,</span>
+  <span class="p">})</span>
+
+  <span class="n">token</span><span class="p">,</span> <span class="n">httpResposne</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">apiClient</span><span class="o">.</span><span class="n">TokensApi</span><span class="o">.</span><span class="n">CreateChild</span><span class="p">(</span><span class="n">contextWithAPIKey</span><span class="p">,</span> <span class="s">"c06d0789-0a38-40be-b7cc-c28a718f76f1"</span><span class="p">)</span><span class="o">.</span><span class="n">CreateTokenRequest</span><span class="p">(</span><span class="n">createTokenRequest</span><span class="p">)</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
+<span class="p">}</span>
 </code></pre></div>
 <blockquote>
 <p>Response</p>
@@ -8143,6 +8508,22 @@ permission based on the parent token&#39;s privacy settings.</p>
     <span class="n">tokens_client</span> <span class="o">=</span> <span class="n">tokens_api</span><span class="p">.</span><span class="n">TokensApi</span><span class="p">(</span><span class="n">api_client</span><span class="p">)</span>
 
     <span class="n">tokens</span> <span class="o">=</span> <span class="n">tokens_client</span><span class="p">.</span><span class="n">get_children</span><span class="p">(</span><span class="s">"c06d0789-0a38-40be-b7cc-c28a718f76f1"</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
+
+<span class="k">import</span> <span class="p">(</span>
+  <span class="s">"context"</span>
+  <span class="s">"github.com/Basis-Theory/basistheory-go/v3"</span>
+<span class="p">)</span>
+
+<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">configuration</span> <span class="o">:=</span> <span class="n">basistheory</span><span class="o">.</span><span class="n">NewConfiguration</span><span class="p">()</span>
+  <span class="n">apiClient</span> <span class="o">:=</span> <span class="n">basistheory</span><span class="o">.</span><span class="n">NewAPIClient</span><span class="p">(</span><span class="n">configuration</span><span class="p">)</span>
+  <span class="n">contextWithAPIKey</span> <span class="o">:=</span> <span class="n">context</span><span class="o">.</span><span class="n">WithValue</span><span class="p">(</span><span class="n">context</span><span class="o">.</span><span class="n">Background</span><span class="p">(),</span> <span class="n">basistheory</span><span class="o">.</span><span class="n">ContextAPIKeys</span><span class="p">,</span> <span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="n">basistheory</span><span class="o">.</span><span class="n">APIKey</span><span class="p">{</span>
+    <span class="s">"ApiKey"</span><span class="o">:</span> <span class="p">{</span><span class="n">Key</span><span class="o">:</span> <span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">},</span>
+  <span class="p">})</span>
+
+  <span class="n">tokens</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">apiClient</span><span class="o">.</span><span class="n">TokensApi</span><span class="o">.</span><span class="n">GetChildren</span><span class="p">(</span><span class="n">contextWithAPIKey</span><span class="p">,</span> <span class="s">"c06d0789-0a38-40be-b7cc-c28a718f76f1"</span><span class="p">)</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
+<span class="p">}</span>
 </code></pre></div>
 <blockquote>
 <p>Response</p>
@@ -8266,6 +8647,25 @@ permission based on the parent token&#39;s privacy settings.</p>
       <span class="s">"first_name"</span><span class="p">:</span> <span class="s">"John"</span><span class="p">,</span>
       <span class="s">"last_name"</span><span class="p">:</span> <span class="s">"Doe"</span>
     <span class="p">})</span>
+</code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
+
+<span class="k">import</span> <span class="p">(</span>
+  <span class="s">"context"</span>
+  <span class="s">"github.com/Basis-Theory/basistheory-go/v3"</span>
+<span class="p">)</span>
+
+<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">configuration</span> <span class="o">:=</span> <span class="n">basistheory</span><span class="o">.</span><span class="n">NewConfiguration</span><span class="p">()</span>
+  <span class="n">apiClient</span> <span class="o">:=</span> <span class="n">basistheory</span><span class="o">.</span><span class="n">NewAPIClient</span><span class="p">(</span><span class="n">configuration</span><span class="p">)</span>
+  <span class="n">contextWithAPIKey</span> <span class="o">:=</span> <span class="n">context</span><span class="o">.</span><span class="n">WithValue</span><span class="p">(</span><span class="n">context</span><span class="o">.</span><span class="n">Background</span><span class="p">(),</span> <span class="n">basistheory</span><span class="o">.</span><span class="n">ContextAPIKeys</span><span class="p">,</span> <span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="n">basistheory</span><span class="o">.</span><span class="n">APIKey</span><span class="p">{</span>
+    <span class="s">"ApiKey"</span><span class="o">:</span> <span class="p">{</span><span class="n">Key</span><span class="o">:</span> <span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">},</span>
+  <span class="p">})</span>
+
+  <span class="n">tokens</span><span class="p">,</span> <span class="n">httpResponse</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">apiClient</span><span class="o">.</span><span class="n">TokenizeApi</span><span class="o">.</span><span class="n">Tokenize</span><span class="p">(</span><span class="n">contextWithAPIKey</span><span class="p">)</span><span class="o">.</span><span class="n">Body</span><span class="p">(</span><span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="k">interface</span><span class="p">{}{</span>
+    <span class="s">"first_name"</span><span class="o">:</span> <span class="s">"John"</span><span class="p">,</span>
+    <span class="s">"last_name"</span><span class="o">:</span> <span class="s">"Doe"</span><span class="p">,</span>
+  <span class="p">})</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
+<span class="p">}</span>
 </code></pre></div>
 <blockquote>
 <p>Create Basic Token Response</p>
@@ -8337,6 +8737,30 @@ permission based on the parent token&#39;s privacy settings.</p>
       <span class="p">],</span>
       <span class="n">fingerprint_expression</span><span class="o">=</span><span class="s">"{{ data }}"</span>
     <span class="p">))</span>
+</code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
+
+<span class="k">import</span> <span class="p">(</span>
+  <span class="s">"context"</span>
+  <span class="s">"github.com/Basis-Theory/basistheory-go/v3"</span>
+<span class="p">)</span>
+
+<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">configuration</span> <span class="o">:=</span> <span class="n">basistheory</span><span class="o">.</span><span class="n">NewConfiguration</span><span class="p">()</span>
+  <span class="n">apiClient</span> <span class="o">:=</span> <span class="n">basistheory</span><span class="o">.</span><span class="n">NewAPIClient</span><span class="p">(</span><span class="n">configuration</span><span class="p">)</span>
+  <span class="n">contextWithAPIKey</span> <span class="o">:=</span> <span class="n">context</span><span class="o">.</span><span class="n">WithValue</span><span class="p">(</span><span class="n">context</span><span class="o">.</span><span class="n">Background</span><span class="p">(),</span> <span class="n">basistheory</span><span class="o">.</span><span class="n">ContextAPIKeys</span><span class="p">,</span> <span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="n">basistheory</span><span class="o">.</span><span class="n">APIKey</span><span class="p">{</span>
+    <span class="s">"ApiKey"</span><span class="o">:</span> <span class="p">{</span><span class="n">Key</span><span class="o">:</span> <span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">},</span>
+  <span class="p">})</span>
+
+  <span class="n">tokens</span><span class="p">,</span> <span class="n">httpResponse</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">apiClient</span><span class="o">.</span><span class="n">TokenizeApi</span><span class="o">.</span><span class="n">Tokenize</span><span class="p">(</span><span class="n">contextWithAPIKey</span><span class="p">)</span><span class="o">.</span><span class="n">Body</span><span class="p">(</span><span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="k">interface</span><span class="p">{}{</span>
+    <span class="s">"type"</span><span class="o">:</span> <span class="s">"token"</span><span class="p">,</span>
+    <span class="s">"data"</span><span class="o">:</span> <span class="s">"Sensitive Value"</span><span class="p">,</span>
+    <span class="s">"metadata"</span><span class="o">:</span> <span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="k">interface</span><span class="p">{}{</span>
+      <span class="s">"nonSensitiveField"</span><span class="o">:</span> <span class="s">"Non-Sensitive Value"</span><span class="p">,</span>
+      <span class="p">},</span>
+    <span class="s">"search_indexes"</span><span class="o">:</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"{{ data }}"</span><span class="p">},</span>
+    <span class="s">"fingerprint_expression"</span><span class="o">:</span> <span class="s">"{{ data }}"</span><span class="p">,</span>
+  <span class="p">})</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
+<span class="p">}</span>
 </code></pre></div>
 <blockquote>
 <p>Create Token Response</p>
@@ -8424,6 +8848,33 @@ permission based on the parent token&#39;s privacy settings.</p>
         <span class="s">"nonSensitive"</span><span class="p">:</span> <span class="s">"Non-Sensitive Value"</span>
       <span class="p">}</span>
     <span class="p">))</span>
+</code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
+
+<span class="k">import</span> <span class="p">(</span>
+  <span class="s">"context"</span>
+  <span class="s">"github.com/Basis-Theory/basistheory-go/v3"</span>
+<span class="p">)</span>
+
+<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">configuration</span> <span class="o">:=</span> <span class="n">basistheory</span><span class="o">.</span><span class="n">NewConfiguration</span><span class="p">()</span>
+  <span class="n">apiClient</span> <span class="o">:=</span> <span class="n">basistheory</span><span class="o">.</span><span class="n">NewAPIClient</span><span class="p">(</span><span class="n">configuration</span><span class="p">)</span>
+  <span class="n">contextWithAPIKey</span> <span class="o">:=</span> <span class="n">context</span><span class="o">.</span><span class="n">WithValue</span><span class="p">(</span><span class="n">context</span><span class="o">.</span><span class="n">Background</span><span class="p">(),</span> <span class="n">basistheory</span><span class="o">.</span><span class="n">ContextAPIKeys</span><span class="p">,</span> <span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="n">basistheory</span><span class="o">.</span><span class="n">APIKey</span><span class="p">{</span>
+    <span class="s">"ApiKey"</span><span class="o">:</span> <span class="p">{</span><span class="n">Key</span><span class="o">:</span> <span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">},</span>
+  <span class="p">})</span>
+
+  <span class="n">tokens</span><span class="p">,</span> <span class="n">httpResponse</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">apiClient</span><span class="o">.</span><span class="n">TokenizeApi</span><span class="o">.</span><span class="n">Tokenize</span><span class="p">(</span><span class="n">contextWithAPIKey</span><span class="p">)</span><span class="o">.</span><span class="n">Body</span><span class="p">(</span><span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="k">interface</span><span class="p">{}{</span>
+    <span class="s">"type"</span><span class="o">:</span> <span class="s">"card"</span><span class="p">,</span>
+    <span class="s">"data"</span><span class="o">:</span> <span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="k">interface</span><span class="p">{}{</span>
+      <span class="s">"number"</span><span class="o">:</span>           <span class="s">"4242424242424242"</span><span class="p">,</span>
+      <span class="s">"expiration_month"</span><span class="o">:</span> <span class="m">12</span><span class="p">,</span>
+      <span class="s">"expiration_year"</span><span class="o">:</span>  <span class="m">2025</span><span class="p">,</span>
+      <span class="s">"cvc"</span><span class="o">:</span>              <span class="s">"123"</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="s">"metadata"</span><span class="o">:</span> <span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="k">interface</span><span class="p">{}{</span>
+      <span class="s">"nonSensitiveField"</span><span class="o">:</span> <span class="s">"Non-Sensitive Value"</span><span class="p">,</span>
+    <span class="p">},</span>
+  <span class="p">})</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
+<span class="p">}</span>
 </code></pre></div>
 <blockquote>
 <p>Create Card Response</p>
@@ -8540,6 +8991,41 @@ permission based on the parent token&#39;s privacy settings.</p>
             <span class="nb">type</span><span class="o">=</span><span class="s">"token"</span><span class="p">,</span>
             <span class="n">data</span><span class="o">=</span><span class="s">"Sensitive Value"</span>
         <span class="p">)])</span>
+</code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
+
+<span class="k">import</span> <span class="p">(</span>
+  <span class="s">"context"</span>
+  <span class="s">"github.com/Basis-Theory/basistheory-go/v3"</span>
+<span class="p">)</span>
+
+<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">configuration</span> <span class="o">:=</span> <span class="n">basistheory</span><span class="o">.</span><span class="n">NewConfiguration</span><span class="p">()</span>
+  <span class="n">apiClient</span> <span class="o">:=</span> <span class="n">basistheory</span><span class="o">.</span><span class="n">NewAPIClient</span><span class="p">(</span><span class="n">configuration</span><span class="p">)</span>
+  <span class="n">contextWithAPIKey</span> <span class="o">:=</span> <span class="n">context</span><span class="o">.</span><span class="n">WithValue</span><span class="p">(</span><span class="n">context</span><span class="o">.</span><span class="n">Background</span><span class="p">(),</span> <span class="n">basistheory</span><span class="o">.</span><span class="n">ContextAPIKeys</span><span class="p">,</span> <span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="n">basistheory</span><span class="o">.</span><span class="n">APIKey</span><span class="p">{</span>
+    <span class="s">"ApiKey"</span><span class="o">:</span> <span class="p">{</span><span class="n">Key</span><span class="o">:</span> <span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">},</span>
+  <span class="p">})</span>
+
+  <span class="n">tokens</span><span class="p">,</span> <span class="n">httpResponse</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">apiClient</span><span class="o">.</span><span class="n">TokenizeApi</span><span class="o">.</span><span class="n">Tokenize</span><span class="p">(</span><span class="n">contextWithAPIKey</span><span class="p">)</span><span class="o">.</span><span class="n">Body</span><span class="p">(</span><span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="k">interface</span><span class="p">{}{</span>
+    <span class="s">"first_name"</span><span class="o">:</span> <span class="s">"John"</span><span class="p">,</span>
+    <span class="s">"last_name"</span><span class="o">:</span>  <span class="s">"Doe"</span><span class="p">,</span>
+    <span class="s">"card_token"</span><span class="o">:</span> <span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="k">interface</span><span class="p">{}{</span>
+      <span class="s">"type"</span><span class="o">:</span> <span class="s">"card"</span><span class="p">,</span>
+      <span class="s">"data"</span><span class="o">:</span> <span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="k">interface</span><span class="p">{}{</span>
+        <span class="s">"number"</span><span class="o">:</span>           <span class="s">"4242424242424242"</span><span class="p">,</span>
+        <span class="s">"expiration_month"</span><span class="o">:</span> <span class="m">12</span><span class="p">,</span>
+        <span class="s">"expiration_year"</span><span class="o">:</span>  <span class="m">2025</span><span class="p">,</span>
+        <span class="s">"cvc"</span><span class="o">:</span>              <span class="s">"123"</span><span class="p">,</span>
+      <span class="p">},</span>
+      <span class="s">"metadata"</span><span class="o">:</span> <span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="k">interface</span><span class="p">{}{</span>
+        <span class="s">"nonSensitiveField"</span><span class="o">:</span> <span class="s">"Non-Sensitive Value"</span><span class="p">,</span>
+      <span class="p">},</span>
+    <span class="p">},</span>
+    <span class="s">"generic_token"</span><span class="o">:</span> <span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="k">interface</span><span class="p">{}{</span>
+      <span class="s">"type"</span><span class="o">:</span> <span class="s">"token"</span><span class="p">,</span>
+      <span class="s">"data"</span><span class="o">:</span> <span class="s">"Sensitive Value"</span><span class="p">,</span>
+    <span class="p">},</span>
+  <span class="p">})</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
+<span class="p">}</span>
 </code></pre></div>
 <blockquote>
 <p>Tokenize Array Response</p>
