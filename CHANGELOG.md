@@ -1,3 +1,10 @@
+# [1.48.0](https://github.com/Basis-Theory/docs/compare/v1.47.0...v1.48.0) (2022-06-10)
+
+
+### Features
+
+* adds settings on Tenant and deduplicate_token on Token ([#199](https://github.com/Basis-Theory/docs/issues/199)) ([4187beb](https://github.com/Basis-Theory/docs/commit/4187bebacfecbb7def8e4a5e26794b8e94733245))
+
 # [1.47.0](https://github.com/Basis-Theory/docs/compare/v1.46.0...v1.47.0) (2022-06-10)
 
 
