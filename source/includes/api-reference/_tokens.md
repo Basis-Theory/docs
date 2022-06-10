@@ -210,6 +210,37 @@ with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_
     ))
 ```
 
+```go
+package main
+
+import (
+  "context"
+  "github.com/Basis-Theory/basistheory-go/v3"
+)
+
+func main() {
+  configuration := basistheory.NewConfiguration()
+  apiClient := basistheory.NewAPIClient(configuration)
+  contextWithAPIKey := context.WithValue(context.Background(), basistheory.ContextAPIKeys, map[string]basistheory.APIKey{
+    "ApiKey": {Key: "key_N88mVGsp3sCXkykyN2EFED"},
+  })
+
+  createTokenRequest := *basistheory.NewCreateTokenRequest("Sensitive Value")
+  createTokenRequest.SetType("token")
+  createTokenRequest.SetMetadata(map[string]string{
+    "myMetadata": "myMetadataValue",
+  })
+  createTokenRequest.SetSearchIndexes([]string{"{{ data }}", "{{ data | last4}}"})
+  createTokenRequest.SetFingerprintExpression("{{ data }}")
+
+  privacy := *basistheory.NewPrivacy()
+  privacy.SetImpactLevel("moderate")
+  createTokenRequest.SetPrivacy(privacy)
+
+  createTokenResponse, createTokenHttpResponse, createErr := apiClient.TokensApi.Create(contextWithAPIKey).CreateTokenRequest(createTokenRequest).Execute()
+}
+```
+
 > Response
 
 ```json
@@ -310,6 +341,24 @@ with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_
     tokens = token_client.get()
 ```
 
+```go
+package main
+
+import (
+  "context"
+  "github.com/Basis-Theory/basistheory-go/v3"
+)
+
+func main() {
+  configuration := basistheory.NewConfiguration()
+  apiClient := basistheory.NewAPIClient(configuration)
+  contextWithAPIKey := context.WithValue(context.Background(), basistheory.ContextAPIKeys, map[string]basistheory.APIKey{
+    "ApiKey": {Key: "key_N88mVGsp3sCXkykyN2EFED"},
+  })
+
+  tokens, httpResponse, err := apiClient.TokensApi.Get(contextWithAPIKey).Execute()
+}
+```
 
 > Response
 
@@ -402,6 +451,25 @@ with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_
     token_client = tokens_api.TokensApi(api_client)
 
     token = token_client.get_by_id(id="c06d0789-0a38-40be-b7cc-c28a718f76f1")
+```
+
+```go
+package main
+
+import (
+  "context"
+  "github.com/Basis-Theory/basistheory-go/v3"
+)
+
+func main() {
+  configuration := basistheory.NewConfiguration()
+  apiClient := basistheory.NewAPIClient(configuration)
+  contextWithAPIKey := context.WithValue(context.Background(), basistheory.ContextAPIKeys, map[string]basistheory.APIKey{
+    "ApiKey": {Key: "key_N88mVGsp3sCXkykyN2EFED"},
+  })
+
+  token, httpResponse, err := apiClient.TokensApi.GetById(contextWithAPIKey, "c06d0789-0a38-40be-b7cc-c28a718f76f1").Execute()
+}
 ```
 
 > Response
@@ -506,6 +574,29 @@ with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_
     ))
 ```
 
+```go
+package main
+
+import (
+  "context"
+  "github.com/Basis-Theory/basistheory-go/v3"
+)
+
+func main() {
+  configuration := basistheory.NewConfiguration()
+  apiClient := basistheory.NewAPIClient(configuration)
+  contextWithAPIKey := context.WithValue(context.Background(), basistheory.ContextAPIKeys, map[string]basistheory.APIKey{
+    "ApiKey": {Key: "key_N88mVGsp3sCXkykyN2EFED"},
+  })
+
+  searchTokenRequest := *basistheory.NewSearchTokensRequest()
+  searchTokenRequest.SetQuery("data:6789 AND type:social_security_number")
+  searchTokenRequest.SetPage(1)
+  searchTokenRequest.SetSize(20)
+
+  tokens, httpResponse, err := apiClient.TokensApi.Search(contextWithAPIKey).SearchTokensRequest(searchTokenRequest).Execute()
+}
+```
 
 > Response
 
@@ -715,6 +806,25 @@ with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_
     token_client = tokens_api.TokensApi(api_client)
 
     token_client.delete(id="c06d0789-0a38-40be-b7cc-c28a718f76f1")
+```
+
+```go
+package main
+
+import (
+  "context"
+  "github.com/Basis-Theory/basistheory-go/v3"
+)
+
+func main() {
+  configuration := basistheory.NewConfiguration()
+  apiClient := basistheory.NewAPIClient(configuration)
+  contextWithAPIKey := context.WithValue(context.Background(), basistheory.ContextAPIKeys, map[string]basistheory.APIKey{
+    "ApiKey": {Key: "key_N88mVGsp3sCXkykyN2EFED"},
+  })
+
+  httpResponse, err := apiClient.TokensApi.Delete(contextWithAPIKey, "c06d0789-0a38-40be-b7cc-c28a718f76f1").Execute()
+}
 ```
 
 <span class="http-method delete">

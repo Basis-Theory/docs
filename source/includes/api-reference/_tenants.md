@@ -82,6 +82,25 @@ with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_
     tenant = tenants_client.get()
 ```
 
+```go
+package main
+
+import (
+  "context"
+  "github.com/Basis-Theory/basistheory-go/v3"
+)
+
+func main() {
+  configuration := basistheory.NewConfiguration()
+  apiClient := basistheory.NewAPIClient(configuration)
+  contextWithAPIKey := context.WithValue(context.Background(), basistheory.ContextAPIKeys, map[string]basistheory.APIKey{
+    "ApiKey": {Key: "key_N88mVGsp3sCXkykyN2EFED"},
+  })
+
+  tenant, httpResponse, err := apiClient.TenantsApi.Get(contextWithAPIKey).Execute()
+}
+```
+
 > Response
 
 ```json
@@ -173,6 +192,27 @@ with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_
     ))
 ```
 
+```go
+package main
+
+import (
+  "context"
+  "github.com/Basis-Theory/basistheory-go/v3"
+)
+
+func main() {
+  configuration := basistheory.NewConfiguration()
+  apiClient := basistheory.NewAPIClient(configuration)
+  contextWithAPIKey := context.WithValue(context.Background(), basistheory.ContextAPIKeys, map[string]basistheory.APIKey{
+    "ApiKey": {Key: "key_N88mVGsp3sCXkykyN2EFED"},
+  })
+
+  updateTenantRequest := *basistheory.NewUpdateTenantRequest("My Example Tenant")
+
+  tenant, httpResponse, err := apiClient.TenantsApi.Update(contextWithAPIKey).UpdateTenantRequest(updateTenantRequest).Execute()
+}
+```
+
 > Response
 
 ```json
@@ -251,6 +291,25 @@ with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_
     tenants_client.delete()
 ```
 
+```go
+package main
+
+import (
+  "context"
+  "github.com/Basis-Theory/basistheory-go/v3"
+)
+
+func main() {
+  configuration := basistheory.NewConfiguration()
+  apiClient := basistheory.NewAPIClient(configuration)
+  contextWithAPIKey := context.WithValue(context.Background(), basistheory.ContextAPIKeys, map[string]basistheory.APIKey{
+    "ApiKey": {Key: "key_N88mVGsp3sCXkykyN2EFED"},
+  })
+
+  httpResponse, err := apiClient.TenantsApi.Delete(contextWithAPIKey).Execute()
+}
+```
+
 <span class="http-method delete">
   <span class="box-method">DELETE</span>
   `https://api.basistheory.com/tenants/self`
@@ -302,6 +361,25 @@ with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_
     tenants_client = tenants_api.TenantsApi(api_client)
 
     tenant_usage_report = tenants_client.get_tenant_usage_report()
+```
+
+```go
+package main
+
+import (
+  "context"
+  "github.com/Basis-Theory/basistheory-go/v3"
+)
+
+func main() {
+  configuration := basistheory.NewConfiguration()
+  apiClient := basistheory.NewAPIClient(configuration)
+  contextWithAPIKey := context.WithValue(context.Background(), basistheory.ContextAPIKeys, map[string]basistheory.APIKey{
+    "ApiKey": {Key: "key_N88mVGsp3sCXkykyN2EFED"},
+  })
+
+  tenantUsageReport, httpResponse, err := apiClient.TenantsApi.GetTenantUsageReport(contextWithAPIKey).Execute()
+}
 ```
 
 > Response

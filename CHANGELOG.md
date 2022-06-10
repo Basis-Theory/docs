@@ -1,3 +1,10 @@
+# [1.47.0](https://github.com/Basis-Theory/docs/compare/v1.46.0...v1.47.0) (2022-06-10)
+
+
+### Features
+
+* adds documentation for all Go endpoints ([#198](https://github.com/Basis-Theory/docs/issues/198)) ([024687c](https://github.com/Basis-Theory/docs/commit/024687c59a82f2bf91369fe441c68a02a04ede68))
+
 # [1.46.0](https://github.com/Basis-Theory/docs/compare/v1.45.0...v1.46.0) (2022-06-08)
 
 

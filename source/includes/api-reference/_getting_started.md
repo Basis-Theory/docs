@@ -30,7 +30,7 @@ pip install basistheory
 ```
 
 ```go
-go get github.com/Basis-Theory/basistheory-go/v2
+go get github.com/Basis-Theory/basistheory-go/v3
 ```
 
 Our SDKs enable you to quickly and easily integrate with the API. Select one of the language tabs to see instructions on how to install the SDK and view code examples in that language.

@@ -39,6 +39,25 @@ with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_
     applications = applications_client.get(page=2, size=10)
 ```
 
+```go
+package main
+
+import (
+  "context"
+  "github.com/Basis-Theory/basistheory-go/v3"
+)
+
+func main() {
+  configuration := basistheory.NewConfiguration()
+  apiClient := basistheory.NewAPIClient(configuration)
+  contextWithAPIKey := context.WithValue(context.Background(), basistheory.ContextAPIKeys, map[string]basistheory.APIKey{
+    "ApiKey": {Key: "key_N88mVGsp3sCXkykyN2EFED"},
+  })
+
+  applications, httpResponse, err := apiClient.ApplicationsApi.Get(contextWithAPIKey).Page(2).Size(10).Execute()
+}
+```
+
 > Response
 
 ```json
