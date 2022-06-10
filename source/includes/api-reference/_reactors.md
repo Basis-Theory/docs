@@ -106,7 +106,7 @@ package main
 
 import (
   "context"
-  "github.com/Basis-Theory/basistheory-go/v2"
+  "github.com/Basis-Theory/basistheory-go/v3"
 )
 
 func main() {
@@ -127,7 +127,7 @@ func main() {
   application.SetId("45c124e7-6ab2-4899-b4d9-1388b0ba9d04")
   createReactorRequest.SetApplication(application)
 
-  reactor, response, error := apiClient.ReactorsApi.ReactorsCreate(contextWithAPIKey).CreateReactorRequest(createReactorRequest).Execute()
+  reactor, httpResponse, error := apiClient.ReactorsApi.Create(contextWithAPIKey).CreateReactorRequest(createReactorRequest).Execute()
 }
 ```
 
@@ -217,7 +217,7 @@ package main
 
 import (
   "context"
-  "github.com/Basis-Theory/basistheory-go/v2"
+  "github.com/Basis-Theory/basistheory-go/v3"
 )
 
 func main() {
@@ -227,7 +227,7 @@ func main() {
     "ApiKey": {Key: "key_N88mVGsp3sCXkykyN2EFED"},
   })
 
-  reactors, response, err := apiClient.ReactorsApi.ReactorsGet(contextWithAPIKey).Execute()
+  reactors, httpResponse, err := apiClient.ReactorsApi.Get(contextWithAPIKey).Execute()
 }
 ```
 
@@ -321,7 +321,7 @@ package main
 
 import (
   "context"
-  "github.com/Basis-Theory/basistheory-go/v2"
+  "github.com/Basis-Theory/basistheory-go/v3"
 )
 
 func main() {
@@ -331,7 +331,7 @@ func main() {
     "ApiKey": {Key: "key_N88mVGsp3sCXkykyN2EFED"},
   })
 
-  reactor, response, err := apiClient.ReactorsApi.ReactorsGetById(contextWithAPIKey, "5b493235-6917-4307-906a-2cd6f1a90b13").Execute()
+  reactor, httpResponse, err := apiClient.ReactorsApi.GetById(contextWithAPIKey, "5b493235-6917-4307-906a-2cd6f1a90b13").Execute()
 }
 ```
 
@@ -456,7 +456,7 @@ package main
 
 import (
   "context"
-  "github.com/Basis-Theory/basistheory-go/v2"
+  "github.com/Basis-Theory/basistheory-go/v3"
 )
 
 func main() {
@@ -474,7 +474,7 @@ func main() {
   application.SetId("45c124e7-6ab2-4899-b4d9-1388b0ba9d04")
   updateReactorRequest.SetApplication(application)
 
-  reactor, response, err := apiClient.ReactorsApi.ReactorsUpdate(contextWithAPIKey, "5b493235-6917-4307-906a-2cd6f1a90b13").UpdateReactorRequest(updateReactorRequest).Execute()
+  reactor, httpResponse, err := apiClient.ReactorsApi.Update(contextWithAPIKey, "5b493235-6917-4307-906a-2cd6f1a90b13").UpdateReactorRequest(updateReactorRequest).Execute()
 }
 ```
 
@@ -569,7 +569,7 @@ package main
 
 import (
   "context"
-  "github.com/Basis-Theory/basistheory-go/v2"
+  "github.com/Basis-Theory/basistheory-go/v3"
 )
 
 func main() {
@@ -579,7 +579,7 @@ func main() {
     "ApiKey": {Key: "key_N88mVGsp3sCXkykyN2EFED"},
   })
 
-  response, err := apiClient.ReactorsApi.ReactorsDelete(contextWithAPIKey, "fb124bba-f90d-45f0-9a59-5edca27b3b4a").Execute()
+  httpResponse, err := apiClient.ReactorsApi.Delete(contextWithAPIKey, "fb124bba-f90d-45f0-9a59-5edca27b3b4a").Execute()
 }
 ```
 
@@ -672,7 +672,7 @@ package main
 
 import (
   "context"
-  "github.com/Basis-Theory/basistheory-go/v2"
+  "github.com/Basis-Theory/basistheory-go/v3"
 )
 
 func main() {
@@ -688,7 +688,7 @@ func main() {
     "customer_id": "myCustomerId1234",
   })
 
-  reactResponse, response, err := apiClient.ReactorsApi.ReactorsReact(contextWithAPIKey, "5b493235-6917-4307-906a-2cd6f1a90b13").ReactRequest(reactRequest).Execute()
+  reacthttpResponse, httpResponse, err := apiClient.ReactorsApi.React(contextWithAPIKey, "5b493235-6917-4307-906a-2cd6f1a90b13").ReactRequest(reactRequest).Execute()
 }
 ```
 

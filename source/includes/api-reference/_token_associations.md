@@ -41,6 +41,25 @@ with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_
     tokens_client.create_association("c06d0789-0a38-40be-b7cc-c28a718f76f1", "c1e565009-1984-4638-8fca-dce8a82cc2af")
 ```
 
+```go
+package main
+
+import (
+  "context"
+  "github.com/Basis-Theory/basistheory-go/v3"
+)
+
+func main() {
+  configuration := basistheory.NewConfiguration()
+  apiClient := basistheory.NewAPIClient(configuration)
+  contextWithAPIKey := context.WithValue(context.Background(), basistheory.ContextAPIKeys, map[string]basistheory.APIKey{
+    "ApiKey": {Key: "key_N88mVGsp3sCXkykyN2EFED"},
+  })
+
+  httpResponse, err := apiClient.TokensApi.CreateAssociation(contextWithAPIKey, "c06d0789-0a38-40be-b7cc-c28a718f76f1", "c1e565009-1984-4638-8fca-dce8a82cc2af").Execute()
+}
+```
+
 <span class="http-method post">
   <span class="box-method">POST</span>
   `https://api.basistheory.com/tokens/{parent_id}/children/{child_id}`
@@ -110,6 +129,25 @@ with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_
     tokens_client = tokens_api.TokensApi(api_client)
 
     tokens_client.delete_association("c06d0789-0a38-40be-b7cc-c28a718f76f1", "c1e565009-1984-4638-8fca-dce8a82cc2af")
+```
+
+```go
+package main
+
+import (
+  "context"
+  "github.com/Basis-Theory/basistheory-go/v3"
+)
+
+func main() {
+  configuration := basistheory.NewConfiguration()
+  apiClient := basistheory.NewAPIClient(configuration)
+  contextWithAPIKey := context.WithValue(context.Background(), basistheory.ContextAPIKeys, map[string]basistheory.APIKey{
+    "ApiKey": {Key: "key_N88mVGsp3sCXkykyN2EFED"},
+  })
+
+  httpResponse, err := apiClient.TokensApi.DeleteAssociation(contextWithAPIKey, "c06d0789-0a38-40be-b7cc-c28a718f76f1", "c1e565009-1984-4638-8fca-dce8a82cc2af").Execute()
+}
 ```
 
 <span class="http-method delete">
@@ -202,6 +240,31 @@ with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_
     ))
 ```
 
+```go
+package main
+
+import (
+  "context"
+  "github.com/Basis-Theory/basistheory-go/v3"
+)
+
+func main() {
+  configuration := basistheory.NewConfiguration()
+  apiClient := basistheory.NewAPIClient(configuration)
+  contextWithAPIKey := context.WithValue(context.Background(), basistheory.ContextAPIKeys, map[string]basistheory.APIKey{
+    "ApiKey": {Key: "key_N88mVGsp3sCXkykyN2EFED"},
+  })
+
+  createTokenRequest := *basistheory.NewCreateTokenRequest("Sensitive Value")
+  createTokenRequest.SetType("token")
+  createTokenRequest.SetMetadata(map[string]string{
+    "nonSensitiveField": "Non-Sensitive Value",
+  })
+
+  token, httpResposne, err := apiClient.TokensApi.CreateChild(contextWithAPIKey, "c06d0789-0a38-40be-b7cc-c28a718f76f1").CreateTokenRequest(createTokenRequest).Execute()
+}
+```
+
 > Response
 
 ```json
@@ -292,6 +355,25 @@ with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_
     tokens_client = tokens_api.TokensApi(api_client)
 
     tokens = tokens_client.get_children("c06d0789-0a38-40be-b7cc-c28a718f76f1")
+```
+
+```go
+package main
+
+import (
+  "context"
+  "github.com/Basis-Theory/basistheory-go/v3"
+)
+
+func main() {
+  configuration := basistheory.NewConfiguration()
+  apiClient := basistheory.NewAPIClient(configuration)
+  contextWithAPIKey := context.WithValue(context.Background(), basistheory.ContextAPIKeys, map[string]basistheory.APIKey{
+    "ApiKey": {Key: "key_N88mVGsp3sCXkykyN2EFED"},
+  })
+
+  tokens, response, err := apiClient.TokensApi.GetChildren(contextWithAPIKey, "c06d0789-0a38-40be-b7cc-c28a718f76f1").Execute()
+}
 ```
 
 > Response

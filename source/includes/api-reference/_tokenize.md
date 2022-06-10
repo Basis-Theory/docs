@@ -51,6 +51,28 @@ with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_
     })
 ```
 
+```go
+package main
+
+import (
+  "context"
+  "github.com/Basis-Theory/basistheory-go/v3"
+)
+
+func main() {
+  configuration := basistheory.NewConfiguration()
+  apiClient := basistheory.NewAPIClient(configuration)
+  contextWithAPIKey := context.WithValue(context.Background(), basistheory.ContextAPIKeys, map[string]basistheory.APIKey{
+    "ApiKey": {Key: "key_N88mVGsp3sCXkykyN2EFED"},
+  })
+
+  tokens, httpResponse, err := apiClient.TokenizeApi.Tokenize(contextWithAPIKey).Body(map[string]interface{}{
+    "first_name": "John",
+    "last_name": "Doe",
+  }).Execute()
+}
+```
+
 > Create Basic Token Response
 
 ```json
@@ -132,6 +154,33 @@ with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_
       ],
       fingerprint_expression="{{ data }}"
     ))
+```
+
+```go
+package main
+
+import (
+  "context"
+  "github.com/Basis-Theory/basistheory-go/v3"
+)
+
+func main() {
+  configuration := basistheory.NewConfiguration()
+  apiClient := basistheory.NewAPIClient(configuration)
+  contextWithAPIKey := context.WithValue(context.Background(), basistheory.ContextAPIKeys, map[string]basistheory.APIKey{
+    "ApiKey": {Key: "key_N88mVGsp3sCXkykyN2EFED"},
+  })
+
+  tokens, httpResponse, err := apiClient.TokenizeApi.Tokenize(contextWithAPIKey).Body(map[string]interface{}{
+    "type": "token",
+    "data": "Sensitive Value",
+    "metadata": map[string]interface{}{
+      "nonSensitiveField": "Non-Sensitive Value",
+      },
+    "search_indexes": []string{"{{ data }}"},
+    "fingerprint_expression": "{{ data }}",
+  }).Execute()
+}
 ```
 
 > Create Token Response
@@ -231,6 +280,36 @@ with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_
         "nonSensitive": "Non-Sensitive Value"
       }
     ))
+```
+
+```go
+package main
+
+import (
+  "context"
+  "github.com/Basis-Theory/basistheory-go/v3"
+)
+
+func main() {
+  configuration := basistheory.NewConfiguration()
+  apiClient := basistheory.NewAPIClient(configuration)
+  contextWithAPIKey := context.WithValue(context.Background(), basistheory.ContextAPIKeys, map[string]basistheory.APIKey{
+    "ApiKey": {Key: "key_N88mVGsp3sCXkykyN2EFED"},
+  })
+
+  tokens, httpResponse, err := apiClient.TokenizeApi.Tokenize(contextWithAPIKey).Body(map[string]interface{}{
+    "type": "card",
+    "data": map[string]interface{}{
+      "number":           "4242424242424242",
+      "expiration_month": 12,
+      "expiration_year":  2025,
+      "cvc":              "123",
+    },
+    "metadata": map[string]interface{}{
+      "nonSensitiveField": "Non-Sensitive Value",
+    },
+  }).Execute()
+}
 ```
 
 > Create Card Response
@@ -358,6 +437,44 @@ with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_
             type="token",
             data="Sensitive Value"
         )])
+```
+
+```go
+package main
+
+import (
+  "context"
+  "github.com/Basis-Theory/basistheory-go/v3"
+)
+
+func main() {
+  configuration := basistheory.NewConfiguration()
+  apiClient := basistheory.NewAPIClient(configuration)
+  contextWithAPIKey := context.WithValue(context.Background(), basistheory.ContextAPIKeys, map[string]basistheory.APIKey{
+    "ApiKey": {Key: "key_N88mVGsp3sCXkykyN2EFED"},
+  })
+
+  tokens, httpResponse, err := apiClient.TokenizeApi.Tokenize(contextWithAPIKey).Body(map[string]interface{}{
+    "first_name": "John",
+    "last_name":  "Doe",
+    "card_token": map[string]interface{}{
+      "type": "card",
+      "data": map[string]interface{}{
+        "number":           "4242424242424242",
+        "expiration_month": 12,
+        "expiration_year":  2025,
+        "cvc":              "123",
+      },
+      "metadata": map[string]interface{}{
+        "nonSensitiveField": "Non-Sensitive Value",
+      },
+    },
+    "generic_token": map[string]interface{}{
+      "type": "token",
+      "data": "Sensitive Value",
+    },
+  }).Execute()
+}
 ```
 
 > Tokenize Array Response

@@ -83,6 +83,25 @@ with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_
     tenant_members = tenant_client.get_members()
 ```
 
+```go
+package main
+
+import (
+  "context"
+  "github.com/Basis-Theory/basistheory-go/v3"
+)
+
+func main() {
+  configuration := basistheory.NewConfiguration()
+  apiClient := basistheory.NewAPIClient(configuration)
+  contextWithAPIKey := context.WithValue(context.Background(), basistheory.ContextAPIKeys, map[string]basistheory.APIKey{
+    "ApiKey": {Key: "key_N88mVGsp3sCXkykyN2EFED"},
+  })
+
+  tenantMembers, httpResponse, err := apiClient.TenantsApi.GetMembers(contextWithAPIKey).Execute()
+}
+```
+
 > Response
 
 ```json
@@ -173,6 +192,25 @@ with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_
     tenant_client.delete_member(member_id="5540a02f-99e7-46de-8f41-1b3cf7b2a3d2")
 ```
 
+```go
+package main
+
+import (
+  "context"
+  "github.com/Basis-Theory/basistheory-go/v3"
+)
+
+func main() {
+  configuration := basistheory.NewConfiguration()
+  apiClient := basistheory.NewAPIClient(configuration)
+  contextWithAPIKey := context.WithValue(context.Background(), basistheory.ContextAPIKeys, map[string]basistheory.APIKey{
+    "ApiKey": {Key: "key_N88mVGsp3sCXkykyN2EFED"},
+  })
+
+  httpResponse, err := apiClient.TenantsApi.DeleteMember(contextWithAPIKey, "5540a02f-99e7-46de-8f41-1b3cf7b2a3d2").Execute()
+}
+```
+
 <span class="http-method delete">
   <span class="box-method">DELETE</span>
   `https://api.basistheory.com/tenants/self/members/{id}`
@@ -241,6 +279,27 @@ with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_
     created_invitation = tenant_client.create_invitation(create_tenant_invitation_request=CreateTenantInvitationRequest(
         email="jane@doe.com"
     ))
+```
+
+```go
+package main
+
+import (
+  "context"
+  "github.com/Basis-Theory/basistheory-go/v3"
+)
+
+func main() {
+  configuration := basistheory.NewConfiguration()
+  apiClient := basistheory.NewAPIClient(configuration)
+  contextWithAPIKey := context.WithValue(context.Background(), basistheory.ContextAPIKeys, map[string]basistheory.APIKey{
+    "ApiKey": {Key: "key_N88mVGsp3sCXkykyN2EFED"},
+  })
+
+  createTenantInvitationRequest := *basistheory.NewCreateTenantInvitationRequest("jane@doe.com")
+
+  createdInvitation, httpResponse, err := apiClient.TenantsApi.CreateInvitation(contextWithAPIKey).CreateTenantInvitationRequest(createTenantInvitationRequest).Execute()
+}
 ```
 
 > Response
@@ -318,6 +377,25 @@ with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_
     resent_invitation = tenant_client.resend_invitation(invitation_id="dfd0319e-e978-4d2a-9109-f8a9048088bd")
 ```
 
+```go
+package main
+
+import (
+  "context"
+  "github.com/Basis-Theory/basistheory-go/v3"
+)
+
+func main() {
+  configuration := basistheory.NewConfiguration()
+  apiClient := basistheory.NewAPIClient(configuration)
+  contextWithAPIKey := context.WithValue(context.Background(), basistheory.ContextAPIKeys, map[string]basistheory.APIKey{
+    "ApiKey": {Key: "key_N88mVGsp3sCXkykyN2EFED"},
+  })
+
+  resentInvitation, httpResponse, err := apiClient.TenantsApi.ResendInvitation(contextWithAPIKey, "dfd0319e-e978-4d2a-9109-f8a9048088bd").Execute()
+}
+```
+
 > Response
 
 ```json
@@ -384,6 +462,25 @@ with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_
     tenant_client = tenants_api.TenantsApi(api_client)
 
     invitations = tenant_client.get_invitations()
+```
+
+```go
+package main
+
+import (
+  "context"
+  "github.com/Basis-Theory/basistheory-go/v3"
+)
+
+func main() {
+  configuration := basistheory.NewConfiguration()
+  apiClient := basistheory.NewAPIClient(configuration)
+  contextWithAPIKey := context.WithValue(context.Background(), basistheory.ContextAPIKeys, map[string]basistheory.APIKey{
+    "ApiKey": {Key: "key_N88mVGsp3sCXkykyN2EFED"},
+  })
+
+  invitations, httpResponse, err := apiClient.TenantsApi.GetInvitations(contextWithAPIKey).Execute()
+}
 ```
 
 > Response
@@ -540,6 +637,25 @@ with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_
     tenant_client = tenants_api.TenantsApi(api_client)
 
     tenant_client.delete_invitation(invitation_id="fb32ea26-2185-4ad2-a7bf-2fe69c00ae13")
+```
+
+```go
+package main
+
+import (
+  "context"
+  "github.com/Basis-Theory/basistheory-go/v3"
+)
+
+func main() {
+  configuration := basistheory.NewConfiguration()
+  apiClient := basistheory.NewAPIClient(configuration)
+  contextWithAPIKey := context.WithValue(context.Background(), basistheory.ContextAPIKeys, map[string]basistheory.APIKey{
+    "ApiKey": {Key: "key_N88mVGsp3sCXkykyN2EFED"},
+  })
+
+  httpResponse, err := apiClient.TenantsApi.DeleteInvitation(contextWithAPIKey, "fb32ea26-2185-4ad2-a7bf-2fe69c00ae13").Execute()
+}
 ```
 
 <span class="http-method delete">
