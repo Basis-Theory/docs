@@ -5,15 +5,16 @@ Tenants provide a way to logically group your Applications and tokens. Common us
 
 ## Tenant Object
 
-| Attribute     | Type     | Description                                                                                 |
-|---------------|----------|---------------------------------------------------------------------------------------------|
-| `id`          | *uuid*   | Unique identifier of the Tenants                                                            |
-| `owner_id`    | *uuid*   | The user ID which owns the Tenants                                                          |
-| `name`        | *string* | The name of the Tenants                                                                     |
-| `created_by`  | *uuid*   | (Optional) The ID of the user that created the Tenant                                       |
-| `created_at`  | *date*   | (Optional) Created date of the Tenant in ISO 8601 format                                    |
-| `modified_by` | *uuid*   | (Optional) The ID of the user or [Application](#applications) that last modified the Tenant |
-| `modified_at` | *date*   | (Optional) Last modified date of the Tenant in ISO 8601 format                              |
+| Attribute     | Type                                               | Description                                                                                 |
+|---------------|----------------------------------------------------|---------------------------------------------------------------------------------------------|
+| `id`          | *uuid*                                             | Unique identifier of the Tenant                                                             |
+| `owner_id`    | *uuid*                                             | The user ID which owns the Tenant                                                           |
+| `name`        | *string*                                           | The name of the Tenant                                                                      |
+| `settings`    | [Tenant Settings](#tenants-tenant-settings-object) | The setting for the Tenant                                                                  |
+| `created_by`  | *uuid*                                             | (Optional) The ID of the user that created the Tenant                                       |
+| `created_at`  | *date*                                             | (Optional) Created date of the Tenant in ISO 8601 format                                    |
+| `modified_by` | *uuid*                                             | (Optional) The ID of the user or [Application](#applications) that last modified the Tenant |
+| `modified_at` | *date*                                             | (Optional) Last modified date of the Tenant in ISO 8601 format                              |
 
 ## Tenant Usage Report Object
 
@@ -39,6 +40,12 @@ Tenants provide a way to logically group your Applications and tokens. Common us
 |-------------------|--------|-------------------------------------------------|
 | `count`           | *long* | Number of tokens                                |
 | `last_created_at` | *date* | (Optional) Last created date in ISO 8601 format |
+
+## Tenant Settings Object
+
+| Attribute            | Type       | Description                                                    |
+|----------------------|------------|----------------------------------------------------------------|
+| `deduplicate_tokens` | *string*   | (Bool) Whether tokens are deduplicated on creation and updates |
 
 ## Get a Tenant
 
@@ -101,6 +108,9 @@ func main() {
   "id": "f88da999-b124-4a14-acde-cbc121444f14",
   "owner_id": "97cec6e8-a143-4fb4-9ab0-cf7e49242d21",
   "name": "My Tenant",
+  "settings": {
+    "deduplicate_tokens": "false"
+  },
   "created_by": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
   "created_at": "2020-09-15T15:53:00+00:00",
   "modified_by": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
@@ -136,7 +146,10 @@ curl "https://api.basistheory.com/tenants/self" \
   -H "Content-Type: application/json" \
   -X "PUT" \
   -d '{
-    "name": "My Example Tenant"
+    "name": "My Example Tenant",
+    "settings": {
+      "deduplicate_tokens": "true"
+    }
   }'
 ```
 
@@ -147,6 +160,9 @@ const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
 
 const tenant = await bt.tenants.update({
   name: 'My Example Tenant',
+  settings: {
+    "deduplicate_tokens": "true"
+  }
 });
 ```
 
@@ -157,6 +173,9 @@ var client = new TenantClient("key_N88mVGsp3sCXkykyN2EFED");
 
 var tenant = await client.UpdateAsync(new Tenant {
   Name = "My Example Tenant"
+  Settings = new Dictionary<string, string> {
+    { "deduplicate_tokens",  "true" }
+  },
 });
 ```
 
@@ -201,6 +220,9 @@ func main() {
   "id": "f88da999-b124-4a14-acde-cbc121444f14",
   "owner_id": "97cec6e8-a143-4fb4-9ab0-cf7e49242d21",
   "name": "My Example Tenant",
+  "settings": {
+    "deduplicate_tokens": "true"
+  },
   "created_by": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
   "created_at": "2020-09-15T15:53:00+00:00",
   "modified_by": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
@@ -223,9 +245,10 @@ Update the Tenant associated with the provided `BT-API-KEY`.
 
 ### Request Parameters
 
-| Attribute | Required | Type     | Default | Description                                           |
-|-----------|----------|----------|---------|-------------------------------------------------------|
-| `name`    | true     | *string* | `null`  | The name of the Tenant. Has a maximum length of `200` |
+| Attribute  | Required | Type     | Default                                            | Description                                           |
+|------------|----------|----------|----------------------------------------------------|-------------------------------------------------------|
+| `name`     | true     | *string* | `null`                                             | The name of the Tenant. Has a maximum length of `200` |
+| `settings` | false    | *string* | [Tenant Settings](#tenants-tenant-settings-object) | The settings for the Tenant                           |
 
 ### Response
 

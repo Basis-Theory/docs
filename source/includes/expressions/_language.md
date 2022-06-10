@@ -12,7 +12,8 @@ rendered when the expression is evaluated, and they are formed by wrapping a sta
 
 The variables that are available for reference within an object expression depends on the context in which the expression is used.
 When including expressions during token creation (e.g. within `search_indexes` or `fingerprint_expression`), 
-the `data` variable is automatically bound to the token's `data` value.
+the `data` variable is automatically bound to the token's `data` value. `metadata` is also available for expressions within
+`fingerprint_expression`.
 
 When including expressions within Reactor or Proxy requests, token ids may be specified within object expressions, 
 and each token id will be bound to the corresponding token's data value. 
