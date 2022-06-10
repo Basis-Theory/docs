@@ -570,6 +570,9 @@ _iub.csConfiguration = {"ccpaAcknowledgeOnLoad":true,"consentOnContinuedBrowsing
                       <a href="#tenants-token-type-metrics-object" class="toc-h2 toc-link" data-title="Token Type Metrics Object">Token Type Metrics Object</a>
                     </li>
                     <li>
+                      <a href="#tenants-tenant-settings-object" class="toc-h2 toc-link" data-title="Tenant Settings Object">Tenant Settings Object</a>
+                    </li>
+                    <li>
                       <a href="#tenants-get-a-tenant" class="toc-h2 toc-link" data-title="Get a Tenant">Get a Tenant</a>
                     </li>
                     <li>
@@ -5511,17 +5514,22 @@ a single complex token that contains several of the request parameters. </p>
 <tr>
 <td><code>id</code></td>
 <td><em>uuid</em></td>
-<td>Unique identifier of the Tenants</td>
+<td>Unique identifier of the Tenant</td>
 </tr>
 <tr>
 <td><code>owner_id</code></td>
 <td><em>uuid</em></td>
-<td>The user ID which owns the Tenants</td>
+<td>The user ID which owns the Tenant</td>
 </tr>
 <tr>
 <td><code>name</code></td>
 <td><em>string</em></td>
-<td>The name of the Tenants</td>
+<td>The name of the Tenant</td>
+</tr>
+<tr>
+<td><code>settings</code></td>
+<td><a href="#tenants-tenant-settings-object">Tenant Settings</a></td>
+<td>The setting for the Tenant</td>
 </tr>
 <tr>
 <td><code>created_by</code></td>
@@ -5605,6 +5613,20 @@ a single complex token that contains several of the request parameters. </p>
 <td>(Optional) Last created date in ISO 8601 format</td>
 </tr>
 </tbody></table>
+<h2 id='tenants-tenant-settings-object'>Tenant Settings Object</h2>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>deduplicate_tokens</code></td>
+<td><em>string</em></td>
+<td>(Bool) Whether tokens are deduplicated on creation and updates</td>
+</tr>
+</tbody></table>
 <h2 id='tenants-get-a-tenant'>Get a Tenant</h2>
 <blockquote>
 <p>Request</p>
@@ -5652,6 +5674,9 @@ a single complex token that contains several of the request parameters. </p>
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f88da999-b124-4a14-acde-cbc121444f14"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"owner_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"97cec6e8-a143-4fb4-9ab0-cf7e49242d21"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My Tenant"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"settings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"deduplicate_tokens"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
   </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"modified_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
@@ -5679,7 +5704,10 @@ a single complex token that contains several of the request parameters. </p>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   <span class="nt">-X</span> <span class="s2">"PUT"</span> <span class="se">\</span>
   <span class="nt">-d</span> <span class="s1">'{
-    "name": "My Example Tenant"
+    "name": "My Example Tenant",
+    "settings": {
+      "deduplicate_tokens": "true"
+    }
   }'</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">BasisTheory</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@basis-theory/basis-theory-js</span><span class="dl">'</span><span class="p">;</span>
 
@@ -5687,6 +5715,9 @@ a single complex token that contains several of the request parameters. </p>
 
 <span class="kd">const</span> <span class="nx">tenant</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">bt</span><span class="p">.</span><span class="nx">tenants</span><span class="p">.</span><span class="nx">update</span><span class="p">({</span>
   <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">My Example Tenant</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">settings</span><span class="p">:</span> <span class="p">{</span>
+    <span class="dl">"</span><span class="s2">deduplicate_tokens</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">true</span><span class="dl">"</span>
+  <span class="p">}</span>
 <span class="p">});</span>
 </code></pre></div><div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="k">using</span> <span class="nn">BasisTheory.net.Tenants</span><span class="p">;</span>
 
@@ -5694,6 +5725,9 @@ a single complex token that contains several of the request parameters. </p>
 
 <span class="kt">var</span> <span class="n">tenant</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">UpdateAsync</span><span class="p">(</span><span class="k">new</span> <span class="n">Tenant</span> <span class="p">{</span>
   <span class="n">Name</span> <span class="p">=</span> <span class="s">"My Example Tenant"</span>
+  <span class="n">Settings</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="kt">string</span><span class="p">&gt;</span> <span class="p">{</span>
+    <span class="p">{</span> <span class="s">"deduplicate_tokens"</span><span class="p">,</span>  <span class="s">"true"</span> <span class="p">}</span>
+  <span class="p">},</span>
 <span class="p">});</span>
 </code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">basistheory</span>
 <span class="kn">from</span> <span class="nn">basistheory.api</span> <span class="kn">import</span> <span class="n">tenants_api</span>
@@ -5731,6 +5765,9 @@ a single complex token that contains several of the request parameters. </p>
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f88da999-b124-4a14-acde-cbc121444f14"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"owner_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"97cec6e8-a143-4fb4-9ab0-cf7e49242d21"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My Example Tenant"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"settings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"deduplicate_tokens"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
   </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"modified_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
@@ -5763,6 +5800,13 @@ a single complex token that contains several of the request parameters. </p>
 <td><em>string</em></td>
 <td><code>null</code></td>
 <td>The name of the Tenant. Has a maximum length of <code>200</code></td>
+</tr>
+<tr>
+<td><code>settings</code></td>
+<td>false</td>
+<td><em>string</em></td>
+<td><a href="#tenants-tenant-settings-object">Tenant Settings</a></td>
+<td>The settings for the Tenant</td>
 </tr>
 </tbody></table>
 <h3 id='tenants-update-tenant-response'>Response</h3>
@@ -6689,7 +6733,7 @@ Token Types define the rules around a data type such as validation requirements,
 </tr>
 <tr>
 <td><strong>Default Fingerprint Expression</strong></td>
-<td>None</td>
+<td><code>{{ data &#124; stringify}}</code></td>
 </tr>
 </tbody></table>
 <h2 id='token-types-card'>Card</h2>
@@ -7063,7 +7107,7 @@ Token Types define the rules around a data type such as validation requirements,
 <tr>
 <td><code>fingerprint</code></td>
 <td><em>string</em></td>
-<td>Uniquely identifies the contents of this token. See <a href="#token-types">Token Types</a> for a list of which token types support fingerprinting.</td>
+<td>Uniquely identifies the contents of this token. See <a href="#token-types">Token Types</a> for the default expression for each token type.</td>
 </tr>
 <tr>
 <td><code>privacy</code></td>
@@ -7373,7 +7417,8 @@ but the plaintext card data will not be returned. Instead, the restriction polic
       "{{ data }}",
       "{{ data | last4}}"
     ],
-    "fingerprint_expression": "{{ data }}"
+    "fingerprint_expression": "{{ data }}",
+    "deduplicate_token": true,
   }'</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">BasisTheory</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@basis-theory/basis-theory-js</span><span class="dl">'</span><span class="p">;</span>
 
@@ -7392,7 +7437,8 @@ but the plaintext card data will not be returned. Instead, the restriction polic
     <span class="dl">'</span><span class="s1">{{ data }}</span><span class="dl">'</span><span class="p">,</span>
     <span class="dl">'</span><span class="s1">{{ data | last4}}</span><span class="dl">'</span>
   <span class="p">],</span>
-  <span class="na">fingerprintExpression</span><span class="p">:</span> <span class="dl">"</span><span class="s2">{{ data }}</span><span class="dl">"</span>
+  <span class="na">fingerprintExpression</span><span class="p">:</span> <span class="dl">"</span><span class="s2">{{ data }}</span><span class="dl">"</span><span class="p">,</span>
+  <span class="na">deduplicateToken</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
 <span class="p">});</span>
 </code></pre></div><div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="k">using</span> <span class="nn">BasisTheory.net.Tokens</span><span class="p">;</span>
 
@@ -7411,7 +7457,8 @@ but the plaintext card data will not be returned. Instead, the restriction polic
     <span class="s">"{{ data }}"</span><span class="p">,</span>
     <span class="s">"{{ data | last4}}"</span>
   <span class="p">}</span>
-  <span class="n">FingerprintExpression</span> <span class="p">=</span> <span class="s">"{{ data }}"</span>
+  <span class="n">FingerprintExpression</span> <span class="p">=</span> <span class="s">"{{ data }}"</span><span class="p">,</span>
+  <span class="n">DeduplicateToken</span> <span class="p">=</span> <span class="k">true</span><span class="p">,</span>
 <span class="p">});</span>
 </code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">basistheory</span>
 <span class="kn">from</span> <span class="nn">basistheory.api</span> <span class="kn">import</span> <span class="n">tokens_api</span>
@@ -7542,6 +7589,20 @@ but the plaintext card data will not be returned. Instead, the restriction polic
 <td><em>array</em></td>
 <td><code>null</code></td>
 <td>Array of <a href="#expressions">expressions</a> used to generate indexes to be able to search against.</td>
+</tr>
+<tr>
+<td><code>fingerprint_expression</code></td>
+<td>false</td>
+<td><em>string</em></td>
+<td><code>{{ data &#124; stringify }}</code></td>
+<td><a href="#expressions">Expressions</a> used to fingerprint your token.</td>
+</tr>
+<tr>
+<td><code>deduplicate_token</code></td>
+<td>false</td>
+<td><em>bool</em></td>
+<td><code>null</code></td>
+<td>Whether the token is deduplicated on creation.</td>
 </tr>
 </tbody></table>
 

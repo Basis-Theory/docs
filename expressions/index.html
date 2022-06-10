@@ -509,7 +509,8 @@ rendered when the expression is evaluated, and they are formed by wrapping a sta
 
 <p>The variables that are available for reference within an object expression depends on the context in which the expression is used.
 When including expressions during token creation (e.g. within <code>search_indexes</code> or <code>fingerprint_expression</code>), 
-the <code>data</code> variable is automatically bound to the token&#39;s <code>data</code> value.</p>
+the <code>data</code> variable is automatically bound to the token&#39;s <code>data</code> value. <code>metadata</code> is also available for expressions within
+<code>fingerprint_expression</code>.</p>
 
 <p>When including expressions within Reactor or Proxy requests, token ids may be specified within object expressions, 
 and each token id will be bound to the corresponding token&#39;s data value. 
@@ -1650,8 +1651,8 @@ Fingerprints are cryptographically secure and cannot be reversed to recover the 
 so they are safe to store in your application and used to compare tokens without retrieving plaintext token data (e.g. for token de-duplication).</p>
 
 <p>When <a href="/#tokens-create-token">creating a token</a>, fingerprint expression can be specified within the request.
-You are able to reference the <code>data</code> variable within an <a href="#language-objects">object</a> expression -
-<code>data</code> will be bound to the provided token data, which may either be a complex or primitive value, based on your usage.</p>
+You are able to reference the <code>data</code> and <code>metadata</code> variable within an <a href="#language-objects">object</a> expression -
+<code>data</code> and <code>metadata</code> will be bound to the provided token data and metadata, respectively.</p>
 <h2 id='fingerprints-examples'>Examples</h2>
 <ul>
 <li><a href="#search-indexes-examples-indexing-primitive-tokens">Fingerprinting Primitive Tokens</a></li>
