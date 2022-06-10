@@ -299,7 +299,7 @@ package main
 
 import (
   "context"
-  "github.com/Basis-Theory/basistheory-go/v2"
+  "github.com/Basis-Theory/basistheory-go/v3"
 )
 
 func main() {
@@ -338,7 +338,7 @@ func main() {
   requestParameters = append(requestParameters, reactorFormulaRequestParameter2)
   createReactorFormulaRequest.SetRequestParameters(requestParameters)
 
-  reactorFormula, response, err := apiClient.ReactorFormulasApi.ReactorFormulasCreate(contextWithAPIKey).CreateReactorFormulaRequest(createReactorFormulaRequest).Execute()
+  reactorFormula, httpResponse, err := apiClient.ReactorFormulasApi.Create(contextWithAPIKey).CreateReactorFormulaRequest(createReactorFormulaRequest).Execute()
 }
 ```
 
@@ -458,7 +458,7 @@ package main
 
 import (
   "context"
-  "github.com/Basis-Theory/basistheory-go/v2"
+  "github.com/Basis-Theory/basistheory-go/v3"
 )
 
 func main() {
@@ -468,7 +468,7 @@ func main() {
     "ApiKey": {Key: "key_N88mVGsp3sCXkykyN2EFED"},
   })
 
-  reactorFormulas, response, err := apiClient.ReactorFormulasApi.ReactorFormulasGet(contextWithAPIKey).Execute()
+  reactorFormulas, httpResponse, err := apiClient.ReactorFormulasApi.Get(contextWithAPIKey).Execute()
 }
 ```
 
@@ -591,7 +591,7 @@ package main
 
 import (
   "context"
-  "github.com/Basis-Theory/basistheory-go/v2"
+  "github.com/Basis-Theory/basistheory-go/v3"
 )
 
 func main() {
@@ -601,7 +601,7 @@ func main() {
     "ApiKey": {Key: "key_N88mVGsp3sCXkykyN2EFED"},
   })
 
-  reactorFormula, response, err := apiClient.ReactorFormulasApi.ReactorFormulasGetById(contextWithAPIKey, "17069df1-80f4-439e-86a7-4121863e4678").Execute()
+  reactorFormula, httpResponse, err := apiClient.ReactorFormulasApi.GetById(contextWithAPIKey, "17069df1-80f4-439e-86a7-4121863e4678").Execute()
 }
 ```
 
@@ -869,7 +869,7 @@ package main
 
 import (
   "context"
-  "github.com/Basis-Theory/basistheory-go/v2"
+  "github.com/Basis-Theory/basistheory-go/v3"
 )
 
 func main() {
@@ -909,7 +909,7 @@ func main() {
   requestParameters = append(requestParameters, reactorFormulaRequestParameter2)
   updateReactorFormulaRequest.SetRequestParameters(requestParameters)
 
-  reactorFormula, response, err := apiClient.ReactorFormulasApi.ReactorFormulasUpdate(contextWithAPIKey, "17069df1-80f4-439e-86a7-4121863e4678").UpdateReactorFormulaRequest(updateReactorFormulaRequest).Execute()
+  reactorFormula, httpResponse, err := apiClient.ReactorFormulasApi.Update(contextWithAPIKey, "17069df1-80f4-439e-86a7-4121863e4678").UpdateReactorFormulaRequest(updateReactorFormulaRequest).Execute()
 }
 ```
 
@@ -1035,7 +1035,7 @@ package main
 
 import (
   "context"
-  "github.com/Basis-Theory/basistheory-go/v2"
+  "github.com/Basis-Theory/basistheory-go/v3"
 )
 
 func main() {
@@ -1045,7 +1045,7 @@ func main() {
     "ApiKey": {Key: "key_N88mVGsp3sCXkykyN2EFED"},
   })
 
-  response, err := apiClient.ReactorFormulasApi.ReactorFormulasDelete(contextWithAPIKey, "17069df1-80f4-439e-86a7-4121863e4678").Execute()
+  httpResponse, err := apiClient.ReactorFormulasApi.Delete(contextWithAPIKey, "17069df1-80f4-439e-86a7-4121863e4678").Execute()
 }
 ```
 
