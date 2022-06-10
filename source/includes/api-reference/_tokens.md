@@ -17,7 +17,6 @@
 | `modified_at`            | *date*                                                  | (Optional) Last modified date of the token in ISO 8601 format                                                                   |
 | `search_indexes`         | *array*                                                 | (Optional) Array of search index [expressions](/expressions/#search-indexes) used when creating the token.                      |
 | `fingerprint_expression` | *string*                                                | (Optional) An [expression](/expressions/#fingerprints) defining the value to fingerprint when creating the token.               |
-| `deduplicate_token`      | *bool*                                                  | (Optional) A boolean defining whether tokens are deduplicated when creating the token.                                          |
 
 ### Privacy Object
 
