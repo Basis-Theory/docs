@@ -261,7 +261,6 @@ func main() {
     "{{ data | last4}}"
   ],
   "fingerprint_expression": "{{ data }}",
-  "deduplicate_token": true,
   "created_by": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
   "created_at": "2020-09-15T15:53:00+00:00"
 }
