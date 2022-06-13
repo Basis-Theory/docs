@@ -231,6 +231,7 @@ func main() {
   })
   createTokenRequest.SetSearchIndexes([]string{"{{ data }}", "{{ data | last4}}"})
   createTokenRequest.SetFingerprintExpression("{{ data }}")
+  createTokenRequest.SetDeduplicateToken(true)
 
   privacy := *basistheory.NewPrivacy()
   privacy.SetImpactLevel("moderate")
