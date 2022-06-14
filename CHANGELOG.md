@@ -1,3 +1,10 @@
+# [1.50.0](https://github.com/Basis-Theory/docs/compare/v1.49.0...v1.50.0) (2022-06-14)
+
+
+### Features
+
+* Documenting proxy header limitations ([#201](https://github.com/Basis-Theory/docs/issues/201)) ([22aa90d](https://github.com/Basis-Theory/docs/commit/22aa90d594cec67c2394182400720a92e3917ecd))
+
 # [1.49.0](https://github.com/Basis-Theory/docs/compare/v1.48.0...v1.49.0) (2022-06-14)
 
 
