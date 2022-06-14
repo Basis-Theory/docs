@@ -99,7 +99,6 @@ module.exports = async function (req) {
       tokenize: {} // sensitive data that should be tokenized
   };
 };
-
 ```
 
 For more information about writing your own code for a Reactor Formula, check out [our guide](https://developers.basistheory.com/guides/run-your-own-code-in-a-reactor/).

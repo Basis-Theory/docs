@@ -124,7 +124,7 @@ Get a list of logs for the Tenant.
 Returns a [paginated object](#pagination) with the `data` property containing an array of [logs](#log-object). Providing any query parameters will filter the results. Returns [an error](#errors) if logs could not be retrieved.
 
 
-## List Log Entity Types
+## List Entity Types
 
 > Request
 
