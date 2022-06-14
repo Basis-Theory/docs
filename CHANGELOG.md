@@ -1,3 +1,10 @@
+# [1.49.0](https://github.com/Basis-Theory/docs/compare/v1.48.0...v1.49.0) (2022-06-14)
+
+
+### Features
+
+* adds deduplicate_token on Token and settings on Tenant for Go ([#200](https://github.com/Basis-Theory/docs/issues/200)) ([9f8be3a](https://github.com/Basis-Theory/docs/commit/9f8be3a70b45b77fda3d35dcfc5bbd78e247f2c0))
+
 # [1.48.0](https://github.com/Basis-Theory/docs/compare/v1.47.0...v1.48.0) (2022-06-10)
 
 

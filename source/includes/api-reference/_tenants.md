@@ -208,6 +208,9 @@ func main() {
   })
 
   updateTenantRequest := *basistheory.NewUpdateTenantRequest("My Example Tenant")
+  updateTenantRequest.SetSettings(map[string]string{
+    "deduplicate_tokens": "true",
+  })
 
   tenant, httpResponse, err := apiClient.TenantsApi.Update(contextWithAPIKey).UpdateTenantRequest(updateTenantRequest).Execute()
 }
