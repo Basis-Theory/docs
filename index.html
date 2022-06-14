@@ -5754,6 +5754,9 @@ a single complex token that contains several of the request parameters. </p>
   <span class="p">})</span>
 
   <span class="n">updateTenantRequest</span> <span class="o">:=</span> <span class="o">*</span><span class="n">basistheory</span><span class="o">.</span><span class="n">NewUpdateTenantRequest</span><span class="p">(</span><span class="s">"My Example Tenant"</span><span class="p">)</span>
+  <span class="n">updateTenantRequest</span><span class="o">.</span><span class="n">SetSettings</span><span class="p">(</span><span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">string</span><span class="p">{</span>
+    <span class="s">"deduplicate_tokens"</span><span class="o">:</span> <span class="s">"true"</span><span class="p">,</span>
+  <span class="p">})</span>
 
   <span class="n">tenant</span><span class="p">,</span> <span class="n">httpResponse</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">apiClient</span><span class="o">.</span><span class="n">TenantsApi</span><span class="o">.</span><span class="n">Update</span><span class="p">(</span><span class="n">contextWithAPIKey</span><span class="p">)</span><span class="o">.</span><span class="n">UpdateTenantRequest</span><span class="p">(</span><span class="n">updateTenantRequest</span><span class="p">)</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
 <span class="p">}</span>
@@ -7503,6 +7506,7 @@ but the plaintext card data will not be returned. Instead, the restriction polic
   <span class="p">})</span>
   <span class="n">createTokenRequest</span><span class="o">.</span><span class="n">SetSearchIndexes</span><span class="p">([]</span><span class="kt">string</span><span class="p">{</span><span class="s">"{{ data }}"</span><span class="p">,</span> <span class="s">"{{ data | last4}}"</span><span class="p">})</span>
   <span class="n">createTokenRequest</span><span class="o">.</span><span class="n">SetFingerprintExpression</span><span class="p">(</span><span class="s">"{{ data }}"</span><span class="p">)</span>
+  <span class="n">createTokenRequest</span><span class="o">.</span><span class="n">SetDeduplicateToken</span><span class="p">(</span><span class="no">true</span><span class="p">)</span>
 
   <span class="n">privacy</span> <span class="o">:=</span> <span class="o">*</span><span class="n">basistheory</span><span class="o">.</span><span class="n">NewPrivacy</span><span class="p">()</span>
   <span class="n">privacy</span><span class="o">.</span><span class="n">SetImpactLevel</span><span class="p">(</span><span class="s">"moderate"</span><span class="p">)</span>
@@ -7574,7 +7578,7 @@ but the plaintext card data will not be returned. Instead, the restriction polic
 <td>false</td>
 <td><em><a href="#tokens-token-object-privacy-object">privacy object</a></em></td>
 <td><code>null</code></td>
-<td>Token Privacy Settings overrides. Overrides must be a higher specificity level than the default or minimum setting for the <a href="#token-token-types">Token Type</a>.</td>
+<td>Token Privacy Settings overrides. Overrides must be a higher specificity level than the default or minimum setting for the <a href="#token-types">Token Type</a>.</td>
 </tr>
 <tr>
 <td><code>metadata</code></td>
@@ -7588,14 +7592,14 @@ but the plaintext card data will not be returned. Instead, the restriction polic
 <td>false</td>
 <td><em>array</em></td>
 <td><code>null</code></td>
-<td>Array of <a href="#expressions">expressions</a> used to generate indexes to be able to search against.</td>
+<td>Array of <a href="/expressions/#search-indexes">expressions</a> used to generate indexes to be able to search against.</td>
 </tr>
 <tr>
 <td><code>fingerprint_expression</code></td>
 <td>false</td>
 <td><em>string</em></td>
 <td><code>{{ data &#124; stringify }}</code></td>
-<td><a href="#expressions">Expressions</a> used to fingerprint your token.</td>
+<td><a href="/expressions/#fingerprints">Expressions</a> used to fingerprint your token.</td>
 </tr>
 <tr>
 <td><code>deduplicate_token</code></td>
@@ -8115,7 +8119,7 @@ based on the <code>search_indexes</code> provided in the <a href="#tokens-create
 <li><code>{{ data | last4 }}</code> which results in the last 4 digits of the value, eg. <code>6789</code></li>
 </ul>
 
-<p>For generic tokens (type <code>token</code>), default indexes are not applied, and you are free to specify any desired indexes within the <code>search_indexes</code> property during <a href="#tokens-create-token">token creation</a>. The <code>search_indexes</code> property supports the use of <a href="#expressions">expressions</a>, which are based on the <a href="https://shopify.github.io/liquid/">Liquid templating language</a>. Each expression must result in a single value, which cannot be null or empty, otherwise a 400 error will be returned.</p>
+<p>For generic tokens (type <code>token</code>), default indexes are not applied, and you are free to specify any desired indexes within the <code>search_indexes</code> property during <a href="#tokens-create-token">token creation</a>. The <code>search_indexes</code> property supports the use of <a href="/expressions/#search-indexes">expressions</a>, which are based on the <a href="https://shopify.github.io/liquid/">Liquid templating language</a>. Each expression must result in a single value, which cannot be null or empty, otherwise a 400 error will be returned.</p>
 
 <p>Any expressions contained within <code>search_indexes</code> will be evaluated against the token data before generating indexes. Token data searches will only return a token if there is an exact match on one of the evaluated <code>search_indexes</code>; full wildcard search is not currently supported.</p>
 
