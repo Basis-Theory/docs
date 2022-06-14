@@ -1,3 +1,10 @@
+# [1.51.0](https://github.com/Basis-Theory/docs/compare/v1.50.0...v1.51.0) (2022-06-14)
+
+
+### Features
+
+* fixes inconsistencies in docs ([#202](https://github.com/Basis-Theory/docs/issues/202)) ([df4a40f](https://github.com/Basis-Theory/docs/commit/df4a40fd837830e49bb736ab3bcfbec31f140917))
+
 # [1.50.0](https://github.com/Basis-Theory/docs/compare/v1.49.0...v1.50.0) (2022-06-14)
 
 
