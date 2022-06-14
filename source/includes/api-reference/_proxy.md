@@ -114,12 +114,13 @@ The reactor will receive a JSON object with the following payload:
 {
   args: {
     body, // detokenized request body
-    headers //request headers
+    headers // request headers
   }
 }
 ```
 
-The Reactor must respond with the following object:
+Within the reactor, the headers and body of the proxy request can be changed.
+The Reactor must respond with the following object, which defines the request `body` and `headers` to be sent in the request to the proxy `destination_url`:
 
 <div class="center-column"></div>
 ```js
@@ -131,7 +132,14 @@ The Reactor must respond with the following object:
 }
 ```
 
-Within the reactor, the headers and body of the request can be changed.
+<aside class="notice">
+  <span>
+    Request header names can only contain alphanumeric characters, hyphens, and underscores. 
+    Headers names containing other characters will be discarded from the request.
+    Response headers are unrestricted. If you must forward a restricted header to the proxy destination, 
+    as a workaround, you may add this header manually from within a request reactor.
+  </span>
+</aside>
 
 In some situations, you may want to tokenize or detokenize part of the request body. In order to do this, set the `application.id` property when [creating your reactor](#reactors-create-reactor). This will inject a pre-configured Basis Theory JS instance into the request:
 
