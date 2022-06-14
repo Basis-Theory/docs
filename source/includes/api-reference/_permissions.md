@@ -118,12 +118,6 @@ func main() {
 }
 ```
 
-### Query Parameters
-
-| Parameter          | Required | Type     | Default | Description                                                                  |
-| ------------------ | -------- | -------- | ------- | ---------------------------------------------------------------------------- |
-| `application_type` | false    | *string* | `null`  | [Application type](#applications-application-types) to filter permissions by |
-
 > Response
 
 ```json
@@ -144,6 +138,14 @@ func main() {
   <span class="box-method">GET</span>
   `https://api.basistheory.com/permissions`
 </span>
+
+Gets the list of all supported permissions.
+
+### Query Parameters
+
+| Parameter          | Required | Type     | Default | Description                                                                  |
+|--------------------|----------|----------|---------|------------------------------------------------------------------------------|
+| `application_type` | false    | *string* | `null`  | [Application type](#applications-application-types) to filter permissions by |
 
 ### Response
 
