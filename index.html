@@ -2548,11 +2548,12 @@ At least one <code>token:&lt;classification&gt;:use:proxy</code> permission is r
 <div class="highlight"><pre class="highlight javascript"><code><span class="p">{</span>
   <span class="nl">args</span><span class="p">:</span> <span class="p">{</span>
     <span class="nx">body</span><span class="p">,</span> <span class="c1">// detokenized request body</span>
-    <span class="nx">headers</span> <span class="c1">//request headers</span>
+    <span class="nx">headers</span> <span class="c1">// request headers</span>
   <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>The Reactor must respond with the following object:</p>
+<p>Within the reactor, the headers and body of the proxy request can be changed.
+The Reactor must respond with the following object, which defines the request <code>body</code> and <code>headers</code> to be sent in the request to the proxy <code>destination_url</code>:</p>
 
 <div class="center-column"></div>
 <div class="highlight"><pre class="highlight javascript"><code><span class="p">{</span>
@@ -2562,7 +2563,14 @@ At least one <code>token:&lt;classification&gt;:use:proxy</code> permission is r
   <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>Within the reactor, the headers and body of the request can be changed.</p>
+<aside class="notice">
+  <span>
+    Request header names can only contain alphanumeric characters, hyphens, and underscores. 
+    Headers names containing other characters will be discarded from the request.
+    Response headers are unrestricted. If you must forward a restricted header to the proxy destination, 
+    as a workaround, you may add this header manually from within a request reactor.
+  </span>
+</aside>
 
 <p>In some situations, you may want to tokenize or detokenize part of the request body. In order to do this, set the <code>application.id</code> property when <a href="#reactors-create-reactor">creating your reactor</a>. This will inject a pre-configured Basis Theory JS instance into the request:</p>
 
