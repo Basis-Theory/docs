@@ -1,3 +1,10 @@
+# [1.52.0](https://github.com/Basis-Theory/docs/compare/v1.51.0...v1.52.0) (2022-06-15)
+
+
+### Features
+
+* Fixing detokenization links and adding redirect for /detokenization ([#204](https://github.com/Basis-Theory/docs/issues/204)) ([f83d539](https://github.com/Basis-Theory/docs/commit/f83d539663f39ce82689b1d9fe77fb63de892499))
+
 # [1.51.0](https://github.com/Basis-Theory/docs/compare/v1.50.0...v1.51.0) (2022-06-14)
 
 
