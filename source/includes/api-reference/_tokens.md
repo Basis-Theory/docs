@@ -518,6 +518,188 @@ Token data will be restricted based on the token's [restriction policy](#tokens-
 Returns [an error](#errors) if the token could not be retrieved.
 
 
+## Update Token
+
+> Request
+
+```shell
+curl "https://api.basistheory.com/tokens/c06d0789-0a38-40be-b7cc-c28a718f76f1" \
+  -H "BT-API-KEY: key_N88mVGsp3sCXkykyN2EFED" \
+  -H "Content-Type: application/merge-patch+json" \
+  -X "PATCH" \
+  -d '{
+    "data": "Sensitive Value",
+    "privacy": {
+      "impact_level": "moderate"
+    },
+    "metadata": {
+      "nonSensitiveField": "Non-Sensitive Value"
+    },
+    "search_indexes": [
+      "{{ data }}",
+      "{{ data | last4}}"
+    ],
+    "fingerprint_expression": "{{ data }}",
+    "deduplicate_token": true,
+  }'
+```
+
+```javascript
+import { BasisTheory } from '@basis-theory/basis-theory-js';
+
+const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
+
+const token = await bt.tokens.update('c06d0789-0a38-40be-b7cc-c28a718f76f1', {
+  data: 'Sensitive Value',
+  privacy: {
+    impactLevel: "moderate"
+  },
+  metadata: {
+    nonSensitiveField: 'Non-Sensitive Value'
+  },
+  searchIndexes: [
+    '{{ data }}',
+    '{{ data | last4}}'
+  ],
+  fingerprintExpression: "{{ data }}",
+  deduplicateToken: true,
+});
+```
+
+```csharp
+using BasisTheory.net.Tokens;
+
+var client = new TokenClient("key_N88mVGsp3sCXkykyN2EFED");
+
+var token = await client.UpdateAsync("c06d0789-0a38-40be-b7cc-c28a718f76f1", new UpdateTokenRequest {
+  Data = "Sensitive Value",
+  Privacy = new DataPrivacy {
+    ImpactLevel = DataImpactLevel.MODERATE
+  },
+  Metadata = new Dictionary<string, string> {
+    { "nonSensitiveField",  "Non-Sensitive Value" }
+  },
+  SearchIndexes = new List<string> {
+    "{{ data }}",
+    "{{ data | last4}}"
+  }
+  FingerprintExpression = "{{ data }}",
+  DeduplicateToken = true,
+});
+```
+
+```python
+import basistheory
+from basistheory.api import tokens_api
+from basistheory.model.update_token_request import UpdateTokenRequest
+
+with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_N88mVGsp3sCXkykyN2EFED")) as api_client:
+    token_client = tokens_api.TokensApi(api_client)
+
+    token = token_client.update(id="c06d0789-0a38-40be-b7cc-c28a718f76f1", update_token_request=UpdateTokenRequest(
+        data="Sensitive Value",
+        metadata={
+            "nonSensitiveField": "Non-Sensitive Value"
+        },
+        privacy=Privacy(
+          impact_level="moderate"
+        ),
+        search_indexes=[
+          "{{ data }}",
+          "{{ data | last4}}"
+        ],
+        fingerprint_expression="{{ data }}"
+    ))
+```
+
+```go
+package main
+
+import (
+  "context"
+  "github.com/Basis-Theory/basistheory-go/v3"
+)
+
+func main() {
+  configuration := basistheory.NewConfiguration()
+  apiClient := basistheory.NewAPIClient(configuration)
+  contextWithAPIKey := context.WithValue(context.Background(), basistheory.ContextAPIKeys, map[string]basistheory.APIKey{
+    "ApiKey": {Key: "key_N88mVGsp3sCXkykyN2EFED"},
+  })
+
+  updateTokenRequest := *basistheory.NewUpdateTokenRequest("Sensitive Value")
+  updateTokenRequest.SetMetadata(map[string]string{
+    "myMetadata": "myMetadataValue",
+  })
+  updateTokenRequest.SetSearchIndexes([]string{"{{ data }}", "{{ data | last4}}"})
+  updateTokenRequest.SetFingerprintExpression("{{ data }}")
+
+  privacy := *basistheory.NewPrivacy()
+  privacy.SetImpactLevel("moderate")
+  updateTokenRequest.SetPrivacy(privacy)
+
+  updateTokenResponse, updateTokenHttpResponse, createErr := apiClient.TokensApi.Update(contextWithAPIKey, "c06d0789-0a38-40be-b7cc-c28a718f76f1").UpdateTokenRequest(updateTokenRequest).Execute()
+}
+```
+
+> Response
+
+```json
+{
+  "id": "c06d0789-0a38-40be-b7cc-c28a718f76f1",
+  "tenant_id": "77cb0024-123e-41a8-8ff8-a3d5a0fa8a08",
+  "type": "token",
+  "privacy": {
+    "classification": "general",
+    "impact_level": "moderate",
+    "restriction_policy": "redact"
+  },
+  "metadata": {
+    "nonSensitiveField": "Non-Sensitive Value"
+  },
+  "search_indexes": [
+    "{{ data }}",
+    "{{ data | last4}}"
+  ],
+  "fingerprint_expression": "{{ data }}",
+  "created_by": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
+  "created_at": "2020-09-15T15:53:00+00:00"
+}
+```
+
+<span class="http-method patch">
+  <span class="box-method">PATCH</span>
+  `https://api.basistheory.com/tokens`
+</span>
+
+Update an existing token for the Tenant.
+
+### Permissions
+
+<p class="scopes">
+  <span class="scope">token:&lt;classification&gt;:update</span>
+</p>
+
+### Request Parameters
+
+| Attribute                | Required | Type                                                    | Behavior                                 | Description                                                                                                                                                  |
+|--------------------------|----------|---------------------------------------------------------|------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `data`                   | false     | *any*                                                  | Merge Patch (see <a href="https://datatracker.ietf.org/doc/html/rfc7386">RFC 7386</a>)                                  | Token data. Can be an object, array, or any primitive type such as an integer, boolean, or string                                                            |
+| `privacy`                | false    | *[privacy object](#tokens-token-object-privacy-object)* | Replace                                   | Token Privacy Settings overrides. Overrides must be a higher specificity level than the default or minimum setting for the [Token Type](#token-token-types). The `classfication` attribute of the `privacy` object *cannot* be overriden on update.|
+| `metadata`               | false    | *map*                                                   | Merge Patch (see <a href="https://datatracker.ietf.org/doc/html/rfc7386">RFC 7386</a>)                                   | A key-value map of non-sensitive data.                                                                                                                       |
+| `search_indexes`         | false    | *array*                                                 | Replace                                   | Array of [expressions](#expressions) used to generate indexes to be able to search against.                                                                  |
+| `fingerprint_expression` | false    | *string*                                                | Replace                                   | [Expressions](#expressions) used to fingerprint your token.                                                                                                  |
+| `deduplicate_token`      | false    | *bool*                                                  | Replace                                    | Whether the token is deduplicated on creation.                                                                                                               |
+
+### Response
+
+Returns the updated [token](#tokens-token-object) if successful. Returns [an error](#errors) if there were validation errors, or the token failed to create.
+
+<aside class="notice">
+  <span>The response object will omit the <code>data</code> and <code>metadata</code> attributes if the application does not have the <code>token:&lt;classification&gt;:read</code> permission.</span>
+</aside>
+
+
 ## Search Tokens
 
 > Request
