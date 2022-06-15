@@ -10,6 +10,7 @@ Reactor formulas give you the ability to pre-configure custom integrations to se
 | `name`               | *string* | The name of the Reactor Formula. Has a maximum length of `200`                                                                      |
 | `description`        | *string* | The description of the Reactor Formula                                                                                              |
 | `type`               | *string* | [Type](#reactor-formulas-reactor-formula-types) of the Reactor Formula                                                              |
+| `status`             | *string* | [Status](#reactor-formulas-reactor-formula-statuses) of the Reactor Formula                                                         |
 | `icon`               | *string* | Base64 [data URL](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URIs) of the image                          |
 | `code`               | *string* | [Reactor Formula code](#reactor-formulas-reactor-formula-code) which will be executed when the Reactor Formula is processed         |
 | `configuration`      | *array*  | Array of [configuration](#reactor-formulas-reactor-formula-configuration) options for configuring a reactor                         |
@@ -108,6 +109,13 @@ For more information about writing your own code for a Reactor Formula, check ou
 |------------|--------------------------------------------------------------------------------------------|
 | `official` | Official formulas that are built and supported by Basis Theory and its authorized partners |
 | `private`  | Private formulas which are only available to your Tenant                                   |
+
+## Reactor Formula Statuses
+
+| Type          | Description                                                                                                                                                                                                                                                                                                                                 |
+|---------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `verified`    | The formula has been verified and is generally available                                                                                                                                                                                                                                                                                    |
+| `coming_soon` | The formula has limited availability. Request to <a href="https://support.basistheory.com/hc/requests/new?tf_subject=Join%20Private%20Beta%20for%20Reactor%20Formula&amp;tf_description=Let%20us%20know%20which%20reactor%20formula%20you'd%20like%20to%20use&amp;tf_priority=normal" target="_blank">join the Private Beta</a> for access. |
 
 <h2 id="reactor-formulas-create-reactor-formula">Create Reactor Formula</h2>
 
@@ -531,7 +539,7 @@ func main() {
   `https://api.basistheory.com/reactor-formulas`
 </span>
 
-Get a list of official Reactor Formula and private, Tenant-specific Reactor Formulas.
+Get a list of official Reactor Formulas and private Tenant-specific Reactor Formulas.
 
 ### Permissions
 

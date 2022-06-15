@@ -1,3 +1,24 @@
+# [1.51.0](https://github.com/Basis-Theory/docs/compare/v1.50.0...v1.51.0) (2022-06-14)
+
+
+### Features
+
+* fixes inconsistencies in docs ([#202](https://github.com/Basis-Theory/docs/issues/202)) ([df4a40f](https://github.com/Basis-Theory/docs/commit/df4a40fd837830e49bb736ab3bcfbec31f140917))
+
+# [1.50.0](https://github.com/Basis-Theory/docs/compare/v1.49.0...v1.50.0) (2022-06-14)
+
+
+### Features
+
+* Documenting proxy header limitations ([#201](https://github.com/Basis-Theory/docs/issues/201)) ([22aa90d](https://github.com/Basis-Theory/docs/commit/22aa90d594cec67c2394182400720a92e3917ecd))
+
+# [1.49.0](https://github.com/Basis-Theory/docs/compare/v1.48.0...v1.49.0) (2022-06-14)
+
+
+### Features
+
+* adds deduplicate_token on Token and settings on Tenant for Go ([#200](https://github.com/Basis-Theory/docs/issues/200)) ([9f8be3a](https://github.com/Basis-Theory/docs/commit/9f8be3a70b45b77fda3d35dcfc5bbd78e247f2c0))
+
 # [1.48.0](https://github.com/Basis-Theory/docs/compare/v1.47.0...v1.48.0) (2022-06-10)
 
 

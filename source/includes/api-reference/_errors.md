@@ -32,7 +32,64 @@ try {
   console.log(e.data); // HTTP Response body
   console.log(e.data.errors);
 }
+```
 
+```csharp
+using BasisTheory.net.Common.Errors;
+using BasisTheory.net.Tokens;
+
+try {
+  var client = new TokenClient("key_N88mVGsp3sCXkykyN2EFED");
+  var token = await client.CreateAsync(new Token {...});
+} 
+catch (BasisTheoryException btex) {
+  Console.WriteLine(btex.Message);
+  Console.WriteLine(btex.Error.Status); // HTTP status code
+  Console.WriteLine(btex.Error.Title);  // error title from HTTP response
+  Console.WriteLine(btex.Error.Detail); // error detail from HTTP response
+  
+  // (optionally) btex.Error.Errors contains Dictionary of validation errors
+}
+```
+
+```python
+import basistheory
+from basistheory.api import tokens_api
+from basistheory.model.create_token_request import CreateTokenRequest
+
+with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_N88mVGsp3sCXkykyN2EFED")) as api_client:
+    token_client = tokens_api.TokensApi(api_client)
+
+    try:
+        token = token_client.create(create_token_request=CreateTokenRequest(...))
+    except basistheory.ApiException as e:
+        print("Exception when calling TokensApi: %s\n" % e)
+```
+
+```go
+package main
+
+import (
+  "context"
+  "github.com/Basis-Theory/basistheory-go/v3"
+)
+
+func main() {
+  configuration := basistheory.NewConfiguration()
+  apiClient := basistheory.NewAPIClient(configuration)
+  contextWithAPIKey := context.WithValue(context.Background(), basistheory.ContextAPIKeys, map[string]basistheory.APIKey{
+    "ApiKey": {Key: "key_N88mVGsp3sCXkykyN2EFED"},
+  })
+
+  createTokenRequest := *basistheory.NewCreateTokenRequest("Sensitive Value")
+  ...
+
+  createTokenResponse, createTokenHttpResponse, createErr := apiClient.TokensApi.Create(contextWithAPIKey).CreateTokenRequest(createTokenRequest).Execute()
+  
+  if createErr != nil {
+    fmt.Printlnf("Create token request failed: %v", createErr)
+  }
+}
 ```
 
 ### Response

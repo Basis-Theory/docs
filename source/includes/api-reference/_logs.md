@@ -13,6 +13,13 @@
 | `message`     | *string* | The log message                                                                         |
 | `created_at`  | *date*   | Created date of the token in ISO 8601 format                                            |
 
+## Entity Type Object
+
+| Attribute      | Type     | Description                                                        |
+|----------------|----------|--------------------------------------------------------------------|
+| `display_name` | *string* | A readable string name for the entity type                         |
+| `value`        | *string* | The system name of the entity. Referenced by a log's `entity_type` |
+
 
 ## List Logs
 
@@ -115,3 +122,54 @@ Get a list of logs for the Tenant.
 ### Response
 
 Returns a [paginated object](#pagination) with the `data` property containing an array of [logs](#log-object). Providing any query parameters will filter the results. Returns [an error](#errors) if logs could not be retrieved.
+
+
+## List Entity Types
+
+> Request
+
+```shell
+curl "https://api.basistheory.com/logs/entity-types" \
+  -H "BT-API-KEY: key_N88mVGsp3sCXkykyN2EFED"
+```
+
+> Response
+
+```json
+[
+  {
+    "display_name": "Application",
+    "value": "application"
+  },
+  {
+    "display_name": "Bank",
+    "value": "bank"
+  },
+  {
+    "display_name": "Card",
+    "value": "card"
+  },
+  {
+    "display_name": "Proxy",
+    "value": "proxy"
+  },
+  ...
+]
+```
+
+<span class="http-method get">
+  <span class="box-method">GET</span>
+  `https://api.basistheory.com/logs/entity-types`
+</span>
+
+Get a list of entity types that may be referenced from the logs.
+
+### Permissions
+
+<p class="scopes">
+  <span class="scope">log:read</span>
+</p>
+
+### Response
+
+Returns a non-paginated array of [entity types](#logs-entity-type-object).
