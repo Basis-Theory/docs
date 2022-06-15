@@ -2755,7 +2755,7 @@ The Reactor must respond with the following object, which defines the request <c
 
 <p><strong>Detokenization</strong></p>
 
-<p>The Basis Theory Proxy will attempt to <a href="/detokenization">detokenize</a> any <a href="/detokenization#detokenization-expressions">detokenization expressions</a> present in the request and inject the raw token data in the request body before it is sent to the downstream destination.</p>
+<p>The Basis Theory Proxy will attempt to <a href="/expressions/#detokenization">detokenize</a> any <a href="/expressions">expressions</a> present in the request and inject the raw token data in the request body before it is sent to the downstream destination.</p>
 
 <p>For example, given a token:</p>
 
@@ -2782,10 +2782,10 @@ The Reactor must respond with the following object, which defines the request <c
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>The <code>token:&lt;classification&gt;:use:proxy</code> permission is required in order to detokenize tokens classified as <code>&lt;classification&gt;</code> within a proxy request. 
-At most, 100 tokens may be detokenized within a single proxy request. You can find more information about the supported detokenization expressions <a href="/detokenization#detokenization-expressions">here</a>.</p>
+At most, 100 tokens may be detokenized within a single proxy request. You can find more information about the supported detokenization expressions <a href="/expressions/#detokenization">here</a>.</p>
 
 <aside class="notice">
-  <span>For more detailed examples about how to detokenize within the Proxy, check out our <a href="/detokenization#examples">Detokenization Examples</a>.</span>
+  <span>For more detailed examples about how to detokenize within the Proxy, check out our <a href="/expressions/#detokenization-examples">Detokenization Examples</a>.</span>
 </aside>
 <h3 id='proxy-proxying-requests-proxy-responses'>Proxy Responses</h3>
 <p>Unless an error occurs within the Basis Theory Proxy, the raw response from the destination will be returned from the proxy.</p>
@@ -5670,14 +5670,14 @@ If a request parameter was defined with <code>optional: false</code> and a value
 For example, say a request parameter is declared with type <code>number</code> but the string value <code>&quot;123&quot;</code> is provided. This value can be cast to a number, so the reactor would receive the numeric value <code>123</code>. 
 However, if the string value <code>&quot;non-numeric&quot;</code> were provided, a 400 error would be returned because the value cannot be cast to a number.</p>
 <h3 id='reactors-invoke-a-reactor-detokenization'>Detokenization</h3>
-<p>In order to use tokenized data within a reactor, the <code>args</code> parameter may contain one or more <a href="/detokenization#detokenization-expressions">detokenization expressions</a>.
-When any detokenization expressions are detected, Basis Theory will attempt to <a href="/detokenization">detokenize</a> and inject the raw token data into the <code>args</code> forwarded to the Reactor function.</p>
+<p>In order to use tokenized data within a reactor, the <code>args</code> parameter may contain one or more <a href="/expressions/#detokenization">detokenization expressions</a>.
+When any detokenization expressions are detected, Basis Theory will attempt to detokenize and inject the raw token data into the <code>args</code> forwarded to the Reactor function.</p>
 
 <p>Reactor request <code>args</code> may contain a mixture of detokenization expressions and raw plaintext data. </p>
 
 <p>Tokens containing complex data may be detokenized into a Reactor request, including Bank and Card token types.
 When tokens with complex data are detokenized, the entire JSON data payload will be included within the <code>args</code>. 
-For an example, see <a href="/detokenization#examples-use-complex-tokens">Use Complex Tokens</a>.</p>
+For an example, see <a href="/expressions/#detokenization-examples">Use Complex Tokens</a>.</p>
 
 <p>If the <code>args</code> passed into a Reactor contain additional properties that have not been declared as request parameters on the Reactor Formula,
 those properties will be automatically removed and not sent on the request to the Reactor function.</p>
@@ -5688,7 +5688,7 @@ a single complex token that contains several of the request parameters. </p>
 <p>At most, 100 tokens may be detokenized within a single Reactor request.</p>
 
 <aside class="notice">
-  <span>For more detailed examples about how to detokenize within Reactors, check out our <a href="/detokenization#examples">Detokenization Examples</a>.</span>
+  <span>For more detailed examples about how to detokenize within Reactors, check out our <a href="/expressions/#detokenization-examples">Detokenization Examples</a>.</span>
 </aside>
 <h1 id='tenants'>Tenants</h1>
 <p>Tenants provide a way to logically group your Applications and tokens. Common use cases for Tenants may be to create one per environment such as development, QA, and production or to isolate business domains from each other. Tenant data is isolated from other tenants unless explicitly shared.</p>
