@@ -601,7 +601,7 @@ with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_
         metadata={
             "nonSensitiveField": "Non-Sensitive Value"
         },
-        privacy=Privacy(
+        privacy=UpdatePrivacy(
           impact_level="moderate"
         ),
         search_indexes=[
