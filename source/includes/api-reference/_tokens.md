@@ -572,7 +572,7 @@ using BasisTheory.net.Tokens;
 
 var client = new TokenClient("key_N88mVGsp3sCXkykyN2EFED");
 
-var token = await client.UpdateAsync("c06d0789-0a38-40be-b7cc-c28a718f76f1", new UpdateTokenRequest {
+var token = await client.UpdateAsync("c06d0789-0a38-40be-b7cc-c28a718f76f1", new TokenUpdateRequest {
   Data = "Sensitive Value",
   Privacy = new PrivacyUpdateModel {
     ImpactLevel = DataImpactLevel.MODERATE
