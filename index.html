@@ -690,6 +690,9 @@ _iub.csConfiguration = {"ccpaAcknowledgeOnLoad":true,"consentOnContinuedBrowsing
                       <a href="#tokens-get-a-token" class="toc-h2 toc-link" data-title="Get a Token">Get a Token</a>
                     </li>
                     <li>
+                      <a href="#tokens-update-token" class="toc-h2 toc-link" data-title="Update Token">Update Token</a>
+                    </li>
+                    <li>
                       <a href="#tokens-search-tokens" class="toc-h2 toc-link" data-title="Search Tokens">Search Tokens</a>
                     </li>
                     <li>
@@ -8016,6 +8019,209 @@ Providing any query parameters will filter the results. Returns <a href="#errors
 Plaintext token data will be returned when the requester has read permissions on the token classification at equal or greater impact level.
 Token data will be restricted based on the token&#39;s <a href="#tokens-token-restriction-policies">restriction policy</a> when the requester has read permissions on the token classification at a lower impact level.
 Returns <a href="#errors">an error</a> if the token could not be retrieved.</p>
+<h2 id='tokens-update-token'>Update Token</h2>
+<blockquote>
+<p>Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/tokens/c06d0789-0a38-40be-b7cc-c28a718f76f1"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"BT-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/merge-patch+json"</span> <span class="se">\</span>
+  <span class="nt">-X</span> <span class="s2">"PATCH"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">'{
+    "data": "Sensitive Value",
+    "privacy": {
+      "impact_level": "moderate"
+    },
+    "metadata": {
+      "nonSensitiveField": "Non-Sensitive Value"
+    },
+    "search_indexes": [
+      "{{ data }}",
+      "{{ data | last4}}"
+    ],
+    "fingerprint_expression": "{{ data }}",
+    "deduplicate_token": true,
+  }'</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">BasisTheory</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@basis-theory/basis-theory-js</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">bt</span> <span class="o">=</span> <span class="k">await</span> <span class="k">new</span> <span class="nx">BasisTheory</span><span class="p">().</span><span class="nx">init</span><span class="p">(</span><span class="dl">'</span><span class="s1">key_N88mVGsp3sCXkykyN2EFED</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">token</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">bt</span><span class="p">.</span><span class="nx">tokens</span><span class="p">.</span><span class="nx">update</span><span class="p">(</span><span class="dl">'</span><span class="s1">c06d0789-0a38-40be-b7cc-c28a718f76f1</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">data</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Sensitive Value</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">privacy</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">impactLevel</span><span class="p">:</span> <span class="dl">"</span><span class="s2">moderate</span><span class="dl">"</span>
+  <span class="p">},</span>
+  <span class="na">metadata</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">nonSensitiveField</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Non-Sensitive Value</span><span class="dl">'</span>
+  <span class="p">},</span>
+  <span class="na">searchIndexes</span><span class="p">:</span> <span class="p">[</span>
+    <span class="dl">'</span><span class="s1">{{ data }}</span><span class="dl">'</span><span class="p">,</span>
+    <span class="dl">'</span><span class="s1">{{ data | last4}}</span><span class="dl">'</span>
+  <span class="p">],</span>
+  <span class="na">fingerprintExpression</span><span class="p">:</span> <span class="dl">"</span><span class="s2">{{ data }}</span><span class="dl">"</span><span class="p">,</span>
+  <span class="na">deduplicateToken</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+<span class="p">});</span>
+</code></pre></div><div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="k">using</span> <span class="nn">BasisTheory.net.Tokens</span><span class="p">;</span>
+
+<span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">TokenClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
+
+<span class="kt">var</span> <span class="n">token</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">UpdateAsync</span><span class="p">(</span><span class="s">"c06d0789-0a38-40be-b7cc-c28a718f76f1"</span><span class="p">,</span> <span class="k">new</span> <span class="n">TokenUpdateRequest</span> <span class="p">{</span>
+  <span class="n">Data</span> <span class="p">=</span> <span class="s">"Sensitive Value"</span><span class="p">,</span>
+  <span class="n">Privacy</span> <span class="p">=</span> <span class="k">new</span> <span class="n">PrivacyUpdateModel</span> <span class="p">{</span>
+    <span class="n">ImpactLevel</span> <span class="p">=</span> <span class="n">DataImpactLevel</span><span class="p">.</span><span class="n">MODERATE</span>
+  <span class="p">},</span>
+  <span class="n">Metadata</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="kt">string</span><span class="p">&gt;</span> <span class="p">{</span>
+    <span class="p">{</span> <span class="s">"nonSensitiveField"</span><span class="p">,</span>  <span class="s">"Non-Sensitive Value"</span> <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="n">SearchIndexes</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="p">{</span>
+    <span class="s">"{{ data }}"</span><span class="p">,</span>
+    <span class="s">"{{ data | last4}}"</span>
+  <span class="p">}</span>
+  <span class="n">FingerprintExpression</span> <span class="p">=</span> <span class="s">"{{ data }}"</span><span class="p">,</span>
+  <span class="n">DeduplicateToken</span> <span class="p">=</span> <span class="k">true</span><span class="p">,</span>
+<span class="p">});</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">basistheory</span>
+<span class="kn">from</span> <span class="nn">basistheory.api</span> <span class="kn">import</span> <span class="n">tokens_api</span>
+<span class="kn">from</span> <span class="nn">basistheory.model.update_token_request</span> <span class="kn">import</span> <span class="n">UpdateTokenRequest</span>
+
+<span class="k">with</span> <span class="n">basistheory</span><span class="p">.</span><span class="n">ApiClient</span><span class="p">(</span><span class="n">configuration</span><span class="o">=</span><span class="n">basistheory</span><span class="p">.</span><span class="n">Configuration</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">))</span> <span class="k">as</span> <span class="n">api_client</span><span class="p">:</span>
+    <span class="n">token_client</span> <span class="o">=</span> <span class="n">tokens_api</span><span class="p">.</span><span class="n">TokensApi</span><span class="p">(</span><span class="n">api_client</span><span class="p">)</span>
+
+    <span class="n">token</span> <span class="o">=</span> <span class="n">token_client</span><span class="p">.</span><span class="n">update</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s">"c06d0789-0a38-40be-b7cc-c28a718f76f1"</span><span class="p">,</span> <span class="n">update_token_request</span><span class="o">=</span><span class="n">UpdateTokenRequest</span><span class="p">(</span>
+        <span class="n">data</span><span class="o">=</span><span class="s">"Sensitive Value"</span><span class="p">,</span>
+        <span class="n">metadata</span><span class="o">=</span><span class="p">{</span>
+            <span class="s">"nonSensitiveField"</span><span class="p">:</span> <span class="s">"Non-Sensitive Value"</span>
+        <span class="p">},</span>
+        <span class="n">privacy</span><span class="o">=</span><span class="n">UpdatePrivacy</span><span class="p">(</span>
+          <span class="n">impact_level</span><span class="o">=</span><span class="s">"moderate"</span>
+        <span class="p">),</span>
+        <span class="n">search_indexes</span><span class="o">=</span><span class="p">[</span>
+          <span class="s">"{{ data }}"</span><span class="p">,</span>
+          <span class="s">"{{ data | last4}}"</span>
+        <span class="p">],</span>
+        <span class="n">fingerprint_expression</span><span class="o">=</span><span class="s">"{{ data }}"</span>
+    <span class="p">))</span>
+</code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
+
+<span class="k">import</span> <span class="p">(</span>
+  <span class="s">"context"</span>
+  <span class="s">"github.com/Basis-Theory/basistheory-go/v3"</span>
+<span class="p">)</span>
+
+<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">configuration</span> <span class="o">:=</span> <span class="n">basistheory</span><span class="o">.</span><span class="n">NewConfiguration</span><span class="p">()</span>
+  <span class="n">apiClient</span> <span class="o">:=</span> <span class="n">basistheory</span><span class="o">.</span><span class="n">NewAPIClient</span><span class="p">(</span><span class="n">configuration</span><span class="p">)</span>
+  <span class="n">contextWithAPIKey</span> <span class="o">:=</span> <span class="n">context</span><span class="o">.</span><span class="n">WithValue</span><span class="p">(</span><span class="n">context</span><span class="o">.</span><span class="n">Background</span><span class="p">(),</span> <span class="n">basistheory</span><span class="o">.</span><span class="n">ContextAPIKeys</span><span class="p">,</span> <span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="n">basistheory</span><span class="o">.</span><span class="n">APIKey</span><span class="p">{</span>
+    <span class="s">"ApiKey"</span><span class="o">:</span> <span class="p">{</span><span class="n">Key</span><span class="o">:</span> <span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">},</span>
+  <span class="p">})</span>
+
+  <span class="n">updateTokenRequest</span> <span class="o">:=</span> <span class="o">*</span><span class="n">basistheory</span><span class="o">.</span><span class="n">NewUpdateTokenRequest</span><span class="p">(</span><span class="s">"Sensitive Value"</span><span class="p">)</span>
+  <span class="n">updateTokenRequest</span><span class="o">.</span><span class="n">SetMetadata</span><span class="p">(</span><span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">string</span><span class="p">{</span>
+    <span class="s">"myMetadata"</span><span class="o">:</span> <span class="s">"myMetadataValue"</span><span class="p">,</span>
+  <span class="p">})</span>
+  <span class="n">updateTokenRequest</span><span class="o">.</span><span class="n">SetSearchIndexes</span><span class="p">([]</span><span class="kt">string</span><span class="p">{</span><span class="s">"{{ data }}"</span><span class="p">,</span> <span class="s">"{{ data | last4}}"</span><span class="p">})</span>
+  <span class="n">updateTokenRequest</span><span class="o">.</span><span class="n">SetFingerprintExpression</span><span class="p">(</span><span class="s">"{{ data }}"</span><span class="p">)</span>
+
+  <span class="n">privacy</span> <span class="o">:=</span> <span class="o">*</span><span class="n">basistheory</span><span class="o">.</span><span class="n">NewPrivacy</span><span class="p">()</span>
+  <span class="n">privacy</span><span class="o">.</span><span class="n">SetImpactLevel</span><span class="p">(</span><span class="s">"moderate"</span><span class="p">)</span>
+  <span class="n">updateTokenRequest</span><span class="o">.</span><span class="n">SetPrivacy</span><span class="p">(</span><span class="n">privacy</span><span class="p">)</span>
+
+  <span class="n">updateTokenResponse</span><span class="p">,</span> <span class="n">updateTokenHttpResponse</span><span class="p">,</span> <span class="n">createErr</span> <span class="o">:=</span> <span class="n">apiClient</span><span class="o">.</span><span class="n">TokensApi</span><span class="o">.</span><span class="n">Update</span><span class="p">(</span><span class="n">contextWithAPIKey</span><span class="p">,</span> <span class="s">"c06d0789-0a38-40be-b7cc-c28a718f76f1"</span><span class="p">)</span><span class="o">.</span><span class="n">UpdateTokenRequest</span><span class="p">(</span><span class="n">updateTokenRequest</span><span class="p">)</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c06d0789-0a38-40be-b7cc-c28a718f76f1"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"tenant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77cb0024-123e-41a8-8ff8-a3d5a0fa8a08"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"token"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"privacy"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"classification"</span><span class="p">:</span><span class="w"> </span><span class="s2">"general"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"impact_level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"moderate"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"restriction_policy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"redact"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"nonSensitiveField"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Non-Sensitive Value"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"search_indexes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"{{ data }}"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"{{ data | last4}}"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"fingerprint_expression"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{{ data }}"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p><span class="http-method patch">
+  <span class="box-method">PATCH</span>
+  <code>https://api.basistheory.com/tokens</code>
+</span></p>
+
+<p>Update an existing token for the Tenant.</p>
+<h3 id='tokens-update-token-permissions'>Permissions</h3>
+<p class="scopes">
+  <span class="scope">token:&lt;classification&gt;:update</span>
+</p>
+<h3 id='tokens-update-token-request-parameters'>Request Parameters</h3>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Required</th>
+<th>Type</th>
+<th>Behavior</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>data</code></td>
+<td>false</td>
+<td><em>any</em></td>
+<td>Merge Patch (see <a href="https://datatracker.ietf.org/doc/html/rfc7386">RFC 7386</a>)</td>
+<td>Token data. Can be an object, array, or any primitive type such as an integer, boolean, or string</td>
+</tr>
+<tr>
+<td><code>privacy</code></td>
+<td>false</td>
+<td><em><a href="#tokens-token-object-privacy-object">privacy object</a></em></td>
+<td>Replace</td>
+<td>Token Privacy Settings overrides. Overrides must be a higher specificity level than the default or minimum setting for the <a href="#token-token-types">Token Type</a>. The <code>classfication</code> attribute of the <code>privacy</code> object <em>cannot</em> be overriden on update.</td>
+</tr>
+<tr>
+<td><code>metadata</code></td>
+<td>false</td>
+<td><em>map</em></td>
+<td>Merge Patch (see <a href="https://datatracker.ietf.org/doc/html/rfc7386">RFC 7386</a>)</td>
+<td>A key-value map of non-sensitive data.</td>
+</tr>
+<tr>
+<td><code>search_indexes</code></td>
+<td>false</td>
+<td><em>array</em></td>
+<td>Replace</td>
+<td>Array of <a href="#expressions">expressions</a> used to generate indexes to be able to search against.</td>
+</tr>
+<tr>
+<td><code>fingerprint_expression</code></td>
+<td>false</td>
+<td><em>string</em></td>
+<td>Replace</td>
+<td><a href="#expressions">Expressions</a> used to fingerprint your token.</td>
+</tr>
+<tr>
+<td><code>deduplicate_token</code></td>
+<td>false</td>
+<td><em>bool</em></td>
+<td>Replace</td>
+<td>Whether the token is deduplicated on creation.</td>
+</tr>
+</tbody></table>
+<h3 id='tokens-update-token-response'>Response</h3>
+<p>Returns the updated <a href="#tokens-token-object">token</a> if successful. Returns <a href="#errors">an error</a> if there were validation errors, or the token failed to create.</p>
+
+<aside class="notice">
+  <span>The response object will omit the <code>data</code> and <code>metadata</code> attributes if the application does not have the <code>token:&lt;classification&gt;:read</code> permission.</span>
+</aside>
 <h2 id='tokens-search-tokens'>Search Tokens</h2>
 <blockquote>
 <p>Request</p>
