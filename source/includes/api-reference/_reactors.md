@@ -791,14 +791,14 @@ However, if the string value `"non-numeric"` were provided, a 400 error would be
 
 ### Detokenization
 
-In order to use tokenized data within a reactor, the `args` parameter may contain one or more [detokenization expressions](/detokenization#detokenization-expressions).
-When any detokenization expressions are detected, Basis Theory will attempt to [detokenize](/detokenization) and inject the raw token data into the `args` forwarded to the Reactor function.
+In order to use tokenized data within a reactor, the `args` parameter may contain one or more [detokenization expressions](/expressions/#detokenization).
+When any detokenization expressions are detected, Basis Theory will attempt to detokenize and inject the raw token data into the `args` forwarded to the Reactor function.
 
 Reactor request `args` may contain a mixture of detokenization expressions and raw plaintext data. 
 
 Tokens containing complex data may be detokenized into a Reactor request, including Bank and Card token types.
 When tokens with complex data are detokenized, the entire JSON data payload will be included within the `args`. 
-For an example, see [Use Complex Tokens](/detokenization#examples-use-complex-tokens).
+For an example, see [Use Complex Tokens](/expressions/#detokenization-examples).
 
 If the `args` passed into a Reactor contain additional properties that have not been declared as request parameters on the Reactor Formula,
 those properties will be automatically removed and not sent on the request to the Reactor function.
@@ -809,5 +809,5 @@ a single complex token that contains several of the request parameters.
 At most, 100 tokens may be detokenized within a single Reactor request.
 
 <aside class="notice">
-  <span>For more detailed examples about how to detokenize within Reactors, check out our <a href="/detokenization#examples">Detokenization Examples</a>.</span>
+  <span>For more detailed examples about how to detokenize within Reactors, check out our <a href="/expressions/#detokenization-examples">Detokenization Examples</a>.</span>
 </aside>

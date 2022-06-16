@@ -114,12 +114,13 @@ The reactor will receive a JSON object with the following payload:
 {
   args: {
     body, // detokenized request body
-    headers //request headers
+    headers // request headers
   }
 }
 ```
 
-The Reactor must respond with the following object:
+Within the reactor, the headers and body of the proxy request can be changed.
+The Reactor must respond with the following object, which defines the request `body` and `headers` to be sent in the request to the proxy `destination_url`:
 
 <div class="center-column"></div>
 ```js
@@ -131,7 +132,14 @@ The Reactor must respond with the following object:
 }
 ```
 
-Within the reactor, the headers and body of the request can be changed.
+<aside class="notice">
+  <span>
+    Request header names can only contain alphanumeric characters, hyphens, and underscores. 
+    Headers names containing other characters will be discarded from the request.
+    Response headers are unrestricted. If you must forward a restricted header to the proxy destination, 
+    as a workaround, you may add this header manually from within a request reactor.
+  </span>
+</aside>
 
 In some situations, you may want to tokenize or detokenize part of the request body. In order to do this, set the `application.id` property when [creating your reactor](#reactors-create-reactor). This will inject a pre-configured Basis Theory JS instance into the request:
 
@@ -158,7 +166,7 @@ In the above example, we utilized the injected Basis Theory JS instance to token
 
 **Detokenization**
 
-The Basis Theory Proxy will attempt to [detokenize](/detokenization) any [detokenization expressions](/detokenization#detokenization-expressions) present in the request and inject the raw token data in the request body before it is sent to the downstream destination.
+The Basis Theory Proxy will attempt to [detokenize](/expressions/#detokenization) any [expressions](/expressions) present in the request and inject the raw token data in the request body before it is sent to the downstream destination.
 
 For example, given a token:
 
@@ -191,10 +199,10 @@ then the following request body will be sent to the destination:
 ```
 
 The `token:<classification>:use:proxy` permission is required in order to detokenize tokens classified as `<classification>` within a proxy request. 
-At most, 100 tokens may be detokenized within a single proxy request. You can find more information about the supported detokenization expressions [here](/detokenization#detokenization-expressions).
+At most, 100 tokens may be detokenized within a single proxy request. You can find more information about the supported detokenization expressions [here](/expressions/#detokenization).
 
 <aside class="notice">
-  <span>For more detailed examples about how to detokenize within the Proxy, check out our <a href="/detokenization#examples">Detokenization Examples</a>.</span>
+  <span>For more detailed examples about how to detokenize within the Proxy, check out our <a href="/expressions/#detokenization-examples">Detokenization Examples</a>.</span>
 </aside>
 
 ### Proxy Responses
