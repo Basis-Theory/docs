@@ -8,6 +8,7 @@
 | `tenant_id`              | *uuid*                                                  | The [Tenant](#tenants-tenant-object) ID which owns the token                                                                    |
 | `type`                   | *string*                                                | [Token type](#token-types)                                                                                                      |
 | `data`                   | *any*                                                   | Token data                                                                                                                      |
+| `mask` | *any*                                                | (Optional) An [expression](/expressions/#masks) defining the mask to apply when retrieven token data with restricted permissions.            |
 | `fingerprint`            | *string*                                                | Uniquely identifies the contents of this token. See [Token Types](#token-types) for the default expression for each token type. |
 | `privacy`                | *[privacy object](#tokens-token-object-privacy-object)* | Token Privacy Settings                                                                                                          |
 | `metadata`               | *map*                                                   | A key-value map of non-sensitive data.                                                                                          |
@@ -111,6 +112,8 @@ with [permission](#permissions-permission-types-token-permissions) to read the T
 For example, an application with `token:pci:read:low` is allowed to read a `card_number` token (classified as `pci` with `high` impact level),
 but the plaintext card data will not be returned. Instead, the restriction policy associated with the `card_number` token (`mask`) will be applied and only masked card number data will be returned.
 
+Refer to [mask expressions](/expressions/#masks) to find out more about how to define masks for your token data.
+
 ## Create Token
 
 > Request
@@ -123,8 +126,9 @@ curl "https://api.basistheory.com/tokens" \
   -d '{
     "type": "token",
     "data": "Sensitive Value",
+    "mask": "{{ data | reveal_last: 4 }}",
     "privacy": {
-      "impact_level": "moderate"
+      "restriction_policy": "mask"
     },
     "metadata": {
       "nonSensitiveField": "Non-Sensitive Value"
@@ -146,8 +150,9 @@ const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
 const token = await bt.tokens.create({
   type: 'token',
   data: 'Sensitive Value',
+  mask: '{{ data | reveal_last: 4 }}',
   privacy: {
-    impactLevel: "moderate"
+    restriction_policy: "mask"
   },
   metadata: {
     nonSensitiveField: 'Non-Sensitive Value'
@@ -169,8 +174,9 @@ var client = new TokenClient("key_N88mVGsp3sCXkykyN2EFED");
 var token = await client.CreateAsync(new Token {
   Type = "token",
   Data = "Sensitive Value",
+  Mask = "{{ data | reveal_last: 4 }}",
   Privacy = new DataPrivacy {
-    ImpactLevel = DataImpactLevel.MODERATE
+    RestrictionPolicy = DataRestrictionPolicy.MASK
   },
   Metadata = new Dictionary<string, string> {
     { "nonSensitiveField",  "Non-Sensitive Value" }
@@ -195,11 +201,12 @@ with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_
     token = token_client.create(create_token_request=CreateTokenRequest(
         type="token",
         data="Sensitive Value",
+        mask="{{ data | reveal_last: 4 }}"
         metadata={
             "nonSensitiveField": "Non-Sensitive Value"
         },
         privacy=Privacy(
-          impact_level="moderate"
+          restriction_policy="mask"
         ),
         search_indexes=[
           "{{ data }}",
@@ -225,6 +232,7 @@ func main() {
   })
 
   createTokenRequest := *basistheory.NewCreateTokenRequest("Sensitive Value")
+  createTokenRequest.SetMask("{{ data | reveal_last: 4 }}")
   createTokenRequest.SetType("token")
   createTokenRequest.SetMetadata(map[string]string{
     "myMetadata": "myMetadataValue",
@@ -233,7 +241,7 @@ func main() {
   createTokenRequest.SetFingerprintExpression("{{ data }}")
 
   privacy := *basistheory.NewPrivacy()
-  privacy.SetImpactLevel("moderate")
+  privacy.SetRestrictionPolicy("mask")
   createTokenRequest.SetPrivacy(privacy)
 
   createTokenResponse, createTokenHttpResponse, createErr := apiClient.TokensApi.Create(contextWithAPIKey).CreateTokenRequest(createTokenRequest).Execute()
@@ -247,10 +255,12 @@ func main() {
   "id": "c06d0789-0a38-40be-b7cc-c28a718f76f1",
   "tenant_id": "77cb0024-123e-41a8-8ff8-a3d5a0fa8a08",
   "type": "token",
+  "data": "XXXXXXXXXXXalue",
+  "mask": "{{ data | reveal_last: 4 }}",
   "privacy": {
     "classification": "general",
-    "impact_level": "moderate",
-    "restriction_policy": "redact"
+    "impact_level": "high",
+    "restriction_policy": "mask"
   },
   "metadata": {
     "nonSensitiveField": "Non-Sensitive Value"
@@ -284,6 +294,7 @@ Create a new token for the Tenant.
 |--------------------------|----------|---------------------------------------------------------|------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `type`                   | true     | *string*                                                | `null`                                   | [Token type](#token-types) of the token                                                                                                                      |
 | `data`                   | true     | *any*                                                   | `null`                                   | Token data. Can be an object, array, or any primitive type such as an integer, boolean, or string                                                            |
+| `mask`                   | false     | *any*                                                   | Depends on the [token type](#token-types)                                   | Token data mask. Can be an object, array, or any primitive type such as an integer, boolean, or string. See [#expressions/masks].                                                            |
 | `privacy`                | false    | *[privacy object](#tokens-token-object-privacy-object)* | `null`                                   | Token Privacy Settings overrides. Overrides must be a higher specificity level than the default or minimum setting for the [Token Type](#token-token-types). |
 | `metadata`               | false    | *map*                                                   | `null`                                   | A key-value map of non-sensitive data.                                                                                                                       |
 | `search_indexes`         | false    | *array*                                                 | `null`                                   | Array of [expressions](#expressions) used to generate indexes to be able to search against.                                                                  |
