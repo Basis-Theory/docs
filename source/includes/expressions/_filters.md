@@ -127,6 +127,35 @@ Given a token with the data:
 | <code>{{ data &#124; last4 }}</code>                     | "1667" |
 | <code>{{ data &#124; slice: 12, 2 &#124; last4 }}</code> | "67"   |
 
+## reveal_last
+
+Returns the last `length` characters of a string. If the string's length is less than `length`, the whole value is returned.
+
+### Parameters
+
+| Position | Name            | Type   | Required | Default Value | Description                                      |
+|----------|-----------------|--------|----------|---------------|--------------------------------------------------|
+| 0        | length          | *int*  | true     | `null`        | The number of characters to reveal               |
+| 1        | maskChar        | *char* | false    | `X`           | A masking character                              |
+
+### Examples
+
+Given a token with the data:
+
+<div class="center-column" style="clear: none;"></div>
+```json
+{
+  "id": "d35412f4-9d3b-45d8-b051-fe4b7d4e14c5",
+  "type": "token",
+  "data": "36227206271667"
+}
+```
+
+| Expression                                               | Result                    |
+|----------------------------------------------------------|---------------------------|
+| <code>{{ data &#124; reveal_last: 6 }}</code>            | "XXXXXXXX271667"          |
+| <code>{{ data &#124; reveal_last: 3, '#' }}</code>       | "###########667"          |
+
 ## pad_left
 
 Returns a new string of the desired length by padding the input string on the left with the specified `padChar`.

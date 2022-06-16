@@ -2,20 +2,20 @@
 
 Masks allow to format original data to create a partial view of it without leaking sensitive data. For example, if the original credit card number was `4242-4242-4242-4242`, a common mask pattern is to only show the last 4 digits, such as `XXXX-XXXX-XXXX-4242`.
 
-The token's mask will be applied to the `data` property upon token retrieval, for those tokens with a `mask` data restriction policy. If the token's data restriction policy is `redact` then a mask cannot be provided since the data will be redacted. The `mask` is required for tokens with type `token` and data restriction policy `mask`. All other token types have a default mask assigned in case a custom one is not provided. 
-
 When [creating a token](/#tokens-create-token), the mask can be specified within the request.
 You are able to reference the `data` property within an [object](#language-objects) expression -
 `data` will be bound to the provided token data.
 
+The token's mask will be applied to the `data` property upon token retrieval, for those tokens with a `mask` [data restriction policy](/#tokens-token-restriction-policies). If the token's data restriction policy is `redact` then a mask cannot be provided since the data will be redacted. The `mask` is required for tokens with type `token` and data restriction policy `mask`. All other token types have a default mask assigned in case a custom one is not provided. 
+
 <aside class="notice">
-  <span>Only generic tokens, those with type <code>token</code> allow providing custom masks.</span>
+  <span>Only generic tokens (those with type <code>token</code>) allow providing custom masks.</span>
 </aside>
 
 ## Examples
 
-- [Masking Primitive Tokens](#search-indexes-examples-indexing-primitive-tokens)
-- [Masking Complex Tokens](#search-indexes-examples-indexing-properties-of-a-complex-token)
+- [Masking Primitive Tokens](#masks-examples-masking-primitive-tokens)
+- [Masking Complex Tokens](#masks-examples-masking-complex-tokens)
 
 ### Masking Primitive Tokens
 
@@ -26,7 +26,7 @@ Request:
 {
   "type": "token",
   "data": "4242-4242-4242-4242",
-  "mask": "{{ data | reveal_last: 4, '#' }}",
+  "mask": "{{ data | reveal_last: 4 }}",
   ...
 }
 ```
@@ -38,7 +38,7 @@ Response:
 {
   "type": "token",
   "data": "XXXX-XXXX-XXXX-4242",
-  "mask": "{{ data | reveal_last: 4, '#' }}",
+  "mask": "{{ data | reveal_last: 4 }}",
   ...
 }
 ```

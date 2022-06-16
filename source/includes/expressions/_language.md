@@ -11,7 +11,7 @@ rendered when the expression is evaluated, and they are formed by wrapping a sta
 `{{ data.card_number }}` would be evaluated by rendering the `card_number` property within the `data` object.
 
 The variables that are available for reference within an object expression depends on the context in which the expression is used.
-When including expressions during token creation (e.g. within `search_indexes` or `fingerprint_expression`), 
+When including expressions during token creation (e.g. within `search_indexes`, `fingerprint_expression` or `mask`), 
 the `data` variable is automatically bound to the token's `data` value. `metadata` is also available for expressions within
 `fingerprint_expression`.
 

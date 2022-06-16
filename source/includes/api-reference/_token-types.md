@@ -41,7 +41,7 @@ The `token` type is used for general data types that don't require input validat
 | **Default Restriction Policy**     | `mask`                                                                        |
 | **Input Validation**               | See [Card Object](#tokens-token-data-validations) for validation requirements |
 | **Default Fingerprint Expression** | `{{ data.number }}`                                                           |
-| **Default Mask Expression**        | <code>{ "number": "{{ data.number &#124; reveal_last: 4 }}", "expiration_month": "{{ data.expiration_month }}",                               "expiration_year": "{{ data.expiration_year }}" }</code>                                  |
+| **Default Mask Expression**        | <code>{<br>&nbsp;&nbsp;"number": "{{ data.number &#124; reveal_last: 4 }}",<br>&nbsp;&nbsp;"expiration_month": "{{ data.expiration_month }}",<br>&nbsp;&nbsp;"expiration_year": "{{ data.expiration_year }}"<br>}</code>                                  |
 
 
 ## Bank
@@ -55,8 +55,7 @@ The `token` type is used for general data types that don't require input validat
 | **Default Restriction Policy**     | `mask`                                                                        |
 | **Input Validation**               | See [Bank Object](#tokens-token-data-validations) for validation requirements |
 | **Default Fingerprint Expression** | <code>{{ data.account_number }}&#124;{{ data.routing_number }}</code>         |
-| **Default Mask Expression**        | ```{ "routing_number": "{{ data.routing_number }}", 
-"account_number": "{{ data.account_number &#124; reveal_last: 4 }}" }``` |
+| **Default Mask Expression**        | <code>{<br>&nbsp;&nbsp;"routing_number": "{{ data.routing_number }}",<br>&nbsp;&nbsp;"account_number": "{{ data.account_number &#124; reveal_last: 4 }}"<br>}</code> |
 
 
 ## Card Number
