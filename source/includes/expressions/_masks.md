@@ -81,11 +81,11 @@ Response:
   "type": "token",
   "data": {
     "name": { 
-      "first" = "John",  
-      "last" = "D." 
+      "first": "John",  
+      "last": "D." 
     },
-    "ssn" = "###-##-6789",
-    "card_number" = "####-####-####-4242"
+    "ssn": "###-##-6789",
+    "card_number": "####-####-####-4242"
   },
   "mask": {
     "name": {
