@@ -1,6 +1,6 @@
 # Masks
 
-Masks allow to format original data to create a partial view of it without leaking sensitive data. For example, if the original credit card number was `4242-4242-4242-4242`, a common mask pattern is to only show the last 4 digits, such as `XXXX-XXXX-XXXX-4242`.
+Masks allow you to reformat token data into a non-sensitive representation that can be safely exposed. For example, if the original credit card number was `4242-4242-4242-4242`, a common mask pattern is to only show the last 4 digits, such as `XXXX-XXXX-XXXX-4242`.
 
 When [creating a token](/#tokens-create-token), the mask can be specified within the request.
 You are able to reference the `data` property within an [object](#language-objects) expression -
