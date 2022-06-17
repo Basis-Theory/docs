@@ -12,6 +12,7 @@
             <a href="#detokenization">Detokenization</a>
             <a href="#search-indexes">Search Indexes</a>
             <a href="#fingerprints">Fingerprints</a>
+            <a href="#masks">Masks</a>
         </span>
     </span>
     <img src="/images/expressions-intro.svg"/>
@@ -25,3 +26,4 @@ Expressions can be used within many API endpoints, including:
 - [Proxy](https://developers.basistheory.com/concepts/what-is-the-proxy) requests, to [detokenize](#detokenization) and transform tokens
 - [search_indexes](#search-indexes) when [creating a token](/api-reference/#tokens-create-token) or [tokenizing](/api-reference/#tokenize), to define indexes to enable [searching tokens](/api-reference/#tokens-search-tokens)
 - [fingerprint_expression](#fingerprints) when [creating a token](/api-reference/#tokens-create-token) or [tokenizing](/api-reference/#tokenize), to define a value used to generate a token fingerprint
+- [mask](#masks) when [creating a token](/api-reference/#tokens-create-token) or [tokenizing](/api-reference/#tokenize), to define the mask applied to the token's data when the actor has restricted permissions

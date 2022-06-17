@@ -24,6 +24,7 @@ intro_includes:
   - expressions/detokenization
   - expressions/search_indexes
   - expressions/fingerprints
+  - expressions/masks
 
 reference_links:
   - <a class="toc-h1 toc-link" href="/api-reference">API Reference</a>

@@ -27,6 +27,7 @@ The `token` type is used for general data types that don't require input validat
 | **Input Validation**               | None                                    |
 | **Input Length**                   | Any                                     |
 | **Default Fingerprint Expression** | <code>{{ data &#124; stringify}}</code> |
+| **Default Mask Expression**        | `null`                                  |
 
 
 ## Card
@@ -40,6 +41,7 @@ The `token` type is used for general data types that don't require input validat
 | **Default Restriction Policy**     | `mask`                                                                        |
 | **Input Validation**               | See [Card Object](#tokens-token-data-validations) for validation requirements |
 | **Default Fingerprint Expression** | `{{ data.number }}`                                                           |
+| **Default Mask Expression**        | <code>{<br>&nbsp;&nbsp;"number": "{{ data.number &#124; reveal_last: 4 }}",<br>&nbsp;&nbsp;"expiration_month": "{{ data.expiration_month }}",<br>&nbsp;&nbsp;"expiration_year": "{{ data.expiration_year }}"<br>}</code>                                  |
 
 
 ## Bank
@@ -53,6 +55,7 @@ The `token` type is used for general data types that don't require input validat
 | **Default Restriction Policy**     | `mask`                                                                        |
 | **Input Validation**               | See [Bank Object](#tokens-token-data-validations) for validation requirements |
 | **Default Fingerprint Expression** | <code>{{ data.account_number }}&#124;{{ data.routing_number }}</code>         |
+| **Default Mask Expression**        | <code>{<br>&nbsp;&nbsp;"routing_number": "{{ data.routing_number }}",<br>&nbsp;&nbsp;"account_number": "{{ data.account_number &#124; reveal_last: 4 }}"<br>}</code> |
 
 
 ## Card Number
@@ -67,6 +70,7 @@ The `token` type is used for general data types that don't require input validat
 | **Input Validation**               | Luhn-valid, numeric |
 | **Input Length**                   | 13 - 19             |
 | **Default Fingerprint Expression** | `{{ data }}`        |
+| **Default Mask Expression**        | <code>{{ data &#124; reveal_last: 4 }}</code> |
 
 Examples:
 
@@ -88,6 +92,7 @@ Examples:
 | **Input Validation**               | Numeric                  |
 | **Input Length**                   | 3 - 17                   |
 | **Default Fingerprint Expression** | `{{ data }}`             |
+| **Default Mask Expression**        | <code>{{ data &#124; reveal_last: 4 }}</code> |
 
 Examples: 
 
@@ -108,6 +113,7 @@ Examples:
 | **Input Validation**               | Numeric, ABA-valid       |
 | **Input Length**                   | 9                        |
 | **Default Fingerprint Expression** | `{{ data }}`             |
+| **Default Mask Expression**        | <code>{{ data &#124; reveal_last: 4 }}</code> |
 
 
 ## Social Security Number
@@ -122,6 +128,7 @@ Examples:
 | **Input Validation**               | Numeric with optional delimiter of `"-"`   |
 | **Input Length**                   | 9 (not including delimiting characters)    |
 | **Default Fingerprint Expression** | <code>{{ data &#124; remove: '-' }}</code> |
+| **Default Mask Expression**        | <code>{{ data &#124; reveal_last: 4 }}</code> |
 
 Examples:
 
@@ -143,6 +150,7 @@ Examples:
 | **Input Validation**               | Numeric with optional delimiter of `"-"`   |
 | **Input Length**                   | 9 (not including delimiting characters)    |
 | **Default Fingerprint Expression** | <code>{{ data &#124; remove: '-' }}</code> |
+| **Default Mask Expression**        | <code>{{ data &#124; reveal_last: 4 }}</code> |
 
 Examples:
 
