@@ -8,7 +8,7 @@
 | `tenant_id`              | *uuid*                                                  | The [Tenant](#tenants-tenant-object) ID which owns the token                                                                    |
 | `type`                   | *string*                                                | [Token type](#token-types)                                                                                                      |
 | `data`                   | *any*                                                   | Token data                                                                                                                      |
-| `mask` | *any*                                                | (Optional) An [expression](/expressions/#masks) defining the mask to apply when retrieven token data with restricted permissions.            |
+| `mask` | *any*                                                | (Optional) An [expression](/expressions/#masks) defining the mask to apply when retrieving token data with restricted permissions.            |
 | `fingerprint`            | *string*                                                | Uniquely identifies the contents of this token. See [Token Types](#token-types) for the default expression for each token type. |
 | `privacy`                | *[privacy object](#tokens-token-object-privacy-object)* | Token Privacy Settings                                                                                                          |
 | `metadata`               | *map*                                                   | A key-value map of non-sensitive data.                                                                                          |
