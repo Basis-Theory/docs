@@ -129,7 +129,7 @@ Given a token with the data:
 
 ## reveal_last
 
-Returns the last `length` characters of a string. If the string's length is less than `length`, the whole value is returned.
+Returns the last `length` characters of a string. If the string's length is less than or equal to `length`, the whole value is returned.
 
 ### Parameters
 
