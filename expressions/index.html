@@ -369,6 +369,9 @@ _iub.csConfiguration = {"ccpaAcknowledgeOnLoad":true,"consentOnContinuedBrowsing
                     <a href="#filters-last4" class="toc-h2 toc-link" data-title="last4">last4</a>
                   </li>
                   <li>
+                    <a href="#filters-reveal_last" class="toc-h2 toc-link" data-title="reveal_last">reveal_last</a>
+                  </li>
+                  <li>
                     <a href="#filters-pad_left" class="toc-h2 toc-link" data-title="pad_left">pad_left</a>
                   </li>
                   <li>
@@ -406,6 +409,14 @@ _iub.csConfiguration = {"ccpaAcknowledgeOnLoad":true,"consentOnContinuedBrowsing
               <ul class="toc-list-h2">
                   <li>
                     <a href="#fingerprints-examples" class="toc-h2 toc-link" data-title="Examples">Examples</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#masks" class="toc-h1 toc-link" data-title="Masks">Masks</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#masks-examples" class="toc-h2 toc-link" data-title="Examples">Examples</a>
                   </li>
               </ul>
           </li>
@@ -483,6 +494,7 @@ _iub.csConfiguration = {"ccpaAcknowledgeOnLoad":true,"consentOnContinuedBrowsing
             <a href="#detokenization">Detokenization</a>
             <a href="#search-indexes">Search Indexes</a>
             <a href="#fingerprints">Fingerprints</a>
+            <a href="#masks">Masks</a>
         </span>
     </span>
     <img src="../images/expressions-intro-536e8367.svg"/>
@@ -497,6 +509,7 @@ _iub.csConfiguration = {"ccpaAcknowledgeOnLoad":true,"consentOnContinuedBrowsing
 <li><a href="https://developers.basistheory.com/concepts/what-is-the-proxy">Proxy</a> requests, to <a href="#detokenization">detokenize</a> and transform tokens</li>
 <li><a href="#search-indexes">search_indexes</a> when <a href="/api-reference/#tokens-create-token">creating a token</a> or <a href="/api-reference/#tokenize">tokenizing</a>, to define indexes to enable <a href="/api-reference/#tokens-search-tokens">searching tokens</a></li>
 <li><a href="#fingerprints">fingerprint_expression</a> when <a href="/api-reference/#tokens-create-token">creating a token</a> or <a href="/api-reference/#tokenize">tokenizing</a>, to define a value used to generate a token fingerprint</li>
+<li><a href="#masks">mask</a> when <a href="/api-reference/#tokens-create-token">creating a token</a> or <a href="/api-reference/#tokenize">tokenizing</a>, to define the mask applied to the token&#39;s data when the actor has restricted permissions</li>
 </ul>
 <h1 id='language'>Language</h1>
 <p>The expression language used within the Basis Theory API is based on the <a href="https://shopify.github.io/liquid">Liquid template language</a>.
@@ -508,7 +521,7 @@ rendered when the expression is evaluated, and they are formed by wrapping a sta
 <code>{{ data.card_number }}</code> would be evaluated by rendering the <code>card_number</code> property within the <code>data</code> object.</p>
 
 <p>The variables that are available for reference within an object expression depends on the context in which the expression is used.
-When including expressions during token creation (e.g. within <code>search_indexes</code> or <code>fingerprint_expression</code>), 
+When including expressions during token creation (e.g. within <code>search_indexes</code>, <code>fingerprint_expression</code> or <code>mask</code>), 
 the <code>data</code> variable is automatically bound to the token&#39;s <code>data</code> value. <code>metadata</code> is also available for expressions within
 <code>fingerprint_expression</code>.</p>
 
@@ -668,6 +681,61 @@ The <code>json</code> filter provides further flexibility for evaluating complex
 <tr>
 <td><code>{{ data &#124; slice: 12, 2 &#124; last4 }}</code></td>
 <td>&quot;67&quot;</td>
+</tr>
+</tbody></table>
+<h2 id='filters-reveal_last'>reveal_last</h2>
+<p>Returns the last <code>length</code> characters of a string. If the string&#39;s length is less than or equal to <code>length</code>, the whole value is returned.</p>
+<h3 id='filters-reveal_last-parameters'>Parameters</h3>
+<table><thead>
+<tr>
+<th>Position</th>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Default Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>0</td>
+<td>length</td>
+<td><em>int</em></td>
+<td>true</td>
+<td><code>null</code></td>
+<td>The number of characters to reveal</td>
+</tr>
+<tr>
+<td>1</td>
+<td>maskChar</td>
+<td><em>char</em></td>
+<td>false</td>
+<td><code>X</code></td>
+<td>A masking character</td>
+</tr>
+</tbody></table>
+<h3 id='filters-reveal_last-examples'>Examples</h3>
+<p>Given a token with the data:</p>
+
+<div class="center-column" style="clear: none;"></div>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d35412f4-9d3b-45d8-b051-fe4b7d4e14c5"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"token"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"36227206271667"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Expression</th>
+<th>Result</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>{{ data &#124; reveal_last: 6 }}</code></td>
+<td>&quot;XXXXXXXX271667&quot;</td>
+</tr>
+<tr>
+<td><code>{{ data &#124; reveal_last: 3, &#39;#&#39; }}</code></td>
+<td>&quot;###########667&quot;</td>
 </tr>
 </tbody></table>
 <h2 id='filters-pad_left'>pad_left</h2>
@@ -1730,6 +1798,97 @@ You are able to reference the <code>data</code> and <code>metadata</code> variab
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>Fingerprinted Value: <code>&quot;JOHN SMITH&quot;</code></p>
+<h1 id='masks'>Masks</h1>
+<p>Masks allow you to reformat token data into a non-sensitive representation that can be safely exposed. For example, if the original credit card number was <code>4242-4242-4242-4242</code>, a common mask pattern is to only show the last 4 digits, such as <code>XXXX-XXXX-XXXX-4242</code>.</p>
+
+<p>When <a href="/#tokens-create-token">creating a token</a>, the mask can be specified within the request.
+You are able to reference the <code>data</code> property within an <a href="#language-objects">object</a> expression -
+<code>data</code> will be bound to the provided token data.</p>
+
+<p>When retrieving a token with inadequate read permissions, returned token data is either masked or redacted based on the token&#39;s <a href="/#tokens-token-restriction-policies">data restriction policy</a>. For tokens with the <code>mask</code> restriction policy, the token&#39;s mask will be evaluated and returned within the <code>data</code> property. For tokens with the <code>redact</code>  restriction policy, <code>data</code> will not be returned and a <code>mask</code> cannot be defined. The <code>mask</code> property is required for tokens with type <code>token</code> having a data restriction policy of <code>mask</code>. All other token types have a default mask assigned in case a custom one is not provided. </p>
+
+<aside class="notice">
+  <span>Only generic tokens (those with type <code>token</code>) allow providing custom masks.</span>
+</aside>
+<h2 id='masks-examples'>Examples</h2>
+<ul>
+<li><a href="#masks-examples-masking-primitive-tokens">Masking Primitive Tokens</a></li>
+<li><a href="#masks-examples-masking-complex-tokens">Masking Complex Tokens</a></li>
+</ul>
+<h3 id='masks-examples-masking-primitive-tokens'>Masking Primitive Tokens</h3>
+<p>Request:</p>
+
+<div class="center-column"></div>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"token"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4242-4242-4242-4242"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"mask"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{{ data | reveal_last: 4 }}"</span><span class="p">,</span><span class="w">
+  </span><span class="err">...</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Response:</p>
+
+<div class="center-column"></div>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"token"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XXXX-XXXX-XXXX-4242"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"mask"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{{ data | reveal_last: 4 }}"</span><span class="p">,</span><span class="w">
+  </span><span class="err">...</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='masks-examples-masking-complex-tokens'>Masking Complex Tokens</h3>
+<p>Request:</p>
+
+<div class="center-column"></div>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"token"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> 
+      </span><span class="nl">"first"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w"> 
+      </span><span class="nl">"middle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Wilson"</span><span class="p">,</span><span class="w"> 
+      </span><span class="nl">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doe"</span><span class="w"> 
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"ssn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123-45-6789"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"card_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4242-4242-4242-4242"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cvc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"mask"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"first"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{{ data.name.first }}"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{{ data.name.last | slice: 0, 1 }}."</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"ssn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{{ data.ssn | reveal_last: 4, '#' }}"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"card_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{{ data.card_number | reveal_last: 4, '#' }}"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="err">...</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Response:</p>
+
+<div class="center-column"></div>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"token"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> 
+      </span><span class="nl">"first"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">  
+      </span><span class="nl">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"D."</span><span class="w"> 
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"ssn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"###-##-6789"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"card_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"####-####-####-4242"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"mask"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"first"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{{ data.name.first }}"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{{ data.name.last | slice: 0, 1 }}."</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"ssn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{{ data.ssn | reveal_last: 4, '#' }}"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"card_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{{ data.card_number | reveal_last: 4, '#' }}"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="err">...</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<aside class="notice">
+  <span>As shown in this example, you can redact specific data properties by just omitting them in the mask object.</span>
+</aside>
 
         
         

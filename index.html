@@ -6930,6 +6930,10 @@ Token Types define the rules around a data type such as validation requirements,
 <td><strong>Default Fingerprint Expression</strong></td>
 <td><code>{{ data &#124; stringify}}</code></td>
 </tr>
+<tr>
+<td><strong>Default Mask Expression</strong></td>
+<td><code>null</code></td>
+</tr>
 </tbody></table>
 <h2 id='token-types-card'>Card</h2>
 <table><thead>
@@ -6966,6 +6970,10 @@ Token Types define the rules around a data type such as validation requirements,
 <td><strong>Default Fingerprint Expression</strong></td>
 <td><code>{{ data.number }}</code></td>
 </tr>
+<tr>
+<td><strong>Default Mask Expression</strong></td>
+<td><code>{<br>&nbsp;&nbsp;&quot;number&quot;: &quot;{{ data.number &#124; reveal_last: 4 }}&quot;,<br>&nbsp;&nbsp;&quot;expiration_month&quot;: &quot;{{ data.expiration_month }}&quot;,<br>&nbsp;&nbsp;&quot;expiration_year&quot;: &quot;{{ data.expiration_year }}&quot;<br>}</code></td>
+</tr>
 </tbody></table>
 <h2 id='token-types-bank'>Bank</h2>
 <table><thead>
@@ -7001,6 +7009,10 @@ Token Types define the rules around a data type such as validation requirements,
 <tr>
 <td><strong>Default Fingerprint Expression</strong></td>
 <td><code>{{ data.account_number }}&#124;{{ data.routing_number }}</code></td>
+</tr>
+<tr>
+<td><strong>Default Mask Expression</strong></td>
+<td><code>{<br>&nbsp;&nbsp;&quot;routing_number&quot;: &quot;{{ data.routing_number }}&quot;,<br>&nbsp;&nbsp;&quot;account_number&quot;: &quot;{{ data.account_number &#124; reveal_last: 4 }}&quot;<br>}</code></td>
 </tr>
 </tbody></table>
 <h2 id='token-types-card-number'>Card Number</h2>
@@ -7041,6 +7053,10 @@ Token Types define the rules around a data type such as validation requirements,
 <tr>
 <td><strong>Default Fingerprint Expression</strong></td>
 <td><code>{{ data }}</code></td>
+</tr>
+<tr>
+<td><strong>Default Mask Expression</strong></td>
+<td><code>{{ data &#124; reveal_last: 4 }}</code></td>
 </tr>
 </tbody></table>
 
@@ -7100,6 +7116,10 @@ Token Types define the rules around a data type such as validation requirements,
 <td><strong>Default Fingerprint Expression</strong></td>
 <td><code>{{ data }}</code></td>
 </tr>
+<tr>
+<td><strong>Default Mask Expression</strong></td>
+<td><code>{{ data &#124; reveal_last: 4 }}</code></td>
+</tr>
 </tbody></table>
 
 <p>Examples: </p>
@@ -7154,6 +7174,10 @@ Token Types define the rules around a data type such as validation requirements,
 <td><strong>Default Fingerprint Expression</strong></td>
 <td><code>{{ data }}</code></td>
 </tr>
+<tr>
+<td><strong>Default Mask Expression</strong></td>
+<td><code>{{ data &#124; reveal_last: 4 }}</code></td>
+</tr>
 </tbody></table>
 <h2 id='token-types-social-security-number'>Social Security Number</h2>
 <table><thead>
@@ -7193,6 +7217,10 @@ Token Types define the rules around a data type such as validation requirements,
 <tr>
 <td><strong>Default Fingerprint Expression</strong></td>
 <td><code>{{ data &#124; remove: &#39;-&#39; }}</code></td>
+</tr>
+<tr>
+<td><strong>Default Mask Expression</strong></td>
+<td><code>{{ data &#124; reveal_last: 4 }}</code></td>
 </tr>
 </tbody></table>
 
@@ -7252,6 +7280,10 @@ Token Types define the rules around a data type such as validation requirements,
 <td><strong>Default Fingerprint Expression</strong></td>
 <td><code>{{ data &#124; remove: &#39;-&#39; }}</code></td>
 </tr>
+<tr>
+<td><strong>Default Mask Expression</strong></td>
+<td><code>{{ data &#124; reveal_last: 4 }}</code></td>
+</tr>
 </tbody></table>
 
 <p>Examples:</p>
@@ -7298,6 +7330,11 @@ Token Types define the rules around a data type such as validation requirements,
 <td><code>data</code></td>
 <td><em>any</em></td>
 <td>Token data</td>
+</tr>
+<tr>
+<td><code>mask</code></td>
+<td><em>any</em></td>
+<td>(Optional) An <a href="/expressions/#masks">expression</a> defining the mask to apply when retrieving token data with restricted permissions.</td>
 </tr>
 <tr>
 <td><code>fingerprint</code></td>
@@ -7591,6 +7628,8 @@ with <a href="#permissions-permission-types-token-permissions">permission</a> to
 
 <p>For example, an application with <code>token:pci:read:low</code> is allowed to read a <code>card_number</code> token (classified as <code>pci</code> with <code>high</code> impact level),
 but the plaintext card data will not be returned. Instead, the restriction policy associated with the <code>card_number</code> token (<code>mask</code>) will be applied and only masked card number data will be returned.</p>
+
+<p>Refer to <a href="/expressions/#masks">mask expressions</a> to find out more about how to define masks for your token data.</p>
 <h2 id='tokens-create-token'>Create Token</h2>
 <blockquote>
 <p>Request</p>
@@ -7602,8 +7641,9 @@ but the plaintext card data will not be returned. Instead, the restriction polic
   <span class="nt">-d</span> <span class="s1">'{
     "type": "token",
     "data": "Sensitive Value",
+    "mask": "{{ data | reveal_last: 4 }}",
     "privacy": {
-      "impact_level": "moderate"
+      "restriction_policy": "mask"
     },
     "metadata": {
       "nonSensitiveField": "Non-Sensitive Value"
@@ -7622,8 +7662,9 @@ but the plaintext card data will not be returned. Instead, the restriction polic
 <span class="kd">const</span> <span class="nx">token</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">bt</span><span class="p">.</span><span class="nx">tokens</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
   <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">token</span><span class="dl">'</span><span class="p">,</span>
   <span class="na">data</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Sensitive Value</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">mask</span><span class="p">:</span> <span class="dl">'</span><span class="s1">{{ data | reveal_last: 4 }}</span><span class="dl">'</span><span class="p">,</span>
   <span class="na">privacy</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">impactLevel</span><span class="p">:</span> <span class="dl">"</span><span class="s2">moderate</span><span class="dl">"</span>
+    <span class="na">restriction_policy</span><span class="p">:</span> <span class="dl">"</span><span class="s2">mask</span><span class="dl">"</span>
   <span class="p">},</span>
   <span class="na">metadata</span><span class="p">:</span> <span class="p">{</span>
     <span class="na">nonSensitiveField</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Non-Sensitive Value</span><span class="dl">'</span>
@@ -7642,8 +7683,9 @@ but the plaintext card data will not be returned. Instead, the restriction polic
 <span class="kt">var</span> <span class="n">token</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">CreateAsync</span><span class="p">(</span><span class="k">new</span> <span class="n">Token</span> <span class="p">{</span>
   <span class="n">Type</span> <span class="p">=</span> <span class="s">"token"</span><span class="p">,</span>
   <span class="n">Data</span> <span class="p">=</span> <span class="s">"Sensitive Value"</span><span class="p">,</span>
+  <span class="n">Mask</span> <span class="p">=</span> <span class="s">"{{ data | reveal_last: 4 }}"</span><span class="p">,</span>
   <span class="n">Privacy</span> <span class="p">=</span> <span class="k">new</span> <span class="n">DataPrivacy</span> <span class="p">{</span>
-    <span class="n">ImpactLevel</span> <span class="p">=</span> <span class="n">DataImpactLevel</span><span class="p">.</span><span class="n">MODERATE</span>
+    <span class="n">RestrictionPolicy</span> <span class="p">=</span> <span class="n">DataRestrictionPolicy</span><span class="p">.</span><span class="n">MASK</span>
   <span class="p">},</span>
   <span class="n">Metadata</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="kt">string</span><span class="p">&gt;</span> <span class="p">{</span>
     <span class="p">{</span> <span class="s">"nonSensitiveField"</span><span class="p">,</span>  <span class="s">"Non-Sensitive Value"</span> <span class="p">}</span>
@@ -7665,11 +7707,12 @@ but the plaintext card data will not be returned. Instead, the restriction polic
     <span class="n">token</span> <span class="o">=</span> <span class="n">token_client</span><span class="p">.</span><span class="n">create</span><span class="p">(</span><span class="n">create_token_request</span><span class="o">=</span><span class="n">CreateTokenRequest</span><span class="p">(</span>
         <span class="nb">type</span><span class="o">=</span><span class="s">"token"</span><span class="p">,</span>
         <span class="n">data</span><span class="o">=</span><span class="s">"Sensitive Value"</span><span class="p">,</span>
+        <span class="n">mask</span><span class="o">=</span><span class="s">"{{ data | reveal_last: 4 }}"</span>
         <span class="n">metadata</span><span class="o">=</span><span class="p">{</span>
             <span class="s">"nonSensitiveField"</span><span class="p">:</span> <span class="s">"Non-Sensitive Value"</span>
         <span class="p">},</span>
         <span class="n">privacy</span><span class="o">=</span><span class="n">Privacy</span><span class="p">(</span>
-          <span class="n">impact_level</span><span class="o">=</span><span class="s">"moderate"</span>
+          <span class="n">restriction_policy</span><span class="o">=</span><span class="s">"mask"</span>
         <span class="p">),</span>
         <span class="n">search_indexes</span><span class="o">=</span><span class="p">[</span>
           <span class="s">"{{ data }}"</span><span class="p">,</span>
@@ -7692,6 +7735,7 @@ but the plaintext card data will not be returned. Instead, the restriction polic
   <span class="p">})</span>
 
   <span class="n">createTokenRequest</span> <span class="o">:=</span> <span class="o">*</span><span class="n">basistheory</span><span class="o">.</span><span class="n">NewCreateTokenRequest</span><span class="p">(</span><span class="s">"Sensitive Value"</span><span class="p">)</span>
+  <span class="n">createTokenRequest</span><span class="o">.</span><span class="n">SetMask</span><span class="p">(</span><span class="s">"{{ data | reveal_last: 4 }}"</span><span class="p">)</span>
   <span class="n">createTokenRequest</span><span class="o">.</span><span class="n">SetType</span><span class="p">(</span><span class="s">"token"</span><span class="p">)</span>
   <span class="n">createTokenRequest</span><span class="o">.</span><span class="n">SetMetadata</span><span class="p">(</span><span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">string</span><span class="p">{</span>
     <span class="s">"myMetadata"</span><span class="o">:</span> <span class="s">"myMetadataValue"</span><span class="p">,</span>
@@ -7701,7 +7745,7 @@ but the plaintext card data will not be returned. Instead, the restriction polic
   <span class="n">createTokenRequest</span><span class="o">.</span><span class="n">SetDeduplicateToken</span><span class="p">(</span><span class="no">true</span><span class="p">)</span>
 
   <span class="n">privacy</span> <span class="o">:=</span> <span class="o">*</span><span class="n">basistheory</span><span class="o">.</span><span class="n">NewPrivacy</span><span class="p">()</span>
-  <span class="n">privacy</span><span class="o">.</span><span class="n">SetImpactLevel</span><span class="p">(</span><span class="s">"moderate"</span><span class="p">)</span>
+  <span class="n">privacy</span><span class="o">.</span><span class="n">SetRestrictionPolicy</span><span class="p">(</span><span class="s">"mask"</span><span class="p">)</span>
   <span class="n">createTokenRequest</span><span class="o">.</span><span class="n">SetPrivacy</span><span class="p">(</span><span class="n">privacy</span><span class="p">)</span>
 
   <span class="n">createTokenResponse</span><span class="p">,</span> <span class="n">createTokenHttpResponse</span><span class="p">,</span> <span class="n">createErr</span> <span class="o">:=</span> <span class="n">apiClient</span><span class="o">.</span><span class="n">TokensApi</span><span class="o">.</span><span class="n">Create</span><span class="p">(</span><span class="n">contextWithAPIKey</span><span class="p">)</span><span class="o">.</span><span class="n">CreateTokenRequest</span><span class="p">(</span><span class="n">createTokenRequest</span><span class="p">)</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
@@ -7714,10 +7758,12 @@ but the plaintext card data will not be returned. Instead, the restriction polic
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c06d0789-0a38-40be-b7cc-c28a718f76f1"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"tenant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77cb0024-123e-41a8-8ff8-a3d5a0fa8a08"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"token"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XXXXXXXXXXXalue"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"mask"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{{ data | reveal_last: 4 }}"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"privacy"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"classification"</span><span class="p">:</span><span class="w"> </span><span class="s2">"general"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"impact_level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"moderate"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"restriction_policy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"redact"</span><span class="w">
+    </span><span class="nl">"impact_level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"high"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"restriction_policy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mask"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"nonSensitiveField"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Non-Sensitive Value"</span><span class="w">
@@ -7766,11 +7812,18 @@ but the plaintext card data will not be returned. Instead, the restriction polic
 <td>Token data. Can be an object, array, or any primitive type such as an integer, boolean, or string</td>
 </tr>
 <tr>
+<td><code>mask</code></td>
+<td>false</td>
+<td><em>any</em></td>
+<td>Depends on the <a href="#token-types">token type</a></td>
+<td>Token data mask. Can be an object, array, or any primitive type such as an integer, boolean, or string. See <a href="/expressions/#masks">mask expressions</a>.</td>
+</tr>
+<tr>
 <td><code>privacy</code></td>
 <td>false</td>
 <td><em><a href="#tokens-token-object-privacy-object">privacy object</a></em></td>
 <td><code>null</code></td>
-<td>Token Privacy Settings overrides. Overrides must be a higher specificity level than the default or minimum setting for the <a href="#token-types">Token Type</a>.</td>
+<td>Token Privacy Settings overrides. Overrides must be a higher specificity level than the default or minimum setting for the <a href="#token-token-types">Token Type</a>.</td>
 </tr>
 <tr>
 <td><code>metadata</code></td>
@@ -8029,8 +8082,9 @@ Returns <a href="#errors">an error</a> if the token could not be retrieved.</p>
   <span class="nt">-X</span> <span class="s2">"PATCH"</span> <span class="se">\</span>
   <span class="nt">-d</span> <span class="s1">'{
     "data": "Sensitive Value",
+    "mask": "{{ data | reveal_last: 4 }}",
     "privacy": {
-      "impact_level": "moderate"
+      "restriction_policy": "mask"
     },
     "metadata": {
       "nonSensitiveField": "Non-Sensitive Value"
@@ -8048,8 +8102,9 @@ Returns <a href="#errors">an error</a> if the token could not be retrieved.</p>
 
 <span class="kd">const</span> <span class="nx">token</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">bt</span><span class="p">.</span><span class="nx">tokens</span><span class="p">.</span><span class="nx">update</span><span class="p">(</span><span class="dl">'</span><span class="s1">c06d0789-0a38-40be-b7cc-c28a718f76f1</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">data</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Sensitive Value</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">mask</span><span class="p">:</span> <span class="dl">'</span><span class="s1">{{ data | reveal_last: 4 }}</span><span class="dl">'</span><span class="p">,</span>
   <span class="na">privacy</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">impactLevel</span><span class="p">:</span> <span class="dl">"</span><span class="s2">moderate</span><span class="dl">"</span>
+    <span class="na">restrictionPolicy</span><span class="p">:</span> <span class="dl">"</span><span class="s2">mask</span><span class="dl">"</span>
   <span class="p">},</span>
   <span class="na">metadata</span><span class="p">:</span> <span class="p">{</span>
     <span class="na">nonSensitiveField</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Non-Sensitive Value</span><span class="dl">'</span>
@@ -8067,8 +8122,9 @@ Returns <a href="#errors">an error</a> if the token could not be retrieved.</p>
 
 <span class="kt">var</span> <span class="n">token</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">UpdateAsync</span><span class="p">(</span><span class="s">"c06d0789-0a38-40be-b7cc-c28a718f76f1"</span><span class="p">,</span> <span class="k">new</span> <span class="n">TokenUpdateRequest</span> <span class="p">{</span>
   <span class="n">Data</span> <span class="p">=</span> <span class="s">"Sensitive Value"</span><span class="p">,</span>
+  <span class="n">Mask</span> <span class="p">=</span> <span class="s">"{{ data | reveal_last: 4 }}"</span><span class="p">,</span>
   <span class="n">Privacy</span> <span class="p">=</span> <span class="k">new</span> <span class="n">PrivacyUpdateModel</span> <span class="p">{</span>
-    <span class="n">ImpactLevel</span> <span class="p">=</span> <span class="n">DataImpactLevel</span><span class="p">.</span><span class="n">MODERATE</span>
+    <span class="n">RestrictionPolicy</span> <span class="p">=</span> <span class="n">DataRestrictionPolicy</span><span class="p">.</span><span class="n">MASK</span>
   <span class="p">},</span>
   <span class="n">Metadata</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="kt">string</span><span class="p">&gt;</span> <span class="p">{</span>
     <span class="p">{</span> <span class="s">"nonSensitiveField"</span><span class="p">,</span>  <span class="s">"Non-Sensitive Value"</span> <span class="p">}</span>
@@ -8089,11 +8145,12 @@ Returns <a href="#errors">an error</a> if the token could not be retrieved.</p>
 
     <span class="n">token</span> <span class="o">=</span> <span class="n">token_client</span><span class="p">.</span><span class="n">update</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s">"c06d0789-0a38-40be-b7cc-c28a718f76f1"</span><span class="p">,</span> <span class="n">update_token_request</span><span class="o">=</span><span class="n">UpdateTokenRequest</span><span class="p">(</span>
         <span class="n">data</span><span class="o">=</span><span class="s">"Sensitive Value"</span><span class="p">,</span>
+        <span class="n">mask</span><span class="o">=</span><span class="s">"{{ data | reveal_last: 4 }}"</span><span class="p">,</span>
         <span class="n">metadata</span><span class="o">=</span><span class="p">{</span>
             <span class="s">"nonSensitiveField"</span><span class="p">:</span> <span class="s">"Non-Sensitive Value"</span>
         <span class="p">},</span>
         <span class="n">privacy</span><span class="o">=</span><span class="n">UpdatePrivacy</span><span class="p">(</span>
-          <span class="n">impact_level</span><span class="o">=</span><span class="s">"moderate"</span>
+          <span class="n">restriction_policy</span><span class="o">=</span><span class="s">"mask"</span>
         <span class="p">),</span>
         <span class="n">search_indexes</span><span class="o">=</span><span class="p">[</span>
           <span class="s">"{{ data }}"</span><span class="p">,</span>
@@ -8116,6 +8173,7 @@ Returns <a href="#errors">an error</a> if the token could not be retrieved.</p>
   <span class="p">})</span>
 
   <span class="n">updateTokenRequest</span> <span class="o">:=</span> <span class="o">*</span><span class="n">basistheory</span><span class="o">.</span><span class="n">NewUpdateTokenRequest</span><span class="p">(</span><span class="s">"Sensitive Value"</span><span class="p">)</span>
+  <span class="n">updateTokenRequest</span><span class="o">.</span><span class="n">SetMask</span><span class="p">(</span><span class="s">"{{ data | reveal_last: 4 }}"</span><span class="p">)</span>
   <span class="n">updateTokenRequest</span><span class="o">.</span><span class="n">SetMetadata</span><span class="p">(</span><span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">string</span><span class="p">{</span>
     <span class="s">"myMetadata"</span><span class="o">:</span> <span class="s">"myMetadataValue"</span><span class="p">,</span>
   <span class="p">})</span>
@@ -8123,7 +8181,7 @@ Returns <a href="#errors">an error</a> if the token could not be retrieved.</p>
   <span class="n">updateTokenRequest</span><span class="o">.</span><span class="n">SetFingerprintExpression</span><span class="p">(</span><span class="s">"{{ data }}"</span><span class="p">)</span>
 
   <span class="n">privacy</span> <span class="o">:=</span> <span class="o">*</span><span class="n">basistheory</span><span class="o">.</span><span class="n">NewPrivacy</span><span class="p">()</span>
-  <span class="n">privacy</span><span class="o">.</span><span class="n">SetImpactLevel</span><span class="p">(</span><span class="s">"moderate"</span><span class="p">)</span>
+  <span class="n">privacy</span><span class="o">.</span><span class="n">SetRestrictionPolicy</span><span class="p">(</span><span class="s">"mask"</span><span class="p">)</span>
   <span class="n">updateTokenRequest</span><span class="o">.</span><span class="n">SetPrivacy</span><span class="p">(</span><span class="n">privacy</span><span class="p">)</span>
 
   <span class="n">updateTokenResponse</span><span class="p">,</span> <span class="n">updateTokenHttpResponse</span><span class="p">,</span> <span class="n">createErr</span> <span class="o">:=</span> <span class="n">apiClient</span><span class="o">.</span><span class="n">TokensApi</span><span class="o">.</span><span class="n">Update</span><span class="p">(</span><span class="n">contextWithAPIKey</span><span class="p">,</span> <span class="s">"c06d0789-0a38-40be-b7cc-c28a718f76f1"</span><span class="p">)</span><span class="o">.</span><span class="n">UpdateTokenRequest</span><span class="p">(</span><span class="n">updateTokenRequest</span><span class="p">)</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
@@ -8136,10 +8194,12 @@ Returns <a href="#errors">an error</a> if the token could not be retrieved.</p>
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c06d0789-0a38-40be-b7cc-c28a718f76f1"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"tenant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77cb0024-123e-41a8-8ff8-a3d5a0fa8a08"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"token"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XXXXXXXXXXXalue"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"mask"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{{ data | reveal_last: 4 }}"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"privacy"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"classification"</span><span class="p">:</span><span class="w"> </span><span class="s2">"general"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"impact_level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"moderate"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"restriction_policy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"redact"</span><span class="w">
+    </span><span class="nl">"impact_level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"high"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"restriction_policy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mask"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"nonSensitiveField"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Non-Sensitive Value"</span><span class="w">
@@ -8181,6 +8241,13 @@ Returns <a href="#errors">an error</a> if the token could not be retrieved.</p>
 <td>Token data. Can be an object, array, or any primitive type such as an integer, boolean, or string</td>
 </tr>
 <tr>
+<td><code>mask</code></td>
+<td>false</td>
+<td><em>any</em></td>
+<td>Merge Patch (see <a href="https://datatracker.ietf.org/doc/html/rfc7386">RFC 7386</a>)</td>
+<td>Token data mask. Can be an object, array, or any primitive type such as an integer, boolean, or string. See <a href="/expressions/#masks">mask expressions</a>.</td>
+</tr>
+<tr>
 <td><code>privacy</code></td>
 <td>false</td>
 <td><em><a href="#tokens-token-object-privacy-object">privacy object</a></em></td>
@@ -8199,14 +8266,14 @@ Returns <a href="#errors">an error</a> if the token could not be retrieved.</p>
 <td>false</td>
 <td><em>array</em></td>
 <td>Replace</td>
-<td>Array of <a href="#expressions">expressions</a> used to generate indexes to be able to search against.</td>
+<td>Array of <a href="/expressions/#search-indexes">expressions</a> used to generate indexes to be able to search against.</td>
 </tr>
 <tr>
 <td><code>fingerprint_expression</code></td>
 <td>false</td>
 <td><em>string</em></td>
 <td>Replace</td>
-<td><a href="#expressions">Expressions</a> used to fingerprint your token.</td>
+<td><a href="/expressions/#fingerprints">Expressions</a> used to fingerprint your token.</td>
 </tr>
 <tr>
 <td><code>deduplicate_token</code></td>
@@ -8220,7 +8287,7 @@ Returns <a href="#errors">an error</a> if the token could not be retrieved.</p>
 <p>Returns the updated <a href="#tokens-token-object">token</a> if successful. Returns <a href="#errors">an error</a> if there were validation errors, or the token failed to create.</p>
 
 <aside class="notice">
-  <span>The response object will omit the <code>data</code> and <code>metadata</code> attributes if the application does not have the <code>token:&lt;classification&gt;:read</code> permission.</span>
+  <span>If the updated token results in a duplicate of an existing token and the application does not have the original token's read permission, the <code>data</code>,    <code>metadata</code>, <code>fingerprint_expression</code>, <code>search_indexes</code> and <code>mask</code> attributes will be redacted.</span>
 </aside>
 <h2 id='tokens-search-tokens'>Search Tokens</h2>
 <blockquote>
