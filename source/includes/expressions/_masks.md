@@ -6,7 +6,7 @@ When [creating a token](/#tokens-create-token), the mask can be specified within
 You are able to reference the `data` property within an [object](#language-objects) expression -
 `data` will be bound to the provided token data.
 
-The token's mask will be applied to the `data` property upon token retrieval, for those tokens with a `mask` [data restriction policy](/#tokens-token-restriction-policies). If the token's data restriction policy is `redact` then a mask cannot be provided since the data will be redacted. The `mask` is required for tokens with type `token` and data restriction policy `mask`. All other token types have a default mask assigned in case a custom one is not provided. 
+When retrieving a token with inadequate read permissions, returned token data is either masked or redacted based on the token's [data restriction policy](/#tokens-token-restriction-policies). For tokens with the `mask` restriction policy, the token's mask will be evaluated and returned within the `data` property. For tokens with the `redact`  restriction policy, `data` will not be returned and a `mask` cannot be defined. The `mask` property is required for tokens with type `token` having a data restriction policy of `mask`. All other token types have a default mask assigned in case a custom one is not provided. 
 
 <aside class="notice">
   <span>Only generic tokens (those with type <code>token</code>) allow providing custom masks.</span>
