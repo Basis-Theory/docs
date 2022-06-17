@@ -53,13 +53,13 @@ Request:
   "type": "token",
   "data": {
     "name": { 
-      "first" = "John", 
-      "middle" = "Wilson", 
-      "last" = "Doe" 
+      "first": "John", 
+      "middle": "Wilson", 
+      "last": "Doe" 
     },
-    "ssn" = "123-45-6789",
-    "card_number" = "4242-4242-4242-4242",
-    "cvc" = "123"
+    "ssn": "123-45-6789",
+    "card_number": "4242-4242-4242-4242",
+    "cvc": "123"
   },
   "mask": {
     "name": {
