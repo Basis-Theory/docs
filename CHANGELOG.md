@@ -1,3 +1,10 @@
+# [1.54.0](https://github.com/Basis-Theory/docs/compare/v1.53.0...v1.54.0) (2022-06-20)
+
+
+### Features
+
+* update fonts ([#205](https://github.com/Basis-Theory/docs/issues/205)) ([6c531e5](https://github.com/Basis-Theory/docs/commit/6c531e52de6e48549dd92e8a89435a1a42d95fe1))
+
 # [1.53.0](https://github.com/Basis-Theory/docs/compare/v1.52.0...v1.53.0) (2022-06-16)
 
 
