@@ -2,7 +2,8 @@
 @import 'normalize';
 @import 'variables';
 @import 'icon-font';
-@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@200;400;500;600&display=swap');
 // @import 'rtl'; // uncomment to switch to RTL format
 
 /*
@@ -215,9 +216,7 @@ html, body {
   // This is the currently selected ToC entry
   .toc-link.active {
     color: $primary-dark;
-    font-weight: 600;
     font-size: 14px;
-    background-image: linear-gradient(-90deg, #ebedf5 0%, rgba(235, 237, 245, 0.8) 80%, rgba(235, 237, 245, 0) 100%);
     padding-top: 0.25rem;
     padding-bottom: 0.25rem;
   }
@@ -226,9 +225,7 @@ html, body {
   .toc-link.active-parent {
     font-size: 14px;
     font-style: normal;
-    font-weight: 600;
     line-height: 20px;
-    letter-spacing: 0.15px;
     text-align: left;
     color: $primary-dark;
   }
@@ -248,7 +245,7 @@ html, body {
   .toc-h1 {
     font-size: 14px !important;
     color: $grey-600;
-    font-weight: 600;
+    font-weight: 500;
     background-image: none !important;
     padding-bottom: 6px !important;
     padding-top: 6px !important;
@@ -382,7 +379,7 @@ html, body {
 }
 
 .nav-title {
-  font-family: "Source Sans Pro", sans-serif;
+  font-family: "Inter", sans-serif;
   font-style: normal;
   font-weight: 600;
   font-size: 12px;

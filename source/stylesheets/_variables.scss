@@ -124,19 +124,20 @@ $phone-width: $tablet-width - $nav-width !default; // min width before reverting
 ////////////////////
 %default-font {
   font-size: 14px;
-  font-family: "Source Sans Pro", sans-serif;
+  font-family: "Inter", sans-serif;
   font-style: normal;
   letter-spacing: 0.15px;
 }
 
 %header-font {
   @extend %default-font;
+  font-family: "Outfit", sans-serif;
   font-weight: bold;
 }
 
 %code-font {
   @extend %default-font;
-  font-family: "Source Code Pro", "Source Sans Pro", sans-serif;
+  font-family: "Source Code Pro", "monospace", sans-serif;
   font-weight: 500;
   line-height: 17.6px;
   font-style: normal;
@@ -152,10 +153,10 @@ $phone-width: $tablet-width - $nav-width !default; // min width before reverting
 }
 
 %principal-title-font {
-  font-family: "Source Sans Pro", sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: 16px;
   font-style: normal;
-  font-weight: 600;
+  font-weight: 500;
   line-height: 28px;
   letter-spacing: 0.15px;
   text-align: left;
@@ -170,7 +171,7 @@ $phone-width: $tablet-width - $nav-width !default; // min width before reverting
 }
 
 %http-method-font {
-  font-family: "Source Sans Pro", sans-serif;
+  font-family: "Source Code Pro", sans-serif;
   font-style: normal;
   font-weight: bold;
   font-size: 12px;
@@ -179,7 +180,7 @@ $phone-width: $tablet-width - $nav-width !default; // min width before reverting
 }
 
 %subtitle2-font {
-  font-family: "Source Sans Pro", sans-serif;
+  font-family: "Outfit", sans-serif;
   font-size: 20px;
   font-style: normal;
   font-weight: 600;
@@ -189,7 +190,7 @@ $phone-width: $tablet-width - $nav-width !default; // min width before reverting
 }
 
 %body1-font {
-  font-family: "Source Sans Pro", sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -215,17 +216,17 @@ $phone-width: $tablet-width - $nav-width !default; // min width before reverting
 }
 
 %scope-font {
-  @extend %default-font;
-  font-weight: 600;
+  font-family: "Source Code Pro", monospace;
+  font-weight: 500;
   line-height: 180%;
   color: $grey-800;
 }
 
 %code-annotation-font {
-  font-family: "Source Sans Pro", sans-serif;
+  font-family: "Inter", sans-serif;
   font-style: normal;
-  font-weight: 600;
-  font-size: 20px;
+  font-weight: 500;
+  font-size: 16px;
   line-height: 160%;
   letter-spacing: 0.15px;
 }
@@ -248,7 +249,7 @@ $phone-width: $tablet-width - $nav-width !default; // min width before reverting
 }
 
 %nav-secondary-title {
-  font-family: "Source Sans Pro", sans-serif;
+  font-family: "Outfit", sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: inherit;
