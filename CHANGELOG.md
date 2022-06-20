@@ -1,3 +1,10 @@
+# [1.53.0](https://github.com/Basis-Theory/docs/compare/v1.52.0...v1.53.0) (2022-06-16)
+
+
+### Features
+
+* add token update docs ([#203](https://github.com/Basis-Theory/docs/issues/203)) ([00e7a63](https://github.com/Basis-Theory/docs/commit/00e7a63a995b978d568fa0ca286445bc8b9a7442))
+
 # [1.52.0](https://github.com/Basis-Theory/docs/compare/v1.51.0...v1.52.0) (2022-06-15)
 
 
