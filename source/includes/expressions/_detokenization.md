@@ -8,12 +8,10 @@ Detokenization is performed whenever a **detokenization expression** is identifi
 In their simplest form, these are Liquid [objects](#language-objects) of the form `{{<tokenId>}}`. 
 This expression will be replaced with the token data contained within the token with id `<tokenId>`.
 
-Detokenization expressions containing non-uuid values, such as `{{non uuid value}}` will evaluate to `null` and will be removed from the request.
-
-Any `uuid` value contained in a detokenization expression is expected to represent the `id` of a token within your tenant. 
+Any `string` value contained in a detokenization expression is expected to represent the `id` of a token within your tenant. 
 If no such token is found with that identifier, the request will be rejected with a 400 error.
 
-If a token is found with the given `uuid` identifier, but the calling application is missing permission to use that 
+If a token is found with the given identifier, but the calling application is missing permission to use that 
 token, then the request will be rejected with a 403 error. 
 See the following links for more information about the permissions required to use tokens in a 
 [Reactor](/#reactors-invoke-a-reactor) or [Proxy](/#proxy-proxying-outbound-requests).

@@ -4,7 +4,7 @@
 
 | Attribute                | Type                                                    | Description                                                                                                                        |
 |--------------------------|---------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------|
-| `id`                     | *uuid*                                                  | Unique identifier of the token which can be used to [get a token](#get-a-token)                                                    |
+| `id`                     | *string*                                                | Unique identifier of the token which can be used to [get a token](#get-a-token)                                                    |
 | `tenant_id`              | *uuid*                                                  | The [Tenant](#tenants-tenant-object) ID which owns the token                                                                       |
 | `type`                   | *string*                                                | [Token type](#token-types)                                                                                                         |
 | `data`                   | *any*                                                   | Token data                                                                                                                         |
@@ -293,7 +293,7 @@ Create a new token for the Tenant.
 
 | Attribute                | Required | Type                                                    | Default                                   | Description                                                                                                                                                  |
 |--------------------------|----------|---------------------------------------------------------|-------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `id`                     | false    | *string*                                                | `null`                                    | A value or [expression](/expressions/#aliasing) specifying the token's id. If not specified, a random UUID will be assigned.                                 |
+| `id`                     | false    | *string*                                                | `null`                                    | A value or [expression](/expressions/#aliasing) specifying the token's id. If not specified, a UUID will be assigned.                                        |
 | `type`                   | true     | *string*                                                | `null`                                    | [Token type](#token-types) of the token                                                                                                                      |
 | `data`                   | true     | *any*                                                   | `null`                                    | Token data. Can be an object, array, or any primitive type such as an integer, boolean, or string                                                            |
 | `mask`                   | false    | *any*                                                   | Depends on the [token type](#token-types) | Token data mask. Can be an object, array, or any primitive type such as an integer, boolean, or string. See [mask expressions](/expressions/#masks).         |
@@ -421,7 +421,7 @@ If you need to perform a more advanced token search, see [Search Tokens](#tokens
 
 | Parameter        | Required | Type     | Default | Description                                                                                                                                                                                                                                                                                             |
 |------------------|----------|----------|---------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `id`             | false    | *uuid*   | `null`  | One to many Token IDs to retrieve. Multiple IDs can be passed in the form `?id=<value1>&id=<value2>`.                                                                                                                                                                                                   |
+| `id`             | false    | *string* | `null`  | One to many Token IDs to retrieve. Multiple IDs can be passed in the form `?id=<value1>&id=<value2>`.                                                                                                                                                                                                   |
 | `type`           | false    | *string* | `null`  | One to many [token types](#token-types) to filter the list of tokens by. Can be repeated in the form `?type=<value1>&type=<value2>`.                                                                                                                                                                    |
 | `metadata.[key]` | false    | *map*    | `{}`    | Map of key-value pairs to filter tokens with matching metadata in the form `?metadata.key1=value1&metadata.key2=value2`. *Note*, `[key]` must be unique and repeated keys will be ignored. Metadata will be searched for a case-insensitive, exact match. Multiple parameters will be `AND`ed together. |
 
@@ -523,9 +523,9 @@ Get a token by ID in the Tenant.
 
 ### URI Parameters
 
-| Parameter | Required | Type   | Default | Description         |
-|-----------|----------|--------|---------|---------------------|
-| `id`      | true     | *uuid* | `null`  | The ID of the token |
+| Parameter | Required | Type     | Default | Description         |
+|-----------|----------|----------|---------|---------------------|
+| `id`      | true     | *string* | `null`  | The ID of the token |
 
 ### Response
 
@@ -1051,9 +1051,9 @@ Delete a token by ID in the Tenant.
 
 ### URI Parameters
 
-| Parameter | Required | Type   | Default | Description         |
-|-----------|----------|--------|---------|---------------------|
-| `id`      | true     | *uuid* | `null`  | The ID of the token |
+| Parameter | Required | Type     | Default | Description         |
+|-----------|----------|----------|---------|---------------------|
+| `id`      | true     | *string* | `null`  | The ID of the token |
 
 ### Response
 
