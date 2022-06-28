@@ -293,7 +293,7 @@ Create a new token for the Tenant.
 
 | Attribute                | Required | Type                                                    | Default                                   | Description                                                                                                                                                  |
 |--------------------------|----------|---------------------------------------------------------|-------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `id`                     | false    | *string*                                                | `null`                                    | A value or [expression](/expressions/#aliasing) specifying the token's id. If not specified, a UUID will be assigned.                                        |
+| `id`                     | false    | *string*                                                | `null`                                    | A value or [expression](/expressions/#aliasing) specifying the token's ID. If not specified, a UUID will be assigned.                                        |
 | `type`                   | true     | *string*                                                | `null`                                    | [Token type](#token-types) of the token                                                                                                                      |
 | `data`                   | true     | *any*                                                   | `null`                                    | Token data. Can be an object, array, or any primitive type such as an integer, boolean, or string                                                            |
 | `mask`                   | false    | *any*                                                   | Depends on the [token type](#token-types) | Token data mask. Can be an object, array, or any primitive type such as an integer, boolean, or string. See [mask expressions](/expressions/#masks).         |
@@ -304,7 +304,7 @@ Create a new token for the Tenant.
 | `deduplicate_token`      | false    | *bool*                                                  | `null`                                    | Whether the token is deduplicated on creation.                                                                                                               |
 
 <aside class="warning">
-  <span>WARNING - Never reveal sensitive information in the <code>id</code> of your token. See the documentation on <a href="/expressions/#aliasing-best-practices">Aliasing</a> to learn more about best practices when specifying your own token id.</span>
+  <span>WARNING - Never reveal sensitive information in the <code>id</code> of your token. See the documentation on <a href="/expressions/#aliasing-best-practices">Aliasing</a> to learn more about best practices when specifying your own token ID.</span>
 </aside>
 
 <aside class="warning">

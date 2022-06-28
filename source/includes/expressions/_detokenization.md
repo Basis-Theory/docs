@@ -6,7 +6,7 @@ platform and the [Proxy](https://developers.basistheory.com/concepts/what-is-the
 
 Detokenization is performed whenever a **detokenization expression** is identified within a request.
 In their simplest form, these are Liquid [objects](#language-objects) of the form `{{<tokenId>}}`. 
-This expression will be replaced with the token data contained within the token with id `<tokenId>`.
+This expression will be replaced with the token data contained within the token with ID `<tokenId>`.
 
 Any `string` value contained in a detokenization expression is expected to represent the `id` of a token within your tenant. 
 If no such token is found with that identifier, the request will be rejected with a 400 error.

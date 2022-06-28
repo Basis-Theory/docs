@@ -80,7 +80,7 @@ This event is triggered whenever element's value(s) change. For example, if the 
 
 | Attribute  | Type                          | Description                                                                        |
 |------------|-------------------------------|------------------------------------------------------------------------------------|
-| `targetId` | *string*                      | Input id that triggered the error. Values vary per [element type](#element-types). |
+| `targetId` | *string*                      | Input ID that triggered the error. Values vary per [element type](#element-types). |
 | `type`     | *"invalid"* or *"incomplete"* | Type of the error.                                                                 |
 
 ## On Focus
@@ -108,7 +108,7 @@ Triggered when an element input is focused.
 
 | Attribute  | Type     | Description                                                                        |
 |------------|----------|------------------------------------------------------------------------------------|
-| `targetId` | *string* | Input id that triggered the event. Values vary per [element type](#element-types). |
+| `targetId` | *string* | Input ID that triggered the event. Values vary per [element type](#element-types). |
 
 ## On Blur
 
@@ -135,7 +135,7 @@ Triggered when an element input focus is lost.
 
 | Attribute  | Type     | Description                                                                        |
 |------------|----------|------------------------------------------------------------------------------------|
-| `targetId` | *string* | Input id that triggered the event. Values vary per [element type](#element-types). |
+| `targetId` | *string* | Input ID that triggered the event. Values vary per [element type](#element-types). |
 
 ## On Keydown
 

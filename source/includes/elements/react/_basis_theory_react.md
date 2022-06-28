@@ -69,7 +69,7 @@ The targeted Element must be present in your component tree (virtual DOM) when i
 | `id`      | true     | *string* | The `id` of the Element instance |
 
 <aside class="warning">
-  <span>Passing an unknown id to the <code>getElement</code> will throw an error at runtime.</span>
+  <span>Passing an unknown `id` to the <code>getElement</code> will throw an error at runtime.</span>
 </aside>
 
 <aside class="warning">
