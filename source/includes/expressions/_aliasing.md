@@ -4,7 +4,7 @@ By default, when [creating a token](/#tokens-create-token), a random ID (v4 UUID
 token and its secure payload. Token IDs can be safely stored within your system or transmitted within API requests
 without the risk of revealing sensitive information.
 
-While randomly generated IDs may be sufficient for many use cases, we have seen several scenarios in which it can be
+While randomly generated IDs may be sufficient for many use cases, there are several scenarios in which it can be
 valuable for a generated token ID to satisfy a specific format, or to allow a custom token ID to be specified within
 the request:
 
@@ -52,18 +52,23 @@ resulting in an ID of the form `9326-7128-4203-4242`.
 
 While you have the ability to set any value as a token's ID, you should never reveal sensitive information in IDs.
 The `id` property will not be encrypted and will be revealed in plaintext within API requests and responses, and this 
-value will likely referenced within your systems.
+value will likely be referenced within your systems.
 
 Only reveal characters at the beginning or end of your token data if absolutely necessary, and if so, reveal the minimum number of characters possible.
 Every revealed character makes it easier for a malicious actor to try to uncover the underlying token's data. 
 For example, given a 16 digit credit card number, revealing the first 6 and last 4 characters in a format preserving alias
 only leaves 6 remaining digits (10^6 = 1 million possible combinations), which can be reduced further
-knowing that the card number must have a valid Luhn checksum. 
+knowing that the card number must have a valid Luhn checksum. Instead, consider revealing only the first 6 or last 4 digits, but not both.
 
-Special characters and whitespace characters are accepted within IDs, but they will need to be URL encoded within
-requests where the ID is provided within the API route. The latest official Basis Theory SDKs automatically URL encode 
-token IDs when they are included in the URL.
+## Limitations
 
+Token IDs may not contain any of the following special characters: `#`, `/`, `\`, `+`, `?`, `[`, `]`, `|`, `&`, `=`, `%`, `<`, `>`, `{`, `}`, `^`
+
+Including any restricted special characters in an ID will result in a `400 BAD REQUEST` response.
+
+Since token IDs are included within the URL route on some operations, some allowable special characters and whitespace 
+characters will need to be URL encoded within requests where the ID is provided within the API route. 
+The latest official Basis Theory SDKs automatically URL encode token IDs when they are included in the URL.
 
 ## Examples
 
