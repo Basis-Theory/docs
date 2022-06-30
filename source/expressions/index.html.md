@@ -22,9 +22,10 @@ intro_includes:
   - expressions/language
   - expressions/filters
   - expressions/detokenization
-  - expressions/search_indexes
+  - expressions/aliasing
   - expressions/fingerprints
   - expressions/masks
+  - expressions/search_indexes
 
 reference_links:
   - <a class="toc-h1 toc-link" href="/api-reference">API Reference</a>

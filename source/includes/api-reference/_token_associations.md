@@ -78,10 +78,10 @@ tokens' privacy settings.
 
 ### URI Parameters
 
-| Parameter   | Required | Type   | Default | Description                |
-|-------------|----------|--------|---------|----------------------------|
-| `parent_id` | true     | *uuid* | `null`  | The ID of the parent token |
-| `child_id`  | true     | *uuid* | `null`  | The ID of the child token  |
+| Parameter   | Required | Type     | Default | Description                |
+|-------------|----------|----------|---------|----------------------------|
+| `parent_id` | true     | *string* | `null`  | The ID of the parent token |
+| `child_id`  | true     | *string* | `null`  | The ID of the child token  |
 
 <aside class="notice">
   <span>Bi-directional associations can be made between two tokens by creating a token association and swapping the <code>parent_id</code> and <code>child_id</code>.</span>
@@ -165,10 +165,10 @@ Delete a parent/child association between two tokens in the Tenant.
 
 ### URI Parameters
 
-| Parameter   | Required | Type   | Default | Description                |
-|-------------|----------|--------|---------|----------------------------|
-| `parent_id` | true     | *uuid* | `null`  | The ID of the parent token |
-| `child_id`  | true     | *uuid* | `null`  | The ID of the child token  |
+| Parameter   | Required | Type     | Default | Description                |
+|-------------|----------|----------|---------|----------------------------|
+| `parent_id` | true     | *string* | `null`  | The ID of the parent token |
+| `child_id`  | true     | *string* | `null`  | The ID of the child token  |
 
 ### Response
 
@@ -425,9 +425,9 @@ Get a list of child tokens for a token in the Tenant.
 
 ### Query Parameters
 
-| Parameter | Required | Type    | Default | Description                                                                                   |
-|-----------|----------|---------|---------|-----------------------------------------------------------------------------------------------|
-| `id`      | false    | *array* | `[]`    | An optional list of token ID's to filter the list of child tokens by                          |
+| Parameter | Required | Type    | Default | Description                                                                            |
+|-----------|----------|---------|---------|----------------------------------------------------------------------------------------|
+| `id`      | false    | *array* | `[]`    | An optional list of token ID's to filter the list of child tokens by                   |
 | `type`    | false    | *array* | `[]`    | An optional array of [token types](#token-types) to filter the list of child tokens by |
 
 ### Response

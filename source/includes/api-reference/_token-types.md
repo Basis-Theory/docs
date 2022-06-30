@@ -11,7 +11,7 @@ Token Types define the rules around a data type such as validation requirements,
 - [US Bank Account Number](#token-types-us-bank-account-number)
 - [US Bank Routing Number](#token-types-us-bank-routing-number)
 - [Social Security Number](#token-types-social-security-number)
-- [Employer Id Number](#token-types-employer-id-number)
+- [Employer ID Number](#token-types-employer-id-number)
 
 ## Token
 
@@ -138,7 +138,7 @@ Examples:
 | 123-45-6789 | XXX-XX-6789  |
 
 
-## Employer Id Number
+## Employer ID Number
 
 | Token Attribute                    | Value                                      |
 |------------------------------------|--------------------------------------------|
