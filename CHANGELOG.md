@@ -1,3 +1,10 @@
+# [1.55.0](https://github.com/Basis-Theory/docs/compare/v1.54.0...v1.55.0) (2022-06-30)
+
+
+### Features
+
+* Documenting alias expressions and id input when creating tokens ([#207](https://github.com/Basis-Theory/docs/issues/207)) ([b43266a](https://github.com/Basis-Theory/docs/commit/b43266a4b395a585f95e7e97836890171a656727))
+
 # [1.54.0](https://github.com/Basis-Theory/docs/compare/v1.53.0...v1.54.0) (2022-06-20)
 
 
