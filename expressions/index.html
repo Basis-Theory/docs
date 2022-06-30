@@ -363,19 +363,25 @@ _iub.csConfiguration = {"ccpaAcknowledgeOnLoad":true,"consentOnContinuedBrowsing
             <a href="#filters" class="toc-h1 toc-link" data-title="Filters">Filters</a>
               <ul class="toc-list-h2">
                   <li>
+                    <a href="#filters-alias_preserve_format" class="toc-h2 toc-link" data-title="alias_preserve_format">alias_preserve_format</a>
+                  </li>
+                  <li>
+                    <a href="#filters-alias_preserve_length" class="toc-h2 toc-link" data-title="alias_preserve_length">alias_preserve_length</a>
+                  </li>
+                  <li>
                     <a href="#filters-json" class="toc-h2 toc-link" data-title="json">json</a>
                   </li>
                   <li>
                     <a href="#filters-last4" class="toc-h2 toc-link" data-title="last4">last4</a>
                   </li>
                   <li>
-                    <a href="#filters-reveal_last" class="toc-h2 toc-link" data-title="reveal_last">reveal_last</a>
-                  </li>
-                  <li>
                     <a href="#filters-pad_left" class="toc-h2 toc-link" data-title="pad_left">pad_left</a>
                   </li>
                   <li>
                     <a href="#filters-pad_right" class="toc-h2 toc-link" data-title="pad_right">pad_right</a>
+                  </li>
+                  <li>
+                    <a href="#filters-reveal_last" class="toc-h2 toc-link" data-title="reveal_last">reveal_last</a>
                   </li>
                   <li>
                     <a href="#filters-stringify" class="toc-h2 toc-link" data-title="stringify">stringify</a>
@@ -397,10 +403,22 @@ _iub.csConfiguration = {"ccpaAcknowledgeOnLoad":true,"consentOnContinuedBrowsing
               </ul>
           </li>
           <li>
-            <a href="#search-indexes" class="toc-h1 toc-link" data-title="Search Indexes">Search Indexes</a>
+            <a href="#aliasing" class="toc-h1 toc-link" data-title="Aliasing">Aliasing</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#search-indexes-examples" class="toc-h2 toc-link" data-title="Examples">Examples</a>
+                    <a href="#aliasing-predefined-token-ids" class="toc-h2 toc-link" data-title="Predefined Token IDs">Predefined Token IDs</a>
+                  </li>
+                  <li>
+                    <a href="#aliasing-alias-expressions" class="toc-h2 toc-link" data-title="Alias Expressions">Alias Expressions</a>
+                  </li>
+                  <li>
+                    <a href="#aliasing-best-practices" class="toc-h2 toc-link" data-title="Best Practices">Best Practices</a>
+                  </li>
+                  <li>
+                    <a href="#aliasing-limitations" class="toc-h2 toc-link" data-title="Limitations">Limitations</a>
+                  </li>
+                  <li>
+                    <a href="#aliasing-examples" class="toc-h2 toc-link" data-title="Examples">Examples</a>
                   </li>
               </ul>
           </li>
@@ -417,6 +435,14 @@ _iub.csConfiguration = {"ccpaAcknowledgeOnLoad":true,"consentOnContinuedBrowsing
               <ul class="toc-list-h2">
                   <li>
                     <a href="#masks-examples" class="toc-h2 toc-link" data-title="Examples">Examples</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#search-indexes" class="toc-h1 toc-link" data-title="Search Indexes">Search Indexes</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#search-indexes-examples" class="toc-h2 toc-link" data-title="Examples">Examples</a>
                   </li>
               </ul>
           </li>
@@ -492,9 +518,10 @@ _iub.csConfiguration = {"ccpaAcknowledgeOnLoad":true,"consentOnContinuedBrowsing
             <a href="#language">Language</a>
             <a href="#filters">Filters</a>
             <a href="#detokenization">Detokenization</a>
-            <a href="#search-indexes">Search Indexes</a>
+            <a href="#aliasing">Aliasing</a>
             <a href="#fingerprints">Fingerprints</a>
             <a href="#masks">Masks</a>
+            <a href="#search-indexes">Search Indexes</a>
         </span>
     </span>
     <img src="../images/expressions-intro-536e8367.svg"/>
@@ -507,9 +534,10 @@ _iub.csConfiguration = {"ccpaAcknowledgeOnLoad":true,"consentOnContinuedBrowsing
 <ul>
 <li><a href="https://developers.basistheory.com/concepts/what-are-reactors">Reactor</a> args, to <a href="#detokenization">detokenize</a> and transform tokens</li>
 <li><a href="https://developers.basistheory.com/concepts/what-is-the-proxy">Proxy</a> requests, to <a href="#detokenization">detokenize</a> and transform tokens</li>
-<li><a href="#search-indexes">search_indexes</a> when <a href="/api-reference/#tokens-create-token">creating a token</a> or <a href="/api-reference/#tokenize">tokenizing</a>, to define indexes to enable <a href="/api-reference/#tokens-search-tokens">searching tokens</a></li>
+<li><a href="#aliasing">Aliasing</a> when <a href="/api-reference/#tokens-create-token">creating a token</a> or <a href="/api-reference/#tokenize">tokenizing</a>, to specify the id of the created token </li>
 <li><a href="#fingerprints">fingerprint_expression</a> when <a href="/api-reference/#tokens-create-token">creating a token</a> or <a href="/api-reference/#tokenize">tokenizing</a>, to define a value used to generate a token fingerprint</li>
 <li><a href="#masks">mask</a> when <a href="/api-reference/#tokens-create-token">creating a token</a> or <a href="/api-reference/#tokenize">tokenizing</a>, to define the mask applied to the token&#39;s data when the actor has restricted permissions</li>
+<li><a href="#search-indexes">search_indexes</a> when <a href="/api-reference/#tokens-create-token">creating a token</a> or <a href="/api-reference/#tokenize">tokenizing</a>, to define indexes to enable <a href="/api-reference/#tokens-search-tokens">searching tokens</a></li>
 </ul>
 <h1 id='language'>Language</h1>
 <p>The expression language used within the Basis Theory API is based on the <a href="https://shopify.github.io/liquid">Liquid template language</a>.
@@ -561,6 +589,141 @@ For example, given a token containing a <code>name</code> object containing both
 <p>This expression would evaluate to the value <code>&quot;DOE&quot;</code>.</p>
 
 <p>In addition to the standard Liquid filters, several custom filters are also available:</p>
+<h2 id='filters-alias_preserve_format'>alias_preserve_format</h2>
+<p>Randomly generates a unique alias that preserves the format of the input string, optionally revealing a specified 
+number of characters from the beginning and end of the value. </p>
+
+<p>Alpha characters are replaced with randomized alpha characters, numeric characters are replaced with randomized numeric 
+characters, and special characters and whitespace are preserved.</p>
+<h3 id='filters-alias_preserve_format-parameters'>Parameters</h3>
+<table><thead>
+<tr>
+<th>Position</th>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Default Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>0</td>
+<td>reveal_first_length</td>
+<td><em>int</em></td>
+<td>false</td>
+<td><code>0</code></td>
+<td>The number of characters to reveal from the beginning of the value</td>
+</tr>
+<tr>
+<td>1</td>
+<td>reveal_last_length</td>
+<td><em>int</em></td>
+<td>false</td>
+<td><code>0</code></td>
+<td>The number of characters to reveal from the end of the value</td>
+</tr>
+</tbody></table>
+<h3 id='filters-alias_preserve_format-examples'>Examples</h3>
+<p>Given a token with the data:</p>
+
+<div class="center-column" style="clear: none;"></div>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;expression&gt;"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"token"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ABC12345DEF67890"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Expression</th>
+<th>Example Result</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>{{ data &#124; alias_preserve_format }}</code></td>
+<td>&quot;xir83203hqn73599&quot;</td>
+</tr>
+<tr>
+<td><code>{{ data &#124; alias_preserve_format: 3 }}</code></td>
+<td>&quot;ABC83203hqn73599&quot;</td>
+</tr>
+<tr>
+<td><code>{{ data &#124; alias_preserve_format: 0, 5 }}</code></td>
+<td>&quot;xir83203hqn67890&quot;</td>
+</tr>
+<tr>
+<td><code>{{ data &#124; alias_preserve_format: 3, 5 }}</code></td>
+<td>&quot;ABC83203hqn67890&quot;</td>
+</tr>
+</tbody></table>
+<h2 id='filters-alias_preserve_length'>alias_preserve_length</h2>
+<p>Randomly generates a unique alias that preserves the length of the input string, optionally revealing a specified
+number of characters from the beginning and end of the value.</p>
+
+<p>All characters are replaced with randomized alphanumeric characters.
+The type of the character in each position is not preserved, e.g. alpha characters may be replaced with numeric characters and vice versa.
+Special characters and whitespace are not preserved and will be replaced with alphanumeric characters.</p>
+<h3 id='filters-alias_preserve_length-parameters'>Parameters</h3>
+<table><thead>
+<tr>
+<th>Position</th>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Default Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>0</td>
+<td>reveal_first_length</td>
+<td><em>int</em></td>
+<td>false</td>
+<td><code>0</code></td>
+<td>The number of characters to reveal from the beginning of the value</td>
+</tr>
+<tr>
+<td>1</td>
+<td>reveal_last_length</td>
+<td><em>int</em></td>
+<td>false</td>
+<td><code>0</code></td>
+<td>The number of characters to reveal from the end of the value</td>
+</tr>
+</tbody></table>
+<h3 id='filters-alias_preserve_length-examples'>Examples</h3>
+<p>Given a token with the data:</p>
+
+<div class="center-column" style="clear: none;"></div>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;expression&gt;"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"token"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ABC12345DEF67890"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Expression</th>
+<th>Example Result</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>{{ data &#124; alias_preserve_length }}</code></td>
+<td>&quot;v38anr9m2cx0giw7&quot;</td>
+</tr>
+<tr>
+<td><code>{{ data &#124; alias_preserve_length: 3 }}</code></td>
+<td>&quot;ABCanr9m2cx0giw7&quot;</td>
+</tr>
+<tr>
+<td><code>{{ data &#124; alias_preserve_length: 0, 5 }}</code></td>
+<td>&quot;v38anr9m2cx67890&quot;</td>
+</tr>
+<tr>
+<td><code>{{ data &#124; alias_preserve_length: 3, 5 }}</code></td>
+<td>&quot;ABCanr9m2cx67890&quot;</td>
+</tr>
+</tbody></table>
 <h2 id='filters-json'>json</h2>
 <p>Evaluates a <a href="https://goessner.net/articles/JsonPath/">JSON Path</a> expression (<a href="https://tools.ietf.org/id/draft-goessner-dispatch-jsonpath-00.html">proposed spec</a>) on the input object.</p>
 
@@ -582,7 +745,7 @@ The <code>json</code> filter provides further flexibility for evaluating complex
 </thead><tbody>
 <tr>
 <td>0</td>
-<td>jsonPathExpression</td>
+<td>json_path_expression</td>
 <td><em>string</em></td>
 <td>true</td>
 <td>A JSON Path expression</td>
@@ -657,7 +820,7 @@ The <code>json</code> filter provides further flexibility for evaluating complex
 <h2 id='filters-last4'>last4</h2>
 <p>Returns the last 4 characters of a string. If the string&#39;s length is less than 4, the whole value is returned.</p>
 <h3 id='filters-last4-parameters'>Parameters</h3>
-<p>N/A</p>
+<p>None</p>
 <h3 id='filters-last4-examples'>Examples</h3>
 <p>Given a token with the data:</p>
 
@@ -683,61 +846,6 @@ The <code>json</code> filter provides further flexibility for evaluating complex
 <td>&quot;67&quot;</td>
 </tr>
 </tbody></table>
-<h2 id='filters-reveal_last'>reveal_last</h2>
-<p>Returns the last <code>length</code> characters of a string. If the string&#39;s length is less than or equal to <code>length</code>, the whole value is returned.</p>
-<h3 id='filters-reveal_last-parameters'>Parameters</h3>
-<table><thead>
-<tr>
-<th>Position</th>
-<th>Name</th>
-<th>Type</th>
-<th>Required</th>
-<th>Default Value</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>0</td>
-<td>length</td>
-<td><em>int</em></td>
-<td>true</td>
-<td><code>null</code></td>
-<td>The number of characters to reveal</td>
-</tr>
-<tr>
-<td>1</td>
-<td>maskChar</td>
-<td><em>char</em></td>
-<td>false</td>
-<td><code>X</code></td>
-<td>A masking character</td>
-</tr>
-</tbody></table>
-<h3 id='filters-reveal_last-examples'>Examples</h3>
-<p>Given a token with the data:</p>
-
-<div class="center-column" style="clear: none;"></div>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d35412f4-9d3b-45d8-b051-fe4b7d4e14c5"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"token"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"36227206271667"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<table><thead>
-<tr>
-<th>Expression</th>
-<th>Result</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>{{ data &#124; reveal_last: 6 }}</code></td>
-<td>&quot;XXXXXXXX271667&quot;</td>
-</tr>
-<tr>
-<td><code>{{ data &#124; reveal_last: 3, &#39;#&#39; }}</code></td>
-<td>&quot;###########667&quot;</td>
-</tr>
-</tbody></table>
 <h2 id='filters-pad_left'>pad_left</h2>
 <p>Returns a new string of the desired length by padding the input string on the left with the specified <code>padChar</code>.</p>
 
@@ -761,7 +869,7 @@ The <code>json</code> filter provides further flexibility for evaluating complex
 </tr>
 <tr>
 <td>1</td>
-<td>padChar</td>
+<td>pad_char</td>
 <td><em>char</em></td>
 <td>true</td>
 <td>A padding character</td>
@@ -823,7 +931,7 @@ The <code>json</code> filter provides further flexibility for evaluating complex
 </tr>
 <tr>
 <td>1</td>
-<td>padChar</td>
+<td>pad_char</td>
 <td><em>char</em></td>
 <td>true</td>
 <td>A padding character</td>
@@ -860,6 +968,61 @@ The <code>json</code> filter provides further flexibility for evaluating complex
 <tr>
 <td><code>{{ data &#124; pad_right: 2, &#39;0&#39; }}</code></td>
 <td>&quot;1234&quot;</td>
+</tr>
+</tbody></table>
+<h2 id='filters-reveal_last'>reveal_last</h2>
+<p>Returns the last <code>length</code> characters of a string. If the string&#39;s length is less than or equal to <code>length</code>, the whole value is returned.</p>
+<h3 id='filters-reveal_last-parameters'>Parameters</h3>
+<table><thead>
+<tr>
+<th>Position</th>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Default Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>0</td>
+<td>length</td>
+<td><em>int</em></td>
+<td>true</td>
+<td><code>null</code></td>
+<td>The number of characters to reveal</td>
+</tr>
+<tr>
+<td>1</td>
+<td>mask_char</td>
+<td><em>char</em></td>
+<td>false</td>
+<td><code>X</code></td>
+<td>A masking character</td>
+</tr>
+</tbody></table>
+<h3 id='filters-reveal_last-examples'>Examples</h3>
+<p>Given a token with the data:</p>
+
+<div class="center-column" style="clear: none;"></div>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d35412f4-9d3b-45d8-b051-fe4b7d4e14c5"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"token"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"36227206271667"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Expression</th>
+<th>Result</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>{{ data &#124; reveal_last: 6 }}</code></td>
+<td>&quot;XXXXXXXX271667&quot;</td>
+</tr>
+<tr>
+<td><code>{{ data &#124; reveal_last: 3, &#39;#&#39; }}</code></td>
+<td>&quot;###########667&quot;</td>
 </tr>
 </tbody></table>
 <h2 id='filters-stringify'>stringify</h2>
@@ -932,14 +1095,12 @@ platform and the <a href="https://developers.basistheory.com/concepts/what-is-th
 
 <p>Detokenization is performed whenever a <strong>detokenization expression</strong> is identified within a request.
 In their simplest form, these are Liquid <a href="#language-objects">objects</a> of the form <code>{{&lt;tokenId&gt;}}</code>. 
-This expression will be replaced with the token data contained within the token with id <code>&lt;tokenId&gt;</code>.</p>
+This expression will be replaced with the token data contained within the token with ID <code>&lt;tokenId&gt;</code>.</p>
 
-<p>Detokenization expressions containing non-uuid values, such as <code>{{non uuid value}}</code> will evaluate to <code>null</code> and will be removed from the request.</p>
-
-<p>Any <code>uuid</code> value contained in a detokenization expression is expected to represent the <code>id</code> of a token within your tenant. 
+<p>Any <code>string</code> value contained in a detokenization expression is expected to represent the <code>id</code> of a token within your tenant. 
 If no such token is found with that identifier, the request will be rejected with a 400 error.</p>
 
-<p>If a token is found with the given <code>uuid</code> identifier, but the calling application is missing permission to use that 
+<p>If a token is found with the given identifier, but the calling application is missing permission to use that 
 token, then the request will be rejected with a 403 error. 
 See the following links for more information about the permissions required to use tokens in a 
 <a href="/#reactors-invoke-a-reactor">Reactor</a> or <a href="/#proxy-proxying-outbound-requests">Proxy</a>.</p>
@@ -1599,118 +1760,125 @@ properties into a single string value.</p>
 </span></code></pre></div>
 <p>We will transform the <code>expiration_month</code> property within this token to be padded on the left with a <code>0</code> to two characters, 
 and to only provide the last two digits of the expiration year.</p>
-<h1 id='search-indexes'>Search Indexes</h1>
-<p>Several token attributes can be <a href="https://developers.basistheory.com/concepts/what-is-search/">searched</a> through the <a href="/#tokens-search-tokens">token search</a> API.
-A token&#39;s data can also be searched, provided that the token has been indexed for search at the time of its creation.</p>
+<h1 id='aliasing'>Aliasing</h1>
+<p>By default, when <a href="/#tokens-create-token">creating a token</a>, a random ID (v4 UUID) will be generated to represent the
+token and its secure payload. Token IDs can be safely stored within your system or transmitted within API requests
+without the risk of revealing sensitive information.</p>
 
-<p>When <a href="/#tokens-create-token">creating a token</a>, an array of search index expressions can be specified within the request.
-You are able to reference the <code>data</code> variable within <a href="#language-objects">object</a> expressions - 
-<code>data</code> will be bound to the provided token data, which may either be a complex or primitive value, based on your usage.</p>
-<h2 id='search-indexes-examples'>Examples</h2>
+<p>While randomly generated IDs may be sufficient for many use cases, there are several scenarios in which it can be
+valuable for a generated token ID to satisfy a specific format, or to allow a custom token ID to be specified within
+the request:</p>
+
 <ul>
-<li><a href="#search-indexes-examples-indexing-primitive-tokens">Indexing Primitive Tokens</a></li>
-<li><a href="#search-indexes-examples-indexing-properties-of-a-complex-token">Indexing Properties of a Complex Token</a></li>
-<li><a href="#search-indexes-examples-transforming-data-before-indexing">Transforming Data Before Indexing</a></li>
+<li>You would like the ID to resemble the format of the underlying token data (e.g. to satisfy validation constraints)</li>
+<li>Due to technical constraints, your system requires the token ID to have a prescribed size or format (e.g. to store the
+ID within a legacy database column having a certain data type)</li>
+<li>You wish to pre-generate token IDs within your system</li>
+<li>You wish to define your own custom algorithm for generating token IDs</li>
 </ul>
-<h3 id='search-indexes-examples-indexing-primitive-tokens'>Indexing Primitive Tokens</h3>
+
+<p>Basis Theory supports these use cases in two ways:</p>
+
+<ol>
+<li>Accepting a <a href="#aliasing-pre-defined-token-ids">predefined token id</a> when creating a token</li>
+<li>Specifying how an ID should be generated through the use of <a href="#aliasing-alias-expressions">Alias Expressions</a></li>
+</ol>
+<h2 id='aliasing-predefined-token-ids'>Predefined Token IDs</h2>
+<p>A token ID can be pre-generated by your system and provided when <a href="/#tokens-create-token">creating a token</a>
+within the <code>id</code> property. Any non-empty string value between 3 and 400 characters can be specified as an ID, as long as
+there is not another token within your tenant with the same ID. If a duplicate ID is found, a <code>409 CONFLICT</code> 
+response will be returned.</p>
+<h2 id='aliasing-alias-expressions'>Alias Expressions</h2>
+<p>Alias expressions allow you to leverage the full <a href="#language">expression language</a> to specify a token&#39;s ID via a
+dynamically evaluated expression, and can be provided within the <code>id</code> property of the
+<a href="/api-reference/#tokens-create-token">create token</a> or <a href="/api-reference/#tokenize">tokenize</a> requests.</p>
+
+<p>You are able to reference the <code>data</code> property within an <a href="#language-objects">object</a> expression -
+<code>data</code> will be bound to the provided token data.</p>
+
+<p>Typically, alias expressions are used in conjunction with one of the <code>alias_*</code> filters (e.g. <a href="#filters-alias_preserve_format">alias_preserve_format</a>
+or <a href="#filters-alias_preserve_length">alias_preserve_length</a>). These filters randomly generate a secure pseudonym based on the token&#39;s data.
+For example, if a token contains the credit card number <code>4242-4242-4242-4242</code>, the alias expression <code>{{ data | alias_preserve_format: 0, 4 }}</code>
+could be used to reveal the last 4 digits in the ID while replacing all the other non-revealed digits with random digits, 
+resulting in an ID of the form <code>9326-7128-4203-4242</code>.</p>
+
+<aside class="warning">
+  <span>
+    The number of randomly generated aliases satisfying a certain format is finite and has a chance to become exhausted. 
+    If a unique alias cannot be generated, a randomly generated UUID will be returned instead.
+  </span>
+</aside>
+<h2 id='aliasing-best-practices'>Best Practices</h2>
+<p>While you have the ability to set any value as a token&#39;s ID, you should never reveal sensitive information in IDs.
+The <code>id</code> property will not be encrypted and will be revealed in plaintext within API requests and responses, and this 
+value will likely be referenced within your systems.</p>
+
+<p>Only reveal characters at the beginning or end of your token data if absolutely necessary, and if so, reveal the minimum number of characters possible.
+Every revealed character makes it easier for a malicious actor to try to uncover the underlying token&#39;s data. 
+For example, given a 16 digit credit card number, revealing the first 6 and last 4 characters in a format preserving alias
+only leaves 6 remaining digits (10^6 = 1 million possible combinations), which can be reduced further
+knowing that the card number must have a valid Luhn checksum. Instead, consider revealing only the first 6 or last 4 digits, but not both.</p>
+<h2 id='aliasing-limitations'>Limitations</h2>
+<p>Token IDs may not contain any of the following special characters: <code>#</code>, <code>/</code>, <code>\</code>, <code>+</code>, <code>?</code>, <code>[</code>, <code>]</code>, <code>|</code>, <code>&amp;</code>, <code>=</code>, <code>%</code>, <code>&lt;</code>, <code>&gt;</code>, <code>{</code>, <code>}</code>, <code>^</code></p>
+
+<p>Including any restricted special characters in an ID will result in a <code>400 BAD REQUEST</code> response.</p>
+
+<p>Since token IDs are included within the URL route on some operations, some allowable special characters and whitespace 
+characters will need to be URL encoded within requests where the ID is provided within the API route. 
+The latest official Basis Theory SDKs automatically URL encode token IDs when they are included in the URL.</p>
+<h2 id='aliasing-examples'>Examples</h2>
+<ul>
+<li><a href="#aliasing-examples-ssn-with-last-4-digits-preserved">SSN with Last 4 Digits Preserved</a></li>
+<li><a href="#aliasing-examples-card-number-with-last-4-digits-preserved">Card Number with Last 4 Digits Preserved</a></li>
+<li><a href="#aliasing-examples-email-with-domain-preserved">Email with Domain Preserved</a></li>
+</ul>
+<h3 id='aliasing-examples-ssn-with-last-4-digits-preserved'>SSN with Last 4 Digits Preserved</h3>
 <p>Request:</p>
 
 <div class="center-column"></div>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{{ data | alias_preserve_format: 0, 4 }}"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"token"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"111-22-3333"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"search_indexes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="s2">"{{ data }}"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"{{ data | last4 }}"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"{{ data | remove: '-' }}"</span><span class="w">
-  </span><span class="p">]</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"111-22-3333"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>Created Indexes:</p>
-
-<ul>
-<li><code>&quot;111-22-3333&quot;</code></li>
-<li><code>&quot;3333&quot;</code></li>
-<li><code>&quot;111223333&quot;</code></li>
-</ul>
-<h3 id='search-indexes-examples-indexing-properties-of-a-complex-token'>Indexing Properties of a Complex Token</h3>
+<p>Example ID Value: <code>830-46-3333</code></p>
+<h3 id='aliasing-examples-card-number-with-last-4-digits-preserved'>Card Number with Last 4 Digits Preserved</h3>
 <p>Request:</p>
 
 <div class="center-column"></div>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{{ data.number | alias_preserve_format: 0, 4 }}"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"card"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4242424242424242"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"expiration_month"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"expiration_year"</span><span class="p">:</span><span class="w"> </span><span class="mi">2025</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cvc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"456"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Example ID Value: <code>9273610263384242</code></p>
+<h3 id='aliasing-examples-email-with-domain-preserved'>Email with Domain Preserved</h3>
+<p>This example assumes you do not know the length of the email domain, and want to preserve arbitrary domains.</p>
+
+<p>Request:</p>
+
+<div class="center-column"></div>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{{ data.email | split: '@' | first | alias_preserve_length }}@{{ data.email | split: '@' | last }}"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"token"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"card"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"card_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4000056655665556"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"exp_month"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"exp_year"</span><span class="p">:</span><span class="w"> </span><span class="mi">2026</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"owner"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"middle_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Andrew"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Smith"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="nl">"billing_address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"street_address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"175 5th Ave"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New York"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NY"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"zip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10010"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"search_indexes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="s2">"{{ data.card.card_number }}"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"{{ data.card.owner.last_name }}"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"{{ data.billing_address.zip }}"</span><span class="w">
-  </span><span class="p">]</span><span class="w">
+    </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john.doe@gmail.com"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>Created Indexes:</p>
+<p>Example ID Value: <code>k7dn59wb@gmail.com</code></p>
 
-<ul>
-<li><code>&quot;4000056655665556&quot;</code></li>
-<li><code>&quot;Smith&quot;</code></li>
-<li><code>&quot;10010&quot;</code></li>
-</ul>
-<h3 id='search-indexes-examples-transforming-data-before-indexing'>Transforming Data Before Indexing</h3>
-<p>Request:</p>
-
-<div class="center-column"></div>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"token"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"card"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"card_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4000056655665556"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"exp_month"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"exp_year"</span><span class="p">:</span><span class="w"> </span><span class="mi">2026</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"owner"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"middle_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Andrew"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Smith"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="nl">"billing_address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"street_address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"175 5th Ave"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New York"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NY"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"zip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10010"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"search_indexes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="s2">"{{ data.card.card_number | last4 }}"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"{{ data.card.owner.last_name | upcase }}"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"{{ data.card.owner.first_name | upcase }} {{ data.card.owner.last_name | upcase }}"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"{{ data.billing_address.zip | slice: 0, 5 }}"</span><span class="w">
-  </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>Created Indexes:</p>
-
-<ul>
-<li><code>&quot;5556&quot;</code></li>
-<li><code>&quot;SMITH&quot;</code></li>
-<li><code>&quot;JOHN SMITH&quot;</code></li>
-<li><code>&quot;10010&quot;</code></li>
-</ul>
+<p>If you know the length of the domain ahead of time, you can simplify this expression by revealing the number of 
+characters in the domain, e.g. <code>{{ data.email | alias_preserve_length: 0, 10 }}</code>.</p>
 <h1 id='fingerprints'>Fingerprints</h1>
 <p>A <a href="https://developers.basistheory.com/concepts/what-are-fingerprints/">fingerprint</a> can be generated at the time a token is created, 
 which can be used to uniquely identify the contents of a token for its type. You will get different fingerprints for the same content
@@ -1889,6 +2057,118 @@ You are able to reference the <code>data</code> property within an <a href="#lan
 <aside class="notice">
   <span>As shown in this example, you can redact specific data properties by just omitting them in the mask object.</span>
 </aside>
+<h1 id='search-indexes'>Search Indexes</h1>
+<p>Several token attributes can be <a href="https://developers.basistheory.com/concepts/what-is-search/">searched</a> through the <a href="/#tokens-search-tokens">token search</a> API.
+A token&#39;s data can also be searched, provided that the token has been indexed for search at the time of its creation.</p>
+
+<p>When <a href="/#tokens-create-token">creating a token</a>, an array of search index expressions can be specified within the request.
+You are able to reference the <code>data</code> variable within <a href="#language-objects">object</a> expressions - 
+<code>data</code> will be bound to the provided token data, which may either be a complex or primitive value, based on your usage.</p>
+<h2 id='search-indexes-examples'>Examples</h2>
+<ul>
+<li><a href="#search-indexes-examples-indexing-primitive-tokens">Indexing Primitive Tokens</a></li>
+<li><a href="#search-indexes-examples-indexing-properties-of-a-complex-token">Indexing Properties of a Complex Token</a></li>
+<li><a href="#search-indexes-examples-transforming-data-before-indexing">Transforming Data Before Indexing</a></li>
+</ul>
+<h3 id='search-indexes-examples-indexing-primitive-tokens'>Indexing Primitive Tokens</h3>
+<p>Request:</p>
+
+<div class="center-column"></div>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"token"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"111-22-3333"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"search_indexes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"{{ data }}"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"{{ data | last4 }}"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"{{ data | remove: '-' }}"</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Created Indexes:</p>
+
+<ul>
+<li><code>&quot;111-22-3333&quot;</code></li>
+<li><code>&quot;3333&quot;</code></li>
+<li><code>&quot;111223333&quot;</code></li>
+</ul>
+<h3 id='search-indexes-examples-indexing-properties-of-a-complex-token'>Indexing Properties of a Complex Token</h3>
+<p>Request:</p>
+
+<div class="center-column"></div>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"token"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"card"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"card_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4000056655665556"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"exp_month"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"exp_year"</span><span class="p">:</span><span class="w"> </span><span class="mi">2026</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"owner"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"middle_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Andrew"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Smith"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"billing_address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"street_address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"175 5th Ave"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New York"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NY"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"zip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10010"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"search_indexes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"{{ data.card.card_number }}"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"{{ data.card.owner.last_name }}"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"{{ data.billing_address.zip }}"</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Created Indexes:</p>
+
+<ul>
+<li><code>&quot;4000056655665556&quot;</code></li>
+<li><code>&quot;Smith&quot;</code></li>
+<li><code>&quot;10010&quot;</code></li>
+</ul>
+<h3 id='search-indexes-examples-transforming-data-before-indexing'>Transforming Data Before Indexing</h3>
+<p>Request:</p>
+
+<div class="center-column"></div>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"token"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"card"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"card_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4000056655665556"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"exp_month"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"exp_year"</span><span class="p">:</span><span class="w"> </span><span class="mi">2026</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"owner"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"middle_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Andrew"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Smith"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"billing_address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"street_address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"175 5th Ave"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New York"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NY"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"zip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10010"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"search_indexes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"{{ data.card.card_number | last4 }}"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"{{ data.card.owner.last_name | upcase }}"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"{{ data.card.owner.first_name | upcase }} {{ data.card.owner.last_name | upcase }}"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"{{ data.billing_address.zip | slice: 0, 5 }}"</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Created Indexes:</p>
+
+<ul>
+<li><code>&quot;5556&quot;</code></li>
+<li><code>&quot;SMITH&quot;</code></li>
+<li><code>&quot;JOHN SMITH&quot;</code></li>
+<li><code>&quot;10010&quot;</code></li>
+</ul>
 
         
         

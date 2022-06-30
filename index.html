@@ -658,7 +658,7 @@ _iub.csConfiguration = {"ccpaAcknowledgeOnLoad":true,"consentOnContinuedBrowsing
                       <a href="#token-types-social-security-number" class="toc-h2 toc-link" data-title="Social Security Number">Social Security Number</a>
                     </li>
                     <li>
-                      <a href="#token-types-employer-id-number" class="toc-h2 toc-link" data-title="Employer Id Number">Employer Id Number</a>
+                      <a href="#token-types-employer-id-number" class="toc-h2 toc-link" data-title="Employer ID Number">Employer ID Number</a>
                     </li>
                 </ul>
             </li>
@@ -6887,7 +6887,7 @@ Token Types define the rules around a data type such as validation requirements,
 <li><a href="#token-types-us-bank-account-number">US Bank Account Number</a></li>
 <li><a href="#token-types-us-bank-routing-number">US Bank Routing Number</a></li>
 <li><a href="#token-types-social-security-number">Social Security Number</a></li>
-<li><a href="#token-types-employer-id-number">Employer Id Number</a></li>
+<li><a href="#token-types-employer-id-number">Employer ID Number</a></li>
 </ul>
 <h2 id='token-types-token'>Token</h2>
 <p>The <code>token</code> type is used for general data types that don&#39;t require input validation or formatting restrictions.</p>
@@ -7241,7 +7241,7 @@ Token Types define the rules around a data type such as validation requirements,
 <td>XXX-XX-6789</td>
 </tr>
 </tbody></table>
-<h2 id='token-types-employer-id-number'>Employer Id Number</h2>
+<h2 id='token-types-employer-id-number'>Employer ID Number</h2>
 <table><thead>
 <tr>
 <th>Token Attribute</th>
@@ -7313,7 +7313,7 @@ Token Types define the rules around a data type such as validation requirements,
 </thead><tbody>
 <tr>
 <td><code>id</code></td>
-<td><em>uuid</em></td>
+<td><em>string</em></td>
 <td>Unique identifier of the token which can be used to <a href="#get-a-token">get a token</a></td>
 </tr>
 <tr>
@@ -7798,6 +7798,13 @@ but the plaintext card data will not be returned. Instead, the restriction polic
 </tr>
 </thead><tbody>
 <tr>
+<td><code>id</code></td>
+<td>false</td>
+<td><em>string</em></td>
+<td><code>null</code></td>
+<td>A value or <a href="/expressions/#aliasing">expression</a> specifying the token&#39;s ID. If not specified, a UUID will be assigned.</td>
+</tr>
+<tr>
 <td><code>type</code></td>
 <td>true</td>
 <td><em>string</em></td>
@@ -7854,6 +7861,10 @@ but the plaintext card data will not be returned. Instead, the restriction polic
 <td>Whether the token is deduplicated on creation.</td>
 </tr>
 </tbody></table>
+
+<aside class="warning">
+  <span>WARNING - Never reveal sensitive information in the <code>id</code> of your token. See the documentation on <a href="/expressions/#aliasing-best-practices">Aliasing</a> to learn more about best practices when specifying your own token ID.</span>
+</aside>
 
 <aside class="warning">
   <span>WARNING - Never store sensitive plaintext information in the <code>metadata</code> of your token.</span>
@@ -7955,7 +7966,7 @@ If you need to perform a more advanced token search, see <a href="#tokens-search
 <tr>
 <td><code>id</code></td>
 <td>false</td>
-<td><em>uuid</em></td>
+<td><em>string</em></td>
 <td><code>null</code></td>
 <td>One to many Token IDs to retrieve. Multiple IDs can be passed in the form <code>?id=&lt;value1&gt;&amp;id=&lt;value2&gt;</code>.</td>
 </tr>
@@ -8062,7 +8073,7 @@ Providing any query parameters will filter the results. Returns <a href="#errors
 <tr>
 <td><code>id</code></td>
 <td>true</td>
-<td><em>uuid</em></td>
+<td><em>string</em></td>
 <td><code>null</code></td>
 <td>The ID of the token</td>
 </tr>
@@ -8666,7 +8677,7 @@ based on the <code>search_indexes</code> provided in the <a href="#tokens-create
 <tr>
 <td><code>id</code></td>
 <td>true</td>
-<td><em>uuid</em></td>
+<td><em>string</em></td>
 <td><code>null</code></td>
 <td>The ID of the token</td>
 </tr>
@@ -8745,14 +8756,14 @@ tokens&#39; privacy settings.</p>
 <tr>
 <td><code>parent_id</code></td>
 <td>true</td>
-<td><em>uuid</em></td>
+<td><em>string</em></td>
 <td><code>null</code></td>
 <td>The ID of the parent token</td>
 </tr>
 <tr>
 <td><code>child_id</code></td>
 <td>true</td>
-<td><em>uuid</em></td>
+<td><em>string</em></td>
 <td><code>null</code></td>
 <td>The ID of the child token</td>
 </tr>
@@ -8830,14 +8841,14 @@ tokens&#39; privacy settings.</p>
 <tr>
 <td><code>parent_id</code></td>
 <td>true</td>
-<td><em>uuid</em></td>
+<td><em>string</em></td>
 <td><code>null</code></td>
 <td>The ID of the parent token</td>
 </tr>
 <tr>
 <td><code>child_id</code></td>
 <td>true</td>
-<td><em>uuid</em></td>
+<td><em>string</em></td>
 <td><code>null</code></td>
 <td>The ID of the child token</td>
 </tr>
