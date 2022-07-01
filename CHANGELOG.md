@@ -1,3 +1,10 @@
+# [1.56.0](https://github.com/Basis-Theory/docs/compare/v1.55.0...v1.56.0) (2022-07-01)
+
+
+### Features
+
+* add docs for elements autoComplete option ([#208](https://github.com/Basis-Theory/docs/issues/208)) ([edf7050](https://github.com/Basis-Theory/docs/commit/edf7050675767f96b84945b08cbf9258d43fda99))
+
 # [1.55.0](https://github.com/Basis-Theory/docs/compare/v1.54.0...v1.55.0) (2022-06-30)
 
 
