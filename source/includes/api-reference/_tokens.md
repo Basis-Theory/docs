@@ -18,6 +18,7 @@
 | `modified_at`            | *date*                                                  | (Optional) Last modified date of the token in ISO 8601 format                                                                      |
 | `search_indexes`         | *array*                                                 | (Optional) Array of search index [expressions](/expressions/#search-indexes) used when creating the token.                         |
 | `fingerprint_expression` | *string*                                                | (Optional) An [expression](/expressions/#fingerprints) defining the value to fingerprint when creating the token.                  |
+| `expires_at`             | *string*                                                | (Optional) The [token expiration](#token-expiration) date.                                                                         |
 
 ### Privacy Object
 
@@ -113,6 +114,24 @@ For example, an application with `token:pci:read:low` is allowed to read a `card
 but the plaintext card data will not be returned. Instead, the restriction policy associated with the `card_number` token (`mask`) will be applied and only masked card number data will be returned.
 
 Refer to [mask expressions](/expressions/#masks) to find out more about how to define masks for your token data.
+
+## Token Expiration 
+
+By default a created token will not expire, however, users can optionally set the `expires_at` property when creating a token to determine its expiration date.
+An expired token is **deleted** from the tenant up to **1 hour** after it's expiration time.
+
+| `expires_at` Formats            | Example                                                                                                                           
+|---------------------------------|--------------------------------------------------------------------------------------------------------------------------------------|
+| `DateTime` String w/ Offset       | 8/26/2030 7:23:57 PM -07:00
+| `ShortDate` String                | 9/27/2030                                                                      
+
+<aside class="notice">
+  If an offset is not provided with the <code>DateTime</code> string, it's considered that the provided time is in&nbsp;<strong>UTC</strong>.</span>
+</aside>
+
+<aside class="notice">
+  When using the <code>ShortDate</code> format, the expiration time will be set as&nbsp;<strong>12AM UTC</strong>.</span>
+</aside>
 
 ## Create Token
 
@@ -302,6 +321,8 @@ Create a new token for the Tenant.
 | `search_indexes`         | false    | *array*                                                 | `null`                                    | Array of [expressions](/expressions/#search-indexes) used to generate indexes to be able to search against.                                                  |
 | `fingerprint_expression` | false    | *string*                                                | <code>{{ data &#124; stringify }}</code>  | [Expressions](/expressions/#fingerprints) used to fingerprint your token.                                                                                    |
 | `deduplicate_token`      | false    | *bool*                                                  | `null`                                    | Whether the token is deduplicated on creation.                                                                                                               |
+| `expires_at`             | false    | *string*                                                  | `null`                                    | Token expiration date/time. See [Token Expiration](#token-expiration) for more details.                                                                                                               |
+
 
 <aside class="warning">
   <span>WARNING - Never reveal sensitive information in the <code>id</code> of your token. See the documentation on <a href="/expressions/#aliasing-best-practices">Aliasing</a> to learn more about best practices when specifying your own token ID.</span>
