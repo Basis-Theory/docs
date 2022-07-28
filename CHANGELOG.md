@@ -1,3 +1,10 @@
+# [1.57.0](https://github.com/Basis-Theory/docs/compare/v1.56.0...v1.57.0) (2022-07-28)
+
+
+### Features
+
+* add token ttl docs ([#209](https://github.com/Basis-Theory/docs/issues/209)) ([7b73dd9](https://github.com/Basis-Theory/docs/commit/7b73dd9a5aaa4d6357dc7a172e0d96af16d06e6d))
+
 # [1.56.0](https://github.com/Basis-Theory/docs/compare/v1.55.0...v1.56.0) (2022-07-01)
 
 
