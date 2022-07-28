@@ -681,6 +681,9 @@ _iub.csConfiguration = {"ccpaAcknowledgeOnLoad":true,"consentOnContinuedBrowsing
                       <a href="#tokens-token-restriction-policies" class="toc-h2 toc-link" data-title="Token Restriction Policies">Token Restriction Policies</a>
                     </li>
                     <li>
+                      <a href="#tokens-token-expiration" class="toc-h2 toc-link" data-title="Token Expiration">Token Expiration</a>
+                    </li>
+                    <li>
                       <a href="#tokens-create-token" class="toc-h2 toc-link" data-title="Create Token">Create Token</a>
                     </li>
                     <li>
@@ -7381,6 +7384,11 @@ Token Types define the rules around a data type such as validation requirements,
 <td><em>string</em></td>
 <td>(Optional) An <a href="/expressions/#fingerprints">expression</a> defining the value to fingerprint when creating the token.</td>
 </tr>
+<tr>
+<td><code>expires_at</code></td>
+<td><em>string</em></td>
+<td>(Optional) The <a href="#token-expiration">token expiration</a> date.</td>
+</tr>
 </tbody></table>
 <h3 id='tokens-token-object-privacy-object'>Privacy Object</h3>
 <p>Token Privacy defines the privacy settings applied to a Token. By default, privacy settings will be applied based on the <a href="#token-types">Token Type</a>.
@@ -7630,6 +7638,33 @@ with <a href="#permissions-permission-types-token-permissions">permission</a> to
 but the plaintext card data will not be returned. Instead, the restriction policy associated with the <code>card_number</code> token (<code>mask</code>) will be applied and only masked card number data will be returned.</p>
 
 <p>Refer to <a href="/expressions/#masks">mask expressions</a> to find out more about how to define masks for your token data.</p>
+<h2 id='tokens-token-expiration'>Token Expiration</h2>
+<p>By default a created token will not expire, however, users can optionally set the <code>expires_at</code> property when creating a token to determine its expiration date.
+An expired token is <strong>deleted</strong> from the tenant up to <strong>1 hour</strong> after it&#39;s expiration time.</p>
+<h3 id='tokens-token-expiration-expiration-date-formats'>Expiration Date Formats</h3>
+<table><thead>
+<tr>
+<th>Format</th>
+<th>Example</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>DateTime</code> String w/ Offset</td>
+<td>8/26/2030 7:23:57 PM -07:00</td>
+</tr>
+<tr>
+<td><code>ShortDate</code> String</td>
+<td>9/27/2030</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+  If an offset is not provided with the <code>DateTime</code> string, it's considered that the provided time is in&nbsp;<strong>UTC</strong>.</span>
+</aside>
+
+<aside class="notice">
+  When using the <code>ShortDate</code> format, the expiration time will be set as&nbsp;<strong>12AM UTC</strong>.</span>
+</aside>
 <h2 id='tokens-create-token'>Create Token</h2>
 <blockquote>
 <p>Request</p>
@@ -7654,6 +7689,7 @@ but the plaintext card data will not be returned. Instead, the restriction polic
     ],
     "fingerprint_expression": "{{ data }}",
     "deduplicate_token": true,
+    "expires_at": "8/26/2030 7:23:57 PM -07:00"
   }'</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">BasisTheory</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@basis-theory/basis-theory-js</span><span class="dl">'</span><span class="p">;</span>
 
@@ -7664,7 +7700,7 @@ but the plaintext card data will not be returned. Instead, the restriction polic
   <span class="na">data</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Sensitive Value</span><span class="dl">'</span><span class="p">,</span>
   <span class="na">mask</span><span class="p">:</span> <span class="dl">'</span><span class="s1">{{ data | reveal_last: 4 }}</span><span class="dl">'</span><span class="p">,</span>
   <span class="na">privacy</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">restriction_policy</span><span class="p">:</span> <span class="dl">"</span><span class="s2">mask</span><span class="dl">"</span>
+    <span class="na">restriction_policy</span><span class="p">:</span> <span class="dl">'</span><span class="s1">mask</span><span class="dl">'</span>
   <span class="p">},</span>
   <span class="na">metadata</span><span class="p">:</span> <span class="p">{</span>
     <span class="na">nonSensitiveField</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Non-Sensitive Value</span><span class="dl">'</span>
@@ -7673,8 +7709,9 @@ but the plaintext card data will not be returned. Instead, the restriction polic
     <span class="dl">'</span><span class="s1">{{ data }}</span><span class="dl">'</span><span class="p">,</span>
     <span class="dl">'</span><span class="s1">{{ data | last4}}</span><span class="dl">'</span>
   <span class="p">],</span>
-  <span class="na">fingerprintExpression</span><span class="p">:</span> <span class="dl">"</span><span class="s2">{{ data }}</span><span class="dl">"</span><span class="p">,</span>
+  <span class="na">fingerprintExpression</span><span class="p">:</span> <span class="dl">'</span><span class="s1">{{ data }}</span><span class="dl">'</span><span class="p">,</span>
   <span class="na">deduplicateToken</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="na">expiresAt</span><span class="p">:</span> <span class="dl">'</span><span class="s1">8/26/2030 7:23:57 PM -07:00</span><span class="dl">'</span>
 <span class="p">});</span>
 </code></pre></div><div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="k">using</span> <span class="nn">BasisTheory.net.Tokens</span><span class="p">;</span>
 
@@ -7696,6 +7733,7 @@ but the plaintext card data will not be returned. Instead, the restriction polic
   <span class="p">}</span>
   <span class="n">FingerprintExpression</span> <span class="p">=</span> <span class="s">"{{ data }}"</span><span class="p">,</span>
   <span class="n">DeduplicateToken</span> <span class="p">=</span> <span class="k">true</span><span class="p">,</span>
+  <span class="n">ExpiresAt</span> <span class="p">=</span> <span class="s">"8/26/2030 7:23:57 PM -07:00"</span>
 <span class="p">});</span>
 </code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">basistheory</span>
 <span class="kn">from</span> <span class="nn">basistheory.api</span> <span class="kn">import</span> <span class="n">tokens_api</span>
@@ -7718,7 +7756,8 @@ but the plaintext card data will not be returned. Instead, the restriction polic
           <span class="s">"{{ data }}"</span><span class="p">,</span>
           <span class="s">"{{ data | last4}}"</span>
         <span class="p">],</span>
-        <span class="n">fingerprint_expression</span><span class="o">=</span><span class="s">"{{ data }}"</span>
+        <span class="n">fingerprint_expression</span><span class="o">=</span><span class="s">"{{ data }}"</span><span class="p">,</span>
+        <span class="n">expires_at</span><span class="o">=</span><span class="s">"8/26/2030 7:23:57 PM -07:00"</span>
     <span class="p">))</span>
 </code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
 
@@ -7743,6 +7782,7 @@ but the plaintext card data will not be returned. Instead, the restriction polic
   <span class="n">createTokenRequest</span><span class="o">.</span><span class="n">SetSearchIndexes</span><span class="p">([]</span><span class="kt">string</span><span class="p">{</span><span class="s">"{{ data }}"</span><span class="p">,</span> <span class="s">"{{ data | last4}}"</span><span class="p">})</span>
   <span class="n">createTokenRequest</span><span class="o">.</span><span class="n">SetFingerprintExpression</span><span class="p">(</span><span class="s">"{{ data }}"</span><span class="p">)</span>
   <span class="n">createTokenRequest</span><span class="o">.</span><span class="n">SetDeduplicateToken</span><span class="p">(</span><span class="no">true</span><span class="p">)</span>
+  <span class="n">createTokenRequest</span><span class="o">.</span><span class="n">SetExpiresAt</span><span class="p">(</span><span class="s">"8/26/2030 7:23:57 PM -07:00"</span><span class="p">)</span>
 
   <span class="n">privacy</span> <span class="o">:=</span> <span class="o">*</span><span class="n">basistheory</span><span class="o">.</span><span class="n">NewPrivacy</span><span class="p">()</span>
   <span class="n">privacy</span><span class="o">.</span><span class="n">SetRestrictionPolicy</span><span class="p">(</span><span class="s">"mask"</span><span class="p">)</span>
@@ -7774,7 +7814,8 @@ but the plaintext card data will not be returned. Instead, the restriction polic
   </span><span class="p">],</span><span class="w">
   </span><span class="nl">"fingerprint_expression"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{{ data }}"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="w">
+  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"expires_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2030-08-26T19:23:57-07:00"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p><span class="http-method post">
@@ -7859,6 +7900,13 @@ but the plaintext card data will not be returned. Instead, the restriction polic
 <td><em>bool</em></td>
 <td><code>null</code></td>
 <td>Whether the token is deduplicated on creation.</td>
+</tr>
+<tr>
+<td><code>expires_at</code></td>
+<td>false</td>
+<td><em>string</em></td>
+<td><code>null</code></td>
+<td>Token expiration date/time. See <a href="#token-expiration">Token Expiration</a> for more details.</td>
 </tr>
 </tbody></table>
 
