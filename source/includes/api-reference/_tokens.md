@@ -18,6 +18,7 @@
 | `modified_at`            | *date*                                                  | (Optional) Last modified date of the token in ISO 8601 format                                                                      |
 | `search_indexes`         | *array*                                                 | (Optional) Array of search index [expressions](/expressions/#search-indexes) used when creating the token.                         |
 | `fingerprint_expression` | *string*                                                | (Optional) An [expression](/expressions/#fingerprints) defining the value to fingerprint when creating the token.                  |
+| `expires_at`             | *string*                                                | (Optional) The [token expiration](#token-expiration) date.                                                                         |
 
 ### Privacy Object
 
@@ -114,6 +115,25 @@ but the plaintext card data will not be returned. Instead, the restriction polic
 
 Refer to [mask expressions](/expressions/#masks) to find out more about how to define masks for your token data.
 
+## Token Expiration 
+
+By default a created token will not expire, however, users can optionally set the `expires_at` property when creating a token to determine its expiration date.
+An expired token is **deleted** from the tenant up to **1 hour** after it's expiration time.
+
+### Expiration Date Formats
+| Format                            | Example                                                                                                                           
+|-----------------------------------|--------------------------------------------------------------------------------------------------------------------------------------|
+| `DateTime` String w/ Offset       | 8/26/2030 7:23:57 PM -07:00
+| `ShortDate` String                | 9/27/2030                                                                      
+
+<aside class="notice">
+  If an offset is not provided with the <code>DateTime</code> string, it's considered that the provided time is in&nbsp;<strong>UTC</strong>.</span>
+</aside>
+
+<aside class="notice">
+  When using the <code>ShortDate</code> format, the expiration time will be set as&nbsp;<strong>12AM UTC</strong>.</span>
+</aside>
+
 ## Create Token
 
 > Request
@@ -139,6 +159,7 @@ curl "https://api.basistheory.com/tokens" \
     ],
     "fingerprint_expression": "{{ data }}",
     "deduplicate_token": true,
+    "expires_at": "8/26/2030 7:23:57 PM -07:00"
   }'
 ```
 
@@ -152,7 +173,7 @@ const token = await bt.tokens.create({
   data: 'Sensitive Value',
   mask: '{{ data | reveal_last: 4 }}',
   privacy: {
-    restriction_policy: "mask"
+    restriction_policy: 'mask'
   },
   metadata: {
     nonSensitiveField: 'Non-Sensitive Value'
@@ -161,8 +182,9 @@ const token = await bt.tokens.create({
     '{{ data }}',
     '{{ data | last4}}'
   ],
-  fingerprintExpression: "{{ data }}",
+  fingerprintExpression: '{{ data }}',
   deduplicateToken: true,
+  expiresAt: '8/26/2030 7:23:57 PM -07:00'
 });
 ```
 
@@ -187,6 +209,7 @@ var token = await client.CreateAsync(new Token {
   }
   FingerprintExpression = "{{ data }}",
   DeduplicateToken = true,
+  ExpiresAt = "8/26/2030 7:23:57 PM -07:00"
 });
 ```
 
@@ -212,7 +235,8 @@ with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_
           "{{ data }}",
           "{{ data | last4}}"
         ],
-        fingerprint_expression="{{ data }}"
+        fingerprint_expression="{{ data }}",
+        expires_at="8/26/2030 7:23:57 PM -07:00"
     ))
 ```
 
@@ -240,6 +264,7 @@ func main() {
   createTokenRequest.SetSearchIndexes([]string{"{{ data }}", "{{ data | last4}}"})
   createTokenRequest.SetFingerprintExpression("{{ data }}")
   createTokenRequest.SetDeduplicateToken(true)
+  createTokenRequest.SetExpiresAt("8/26/2030 7:23:57 PM -07:00")
 
   privacy := *basistheory.NewPrivacy()
   privacy.SetRestrictionPolicy("mask")
@@ -272,7 +297,8 @@ func main() {
   ],
   "fingerprint_expression": "{{ data }}",
   "created_by": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
-  "created_at": "2020-09-15T15:53:00+00:00"
+  "created_at": "2020-09-15T15:53:00+00:00",
+  "expires_at": "2030-08-26T19:23:57-07:00"
 }
 ```
 
@@ -302,6 +328,8 @@ Create a new token for the Tenant.
 | `search_indexes`         | false    | *array*                                                 | `null`                                    | Array of [expressions](/expressions/#search-indexes) used to generate indexes to be able to search against.                                                  |
 | `fingerprint_expression` | false    | *string*                                                | <code>{{ data &#124; stringify }}</code>  | [Expressions](/expressions/#fingerprints) used to fingerprint your token.                                                                                    |
 | `deduplicate_token`      | false    | *bool*                                                  | `null`                                    | Whether the token is deduplicated on creation.                                                                                                               |
+| `expires_at`             | false    | *string*                                                  | `null`                                    | Token expiration date/time. See [Token Expiration](#token-expiration) for more details.                                                                                                               |
+
 
 <aside class="warning">
   <span>WARNING - Never reveal sensitive information in the <code>id</code> of your token. See the documentation on <a href="/expressions/#aliasing-best-practices">Aliasing</a> to learn more about best practices when specifying your own token ID.</span>
