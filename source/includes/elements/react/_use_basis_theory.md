@@ -42,7 +42,7 @@ Parameter | Required | Type                     | Description
 <!-- Options link above looks weird because of how Slate generates them -->
 
 <aside class="notice">
-  <span>Make sure your API key has an <code>Elements</code> or <code>Client-side Application</code> <a href="/api-reference#applications-application-types">Application Type</a>.</span>
+  <span>Make sure your API key has a <code>Public</code> <a href="/api-reference#applications-application-types">Application Type</a>.</span>
 </aside>
 
 ## Retrieve from Context

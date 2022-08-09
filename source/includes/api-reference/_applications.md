@@ -21,9 +21,8 @@ Your ability to authenticate to the API is granted by creating Applications, eac
 
 | Name                    | Type               | Description                                                                                                                    |
 |-------------------------|--------------------|--------------------------------------------------------------------------------------------------------------------------------|
-| Server-to-Server        | `server_to_server` | Used for tokenizing, retrieving, and decrypting data within backend services where the `API key` can be secured                |
-| Client-side Application | `public`           | Used for tokenizing data directly within your mobile or browser application                                                    |
-| Elements                | `elements`         | Used for tokenizing data with the Basis Theory Elements module                                                                 |
+| Private        | `private` | Used for tokenizing, retrieving, and decrypting data within backend services where the `API key` can be secured                |
+| Public      | `public`           | Used for tokenizing data directly within your mobile or browser application |
 | Management              | `management`       | Used for managing all aspects of your token infrastructure such as [creating an Application](#applications-create-application) |
 
 ## Create Application
@@ -37,7 +36,7 @@ curl "https://api.basistheory.com/applications" \
   -X "POST" \
   -d '{
     "name": "My Example App",
-    "type": "server_to_server",
+    "type": "private",
     "permissions": [
       "token:general:create",
       "token:general:read:low"
@@ -54,7 +53,7 @@ const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
 
 const application = await bt.applications.create({
   name: 'My Example App',
-  type: 'server_to_server',
+  type: 'private',
   permissions: [
     'token:general:create',
     'token:general:read:low',
@@ -71,7 +70,7 @@ var client = new ApplicationClient("key_N88mVGsp3sCXkykyN2EFED");
 
 var application = await client.CreateAsync(new Application {
   Name = "My Example App",
-  Type = "server_to_server",
+  Type = "private",
   Permissions = new List<string> {
     "token:general:create",
     "token:general:read:low",
@@ -91,7 +90,7 @@ with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_
 
     application = application_client.create(create_application_request=CreateApplicationRequest(
         name="My Example App",
-        type="server_to_server",
+        type="private",
         permissions=[
             "token:general:create",
             "token:general:read:low",
@@ -136,7 +135,7 @@ func main() {
   "tenant_id": "77cb0024-123e-41a8-8ff8-a3d5a0fa8a08",
   "name": "My Example App",
   "key": "key_FZ8RmaxoGc73lbmF2cpmUJ",
-  "type": "server_to_server",
+  "type": "private",
   "permissions": [
     "token:general:create",
     "token:general:read:low",
@@ -238,7 +237,7 @@ func main() {
       "id": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
       "tenant_id": "77cb0024-123e-41a8-8ff8-a3d5a0fa8a08",
       "name": "My Example App",
-      "type": "server_to_server",
+      "type": "private",
       "permissions": [
         "token:general:create",
         "token:general:read:low",
@@ -671,7 +670,7 @@ func main() {
   "tenant_id": "77cb0024-123e-41a8-8ff8-a3d5a0fa8a08",
   "name": "My Example App",
   "key": "key_FZ8RmaxoGc73lbmF2cpmUJ",
-  "type": "server_to_server",
+  "type": "private",
   "permissions": [
     "token:general:create",
     "token:general:read:low",
