@@ -11,6 +11,7 @@
 | `mask`                   | *any*                                                   | (Optional) An [expression](/expressions/#masks) defining the mask to apply when retrieving token data with restricted permissions. |
 | `fingerprint`            | *string*                                                | Uniquely identifies the contents of this token. See [Token Types](#token-types) for the default expression for each token type.    |
 | `privacy`                | *[privacy object](#tokens-token-object-privacy-object)* | Token Privacy Settings                                                                                                             |
+| `container`              | *string*                                                | A path containing a logical grouping of tokens. See [Token Containers](#tokens-token-containers) for details.                      |
 | `metadata`               | *map*                                                   | A key-value map of non-sensitive data.                                                                                             |
 | `created_by`             | *uuid*                                                  | (Optional) The [Application](#applications-application-object) ID which created the token                                          |
 | `created_at`             | *date*                                                  | (Optional) Created date of the token in ISO 8601 format                                                                            |
@@ -121,17 +122,45 @@ By default a created token will not expire, however, users can optionally set th
 An expired token is **deleted** from the tenant up to **1 hour** after it's expiration time.
 
 ### Expiration Date Formats
-| Format                            | Example                                                                                                                           
-|-----------------------------------|--------------------------------------------------------------------------------------------------------------------------------------|
-| `DateTime` String w/ Offset       | 8/26/2030 7:23:57 PM -07:00
-| `ShortDate` String                | 9/27/2030                                                                      
+| Format                      | Example                     |
+|-----------------------------|-----------------------------|
+| `DateTime` String w/ Offset | 8/26/2030 7:23:57 PM -07:00 |
+| `ShortDate` String          | 9/27/2030                   |
 
 <aside class="notice">
-  If an offset is not provided with the <code>DateTime</code> string, it's considered that the provided time is in&nbsp;<strong>UTC</strong>.</span>
+  <span>If an offset is not provided with the <code>DateTime</code> string, it's considered that the provided time is in&nbsp;<strong>UTC</strong>.</span>
 </aside>
 
 <aside class="notice">
-  When using the <code>ShortDate</code> format, the expiration time will be set as&nbsp;<strong>12AM UTC</strong>.</span>
+  <span>When using the <code>ShortDate</code> format, the expiration time will be set as&nbsp;<strong>12AM UTC</strong>.</span>
+</aside>
+
+## Token Containers
+
+Tokens can be logically grouped into containers to segment tokens within a Tenant. 
+A container is represented by a hierarchical path, which is conceptually similar to directories in a UNIX filesystem.
+
+Container names must start and end with a `/`, and the root container is denoted by `/`.
+Container names may include any alphanumeric characters, `-`, or `_`, and can contain an arbitrary number of nested sub-containers.
+
+By default, tokens will be grouped into containers based off their data [classification](#tokens-token-classifications) and [impact levels](#tokens-token-impact-levels), using the format
+`/<classification>/<impact_level>/`, e.g. `/pci/high/` or `/general/low/`.
+
+You have complete control to customize your container hierarchy to meet your unique data governance requirements.
+For example, if you wish to segment your tokens by customer and data classification, you could organize tokens into the containers:
+
+- `/customer-123/pii/`
+- `/customer-123/general/`
+- `/customer-456/pii/`
+- `/customer-456/general/`
+- `/customer-456/my-custom-classification/`
+
+<aside class="notice">
+  <span>
+    Coming soon! We are hard at work building a more flexible access control system for Applications. 
+    Containers will be leveraged to scope permissions to a subset of tokens, 
+    providing greater control to limit which tokens an application can access.
+  </span>
 </aside>
 
 ## Create Token
@@ -147,6 +176,7 @@ curl "https://api.basistheory.com/tokens" \
     "type": "token",
     "data": "Sensitive Value",
     "mask": "{{ data | reveal_last: 4 }}",
+    "container": "/general/high/",
     "privacy": {
       "restriction_policy": "mask"
     },
@@ -172,6 +202,7 @@ const token = await bt.tokens.create({
   type: 'token',
   data: 'Sensitive Value',
   mask: '{{ data | reveal_last: 4 }}',
+  container: '/general/high/',
   privacy: {
     restriction_policy: 'mask'
   },
@@ -197,6 +228,7 @@ var token = await client.CreateAsync(new Token {
   Type = "token",
   Data = "Sensitive Value",
   Mask = "{{ data | reveal_last: 4 }}",
+  Container = "/general/high/",
   Privacy = new DataPrivacy {
     RestrictionPolicy = DataRestrictionPolicy.MASK
   },
@@ -224,10 +256,11 @@ with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_
     token = token_client.create(create_token_request=CreateTokenRequest(
         type="token",
         data="Sensitive Value",
-        mask="{{ data | reveal_last: 4 }}"
+        mask="{{ data | reveal_last: 4 }}",
         metadata={
             "nonSensitiveField": "Non-Sensitive Value"
         },
+        container="/general/high/",
         privacy=Privacy(
           restriction_policy="mask"
         ),
@@ -264,6 +297,7 @@ func main() {
   createTokenRequest.SetSearchIndexes([]string{"{{ data }}", "{{ data | last4}}"})
   createTokenRequest.SetFingerprintExpression("{{ data }}")
   createTokenRequest.SetDeduplicateToken(true)
+  createTokenRequest.SetContainer("/general/high/")
   createTokenRequest.SetExpiresAt("8/26/2030 7:23:57 PM -07:00")
 
   privacy := *basistheory.NewPrivacy()
@@ -283,6 +317,7 @@ func main() {
   "type": "token",
   "data": "XXXXXXXXXXXalue",
   "mask": "{{ data | reveal_last: 4 }}",
+  "container": "/general/high/",
   "privacy": {
     "classification": "general",
     "impact_level": "high",
@@ -324,11 +359,12 @@ Create a new token for the Tenant.
 | `data`                   | true     | *any*                                                   | `null`                                    | Token data. Can be an object, array, or any primitive type such as an integer, boolean, or string                                                            |
 | `mask`                   | false    | *any*                                                   | Depends on the [token type](#token-types) | Token data mask. Can be an object, array, or any primitive type such as an integer, boolean, or string. See [mask expressions](/expressions/#masks).         |
 | `privacy`                | false    | *[privacy object](#tokens-token-object-privacy-object)* | `null`                                    | Token Privacy Settings overrides. Overrides must be a higher specificity level than the default or minimum setting for the [Token Type](#token-token-types). |
+| `container`              | false    | *string*                                                | Depends on the [token type](#token-types) | A path containing a logical grouping of tokens. See [Token Containers](#tokens-token-containers) for details.                                                |
 | `metadata`               | false    | *map*                                                   | `null`                                    | A key-value map of non-sensitive data.                                                                                                                       |
 | `search_indexes`         | false    | *array*                                                 | `null`                                    | Array of [expressions](/expressions/#search-indexes) used to generate indexes to be able to search against.                                                  |
 | `fingerprint_expression` | false    | *string*                                                | <code>{{ data &#124; stringify }}</code>  | [Expressions](/expressions/#fingerprints) used to fingerprint your token.                                                                                    |
 | `deduplicate_token`      | false    | *bool*                                                  | `null`                                    | Whether the token is deduplicated on creation.                                                                                                               |
-| `expires_at`             | false    | *string*                                                  | `null`                                    | Token expiration date/time. See [Token Expiration](#token-expiration) for more details.                                                                                                               |
+| `expires_at`             | false    | *string*                                                | `null`                                    | Token expiration date/time. See [Token Expiration](#token-expiration) for more details.                                                                      |
 
 
 <aside class="warning">
@@ -414,6 +450,7 @@ func main() {
       "type": "token",
       "tenant_id": "77cb0024-123e-41a8-8ff8-a3d5a0fa8a08",
       "data": null, // Redacted based on Restriction Policy
+      "container": "/general/high/",
       "privacy": {
         "classification": "general",
         "impact_level": "moderate",
@@ -523,6 +560,7 @@ func main() {
   "type": "token",
   "tenant_id": "77cb0024-123e-41a8-8ff8-a3d5a0fa8a08",
   "data": null, // Redacted based on Restriction Policy
+  "container": "/general/high/",
   "privacy": {
     "classification": "general",
     "impact_level": "moderate",
@@ -701,6 +739,7 @@ func main() {
   "type": "token",
   "data": "XXXXXXXXXXXalue",
   "mask": "{{ data | reveal_last: 4 }}",
+  "container": "/general/high/",
   "privacy": {
     "classification": "general",
     "impact_level": "high",
@@ -843,6 +882,7 @@ func main() {
       "tenant_id": "77cb0024-123e-41a8-8ff8-a3d5a0fa8a08",
       "data": "XXX-XX-6789",
       "fingerprint": "AKCUXS83DokKo4pDRKSAy4d42t9i8dcP1X2jijwEBCQH",
+      "container": "/pii/high/",
       "privacy": {
         "classification": "pii",
         "impact_level": "high",
@@ -935,6 +975,20 @@ For example, to search for tokens having the metadata `{ customer_id: "123456" }
   `metadata.customer_id:123456`
 </span>
 
+Container search terms support both exact and wildcard matches. An exact container search will only return tokens in
+the searched container and will not include tokens in parent or child containers. For example, to return only tokens
+in the `/customer-123/pii/` container, you can query:
+<span class="text-snippet">
+  `container:"/customer-123/pii/"`
+</span>
+
+Wildcard container searches can be used to match on all tokens within a container or its sub-containers. 
+The wildcard character `*` can only appear at the end of a container search term and cannot be used to match 
+For example, to return all tokens for `customer-123` which may be contained within sub-containers `/customer-123/pii` or `/customer-123/cards`, you can query:
+<span class="text-snippet">
+  `container:"/customer-123/*"`
+</span>
+
 Date range searches are supported using the Lucene bracketed range syntax. 
 `[START_DATE TO END_DATE]` denotes an inclusive range and `{START_DATE TO END_DATE}` denotes an exclusive range. 
 Values are formatted as a string in ISO 8601 format and can either represent a date or date and time in UTC.
@@ -968,6 +1022,7 @@ Multiple terms may be combined using the `AND`, `OR` and `NOT` operators (case s
 | `type`            | *string* | The [token type](#token-types).                                                              | `type:card_number`                                 |
 | `data`            | *string* | Token data. See [Searching Data](#tokens-search-tokens-searching-data) for supported values. | `data:6789`                                        |
 | `fingerprint`     | *string* | Token's content unique identifier.                                                           | `fingerprint:fe24d4cc-de50-4d8c-8da7-8c7483ba21bf` |
+| `container`       | *string* | The token's [container](#tokens-token-containers).                                           | `container:"/pci/high/"`                           |
 | `privacy.[field]` | *string* | Token [privacy settings](#tokens-token-object-privacy-object).                               | `privacy.classification:pci`                       |
 | `metadata.[key]`  | *string* | Search against token metadata having the given `[key]`.                                      | `metadata.user_id:34445`                           |
 | `created_by`      | *string* | Application ID which created the token.                                                      | `created_by:fe24d4cc-de50-4d8c-8da7-8c7483ba21bf`  |
