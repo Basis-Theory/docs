@@ -984,7 +984,7 @@ in the `/customer-123/pii/` container, you can query:
 
 Wildcard container searches can be used to match on all tokens within a container or its sub-containers. 
 The wildcard character `*` can only appear at the end of a container search term.
-For example, to return all tokens for `customer-123` which may be partitioned into sub-containers `/customer-123/pii/` or `/customer-123/cards/`, you can query:
+For example, to return all tokens for `customer-123` which may be partitioned into sub-containers `/customer-123/pii/` or `/customer-123/general/`, you can query:
 <span class="text-snippet">
   `container:"/customer-123/*"`
 </span>
