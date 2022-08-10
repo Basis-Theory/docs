@@ -1,3 +1,10 @@
+# [1.58.0](https://github.com/Basis-Theory/docs/compare/v1.57.0...v1.58.0) (2022-08-10)
+
+
+### Features
+
+* updating application types ([#215](https://github.com/Basis-Theory/docs/issues/215)) ([ff308c6](https://github.com/Basis-Theory/docs/commit/ff308c6e33927f901c6321be0605a25e7756bc2a))
+
 # [1.57.0](https://github.com/Basis-Theory/docs/compare/v1.56.0...v1.57.0) (2022-07-28)
 
 
