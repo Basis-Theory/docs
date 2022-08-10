@@ -690,7 +690,7 @@ _iub.csConfiguration = {"ccpaAcknowledgeOnLoad":true,"consentOnContinuedBrowsing
 
 <p>Permissions are associated with every Application and can be configured when you <a href="/api-reference#applications-create-application">create an Application</a> or <a href="/api-reference#applications-update-application">update an Application</a>. </p>
 
-<p><strong>Elements</strong> Applications only allow <em>create</em> permissions, removing any risk that your API keys are stolen and used to access data.</p>
+<p><strong>Public</strong> Applications only allow <em>create</em> and <em>update</em> permissions, removing any risk that your API keys are stolen and used to access data.</p>
 <h2 id='permissions-permission-types'>Permission Types</h2>
 <table><thead>
 <tr>
@@ -703,16 +703,36 @@ _iub.csConfiguration = {"ccpaAcknowledgeOnLoad":true,"consentOnContinuedBrowsing
 <td>Create tokens in the vault</td>
 </tr>
 <tr>
+<td><code>token:general:update</code></td>
+<td>Update tokens in the vault</td>
+</tr>
+<tr>
 <td><code>token:pci:create</code></td>
 <td>Create Card tokens</td>
+</tr>
+<tr>
+<td><code>token:pci:update</code></td>
+<td>Update Card tokens</td>
 </tr>
 <tr>
 <td><code>token:bank:create</code></td>
 <td>Create Bank tokens</td>
 </tr>
+<tr>
+<td><code>token:bank:update</code></td>
+<td>Update Bank tokens</td>
+</tr>
+<tr>
+<td><code>token:pii:create</code></td>
+<td>Create PII tokens</td>
+</tr>
+<tr>
+<td><code>token:pii:update</code></td>
+<td>Update PII tokens</td>
+</tr>
 </tbody></table>
 <h1 id='authentication'>Authentication</h1>
-<p><strong>Elements</strong> use a specific type of Application key to allow access to the API. To create one, login into our <a href="https://portal.basistheory.com" target="_blank">Portal</a> and create a new &quot;Elements&quot; Application with the permissions you require.</p>
+<p><strong>Elements</strong> use an application of type &quot;Public&quot; to allow access to the API. To create one, login into our <a href="https://portal.basistheory.com" target="_blank">Portal</a> and create a new &quot;Public&quot; Application with the permissions you require.</p>
 <h1 id='limits'>Limits</h1>
 <p>The Basis Theory API has rate limits applied to ensure the speed and consistency of our systems. </p>
 
@@ -813,7 +833,7 @@ _iub.csConfiguration = {"ccpaAcknowledgeOnLoad":true,"consentOnContinuedBrowsing
 </aside>
 
 <aside class="notice">
-  <span>Friendly reminder to replace <code>test_1234567890</code> with a valid <a href="/api-reference/#applications-application-types">Elements Application key</a>.</span>
+  <span>Friendly reminder to replace <code>test_1234567890</code> with a valid <a href="/api-reference/#applications-application-types">Public Application key</a>.</span>
 </aside>
 <h1 id='element-types'>Element Types</h1><h2 id='element-types-card-element'>Card Element</h2>
 <p>The <code>&quot;card&quot;</code> element type features a one-liner credit card collector containing the following inputs:</p>
@@ -2039,7 +2059,7 @@ services. To do that, simply pass the Element instance (or one of its data parsi
 <!-- Options link above looks weird because of how Slate generates them -->
 
 <aside class="notice">
-  <span>Make sure your API key has an <code>Elements</code> or <code>Client-side Application</code> <a href="/api-reference#applications-application-types">Application Type</a>.</span>
+  <span>Make sure your API key has a <code>Public</code> <a href="/api-reference#applications-application-types">Application Type</a>.</span>
 </aside>
 <h2 id='usebasistheory-retrieve-from-context'>Retrieve from Context</h2>
 <p>Calling the <code>useBasisTheory</code> hook with no parameters will retrieve the  <a href="#basistheoryreact"><code>BasisTheoryReact</code></a> instance from the <code>Context</code>. See <a href="#basistheoryprovider">BasisTheoryProvider</a>.</p>

@@ -1348,19 +1348,14 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
 </tr>
 </thead><tbody>
 <tr>
-<td>Server-to-Server</td>
-<td><code>server_to_server</code></td>
+<td>Private</td>
+<td><code>private</code></td>
 <td>Used for tokenizing, retrieving, and decrypting data within backend services where the <code>API key</code> can be secured</td>
 </tr>
 <tr>
-<td>Client-side Application</td>
+<td>Public</td>
 <td><code>public</code></td>
 <td>Used for tokenizing data directly within your mobile or browser application</td>
-</tr>
-<tr>
-<td>Elements</td>
-<td><code>elements</code></td>
-<td>Used for tokenizing data with the Basis Theory Elements module</td>
 </tr>
 <tr>
 <td>Management</td>
@@ -1378,7 +1373,7 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
   <span class="nt">-X</span> <span class="s2">"POST"</span> <span class="se">\</span>
   <span class="nt">-d</span> <span class="s1">'{
     "name": "My Example App",
-    "type": "server_to_server",
+    "type": "private",
     "permissions": [
       "token:general:create",
       "token:general:read:low"
@@ -1392,7 +1387,7 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
 
 <span class="kd">const</span> <span class="nx">application</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">bt</span><span class="p">.</span><span class="nx">applications</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
   <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">My Example App</span><span class="dl">'</span><span class="p">,</span>
-  <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">server_to_server</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">private</span><span class="dl">'</span><span class="p">,</span>
   <span class="na">permissions</span><span class="p">:</span> <span class="p">[</span>
     <span class="dl">'</span><span class="s1">token:general:create</span><span class="dl">'</span><span class="p">,</span>
     <span class="dl">'</span><span class="s1">token:general:read:low</span><span class="dl">'</span><span class="p">,</span>
@@ -1406,7 +1401,7 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
 
 <span class="kt">var</span> <span class="n">application</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">CreateAsync</span><span class="p">(</span><span class="k">new</span> <span class="n">Application</span> <span class="p">{</span>
   <span class="n">Name</span> <span class="p">=</span> <span class="s">"My Example App"</span><span class="p">,</span>
-  <span class="n">Type</span> <span class="p">=</span> <span class="s">"server_to_server"</span><span class="p">,</span>
+  <span class="n">Type</span> <span class="p">=</span> <span class="s">"private"</span><span class="p">,</span>
   <span class="n">Permissions</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="p">{</span>
     <span class="s">"token:general:create"</span><span class="p">,</span>
     <span class="s">"token:general:read:low"</span><span class="p">,</span>
@@ -1423,7 +1418,7 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
 
     <span class="n">application</span> <span class="o">=</span> <span class="n">application_client</span><span class="p">.</span><span class="n">create</span><span class="p">(</span><span class="n">create_application_request</span><span class="o">=</span><span class="n">CreateApplicationRequest</span><span class="p">(</span>
         <span class="n">name</span><span class="o">=</span><span class="s">"My Example App"</span><span class="p">,</span>
-        <span class="nb">type</span><span class="o">=</span><span class="s">"server_to_server"</span><span class="p">,</span>
+        <span class="nb">type</span><span class="o">=</span><span class="s">"private"</span><span class="p">,</span>
         <span class="n">permissions</span><span class="o">=</span><span class="p">[</span>
             <span class="s">"token:general:create"</span><span class="p">,</span>
             <span class="s">"token:general:read:low"</span><span class="p">,</span>
@@ -1464,7 +1459,7 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
   </span><span class="nl">"tenant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77cb0024-123e-41a8-8ff8-a3d5a0fa8a08"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My Example App"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"key_FZ8RmaxoGc73lbmF2cpmUJ"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"server_to_server"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"private"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"permissions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="s2">"token:general:create"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"token:general:read:low"</span><span class="p">,</span><span class="w">
@@ -1569,7 +1564,7 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
       </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"tenant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77cb0024-123e-41a8-8ff8-a3d5a0fa8a08"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My Example App"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"server_to_server"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"private"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"permissions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="s2">"token:general:create"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"token:general:read:low"</span><span class="p">,</span><span class="w">
@@ -1972,7 +1967,7 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
   </span><span class="nl">"tenant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77cb0024-123e-41a8-8ff8-a3d5a0fa8a08"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My Example App"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"key_FZ8RmaxoGc73lbmF2cpmUJ"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"server_to_server"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"private"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"permissions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="s2">"token:general:create"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"token:general:read:low"</span><span class="p">,</span><span class="w">
@@ -2486,42 +2481,42 @@ or <a href="#applications-update-application">update an Application</a>.</p>
 <tr>
 <td><code>token:&lt;classification&gt;:create</code></td>
 <td>Create Tokens in <a href="#tokens-token-classifications">&lt;classification&gt;</a> (e.g. <code>token:general:create</code>)</td>
-<td><code>public</code>, <code>elements</code>, <code>server_to_server</code></td>
+<td><code>public</code>, <code>private</code></td>
 </tr>
 <tr>
 <td><code>token:&lt;classification&gt;:read:low</code></td>
 <td>Read plaintext token data in <a href="#tokens-token-classifications">&lt;classification&gt;</a> with <code>low</code> <a href="#tokens-token-impact-levels">&lt;impact_level&gt;</a>. Tokens in <code>&lt;classification&gt;</code> with higher impact level will be restricted based on the token&#39;s <a href="#tokens-token-restriction-policies">restriction policy</a></td>
-<td><code>server_to_server</code></td>
+<td><code>private</code></td>
 </tr>
 <tr>
 <td><code>token:&lt;classification&gt;:read:moderate</code></td>
 <td>Read plaintext token data in <a href="#tokens-token-classifications">&lt;classification&gt;</a> with <code>moderate</code> <a href="#tokens-token-impact-levels">&lt;impact_level&gt;</a> and lower. Tokens in <code>&lt;classification&gt;</code> with higher impact level will be restricted based on the token&#39;s <a href="#tokens-token-restriction-policies">restriction policy</a></td>
-<td><code>server_to_server</code></td>
+<td><code>private</code></td>
 </tr>
 <tr>
 <td><code>token:&lt;classification&gt;:read:high</code></td>
 <td>Read plaintext token data in <a href="#tokens-token-classifications">&lt;classification&gt;</a> with <code>high</code> <a href="#tokens-token-impact-levels">&lt;impact_level&gt;</a> and lower (i.e. <code>low</code> and <code>moderate</code>).</td>
-<td><code>server_to_server</code></td>
+<td><code>private</code></td>
 </tr>
 <tr>
 <td><code>token:&lt;classification&gt;:update</code></td>
 <td>Update Tokens in <a href="#tokens-token-classifications">&lt;classification&gt;</a> (e.g. <code>token:general:update</code>)</td>
-<td><code>server_to_server</code></td>
+<td><code>private</code></td>
 </tr>
 <tr>
 <td><code>token:&lt;classification&gt;:delete</code></td>
 <td>Delete Tokens in <a href="#tokens-token-classifications">&lt;classification&gt;</a> (e.g. <code>token:general:delete</code>)</td>
-<td><code>server_to_server</code></td>
+<td><code>private</code></td>
 </tr>
 <tr>
 <td><code>token:&lt;classification&gt;:use:proxy</code></td>
 <td>Use Tokens in <a href="#tokens-token-classifications">&lt;classification&gt;</a> via <a href="#proxy">Proxy</a> (e.g. <code>token:general:use:proxy</code>)</td>
-<td><code>server_to_server</code></td>
+<td><code>private</code></td>
 </tr>
 <tr>
 <td><code>token:&lt;classification&gt;:use:reactor</code></td>
 <td>Use Tokens in <a href="#tokens-token-classifications">&lt;classification&gt;</a> via <a href="#reactors">Reactor</a> (e.g. <code>token:general:use:reactor</code>)</td>
-<td><code>server_to_server</code></td>
+<td><code>private</code></td>
 </tr>
 </tbody></table>
 <h2 id='permissions-list-permissions'>List Permissions</h2>
@@ -2572,7 +2567,7 @@ or <a href="#applications-update-application">update an Application</a>.</p>
     </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"token:pci:read:low"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Read tokens with PCI classification of low impact level"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"application_types"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="s2">"server_to_server"</span><span class="w">
+      </span><span class="s2">"private"</span><span class="w">
     </span><span class="p">]</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
