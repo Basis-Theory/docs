@@ -11,7 +11,7 @@
 | `mask`                   | *any*                                                   | (Optional) An [expression](/expressions/#masks) defining the mask to apply when retrieving token data with restricted permissions. |
 | `fingerprint`            | *string*                                                | Uniquely identifies the contents of this token. See [Token Types](#token-types) for the default expression for each token type.    |
 | `privacy`                | *[privacy object](#tokens-token-object-privacy-object)* | Token Privacy Settings                                                                                                             |
-| `container`              | *string*                                                | A path containing a logical grouping of tokens. See [Token Containers](#tokens-token-containers) for details.                      |
+| `container`              | *string*                                                | A path representing a logical grouping of tokens. See [Token Containers](#tokens-token-containers) for details.                    |
 | `metadata`               | *map*                                                   | A key-value map of non-sensitive data.                                                                                             |
 | `created_by`             | *uuid*                                                  | (Optional) The [Application](#applications-application-object) ID which created the token                                          |
 | `created_at`             | *date*                                                  | (Optional) Created date of the token in ISO 8601 format                                                                            |
@@ -143,7 +143,7 @@ A container is represented by a hierarchical path, which is conceptually similar
 Container names must start and end with a `/`, and the root container is denoted by `/`.
 Container names may include any alphanumeric characters, `-`, or `_`, and can contain an arbitrary number of nested sub-containers.
 
-By default, tokens will be grouped into containers based off their data [classification](#tokens-token-classifications) and [impact levels](#tokens-token-impact-levels), using the format
+By default, tokens will be assigned to containers based off their data [classification](#tokens-token-classifications) and [impact levels](#tokens-token-impact-levels), using the format
 `/<classification>/<impact_level>/`, e.g. `/pci/high/` or `/general/low/`.
 
 You have complete control to customize your container hierarchy to meet your unique data governance requirements.
@@ -359,7 +359,7 @@ Create a new token for the Tenant.
 | `data`                   | true     | *any*                                                   | `null`                                    | Token data. Can be an object, array, or any primitive type such as an integer, boolean, or string                                                            |
 | `mask`                   | false    | *any*                                                   | Depends on the [token type](#token-types) | Token data mask. Can be an object, array, or any primitive type such as an integer, boolean, or string. See [mask expressions](/expressions/#masks).         |
 | `privacy`                | false    | *[privacy object](#tokens-token-object-privacy-object)* | `null`                                    | Token Privacy Settings overrides. Overrides must be a higher specificity level than the default or minimum setting for the [Token Type](#token-token-types). |
-| `container`              | false    | *string*                                                | Depends on the [token type](#token-types) | A path containing a logical grouping of tokens. See [Token Containers](#tokens-token-containers) for details.                                                |
+| `container`              | false    | *string*                                                | Depends on the [token type](#token-types) | A path representing a logical grouping of tokens. See [Token Containers](#tokens-token-containers) for details.                                              |
 | `metadata`               | false    | *map*                                                   | `null`                                    | A key-value map of non-sensitive data.                                                                                                                       |
 | `search_indexes`         | false    | *array*                                                 | `null`                                    | Array of [expressions](/expressions/#search-indexes) used to generate indexes to be able to search against.                                                  |
 | `fingerprint_expression` | false    | *string*                                                | <code>{{ data &#124; stringify }}</code>  | [Expressions](/expressions/#fingerprints) used to fingerprint your token.                                                                                    |
@@ -984,7 +984,7 @@ in the `/customer-123/pii/` container, you can query:
 
 Wildcard container searches can be used to match on all tokens within a container or its sub-containers. 
 The wildcard character `*` can only appear at the end of a container search term.
-For example, to return all tokens for `customer-123` which may be contained within sub-containers `/customer-123/pii` or `/customer-123/cards`, you can query:
+For example, to return all tokens for `customer-123` which may be partitioned into sub-containers `/customer-123/pii/` or `/customer-123/cards/`, you can query:
 <span class="text-snippet">
   `container:"/customer-123/*"`
 </span>

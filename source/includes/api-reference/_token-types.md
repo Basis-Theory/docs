@@ -55,7 +55,7 @@ The `token` type is used for general data types that don't require input validat
 | **Default Impact Level**           | `high`                                                                                                                                                               |
 | **Minimum Impact Level**           | `high`                                                                                                                                                               |
 | **Default Restriction Policy**     | `mask`                                                                                                                                                               |
-| **Default Container**              | `/bank/high`                                                                                                                                                         |
+| **Default Container**              | `/bank/high/`                                                                                                                                                        |
 | **Input Validation**               | See [Bank Object](#tokens-token-data-validations) for validation requirements                                                                                        |
 | **Default Fingerprint Expression** | <code>{{ data.account_number }}&#124;{{ data.routing_number }}</code>                                                                                                |
 | **Default Mask Expression**        | <code>{<br>&nbsp;&nbsp;"routing_number": "{{ data.routing_number }}",<br>&nbsp;&nbsp;"account_number": "{{ data.account_number &#124; reveal_last: 4 }}"<br>}</code> |
