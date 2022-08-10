@@ -53,5 +53,5 @@ Attribute  | Required | Type       | Description
 </aside>
 
 <aside class="notice">
-  <span>Friendly reminder to replace <code>test_1234567890</code> with a valid <a href="/api-reference/#applications-application-types">Elements Application key</a>.</span>
+  <span>Friendly reminder to replace <code>test_1234567890</code> with a valid <a href="/api-reference/#applications-application-types">Public Application key</a>.</span>
 </aside>
