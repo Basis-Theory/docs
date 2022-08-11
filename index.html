@@ -684,6 +684,9 @@ _iub.csConfiguration = {"ccpaAcknowledgeOnLoad":true,"consentOnContinuedBrowsing
                       <a href="#tokens-token-expiration" class="toc-h2 toc-link" data-title="Token Expiration">Token Expiration</a>
                     </li>
                     <li>
+                      <a href="#tokens-token-containers" class="toc-h2 toc-link" data-title="Token Containers">Token Containers</a>
+                    </li>
+                    <li>
                       <a href="#tokens-create-token" class="toc-h2 toc-link" data-title="Create Token">Create Token</a>
                     </li>
                     <li>
@@ -6917,6 +6920,10 @@ Token Types define the rules around a data type such as validation requirements,
 <td><code>redact</code></td>
 </tr>
 <tr>
+<td><strong>Default Container</strong></td>
+<td><code>/general/high/</code></td>
+</tr>
+<tr>
 <td><strong>Input Validation</strong></td>
 <td>None</td>
 </tr>
@@ -6961,6 +6968,10 @@ Token Types define the rules around a data type such as validation requirements,
 <td><code>mask</code></td>
 </tr>
 <tr>
+<td><strong>Default Container</strong></td>
+<td><code>/pci/high/</code></td>
+</tr>
+<tr>
 <td><strong>Input Validation</strong></td>
 <td>See <a href="#tokens-token-data-validations">Card Object</a> for validation requirements</td>
 </tr>
@@ -7001,6 +7012,10 @@ Token Types define the rules around a data type such as validation requirements,
 <td><code>mask</code></td>
 </tr>
 <tr>
+<td><strong>Default Container</strong></td>
+<td><code>/bank/high/</code></td>
+</tr>
+<tr>
 <td><strong>Input Validation</strong></td>
 <td>See <a href="#tokens-token-data-validations">Bank Object</a> for validation requirements</td>
 </tr>
@@ -7039,6 +7054,10 @@ Token Types define the rules around a data type such as validation requirements,
 <tr>
 <td><strong>Default Restriction Policy</strong></td>
 <td><code>mask</code></td>
+</tr>
+<tr>
+<td><strong>Default Container</strong></td>
+<td><code>/pci/high/</code></td>
 </tr>
 <tr>
 <td><strong>Input Validation</strong></td>
@@ -7103,6 +7122,10 @@ Token Types define the rules around a data type such as validation requirements,
 <td><code>mask</code></td>
 </tr>
 <tr>
+<td><strong>Default Container</strong></td>
+<td><code>/bank/high/</code></td>
+</tr>
+<tr>
 <td><strong>Input Validation</strong></td>
 <td>Numeric</td>
 </tr>
@@ -7161,6 +7184,10 @@ Token Types define the rules around a data type such as validation requirements,
 <td><code>redact</code></td>
 </tr>
 <tr>
+<td><strong>Default Container</strong></td>
+<td><code>/bank/low/</code></td>
+</tr>
+<tr>
 <td><strong>Input Validation</strong></td>
 <td>Numeric, ABA-valid</td>
 </tr>
@@ -7203,6 +7230,10 @@ Token Types define the rules around a data type such as validation requirements,
 <tr>
 <td><strong>Default Restriction Policy</strong></td>
 <td><code>mask</code></td>
+</tr>
+<tr>
+<td><strong>Default Container</strong></td>
+<td><code>/pii/high/</code></td>
 </tr>
 <tr>
 <td><strong>Input Validation</strong></td>
@@ -7265,6 +7296,10 @@ Token Types define the rules around a data type such as validation requirements,
 <tr>
 <td><strong>Default Restriction Policy</strong></td>
 <td><code>mask</code></td>
+</tr>
+<tr>
+<td><strong>Default Container</strong></td>
+<td><code>/pii/high/</code></td>
 </tr>
 <tr>
 <td><strong>Input Validation</strong></td>
@@ -7343,6 +7378,11 @@ Token Types define the rules around a data type such as validation requirements,
 <td><code>privacy</code></td>
 <td><em><a href="#tokens-token-object-privacy-object">privacy object</a></em></td>
 <td>Token Privacy Settings</td>
+</tr>
+<tr>
+<td><code>container</code></td>
+<td><em>string</em></td>
+<td>A path representing a logical grouping of tokens. See <a href="#tokens-token-containers">Token Containers</a> for details.</td>
 </tr>
 <tr>
 <td><code>metadata</code></td>
@@ -7654,11 +7694,39 @@ An expired token is <strong>deleted</strong> from the tenant up to <strong>1 hou
 </tbody></table>
 
 <aside class="notice">
-  If an offset is not provided with the <code>DateTime</code> string, it's considered that the provided time is in&nbsp;<strong>UTC</strong>.</span>
+  <span>If an offset is not provided with the <code>DateTime</code> string, it's considered that the provided time is in&nbsp;<strong>UTC</strong>.</span>
 </aside>
 
 <aside class="notice">
-  When using the <code>ShortDate</code> format, the expiration time will be set as&nbsp;<strong>12AM UTC</strong>.</span>
+  <span>When using the <code>ShortDate</code> format, the expiration time will be set as&nbsp;<strong>12AM UTC</strong>.</span>
+</aside>
+<h2 id='tokens-token-containers'>Token Containers</h2>
+<p>Tokens can be logically grouped into containers to segment tokens within a Tenant. 
+A container is represented by a hierarchical path, which is conceptually similar to directories in a UNIX filesystem.</p>
+
+<p>Container names must start and end with a <code>/</code>, and the root container is denoted by <code>/</code>.
+Container names may include any alphanumeric characters, <code>-</code>, or <code>_</code>, and can contain an arbitrary number of nested sub-containers.</p>
+
+<p>By default, tokens will be assigned to containers based off their data <a href="#tokens-token-classifications">classification</a> and <a href="#tokens-token-impact-levels">impact levels</a>, using the format
+<code>/&lt;classification&gt;/&lt;impact_level&gt;/</code>, e.g. <code>/pci/high/</code> or <code>/general/low/</code>.</p>
+
+<p>You have complete control to customize your container hierarchy to meet your unique data governance requirements.
+For example, if you wish to segment your tokens by customer and data classification, you could organize tokens into the containers:</p>
+
+<ul>
+<li><code>/customer-123/pii/</code></li>
+<li><code>/customer-123/general/</code></li>
+<li><code>/customer-456/pii/</code></li>
+<li><code>/customer-456/general/</code></li>
+<li><code>/customer-456/my-custom-classification/</code></li>
+</ul>
+
+<aside class="notice">
+  <span>
+    Coming soon! We are hard at work building a more flexible access control system for Applications. 
+    Containers will be leveraged to scope permissions to a subset of tokens, 
+    providing greater control to limit which tokens an application can access.
+  </span>
 </aside>
 <h2 id='tokens-create-token'>Create Token</h2>
 <blockquote>
@@ -7672,6 +7740,7 @@ An expired token is <strong>deleted</strong> from the tenant up to <strong>1 hou
     "type": "token",
     "data": "Sensitive Value",
     "mask": "{{ data | reveal_last: 4 }}",
+    "container": "/general/high/",
     "privacy": {
       "restriction_policy": "mask"
     },
@@ -7694,6 +7763,7 @@ An expired token is <strong>deleted</strong> from the tenant up to <strong>1 hou
   <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">token</span><span class="dl">'</span><span class="p">,</span>
   <span class="na">data</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Sensitive Value</span><span class="dl">'</span><span class="p">,</span>
   <span class="na">mask</span><span class="p">:</span> <span class="dl">'</span><span class="s1">{{ data | reveal_last: 4 }}</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">container</span><span class="p">:</span> <span class="dl">'</span><span class="s1">/general/high/</span><span class="dl">'</span><span class="p">,</span>
   <span class="na">privacy</span><span class="p">:</span> <span class="p">{</span>
     <span class="na">restriction_policy</span><span class="p">:</span> <span class="dl">'</span><span class="s1">mask</span><span class="dl">'</span>
   <span class="p">},</span>
@@ -7716,6 +7786,7 @@ An expired token is <strong>deleted</strong> from the tenant up to <strong>1 hou
   <span class="n">Type</span> <span class="p">=</span> <span class="s">"token"</span><span class="p">,</span>
   <span class="n">Data</span> <span class="p">=</span> <span class="s">"Sensitive Value"</span><span class="p">,</span>
   <span class="n">Mask</span> <span class="p">=</span> <span class="s">"{{ data | reveal_last: 4 }}"</span><span class="p">,</span>
+  <span class="n">Container</span> <span class="p">=</span> <span class="s">"/general/high/"</span><span class="p">,</span>
   <span class="n">Privacy</span> <span class="p">=</span> <span class="k">new</span> <span class="n">DataPrivacy</span> <span class="p">{</span>
     <span class="n">RestrictionPolicy</span> <span class="p">=</span> <span class="n">DataRestrictionPolicy</span><span class="p">.</span><span class="n">MASK</span>
   <span class="p">},</span>
@@ -7740,10 +7811,11 @@ An expired token is <strong>deleted</strong> from the tenant up to <strong>1 hou
     <span class="n">token</span> <span class="o">=</span> <span class="n">token_client</span><span class="p">.</span><span class="n">create</span><span class="p">(</span><span class="n">create_token_request</span><span class="o">=</span><span class="n">CreateTokenRequest</span><span class="p">(</span>
         <span class="nb">type</span><span class="o">=</span><span class="s">"token"</span><span class="p">,</span>
         <span class="n">data</span><span class="o">=</span><span class="s">"Sensitive Value"</span><span class="p">,</span>
-        <span class="n">mask</span><span class="o">=</span><span class="s">"{{ data | reveal_last: 4 }}"</span>
+        <span class="n">mask</span><span class="o">=</span><span class="s">"{{ data | reveal_last: 4 }}"</span><span class="p">,</span>
         <span class="n">metadata</span><span class="o">=</span><span class="p">{</span>
             <span class="s">"nonSensitiveField"</span><span class="p">:</span> <span class="s">"Non-Sensitive Value"</span>
         <span class="p">},</span>
+        <span class="n">container</span><span class="o">=</span><span class="s">"/general/high/"</span><span class="p">,</span>
         <span class="n">privacy</span><span class="o">=</span><span class="n">Privacy</span><span class="p">(</span>
           <span class="n">restriction_policy</span><span class="o">=</span><span class="s">"mask"</span>
         <span class="p">),</span>
@@ -7777,6 +7849,7 @@ An expired token is <strong>deleted</strong> from the tenant up to <strong>1 hou
   <span class="n">createTokenRequest</span><span class="o">.</span><span class="n">SetSearchIndexes</span><span class="p">([]</span><span class="kt">string</span><span class="p">{</span><span class="s">"{{ data }}"</span><span class="p">,</span> <span class="s">"{{ data | last4}}"</span><span class="p">})</span>
   <span class="n">createTokenRequest</span><span class="o">.</span><span class="n">SetFingerprintExpression</span><span class="p">(</span><span class="s">"{{ data }}"</span><span class="p">)</span>
   <span class="n">createTokenRequest</span><span class="o">.</span><span class="n">SetDeduplicateToken</span><span class="p">(</span><span class="no">true</span><span class="p">)</span>
+  <span class="n">createTokenRequest</span><span class="o">.</span><span class="n">SetContainer</span><span class="p">(</span><span class="s">"/general/high/"</span><span class="p">)</span>
   <span class="n">createTokenRequest</span><span class="o">.</span><span class="n">SetExpiresAt</span><span class="p">(</span><span class="s">"8/26/2030 7:23:57 PM -07:00"</span><span class="p">)</span>
 
   <span class="n">privacy</span> <span class="o">:=</span> <span class="o">*</span><span class="n">basistheory</span><span class="o">.</span><span class="n">NewPrivacy</span><span class="p">()</span>
@@ -7795,6 +7868,7 @@ An expired token is <strong>deleted</strong> from the tenant up to <strong>1 hou
   </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"token"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XXXXXXXXXXXalue"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"mask"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{{ data | reveal_last: 4 }}"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"container"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/general/high/"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"privacy"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"classification"</span><span class="p">:</span><span class="w"> </span><span class="s2">"general"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"impact_level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"high"</span><span class="p">,</span><span class="w">
@@ -7867,6 +7941,13 @@ An expired token is <strong>deleted</strong> from the tenant up to <strong>1 hou
 <td><em><a href="#tokens-token-object-privacy-object">privacy object</a></em></td>
 <td><code>null</code></td>
 <td>Token Privacy Settings overrides. Overrides must be a higher specificity level than the default or minimum setting for the <a href="#token-token-types">Token Type</a>.</td>
+</tr>
+<tr>
+<td><code>container</code></td>
+<td>false</td>
+<td><em>string</em></td>
+<td>Depends on the <a href="#token-types">token type</a></td>
+<td>A path representing a logical grouping of tokens. See <a href="#tokens-token-containers">Token Containers</a> for details.</td>
 </tr>
 <tr>
 <td><code>metadata</code></td>
@@ -7969,6 +8050,7 @@ An expired token is <strong>deleted</strong> from the tenant up to <strong>1 hou
       </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"token"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"tenant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77cb0024-123e-41a8-8ff8-a3d5a0fa8a08"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">Redacted</span><span class="w"> </span><span class="err">based</span><span class="w"> </span><span class="err">on</span><span class="w"> </span><span class="err">Restriction</span><span class="w"> </span><span class="err">Policy</span><span class="w">
+      </span><span class="nl">"container"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/general/high/"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"privacy"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"classification"</span><span class="p">:</span><span class="w"> </span><span class="s2">"general"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"impact_level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"moderate"</span><span class="p">,</span><span class="w">
@@ -8081,6 +8163,7 @@ Providing any query parameters will filter the results. Returns <a href="#errors
   </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"token"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"tenant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77cb0024-123e-41a8-8ff8-a3d5a0fa8a08"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">Redacted</span><span class="w"> </span><span class="err">based</span><span class="w"> </span><span class="err">on</span><span class="w"> </span><span class="err">Restriction</span><span class="w"> </span><span class="err">Policy</span><span class="w">
+  </span><span class="nl">"container"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/general/high/"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"privacy"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"classification"</span><span class="p">:</span><span class="w"> </span><span class="s2">"general"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"impact_level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"moderate"</span><span class="p">,</span><span class="w">
@@ -8250,6 +8333,7 @@ Returns <a href="#errors">an error</a> if the token could not be retrieved.</p>
   </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"token"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XXXXXXXXXXXalue"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"mask"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{{ data | reveal_last: 4 }}"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"container"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/general/high/"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"privacy"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"classification"</span><span class="p">:</span><span class="w"> </span><span class="s2">"general"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"impact_level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"high"</span><span class="p">,</span><span class="w">
@@ -8419,6 +8503,7 @@ Returns <a href="#errors">an error</a> if the token could not be retrieved.</p>
       </span><span class="nl">"tenant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77cb0024-123e-41a8-8ff8-a3d5a0fa8a08"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XXX-XX-6789"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"fingerprint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AKCUXS83DokKo4pDRKSAy4d42t9i8dcP1X2jijwEBCQH"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"container"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/pii/high/"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"privacy"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"classification"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pii"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"impact_level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"high"</span><span class="p">,</span><span class="w">
@@ -8528,6 +8613,20 @@ For example, to search for tokens having the metadata <code>{ customer_id: &quot
   <code>metadata.customer_id:123456</code>
 </span></p>
 
+<p>Container search terms support both exact and wildcard matches. An exact container search will only return tokens in
+the searched container and will not include tokens in parent or child containers. For example, to return only tokens
+in the <code>/customer-123/pii/</code> container, you can query:
+<span class="text-snippet">
+  <code>container:&quot;/customer-123/pii/&quot;</code>
+</span></p>
+
+<p>Wildcard container searches can be used to match on all tokens within a container or its sub-containers. 
+The wildcard character <code>*</code> can only appear at the end of a container search term.
+For example, to return all tokens for <code>customer-123</code> which may be partitioned into sub-containers <code>/customer-123/pii/</code> or <code>/customer-123/general/</code>, you can query:
+<span class="text-snippet">
+  <code>container:&quot;/customer-123/*&quot;</code>
+</span></p>
+
 <p>Date range searches are supported using the Lucene bracketed range syntax. 
 <code>[START_DATE TO END_DATE]</code> denotes an inclusive range and <code>{START_DATE TO END_DATE}</code> denotes an exclusive range. 
 Values are formatted as a string in ISO 8601 format and can either represent a date or date and time in UTC.
@@ -8584,6 +8683,12 @@ For example, to search for tokens that were created in the year 2021, you can qu
 <td><em>string</em></td>
 <td>Token&#39;s content unique identifier.</td>
 <td><code>fingerprint:fe24d4cc-de50-4d8c-8da7-8c7483ba21bf</code></td>
+</tr>
+<tr>
+<td><code>container</code></td>
+<td><em>string</em></td>
+<td>The token&#39;s <a href="#tokens-token-containers">container</a>.</td>
+<td><code>container:&quot;/pci/high/&quot;</code></td>
 </tr>
 <tr>
 <td><code>privacy.[field]</code></td>
@@ -8981,6 +9086,7 @@ tokens&#39; privacy settings.</p>
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c1e565009-1984-4638-8fca-dce8a82cc2af"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"tenant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77cb0024-123e-41a8-8ff8-a3d5a0fa8a08"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"token"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"container"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/general/high/"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"privacy"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"classification"</span><span class="p">:</span><span class="w"> </span><span class="s2">"general"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"impact_level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"high"</span><span class="p">,</span><span class="w">
@@ -9117,6 +9223,7 @@ permission based on the parent token&#39;s privacy settings.</p>
       </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"token"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"tenant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77cb0024-123e-41a8-8ff8-a3d5a0fa8a08"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">Redacted</span><span class="w"> </span><span class="err">based</span><span class="w"> </span><span class="err">on</span><span class="w"> </span><span class="err">restriction</span><span class="w"> </span><span class="err">policy</span><span class="w">
+      </span><span class="nl">"container"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/general/high/"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"privacy"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"classification"</span><span class="p">:</span><span class="w"> </span><span class="s2">"general"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"impact_level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"high"</span><span class="p">,</span><span class="w">
