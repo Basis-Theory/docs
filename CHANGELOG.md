@@ -1,3 +1,10 @@
+# [1.59.0](https://github.com/Basis-Theory/docs/compare/v1.58.0...v1.59.0) (2022-08-11)
+
+
+### Features
+
+* Adds token container documentation ([#216](https://github.com/Basis-Theory/docs/issues/216)) ([178b62a](https://github.com/Basis-Theory/docs/commit/178b62accb0d3635c44e7ff156f2a3bf598a19d9))
+
 # [1.58.0](https://github.com/Basis-Theory/docs/compare/v1.57.0...v1.58.0) (2022-08-10)
 
 
