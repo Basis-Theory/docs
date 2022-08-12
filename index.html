@@ -7674,7 +7674,7 @@ but the plaintext card data will not be returned. Instead, the restriction polic
 
 <p>Refer to <a href="/expressions/#masks">mask expressions</a> to find out more about how to define masks for your token data.</p>
 <h2 id='tokens-token-expiration'>Token Expiration</h2>
-<p>By default a created token will not expire, however, users can optionally set the <code>expires_at</code> property when creating a token to determine its expiration date.
+<p>By default a created token will not expire, however, users can optionally set the <code>expires_at</code> property with an ISO8601 <code>DateTime</code> when creating a token to determine its expiration date.
 An expired token is <strong>deleted</strong> from the tenant up to <strong>1 hour</strong> after it&#39;s expiration time.</p>
 <h3 id='tokens-token-expiration-expiration-date-formats'>Expiration Date Formats</h3>
 <table><thead>
@@ -7982,7 +7982,7 @@ For example, if you wish to segment your tokens by customer and data classificat
 <td>false</td>
 <td><em>string</em></td>
 <td><code>null</code></td>
-<td>Token expiration date/time. See <a href="#token-expiration">Token Expiration</a> for more details.</td>
+<td>ISO8601 compatible Token expiration DateTime. See <a href="#token-expiration">Token Expiration</a> for more details.</td>
 </tr>
 </tbody></table>
 
