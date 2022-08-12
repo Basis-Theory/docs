@@ -1,3 +1,10 @@
+## [1.59.1](https://github.com/Basis-Theory/docs/compare/v1.59.0...v1.59.1) (2022-08-12)
+
+
+### Bug Fixes
+
+* explains expires_at accepts ISO8601 DateTimes ([#217](https://github.com/Basis-Theory/docs/issues/217)) ([ad7a7be](https://github.com/Basis-Theory/docs/commit/ad7a7beddbe26ef322c11f3cd35ab64aac285886))
+
 # [1.59.0](https://github.com/Basis-Theory/docs/compare/v1.58.0...v1.59.0) (2022-08-11)
 
 
