@@ -118,7 +118,7 @@ Refer to [mask expressions](/expressions/#masks) to find out more about how to d
 
 ## Token Expiration 
 
-By default a created token will not expire, however, users can optionally set the `expires_at` property when creating a token to determine its expiration date.
+By default a created token will not expire, however, users can optionally set the `expires_at` property with an ISO8601 <code>DateTime</code> when creating a token to determine its expiration date.
 An expired token is **deleted** from the tenant up to **1 hour** after it's expiration time.
 
 ### Expiration Date Formats
@@ -364,7 +364,7 @@ Create a new token for the Tenant.
 | `search_indexes`         | false    | *array*                                                 | `null`                                    | Array of [expressions](/expressions/#search-indexes) used to generate indexes to be able to search against.                                                  |
 | `fingerprint_expression` | false    | *string*                                                | <code>{{ data &#124; stringify }}</code>  | [Expressions](/expressions/#fingerprints) used to fingerprint your token.                                                                                    |
 | `deduplicate_token`      | false    | *bool*                                                  | `null`                                    | Whether the token is deduplicated on creation.                                                                                                               |
-| `expires_at`             | false    | *string*                                                | `null`                                    | Token expiration date/time. See [Token Expiration](#token-expiration) for more details.                                                                      |
+| `expires_at`             | false    | *string*                                                | `null`                                    | ISO8601 compatible Token expiration DateTime. See [Token Expiration](#token-expiration) for more details.                                                                      |
 
 
 <aside class="warning">
