@@ -1,3 +1,10 @@
+# [1.60.0](https://github.com/Basis-Theory/docs/compare/v1.59.1...v1.60.0) (2022-08-16)
+
+
+### Features
+
+* docs for new reveal filter ([#218](https://github.com/Basis-Theory/docs/issues/218)) ([e1fa735](https://github.com/Basis-Theory/docs/commit/e1fa735d1cd9055f01805e78be4c0b4f7971b53c))
+
 ## [1.59.1](https://github.com/Basis-Theory/docs/compare/v1.59.0...v1.59.1) (2022-08-12)
 
 
