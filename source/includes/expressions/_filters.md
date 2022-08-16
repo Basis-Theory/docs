@@ -199,6 +199,41 @@ Given a token with the data:
 | <code>{{ data &#124; last4 }}</code>                     | "1667" |
 | <code>{{ data &#124; slice: 12, 2 &#124; last4 }}</code> | "67"   |
 
+## reveal
+
+Returns a masked version of the string revealing characters at the start and end whilst preserving others. If the string's
+length is less than or equal to `reveal_first` + `reveal_last`, or the resulting masked string equals the original unmasked value,
+the whole value is masked.
+
+### Parameters
+
+| Position | Name           | Type     | Required | Default Value | Description                                     |
+|----------|----------------|----------|----------|---------------|-------------------------------------------------|
+| 0        | reveal_first   | *int*    | false    | `0`           | The number of characters to reveal at the start |
+| 1        | reveal_last    | *int*    | false    | `0`           | The number of characters to reveal at the end   |
+| 2        | mask_char      | *char*   | false    | `X`           | A masking character                             |
+| 3        | preserve_chars | *string* | false    | ``            | The characters to preserve                      |
+
+### Examples
+
+Given a token with the data:
+
+<div class="center-column" style="clear: none;"></div>
+```json
+{
+  "id": "d35412f4-9d3b-45d8-b051-fe4b7d4e14c5",
+  "type": "token",
+  "data": "3622-7206-2716-5567"
+}
+```
+
+| Expression                                            | Result                |
+|-------------------------------------------------------|-----------------------|
+| <code>{{ data &#124; reveal: 6 }}</code>              | "3622-7XXXXXXXXXXXXX" |
+| <code>{{ data &#124; reveal: 7, 5 }}</code>           | "3622-72XXXXXXX-5567" |
+| <code>{{ data &#124; reveal: 7, 5, '#' }}</code>      | "3622-72#######-5567" |
+| <code>{{ data &#124; reveal: 7, 4, '#', "-" }}</code> | "3622-72##-####-5567" |
+| <code>{{ data &#124; reveal: 10, 9 }}</code>          | "XXXXXXXXXXXXXXXXXXX" |
 
 ## pad_left
 
