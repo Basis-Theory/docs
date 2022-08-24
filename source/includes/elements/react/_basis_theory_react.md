@@ -60,6 +60,11 @@ bt.getElement('expDate').month(); // Error TS2551: property doesn't exist
 bt.getElement<ICardExpirationDateElement>('expDate').month() // no error
 ```
 
+<aside class="notice">
+  <span>Instead of using <code>getElement</code> Basis Theory recommends passing a created <code>ref</code> attribute/callback function when creating an Element, to store/receive its underlying instance.</span>
+</aside>
+
+
 Gets the underlying Element instance. Given the declarative nature of React, this method enables referencing the Element value for tokenization.
 
 The targeted Element must be present in your component tree (virtual DOM) when invoking this method.
