@@ -1466,7 +1466,8 @@ attribute, in this case, will modify the user input to remove <code>(</code>, <c
     <span class="p">{...},</span>
     <span class="p">{...}</span>
   <span class="p">],</span>
-  <span class="dl">"</span><span class="s2">cardBrand</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">american-express</span><span class="dl">"</span>
+  <span class="dl">"</span><span class="s2">cardBrand</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">american-express</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">cardLast4</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">8431</span><span class="dl">"</span>  
 <span class="p">}</span>
 </code></pre></div>
 <table><thead>
@@ -1500,6 +1501,12 @@ attribute, in this case, will modify the user input to remove <code>(</code>, <c
 <td><em>string</em></td>
 <td><a href="#element-types-card-element">card</a><br><a href="#element-types-card-number-element">cardNumber</a></td>
 <td>(Optional) The credit card <a href="#element-options-card-brands">brand</a> (e.g. <code>&#39;american-express&#39;</code>, <code>&#39;visa&#39;</code>, <code>&#39;unknown&#39;</code>). The value defaults to <code>&#39;unknown&#39;</code> until a card brand is recognized.</td>
+</tr>
+<tr>
+<td><code>cardLast4</code></td>
+<td><em>string</em></td>
+<td><a href="#element-types-card-element">card</a><br><a href="#element-types-card-number-element">cardNumber</a></td>
+<td>(Optional) The credit card&#39;s last 4 digits. The value is not provided until a complete card number is entered.</td>
 </tr>
 </tbody></table>
 <h3 id='element-events-on-change-fielderror'>FieldError</h3><div class="highlight"><pre class="highlight tsx tab-tsx"><code><span class="p">{</span>
