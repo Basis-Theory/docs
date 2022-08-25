@@ -5,6 +5,7 @@
 ## Using Refs
 
 ```tsx
+import { useRef } from 'react';
 import { 
   BasisTheoryApiError,
   BasisTheoryValidationError,
@@ -16,8 +17,8 @@ const ssnMask = [/\d/, /\d/, /\d/, "-", /\d/, /\d/, "-", /\d/, /\d/, /\d/, /\d/]
 
 const MyForm = () => {
   const { bt } = useBasisTheory('test_1234567890', { elements: true });
-  const fullNameRef = React.useRef(null);
-  const ssnRef = React.useRef(null);
+  const fullNameRef = useRef(null);
+  const ssnRef = useRef(null);
 
   const submit = async () => {
     const fullName = fullNameRef.current;
@@ -50,15 +51,16 @@ const MyForm = () => {
 > Typescript
 
 ```tsx
+import { useRef } from 'react';
 import type { 
   CardExpirationDateElement as ICardExpirationDateElement 
 } from '@basis-theory/basis-theory-react/types';
 
-const expirationDateRef = React.useRef(null);
+const expirationDateRef = useRef(null);
 
 expirationDateRef.current.month(); // Error TS2551: property doesn't exist 
 
-const expirationDateRef = React.useRef<ICardExpirationDateElement>(null); 
+const expirationDateRef = useRef<ICardExpirationDateElement>(null); 
 
 expirationDateRef.current.month(); // no error
 ```
