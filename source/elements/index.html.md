@@ -46,6 +46,7 @@ react_includes:
   - elements/react/card_expiration_date_element
   - elements/react/card_verification_code_element
   - elements/react/basis_theory_react
+  - elements/react/react_deprecations
 
 reference_links:
   - <a class="toc-h1 toc-link" href="/api-reference">API Reference</a>
