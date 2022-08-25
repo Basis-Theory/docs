@@ -154,7 +154,7 @@ module.exports = async function (req) {
   req.args.body.sensitive_value = token.id;
 
   return {
-    raw {
+    raw: {
       body: req.args.body,
       headers: req.args.headers
     }
