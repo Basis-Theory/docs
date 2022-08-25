@@ -58,7 +58,8 @@ This event is triggered whenever element's value(s) change. For example, if the 
     {...},
     {...}
   ],
-  "cardBrand": "american-express"
+  "cardBrand": "american-express",
+  "cardLast4": "8431"  
 }
 ```
 
@@ -68,6 +69,7 @@ This event is triggered whenever element's value(s) change. For example, if the 
 | `empty`     | *boolean* | All                                                                                     | Whether the element is empty. Multi-input Elements will be `empty` only if all inputs are.                                                                                               |
 | `errors`    | *array*   | All                                                                                     | Array of [FieldError](#element-events-on-change-fielderror).                                                                                                                             |
 | `cardBrand` | *string*  | [card](#element-types-card-element)<br>[cardNumber](#element-types-card-number-element) | (Optional) The credit card [brand](#element-options-card-brands) (e.g. `'american-express'`, `'visa'`, `'unknown'`). The value defaults to `'unknown'` until a card brand is recognized. |
+| `cardLast4` | *string*  | [card](#element-types-card-element)<br>[cardNumber](#element-types-card-number-element) | (Optional) The credit card's last 4 digits. The value is not provided until a complete card number is entered.                                                                           |
 
 ### FieldError
 
