@@ -1,3 +1,10 @@
+# [1.61.0](https://github.com/Basis-Theory/docs/compare/v1.60.0...v1.61.0) (2022-08-25)
+
+
+### Features
+
+* adding card last 4 change event docs ([#220](https://github.com/Basis-Theory/docs/issues/220)) ([e5275c2](https://github.com/Basis-Theory/docs/commit/e5275c268fcdb8886718c992fcb092430bf01eb5))
+
 # [1.60.0](https://github.com/Basis-Theory/docs/compare/v1.59.1...v1.60.0) (2022-08-16)
 
 
