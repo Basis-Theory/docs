@@ -470,6 +470,9 @@ _iub.csConfiguration = {"ccpaAcknowledgeOnLoad":true,"consentOnContinuedBrowsing
               <a href="#tokenization" class="toc-h1 toc-link" data-title="Tokenization">Tokenization</a>
                 <ul class="toc-list-h2">
                     <li>
+                      <a href="#tokenization-data-parsing" class="toc-h2 toc-link" data-title="Data Parsing">Data Parsing</a>
+                    </li>
+                    <li>
                       <a href="#tokenization-errors" class="toc-h2 toc-link" data-title="Errors">Errors</a>
                     </li>
                 </ul>
@@ -525,7 +528,15 @@ _iub.csConfiguration = {"ccpaAcknowledgeOnLoad":true,"consentOnContinuedBrowsing
               <a href="#basistheoryreact" class="toc-h1 toc-link" data-title="BasisTheoryReact">BasisTheoryReact</a>
                 <ul class="toc-list-h2">
                     <li>
-                      <a href="#basistheoryreact-getelement" class="toc-h2 toc-link" data-title="getElement">getElement</a>
+                      <a href="#basistheoryreact-using-refs" class="toc-h2 toc-link" data-title="Using Refs">Using Refs</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+              <a href="#react-deprecations" class="toc-h1 toc-link" data-title="React Deprecations">React Deprecations</a>
+                <ul class="toc-list-h2">
+                    <li>
+                      <a href="#react-deprecations-deprecated-features" class="toc-h2 toc-link" data-title="Deprecated Features">Deprecated Features</a>
                     </li>
                 </ul>
             </li>
@@ -1783,7 +1794,7 @@ services. To do that, simply pass the Element instance (or one of its data parsi
 <aside class="warning">
   <span>Note that when submitting <code>plainText</code> values, data will be HTML encoded before storage for security reasons.
 </aside>
-<h3 id='tokenization-on-keydown-data-parsing'>Data Parsing</h3>
+<h2 id='tokenization-data-parsing'>Data Parsing</h2>
 <p>The following methods can be called to parse the Element value for proper tokenization. </p>
 
 <table><thead>
@@ -2240,6 +2251,13 @@ services. To do that, simply pass the Element instance (or one of its data parsi
 <td>true</td>
 <td>Event Listener. See <a href="#element-events-on-keydown">On Keydown</a></td>
 </tr>
+<tr>
+<td><code>ref</code></td>
+<td>false</td>
+<td><em>object/function</em></td>
+<td>false</td>
+<td><a href="https://reactjs.org/docs/refs-and-the-dom.html">Ref object</a>/<a href="https://reactjs.org/docs/refs-and-the-dom.html">Callback ref function</a> to store/receive the Element instance.</td>
+</tr>
 </tbody></table>
 <h1 id='textelement'>TextElement</h1>
 <blockquote>
@@ -2395,6 +2413,13 @@ services. To do that, simply pass the Element instance (or one of its data parsi
 <td>true</td>
 <td>Event listener. See <a href="#element-events-on-keydown">On Keydown</a></td>
 </tr>
+<tr>
+<td><code>ref</code></td>
+<td>false</td>
+<td><em>object/function</em></td>
+<td>false</td>
+<td><a href="https://reactjs.org/docs/refs-and-the-dom.html">Ref object</a>/<a href="https://reactjs.org/docs/refs-and-the-dom.html">Callback ref function</a> to store/receive the Element instance.</td>
+</tr>
 </tbody></table>
 <h1 id='cardnumberelement'>CardNumberElement</h1>
 <blockquote>
@@ -2536,6 +2561,13 @@ services. To do that, simply pass the Element instance (or one of its data parsi
 <td>true</td>
 <td>Event listener. See <a href="#element-events-on-keydown">On Keydown</a></td>
 </tr>
+<tr>
+<td><code>ref</code></td>
+<td>false</td>
+<td><em>object/function</em></td>
+<td>false</td>
+<td><a href="https://reactjs.org/docs/refs-and-the-dom.html">Ref object</a>/<a href="https://reactjs.org/docs/refs-and-the-dom.html">Callback ref function</a> to store/receive the Element instance.</td>
+</tr>
 </tbody></table>
 <h1 id='cardexpirationdateelement'>CardExpirationDateElement</h1>
 <blockquote>
@@ -2669,6 +2701,13 @@ services. To do that, simply pass the Element instance (or one of its data parsi
 <td><em>function</em></td>
 <td>true</td>
 <td>Event listener. See <a href="#element-events-on-keydown">On Keydown</a></td>
+</tr>
+<tr>
+<td><code>ref</code></td>
+<td>false</td>
+<td><em>object/function</em></td>
+<td>false</td>
+<td><a href="https://reactjs.org/docs/refs-and-the-dom.html">Ref object</a>/<a href="https://reactjs.org/docs/refs-and-the-dom.html">Callback ref function</a> to store/receive the Element instance.</td>
 </tr>
 </tbody></table>
 <h1 id='cardverificationcodeelement'>CardVerificationCodeElement</h1>
@@ -2811,10 +2850,18 @@ services. To do that, simply pass the Element instance (or one of its data parsi
 <td>true</td>
 <td>Event listener. See <a href="#element-events-on-keydown">On Keydown</a></td>
 </tr>
+<tr>
+<td><code>ref</code></td>
+<td>false</td>
+<td><em>object/function</em></td>
+<td>false</td>
+<td><a href="https://reactjs.org/docs/refs-and-the-dom.html">Ref object</a>/<a href="https://reactjs.org/docs/refs-and-the-dom.html">Callback ref function</a> to store/receive the Element instance.</td>
+</tr>
 </tbody></table>
 <h1 id='basistheoryreact'>BasisTheoryReact</h1>
 <p><code>BasisTheoryReact</code> adds React-specific capabilities on top of the <code>BasisTheory</code> class. All <a href="/api-reference">API features</a> and <a href="#tokenization">Tokenization Features</a> are still available, plus the methods below.</p>
-<h2 id='basistheoryreact-getelement'>getElement</h2><div class="highlight"><pre class="highlight tsx tab-tsx"><code><span class="k">import</span> <span class="p">{</span> 
+<h2 id='basistheoryreact-using-refs'>Using Refs</h2><div class="highlight"><pre class="highlight tsx tab-tsx"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">useRef</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> 
   <span class="nx">BasisTheoryApiError</span><span class="p">,</span>
   <span class="nx">BasisTheoryValidationError</span><span class="p">,</span>
   <span class="nx">TextElement</span><span class="p">,</span> 
@@ -2825,10 +2872,12 @@ services. To do that, simply pass the Element instance (or one of its data parsi
 
 <span class="kd">const</span> <span class="nx">MyForm</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
   <span class="kd">const</span> <span class="p">{</span> <span class="nx">bt</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">useBasisTheory</span><span class="p">(</span><span class="dl">'</span><span class="s1">test_1234567890</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span> <span class="na">elements</span><span class="p">:</span> <span class="kc">true</span> <span class="p">});</span>
+  <span class="kd">const</span> <span class="nx">fullNameRef</span> <span class="o">=</span> <span class="nx">useRef</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="nx">ssnRef</span> <span class="o">=</span> <span class="nx">useRef</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
 
   <span class="kd">const</span> <span class="nx">submit</span> <span class="o">=</span> <span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="kd">const</span> <span class="nx">fullName</span> <span class="o">=</span> <span class="nx">bt</span><span class="p">.</span><span class="nx">getElement</span><span class="p">(</span><span class="dl">'</span><span class="s1">fullName</span><span class="dl">'</span><span class="p">);</span>
-    <span class="kd">const</span> <span class="nx">ssn</span> <span class="o">=</span> <span class="nx">bt</span><span class="p">.</span><span class="nx">getElement</span><span class="p">(</span><span class="dl">'</span><span class="s1">ssn</span><span class="dl">'</span><span class="p">);</span>
+    <span class="kd">const</span> <span class="nx">fullName</span> <span class="o">=</span> <span class="nx">fullNameRef</span><span class="p">.</span><span class="nx">current</span><span class="p">;</span>
+    <span class="kd">const</span> <span class="nx">ssn</span> <span class="o">=</span> <span class="nx">ssnRef</span><span class="p">.</span><span class="nx">current</span><span class="p">;</span>
 
     <span class="k">try</span> <span class="p">{</span>
       <span class="kd">const</span> <span class="nx">tokens</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">bt</span><span class="p">.</span><span class="nx">tokenize</span><span class="p">({</span>
@@ -2845,8 +2894,8 @@ services. To do that, simply pass the Element instance (or one of its data parsi
   <span class="p">}</span>
 
   <span class="k">return</span> <span class="p">&lt;</span><span class="nc">BasisTheoryProvider</span> <span class="na">bt</span><span class="p">=</span><span class="si">{</span><span class="nx">bt</span><span class="si">}</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nc">TextElement</span> <span class="na">id</span><span class="p">=</span><span class="s">"fullName"</span> <span class="na">placeholder</span><span class="p">=</span><span class="s">"Full name"</span> <span class="na">aria-label</span><span class="p">=</span><span class="s">"Full name"</span> <span class="p">/&gt;</span>
-    <span class="p">&lt;</span><span class="nc">TextElement</span> <span class="na">id</span><span class="p">=</span><span class="s">"ssn"</span> <span class="na">placeholder</span><span class="p">=</span><span class="s">"SSN"</span> <span class="na">aria-label</span><span class="p">=</span><span class="s">"Social Security Number"</span> <span class="na">mask</span><span class="p">=</span><span class="si">{</span><span class="nx">ssnMask</span><span class="si">}</span> <span class="na">transform</span><span class="p">=</span><span class="si">{</span><span class="sr">/</span><span class="se">[</span><span class="sr">-</span><span class="se">]</span><span class="sr">/</span><span class="si">}</span> <span class="p">/&gt;</span>
+    <span class="p">&lt;</span><span class="nc">TextElement</span> <span class="na">id</span><span class="p">=</span><span class="s">"fullName"</span> <span class="na">ref</span><span class="p">=</span><span class="si">{</span><span class="nx">fullNameRef</span><span class="si">}</span> <span class="na">placeholder</span><span class="p">=</span><span class="s">"Full name"</span> <span class="na">aria-label</span><span class="p">=</span><span class="s">"Full name"</span> <span class="p">/&gt;</span>
+    <span class="p">&lt;</span><span class="nc">TextElement</span> <span class="na">id</span><span class="p">=</span><span class="s">"ssn"</span> <span class="na">ref</span><span class="p">=</span><span class="si">{</span><span class="nx">ssnRef</span><span class="si">}</span> <span class="na">placeholder</span><span class="p">=</span><span class="s">"SSN"</span> <span class="na">aria-label</span><span class="p">=</span><span class="s">"Social Security Number"</span> <span class="na">mask</span><span class="p">=</span><span class="si">{</span><span class="nx">ssnMask</span><span class="si">}</span> <span class="na">transform</span><span class="p">=</span><span class="si">{</span><span class="sr">/</span><span class="se">[</span><span class="sr">-</span><span class="se">]</span><span class="sr">/</span><span class="si">}</span> <span class="p">/&gt;</span>
     <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
       <span class="p">&lt;</span><span class="nt">button</span> <span class="na">type</span><span class="p">=</span><span class="s">"submit"</span> <span class="na">onClick</span><span class="p">=</span><span class="si">{</span><span class="nx">submit</span><span class="si">}</span> <span class="na">disabled</span><span class="p">=</span><span class="si">{</span><span class="o">!</span><span class="nx">bt</span><span class="si">}</span><span class="p">&gt;</span>Submit<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
     <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
@@ -2856,46 +2905,42 @@ services. To do that, simply pass the Element instance (or one of its data parsi
 <blockquote>
 <p>Typescript</p>
 </blockquote>
-<div class="highlight"><pre class="highlight tsx tab-tsx"><code><span class="k">import</span> <span class="kd">type</span> <span class="p">{</span> 
+<div class="highlight"><pre class="highlight tsx tab-tsx"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">useRef</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="kd">type</span> <span class="p">{</span> 
   <span class="nx">CardExpirationDateElement</span> <span class="k">as</span> <span class="nx">ICardExpirationDateElement</span> 
 <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@basis-theory/basis-theory-react/types</span><span class="dl">'</span><span class="p">;</span>
 
+<span class="kd">const</span> <span class="nx">expirationDateRef</span> <span class="o">=</span> <span class="nx">useRef</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
 
-<span class="nx">bt</span><span class="p">.</span><span class="nx">getElement</span><span class="p">(</span><span class="dl">'</span><span class="s1">expDate</span><span class="dl">'</span><span class="p">).</span><span class="nx">month</span><span class="p">();</span> <span class="c1">// Error TS2551: property doesn't exist </span>
+<span class="nx">expirationDateRef</span><span class="p">.</span><span class="nx">current</span><span class="p">.</span><span class="nx">month</span><span class="p">();</span> <span class="c1">// Error TS2551: property doesn't exist </span>
 
-<span class="p">(</span><span class="nx">bt</span><span class="p">.</span><span class="nx">getElement</span><span class="p">(</span><span class="dl">'</span><span class="s1">expDate</span><span class="dl">'</span><span class="p">)</span> <span class="k">as</span> <span class="nx">ICardExpirationDateElement</span><span class="p">).</span><span class="nx">month</span><span class="p">();</span> <span class="c1">// no error</span>
+<span class="kd">const</span> <span class="nx">expirationDateRef</span> <span class="o">=</span> <span class="nx">useRef</span><span class="o">&lt;</span><span class="nx">ICardExpirationDateElement</span><span class="o">&gt;</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span> 
 
-<span class="nx">bt</span><span class="p">.</span><span class="nx">getElement</span><span class="o">&lt;</span><span class="nx">ICardExpirationDateElement</span><span class="o">&gt;</span><span class="p">(</span><span class="dl">'</span><span class="s1">expDate</span><span class="dl">'</span><span class="p">).</span><span class="nx">month</span><span class="p">()</span> <span class="c1">// no error</span>
+<span class="nx">expirationDateRef</span><span class="p">.</span><span class="nx">current</span><span class="p">.</span><span class="nx">month</span><span class="p">();</span> <span class="c1">// no error</span>
 </code></pre></div>
-<p>Gets the underlying Element instance. Given the declarative nature of React, this method enables referencing the Element value for tokenization.</p>
+<p><a href="https://reactjs.org/docs/refs-and-the-dom.html">Refs</a> are a way to access DOM nodes or React component instances.</p>
 
-<p>The targeted Element must be present in your component tree (virtual DOM) when invoking this method.</p>
+<p>In BasisTheoryReact, <code>refs</code> are utilized to store or receive (in the case of a <a href="https://reactjs.org/docs/refs-and-the-dom.html#callback-refs">callback ref</a>) the underlying Element instance, to tokenize their value or call one of its methods.</p>
+
+<p>When using Typescript, you can type-cast the element <code>ref</code> to safely call <a href="#tokenization-data-parsing">specific</a> Elements methods.</p>
+<h1 id='react-deprecations'>React Deprecations</h1><h2 id='react-deprecations-deprecated-features'>Deprecated Features</h2>
+<p>The following table lists deprecated features and their respective shutdown date.</p>
 
 <table><thead>
 <tr>
-<th>Parameter</th>
-<th>Required</th>
-<th>Type</th>
-<th>Description</th>
+<th>Feature</th>
+<th>Deprecated</th>
+<th>Shutdown Date</th>
+<th>Details</th>
 </tr>
 </thead><tbody>
 <tr>
-<td><code>id</code></td>
-<td>true</td>
-<td><em>string</em></td>
-<td>The <code>id</code> of the Element instance</td>
+<td><code>getElement</code> method</td>
+<td>August 25, 2022</td>
+<td>November 15, 2022</td>
+<td><code>getElement</code> method will be removed in an upcoming release. Instead, please use <a href="#basistheoryreact-using-refs">refs</a></td>
 </tr>
 </tbody></table>
-
-<aside class="warning">
-  <span>Passing an unknown `id` to the <code>getElement</code> will throw an error at runtime.</span>
-</aside>
-
-<aside class="warning">
-  <span>When using React, it is not recommended to directly call lifecycle methods from the Element instance returned by the <code>getElement</code> method.</span>
-</aside>
-
-<p>You can type-cast <code>getElement</code> method to safely call specific Elements methods.</p>
 
         
       </div>
