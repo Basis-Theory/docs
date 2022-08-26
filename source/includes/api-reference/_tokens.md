@@ -19,7 +19,7 @@
 | `modified_at`            | *date*                                                  | (Optional) Last modified date of the token in ISO 8601 format                                                                      |
 | `search_indexes`         | *array*                                                 | (Optional) Array of search index [expressions](/expressions/#search-indexes) used when creating the token.                         |
 | `fingerprint_expression` | *string*                                                | (Optional) An [expression](/expressions/#fingerprints) defining the value to fingerprint when creating the token.                  |
-| `expires_at`             | *string*                                                | (Optional) The [token expiration](#token-expiration) date.                                                                         |
+| `expires_at`             | *string*                                                | (Optional) The [token expiration](#tokens-token-expiration) date.                                                                         |
 
 ### Privacy Object
 
