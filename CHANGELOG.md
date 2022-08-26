@@ -1,3 +1,10 @@
+# [1.62.0](https://github.com/Basis-Theory/docs/compare/v1.61.0...v1.62.0) (2022-08-26)
+
+
+### Features
+
+* add react refs docs ([#221](https://github.com/Basis-Theory/docs/issues/221)) ([e256252](https://github.com/Basis-Theory/docs/commit/e256252544356cdbe1e056b2c7b71e2590c2ba08))
+
 # [1.61.0](https://github.com/Basis-Theory/docs/compare/v1.60.0...v1.61.0) (2022-08-25)
 
 
