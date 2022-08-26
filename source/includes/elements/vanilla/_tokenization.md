@@ -94,7 +94,7 @@ You can fetch this same data later with [Get a Token API](/api-reference#tokens-
   <span>Note that when submitting <code>plainText</code> values, data will be HTML encoded before storage for security reasons.
 </aside>
 
-### Data Parsing
+## Data Parsing
 
 The following methods can be called to parse the Element value for proper tokenization. 
 
