@@ -65,8 +65,8 @@ const expirationDateRef = useRef<ICardExpirationDateElement>(null);
 expirationDateRef.current.month(); // no error
 ```
 
-[Refs](https://reactjs.org/docs/refs-and-the-dom.html) are a way to access DOM nodes or React elements created in the render method.
+[Refs](https://reactjs.org/docs/refs-and-the-dom.html) are a way to access DOM nodes or React component instances.
 
-In the case of BasisTheoryReact, `refs` are utilized to store or receive (in the case of a [callback ref](https://reactjs.org/docs/refs-and-the-dom.html#callback-refs)) the created element instance.
+In BasisTheoryReact, `refs` are utilized to store or receive (in the case of a [callback ref](https://reactjs.org/docs/refs-and-the-dom.html#callback-refs)) the underlying Element instance, to tokenize their value or call one of its methods.
 
-When using typescript, you can type-cast the element `ref` to safely call specific Elements methods.
+When using Typescript, you can type-cast the element `ref` to safely call [specific](#tokenization-data-parsing) Elements methods.
