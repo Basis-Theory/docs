@@ -32,6 +32,7 @@ vanilla_includes:
   - elements/vanilla/element_options_mask
   - elements/vanilla/element_options_transform
   - elements/vanilla/element_options_card_brands
+  - elements/vanilla/element_methods
   - elements/vanilla/element_events
   - elements/vanilla/tokenization
   - elements/vanilla/deprecations

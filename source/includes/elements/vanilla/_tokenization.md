@@ -82,7 +82,7 @@ BasisTheory.tokenize({
 
 
 Elements' values can be securely tokenized using [`tokens.create`](/#tokens-create-token) and [`tokenize`](/#tokenize)
-services. To do that, simply pass the Element instance (or one of its data parsing methods) in the payload.
+services. To do that, simply pass the Element instance (or one of its [data parsing methods](#element-methods)) in the payload.
 
 You can fetch this same data later with [Get a Token API](/api-reference#tokens-get-a-token)
 
@@ -92,19 +92,6 @@ You can fetch this same data later with [Get a Token API](/api-reference#tokens-
 
 <aside class="warning">
   <span>Note that when submitting <code>plainText</code> values, data will be HTML encoded before storage for security reasons.
-</aside>
-
-## Data Parsing
-
-The following methods can be called to parse the Element value for proper tokenization. 
-
-| Name    | Resulting Type | Eligible Elements                                                 | Description                                             |
-|---------|----------------|-------------------------------------------------------------------|---------------------------------------------------------|
-| `month` | *number*       | [cardExpirationDate](#element-types-card-expiration-date-element) | Resolves to the one-based month value of the input date |
-| `year`  | *number*       | [cardExpirationDate](#element-types-card-expiration-date-element) | Resolves to the four-digit year value of the input date |
-
-<aside class="notice">
-  <span>If you need more Elements' data parsing methods, don't hesitate to <a href="mailto:support@basistheory.com?subject=Elements Data Parsing Feature Request">reach out</a>.</span>
 </aside>
 
 ## Errors
