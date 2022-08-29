@@ -1,3 +1,10 @@
+# [1.63.0](https://github.com/Basis-Theory/docs/compare/v1.62.0...v1.63.0) (2022-08-29)
+
+
+### Features
+
+* add docs for elements focus and blur ([#223](https://github.com/Basis-Theory/docs/issues/223)) ([9218c97](https://github.com/Basis-Theory/docs/commit/9218c976a279189240f3e5ce3bfe1e3f8635d5f1))
+
 # [1.62.0](https://github.com/Basis-Theory/docs/compare/v1.61.0...v1.62.0) (2022-08-26)
 
 
