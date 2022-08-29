@@ -69,4 +69,4 @@ expirationDateRef.current.month(); // no error
 
 In BasisTheoryReact, `refs` are utilized to store or receive (in the case of a [callback ref](https://reactjs.org/docs/refs-and-the-dom.html#callback-refs)) the underlying Element instance, to tokenize their value or call one of its methods.
 
-When using Typescript, you can type-cast the element `ref` to safely call [specific](#tokenization-data-parsing) Elements methods.
+When using Typescript, you can type-cast the element `ref` to safely call specific [Elements methods](#element-methods).

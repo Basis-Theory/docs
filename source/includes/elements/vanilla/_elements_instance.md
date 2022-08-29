@@ -57,14 +57,6 @@ This lifecycle method updates the element options the element was initialized wi
 |-----------|----------|----------|---------------------------------------------------------|
 | `options` | false    | *object* | [Options](#element-options) for customizing the element |
 
-## Clear Element
-
-```tsx
-cardElement.clear();
-```
-
-Clears the element input(s) value.
-
 ## Unmount Element
 
 ```tsx
