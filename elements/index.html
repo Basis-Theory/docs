@@ -422,9 +422,6 @@ _iub.csConfiguration = {"ccpaAcknowledgeOnLoad":true,"consentOnContinuedBrowsing
                       <a href="#elements-instance-update-element" class="toc-h2 toc-link" data-title="Update Element">Update Element</a>
                     </li>
                     <li>
-                      <a href="#elements-instance-clear-element" class="toc-h2 toc-link" data-title="Clear Element">Clear Element</a>
-                    </li>
-                    <li>
                       <a href="#elements-instance-unmount-element" class="toc-h2 toc-link" data-title="Unmount Element">Unmount Element</a>
                     </li>
                 </ul>
@@ -445,6 +442,9 @@ _iub.csConfiguration = {"ccpaAcknowledgeOnLoad":true,"consentOnContinuedBrowsing
                       <a href="#element-options-card-brands" class="toc-h2 toc-link" data-title="Card Brands">Card Brands</a>
                     </li>
                 </ul>
+            </li>
+            <li>
+              <a href="#element-methods" class="toc-h1 toc-link" data-title="Element Methods">Element Methods</a>
             </li>
             <li>
               <a href="#element-events" class="toc-h1 toc-link" data-title="Element Events">Element Events</a>
@@ -469,9 +469,6 @@ _iub.csConfiguration = {"ccpaAcknowledgeOnLoad":true,"consentOnContinuedBrowsing
             <li>
               <a href="#tokenization" class="toc-h1 toc-link" data-title="Tokenization">Tokenization</a>
                 <ul class="toc-list-h2">
-                    <li>
-                      <a href="#tokenization-data-parsing" class="toc-h2 toc-link" data-title="Data Parsing">Data Parsing</a>
-                    </li>
                     <li>
                       <a href="#tokenization-errors" class="toc-h2 toc-link" data-title="Errors">Errors</a>
                     </li>
@@ -1073,9 +1070,6 @@ and masking.</p>
 <td><a href="#element-options">Options</a> for customizing the element</td>
 </tr>
 </tbody></table>
-<h2 id='elements-instance-clear-element'>Clear Element</h2><div class="highlight"><pre class="highlight tsx tab-tsx"><code><span class="nx">cardElement</span><span class="p">.</span><span class="nx">clear</span><span class="p">();</span>
-</code></pre></div>
-<p>Clears the element input(s) value.</p>
 <h2 id='elements-instance-unmount-element'>Unmount Element</h2><div class="highlight"><pre class="highlight tsx tab-tsx"><code><span class="nx">cardElement</span><span class="p">.</span><span class="nx">unmount</span><span class="p">();</span>
 </code></pre></div>
 <p>This lifecycle method safely removes the element from the DOM, stopping any further communication with it.</p>
@@ -1418,6 +1412,48 @@ attribute, in this case, will modify the user input to remove <code>(</code>, <c
 <aside class="notice">
   <span>If you don't see the card brand you're looking for, please <a href="mailto:support@basistheory.com?subject=CardElement request card brand" target="_blank">contact us</a>!</span>
 </aside>
+<h1 id='element-methods'>Element Methods</h1>
+<p>Once you have <a href="#elements-instance-create-element">created</a> and <a href="#elements-instance-mount-element">mounted</a> an element instance, you can invoke the methods below:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Resulting Type</th>
+<th>Eligible Elements</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>clear</code></td>
+<td><em>void</em></td>
+<td>All</td>
+<td>Clears the element input(s) value.</td>
+</tr>
+<tr>
+<td><code>focus</code></td>
+<td><em>void</em></td>
+<td>All</td>
+<td>Focuses on the element input.</td>
+</tr>
+<tr>
+<td><code>blur</code></td>
+<td><em>void</em></td>
+<td>All</td>
+<td>Blurs the element input.</td>
+</tr>
+<tr>
+<td><code>month</code></td>
+<td><em>number</em></td>
+<td><a href="#element-types-card-expiration-date-element">cardExpirationDate</a></td>
+<td>Data-parsing method that resolves to the one-based month value of the input date.</td>
+</tr>
+<tr>
+<td><code>year</code></td>
+<td><em>number</em></td>
+<td><a href="#element-types-card-expiration-date-element">cardExpirationDate</a></td>
+<td>Data-parsing method that resolves to the four-digit year value of the input date.</td>
+</tr>
+</tbody></table>
 <h1 id='element-events'>Element Events</h1><div class="highlight"><pre class="highlight tsx tab-tsx"><code><span class="kd">var</span> <span class="nx">subscription</span> <span class="o">=</span> <span class="nx">cardElement</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">event-type</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
   <span class="c1">// handle event  </span>
 <span class="p">});</span>
@@ -1783,7 +1819,7 @@ attribute, in this case, will modify the user input to remove <code>(</code>, <c
 <span class="p">});</span>
 </code></pre></div>
 <p>Elements&#39; values can be securely tokenized using <a href="/#tokens-create-token"><code>tokens.create</code></a> and <a href="/#tokenize"><code>tokenize</code></a>
-services. To do that, simply pass the Element instance (or one of its data parsing methods) in the payload.</p>
+services. To do that, simply pass the Element instance (or one of its <a href="#element-methods">data parsing methods</a>) in the payload.</p>
 
 <p>You can fetch this same data later with <a href="/api-reference#tokens-get-a-token">Get a Token API</a></p>
 
@@ -1793,34 +1829,6 @@ services. To do that, simply pass the Element instance (or one of its data parsi
 
 <aside class="warning">
   <span>Note that when submitting <code>plainText</code> values, data will be HTML encoded before storage for security reasons.
-</aside>
-<h2 id='tokenization-data-parsing'>Data Parsing</h2>
-<p>The following methods can be called to parse the Element value for proper tokenization. </p>
-
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Resulting Type</th>
-<th>Eligible Elements</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>month</code></td>
-<td><em>number</em></td>
-<td><a href="#element-types-card-expiration-date-element">cardExpirationDate</a></td>
-<td>Resolves to the one-based month value of the input date</td>
-</tr>
-<tr>
-<td><code>year</code></td>
-<td><em>number</em></td>
-<td><a href="#element-types-card-expiration-date-element">cardExpirationDate</a></td>
-<td>Resolves to the four-digit year value of the input date</td>
-</tr>
-</tbody></table>
-
-<aside class="notice">
-  <span>If you need more Elements' data parsing methods, don't hesitate to <a href="mailto:support@basistheory.com?subject=Elements Data Parsing Feature Request">reach out</a>.</span>
 </aside>
 <h2 id='tokenization-errors'>Errors</h2>
 <p>Elements services could throw an error based on client-side validations or if the server rejects the request.</p>
@@ -2922,7 +2930,7 @@ services. To do that, simply pass the Element instance (or one of its data parsi
 
 <p>In BasisTheoryReact, <code>refs</code> are utilized to store or receive (in the case of a <a href="https://reactjs.org/docs/refs-and-the-dom.html#callback-refs">callback ref</a>) the underlying Element instance, to tokenize their value or call one of its methods.</p>
 
-<p>When using Typescript, you can type-cast the element <code>ref</code> to safely call <a href="#tokenization-data-parsing">specific</a> Elements methods.</p>
+<p>When using Typescript, you can type-cast the element <code>ref</code> to safely call specific <a href="#element-methods">Elements methods</a>.</p>
 <h1 id='react-deprecations'>React Deprecations</h1><h2 id='react-deprecations-deprecated-features'>Deprecated Features</h2>
 <p>The following table lists deprecated features and their respective shutdown date.</p>
 
