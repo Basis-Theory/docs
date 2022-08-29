@@ -82,7 +82,7 @@ BasisTheory.tokenize({
 
 
 Elements' values can be securely tokenized using [`tokens.create`](/#tokens-create-token) and [`tokenize`](/#tokenize)
-services. To do that, simply pass the Element instance (or one of its data parsing methods) in the payload.
+services. To do that, simply pass the Element instance (or one of its [data parsing methods](#element-methods)) in the payload.
 
 You can fetch this same data later with [Get a Token API](/api-reference#tokens-get-a-token)
 
