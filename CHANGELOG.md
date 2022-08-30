@@ -1,3 +1,10 @@
+## [1.63.1](https://github.com/Basis-Theory/docs/compare/v1.63.0...v1.63.1) (2022-08-30)
+
+
+### Bug Fixes
+
+* documenting that application permissions are now required ([#225](https://github.com/Basis-Theory/docs/issues/225)) ([0b4ad8b](https://github.com/Basis-Theory/docs/commit/0b4ad8b7b10e72917fd5bbc0f1088fc4796d6184))
+
 # [1.63.0](https://github.com/Basis-Theory/docs/compare/v1.62.0...v1.63.0) (2022-08-29)
 
 
