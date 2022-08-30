@@ -19,11 +19,11 @@ Your ability to authenticate to the API is granted by creating Applications, eac
 
 ## Application Types
 
-| Name                    | Type               | Description                                                                                                                    |
-|-------------------------|--------------------|--------------------------------------------------------------------------------------------------------------------------------|
-| Private        | `private` | Used for tokenizing, retrieving, and decrypting data within backend services where the `API key` can be secured                |
-| Public      | `public`           | Used for tokenizing data directly within your mobile or browser application |
-| Management              | `management`       | Used for managing all aspects of your token infrastructure such as [creating an Application](#applications-create-application) |
+| Name       | Type         | Description                                                                                                                    |
+|------------|--------------|--------------------------------------------------------------------------------------------------------------------------------|
+| Private    | `private`    | Used for tokenizing, retrieving, and decrypting data within backend services where the `API key` can be secured                |
+| Public     | `public`     | Used for tokenizing data directly within your mobile or browser application                                                    |
+| Management | `management` | Used for managing all aspects of your token infrastructure such as [creating an Application](#applications-create-application) |
 
 ## Create Application
 
@@ -162,11 +162,11 @@ Create a new Application for the Tenant.
 
 ### Request Parameters
 
-| Attribute     | Required | Type     | Default | Description                                                       |
-|---------------|----------|----------|---------|-------------------------------------------------------------------|
-| `name`        | true     | *string* | `null`  | The name of the Application. Has a maximum length of `200`        |
-| `type`        | true     | *string* | `null`  | [Application type](#applications-application-types) of the application |
-| `permissions` | false    | *array*  | `[]`    | [Permissions](#permissions-permission-types) for the application  |
+| Attribute     | Required | Type     | Default | Description                                                                                   |
+|---------------|----------|----------|---------|-----------------------------------------------------------------------------------------------|
+| `name`        | true     | *string* | `null`  | The name of the Application. Has a maximum length of `200`                                    |
+| `type`        | true     | *string* | `null`  | [Application type](#applications-application-types) of the application                        |
+| `permissions` | true     | *array*  | `[]`    | A non-empty array of [Permissions](#permissions-permission-types) granted to the application. |
 
 ### Response
 
@@ -597,10 +597,10 @@ Update an application by ID in the Tenant.
 
 ### Request Parameters
 
-| Attribute     | Required | Type     | Default | Description                                                      |
-|---------------|----------|----------|---------|------------------------------------------------------------------|
-| `name`        | true     | *string* | `null`  | The name of the application. Has a maximum length of `200`       |
-| `permissions` | false    | *array*  | `[]`    | [Permissions](#permissions-permission-types) for the application |
+| Attribute     | Required | Type     | Default | Description                                                                                   |
+|---------------|----------|----------|---------|-----------------------------------------------------------------------------------------------|
+| `name`        | true     | *string* | `null`  | The name of the application. Has a maximum length of `200`                                    |
+| `permissions` | true     | *array*  | `[]`    | A non-empty array of [Permissions](#permissions-permission-types) granted to the application. |
 
 ### Response
 
