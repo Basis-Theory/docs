@@ -162,11 +162,11 @@ Create a new Application for the Tenant.
 
 ### Request Parameters
 
-| Attribute     | Required | Type     | Default | Description                                                            |
-|---------------|----------|----------|---------|------------------------------------------------------------------------|
-| `name`        | true     | *string* | `null`  | The name of the Application. Has a maximum length of `200`             |
-| `type`        | true     | *string* | `null`  | [Application type](#applications-application-types) of the application |
-| `permissions` | true     | *array*  | `[]`    | [Permissions](#permissions-permission-types) for the application       |
+| Attribute     | Required | Type     | Default | Description                                                                                   |
+|---------------|----------|----------|---------|-----------------------------------------------------------------------------------------------|
+| `name`        | true     | *string* | `null`  | The name of the Application. Has a maximum length of `200`                                    |
+| `type`        | true     | *string* | `null`  | [Application type](#applications-application-types) of the application                        |
+| `permissions` | true     | *array*  | `[]`    | A non-empty array of [Permissions](#permissions-permission-types) granted to the application. |
 
 ### Response
 
@@ -597,10 +597,10 @@ Update an application by ID in the Tenant.
 
 ### Request Parameters
 
-| Attribute     | Required | Type     | Default | Description                                                      |
-|---------------|----------|----------|---------|------------------------------------------------------------------|
-| `name`        | true     | *string* | `null`  | The name of the application. Has a maximum length of `200`       |
-| `permissions` | true     | *array*  | `[]`    | [Permissions](#permissions-permission-types) for the application |
+| Attribute     | Required | Type     | Default | Description                                                                                   |
+|---------------|----------|----------|---------|-----------------------------------------------------------------------------------------------|
+| `name`        | true     | *string* | `null`  | The name of the application. Has a maximum length of `200`                                    |
+| `permissions` | true     | *array*  | `[]`    | A non-empty array of [Permissions](#permissions-permission-types) granted to the application. |
 
 ### Response
 
