@@ -689,7 +689,10 @@ html, body {
   p {
     @extend %body1-font;
     color: $grey-800;
+  }
 
+  li {
+    color: $grey-800;
   }
 
   p, li, dt, dd {

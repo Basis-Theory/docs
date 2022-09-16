@@ -8,7 +8,7 @@ Basis Theory token identifiers included in the request will be replaced with the
 
 ### Proxy Requests
 
-> Request with BT-PROXY-KEY
+> Request with `BT-PROXY-KEY` header
 
 ```shell
 curl "https://api.basistheory.com/proxy" \
@@ -22,7 +22,20 @@ curl "https://api.basistheory.com/proxy" \
   }'
 ```
 
-> Request with BT-PROXY-URL
+> Request with `bt-proxy-key` query param
+
+```shell
+curl "https://api.basistheory.com/proxy?bt-proxy-key=e29a50980ca5" \
+  -H "BT-API-KEY: key_N88mVGsp3sCXkykyN2EFED" \
+  -H "Content-Type: application/json" \
+  -X "POST" \
+  -d '{
+    "parameter1": "{{26818785-547b-4b28-b0fa-531377e99f4e}}",
+    "parameter2": "non-sensitive"
+  }'
+```
+
+> Request with `BT-PROXY-URL` header
 
 ```shell
 curl "https://api.basistheory.com/proxy" \
@@ -35,6 +48,7 @@ curl "https://api.basistheory.com/proxy" \
     "parameter2": "non-sensitive"
   }'
 ```
+
 
 <span class="http-method post">
   <span class="method-wrapper">
@@ -75,9 +89,10 @@ Proxy a request to a third party API.
 
 **Authentication**
 
-Proxy requests must be authenticated using a `BT-API-KEY` header (see [Authentication](#authentication)).
+By default, proxy requests must be authenticated using a `BT-API-KEY` header (see [Authentication](#authentication)).
+Alternatively, pre-configured proxies allow requests to be made publicly. See the Configuration section below.
 
-Any authentication required by the destination service can be set on the request and will be forwarded through the proxy,
+Any authentication required by the destination service can be set on the request and will be forwarded through the proxy
 (for example, by setting the `Authorization` header).
 
 **Permissions**
@@ -93,12 +108,13 @@ At least one `token:<classification>:use:proxy` permission is required, for exam
 
 **Configuration**
 
-Basis Theory's Proxy provides two ways to configure a request. The first option is to [create a pre-configured Proxy](#proxies-create-a-proxy) and set the `BT-PROXY-KEY` header which will route traffic to the configured `destination_url`.
+Basis Theory's Proxy provides two ways to configure a request:
 
-The alternative is to set the `BT-PROXY-URL` request header. The value of the `BT-PROXY-URL` header defines the base URL to which the request will be proxied. 
+1. [Create a pre-configured Proxy](#proxies-create-a-proxy) and pass either a `BT-PROXY-KEY` header or a `bt-proxy-key` URL query parameter in your request, which will route traffic to the configured `destination_url`;
+2. Pass the `BT-PROXY-URL` request header. Its value defines the base URL to which the request will be proxied. 
 
 The configured proxy URL must use HTTPS with DNS as the host (explicit IP addresses are not allowed). Destinations must use HTTPS >= TLSv1.2.
-  
+
 The proxy URL will serve as the base URL for the proxied request. Any path and/or query parameters under `/proxy/**` will be appended to the base URL before forwarding the request.
 
 For example, sending a proxy request to `https://api.basistheory.com/proxy/foo/bar?param=value` and including the header `BT-PROXY-URL=https://example.com/api` will result in the request being forwarded to `https://example.com/api/foo/bar?param=value`.
