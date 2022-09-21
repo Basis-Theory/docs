@@ -1,3 +1,10 @@
+## [1.63.2](https://github.com/Basis-Theory/docs/compare/v1.63.1...v1.63.2) (2022-09-21)
+
+
+### Bug Fixes
+
+* explain proxy auth options ([#226](https://github.com/Basis-Theory/docs/issues/226)) ([d00d402](https://github.com/Basis-Theory/docs/commit/d00d402029dbdc75a83af306d38341fc8e0437f7))
+
 ## [1.63.1](https://github.com/Basis-Theory/docs/compare/v1.63.0...v1.63.1) (2022-08-30)
 
 
