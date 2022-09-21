@@ -286,7 +286,7 @@
     </style>
 
     <link href="stylesheets/header-32fbb7c4.css" rel="stylesheet" media="screen" />
-    <link href="stylesheets/screen-b1542700.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/screen-d937d6c9.css" rel="stylesheet" media="screen" />
     <link href="stylesheets/home-d90da665.css" rel="stylesheet" media="screen" />
     <link href="stylesheets/guides.css" rel="stylesheet" media="screen" />
     <link href="stylesheets/iubenda-a04c1f72.css" rel="stylesheet" media="screen" />
@@ -2610,7 +2610,7 @@ could not be retrieved.</p>
 <p>Basis Theory token identifiers included in the request will be replaced with the raw token data and then the modified request will be forwarded to the destination specified in the <code>BT-PROXY-URL</code> request header. The destination will receive the raw data in the request without your system needing to interact with sensitive data on your own servers.</p>
 <h3 id='proxy-proxying-requests-proxy-requests'>Proxy Requests</h3>
 <blockquote>
-<p>Request with BT-PROXY-KEY</p>
+<p>Request with <code>BT-PROXY-KEY</code> header</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/proxy"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"BT-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span> <span class="se">\</span>
@@ -2623,7 +2623,19 @@ could not be retrieved.</p>
   }'</span>
 </code></pre></div>
 <blockquote>
-<p>Request with BT-PROXY-URL</p>
+<p>Request with <code>bt-proxy-key</code> query param</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/proxy?bt-proxy-key=e29a50980ca5"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"BT-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">-X</span> <span class="s2">"POST"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">'{
+    "parameter1": "{{26818785-547b-4b28-b0fa-531377e99f4e}}",
+    "parameter2": "non-sensitive"
+  }'</span>
+</code></pre></div>
+<blockquote>
+<p>Request with <code>BT-PROXY-URL</code> header</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.basistheory.com/proxy"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"BT-API-KEY: key_N88mVGsp3sCXkykyN2EFED"</span> <span class="se">\</span>
@@ -2674,9 +2686,10 @@ could not be retrieved.</p>
 
 <p><strong>Authentication</strong></p>
 
-<p>Proxy requests must be authenticated using a <code>BT-API-KEY</code> header (see <a href="#authentication">Authentication</a>).</p>
+<p>By default, proxy requests must be authenticated using a <code>BT-API-KEY</code> header (see <a href="#authentication">Authentication</a>).
+Alternatively, pre-configured proxies enable unauthenticated requests from any system, provided the caller knows the unique proxy key. This can be useful for accepting inbound requests that originate from third party systems without the need to share a Basis Theory API key with the third party. See the Configuration section below.</p>
 
-<p>Any authentication required by the destination service can be set on the request and will be forwarded through the proxy,
+<p>Any authentication required by the destination service can be set on the request and will be forwarded through the proxy
 (for example, by setting the <code>Authorization</code> header).</p>
 
 <p><strong>Permissions</strong></p>
@@ -2692,9 +2705,12 @@ At least one <code>token:&lt;classification&gt;:use:proxy</code> permission is r
 
 <p><strong>Configuration</strong></p>
 
-<p>Basis Theory&#39;s Proxy provides two ways to configure a request. The first option is to <a href="#proxies-create-a-proxy">create a pre-configured Proxy</a> and set the <code>BT-PROXY-KEY</code> header which will route traffic to the configured <code>destination_url</code>.</p>
+<p>Basis Theory&#39;s Proxy provides two ways to configure a request:</p>
 
-<p>The alternative is to set the <code>BT-PROXY-URL</code> request header. The value of the <code>BT-PROXY-URL</code> header defines the base URL to which the request will be proxied. </p>
+<ol>
+<li><a href="#proxies-create-a-proxy">Create a pre-configured Proxy</a> and pass either a <code>BT-PROXY-KEY</code> header or a <code>bt-proxy-key</code> URL query parameter in your request, which will route traffic to the configured <code>destination_url</code>;</li>
+<li>Pass the <code>BT-PROXY-URL</code> request header. Its value defines the base URL to which the request will be proxied. </li>
+</ol>
 
 <p>The configured proxy URL must use HTTPS with DNS as the host (explicit IP addresses are not allowed). Destinations must use HTTPS &gt;= TLSv1.2.</p>
 
