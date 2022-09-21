@@ -90,7 +90,7 @@ Proxy a request to a third party API.
 **Authentication**
 
 By default, proxy requests must be authenticated using a `BT-API-KEY` header (see [Authentication](#authentication)).
-Alternatively, pre-configured proxies allow requests to be made publicly. See the Configuration section below.
+Alternatively, pre-configured proxies enable unauthenticated requests from any system, provided the caller knows the unique proxy key. This can be useful for accepting inbound requests that originate from third party systems without the need to share a Basis Theory API key with the third party. See the Configuration section below.
 
 Any authentication required by the destination service can be set on the request and will be forwarded through the proxy
 (for example, by setting the `Authorization` header).
