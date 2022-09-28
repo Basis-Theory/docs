@@ -7717,6 +7717,14 @@ An expired token is <strong>deleted</strong> from the tenant up to <strong>1 hou
   <span>When using the <code>ShortDate</code> format, the expiration time will be set as&nbsp;<strong>12AM UTC</strong>.</span>
 </aside>
 <h2 id='tokens-token-containers'>Token Containers</h2>
+<aside class="notice">
+  <span>
+    Coming soon! We are hard at work building a more flexible access control system for Applications. 
+    Containers will be leveraged to scope permissions to a subset of tokens, 
+    providing greater control to limit which tokens an application can access.
+  </span>
+</aside>
+
 <p>Tokens can be logically grouped into containers to segment tokens within a Tenant. 
 A container is represented by a hierarchical path, which is conceptually similar to directories in a UNIX filesystem.</p>
 
@@ -7736,14 +7744,6 @@ For example, if you wish to segment your tokens by customer and data classificat
 <li><code>/customer-456/general/</code></li>
 <li><code>/customer-456/my-custom-classification/</code></li>
 </ul>
-
-<aside class="notice">
-  <span>
-    Coming soon! We are hard at work building a more flexible access control system for Applications. 
-    Containers will be leveraged to scope permissions to a subset of tokens, 
-    providing greater control to limit which tokens an application can access.
-  </span>
-</aside>
 <h2 id='tokens-create-token'>Create Token</h2>
 <blockquote>
 <p>Request</p>
@@ -7756,7 +7756,6 @@ For example, if you wish to segment your tokens by customer and data classificat
     "type": "token",
     "data": "Sensitive Value",
     "mask": "{{ data | reveal_last: 4 }}",
-    "container": "/general/high/",
     "privacy": {
       "restriction_policy": "mask"
     },
@@ -7957,13 +7956,6 @@ For example, if you wish to segment your tokens by customer and data classificat
 <td><em><a href="#tokens-token-object-privacy-object">privacy object</a></em></td>
 <td><code>null</code></td>
 <td>Token Privacy Settings overrides. Overrides must be a higher specificity level than the default or minimum setting for the <a href="#token-token-types">Token Type</a>.</td>
-</tr>
-<tr>
-<td><code>container</code></td>
-<td>false</td>
-<td><em>string</em></td>
-<td>Depends on the <a href="#token-types">token type</a></td>
-<td>A path representing a logical grouping of tokens. See <a href="#tokens-token-containers">Token Containers</a> for details.</td>
 </tr>
 <tr>
 <td><code>metadata</code></td>
