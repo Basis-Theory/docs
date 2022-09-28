@@ -137,6 +137,14 @@ An expired token is **deleted** from the tenant up to **1 hour** after it's expi
 
 ## Token Containers
 
+<aside class="notice">
+  <span>
+    Coming soon! We are hard at work building a more flexible access control system for Applications. 
+    Containers will be leveraged to scope permissions to a subset of tokens, 
+    providing greater control to limit which tokens an application can access.
+  </span>
+</aside>
+
 Tokens can be logically grouped into containers to segment tokens within a Tenant. 
 A container is represented by a hierarchical path, which is conceptually similar to directories in a UNIX filesystem.
 
@@ -155,14 +163,6 @@ For example, if you wish to segment your tokens by customer and data classificat
 - `/customer-456/general/`
 - `/customer-456/my-custom-classification/`
 
-<aside class="notice">
-  <span>
-    Coming soon! We are hard at work building a more flexible access control system for Applications. 
-    Containers will be leveraged to scope permissions to a subset of tokens, 
-    providing greater control to limit which tokens an application can access.
-  </span>
-</aside>
-
 ## Create Token
 
 > Request
@@ -176,7 +176,6 @@ curl "https://api.basistheory.com/tokens" \
     "type": "token",
     "data": "Sensitive Value",
     "mask": "{{ data | reveal_last: 4 }}",
-    "container": "/general/high/",
     "privacy": {
       "restriction_policy": "mask"
     },
@@ -359,7 +358,6 @@ Create a new token for the Tenant.
 | `data`                   | true     | *any*                                                   | `null`                                    | Token data. Can be an object, array, or any primitive type such as an integer, boolean, or string                                                            |
 | `mask`                   | false    | *any*                                                   | Depends on the [token type](#token-types) | Token data mask. Can be an object, array, or any primitive type such as an integer, boolean, or string. See [mask expressions](/expressions/#masks).         |
 | `privacy`                | false    | *[privacy object](#tokens-token-object-privacy-object)* | `null`                                    | Token Privacy Settings overrides. Overrides must be a higher specificity level than the default or minimum setting for the [Token Type](#token-token-types). |
-| `container`              | false    | *string*                                                | Depends on the [token type](#token-types) | A path representing a logical grouping of tokens. See [Token Containers](#tokens-token-containers) for details.                                              |
 | `metadata`               | false    | *map*                                                   | `null`                                    | A key-value map of non-sensitive data.                                                                                                                       |
 | `search_indexes`         | false    | *array*                                                 | `null`                                    | Array of [expressions](/expressions/#search-indexes) used to generate indexes to be able to search against.                                                  |
 | `fingerprint_expression` | false    | *string*                                                | <code>{{ data &#124; stringify }}</code>  | [Expressions](/expressions/#fingerprints) used to fingerprint your token.                                                                                    |
