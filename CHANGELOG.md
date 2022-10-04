@@ -1,3 +1,10 @@
+## [1.63.3](https://github.com/Basis-Theory/docs/compare/v1.63.2...v1.63.3) (2022-09-28)
+
+
+### Bug Fixes
+
+* remove container from create token tokens ([#228](https://github.com/Basis-Theory/docs/issues/228)) ([b69fe93](https://github.com/Basis-Theory/docs/commit/b69fe933b117bde7b2da25331a8f0388de05687f))
+
 ## [1.63.2](https://github.com/Basis-Theory/docs/compare/v1.63.1...v1.63.2) (2022-09-21)
 
 
