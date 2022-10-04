@@ -684,9 +684,6 @@ _iub.csConfiguration = {"ccpaAcknowledgeOnLoad":true,"consentOnContinuedBrowsing
                       <a href="#tokens-token-expiration" class="toc-h2 toc-link" data-title="Token Expiration">Token Expiration</a>
                     </li>
                     <li>
-                      <a href="#tokens-token-containers" class="toc-h2 toc-link" data-title="Token Containers">Token Containers</a>
-                    </li>
-                    <li>
                       <a href="#tokens-create-token" class="toc-h2 toc-link" data-title="Create Token">Create Token</a>
                     </li>
                     <li>
@@ -7398,7 +7395,7 @@ Token Types define the rules around a data type such as validation requirements,
 <tr>
 <td><code>container</code></td>
 <td><em>string</em></td>
-<td>A path representing a logical grouping of tokens. See <a href="#tokens-token-containers">Token Containers</a> for details.</td>
+<td>A path representing a logical grouping of tokens. See <a href="https://developers.basistheory.com/concepts/what-are-token-containers/">Token Containers</a> for details.</td>
 </tr>
 <tr>
 <td><code>metadata</code></td>
@@ -7716,34 +7713,6 @@ An expired token is <strong>deleted</strong> from the tenant up to <strong>1 hou
 <aside class="notice">
   <span>When using the <code>ShortDate</code> format, the expiration time will be set as&nbsp;<strong>12AM UTC</strong>.</span>
 </aside>
-<h2 id='tokens-token-containers'>Token Containers</h2>
-<aside class="notice">
-  <span>
-    Coming soon! We are hard at work building a more flexible access control system for Applications. 
-    Containers will be leveraged to scope permissions to a subset of tokens, 
-    providing greater control to limit which tokens an application can access.
-  </span>
-</aside>
-
-<p>Tokens can be logically grouped into containers to segment tokens within a Tenant. 
-A container is represented by a hierarchical path, which is conceptually similar to directories in a UNIX filesystem.</p>
-
-<p>Container names must start and end with a <code>/</code>, and the root container is denoted by <code>/</code>.
-Container names may include any alphanumeric characters, <code>-</code>, or <code>_</code>, and can contain an arbitrary number of nested sub-containers.</p>
-
-<p>By default, tokens will be assigned to containers based off their data <a href="#tokens-token-classifications">classification</a> and <a href="#tokens-token-impact-levels">impact levels</a>, using the format
-<code>/&lt;classification&gt;/&lt;impact_level&gt;/</code>, e.g. <code>/pci/high/</code> or <code>/general/low/</code>.</p>
-
-<p>You have complete control to customize your container hierarchy to meet your unique data governance requirements.
-For example, if you wish to segment your tokens by customer and data classification, you could organize tokens into the containers:</p>
-
-<ul>
-<li><code>/customer-123/pii/</code></li>
-<li><code>/customer-123/general/</code></li>
-<li><code>/customer-456/pii/</code></li>
-<li><code>/customer-456/general/</code></li>
-<li><code>/customer-456/my-custom-classification/</code></li>
-</ul>
 <h2 id='tokens-create-token'>Create Token</h2>
 <blockquote>
 <p>Request</p>
@@ -7956,6 +7925,13 @@ For example, if you wish to segment your tokens by customer and data classificat
 <td><em><a href="#tokens-token-object-privacy-object">privacy object</a></em></td>
 <td><code>null</code></td>
 <td>Token Privacy Settings overrides. Overrides must be a higher specificity level than the default or minimum setting for the <a href="#token-token-types">Token Type</a>.</td>
+</tr>
+<tr>
+<td><code>container</code></td>
+<td>false</td>
+<td><em>string</em></td>
+<td>Depends on the <a href="#token-types">token type</a></td>
+<td>A path representing a logical grouping of tokens. See <a href="https://developers.basistheory.com/concepts/what-are-token-containers/">Token Containers</a> for details.</td>
 </tr>
 <tr>
 <td><code>metadata</code></td>
