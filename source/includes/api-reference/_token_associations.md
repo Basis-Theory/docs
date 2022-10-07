@@ -311,12 +311,12 @@ permission based on the parent token's privacy settings.
 
 ### Request Parameters
 
-| Attribute    | Required | Type                                                          | Default | Description                                           |
-|--------------|----------|---------------------------------------------------------------|---------|-------------------------------------------------------|
-| `type`       | true     | *string*                                                      | `null`  | [Token type](#token-types) of the token               |
-| `data`       | true     | *any*                                                         | `null`  | Token data                                            |
-| `privacy`    | false    | *[privacy object](#tokens-token-object-privacy-object)*       | `null`  | Token Privacy Settings                                |
-| `metadata`   | false    | *map*                                                         | `null`  | A key-value map of non-sensitive data.                |
+| Attribute  | Required | Type                                                    | Default | Description                                               |
+|------------|----------|---------------------------------------------------------|---------|-----------------------------------------------------------|
+| `type`     | true     | *string*                                                | `null`  | [Token type](#token-types) of the token                   |
+| `data`     | true     | *any*                                                   | `null`  | Token data                                                |
+| `privacy`  | false    | *[privacy object](#tokens-token-object-privacy-object)* | `null`  | Token Privacy Settings                                    |
+| `metadata` | false    | *map<string, string>*                                   | `null`  | A key-value map of strings containing non-sensitive data. |
 
 ### Response
 
