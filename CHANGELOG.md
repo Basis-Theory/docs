@@ -1,3 +1,10 @@
+## [1.63.4](https://github.com/Basis-Theory/docs/compare/v1.63.3...v1.63.4) (2022-10-07)
+
+
+### Bug Fixes
+
+* update token metadata type definition ([#229](https://github.com/Basis-Theory/docs/issues/229)) ([b5e451b](https://github.com/Basis-Theory/docs/commit/b5e451be04ed90a91ee0052be8628699c0f87e15))
+
 ## [1.63.3](https://github.com/Basis-Theory/docs/compare/v1.63.2...v1.63.3) (2022-09-28)
 
 
