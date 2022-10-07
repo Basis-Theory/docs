@@ -7399,8 +7399,8 @@ Token Types define the rules around a data type such as validation requirements,
 </tr>
 <tr>
 <td><code>metadata</code></td>
-<td><em>map</em></td>
-<td>A key-value map of non-sensitive data.</td>
+<td><em>map<string, string></em></td>
+<td>A key-value map of strings containing non-sensitive data.</td>
 </tr>
 <tr>
 <td><code>created_by</code></td>
@@ -7936,9 +7936,9 @@ An expired token is <strong>deleted</strong> from the tenant up to <strong>1 hou
 <tr>
 <td><code>metadata</code></td>
 <td>false</td>
-<td><em>map</em></td>
+<td><em>map<string, string></em></td>
 <td><code>null</code></td>
-<td>A key-value map of non-sensitive data.</td>
+<td>A key-value map of strings containing non-sensitive data.</td>
 </tr>
 <tr>
 <td><code>search_indexes</code></td>
@@ -8379,9 +8379,9 @@ Returns <a href="#errors">an error</a> if the token could not be retrieved.</p>
 <tr>
 <td><code>metadata</code></td>
 <td>false</td>
-<td><em>map</em></td>
+<td><em>map<string, string></em></td>
 <td>Merge Patch (see <a href="https://datatracker.ietf.org/doc/html/rfc7386">RFC 7386</a>)</td>
-<td>A key-value map of non-sensitive data.</td>
+<td>A key-value map of strings containing non-sensitive data.</td>
 </tr>
 <tr>
 <td><code>search_indexes</code></td>
@@ -9149,9 +9149,9 @@ permission based on the parent token&#39;s privacy settings.</p>
 <tr>
 <td><code>metadata</code></td>
 <td>false</td>
-<td><em>map</em></td>
+<td><em>map<string, string></em></td>
 <td><code>null</code></td>
-<td>A key-value map of non-sensitive data.</td>
+<td>A key-value map of strings containing non-sensitive data.</td>
 </tr>
 </tbody></table>
 <h3 id='token-associations-create-child-token-for-a-token-response'>Response</h3>
