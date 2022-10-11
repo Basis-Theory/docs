@@ -25,20 +25,45 @@ The following table lists deprecated API endpoints and their respective shutdown
 
 ## Deprecated Features
 
-The following table lists deprecated features and their respective shutdown date.
+The following table lists deprecated features and their respective shutdown dates.
 
-| Feature                                           | Deprecated       | Shutdown Date    | Details                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-|---------------------------------------------------|------------------|------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `token:<classification>:*` permissions            | October 11, 2022 | October 11, 2022 | Classification and impact level based permissions have been migrated to [Access Rules](https://developers.basistheory.com/concepts/access-controls/#what-are-access-rules) to provide a more flexible model for scoping access to a subset of Tokens via [Containers](https://developers.basistheory.com/concepts/what-are-containers). For more information, see the [table below](#deprecated-features-migrating-permissions-to-access-rules). |
-| `source_token_type` removed from Reactor Formulas | March 17, 2022   | March 17, 2022   | In order to support the creation of more flexible reactors that accept more than one token argument, Reactor Formulas no longer have a single `source_token_type` and this property has been removed.                                                                                                                                                                                                                                            |
-| `X-API-KEY` has been replaced with `BT-API-KEY`   | January 9, 2022  | March 9, 2022    | In order to prevent potential conflicts with the `X-API-KEY` header while using the [Proxy](#proxy) feature, the authentication header for the Basis Theory API has been replaced with `BT-API-KEY`.                                                                                                                                                                                                                                             |
+| Feature                                           | Deprecated Date  | Shutdown Date    | Details                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+|---------------------------------------------------|------------------|------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Token Privacy Settings                            | October 13, 2022 | January 11, 2023 | Privacy settings (i.e. [classification](#tokens-token-classifications), [impact level](#tokens-token-impact-levels), and [restriction policy](#tokens-token-restriction-policies)) have been deprecated and replaced by a more flexible authorization model based upon [Containers](https://developers.basistheory.com/concepts/what-are-token-containers) and [Access Rules](https://developers.basistheory.com/concepts/access-controls/#what-are-access-rules). For more information, see the section below on [Migrating from Privacy Settings](/#deprecations-deprecated-features-migrating-from-privacy-settings). |
+| `token:<classification>:*` permissions            | October 13, 2022 | October 13, 2022 | Classification and impact level based permissions have been migrated to [Access Rules](https://developers.basistheory.com/concepts/access-controls/#what-are-access-rules) to provide a more flexible model for scoping access to a subset of Tokens via [Containers](https://developers.basistheory.com/concepts/what-are-token-containers). For more information, see the [table below](#deprecated-features-migrating-permissions-to-access-rules).                                                                                                                                                                   |
+| `source_token_type` removed from Reactor Formulas | March 17, 2022   | March 17, 2022   | In order to support the creation of more flexible reactors that accept more than one token argument, Reactor Formulas no longer have a single `source_token_type` and this property has been removed.                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| `X-API-KEY` has been replaced with `BT-API-KEY`   | January 9, 2022  | March 9, 2022    | In order to prevent potential conflicts with the `X-API-KEY` header while using the [Proxy](#proxy) feature, the authentication header for the Basis Theory API has been replaced with `BT-API-KEY`.                                                                                                                                                                                                                                                                                                                                                                                                                     |
+
+### Migrating From Privacy Settings
+
+[Privacy settings](/#tokens-token-object-privacy-object) were previously used to scope access to Tokens based on
+their classification and impact levels. In order to provide a more flexible access control model that can be customized
+per Application, we have introduced Token [Containers](https://developers.basistheory.com/concepts/what-are-token-containers) 
+to logically group Tokens according to any data governance requirements. A Token's `container` attribute may be defined
+when creating the token, or if unspecified, it will default to `/<classification>/<impact_level>/`. If you were 
+previously customizing a Token's classification or impact level, please update your systems to instead directly set the
+`container` attribute instead.
+
+Restriction policies (i.e. `mask`, `redact`) were previously used in conjunction with impact level based read 
+permissions (e.g. `token:general:read:low`) to define how Token data should be transformed when reading Tokens with 
+a higher impact level than your permission allows. This model proved to be too inflexible as it was a global setting
+applied at the Token level and could not be customized per actor. Restriction policies no longer have any functional 
+impact, and were replaced by transforms applied via [Access Rules](https://developers.basistheory.com/concepts/access-controls/#what-are-access-rules).  
+
+If your systems are using the `privacy` attribute of the [Token Object](#tokens-token-object) in API responses, please
+update your integration to ignore this attribute as it will be removed on the Shutdown Date specified in the table above.
+
+If you were previously using classification-based Token permissions (e.g. `token:general:create`), your permissions
+have automatically been migrated to equivalent [Access Rules](https://developers.basistheory.com/concepts/access-controls/#what-are-access-rules).
+Refer to [Migrating Permissions to Access Rules](#deprecated-features-migrating-permissions-to-access-rules) below for further details.
+
 
 ### Migrating Permissions to Access Rules
 
-Permissions on existing Applications have been automatically migrated to equivalent [Access Rules](https://developers.basistheory.com/concepts/access-controls/#what-are-access-rules).
-The table below details how each permission was migrated, with each row representing the details of an Access Rule 
-(i.e. Container, Transform, Permissions). If these Rules do not satisfy your authorization requirements, 
-Rules can be added, removed, or customized through the Portal or the API.
+Permissions on existing Application have been automatically migrated to equivalent [Access Rules](https://developers.basistheory.com/concepts/access-controls/#what-are-access-rules),
+and no action is required. The table below details how each permission was migrated, with each row representing 
+an Access Rule (i.e. Container, Transform, Permissions). If your authorization requirements have changed, new 
+rules can be added, or existing rules can be removed or customized through the Portal or the API.
 
 | Legacy Permission             | Container            | Transform | Permission(s)               |
 |-------------------------------|----------------------|-----------|-----------------------------|

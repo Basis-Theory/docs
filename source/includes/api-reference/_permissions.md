@@ -1,8 +1,7 @@
 # Permissions
 
-Permissions offer fine-grained control over your Application's access to different aspects of your token infrastructure.
-We suggest limiting the scope of your Application to the least amount possible, and to not share them across your
-internal services.
+Permissions offer fine-grained control over your Application's access to different resources within your Tenant.
+We suggest minimizing the scope of your Applications, and to not share Applications across your internal services.
 
 Permissions are associated with every Application and can be configured when
 you [create an Application](#applications-create-application)
@@ -20,49 +19,39 @@ Every API endpoint will document the required permissions needed to perform the 
 
 ## Permission Types
 
-### Management Permissions
+| Permission                 | Description                                                | Application Types  |
+|----------------------------|------------------------------------------------------------|--------------------|
+| `token:create`             | Create Tokens                                              | `public` `private` |
+| `token:update`             | Update Tokens                                              | `public` `private` |
+| `token:read`               | Read Tokens                                                | `private`          |
+| `token:search`             | Search Tokens                                              | `private`          |
+| `token:delete`             | Delete Tokens                                              | `private`          |
+| `token:use`                | Use Tokens in Basis Theory Services (e.g. Proxy, Reactors) | `private`          |
+| `tenant:read`              | Read Tenants                                               | `management`       |
+| `tenant:update`            | Update Tenants                                             | `management`       |
+| `tenant:delete`            | Delete Tenants                                             | `management`       |
+| `application:read`         | Read Applications                                          | `management`       |
+| `application:create`       | Create Applications                                        | `management`       |
+| `application:update`       | Update and regenerate API keys for Applications            | `management`       |
+| `application:delete`       | Delete Applications                                        | `management`       |
+| `log:read`                 | Read audit logs                                            | `management`       |
+| `reactor:read`             | Read Reactor Formulas and Reactors                         | `management`       |
+| `reactor:create`           | Create Reactors Formulas and Reactors                      | `management`       |
+| `reactor:update`           | Update Reactors Formulas and Reactors                      | `management`       |
+| `reactor:delete`           | Delete Reactors Formulas and Reactors                      | `management`       |
+| `proxy:read`               | Read Proxies                                               | `management`       |
+| `proxy:create`             | Create Proxies                                             | `management`       |
+| `proxy:update`             | Update Proxies                                             | `management`       |
+| `proxy:delete`             | Delete Proxies                                             | `management`       |
+| `tenant:member:read`       | Read Tenant Members                                        | `management`       |
+| `tenant:member:update`     | Update Tenant Members                                      | `management`       |
+| `tenant:member:delete`     | Delete Tenant Members                                      | `management`       |
+| `tenant:invitation:create` | Create Tenant Invitations                                  | `management`       |
+| `tenant:invitation:read`   | Read Tenant Invitations                                    | `management`       |
+| `tenant:invitation:update` | Update Tenant Invitations                                  | `management`       |
+| `tenant:invitation:delete` | Delete Tenant Invitations                                  | `management`       |
+| `report:read`              | Read reports                                               | `management`       |
 
-| Permission                 | Description                                     | Application Types |
-|----------------------------|-------------------------------------------------|-------------------|
-| `tenant:read`              | Read Tenants                                    | `management`      |
-| `tenant:update`            | Update Tenants                                  | `management`      |
-| `tenant:delete`            | Delete Tenants                                  | `management`      |
-| `application:read`         | Read Applications                               | `management`      |
-| `application:create`       | Create Applications                             | `management`      |
-| `application:update`       | Update and regenerate API keys for Applications | `management`      |
-| `application:delete`       | Delete Applications                             | `management`      |
-| `log:read`                 | Read audit logs                                 | `management`      |
-| `reactor:read`             | Read Reactor Formulas and Reactors              | `management`      |
-| `reactor:create`           | Create Reactors Formulas and Reactors           | `management`      |
-| `reactor:update`           | Update Reactors Formulas and Reactors           | `management`      |
-| `reactor:delete`           | Delete Reactors Formulas and Reactors           | `management`      |
-| `proxy:read`               | Read Proxies                                    | `management`      |
-| `proxy:create`             | Create Proxies                                  | `management`      |
-| `proxy:update`             | Update Proxies                                  | `management`      |
-| `proxy:delete`             | Delete Proxies                                  | `management`      |
-| `tenant:member:read`       | Read Tenant Members                             | `management`      |
-| `tenant:member:update`     | Update Tenant Members                           | `management`      |
-| `tenant:member:delete`     | Delete Tenant Members                           | `management`      |
-| `tenant:invitation:create` | Create Tenant Invitations                       | `management`      |
-| `tenant:invitation:read`   | Read Tenant Invitations                         | `management`      |
-| `tenant:invitation:update` | Update Tenant Invitations                       | `management`      |
-| `tenant:invitation:delete` | Delete Tenant Invitations                       | `management`      |
-| `report:read`              | Read reports                                    | `management`      |
-
-### Token Permissions
-
-All Token permissions follow the form of `token:<classification>:<operation>:<scope?>`.
-
-| Permission                             | Description                                                                                                                                                                                                                                                                                                        | Application Types                        |
-|----------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------|
-| `token:<classification>:create`        | Create Tokens in [\<classification\>](#tokens-token-classifications) (e.g. `token:general:create`)                                                                                                                                                                                                                 | `public`, `private` |
-| `token:<classification>:read:low`      | Read plaintext token data in [\<classification\>](#tokens-token-classifications) with `low` [\<impact_level\>](#tokens-token-impact-levels). Tokens in `<classification>` with higher impact level will be restricted based on the token's [restriction policy](#tokens-token-restriction-policies)                | `private`                       |
-| `token:<classification>:read:moderate` | Read plaintext token data in [\<classification\>](#tokens-token-classifications) with `moderate` [\<impact_level\>](#tokens-token-impact-levels) and lower. Tokens in `<classification>` with higher impact level will be restricted based on the token's [restriction policy](#tokens-token-restriction-policies) | `private`                       |
-| `token:<classification>:read:high`     | Read plaintext token data in [\<classification\>](#tokens-token-classifications) with `high` [\<impact_level\>](#tokens-token-impact-levels) and lower (i.e. `low` and `moderate`).                                                                                                                                | `private`                       |
-| `token:<classification>:update`        | Update Tokens in [\<classification\>](#tokens-token-classifications) (e.g. `token:general:update`)                                                                                                                                                                                                                 | `private`                       |
-| `token:<classification>:delete`        | Delete Tokens in [\<classification\>](#tokens-token-classifications) (e.g. `token:general:delete`)                                                                                                                                                                                                                 | `private`                       |
-| `token:<classification>:use:proxy`     | Use Tokens in [\<classification\>](#tokens-token-classifications) via [Proxy](#proxy) (e.g. `token:general:use:proxy`)                                                                                                                                                                                             | `private`                       |
-| `token:<classification>:use:reactor`   | Use Tokens in [\<classification\>](#tokens-token-classifications) via [Reactor](#reactors) (e.g. `token:general:use:reactor`)                                                                                                                                                                                      | `private`                       |
 
 ## List Permissions
 
@@ -123,8 +112,8 @@ func main() {
 ```json
 [
   {
-    "type": "token:pci:read:low",
-    "description": "Read tokens with PCI classification of low impact level",
+    "type": "token:read",
+    "description": "Read tokens",
     "application_types": [
       "private"
     ]

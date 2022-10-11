@@ -69,11 +69,10 @@ Create a new parent/child association between two tokens in the Tenants.
 
 ### Permissions
 
-Creating an association between two existing tokens requires the appropriate read permission based on the parent and child
-tokens' privacy settings.
+Creating an association between two existing tokens requires read permission on both the parent and child tokens.
 
 <p class="scopes">
-  <span class="scope">token:&lt;classification&gt;:read:&lt;impact_level&gt;</span>
+  <span class="scope">token:read</span>
 </p>
 
 ### URI Parameters
@@ -160,7 +159,7 @@ Delete a parent/child association between two tokens in the Tenant.
 ### Permissions
 
 <p class="scopes">
-  <span class="scope">token:&lt;classification&gt;:delete</span>
+  <span class="scope">token:delete</span>
 </p>
 
 ### URI Parameters
@@ -295,12 +294,11 @@ Create a new child token a token in the Tenant.
 
 ### Permissions
 
-Creating a child token requires the appropriate create permission based on the child's classification as well as the appropriate `read`
-permission based on the parent token's privacy settings.
+Creating a child token requires the appropriate create permission to the child token and read permission to the parent token.
 
 <p class="scopes">
-  <span class="scope">token:&lt;classification&gt;:create</span>
-  <span class="scope">token:&lt;classification&gt;:read:&lt;impact_level&gt;</span>
+  <span class="scope">token:create</span>
+  <span class="scope">token:read</span>
 </p>
 
 ### URI Parameters
@@ -416,7 +414,7 @@ Get a list of child tokens for a token in the Tenant.
 ### Permissions
 
 <p class="scopes">
-  <span class="scope">token:&lt;classification&gt;:read:&lt;impact_level&gt;</span>
+  <span class="scope">token:read</span>
 </p>
 
 ### URI Parameters
