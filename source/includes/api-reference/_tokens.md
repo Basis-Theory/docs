@@ -29,7 +29,7 @@
     <a href="https://developers.basistheory.com/concepts/what-are-token-containers">Containers</a> and 
     <a href="https://developers.basistheory.com/concepts/access-controls/#what-are-access-rules">Access Rules</a>. 
     If you are currently using Token Privacy settings, see our documentation on 
-    <a href="/#deprecations-deprecated-features-migrating-from-privacy-settings">Migrating from Privacy Settings</a>.
+    <a href="/#deprecations-migrating-from-privacy-settings">Migrating from Privacy Settings</a>.
   </span>
 </aside>
 
