@@ -732,6 +732,12 @@ _iub.csConfiguration = {"ccpaAcknowledgeOnLoad":true,"consentOnContinuedBrowsing
                     <li>
                       <a href="#deprecations-deprecated-features" class="toc-h2 toc-link" data-title="Deprecated Features">Deprecated Features</a>
                     </li>
+                    <li>
+                      <a href="#deprecations-migrating-from-privacy-settings" class="toc-h2 toc-link" data-title="Migrating From Privacy Settings">Migrating From Privacy Settings</a>
+                    </li>
+                    <li>
+                      <a href="#deprecations-migrating-permissions-to-access-rules" class="toc-h2 toc-link" data-title="Migrating Permissions to Access Rules">Migrating Permissions to Access Rules</a>
+                    </li>
                 </ul>
             </li>
         </ul>
@@ -1375,10 +1381,8 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
     "name": "My Example App",
     "type": "private",
     "permissions": [
-      "token:general:create",
-      "token:general:read:low"
-      "token:pci:create",
-      "token:pci:read:low",
+      "token:create",
+      "token:read"
     ]
   }'</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">BasisTheory</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@basis-theory/basis-theory-js</span><span class="dl">'</span><span class="p">;</span>
@@ -1389,10 +1393,8 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
   <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">My Example App</span><span class="dl">'</span><span class="p">,</span>
   <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">private</span><span class="dl">'</span><span class="p">,</span>
   <span class="na">permissions</span><span class="p">:</span> <span class="p">[</span>
-    <span class="dl">'</span><span class="s1">token:general:create</span><span class="dl">'</span><span class="p">,</span>
-    <span class="dl">'</span><span class="s1">token:general:read:low</span><span class="dl">'</span><span class="p">,</span>
-    <span class="dl">'</span><span class="s1">token:pci:create</span><span class="dl">'</span><span class="p">,</span>
-    <span class="dl">'</span><span class="s1">token:pci:read:low</span><span class="dl">'</span><span class="p">,</span>
+    <span class="dl">'</span><span class="s1">token:create</span><span class="dl">'</span><span class="p">,</span>
+    <span class="dl">'</span><span class="s1">token:read</span><span class="dl">'</span><span class="p">,</span>
   <span class="p">],</span>
 <span class="p">});</span>
 </code></pre></div><div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="k">using</span> <span class="nn">BasisTheory.net.Applications</span><span class="p">;</span>
@@ -1403,10 +1405,8 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
   <span class="n">Name</span> <span class="p">=</span> <span class="s">"My Example App"</span><span class="p">,</span>
   <span class="n">Type</span> <span class="p">=</span> <span class="s">"private"</span><span class="p">,</span>
   <span class="n">Permissions</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="p">{</span>
-    <span class="s">"token:general:create"</span><span class="p">,</span>
-    <span class="s">"token:general:read:low"</span><span class="p">,</span>
-    <span class="s">"token:pci:create"</span><span class="p">,</span>
-    <span class="s">"token:pci:read:low"</span>
+    <span class="s">"token:create"</span><span class="p">,</span>
+    <span class="s">"token:read"</span>
   <span class="p">}</span>
 <span class="p">});</span>
 </code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">basistheory</span>
@@ -1420,10 +1420,8 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
         <span class="n">name</span><span class="o">=</span><span class="s">"My Example App"</span><span class="p">,</span>
         <span class="nb">type</span><span class="o">=</span><span class="s">"private"</span><span class="p">,</span>
         <span class="n">permissions</span><span class="o">=</span><span class="p">[</span>
-            <span class="s">"token:general:create"</span><span class="p">,</span>
-            <span class="s">"token:general:read:low"</span><span class="p">,</span>
-            <span class="s">"token:pci:create"</span><span class="p">,</span>
-            <span class="s">"token:pci:read:low"</span>
+            <span class="s">"token:create"</span><span class="p">,</span>
+            <span class="s">"token:read"</span>
         <span class="p">]</span>
     <span class="p">))</span>
 </code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
@@ -1442,10 +1440,8 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
 
   <span class="n">createApplicationRequest</span> <span class="o">:=</span> <span class="o">*</span><span class="n">basistheory</span><span class="o">.</span><span class="n">NewCreateApplicationRequest</span><span class="p">(</span><span class="n">applicationName</span><span class="p">,</span> <span class="n">applicationType</span><span class="p">)</span>
   <span class="n">createApplicationRequest</span><span class="o">.</span><span class="n">SetPermissions</span><span class="p">([]</span><span class="kt">string</span><span class="p">{</span>
-    <span class="s">"token:general:create"</span><span class="p">,</span>
-    <span class="s">"token:general:read:low"</span><span class="p">,</span>
-    <span class="s">"token:pci:create"</span><span class="p">,</span>
-    <span class="s">"token:pci:read:low"</span><span class="p">,</span>
+    <span class="s">"token:create"</span><span class="p">,</span>
+    <span class="s">"token:read"</span>
   <span class="p">})</span>
 
   <span class="n">application</span><span class="p">,</span> <span class="n">httpResponse</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">apiClient</span><span class="o">.</span><span class="n">ApplicationsApi</span><span class="o">.</span><span class="n">Create</span><span class="p">(</span><span class="n">contextWithAPIKey</span><span class="p">)</span><span class="o">.</span><span class="n">CreateApplicationRequest</span><span class="p">(</span><span class="n">createApplicationRequest</span><span class="p">)</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
@@ -1461,10 +1457,8 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
   </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"key_FZ8RmaxoGc73lbmF2cpmUJ"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"private"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"permissions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="s2">"token:general:create"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"token:general:read:low"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"token:pci:create"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"token:pci:read:low"</span><span class="w">
+    </span><span class="s2">"token:create"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"token:read"</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="w">
@@ -1566,10 +1560,8 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
       </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My Example App"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"private"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"permissions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="s2">"token:general:create"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"token:general:read:low"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"token:pci:create"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"token:pci:read:low"</span><span class="w">
+        </span><span class="s2">"token:create"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"token:read"</span><span class="w">
       </span><span class="p">],</span><span class="w">
       </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="p">,</span><span class="w">
@@ -1969,10 +1961,8 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
   </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"key_FZ8RmaxoGc73lbmF2cpmUJ"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"private"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"permissions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="s2">"token:general:create"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"token:general:read:low"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"token:pci:create"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"token:pci:read:low"</span><span class="w">
+    </span><span class="s2">"token:create"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"token:read"</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c57a0d0d-e8e6-495f-9c79-a317cc21996c"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="p">,</span><span class="w">
@@ -2306,9 +2296,8 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
 <h3 id='logs-list-entity-types-response'>Response</h3>
 <p>Returns a non-paginated array of <a href="#logs-entity-type-object">entity types</a>.</p>
 <h1 id='permissions'>Permissions</h1>
-<p>Permissions offer fine-grained control over your Application&#39;s access to different aspects of your token infrastructure.
-We suggest limiting the scope of your Application to the least amount possible, and to not share them across your
-internal services.</p>
+<p>Permissions offer fine-grained control over your Application&#39;s access to different resources within your Tenant.
+We suggest minimizing the scope of your Applications, and to not share Applications across your internal services.</p>
 
 <p>Permissions are associated with every Application and can be configured when
 you <a href="#applications-create-application">create an Application</a>
@@ -2339,7 +2328,7 @@ or <a href="#applications-update-application">update an Application</a>.</p>
 <td>List of <a href="#applications-application-types">application types</a> that can assign the permission</td>
 </tr>
 </tbody></table>
-<h2 id='permissions-permission-types'>Permission Types</h2><h3 id='permissions-permission-types-management-permissions'>Management Permissions</h3>
+<h2 id='permissions-permission-types'>Permission Types</h2>
 <table><thead>
 <tr>
 <th>Permission</th>
@@ -2347,6 +2336,36 @@ or <a href="#applications-update-application">update an Application</a>.</p>
 <th>Application Types</th>
 </tr>
 </thead><tbody>
+<tr>
+<td><code>token:create</code></td>
+<td>Create Tokens</td>
+<td><code>public</code> <code>private</code></td>
+</tr>
+<tr>
+<td><code>token:update</code></td>
+<td>Update Tokens</td>
+<td><code>public</code> <code>private</code></td>
+</tr>
+<tr>
+<td><code>token:read</code></td>
+<td>Read Tokens</td>
+<td><code>private</code></td>
+</tr>
+<tr>
+<td><code>token:search</code></td>
+<td>Search Tokens</td>
+<td><code>private</code></td>
+</tr>
+<tr>
+<td><code>token:delete</code></td>
+<td>Delete Tokens</td>
+<td><code>private</code></td>
+</tr>
+<tr>
+<td><code>token:use</code></td>
+<td>Use Tokens in Basis Theory Services (e.g. Proxy, Reactors)</td>
+<td><code>private</code></td>
+</tr>
 <tr>
 <td><code>tenant:read</code></td>
 <td>Read Tenants</td>
@@ -2468,57 +2487,6 @@ or <a href="#applications-update-application">update an Application</a>.</p>
 <td><code>management</code></td>
 </tr>
 </tbody></table>
-<h3 id='permissions-permission-types-token-permissions'>Token Permissions</h3>
-<p>All Token permissions follow the form of <code>token:&lt;classification&gt;:&lt;operation&gt;:&lt;scope?&gt;</code>.</p>
-
-<table><thead>
-<tr>
-<th>Permission</th>
-<th>Description</th>
-<th>Application Types</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>token:&lt;classification&gt;:create</code></td>
-<td>Create Tokens in <a href="#tokens-token-classifications">&lt;classification&gt;</a> (e.g. <code>token:general:create</code>)</td>
-<td><code>public</code>, <code>private</code></td>
-</tr>
-<tr>
-<td><code>token:&lt;classification&gt;:read:low</code></td>
-<td>Read plaintext token data in <a href="#tokens-token-classifications">&lt;classification&gt;</a> with <code>low</code> <a href="#tokens-token-impact-levels">&lt;impact_level&gt;</a>. Tokens in <code>&lt;classification&gt;</code> with higher impact level will be restricted based on the token&#39;s <a href="#tokens-token-restriction-policies">restriction policy</a></td>
-<td><code>private</code></td>
-</tr>
-<tr>
-<td><code>token:&lt;classification&gt;:read:moderate</code></td>
-<td>Read plaintext token data in <a href="#tokens-token-classifications">&lt;classification&gt;</a> with <code>moderate</code> <a href="#tokens-token-impact-levels">&lt;impact_level&gt;</a> and lower. Tokens in <code>&lt;classification&gt;</code> with higher impact level will be restricted based on the token&#39;s <a href="#tokens-token-restriction-policies">restriction policy</a></td>
-<td><code>private</code></td>
-</tr>
-<tr>
-<td><code>token:&lt;classification&gt;:read:high</code></td>
-<td>Read plaintext token data in <a href="#tokens-token-classifications">&lt;classification&gt;</a> with <code>high</code> <a href="#tokens-token-impact-levels">&lt;impact_level&gt;</a> and lower (i.e. <code>low</code> and <code>moderate</code>).</td>
-<td><code>private</code></td>
-</tr>
-<tr>
-<td><code>token:&lt;classification&gt;:update</code></td>
-<td>Update Tokens in <a href="#tokens-token-classifications">&lt;classification&gt;</a> (e.g. <code>token:general:update</code>)</td>
-<td><code>private</code></td>
-</tr>
-<tr>
-<td><code>token:&lt;classification&gt;:delete</code></td>
-<td>Delete Tokens in <a href="#tokens-token-classifications">&lt;classification&gt;</a> (e.g. <code>token:general:delete</code>)</td>
-<td><code>private</code></td>
-</tr>
-<tr>
-<td><code>token:&lt;classification&gt;:use:proxy</code></td>
-<td>Use Tokens in <a href="#tokens-token-classifications">&lt;classification&gt;</a> via <a href="#proxy">Proxy</a> (e.g. <code>token:general:use:proxy</code>)</td>
-<td><code>private</code></td>
-</tr>
-<tr>
-<td><code>token:&lt;classification&gt;:use:reactor</code></td>
-<td>Use Tokens in <a href="#tokens-token-classifications">&lt;classification&gt;</a> via <a href="#reactors">Reactor</a> (e.g. <code>token:general:use:reactor</code>)</td>
-<td><code>private</code></td>
-</tr>
-</tbody></table>
 <h2 id='permissions-list-permissions'>List Permissions</h2>
 <blockquote>
 <p>Request</p>
@@ -2564,8 +2532,8 @@ or <a href="#applications-update-application">update an Application</a>.</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"token:pci:read:low"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Read tokens with PCI classification of low impact level"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"token:read"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Read tokens"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"application_types"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="s2">"private"</span><span class="w">
     </span><span class="p">]</span><span class="w">
@@ -2691,14 +2659,12 @@ Alternatively, pre-configured proxies enable unauthenticated requests from any s
 
 <p><strong>Permissions</strong></p>
 
-<p>Depending on the <a href="#tokens-token-classifications">classification(s)</a> of Tokens you need to forward to a third party, the corresponding <code>token:&lt;classification&gt;:use:proxy</code> permission is required.
-At least one <code>token:&lt;classification&gt;:use:proxy</code> permission is required, for example:</p>
-
 <p class="scopes">
-  <span class="scope">token:general:use:proxy</span>
-  <span class="scope">token:pci:use:proxy</span>
-  <span class="scope">token:bank:use:proxy</span>
+  <span class="scope">token:use</span>
 </p>
+
+<p>The <code>token:use</code> permission is required to use the Proxy, and it is required for each
+<a href="https://developers.basistheory.com/concepts/what-are-token-containers">Container</a> of Tokens you wish to detokenize through the Proxy.</p>
 
 <p><strong>Configuration</strong></p>
 
@@ -2798,7 +2764,7 @@ The Reactor must respond with the following object, which defines the request <c
     </span><span class="nl">"parameter2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"non-sensitive data"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>The <code>token:&lt;classification&gt;:use:proxy</code> permission is required in order to detokenize tokens classified as <code>&lt;classification&gt;</code> within a proxy request. 
+<p>The <code>token:use</code> permission is required in order to detokenize tokens within a proxy request. 
 At most, 100 tokens may be detokenized within a single proxy request. You can find more information about the supported detokenization expressions <a href="/expressions/#detokenization">here</a>.</p>
 
 <aside class="notice">
@@ -5516,13 +5482,11 @@ For more information, see <a href="#tokenize">Tokenize</a>.</p>
 <p>Invoke a reactor by ID.</p>
 <h3 id='reactors-invoke-a-reactor-permissions'>Permissions</h3>
 <p class="scopes">
-  <span class="scope">token:&lt;classification&gt;:use:reactor</span>
+  <span class="scope">token:use</span>
 </p>
 
-<p>Depending on the <a href="#tokens-token-classifications">classification(s)</a> of Tokens used within a Reactor, the corresponding <code>token:&lt;classification&gt;:use:reactor</code> permission is required - 
-this permission grants the Reactor access to detokenize tokens of any impact level with this classification.</p>
-
-<p>At least one <code>token:&lt;classification&gt;:use:reactor</code> permission is required to invoke a Reactor.</p>
+<p>The <code>token:use</code> permission is required to use a Reactor, and it is required for each
+<a href="https://developers.basistheory.com/concepts/what-are-token-containers">Container</a> of Tokens you wish to detokenize in a Reactor.</p>
 <h3 id='reactors-invoke-a-reactor-uri-parameters'>URI Parameters</h3>
 <table><thead>
 <tr>
@@ -7439,7 +7403,17 @@ Token Types define the rules around a data type such as validation requirements,
 </tr>
 </tbody></table>
 <h3 id='tokens-token-object-privacy-object'>Privacy Object</h3>
-<p>Token Privacy defines the privacy settings applied to a Token. By default, privacy settings will be applied based on the <a href="#token-types">Token Type</a>.
+<aside class="warning">
+  <span>
+    Privacy settings have been deprecated and replaced by a more flexible authorization model based upon 
+    <a href="https://developers.basistheory.com/concepts/what-are-token-containers">Containers</a> and 
+    <a href="https://developers.basistheory.com/concepts/access-controls/#what-are-access-rules">Access Rules</a>. 
+    If you are currently using Token Privacy settings, see our documentation on 
+    <a href="/#deprecations-migrating-from-privacy-settings">Migrating from Privacy Settings</a>.
+  </span>
+</aside>
+
+<p>The following object defines the privacy settings applied to a Token. If unspecified, a default set of privacy settings will be applied based on the <a href="#token-types">Token Type</a>.
 Default privacy settings can be overridden at the time of creation, but only to a setting with a higher specificity level.</p>
 
 <table><thead>
@@ -7462,7 +7436,7 @@ Default privacy settings can be overridden at the time of creation, but only to 
 <tr>
 <td><code>restriction_policy</code></td>
 <td><em>string</em></td>
-<td><a href="#tokens-token-restriction-policies">Restriction policy</a> applied to the Token when read by a User or Application with read permissions at a lower impact level (i.e. <code>mask</code>, <code>redact</code>)</td>
+<td>(Deprecated) <a href="#tokens-token-restriction-policies">Restriction policy</a> applied to the Token.</td>
 </tr>
 </tbody></table>
 <h2 id='tokens-token-data-validations'>Token Data Validations</h2><h3 id='tokens-token-data-validations-bank-object'>Bank Object</h3>
@@ -7600,9 +7574,13 @@ Default privacy settings can be overridden at the time of creation, but only to 
 </tr>
 </tbody></table>
 <h2 id='tokens-token-classifications'>Token Classifications</h2>
-<p>Each token has a data classification associated with it which defines the type of data it contains.
-Basis Theory grants access to Tokens based on data classifications (see <a href="#permissions-permission-types-token-permissions">Token Permissions</a> for more details). 
-The following data classifications are supported:</p>
+<p>Each Token has a data classification associated with it which defines the type of data it contains.</p>
+
+<p>Basis Theory scopes access to Tokens based upon their <a href="https://developers.basistheory.com/concepts/what-are-token-containers">Container</a>. 
+While the <code>container</code> attribute can be explicitly provided when creating a Token, if unspecified, 
+its value defaults to <code>/&lt;classification&gt;/&lt;impact_level&gt;/</code>.</p>
+
+<p>The following data classifications are supported:</p>
 
 <table><thead>
 <tr>
@@ -7633,8 +7611,14 @@ The following data classifications are supported:</p>
 </tr>
 </tbody></table>
 <h2 id='tokens-token-impact-levels'>Token Impact Levels</h2>
-<p>Basis Theory follows the standard <strong><a href="https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.199.pdf#page=6" target="_blank">NIST-defined impact levels</a></strong> of low, moderate, and high to classify the impact unauthorized exposure of a particular piece of data would have on an organization.
-Token impact levels are used to further classify and permit access to Tokens within a <a href="#tokens-token-classifications">Token Classification</a>.</p>
+<p>Basis Theory follows the standard <strong><a href="https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.199.pdf#page=6" target="_blank">NIST-defined impact levels</a></strong> 
+of low, moderate, and high to classify the impact unauthorized exposure of a particular piece of data would have on an organization.</p>
+
+<p>Basis Theory scopes access to Tokens based upon their <a href="https://developers.basistheory.com/concepts/what-are-token-containers">Container</a>.
+While the <code>container</code> attribute can be explicitly provided when creating a Token, if unspecified,
+its value defaults to <code>/&lt;classification&gt;/&lt;impact_level&gt;/</code>.</p>
+
+<p>The following impact levels are supported:</p>
 
 <table><thead>
 <tr>
@@ -7660,32 +7644,28 @@ Token impact levels are used to further classify and permit access to Tokens wit
 </tr>
 </tbody></table>
 <h2 id='tokens-token-restriction-policies'>Token Restriction Policies</h2>
-<p>A Token Restriction Policy defines the policy to enforce on a Token&#39;s data when read by a User or Application
-with <a href="#permissions-permission-types-token-permissions">permission</a> to read the Token&#39;s <a href="#tokens-token-classifications">classification</a> but at a lower <a href="#tokens-token-impact-levels">impact level</a>.</p>
+<aside class="warning">
+  <span>
+    Restriction Policies have been deprecated and replaced by transforms on <a href="https://developers.basistheory.com/concepts/access-controls/#what-are-access-rules">Access Rules</a>.
+    Setting a Restriction Policy on a Token no longer has any functional purpose.
+  </span>
+</aside>
 
 <table><thead>
 <tr>
 <th>Name</th>
-<th>Description</th>
 <th>Specificity Level</th>
 </tr>
 </thead><tbody>
 <tr>
 <td><code>mask</code></td>
-<td>Token data will be masked in the response, falling back to <code>redact</code> restriction policy if a mask is not available for the Token Type</td>
 <td>0</td>
 </tr>
 <tr>
 <td><code>redact</code></td>
-<td>Token data will be completely removed in the response</td>
 <td>1</td>
 </tr>
 </tbody></table>
-
-<p>For example, an application with <code>token:pci:read:low</code> is allowed to read a <code>card_number</code> token (classified as <code>pci</code> with <code>high</code> impact level),
-but the plaintext card data will not be returned. Instead, the restriction policy associated with the <code>card_number</code> token (<code>mask</code>) will be applied and only masked card number data will be returned.</p>
-
-<p>Refer to <a href="/expressions/#masks">mask expressions</a> to find out more about how to define masks for your token data.</p>
 <h2 id='tokens-token-expiration'>Token Expiration</h2>
 <p>By default a created token will not expire, however, users can optionally set the <code>expires_at</code> property with an ISO8601 <code>DateTime</code> when creating a token to determine its expiration date.
 An expired token is <strong>deleted</strong> from the tenant up to <strong>1 hour</strong> after it&#39;s expiration time.</p>
@@ -7879,7 +7859,7 @@ An expired token is <strong>deleted</strong> from the tenant up to <strong>1 hou
 <p>Create a new token for the Tenant.</p>
 <h3 id='tokens-create-token-permissions'>Permissions</h3>
 <p class="scopes">
-  <span class="scope">token:&lt;classification&gt;:create</span>
+  <span class="scope">token:create</span>
 </p>
 <h3 id='tokens-create-token-request-parameters'>Request Parameters</h3>
 <table><thead>
@@ -8060,7 +8040,7 @@ An expired token is <strong>deleted</strong> from the tenant up to <strong>1 hou
 If you need to perform a more advanced token search, see <a href="#tokens-search-tokens">Search Tokens</a>.</p>
 <h3 id='tokens-list-tokens-permissions'>Permissions</h3>
 <p class="scopes">
-  <span class="scope">token:&lt;classification&gt;:read:&lt;impact_level&gt;</span>
+  <span class="scope">token:read</span>
 </p>
 <h3 id='tokens-list-tokens-query-parameters'>Query Parameters</h3>
 <table><thead>
@@ -8168,7 +8148,7 @@ Providing any query parameters will filter the results. Returns <a href="#errors
 <p>Get a token by ID in the Tenant.</p>
 <h3 id='tokens-get-a-token-permissions'>Permissions</h3>
 <p class="scopes">
-  <span class="scope">token:&lt;classification&gt;:read:&lt;impact_level&gt;</span>
+  <span class="scope">token:read</span>
 </p>
 <h3 id='tokens-get-a-token-uri-parameters'>URI Parameters</h3>
 <table><thead>
@@ -8343,7 +8323,7 @@ Returns <a href="#errors">an error</a> if the token could not be retrieved.</p>
 <p>Update an existing token for the Tenant.</p>
 <h3 id='tokens-update-token-permissions'>Permissions</h3>
 <p class="scopes">
-  <span class="scope">token:&lt;classification&gt;:update</span>
+  <span class="scope">token:update</span>
 </p>
 <h3 id='tokens-update-token-request-parameters'>Request Parameters</h3>
 <table><thead>
@@ -8520,7 +8500,7 @@ Use this endpoint to perform an advanced token search using token data or to bui
 For simpler search use cases, see <a href="#list-tokens">List Tokens</a>.</p>
 <h3 id='tokens-search-tokens-permissions'>Permissions</h3>
 <p class="scopes">
-  <span class="scope">token:&lt;classification&gt;:read:&lt;impact_level&gt;</span>
+  <span class="scope">token:read</span>
 </p>
 
 <p>At least one token read <a href="#permissions-permission-types-token-permissions">permission</a> is required in order to perform a token search. 
@@ -8794,7 +8774,7 @@ based on the <code>search_indexes</code> provided in the <a href="#tokens-create
 </aside>
 <h3 id='tokens-delete-token-permissions'>Permissions</h3>
 <p class="scopes">
-  <span class="scope">token:&lt;classification&gt;:delete</span>
+  <span class="scope">token:delete</span>
 </p>
 <h3 id='tokens-delete-token-uri-parameters'>URI Parameters</h3>
 <table><thead>
@@ -8869,11 +8849,10 @@ based on the <code>search_indexes</code> provided in the <a href="#tokens-create
 
 <p>Create a new parent/child association between two tokens in the Tenants.</p>
 <h3 id='token-associations-create-token-association-permissions'>Permissions</h3>
-<p>Creating an association between two existing tokens requires the appropriate read permission based on the parent and child
-tokens&#39; privacy settings.</p>
+<p>Creating an association between two existing tokens requires read permission on both the parent and child tokens.</p>
 
 <p class="scopes">
-  <span class="scope">token:&lt;classification&gt;:read:&lt;impact_level&gt;</span>
+  <span class="scope">token:read</span>
 </p>
 <h3 id='token-associations-create-token-association-uri-parameters'>URI Parameters</h3>
 <table><thead>
@@ -8958,7 +8937,7 @@ tokens&#39; privacy settings.</p>
 <p>Delete a parent/child association between two tokens in the Tenant.</p>
 <h3 id='token-associations-delete-token-association-permissions'>Permissions</h3>
 <p class="scopes">
-  <span class="scope">token:&lt;classification&gt;:delete</span>
+  <span class="scope">token:delete</span>
 </p>
 <h3 id='token-associations-delete-token-association-uri-parameters'>URI Parameters</h3>
 <table><thead>
@@ -9090,12 +9069,11 @@ tokens&#39; privacy settings.</p>
 
 <p>Create a new child token a token in the Tenant.</p>
 <h3 id='token-associations-create-child-token-for-a-token-permissions'>Permissions</h3>
-<p>Creating a child token requires the appropriate create permission based on the child&#39;s classification as well as the appropriate <code>read</code>
-permission based on the parent token&#39;s privacy settings.</p>
+<p>Creating a child token requires the appropriate create permission to the child token and read permission to the parent token.</p>
 
 <p class="scopes">
-  <span class="scope">token:&lt;classification&gt;:create</span>
-  <span class="scope">token:&lt;classification&gt;:read:&lt;impact_level&gt;</span>
+  <span class="scope">token:create</span>
+  <span class="scope">token:read</span>
 </p>
 <h3 id='token-associations-create-child-token-for-a-token-uri-parameters'>URI Parameters</h3>
 <table><thead>
@@ -9232,7 +9210,7 @@ permission based on the parent token&#39;s privacy settings.</p>
 <p>Get a list of child tokens for a token in the Tenant.</p>
 <h3 id='token-associations-list-child-tokens-for-a-token-permissions'>Permissions</h3>
 <p class="scopes">
-  <span class="scope">token:&lt;classification&gt;:read:&lt;impact_level&gt;</span>
+  <span class="scope">token:read</span>
 </p>
 <h3 id='token-associations-list-child-tokens-for-a-token-uri-parameters'>URI Parameters</h3>
 <table><thead>
@@ -9867,7 +9845,13 @@ permission based on the parent token&#39;s privacy settings.</p>
 
 <p>Tokenize one to many tokens for the Tenant.</p>
 <h3 id='tokenize-list-child-tokens-for-a-token-permissions'>Permissions</h3>
-<p>Permissions are determined by the <a href="#tokens-token-classifications">classification(s)</a> being tokenized and require the appropriate <code>token:&lt;classification&gt;:create</code> permission(s) based on the request.</p>
+<p class="scopes">
+  <span class="scope">token:create</span>
+</p>
+
+<p>The <code>token:create</code> permission must be granted on each destination container, and the required scope of this permission 
+is determined by the <a href="https://developers.basistheory.com/concepts/what-are-token-containers">containers</a> 
+specified in the tokenize request.</p>
 <h1 id='deprecations'>Deprecations</h1><h2 id='deprecations-deprecated-endpoints'>Deprecated Endpoints</h2>
 <p>The following table lists deprecated API endpoints and their respective shutdown date.</p>
 
@@ -9987,16 +9971,28 @@ permission based on the parent token&#39;s privacy settings.</p>
 </tr>
 </tbody></table>
 <h2 id='deprecations-deprecated-features'>Deprecated Features</h2>
-<p>The following table lists deprecated features and their respective shutdown date.</p>
+<p>The following table lists deprecated features and their respective shutdown dates.</p>
 
 <table><thead>
 <tr>
 <th>Feature</th>
-<th>Deprecated</th>
+<th>Deprecated Date</th>
 <th>Shutdown Date</th>
 <th>Details</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>Token Privacy Settings</td>
+<td>October 13, 2022</td>
+<td>February 1, 2023</td>
+<td>Privacy settings (i.e. <a href="#tokens-token-classifications">classification</a>, <a href="#tokens-token-impact-levels">impact level</a>, and <a href="#tokens-token-restriction-policies">restriction policy</a>) have been deprecated and replaced by a more flexible authorization model based upon <a href="https://developers.basistheory.com/concepts/what-are-token-containers">Containers</a> and <a href="https://developers.basistheory.com/concepts/access-controls/#what-are-access-rules">Access Rules</a>. For more information, see the section below on <a href="/#deprecations-migrating-from-privacy-settings">Migrating from Privacy Settings</a>.</td>
+</tr>
+<tr>
+<td><code>token:&lt;classification&gt;:*</code> permissions</td>
+<td>October 13, 2022</td>
+<td>October 13, 2022</td>
+<td>Classification and impact level based permissions have been migrated to <a href="https://developers.basistheory.com/concepts/access-controls/#what-are-access-rules">Access Rules</a> to provide a more flexible model for scoping access to a subset of Tokens via <a href="https://developers.basistheory.com/concepts/what-are-token-containers">Containers</a>. For more information, see the <a href="#deprecated-features-migrating-permissions-to-access-rules">table below</a>.</td>
+</tr>
 <tr>
 <td><code>source_token_type</code> removed from Reactor Formulas</td>
 <td>March 17, 2022</td>
@@ -10009,11 +10005,305 @@ permission based on the parent token&#39;s privacy settings.</p>
 <td>March 9, 2022</td>
 <td>In order to prevent potential conflicts with the <code>X-API-KEY</code> header while using the <a href="#proxy">Proxy</a> feature, the authentication header for the Basis Theory API has been replaced with <code>BT-API-KEY</code>.</td>
 </tr>
+</tbody></table>
+<h2 id='deprecations-migrating-from-privacy-settings'>Migrating From Privacy Settings</h2>
+<p><a href="/#tokens-token-object-privacy-object">Privacy settings</a> were previously used to scope access to Tokens based on
+their classification and impact levels. In order to provide a more flexible access control model that can be customized
+per Application, we have introduced Token <a href="https://developers.basistheory.com/concepts/what-are-token-containers">Containers</a> 
+to logically group Tokens according to any data governance requirements. A Token&#39;s <code>container</code> attribute may be defined
+when creating the token, or if unspecified, it will default to <code>/&lt;classification&gt;/&lt;impact_level&gt;/</code>. If you were 
+previously customizing a Token&#39;s classification or impact level, please update your systems to instead directly set the
+<code>container</code> attribute instead.</p>
+
+<p>Restriction policies (i.e. <code>mask</code>, <code>redact</code>) were previously used in conjunction with impact level based read 
+permissions (e.g. <code>token:general:read:low</code>) to define how Token data should be transformed when reading Tokens with 
+a higher impact level than your permission allows. This model proved to be too inflexible as it was a global setting
+applied at the Token level and could not be customized per actor. Restriction policies no longer have any functional 
+impact, and were replaced by transforms applied via <a href="https://developers.basistheory.com/concepts/access-controls/#what-are-access-rules">Access Rules</a>.  </p>
+
+<p>If your systems are using the <code>privacy</code> attribute of the <a href="#tokens-token-object">Token Object</a> in API responses, please
+update your integration to ignore this attribute as it will be removed on the Shutdown Date specified in the table above.</p>
+
+<p>If you were previously using classification-based Token permissions (e.g. <code>token:general:create</code>), your permissions
+have automatically been migrated to equivalent <a href="https://developers.basistheory.com/concepts/access-controls/#what-are-access-rules">Access Rules</a>.
+Refer to <a href="#deprecated-features-migrating-permissions-to-access-rules">Migrating Permissions to Access Rules</a> below for further details.</p>
+<h2 id='deprecations-migrating-permissions-to-access-rules'>Migrating Permissions to Access Rules</h2>
+<p>Permissions on existing Applications have been automatically migrated to equivalent <a href="https://developers.basistheory.com/concepts/access-controls/#what-are-access-rules">Access Rules</a>,
+and no action is required. The table below details how each permission was migrated, with each row representing 
+an Access Rule (i.e. Container, Transform, Permissions). If your authorization requirements have changed, new 
+rules can be added, or existing rules can be removed or customized through the Portal or the API.</p>
+
+<table><thead>
 <tr>
-<td><code>token:*</code>, <code>bank:*</code> and <code>card:*</code> permissions</td>
-<td>January 3, 2022</td>
-<td>January 3, 2022</td>
-<td>The following permissions have been removed as of January 3, 2022 (see table for removed permissions and their replacement). New token permissions provide more granular access control based on <a href="#tokens-token-classifications">Data Classification</a> and <a href="#tokens-token-impact-levels">Impact Level</a>. For more information, see <a href="#permissions-permission-types-token-permissions">Token Permissions</a>. <table><thead><tr><th>Legacy Permission</th><th>Migrated To</th></tr></thead><tbody><tr><td><code>token:create</code></td><td><code>token:general:create</code></td></tr><tr><td><code>token:read</code></td><td><code>token:general:read:low</code></td></tr><tr><td><code>token:decrypt</code></td><td><code>token:general:read:high</code></td></tr><tr><td><code>token:update</code></td><td><code>token:general:update</code></td></tr><tr><td><code>token:delete</code></td><td><code>token:general:delete</code></td></tr><tr><td><code>token:use</code></td><td><code>token:general:use:proxy</code></td></tr><tr><td><code>bank:create</code></td><td><code>token:bank:create</code></td></tr><tr><td><code>bank:read</code></td><td><code>token:bank:read:low</code></td></tr><tr><td><code>bank:decrypt</code></td><td><code>token:bank:read:high</code></td></tr><tr><td><code>bank:update</code></td><td><code>token:bank:update</code></td></tr><tr><td><code>bank:delete</code></td><td><code>token:bank:delete</code></td></tr><tr><td><code>bank:use</code></td><td><code>token:bank:use:proxy</code></td></tr><tr><td><code>card:create</code></td><td><code>token:pci:create</code></td></tr><tr><td><code>card:read</code></td><td><code>token:pci:read:low</code></td></tr><tr><td><code>card:update</code></td><td><code>token:pci:update</code></td></tr><tr><td><code>card:delete</code></td><td><code>token:pci:delete</code></td></tr><tr><td><code>card:use</code></td><td><code>token:pci:use:proxy</code></td></tr></tbody></table></td>
+<th>Legacy Permission</th>
+<th>Container</th>
+<th>Transform</th>
+<th>Permission(s)</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>token:general:create</code></td>
+<td><code>/general/</code></td>
+<td><code>mask</code></td>
+<td><code>token:create</code></td>
+</tr>
+<tr>
+<td><code>token:general:update</code></td>
+<td><code>/general/</code></td>
+<td><code>mask</code></td>
+<td><code>token:update</code></td>
+</tr>
+<tr>
+<td><code>token:general:read:low</code></td>
+<td><code>/general/low/</code></td>
+<td><code>reveal</code></td>
+<td><code>token:read</code> <code>token:search</code></td>
+</tr>
+<tr>
+<td></td>
+<td><code>/general/</code></td>
+<td><code>mask</code></td>
+<td><code>token:read</code></td>
+</tr>
+<tr>
+<td><code>token:general:read:moderate</code></td>
+<td><code>/general/low/</code></td>
+<td><code>reveal</code></td>
+<td><code>token:read</code> <code>token:search</code></td>
+</tr>
+<tr>
+<td></td>
+<td><code>/general/moderate/</code></td>
+<td><code>reveal</code></td>
+<td><code>token:read</code> <code>token:search</code></td>
+</tr>
+<tr>
+<td></td>
+<td><code>/general/high/</code></td>
+<td><code>mask</code></td>
+<td><code>token:read</code></td>
+</tr>
+<tr>
+<td><code>token:general:read:high</code></td>
+<td><code>/general/</code></td>
+<td><code>reveal</code></td>
+<td><code>token:read</code> <code>token:search</code></td>
+</tr>
+<tr>
+<td><code>token:general:delete</code></td>
+<td><code>/general/</code></td>
+<td><code>mask</code></td>
+<td><code>token:delete</code></td>
+</tr>
+<tr>
+<td><code>token:general:use:proxy</code></td>
+<td><code>/general/</code></td>
+<td><code>reveal</code></td>
+<td><code>token:use</code></td>
+</tr>
+<tr>
+<td><code>token:general:use:reactor</code></td>
+<td><code>/general/</code></td>
+<td><code>reveal</code></td>
+<td><code>token:use</code></td>
+</tr>
+<tr>
+<td><code>token:bank:create</code></td>
+<td><code>/bank/</code></td>
+<td><code>mask</code></td>
+<td><code>token:create</code></td>
+</tr>
+<tr>
+<td><code>token:bank:update</code></td>
+<td><code>/bank/</code></td>
+<td><code>mask</code></td>
+<td><code>token:update</code></td>
+</tr>
+<tr>
+<td><code>token:bank:read:low</code></td>
+<td><code>/bank/low/</code></td>
+<td><code>reveal</code></td>
+<td><code>token:read</code> <code>token:search</code></td>
+</tr>
+<tr>
+<td></td>
+<td><code>/bank/</code></td>
+<td><code>mask</code></td>
+<td><code>token:read</code></td>
+</tr>
+<tr>
+<td><code>token:bank:read:moderate</code></td>
+<td><code>/bank/low/</code></td>
+<td><code>reveal</code></td>
+<td><code>token:read</code> <code>token:search</code></td>
+</tr>
+<tr>
+<td></td>
+<td><code>/bank/moderate/</code></td>
+<td><code>reveal</code></td>
+<td><code>token:read</code> <code>token:search</code></td>
+</tr>
+<tr>
+<td></td>
+<td><code>/bank/high/</code></td>
+<td><code>mask</code></td>
+<td><code>token:read</code></td>
+</tr>
+<tr>
+<td><code>token:bank:read:high</code></td>
+<td><code>/bank/</code></td>
+<td><code>reveal</code></td>
+<td><code>token:read</code> <code>token:search</code></td>
+</tr>
+<tr>
+<td><code>token:bank:delete</code></td>
+<td><code>/bank/</code></td>
+<td><code>mask</code></td>
+<td><code>token:delete</code></td>
+</tr>
+<tr>
+<td><code>token:bank:use:proxy</code></td>
+<td><code>/bank/</code></td>
+<td><code>reveal</code></td>
+<td><code>token:use</code></td>
+</tr>
+<tr>
+<td><code>token:bank:use:reactor</code></td>
+<td><code>/bank/</code></td>
+<td><code>reveal</code></td>
+<td><code>token:use</code></td>
+</tr>
+<tr>
+<td><code>token:pci:create</code></td>
+<td><code>/pci/</code></td>
+<td><code>mask</code></td>
+<td><code>token:create</code></td>
+</tr>
+<tr>
+<td><code>token:pci:update</code></td>
+<td><code>/pci/</code></td>
+<td><code>mask</code></td>
+<td><code>token:update</code></td>
+</tr>
+<tr>
+<td><code>token:pci:read:low</code></td>
+<td><code>/pci/low/</code></td>
+<td><code>reveal</code></td>
+<td><code>token:read</code> <code>token:search</code></td>
+</tr>
+<tr>
+<td></td>
+<td><code>/pci/</code></td>
+<td><code>mask</code></td>
+<td><code>token:read</code></td>
+</tr>
+<tr>
+<td><code>token:pci:read:moderate</code></td>
+<td><code>/pci/low/</code></td>
+<td><code>reveal</code></td>
+<td><code>token:read</code> <code>token:search</code></td>
+</tr>
+<tr>
+<td></td>
+<td><code>/pci/moderate/</code></td>
+<td><code>reveal</code></td>
+<td><code>token:read</code> <code>token:search</code></td>
+</tr>
+<tr>
+<td></td>
+<td><code>/pci/high/</code></td>
+<td><code>mask</code></td>
+<td><code>token:read</code></td>
+</tr>
+<tr>
+<td><code>token:pci:read:high</code></td>
+<td><code>/pci/</code></td>
+<td><code>reveal</code></td>
+<td><code>token:read</code> <code>token:search</code></td>
+</tr>
+<tr>
+<td><code>token:pci:delete</code></td>
+<td><code>/pci/</code></td>
+<td><code>mask</code></td>
+<td><code>token:delete</code></td>
+</tr>
+<tr>
+<td><code>token:pci:use:proxy</code></td>
+<td><code>/pci/</code></td>
+<td><code>reveal</code></td>
+<td><code>token:use</code></td>
+</tr>
+<tr>
+<td><code>token:pci:use:reactor</code></td>
+<td><code>/pci/</code></td>
+<td><code>reveal</code></td>
+<td><code>token:use</code></td>
+</tr>
+<tr>
+<td><code>token:pii:create</code></td>
+<td><code>/pii/</code></td>
+<td><code>mask</code></td>
+<td><code>token:create</code></td>
+</tr>
+<tr>
+<td><code>token:pii:update</code></td>
+<td><code>/pii/</code></td>
+<td><code>mask</code></td>
+<td><code>token:update</code></td>
+</tr>
+<tr>
+<td><code>token:pii:read:low</code></td>
+<td><code>/pii/low/</code></td>
+<td><code>reveal</code></td>
+<td><code>token:read</code> <code>token:search</code></td>
+</tr>
+<tr>
+<td></td>
+<td><code>/pii/</code></td>
+<td><code>mask</code></td>
+<td><code>token:read</code></td>
+</tr>
+<tr>
+<td><code>token:pii:read:moderate</code></td>
+<td><code>/pii/low/</code></td>
+<td><code>reveal</code></td>
+<td><code>token:read</code> <code>token:search</code></td>
+</tr>
+<tr>
+<td></td>
+<td><code>/pii/moderate/</code></td>
+<td><code>reveal</code></td>
+<td><code>token:read</code> <code>token:search</code></td>
+</tr>
+<tr>
+<td></td>
+<td><code>/pii/high/</code></td>
+<td><code>mask</code></td>
+<td><code>token:read</code></td>
+</tr>
+<tr>
+<td><code>token:pii:read:high</code></td>
+<td><code>/pii/</code></td>
+<td><code>reveal</code></td>
+<td><code>token:read</code> <code>token:search</code></td>
+</tr>
+<tr>
+<td><code>token:pii:delete</code></td>
+<td><code>/pii/</code></td>
+<td><code>mask</code></td>
+<td><code>token:delete</code></td>
+</tr>
+<tr>
+<td><code>token:pii:use:proxy</code></td>
+<td><code>/pii/</code></td>
+<td><code>reveal</code></td>
+<td><code>token:use</code></td>
+</tr>
+<tr>
+<td><code>token:pii:use:reactor</code></td>
+<td><code>/pii/</code></td>
+<td><code>reveal</code></td>
+<td><code>token:use</code></td>
 </tr>
 </tbody></table>
 

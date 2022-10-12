@@ -369,11 +369,6 @@ _iub.csConfiguration = {"ccpaAcknowledgeOnLoad":true,"consentOnContinuedBrowsing
           </li>
           <li>
             <a href="#permissions" class="toc-h1 toc-link" data-title="Permissions">Permissions</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#permissions-permission-types" class="toc-h2 toc-link" data-title="Permission Types">Permission Types</a>
-                  </li>
-              </ul>
           </li>
           <li>
             <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
@@ -694,51 +689,14 @@ _iub.csConfiguration = {"ccpaAcknowledgeOnLoad":true,"consentOnContinuedBrowsing
 
 <p>If you can&#39;t upgrade past <code>1.13.1</code>, <a href="https://www.npmjs.com/package/@basis-theory/basis-theory-elements">Basis Theory Elements</a> offers unmaintained definitions for deprecated Elements features.</p>
 <h1 id='permissions'>Permissions</h1>
-<p>Permissions offer fine-grained control over your Application&#39;s access to different aspects of your token infrastructure. We suggest limiting the scope of your Application to the least amount possible, and to not share them across your internal services.</p>
+<p>Permissions offer fine-grained control over your Application&#39;s access to different resources within your Tenant. 
+We suggest limiting the scope of your Application to the least amount possible, and to not share them across your internal services.</p>
 
-<p>Permissions are associated with every Application and can be configured when you <a href="/api-reference#applications-create-application">create an Application</a> or <a href="/api-reference#applications-update-application">update an Application</a>. </p>
+<p>Permissions are associated with every Application and can be configured when you <a href="/api-reference#applications-create-application">create an Application</a> 
+or <a href="/api-reference#applications-update-application">update an Application</a>. </p>
 
-<p><strong>Public</strong> Applications only allow <em>create</em> and <em>update</em> permissions, removing any risk that your API keys are stolen and used to access data.</p>
-<h2 id='permissions-permission-types'>Permission Types</h2>
-<table><thead>
-<tr>
-<th>Permission</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>token:general:create</code></td>
-<td>Create tokens in the vault</td>
-</tr>
-<tr>
-<td><code>token:general:update</code></td>
-<td>Update tokens in the vault</td>
-</tr>
-<tr>
-<td><code>token:pci:create</code></td>
-<td>Create Card tokens</td>
-</tr>
-<tr>
-<td><code>token:pci:update</code></td>
-<td>Update Card tokens</td>
-</tr>
-<tr>
-<td><code>token:bank:create</code></td>
-<td>Create Bank tokens</td>
-</tr>
-<tr>
-<td><code>token:bank:update</code></td>
-<td>Update Bank tokens</td>
-</tr>
-<tr>
-<td><code>token:pii:create</code></td>
-<td>Create PII tokens</td>
-</tr>
-<tr>
-<td><code>token:pii:update</code></td>
-<td>Update PII tokens</td>
-</tr>
-</tbody></table>
+<p>Elements require the use of an API Key associated with a <strong>Public</strong> Application, which only allows the use of
+<code>token:create</code> and <code>token:update</code> permissions, removing any risk that your API keys are stolen and used to access data.</p>
 <h1 id='authentication'>Authentication</h1>
 <p><strong>Elements</strong> use an application of type &quot;Public&quot; to allow access to the API. To create one, login into our <a href="https://portal.basistheory.com" target="_blank">Portal</a> and create a new &quot;Public&quot; Application with the permissions you require.</p>
 <h1 id='limits'>Limits</h1>
@@ -748,7 +706,7 @@ _iub.csConfiguration = {"ccpaAcknowledgeOnLoad":true,"consentOnContinuedBrowsing
 <li>Our Elements are restricted to 10 requests per IP, per second, per <a href="/api-reference/#applications">Application</a></li>
 <li>Our APIs are restricted to 100 requests per IP, per second, per <a href="/api-reference/#applications">Application</a></li>
 </ul>
-<h3 id='limits-permission-types-error-codes'>Error Codes</h3>
+<h3 id='limits-usage-with-typescript-error-codes'>Error Codes</h3>
 <table><thead>
 <tr>
 <th>Error Code</th>
@@ -815,7 +773,7 @@ _iub.csConfiguration = {"ccpaAcknowledgeOnLoad":true,"consentOnContinuedBrowsing
 </tbody></table>
 
 <!-- Options link above looks weird because of how Slate generates them -->
-<h3 id='initialize-permission-types-basis-theory-init-options'>Basis Theory Init Options</h3>
+<h3 id='initialize-usage-with-typescript-basis-theory-init-options'>Basis Theory Init Options</h3>
 <table><thead>
 <tr>
 <th>Attribute</th>
