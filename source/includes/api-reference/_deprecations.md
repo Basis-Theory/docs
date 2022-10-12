@@ -60,7 +60,7 @@ Refer to [Migrating Permissions to Access Rules](#deprecated-features-migrating-
 
 ### Migrating Permissions to Access Rules
 
-Permissions on existing Application have been automatically migrated to equivalent [Access Rules](https://developers.basistheory.com/concepts/access-controls/#what-are-access-rules),
+Permissions on existing Applications have been automatically migrated to equivalent [Access Rules](https://developers.basistheory.com/concepts/access-controls/#what-are-access-rules),
 and no action is required. The table below details how each permission was migrated, with each row representing 
 an Access Rule (i.e. Container, Transform, Permissions). If your authorization requirements have changed, new 
 rules can be added, or existing rules can be removed or customized through the Portal or the API.
