@@ -1,3 +1,10 @@
+# [1.64.0](https://github.com/Basis-Theory/docs/compare/v1.63.4...v1.64.0) (2022-10-12)
+
+
+### Features
+
+* Updates token permissions and documents new deprecations ([#230](https://github.com/Basis-Theory/docs/issues/230)) ([dc7eaa9](https://github.com/Basis-Theory/docs/commit/dc7eaa96a1ba00c598b25014fb53e43a69167e45))
+
 ## [1.63.4](https://github.com/Basis-Theory/docs/compare/v1.63.3...v1.63.4) (2022-10-07)
 
 
