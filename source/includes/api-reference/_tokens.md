@@ -23,14 +23,24 @@
 
 ### Privacy Object
 
-Token Privacy defines the privacy settings applied to a Token. By default, privacy settings will be applied based on the [Token Type](#token-types).
+<aside class="warning">
+  <span>
+    Privacy settings have been deprecated and replaced by a more flexible authorization model based upon 
+    <a href="https://developers.basistheory.com/concepts/what-are-token-containers">Containers</a> and 
+    <a href="https://developers.basistheory.com/concepts/access-controls/#what-are-access-rules">Access Rules</a>. 
+    If you are currently using Token Privacy settings, see our documentation on 
+    <a href="/#deprecations-migrating-from-privacy-settings">Migrating from Privacy Settings</a>.
+  </span>
+</aside>
+
+The following object defines the privacy settings applied to a Token. If unspecified, a default set of privacy settings will be applied based on the [Token Type](#token-types).
 Default privacy settings can be overridden at the time of creation, but only to a setting with a higher specificity level.
 
-| Attribute            | Type     | Description                                                                                                                                                                            |
-|----------------------|----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `classification`     | *string* | [Classification](#tokens-token-classifications) of the Token (e.g. `general`, `bank`, `pci`)                                                                                           |
-| `impact_level`       | *string* | [Impact level](#tokens-token-impact-levels) of the Token (i.e. `low`, `moderate`, `high`)                                                                                              |
-| `restriction_policy` | *string* | [Restriction policy](#tokens-token-restriction-policies) applied to the Token when read by a User or Application with read permissions at a lower impact level (i.e. `mask`, `redact`) |
+| Attribute            | Type     | Description                                                                                  |
+|----------------------|----------|----------------------------------------------------------------------------------------------|
+| `classification`     | *string* | [Classification](#tokens-token-classifications) of the Token (e.g. `general`, `bank`, `pci`) |
+| `impact_level`       | *string* | [Impact level](#tokens-token-impact-levels) of the Token (i.e. `low`, `moderate`, `high`)    |
+| `restriction_policy` | *string* | (Deprecated) [Restriction policy](#tokens-token-restriction-policies) applied to the Token.  |
 
 ## Token Data Validations
 
@@ -78,8 +88,12 @@ To enable testing of Cards, we've implemented a list of acceptable test card num
 
 ## Token Classifications
 
-Each token has a data classification associated with it which defines the type of data it contains.
-Basis Theory grants access to Tokens based on data classifications (see [Token Permissions](#permissions-permission-types-token-permissions) for more details). 
+Each Token has a data classification associated with it which defines the type of data it contains.
+
+Basis Theory scopes access to Tokens based upon their [Container](https://developers.basistheory.com/concepts/what-are-token-containers). 
+While the `container` attribute can be explicitly provided when creating a Token, if unspecified, 
+its value defaults to `/<classification>/<impact_level>/`.
+
 The following data classifications are supported:
 
 | Name      | Description                                                                                                | Specificity Level |
@@ -91,8 +105,15 @@ The following data classifications are supported:
 
 ## Token Impact Levels
 
-Basis Theory follows the standard **<a href="https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.199.pdf#page=6" target="_blank">NIST-defined impact levels</a>** of low, moderate, and high to classify the impact unauthorized exposure of a particular piece of data would have on an organization.
-Token impact levels are used to further classify and permit access to Tokens within a [Token Classification](#tokens-token-classifications).
+Basis Theory follows the standard **<a href="https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.199.pdf#page=6" target="_blank">NIST-defined impact levels</a>** 
+of low, moderate, and high to classify the impact unauthorized exposure of a particular piece of data would have on an organization.
+
+Basis Theory scopes access to Tokens based upon their [Container](https://developers.basistheory.com/concepts/what-are-token-containers).
+While the `container` attribute can be explicitly provided when creating a Token, if unspecified,
+its value defaults to `/<classification>/<impact_level>/`.
+
+The following impact levels are supported:
+
 
 | Name       | Description                                                                                                            | Specificity Level |
 |------------|------------------------------------------------------------------------------------------------------------------------|-------------------|
@@ -103,18 +124,18 @@ Token impact levels are used to further classify and permit access to Tokens wit
 
 ## Token Restriction Policies
 
-A Token Restriction Policy defines the policy to enforce on a Token's data when read by a User or Application
-with [permission](#permissions-permission-types-token-permissions) to read the Token's [classification](#tokens-token-classifications) but at a lower [impact level](#tokens-token-impact-levels).
+<aside class="warning">
+  <span>
+    Restriction Policies have been deprecated and replaced by transforms on <a href="https://developers.basistheory.com/concepts/access-controls/#what-are-access-rules">Access Rules</a>.
+    Setting a Restriction Policy on a Token no longer has any functional purpose.
+  </span>
+</aside>
 
-| Name     | Description                                                                                                                          | Specificity Level |
-|----------|--------------------------------------------------------------------------------------------------------------------------------------|-------------------|
-| `mask`   | Token data will be masked in the response, falling back to `redact` restriction policy if a mask is not available for the Token Type | 0                 |
-| `redact` | Token data will be completely removed in the response                                                                                | 1                 |
+| Name     | Specificity Level |
+|----------|-------------------|
+| `mask`   | 0                 |
+| `redact` | 1                 |
 
-For example, an application with `token:pci:read:low` is allowed to read a `card_number` token (classified as `pci` with `high` impact level),
-but the plaintext card data will not be returned. Instead, the restriction policy associated with the `card_number` token (`mask`) will be applied and only masked card number data will be returned.
-
-Refer to [mask expressions](/expressions/#masks) to find out more about how to define masks for your token data.
 
 ## Token Expiration 
 
@@ -318,7 +339,7 @@ Create a new token for the Tenant.
 ### Permissions
 
 <p class="scopes">
-  <span class="scope">token:&lt;classification&gt;:create</span>
+  <span class="scope">token:create</span>
 </p>
 
 ### Request Parameters
@@ -450,7 +471,7 @@ If you need to perform a more advanced token search, see [Search Tokens](#tokens
 ### Permissions
 
 <p class="scopes">
-  <span class="scope">token:&lt;classification&gt;:read:&lt;impact_level&gt;</span>
+  <span class="scope">token:read</span>
 </p>
 
 ### Query Parameters
@@ -555,7 +576,7 @@ Get a token by ID in the Tenant.
 ### Permissions
 
 <p class="scopes">
-  <span class="scope">token:&lt;classification&gt;:read:&lt;impact_level&gt;</span>
+  <span class="scope">token:read</span>
 </p>
 
 ### URI Parameters
@@ -739,7 +760,7 @@ Update an existing token for the Tenant.
 ### Permissions
 
 <p class="scopes">
-  <span class="scope">token:&lt;classification&gt;:update</span>
+  <span class="scope">token:update</span>
 </p>
 
 ### Request Parameters
@@ -889,7 +910,7 @@ For simpler search use cases, see [List Tokens](#list-tokens).
 ### Permissions
 
 <p class="scopes">
-  <span class="scope">token:&lt;classification&gt;:read:&lt;impact_level&gt;</span>
+  <span class="scope">token:read</span>
 </p>
 
 At least one token read [permission](#permissions-permission-types-token-permissions) is required in order to perform a token search. 
@@ -1100,7 +1121,7 @@ Delete a token by ID in the Tenant.
 ### Permissions
 
 <p class="scopes">
-  <span class="scope">token:&lt;classification&gt;:delete</span>
+  <span class="scope">token:delete</span>
 </p>
 
 ### URI Parameters

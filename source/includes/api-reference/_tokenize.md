@@ -661,4 +661,10 @@ Tokenize one to many tokens for the Tenant.
 
 ### Permissions
 
-Permissions are determined by the [classification(s)](#tokens-token-classifications) being tokenized and require the appropriate `token:<classification>:create` permission(s) based on the request.
+<p class="scopes">
+  <span class="scope">token:create</span>
+</p>
+
+The `token:create` permission must be granted on each destination container, and the required scope of this permission 
+is determined by the [containers](https://developers.basistheory.com/concepts/what-are-token-containers) 
+specified in the tokenize request.

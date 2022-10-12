@@ -38,10 +38,8 @@ curl "https://api.basistheory.com/applications" \
     "name": "My Example App",
     "type": "private",
     "permissions": [
-      "token:general:create",
-      "token:general:read:low"
-      "token:pci:create",
-      "token:pci:read:low",
+      "token:create",
+      "token:read"
     ]
   }'
 ```
@@ -55,10 +53,8 @@ const application = await bt.applications.create({
   name: 'My Example App',
   type: 'private',
   permissions: [
-    'token:general:create',
-    'token:general:read:low',
-    'token:pci:create',
-    'token:pci:read:low',
+    'token:create',
+    'token:read',
   ],
 });
 ```
@@ -72,10 +68,8 @@ var application = await client.CreateAsync(new Application {
   Name = "My Example App",
   Type = "private",
   Permissions = new List<string> {
-    "token:general:create",
-    "token:general:read:low",
-    "token:pci:create",
-    "token:pci:read:low"
+    "token:create",
+    "token:read"
   }
 });
 ```
@@ -92,10 +86,8 @@ with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_
         name="My Example App",
         type="private",
         permissions=[
-            "token:general:create",
-            "token:general:read:low",
-            "token:pci:create",
-            "token:pci:read:low"
+            "token:create",
+            "token:read"
         ]
     ))
 ```
@@ -117,10 +109,8 @@ func main() {
 
   createApplicationRequest := *basistheory.NewCreateApplicationRequest(applicationName, applicationType)
   createApplicationRequest.SetPermissions([]string{
-    "token:general:create",
-    "token:general:read:low",
-    "token:pci:create",
-    "token:pci:read:low",
+    "token:create",
+    "token:read"
   })
 
   application, httpResponse, err := apiClient.ApplicationsApi.Create(contextWithAPIKey).CreateApplicationRequest(createApplicationRequest).Execute()
@@ -137,10 +127,8 @@ func main() {
   "key": "key_FZ8RmaxoGc73lbmF2cpmUJ",
   "type": "private",
   "permissions": [
-    "token:general:create",
-    "token:general:read:low",
-    "token:pci:create",
-    "token:pci:read:low"
+    "token:create",
+    "token:read"
   ],
   "created_by": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
   "created_at": "2020-09-15T15:53:00+00:00"
@@ -239,10 +227,8 @@ func main() {
       "name": "My Example App",
       "type": "private",
       "permissions": [
-        "token:general:create",
-        "token:general:read:low",
-        "token:pci:create",
-        "token:pci:read:low"
+        "token:create",
+        "token:read"
       ],
       "created_by": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
       "created_at": "2020-09-15T15:53:00+00:00",
@@ -672,10 +658,8 @@ func main() {
   "key": "key_FZ8RmaxoGc73lbmF2cpmUJ",
   "type": "private",
   "permissions": [
-    "token:general:create",
-    "token:general:read:low",
-    "token:pci:create",
-    "token:pci:read:low"
+    "token:create",
+    "token:read"
   ],
   "created_by": "c57a0d0d-e8e6-495f-9c79-a317cc21996c",
   "created_at": "2020-09-15T15:53:00+00:00",

@@ -703,13 +703,11 @@ Invoke a reactor by ID.
 ### Permissions
 
 <p class="scopes">
-  <span class="scope">token:&lt;classification&gt;:use:reactor</span>
+  <span class="scope">token:use</span>
 </p>
 
-Depending on the [classification(s)](#tokens-token-classifications) of Tokens used within a Reactor, the corresponding `token:<classification>:use:reactor` permission is required - 
-this permission grants the Reactor access to detokenize tokens of any impact level with this classification.
-
-At least one `token:<classification>:use:reactor` permission is required to invoke a Reactor.
+The `token:use` permission is required to use a Reactor, and it is required for each
+[Container](https://developers.basistheory.com/concepts/what-are-token-containers) of Tokens you wish to detokenize in a Reactor.
 
 ### URI Parameters
 

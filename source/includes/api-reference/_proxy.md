@@ -97,14 +97,12 @@ Any authentication required by the destination service can be set on the request
 
 **Permissions**
 
-Depending on the [classification(s)](#tokens-token-classifications) of Tokens you need to forward to a third party, the corresponding `token:<classification>:use:proxy` permission is required.
-At least one `token:<classification>:use:proxy` permission is required, for example:
-
 <p class="scopes">
-  <span class="scope">token:general:use:proxy</span>
-  <span class="scope">token:pci:use:proxy</span>
-  <span class="scope">token:bank:use:proxy</span>
+  <span class="scope">token:use</span>
 </p>
+
+The `token:use` permission is required to use the Proxy, and it is required for each
+[Container](https://developers.basistheory.com/concepts/what-are-token-containers) of Tokens you wish to detokenize through the Proxy.
 
 **Configuration**
 
@@ -214,7 +212,7 @@ then the following request body will be sent to the destination:
 }
 ```
 
-The `token:<classification>:use:proxy` permission is required in order to detokenize tokens classified as `<classification>` within a proxy request. 
+The `token:use` permission is required in order to detokenize tokens within a proxy request. 
 At most, 100 tokens may be detokenized within a single proxy request. You can find more information about the supported detokenization expressions [here](/expressions/#detokenization).
 
 <aside class="notice">
