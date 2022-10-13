@@ -1,6 +1,8 @@
 # Applications
 
-Your ability to authenticate to the API is granted by creating Applications, each Application type has different usages to create the most fine-grained control over your tokens and infrastructure possible. Below, we describe each Application Type and their usages.
+Your ability to authenticate to the Basis Theory API is granted through an API Key associated with an Application.
+Each Application type enables different use cases, and you should strive to grant the minimal level of access to each
+Application. Below, we describe each Application Type and how to choose between them.
 
 ## Application Object
 
@@ -11,7 +13,8 @@ Your ability to authenticate to the API is granted by creating Applications, eac
 | `name`        | *string* | The name of the Application                                                                                      |
 | `key`         | *string* | The API key which should be used for authenticating against Basis Theory API endpoints                           |
 | `type`        | *string* | [Application type](#applications-application-types) of the Application                                           |
-| `permissions` | *array*  | List of [permissions](#permissions-permission-types) for the Application                                         |
+| `permissions` | *array*  | List of [permissions](#permissions-permission-types) granted to the Application                                  |
+| `rules`       | *array*  | List of [access rules](#applications-access-rules) granted to the Application                                    |
 | `created_by`  | *uuid*   | (Optional) The ID of the user or [Application](#applications) that created the Application                       |
 | `created_at`  | *date*   | (Optional) Created date of the Application in ISO 8601 format                                                    |
 | `modified_by` | *uuid*   | (Optional) The ID of the user or [Application](#applications) that last modified the Application                 |
@@ -24,6 +27,26 @@ Your ability to authenticate to the API is granted by creating Applications, eac
 | Private    | `private`    | Used for tokenizing, retrieving, and decrypting data within backend services where the `API key` can be secured                |
 | Public     | `public`     | Used for tokenizing data directly within your mobile or browser application                                                    |
 | Management | `management` | Used for managing all aspects of your token infrastructure such as [creating an Application](#applications-create-application) |
+
+## Access Rules
+
+| Attribute     | Type     | Description                                                                                                             |
+|---------------|----------|-------------------------------------------------------------------------------------------------------------------------|
+| `description` | *string* | A description of this Access Rule                                                                                       |
+| `priority`    | *int*    | The priority of the rule, beginning with `1` and higher values having lower precedence                                  |
+| `container`   | *string* | The [container](https://developers.basistheory.com/concepts/what-are-token-containers) of Tokens this rule is scoped to |
+| `transform`   | *string* | The [transform](#applications-access-rules-access-rule-transforms) to apply to accessed Tokens                          |
+| `permissions` | *array*  | List of [permissions](#permissions-permission-types) to grant on this Access Rule                                       |
+
+See [Access Rules](https://developers.basistheory.com/concepts/access-controls/#what-are-access-rules) for more information.
+
+### Access Rule Transforms
+
+| Name   | Type     | Description                                                                                                             |
+|--------|----------|-------------------------------------------------------------------------------------------------------------------------|
+| Redact | `redact` | Redacts the `data` property from Token responses                                                                        |
+| Mask   | `mask`   | Returns the masked value in the `data` property on Token responses if a `mask` is defined, otherwise `data` is redacted |
+| Reveal | `reveal` | Returns the plaintext value in the `data` property in Token responses                                                   |
 
 ## Create Application
 
@@ -150,11 +173,14 @@ Create a new Application for the Tenant.
 
 ### Request Parameters
 
-| Attribute     | Required | Type     | Default | Description                                                                                   |
-|---------------|----------|----------|---------|-----------------------------------------------------------------------------------------------|
-| `name`        | true     | *string* | `null`  | The name of the Application. Has a maximum length of `200`                                    |
-| `type`        | true     | *string* | `null`  | [Application type](#applications-application-types) of the application                        |
-| `permissions` | true     | *array*  | `[]`    | A non-empty array of [Permissions](#permissions-permission-types) granted to the application. |
+| Attribute     | Required | Type     | Default | Description                                                                          |
+|---------------|----------|----------|---------|--------------------------------------------------------------------------------------|
+| `name`        | true     | *string* | `null`  | The name of the Application. Has a maximum length of `200`                           |
+| `type`        | true     | *string* | `null`  | [Application type](#applications-application-types) of the application               |
+| `permissions` | false    | *array*  | `[]`    | An array of [Permissions](#permissions-permission-types) granted to the application. |
+| `rules`       | false    | *array*  | `[]`    | An array of [Access Rules](#applications-access-rules) granted to the application.   |
+
+Either `permissions` or `rules` is required to be non-empty when creating an Application.
 
 ### Response
 
@@ -586,7 +612,10 @@ Update an application by ID in the Tenant.
 | Attribute     | Required | Type     | Default | Description                                                                                   |
 |---------------|----------|----------|---------|-----------------------------------------------------------------------------------------------|
 | `name`        | true     | *string* | `null`  | The name of the application. Has a maximum length of `200`                                    |
-| `permissions` | true     | *array*  | `[]`    | A non-empty array of [Permissions](#permissions-permission-types) granted to the application. |
+| `permissions` | false    | *array*  | `[]`    | A non-empty array of [Permissions](#permissions-permission-types) granted to the application. |
+| `rules`       | false    | *array*  | `[]`    | An array of [Access Rules](#applications-access-rules) granted to the application.            |
+
+Either `permissions` or `rules` is required to be non-empty when updating an Application.
 
 ### Response
 

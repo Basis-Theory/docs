@@ -55,7 +55,7 @@ update your integration to ignore this attribute as it will be removed on the Sh
 
 If you were previously using classification-based Token permissions (e.g. `token:general:create`), your permissions
 have automatically been migrated to equivalent [Access Rules](https://developers.basistheory.com/concepts/access-controls/#what-are-access-rules).
-Refer to [Migrating Permissions to Access Rules](#deprecated-features-migrating-permissions-to-access-rules) below for further details.
+Refer to [Migrating Permissions to Access Rules](/#deprecations-migrating-permissions-to-access-rules) below for further details.
 
 
 ## Migrating Permissions to Access Rules
