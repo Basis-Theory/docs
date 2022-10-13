@@ -2,24 +2,24 @@
 
 ## Token Object
 
-| Attribute                | Type                                                    | Description                                                                                                                                                   |
-|--------------------------|---------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `id`                     | *string*                                                | Unique identifier of the token which can be used to [get a token](#get-a-token)                                                                               |
-| `tenant_id`              | *uuid*                                                  | The [Tenant](#tenants-tenant-object) ID which owns the token                                                                                                  |
-| `type`                   | *string*                                                | [Token type](#token-types)                                                                                                                                    |
-| `data`                   | *any*                                                   | Token data                                                                                                                                                    |
-| `mask`                   | *any*                                                   | (Optional) An [expression](/expressions/#masks) defining the mask to apply when retrieving token data with restricted permissions.                            |
-| `fingerprint`            | *string*                                                | Uniquely identifies the contents of this token. See [Token Types](#token-types) for the default expression for each token type.                               |
-| `privacy`                | *[privacy object](#tokens-token-object-privacy-object)* | Token Privacy Settings                                                                                                                                        |
-| `container`              | *string*                                                | A path representing a logical grouping of tokens. See [Token Containers](https://developers.basistheory.com/concepts/what-are-token-containers/) for details. |
-| `metadata`               | *map<string, string>*                                   | A key-value map of strings containing non-sensitive data.                                                                                                     |
-| `created_by`             | *uuid*                                                  | (Optional) The [Application](#applications-application-object) ID which created the token                                                                     |
-| `created_at`             | *date*                                                  | (Optional) Created date of the token in ISO 8601 format                                                                                                       |
-| `modified_by`            | *uuid*                                                  | (Optional) The [Application](#applications) ID which last modified the token                                                                                  |
-| `modified_at`            | *date*                                                  | (Optional) Last modified date of the token in ISO 8601 format                                                                                                 |
-| `search_indexes`         | *array*                                                 | (Optional) Array of search index [expressions](/expressions/#search-indexes) used when creating the token.                                                    |
-| `fingerprint_expression` | *string*                                                | (Optional) An [expression](/expressions/#fingerprints) defining the value to fingerprint when creating the token.                                             |
-| `expires_at`             | *string*                                                | (Optional) The [token expiration](#tokens-token-expiration) date.                                                                                             |
+| Attribute                | Type                                                    | Description                                                                                                                                                                                                                     |
+|--------------------------|---------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `id`                     | *string*                                                | Unique identifier of the token which can be used to [get a token](#get-a-token)                                                                                                                                                 |
+| `tenant_id`              | *uuid*                                                  | The [Tenant](#tenants-tenant-object) ID which owns the token                                                                                                                                                                    |
+| `type`                   | *string*                                                | [Token type](#token-types)                                                                                                                                                                                                      |
+| `data`                   | *any*                                                   | Token data                                                                                                                                                                                                                      |
+| `mask`                   | *any*                                                   | An [expression](/expressions/#masks) defining the mask to apply when retrieving token data with restricted permissions.                                                                                                         |
+| `fingerprint`            | *string*                                                | Uniquely identifies the contents of this token. See [Token Types](#token-types) for the default expression for each token type.                                                                                                 |
+| `privacy`                | *[privacy object](#tokens-token-object-privacy-object)* | (Deprecated) Token Privacy Settings                                                                                                                                                                                             |
+| `containers`             | *array*                                                 | Array of containers to place this token within. Each container is a path representing a logical grouping of tokens. See [Token Containers](https://developers.basistheory.com/concepts/what-are-token-containers/) for details. |
+| `metadata`               | *map<string, string>*                                   | A key-value map of strings containing non-sensitive data.                                                                                                                                                                       |
+| `created_by`             | *uuid*                                                  | The [Application](#applications-application-object) ID which created the token                                                                                                                                                  |
+| `created_at`             | *date*                                                  | Created date of the token in ISO 8601 format                                                                                                                                                                                    |
+| `modified_by`            | *uuid*                                                  | (Optional) The [Application](#applications) ID which last modified the token                                                                                                                                                    |
+| `modified_at`            | *date*                                                  | (Optional) Last modified date of the token in ISO 8601 format                                                                                                                                                                   |
+| `search_indexes`         | *array*                                                 | (Optional) Array of search index [expressions](/expressions/#search-indexes) used when creating the token.                                                                                                                      |
+| `fingerprint_expression` | *string*                                                | (Optional) An [expression](/expressions/#fingerprints) defining the value to fingerprint when creating the token.                                                                                                               |
+| `expires_at`             | *string*                                                | (Optional) The [token expiration](#tokens-token-expiration) date.                                                                                                                                                               |
 
 ### Privacy Object
 
@@ -90,9 +90,9 @@ To enable testing of Cards, we've implemented a list of acceptable test card num
 
 Each Token has a data classification associated with it which defines the type of data it contains.
 
-Basis Theory scopes access to Tokens based upon their [Container](https://developers.basistheory.com/concepts/what-are-token-containers). 
-While the `container` attribute can be explicitly provided when creating a Token, if unspecified, 
-its value defaults to `/<classification>/<impact_level>/`.
+Basis Theory scopes access to Tokens based upon their [Containers](https://developers.basistheory.com/concepts/what-are-token-containers). 
+While the `containers` attribute can be explicitly provided when creating a Token, if unspecified, 
+its value defaults to `["/<classification>/<impact_level>/"]`.
 
 The following data classifications are supported:
 
@@ -108,9 +108,9 @@ The following data classifications are supported:
 Basis Theory follows the standard **<a href="https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.199.pdf#page=6" target="_blank">NIST-defined impact levels</a>** 
 of low, moderate, and high to classify the impact unauthorized exposure of a particular piece of data would have on an organization.
 
-Basis Theory scopes access to Tokens based upon their [Container](https://developers.basistheory.com/concepts/what-are-token-containers).
-While the `container` attribute can be explicitly provided when creating a Token, if unspecified,
-its value defaults to `/<classification>/<impact_level>/`.
+Basis Theory scopes access to Tokens based upon their [Containers](https://developers.basistheory.com/concepts/what-are-token-containers).
+While the `containers` attribute can be explicitly provided when creating a Token, if unspecified,
+its value defaults to `["/<classification>/<impact_level>/"]`.
 
 The following impact levels are supported:
 
@@ -194,7 +194,7 @@ const token = await bt.tokens.create({
   type: 'token',
   data: 'Sensitive Value',
   mask: '{{ data | reveal_last: 4 }}',
-  container: '/general/high/',
+  containers: ['/general/high/'],
   privacy: {
     restriction_policy: 'mask'
   },
@@ -220,7 +220,7 @@ var token = await client.CreateAsync(new Token {
   Type = "token",
   Data = "Sensitive Value",
   Mask = "{{ data | reveal_last: 4 }}",
-  Container = "/general/high/",
+  Containers = new List<string> { "/general/high/" },
   Privacy = new DataPrivacy {
     RestrictionPolicy = DataRestrictionPolicy.MASK
   },
@@ -252,7 +252,7 @@ with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_
         metadata={
             "nonSensitiveField": "Non-Sensitive Value"
         },
-        container="/general/high/",
+        containers=["/general/high/"],
         privacy=Privacy(
           restriction_policy="mask"
         ),
@@ -289,7 +289,7 @@ func main() {
   createTokenRequest.SetSearchIndexes([]string{"{{ data }}", "{{ data | last4}}"})
   createTokenRequest.SetFingerprintExpression("{{ data }}")
   createTokenRequest.SetDeduplicateToken(true)
-  createTokenRequest.SetContainer("/general/high/")
+  createTokenRequest.SetContainers([]string{"/general/high/"})
   createTokenRequest.SetExpiresAt("8/26/2030 7:23:57 PM -07:00")
 
   privacy := *basistheory.NewPrivacy()
@@ -309,7 +309,7 @@ func main() {
   "type": "token",
   "data": "XXXXXXXXXXXalue",
   "mask": "{{ data | reveal_last: 4 }}",
-  "container": "/general/high/",
+  "containers": ["/general/high/"],
   "privacy": {
     "classification": "general",
     "impact_level": "high",
@@ -344,19 +344,19 @@ Create a new token for the Tenant.
 
 ### Request Parameters
 
-| Attribute                | Required | Type                                                    | Default                                   | Description                                                                                                                                                   |
-|--------------------------|----------|---------------------------------------------------------|-------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `id`                     | false    | *string*                                                | `null`                                    | A value or [expression](/expressions/#aliasing) specifying the token's ID. If not specified, a UUID will be assigned.                                         |
-| `type`                   | true     | *string*                                                | `null`                                    | [Token type](#token-types) of the token                                                                                                                       |
-| `data`                   | true     | *any*                                                   | `null`                                    | Token data. Can be an object, array, or any primitive type such as an integer, boolean, or string                                                             |
-| `mask`                   | false    | *any*                                                   | Depends on the [token type](#token-types) | Token data mask. Can be an object, array, or any primitive type such as an integer, boolean, or string. See [mask expressions](/expressions/#masks).          |
-| `privacy`                | false    | *[privacy object](#tokens-token-object-privacy-object)* | `null`                                    | Token Privacy Settings overrides. Overrides must be a higher specificity level than the default or minimum setting for the [Token Type](#token-token-types).  |
-| `container`              | false    | *string*                                                | Depends on the [token type](#token-types) | A path representing a logical grouping of tokens. See [Token Containers](https://developers.basistheory.com/concepts/what-are-token-containers/) for details. |
-| `metadata`               | false    | *map<string, string>*                                   | `null`                                    | A key-value map of strings containing non-sensitive data.                                                                                                     |
-| `search_indexes`         | false    | *array*                                                 | `null`                                    | Array of [expressions](/expressions/#search-indexes) used to generate indexes to be able to search against.                                                   |
-| `fingerprint_expression` | false    | *string*                                                | <code>{{ data &#124; stringify }}</code>  | [Expressions](/expressions/#fingerprints) used to fingerprint your token.                                                                                     |
-| `deduplicate_token`      | false    | *bool*                                                  | `null`                                    | Whether the token is deduplicated on creation.                                                                                                                |
-| `expires_at`             | false    | *string*                                                | `null`                                    | ISO8601 compatible Token expiration DateTime. See [Token Expiration](#token-expiration) for more details.                                                     |
+| Attribute                | Required | Type                                                    | Default                                   | Description                                                                                                                                                                                                                     |
+|--------------------------|----------|---------------------------------------------------------|-------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `id`                     | false    | *string*                                                | `null`                                    | A value or [expression](/expressions/#aliasing) specifying the token's ID. If not specified, a UUID will be assigned.                                                                                                           |
+| `type`                   | true     | *string*                                                | `null`                                    | [Token type](#token-types) of the token                                                                                                                                                                                         |
+| `data`                   | true     | *any*                                                   | `null`                                    | Token data. Can be an object, array, or any primitive type such as an integer, boolean, or string                                                                                                                               |
+| `mask`                   | false    | *any*                                                   | Depends on the [token type](#token-types) | Token data mask. Can be an object, array, or any primitive type such as an integer, boolean, or string. See [mask expressions](/expressions/#masks).                                                                            |
+| `privacy`                | false    | *[privacy object](#tokens-token-object-privacy-object)* | `null`                                    | Token Privacy Settings overrides. Overrides must be a higher specificity level than the default or minimum setting for the [Token Type](#token-token-types).                                                                    |
+| `containers`             | false    | *array*                                                 | Depends on the [token type](#token-types) | Array of containers to place this token within. Each container is a path representing a logical grouping of tokens. See [Token Containers](https://developers.basistheory.com/concepts/what-are-token-containers/) for details. |
+| `metadata`               | false    | *map<string, string>*                                   | `null`                                    | A key-value map of strings containing non-sensitive data.                                                                                                                                                                       |
+| `search_indexes`         | false    | *array*                                                 | `null`                                    | Array of [expressions](/expressions/#search-indexes) used to generate indexes to be able to search against.                                                                                                                     |
+| `fingerprint_expression` | false    | *string*                                                | <code>{{ data &#124; stringify }}</code>  | [Expressions](/expressions/#fingerprints) used to fingerprint your token.                                                                                                                                                       |
+| `deduplicate_token`      | false    | *bool*                                                  | `null`                                    | Whether the token is deduplicated on creation.                                                                                                                                                                                  |
+| `expires_at`             | false    | *string*                                                | `null`                                    | ISO8601 compatible Token expiration DateTime. See [Token Expiration](#token-expiration) for more details.                                                                                                                       |
 
 
 <aside class="warning">
@@ -442,7 +442,7 @@ func main() {
       "type": "token",
       "tenant_id": "77cb0024-123e-41a8-8ff8-a3d5a0fa8a08",
       "data": null, // Redacted based on Restriction Policy
-      "container": "/general/high/",
+      "containers": ["/general/high/"],
       "privacy": {
         "classification": "general",
         "impact_level": "moderate",
@@ -552,7 +552,7 @@ func main() {
   "type": "token",
   "tenant_id": "77cb0024-123e-41a8-8ff8-a3d5a0fa8a08",
   "data": null, // Redacted based on Restriction Policy
-  "container": "/general/high/",
+  "containers": ["/general/high/"],
   "privacy": {
     "classification": "general",
     "impact_level": "moderate",
@@ -731,7 +731,7 @@ func main() {
   "type": "token",
   "data": "XXXXXXXXXXXalue",
   "mask": "{{ data | reveal_last: 4 }}",
-  "container": "/general/high/",
+  "containers": ["/general/high/"],
   "privacy": {
     "classification": "general",
     "impact_level": "high",
@@ -874,7 +874,7 @@ func main() {
       "tenant_id": "77cb0024-123e-41a8-8ff8-a3d5a0fa8a08",
       "data": "XXX-XX-6789",
       "fingerprint": "AKCUXS83DokKo4pDRKSAy4d42t9i8dcP1X2jijwEBCQH",
-      "container": "/pii/high/",
+      "containers": ["/pii/high/"],
       "privacy": {
         "classification": "pii",
         "impact_level": "high",
@@ -1014,7 +1014,7 @@ Multiple terms may be combined using the `AND`, `OR` and `NOT` operators (case s
 | `type`            | *string* | The [token type](#token-types).                                                              | `type:card_number`                                 |
 | `data`            | *string* | Token data. See [Searching Data](#tokens-search-tokens-searching-data) for supported values. | `data:6789`                                        |
 | `fingerprint`     | *string* | Token's content unique identifier.                                                           | `fingerprint:fe24d4cc-de50-4d8c-8da7-8c7483ba21bf` |
-| `container`       | *string* | The token's [container](#tokens-token-containers).                                           | `container:"/pci/high/"`                           |
+| `container`       | *string* | Searches across a token's [containers](#tokens-token-containers).                            | `container:"/pci/high/"`                           |
 | `privacy.[field]` | *string* | Token [privacy settings](#tokens-token-object-privacy-object).                               | `privacy.classification:pci`                       |
 | `metadata.[key]`  | *string* | Search against token metadata having the given `[key]`.                                      | `metadata.user_id:34445`                           |
 | `created_by`      | *string* | Application ID which created the token.                                                      | `created_by:fe24d4cc-de50-4d8c-8da7-8c7483ba21bf`  |

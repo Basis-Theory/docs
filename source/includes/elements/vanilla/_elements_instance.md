@@ -31,11 +31,11 @@ This lifecycle method returns a new instance of an element type.
 </script>
 ```
 
-This lifecycle method attaches the element to the DOM, under a specific container.
+This lifecycle method attaches the element to the DOM, under a specific DOM container.
 
-| Parameter  | Required | Type     | Description                                                                |
-|------------|----------|----------|----------------------------------------------------------------------------|
-| `selector` | true     | *string* | CSS selector that matches the container where your element will be mounted |
+| Parameter  | Required | Type     | Description                                                                    |
+|------------|----------|----------|--------------------------------------------------------------------------------|
+| `selector` | true     | *string* | CSS selector that matches the DOM container where your element will be mounted |
 
 <aside class="warning">
   <span>Multiple calls to <code>element.mount</code> will result in an error.</span>
