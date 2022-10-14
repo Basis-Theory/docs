@@ -272,11 +272,6 @@ func main() {
   "tenant_id": "77cb0024-123e-41a8-8ff8-a3d5a0fa8a08",
   "type": "token",
   "containers": ["/general/high/"],
-  "privacy": {
-    "classification": "general",
-    "impact_level": "high",
-    "restriction_policy": "redact"  
-  },
   "created_by": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
   "created_at": "2020-09-15T15:53:00+00:00",
   "metadata": {
@@ -309,12 +304,7 @@ Creating a child token requires the appropriate create permission to the child t
 
 ### Request Parameters
 
-| Attribute  | Required | Type                                                    | Default | Description                                               |
-|------------|----------|---------------------------------------------------------|---------|-----------------------------------------------------------|
-| `type`     | true     | *string*                                                | `null`  | [Token type](#token-types) of the token                   |
-| `data`     | true     | *any*                                                   | `null`  | Token data                                                |
-| `privacy`  | false    | *[privacy object](#tokens-token-object-privacy-object)* | `null`  | Token Privacy Settings                                    |
-| `metadata` | false    | *map<string, string>*                                   | `null`  | A key-value map of strings containing non-sensitive data. |
+See [Create Token](#tokens-create-token) for supported request parameters.
 
 ### Response
 
@@ -385,13 +375,8 @@ func main() {
       "id": "c1e565009-1984-4638-8fca-dce8a82cc2af",
       "type": "token",
       "tenant_id": "77cb0024-123e-41a8-8ff8-a3d5a0fa8a08",
-      "data": null, // Redacted based on restriction policy
+      "data": "secret data",
       "containers": ["/general/high/"],
-      "privacy": {
-        "classification": "general",
-        "impact_level": "high",
-        "restriction_policy": "redact"
-      },
       "metadata": {
         "nonSensitiveField": "Non-Sensitive Value"
       },

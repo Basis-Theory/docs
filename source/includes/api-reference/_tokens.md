@@ -10,7 +10,6 @@
 | `data`                   | *any*                                                   | Token data                                                                                                                                                                                                                      |
 | `mask`                   | *any*                                                   | An [expression](/expressions/#masks) defining the mask to apply when retrieving token data with restricted permissions.                                                                                                         |
 | `fingerprint`            | *string*                                                | Uniquely identifies the contents of this token. See [Token Types](#token-types) for the default expression for each token type.                                                                                                 |
-| `privacy`                | *[privacy object](#tokens-token-object-privacy-object)* | (Deprecated) Token Privacy Settings                                                                                                                                                                                             |
 | `containers`             | *array*                                                 | Array of containers to place this token within. Each container is a path representing a logical grouping of tokens. See [Token Containers](https://developers.basistheory.com/concepts/what-are-token-containers/) for details. |
 | `metadata`               | *map<string, string>*                                   | A key-value map of strings containing non-sensitive data.                                                                                                                                                                       |
 | `created_by`             | *uuid*                                                  | The [Application](#applications-application-object) ID which created the token                                                                                                                                                  |
@@ -20,27 +19,6 @@
 | `search_indexes`         | *array*                                                 | (Optional) Array of search index [expressions](/expressions/#search-indexes) used when creating the token.                                                                                                                      |
 | `fingerprint_expression` | *string*                                                | (Optional) An [expression](/expressions/#fingerprints) defining the value to fingerprint when creating the token.                                                                                                               |
 | `expires_at`             | *string*                                                | (Optional) The [token expiration](#tokens-token-expiration) date.                                                                                                                                                               |
-
-### Privacy Object
-
-<aside class="warning">
-  <span>
-    Privacy settings have been deprecated and replaced by a more flexible authorization model based upon 
-    <a href="https://developers.basistheory.com/concepts/what-are-token-containers">Containers</a> and 
-    <a href="https://developers.basistheory.com/concepts/access-controls/#what-are-access-rules">Access Rules</a>. 
-    If you are currently using Token Privacy settings, see our documentation on 
-    <a href="/#deprecations-migrating-from-privacy-settings">Migrating from Privacy Settings</a>.
-  </span>
-</aside>
-
-The following object defines the privacy settings applied to a Token. If unspecified, a default set of privacy settings will be applied based on the [Token Type](#token-types).
-Default privacy settings can be overridden at the time of creation, but only to a setting with a higher specificity level.
-
-| Attribute            | Type     | Description                                                                                  |
-|----------------------|----------|----------------------------------------------------------------------------------------------|
-| `classification`     | *string* | [Classification](#tokens-token-classifications) of the Token (e.g. `general`, `bank`, `pci`) |
-| `impact_level`       | *string* | [Impact level](#tokens-token-impact-levels) of the Token (i.e. `low`, `moderate`, `high`)    |
-| `restriction_policy` | *string* | (Deprecated) [Restriction policy](#tokens-token-restriction-policies) applied to the Token.  |
 
 ## Token Data Validations
 
@@ -85,58 +63,6 @@ To enable testing of Cards, we've implemented a list of acceptable test card num
 | 3566002020360505 | Test card   |
 | 620000000000000  | Test card   |
 
-
-## Token Classifications
-
-Each Token has a data classification associated with it which defines the type of data it contains.
-
-Basis Theory scopes access to Tokens based upon their [Containers](https://developers.basistheory.com/concepts/what-are-token-containers). 
-While the `containers` attribute can be explicitly provided when creating a Token, if unspecified, 
-its value defaults to `["/<classification>/<impact_level>/"]`.
-
-The following data classifications are supported:
-
-| Name      | Description                                                                                                | Specificity Level |
-|-----------|------------------------------------------------------------------------------------------------------------|-------------------|
-| `general` | Contains sensitive data that does not fall under a more specific classification or compliance requirements | 0                 |
-| `bank`    | Contains data that falls under banking compliance (e.g. Nacha)                                             | 10                |
-| `pci`     | Contains data that falls under PCI compliance                                                              | 10                |
-| `pii`     | Contains user or customer specific identifiers (e.g. email, date of birth, address)                        | 10                |
-
-## Token Impact Levels
-
-Basis Theory follows the standard **<a href="https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.199.pdf#page=6" target="_blank">NIST-defined impact levels</a>** 
-of low, moderate, and high to classify the impact unauthorized exposure of a particular piece of data would have on an organization.
-
-Basis Theory scopes access to Tokens based upon their [Containers](https://developers.basistheory.com/concepts/what-are-token-containers).
-While the `containers` attribute can be explicitly provided when creating a Token, if unspecified,
-its value defaults to `["/<classification>/<impact_level>/"]`.
-
-The following impact levels are supported:
-
-
-| Name       | Description                                                                                                            | Specificity Level |
-|------------|------------------------------------------------------------------------------------------------------------------------|-------------------|
-| `low`      | Loss of data confidentiality, integrity, or availability is expected to have **limited** adverse effect                | 0                 |
-| `moderate` | Loss of data confidentiality, integrity, or availability is expected to have **serious** adverse effect                | 1                 |
-| `high`     | Loss of data confidentiality, integrity, or availability is expected to have **severe or catastrophic** adverse effect | 2                 |
-
-
-## Token Restriction Policies
-
-<aside class="warning">
-  <span>
-    Restriction Policies have been deprecated and replaced by transforms on <a href="https://developers.basistheory.com/concepts/access-controls/#what-are-access-rules">Access Rules</a>.
-    Setting a Restriction Policy on a Token no longer has any functional purpose.
-  </span>
-</aside>
-
-| Name     | Specificity Level |
-|----------|-------------------|
-| `mask`   | 0                 |
-| `redact` | 1                 |
-
-
 ## Token Expiration 
 
 By default a created token will not expire, however, users can optionally set the `expires_at` property with an ISO8601 <code>DateTime</code> when creating a token to determine its expiration date.
@@ -169,9 +95,7 @@ curl "https://api.basistheory.com/tokens" \
     "type": "token",
     "data": "Sensitive Value",
     "mask": "{{ data | reveal_last: 4 }}",
-    "privacy": {
-      "restriction_policy": "mask"
-    },
+    "containers": [ "/general/high/" ],
     "metadata": {
       "nonSensitiveField": "Non-Sensitive Value"
     },
@@ -195,9 +119,6 @@ const token = await bt.tokens.create({
   data: 'Sensitive Value',
   mask: '{{ data | reveal_last: 4 }}',
   containers: ['/general/high/'],
-  privacy: {
-    restriction_policy: 'mask'
-  },
   metadata: {
     nonSensitiveField: 'Non-Sensitive Value'
   },
@@ -221,9 +142,6 @@ var token = await client.CreateAsync(new Token {
   Data = "Sensitive Value",
   Mask = "{{ data | reveal_last: 4 }}",
   Containers = new List<string> { "/general/high/" },
-  Privacy = new DataPrivacy {
-    RestrictionPolicy = DataRestrictionPolicy.MASK
-  },
   Metadata = new Dictionary<string, string> {
     { "nonSensitiveField",  "Non-Sensitive Value" }
   },
@@ -253,9 +171,6 @@ with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_
             "nonSensitiveField": "Non-Sensitive Value"
         },
         containers=["/general/high/"],
-        privacy=Privacy(
-          restriction_policy="mask"
-        ),
         search_indexes=[
           "{{ data }}",
           "{{ data | last4}}"
@@ -292,10 +207,6 @@ func main() {
   createTokenRequest.SetContainers([]string{"/general/high/"})
   createTokenRequest.SetExpiresAt("8/26/2030 7:23:57 PM -07:00")
 
-  privacy := *basistheory.NewPrivacy()
-  privacy.SetRestrictionPolicy("mask")
-  createTokenRequest.SetPrivacy(privacy)
-
   createTokenResponse, createTokenHttpResponse, createErr := apiClient.TokensApi.Create(contextWithAPIKey).CreateTokenRequest(createTokenRequest).Execute()
 }
 ```
@@ -310,11 +221,6 @@ func main() {
   "data": "XXXXXXXXXXXalue",
   "mask": "{{ data | reveal_last: 4 }}",
   "containers": ["/general/high/"],
-  "privacy": {
-    "classification": "general",
-    "impact_level": "high",
-    "restriction_policy": "mask"
-  },
   "metadata": {
     "nonSensitiveField": "Non-Sensitive Value"
   },
@@ -350,7 +256,6 @@ Create a new token for the Tenant.
 | `type`                   | true     | *string*                                                | `null`                                    | [Token type](#token-types) of the token                                                                                                                                                                                         |
 | `data`                   | true     | *any*                                                   | `null`                                    | Token data. Can be an object, array, or any primitive type such as an integer, boolean, or string                                                                                                                               |
 | `mask`                   | false    | *any*                                                   | Depends on the [token type](#token-types) | Token data mask. Can be an object, array, or any primitive type such as an integer, boolean, or string. See [mask expressions](/expressions/#masks).                                                                            |
-| `privacy`                | false    | *[privacy object](#tokens-token-object-privacy-object)* | `null`                                    | Token Privacy Settings overrides. Overrides must be a higher specificity level than the default or minimum setting for the [Token Type](#token-token-types).                                                                    |
 | `containers`             | false    | *array*                                                 | Depends on the [token type](#token-types) | Array of containers to place this token within. Each container is a path representing a logical grouping of tokens. See [Token Containers](https://developers.basistheory.com/concepts/what-are-token-containers/) for details. |
 | `metadata`               | false    | *map<string, string>*                                   | `null`                                    | A key-value map of strings containing non-sensitive data.                                                                                                                                                                       |
 | `search_indexes`         | false    | *array*                                                 | `null`                                    | Array of [expressions](/expressions/#search-indexes) used to generate indexes to be able to search against.                                                                                                                     |
@@ -441,13 +346,8 @@ func main() {
       "id": "c06d0789-0a38-40be-b7cc-c28a718f76f1",
       "type": "token",
       "tenant_id": "77cb0024-123e-41a8-8ff8-a3d5a0fa8a08",
-      "data": null, // Redacted based on Restriction Policy
+      "data": "secret data",
       "containers": ["/general/high/"],
-      "privacy": {
-        "classification": "general",
-        "impact_level": "moderate",
-        "restriction_policy": "redact"
-      },
       "metadata": {
         "nonSensitiveField": "Non-Sensitive Value"
       },
@@ -485,8 +385,8 @@ If you need to perform a more advanced token search, see [Search Tokens](#tokens
 ### Response
 
 Returns a [paginated object](#pagination) with the `data` property containing an array of [tokens](#tokens-token-object).
-Plaintext token data will be returned when the requester has read permissions on the token classification at equal or greater impact level.
-Token data will be restricted based on the token's [restriction policy](#tokens-token-restriction-policies) when the requester has read permissions on the token classification at a lower impact level.
+Token data will be returned according to the [transform](https://developers.basistheory.com/concepts/access-controls/#transform) 
+applied within the requesting Application's [Access Controls](https://developers.basistheory.com/concepts/access-controls). 
 Providing any query parameters will filter the results. Returns [an error](#errors) if tokens could not be retrieved.
 
 
@@ -551,13 +451,8 @@ func main() {
   "id": "c06d0789-0a38-40be-b7cc-c28a718f76f1",
   "type": "token",
   "tenant_id": "77cb0024-123e-41a8-8ff8-a3d5a0fa8a08",
-  "data": null, // Redacted based on Restriction Policy
+  "data": "secret data",
   "containers": ["/general/high/"],
-  "privacy": {
-    "classification": "general",
-    "impact_level": "moderate",
-    "restriction_policy": "redact"
-  },
   "metadata": {
     "nonSensitiveField": "Non-Sensitive Value"
   },
@@ -588,8 +483,8 @@ Get a token by ID in the Tenant.
 ### Response
 
 Returns a [token](#tokens-token-object) with the `id` provided.
-Plaintext token data will be returned when the requester has read permissions on the token classification at equal or greater impact level.
-Token data will be restricted based on the token's [restriction policy](#tokens-token-restriction-policies) when the requester has read permissions on the token classification at a lower impact level.
+Token data will be returned according to the [transform](https://developers.basistheory.com/concepts/access-controls/#transform)
+applied within the requesting Application's [Access Controls](https://developers.basistheory.com/concepts/access-controls).
 Returns [an error](#errors) if the token could not be retrieved.
 
 
@@ -605,9 +500,6 @@ curl "https://api.basistheory.com/tokens/c06d0789-0a38-40be-b7cc-c28a718f76f1" \
   -d '{
     "data": "Sensitive Value",
     "mask": "{{ data | reveal_last: 4 }}",
-    "privacy": {
-      "restriction_policy": "mask"
-    },
     "metadata": {
       "nonSensitiveField": "Non-Sensitive Value"
     },
@@ -628,9 +520,6 @@ const bt = await new BasisTheory().init('key_N88mVGsp3sCXkykyN2EFED');
 const token = await bt.tokens.update('c06d0789-0a38-40be-b7cc-c28a718f76f1', {
   data: 'Sensitive Value',
   mask: '{{ data | reveal_last: 4 }}',
-  privacy: {
-    restrictionPolicy: "mask"
-  },
   metadata: {
     nonSensitiveField: 'Non-Sensitive Value'
   },
@@ -651,9 +540,6 @@ var client = new TokenClient("key_N88mVGsp3sCXkykyN2EFED");
 var token = await client.UpdateAsync("c06d0789-0a38-40be-b7cc-c28a718f76f1", new TokenUpdateRequest {
   Data = "Sensitive Value",
   Mask = "{{ data | reveal_last: 4 }}",
-  Privacy = new PrivacyUpdateModel {
-    RestrictionPolicy = DataRestrictionPolicy.MASK
-  },
   Metadata = new Dictionary<string, string> {
     { "nonSensitiveField",  "Non-Sensitive Value" }
   },
@@ -680,9 +566,6 @@ with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_
         metadata={
             "nonSensitiveField": "Non-Sensitive Value"
         },
-        privacy=UpdatePrivacy(
-          restriction_policy="mask"
-        ),
         search_indexes=[
           "{{ data }}",
           "{{ data | last4}}"
@@ -714,10 +597,6 @@ func main() {
   updateTokenRequest.SetSearchIndexes([]string{"{{ data }}", "{{ data | last4}}"})
   updateTokenRequest.SetFingerprintExpression("{{ data }}")
 
-  privacy := *basistheory.NewPrivacy()
-  privacy.SetRestrictionPolicy("mask")
-  updateTokenRequest.SetPrivacy(privacy)
-
   updateTokenResponse, updateTokenHttpResponse, createErr := apiClient.TokensApi.Update(contextWithAPIKey, "c06d0789-0a38-40be-b7cc-c28a718f76f1").UpdateTokenRequest(updateTokenRequest).Execute()
 }
 ```
@@ -732,11 +611,6 @@ func main() {
   "data": "XXXXXXXXXXXalue",
   "mask": "{{ data | reveal_last: 4 }}",
   "containers": ["/general/high/"],
-  "privacy": {
-    "classification": "general",
-    "impact_level": "high",
-    "restriction_policy": "mask"
-  },
   "metadata": {
     "nonSensitiveField": "Non-Sensitive Value"
   },
@@ -765,15 +639,15 @@ Update an existing token for the Tenant.
 
 ### Request Parameters
 
-| Attribute                | Required | Type                                                    | Behavior                                                                               | Description                                                                                                                                                                                                                                         |
-|--------------------------|----------|---------------------------------------------------------|----------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `data`                   | false    | *any*                                                   | Merge Patch (see <a href="https://datatracker.ietf.org/doc/html/rfc7386">RFC 7386</a>) | Token data. Can be an object, array, or any primitive type such as an integer, boolean, or string                                                                                                                                                   |
-| `mask`                   | false    | *any*                                                   | Merge Patch (see <a href="https://datatracker.ietf.org/doc/html/rfc7386">RFC 7386</a>) | Token data mask. Can be an object, array, or any primitive type such as an integer, boolean, or string. See [mask expressions](/expressions/#masks).                                                                                                |
-| `privacy`                | false    | *[privacy object](#tokens-token-object-privacy-object)* | Replace                                                                                | Token Privacy Settings overrides. Overrides must be a higher specificity level than the default or minimum setting for the [Token Type](#token-token-types). The `classfication` attribute of the `privacy` object *cannot* be overriden on update. |
-| `metadata`               | false    | *map<string, string>*                                   | Merge Patch (see <a href="https://datatracker.ietf.org/doc/html/rfc7386">RFC 7386</a>) | A key-value map of strings containing non-sensitive data.                                                                                                                                                                                           |
-| `search_indexes`         | false    | *array*                                                 | Replace                                                                                | Array of [expressions](/expressions/#search-indexes) used to generate indexes to be able to search against.                                                                                                                                         |
-| `fingerprint_expression` | false    | *string*                                                | Replace                                                                                | [Expressions](/expressions/#fingerprints) used to fingerprint your token.                                                                                                                                                                           |
-| `deduplicate_token`      | false    | *bool*                                                  | Replace                                                                                | Whether the token is deduplicated on creation.                                                                                                                                                                                                      |
+| Attribute                | Required       | Type                  | Behavior                                                                               | Description                                                                                                                                                                                                                     |
+|--------------------------|----------------|-----------------------|----------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `data`                   | false          | *any*                 | Merge Patch (see <a href="https://datatracker.ietf.org/doc/html/rfc7386">RFC 7386</a>) | Token data. Can be an object, array, or any primitive type such as an integer, boolean, or string                                                                                                                               |
+| `mask`                   | false          | *any*                 | Merge Patch (see <a href="https://datatracker.ietf.org/doc/html/rfc7386">RFC 7386</a>) | Token data mask. Can be an object, array, or any primitive type such as an integer, boolean, or string. See [mask expressions](/expressions/#masks).                                                                            |
+| `metadata`               | false          | *map<string, string>* | Merge Patch (see <a href="https://datatracker.ietf.org/doc/html/rfc7386">RFC 7386</a>) | A key-value map of strings containing non-sensitive data.                                                                                                                                                                       |
+| `containers`             | false          | *array*               | Replace                                                                                | Array of containers to place this token within. Each container is a path representing a logical grouping of tokens. See [Token Containers](https://developers.basistheory.com/concepts/what-are-token-containers/) for details. |
+| `search_indexes`         | false          | *array*               | Replace                                                                                | Array of [expressions](/expressions/#search-indexes) used to generate indexes to be able to search against.                                                                                                                     |
+| `fingerprint_expression` | false          | *string*              | Replace                                                                                | [Expressions](/expressions/#fingerprints) used to fingerprint your token.                                                                                                                                                       |
+| `deduplicate_token`      | false          | *bool*                | Replace                                                                                | Whether the token is deduplicated on creation.                                                                                                                                                                                  |
 
 ### Response
 
@@ -875,11 +749,6 @@ func main() {
       "data": "XXX-XX-6789",
       "fingerprint": "AKCUXS83DokKo4pDRKSAy4d42t9i8dcP1X2jijwEBCQH",
       "containers": ["/pii/high/"],
-      "privacy": {
-        "classification": "pii",
-        "impact_level": "high",
-        "restriction_policy": "mask"
-      },
       "metadata": {
         "nonSensitiveField": "Non-Sensitive Value"
       },
@@ -910,15 +779,11 @@ For simpler search use cases, see [List Tokens](#list-tokens).
 ### Permissions
 
 <p class="scopes">
-  <span class="scope">token:read</span>
+  <span class="scope">token:search</span>
 </p>
 
-At least one token read [permission](#permissions-permission-types-token-permissions) is required in order to perform a token search. 
-A token search will only return tokens that your application or user is authorized to read. 
-
-Applications are permitted to search on the `data` field of a token only if the application's [permissions](#permissions-permission-types-token-permissions)
-allow reading the [unrestricted](#tokens-token-restriction-policies) plaintext token data. 
-Applications may search across non-data fields (eg. `metadata`, `type`) on tokens with any read permission for that data [classification](#tokens-token-classifications), even if that read permission only allows [restricted](#tokens-token-restriction-policies) access to the token data.
+Token data will be returned in search results according to the [transform](https://developers.basistheory.com/concepts/access-controls/#transform)
+applied within the requesting Application's [Access Controls](https://developers.basistheory.com/concepts/access-controls).
 
 ### Request Parameters
 
@@ -931,8 +796,8 @@ Applications may search across non-data fields (eg. `metadata`, `type`) on token
 ### Response
 
 Returns a [paginated object](#pagination) with the `data` property containing an array of [tokens](#tokens-token-object).
-Plaintext token data will be returned when the requester has read permissions on the token classification at equal or greater impact level.
-Token data will be restricted based on the token's [restriction policy](#tokens-token-restriction-policies) when the requester has read permissions on the token classification at a lower impact level.
+Token data will be returned according to the [transform](https://developers.basistheory.com/concepts/access-controls/#transform)
+applied to the requesting Application's [Access Controls](https://developers.basistheory.com/concepts/access-controls).
 Returns [an error](#errors) if tokens could not be retrieved or when an invalid [query](#tokens-search-tokens-query-syntax) is submitted.
 
 ### Query Syntax
@@ -1015,7 +880,6 @@ Multiple terms may be combined using the `AND`, `OR` and `NOT` operators (case s
 | `data`            | *string* | Token data. See [Searching Data](#tokens-search-tokens-searching-data) for supported values. | `data:6789`                                        |
 | `fingerprint`     | *string* | Token's content unique identifier.                                                           | `fingerprint:fe24d4cc-de50-4d8c-8da7-8c7483ba21bf` |
 | `container`       | *string* | Searches across a token's [containers](#tokens-token-containers).                            | `container:"/pci/high/"`                           |
-| `privacy.[field]` | *string* | Token [privacy settings](#tokens-token-object-privacy-object).                               | `privacy.classification:pci`                       |
 | `metadata.[key]`  | *string* | Search against token metadata having the given `[key]`.                                      | `metadata.user_id:34445`                           |
 | `created_by`      | *string* | Application ID which created the token.                                                      | `created_by:fe24d4cc-de50-4d8c-8da7-8c7483ba21bf`  |
 | `created_at`      | *date*   | The date or date and time a token was created in ISO 8601 format.                            | `created_at:[2020-01-01 TO 2020-01-28]`            |

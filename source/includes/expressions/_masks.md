@@ -1,16 +1,18 @@
 # Masks
 
-Masks allow you to reformat token data into a non-sensitive representation that can be safely exposed. For example, if the original credit card number was `4242-4242-4242-4242`, a common mask pattern is to only show the last 4 digits, such as `XXXX-XXXX-XXXX-4242`.
+Masks allow you to reformat token data into a non-sensitive representation that can be safely exposed. 
+For example, if the original credit card number was `4242-4242-4242-4242`, a common mask pattern is to only show 
+the last 4 digits, such as `XXXX-XXXX-XXXX-4242`.
 
 When [creating a token](/#tokens-create-token), the mask can be specified within the request.
 You are able to reference the `data` property within an [object](#language-objects) expression -
 `data` will be bound to the provided token data.
 
-When retrieving a token with inadequate read permissions, returned token data is either masked or redacted based on the token's [data restriction policy](/#tokens-token-restriction-policies). For tokens with the `mask` restriction policy, the token's mask will be evaluated and returned within the `data` property. For tokens with the `redact`  restriction policy, `data` will not be returned and a `mask` cannot be defined. The `mask` property is required for tokens with type `token` having a data restriction policy of `mask`. All other token types have a default mask assigned in case a custom one is not provided. 
-
-<aside class="notice">
-  <span>Only generic tokens (those with type <code>token</code>) allow providing custom masks.</span>
-</aside>
+When retrieving a token with an Application API Key, token data is returned according to the format specified by the
+[transform](https://developers.basistheory.com/concepts/access-controls/#transform) applied within the Application's
+[Access Controls](https://developers.basistheory.com/concepts/access-controls).
+For tokens that receive a `mask` transform, the token's mask will be evaluated and returned within the `data` property.
+If a mask expression is not defined on the token, the token's data will be redacted.
 
 ## Examples
 

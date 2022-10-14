@@ -411,10 +411,7 @@ generic `PII` token to hold the card owner's name:
   "id": "d9939ddc-d7be-423b-a0f5-69f65fec57df",
   "type": "card_number",
   "data": "5555555555554444",
-  "privacy": {
-    "classification": "pci",
-    "impact_level": "high"
-  }
+  "containers": ["/pci/high/"]
 }
 ```
 
@@ -424,10 +421,7 @@ generic `PII` token to hold the card owner's name:
   "id": "f4d86311-1254-4155-b532-b651279a8cc0",
   "type": "token",
   "data": "Jane Doe",
-  "privacy": {
-    "classification": "pii",
-    "impact_level": "moderate"
-  }
+  "containers": ["/pii/moderate/"]
 }
 ```
 
@@ -643,10 +637,7 @@ In this example, we will store our card data within a custom generic token that 
       "zip": "10010"
     }
   },
-  "privacy": {
-    "classification": "pci",
-    "impact_level": "high"
-  }
+  "containers": ["/pci/high/"]
 }
 ```
 

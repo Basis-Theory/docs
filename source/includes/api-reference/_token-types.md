@@ -1,8 +1,9 @@
 # Token Types
 
 Basis Theory offers several pre-configured token types for various use-cases and compliance requirements.
-Token Types define the rules around a data type such as validation requirements, [data classification](#tokens-token-classifications), 
-[data impact level](#tokens-token-impact-levels), and [data restriction policy](#tokens-token-restriction-policies).
+Token Types define the rules around a data type such as validation requirements, default 
+[token containers](https://developers.basistheory.com/concepts/what-are-token-containers), 
+fingerprint expressions, and mask expressions.
 
 - [Token](#token-types-token)
 - [Card](#token-types-card)
@@ -20,10 +21,6 @@ The `token` type is used for general data types that don't require input validat
 | Token Attribute                    | Value                                   |
 |------------------------------------|-----------------------------------------|
 | **Type**                           | `token`                                 |
-| **Default Classification**         | `general`                               |
-| **Default Impact Level**           | `high`                                  |
-| **Minimum Impact Level**           | `low`                                   |
-| **Default Restriction Policy**     | `redact`                                |
 | **Default Containers**             | `[ "/general/high/" ]`                  |
 | **Input Validation**               | None                                    |
 | **Input Length**                   | Any                                     |
@@ -36,10 +33,6 @@ The `token` type is used for general data types that don't require input validat
 | Token Attribute                    | Value                                                                                                                                                                                                                    |
 |------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **Type**                           | `card`                                                                                                                                                                                                                   |
-| **Default Classification**         | `pci`                                                                                                                                                                                                                    |
-| **Default Impact Level**           | `high`                                                                                                                                                                                                                   |
-| **Minimum Impact Level**           | `high`                                                                                                                                                                                                                   |
-| **Default Restriction Policy**     | `mask`                                                                                                                                                                                                                   |
 | **Default Containers**             | `[ "/pci/high/" ]`                                                                                                                                                                                                       |
 | **Input Validation**               | See [Card Object](#tokens-token-data-validations) for validation requirements                                                                                                                                            |
 | **Default Fingerprint Expression** | `{{ data.number }}`                                                                                                                                                                                                      |
@@ -51,10 +44,6 @@ The `token` type is used for general data types that don't require input validat
 | Token Attribute                    | Value                                                                                                                                                                |
 |------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **Type**                           | `bank`                                                                                                                                                               |
-| **Default Classification**         | `bank`                                                                                                                                                               |
-| **Default Impact Level**           | `high`                                                                                                                                                               |
-| **Minimum Impact Level**           | `high`                                                                                                                                                               |
-| **Default Restriction Policy**     | `mask`                                                                                                                                                               |
 | **Default Containers**             | `[ "/bank/high/" ]`                                                                                                                                                  |
 | **Input Validation**               | See [Bank Object](#tokens-token-data-validations) for validation requirements                                                                                        |
 | **Default Fingerprint Expression** | <code>{{ data.account_number }}&#124;{{ data.routing_number }}</code>                                                                                                |
@@ -66,10 +55,6 @@ The `token` type is used for general data types that don't require input validat
 | Token Attribute                    | Value                                         |
 |------------------------------------|-----------------------------------------------|
 | **Type**                           | `card_number`                                 |
-| **Default Classification**         | `pci`                                         |
-| **Default Impact Level**           | `high`                                        |
-| **Minimum Impact Level**           | `high`                                        |
-| **Default Restriction Policy**     | `mask`                                        |
 | **Default Containers**             | `[ "/pci/high/" ]`                            |
 | **Input Validation**               | Luhn-valid, numeric                           |
 | **Input Length**                   | 13 - 19                                       |
@@ -89,10 +74,6 @@ Examples:
 | Token Attribute                    | Value                                         |
 |------------------------------------|-----------------------------------------------|
 | **Type**                           | `us_bank_account_number`                      |
-| **Default Classification**         | `bank`                                        |
-| **Default Impact Level**           | `high`                                        |
-| **Minimum Impact Level**           | `low`                                         |
-| **Default Restriction Policy**     | `mask`                                        |
 | **Default Containers**             | `[ "/bank/high/" ]`                           |
 | **Input Validation**               | Numeric                                       |
 | **Input Length**                   | 3 - 17                                        |
@@ -111,10 +92,6 @@ Examples:
 | Token Attribute                    | Value                                         |
 |------------------------------------|-----------------------------------------------|
 | **Type**                           | `us_bank_routing_number`                      |
-| **Default Classification**         | `bank`                                        |
-| **Default Impact Level**           | `low`                                         |
-| **Minimum Impact Level**           | `low`                                         |
-| **Default Restriction Policy**     | `redact`                                      |
 | **Default Containers**             | `[ "/bank/low/" ]`                            |
 | **Input Validation**               | Numeric, ABA-valid                            |
 | **Input Length**                   | 9                                             |
@@ -127,10 +104,6 @@ Examples:
 | Token Attribute                    | Value                                         |
 |------------------------------------|-----------------------------------------------|
 | **Type**                           | `social_security_number`                      |
-| **Default Classification**         | `pii`                                         |
-| **Default Impact Level**           | `high`                                        |
-| **Minimum Impact Level**           | `low`                                         |
-| **Default Restriction Policy**     | `mask`                                        |
 | **Default Containers**             | `[ "/pii/high/" ]`                            |
 | **Input Validation**               | Numeric with optional delimiter of `"-"`      |
 | **Input Length**                   | 9 (not including delimiting characters)       |
@@ -150,10 +123,6 @@ Examples:
 | Token Attribute                    | Value                                         |
 |------------------------------------|-----------------------------------------------|
 | **Type**                           | `employer_id_number`                          |
-| **Default Classification**         | `pii`                                         |
-| **Default Impact Level**           | `high`                                        |
-| **Minimum Impact Level**           | `low`                                         |
-| **Default Restriction Policy**     | `mask`                                        |
 | **Default Containers**             | `[ "/pii/high/" ]`                            |
 | **Input Validation**               | Numeric with optional delimiter of `"-"`      |
 | **Input Length**                   | 9 (not including delimiting characters)       |
