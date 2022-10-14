@@ -271,7 +271,7 @@ func main() {
   "id": "c1e565009-1984-4638-8fca-dce8a82cc2af",
   "tenant_id": "77cb0024-123e-41a8-8ff8-a3d5a0fa8a08",
   "type": "token",
-  "container": "/general/high/",
+  "containers": ["/general/high/"],
   "privacy": {
     "classification": "general",
     "impact_level": "high",
@@ -386,7 +386,7 @@ func main() {
       "type": "token",
       "tenant_id": "77cb0024-123e-41a8-8ff8-a3d5a0fa8a08",
       "data": null, // Redacted based on restriction policy
-      "container": "/general/high/",
+      "containers": ["/general/high/"],
       "privacy": {
         "classification": "general",
         "impact_level": "high",
