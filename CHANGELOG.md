@@ -1,3 +1,10 @@
+# [1.65.0](https://github.com/Basis-Theory/docs/compare/v1.64.0...v1.65.0) (2022-10-14)
+
+
+### Features
+
+* Documenting Access Rules on applications and multiple token containers ([#231](https://github.com/Basis-Theory/docs/issues/231)) ([c4dfe73](https://github.com/Basis-Theory/docs/commit/c4dfe73495d965e8ed6d973790737005833be8f1))
+
 # [1.64.0](https://github.com/Basis-Theory/docs/compare/v1.63.4...v1.64.0) (2022-10-12)
 
 
