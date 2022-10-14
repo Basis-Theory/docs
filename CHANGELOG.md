@@ -1,3 +1,10 @@
+# [1.66.0](https://github.com/Basis-Theory/docs/compare/v1.65.0...v1.66.0) (2022-10-14)
+
+
+### Features
+
+* Removes privacy settings from docs ([#232](https://github.com/Basis-Theory/docs/issues/232)) ([8639e57](https://github.com/Basis-Theory/docs/commit/8639e57cfe8a93f50b9b63cace087e9b9cdf8de7))
+
 # [1.65.0](https://github.com/Basis-Theory/docs/compare/v1.64.0...v1.65.0) (2022-10-14)
 
 
