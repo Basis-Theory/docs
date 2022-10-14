@@ -415,6 +415,9 @@ _iub.csConfiguration = {"ccpaAcknowledgeOnLoad":true,"consentOnContinuedBrowsing
                       <a href="#applications-application-types" class="toc-h2 toc-link" data-title="Application Types">Application Types</a>
                     </li>
                     <li>
+                      <a href="#applications-access-rules" class="toc-h2 toc-link" data-title="Access Rules">Access Rules</a>
+                    </li>
+                    <li>
                       <a href="#applications-create-application" class="toc-h2 toc-link" data-title="Create Application">Create Application</a>
                     </li>
                     <li>
@@ -1285,7 +1288,9 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
 </tbody></table>
 
         <h1 id='applications'>Applications</h1>
-<p>Your ability to authenticate to the API is granted by creating Applications, each Application type has different usages to create the most fine-grained control over your tokens and infrastructure possible. Below, we describe each Application Type and their usages.</p>
+<p>Your ability to authenticate to the Basis Theory API is granted through an API Key associated with an Application.
+Each Application type enables different use cases, and you should strive to grant the minimal level of access to each
+Application. Below, we describe each Application Type and how to choose between them.</p>
 <h2 id='applications-application-object'>Application Object</h2>
 <table><thead>
 <tr>
@@ -1322,7 +1327,12 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
 <tr>
 <td><code>permissions</code></td>
 <td><em>array</em></td>
-<td>List of <a href="#permissions-permission-types">permissions</a> for the Application</td>
+<td>List of <a href="#permissions-permission-types">permissions</a> granted to the Application</td>
+</tr>
+<tr>
+<td><code>rules</code></td>
+<td><em>array</em></td>
+<td>List of <a href="#applications-access-rules">access rules</a> granted to the Application</td>
 </tr>
 <tr>
 <td><code>created_by</code></td>
@@ -1367,6 +1377,66 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
 <td>Management</td>
 <td><code>management</code></td>
 <td>Used for managing all aspects of your token infrastructure such as <a href="#applications-create-application">creating an Application</a></td>
+</tr>
+</tbody></table>
+<h2 id='applications-access-rules'>Access Rules</h2>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>description</code></td>
+<td><em>string</em></td>
+<td>A description of this Access Rule</td>
+</tr>
+<tr>
+<td><code>priority</code></td>
+<td><em>int</em></td>
+<td>The priority of the rule, beginning with <code>1</code> and higher values having lower precedence</td>
+</tr>
+<tr>
+<td><code>container</code></td>
+<td><em>string</em></td>
+<td>The <a href="https://developers.basistheory.com/concepts/what-are-token-containers">container</a> of Tokens this rule is scoped to</td>
+</tr>
+<tr>
+<td><code>transform</code></td>
+<td><em>string</em></td>
+<td>The <a href="#applications-access-rules-access-rule-transforms">transform</a> to apply to accessed Tokens</td>
+</tr>
+<tr>
+<td><code>permissions</code></td>
+<td><em>array</em></td>
+<td>List of <a href="#permissions-permission-types">permissions</a> to grant on this Access Rule</td>
+</tr>
+</tbody></table>
+
+<p>See <a href="https://developers.basistheory.com/concepts/access-controls/#what-are-access-rules">Access Rules</a> for more information.</p>
+<h3 id='applications-access-rules-access-rule-transforms'>Access Rule Transforms</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Redact</td>
+<td><code>redact</code></td>
+<td>Redacts the <code>data</code> property from Token responses</td>
+</tr>
+<tr>
+<td>Mask</td>
+<td><code>mask</code></td>
+<td>Returns the masked value in the <code>data</code> property on Token responses if a <code>mask</code> is defined, otherwise <code>data</code> is redacted</td>
+</tr>
+<tr>
+<td>Reveal</td>
+<td><code>reveal</code></td>
+<td>Returns the plaintext value in the <code>data</code> property in Token responses</td>
 </tr>
 </tbody></table>
 <h2 id='applications-create-application'>Create Application</h2>
@@ -1500,12 +1570,21 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
 </tr>
 <tr>
 <td><code>permissions</code></td>
-<td>true</td>
+<td>false</td>
 <td><em>array</em></td>
 <td><code>[]</code></td>
-<td>A non-empty array of <a href="#permissions-permission-types">Permissions</a> granted to the application.</td>
+<td>An array of <a href="#permissions-permission-types">Permissions</a> granted to the application.</td>
+</tr>
+<tr>
+<td><code>rules</code></td>
+<td>false</td>
+<td><em>array</em></td>
+<td><code>[]</code></td>
+<td>An array of <a href="#applications-access-rules">Access Rules</a> granted to the application.</td>
 </tr>
 </tbody></table>
+
+<p>Either <code>permissions</code> or <code>rules</code> is required to be non-empty when creating an Application.</p>
 <h3 id='applications-create-application-response'>Response</h3>
 <p>Returns an <a href="#applications-application-object">Application</a> if the application was created. Returns <a href="#errors">an error</a> if there were validation errors, or the application failed to create.</p>
 <h2 id='applications-list-applications'>List Applications</h2>
@@ -1902,12 +1981,21 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
 </tr>
 <tr>
 <td><code>permissions</code></td>
-<td>true</td>
+<td>false</td>
 <td><em>array</em></td>
 <td><code>[]</code></td>
 <td>A non-empty array of <a href="#permissions-permission-types">Permissions</a> granted to the application.</td>
 </tr>
+<tr>
+<td><code>rules</code></td>
+<td>false</td>
+<td><em>array</em></td>
+<td><code>[]</code></td>
+<td>An array of <a href="#applications-access-rules">Access Rules</a> granted to the application.</td>
+</tr>
 </tbody></table>
+
+<p>Either <code>permissions</code> or <code>rules</code> is required to be non-empty when updating an Application.</p>
 <h3 id='applications-update-application-response'>Response</h3>
 <p>Returns an <a href="#applications-application-object">Application</a> if the application was updated. Returns <a href="#errors">an error</a> if there were validation errors, or the application failed to update.</p>
 <h2 id='applications-regenerate-api-key'>Regenerate API Key</h2>
@@ -6897,8 +6985,8 @@ Token Types define the rules around a data type such as validation requirements,
 <td><code>redact</code></td>
 </tr>
 <tr>
-<td><strong>Default Container</strong></td>
-<td><code>/general/high/</code></td>
+<td><strong>Default Containers</strong></td>
+<td><code>[ &quot;/general/high/&quot; ]</code></td>
 </tr>
 <tr>
 <td><strong>Input Validation</strong></td>
@@ -6945,8 +7033,8 @@ Token Types define the rules around a data type such as validation requirements,
 <td><code>mask</code></td>
 </tr>
 <tr>
-<td><strong>Default Container</strong></td>
-<td><code>/pci/high/</code></td>
+<td><strong>Default Containers</strong></td>
+<td><code>[ &quot;/pci/high/&quot; ]</code></td>
 </tr>
 <tr>
 <td><strong>Input Validation</strong></td>
@@ -6989,8 +7077,8 @@ Token Types define the rules around a data type such as validation requirements,
 <td><code>mask</code></td>
 </tr>
 <tr>
-<td><strong>Default Container</strong></td>
-<td><code>/bank/high/</code></td>
+<td><strong>Default Containers</strong></td>
+<td><code>[ &quot;/bank/high/&quot; ]</code></td>
 </tr>
 <tr>
 <td><strong>Input Validation</strong></td>
@@ -7033,8 +7121,8 @@ Token Types define the rules around a data type such as validation requirements,
 <td><code>mask</code></td>
 </tr>
 <tr>
-<td><strong>Default Container</strong></td>
-<td><code>/pci/high/</code></td>
+<td><strong>Default Containers</strong></td>
+<td><code>[ &quot;/pci/high/&quot; ]</code></td>
 </tr>
 <tr>
 <td><strong>Input Validation</strong></td>
@@ -7099,8 +7187,8 @@ Token Types define the rules around a data type such as validation requirements,
 <td><code>mask</code></td>
 </tr>
 <tr>
-<td><strong>Default Container</strong></td>
-<td><code>/bank/high/</code></td>
+<td><strong>Default Containers</strong></td>
+<td><code>[ &quot;/bank/high/&quot; ]</code></td>
 </tr>
 <tr>
 <td><strong>Input Validation</strong></td>
@@ -7161,8 +7249,8 @@ Token Types define the rules around a data type such as validation requirements,
 <td><code>redact</code></td>
 </tr>
 <tr>
-<td><strong>Default Container</strong></td>
-<td><code>/bank/low/</code></td>
+<td><strong>Default Containers</strong></td>
+<td><code>[ &quot;/bank/low/&quot; ]</code></td>
 </tr>
 <tr>
 <td><strong>Input Validation</strong></td>
@@ -7209,8 +7297,8 @@ Token Types define the rules around a data type such as validation requirements,
 <td><code>mask</code></td>
 </tr>
 <tr>
-<td><strong>Default Container</strong></td>
-<td><code>/pii/high/</code></td>
+<td><strong>Default Containers</strong></td>
+<td><code>[ &quot;/pii/high/&quot; ]</code></td>
 </tr>
 <tr>
 <td><strong>Input Validation</strong></td>
@@ -7275,8 +7363,8 @@ Token Types define the rules around a data type such as validation requirements,
 <td><code>mask</code></td>
 </tr>
 <tr>
-<td><strong>Default Container</strong></td>
-<td><code>/pii/high/</code></td>
+<td><strong>Default Containers</strong></td>
+<td><code>[ &quot;/pii/high/&quot; ]</code></td>
 </tr>
 <tr>
 <td><strong>Input Validation</strong></td>
@@ -7344,7 +7432,7 @@ Token Types define the rules around a data type such as validation requirements,
 <tr>
 <td><code>mask</code></td>
 <td><em>any</em></td>
-<td>(Optional) An <a href="/expressions/#masks">expression</a> defining the mask to apply when retrieving token data with restricted permissions.</td>
+<td>An <a href="/expressions/#masks">expression</a> defining the mask to apply when retrieving token data with restricted permissions.</td>
 </tr>
 <tr>
 <td><code>fingerprint</code></td>
@@ -7354,12 +7442,12 @@ Token Types define the rules around a data type such as validation requirements,
 <tr>
 <td><code>privacy</code></td>
 <td><em><a href="#tokens-token-object-privacy-object">privacy object</a></em></td>
-<td>Token Privacy Settings</td>
+<td>(Deprecated) Token Privacy Settings</td>
 </tr>
 <tr>
-<td><code>container</code></td>
-<td><em>string</em></td>
-<td>A path representing a logical grouping of tokens. See <a href="https://developers.basistheory.com/concepts/what-are-token-containers/">Token Containers</a> for details.</td>
+<td><code>containers</code></td>
+<td><em>array</em></td>
+<td>Array of containers to place this token within. Each container is a path representing a logical grouping of tokens. See <a href="https://developers.basistheory.com/concepts/what-are-token-containers/">Token Containers</a> for details.</td>
 </tr>
 <tr>
 <td><code>metadata</code></td>
@@ -7369,12 +7457,12 @@ Token Types define the rules around a data type such as validation requirements,
 <tr>
 <td><code>created_by</code></td>
 <td><em>uuid</em></td>
-<td>(Optional) The <a href="#applications-application-object">Application</a> ID which created the token</td>
+<td>The <a href="#applications-application-object">Application</a> ID which created the token</td>
 </tr>
 <tr>
 <td><code>created_at</code></td>
 <td><em>date</em></td>
-<td>(Optional) Created date of the token in ISO 8601 format</td>
+<td>Created date of the token in ISO 8601 format</td>
 </tr>
 <tr>
 <td><code>modified_by</code></td>
@@ -7576,9 +7664,9 @@ Default privacy settings can be overridden at the time of creation, but only to 
 <h2 id='tokens-token-classifications'>Token Classifications</h2>
 <p>Each Token has a data classification associated with it which defines the type of data it contains.</p>
 
-<p>Basis Theory scopes access to Tokens based upon their <a href="https://developers.basistheory.com/concepts/what-are-token-containers">Container</a>. 
-While the <code>container</code> attribute can be explicitly provided when creating a Token, if unspecified, 
-its value defaults to <code>/&lt;classification&gt;/&lt;impact_level&gt;/</code>.</p>
+<p>Basis Theory scopes access to Tokens based upon their <a href="https://developers.basistheory.com/concepts/what-are-token-containers">Containers</a>. 
+While the <code>containers</code> attribute can be explicitly provided when creating a Token, if unspecified, 
+its value defaults to <code>[&quot;/&lt;classification&gt;/&lt;impact_level&gt;/&quot;]</code>.</p>
 
 <p>The following data classifications are supported:</p>
 
@@ -7614,9 +7702,9 @@ its value defaults to <code>/&lt;classification&gt;/&lt;impact_level&gt;/</code>
 <p>Basis Theory follows the standard <strong><a href="https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.199.pdf#page=6" target="_blank">NIST-defined impact levels</a></strong> 
 of low, moderate, and high to classify the impact unauthorized exposure of a particular piece of data would have on an organization.</p>
 
-<p>Basis Theory scopes access to Tokens based upon their <a href="https://developers.basistheory.com/concepts/what-are-token-containers">Container</a>.
-While the <code>container</code> attribute can be explicitly provided when creating a Token, if unspecified,
-its value defaults to <code>/&lt;classification&gt;/&lt;impact_level&gt;/</code>.</p>
+<p>Basis Theory scopes access to Tokens based upon their <a href="https://developers.basistheory.com/concepts/what-are-token-containers">Containers</a>.
+While the <code>containers</code> attribute can be explicitly provided when creating a Token, if unspecified,
+its value defaults to <code>[&quot;/&lt;classification&gt;/&lt;impact_level&gt;/&quot;]</code>.</p>
 
 <p>The following impact levels are supported:</p>
 
@@ -7727,7 +7815,7 @@ An expired token is <strong>deleted</strong> from the tenant up to <strong>1 hou
   <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">token</span><span class="dl">'</span><span class="p">,</span>
   <span class="na">data</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Sensitive Value</span><span class="dl">'</span><span class="p">,</span>
   <span class="na">mask</span><span class="p">:</span> <span class="dl">'</span><span class="s1">{{ data | reveal_last: 4 }}</span><span class="dl">'</span><span class="p">,</span>
-  <span class="na">container</span><span class="p">:</span> <span class="dl">'</span><span class="s1">/general/high/</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">containers</span><span class="p">:</span> <span class="p">[</span><span class="dl">'</span><span class="s1">/general/high/</span><span class="dl">'</span><span class="p">],</span>
   <span class="na">privacy</span><span class="p">:</span> <span class="p">{</span>
     <span class="na">restriction_policy</span><span class="p">:</span> <span class="dl">'</span><span class="s1">mask</span><span class="dl">'</span>
   <span class="p">},</span>
@@ -7750,7 +7838,7 @@ An expired token is <strong>deleted</strong> from the tenant up to <strong>1 hou
   <span class="n">Type</span> <span class="p">=</span> <span class="s">"token"</span><span class="p">,</span>
   <span class="n">Data</span> <span class="p">=</span> <span class="s">"Sensitive Value"</span><span class="p">,</span>
   <span class="n">Mask</span> <span class="p">=</span> <span class="s">"{{ data | reveal_last: 4 }}"</span><span class="p">,</span>
-  <span class="n">Container</span> <span class="p">=</span> <span class="s">"/general/high/"</span><span class="p">,</span>
+  <span class="n">Containers</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="p">{</span> <span class="s">"/general/high/"</span> <span class="p">},</span>
   <span class="n">Privacy</span> <span class="p">=</span> <span class="k">new</span> <span class="n">DataPrivacy</span> <span class="p">{</span>
     <span class="n">RestrictionPolicy</span> <span class="p">=</span> <span class="n">DataRestrictionPolicy</span><span class="p">.</span><span class="n">MASK</span>
   <span class="p">},</span>
@@ -7779,7 +7867,7 @@ An expired token is <strong>deleted</strong> from the tenant up to <strong>1 hou
         <span class="n">metadata</span><span class="o">=</span><span class="p">{</span>
             <span class="s">"nonSensitiveField"</span><span class="p">:</span> <span class="s">"Non-Sensitive Value"</span>
         <span class="p">},</span>
-        <span class="n">container</span><span class="o">=</span><span class="s">"/general/high/"</span><span class="p">,</span>
+        <span class="n">containers</span><span class="o">=</span><span class="p">[</span><span class="s">"/general/high/"</span><span class="p">],</span>
         <span class="n">privacy</span><span class="o">=</span><span class="n">Privacy</span><span class="p">(</span>
           <span class="n">restriction_policy</span><span class="o">=</span><span class="s">"mask"</span>
         <span class="p">),</span>
@@ -7813,7 +7901,7 @@ An expired token is <strong>deleted</strong> from the tenant up to <strong>1 hou
   <span class="n">createTokenRequest</span><span class="o">.</span><span class="n">SetSearchIndexes</span><span class="p">([]</span><span class="kt">string</span><span class="p">{</span><span class="s">"{{ data }}"</span><span class="p">,</span> <span class="s">"{{ data | last4}}"</span><span class="p">})</span>
   <span class="n">createTokenRequest</span><span class="o">.</span><span class="n">SetFingerprintExpression</span><span class="p">(</span><span class="s">"{{ data }}"</span><span class="p">)</span>
   <span class="n">createTokenRequest</span><span class="o">.</span><span class="n">SetDeduplicateToken</span><span class="p">(</span><span class="no">true</span><span class="p">)</span>
-  <span class="n">createTokenRequest</span><span class="o">.</span><span class="n">SetContainer</span><span class="p">(</span><span class="s">"/general/high/"</span><span class="p">)</span>
+  <span class="n">createTokenRequest</span><span class="o">.</span><span class="n">SetContainers</span><span class="p">([]</span><span class="kt">string</span><span class="p">{</span><span class="s">"/general/high/"</span><span class="p">})</span>
   <span class="n">createTokenRequest</span><span class="o">.</span><span class="n">SetExpiresAt</span><span class="p">(</span><span class="s">"8/26/2030 7:23:57 PM -07:00"</span><span class="p">)</span>
 
   <span class="n">privacy</span> <span class="o">:=</span> <span class="o">*</span><span class="n">basistheory</span><span class="o">.</span><span class="n">NewPrivacy</span><span class="p">()</span>
@@ -7832,7 +7920,7 @@ An expired token is <strong>deleted</strong> from the tenant up to <strong>1 hou
   </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"token"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XXXXXXXXXXXalue"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"mask"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{{ data | reveal_last: 4 }}"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"container"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/general/high/"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"containers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"/general/high/"</span><span class="p">],</span><span class="w">
   </span><span class="nl">"privacy"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"classification"</span><span class="p">:</span><span class="w"> </span><span class="s2">"general"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"impact_level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"high"</span><span class="p">,</span><span class="w">
@@ -7907,11 +7995,11 @@ An expired token is <strong>deleted</strong> from the tenant up to <strong>1 hou
 <td>Token Privacy Settings overrides. Overrides must be a higher specificity level than the default or minimum setting for the <a href="#token-token-types">Token Type</a>.</td>
 </tr>
 <tr>
-<td><code>container</code></td>
+<td><code>containers</code></td>
 <td>false</td>
-<td><em>string</em></td>
+<td><em>array</em></td>
 <td>Depends on the <a href="#token-types">token type</a></td>
-<td>A path representing a logical grouping of tokens. See <a href="https://developers.basistheory.com/concepts/what-are-token-containers/">Token Containers</a> for details.</td>
+<td>Array of containers to place this token within. Each container is a path representing a logical grouping of tokens. See <a href="https://developers.basistheory.com/concepts/what-are-token-containers/">Token Containers</a> for details.</td>
 </tr>
 <tr>
 <td><code>metadata</code></td>
@@ -8014,7 +8102,7 @@ An expired token is <strong>deleted</strong> from the tenant up to <strong>1 hou
       </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"token"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"tenant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77cb0024-123e-41a8-8ff8-a3d5a0fa8a08"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">Redacted</span><span class="w"> </span><span class="err">based</span><span class="w"> </span><span class="err">on</span><span class="w"> </span><span class="err">Restriction</span><span class="w"> </span><span class="err">Policy</span><span class="w">
-      </span><span class="nl">"container"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/general/high/"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"containers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"/general/high/"</span><span class="p">],</span><span class="w">
       </span><span class="nl">"privacy"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"classification"</span><span class="p">:</span><span class="w"> </span><span class="s2">"general"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"impact_level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"moderate"</span><span class="p">,</span><span class="w">
@@ -8127,7 +8215,7 @@ Providing any query parameters will filter the results. Returns <a href="#errors
   </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"token"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"tenant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77cb0024-123e-41a8-8ff8-a3d5a0fa8a08"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">Redacted</span><span class="w"> </span><span class="err">based</span><span class="w"> </span><span class="err">on</span><span class="w"> </span><span class="err">Restriction</span><span class="w"> </span><span class="err">Policy</span><span class="w">
-  </span><span class="nl">"container"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/general/high/"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"containers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"/general/high/"</span><span class="p">],</span><span class="w">
   </span><span class="nl">"privacy"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"classification"</span><span class="p">:</span><span class="w"> </span><span class="s2">"general"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"impact_level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"moderate"</span><span class="p">,</span><span class="w">
@@ -8297,7 +8385,7 @@ Returns <a href="#errors">an error</a> if the token could not be retrieved.</p>
   </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"token"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XXXXXXXXXXXalue"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"mask"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{{ data | reveal_last: 4 }}"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"container"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/general/high/"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"containers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"/general/high/"</span><span class="p">],</span><span class="w">
   </span><span class="nl">"privacy"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"classification"</span><span class="p">:</span><span class="w"> </span><span class="s2">"general"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"impact_level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"high"</span><span class="p">,</span><span class="w">
@@ -8467,7 +8555,7 @@ Returns <a href="#errors">an error</a> if the token could not be retrieved.</p>
       </span><span class="nl">"tenant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77cb0024-123e-41a8-8ff8-a3d5a0fa8a08"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XXX-XX-6789"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"fingerprint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AKCUXS83DokKo4pDRKSAy4d42t9i8dcP1X2jijwEBCQH"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"container"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/pii/high/"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"containers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"/pii/high/"</span><span class="p">],</span><span class="w">
       </span><span class="nl">"privacy"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"classification"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pii"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"impact_level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"high"</span><span class="p">,</span><span class="w">
@@ -8651,7 +8739,7 @@ For example, to search for tokens that were created in the year 2021, you can qu
 <tr>
 <td><code>container</code></td>
 <td><em>string</em></td>
-<td>The token&#39;s <a href="#tokens-token-containers">container</a>.</td>
+<td>Searches across a token&#39;s <a href="#tokens-token-containers">containers</a>.</td>
 <td><code>container:&quot;/pci/high/&quot;</code></td>
 </tr>
 <tr>
@@ -9049,7 +9137,7 @@ based on the <code>search_indexes</code> provided in the <a href="#tokens-create
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c1e565009-1984-4638-8fca-dce8a82cc2af"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"tenant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77cb0024-123e-41a8-8ff8-a3d5a0fa8a08"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"token"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"container"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/general/high/"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"containers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"/general/high/"</span><span class="p">],</span><span class="w">
   </span><span class="nl">"privacy"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"classification"</span><span class="p">:</span><span class="w"> </span><span class="s2">"general"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"impact_level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"high"</span><span class="p">,</span><span class="w">
@@ -9185,7 +9273,7 @@ based on the <code>search_indexes</code> provided in the <a href="#tokens-create
       </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"token"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"tenant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77cb0024-123e-41a8-8ff8-a3d5a0fa8a08"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">Redacted</span><span class="w"> </span><span class="err">based</span><span class="w"> </span><span class="err">on</span><span class="w"> </span><span class="err">restriction</span><span class="w"> </span><span class="err">policy</span><span class="w">
-      </span><span class="nl">"container"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/general/high/"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"containers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"/general/high/"</span><span class="p">],</span><span class="w">
       </span><span class="nl">"privacy"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"classification"</span><span class="p">:</span><span class="w"> </span><span class="s2">"general"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"impact_level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"high"</span><span class="p">,</span><span class="w">
@@ -9991,7 +10079,7 @@ specified in the tokenize request.</p>
 <td><code>token:&lt;classification&gt;:*</code> permissions</td>
 <td>October 13, 2022</td>
 <td>October 13, 2022</td>
-<td>Classification and impact level based permissions have been migrated to <a href="https://developers.basistheory.com/concepts/access-controls/#what-are-access-rules">Access Rules</a> to provide a more flexible model for scoping access to a subset of Tokens via <a href="https://developers.basistheory.com/concepts/what-are-token-containers">Containers</a>. For more information, see the <a href="#deprecated-features-migrating-permissions-to-access-rules">table below</a>.</td>
+<td>Classification and impact level based permissions have been migrated to <a href="https://developers.basistheory.com/concepts/access-controls/#what-are-access-rules">Access Rules</a> to provide a more flexible model for scoping access to a subset of Tokens via <a href="https://developers.basistheory.com/concepts/what-are-token-containers">Containers</a>. For more information, see the <a href="/#deprecations-migrating-permissions-to-access-rules">table below</a>.</td>
 </tr>
 <tr>
 <td><code>source_token_type</code> removed from Reactor Formulas</td>
@@ -10010,10 +10098,10 @@ specified in the tokenize request.</p>
 <p><a href="/#tokens-token-object-privacy-object">Privacy settings</a> were previously used to scope access to Tokens based on
 their classification and impact levels. In order to provide a more flexible access control model that can be customized
 per Application, we have introduced Token <a href="https://developers.basistheory.com/concepts/what-are-token-containers">Containers</a> 
-to logically group Tokens according to any data governance requirements. A Token&#39;s <code>container</code> attribute may be defined
-when creating the token, or if unspecified, it will default to <code>/&lt;classification&gt;/&lt;impact_level&gt;/</code>. If you were 
-previously customizing a Token&#39;s classification or impact level, please update your systems to instead directly set the
-<code>container</code> attribute instead.</p>
+to logically group Tokens according to any data governance requirements. A Token may be explicitly added to a container
+when creating the token, or if unspecified, a Token will be placed within the container <code>/&lt;classification&gt;/&lt;impact_level&gt;/</code> 
+by default. If you were previously customizing a Token&#39;s classification or impact level, please update your systems to 
+directly set the <code>containers</code> attribute instead.</p>
 
 <p>Restriction policies (i.e. <code>mask</code>, <code>redact</code>) were previously used in conjunction with impact level based read 
 permissions (e.g. <code>token:general:read:low</code>) to define how Token data should be transformed when reading Tokens with 
@@ -10026,7 +10114,7 @@ update your integration to ignore this attribute as it will be removed on the Sh
 
 <p>If you were previously using classification-based Token permissions (e.g. <code>token:general:create</code>), your permissions
 have automatically been migrated to equivalent <a href="https://developers.basistheory.com/concepts/access-controls/#what-are-access-rules">Access Rules</a>.
-Refer to <a href="#deprecated-features-migrating-permissions-to-access-rules">Migrating Permissions to Access Rules</a> below for further details.</p>
+Refer to <a href="/#deprecations-migrating-permissions-to-access-rules">Migrating Permissions to Access Rules</a> below for further details.</p>
 <h2 id='deprecations-migrating-permissions-to-access-rules'>Migrating Permissions to Access Rules</h2>
 <p>Permissions on existing Applications have been automatically migrated to equivalent <a href="https://developers.basistheory.com/concepts/access-controls/#what-are-access-rules">Access Rules</a>,
 and no action is required. The table below details how each permission was migrated, with each row representing 
