@@ -675,15 +675,6 @@ _iub.csConfiguration = {"ccpaAcknowledgeOnLoad":true,"consentOnContinuedBrowsing
                       <a href="#tokens-token-data-validations" class="toc-h2 toc-link" data-title="Token Data Validations">Token Data Validations</a>
                     </li>
                     <li>
-                      <a href="#tokens-token-classifications" class="toc-h2 toc-link" data-title="Token Classifications">Token Classifications</a>
-                    </li>
-                    <li>
-                      <a href="#tokens-token-impact-levels" class="toc-h2 toc-link" data-title="Token Impact Levels">Token Impact Levels</a>
-                    </li>
-                    <li>
-                      <a href="#tokens-token-restriction-policies" class="toc-h2 toc-link" data-title="Token Restriction Policies">Token Restriction Policies</a>
-                    </li>
-                    <li>
                       <a href="#tokens-token-expiration" class="toc-h2 toc-link" data-title="Token Expiration">Token Expiration</a>
                     </li>
                     <li>
@@ -6942,8 +6933,9 @@ Deleting a Tenant Invitation will invalidate any outstanding invitation links se
 <p>Returns <a href="#errors">an error</a> if the Tenant Invitation could not be deleted.</p>
 <h1 id='token-types'>Token Types</h1>
 <p>Basis Theory offers several pre-configured token types for various use-cases and compliance requirements.
-Token Types define the rules around a data type such as validation requirements, <a href="#tokens-token-classifications">data classification</a>, 
-<a href="#tokens-token-impact-levels">data impact level</a>, and <a href="#tokens-token-restriction-policies">data restriction policy</a>.</p>
+Token Types define the rules around a data type such as validation requirements, default 
+<a href="https://developers.basistheory.com/concepts/what-are-token-containers">token containers</a>, 
+fingerprint expressions, and mask expressions.</p>
 
 <ul>
 <li><a href="#token-types-token">Token</a></li>
@@ -6967,22 +6959,6 @@ Token Types define the rules around a data type such as validation requirements,
 <tr>
 <td><strong>Type</strong></td>
 <td><code>token</code></td>
-</tr>
-<tr>
-<td><strong>Default Classification</strong></td>
-<td><code>general</code></td>
-</tr>
-<tr>
-<td><strong>Default Impact Level</strong></td>
-<td><code>high</code></td>
-</tr>
-<tr>
-<td><strong>Minimum Impact Level</strong></td>
-<td><code>low</code></td>
-</tr>
-<tr>
-<td><strong>Default Restriction Policy</strong></td>
-<td><code>redact</code></td>
 </tr>
 <tr>
 <td><strong>Default Containers</strong></td>
@@ -7017,22 +6993,6 @@ Token Types define the rules around a data type such as validation requirements,
 <td><code>card</code></td>
 </tr>
 <tr>
-<td><strong>Default Classification</strong></td>
-<td><code>pci</code></td>
-</tr>
-<tr>
-<td><strong>Default Impact Level</strong></td>
-<td><code>high</code></td>
-</tr>
-<tr>
-<td><strong>Minimum Impact Level</strong></td>
-<td><code>high</code></td>
-</tr>
-<tr>
-<td><strong>Default Restriction Policy</strong></td>
-<td><code>mask</code></td>
-</tr>
-<tr>
 <td><strong>Default Containers</strong></td>
 <td><code>[ &quot;/pci/high/&quot; ]</code></td>
 </tr>
@@ -7061,22 +7021,6 @@ Token Types define the rules around a data type such as validation requirements,
 <td><code>bank</code></td>
 </tr>
 <tr>
-<td><strong>Default Classification</strong></td>
-<td><code>bank</code></td>
-</tr>
-<tr>
-<td><strong>Default Impact Level</strong></td>
-<td><code>high</code></td>
-</tr>
-<tr>
-<td><strong>Minimum Impact Level</strong></td>
-<td><code>high</code></td>
-</tr>
-<tr>
-<td><strong>Default Restriction Policy</strong></td>
-<td><code>mask</code></td>
-</tr>
-<tr>
 <td><strong>Default Containers</strong></td>
 <td><code>[ &quot;/bank/high/&quot; ]</code></td>
 </tr>
@@ -7103,22 +7047,6 @@ Token Types define the rules around a data type such as validation requirements,
 <tr>
 <td><strong>Type</strong></td>
 <td><code>card_number</code></td>
-</tr>
-<tr>
-<td><strong>Default Classification</strong></td>
-<td><code>pci</code></td>
-</tr>
-<tr>
-<td><strong>Default Impact Level</strong></td>
-<td><code>high</code></td>
-</tr>
-<tr>
-<td><strong>Minimum Impact Level</strong></td>
-<td><code>high</code></td>
-</tr>
-<tr>
-<td><strong>Default Restriction Policy</strong></td>
-<td><code>mask</code></td>
 </tr>
 <tr>
 <td><strong>Default Containers</strong></td>
@@ -7171,22 +7099,6 @@ Token Types define the rules around a data type such as validation requirements,
 <td><code>us_bank_account_number</code></td>
 </tr>
 <tr>
-<td><strong>Default Classification</strong></td>
-<td><code>bank</code></td>
-</tr>
-<tr>
-<td><strong>Default Impact Level</strong></td>
-<td><code>high</code></td>
-</tr>
-<tr>
-<td><strong>Minimum Impact Level</strong></td>
-<td><code>low</code></td>
-</tr>
-<tr>
-<td><strong>Default Restriction Policy</strong></td>
-<td><code>mask</code></td>
-</tr>
-<tr>
 <td><strong>Default Containers</strong></td>
 <td><code>[ &quot;/bank/high/&quot; ]</code></td>
 </tr>
@@ -7233,22 +7145,6 @@ Token Types define the rules around a data type such as validation requirements,
 <td><code>us_bank_routing_number</code></td>
 </tr>
 <tr>
-<td><strong>Default Classification</strong></td>
-<td><code>bank</code></td>
-</tr>
-<tr>
-<td><strong>Default Impact Level</strong></td>
-<td><code>low</code></td>
-</tr>
-<tr>
-<td><strong>Minimum Impact Level</strong></td>
-<td><code>low</code></td>
-</tr>
-<tr>
-<td><strong>Default Restriction Policy</strong></td>
-<td><code>redact</code></td>
-</tr>
-<tr>
 <td><strong>Default Containers</strong></td>
 <td><code>[ &quot;/bank/low/&quot; ]</code></td>
 </tr>
@@ -7279,22 +7175,6 @@ Token Types define the rules around a data type such as validation requirements,
 <tr>
 <td><strong>Type</strong></td>
 <td><code>social_security_number</code></td>
-</tr>
-<tr>
-<td><strong>Default Classification</strong></td>
-<td><code>pii</code></td>
-</tr>
-<tr>
-<td><strong>Default Impact Level</strong></td>
-<td><code>high</code></td>
-</tr>
-<tr>
-<td><strong>Minimum Impact Level</strong></td>
-<td><code>low</code></td>
-</tr>
-<tr>
-<td><strong>Default Restriction Policy</strong></td>
-<td><code>mask</code></td>
 </tr>
 <tr>
 <td><strong>Default Containers</strong></td>
@@ -7345,22 +7225,6 @@ Token Types define the rules around a data type such as validation requirements,
 <tr>
 <td><strong>Type</strong></td>
 <td><code>employer_id_number</code></td>
-</tr>
-<tr>
-<td><strong>Default Classification</strong></td>
-<td><code>pii</code></td>
-</tr>
-<tr>
-<td><strong>Default Impact Level</strong></td>
-<td><code>high</code></td>
-</tr>
-<tr>
-<td><strong>Minimum Impact Level</strong></td>
-<td><code>low</code></td>
-</tr>
-<tr>
-<td><strong>Default Restriction Policy</strong></td>
-<td><code>mask</code></td>
 </tr>
 <tr>
 <td><strong>Default Containers</strong></td>
@@ -7440,11 +7304,6 @@ Token Types define the rules around a data type such as validation requirements,
 <td>Uniquely identifies the contents of this token. See <a href="#token-types">Token Types</a> for the default expression for each token type.</td>
 </tr>
 <tr>
-<td><code>privacy</code></td>
-<td><em><a href="#tokens-token-object-privacy-object">privacy object</a></em></td>
-<td>(Deprecated) Token Privacy Settings</td>
-</tr>
-<tr>
 <td><code>containers</code></td>
 <td><em>array</em></td>
 <td>Array of containers to place this token within. Each container is a path representing a logical grouping of tokens. See <a href="https://developers.basistheory.com/concepts/what-are-token-containers/">Token Containers</a> for details.</td>
@@ -7488,43 +7347,6 @@ Token Types define the rules around a data type such as validation requirements,
 <td><code>expires_at</code></td>
 <td><em>string</em></td>
 <td>(Optional) The <a href="#tokens-token-expiration">token expiration</a> date.</td>
-</tr>
-</tbody></table>
-<h3 id='tokens-token-object-privacy-object'>Privacy Object</h3>
-<aside class="warning">
-  <span>
-    Privacy settings have been deprecated and replaced by a more flexible authorization model based upon 
-    <a href="https://developers.basistheory.com/concepts/what-are-token-containers">Containers</a> and 
-    <a href="https://developers.basistheory.com/concepts/access-controls/#what-are-access-rules">Access Rules</a>. 
-    If you are currently using Token Privacy settings, see our documentation on 
-    <a href="/#deprecations-migrating-from-privacy-settings">Migrating from Privacy Settings</a>.
-  </span>
-</aside>
-
-<p>The following object defines the privacy settings applied to a Token. If unspecified, a default set of privacy settings will be applied based on the <a href="#token-types">Token Type</a>.
-Default privacy settings can be overridden at the time of creation, but only to a setting with a higher specificity level.</p>
-
-<table><thead>
-<tr>
-<th>Attribute</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>classification</code></td>
-<td><em>string</em></td>
-<td><a href="#tokens-token-classifications">Classification</a> of the Token (e.g. <code>general</code>, <code>bank</code>, <code>pci</code>)</td>
-</tr>
-<tr>
-<td><code>impact_level</code></td>
-<td><em>string</em></td>
-<td><a href="#tokens-token-impact-levels">Impact level</a> of the Token (i.e. <code>low</code>, <code>moderate</code>, <code>high</code>)</td>
-</tr>
-<tr>
-<td><code>restriction_policy</code></td>
-<td><em>string</em></td>
-<td>(Deprecated) <a href="#tokens-token-restriction-policies">Restriction policy</a> applied to the Token.</td>
 </tr>
 </tbody></table>
 <h2 id='tokens-token-data-validations'>Token Data Validations</h2><h3 id='tokens-token-data-validations-bank-object'>Bank Object</h3>
@@ -7661,99 +7483,6 @@ Default privacy settings can be overridden at the time of creation, but only to 
 <td>Test card</td>
 </tr>
 </tbody></table>
-<h2 id='tokens-token-classifications'>Token Classifications</h2>
-<p>Each Token has a data classification associated with it which defines the type of data it contains.</p>
-
-<p>Basis Theory scopes access to Tokens based upon their <a href="https://developers.basistheory.com/concepts/what-are-token-containers">Containers</a>. 
-While the <code>containers</code> attribute can be explicitly provided when creating a Token, if unspecified, 
-its value defaults to <code>[&quot;/&lt;classification&gt;/&lt;impact_level&gt;/&quot;]</code>.</p>
-
-<p>The following data classifications are supported:</p>
-
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-<th>Specificity Level</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>general</code></td>
-<td>Contains sensitive data that does not fall under a more specific classification or compliance requirements</td>
-<td>0</td>
-</tr>
-<tr>
-<td><code>bank</code></td>
-<td>Contains data that falls under banking compliance (e.g. Nacha)</td>
-<td>10</td>
-</tr>
-<tr>
-<td><code>pci</code></td>
-<td>Contains data that falls under PCI compliance</td>
-<td>10</td>
-</tr>
-<tr>
-<td><code>pii</code></td>
-<td>Contains user or customer specific identifiers (e.g. email, date of birth, address)</td>
-<td>10</td>
-</tr>
-</tbody></table>
-<h2 id='tokens-token-impact-levels'>Token Impact Levels</h2>
-<p>Basis Theory follows the standard <strong><a href="https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.199.pdf#page=6" target="_blank">NIST-defined impact levels</a></strong> 
-of low, moderate, and high to classify the impact unauthorized exposure of a particular piece of data would have on an organization.</p>
-
-<p>Basis Theory scopes access to Tokens based upon their <a href="https://developers.basistheory.com/concepts/what-are-token-containers">Containers</a>.
-While the <code>containers</code> attribute can be explicitly provided when creating a Token, if unspecified,
-its value defaults to <code>[&quot;/&lt;classification&gt;/&lt;impact_level&gt;/&quot;]</code>.</p>
-
-<p>The following impact levels are supported:</p>
-
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-<th>Specificity Level</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>low</code></td>
-<td>Loss of data confidentiality, integrity, or availability is expected to have <strong>limited</strong> adverse effect</td>
-<td>0</td>
-</tr>
-<tr>
-<td><code>moderate</code></td>
-<td>Loss of data confidentiality, integrity, or availability is expected to have <strong>serious</strong> adverse effect</td>
-<td>1</td>
-</tr>
-<tr>
-<td><code>high</code></td>
-<td>Loss of data confidentiality, integrity, or availability is expected to have <strong>severe or catastrophic</strong> adverse effect</td>
-<td>2</td>
-</tr>
-</tbody></table>
-<h2 id='tokens-token-restriction-policies'>Token Restriction Policies</h2>
-<aside class="warning">
-  <span>
-    Restriction Policies have been deprecated and replaced by transforms on <a href="https://developers.basistheory.com/concepts/access-controls/#what-are-access-rules">Access Rules</a>.
-    Setting a Restriction Policy on a Token no longer has any functional purpose.
-  </span>
-</aside>
-
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Specificity Level</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>mask</code></td>
-<td>0</td>
-</tr>
-<tr>
-<td><code>redact</code></td>
-<td>1</td>
-</tr>
-</tbody></table>
 <h2 id='tokens-token-expiration'>Token Expiration</h2>
 <p>By default a created token will not expire, however, users can optionally set the <code>expires_at</code> property with an ISO8601 <code>DateTime</code> when creating a token to determine its expiration date.
 An expired token is <strong>deleted</strong> from the tenant up to <strong>1 hour</strong> after it&#39;s expiration time.</p>
@@ -7793,9 +7522,7 @@ An expired token is <strong>deleted</strong> from the tenant up to <strong>1 hou
     "type": "token",
     "data": "Sensitive Value",
     "mask": "{{ data | reveal_last: 4 }}",
-    "privacy": {
-      "restriction_policy": "mask"
-    },
+    "containers": [ "/general/high/" ],
     "metadata": {
       "nonSensitiveField": "Non-Sensitive Value"
     },
@@ -7816,9 +7543,6 @@ An expired token is <strong>deleted</strong> from the tenant up to <strong>1 hou
   <span class="na">data</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Sensitive Value</span><span class="dl">'</span><span class="p">,</span>
   <span class="na">mask</span><span class="p">:</span> <span class="dl">'</span><span class="s1">{{ data | reveal_last: 4 }}</span><span class="dl">'</span><span class="p">,</span>
   <span class="na">containers</span><span class="p">:</span> <span class="p">[</span><span class="dl">'</span><span class="s1">/general/high/</span><span class="dl">'</span><span class="p">],</span>
-  <span class="na">privacy</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">restriction_policy</span><span class="p">:</span> <span class="dl">'</span><span class="s1">mask</span><span class="dl">'</span>
-  <span class="p">},</span>
   <span class="na">metadata</span><span class="p">:</span> <span class="p">{</span>
     <span class="na">nonSensitiveField</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Non-Sensitive Value</span><span class="dl">'</span>
   <span class="p">},</span>
@@ -7839,9 +7563,6 @@ An expired token is <strong>deleted</strong> from the tenant up to <strong>1 hou
   <span class="n">Data</span> <span class="p">=</span> <span class="s">"Sensitive Value"</span><span class="p">,</span>
   <span class="n">Mask</span> <span class="p">=</span> <span class="s">"{{ data | reveal_last: 4 }}"</span><span class="p">,</span>
   <span class="n">Containers</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="p">{</span> <span class="s">"/general/high/"</span> <span class="p">},</span>
-  <span class="n">Privacy</span> <span class="p">=</span> <span class="k">new</span> <span class="n">DataPrivacy</span> <span class="p">{</span>
-    <span class="n">RestrictionPolicy</span> <span class="p">=</span> <span class="n">DataRestrictionPolicy</span><span class="p">.</span><span class="n">MASK</span>
-  <span class="p">},</span>
   <span class="n">Metadata</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="kt">string</span><span class="p">&gt;</span> <span class="p">{</span>
     <span class="p">{</span> <span class="s">"nonSensitiveField"</span><span class="p">,</span>  <span class="s">"Non-Sensitive Value"</span> <span class="p">}</span>
   <span class="p">},</span>
@@ -7868,9 +7589,6 @@ An expired token is <strong>deleted</strong> from the tenant up to <strong>1 hou
             <span class="s">"nonSensitiveField"</span><span class="p">:</span> <span class="s">"Non-Sensitive Value"</span>
         <span class="p">},</span>
         <span class="n">containers</span><span class="o">=</span><span class="p">[</span><span class="s">"/general/high/"</span><span class="p">],</span>
-        <span class="n">privacy</span><span class="o">=</span><span class="n">Privacy</span><span class="p">(</span>
-          <span class="n">restriction_policy</span><span class="o">=</span><span class="s">"mask"</span>
-        <span class="p">),</span>
         <span class="n">search_indexes</span><span class="o">=</span><span class="p">[</span>
           <span class="s">"{{ data }}"</span><span class="p">,</span>
           <span class="s">"{{ data | last4}}"</span>
@@ -7904,10 +7622,6 @@ An expired token is <strong>deleted</strong> from the tenant up to <strong>1 hou
   <span class="n">createTokenRequest</span><span class="o">.</span><span class="n">SetContainers</span><span class="p">([]</span><span class="kt">string</span><span class="p">{</span><span class="s">"/general/high/"</span><span class="p">})</span>
   <span class="n">createTokenRequest</span><span class="o">.</span><span class="n">SetExpiresAt</span><span class="p">(</span><span class="s">"8/26/2030 7:23:57 PM -07:00"</span><span class="p">)</span>
 
-  <span class="n">privacy</span> <span class="o">:=</span> <span class="o">*</span><span class="n">basistheory</span><span class="o">.</span><span class="n">NewPrivacy</span><span class="p">()</span>
-  <span class="n">privacy</span><span class="o">.</span><span class="n">SetRestrictionPolicy</span><span class="p">(</span><span class="s">"mask"</span><span class="p">)</span>
-  <span class="n">createTokenRequest</span><span class="o">.</span><span class="n">SetPrivacy</span><span class="p">(</span><span class="n">privacy</span><span class="p">)</span>
-
   <span class="n">createTokenResponse</span><span class="p">,</span> <span class="n">createTokenHttpResponse</span><span class="p">,</span> <span class="n">createErr</span> <span class="o">:=</span> <span class="n">apiClient</span><span class="o">.</span><span class="n">TokensApi</span><span class="o">.</span><span class="n">Create</span><span class="p">(</span><span class="n">contextWithAPIKey</span><span class="p">)</span><span class="o">.</span><span class="n">CreateTokenRequest</span><span class="p">(</span><span class="n">createTokenRequest</span><span class="p">)</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -7921,11 +7635,6 @@ An expired token is <strong>deleted</strong> from the tenant up to <strong>1 hou
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XXXXXXXXXXXalue"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"mask"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{{ data | reveal_last: 4 }}"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"containers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"/general/high/"</span><span class="p">],</span><span class="w">
-  </span><span class="nl">"privacy"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"classification"</span><span class="p">:</span><span class="w"> </span><span class="s2">"general"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"impact_level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"high"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"restriction_policy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mask"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
   </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"nonSensitiveField"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Non-Sensitive Value"</span><span class="w">
   </span><span class="p">},</span><span class="w">
@@ -7986,13 +7695,6 @@ An expired token is <strong>deleted</strong> from the tenant up to <strong>1 hou
 <td><em>any</em></td>
 <td>Depends on the <a href="#token-types">token type</a></td>
 <td>Token data mask. Can be an object, array, or any primitive type such as an integer, boolean, or string. See <a href="/expressions/#masks">mask expressions</a>.</td>
-</tr>
-<tr>
-<td><code>privacy</code></td>
-<td>false</td>
-<td><em><a href="#tokens-token-object-privacy-object">privacy object</a></em></td>
-<td><code>null</code></td>
-<td>Token Privacy Settings overrides. Overrides must be a higher specificity level than the default or minimum setting for the <a href="#token-token-types">Token Type</a>.</td>
 </tr>
 <tr>
 <td><code>containers</code></td>
@@ -8101,13 +7803,8 @@ An expired token is <strong>deleted</strong> from the tenant up to <strong>1 hou
       </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c06d0789-0a38-40be-b7cc-c28a718f76f1"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"token"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"tenant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77cb0024-123e-41a8-8ff8-a3d5a0fa8a08"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">Redacted</span><span class="w"> </span><span class="err">based</span><span class="w"> </span><span class="err">on</span><span class="w"> </span><span class="err">Restriction</span><span class="w"> </span><span class="err">Policy</span><span class="w">
+      </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"secret data"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"containers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"/general/high/"</span><span class="p">],</span><span class="w">
-      </span><span class="nl">"privacy"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"classification"</span><span class="p">:</span><span class="w"> </span><span class="s2">"general"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"impact_level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"moderate"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"restriction_policy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"redact"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
       </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"nonSensitiveField"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Non-Sensitive Value"</span><span class="w">
       </span><span class="p">},</span><span class="w">
@@ -8164,8 +7861,8 @@ If you need to perform a more advanced token search, see <a href="#tokens-search
 </tbody></table>
 <h3 id='tokens-list-tokens-response'>Response</h3>
 <p>Returns a <a href="#pagination">paginated object</a> with the <code>data</code> property containing an array of <a href="#tokens-token-object">tokens</a>.
-Plaintext token data will be returned when the requester has read permissions on the token classification at equal or greater impact level.
-Token data will be restricted based on the token&#39;s <a href="#tokens-token-restriction-policies">restriction policy</a> when the requester has read permissions on the token classification at a lower impact level.
+Token data will be returned according to the <a href="https://developers.basistheory.com/concepts/access-controls/#transform">transform</a> 
+applied within the requesting Application&#39;s <a href="https://developers.basistheory.com/concepts/access-controls">Access Controls</a>. 
 Providing any query parameters will filter the results. Returns <a href="#errors">an error</a> if tokens could not be retrieved.</p>
 <h2 id='tokens-get-a-token'>Get a Token</h2>
 <blockquote>
@@ -8214,13 +7911,8 @@ Providing any query parameters will filter the results. Returns <a href="#errors
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c06d0789-0a38-40be-b7cc-c28a718f76f1"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"token"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"tenant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77cb0024-123e-41a8-8ff8-a3d5a0fa8a08"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">Redacted</span><span class="w"> </span><span class="err">based</span><span class="w"> </span><span class="err">on</span><span class="w"> </span><span class="err">Restriction</span><span class="w"> </span><span class="err">Policy</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"secret data"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"containers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"/general/high/"</span><span class="p">],</span><span class="w">
-  </span><span class="nl">"privacy"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"classification"</span><span class="p">:</span><span class="w"> </span><span class="s2">"general"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"impact_level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"moderate"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"restriction_policy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"redact"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
   </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"nonSensitiveField"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Non-Sensitive Value"</span><span class="w">
   </span><span class="p">},</span><span class="w">
@@ -8258,8 +7950,8 @@ Providing any query parameters will filter the results. Returns <a href="#errors
 </tbody></table>
 <h3 id='tokens-get-a-token-response'>Response</h3>
 <p>Returns a <a href="#tokens-token-object">token</a> with the <code>id</code> provided.
-Plaintext token data will be returned when the requester has read permissions on the token classification at equal or greater impact level.
-Token data will be restricted based on the token&#39;s <a href="#tokens-token-restriction-policies">restriction policy</a> when the requester has read permissions on the token classification at a lower impact level.
+Token data will be returned according to the <a href="https://developers.basistheory.com/concepts/access-controls/#transform">transform</a>
+applied within the requesting Application&#39;s <a href="https://developers.basistheory.com/concepts/access-controls">Access Controls</a>.
 Returns <a href="#errors">an error</a> if the token could not be retrieved.</p>
 <h2 id='tokens-update-token'>Update Token</h2>
 <blockquote>
@@ -8272,9 +7964,6 @@ Returns <a href="#errors">an error</a> if the token could not be retrieved.</p>
   <span class="nt">-d</span> <span class="s1">'{
     "data": "Sensitive Value",
     "mask": "{{ data | reveal_last: 4 }}",
-    "privacy": {
-      "restriction_policy": "mask"
-    },
     "metadata": {
       "nonSensitiveField": "Non-Sensitive Value"
     },
@@ -8292,9 +7981,6 @@ Returns <a href="#errors">an error</a> if the token could not be retrieved.</p>
 <span class="kd">const</span> <span class="nx">token</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">bt</span><span class="p">.</span><span class="nx">tokens</span><span class="p">.</span><span class="nx">update</span><span class="p">(</span><span class="dl">'</span><span class="s1">c06d0789-0a38-40be-b7cc-c28a718f76f1</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">data</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Sensitive Value</span><span class="dl">'</span><span class="p">,</span>
   <span class="na">mask</span><span class="p">:</span> <span class="dl">'</span><span class="s1">{{ data | reveal_last: 4 }}</span><span class="dl">'</span><span class="p">,</span>
-  <span class="na">privacy</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">restrictionPolicy</span><span class="p">:</span> <span class="dl">"</span><span class="s2">mask</span><span class="dl">"</span>
-  <span class="p">},</span>
   <span class="na">metadata</span><span class="p">:</span> <span class="p">{</span>
     <span class="na">nonSensitiveField</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Non-Sensitive Value</span><span class="dl">'</span>
   <span class="p">},</span>
@@ -8312,9 +7998,6 @@ Returns <a href="#errors">an error</a> if the token could not be retrieved.</p>
 <span class="kt">var</span> <span class="n">token</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">UpdateAsync</span><span class="p">(</span><span class="s">"c06d0789-0a38-40be-b7cc-c28a718f76f1"</span><span class="p">,</span> <span class="k">new</span> <span class="n">TokenUpdateRequest</span> <span class="p">{</span>
   <span class="n">Data</span> <span class="p">=</span> <span class="s">"Sensitive Value"</span><span class="p">,</span>
   <span class="n">Mask</span> <span class="p">=</span> <span class="s">"{{ data | reveal_last: 4 }}"</span><span class="p">,</span>
-  <span class="n">Privacy</span> <span class="p">=</span> <span class="k">new</span> <span class="n">PrivacyUpdateModel</span> <span class="p">{</span>
-    <span class="n">RestrictionPolicy</span> <span class="p">=</span> <span class="n">DataRestrictionPolicy</span><span class="p">.</span><span class="n">MASK</span>
-  <span class="p">},</span>
   <span class="n">Metadata</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="kt">string</span><span class="p">&gt;</span> <span class="p">{</span>
     <span class="p">{</span> <span class="s">"nonSensitiveField"</span><span class="p">,</span>  <span class="s">"Non-Sensitive Value"</span> <span class="p">}</span>
   <span class="p">},</span>
@@ -8338,9 +8021,6 @@ Returns <a href="#errors">an error</a> if the token could not be retrieved.</p>
         <span class="n">metadata</span><span class="o">=</span><span class="p">{</span>
             <span class="s">"nonSensitiveField"</span><span class="p">:</span> <span class="s">"Non-Sensitive Value"</span>
         <span class="p">},</span>
-        <span class="n">privacy</span><span class="o">=</span><span class="n">UpdatePrivacy</span><span class="p">(</span>
-          <span class="n">restriction_policy</span><span class="o">=</span><span class="s">"mask"</span>
-        <span class="p">),</span>
         <span class="n">search_indexes</span><span class="o">=</span><span class="p">[</span>
           <span class="s">"{{ data }}"</span><span class="p">,</span>
           <span class="s">"{{ data | last4}}"</span>
@@ -8369,10 +8049,6 @@ Returns <a href="#errors">an error</a> if the token could not be retrieved.</p>
   <span class="n">updateTokenRequest</span><span class="o">.</span><span class="n">SetSearchIndexes</span><span class="p">([]</span><span class="kt">string</span><span class="p">{</span><span class="s">"{{ data }}"</span><span class="p">,</span> <span class="s">"{{ data | last4}}"</span><span class="p">})</span>
   <span class="n">updateTokenRequest</span><span class="o">.</span><span class="n">SetFingerprintExpression</span><span class="p">(</span><span class="s">"{{ data }}"</span><span class="p">)</span>
 
-  <span class="n">privacy</span> <span class="o">:=</span> <span class="o">*</span><span class="n">basistheory</span><span class="o">.</span><span class="n">NewPrivacy</span><span class="p">()</span>
-  <span class="n">privacy</span><span class="o">.</span><span class="n">SetRestrictionPolicy</span><span class="p">(</span><span class="s">"mask"</span><span class="p">)</span>
-  <span class="n">updateTokenRequest</span><span class="o">.</span><span class="n">SetPrivacy</span><span class="p">(</span><span class="n">privacy</span><span class="p">)</span>
-
   <span class="n">updateTokenResponse</span><span class="p">,</span> <span class="n">updateTokenHttpResponse</span><span class="p">,</span> <span class="n">createErr</span> <span class="o">:=</span> <span class="n">apiClient</span><span class="o">.</span><span class="n">TokensApi</span><span class="o">.</span><span class="n">Update</span><span class="p">(</span><span class="n">contextWithAPIKey</span><span class="p">,</span> <span class="s">"c06d0789-0a38-40be-b7cc-c28a718f76f1"</span><span class="p">)</span><span class="o">.</span><span class="n">UpdateTokenRequest</span><span class="p">(</span><span class="n">updateTokenRequest</span><span class="p">)</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -8386,11 +8062,6 @@ Returns <a href="#errors">an error</a> if the token could not be retrieved.</p>
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XXXXXXXXXXXalue"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"mask"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{{ data | reveal_last: 4 }}"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"containers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"/general/high/"</span><span class="p">],</span><span class="w">
-  </span><span class="nl">"privacy"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"classification"</span><span class="p">:</span><span class="w"> </span><span class="s2">"general"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"impact_level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"high"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"restriction_policy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mask"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
   </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"nonSensitiveField"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Non-Sensitive Value"</span><span class="w">
   </span><span class="p">},</span><span class="w">
@@ -8438,18 +8109,18 @@ Returns <a href="#errors">an error</a> if the token could not be retrieved.</p>
 <td>Token data mask. Can be an object, array, or any primitive type such as an integer, boolean, or string. See <a href="/expressions/#masks">mask expressions</a>.</td>
 </tr>
 <tr>
-<td><code>privacy</code></td>
-<td>false</td>
-<td><em><a href="#tokens-token-object-privacy-object">privacy object</a></em></td>
-<td>Replace</td>
-<td>Token Privacy Settings overrides. Overrides must be a higher specificity level than the default or minimum setting for the <a href="#token-token-types">Token Type</a>. The <code>classfication</code> attribute of the <code>privacy</code> object <em>cannot</em> be overriden on update.</td>
-</tr>
-<tr>
 <td><code>metadata</code></td>
 <td>false</td>
 <td><em>map<string, string></em></td>
 <td>Merge Patch (see <a href="https://datatracker.ietf.org/doc/html/rfc7386">RFC 7386</a>)</td>
 <td>A key-value map of strings containing non-sensitive data.</td>
+</tr>
+<tr>
+<td><code>containers</code></td>
+<td>false</td>
+<td><em>array</em></td>
+<td>Replace</td>
+<td>Array of containers to place this token within. Each container is a path representing a logical grouping of tokens. See <a href="https://developers.basistheory.com/concepts/what-are-token-containers/">Token Containers</a> for details.</td>
 </tr>
 <tr>
 <td><code>search_indexes</code></td>
@@ -8556,11 +8227,6 @@ Returns <a href="#errors">an error</a> if the token could not be retrieved.</p>
       </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XXX-XX-6789"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"fingerprint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AKCUXS83DokKo4pDRKSAy4d42t9i8dcP1X2jijwEBCQH"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"containers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"/pii/high/"</span><span class="p">],</span><span class="w">
-      </span><span class="nl">"privacy"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"classification"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pii"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"impact_level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"high"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"restriction_policy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mask"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
       </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"nonSensitiveField"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Non-Sensitive Value"</span><span class="w">
       </span><span class="p">},</span><span class="w">
@@ -8588,15 +8254,11 @@ Use this endpoint to perform an advanced token search using token data or to bui
 For simpler search use cases, see <a href="#list-tokens">List Tokens</a>.</p>
 <h3 id='tokens-search-tokens-permissions'>Permissions</h3>
 <p class="scopes">
-  <span class="scope">token:read</span>
+  <span class="scope">token:search</span>
 </p>
 
-<p>At least one token read <a href="#permissions-permission-types-token-permissions">permission</a> is required in order to perform a token search. 
-A token search will only return tokens that your application or user is authorized to read. </p>
-
-<p>Applications are permitted to search on the <code>data</code> field of a token only if the application&#39;s <a href="#permissions-permission-types-token-permissions">permissions</a>
-allow reading the <a href="#tokens-token-restriction-policies">unrestricted</a> plaintext token data. 
-Applications may search across non-data fields (eg. <code>metadata</code>, <code>type</code>) on tokens with any read permission for that data <a href="#tokens-token-classifications">classification</a>, even if that read permission only allows <a href="#tokens-token-restriction-policies">restricted</a> access to the token data.</p>
+<p>Token data will be returned in search results according to the <a href="https://developers.basistheory.com/concepts/access-controls/#transform">transform</a>
+applied within the requesting Application&#39;s <a href="https://developers.basistheory.com/concepts/access-controls">Access Controls</a>.</p>
 <h3 id='tokens-search-tokens-request-parameters'>Request Parameters</h3>
 <table><thead>
 <tr>
@@ -8631,8 +8293,8 @@ Applications may search across non-data fields (eg. <code>metadata</code>, <code
 </tbody></table>
 <h3 id='tokens-search-tokens-response'>Response</h3>
 <p>Returns a <a href="#pagination">paginated object</a> with the <code>data</code> property containing an array of <a href="#tokens-token-object">tokens</a>.
-Plaintext token data will be returned when the requester has read permissions on the token classification at equal or greater impact level.
-Token data will be restricted based on the token&#39;s <a href="#tokens-token-restriction-policies">restriction policy</a> when the requester has read permissions on the token classification at a lower impact level.
+Token data will be returned according to the <a href="https://developers.basistheory.com/concepts/access-controls/#transform">transform</a>
+applied to the requesting Application&#39;s <a href="https://developers.basistheory.com/concepts/access-controls">Access Controls</a>.
 Returns <a href="#errors">an error</a> if tokens could not be retrieved or when an invalid <a href="#tokens-search-tokens-query-syntax">query</a> is submitted.</p>
 <h3 id='tokens-search-tokens-query-syntax'>Query Syntax</h3>
 <p>Token search supports a <a href="http://www.lucenetutorial.com/lucene-query-syntax.html" target="_blank">Lucene-based query syntax</a> to build complex search criteria. 
@@ -8741,12 +8403,6 @@ For example, to search for tokens that were created in the year 2021, you can qu
 <td><em>string</em></td>
 <td>Searches across a token&#39;s <a href="#tokens-token-containers">containers</a>.</td>
 <td><code>container:&quot;/pci/high/&quot;</code></td>
-</tr>
-<tr>
-<td><code>privacy.[field]</code></td>
-<td><em>string</em></td>
-<td>Token <a href="#tokens-token-object-privacy-object">privacy settings</a>.</td>
-<td><code>privacy.classification:pci</code></td>
 </tr>
 <tr>
 <td><code>metadata.[key]</code></td>
@@ -9138,11 +8794,6 @@ based on the <code>search_indexes</code> provided in the <a href="#tokens-create
   </span><span class="nl">"tenant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77cb0024-123e-41a8-8ff8-a3d5a0fa8a08"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"token"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"containers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"/general/high/"</span><span class="p">],</span><span class="w">
-  </span><span class="nl">"privacy"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"classification"</span><span class="p">:</span><span class="w"> </span><span class="s2">"general"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"impact_level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"high"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"restriction_policy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"redact"</span><span class="w">  
-  </span><span class="p">},</span><span class="w">
   </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -9182,44 +8833,7 @@ based on the <code>search_indexes</code> provided in the <a href="#tokens-create
 </tr>
 </tbody></table>
 <h3 id='token-associations-create-child-token-for-a-token-request-parameters'>Request Parameters</h3>
-<table><thead>
-<tr>
-<th>Attribute</th>
-<th>Required</th>
-<th>Type</th>
-<th>Default</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>type</code></td>
-<td>true</td>
-<td><em>string</em></td>
-<td><code>null</code></td>
-<td><a href="#token-types">Token type</a> of the token</td>
-</tr>
-<tr>
-<td><code>data</code></td>
-<td>true</td>
-<td><em>any</em></td>
-<td><code>null</code></td>
-<td>Token data</td>
-</tr>
-<tr>
-<td><code>privacy</code></td>
-<td>false</td>
-<td><em><a href="#tokens-token-object-privacy-object">privacy object</a></em></td>
-<td><code>null</code></td>
-<td>Token Privacy Settings</td>
-</tr>
-<tr>
-<td><code>metadata</code></td>
-<td>false</td>
-<td><em>map<string, string></em></td>
-<td><code>null</code></td>
-<td>A key-value map of strings containing non-sensitive data.</td>
-</tr>
-</tbody></table>
+<p>See <a href="#tokens-create-token">Create Token</a> for supported request parameters.</p>
 <h3 id='token-associations-create-child-token-for-a-token-response'>Response</h3>
 <p>Returns a <a href="#tokens-token-object">token</a> if the child token was created for the parent token. Returns <a href="#errors">an error</a> if there were validation errors, or the token failed to create.</p>
 <h2 id='token-associations-list-child-tokens-for-a-token'>List Child Tokens for a Token</h2>
@@ -9272,13 +8886,8 @@ based on the <code>search_indexes</code> provided in the <a href="#tokens-create
       </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c1e565009-1984-4638-8fca-dce8a82cc2af"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"token"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"tenant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77cb0024-123e-41a8-8ff8-a3d5a0fa8a08"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">Redacted</span><span class="w"> </span><span class="err">based</span><span class="w"> </span><span class="err">on</span><span class="w"> </span><span class="err">restriction</span><span class="w"> </span><span class="err">policy</span><span class="w">
+      </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"secret data"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"containers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"/general/high/"</span><span class="p">],</span><span class="w">
-      </span><span class="nl">"privacy"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"classification"</span><span class="p">:</span><span class="w"> </span><span class="s2">"general"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"impact_level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"high"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"restriction_policy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"redact"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
       </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"nonSensitiveField"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Non-Sensitive Value"</span><span class="w">
       </span><span class="p">},</span><span class="w">
@@ -10073,7 +9682,7 @@ specified in the tokenize request.</p>
 <td>Token Privacy Settings</td>
 <td>October 13, 2022</td>
 <td>February 1, 2023</td>
-<td>Privacy settings (i.e. <a href="#tokens-token-classifications">classification</a>, <a href="#tokens-token-impact-levels">impact level</a>, and <a href="#tokens-token-restriction-policies">restriction policy</a>) have been deprecated and replaced by a more flexible authorization model based upon <a href="https://developers.basistheory.com/concepts/what-are-token-containers">Containers</a> and <a href="https://developers.basistheory.com/concepts/access-controls/#what-are-access-rules">Access Rules</a>. For more information, see the section below on <a href="/#deprecations-migrating-from-privacy-settings">Migrating from Privacy Settings</a>.</td>
+<td>Privacy settings (i.e. classification, impact level, and restriction policy) have been deprecated and replaced by a more flexible authorization model based upon <a href="https://developers.basistheory.com/concepts/what-are-token-containers">Containers</a> and <a href="https://developers.basistheory.com/concepts/access-controls/#what-are-access-rules">Access Rules</a>. For more information, see the section below on <a href="/#deprecations-migrating-from-privacy-settings">Migrating from Privacy Settings</a>.</td>
 </tr>
 <tr>
 <td><code>token:&lt;classification&gt;:*</code> permissions</td>
@@ -10095,22 +9704,22 @@ specified in the tokenize request.</p>
 </tr>
 </tbody></table>
 <h2 id='deprecations-migrating-from-privacy-settings'>Migrating From Privacy Settings</h2>
-<p><a href="/#tokens-token-object-privacy-object">Privacy settings</a> were previously used to scope access to Tokens based on
-their classification and impact levels. In order to provide a more flexible access control model that can be customized
-per Application, we have introduced Token <a href="https://developers.basistheory.com/concepts/what-are-token-containers">Containers</a> 
+<p>Privacy settings were previously used to scope access to Tokens based on their data classification and impact levels. 
+In order to provide a more flexible access control model that can be customized per Application, we have introduced 
+Token <a href="https://developers.basistheory.com/concepts/what-are-token-containers">Containers</a> 
 to logically group Tokens according to any data governance requirements. A Token may be explicitly added to a container
-when creating the token, or if unspecified, a Token will be placed within the container <code>/&lt;classification&gt;/&lt;impact_level&gt;/</code> 
+when creating the Token, or if unspecified, a Token will be placed within the container <code>/&lt;classification&gt;/&lt;impact_level&gt;/</code> 
 by default. If you were previously customizing a Token&#39;s classification or impact level, please update your systems to 
 directly set the <code>containers</code> attribute instead.</p>
 
-<p>Restriction policies (i.e. <code>mask</code>, <code>redact</code>) were previously used in conjunction with impact level based read 
+<p>Restriction policies were previously used in conjunction with impact level based read 
 permissions (e.g. <code>token:general:read:low</code>) to define how Token data should be transformed when reading Tokens with 
 a higher impact level than your permission allows. This model proved to be too inflexible as it was a global setting
 applied at the Token level and could not be customized per actor. Restriction policies no longer have any functional 
 impact, and were replaced by transforms applied via <a href="https://developers.basistheory.com/concepts/access-controls/#what-are-access-rules">Access Rules</a>.  </p>
 
 <p>If your systems are using the <code>privacy</code> attribute of the <a href="#tokens-token-object">Token Object</a> in API responses, please
-update your integration to ignore this attribute as it will be removed on the Shutdown Date specified in the table above.</p>
+update your integration to ignore this attribute as it will be removed on February 1, 2023.</p>
 
 <p>If you were previously using classification-based Token permissions (e.g. <code>token:general:create</code>), your permissions
 have automatically been migrated to equivalent <a href="https://developers.basistheory.com/concepts/access-controls/#what-are-access-rules">Access Rules</a>.

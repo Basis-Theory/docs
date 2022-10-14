@@ -1558,10 +1558,7 @@ generic <code>PII</code> token to hold the card owner&#39;s name:</p>
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d9939ddc-d7be-423b-a0f5-69f65fec57df"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"card_number"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5555555555554444"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"privacy"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"classification"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pci"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"impact_level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"high"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+  </span><span class="nl">"containers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"/pci/high/"</span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <div class="center-column" style="clear: none;"></div>
@@ -1569,10 +1566,7 @@ generic <code>PII</code> token to hold the card owner&#39;s name:</p>
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f4d86311-1254-4155-b532-b651279a8cc0"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"token"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jane Doe"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"privacy"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"classification"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pii"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"impact_level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"moderate"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+  </span><span class="nl">"containers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"/pii/moderate/"</span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>In this example, we have not tokenized the card&#39;s expiration date or CVC - say our application accepts these values in
@@ -1760,10 +1754,7 @@ chosen to store the card holder&#39;s first and last names as separate tokens:</
       </span><span class="nl">"zip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10010"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"privacy"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"classification"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pci"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"impact_level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"high"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+  </span><span class="nl">"containers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"/pci/high/"</span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>Notice that the card owner&#39;s full name is constructed by concatenating the <code>card.owner.first_name</code> and <code>card.owner.last_name</code>
@@ -2055,17 +2046,19 @@ You are able to reference the <code>data</code> and <code>metadata</code> variab
 </span></code></pre></div>
 <p>Fingerprinted Value: <code>&quot;JOHN SMITH&quot;</code></p>
 <h1 id='masks'>Masks</h1>
-<p>Masks allow you to reformat token data into a non-sensitive representation that can be safely exposed. For example, if the original credit card number was <code>4242-4242-4242-4242</code>, a common mask pattern is to only show the last 4 digits, such as <code>XXXX-XXXX-XXXX-4242</code>.</p>
+<p>Masks allow you to reformat token data into a non-sensitive representation that can be safely exposed. 
+For example, if the original credit card number was <code>4242-4242-4242-4242</code>, a common mask pattern is to only show 
+the last 4 digits, such as <code>XXXX-XXXX-XXXX-4242</code>.</p>
 
 <p>When <a href="/#tokens-create-token">creating a token</a>, the mask can be specified within the request.
 You are able to reference the <code>data</code> property within an <a href="#language-objects">object</a> expression -
 <code>data</code> will be bound to the provided token data.</p>
 
-<p>When retrieving a token with inadequate read permissions, returned token data is either masked or redacted based on the token&#39;s <a href="/#tokens-token-restriction-policies">data restriction policy</a>. For tokens with the <code>mask</code> restriction policy, the token&#39;s mask will be evaluated and returned within the <code>data</code> property. For tokens with the <code>redact</code>  restriction policy, <code>data</code> will not be returned and a <code>mask</code> cannot be defined. The <code>mask</code> property is required for tokens with type <code>token</code> having a data restriction policy of <code>mask</code>. All other token types have a default mask assigned in case a custom one is not provided. </p>
-
-<aside class="notice">
-  <span>Only generic tokens (those with type <code>token</code>) allow providing custom masks.</span>
-</aside>
+<p>When retrieving a token with an Application API Key, token data is returned according to the format specified by the
+<a href="https://developers.basistheory.com/concepts/access-controls/#transform">transform</a> applied within the Application&#39;s
+<a href="https://developers.basistheory.com/concepts/access-controls">Access Controls</a>.
+For tokens that receive a <code>mask</code> transform, the token&#39;s mask will be evaluated and returned within the <code>data</code> property.
+If a mask expression is not defined on the token, the token&#39;s data will be redacted.</p>
 <h2 id='masks-examples'>Examples</h2>
 <ul>
 <li><a href="#masks-examples-masking-primitive-tokens">Masking Primitive Tokens</a></li>
