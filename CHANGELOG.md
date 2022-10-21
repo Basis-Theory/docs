@@ -1,3 +1,10 @@
+# [1.67.0](https://github.com/Basis-Theory/docs/compare/v1.66.0...v1.67.0) (2022-10-21)
+
+
+### Features
+
+* Adds docs for to_boolean, to_number, to_string filters ([#233](https://github.com/Basis-Theory/docs/issues/233)) ([31011b1](https://github.com/Basis-Theory/docs/commit/31011b1965008b336340318e658d64998e46a11c))
+
 # [1.66.0](https://github.com/Basis-Theory/docs/compare/v1.65.0...v1.66.0) (2022-10-14)
 
 
