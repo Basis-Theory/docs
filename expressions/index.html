@@ -389,6 +389,15 @@ _iub.csConfiguration = {"ccpaAcknowledgeOnLoad":true,"consentOnContinuedBrowsing
                   <li>
                     <a href="#filters-stringify" class="toc-h2 toc-link" data-title="stringify">stringify</a>
                   </li>
+                  <li>
+                    <a href="#filters-to_boolean" class="toc-h2 toc-link" data-title="to_boolean">to_boolean</a>
+                  </li>
+                  <li>
+                    <a href="#filters-to_number" class="toc-h2 toc-link" data-title="to_number">to_number</a>
+                  </li>
+                  <li>
+                    <a href="#filters-to_string" class="toc-h2 toc-link" data-title="to_string">to_string</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -644,19 +653,19 @@ characters, and special characters and whitespace are preserved.</p>
 </thead><tbody>
 <tr>
 <td><code>{{ data &#124; alias_preserve_format }}</code></td>
-<td>&quot;xir83203hqn73599&quot;</td>
+<td><code>&quot;xir83203hqn73599&quot;</code></td>
 </tr>
 <tr>
 <td><code>{{ data &#124; alias_preserve_format: 3 }}</code></td>
-<td>&quot;ABC83203hqn73599&quot;</td>
+<td><code>&quot;ABC83203hqn73599&quot;</code></td>
 </tr>
 <tr>
 <td><code>{{ data &#124; alias_preserve_format: 0, 5 }}</code></td>
-<td>&quot;xir83203hqn67890&quot;</td>
+<td><code>&quot;xir83203hqn67890&quot;</code></td>
 </tr>
 <tr>
 <td><code>{{ data &#124; alias_preserve_format: 3, 5 }}</code></td>
-<td>&quot;ABC83203hqn67890&quot;</td>
+<td><code>&quot;ABC83203hqn67890&quot;</code></td>
 </tr>
 </tbody></table>
 <h2 id='filters-alias_preserve_length'>alias_preserve_length</h2>
@@ -712,19 +721,19 @@ Special characters and whitespace are not preserved and will be replaced with al
 </thead><tbody>
 <tr>
 <td><code>{{ data &#124; alias_preserve_length }}</code></td>
-<td>&quot;v38anr9m2cx0giw7&quot;</td>
+<td><code>&quot;v38anr9m2cx0giw7&quot;</code></td>
 </tr>
 <tr>
 <td><code>{{ data &#124; alias_preserve_length: 3 }}</code></td>
-<td>&quot;ABCanr9m2cx0giw7&quot;</td>
+<td><code>&quot;ABCanr9m2cx0giw7&quot;</code></td>
 </tr>
 <tr>
 <td><code>{{ data &#124; alias_preserve_length: 0, 5 }}</code></td>
-<td>&quot;v38anr9m2cx67890&quot;</td>
+<td><code>&quot;v38anr9m2cx67890&quot;</code></td>
 </tr>
 <tr>
 <td><code>{{ data &#124; alias_preserve_length: 3, 5 }}</code></td>
-<td>&quot;ABCanr9m2cx67890&quot;</td>
+<td><code>&quot;ABCanr9m2cx67890&quot;</code></td>
 </tr>
 </tbody></table>
 <h2 id='filters-json'>json</h2>
@@ -793,23 +802,23 @@ The <code>json</code> filter provides further flexibility for evaluating complex
 </thead><tbody>
 <tr>
 <td><code>{{ data.bicycle.color }}</code></td>
-<td>&quot;red&quot;</td>
+<td><code>&quot;red&quot;</code></td>
 </tr>
 <tr>
 <td><code>{{ data &#124; json: &#39;$.bicycle.color&#39; }}</code></td>
-<td>&quot;red&quot;</td>
+<td><code>&quot;red&quot;</code></td>
 </tr>
 <tr>
 <td><code>{{ data.bicycle }}</code></td>
-<td>{ &quot;color&quot;: &quot;red&quot;, &quot;price&quot;: 19.95 }</td>
+<td><code>{ &quot;color&quot;: &quot;red&quot;, &quot;price&quot;: 19.95 }</code></td>
 </tr>
 <tr>
 <td><code>{{ data &#124; json: &#39;$.books[0].author&#39; }}</code></td>
-<td>&quot;Herman Melville&quot;</td>
+<td><code>&quot;Herman Melville&quot;</code></td>
 </tr>
 <tr>
 <td><code>{{ data &#124; json: &#39;$.books[?(@.price &lt; 10)].title&#39; }}</code></td>
-<td>&quot;Moby Dick&quot;</td>
+<td><code>&quot;Moby Dick&quot;</code></td>
 </tr>
 <tr>
 <td><code>{{ data.nonexistent }}</code></td>
@@ -817,7 +826,7 @@ The <code>json</code> filter provides further flexibility for evaluating complex
 </tr>
 <tr>
 <td><code>{{ data &#124; json: &#39;$.book..author&#39; }}</code></td>
-<td><400 Error></td>
+<td><code>&lt;400 Error&gt;</code></td>
 </tr>
 </tbody></table>
 <h2 id='filters-last4'>last4</h2>
@@ -842,11 +851,11 @@ The <code>json</code> filter provides further flexibility for evaluating complex
 </thead><tbody>
 <tr>
 <td><code>{{ data &#124; last4 }}</code></td>
-<td>&quot;1667&quot;</td>
+<td><code>&quot;1667&quot;</code></td>
 </tr>
 <tr>
 <td><code>{{ data &#124; slice: 12, 2 &#124; last4 }}</code></td>
-<td>&quot;67&quot;</td>
+<td><code>&quot;67&quot;</code></td>
 </tr>
 </tbody></table>
 <h2 id='filters-reveal'>reveal</h2>
@@ -915,23 +924,23 @@ the whole value is masked.</p>
 </thead><tbody>
 <tr>
 <td><code>{{ data &#124; reveal: 6 }}</code></td>
-<td>&quot;3622-7XXXXXXXXXXXXX&quot;</td>
+<td><code>&quot;3622-7XXXXXXXXXXXXX&quot;</code></td>
 </tr>
 <tr>
 <td><code>{{ data &#124; reveal: 7, 5 }}</code></td>
-<td>&quot;3622-72XXXXXXX-5567&quot;</td>
+<td><code>&quot;3622-72XXXXXXX-5567&quot;</code></td>
 </tr>
 <tr>
 <td><code>{{ data &#124; reveal: 7, 5, &#39;#&#39; }}</code></td>
-<td>&quot;3622-72#######-5567&quot;</td>
+<td><code>&quot;3622-72#######-5567&quot;</code></td>
 </tr>
 <tr>
 <td><code>{{ data &#124; reveal: 7, 4, &#39;#&#39;, &quot;-&quot; }}</code></td>
-<td>&quot;3622-72##-####-5567&quot;</td>
+<td><code>&quot;3622-72##-####-5567&quot;</code></td>
 </tr>
 <tr>
 <td><code>{{ data &#124; reveal: 10, 9 }}</code></td>
-<td>&quot;XXXXXXXXXXXXXXXXXXX&quot;</td>
+<td><code>&quot;XXXXXXXXXXXXXXXXXXX&quot;</code></td>
 </tr>
 </tbody></table>
 <h2 id='filters-pad_left'>pad_left</h2>
@@ -981,19 +990,19 @@ the whole value is masked.</p>
 </thead><tbody>
 <tr>
 <td><code>{{ data &#124; pad_left: 6, &#39;0&#39; }}</code></td>
-<td>&quot;001234&quot;</td>
+<td><code>&quot;001234&quot;</code></td>
 </tr>
 <tr>
 <td><code>{{ data &#124; pad_left: 6, &#39;X&#39; }}</code></td>
-<td>&quot;XX1234&quot;</td>
+<td><code>&quot;XX1234&quot;</code></td>
 </tr>
 <tr>
 <td><code>{{ data &#124; pad_left: 4, &#39;0&#39; }}</code></td>
-<td>&quot;1234&quot;</td>
+<td><code>&quot;1234&quot;</code></td>
 </tr>
 <tr>
 <td><code>{{ data &#124; pad_left: 2, &#39;0&#39; }}</code></td>
-<td>&quot;1234&quot;</td>
+<td><code>&quot;1234&quot;</code></td>
 </tr>
 </tbody></table>
 <h2 id='filters-pad_right'>pad_right</h2>
@@ -1043,19 +1052,19 @@ the whole value is masked.</p>
 </thead><tbody>
 <tr>
 <td><code>{{ data &#124; pad_right: 6, &#39;0&#39; }}</code></td>
-<td>&quot;123400&quot;</td>
+<td><code>&quot;123400&quot;</code></td>
 </tr>
 <tr>
 <td><code>{{ data &#124; pad_right: 6, &#39;X&#39; }}</code></td>
-<td>&quot;1234XX&quot;</td>
+<td><code>&quot;1234XX&quot;</code></td>
 </tr>
 <tr>
 <td><code>{{ data &#124; pad_right: 4, &#39;0&#39; }}</code></td>
-<td>&quot;1234&quot;</td>
+<td><code>&quot;1234&quot;</code></td>
 </tr>
 <tr>
 <td><code>{{ data &#124; pad_right: 2, &#39;0&#39; }}</code></td>
-<td>&quot;1234&quot;</td>
+<td><code>&quot;1234&quot;</code></td>
 </tr>
 </tbody></table>
 <h2 id='filters-reveal_last'>reveal_last</h2>
@@ -1106,11 +1115,11 @@ the whole value is masked.</p>
 </thead><tbody>
 <tr>
 <td><code>{{ data &#124; reveal_last: 6 }}</code></td>
-<td>&quot;XXXXXXXX271667&quot;</td>
+<td><code>&quot;XXXXXXXX271667&quot;</code></td>
 </tr>
 <tr>
 <td><code>{{ data &#124; reveal_last: 3, &#39;#&#39; }}</code></td>
-<td>&quot;###########667&quot;</td>
+<td><code>&quot;###########667&quot;</code></td>
 </tr>
 </tbody></table>
 <h2 id='filters-stringify'>stringify</h2>
@@ -1161,19 +1170,129 @@ the whole value is masked.</p>
 </thead><tbody>
 <tr>
 <td><code>{{ data.books[0].price &#124; stringify }}</code></td>
-<td>&quot;8.99&quot;</td>
+<td><code>&quot;8.99&quot;</code></td>
 </tr>
 <tr>
 <td><code>{{ data.books[1].title &#124; stringify }}</code></td>
-<td>&quot;The Lord of the Rings&quot;</td>
+<td><code>&quot;The Lord of the Rings&quot;</code></td>
 </tr>
 <tr>
 <td><code>{{ data.bicycles[1] &#124; stringify }}</code></td>
-<td>&quot;{\&quot;color\&quot;:\&quot;red\&quot;,\&quot;price\&quot;:19.95}&quot;</td>
+<td><code>&quot;{\&quot;color\&quot;:\&quot;red\&quot;,\&quot;price\&quot;:19.95}&quot;</code></td>
 </tr>
 <tr>
 <td><code>{{ data.bicycles &#124; stringify }}</code></td>
-<td>&quot;[{\&quot;color\&quot;:\&quot;red\&quot;,\&quot;price\&quot;:19.95},{\&quot;color\&quot;:\&quot;blue\&quot;,\&quot;price\&quot;:24.95}]&quot;</td>
+<td><code>&quot;[{\&quot;color\&quot;:\&quot;red\&quot;,\&quot;price\&quot;:19.95},{\&quot;color\&quot;:\&quot;blue\&quot;,\&quot;price\&quot;:24.95}]&quot;</code></td>
+</tr>
+</tbody></table>
+<h2 id='filters-to_boolean'>to_boolean</h2>
+<p>Casts the input value to a boolean value.</p>
+
+<p>Returns null when provided a null input value. 
+Returns an error when the input cannot be cast to a boolean.</p>
+<h3 id='filters-to_boolean-parameters'>Parameters</h3>
+<p>None</p>
+<h3 id='filters-to_boolean-examples'>Examples</h3>
+<p>Given a token with the data:</p>
+
+<div class="center-column" style="clear: none;"></div>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d35412f4-9d3b-45d8-b051-fe4b7d4e14c5"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"token"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"true_string"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"false_string"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Expression</th>
+<th>Result</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>{{ data.true_string &#124; to_boolean }}</code></td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>{{ data.false_string &#124; to_boolean }}</code></td>
+<td><code>false</code></td>
+</tr>
+</tbody></table>
+<h2 id='filters-to_number'>to_number</h2>
+<p>Casts the input value to a numeric value.</p>
+
+<p>Returns null when provided a null input value.
+Returns an error when the input cannot be cast to a number.</p>
+<h3 id='filters-to_number-parameters'>Parameters</h3>
+<p>None</p>
+<h3 id='filters-to_number-examples'>Examples</h3>
+<p>Given a token with the data:</p>
+
+<div class="center-column" style="clear: none;"></div>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d35412f4-9d3b-45d8-b051-fe4b7d4e14c5"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"token"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"int_string"</span><span class="p">:</span><span class="w"> </span><span class="s2">"42"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"decimal_string"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3.14159"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Expression</th>
+<th>Result</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>{{ data.int_string &#124; to_number }}</code></td>
+<td><code>42</code></td>
+</tr>
+<tr>
+<td><code>{{ data.decimal_string &#124; to_number }}</code></td>
+<td><code>3.14159</code></td>
+</tr>
+</tbody></table>
+<h2 id='filters-to_string'>to_string</h2>
+<p>Casts the input value to a string value.</p>
+
+<p>Returns null when provided a null input value.
+Returns an error when the input cannot be cast to a string (e.g. for complex object values).</p>
+<h3 id='filters-to_string-parameters'>Parameters</h3>
+<p>None</p>
+<h3 id='filters-to_string-examples'>Examples</h3>
+<p>Given a token with the data:</p>
+
+<div class="center-column" style="clear: none;"></div>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d35412f4-9d3b-45d8-b051-fe4b7d4e14c5"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"token"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"numeric_value"</span><span class="p">:</span><span class="w"> </span><span class="mf">3.14159</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"boolean_value"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"string_value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"foo"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Expression</th>
+<th>Result</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>{{ data.numeric_value &#124; to_string }}</code></td>
+<td><code>&quot;3.14159&quot;</code></td>
+</tr>
+<tr>
+<td><code>{{ data.boolean_value &#124; to_string }}</code></td>
+<td><code>&quot;true&quot;</code></td>
+</tr>
+<tr>
+<td><code>{{ data.string_value &#124; to_string }}</code></td>
+<td><code>&quot;foo&quot;</code></td>
 </tr>
 </tbody></table>
 <h1 id='detokenization'>Detokenization</h1>
