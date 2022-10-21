@@ -25,7 +25,7 @@ Think about it as a portal that we open within your site that allows users to se
 **Reveal Sensitive Data**
 
 <aside class="notice">
-  <span>This feature is currently in early access. Want in? Email us at <a href="mailto:info@basistheory.com?subject=Reveal Elements Early Access Request">info@basistheory.com</a></span>
+  <span>This feature is currently in early access. Interested? Email us at <a href="mailto:info@basistheory.com?subject=Reveal Elements Early Access Request">info@basistheory.com</a></span>
 </aside>
 
 You can utilize Basis Theory Elements to reveal sensitive data directly to your customers while reducing your PCI scope.
