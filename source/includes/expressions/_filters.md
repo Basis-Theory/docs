@@ -66,12 +66,12 @@ Given a token with the data:
 }
 ```
 
-| Expression                                                 | Example Result     |
-|------------------------------------------------------------|--------------------|
-| <code>{{ data &#124; alias_preserve_format }}</code>       | "xir83203hqn73599" |
-| <code>{{ data &#124; alias_preserve_format: 3 }}</code>    | "ABC83203hqn73599" |
-| <code>{{ data &#124; alias_preserve_format: 0, 5 }}</code> | "xir83203hqn67890" |
-| <code>{{ data &#124; alias_preserve_format: 3, 5 }}</code> | "ABC83203hqn67890" |
+| Expression                                                 | Example Result       |
+|------------------------------------------------------------|----------------------|
+| <code>{{ data &#124; alias_preserve_format }}</code>       | `"xir83203hqn73599"` |
+| <code>{{ data &#124; alias_preserve_format: 3 }}</code>    | `"ABC83203hqn73599"` |
+| <code>{{ data &#124; alias_preserve_format: 0, 5 }}</code> | `"xir83203hqn67890"` |
+| <code>{{ data &#124; alias_preserve_format: 3, 5 }}</code> | `"ABC83203hqn67890"` |
 
 
 ## alias_preserve_length
@@ -103,12 +103,12 @@ Given a token with the data:
 }
 ```
 
-| Expression                                                 | Example Result     |
-|------------------------------------------------------------|--------------------|
-| <code>{{ data &#124; alias_preserve_length }}</code>       | "v38anr9m2cx0giw7" |
-| <code>{{ data &#124; alias_preserve_length: 3 }}</code>    | "ABCanr9m2cx0giw7" |
-| <code>{{ data &#124; alias_preserve_length: 0, 5 }}</code> | "v38anr9m2cx67890" |
-| <code>{{ data &#124; alias_preserve_length: 3, 5 }}</code> | "ABCanr9m2cx67890" |
+| Expression                                                 | Example Result       |
+|------------------------------------------------------------|----------------------|
+| <code>{{ data &#124; alias_preserve_length }}</code>       | `"v38anr9m2cx0giw7"` |
+| <code>{{ data &#124; alias_preserve_length: 3 }}</code>    | `"ABCanr9m2cx0giw7"` |
+| <code>{{ data &#124; alias_preserve_length: 0, 5 }}</code> | `"v38anr9m2cx67890"` |
+| <code>{{ data &#124; alias_preserve_length: 3, 5 }}</code> | `"ABCanr9m2cx67890"` |
 
 
 ## json
@@ -162,15 +162,15 @@ Given a token with the data:
 }
 ```
 
-| Expression                                                            | Result                             |
-|-----------------------------------------------------------------------|------------------------------------|
-| <code>{{ data.bicycle.color }}</code>                                 | "red"                              |
-| <code>{{ data &#124; json: '$.bicycle.color' }}</code>                | "red"                              |
-| <code>{{ data.bicycle }}</code>                                       | { "color": "red", "price": 19.95 } |
-| <code>{{ data &#124; json: '$.books[0].author' }}</code>              | "Herman Melville"                  |
-| <code>{{ data &#124; json: '$.books[?(@.price < 10)].title' }}</code> | "Moby Dick"                        |
-| <code>{{ data.nonexistent }}</code>                                   | `null`                             |
-| <code>{{ data &#124; json: '$.book..author' }}</code>                 | <400 Error>                        |
+| Expression                                                            | Result                               |
+|-----------------------------------------------------------------------|--------------------------------------|
+| <code>{{ data.bicycle.color }}</code>                                 | `"red"`                              |
+| <code>{{ data &#124; json: '$.bicycle.color' }}</code>                | `"red"`                              |
+| <code>{{ data.bicycle }}</code>                                       | `{ "color": "red", "price": 19.95 }` |
+| <code>{{ data &#124; json: '$.books[0].author' }}</code>              | `"Herman Melville"`                  |
+| <code>{{ data &#124; json: '$.books[?(@.price < 10)].title' }}</code> | `"Moby Dick"`                        |
+| <code>{{ data.nonexistent }}</code>                                   | `null`                               |
+| <code>{{ data &#124; json: '$.book..author' }}</code>                 | `<400 Error>`                        |
 
 
 ## last4
@@ -194,10 +194,10 @@ Given a token with the data:
 }
 ```
 
-| Expression                                               | Result |
-|----------------------------------------------------------|--------|
-| <code>{{ data &#124; last4 }}</code>                     | "1667" |
-| <code>{{ data &#124; slice: 12, 2 &#124; last4 }}</code> | "67"   |
+| Expression                                               | Result   |
+|----------------------------------------------------------|----------|
+| <code>{{ data &#124; last4 }}</code>                     | `"1667"` |
+| <code>{{ data &#124; slice: 12, 2 &#124; last4 }}</code> | `"67"`   |
 
 ## reveal
 
@@ -227,13 +227,13 @@ Given a token with the data:
 }
 ```
 
-| Expression                                            | Result                |
-|-------------------------------------------------------|-----------------------|
-| <code>{{ data &#124; reveal: 6 }}</code>              | "3622-7XXXXXXXXXXXXX" |
-| <code>{{ data &#124; reveal: 7, 5 }}</code>           | "3622-72XXXXXXX-5567" |
-| <code>{{ data &#124; reveal: 7, 5, '#' }}</code>      | "3622-72#######-5567" |
-| <code>{{ data &#124; reveal: 7, 4, '#', "-" }}</code> | "3622-72##-####-5567" |
-| <code>{{ data &#124; reveal: 10, 9 }}</code>          | "XXXXXXXXXXXXXXXXXXX" |
+| Expression                                            | Result                  |
+|-------------------------------------------------------|-------------------------|
+| <code>{{ data &#124; reveal: 6 }}</code>              | `"3622-7XXXXXXXXXXXXX"` |
+| <code>{{ data &#124; reveal: 7, 5 }}</code>           | `"3622-72XXXXXXX-5567"` |
+| <code>{{ data &#124; reveal: 7, 5, '#' }}</code>      | `"3622-72#######-5567"` |
+| <code>{{ data &#124; reveal: 7, 4, '#', "-" }}</code> | `"3622-72##-####-5567"` |
+| <code>{{ data &#124; reveal: 10, 9 }}</code>          | `"XXXXXXXXXXXXXXXXXXX"` |
 
 ## pad_left
 
@@ -261,12 +261,12 @@ Given a token with the data:
 }
 ```
 
-| Expression                                      | Result   |
-|-------------------------------------------------|----------|
-| <code>{{ data &#124; pad_left: 6, '0' }}</code> | "001234" |
-| <code>{{ data &#124; pad_left: 6, 'X' }}</code> | "XX1234" |
-| <code>{{ data &#124; pad_left: 4, '0' }}</code> | "1234"   |
-| <code>{{ data &#124; pad_left: 2, '0' }}</code> | "1234"   |
+| Expression                                      | Result     |
+|-------------------------------------------------|------------|
+| <code>{{ data &#124; pad_left: 6, '0' }}</code> | `"001234"` |
+| <code>{{ data &#124; pad_left: 6, 'X' }}</code> | `"XX1234"` |
+| <code>{{ data &#124; pad_left: 4, '0' }}</code> | `"1234"`   |
+| <code>{{ data &#124; pad_left: 2, '0' }}</code> | `"1234"`   |
 
 
 ## pad_right
@@ -295,12 +295,12 @@ Given a token with the data:
 }
 ```
 
-| Expression                                       | Result   |
-|--------------------------------------------------|----------|
-| <code>{{ data &#124; pad_right: 6, '0' }}</code> | "123400" |
-| <code>{{ data &#124; pad_right: 6, 'X' }}</code> | "1234XX" |
-| <code>{{ data &#124; pad_right: 4, '0' }}</code> | "1234"   |
-| <code>{{ data &#124; pad_right: 2, '0' }}</code> | "1234"   |
+| Expression                                       | Result     |
+|--------------------------------------------------|------------|
+| <code>{{ data &#124; pad_right: 6, '0' }}</code> | `"123400"` |
+| <code>{{ data &#124; pad_right: 6, 'X' }}</code> | `"1234XX"` |
+| <code>{{ data &#124; pad_right: 4, '0' }}</code> | `"1234"`   |
+| <code>{{ data &#124; pad_right: 2, '0' }}</code> | `"1234"`   |
 
 
 ## reveal_last
@@ -329,8 +329,8 @@ Given a token with the data:
 
 | Expression                                               | Result                    |
 |----------------------------------------------------------|---------------------------|
-| <code>{{ data &#124; reveal_last: 6 }}</code>            | "XXXXXXXX271667"          |
-| <code>{{ data &#124; reveal_last: 3, '#' }}</code>       | "###########667"          |
+| <code>{{ data &#124; reveal_last: 6 }}</code>            | `"XXXXXXXX271667"`          |
+| <code>{{ data &#124; reveal_last: 3, '#' }}</code>       | `"###########667"`          |
 
 
 ## stringify
@@ -380,9 +380,110 @@ Given a token with the data:
 }
 ```
 
-| Expression                                              | Result                                                                       |
-|---------------------------------------------------------|------------------------------------------------------------------------------|
-| <code>{{ data.books[0].price &#124; stringify }}</code> | "8.99"                                                                       |
-| <code>{{ data.books[1].title &#124; stringify }}</code> | "The Lord of the Rings"                                                      |
-| <code>{{ data.bicycles[1] &#124; stringify }}</code>    | "{\"color\":\"red\",\"price\":19.95}"                                        |
-| <code>{{ data.bicycles &#124; stringify }}</code>       | "[{\"color\":\"red\",\"price\":19.95},{\"color\":\"blue\",\"price\":24.95}]" |
+| Expression                                              | Result                                                                         |
+|---------------------------------------------------------|--------------------------------------------------------------------------------|
+| <code>{{ data.books[0].price &#124; stringify }}</code> | `"8.99"`                                                                       |
+| <code>{{ data.books[1].title &#124; stringify }}</code> | `"The Lord of the Rings"`                                                      |
+| <code>{{ data.bicycles[1] &#124; stringify }}</code>    | `"{\"color\":\"red\",\"price\":19.95}"`                                        |
+| <code>{{ data.bicycles &#124; stringify }}</code>       | `"[{\"color\":\"red\",\"price\":19.95},{\"color\":\"blue\",\"price\":24.95}]"` |
+
+
+## to_boolean
+
+Casts the input value to a boolean value.
+
+Returns null when provided a null input value. 
+Returns an error when the input cannot be cast to a boolean.
+
+### Parameters
+
+None
+
+### Examples
+
+Given a token with the data:
+
+<div class="center-column" style="clear: none;"></div>
+```json
+{
+  "id": "d35412f4-9d3b-45d8-b051-fe4b7d4e14c5",
+  "type": "token",
+  "data": {
+    "true_string": "true",
+    "false_string": "false"
+  }
+}
+```
+
+| Expression                                             | Result  |
+|--------------------------------------------------------|---------|
+| <code>{{ data.true_string &#124; to_boolean }}</code>  | `true`  |
+| <code>{{ data.false_string &#124; to_boolean }}</code> | `false` |
+
+
+## to_number
+
+Casts the input value to a numeric value.
+
+Returns null when provided a null input value.
+Returns an error when the input cannot be cast to a number.
+
+### Parameters
+
+None
+
+### Examples
+
+Given a token with the data:
+
+<div class="center-column" style="clear: none;"></div>
+```json
+{
+  "id": "d35412f4-9d3b-45d8-b051-fe4b7d4e14c5",
+  "type": "token",
+  "data": {
+    "int_string": "42",
+    "decimal_string": "3.14159"
+  }
+}
+```
+
+| Expression                                              | Result    |
+|---------------------------------------------------------|-----------|
+| <code>{{ data.int_string &#124; to_number }}</code>     | `42`      |
+| <code>{{ data.decimal_string &#124; to_number }}</code> | `3.14159` |
+
+
+## to_string
+
+Casts the input value to a string value.
+
+Returns null when provided a null input value.
+Returns an error when the input cannot be cast to a string (e.g. for complex object values).
+
+### Parameters
+
+None
+
+### Examples
+
+Given a token with the data:
+
+<div class="center-column" style="clear: none;"></div>
+```json
+{
+  "id": "d35412f4-9d3b-45d8-b051-fe4b7d4e14c5",
+  "type": "token",
+  "data": {
+    "numeric_value": 3.14159,
+    "boolean_value": true,
+    "string_value": "foo"
+  }
+}
+```
+
+| Expression                                             | Result      |
+|--------------------------------------------------------|-------------|
+| <code>{{ data.numeric_value &#124; to_string }}</code> | `"3.14159"` |
+| <code>{{ data.boolean_value &#124; to_string }}</code> | `"true"`    |
+| <code>{{ data.string_value &#124; to_string }}</code>  | `"foo"`     |
