@@ -1,3 +1,10 @@
+# [1.68.0](https://github.com/Basis-Theory/docs/compare/v1.67.0...v1.68.0) (2022-10-21)
+
+
+### Features
+
+* add reveal coming soon ([#235](https://github.com/Basis-Theory/docs/issues/235)) ([2e7b72b](https://github.com/Basis-Theory/docs/commit/2e7b72b86d5cf387d5a62ca4b1ed3e4a57760d75))
+
 # [1.67.0](https://github.com/Basis-Theory/docs/compare/v1.66.0...v1.67.0) (2022-10-21)
 
 
