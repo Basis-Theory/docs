@@ -19,6 +19,7 @@ under the License.
 <% api_page_content = yield %>
 <% vanilla_page_content = yield %>
 <% react_page_content = yield %>
+<% mobile_page_content = yield %>
 <% module_page_content = yield %>
 <%
   if current_page.data.intro_quick_links
@@ -48,6 +49,12 @@ under the License.
   if current_page.data.react_includes
     current_page.data.react_includes.each do |include|
       react_page_content += partial("includes/#{include}")
+    end
+  end
+
+  if current_page.data.mobile_includes
+    current_page.data.mobile_includes.each do |include|
+      mobile_page_content += partial("includes/#{include}")
     end
   end
 
@@ -142,6 +149,7 @@ _iub.csConfiguration = {"ccpaAcknowledgeOnLoad":true,"consentOnContinuedBrowsing
           api_page_content: api_page_content,
           vanilla_page_content: vanilla_page_content,
           react_page_content: react_page_content,
+          mobile_page_content: mobile_page_content,
           current_page: current_page,
        }
     %>
@@ -189,6 +197,7 @@ _iub.csConfiguration = {"ccpaAcknowledgeOnLoad":true,"consentOnContinuedBrowsing
         <%= api_page_content %>
         <%= vanilla_page_content %>
         <%= react_page_content %>
+        <%= mobile_page_content %>
         <%= module_page_content %>
       </div>
       <!-- End Content -->
