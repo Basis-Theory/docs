@@ -1,3 +1,10 @@
+# [1.69.0](https://github.com/Basis-Theory/docs/compare/v1.68.0...v1.69.0) (2022-10-28)
+
+
+### Features
+
+* Adds coming soon sections for mobile SDKs ([#236](https://github.com/Basis-Theory/docs/issues/236)) ([cc72b1d](https://github.com/Basis-Theory/docs/commit/cc72b1d316efa6271ba87f4d5b820ea5a5f5ef00))
+
 # [1.68.0](https://github.com/Basis-Theory/docs/compare/v1.67.0...v1.68.0) (2022-10-21)
 
 
