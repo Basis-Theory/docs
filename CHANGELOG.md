@@ -1,3 +1,10 @@
+## [1.69.1](https://github.com/Basis-Theory/docs/compare/v1.69.0...v1.69.1) (2022-11-08)
+
+
+### Bug Fixes
+
+* broken token expiration link ([#238](https://github.com/Basis-Theory/docs/issues/238)) ([4c9f21f](https://github.com/Basis-Theory/docs/commit/4c9f21f8866eb360c8a0e71dec8409f8c67d8576))
+
 # [1.69.0](https://github.com/Basis-Theory/docs/compare/v1.68.0...v1.69.0) (2022-10-28)
 
 
