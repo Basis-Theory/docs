@@ -32,7 +32,6 @@ BasisTheory.tokens.retrieve('ca9f3fd7-3906-4087-83aa-9a6129221297', {
     number: token.data.number, // expects string
     expiration_month: token.data.expiration_month, // expects number
     expiration_year: token.data.expiration_year, // expects number
-    cvc: token.data.cvc // expects string
   });
 });
 ```
@@ -42,7 +41,6 @@ BasisTheory.tokens.retrieve('ca9f3fd7-3906-4087-83aa-9a6129221297', {
 ```javascript
 const cardNumberElement = BasisTheory.createElement('cardNumber', { targetId: 'card-number' });
 const cardExpirationDateElement = BasisTheory.createElement('cardExpirationDate', { targetId: 'card-expiration-date' });
-const cardVerificationCodeElement = BasisTheory.createElement('cardVerificationCode', { targetId: 'cvc' });
 
 BasisTheory.tokens.retrieve('ca9f3fd7-3906-4087-83aa-9a6129221297', {
   apiKey: 'key_N88mVGsp3sCXkykyN2EFED' // api key is required and should belong to an 'expiring' application
@@ -52,7 +50,6 @@ BasisTheory.tokens.retrieve('ca9f3fd7-3906-4087-83aa-9a6129221297', {
     month: token.data.expiration_month,
     year: token.data.expiration_year
   });
-  cardVerificationCodeElement.setValue(token.data.cvc)
 });
 ```
 
