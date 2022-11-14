@@ -54,7 +54,7 @@ BasisTheory.tokens.retrieve('ca9f3fd7-3906-4087-83aa-9a6129221297', {
 ```
 
 Elements' values can be securely revealed using the [`tokens.retrieve`](/#tokens-get-a-token) service and the Elements' [`setValue`](#element-methods)
-method. When `retrieve` is called from a Basis Theory instance whereas `elements: true`, the API request is made from inside a Basis Theory hosted `iframe` and the returned data remains within it.
+method. When `retrieve` is called from a Basis Theory instance configured with `elements: true`, the API request is made from inside a Basis Theory hosted `iframe` and the returned data remains within it.
 
 <aside class="warning">
   <span>Note that the <code>data</code> attribute in the token returned by the <code>retrieve</code> method is not the actual data, but a a synthetic representation of the sensitive detokenized data.</span>
@@ -66,7 +66,7 @@ method. When `retrieve` is called from a Basis Theory instance whereas `elements
 
 ## Errors
 
-Elements services could throw an error if the server rejects the request.
+Elements services will throw an error if the server rejects the request.
 
 > BasisTheoryApiError
 
@@ -89,7 +89,7 @@ Elements services could throw an error if the server rejects the request.
   <span>Error <code>name</code> property may be used instead of checking its instance type.</span>
 </aside>
 
-> Handling services errors
+> Handling service errors
 
 ```javascript
 import {
@@ -99,7 +99,7 @@ import {
 BasisTheory.tokens.retrieve('ca9f3fd7-3906-4087-83aa-9a6129221297', {
   apiKey: 'key_N88mVGsp3sCXkykyN2EFED' // api key is required and should belong to an 'expiring' application
 }).catch((error) => {
-  if (error instanceof BasisTheoryValidationError) {
+  if (error instanceof BasisTheoryApiError) {
     // check error details
   }
 });
