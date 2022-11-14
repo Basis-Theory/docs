@@ -1,6 +1,6 @@
 # Detokenization
 
-> Retrieve generic token and set value into TextElement
+> Retrieve `string` token data and set value into TextElement
 
 ```javascript
 const textElement = BasisTheory.createElement('text', { targetId: 'text-element' });
@@ -29,10 +29,10 @@ BasisTheory.tokens.retrieve('ca9f3fd7-3906-4087-83aa-9a6129221297', {
   apiKey: 'key_N88mVGsp3sCXkykyN2EFED' // api key is required and should belong to an 'expiring' application
 }).then((token) => {
   cardElement.setValue({
-    number: token.data.number,
-    expiration_month: token.data.expiration_month,
-    expiration_year: token.data.expiration_year,
-    cvc: token.data.cvc
+    number: token.data.number, // expects string
+    expiration_month: token.data.expiration_month, // expects number
+    expiration_year: token.data.expiration_year, // expects number
+    cvc: token.data.cvc // expects string
   });
 });
 ```
@@ -57,11 +57,10 @@ BasisTheory.tokens.retrieve('ca9f3fd7-3906-4087-83aa-9a6129221297', {
 ```
 
 Elements' values can be securely revealed using the [`tokens.retrieve`](/#tokens-get-a-token) service and the Elements' [`setValue`](#element-methods)
-method. When `retrieve` is called from Elements, the request is made from inside an Element `iframe`, hosted by Basis Theory.
-This means that the token data is not directly acessible by the client, keeping it clear from compliance scope.
+method. When `retrieve` is called from a Basis Theory instance whereas `elements: true`, the API request is made from inside a Basis Theory hosted `iframe` and the returned data remains within it.
 
 <aside class="warning">
-  <span>Note that the <code>data</code> attribute in the token returned by the <code>retrieve</code> method is not the actual data, but a [reference](#data-element) to it.</span>
+  <span>Note that the <code>data</code> attribute in the token returned by the <code>retrieve</code> method is not the actual data, but a a synthetic representation of the sensitive detokenized data.</span>
 </aside>
 
 <aside class="notice">

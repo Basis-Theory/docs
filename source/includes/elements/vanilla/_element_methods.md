@@ -15,13 +15,3 @@ Once you have [created](#elements-instance-create-element) and [mounted](#elemen
 
 During Elements initialization, an internal `iframe` is created and attached to the client window.
 This Element is responsible for retrieving tokens and storing the returned token data, while providing a reference to it in the form of a `DataElementReference`.
-
-The values provided by the `DataElementReference` returned are used on the `setValue` method to find the referenced plain token data and set them onto the input. 
-
-See below the attributes that make up the `DataElementRefence`:
-
-Attribute       | Type                   | Description
---------------- | ---------------------- | -----------
-`correlationId` | *string*               | Identifier that correlates values from the same `retrieve` response together
-`elementId`     | *string*               | Identifier for the internal `DataElement` iframe
-`path`          | *string*               | Path for the different nested objects inside of `data` in the retrieved token 
