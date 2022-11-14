@@ -9,9 +9,4 @@ Once you have [created](#elements-instance-create-element) and [mounted](#elemen
 | `blur`    | *void*         | All                                                               | Blurs the element input.                                                                                                  |
 | `month`   | *number*       | [cardExpirationDate](#element-types-card-expiration-date-element) | Data-parsing method that resolves to the one-based month value of the input date.                                         |
 | `year`    | *number*       | [cardExpirationDate](#element-types-card-expiration-date-element) | Data-parsing method that resolves to the four-digit year value of the input date.                                         |
-| `setValue`| *void*         | All                                                               | Accepts a [`DataElementReference`](#data-element-reference) from a retrieved token and safely sets it as the input value. |
-
-### Data Element Reference
-
-During Elements initialization, an internal `iframe` is created and attached to the client window.
-This Element is responsible for retrieving tokens and storing the returned token data, while providing a reference to it in the form of a `DataElementReference`.
+| `setValue`| *void*         | All                                                               | Accepts a synthetic reference from a retrieved token and safely sets it as the input value. |
