@@ -16,10 +16,13 @@ You can customize the behavior of your Elements using the following options:
 | `password`     | false    | *boolean* | true      | [`text`](#element-types-text-element)                                                                                                                                                                                                         | Boolean used to set the text element input type as [password](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/password)                                    |
 | `iconPosition` | false    | *string*  | true      | [`cardNumber`](#element-types-card-number-element)                                                                                                                                                                                            | String used to determine the position of the card element icon. Expected values are: `left` (default), `right` or `none`.                                                  |
 | `cardBrand`    | false    | *string*  | true      | [`cardVerificationCode`](#element-types-card-verification-code-element)                                                                                                                                                                       | [String](#element-options-card-brands) used to determine proper input format and default placeholder/aria-label                                                            |
-
+| `value`        | false    | *string*  | true      | All                                                                                                                                                                                                                                           | Sets a static value for the element input.                                                             |
 <aside class="warning">
   <span>The <code>mask</code> option cannot be used when the <code>password</code> option is set as <code>true</code>.</span>
 </aside>
 <aside class="notice">
   <span>The <code>autoComplete</code> option is turned off by default, contrary to the default browser behavior which is on.</span>
+</aside>
+<aside class="warning">
+  <span>Using the <code>value</code> attribute instead of user input may have compliance implications.</span>
 </aside>

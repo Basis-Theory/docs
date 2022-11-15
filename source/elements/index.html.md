@@ -35,6 +35,7 @@ vanilla_includes:
   - elements/vanilla/element_methods
   - elements/vanilla/element_events
   - elements/vanilla/tokenization
+  - elements/vanilla/detokenization
   - elements/vanilla/deprecations
 
 react_includes:
