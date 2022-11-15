@@ -470,6 +470,14 @@ _iub.csConfiguration = {"ccpaAcknowledgeOnLoad":true,"consentOnContinuedBrowsing
                 </ul>
             </li>
             <li>
+              <a href="#detokenization" class="toc-h1 toc-link" data-title="Detokenization">Detokenization</a>
+                <ul class="toc-list-h2">
+                    <li>
+                      <a href="#detokenization-errors" class="toc-h2 toc-link" data-title="Errors">Errors</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
               <a href="#deprecations" class="toc-h1 toc-link" data-title="Deprecations">Deprecations</a>
                 <ul class="toc-list-h2">
                     <li>
@@ -1183,6 +1191,14 @@ and masking.</p>
 <td><a href="#element-types-card-verification-code-element"><code>cardVerificationCode</code></a></td>
 <td><a href="#element-options-card-brands">String</a> used to determine proper input format and default placeholder/aria-label</td>
 </tr>
+<tr>
+<td><code>value</code></td>
+<td>false</td>
+<td><em>string</em></td>
+<td>true</td>
+<td>All</td>
+<td>Sets a static value for the element input.</td>
+</tr>
 </tbody></table>
 
 <aside class="warning">
@@ -1191,6 +1207,10 @@ and masking.</p>
 
 <aside class="notice">
   <span>The <code>autoComplete</code> option is turned off by default, contrary to the default browser behavior which is on.</span>
+</aside>
+
+<aside class="warning">
+  <span>Using the <code>value</code> attribute instead of user input may have compliance implications.</span>
 </aside>
 <h2 id='element-options-style'>Style</h2><div class="highlight"><pre class="highlight tsx tab-tsx"><code><span class="kd">var</span> <span class="nx">cardElement</span> <span class="o">=</span> <span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">'</span><span class="s1">card</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">style</span><span class="p">:</span> <span class="p">{</span>
@@ -1450,13 +1470,19 @@ attribute, in this case, will modify the user input to remove <code>(</code>, <c
 <td><code>month</code></td>
 <td><em>number</em></td>
 <td><a href="#element-types-card-expiration-date-element">cardExpirationDate</a></td>
-<td>Data-parsing method that resolves to the one-based month value of the input date.</td>
+<td>Data-parsing method that resolves to the month value of the input date, where &quot;January&quot; = 1.</td>
 </tr>
 <tr>
 <td><code>year</code></td>
 <td><em>number</em></td>
 <td><a href="#element-types-card-expiration-date-element">cardExpirationDate</a></td>
 <td>Data-parsing method that resolves to the four-digit year value of the input date.</td>
+</tr>
+<tr>
+<td><code>setValue</code></td>
+<td><em>void</em></td>
+<td>All</td>
+<td>Accepts a synthetic reference from a retrieved token and safely sets it as the input value.</td>
 </tr>
 </tbody></table>
 <h1 id='element-events'>Element Events</h1><div class="highlight"><pre class="highlight tsx tab-tsx"><code><span class="kd">var</span> <span class="nx">subscription</span> <span class="o">=</span> <span class="nx">cardElement</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">event-type</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
@@ -1942,6 +1968,122 @@ services. To do that, simply pass the Element instance (or one of its <a href="#
     <span class="c1">// check error details</span>
   <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">error</span> <span class="k">instanceof</span> <span class="nx">BasisTheoryApiError</span><span class="p">)</span> <span class="p">{</span>
     <span class="c1">// check error data or status</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div><h1 id='detokenization'>Detokenization</h1>
+<blockquote>
+<p>Retrieve <code>string</code> token data and set value into TextElement</p>
+</blockquote>
+<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">textElement</span> <span class="o">=</span> <span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">'</span><span class="s1">text</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span> <span class="na">targetId</span><span class="p">:</span> <span class="dl">'</span><span class="s1">text-element</span><span class="dl">'</span> <span class="p">});</span>
+
+<span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">tokens</span><span class="p">.</span><span class="nx">retrieve</span><span class="p">(</span><span class="dl">'</span><span class="s1">ca9f3fd7-3906-4087-83aa-9a6129221297</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">apiKey</span><span class="p">:</span> <span class="dl">'</span><span class="s1">key_N88mVGsp3sCXkykyN2EFED</span><span class="dl">'</span> <span class="c1">// api key is required and should belong to an 'expiring' application</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">((</span><span class="nx">token</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">textElement</span><span class="p">.</span><span class="nx">setValue</span><span class="p">(</span><span class="nx">token</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div>
+<blockquote>
+<p>Retrieve card token and set value into CardElement</p>
+</blockquote>
+<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">cardElement</span> <span class="o">=</span> <span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">'</span><span class="s1">card</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">tokens</span><span class="p">.</span><span class="nx">retrieve</span><span class="p">(</span><span class="dl">'</span><span class="s1">ca9f3fd7-3906-4087-83aa-9a6129221297</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">apiKey</span><span class="p">:</span> <span class="dl">'</span><span class="s1">key_N88mVGsp3sCXkykyN2EFED</span><span class="dl">'</span> <span class="c1">// api key is required and should belong to an 'expiring' application</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">((</span><span class="nx">token</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">cardElement</span><span class="p">.</span><span class="nx">setValue</span><span class="p">(</span><span class="nx">token</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="c1">// or</span>
+
+<span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">tokens</span><span class="p">.</span><span class="nx">retrieve</span><span class="p">(</span><span class="dl">'</span><span class="s1">ca9f3fd7-3906-4087-83aa-9a6129221297</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">apiKey</span><span class="p">:</span> <span class="dl">'</span><span class="s1">key_N88mVGsp3sCXkykyN2EFED</span><span class="dl">'</span> <span class="c1">// api key is required and should belong to an 'expiring' application</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">((</span><span class="nx">token</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">cardElement</span><span class="p">.</span><span class="nx">setValue</span><span class="p">({</span>
+    <span class="na">number</span><span class="p">:</span> <span class="nx">token</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">number</span><span class="p">,</span> <span class="c1">// expects string</span>
+    <span class="na">expiration_month</span><span class="p">:</span> <span class="nx">token</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">expiration_month</span><span class="p">,</span> <span class="c1">// expects number</span>
+    <span class="na">expiration_year</span><span class="p">:</span> <span class="nx">token</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">expiration_year</span><span class="p">,</span> <span class="c1">// expects number</span>
+  <span class="p">});</span>
+<span class="p">});</span>
+</code></pre></div>
+<blockquote>
+<p>Retrieve card token and set value into split card elements</p>
+</blockquote>
+<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">cardNumberElement</span> <span class="o">=</span> <span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">'</span><span class="s1">cardNumber</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span> <span class="na">targetId</span><span class="p">:</span> <span class="dl">'</span><span class="s1">card-number</span><span class="dl">'</span> <span class="p">});</span>
+<span class="kd">const</span> <span class="nx">cardExpirationDateElement</span> <span class="o">=</span> <span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">'</span><span class="s1">cardExpirationDate</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span> <span class="na">targetId</span><span class="p">:</span> <span class="dl">'</span><span class="s1">card-expiration-date</span><span class="dl">'</span> <span class="p">});</span>
+
+<span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">tokens</span><span class="p">.</span><span class="nx">retrieve</span><span class="p">(</span><span class="dl">'</span><span class="s1">ca9f3fd7-3906-4087-83aa-9a6129221297</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">apiKey</span><span class="p">:</span> <span class="dl">'</span><span class="s1">key_N88mVGsp3sCXkykyN2EFED</span><span class="dl">'</span> <span class="c1">// api key is required and should belong to an 'expiring' application</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">((</span><span class="nx">token</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">cardNumberElement</span><span class="p">.</span><span class="nx">setValue</span><span class="p">(</span><span class="nx">token</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">number</span><span class="p">);</span>
+  <span class="nx">cardExpirationDateElement</span><span class="p">.</span><span class="nx">setValue</span><span class="p">({</span>
+    <span class="na">month</span><span class="p">:</span> <span class="nx">token</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">expiration_month</span><span class="p">,</span>
+    <span class="na">year</span><span class="p">:</span> <span class="nx">token</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">expiration_year</span>
+  <span class="p">});</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>Elements&#39; values can be securely revealed using the <a href="/#tokens-get-a-token"><code>tokens.retrieve</code></a> service and the Elements&#39; <a href="#element-methods"><code>setValue</code></a>
+method. When <code>retrieve</code> is called from a Basis Theory instance configured with <code>elements: true</code>, the API request is made from inside a Basis Theory hosted <code>iframe</code> and the returned data remains within it.</p>
+
+<aside class="warning">
+  <span>Note that the <code>data</code> attribute in the token returned by the <code>retrieve</code> method is not the actual data, but a a synthetic representation of the sensitive detokenized data.</span>
+</aside>
+
+<aside class="notice">
+  <span>Other token attributes such as <code>metadata</code> are directly accessible from the <code>retrieve</code> response as they are considered non-sensitive.</span>
+</aside>
+<h2 id='detokenization-errors'>Errors</h2>
+<p>Elements services will throw an error if the server rejects the request.</p>
+
+<blockquote>
+<p>BasisTheoryApiError</p>
+</blockquote>
+<div class="highlight"><pre class="highlight tsx tab-tsx"><code><span class="p">{</span>
+  <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
+    <span class="c1">// API response body</span>
+  <span class="p">},</span>
+  <span class="na">status</span><span class="p">:</span> <span class="mi">400</span>
+<span class="p">}</span>
+</code></pre></div>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>name</code></td>
+<td>string</td>
+<td>Error name, always <code>&#39;BasisTheoryApiError&#39;</code>.</td>
+</tr>
+<tr>
+<td><code>data</code></td>
+<td><em>object</em></td>
+<td>Response body <a href="/#errors">sent from the server</a>.</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td><em>number</em></td>
+<td>Response HTTP status.</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+  <span>Error <code>name</code> property may be used instead of checking its instance type.</span>
+</aside>
+
+<blockquote>
+<p>Handling service errors</p>
+</blockquote>
+<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="k">import</span> <span class="p">{</span>
+  <span class="nx">BasisTheoryApiError</span><span class="p">,</span>
+<span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@basis-theory/basis-theory-js/common</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="nx">BasisTheory</span><span class="p">.</span><span class="nx">tokens</span><span class="p">.</span><span class="nx">retrieve</span><span class="p">(</span><span class="dl">'</span><span class="s1">ca9f3fd7-3906-4087-83aa-9a6129221297</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">apiKey</span><span class="p">:</span> <span class="dl">'</span><span class="s1">key_N88mVGsp3sCXkykyN2EFED</span><span class="dl">'</span> <span class="c1">// api key is required and should belong to an 'expiring' application</span>
+<span class="p">}).</span><span class="k">catch</span><span class="p">((</span><span class="nx">error</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">error</span> <span class="k">instanceof</span> <span class="nx">BasisTheoryApiError</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// check error details</span>
   <span class="p">}</span>
 <span class="p">});</span>
 </code></pre></div><h1 id='deprecations'>Deprecations</h1><h2 id='deprecations-deprecated-services'>Deprecated Services</h2>
