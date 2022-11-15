@@ -1,3 +1,10 @@
+# [1.70.0](https://github.com/Basis-Theory/docs/compare/v1.69.1...v1.70.0) (2022-11-15)
+
+
+### Features
+
+* add docs for elements reveal ([#239](https://github.com/Basis-Theory/docs/issues/239)) ([c8028f7](https://github.com/Basis-Theory/docs/commit/c8028f7a94187bcb9f305bd86f78839e8098a251))
+
 ## [1.69.1](https://github.com/Basis-Theory/docs/compare/v1.69.0...v1.69.1) (2022-11-08)
 
 
