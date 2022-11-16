@@ -1,3 +1,10 @@
+# [1.71.0](https://github.com/Basis-Theory/docs/compare/v1.70.0...v1.71.0) (2022-11-16)
+
+
+### Features
+
+* updating IP Address List ([#237](https://github.com/Basis-Theory/docs/issues/237)) ([a423de0](https://github.com/Basis-Theory/docs/commit/a423de05464dbb289c13bd5eb26acb0f6dc033b9))
+
 # [1.70.0](https://github.com/Basis-Theory/docs/compare/v1.69.1...v1.70.0) (2022-11-15)
 
 
