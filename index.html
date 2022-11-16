@@ -397,6 +397,11 @@ _iub.csConfiguration = {"ccpaAcknowledgeOnLoad":true,"consentOnContinuedBrowsing
           </li>
           <li>
             <a href="#ip-addresses" class="toc-h1 toc-link" data-title="IP Addresses">IP Addresses</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#ip-addresses-north-america" class="toc-h2 toc-link" data-title="North America">North America</a>
+                  </li>
+              </ul>
           </li>
           <li>
             <a href="#limits" class="toc-h1 toc-link" data-title="Limits">Limits</a>
@@ -1251,13 +1256,21 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
 </tr>
 </tbody></table>
 <h1 id='ip-addresses'>IP Addresses</h1>
-<p>Basis Theory hosts its systems in multiple regions, but utilizes a list of static IP addresses for all oubound network traffic that your systems and firewalls can whitelist for inbound traffic. The following is a list of IP addresses by region for Basis Theory systems:</p>
-<h3 id='ip-addresses-reactor-errors-north-america'>North America</h3>
+<p>Basis Theory hosts its systems in multiple regions, but utilizes a list of static IP addresses for all outbound network traffic that your systems and firewalls can whitelist for inbound traffic.
+These IP addresses are static - we will make the best effort to attempt to give <strong>30-day</strong> notifications to changes to this list.
+The following is a list of IP addresses by region for Basis Theory systems:</p>
+<h2 id='ip-addresses-north-america'>North America</h2>
 <ul>
-<li>40.77.4.67</li>
-<li>40.83.13.92</li>
+<li>52.189.39.79</li>
+<li>52.189.39.34</li>
+<li>20.85.76.209</li>
+<li>20.85.77.0</li>
 <li>40.122.38.216</li>
-<li>104.43.246.78</li>
+<li>52.189.39.70</li>
+<li>52.189.39.66</li>
+<li>20.85.77.4</li>
+<li>20.85.77.29</li>
+<li>40.83.13.92</li>
 </ul>
 <h1 id='limits'>Limits</h1>
 <p>The Basis Theory API has rate limits applied to ensure the speed and consistency of our systems. </p>
@@ -1266,7 +1279,7 @@ on calls to <code>POST */react</code> mapped from vendor-specific errors.</p>
 <li>Our Elements are restricted to 10 requests per IP, per second, per <a href="/api-reference/#applications">Application</a></li>
 <li>Our APIs are restricted to 100 requests per IP, per second, per <a href="/api-reference/#applications">Application</a></li>
 </ul>
-<h3 id='limits-reactor-errors-error-codes'>Error Codes</h3>
+<h3 id='limits-north-america-error-codes'>Error Codes</h3>
 <table><thead>
 <tr>
 <th>Error Code</th>
@@ -2653,6 +2666,10 @@ could not be retrieved.</p>
 <p>The Basis Theory Proxy provides a simple way to facilitate the transfer of sensitive data via HTTP API calls. This Proxy can be configured to sit in front of your API to tokenize or transform an inbound request and also between you and a 3rd Party, keeping the sensitive data from touching your systems. To learn more, check out our <a href="https://developers.basistheory.com/concepts/what-is-the-proxy/">Proxy Concept</a>.</p>
 
 <p>Basis Theory token identifiers included in the request will be replaced with the raw token data and then the modified request will be forwarded to the destination specified in the <code>BT-PROXY-URL</code> request header. The destination will receive the raw data in the request without your system needing to interact with sensitive data on your own servers.</p>
+
+<blockquote>
+<p><strong>Some 3rd party services may require whitelisting of Basis Theory IP addresses to allow communication. You can find our IP list <a href="/api-reference/#ip-addresses">here</a>.</strong> </p>
+</blockquote>
 <h3 id='proxy-proxying-requests-proxy-requests'>Proxy Requests</h3>
 <blockquote>
 <p>Request with <code>BT-PROXY-KEY</code> header</p>
