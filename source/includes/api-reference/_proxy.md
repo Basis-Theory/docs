@@ -6,6 +6,8 @@ The Basis Theory Proxy provides a simple way to facilitate the transfer of sensi
 
 Basis Theory token identifiers included in the request will be replaced with the raw token data and then the modified request will be forwarded to the destination specified in the `BT-PROXY-URL` request header. The destination will receive the raw data in the request without your system needing to interact with sensitive data on your own servers.
 
+> **Some 3rd party services may require whitelisting of Basis Theory IP addresses to allow communication. You can find our IP list [here](/api-reference/#ip-addresses).** 
+
 ### Proxy Requests
 
 > Request with `BT-PROXY-KEY` header
