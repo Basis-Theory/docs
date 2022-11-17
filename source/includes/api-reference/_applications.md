@@ -33,13 +33,14 @@ Application. Below, we describe each Application Type and how to choose between 
 
 ## Access Rules
 
-| Attribute     | Type     | Description                                                                                                             |
-|---------------|----------|-------------------------------------------------------------------------------------------------------------------------|
-| `description` | *string* | A description of this Access Rule                                                                                       |
-| `priority`    | *int*    | The priority of the rule, beginning with `1` and higher values having lower precedence                                  |
-| `container`   | *string* | The [container](https://developers.basistheory.com/concepts/what-are-token-containers) of Tokens this rule is scoped to |
-| `transform`   | *string* | The [transform](#applications-access-rules-access-rule-transforms) to apply to accessed Tokens                          |
-| `permissions` | *array*  | List of [permissions](#permissions-permission-types) to grant on this Access Rule                                       |
+| Attribute     | Type     | Description                                                                                                                                            |
+|---------------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `description` | *string* | A description of this Access Rule                                                                                                                      |
+| `priority`    | *int*    | The priority of the rule, beginning with `1` and higher values having lower precedence                                                                 |
+| `container`   | *string* | The [container](https://developers.basistheory.com/concepts/what-are-token-containers) of Tokens this rule is scoped to                                |
+| `conditions`  | *array*  | List of [conditions](#applications-access-rules-access-rule-conditions) to be satisfied for the rule to be used. Only apply to `Expiring` applications |
+| `transform`   | *string* | The [transform](#applications-access-rules-access-rule-transforms) to apply to accessed Tokens                                                         |
+| `permissions` | *array*  | List of [permissions](#permissions-permission-types) to grant on this Access Rule                                                                      |
 
 See [Access Rules](https://developers.basistheory.com/concepts/access-controls/#what-are-access-rules) for more information.
 
@@ -50,6 +51,14 @@ See [Access Rules](https://developers.basistheory.com/concepts/access-controls/#
 | Redact | `redact` | Redacts the `data` property from Token responses                                                                        |
 | Mask   | `mask`   | Returns the masked value in the `data` property on Token responses if a `mask` is defined, otherwise `data` is redacted |
 | Reveal | `reveal` | Returns the plaintext value in the `data` property in Token responses                                                   |
+
+### Access Rule Conditions
+
+| Attribute   | Type     | Description                                                                   |
+|-------------|----------|-------------------------------------------------------------------------------|
+| `attribute` | *string* | The token attribute the condition is evaluated on. Either `ID` or `CONTAINER` |
+| `operator`  | *string* | The operator used for the evaluation. Either `STARTS_WITH` or `EQUALS`        |
+| `value`     | *string* | The value to evaluate against the token attribute                             |
 
 ## Create Application
 
@@ -176,14 +185,14 @@ Create a new Application for the Tenant.
 
 ### Request Parameters
 
-| Attribute                          | Required | Type     | Default                   | Description                                                                                                  |
-|------------------------------------|----------|----------|---------------------------|--------------------------------------------------------------------------------------------------------------|
-| `name`                             | true     | *string* | `null`                    | The name of the Application. Has a maximum length of `200`                                                   |
-| `type`                             | true     | *string* | `null`                    | [Application type](#applications-application-types) of the application                                       |
-| `permissions`                      | false    | *array*  | `[]`                      | An array of [Permissions](#permissions-permission-types) granted to the application                          |
-| `rules`                            | false    | *array*  | `[]`                      | An array of [Access Rules](#applications-access-rules) granted to the application                            |
-| `expires_at`                       | false    | *string* | `Current date + 1 minute` | ISO8601 compatible DateTime in which the application will be deleted. Only applies for Expiring applications |
-| `can_create_expiring_applications` | false    | *bool*   | `null`                    | Whether this application can provision Expiring applications                                                 |
+| Attribute                          | Required | Type     | Default                   | Description                                                                                                                             |
+|------------------------------------|----------|----------|---------------------------|-----------------------------------------------------------------------------------------------------------------------------------------|
+| `name`                             | true     | *string* | `null`                    | The name of the Application. Has a maximum length of `200`                                                                              |
+| `type`                             | true     | *string* | `null`                    | [Application type](#applications-application-types) of the application                                                                  |
+| `permissions`                      | false    | *array*  | `[]`                      | An array of [Permissions](#permissions-permission-types) granted to the application                                                     |
+| `rules`                            | false    | *array*  | `[]`                      | An array of [Access Rules](#applications-access-rules) granted to the application                                                       |
+| `expires_at`                       | false    | *string* | `Current date + 1 minute` | ISO8601 compatible DateTime in which the application will be deleted. Only applies for `Expiring` applications and must be within a day |
+| `can_create_expiring_applications` | false    | *bool*   | `null`                    | Whether this application can provision Expiring applications. Only applies for `Private` applications                                   |
 
 
 Either `permissions` or `rules` is required to be non-empty when creating an Application.
@@ -615,12 +624,12 @@ Update an application by ID in the Tenant.
 
 ### Request Parameters
 
-| Attribute                          | Required           | Type               | Default            | Description                                                                                   |
-|------------------------------------|--------------------|--------------------|--------------------|-----------------------------------------------------------------------------------------------|
-| `name`                             | true               | *string*           | `null`             | The name of the application. Has a maximum length of `200`                                    |
-| `permissions`                      | false              | *array*            | `[]`               | A non-empty array of [Permissions](#permissions-permission-types) granted to the application. |
-| `rules`                            | false              | *array*            | `[]`               | An array of [Access Rules](#applications-access-rules) granted to the application.            |
-| `can_create_expiring_applications` | false              | *bool*             | `null`             | Whether this application can provision Expiring applications                                  |
+| Attribute                          | Required           | Type               | Default            | Description                                                                                             |
+|------------------------------------|--------------------|--------------------|--------------------|---------------------------------------------------------------------------------------------------------|
+| `name`                             | true               | *string*           | `null`             | The name of the application. Has a maximum length of `200`                                              |
+| `permissions`                      | false              | *array*            | `[]`               | A non-empty array of [Permissions](#permissions-permission-types) granted to the application.           |
+| `rules`                            | false              | *array*            | `[]`               | An array of [Access Rules](#applications-access-rules) granted to the application.                      |
+| `can_create_expiring_applications` | false              | *bool*             | `null`             | Whether this application can provision `Expiring` applications. Only applies for `Private` applications |
 
 Either `permissions` or `rules` is required to be non-empty when updating an Application.
 
