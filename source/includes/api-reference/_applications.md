@@ -6,19 +6,21 @@ Application. Below, we describe each Application Type and how to choose between 
 
 ## Application Object
 
-| Attribute     | Type     | Description                                                                                                      |
-|---------------|----------|------------------------------------------------------------------------------------------------------------------|
-| `id`          | *uuid*   | Unique identifier of the Application which can be used to [get an Application](#applications-get-an-application) |
-| `tenant_id`   | *uuid*   | The [Tenant](#tenants) ID which owns the Application                                                             |
-| `name`        | *string* | The name of the Application                                                                                      |
-| `key`         | *string* | The API key which should be used for authenticating against Basis Theory API endpoints                           |
-| `type`        | *string* | [Application type](#applications-application-types) of the Application                                           |
-| `permissions` | *array*  | List of [permissions](#permissions-permission-types) granted to the Application                                  |
-| `rules`       | *array*  | List of [access rules](#applications-access-rules) granted to the Application                                    |
-| `created_by`  | *uuid*   | (Optional) The ID of the user or [Application](#applications) that created the Application                       |
-| `created_at`  | *date*   | (Optional) Created date of the Application in ISO 8601 format                                                    |
-| `modified_by` | *uuid*   | (Optional) The ID of the user or [Application](#applications) that last modified the Application                 |
-| `modified_at` | *date*   | (Optional) Last modified date of the Application in ISO 8601 format                                              |
+| Attribute                          | Type     | Description                                                                                                      |
+|------------------------------------|----------|------------------------------------------------------------------------------------------------------------------|
+| `id`                               | *uuid*   | Unique identifier of the Application which can be used to [get an Application](#applications-get-an-application) |
+| `tenant_id`                        | *uuid*   | The [Tenant](#tenants) ID which owns the Application                                                             |
+| `name`                             | *string* | The name of the Application                                                                                      |
+| `key`                              | *string* | The API key which should be used for authenticating against Basis Theory API endpoints                           |
+| `type`                             | *string* | [Application type](#applications-application-types) of the Application                                           |
+| `permissions`                      | *array*  | List of [permissions](#permissions-permission-types) granted to the Application                                  |
+| `rules`                            | *array*  | List of [access rules](#applications-access-rules) granted to the Application                                    |
+| `created_by`                       | *uuid*   | (Optional) The ID of the user or [Application](#applications) that created the Application                       |
+| `created_at`                       | *date*   | (Optional) Created date of the Application in ISO 8601 format                                                    |
+| `modified_by`                      | *uuid*   | (Optional) The ID of the user or [Application](#applications) that last modified the Application                 |
+| `modified_at`                      | *date*   | (Optional) Last modified date of the Application in ISO 8601 format                                              |
+| `expires_at`                       | *date*   | (Optional) Expiring date of the Application in ISO 8601 format                                                   |
+| `can_create_expiring_applications` | *bool*   | (Optional) Whether this application can provision Expiring applications                                          |
 
 ## Application Types
 
@@ -27,6 +29,7 @@ Application. Below, we describe each Application Type and how to choose between 
 | Private    | `private`    | Used for tokenizing, retrieving, and decrypting data within backend services where the `API key` can be secured                |
 | Public     | `public`     | Used for tokenizing data directly within your mobile or browser application                                                    |
 | Management | `management` | Used for managing all aspects of your token infrastructure such as [creating an Application](#applications-create-application) |
+| Expiring   | `expiring`   | Used for revealing sensitive data using elements within your mobile or browser application                                     | 
 
 ## Access Rules
 
@@ -173,12 +176,15 @@ Create a new Application for the Tenant.
 
 ### Request Parameters
 
-| Attribute     | Required | Type     | Default | Description                                                                          |
-|---------------|----------|----------|---------|--------------------------------------------------------------------------------------|
-| `name`        | true     | *string* | `null`  | The name of the Application. Has a maximum length of `200`                           |
-| `type`        | true     | *string* | `null`  | [Application type](#applications-application-types) of the application               |
-| `permissions` | false    | *array*  | `[]`    | An array of [Permissions](#permissions-permission-types) granted to the application. |
-| `rules`       | false    | *array*  | `[]`    | An array of [Access Rules](#applications-access-rules) granted to the application.   |
+| Attribute                          | Required | Type     | Default                   | Description                                                                                                  |
+|------------------------------------|----------|----------|---------------------------|--------------------------------------------------------------------------------------------------------------|
+| `name`                             | true     | *string* | `null`                    | The name of the Application. Has a maximum length of `200`                                                   |
+| `type`                             | true     | *string* | `null`                    | [Application type](#applications-application-types) of the application                                       |
+| `permissions`                      | false    | *array*  | `[]`                      | An array of [Permissions](#permissions-permission-types) granted to the application                          |
+| `rules`                            | false    | *array*  | `[]`                      | An array of [Access Rules](#applications-access-rules) granted to the application                            |
+| `expires_at`                       | false    | *string* | `Current date + 1 minute` | ISO8601 compatible DateTime in which the application will be deleted. Only applies for Expiring applications |
+| `can_create_expiring_applications` | false    | *bool*   | `null`                    | Whether this application can provision Expiring applications                                                 |
+
 
 Either `permissions` or `rules` is required to be non-empty when creating an Application.
 
@@ -609,11 +615,12 @@ Update an application by ID in the Tenant.
 
 ### Request Parameters
 
-| Attribute     | Required | Type     | Default | Description                                                                                   |
-|---------------|----------|----------|---------|-----------------------------------------------------------------------------------------------|
-| `name`        | true     | *string* | `null`  | The name of the application. Has a maximum length of `200`                                    |
-| `permissions` | false    | *array*  | `[]`    | A non-empty array of [Permissions](#permissions-permission-types) granted to the application. |
-| `rules`       | false    | *array*  | `[]`    | An array of [Access Rules](#applications-access-rules) granted to the application.            |
+| Attribute                          | Required           | Type               | Default            | Description                                                                                   |
+|------------------------------------|--------------------|--------------------|--------------------|-----------------------------------------------------------------------------------------------|
+| `name`                             | true               | *string*           | `null`             | The name of the application. Has a maximum length of `200`                                    |
+| `permissions`                      | false              | *array*            | `[]`               | A non-empty array of [Permissions](#permissions-permission-types) granted to the application. |
+| `rules`                            | false              | *array*            | `[]`               | An array of [Access Rules](#applications-access-rules) granted to the application.            |
+| `can_create_expiring_applications` | false              | *bool*             | `null`             | Whether this application can provision Expiring applications                                  |
 
 Either `permissions` or `rules` is required to be non-empty when updating an Application.
 
