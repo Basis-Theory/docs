@@ -1359,6 +1359,16 @@ Application. Below, we describe each Application Type and how to choose between 
 <td><em>date</em></td>
 <td>(Optional) Last modified date of the Application in ISO 8601 format</td>
 </tr>
+<tr>
+<td><code>expires_at</code></td>
+<td><em>date</em></td>
+<td>(Optional) Expiring date of the Application in ISO 8601 format</td>
+</tr>
+<tr>
+<td><code>can_create_expiring_applications</code></td>
+<td><em>bool</em></td>
+<td>(Optional) Whether this application can provision Expiring applications</td>
+</tr>
 </tbody></table>
 <h2 id='applications-application-types'>Application Types</h2>
 <table><thead>
@@ -1383,6 +1393,11 @@ Application. Below, we describe each Application Type and how to choose between 
 <td><code>management</code></td>
 <td>Used for managing all aspects of your token infrastructure such as <a href="#applications-create-application">creating an Application</a></td>
 </tr>
+<tr>
+<td>Expiring</td>
+<td><code>expiring</code></td>
+<td>Used for revealing sensitive data using elements within your mobile or browser application</td>
+</tr>
 </tbody></table>
 <h2 id='applications-access-rules'>Access Rules</h2>
 <table><thead>
@@ -1405,7 +1420,12 @@ Application. Below, we describe each Application Type and how to choose between 
 <tr>
 <td><code>container</code></td>
 <td><em>string</em></td>
-<td>The <a href="https://developers.basistheory.com/concepts/what-are-token-containers">container</a> of Tokens this rule is scoped to</td>
+<td>(Optional) The <a href="https://developers.basistheory.com/concepts/what-are-token-containers">container</a> of Tokens this rule is scoped to</td>
+</tr>
+<tr>
+<td><code>conditions</code></td>
+<td><em>array</em></td>
+<td>(Optional) List of <a href="#applications-access-rules-access-rule-conditions">conditions</a> to be satisfied for the rule to be used. Only apply to <code>Expiring</code> applications</td>
 </tr>
 <tr>
 <td><code>transform</code></td>
@@ -1420,6 +1440,11 @@ Application. Below, we describe each Application Type and how to choose between 
 </tbody></table>
 
 <p>See <a href="https://developers.basistheory.com/concepts/access-controls/#what-are-access-rules">Access Rules</a> for more information.</p>
+
+<aside class="notice">
+  <span><code>container</code> is only required for <code>public</code> and <code>private</code> applications, 
+whilst <code>conditions</code> is only required for <code>expiring</code> ones. They are mutually exclusive.</span>
+</aside>
 <h3 id='applications-access-rules-access-rule-transforms'>Access Rule Transforms</h3>
 <table><thead>
 <tr>
@@ -1442,6 +1467,30 @@ Application. Below, we describe each Application Type and how to choose between 
 <td>Reveal</td>
 <td><code>reveal</code></td>
 <td>Returns the plaintext value in the <code>data</code> property in Token responses</td>
+</tr>
+</tbody></table>
+<h3 id='applications-access-rules-access-rule-conditions'>Access Rule Conditions</h3>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>attribute</code></td>
+<td><em>string</em></td>
+<td>The token attribute the condition is evaluated on. Either <code>id</code> or <code>container</code></td>
+</tr>
+<tr>
+<td><code>operator</code></td>
+<td><em>string</em></td>
+<td>The operator used for the evaluation. Either <code>starts_with</code> or <code>equals</code></td>
+</tr>
+<tr>
+<td><code>value</code></td>
+<td><em>string</em></td>
+<td>The value to evaluate against the token attribute</td>
 </tr>
 </tbody></table>
 <h2 id='applications-create-application'>Create Application</h2>
@@ -1578,14 +1627,28 @@ Application. Below, we describe each Application Type and how to choose between 
 <td>false</td>
 <td><em>array</em></td>
 <td><code>[]</code></td>
-<td>An array of <a href="#permissions-permission-types">Permissions</a> granted to the application.</td>
+<td>An array of <a href="#permissions-permission-types">Permissions</a> granted to the application</td>
 </tr>
 <tr>
 <td><code>rules</code></td>
 <td>false</td>
 <td><em>array</em></td>
 <td><code>[]</code></td>
-<td>An array of <a href="#applications-access-rules">Access Rules</a> granted to the application.</td>
+<td>An array of <a href="#applications-access-rules">Access Rules</a> granted to the application</td>
+</tr>
+<tr>
+<td><code>expires_at</code></td>
+<td>false</td>
+<td><em>string</em></td>
+<td><code>Current date + 1 minute</code></td>
+<td>ISO8601 compatible DateTime in which the application will be deleted. Only applies for <code>Expiring</code> applications and must be within a day</td>
+</tr>
+<tr>
+<td><code>can_create_expiring_applications</code></td>
+<td>false</td>
+<td><em>bool</em></td>
+<td><code>null</code></td>
+<td>Whether this application can provision Expiring applications. Only applies for <code>Private</code> applications</td>
 </tr>
 </tbody></table>
 
@@ -1997,6 +2060,13 @@ Application. Below, we describe each Application Type and how to choose between 
 <td><em>array</em></td>
 <td><code>[]</code></td>
 <td>An array of <a href="#applications-access-rules">Access Rules</a> granted to the application.</td>
+</tr>
+<tr>
+<td><code>can_create_expiring_applications</code></td>
+<td>false</td>
+<td><em>bool</em></td>
+<td><code>null</code></td>
+<td>Whether this application can provision <code>Expiring</code> applications. Only applies for <code>Private</code> applications</td>
 </tr>
 </tbody></table>
 
@@ -2442,7 +2512,7 @@ or <a href="#applications-update-application">update an Application</a>.</p>
 <tr>
 <td><code>token:read</code></td>
 <td>Read Tokens</td>
-<td><code>private</code></td>
+<td><code>private</code> <code>expiring</code></td>
 </tr>
 <tr>
 <td><code>token:search</code></td>
