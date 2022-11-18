@@ -1,3 +1,10 @@
+# [1.72.0](https://github.com/Basis-Theory/docs/compare/v1.71.0...v1.72.0) (2022-11-18)
+
+
+### Features
+
+* expiring application docs ([#241](https://github.com/Basis-Theory/docs/issues/241)) ([96f8b1c](https://github.com/Basis-Theory/docs/commit/96f8b1c99f6fcc2921422d73dc2883db648ca8b9))
+
 # [1.71.0](https://github.com/Basis-Theory/docs/compare/v1.70.0...v1.71.0) (2022-11-16)
 
 
