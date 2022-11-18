@@ -33,16 +33,21 @@ Application. Below, we describe each Application Type and how to choose between 
 
 ## Access Rules
 
-| Attribute     | Type     | Description                                                                                                                                            |
-|---------------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `description` | *string* | A description of this Access Rule                                                                                                                      |
-| `priority`    | *int*    | The priority of the rule, beginning with `1` and higher values having lower precedence                                                                 |
-| `container`   | *string* | The [container](https://developers.basistheory.com/concepts/what-are-token-containers) of Tokens this rule is scoped to                                |
-| `conditions`  | *array*  | List of [conditions](#applications-access-rules-access-rule-conditions) to be satisfied for the rule to be used. Only apply to `Expiring` applications |
-| `transform`   | *string* | The [transform](#applications-access-rules-access-rule-transforms) to apply to accessed Tokens                                                         |
-| `permissions` | *array*  | List of [permissions](#permissions-permission-types) to grant on this Access Rule                                                                      |
+| Attribute     | Type     | Description                                                                                                                                                       |
+|---------------|----------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `description` | *string* | A description of this Access Rule                                                                                                                                 |
+| `priority`    | *int*    | The priority of the rule, beginning with `1` and higher values having lower precedence                                                                            |
+| `container`   | *string* | (Optional) The [container](https://developers.basistheory.com/concepts/what-are-token-containers) of Tokens this rule is scoped to                                |
+| `conditions`  | *array*  | (Optional) List of [conditions](#applications-access-rules-access-rule-conditions) to be satisfied for the rule to be used. Only apply to `Expiring` applications |
+| `transform`   | *string* | The [transform](#applications-access-rules-access-rule-transforms) to apply to accessed Tokens                                                                    |
+| `permissions` | *array*  | List of [permissions](#permissions-permission-types) to grant on this Access Rule                                                                                 |
 
 See [Access Rules](https://developers.basistheory.com/concepts/access-controls/#what-are-access-rules) for more information.
+
+<aside class="notice">
+  <span><code>container</code> is only required for <code>public</code> and <code>private</code> applications, 
+whilst <code>conditions</code> is only required for <code>expiring</code> ones. They are mutually exclusive.</span>
+</aside>
 
 ### Access Rule Transforms
 
@@ -56,8 +61,8 @@ See [Access Rules](https://developers.basistheory.com/concepts/access-controls/#
 
 | Attribute   | Type     | Description                                                                   |
 |-------------|----------|-------------------------------------------------------------------------------|
-| `attribute` | *string* | The token attribute the condition is evaluated on. Either `ID` or `CONTAINER` |
-| `operator`  | *string* | The operator used for the evaluation. Either `STARTS_WITH` or `EQUALS`        |
+| `attribute` | *string* | The token attribute the condition is evaluated on. Either `id` or `container` |
+| `operator`  | *string* | The operator used for the evaluation. Either `starts_with` or `equals`        |
 | `value`     | *string* | The value to evaluate against the token attribute                             |
 
 ## Create Application
