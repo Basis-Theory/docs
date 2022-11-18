@@ -19,38 +19,38 @@ Every API endpoint will document the required permissions needed to perform the 
 
 ## Permission Types
 
-| Permission                 | Description                                                | Application Types  |
-|----------------------------|------------------------------------------------------------|--------------------|
-| `token:create`             | Create Tokens                                              | `public` `private` |
-| `token:update`             | Update Tokens                                              | `public` `private` |
-| `token:read`               | Read Tokens                                                | `private`          |
-| `token:search`             | Search Tokens                                              | `private`          |
-| `token:delete`             | Delete Tokens                                              | `private`          |
-| `token:use`                | Use Tokens in Basis Theory Services (e.g. Proxy, Reactors) | `private`          |
-| `tenant:read`              | Read Tenants                                               | `management`       |
-| `tenant:update`            | Update Tenants                                             | `management`       |
-| `tenant:delete`            | Delete Tenants                                             | `management`       |
-| `application:read`         | Read Applications                                          | `management`       |
-| `application:create`       | Create Applications                                        | `management`       |
-| `application:update`       | Update and regenerate API keys for Applications            | `management`       |
-| `application:delete`       | Delete Applications                                        | `management`       |
-| `log:read`                 | Read audit logs                                            | `management`       |
-| `reactor:read`             | Read Reactor Formulas and Reactors                         | `management`       |
-| `reactor:create`           | Create Reactors Formulas and Reactors                      | `management`       |
-| `reactor:update`           | Update Reactors Formulas and Reactors                      | `management`       |
-| `reactor:delete`           | Delete Reactors Formulas and Reactors                      | `management`       |
-| `proxy:read`               | Read Proxies                                               | `management`       |
-| `proxy:create`             | Create Proxies                                             | `management`       |
-| `proxy:update`             | Update Proxies                                             | `management`       |
-| `proxy:delete`             | Delete Proxies                                             | `management`       |
-| `tenant:member:read`       | Read Tenant Members                                        | `management`       |
-| `tenant:member:update`     | Update Tenant Members                                      | `management`       |
-| `tenant:member:delete`     | Delete Tenant Members                                      | `management`       |
-| `tenant:invitation:create` | Create Tenant Invitations                                  | `management`       |
-| `tenant:invitation:read`   | Read Tenant Invitations                                    | `management`       |
-| `tenant:invitation:update` | Update Tenant Invitations                                  | `management`       |
-| `tenant:invitation:delete` | Delete Tenant Invitations                                  | `management`       |
-| `report:read`              | Read reports                                               | `management`       |
+| Permission                 | Description                                                | Application Types    |
+|----------------------------|------------------------------------------------------------|----------------------|
+| `token:create`             | Create Tokens                                              | `public` `private`   |
+| `token:update`             | Update Tokens                                              | `public` `private`   |
+| `token:read`               | Read Tokens                                                | `private` `expiring` |
+| `token:search`             | Search Tokens                                              | `private`            |
+| `token:delete`             | Delete Tokens                                              | `private`            |
+| `token:use`                | Use Tokens in Basis Theory Services (e.g. Proxy, Reactors) | `private`            |
+| `tenant:read`              | Read Tenants                                               | `management`         |
+| `tenant:update`            | Update Tenants                                             | `management`         |
+| `tenant:delete`            | Delete Tenants                                             | `management`         |
+| `application:read`         | Read Applications                                          | `management`         |
+| `application:create`       | Create Applications                                        | `management`         |
+| `application:update`       | Update and regenerate API keys for Applications            | `management`         |
+| `application:delete`       | Delete Applications                                        | `management`         |
+| `log:read`                 | Read audit logs                                            | `management`         |
+| `reactor:read`             | Read Reactor Formulas and Reactors                         | `management`         |
+| `reactor:create`           | Create Reactors Formulas and Reactors                      | `management`         |
+| `reactor:update`           | Update Reactors Formulas and Reactors                      | `management`         |
+| `reactor:delete`           | Delete Reactors Formulas and Reactors                      | `management`         |
+| `proxy:read`               | Read Proxies                                               | `management`         |
+| `proxy:create`             | Create Proxies                                             | `management`         |
+| `proxy:update`             | Update Proxies                                             | `management`         |
+| `proxy:delete`             | Delete Proxies                                             | `management`         |
+| `tenant:member:read`       | Read Tenant Members                                        | `management`         |
+| `tenant:member:update`     | Update Tenant Members                                      | `management`         |
+| `tenant:member:delete`     | Delete Tenant Members                                      | `management`         |
+| `tenant:invitation:create` | Create Tenant Invitations                                  | `management`         |
+| `tenant:invitation:read`   | Read Tenant Invitations                                    | `management`         |
+| `tenant:invitation:update` | Update Tenant Invitations                                  | `management`         |
+| `tenant:invitation:delete` | Delete Tenant Invitations                                  | `management`         |
+| `report:read`              | Read reports                                               | `management`         |
 
 
 ## List Permissions
