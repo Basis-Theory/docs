@@ -2,7 +2,7 @@
 <aside class="header-intro-box">
     <span>
         <h4>Elements</h4>
-        <p class="header-intro-body2-font">Explore how to quickly start using our Elements to tokenize credit cards.</p>
+        <p class="header-intro-body2-font">Explore how to securely collect or reveal sensitive data within your applications.</p>
         <h6>QUICK LINKS</h6>
         <span class="intro-quick-links">
             <a href="#getting-started">Before You Begin</a>
@@ -14,31 +14,56 @@
     <img src="/images/elements_intro.svg"/>
 </aside>
 
-**Basis Theory Elements** are simple, secure, developer-friendly inputs that empower consumers to collect and reveal sensitive data from/to their users directly to/from a Basis Theory certified vault.
+**Basis Theory Elements** are secure inputs that empower developers to easily collect or reveal sensitive data within 
+web or mobile applications. 
 
-Think about it as a portal that we open within your site that allows users to seamlessly tokenize information and never notice they are interacting with our technology. Here is how we make it possible:
+Think about it as an isolated sandbox within your frontend application that your end users are able to seamlessly 
+interact with, and which securely communicates with the Basis Theory Vault. Sensitive data is not directly exposed to
+your application code, which keeps your frontend systems out of compliance scope.
 
-- Own your UX, by fully customizing how **Elements** are styled
-- Inputs and forms are simple to use
-- Able to interact with Elements as you do with native elements
+Here's how we make this possible:
 
-**Native Mobile SDKs**
+- Integrate our web and mobile SDKs into your frontend applications
+- Build forms using our **Element** input components
+- Interact with the Basis Theory API using **Element** references, not plaintext data
+- Own your UI/UX by fully customizing how **Elements** are styled
 
-<aside class="notice">
-  <span>
-    Our native <a href="#android">Android</a> and <a href="#ios">iOS</a> SDKs are in early access. Interested? 
-    Email us at <a href="mailto:info@basistheory.com?subject=Mobile Elements SDK Early Access Request">info@basistheory.com</a>
-  </span>
-</aside>
+**Collect Sensitive Data**
 
-You can utilize our native mobile SDKs to collect sensitive data while keeping your mobile app out of compliance scope.
+Data entered by your end users into **Elements** is tokenized and secured within Basis Theory's certified Vault.
+
+Our SDKs provide several types of inputs to collect various types of data, such as the [CardElement](/elements#cardelement)
+for collecting credit card data and [TextElement](/elements#textelement) for collecting arbitrary textual data.
+
+Elements can be configured to support custom input masking, validation, and transformation rules to satisfy your use cases.
 
 **Reveal Sensitive Data**
 
+Tokens stored within the Basis Theory Vault can be securely revealed to end users without accessing the plaintext
+data directly within your application code.
+
+Using one of our SDKs, sensitive data can be securely retrieved and applied to one or more Elements within your UI.
+See the section below on [detokenization](/elements#detokenization) for more information.
+
 <aside class="notice">
-  <span>This feature is currently in early access. Interested? Email us at <a href="mailto:info@basistheory.com?subject=Reveal Elements Early Access Request">info@basistheory.com</a></span>
+  <span>
+    Revealing sensitive data is only currently supported within the JavaScript and React SDKs. We are working to fully 
+    support this functionality within our native <a href="#android">Android</a> and <a href="#ios">iOS</a> SDKs. Interested?
+    Please email us at <a href="mailto:info@basistheory.com?subject=Mobile Elements SDK - Reveal">info@basistheory.com</a> 
+    to join our early access program.
+  </span>
 </aside>
 
-You can utilize Basis Theory Elements to reveal sensitive data directly to your customers while reducing your PCI scope.
+**SDKs**
 
-Come back soon to see our guide for implementation.
+Our SDKs provide UI components and services that enable your app to
+securely [tokenize](/elements#tokenization) and [detokenize](/elements#detokenization) sensitive data without needing
+to interact directly with the plaintext data.
+
+The following SDKs are available to integrate into your web or mobile applications to collect or reveal sensitive data,
+while keeping your app out of compliance scope:
+
+- [JavaScript](https://github.com/Basis-Theory/basis-theory-js/)
+- [React](https://github.com/Basis-Theory/basis-theory-react/)
+- [Android](https://github.com/Basis-Theory/basistheory-android/)
+- [iOS](https://github.com/Basis-Theory/basistheory-ios/)
