@@ -50,10 +50,6 @@ react_includes:
   - elements/react/basis_theory_react
   - elements/react/react_deprecations
 
-mobile_includes:
-  - elements/mobile/android
-  - elements/mobile/ios
-
 reference_links:
   - <a class="toc-h1 toc-link" href="/api-reference">API Reference</a>
   - <a class="toc-h1 toc-link" href="/elements">Elements</a>
