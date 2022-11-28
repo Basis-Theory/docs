@@ -542,32 +542,6 @@ _iub.csConfiguration = {"ccpaAcknowledgeOnLoad":true,"consentOnContinuedBrowsing
             </li>
         </ul>
 
-        <h1 class="nav-title">Mobile</h1>
-        <ul id="toc_api" class="toc-section toc-list-h1">
-            <li>
-              <a href="#android" class="toc-h1 toc-link" data-title="Android">Android</a>
-                <ul class="toc-list-h2">
-                    <li>
-                      <a href="#android-coming-soon" class="toc-h2 toc-link" data-title="Coming Soon">Coming Soon</a>
-                    </li>
-                    <li>
-                      <a href="#android-java-sdk" class="toc-h2 toc-link" data-title="Java SDK">Java SDK</a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-              <a href="#ios" class="toc-h1 toc-link" data-title="iOS">iOS</a>
-                <ul class="toc-list-h2">
-                    <li>
-                      <a href="#ios-coming-soon" class="toc-h2 toc-link" data-title="Coming Soon">Coming Soon</a>
-                    </li>
-                    <li>
-                      <a href="#ios-swift-sdk" class="toc-h2 toc-link" data-title="Swift SDK">Swift SDK</a>
-                    </li>
-                </ul>
-            </li>
-        </ul>
-
         <h1 class="nav-title">Reference</h1>
         <ul id="toc_api" class="toc-section toc-list-h1">
             <li><a class="toc-h1 toc-link" href="/api-reference">API Reference</a></li>
@@ -627,7 +601,7 @@ _iub.csConfiguration = {"ccpaAcknowledgeOnLoad":true,"consentOnContinuedBrowsing
 <aside class="header-intro-box">
     <span>
         <h4>Elements</h4>
-        <p class="header-intro-body2-font">Explore how to quickly start using our Elements to tokenize credit cards.</p>
+        <p class="header-intro-body2-font">Explore how to securely collect or reveal sensitive data within your applications.</p>
         <h6>QUICK LINKS</h6>
         <span class="intro-quick-links">
             <a href="#getting-started">Before You Begin</a>
@@ -639,36 +613,63 @@ _iub.csConfiguration = {"ccpaAcknowledgeOnLoad":true,"consentOnContinuedBrowsing
     <img src="../images/elements_intro-3651f26d.svg"/>
 </aside>
 
-<p><strong>Basis Theory Elements</strong> are simple, secure, developer-friendly inputs that empower consumers to collect and reveal sensitive data from/to their users directly to/from a Basis Theory certified vault.</p>
+<p><strong>Basis Theory Elements</strong> are secure inputs that empower developers to easily collect or reveal sensitive data within 
+web or mobile applications. </p>
 
-<p>Think about it as a portal that we open within your site that allows users to seamlessly tokenize information and never notice they are interacting with our technology. Here is how we make it possible:</p>
+<p>Think about it as an isolated sandbox within your frontend application that your end users are able to seamlessly 
+interact with, and which securely communicates with the Basis Theory Vault. Sensitive data is not directly exposed to
+your application code, which keeps your frontend systems out of compliance scope.</p>
+
+<p>Here&#39;s how we make this possible:</p>
 
 <ul>
-<li>Own your UX, by fully customizing how <strong>Elements</strong> are styled</li>
-<li>Inputs and forms are simple to use</li>
-<li>Able to interact with Elements as you do with native elements</li>
+<li>Integrate our web and mobile SDKs into your frontend applications</li>
+<li>Build forms using our <strong>Element</strong> input components</li>
+<li>Interact with the Basis Theory API using <strong>Element</strong> references, not plaintext data</li>
+<li>Own your UI/UX by fully customizing how <strong>Elements</strong> are styled</li>
 </ul>
 
-<p><strong>Native Mobile SDKs</strong></p>
+<p><strong>Collect Sensitive Data</strong></p>
 
-<aside class="notice">
-  <span>
-    Our native <a href="#android">Android</a> and <a href="#ios">iOS</a> SDKs are in early access. Interested? 
-    Email us at <a href="mailto:info@basistheory.com?subject=Mobile Elements SDK Early Access Request">info@basistheory.com</a>
-  </span>
-</aside>
+<p>Data entered by your end users into <strong>Elements</strong> is tokenized and secured within Basis Theory&#39;s certified Vault.</p>
 
-<p>You can utilize our native mobile SDKs to collect sensitive data while keeping your mobile app out of compliance scope.</p>
+<p>Our SDKs provide several types of inputs to collect various types of data, such as the <a href="/elements#cardelement">CardElement</a>
+for collecting credit card data and <a href="/elements#textelement">TextElement</a> for collecting arbitrary textual data.</p>
+
+<p>Elements can be configured to support custom input masking, validation, and transformation rules to satisfy your use cases.</p>
 
 <p><strong>Reveal Sensitive Data</strong></p>
 
+<p>Tokens stored within the Basis Theory Vault can be securely revealed to end users without accessing the plaintext
+data directly within your application code.</p>
+
+<p>Using one of our SDKs, sensitive data can be securely retrieved and applied to one or more Elements within your UI.
+See the section below on <a href="/elements#detokenization">detokenization</a> for more information.</p>
+
 <aside class="notice">
-  <span>This feature is currently in early access. Interested? Email us at <a href="mailto:info@basistheory.com?subject=Reveal Elements Early Access Request">info@basistheory.com</a></span>
+  <span>
+    Revealing sensitive data is only currently supported within the JavaScript and React SDKs. We are working to fully 
+    support this functionality within our native <a href="#android">Android</a> and <a href="#ios">iOS</a> SDKs. Interested?
+    Please email us at <a href="mailto:info@basistheory.com?subject=Mobile Elements SDK - Reveal">info@basistheory.com</a> 
+    to join our early access program.
+  </span>
 </aside>
 
-<p>You can utilize Basis Theory Elements to reveal sensitive data directly to your customers while reducing your PCI scope.</p>
+<p><strong>SDKs</strong></p>
 
-<p>Come back soon to see our guide for implementation.</p>
+<p>Our SDKs provide UI components and services that enable your app to
+securely <a href="/elements#tokenization">tokenize</a> and <a href="/elements#detokenization">detokenize</a> sensitive data without needing
+to interact directly with the plaintext data.</p>
+
+<p>The following SDKs are available to integrate into your web or mobile applications to collect or reveal sensitive data,
+while keeping your app out of compliance scope:</p>
+
+<ul>
+<li><a href="https://github.com/Basis-Theory/basis-theory-js/">JavaScript</a></li>
+<li><a href="https://github.com/Basis-Theory/basis-theory-react/">React</a></li>
+<li><a href="https://github.com/Basis-Theory/basistheory-android/">Android</a></li>
+<li><a href="https://github.com/Basis-Theory/basistheory-ios/">iOS</a></li>
+</ul>
 <h1 id='getting-started'>Getting started</h1><h2 id='getting-started-before-you-begin'>Before You Begin</h2><h3 id='getting-started-before-you-begin-if-you-don-39-t-have-an-account'>If you don&#39;t have an account</h3>
 <p>To begin taking advantage of the Basis Theory platform, you’ll need to create an account and Tenant through our <a href="https://portal.basistheory.com/register" target="_blank">Portal</a>.</p>
 <h3 id='getting-started-before-you-begin-if-you-have-an-account'>If you have an account</h3>
@@ -3096,37 +3097,6 @@ method. When <code>retrieve</code> is called from a Basis Theory instance config
 <td><code>getElement</code> method will be removed in an upcoming release. Instead, please use <a href="#basistheoryreact-using-refs">refs</a></td>
 </tr>
 </tbody></table>
-
-        <h1 id='android'>Android</h1><h2 id='android-coming-soon'>Coming Soon</h2>
-<aside class="notice">
-  <span>Our native Android SDK is currently in early access. Interested? Email us at <a href="mailto:info@basistheory.com?subject=Android SDK Early Access Request">info@basistheory.com</a></span>
-</aside>
-
-<p>You can utilize the Basis Theory Android SDK to collect sensitive data within your native Android app while keeping your app 
-out of compliance scope. Our SDK provides components and services that enable your app to securely collect and tokenize
-sensitive data without needing to interact directly with the data.</p>
-
-<p>Come back soon to see our complete docs.</p>
-<h2 id='android-java-sdk'>Java SDK</h2>
-<p>We also provide a <a href="https://github.com/Basis-Theory/basistheory-java">Java SDK</a> that can be used from 
-within either Java or Kotlin based Android apps. While this SDK won&#39;t keep your app completely out of compliance 
-scope while collecting sensitive data, it can simplify your integration with the Basis Theory API. 
-See the <a href="https://github.com/Basis-Theory/basistheory-java">README</a> for installation and usage instructions. </p>
-<h1 id='ios'>iOS</h1><h2 id='ios-coming-soon'>Coming Soon</h2>
-<aside class="notice">
-  <span>Our native iOS SDK is currently in early access. Interested? Email us at <a href="mailto:info@basistheory.com?subject=iOS SDK Early Access Request">info@basistheory.com</a></span>
-</aside>
-
-<p>You can utilize the Basis Theory iOS SDK to collect sensitive data within your native iOS app while keeping your app
-out of compliance scope. Our SDK provides components and services that enable your app to securely collect and tokenize
-sensitive data without needing to interact directly with the data.</p>
-
-<p>Come back soon to see our complete installation and usage docs.</p>
-<h2 id='ios-swift-sdk'>Swift SDK</h2>
-<p>We also provide a <a href="https://github.com/Basis-Theory/basistheory-swift">Swift SDK</a> that can be used from
-within a native Swift-based iOS app. While this SDK won&#39;t keep your app completely out of compliance
-scope while collecting sensitive data, it can simplify your integration with the Basis Theory API. 
-See the <a href="https://github.com/Basis-Theory/basistheory-swift">README</a> for installation and usage instructions. </p>
 
         
       </div>
