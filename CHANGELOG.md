@@ -1,3 +1,10 @@
+# [1.73.0](https://github.com/Basis-Theory/docs/compare/v1.72.0...v1.73.0) (2022-11-28)
+
+
+### Features
+
+* Updating intro section on Elements docs ([#242](https://github.com/Basis-Theory/docs/issues/242)) ([508300a](https://github.com/Basis-Theory/docs/commit/508300a01c8264c25eb6c9084acbe2b4c1778838))
+
 # [1.72.0](https://github.com/Basis-Theory/docs/compare/v1.71.0...v1.72.0) (2022-11-18)
 
 
