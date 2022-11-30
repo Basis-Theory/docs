@@ -65,7 +65,7 @@ module.exports = async function (req) {
 
   return {
       body: processedBody, // Proxy request/response body
-      headers: processedHeaderes // Proxy request/response headers
+      headers: processedHeaders // Proxy request/response headers
   };
 };
 ```
