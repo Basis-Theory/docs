@@ -1,3 +1,10 @@
+# [1.74.0](https://github.com/Basis-Theory/docs/compare/v1.73.0...v1.74.0) (2022-11-30)
+
+
+### Features
+
+* adds new proxy transform attributes ([#243](https://github.com/Basis-Theory/docs/issues/243)) ([19d6ea9](https://github.com/Basis-Theory/docs/commit/19d6ea9c1a8b635d8ec6789b967f06125f227aaf))
+
 # [1.73.0](https://github.com/Basis-Theory/docs/compare/v1.72.0...v1.73.0) (2022-11-28)
 
 
