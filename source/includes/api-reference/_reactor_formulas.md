@@ -84,7 +84,7 @@ All Reactor Formula code snippets must export a function which takes in a [reque
 The payload returned in the `tokenize` property will be tokenized in the same way that requests are tokenized via the Tokenize endpoint. 
 For more information, see [Tokenize](#tokenize).
 
-Reactor Formula Code is written in Javascript (targeting Node.js v14) and generally follows the structure:
+Reactor Formula Code is written in Javascript (targeting Node.js v16) and generally follows the structure:
 
 <div class="center-column"></div>
 ```js
