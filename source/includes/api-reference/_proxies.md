@@ -61,7 +61,7 @@ module.exports = async function (req) {
 
   // do anything here!
   const processedBody = ...; // do something with body
-  const processedHeaderes = ...; // do something with headers
+  const processedHeaders = ...; // do something with headers
 
   return {
       body: processedBody, // Proxy request/response body
