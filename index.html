@@ -491,6 +491,12 @@ _iub.csConfiguration = {"ccpaAcknowledgeOnLoad":true,"consentOnContinuedBrowsing
                       <a href="#proxies-proxy-object" class="toc-h2 toc-link" data-title="Proxy Object">Proxy Object</a>
                     </li>
                     <li>
+                      <a href="#proxies-proxy-transform-object" class="toc-h2 toc-link" data-title="Proxy Transform Object">Proxy Transform Object</a>
+                    </li>
+                    <li>
+                      <a href="#proxies-transform-code" class="toc-h2 toc-link" data-title="Transform Code">Transform Code</a>
+                    </li>
+                    <li>
                       <a href="#proxies-create-a-proxy" class="toc-h2 toc-link" data-title="Create a Proxy">Create a Proxy</a>
                     </li>
                     <li>
@@ -2995,16 +3001,6 @@ At most, 100 tokens may be detokenized within a single proxy request. You can fi
 <td>The URL to proxy requests to</td>
 </tr>
 <tr>
-<td><code>request_reactor_id</code></td>
-<td><em>string</em></td>
-<td>The <a href="#reactors">Reactor</a> to invoke on the Proxy request</td>
-</tr>
-<tr>
-<td><code>response_reactor_id</code></td>
-<td><em>string</em></td>
-<td>The <a href="#reactors">Reactor</a> to invoke on the Proxy response</td>
-</tr>
-<tr>
 <td><code>tenant_id</code></td>
 <td><em>uuid</em></td>
 <td>The <a href="#tenants">Tenant</a> ID which owns the Proxy</td>
@@ -3013,6 +3009,26 @@ At most, 100 tokens may be detokenized within a single proxy request. You can fi
 <td><code>require_auth</code></td>
 <td><em>boolean</em></td>
 <td>Require a <code>BT-API-KEY</code> request header for authentication and authorization</td>
+</tr>
+<tr>
+<td><code>request_transform</code></td>
+<td><em><a href="#proxies-proxy-transform-object">Proxy Transform</a></em></td>
+<td>(Optional) Transform code which will be executed against the proxy&#39;s request before sending to the destination.</td>
+</tr>
+<tr>
+<td><code>response_transform</code></td>
+<td><em><a href="#proxies-proxy-transform-object">Proxy Transform</a></em></td>
+<td>(Optional) Transform code which will be executed against the destination&#39;s response before returning the proxy response.</td>
+</tr>
+<tr>
+<td><code>application_id</code></td>
+<td><em>string</em></td>
+<td>(Optional) This Application&#39;s API key is injected into a pre-configured <a href="https://www.npmjs.com/package/@basis-theory/basis-theory-js" target="_blank">Node.js BasisTheory</a> instance passed into the Proxy Transform runtime.</td>
+</tr>
+<tr>
+<td><code>configuration</code></td>
+<td><em>map</em></td>
+<td>(Optional) A key-value map of all configuration name and values for a <a href="#proxies-proxy-transform-object">Proxy Transform</a></td>
 </tr>
 <tr>
 <td><code>created_by</code></td>
@@ -3035,7 +3051,78 @@ At most, 100 tokens may be detokenized within a single proxy request. You can fi
 <td>(Optional) Last modified date of the Proxy in ISO 8601 format</td>
 </tr>
 </tbody></table>
-<h2 id='proxies-create-a-proxy'>Create a Proxy</h2>
+<h2 id='proxies-proxy-transform-object'>Proxy Transform Object</h2>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>code</code></td>
+<td><em>string</em></td>
+<td><a href="#proxies-transform-code">Transform code</a> which will be executed when the Proxy transform is processed</td>
+</tr>
+</tbody></table>
+<h2 id='proxies-transform-code'>Transform Code</h2>
+<p>All transform code snippets must export a function which takes in a <a href="#proxies-transform-code-transform-request-object">request object</a> and returns a <a href="#proxies-transform-code-transform-response-object">response object</a>.</p>
+<h3 id='proxies-transform-code-transform-request-object'>Transform Request Object</h3>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>args</code></td>
+<td><em>object</em></td>
+<td>The arguments containing the <code>body</code> and <code>headers</code> attributes and an optional <code>bt</code> attribute if an <code>application</code> was configured on the <a href="#proxies-proxy-object">Proxy object</a></td>
+</tr>
+<tr>
+<td><code>configuration</code></td>
+<td><em>object</em></td>
+<td>The configuration defined for the <a href="#proxies-proxy-object">Proxy object</a></td>
+</tr>
+</tbody></table>
+<h3 id='proxies-transform-code-transform-response-object'>Transform Response Object</h3>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>body</code></td>
+<td><em>object</em></td>
+<td>Processed body for the proxy request/response</td>
+</tr>
+<tr>
+<td><code>headers</code></td>
+<td><em>object</em></td>
+<td>Processed headers for the proxy request/response</td>
+</tr>
+</tbody></table>
+
+<p>Transform Code is written in Javascript (targeting Node.js v16) and generally follows the structure:</p>
+
+<div class="center-column"></div>
+<div class="highlight"><pre class="highlight javascript"><code><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="k">async</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="p">{</span> <span class="nx">body</span><span class="p">,</span> <span class="nx">headers</span><span class="p">,</span> <span class="nx">bt</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">args</span><span class="p">;</span> <span class="c1">// access any args provided with the transform request</span>
+  <span class="kd">const</span> <span class="p">{</span> <span class="nx">MY_CONFIG</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">configuration</span><span class="p">;</span> <span class="c1">// access any static config defined on the Proxy</span>
+
+  <span class="c1">// do anything here!</span>
+  <span class="kd">const</span> <span class="nx">processedBody</span> <span class="o">=</span> <span class="p">...;</span> <span class="c1">// do something with body</span>
+  <span class="kd">const</span> <span class="nx">processedHeaders</span> <span class="o">=</span> <span class="p">...;</span> <span class="c1">// do something with headers</span>
+
+  <span class="k">return</span> <span class="p">{</span>
+      <span class="na">body</span><span class="p">:</span> <span class="nx">processedBody</span><span class="p">,</span> <span class="c1">// Proxy request/response body</span>
+      <span class="na">headers</span><span class="p">:</span> <span class="nx">processedHeaders</span> <span class="c1">// Proxy request/response headers</span>
+  <span class="p">};</span>
+<span class="p">};</span>
+</code></pre></div><h2 id='proxies-create-a-proxy'>Create a Proxy</h2>
 <blockquote>
 <p>Request</p>
 </blockquote>
@@ -3046,8 +3133,36 @@ At most, 100 tokens may be detokenized within a single proxy request. You can fi
   <span class="nt">-d</span> <span class="s1">'{
     "name": "My Proxy",
     "destination_url": "https://example.com/api",
-    "request_reactor_id": "5b493235-6917-4307-906a-2cd6f1a90b13",
-    "response_reactor_id": "1cb923e6-ae89-407a-ba07-1564ebe99350",
+    "request_transform": {
+      "code": "
+        module.exports = async function (req) {
+          // Do something with `req.configuration.SERVICE_API_KEY`
+
+          return {
+            headers: req.args.headers,
+            body: req.args.body
+          };
+        };
+      "
+    },
+    "response_transform": {
+      "code": "
+        module.exports = async function (req) {
+          // Do something with `req.configuration.SERVICE_API_KEY`
+
+          return {
+            headers: req.args.headers,
+            body: req.args.body
+          };
+        };
+      "
+    },
+    "configuration": {
+      "SERVICE_API_KEY": "key_abcd1234"
+    },
+    "application": {
+      "id": "45c124e7-6ab2-4899-b4d9-1388b0ba9d04"
+    },
     "require_auth": true
   }'</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">BasisTheory</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@basis-theory/basis-theory-js</span><span class="dl">'</span><span class="p">;</span>
@@ -3057,19 +3172,75 @@ At most, 100 tokens may be detokenized within a single proxy request. You can fi
 <span class="kd">const</span> <span class="nx">proxy</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">bt</span><span class="p">.</span><span class="nx">proxies</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
   <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">My Proxy</span><span class="dl">'</span><span class="p">,</span>
   <span class="na">destinationUrl</span><span class="p">:</span> <span class="dl">'</span><span class="s1">https://example.com/api</span><span class="dl">'</span><span class="p">,</span>
-  <span class="na">requestReactorId</span><span class="p">:</span> <span class="dl">'</span><span class="s1">5b493235-6917-4307-906a-2cd6f1a90b13</span><span class="dl">'</span><span class="p">,</span>
-  <span class="na">responseReactorId</span><span class="p">:</span> <span class="dl">'</span><span class="s1">1cb923e6-ae89-407a-ba07-1564ebe99350</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">requestTransform</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">code</span><span class="p">:</span> <span class="dl">'</span><span class="s1">
+      module.exports = async function (req) {
+        // Do something with `req.configuration.SERVICE_API_KEY`
+
+        return {
+          headers: req.args.headers,
+          body: req.args.body
+        };
+      };
+    </span><span class="dl">'</span>
+  <span class="p">},</span>
+  <span class="na">responseTransform</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">code</span><span class="p">:</span> <span class="dl">'</span><span class="s1">
+      module.exports = async function (req) {
+        // Do something with `req.configuration.SERVICE_API_KEY`
+
+        return {
+          headers: req.args.headers,
+          body: req.args.body
+        };
+      };
+    </span><span class="dl">'</span>
+  <span class="p">},</span>
+  <span class="na">configuration</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">SERVICE_API_KEY</span><span class="p">:</span> <span class="dl">'</span><span class="s1">key_abcd1234</span><span class="dl">'</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="na">application</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">id</span><span class="p">:</span> <span class="dl">'</span><span class="s1">45c124e7-6ab2-4899-b4d9-1388b0ba9d04</span><span class="dl">'</span>
+  <span class="p">},</span>
   <span class="na">requireAuth</span><span class="p">:</span> <span class="kc">true</span>
 <span class="p">});</span>
 </code></pre></div><div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="k">using</span> <span class="nn">BasisTheory.net.Proxies</span><span class="p">;</span>
 
 <span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">ProxyClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
 
-<span class="kt">var</span> <span class="n">proxy</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">CreateAsync</span><span class="p">(</span><span class="k">new</span> <span class="n">Proxy</span> <span class="p">{</span>
+<span class="kt">var</span> <span class="n">proxy</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">CreateAsync</span><span class="p">(</span><span class="k">new</span> <span class="n">ProxyCreateRequest</span> <span class="p">{</span>
   <span class="n">Name</span> <span class="p">=</span> <span class="s">"My Proxy"</span><span class="p">,</span>
   <span class="n">DestinationUrl</span> <span class="p">=</span> <span class="s">"https://example.com/api"</span><span class="p">,</span>
-  <span class="n">RequestReactorId</span> <span class="p">=</span> <span class="s">"5b493235-6917-4307-906a-2cd6f1a90b13"</span><span class="p">,</span>
-  <span class="n">ResponseReactorId</span> <span class="p">=</span> <span class="s">"1cb923e6-ae89-407a-ba07-1564ebe99350"</span><span class="p">,</span>
+  <span class="n">RequestTransform</span> <span class="p">=</span> <span class="k">new</span> <span class="n">RequestTransform</span> <span class="p">{</span>
+    <span class="n">Code</span> <span class="p">=</span> <span class="s">@"
+      module.exports = async function (req) {
+        // Do something with `req.configuration.SERVICE_API_KEY`
+
+        return {
+          headers: req.args.headers,
+          body: req.args.body
+        };
+      };
+    "</span>
+  <span class="p">},</span>
+  <span class="n">ResponseTransform</span> <span class="p">=</span> <span class="k">new</span> <span class="n">RequestTransform</span> <span class="p">{</span>
+    <span class="n">Code</span> <span class="p">=</span> <span class="s">@"
+      module.exports = async function (req) {
+        // Do something with `req.configuration.SERVICE_API_KEY`
+
+        return {
+          headers: req.args.headers,
+          body: req.args.body
+        };
+      };
+    "</span>
+  <span class="p">},</span>
+  <span class="n">Configuration</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="kt">string</span><span class="p">&gt;</span> <span class="p">{</span>
+    <span class="p">{</span> <span class="s">"SERVICE_API_KEY"</span><span class="p">,</span> <span class="s">"key_abcd1234"</span> <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="n">Application</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Application</span> <span class="p">{</span>
+    <span class="n">Id</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Guid</span><span class="p">(</span><span class="s">"45c124e7-6ab2-4899-b4d9-1388b0ba9d04"</span><span class="p">)</span>
+  <span class="p">},</span>
   <span class="n">RequireAuthentication</span><span class="p">:</span> <span class="k">true</span>
 <span class="p">});</span>
 </code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">basistheory</span>
@@ -3082,8 +3253,34 @@ At most, 100 tokens may be detokenized within a single proxy request. You can fi
     <span class="n">proxy</span> <span class="o">=</span> <span class="n">proxy_client</span><span class="p">.</span><span class="n">create</span><span class="p">(</span><span class="n">create_proxy_request</span><span class="o">=</span><span class="n">CreateProxyRequest</span><span class="p">(</span>
         <span class="n">name</span><span class="o">=</span><span class="s">"My Proxy"</span><span class="p">,</span>
         <span class="n">destination_url</span><span class="o">=</span><span class="s">"https://example.com/api"</span><span class="p">,</span>
-        <span class="n">request_reactor_id</span><span class="o">=</span><span class="s">"5b493235-6917-4307-906a-2cd6f1a90b13"</span><span class="p">,</span>
-        <span class="n">response_reactor_id</span><span class="o">=</span><span class="s">"1cb923e6-ae89-407a-ba07-1564ebe99350"</span><span class="p">,</span>
+        <span class="n">requeset_transform</span><span class="o">=</span><span class="n">ProxyTransform</span><span class="p">(</span>
+            <span class="n">code</span><span class="o">=</span><span class="s">" </span><span class="se">\
+</span><span class="s">                module.exports = async function (req) { </span><span class="se">\
+</span><span class="s">                  // Do something with `req.configuration.SERVICE_API_KEY` </span><span class="se">\
+</span><span class="s">
+                  "</span><span class="k">return</span> <span class="p">{</span> \
+                    <span class="n">headers</span><span class="p">:</span> <span class="n">req</span><span class="p">.</span><span class="n">args</span><span class="p">.</span><span class="n">headers</span><span class="p">,</span> \
+                    <span class="n">body</span><span class="p">:</span> <span class="n">req</span><span class="p">.</span><span class="n">args</span><span class="p">.</span><span class="n">body</span> \
+                  <span class="p">};</span> \
+                <span class="p">};</span><span class="s">"
+        ),
+        response_transform=ProxyTransform(
+            code="</span> \
+                <span class="n">module</span><span class="p">.</span><span class="n">exports</span> <span class="o">=</span> <span class="k">async</span> <span class="n">function</span> <span class="p">(</span><span class="n">req</span><span class="p">)</span> <span class="p">{</span> \
+                  <span class="o">//</span> <span class="n">Do</span> <span class="n">something</span> <span class="k">with</span> <span class="sb">`req.configuration.SERVICE_API_KEY`</span> \
+
+                  <span class="s">"return { </span><span class="se">\
+</span><span class="s">                    headers: req.args.headers, </span><span class="se">\
+</span><span class="s">                    body: req.args.body </span><span class="se">\
+</span><span class="s">                  }; </span><span class="se">\
+</span><span class="s">                };"</span>
+        <span class="p">),</span>
+        <span class="n">configuration</span><span class="o">=</span><span class="p">{</span>
+            <span class="s">"SERVICE_API_KEY"</span><span class="p">:</span> <span class="s">"key_abcd134"</span>
+        <span class="p">},</span>
+        <span class="n">application</span><span class="o">=</span><span class="n">Application</span><span class="p">(</span>
+            <span class="nb">id</span><span class="o">=</span><span class="s">"45c124e7-6ab2-4899-b4d9-1388b0ba9d04"</span>
+        <span class="p">),</span>
         <span class="n">require_auth</span><span class="o">=</span><span class="bp">True</span>
     <span class="p">))</span>
 </code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
@@ -3101,8 +3298,36 @@ At most, 100 tokens may be detokenized within a single proxy request. You can fi
   <span class="p">})</span>
 
   <span class="n">createProxyRequest</span> <span class="o">:=</span> <span class="o">*</span><span class="n">basistheory</span><span class="o">.</span><span class="n">NewCreateProxyRequest</span><span class="p">(</span><span class="s">"My Proxy"</span><span class="p">,</span> <span class="s">"https://example.com/api"</span><span class="p">)</span>
-  <span class="n">createProxyRequest</span><span class="o">.</span><span class="n">SetRequestReactorId</span><span class="p">(</span><span class="s">"5b493235-6917-4307-906a-2cd6f1a90b13"</span><span class="p">)</span>
-  <span class="n">createProxyRequest</span><span class="o">.</span><span class="n">SetResponseReactorId</span><span class="p">(</span><span class="s">"1cb923e6-ae89-407a-ba07-1564ebe99350"</span><span class="p">)</span>
+  <span class="n">requestTransform</span> <span class="o">:=</span> <span class="o">*</span><span class="n">basistheory</span><span class="o">.</span><span class="n">NewProxyTransform</span><span class="p">()</span>
+  <span class="n">requestTransform</span><span class="o">.</span><span class="n">SetCode</span><span class="p">(</span><span class="s">`
+    module.exports = async function (req) {
+      // Do something with req.configuration.SERVICE_API_KEY
+
+      return {
+        headers: req.args.headers,
+        body: req.args.body
+      };
+    };
+  `</span><span class="p">)</span>
+  <span class="n">createProxyRequest</span><span class="o">.</span><span class="n">SetRequestTransform</span><span class="p">(</span><span class="n">requestTransform</span><span class="p">)</span>
+  <span class="n">responseTransform</span> <span class="o">:=</span> <span class="o">*</span><span class="n">basistheory</span><span class="o">.</span><span class="n">NewProxyTransform</span><span class="p">()</span>
+  <span class="n">responseTransform</span><span class="o">.</span><span class="n">SetCode</span><span class="p">(</span><span class="s">`
+    module.exports = async function (req) {
+      // Do something with req.configuration.SERVICE_API_KEY
+
+      return {
+        headers: req.args.headers,
+        body: req.args.body
+      };
+    };
+  `</span><span class="p">)</span>
+  <span class="n">createProxyRequest</span><span class="o">.</span><span class="n">SetResponseTransform</span><span class="p">(</span><span class="n">responseTransform</span><span class="p">)</span>
+  <span class="n">createProxyRequest</span><span class="o">.</span><span class="n">SetConfiguration</span><span class="p">(</span><span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">string</span><span class="p">{</span>
+    <span class="s">"SERVICE_API_KEY"</span><span class="o">:</span> <span class="s">"key_abcd134"</span><span class="p">,</span>
+  <span class="p">})</span>
+  <span class="n">application</span> <span class="o">:=</span> <span class="o">*</span><span class="n">basistheory</span><span class="o">.</span><span class="n">NewApplication</span><span class="p">()</span>
+  <span class="n">application</span><span class="o">.</span><span class="n">SetId</span><span class="p">(</span><span class="s">"45c124e7-6ab2-4899-b4d9-1388b0ba9d04"</span><span class="p">)</span>
+  <span class="n">createProxyRequest</span><span class="o">.</span><span class="n">SetApplication</span><span class="p">(</span><span class="n">application</span><span class="p">)</span>
   <span class="n">createProxyRequest</span><span class="o">.</span><span class="n">SetRequireAuth</span><span class="p">(</span><span class="no">true</span><span class="p">)</span>
 
   <span class="n">proxy</span><span class="p">,</span> <span class="n">httpResponse</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">apiClient</span><span class="o">.</span><span class="n">ProxiesApi</span><span class="o">.</span><span class="n">Create</span><span class="p">(</span><span class="n">contextWithAPIKey</span><span class="p">)</span><span class="o">.</span><span class="n">CreateProxyRequest</span><span class="p">(</span><span class="n">createProxyRequest</span><span class="p">)</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
@@ -3117,8 +3342,34 @@ At most, 100 tokens may be detokenized within a single proxy request. You can fi
   </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My Proxy"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"e29a50980ca5"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"destination_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/api"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"request_reactor_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5b493235-6917-4307-906a-2cd6f1a90b13"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"response_reactor_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1cb923e6-ae89-407a-ba07-1564ebe99350"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"request_transform"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"
+      module.exports = async function (req) {
+        // Do something with req.configuration.SERVICE_API_KEY
+
+        return {
+          headers: req.args.headers,
+          body: req.args.body
+        };
+      };
+    "</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"response_transform"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"
+      module.exports = async function (req) {
+        // Do something with req.configuration.SERVICE_API_KEY
+
+        return {
+          headers: req.args.headers,
+          body: req.args.body
+        };
+      };
+    "</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"configuration"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"SERVICE_API_KEY"</span><span class="p">:</span><span class="w"> </span><span class="s2">"key_abcd1234"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"application_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"45c124e7-6ab2-4899-b4d9-1388b0ba9d04"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"require_auth"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
   </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3ce0dceb-fd0b-4471-8006-c51243c9ef7a"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="w">
@@ -3159,18 +3410,32 @@ At most, 100 tokens may be detokenized within a single proxy request. You can fi
 <td>The URL to proxy requests to</td>
 </tr>
 <tr>
-<td><code>request_reactor_id</code></td>
+<td><code>request_transform</code></td>
 <td>false</td>
-<td><em>string</em></td>
+<td><em><a href="#proxies-proxy-transform-object">Proxy Transform</a></em></td>
 <td><code>null</code></td>
-<td>The <a href="#reactors">Reactor</a> to invoke on the Proxy request</td>
+<td>Transform code which will be executed against the proxy&#39;s request before sending to the destination.</td>
 </tr>
 <tr>
-<td><code>response_reactor_id</code></td>
+<td><code>response_transform</code></td>
 <td>false</td>
-<td><em>string</em></td>
+<td><em><a href="#proxies-proxy-transform-object">Proxy Transform</a></em></td>
 <td><code>null</code></td>
-<td>The <a href="#reactors">Reactor</a> to invoke on the Proxy response</td>
+<td>Transform code which will be executed against the destination&#39;s response before returning the proxy response.</td>
+</tr>
+<tr>
+<td><code>application</code></td>
+<td>false</td>
+<td><em><a href="#applications-application-object">Application</a></em></td>
+<td><code>null</code></td>
+<td>This Application&#39;s API key is injected into a pre-configured <a href="https://www.npmjs.com/package/@basis-theory/basis-theory-js" target="_blank">Node.js BasisTheory</a> instance passed into the Proxy Transform runtime.</td>
+</tr>
+<tr>
+<td><code>configuration</code></td>
+<td>false</td>
+<td><em>map</em></td>
+<td><code>null</code></td>
+<td>A key-value map of all configuration name and values for a <a href="#proxies-proxy-transform-object">Proxy Transform</a></td>
 </tr>
 <tr>
 <td><code>require_auth</code></td>
@@ -3234,8 +3499,34 @@ At most, 100 tokens may be detokenized within a single proxy request. You can fi
       </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My Proxy"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"e29a50980ca5"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"destination_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/api"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"request_reactor_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5b493235-6917-4307-906a-2cd6f1a90b13"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"response_reactor_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1cb923e6-ae89-407a-ba07-1564ebe99350"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"request_transform"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"
+          module.exports = async function (req) {
+            // Do something with req.configuration.SERVICE_API_KEY
+
+            return {
+              headers: req.args.headers,
+              body: req.args.body
+            };
+          };
+        "</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"response_transform"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"
+          module.exports = async function (req) {
+            // Do something with req.configuration.SERVICE_API_KEY
+
+            return {
+              headers: req.args.headers,
+              body: req.args.body
+            };
+          };
+        "</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"configuration"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"SERVICE_API_KEY"</span><span class="p">:</span><span class="w"> </span><span class="s2">"key_abcd1234"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"application_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"45c124e7-6ab2-4899-b4d9-1388b0ba9d04"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"require_auth"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
       </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="p">,</span><span class="w">
@@ -3334,8 +3625,34 @@ At most, 100 tokens may be detokenized within a single proxy request. You can fi
   </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My Proxy"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"e29a50980ca5"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"destination_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/api"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"request_reactor_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5b493235-6917-4307-906a-2cd6f1a90b13"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"response_reactor_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1cb923e6-ae89-407a-ba07-1564ebe99350"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"request_transform"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"
+      module.exports = async function (req) {
+        // Do something with req.configuration.SERVICE_API_KEY
+
+        return {
+          headers: req.args.headers,
+          body: req.args.body
+        };
+      };
+    "</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"response_transform"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"
+      module.exports = async function (req) {
+        // Do something with req.configuration.SERVICE_API_KEY
+
+        return {
+          headers: req.args.headers,
+          body: req.args.body
+        };
+      };
+    "</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"configuration"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"SERVICE_API_KEY"</span><span class="p">:</span><span class="w"> </span><span class="s2">"key_abcd1234"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"application_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"45c124e7-6ab2-4899-b4d9-1388b0ba9d04"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"require_auth"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
   </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="p">,</span><span class="w">
@@ -3384,8 +3701,36 @@ At most, 100 tokens may be detokenized within a single proxy request. You can fi
   <span class="nt">-d</span> <span class="s1">'{
     "name": "My Proxy",
     "destination_url": "https://example.com/api",
-    "request_reactor_id": "5b493235-6917-4307-906a-2cd6f1a90b13",
-    "response_reactor_id": "1cb923e6-ae89-407a-ba07-1564ebe99350",
+    "request_transform": {
+      "code": "
+        module.exports = async function (req) {
+          // Do something with `req.configuration.SERVICE_API_KEY`
+
+          return {
+            headers: req.args.headers,
+            body: req.args.body
+          };
+        };
+      "
+    },
+    "response_transform": {
+      "code": "
+        module.exports = async function (req) {
+          // Do something with `req.configuration.SERVICE_API_KEY`
+
+          return {
+            headers: req.args.headers,
+            body: req.args.body
+          };
+        };
+      "
+    },
+    "configuration": {
+      "SERVICE_API_KEY": "key_abcd1234"
+    },
+    "application": {
+      "id": "45c124e7-6ab2-4899-b4d9-1388b0ba9d04"
+    },
     "require_auth": true
   }'</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">BasisTheory</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@basis-theory/basis-theory-js</span><span class="dl">'</span><span class="p">;</span>
@@ -3395,8 +3740,36 @@ At most, 100 tokens may be detokenized within a single proxy request. You can fi
 <span class="kd">const</span> <span class="nx">proxy</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">bt</span><span class="p">.</span><span class="nx">proxies</span><span class="p">.</span><span class="nx">update</span><span class="p">(</span><span class="dl">'</span><span class="s1">433013a6-a614-4e1e-b2aa-5fba67aa85e6</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">My Proxy</span><span class="dl">'</span><span class="p">,</span>
   <span class="na">destinationUrl</span><span class="p">:</span> <span class="dl">'</span><span class="s1">https://example.com/api</span><span class="dl">'</span><span class="p">,</span>
-  <span class="na">requestReactorId</span><span class="p">:</span> <span class="dl">'</span><span class="s1">5b493235-6917-4307-906a-2cd6f1a90b13</span><span class="dl">'</span><span class="p">,</span>
-  <span class="na">responseReactorId</span><span class="p">:</span> <span class="dl">'</span><span class="s1">1cb923e6-ae89-407a-ba07-1564ebe99350</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">requestTransform</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">code</span><span class="p">:</span> <span class="dl">'</span><span class="s1">
+      module.exports = async function (req) {
+        // Do something with `req.configuration.SERVICE_API_KEY`
+
+        return {
+          headers: req.args.headers,
+          body: req.args.body
+        };
+      };
+    </span><span class="dl">'</span>
+  <span class="p">},</span>
+  <span class="na">responseTransform</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">code</span><span class="p">:</span> <span class="dl">'</span><span class="s1">
+      module.exports = async function (req) {
+        // Do something with `req.configuration.SERVICE_API_KEY`
+
+        return {
+          headers: req.args.headers,
+          body: req.args.body
+        };
+      };
+    </span><span class="dl">'</span>
+  <span class="p">},</span>
+  <span class="na">configuration</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">SERVICE_API_KEY</span><span class="p">:</span> <span class="dl">'</span><span class="s1">key_abcd1234</span><span class="dl">'</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="na">application</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">id</span><span class="p">:</span> <span class="dl">'</span><span class="s1">45c124e7-6ab2-4899-b4d9-1388b0ba9d04</span><span class="dl">'</span>
+  <span class="p">},</span>
   <span class="na">requireAuth</span><span class="p">:</span> <span class="kc">true</span>
 <span class="p">});</span>
 </code></pre></div><div class="highlight"><pre class="highlight csharp tab-csharp"><code><span class="k">using</span> <span class="nn">BasisTheory.net.Proxies</span><span class="p">;</span>
@@ -3404,11 +3777,39 @@ At most, 100 tokens may be detokenized within a single proxy request. You can fi
 <span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">ProxyClient</span><span class="p">(</span><span class="s">"key_N88mVGsp3sCXkykyN2EFED"</span><span class="p">);</span>
 
 <span class="kt">var</span> <span class="n">proxy</span> <span class="p">=</span> <span class="k">await</span> <span class="n">client</span><span class="p">.</span><span class="nf">UpdateAsync</span><span class="p">(</span><span class="s">"433013a6-a614-4e1e-b2aa-5fba67aa85e6"</span><span class="p">,</span> 
-  <span class="k">new</span> <span class="n">Proxy</span> <span class="p">{</span>
+  <span class="k">new</span> <span class="n">ProxyUpdateRequest</span> <span class="p">{</span>
     <span class="n">Name</span> <span class="p">=</span> <span class="s">"My Proxy"</span><span class="p">,</span>
     <span class="n">DestinationUrl</span> <span class="p">=</span> <span class="s">"https://example.com/api"</span><span class="p">,</span>
-    <span class="n">RequestReactorId</span> <span class="p">=</span> <span class="s">"5b493235-6917-4307-906a-2cd6f1a90b13"</span><span class="p">,</span>
-    <span class="n">ResponseReactorId</span> <span class="p">=</span> <span class="s">"1cb923e6-ae89-407a-ba07-1564ebe99350"</span><span class="p">,</span>
+    <span class="n">RequestTransform</span> <span class="p">=</span> <span class="k">new</span> <span class="n">RequestTransform</span> <span class="p">{</span>
+      <span class="n">Code</span> <span class="p">=</span> <span class="s">@"
+        module.exports = async function (req) {
+          // Do something with `req.configuration.SERVICE_API_KEY`
+
+          return {
+            headers: req.args.headers,
+            body: req.args.body
+          };
+        };
+      "</span>
+    <span class="p">},</span>
+    <span class="n">ResponseTransform</span> <span class="p">=</span> <span class="k">new</span> <span class="n">RequestTransform</span> <span class="p">{</span>
+      <span class="n">Code</span> <span class="p">=</span> <span class="s">@"
+        module.exports = async function (req) {
+          // Do something with `req.configuration.SERVICE_API_KEY`
+
+          return {
+            headers: req.args.headers,
+            body: req.args.body
+          };
+        };
+      "</span>
+    <span class="p">},</span>
+    <span class="n">Configuration</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="kt">string</span><span class="p">&gt;</span> <span class="p">{</span>
+      <span class="p">{</span> <span class="s">"SERVICE_API_KEY"</span><span class="p">,</span> <span class="s">"key_abcd1234"</span> <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="n">Application</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Application</span> <span class="p">{</span>
+      <span class="n">Id</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Guid</span><span class="p">(</span><span class="s">"45c124e7-6ab2-4899-b4d9-1388b0ba9d04"</span><span class="p">)</span>
+    <span class="p">},</span>
     <span class="n">RequireAuthentication</span> <span class="p">=</span> <span class="k">true</span>
   <span class="p">}</span>
 <span class="p">);</span>
@@ -3422,8 +3823,34 @@ At most, 100 tokens may be detokenized within a single proxy request. You can fi
     <span class="n">application</span> <span class="o">=</span> <span class="n">proxy_client</span><span class="p">.</span><span class="n">update</span><span class="p">(</span><span class="s">"433013a6-a614-4e1e-b2aa-5fba67aa85e6"</span><span class="p">,</span> <span class="n">update_proxy_request</span><span class="o">=</span><span class="n">UpdateProxyRequest</span><span class="p">(</span>
         <span class="n">name</span><span class="o">=</span><span class="s">"My Proxy"</span><span class="p">,</span>
         <span class="n">destination_url</span><span class="o">=</span><span class="s">"https://example.com/api"</span><span class="p">,</span>
-        <span class="n">request_reactor_id</span><span class="o">=</span><span class="s">"5b493235-6917-4307-906a-2cd6f1a90b13"</span><span class="p">,</span>
-        <span class="n">response_reactor_id</span><span class="o">=</span><span class="s">"1cb923e6-ae89-407a-ba07-1564ebe99350"</span><span class="p">,</span>
+        <span class="n">requeset_transform</span><span class="o">=</span><span class="n">ProxyTransform</span><span class="p">(</span>
+            <span class="n">code</span><span class="o">=</span><span class="s">" </span><span class="se">\
+</span><span class="s">                module.exports = async function (req) { </span><span class="se">\
+</span><span class="s">                  // Do something with `req.configuration.SERVICE_API_KEY` </span><span class="se">\
+</span><span class="s">
+                  "</span><span class="k">return</span> <span class="p">{</span> \
+                    <span class="n">headers</span><span class="p">:</span> <span class="n">req</span><span class="p">.</span><span class="n">args</span><span class="p">.</span><span class="n">headers</span><span class="p">,</span> \
+                    <span class="n">body</span><span class="p">:</span> <span class="n">req</span><span class="p">.</span><span class="n">args</span><span class="p">.</span><span class="n">body</span> \
+                  <span class="p">};</span> \
+                <span class="p">};</span><span class="s">"
+        ),
+        response_transform=ProxyTransform(
+            code="</span> \
+                <span class="n">module</span><span class="p">.</span><span class="n">exports</span> <span class="o">=</span> <span class="k">async</span> <span class="n">function</span> <span class="p">(</span><span class="n">req</span><span class="p">)</span> <span class="p">{</span> \
+                  <span class="o">//</span> <span class="n">Do</span> <span class="n">something</span> <span class="k">with</span> <span class="sb">`req.configuration.SERVICE_API_KEY`</span> \
+
+                  <span class="s">"return { </span><span class="se">\
+</span><span class="s">                    headers: req.args.headers, </span><span class="se">\
+</span><span class="s">                    body: req.args.body </span><span class="se">\
+</span><span class="s">                  }; </span><span class="se">\
+</span><span class="s">                };"</span>
+        <span class="p">),</span>
+        <span class="n">configuration</span><span class="o">=</span><span class="p">{</span>
+            <span class="s">"SERVICE_API_KEY"</span><span class="p">:</span> <span class="s">"key_abcd134"</span>
+        <span class="p">},</span>
+        <span class="n">application</span><span class="o">=</span><span class="n">Application</span><span class="p">(</span>
+            <span class="nb">id</span><span class="o">=</span><span class="s">"45c124e7-6ab2-4899-b4d9-1388b0ba9d04"</span>
+        <span class="p">),</span>
         <span class="n">require_auth</span><span class="o">=</span><span class="bp">True</span>
     <span class="p">))</span>
 </code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
@@ -3441,8 +3868,36 @@ At most, 100 tokens may be detokenized within a single proxy request. You can fi
   <span class="p">})</span>
 
   <span class="n">updateProxyRequest</span> <span class="o">:=</span> <span class="o">*</span><span class="n">basistheory</span><span class="o">.</span><span class="n">NewUpdateProxyRequest</span><span class="p">(</span><span class="s">"My Proxy"</span><span class="p">,</span> <span class="s">"https://example.com/api"</span><span class="p">)</span>
-  <span class="n">updateProxyRequest</span><span class="o">.</span><span class="n">SetRequestReactorId</span><span class="p">(</span><span class="s">"5b493235-6917-4307-906a-2cd6f1a90b13"</span><span class="p">)</span>
-  <span class="n">updateProxyRequest</span><span class="o">.</span><span class="n">SetResponseReactorId</span><span class="p">(</span><span class="s">"1cb923e6-ae89-407a-ba07-1564ebe99350"</span><span class="p">)</span>
+  <span class="n">requestTransform</span> <span class="o">:=</span> <span class="o">*</span><span class="n">basistheory</span><span class="o">.</span><span class="n">NewProxyTransform</span><span class="p">()</span>
+  <span class="n">requestTransform</span><span class="o">.</span><span class="n">SetCode</span><span class="p">(</span><span class="s">`
+    module.exports = async function (req) {
+      // Do something with req.configuration.SERVICE_API_KEY
+
+      return {
+        headers: req.args.headers,
+        body: req.args.body
+      };
+    };
+  `</span><span class="p">)</span>
+  <span class="n">updateProxyRequest</span><span class="o">.</span><span class="n">SetRequestTransform</span><span class="p">(</span><span class="n">requestTransform</span><span class="p">)</span>
+  <span class="n">responseTransform</span> <span class="o">:=</span> <span class="o">*</span><span class="n">basistheory</span><span class="o">.</span><span class="n">NewProxyTransform</span><span class="p">()</span>
+  <span class="n">responseTransform</span><span class="o">.</span><span class="n">SetCode</span><span class="p">(</span><span class="s">`
+    module.exports = async function (req) {
+      // Do something with req.configuration.SERVICE_API_KEY
+
+      return {
+        headers: req.args.headers,
+        body: req.args.body
+      };
+    };
+  `</span><span class="p">)</span>
+  <span class="n">updateProxyRequest</span><span class="o">.</span><span class="n">SetResponseTransform</span><span class="p">(</span><span class="n">responseTransform</span><span class="p">)</span>
+  <span class="n">updateProxyRequest</span><span class="o">.</span><span class="n">SetConfiguration</span><span class="p">(</span><span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">string</span><span class="p">{</span>
+    <span class="s">"SERVICE_API_KEY"</span><span class="o">:</span> <span class="s">"key_abcd134"</span><span class="p">,</span>
+  <span class="p">})</span>
+  <span class="n">application</span> <span class="o">:=</span> <span class="o">*</span><span class="n">basistheory</span><span class="o">.</span><span class="n">NewApplication</span><span class="p">()</span>
+  <span class="n">application</span><span class="o">.</span><span class="n">SetId</span><span class="p">(</span><span class="s">"45c124e7-6ab2-4899-b4d9-1388b0ba9d04"</span><span class="p">)</span>
+  <span class="n">updateProxyRequest</span><span class="o">.</span><span class="n">SetApplication</span><span class="p">(</span><span class="n">application</span><span class="p">)</span>
   <span class="n">updateProxyRequest</span><span class="o">.</span><span class="n">SetRequireAuth</span><span class="p">(</span><span class="no">true</span><span class="p">)</span>
 
   <span class="n">proxy</span><span class="p">,</span> <span class="n">httpResponse</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">apiClient</span><span class="o">.</span><span class="n">ProxiesApi</span><span class="o">.</span><span class="n">Update</span><span class="p">(</span><span class="n">contextWithAPIKey</span><span class="p">,</span> <span class="s">"433013a6-a614-4e1e-b2aa-5fba67aa85e6"</span><span class="p">)</span><span class="o">.</span><span class="n">UpdateProxyRequest</span><span class="p">(</span><span class="n">updateProxyRequest</span><span class="p">)</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
@@ -3458,8 +3913,34 @@ At most, 100 tokens may be detokenized within a single proxy request. You can fi
   </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My Proxy"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"e29a50980ca5"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"destination_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/api"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"request_reactor_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5b493235-6917-4307-906a-2cd6f1a90b13"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"response_reactor_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1cb923e6-ae89-407a-ba07-1564ebe99350"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"request_transform"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"
+      module.exports = async function (req) {
+        // Do something with req.configuration.SERVICE_API_KEY
+
+        return {
+          headers: req.args.headers,
+          body: req.args.body
+        };
+      };
+    "</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"response_transform"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"
+      module.exports = async function (req) {
+        // Do something with req.configuration.SERVICE_API_KEY
+
+        return {
+          headers: req.args.headers,
+          body: req.args.body
+        };
+      };
+    "</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"configuration"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"SERVICE_API_KEY"</span><span class="p">:</span><span class="w"> </span><span class="s2">"key_abcd1234"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"application_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"45c124e7-6ab2-4899-b4d9-1388b0ba9d04"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"require_auth"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
   </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3ce0dceb-fd0b-4471-8006-c51243c9ef7a"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-15T15:53:00+00:00"</span><span class="p">,</span><span class="w">
@@ -3520,18 +4001,32 @@ At most, 100 tokens may be detokenized within a single proxy request. You can fi
 <td>The URL to proxy requests to</td>
 </tr>
 <tr>
-<td><code>request_reactor_id</code></td>
+<td><code>request_transform</code></td>
 <td>false</td>
-<td><em>string</em></td>
+<td><em><a href="#proxies-proxy-transform-object">Proxy Transform</a></em></td>
 <td><code>null</code></td>
-<td>The <a href="#reactors">Reactor</a> to invoke on the Proxy request</td>
+<td>Transform code which will be executed against the proxy&#39;s request before sending to the destination.</td>
 </tr>
 <tr>
-<td><code>response_reactor_id</code></td>
+<td><code>response_transform</code></td>
 <td>false</td>
-<td><em>string</em></td>
+<td><em><a href="#proxies-proxy-transform-object">Proxy Transform</a></em></td>
 <td><code>null</code></td>
-<td>The <a href="#reactors">Reactor</a> to invoke on the Proxy response</td>
+<td>Transform code which will be executed against the destination&#39;s response before returning the proxy response.</td>
+</tr>
+<tr>
+<td><code>application</code></td>
+<td>false</td>
+<td><em><a href="#applications-application-object">Application</a></em></td>
+<td><code>null</code></td>
+<td>This Application&#39;s API key is injected into a pre-configured <a href="https://www.npmjs.com/package/@basis-theory/basis-theory-js" target="_blank">Node.js BasisTheory</a> instance passed into the Proxy Transform runtime.</td>
+</tr>
+<tr>
+<td><code>configuration</code></td>
+<td>false</td>
+<td><em>map</em></td>
+<td><code>null</code></td>
+<td>A key-value map of all configuration name and values for a <a href="#proxies-proxy-transform-object">Proxy Transform</a></td>
 </tr>
 <tr>
 <td><code>require_auth</code></td>
@@ -3851,7 +4346,7 @@ a Reactor Formula should define the following request parameters:</p>
 <p>The payload returned in the <code>tokenize</code> property will be tokenized in the same way that requests are tokenized via the Tokenize endpoint. 
 For more information, see <a href="#tokenize">Tokenize</a>.</p>
 
-<p>Reactor Formula Code is written in Javascript (targeting Node.js v14) and generally follows the structure:</p>
+<p>Reactor Formula Code is written in Javascript (targeting Node.js v16) and generally follows the structure:</p>
 
 <div class="center-column"></div>
 <div class="highlight"><pre class="highlight javascript"><code><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="k">async</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
@@ -4948,7 +5443,7 @@ For more information, see <a href="#tokenize">Tokenize</a>.</p>
 <td><code>application</code></td>
 <td><em><a href="#applications-application-object">Application</a></em></td>
 <td style="text-align: left"></td>
-<td>(Optional) This Application&#39;s permissions are injected into a pre-configured <a href="https://www.npmjs.com/package/@basis-theory/basis-theory-js" target="_blank">Node.js BasisTheory</a> instance passed into the Reactor&#39;s runtime.</td>
+<td>(Optional) This Application&#39;s API key is injected into a pre-configured <a href="https://www.npmjs.com/package/@basis-theory/basis-theory-js" target="_blank">Node.js BasisTheory</a> instance passed into the Reactor&#39;s runtime.</td>
 </tr>
 <tr>
 <td><code>created_by</code></td>
@@ -9765,6 +10260,12 @@ specified in the tokenize request.</p>
 <th>Details</th>
 </tr>
 </thead><tbody>
+<tr>
+<td><code>request_reactor_id</code> and <code>response_reactor_id</code> removed from Proxies</td>
+<td>November 30, 2022</td>
+<td>March 31, 2023</td>
+<td>In order to simplify management of Proxies, use of <code>request_transform</code> and <code>response_tramsform</code> has been recommended over Reactors.</td>
+</tr>
 <tr>
 <td>Token Privacy Settings</td>
 <td>October 13, 2022</td>
