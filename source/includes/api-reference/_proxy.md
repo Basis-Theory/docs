@@ -119,11 +119,11 @@ The proxy URL will serve as the base URL for the proxied request. Any path and/o
 
 For example, sending a proxy request to `https://api.basistheory.com/proxy/foo/bar?param=value` and including the header `BT-PROXY-URL=https://example.com/api` will result in the request being forwarded to `https://example.com/api/foo/bar?param=value`.
 
-**Reactors**
+**Proxy Transforms**
 
-Basis Theory's Proxy supports executing reactors on the proxy request and response. When pre-configuring a [Proxy](#proxies-create-a-proxy), the `request_reactor_id` and `response_reactor_id` properties can optionally be set to the ID of an existing [Reactor](#reactors). When the `request_reactor_id` property is set, this reactor will be executed on the Proxy request and allow you to transform the request body and headers before sending the payload to the `destination_url`. When the `response_reactor_id` property is set, this reactor will be executed on the Proxy response and allow you to transform the response body and headers before sending the response to the originator of the request.
+Basis Theory's Proxy supports executing code to transform the proxy request and response. When pre-configuring a [Proxy](#proxies-create-a-proxy), the `request_transform` and `response_transform` properties can optionally be set to an instance of a [Proxy Transform](#proxies-proxy-transform-object). When the `request_transform` property is set, this Proxy Transform will be executed on the Proxy request and allow you to transform the request body and headers before sending the payload to the `destination_url`. When the `response_transform` property is set, this Proxy Transform will be executed on the Proxy response and allow you to transform the response body and headers before sending the response to the originator of the request.
 
-The reactor will receive a JSON object with the following payload:
+The Transform will receive a JSON object with the following payload:
 
 <div class="center-column"></div>
 ```js
@@ -135,16 +135,14 @@ The reactor will receive a JSON object with the following payload:
 }
 ```
 
-Within the reactor, the headers and body of the proxy request can be changed.
-The Reactor must respond with the following object, which defines the request `body` and `headers` to be sent in the request to the proxy `destination_url`:
+Within the transform, the headers and body of the proxy request can be changed.
+The Transform must respond with the following object, which defines the request `body` and `headers` to be sent in the request to the proxy `destination_url`:
 
 <div class="center-column"></div>
 ```js
 {
-  raw: {
-    body,
-    headers
-  }
+  body,
+  headers
 }
 ```
 
@@ -153,11 +151,11 @@ The Reactor must respond with the following object, which defines the request `b
     Request header names can only contain alphanumeric characters, hyphens, and underscores. 
     Headers names containing other characters will be discarded from the request.
     Response headers are unrestricted. If you must forward a restricted header to the proxy destination, 
-    as a workaround, you may add this header manually from within a request reactor.
+    as a workaround, you may add this header manually from within a transform.
   </span>
 </aside>
 
-In some situations, you may want to tokenize or detokenize part of the request body. In order to do this, set the `application.id` property when [creating your reactor](#reactors-create-reactor). This will inject a pre-configured Basis Theory JS instance into the request:
+In some situations, you may want to tokenize or detokenize part of the request body. In order to do this, set the `application.id` property when [creating your Proxy](#proxies-create-a-proxy). This will inject a pre-configured Basis Theory JS instance into the request:
 
 <div class="center-column"></div>
 ```js
@@ -170,10 +168,8 @@ module.exports = async function (req) {
   req.args.body.sensitive_value = token.id;
 
   return {
-    raw: {
-      body: req.args.body,
-      headers: req.args.headers
-    }
+    body: req.args.body,
+    headers: req.args.headers
   }
 }
 ```
