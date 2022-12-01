@@ -26,14 +26,6 @@ jobs:
         node-version: '14'
         cache: 'yarn'
 
-    - uses: actions/cache@v2
-      with:
-        path: vendor/bundle
-        key: gems-${{ runner.os }}-${{ matrix.ruby-version }}-${{ hashFiles('**/Gemfile.lock') }}
-        restore-keys: |
-          gems-${{ runner.os }}-${{ matrix.ruby-version }}-
-          gems-${{ runner.os }}-
-
     - run: bundle config set deployment 'true'
     - name: bundle install
       run: |
