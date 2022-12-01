@@ -1,3 +1,10 @@
+# [1.75.0](https://github.com/Basis-Theory/docs/compare/v1.74.0...v1.75.0) (2022-12-01)
+
+
+### Features
+
+* update proxy section ([#245](https://github.com/Basis-Theory/docs/issues/245)) ([3147ca3](https://github.com/Basis-Theory/docs/commit/3147ca33d20c574985e69a7fd3489ccf11037b76))
+
 # [1.74.0](https://github.com/Basis-Theory/docs/compare/v1.73.0...v1.74.0) (2022-11-30)
 
 
