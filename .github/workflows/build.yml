@@ -5,24 +5,14 @@ on:
     branches: ['master']
 
 jobs:
-  test:
+  build-docs:
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        ruby-version: [3.1]
 
     steps:
     - uses: actions/checkout@v2
 
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
-      with:
-        ruby-version: ${{ matrix.ruby-version }}
-
-    # necessary to get ruby 2.3 to work nicely with bundler vendor/bundle cache
-    # can remove once ruby 2.3 is no longer supported
-    - run: gem update --system
 
     - run: bundle config set deployment 'true'
     - name: bundle install

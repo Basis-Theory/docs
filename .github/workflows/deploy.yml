@@ -7,8 +7,6 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    env:
-      ruby-version: 2.7
 
     steps:
     - uses: actions/checkout@v2
@@ -17,22 +15,12 @@ jobs:
 
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
-      with:
-        ruby-version: ${{ env.ruby-version }}
 
     - name: Setup Node
       uses: actions/setup-node@v2
       with:
         node-version: '14'
         cache: 'yarn'
-
-    - uses: actions/cache@v2
-      with:
-        path: vendor/bundle
-        key: gems-${{ runner.os }}-${{ matrix.ruby-version }}-${{ hashFiles('**/Gemfile.lock') }}
-        restore-keys: |
-          gems-${{ runner.os }}-${{ matrix.ruby-version }}-
-          gems-${{ runner.os }}-
 
     - run: bundle config set deployment 'true'
     - name: bundle install
