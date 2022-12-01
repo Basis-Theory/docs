@@ -2853,11 +2853,11 @@ Alternatively, pre-configured proxies enable unauthenticated requests from any s
 
 <p>For example, sending a proxy request to <code>https://api.basistheory.com/proxy/foo/bar?param=value</code> and including the header <code>BT-PROXY-URL=https://example.com/api</code> will result in the request being forwarded to <code>https://example.com/api/foo/bar?param=value</code>.</p>
 
-<p><strong>Reactors</strong></p>
+<p><strong>Proxy Transforms</strong></p>
 
-<p>Basis Theory&#39;s Proxy supports executing reactors on the proxy request and response. When pre-configuring a <a href="#proxies-create-a-proxy">Proxy</a>, the <code>request_reactor_id</code> and <code>response_reactor_id</code> properties can optionally be set to the ID of an existing <a href="#reactors">Reactor</a>. When the <code>request_reactor_id</code> property is set, this reactor will be executed on the Proxy request and allow you to transform the request body and headers before sending the payload to the <code>destination_url</code>. When the <code>response_reactor_id</code> property is set, this reactor will be executed on the Proxy response and allow you to transform the response body and headers before sending the response to the originator of the request.</p>
+<p>Basis Theory&#39;s Proxy supports executing code to transform the proxy request and response. When pre-configuring a <a href="#proxies-create-a-proxy">Proxy</a>, the <code>request_transform</code> and <code>response_transform</code> properties can optionally be set to an instance of a <a href="#proxies-proxy-transform-object">Proxy Transform</a>. When the <code>request_transform</code> property is set, this Proxy Transform will be executed on the Proxy request and allow you to transform the request body and headers before sending the payload to the <code>destination_url</code>. When the <code>response_transform</code> property is set, this Proxy Transform will be executed on the Proxy response and allow you to transform the response body and headers before sending the response to the originator of the request.</p>
 
-<p>The reactor will receive a JSON object with the following payload:</p>
+<p>The Transform will receive a JSON object with the following payload:</p>
 
 <div class="center-column"></div>
 <div class="highlight"><pre class="highlight javascript"><code><span class="p">{</span>
@@ -2867,15 +2867,13 @@ Alternatively, pre-configured proxies enable unauthenticated requests from any s
   <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>Within the reactor, the headers and body of the proxy request can be changed.
-The Reactor must respond with the following object, which defines the request <code>body</code> and <code>headers</code> to be sent in the request to the proxy <code>destination_url</code>:</p>
+<p>Within the transform, the headers and body of the proxy request can be changed.
+The Transform must respond with the following object, which defines the request <code>body</code> and <code>headers</code> to be sent in the request to the proxy <code>destination_url</code>:</p>
 
 <div class="center-column"></div>
 <div class="highlight"><pre class="highlight javascript"><code><span class="p">{</span>
-  <span class="nl">raw</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nx">body</span><span class="p">,</span>
-    <span class="nx">headers</span>
-  <span class="p">}</span>
+  <span class="nx">body</span><span class="p">,</span>
+  <span class="nx">headers</span>
 <span class="p">}</span>
 </code></pre></div>
 <aside class="notice">
@@ -2883,11 +2881,11 @@ The Reactor must respond with the following object, which defines the request <c
     Request header names can only contain alphanumeric characters, hyphens, and underscores. 
     Headers names containing other characters will be discarded from the request.
     Response headers are unrestricted. If you must forward a restricted header to the proxy destination, 
-    as a workaround, you may add this header manually from within a request reactor.
+    as a workaround, you may add this header manually from within a transform.
   </span>
 </aside>
 
-<p>In some situations, you may want to tokenize or detokenize part of the request body. In order to do this, set the <code>application.id</code> property when <a href="#reactors-create-reactor">creating your reactor</a>. This will inject a pre-configured Basis Theory JS instance into the request:</p>
+<p>In some situations, you may want to tokenize or detokenize part of the request body. In order to do this, set the <code>application.id</code> property when <a href="#proxies-create-a-proxy">creating your Proxy</a>. This will inject a pre-configured Basis Theory JS instance into the request:</p>
 
 <div class="center-column"></div>
 <div class="highlight"><pre class="highlight javascript"><code><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="k">async</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
@@ -2899,10 +2897,8 @@ The Reactor must respond with the following object, which defines the request <c
   <span class="nx">req</span><span class="p">.</span><span class="nx">args</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">sensitive_value</span> <span class="o">=</span> <span class="nx">token</span><span class="p">.</span><span class="nx">id</span><span class="p">;</span>
 
   <span class="k">return</span> <span class="p">{</span>
-    <span class="na">raw</span><span class="p">:</span> <span class="p">{</span>
-      <span class="na">body</span><span class="p">:</span> <span class="nx">req</span><span class="p">.</span><span class="nx">args</span><span class="p">.</span><span class="nx">body</span><span class="p">,</span>
-      <span class="na">headers</span><span class="p">:</span> <span class="nx">req</span><span class="p">.</span><span class="nx">args</span><span class="p">.</span><span class="nx">headers</span>
-    <span class="p">}</span>
+    <span class="na">body</span><span class="p">:</span> <span class="nx">req</span><span class="p">.</span><span class="nx">args</span><span class="p">.</span><span class="nx">body</span><span class="p">,</span>
+    <span class="na">headers</span><span class="p">:</span> <span class="nx">req</span><span class="p">.</span><span class="nx">args</span><span class="p">.</span><span class="nx">headers</span>
   <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
