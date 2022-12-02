@@ -8656,6 +8656,13 @@ Returns <a href="#errors">an error</a> if the token could not be retrieved.</p>
 </span></p>
 
 <p>Update an existing token for the Tenant.</p>
+
+<aside class="notice">
+  <span>The Update Tokens endpoint uses a different content-type to support merge-patch operations. 
+        Requests need the <code>Content-Type</code> header to be set to <code>application/merge-patch+json</code>.
+        Requests made with a different Content-Type header value will receive a <code>415 Unsupported Media Type</code> response code.
+        For more information on merge-patch, see <a href="https://datatracker.ietf.org/doc/html/rfc7386" target="_blank">RFC 7386</a>.</span>
+</aside>
 <h3 id='tokens-update-token-permissions'>Permissions</h3>
 <p class="scopes">
   <span class="scope">token:update</span>
