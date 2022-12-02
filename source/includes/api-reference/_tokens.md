@@ -631,6 +631,13 @@ func main() {
 
 Update an existing token for the Tenant.
 
+<aside class="notice">
+  <span>The Update Tokens endpoint uses a different content-type to support merge-patch operations. 
+        Requests need the <code>Content-Type</code> header to be set to <code>application/merge-patch+json</code>.
+        Requests made with a different Content-Type header value will receive a <code>415 Unsupported Media Type</code> response code.
+        For more information on merge-patch, see <a href="https://datatracker.ietf.org/doc/html/rfc7386" target="_blank">RFC 7386</a>.</span>
+</aside>
+
 ### Permissions
 
 <p class="scopes">
