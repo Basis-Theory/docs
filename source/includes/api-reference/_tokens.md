@@ -101,7 +101,7 @@ curl "https://api.basistheory.com/tokens" \
     },
     "search_indexes": [
       "{{ data }}",
-      "{{ data | last4}}"
+      "{{ data | last4 }}"
     ],
     "fingerprint_expression": "{{ data }}",
     "deduplicate_token": true,
@@ -124,7 +124,7 @@ const token = await bt.tokens.create({
   },
   searchIndexes: [
     '{{ data }}',
-    '{{ data | last4}}'
+    '{{ data | last4 }}'
   ],
   fingerprintExpression: '{{ data }}',
   deduplicateToken: true,
@@ -147,7 +147,7 @@ var token = await client.CreateAsync(new Token {
   },
   SearchIndexes = new List<string> {
     "{{ data }}",
-    "{{ data | last4}}"
+    "{{ data | last4 }}"
   }
   FingerprintExpression = "{{ data }}",
   DeduplicateToken = true,
@@ -173,7 +173,7 @@ with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_
         containers=["/general/high/"],
         search_indexes=[
           "{{ data }}",
-          "{{ data | last4}}"
+          "{{ data | last4 }}"
         ],
         fingerprint_expression="{{ data }}",
         expires_at="8/26/2030 7:23:57 PM -07:00"
@@ -201,7 +201,7 @@ func main() {
   createTokenRequest.SetMetadata(map[string]string{
     "myMetadata": "myMetadataValue",
   })
-  createTokenRequest.SetSearchIndexes([]string{"{{ data }}", "{{ data | last4}}"})
+  createTokenRequest.SetSearchIndexes([]string{"{{ data }}", "{{ data | last4 }}"})
   createTokenRequest.SetFingerprintExpression("{{ data }}")
   createTokenRequest.SetDeduplicateToken(true)
   createTokenRequest.SetContainers([]string{"/general/high/"})
@@ -226,7 +226,7 @@ func main() {
   },
   "search_indexes": [
     "{{ data }}",
-    "{{ data | last4}}"
+    "{{ data | last4 }}"
   ],
   "fingerprint_expression": "{{ data }}",
   "created_by": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
@@ -505,7 +505,7 @@ curl "https://api.basistheory.com/tokens/c06d0789-0a38-40be-b7cc-c28a718f76f1" \
     },
     "search_indexes": [
       "{{ data }}",
-      "{{ data | last4}}"
+      "{{ data | last4 }}"
     ],
     "fingerprint_expression": "{{ data }}",
     "deduplicate_token": true,
@@ -525,7 +525,7 @@ const token = await bt.tokens.update('c06d0789-0a38-40be-b7cc-c28a718f76f1', {
   },
   searchIndexes: [
     '{{ data }}',
-    '{{ data | last4}}'
+    '{{ data | last4 }}'
   ],
   fingerprintExpression: "{{ data }}",
   deduplicateToken: true,
@@ -545,7 +545,7 @@ var token = await client.UpdateAsync("c06d0789-0a38-40be-b7cc-c28a718f76f1", new
   },
   SearchIndexes = new List<string> {
     "{{ data }}",
-    "{{ data | last4}}"
+    "{{ data | last4 }}"
   }
   FingerprintExpression = "{{ data }}",
   DeduplicateToken = true,
@@ -568,7 +568,7 @@ with basistheory.ApiClient(configuration=basistheory.Configuration(api_key="key_
         },
         search_indexes=[
           "{{ data }}",
-          "{{ data | last4}}"
+          "{{ data | last4 }}"
         ],
         fingerprint_expression="{{ data }}"
     ))
@@ -594,7 +594,7 @@ func main() {
   updateTokenRequest.SetMetadata(map[string]string{
     "myMetadata": "myMetadataValue",
   })
-  updateTokenRequest.SetSearchIndexes([]string{"{{ data }}", "{{ data | last4}}"})
+  updateTokenRequest.SetSearchIndexes([]string{"{{ data }}", "{{ data | last4 }}"})
   updateTokenRequest.SetFingerprintExpression("{{ data }}")
 
   updateTokenResponse, updateTokenHttpResponse, createErr := apiClient.TokensApi.Update(contextWithAPIKey, "c06d0789-0a38-40be-b7cc-c28a718f76f1").UpdateTokenRequest(updateTokenRequest).Execute()
@@ -616,7 +616,7 @@ func main() {
   },
   "search_indexes": [
     "{{ data }}",
-    "{{ data | last4}}"
+    "{{ data | last4 }}"
   ],
   "fingerprint_expression": "{{ data }}",
   "created_by": "fb124bba-f90d-45f0-9a59-5edca27b3b4a",
