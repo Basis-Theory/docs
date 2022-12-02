@@ -8104,7 +8104,7 @@ An expired token is <strong>deleted</strong> from the tenant up to <strong>1 hou
     },
     "search_indexes": [
       "{{ data }}",
-      "{{ data | last4}}"
+      "{{ data | last4 }}"
     ],
     "fingerprint_expression": "{{ data }}",
     "deduplicate_token": true,
@@ -8124,7 +8124,7 @@ An expired token is <strong>deleted</strong> from the tenant up to <strong>1 hou
   <span class="p">},</span>
   <span class="na">searchIndexes</span><span class="p">:</span> <span class="p">[</span>
     <span class="dl">'</span><span class="s1">{{ data }}</span><span class="dl">'</span><span class="p">,</span>
-    <span class="dl">'</span><span class="s1">{{ data | last4}}</span><span class="dl">'</span>
+    <span class="dl">'</span><span class="s1">{{ data | last4 }}</span><span class="dl">'</span>
   <span class="p">],</span>
   <span class="na">fingerprintExpression</span><span class="p">:</span> <span class="dl">'</span><span class="s1">{{ data }}</span><span class="dl">'</span><span class="p">,</span>
   <span class="na">deduplicateToken</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
@@ -8144,7 +8144,7 @@ An expired token is <strong>deleted</strong> from the tenant up to <strong>1 hou
   <span class="p">},</span>
   <span class="n">SearchIndexes</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="p">{</span>
     <span class="s">"{{ data }}"</span><span class="p">,</span>
-    <span class="s">"{{ data | last4}}"</span>
+    <span class="s">"{{ data | last4 }}"</span>
   <span class="p">}</span>
   <span class="n">FingerprintExpression</span> <span class="p">=</span> <span class="s">"{{ data }}"</span><span class="p">,</span>
   <span class="n">DeduplicateToken</span> <span class="p">=</span> <span class="k">true</span><span class="p">,</span>
@@ -8167,7 +8167,7 @@ An expired token is <strong>deleted</strong> from the tenant up to <strong>1 hou
         <span class="n">containers</span><span class="o">=</span><span class="p">[</span><span class="s">"/general/high/"</span><span class="p">],</span>
         <span class="n">search_indexes</span><span class="o">=</span><span class="p">[</span>
           <span class="s">"{{ data }}"</span><span class="p">,</span>
-          <span class="s">"{{ data | last4}}"</span>
+          <span class="s">"{{ data | last4 }}"</span>
         <span class="p">],</span>
         <span class="n">fingerprint_expression</span><span class="o">=</span><span class="s">"{{ data }}"</span><span class="p">,</span>
         <span class="n">expires_at</span><span class="o">=</span><span class="s">"8/26/2030 7:23:57 PM -07:00"</span>
@@ -8192,7 +8192,7 @@ An expired token is <strong>deleted</strong> from the tenant up to <strong>1 hou
   <span class="n">createTokenRequest</span><span class="o">.</span><span class="n">SetMetadata</span><span class="p">(</span><span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">string</span><span class="p">{</span>
     <span class="s">"myMetadata"</span><span class="o">:</span> <span class="s">"myMetadataValue"</span><span class="p">,</span>
   <span class="p">})</span>
-  <span class="n">createTokenRequest</span><span class="o">.</span><span class="n">SetSearchIndexes</span><span class="p">([]</span><span class="kt">string</span><span class="p">{</span><span class="s">"{{ data }}"</span><span class="p">,</span> <span class="s">"{{ data | last4}}"</span><span class="p">})</span>
+  <span class="n">createTokenRequest</span><span class="o">.</span><span class="n">SetSearchIndexes</span><span class="p">([]</span><span class="kt">string</span><span class="p">{</span><span class="s">"{{ data }}"</span><span class="p">,</span> <span class="s">"{{ data | last4 }}"</span><span class="p">})</span>
   <span class="n">createTokenRequest</span><span class="o">.</span><span class="n">SetFingerprintExpression</span><span class="p">(</span><span class="s">"{{ data }}"</span><span class="p">)</span>
   <span class="n">createTokenRequest</span><span class="o">.</span><span class="n">SetDeduplicateToken</span><span class="p">(</span><span class="no">true</span><span class="p">)</span>
   <span class="n">createTokenRequest</span><span class="o">.</span><span class="n">SetContainers</span><span class="p">([]</span><span class="kt">string</span><span class="p">{</span><span class="s">"/general/high/"</span><span class="p">})</span>
@@ -8216,7 +8216,7 @@ An expired token is <strong>deleted</strong> from the tenant up to <strong>1 hou
   </span><span class="p">},</span><span class="w">
   </span><span class="nl">"search_indexes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="s2">"{{ data }}"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"{{ data | last4}}"</span><span class="w">
+    </span><span class="s2">"{{ data | last4 }}"</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="nl">"fingerprint_expression"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{{ data }}"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
@@ -8545,7 +8545,7 @@ Returns <a href="#errors">an error</a> if the token could not be retrieved.</p>
     },
     "search_indexes": [
       "{{ data }}",
-      "{{ data | last4}}"
+      "{{ data | last4 }}"
     ],
     "fingerprint_expression": "{{ data }}",
     "deduplicate_token": true,
@@ -8562,7 +8562,7 @@ Returns <a href="#errors">an error</a> if the token could not be retrieved.</p>
   <span class="p">},</span>
   <span class="na">searchIndexes</span><span class="p">:</span> <span class="p">[</span>
     <span class="dl">'</span><span class="s1">{{ data }}</span><span class="dl">'</span><span class="p">,</span>
-    <span class="dl">'</span><span class="s1">{{ data | last4}}</span><span class="dl">'</span>
+    <span class="dl">'</span><span class="s1">{{ data | last4 }}</span><span class="dl">'</span>
   <span class="p">],</span>
   <span class="na">fingerprintExpression</span><span class="p">:</span> <span class="dl">"</span><span class="s2">{{ data }}</span><span class="dl">"</span><span class="p">,</span>
   <span class="na">deduplicateToken</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
@@ -8579,7 +8579,7 @@ Returns <a href="#errors">an error</a> if the token could not be retrieved.</p>
   <span class="p">},</span>
   <span class="n">SearchIndexes</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="p">{</span>
     <span class="s">"{{ data }}"</span><span class="p">,</span>
-    <span class="s">"{{ data | last4}}"</span>
+    <span class="s">"{{ data | last4 }}"</span>
   <span class="p">}</span>
   <span class="n">FingerprintExpression</span> <span class="p">=</span> <span class="s">"{{ data }}"</span><span class="p">,</span>
   <span class="n">DeduplicateToken</span> <span class="p">=</span> <span class="k">true</span><span class="p">,</span>
@@ -8599,7 +8599,7 @@ Returns <a href="#errors">an error</a> if the token could not be retrieved.</p>
         <span class="p">},</span>
         <span class="n">search_indexes</span><span class="o">=</span><span class="p">[</span>
           <span class="s">"{{ data }}"</span><span class="p">,</span>
-          <span class="s">"{{ data | last4}}"</span>
+          <span class="s">"{{ data | last4 }}"</span>
         <span class="p">],</span>
         <span class="n">fingerprint_expression</span><span class="o">=</span><span class="s">"{{ data }}"</span>
     <span class="p">))</span>
@@ -8622,7 +8622,7 @@ Returns <a href="#errors">an error</a> if the token could not be retrieved.</p>
   <span class="n">updateTokenRequest</span><span class="o">.</span><span class="n">SetMetadata</span><span class="p">(</span><span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">string</span><span class="p">{</span>
     <span class="s">"myMetadata"</span><span class="o">:</span> <span class="s">"myMetadataValue"</span><span class="p">,</span>
   <span class="p">})</span>
-  <span class="n">updateTokenRequest</span><span class="o">.</span><span class="n">SetSearchIndexes</span><span class="p">([]</span><span class="kt">string</span><span class="p">{</span><span class="s">"{{ data }}"</span><span class="p">,</span> <span class="s">"{{ data | last4}}"</span><span class="p">})</span>
+  <span class="n">updateTokenRequest</span><span class="o">.</span><span class="n">SetSearchIndexes</span><span class="p">([]</span><span class="kt">string</span><span class="p">{</span><span class="s">"{{ data }}"</span><span class="p">,</span> <span class="s">"{{ data | last4 }}"</span><span class="p">})</span>
   <span class="n">updateTokenRequest</span><span class="o">.</span><span class="n">SetFingerprintExpression</span><span class="p">(</span><span class="s">"{{ data }}"</span><span class="p">)</span>
 
   <span class="n">updateTokenResponse</span><span class="p">,</span> <span class="n">updateTokenHttpResponse</span><span class="p">,</span> <span class="n">createErr</span> <span class="o">:=</span> <span class="n">apiClient</span><span class="o">.</span><span class="n">TokensApi</span><span class="o">.</span><span class="n">Update</span><span class="p">(</span><span class="n">contextWithAPIKey</span><span class="p">,</span> <span class="s">"c06d0789-0a38-40be-b7cc-c28a718f76f1"</span><span class="p">)</span><span class="o">.</span><span class="n">UpdateTokenRequest</span><span class="p">(</span><span class="n">updateTokenRequest</span><span class="p">)</span><span class="o">.</span><span class="n">Execute</span><span class="p">()</span>
@@ -8643,7 +8643,7 @@ Returns <a href="#errors">an error</a> if the token could not be retrieved.</p>
   </span><span class="p">},</span><span class="w">
   </span><span class="nl">"search_indexes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="s2">"{{ data }}"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"{{ data | last4}}"</span><span class="w">
+    </span><span class="s2">"{{ data | last4 }}"</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="nl">"fingerprint_expression"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{{ data }}"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb124bba-f90d-45f0-9a59-5edca27b3b4a"</span><span class="p">,</span><span class="w">
