@@ -1,3 +1,10 @@
+## [1.76.3](https://github.com/Basis-Theory/docs/compare/v1.76.2...v1.76.3) (2022-12-02)
+
+
+### Bug Fixes
+
+* add trailing whitespace to token expressions ([#253](https://github.com/Basis-Theory/docs/issues/253)) ([da701c5](https://github.com/Basis-Theory/docs/commit/da701c5a083aafcc0d8f9fe4d334ac4c0f33848c))
+
 ## [1.76.2](https://github.com/Basis-Theory/docs/compare/v1.76.1...v1.76.2) (2022-12-02)
 
 
