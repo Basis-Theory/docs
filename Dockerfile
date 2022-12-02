@@ -22,7 +22,7 @@ RUN apt-get update \
 
 COPY . /srv/slate
 
-RUN bundle exec middleman build --verbose
+RUN bundle exec middleman build
 RUN chmod +x /srv/slate/slate.sh
 
 ENTRYPOINT ["/srv/slate/slate.sh"]
