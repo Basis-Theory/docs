@@ -1,3 +1,10 @@
+## [1.76.1](https://github.com/Basis-Theory/docs/compare/v1.76.0...v1.76.1) (2022-12-02)
+
+
+### Bug Fixes
+
+* fixing nav issue ([2699c67](https://github.com/Basis-Theory/docs/commit/2699c67c526881141abe2d5cd94e115a5fe3f03b))
+
 # [1.76.0](https://github.com/Basis-Theory/docs/compare/v1.75.0...v1.76.0) (2022-12-01)
 
 
