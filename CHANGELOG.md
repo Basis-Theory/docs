@@ -1,3 +1,10 @@
+## [1.76.2](https://github.com/Basis-Theory/docs/compare/v1.76.1...v1.76.2) (2022-12-02)
+
+
+### Bug Fixes
+
+* add notice for required content-type header on update tokens ([#252](https://github.com/Basis-Theory/docs/issues/252)) ([a928de0](https://github.com/Basis-Theory/docs/commit/a928de08426f8b97749809b2f0d72daafd8608af))
+
 ## [1.76.1](https://github.com/Basis-Theory/docs/compare/v1.76.0...v1.76.1) (2022-12-02)
 
 
