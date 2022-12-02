@@ -1,4 +1,4 @@
-FROM ruby:2.6-slim
+FROM ruby:3.1-slim
 
 WORKDIR /srv/slate
 
@@ -12,8 +12,8 @@ COPY Gemfile.lock .
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
-        build-essential \
-        nodejs \
+    build-essential \
+    nodejs \
     && gem install bundler \
     && bundle install \
     && apt-get remove -y build-essential \
