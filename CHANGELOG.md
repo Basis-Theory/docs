@@ -1,3 +1,10 @@
+## [1.76.4](https://github.com/Basis-Theory/docs/compare/v1.76.3...v1.76.4) (2022-12-07)
+
+
+### Bug Fixes
+
+* bt in transform example ([#256](https://github.com/Basis-Theory/docs/issues/256)) ([5f53036](https://github.com/Basis-Theory/docs/commit/5f53036b2d5b123fa2d4ab9260b5f6a3f29b7dca))
+
 ## [1.76.3](https://github.com/Basis-Theory/docs/compare/v1.76.2...v1.76.3) (2022-12-02)
 
 
