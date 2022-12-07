@@ -3062,6 +3062,8 @@ At most, 100 tokens may be detokenized within a single proxy request. You can fi
 <h2 id='proxies-transform-code'>Transform Code</h2>
 <p>All transform code snippets must export a function which takes in a <a href="#proxies-transform-code-transform-request-object">request object</a> and returns a <a href="#proxies-transform-code-transform-response-object">response object</a>.</p>
 <h3 id='proxies-transform-code-transform-request-object'>Transform Request Object</h3>
+<p>This is the object passed as a parameter to the transform function.</p>
+
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -3072,15 +3074,22 @@ At most, 100 tokens may be detokenized within a single proxy request. You can fi
 <tr>
 <td><code>args</code></td>
 <td><em>object</em></td>
-<td>The arguments containing the <code>body</code> and <code>headers</code> attributes and an optional <code>bt</code> attribute if an <code>application</code> was configured on the <a href="#proxies-proxy-object">Proxy object</a></td>
+<td>The arguments containing the <code>body</code> and <code>headers</code> attributes</td>
 </tr>
 <tr>
 <td><code>configuration</code></td>
 <td><em>object</em></td>
 <td>The configuration defined for the <a href="#proxies-proxy-object">Proxy object</a></td>
 </tr>
+<tr>
+<td><code>bt</code></td>
+<td><em>object</em></td>
+<td>A pre-configured Basis Theory JS instance if an <code>application</code> was configured on the <a href="#proxies-proxy-object">Proxy object</a></td>
+</tr>
 </tbody></table>
 <h3 id='proxies-transform-code-transform-response-object'>Transform Response Object</h3>
+<p>This is the object that must be returned by the transform function.</p>
+
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -3104,7 +3113,8 @@ At most, 100 tokens may be detokenized within a single proxy request. You can fi
 
 <div class="center-column"></div>
 <div class="highlight"><pre class="highlight javascript"><code><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="k">async</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
-  <span class="kd">const</span> <span class="p">{</span> <span class="nx">body</span><span class="p">,</span> <span class="nx">headers</span><span class="p">,</span> <span class="nx">bt</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">args</span><span class="p">;</span> <span class="c1">// access any args provided with the transform request</span>
+  <span class="kd">const</span> <span class="p">{</span> <span class="nx">bt</span><span class="p">,</span> <span class="nx">args</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">req</span><span class="p">;</span>
+  <span class="kd">const</span> <span class="p">{</span> <span class="nx">body</span><span class="p">,</span> <span class="nx">headers</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">args</span><span class="p">;</span> <span class="c1">// access any args provided with the transform request</span>
   <span class="kd">const</span> <span class="p">{</span> <span class="nx">MY_CONFIG</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">configuration</span><span class="p">;</span> <span class="c1">// access any static config defined on the Proxy</span>
 
   <span class="c1">// do anything here!</span>
