@@ -56,7 +56,8 @@ Transform Code is written in Javascript (targeting Node.js v16) and generally fo
 <div class="center-column"></div>
 ```js
 module.exports = async function (req) {
-  const { body, headers, bt } = req.args; // access any args provided with the transform request
+  const { bt, args } = req;
+  const { body, headers } = args; // access any args provided with the transform request
   const { MY_CONFIG } = req.configuration; // access any static config defined on the Proxy
 
   // do anything here!
