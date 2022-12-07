@@ -39,12 +39,17 @@ All transform code snippets must export a function which takes in a [request obj
 
 ### Transform Request Object
 
-| Attribute       | Type     | Description                                                                                                                                                                 |
-| --------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `args`          | *object* | The arguments containing the `body` and `headers` attributes and an optional `bt` attribute if an `application` was configured on the [Proxy object](#proxies-proxy-object) |
-| `configuration` | *object* | The configuration defined for the [Proxy object](#proxies-proxy-object)                                                                                                     |
+This is the object passed as a parameter to the transform function.
+
+| Attribute       | Type     | Description                                                                                                               |
+|-----------------|----------|---------------------------------------------------------------------------------------------------------------------------|
+| `args`          | *object* | The arguments containing the `body` and `headers` attributes                                                              |
+| `configuration` | *object* | The configuration defined for the [Proxy object](#proxies-proxy-object)                                                   |
+| `bt`            | *object* | A pre-configured Basis Theory JS instance if an `application` was configured on the [Proxy object](#proxies-proxy-object) |
 
 ### Transform Response Object
+
+This is the object that must be returned by the transform function.
 
 | Attribute | Type     | Description                                      |
 | --------- | -------- | ------------------------------------------------ |
@@ -56,7 +61,8 @@ Transform Code is written in Javascript (targeting Node.js v16) and generally fo
 <div class="center-column"></div>
 ```js
 module.exports = async function (req) {
-  const { body, headers, bt } = req.args; // access any args provided with the transform request
+  const { bt, args } = req;
+  const { body, headers } = args; // access any args provided with the transform request
   const { MY_CONFIG } = req.configuration; // access any static config defined on the Proxy
 
   // do anything here!
