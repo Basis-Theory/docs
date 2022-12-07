@@ -41,11 +41,11 @@ All transform code snippets must export a function which takes in a [request obj
 
 This is the object passed as a parameter to the transform function.
 
-| Attribute       | Type                                                                                                                      | Description                                                             |
-|-----------------|---------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------|
-| `args`          | *object*                                                                                                                  | The arguments containing the `body` and `headers` attributes            |
-| `configuration` | *object*                                                                                                                  | The configuration defined for the [Proxy object](#proxies-proxy-object) |
-| `bt`            | A pre-configured Basis Theory JS instance if an `application` was configured on the [Proxy object](#proxies-proxy-object) |
+| Attribute       | Type     | Description                                                                                                               |
+|-----------------|----------|---------------------------------------------------------------------------------------------------------------------------|
+| `args`          | *object* | The arguments containing the `body` and `headers` attributes                                                              |
+| `configuration` | *object* | The configuration defined for the [Proxy object](#proxies-proxy-object)                                                   |
+| `bt`            | *object* | A pre-configured Basis Theory JS instance if an `application` was configured on the [Proxy object](#proxies-proxy-object) |
 
 ### Transform Response Object
 
