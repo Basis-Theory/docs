@@ -660,7 +660,7 @@ curl "https://api.basistheory.com/reactors/d08bc998-9301-495c-a2e5-04f8dc0916b4/
               "card": {
                 "number": "{{67d76cd0-bc2a-4a73-be8c-6539c81db465 | json: '$.card_number'}}",
                 "expiration_month": "{{67d76cd0-bc2a-4a73-be8c-6539c81db465 | json: '$.expiration_month' | pad_left: 2, '0'}}",
-                "expiration_year": "{{67d76cd0-bc2a-4a73-be8c-6539c81db465 | json: '$.expiration_year' | slice: -2, 2}}",
+                "expiration_year": "{{67d76cd0-bc2a-4a73-be8c-6539c81db465 | json: '$.expiration_year' | to_string | slice: -2, 2}}",
               },
               "card_owner_full_name": "John Doe"
             }
@@ -679,7 +679,7 @@ curl "https://api.basistheory.com/proxy" \
               "credit_card": {
                 "number": "{{67d76cd0-bc2a-4a73-be8c-6539c81db465 | json: '$.card_number'}}",
                 "month": "{{67d76cd0-bc2a-4a73-be8c-6539c81db465 | json: '$.expiration_month' | pad_left: 2, '0'}}",
-                "year": "{{67d76cd0-bc2a-4a73-be8c-6539c81db465 | json: '$.expiration_year' | slice: -2, 2}}",
+                "year": "{{67d76cd0-bc2a-4a73-be8c-6539c81db465 | json: '$.expiration_year' | to_string | slice: -2, 2}}",
                 "full_name": "John Doe"
               },
               "retained": true
