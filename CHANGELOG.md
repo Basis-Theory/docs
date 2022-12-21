@@ -1,3 +1,10 @@
+## [1.76.5](https://github.com/Basis-Theory/docs/compare/v1.76.4...v1.76.5) (2022-12-21)
+
+
+### Bug Fixes
+
+* fix liquid expression for expiration date ([#258](https://github.com/Basis-Theory/docs/issues/258)) ([1eb1e9e](https://github.com/Basis-Theory/docs/commit/1eb1e9ea5a1c8ad6e9e70a0f79b74d181eecfdca))
+
 ## [1.76.4](https://github.com/Basis-Theory/docs/compare/v1.76.3...v1.76.4) (2022-12-07)
 
 
